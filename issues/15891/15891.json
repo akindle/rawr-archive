@@ -1,0 +1,116 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtPaladin",
+      "DisplayName": "Rawr.ProtPaladin"
+    },
+    "ClosedComment": "The actual issue here is resolved, what remains is a performance gain I&#39;ll look into at a later time.",
+    "ClosedDate": "2010-02-08T13:49:25.077-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I was working on a \"wishlist\" paladin gear setup, and I clicked on and off the Chill of the Throne Buff.\n \nWith the buff active: 50234 HP\nWithout the buff active: 49484 HP\n \nYes, this should affect dodge and avoidance, but why does it affect raw Health?\n \nI have attached the 2.3.5 paladin file to see if others can recreate the problem.",
+    "LastUpdatedDate": "2013-05-16T05:22:26.18-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-01-13T13:25:32.257-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtPaladin] Chill of the Throne Buff Changes Health Total",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15891
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2775,
+      "FileName": "wishlist paladin.xml",
+      "DownloadUrl": ".\\2775"
+    },
+    {
+      "FileId": 2835,
+      "FileName": "nonnapkinmath.xls",
+      "DownloadUrl": ".\\2835"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Easy, Unidentifiable Organ will have a different uptime if you have less dodge. Less dodge = higher uptime = more health.",
+      "PostedDate": "2010-01-13T13:38:45.107-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That said, I think there may be something wrong with the way it's calculating stack uptime. The napkin math just doesn't even remotely reflect the level of difference that I see on the on-damage-taken procs.",
+      "PostedDate": "2010-01-13T14:44:51.993-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It seems unlikey that it's Unidentifiable Organ doing that (at least not properly)... as the uptime of the buff should increase with less avoidance, not decrease.",
+      "PostedDate": "2010-01-13T17:15:08.5-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Looking at the code for procs seems to indicate that ProtPaladin will need some fixes to the proc system similar to how I revamped mine some time ago.. being that it is using:\r\ncase Trigger.DamageTaken:\r\n                            statsSpecialEffects.Accumulate(effect.GetAverageStats((1.0f / am.AttackerHitsPerSecond), 1.0f, weaponSpeed));\r\n\r\nrather than my updated version of:\r\ncase Trigger.DamageTaken:\r\n                        effect.AccumulateAverageStats(statsSpecialEffects, (1.0f / am.AttackerSwingsPerSecond), (am.AttackerHitsPerSecond / am.AttackerSwingsPerSecond));\r\n\r\nCould be some oddities with it triggering 100% of the time on the landed interval rather than being based on the avoidance percentage per interval.",
+      "PostedDate": "2010-01-13T17:21:50.377-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-18T20:13:36.037-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The math works out for me.  The proc has an uptime of 10 seconds.  The attack speed is 2 seconds.  That means you have to proc the effect in 5 hits or you lose the stack.  WIth no avoidance at all, each attack has a 100% chance of landing and a 60% chance of procing, so the stack will stay up about 99% of the time.  With Chill of the Throne on the provided toon, each attack has roughly a 60% chance of landing and a 60% chance of procing.  That reduces the chance that the stack will continue to about 75%.  Remove Chill of the Throne and now you only have a 40% chance of landing with the 60% chance of procing after that, reducing the chance the stack continues to around 58%.\r\n\r\nOn top of that, you have to proc it 10 consecutive times to get the max effect.  In example 1, you have about a 90% chance of going full before it resets.  Example 2 drops it dramatically to just above 5%.  In example 3, we're talking roughly a 0.4% chance of 10 stacks.\r\n\r\nI am inclined to believe Rawr is right here, and that the 20% dodge makes a big difference to the average stack size of the Unidentifiable Organ.",
+      "PostedDate": "2010-01-21T14:11:50.553-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "EvanM,\r\n\r\nIf I'm reading the code correctly, your method skips a few method calls that my method is calling, but turns out the same in the end.  Is that an accurate statement?  If so, I should convert this over, might get a modest performance gain out of it.",
+      "PostedDate": "2010-01-21T14:17:19.233-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well, so much for napkin math... my numbers are off a bit. :)  So I had Excel do it for me.  Uploaded the non-napkin math, with the examples highlighted in yellow.  It's still significant, 32.114% chance to reach 10 stacks with Chill of the Throne vs. 5.370% chance to reach 10 stacks without.",
+      "PostedDate": "2010-01-21T14:36:05.867-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-21T14:36:07.693-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-08T13:49:25.077-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:06:03.233-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:30:35.053-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:26.18-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

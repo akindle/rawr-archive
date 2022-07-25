@@ -1,0 +1,91 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSDK",
+      "DisplayName": "Rawr.DPSDK"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2012-01-31T20:56:27.797-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I was trying to use the tool to help optimize my Unholy DK gear but I ran into a slight issue.\nUsing my own personal WoL data, a few random Baleroc logs of the top 40 on 25 heroic as well as simulationcraft raw results as well as the derived statweights . . . Mastery is better than Critical strike rating.  However I ran into a slight problem where Rawr is reforging all of my Mastery into Crit where it can.\n \nmy character file is attached.\n \nThis is with Rawr WPF 4.2.5",
+    "LastUpdatedDate": "2013-05-16T05:17:22.613-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-10-09T00:01:03.24-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSDK] Unholy Crit and Mastery",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 21622
+  },
+  "FileAttachments": [
+    {
+      "FileId": 5376,
+      "FileName": "Tsuki.xml",
+      "DownloadUrl": ".\\5376"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I can see what you're saying about Crit v Mastery in the model.  In my current dev build, Crit is scaling slightly better than Mastery.  Unfortunately, I'm not sure where exactly the problem might be just yet.  Everything that should be scaling with Shadow damage, has that multiplier on it.  If you look at the rotation report, are your ability ratios about right?  Do you see the parses or SimC track more shadow-based abilities than I do?  Is there some data that I could provide that would make it easier for you to compare?",
+      "PostedDate": "2011-10-24T18:19:48.12-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Just at a cursory glance, I am not seeing Death and Decay used in the single target rotation for Unholy. This alone would devalue the Mastery stat in your calculations.\r\n\r\nI will keep looking and compare the breakdowns further to try and find any other discrepancies.",
+      "PostedDate": "2011-10-29T11:48:58.097-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "your DPS breakdown is as follows for my character:\r\nwhite \t\t\t10.06\r\nBlood Plague\t\t6.88\r\nFestering Strike\t\t10.29\r\nScourge Strike\t\t43.91\r\nDeath Coil\t\t\t15.40\r\nFrost Fever\t\t5.70\r\nGargoyle\t\t\t1.92\r\nGhoul\t\t\t3.83\r\n\r\nmind you, this only comes out to 97.99%\r\n\r\nMy personal DPS breakdown from beating on a target dummy for 10 minutes 3x in a row:\r\nwhite\t\t\t\t10.5\r\nDeath and Decay\t4.4\r\nBlood Plague\t\t5.0\r\nFestering Strike\t\t5.6\r\nScourge Strike\t\t30.5\r\nDeath Coil\t\t\t15.8\r\nFrost Fever\t\t3.7\r\nGargoyle\t\t\t5.2\r\nGhoul\t\t\t19.9\r\n\r\nFrom what I can see, the Ghoul is heavily undervalued causing the stat weights to be off kilter.",
+      "PostedDate": "2011-10-29T20:33:23.68-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 63715.",
+      "PostedDate": "2011-11-07T10:26:12.287-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-11-07T11:25:22.757-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated w/ changelist 64650 ",
+      "PostedDate": "2012-01-18T09:15:07.477-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-01-31T20:56:27.797-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:24:14.017-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:17:22.613-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

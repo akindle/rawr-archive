@@ -1,0 +1,85 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Cat",
+      "DisplayName": "Rawr.Cat"
+    },
+    "ClosedComment": "Fixed for next version.&#40;Correct fix was to remove the &#39;&#47; chanceNonAvoided&#39; entirely&#41;",
+    "ClosedDate": "2010-08-22T11:26:42.197-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The problem is in the following calculation:\nfloat cpPerCPGTemp = (chanceHitYellowTemp + chanceCritYellowTemp * (1f + stats.BonusCPOnCrit)) / chanceNonAvoided;\n \nThis should be:\nfloat cpPerCPGTemp = (chanceHitYellowTemp + chanceCritYellowTemp * (1f + stats.BonusCPOnCrit)) * chanceNonAvoided;\n \nWith the current implementation you get less CPs per attack the more Hit/Exp you get.",
+    "LastUpdatedDate": "2017-11-27T10:59:37.077-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-08-10T04:50:52.72-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Cat] Higher Hit/Exp gives less CPs per attack",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 18450
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "No, the  '/chanceNonAvoided' is there intentionally.\r\nIt's done that way because avoids are considered as costing extra energy/GCDs, and then for the purposes of attack results, it removes the avoids from the possible results.\r\n\r\nExample with really big numbers: \r\n\r\nBase: 25% crit chance, 25% hit chance, 50% avoid chance, on an ability that costs 30 energy.\r\nResult: energy cost is 60, costs 2 GCDs, and it crits 50% of the time.\r\n\r\nBase: 25% crity chance, 75% hit chance, 0% avoid chance, on an ability that costs 30 energy.\r\nResult: energy cost is 30, costs 1 GCD, and it crits 25% of the time.",
+      "PostedDate": "2010-08-10T09:52:11.957-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Err, as pointed out, it's not 60 energy, it's 36.\r\nAlso, it should be 2roll not 1roll, which is a problem. I *think* that's covered elsewhere, but I'm not sure, need to investigate; that very well may be a problem.",
+      "PostedDate": "2010-08-10T10:50:59.183-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-08-10T15:09:55.963-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-08-18T14:05:38.607-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-08-22T11:26:42.197-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T22:45:40.733-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:27:46.113-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:08.76-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T10:59:37.077-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

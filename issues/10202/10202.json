@@ -1,0 +1,86 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Bear",
+      "DisplayName": "Rawr.Bear"
+    },
+    "ClosedComment": "Hello diminishing returns.",
+    "ClosedDate": "2009-02-12T13:46:23.533-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "In Rawr.Bear, if you manage to compose a configuration(gear+buffs) where a tank is immune to melee (dodge + miss > 100%), the \"Mitigation Points\" value becomes negative. Probably the code computes that value with something like \"x/(1-(miss+dodge))\". There should be a check and something like \"Infinite\" should appear instead. It affects \"Overall Points\" and \"Damage taken\" too.",
+    "LastUpdatedDate": "2013-05-16T05:27:17.047-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-05-16T03:58:56.853-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Bear] Mitigation is wrong for melee immune tanks",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 10202
+  },
+  "FileAttachments": [
+    {
+      "FileId": 978,
+      "FileName": "verify-negative-mitigation-points.xml",
+      "DownloadUrl": ".\\978"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I'm not able to repro this; it does goto Infinity for me. Can you provide an example character file?",
+      "PostedDate": "2008-05-16T08:36:56.997-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This character file gives:\r\n- Damage Taken: -0.0611987%\r\n- Overall Points: -1.133598E+07\r\n- Mitigation Points: -1.143815E+07\r\n\r\nYou can also reproduce this by loading the same char from armory(if it has tank gear on), and putting all the dodge/agility buffs possible until the combat table contains only dodge and miss.",
+      "PostedDate": "2008-05-16T14:49:17.613-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-05-16T14:49:19.16-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks",
+      "PostedDate": "2008-05-16T15:57:46.01-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-02-12T13:46:23.533-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:39:31.72-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:51.847-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:27:17.047-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

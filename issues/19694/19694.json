@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Bear",
+      "DisplayName": "Rawr.Bear"
+    },
+    "ClosedComment": "User misconceptions&#58;1&#41; We don&#39;t use stat weights, the chart you are looking at is an output2&#41; You are seeing the Survivability Soft Cap coming into effect",
+    "ClosedDate": "2011-01-14T10:43:47.713-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I've used Rawr and it helps me tremendously as a bear tank.  As I've been gearing out however, I've noticed that there's a strange anomaly in stat values and how Rawr calculates the best stats for survivability/mitigation.  I want to know if this is intentional, that there is something that I am missing, or if it appears to be a bug in calculating the best stat value.\n \nI am trying to make this as precise as I could, to show where it breaks down.\n \nUse my character info for reference:  Lockhaven, US-Destromath\n \nStat Value of Stamina: 33.05\n \nStat Value of Agility: 49.33\n \nHowever, if you were to change Treads of Fleeting Joy into Boots of the Predator (my old blue boots), the stats now look like this.\n \nStat Value of Stamina: 55.25\n \nStat Value of Agility: 49.04\n \nHow is it that upgrading my boots from a blue to an epic suddenly cause the entire system to change?  Stamina has dramatically lost its value is now worth less in value than dodge rating, and now Agility is the stat I'm being told to gem for.  How does Rawr make this calculation?  I understand the value of dodge and agility, but it shouldn't be overtaking stamina this dramatically.  It gets difficult when I regem an item from stamina to Agi+Stam, and suddenly the values change drastically over a few stat points.\n \nIf there is any feedback or if this is working intentionally, then please let me know! If I have really stumbled upon a bug however, glad to bring it up!",
+    "LastUpdatedDate": "2013-05-16T05:19:02.83-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-01-14T05:16:16.513-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Bear] Stat Values seem to break down in higher-end gear.",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19694
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Your problem is that you are looking at the Stat values page and thinking this actually means anything. It means absolutely bugger all. Think of them as random number generators.\r\n\r\nWhat actually happens to show those figures (note they are never ever ever used in any calculations) is Rawr adds X of a stat see how that changes the overall figures and divides by X to get the \"stat value\" for that stat. If you are at all close to any of the many breakpoints (hit, expertise caps, points where haste gives you extra ticks of something etc etc) then the figures will WILDLY vary for small changes. However since the stats values are meaningless in the first place there is no need to worry. \r\n\r\nSimple solution to the problem - stop looking at stat values.\r\n\r\nNow there MIGHT be an underlying calculation issue however if you believe that to be the case please provide information on how the displayed results changed from what you expected. eg: did dodge go up more than it should? Did something drop that shouldn't have. Tell us what might be wrong in terms of the output figures but do not use stats values as they are by definition going to be highly volatile.",
+      "PostedDate": "2011-01-14T05:44:49.657-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "No, that much is fine in this case. \r\n\r\nThis is 100% intended. What you're seeing is the effects of the Survival Soft Cap. You're getting just above and below the soft cap that you have set.  ",
+      "PostedDate": "2011-01-14T08:38:14.793-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-14T10:43:47.713-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T18:42:44.223-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:24.61-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:02.83-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Warlock",
+      "DisplayName": "Rawr.Warlock"
+    },
+    "ClosedComment": "Added decimation in newest change set, use that instead of adding soul fire to priority list.",
+    "ClosedDate": "2009-09-16T07:39:21.517-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Not sure exactly how I got into this state but my DPS shows as NaN.",
+    "LastUpdatedDate": "2013-05-16T05:24:22.733-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-09-14T07:25:58.07-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Warlock] NaN for DPS",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14147
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2216,
+      "FileName": "Necronator.xml",
+      "DownloadUrl": ".\\2216"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "can you post the save file?",
+      "PostedDate": "2009-09-14T07:44:21.537-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Looks like Soul Fire is the one not playing nice. If I remove it from my spell priority list I can DPS number.",
+      "PostedDate": "2009-09-14T09:17:20.837-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Looked into the cause of this error, I believe it occurs when a user creates an incorrect priority list. Your filler MUST be the lowest priority;  you cannot have soul fire below incinerate or Shadowbolt, as it will never be cast yet still be labeled as the filler spell causing a 0/0 case during a certain calculation.  ",
+      "PostedDate": "2009-09-14T20:07:00.813-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I moved shadow bolt to the bottom of the list ad soul fire just about it and I still get NaN. ",
+      "PostedDate": "2009-09-15T06:59:26.563-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-15T06:59:28.413-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hmm, I apologize, I was mistaken, just looked it up and Soul Fire does not have a cooldown either, so currently soul fire and shadowbolt/incinerate cannot be used in the same priority list. I assume you want it to only use soul fire when decimation procs? The problem with implementing such a mechanic (similar problem to drain soul/deaths embrace) is that I don't believe we can accurately determine what percent of the time the boss is below 35% (not just simply 35% of the time; as these execute abilities make the last portion of a boss last shorter than the start). If I get some time I may work on implementing a method of using decimation procs though (possibly a check box or something) and a slider for % time below 35%.",
+      "PostedDate": "2009-09-15T12:28:24.457-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-16T07:39:21.517-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T15:09:50.033-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:42:11.687-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:03.653-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:22.733-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

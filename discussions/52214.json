@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "175380",
+    "ThreadId": "52214",
+    "Html": "Hi again guys,<br>\r\n<br>\r\nI was wondering if it'd be posisble to add the ability to calculate effective health in both the tankadin and probably the warrior tank modules..There's been numerous discussions on other forumns about this outlinging the diffeence between having high hp and low mitigation, and low hp and high mitigation and how they affect the &quot;Effective Health&quot; of the tank.<br>\r\n<br>\r\nBeing able to then filter/optimise for this with other variables such as crit immunity hit/exp cap, block/dodge/parry threasholds would also be helpful (I think). Is this possible, just an awful lot of work or just plain useless?\r\n",
+    "PostedDate": "2009-04-03T11:04:38.14-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "175388",
+    "ThreadId": "52214",
+    "Html": "<p>I believe ProtWarr and ProtPaladin either use and display Effective Health as Survival Points, or have an option to set survival points to equal Effective Health.<br>\r\n<br>\r\nIn both ProtWarr and ProtPaladin, Survival Points is defined as equal to DefendModel.Effective Health which is...</p>\r\n<p>EffectiveHealth     = (Stats.Health / guaranteedReduction);<br>\r\n<br>\r\nSurvival and Mitigation points work as a very similar way of determining tanking potency compared to Effective Health; is it just the name of the term that you want to see, or do you feel that there's a difference in definitions?</p>\r\n",
+    "PostedDate": "2009-04-03T11:18:19.15-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "175750",
+    "ThreadId": "52214",
+    "Html": "Looks like you have it spot on, i just didn't realise it was called something else.<br>\r\n<br>\r\nAnother request if possible...<br>\r\n<br>\r\nI keep pretty much every item I ever get in case at some point it may become useful again (i.e when i change one item because of a sidegrade etc.).<br>\r\n<br>\r\nwhat I was wondering however is it possible (in as few steps as possible) when optimising for the optimiser after it has pulled up the items/enchants/gems to meet the primary filter. i.e. a set to give max effective health.<br>\r\n<br>\r\nThat it could then filter the remaining items for say max block rating/value, only using an item from the first optimise if it doesn't require a change in gem's and enchants.<br>\r\n<br>\r\nAs for me tanking a 5 man heroic in my full raiding set is pretty difficult, the damage i take isn't sufficient enough to enable me to be healed for enough mana regen. (i end up going half naked). Whereas a block set would mean i take more &quot;controllable&quot; damage. And by using the remaining items or items that don't need adjustment means less gold spent re-gemming/re-enchanting.<br>\r\n<br>\r\n<br>\r\n<br>\r\n",
+    "PostedDate": "2009-04-05T01:14:41.057-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "175753",
+    "ThreadId": "52214",
+    "Html": "I find myself in similar situations, so rather than answering your question directly I find it easier to just share what I do :) Even as a dev I'm not completely comfortable with the Batch Tools, so I'm counting on someone saying &quot;Oh man that's easy to do, just use Batch Tools&quot; but... Here's how I do it (lol)<div><div><br></div><div>There is a major set that I need to have optimized to the absolute maximum, and that's my &quot;50,000 Base Damage High Mitigation Set with 6k+ TPS and 42k+ health fully buffed&quot; set for Malygos and the like. When Ulduar comes, it'll be changed to match the fights that are most tank-gear-dependant.</div><div><br></div><div>So I mark all my available items as completely regemmable and enchantable for that point. I then set my options, and optimize given the criteria of this most important role.</div><div><br></div><div>After they are all set, I go to &quot;Current Items/Buffs&quot; and ctrl-click the availability-diamonds for my equipped items from Green (any gemming) to Blue (only that gemming)  and set the Enchants to specifically the ones chosen. They won't be changed no matter what.</div><div><br></div><div>I then go ahead and change the options to &quot;25,000 Base Damage High TPS &gt;30k health unbuffed&quot; which suits me fine for lower-naxx or 10 mans or heroics. Then I optimize that. It will use your current items that are specific, but regem any items that aren't used in your Malygos set.</div><div><br></div><div>Though most of us working on these models would prefer for you to use our hard work; I find that if you keep your specialized set optimized, then just have your offset gear set to &quot;general purpose&quot; gemmings and enchants you'll wind up happy. At that point you can just pick and choose your gear for those times where you just &quot;need a bit more threat&quot; or &quot;need less damage reduction&quot; through plain ol' common sense.</div><div><br></div><div>My favorite way of &quot;eyeballing it&quot; (even if it's not completely accurate because of the way upgrade lists work) would be to have the options panel open and look at your upgrade list chart in the comparison window. Fiddle with Boss Damage, Threat Scale, etc and see at which points certain gear starts to appear on the upgrade list. For example the BV wrists from Naxx25 suddenly outperform the Dodge/Parry ones at around &lt;20k base attack when it comes to Survival/Mitigation points.</div><div><br></div><div>Again, I'm 90% sure that there's a much faster and easier way to do what you want, but I'm generally happy with these steps;  it helps me understand the gear relations a lot easier.</div><div><br></div><div>On a side note, Mana usage and regeneration (through Spiritual Attument and so on) being linked with Boss Incoming DPS is something Negarine and I were talking about implementing in the ProtPaladin model eventually, but it has been a rather low priority.</div></div>",
+    "PostedDate": "2009-04-05T01:43:49.993-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "175808",
+    "ThreadId": "52214",
+    "Html": "Wow good advice i'll give that a try..<br>\r\n<br>\r\nJust ran the beta and i gotta say wow i'm real impressed.. got my talent spec sorted as well as the items i'm probably goimg to enter uldular wiht (baring any new upgrades).<br>\r\n<br>\r\nJust one final idea that's sprang to mind,...<br>\r\nwould it be possible for the changes mae between current equipped and &quot;optimised&quot; be able to be exported into an addon-esque arrangement that could then be loaded in-game, like a set of intstructions to get from where your items are now to where they would be optimised.<br>\r\n<br>\r\nMaybe with slot - item name - gem1/meta - gem2 - enchant etc.<br>\r\n<br>\r\nAlthough i know its only a case of alt-tabbing but when you have lots of changes to make i'm sure it'd be handy...<br>\r\n<br>\r\nNot sure if its possible or even been raised before but maybe extend it to do the reverse also import into rawr the item's you have in you bag/bank available also..<br>\r\n<br>\r\n",
+    "PostedDate": "2009-04-05T06:26:17.14-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "176196",
+    "ThreadId": "52214",
+    "Html": "Just tried yout tip above on the latest beta, and even though the items are marked with a blue diamond (which i'm hoping i've got right as DO NOT REGEM) the optimiser will re-gem and re-enchant, regardless. I do not have the force regem/re-enchant tick boxes ticked.<br>\r\n<br>\r\nThe only other contstriant I have selected is that the defense rating must be 540.\r\n",
+    "PostedDate": "2009-04-06T09:33:51.317-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "176333",
+    "ThreadId": "52214",
+    "Html": "It's possible that while X item might be marked blue, you might have not unmarked the green. If you see other copies of the item with a green check, that would be your situation.<div><br></div><div>Confusing, I know.</div>",
+    "PostedDate": "2009-04-06T14:50:12.823-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "176335",
+    "ThreadId": "52214",
+    "Html": "oh didn't think of that i'll go check that now.\r\n",
+    "PostedDate": "2009-04-06T14:53:58.503-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

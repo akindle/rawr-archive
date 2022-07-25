@@ -1,0 +1,116 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Cat",
+      "DisplayName": "Rawr.Cat"
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-08T07:17:23.113-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Rawr says my Attack Power in Cat Form should be 7597,726.\nI'm logged out in Cat Form, however Armory isn't updated yet. It shows my AP as 1643 in human form.\nIt was showing around 4500 in Cat Form in-game.\nYou said Rawr counts Savage Roar to be present - but that's not enough to explain the discrepancy.\n \nI attach my CatDps xml file, and talents.xml file in which I defined my current build, both zipped in single zip.\n \nOne interesting thing you might connect to this issue is, that I appear to have 2 enchants on my shoulders in Rawr. The one I set up, and I really have - Lesser Inscription of the Axe. And another one, Greater Inscription of Vengeance I never set there, and I can't remove it by clicking on enchant name under shoulder icon.",
+    "LastUpdatedDate": "2017-11-27T10:59:26.16-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-12-02T10:07:52.92-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Cat] Discrepancy in Attack Power",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 3,
+    "Id": 11827
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1508,
+      "FileName": "data.zip",
+      "DownloadUrl": ".\\1508"
+    },
+    {
+      "FileId": 1521,
+      "FileName": "meow.zip",
+      "DownloadUrl": ".\\1521"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Forgot to add my Armory link : http://eu.wowarmory.com/character-sheet.xml?r=Draenor&n=Ipsos",
+      "PostedDate": "2008-12-02T10:10:29.293-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm getting the same issue... my in-game character frame shows 5697 AP, while Rawr shows 8154.341. Attaching the xml.",
+      "PostedDate": "2008-12-04T11:43:10.32-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-12-04T11:43:12.197-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-12-18T00:52:38.633-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Looking at your profile Yaten, I notice you have [Mirror of Truth] and [Idol of the White Stag] which both are converted from proc based attack power to static attack power in RAWR.  This means the game doesn't attribute include these items in your AP value until they proc whereas RAWR takes their AP into account at all times.  Also, RAWR calculates AP as follows (from what I've figured out in my own spreadsheet):\r\n\r\n=(API+((AGII+87)*1.06)+(((STRI+86-WPNSTR)*1.06*2)-20)+120+160+((WPNAP+(WPNSTR*1.06*2))*1.2))*1.1*1.4\r\n\r\nWhere:\r\nAPI = Sum of attack power stat from items\r\nAGII = Agility from items\r\nSTRI = Strength from items (including weapon)\r\nWPNSTR = Any strength on weapon only\r\nWPNAP = Any attack power on weapon only\r\n\r\nPlugging in your current values from armory:\r\n\r\n=(1411.67+((731+87)*1.06)+(((235+86-52)*1.06*2)-20)+120+160+((1602+(52*1.06*2))*1.2))*1.1*1.4\r\n=(1411.67+867.08+550.28+120+160+2054.688)*1.1*1.4\r\n=7952.12572\r\n\r\nNow, working with the equation I believe the game currently uses:\r\n\r\n=(API+((AGII+87)*1.06)+(((STRI+86)*1.06*2)-20)+120+160+(WPNAP*1.2))*1.1*1.4\r\n=(1411.67+((731+87)*1.06)+(((235+86)*1.06*2)-20)+120+160+(1602*1.2))*1.1*1.4\r\n=(1411.67+867.08+660.52+120+160+1922.4)*1.1*1.4\r\n=7918.1718  (plus or minus a few for rounding)\r\n\r\nSubtracting static ap values for MoT and IoWS:\r\n=7918.1718-((94+166.67)*1.1*1.4)\r\n=7516.74 (w/SR) \r\nor 5369.1 (w/o SR) which should be very close to your cat form character sheet.\r\n\r\n",
+      "PostedDate": "2008-12-18T06:06:15.103-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-12-18T06:13:20.463-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The shoulder inscription issue is due to the Sons of Hodir (honoured) inscriptions being identical to those offered by the Aldor (exalted). Therefore you might have one or the other noted as being active, but the actual stats are the same.\r\n\r\nAs a Scryer, I didn't recognise the old inscriptions initially either.",
+      "PostedDate": "2008-12-18T23:59:18.96-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-08T07:17:23.113-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:33:04.973-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T22:45:40.733-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:10.907-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:44.993-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T10:59:26.16-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+--- Rawr.RestoSham/CalculationsRestoSham.cs 2009-12-15 18:24:55.000000000 -0800
++++ Rawr.RestoSham/CalculationsRestoSham.cs 2009-12-16 10:55:56.165842163 -0800
+@@ -525,8 +525,8 @@
+                     case (Trigger.SpellHit):
+                         effect.AccumulateAverageStats(statsProcs2, (1f / HealPerSec), effect.Chance, 0f, FightSeconds);
+                         break;
+-                    case Trigger.Use:
+-                        effect.AccumulateAverageStats(statsProcs2, effect.Cooldown, 1f, 0f, FightSeconds);
++                    case (Trigger.Use):
++                        effect.AccumulateAverageStats(statsProcs2, 0f, 1f, 0f, FightSeconds);
+                         break;
+                 }
+             }
+@@ -699,8 +699,8 @@
+                     case (Trigger.SpellHit):
+                         effect.AccumulateAverageStats(statsProcs, (1f / HealPerSec), effect.Chance, 0f, FightSeconds);
+                         break;
+-                    case Trigger.Use:
+-                        effect.AccumulateAverageStats(statsProcs, effect.Cooldown, 1f, 0f, effect.Duration);
++                    case (Trigger.Use):
++                        effect.AccumulateAverageStats(statsProcs, 0f, 1f, 0f, FightSeconds);
+                         break;
+                 }
+             }

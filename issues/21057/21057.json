@@ -1,0 +1,76 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-07-10T20:16:18.87-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When I open the attached file, disable Arcane Light and enable Segment Cooldowns in the Comparison column, Rawr hangs.\n \nWhen this happens, Windows Task Manager indicates Silverlight always has 50% CPU usage, which suggests that it's running on only one core and this is probably a threading issue. I have a Centrino Core 2 Duo (2x1200 MHz) and an Nvidia G210M with CUDA (16x1500 MHz).",
+    "LastUpdatedDate": "2013-05-16T05:17:45.06-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-07-01T04:33:22.103-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Arcane mage with Segment Cooldowns hangs, uses only 1 CPU core",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 21057
+  },
+  "FileAttachments": [
+    {
+      "FileId": 5097,
+      "FileName": "cryoclasm.xml",
+      "DownloadUrl": ".\\5097"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "You should never use Segment Cooldowns for comparisons, specially not for arcane, it just can't handle that much. The only reasonable use for Segment Cooldowns with arcane is for display and even that will take a very deep understanding of how it works and probably take hours if not days to compute. The most likely cause why it seems to hang is running out of memory and using swap. If you really want to use segment cooldowns with arcane I'd suggest you drop by on IRC some day and I can explain a bit more how to go about it.",
+      "PostedDate": "2011-07-01T05:22:51.797-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The reason I want to use segmented cooldowns is to get Sequence Reconstruction to work, so I can optimize my rotation. Any recommended settings for doing that? ",
+      "PostedDate": "2011-07-01T06:45:53.817-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The settings I usually use for arcane cooldown segmentation are the following:\r\n\r\nMirror Image: Averaged\r\nFlame Orb: Averaged\r\nHeroism Control: After 35%\r\nArcane Light: Enabled\r\nSMP Computation Limit: 10000000\r\nSMP Search Method: DepthFirst\r\nIntegral Mana Consumables: Display\r\nSegment Cooldowns: Display\r\nSegment Mana: Comparison and Display\r\nAdvanced Constraints: Comparison 1, Display 5\r\nVariable Segment Duration: Enabled\r\n\r\nI will usually combine this with putting some restrictions in the Cooldown Editor to limit the search space, otherwise you can be waiting for days to get final results. You should always go to Solver Log tab when calculations are going on. From there you can cancel at any point which will give you the best result found so far, but it won't be guaranteed to be optimal unless the search is complete.",
+      "PostedDate": "2011-07-01T12:51:13.367-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-07-10T20:16:18.87-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:24:46.26-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:17:45.06-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

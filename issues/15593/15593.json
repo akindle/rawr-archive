@@ -1,0 +1,126 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Enhance",
+      "DisplayName": "Rawr.Enhance"
+    },
+    "ClosedComment": "Ok fixed ED uptime. Fixed Fire Totem uptimes. Re-jigged priorities to fix other issues you raised.",
+    "ClosedDate": "2009-12-30T07:58:07.293-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I was playing around with switching gear in and out trying to find upgrades when I noticed some of the gear just wasn't working the way I would have expected. I was trying to troubleshoot where I was going wrong and decided to turn everything off in the priorities except for stormstrike to start. What I notice is that the simulation doesn't seem to notice I'm casting zero spells. I still get 98% ED uptime when there are no spells cast. The Berserking uptime does not seem to reflect the number of blows landed by MH or OH(WF procs should increase MH and lava lash should increase offhand). When turning off all fire totems in priority I still get 14% fire totem uptime (with zero dps attached to magma or searing). There are other fun issues with fire totem uptime which cause dps to vary wildly(when I switch from magma at 85% uptime to searing, uptime drops to 1.5%). Something has gone terribly wrong and the Enhancement simulations need a bit of a sanity check.",
+    "LastUpdatedDate": "2013-05-16T05:22:47.45-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-12-23T22:37:53.51-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Enhance] Something seriously wrong in 2.3.4",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 15593
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2673,
+      "FileName": "buggedfiretotem.xml",
+      "DownloadUrl": ".\\2673"
+    },
+    {
+      "FileId": 2674,
+      "FileName": "buggedfiretotem2.xml",
+      "DownloadUrl": ".\\2674"
+    },
+    {
+      "FileId": 2675,
+      "FileName": "buggedfiretotem3.xml",
+      "DownloadUrl": ".\\2675"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Uploading xml files demonstrating these issues.  First one has a normal rotation and gear.",
+      "PostedDate": "2009-12-23T23:15:00.553-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-23T23:15:02.71-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Second has everything turned off except magma totem.  Fire totem Uptime is back upto 83.77%  Note ED is 99.38% with no casts.",
+      "PostedDate": "2009-12-23T23:17:30.217-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-23T23:17:33.02-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Third just has everything turned off.  Fire totem uptime is now 14%.  ED is still 99.38%",
+      "PostedDate": "2009-12-23T23:19:36.81-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-23T23:19:38.97-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The Priority frame has a BIG health warning that changing things has minimal effect on dps. Largely it assumes a default priority in use and pays little attention to that frame. I'm probably going to drop support for changing priorities in Rawr3, haven't decided yet.\r\n\r\nSo its not that anything is wrong with the calculations really its just that the frame in question doesn't do much to affect the dps.",
+      "PostedDate": "2009-12-24T04:33:13.63-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well I found the bug with elemental devastation.  In combatstats.cs, in the swing loop you are including flametongue crits as proccing elemental devastation which does not occur in game.\r\n\r\nAlso I was not changing the priority of abilities, but rather turning off the use of abilites entirely.  This appears to be supported in the code.  I understand that changing the order does not change the dps.",
+      "PostedDate": "2009-12-24T05:11:07.06-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-28T03:33:50.443-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yeah as I said that priority frame was an attempt to model priority ordering but it produced more of a spiky sim output than a closed form model output. Therefore I abandoned using the priority ordering mostly. That said unticking an option should have a check to say if priorities aren't in use and therefore should have zero dps. However actually what should happen is that if neither FE, MT nor ST is selected then Fire totem uptime should be 100% as Flametongue should be assumed.",
+      "PostedDate": "2009-12-30T03:28:14.23-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-30T07:58:07.293-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T19:52:08.547-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:05.24-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:47.45-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

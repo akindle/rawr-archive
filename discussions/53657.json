@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "180612",
+    "ThreadId": "53657",
+    "Html": "I compiled &amp; ran change set 33243 and optimized for talents.  I was quite surprised when it came up with a 20/51/0 build that included 1/3 Anticipation and 1/5 Toughness and 3/3 in Call of Flame.  And it was totally void of Improved Stormstrike.  I'm gonna defer to Leyva, but aren't those Enh talents for PvP and the Ele for, well Ele?  Is this an appropriate Enh Raiding spec?",
+    "PostedDate": "2009-04-17T08:48:52.627-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "180659",
+    "ThreadId": "53657",
+    "Html": "Some things to remember for optimising talents in general:<br>\r\n- No expert knowledge is encoded into Rawr to guide it to choosing optimal talents for PVP or PVE situations.<br>\r\n- It makes choices only based on the results of those choices on the model's output numbers.<br>\r\n- All talents aren't modelled, since they don't all apply to the main scenario being modelled, but are rather only useful situationally. For the model these talents will not have any inherent value and is\r\nunlikely to be chosen, even if they might be critical to handle certain\r\nfights.<br>\r\n&nbsp;&nbsp;&nbsp; Examples of these talents include:<br>\r\n&nbsp; &nbsp; &nbsp;&nbsp; * a mana regen talent in a model that doesn't consider mana, <br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * a stamina bonus in a model that only considers dps or healing, <br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * an AoE talent in a model that focusses on single target dps. <br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * pushback talents are unlikely to be modelled (unless it is a tank model, where constant damage is assumed).<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * range increasing talents are unlikely to be modelled (in order to make that meaningful, you would need to describe movement patterns of both the boss and yourself). <br>\r\n- The optimiser uses a random process, so it might choose or drop talents that don't affect the outcome.<br>\r\n- Talent dependencies make the problem both easier (fewer choices), but also harder (you need the combination of talents before they are allowed or worth anything, e.g. useless tier 1 gives access to useful tier 2).<br>\r\n<br>\r\nFrom the little I have played around with this feature, I would guess it uses your current talent spec as a starting point. So starting with a typical PVE raid build would probably give better results than a clean slate.But even then, if all useful talents aren't modelled fully (very unlikely), it is still likely to drop some useful talents for marginal talents that are modelled. So at best, you probably only want to use this result as food for thought and hints on other raid specs variations to consider, instead of blindly just following this talent spec.<br>\r\n<br>\r\n<br>\r\n<br>\r\n&nbsp;<br>\r\n",
+    "PostedDate": "2009-04-17T12:07:49.31-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "180664",
+    "ThreadId": "53657",
+    "Html": "What wildebees said, except that the starting point is not your current spec, but all the presets. So make sure you have the cookie cutter specs available in presets and it'll do a better job finding variations on them.\r\n",
+    "PostedDate": "2009-04-17T12:26:16.473-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "180792",
+    "ThreadId": "53657",
+    "Html": "I have not looked near talent optimisation yet, getting the base model working is far far far more important. In particular I do not model mana usage, so NO mana talents are EVER going to show as valid choices. In addition you need to ensure that you are not suggesting it optimises for overall as that will take the stamina calcs into account. ie: that's why anticipation &amp; toughness have popped into the equation. Imp.SS by the way is a PvP talent now, we really don't need the extra mana, taking 2/2 Imp. SS is a BIG waste of talents in 3.1 for a raiding shaman. <br>\r\n<br>\r\nHowever what you haven't seen is that the base model still needs work, if you've read anything I've written on EJ or MMO-champion forums you would know that. I'd very very much appreciate some additional testing of the CORE calculations rather than testing stuff that's way down the line. The key is that if the core calcs aren't 100% then there is no way that the esoteric functions of talent optimising is going to work.<br>\r\n<br>\r\nSo all I can say is THIS FEATURE DOESN'T WORK FOR ENHANCEMENT at this time. <br>\r\n<br>\r\nThe focus at present you could assist on is testing the core calcs, we have a great resource in EnhSim for Enhancement Shamans so we can run both models and check that they are giving the same results. Thats the goal to get Rawr.Enhance as accurate as possible and as close to what EnhSim is giving as possible. If you can assist in that it would be much appreciated. Just understand that Rawr cannot give good results for things like talent choices if the core model isn't matching relality (or in this case EnhSim). Its close but there are some issues.<br>\r\n",
+    "PostedDate": "2009-04-18T03:32:50.913-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

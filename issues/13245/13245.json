@@ -1,0 +1,101 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "9 versions old and Dev explained reasoning",
+    "ClosedDate": "2009-08-19T12:37:52.947-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Any time I try to import items with armor penetration with Add item... the armor penetration rating is always missing and I have to edit in the item. As for weapon enchants, it still has executioner far and away the best enchant. Is this correct? \nAs a side note, does Rawr undervalue 4 piece T8? At the moment it doesn't even think it is worth getting when running the optimizer, and when I manually equip 4pc T8, it still thinks 4pt Savage Roars are better than 1-2pt roars even with the set bonus.",
+    "LastUpdatedDate": "2013-05-16T05:25:33.63-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-05-14T16:30:55.56-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] Not importing items correctly and Weapon enchants still bugged",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13245
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1897,
+      "FileName": "cat.xml",
+      "DownloadUrl": ".\\1897"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I also forgot, Rampage is bugged where it grants an additional 5% crit as a cat druid specced into leader of the pack. In addition, a gear set that rawr has at 926 armor penetration rating, FB and rake are no longer used. Be aware that I created Brann's Signet Ring and Brann's Sealing Ring as item ID 47001 and 47002 respectively, so It may error out when trying to load the character sheet.",
+      "PostedDate": "2009-05-14T16:33:51.927-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-05-14T16:33:55.66-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yes, current theorycraft is showing Executioner as best. I tested the proc rate and buff effect myself. I welcome anyone to review the code though, would love a double check of my math.\r\n\r\nJust found and fixed the rampage bug. At 926 it's quite likely that it's worth it to drop Rake. Dropping FB sounds odd though...\r\n\r\n",
+      "PostedDate": "2009-05-15T09:32:02.217-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I don't see any issues with 4T8. Having extra CP, SR is a fine thing to use them on.\r\n\r\nI tried your file, and was missing 47003 and 50000 as well, but was still able to repro it dropping FB... I'll look into why it thinks FB wouldn't increase damage.",
+      "PostedDate": "2009-05-15T09:45:48.93-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hrm, maybe because it isn't using FB it's dumping all the extra CBs into SR even with 4pc t8. I guess the only issue left in this thread besides FB is the armor pen gear not importing correctly. I was looking forward to the final gearset I had with 990 arp without proc but it seems they're going to cap arp at 100%",
+      "PostedDate": "2009-05-15T14:30:34.427-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Rawr will never waste CP on refreshing SR early. It will certainly waste CP by just not using them, though. ie, that rotation is 'keep SR up, keep Rip up, spam shred after shred after shred after shred'",
+      "PostedDate": "2009-05-15T15:16:24.793-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-19T12:37:52.947-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T16:29:59.67-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:15.273-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:30.013-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:33.63-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

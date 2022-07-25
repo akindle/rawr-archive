@@ -1,0 +1,120 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtPaladin",
+      "DisplayName": "Rawr.ProtPaladin"
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-09T17:31:39.477-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Crusade is not effecting threat even though it now provides for a 3% damage increase.  If this is a known issue (I couldn't find it anywhere) I apologize.",
+    "LastUpdatedDate": "2013-05-16T05:25:49.12-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-04-16T12:33:29.14-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtPaladin] No threat for Crusade",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13031
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Crusade only works against certain creature types. Be sure to set the creature type you want to use in the target options.",
+      "PostedDate": "2009-04-16T17:49:04.717-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Brainfart :)  it's a 1% damage increase for each point + additional bonus against certan types.\r\nEither way, it's in all damage calculations just like one-handed weapon specialization. The talent chart lists the benefit of 3/3 points in crusade. Where are you looking at ?",
+      "PostedDate": "2009-04-16T17:56:11.77-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "First I compared a 5/60/6 spec to a 0/58/13 spec.  General consensus is that the 0/58/13 should be the better threat generating spec now (5% crit +3% overall damage should > 15% judgment & seal damage - but the 5/60/6 spec had higher threat generation.\r\n\r\nIn order to check Crusade then I simply looked at the same configuration (gear, buffs, spec) except in one case I removed the 3 pts in Crusade (and did not use them at all).  Threat stats did not change.  ",
+      "PostedDate": "2009-04-16T18:26:38.31-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "How can you spec into 3/3 crusade and  5/5 convition with only 13 points spent in Retribution ?\r\n5/5 Seals of the Pure beats 3/5 Conviction, yes.",
+      "PostedDate": "2009-04-16T19:56:29.997-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Beats it in my gear set up, that is.  Also, Threat generation in ProtPaladin is calculated strictly for 9696, which greatly depends on the seal and weapon you use. (and reckoning)",
+      "PostedDate": "2009-04-16T20:00:54.69-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "My apologies...switched the numbers...it's 0/53/18...the standard spec being talked about on maintankadin (too little sleep these last few days).\r\n\r\nAnd maybe I confused the issue by giving you too much info instead of too little.  When I went from 0/53/18 to 0/53/15 (just removed Crusade) the threat numbers didn't change at all - that's why it seemed to me that the 3% damage increase wasn't making it into the model.",
+      "PostedDate": "2009-04-17T05:48:05.94-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ah yeah. \r\nThing is, talents won't show any ranking value on the chart when you don't spec into it. So we made the comparization chart for Talents assume having points spent in it those talents.\r\nYour gear rankings and all other charts change when you spec any talent, and the custom specs you save are shown in the Talent Specs chart for whatever points you spent.\r\nTry looking at the helmet item chart (threat ranking points) while you spend points in crusade, you'll see what I mean.\r\n\r\nI guess the solution would be to have all possible ranks of a talent show an individual ranking bar for the Talent chart. Like:\r\nCrusade 1/3\r\nCrusade 2/3\r\nCrusade 3/3\r\nwhich is many, many, many bars and looks unclearly arranged. I'll have to see what Solieu thinks about this, but I do agree with you. That's not ideal.",
+      "PostedDate": "2009-04-17T08:53:42.17-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm not sure I follow you, but I tried the following.  I started with a 0/53/15 spec and then added the last 3 points in the following three places:\r\n\r\n1.  Spiritual Focus (My \"control\" test) - Total Threat (SoV) = 5,938 tps\r\n2.  Sanctity of Battle - Total Threat (SoV) = 6,062 tps\r\n3.  Crusade - Total Threat (SoV) = 5,938\r\n\r\nI could also see the change in threat valuation for my helm as you discussed, and it changed from 1 to 2, but not from 1 to 3.\r\n\r\nSo it seems to me that this is a more fundamental problem with Crusade - unless I'm just totally missing the boat here, which I accept as a real possibility! =P",
+      "PostedDate": "2009-04-17T09:42:21.373-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Oy,  \"Total Threat (SoV)\"   ? That sounds like Tankadin model.\r\n\r\nCheck which model you have selected. It's totally possible you're in the Tankadin module. \r\nProtPaladin doesn't have any \"Total Threat (SoV)\"\r\nIt should show \"Threat/sec\" with a mouseover tooltip reading \"Basic + Seal of Vengeance\" \"9-6-9-6 Rotation\"",
+      "PostedDate": "2009-04-17T10:45:51.087-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "oh hell...yes, that's it...my apologies.  I missed the fact that we had more than one model for protection pallies.  Sorry to take up your time like this. =(",
+      "PostedDate": "2009-04-17T11:29:40.503-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Don't worry ^^ keep the issues coming and most of all, anything you feel is missing :)",
+      "PostedDate": "2009-04-17T12:56:08.897-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-09T17:31:39.477-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T16:39:30.707-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T16:47:53.517-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:49.18-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:49.12-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

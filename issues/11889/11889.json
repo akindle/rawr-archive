@@ -1,0 +1,95 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Moonkin",
+      "DisplayName": "Rawr.Moonkin"
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-08T07:16:42.257-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Using an increment of 1 in the \"Relative Stat Values\" calculator causes some stats (notably int and spirit) to be undervalued since adding only 1 to this stat likely will not cause an increase in damage.  By using a larger value (such as 10 or ideally providing an option for the user to control this) and them dividing the calcualted points by the same value, spirit can be valued more correctly.  For instance, with a value of 1, I see relative values of:\n  Hit 1.71, Spell Power 1.32, Crit 1.10, Haste 0.95, Int 0.30, Spirit 0.0\nbut using a value of 10 for the increment (and dividor) I see:\n  Hit 1.71, Spell Power 1.32, Crit 1.10, Haste 0.95, Int 0.56, Spirit 0.20",
+    "LastUpdatedDate": "2017-11-27T11:00:10.373-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-12-05T13:05:21.817-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Moonkin] Spirit undervalued",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 11889
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I'll figure out something suitable for this.  I don't think it'll be a user control, but I might do it more like some of the other models do theirs, which would probably give more accurate results.",
+      "PostedDate": "2008-12-05T13:10:27.583-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Any stat that gets multiplied or rounded should use the method I started where it looks for the boundaries of the current 'block', and divides the value change between the current and the next block by the length of the current block. \r\n\r\nFor example:\r\n\r\n//Differential Calculations for Agi\r\n\r\n\t\t\t\t\tCharacterCalculationsBear calcAtAdd = calcBaseValue;\r\n\t\t\t\t\tfloat agiToAdd = 0f;\r\n\t\t\t\t\twhile (calcBaseValue.OverallPoints == calcAtAdd.OverallPoints && agiToAdd < 2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tagiToAdd += 0.01f;\r\n\t\t\t\t\t\tcalcAtAdd = GetCharacterCalculations(character, new Item() { Stats = new Stats() { Agility = agiToAdd } }) as CharacterCalculationsBear;\r\n\t\t\t\t\t}\r\n\r\n\t\t\t\t\tCharacterCalculationsBear calcAtSubtract = calcBaseValue;\r\n\t\t\t\t\tfloat agiToSubtract = 0f;\r\n\t\t\t\t\twhile (calcBaseValue.OverallPoints == calcAtSubtract.OverallPoints && agiToSubtract > -2)\r\n\t\t\t\t\t{\r\n\t\t\t\t\t\tagiToSubtract -= 0.01f;\r\n\t\t\t\t\t\tcalcAtSubtract = GetCharacterCalculations(character, new Item() { Stats = new Stats() { Agility = agiToSubtract } }) as CharacterCalculationsBear;\r\n\t\t\t\t\t}\r\n\t\t\t\t\tagiToSubtract += 0.01f;\r\n\r\n\t\t\t\t\tComparisonCalculationBear comparisonAgi = new ComparisonCalculationBear() { Name = \"Agility\", \r\n                        OverallPoints =     (calcAtAdd.OverallPoints - calcBaseValue.OverallPoints) / (agiToAdd - agiToSubtract),\r\n\t\t\t\t\t\tMitigationPoints =  (calcAtAdd.MitigationPoints - calcBaseValue.MitigationPoints) / (agiToAdd - agiToSubtract), \r\n                        SurvivalPoints =    (calcAtAdd.SurvivalPoints - calcBaseValue.SurvivalPoints) / (agiToAdd - agiToSubtract),\r\n                        ThreatPoints =      (calcAtAdd.ThreatPoints - calcBaseValue.ThreatPoints) / (agiToAdd - agiToSubtract)};\r\n\r\n\r\n\r\nNote that if anyone sees a better way to do the +/- 0.01 part, let me know. Thought about doing sort of a binary search thing, but not sure how much better that'd be, and at just 0.01, that gets an accurate enough answer, and performance really doesn't matter much for this chart.",
+      "PostedDate": "2008-12-05T13:28:58.723-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Also since moonkin calculations are relatively heavy I'd suggest to compute boundaries by only calculating the int, spi stat, and compute complete solver calculations only at the boundary.",
+      "PostedDate": "2008-12-05T13:56:11.41-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I saw that method and figured that was probably the best way to do it, I just got lazy.  Shame on me.  At any rate, I'll try to work out a solution that accomplishes the same effect in a reasonably optimized fashion.",
+      "PostedDate": "2008-12-05T14:46:47.427-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-08T07:16:42.257-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:08:21.72-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:08:46.92-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:03:27.03-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:08.017-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:42.76-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:00:10.373-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

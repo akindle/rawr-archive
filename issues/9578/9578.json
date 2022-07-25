@@ -1,0 +1,95 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "This is no longer an issue with the new status screen that prevents the app from appearing to lock when updating from the armory.",
+    "ClosedDate": "2008-04-11T11:27:24.777-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I would recommend possibly having either A) Filters to sort out caster VS melee gear or B) load separate gear lists attached to which ever module you choose. For example have a separate set of \"ItemCache.xml\" Files which only load and unload depending on if you are choosing cat/bear modules (or warrior/rogue etc later on) or a different .xml file for Moonkin/mage/warlock etc.\n \nGranted, I have no idea how hard this would be to implement, but I was very happy with the bear/cat release. This more recent release however has drastically slowed all aspects of working within the program. \n \nAlso a large number of items are still missing from the list, when I tried to \"search armory for upgrades\" it locked and eventually crashed. This could also be caused by the larger .xml files choking the program, maybe?",
+    "LastUpdatedDate": "2013-05-16T05:27:31.847-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-03-07T13:24:37.127-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] Extremely slow equip times and other actions",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 9578
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "This sounds like something else is going on. Can you run b11, try a few actions, then switch to b12 and try those same actions exactly, and see if there really is a performance difference? There should be no reason for load upgrades to crash (it does and always has taken a while, in which it appears to 'lock'). Can you provide the error log?",
+      "PostedDate": "2008-03-07T13:57:53.737-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok, I loaded the same .XML file for my character stats and gear selections.  I set both versions to \"cat\" module.  I ran a search for upgrades on version 11 and it took almost exaclt 1 minute.  I then closed 11 and opened 12.1 and did the same search.  It took 3 minutes and some odd seconds to complete, but it did complete without crashing.  After messing with this a bit, I think this \"crash\" I was seeing might have had more to do with my network traffic combined with timeout settings of my network.  I think I may simply have timed out my connection and my works network failed on me.\r\n\r\nEven with the crashing issue not relevant, the decreased speed in searching, equipping, editing, etc are quite an unfortunate side effect of having all this extra abilities for other classes.  Hopefully some streamlining of the process of handling all of this new information can be added at a later date.",
+      "PostedDate": "2008-03-19T08:38:21.377-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Look for Upgrades will certainly be somewhat slower, but shouldn't be triple. That's most likely due to the armory being slow as hell and unreliable.",
+      "PostedDate": "2008-03-19T13:13:01.003-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I have been doing small tweaks on calls to the armory as well as execution workflow while searching for upgrades.  Doing an upgrade search on a t4 cat, with about 20 items for each slot takes about a minute currently unless the armory craps out in the middle.  If you could attach the xml file that you used where it took upwards of 3 minutes, I can test on the latest build to see if we have corrected your issue through other tweaking.\r\n",
+      "PostedDate": "2008-03-26T10:50:21.93-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Can you please check to see if this is still an issue for you?",
+      "PostedDate": "2008-04-08T14:19:04.06-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-04-11T11:27:24.777-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T16:00:23.697-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T16:00:31.49-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:22:58.827-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:37:10.68-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:27:31.847-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

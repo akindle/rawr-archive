@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "95179",
+    "ThreadId": "28543",
+    "Html": "Hi All,<br>\r\n<br>\r\nI've used Rawr on my Mage, Warlock and Druid and the amount of fine tuning its allowed<br>\r\nhas been incredible. Needless to say, I've rerolled to a hunter and would like to know if there<br>\r\nare plans to get a Hunter module added. I'm aware a hunter module is probably the most<br>\r\ncomplicated out of all the classes but noticed that maxdps.com has added a 'BM hunter'<br>\r\nsection. <br>\r\n<br>\r\nCan you give us hunters any indication what the plans are as i'm sure there are a mountain<br>\r\nof us just dieing to dive into Rawr.<br>\r\n<br>\r\nRegards,<br>\r\nHot<br>\r\n",
+    "PostedDate": "2008-05-28T03:50:05.893-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "95244",
+    "ThreadId": "28543",
+    "Html": "I'd love to support Hunters. The intentions aren't with me though. We need someone who knows C# and hunter theorycraft quite well, to make the model. Feel free to spread the word that we're looking for a C# dev to make a Rawr.Hunter, to the hunter theorycraft community.",
+    "PostedDate": "2008-05-28T08:23:09.697-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "95662",
+    "ThreadId": "28543",
+    "Html": "I'm in the process of getting the basics of a hunter model working.&nbsp; Base states and fundamental calculated stats are complete: crit %, hit %, weapon speed after haste, etc.&nbsp; The first version out will probably still contain a lot of assumptions and restrictions but I'm trying to incorporate as many calculations as possible as I go through the model on the first pass.&nbsp; I have no ETA on when a version will be available to the public, but the basic working model will probably be checked into source control sometime in the 2 weeks after I get initial hunter and pet DPS calculations done.<br>\r\n",
+    "PostedDate": "2008-05-29T16:38:29.59-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "97326",
+    "ThreadId": "28543",
+    "Html": "My basic model was based on Cheeky's DPS spreadsheet for hunters.&nbsp; I finished the model a few days ago, but was waiting for a reply from cheeky as to if I could base my model off of his or not (since there is no specific copy right notice with the spreadsheet, and without it, its professional courtesy to ask).&nbsp; I just received the response that its cool so I'll be checking in the base model sometime this weekend. <br>\r\n<br>\r\nTrinket modeling based on proc chance is slightly off given how rawr models trinkets and the hunter shot rate but usually only by a few AP averaged out.&nbsp; DST isn't modeled at all and is treated by rawr as a static haste buff.&nbsp; I do not know how accurate that is with auto shot clipping and the GCD as it factors in with Quick Shots proc, etc.&nbsp; Trinkets that are a static on use AP increase are just averaged out and fits within the model.<br>\r\n<br>\r\nLimits to the model:<br>\r\n-- Currently, only BM builds are really modeled.&nbsp; (<br>\r\n-- Level 70, max rank spells trained only (this will probably never change)<br>\r\n-- Currently no way to change pet options. (this will be fixed before the model is released to the public, but if you grab the source, you'll have to deal with this one)<br>\r\n<br>\r\nThere are others but those are the big ones.&nbsp; 1 will probably be fixed in a future version.&nbsp; As stated, 3 will be fixed to include the main raiding pets before the first live release.<br>\r\n<br>\r\nThe way that the shot rotation modeling works is based on burst damage, how much DPS can you pump out in a set rotation, (currently 50 shots, which matches the spreadsheet so I could test results).&nbsp; My eventual goal for the second release is to add a duration model so you can see how much DPS you can pump out over a 5 minute fight given OOM issues, mana potting, switching to viper aspect if need be and how that affects damage output, etc.&nbsp; This additional modeling would help to show why you can't go complete rogue gear (which is kind of obvious, but the optimizer might think otherwise without taking mana into consideration)<br>\r\n<br>\r\nI look forward to community feedback on the model.&nbsp; I've been using it for the past few days and I'm really happy with it, and I look forward to improving it more.<br>\r\n",
+    "PostedDate": "2008-06-06T11:37:59.367-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "97607",
+    "ThreadId": "28543",
+    "Html": "This is excellent news! If there is any testing that i (or a number of us reading) can do, please don't hesitate to ask!<br>\r\nWe are all waiting very patiently! :D<br>\r\n",
+    "PostedDate": "2008-06-09T04:01:53.377-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

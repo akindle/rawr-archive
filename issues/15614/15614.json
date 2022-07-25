@@ -1,0 +1,261 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.HealPriest",
+      "DisplayName": "Rawr.HealPriest"
+    },
+    "ClosedComment": "Finally closed. &#58;D",
+    "ClosedDate": "2010-03-08T12:29:01.48-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I know that the Priest T10 Set bonuses are in the system, however The T10 Buffs don't seem to be showing up in the Buff panel. I see the other Set bonuses plus the Gladiator set bonuses but not T10. What got me looking was when I was trying to optimize with just ICC 10-man gear + Frost/Tailoring/ToC 25 gear selected. It was basically saying not to use the T10 set at all and just go with the badge gear. This worried me so when I looked at the buff panel I noticed that the T10 set names were NOT part of the list.",
+    "LastUpdatedDate": "2013-05-16T05:22:45.043-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-12-26T00:04:24.17-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[HealPriest] T10 buffs not showing up in Buff Frame",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 15614
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2683,
+      "FileName": "ICC 10 - Holy.xml",
+      "DownloadUrl": ".\\2683"
+    },
+    {
+      "FileId": 2733,
+      "FileName": "WoWCombatLog.txt",
+      "DownloadUrl": ".\\2733"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Reason for that is rather simple. T10 Bonuses for Holy are not yet modelled as I'm unsure of just how to model the T10 4 piece bonus. I could model it as an increase in throughput for Penance and Circle of Healing, but I'm very unsure of how effective the set bonus is in practice. Basically: I'm still not entirely sure how the T10 4pc will work out in practice so I have not yet modelled it. If you know someone with that bonus with a WWS or similar that would be helpful.",
+      "PostedDate": "2009-12-26T03:24:24.373-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I doubt we will see any 4 piece until February unfortunately. I know on my mage the earliest I could have gotten 2-piece is next week (if I had gotten shoulders and gloves; instead I got the chest which costs 95 badges [which I got on Wednesday])",
+      "PostedDate": "2009-12-26T09:18:11.283-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Also I had assumed that they were in the system since I saw the variables posted in the buff.cs file.",
+      "PostedDate": "2009-12-26T09:19:24.24-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yeah, variables are all there, they just don't do anything useful. I'm having some issues as to count it as a cooldown reduction or increased throughput. I don't like the cooldown reduction approach because most of the time it won't really be a cooldown reduction at all, especially for Holy. Also for discipline its mostly useful for tank healing, but its only a slight improvement on throughput (and increase in cost) of Penance. And this is why it would be useful to know exactly how it works out when applied to actual raiding.",
+      "PostedDate": "2009-12-26T09:51:35.533-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "And just to continue that thought. Assuming you got haste enough to bring GCD down to 1.2s, you can cast 4 spells between each Circle of Healing, that means you got 2 scenarios, where you actually cast FH ALWAYS first after your CoH.\r\nA: CoH - FH - ? - ? - ? (80%)\r\nB: CoH - FH - (20%)\r\nWhich means you end up casting 1+4 spells 80% of the time, and 1+1 spells 20% of the time. So where normally 20% of your casts is CoH (1/5 spells), with the 4pt10 you cast 1/5*80% + 1/2*20% = 26% CoH. So 4pt10 in this scenario for Holy is an increased cost and throughput of CoH by 30%. But thats not the entire truth as well. Because most of the time you are probably going to end up doing:\r\nA: CoH - FH - ? - ? - ? (80%)\r\nB: CoH - FH - ? (x% - You want prayer of mending out there, someone needs a quick flash, you don't need CoH just yet)\r\nC: CoH - FH  (20% - x%)\r\nWhich means the real value will be even less than a 30% increase. For AoE heavy fights a 30% increase would massively overweigh it,, although, to know how this works out in reality, I need to see it in action. Who knows, maybe a good healer can squeeze out close to 30% on it.\r\n\r\nGoing by same logic on Penance, you get 7 spells in between each cast\r\nA: Penance - FH - ? - ? - ? - ? - ? - ? (80%)\r\nB: Penance - FH (20%)\r\nSo normally you are casting 1/8 spells as Penance (12.5%).  With 4pt10 that increases to 1/8*80% + 1/2*20% = 20%.\r\n\r\nAlso I need to take into account the gain vs loss in use of other spells etc.",
+      "PostedDate": "2009-12-26T10:21:47.327-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-04T09:29:07.033-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I know this is bringing up an old thread but I do have some new information to give. I finally got my 2-piece T10 on my priest last night and did a little bit of testing. First of all the Bonus adds a buff you can get called \"Blessed Healing.\" Each tick ticks for about 500 health every 3 seconds (depends really on what your flash heal was). The ticks CAN STACK! With a 3-stack (I didn't test higher but I've read as high as 5k ticks every 3 seconds) I had 1.7k ticks. It appears there is an ICD of about 2-3 seconds though before another stack can be placed.\r\n\r\nI'm attaching my Combat log if you want to take a look. if you want me to run a longer Combat log I can. This is running with NO EXTRA BUFFS (no Inner Fire, no Spirit buff, nothing).",
+      "PostedDate": "2010-01-06T10:54:10.277-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-06T10:54:13.24-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Correction, it's on the target you are healing that they get the buff. Just ran a 5 man and I only got the buff if I was healing myself.",
+      "PostedDate": "2010-01-06T12:23:25.323-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Excellent. However this brings up a small problem, its not really useful for random raid healing unless its sustained damage. And in those cases Disc are probably doing PWS and holy CoH/Renew. Hrm. Annoying bonus.",
+      "PostedDate": "2010-01-06T12:40:41.98-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "So as i understand you right (and sorry, english is not my mothers tongue) the T10 2 piece bonus is not included in rawr 2.3.6 as well... right?\r\n\r\nAny plans to add them recently?\r\n\r\nThanks for this great tool :o)",
+      "PostedDate": "2010-01-21T00:05:26.567-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "As i undestand you right (sorry, english is not my mothers tongue).... the T10 two pieces bonus is not included as well in rawr 2.3.6 right?\r\n\r\nThanks for this great tool ;0)",
+      "PostedDate": "2010-01-21T00:06:54.947-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "As i undestand you right (sorry, english is not my mothers tongue).... the T10 two pieces bonus is not included as well in rawr 2.3.6 right?\r\n\r\nThanks for this great tool ;0)",
+      "PostedDate": "2010-01-21T00:09:10.327-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It is still not implemented as I'm a bit afraid I'll end up massively overvaluing the 2 & 4pc bonuses before I know exactly how they will function in a live scenario. So far 2pc is seemingly as useless as I feared.",
+      "PostedDate": "2010-01-21T00:49:33.167-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "here is log with disc priest with 2T10pc\r\nhttp://www.wowmeteronline.com/combat/detail/305761990#healingout\r\n\r\nand here description of proc http://www.wowwiki.com/Blessed_Healing\r\n\r\nprobably this proc not such crap as all we thought",
+      "PostedDate": "2010-01-28T07:53:05.767-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well a guildy just got 4-piece the other night. I forgot to get a combat log last night with him using the 4-piece. We still have 10 attempts left on queen so I'll run a combat log tonight with it.",
+      "PostedDate": "2010-01-28T09:04:21.977-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "4pc already, heavy duty farming :P\r\n\r\narrt:\r\nLooked at the log\r\n- Proc rate seems to match closely to 33% as expected.\r\n- Adds about 14% to Flash Heal (Expected 33% * 33% = 10.89%). Might doubledip from talents Paladins/Druids and others have.\r\n- almost 57% overheal. (This is exciting).\r\n\r\nLoved that you used Blood Queen fight, as I feel this will end up being our best benchmark for ICC.\r\nI'd also love to see a log from a Holy Priest on the same fight.",
+      "PostedDate": "2010-01-28T10:41:46.783-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The priest I was reffering to is a holy priest with a more dedication to renews.\r\n\r\nhttp://www.wowarmory.com/character-sheet.xml?r=Crushridge&cn=Tietanpurkey\r\n\r\nAnd for the record, I got my 4-piece on my mage earlier today. Would have gotten it sooner but I missed a few of the 10-man bosses, while his group has been able to clear everything every week.",
+      "PostedDate": "2010-01-28T10:55:20.197-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Also, I don't know about Queen being the best benchmark. It may, but I know single-target heals is going to be dreamwalker. Granted we are going to be getting that healing buff so that may off-shoot the numbers but meh.",
+      "PostedDate": "2010-01-28T10:58:29.08-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I don't believe Holy nor Disc are best suited at being single target healers, which is why I feel the Blood Queen fight might be a good benchmark, as you need to do multiple things. Rotgut is also probably a decent benchmark. Heroic Rotgut might be devastating.",
+      "PostedDate": "2010-01-28T11:05:11.937-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well, shit! someone else in raid did a log last night.\r\n\r\nhttp://www.worldoflogs.com/reports/mb88t6z5ui9iivgt/details/30/\r\n\r\nHope this helps",
+      "PostedDate": "2010-01-28T11:14:02.343-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks Hinalover.\r\n\r\nFrom what I can see on the 4:14 minute try on Blood Queen, the Priest had 8 procs of 4pt10.  I assume he's got Circle of Healing glyphed, so he cast 18-20 Circle of Healing over 2:46 (when he died.). Assuming the best case that he cast 20 CoH over 166 seconds, thats 8.3s between each CoH. From this I can already see he's not casting CoH every cooldown which means the benefit of 4pt10 is minimal. Even if those 8 procs halved his cd from 8 to 4 seconds (human reaction time and such included), it gave him at best 4*8 = 32s/8.3 = 3.9 extra casts. Thats a 15% increase. Previously in the thread I estimed a maximum gain of 30%.\r\n\r\nI think I want more logs if possible from him when he gets more time to (ab)use the set bonus. Could you do that for me?",
+      "PostedDate": "2010-01-28T13:17:57.043-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well, like I said, we have 10 more attempts at 25 Queen tonight. I'll link tonights' attempts after raid.",
+      "PostedDate": "2010-01-28T13:23:37.237-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Here is tonights attempt. The second to last attempt on Queen we got her down to 2% which was our best attempt. Sucks we missed her but that much >_<\r\n\r\nhttp://www.worldoflogs.com/reports/bq5tzgqwm29m3to4/",
+      "PostedDate": "2010-01-28T21:51:19.78-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That report was even more disappointing in some aspects.\r\n\r\nTry 1 : 4 procs, 4:42 Alive time, 24 CoH casts.\r\nTry 2 : 4 procs, 0:33 Alive time, 5 CoH casts.\r\nTry 3 : 9 procs, 5:11 Alive time, 34 CoH casts.\r\nTry 4 : 4 procs, 4:54 Alive time, 32 CoH casts.\r\nTry 5 : 4 procs, 2:29 Alive time, 20 CoH casts.\r\nTry 6 : 10 procs, 4:09 Alive time, 34 CoH casts.\r\nTry 7 : 8 procs, 4:05 Alive time, 24 CoH casts.\r\nTry 8 : 7 procs, 4:51 Alive time, 32 CoH casts.\r\nTry 9 : 3 procs, 5:23 Alive time, 40 CoH casts.\r\nTry 10 : 5 procs, 5:28 Alive time, 32 CoH casts.\r\n\r\nThe biggest issue I have with the above numbers is the low proc chance. The 4pt10 is really unreliable.\r\n\r\nStill going through log.",
+      "PostedDate": "2010-01-29T07:24:27.12-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Try 1: No CoH casts <6s apart.\r\nTry 2: 1 CoH ~1.1s before it should be cast. Short try however.\r\nTry 3: 1 CoH ~0.1s before it should be cast.\r\nTry 4: No CoH casts <6s apart.\r\nTry 5: 1 CoH ~2.5s before it should be cast.\r\nTry 6: 1 CoH ~0.3s before it should be cast. 1 CoH ~1.2s before. 1 CoH ~0.6s before. 1 CoH ~0.6s before.\r\nTry 7: No CoH casts <6s apart.\r\nTry 8: 1 CoH ~3.6s before.\r\nTry 9: No CoH casts <6s apart.\r\nTry 10: 1 CoH 0.7s before, although 2 flash heals were cast.\r\n\r\nAll in all, very very poor results. Not sure if the player can push out any more of the set bonus. I'd almost need to know how he felt it went or if he tried to (ab)use the set bonus.",
+      "PostedDate": "2010-01-29T10:38:32.75-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Okay I finally got Tiet to sit down. He mentioned a few things about last night\r\n\r\na) The buff has a lower chance to proc if people are overhealed. ie: 20% if 5/6 are overhealed, 40% if 4/6 are overhealed, etc. He was saying that during Twins (we ran a normal run to see if we can get the DV for some of our melee), the buff was proccing ALL of the time.\r\n\r\nb) a lot of the times he didn't use the CoH is because he had to cast a Prayer of healing and wasted the buff.\r\n\r\nc) He is TRYING to abuse it but other spells sometimes get priority.",
+      "PostedDate": "2010-01-29T18:55:53.31-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Another update, I was talking to him while he did a 5-man while as disc and he said the thing wasn't proccing when he was over-healing. in the entire run he said it only procced once or twice.",
+      "PostedDate": "2010-01-29T23:37:53.45-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "A: Interesting mechanic if it has a chance to proc based on how many it doesn't overheal. Still, I'm having a hard time believing that would be the actual mechanic. Needs controlled testing.\r\n\r\nB/C: That is what I feared. This lowers the real value of this set bonus.\r\n\r\nWhen you say overhealing, does that mean the effective heal is 0? Or that the heal tops them off?",
+      "PostedDate": "2010-01-30T03:14:49.707-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I believe so. I tried to get him to comment in this thread last night, but he declined.",
+      "PostedDate": "2010-01-30T09:49:57.603-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Tiets' assesment:\r\n\r\n2-piece - He likes and will keep the set bonus\r\n\r\n4-piece - indifferent. Useful when it does proc but might just go with off-set pieces",
+      "PostedDate": "2010-01-30T09:57:22.86-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-27T13:46:37.027-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Uh yeah, I get the hint.",
+      "PostedDate": "2010-02-28T01:16:17.307-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Is it possible to include the new 4-piece bonus of patch 3.3.3?\r\n\r\nPriest Tier-10 4-Piece Healing Set Bonus: Redesigned. This bonus now increases the effectiveness of the caster's Power Word: Shield and Renew spells by 5%.",
+      "PostedDate": "2010-03-03T12:50:35.803-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This is coming. Finally the bonus got changed to something useful.",
+      "PostedDate": "2010-03-08T10:31:29.67-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-08T12:29:01.48-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Is it possible to include the NEW new 4-piece bonus of patch 3.3.3? ^^\r\n\r\nPriest Tier-10 4-Piece Healing Set Bonus: Redesigned. This bonus now increases the effectiveness of the caster's Power Word: Shield by 5% and Circle of Healing by 10%.",
+      "PostedDate": "2010-03-22T10:38:14.777-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This is implemented in the newest Rawr and Rawr3. However the tooltip will give you wrong feedback until I fix that. The Math is correct.",
+      "PostedDate": "2010-03-22T10:59:18.157-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-09T12:29:22.793-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:37:50.02-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:02.427-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:45.043-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

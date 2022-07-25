@@ -1,0 +1,86 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "could not duplicate in current version",
+    "ClosedDate": "2008-12-11T08:33:38.413-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "See the end of this message for details on invoking \njust-in-time (JIT) debugging instead of this dialog box.\n \n************** Exception Text **************\nSystem.ArgumentException: Parameter is not valid.\nat System.Drawing.Image.FromStream(Stream stream, Boolean useEmbeddedColorManagement, Boolean validateImageData)\nat System.Drawing.Image.FromStream(Stream stream)\nat Rawr.ItemIcons.GetItemIcon(String iconName, Boolean small)\nat Rawr.ItemIcons.GetItemIcon(Item item, Boolean small)\nat Rawr.ItemSelectorItem.get_PrerenderedImage()\nat Rawr.ItemSelectorItem.OnPaint(PaintEventArgs e)\nat System.Windows.Forms.Control.PaintWithErrorHandling(PaintEventArgs e, Int16 layer, Boolean disposeEventArgs)\nat System.Windows.Forms.Control.WmPaint(Message& m)\nat System.Windows.Forms.Control.WndProc(Message& m)\nat System.Windows.Forms.ScrollableControl.WndProc(Message& m)\nat System.Windows.Forms.ContainerControl.WndProc(Message& m)\nat System.Windows.Forms.UserControl.WndProc(Message& m)\nat System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)\nat System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)\nat System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)\n \n----------------------------------------------------------------------------------------------------\nAlso there is a error in the sort function\nWhen I open the program in Bear and click in any item slot (the sort in that slot) is arranged for bear form but I find that if I chang the form to Cat and click on the same armor slot thad check the sort dropdown it still had the sort order for Bear and I have to close the program to effect a change...",
+    "LastUpdatedDate": "2013-05-16T05:27:15.82-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-05-22T02:00:19.147-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] Unhandled Exception on clicking on shoulder Slot",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 10222
+  },
+  "FileAttachments": [
+    {
+      "FileId": 989,
+      "FileName": "BeartoCatForm Sort.JPG",
+      "DownloadUrl": ".\\989"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Does that error happen consistently? If you delete your 'images' folder, and replace it with the one from the latest release, does it still happen? Looks like an image is corrupt or something...\r\n\r\nRegarding the 'error in the sort function', can you explain more? I don't understand the situation or what's going wrong....",
+      "PostedDate": "2008-05-22T08:36:10.427-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Tried replacing the image file and did not work (throwing error on all forms except Bear and Cat).  Downloaded the program again and the error is gone in that one, most likely when I updated the item cache as a fresh download fixed it..\r\n\r\nAs to the sort error I mentioned. Best to just describe it in more detail.\r\n1. Open the Program and Select the Form Bear and close program if not in Bear at start\r\n2. Open program again\r\n3. Check the Comparisons window and click sort, there should be (Overall, Alphabetical, Mitigation, Survival and Threat) for Bear form\r\n4. Now click on any armor slow (I chose Head but any will do)\r\n     On the top of the window that appears listing the armor in question is a filter box and another sort drop window that has the same as the Comparisons \r\n        (Overall, Alphabetical, Mitigation, Survival and Threat)\r\n5. Now go to the Models and select Cat Form\r\n6. Check the Comparisons window and click sort, there should be (Overall, Alphabetical, DPS and Survivability) for Cat form\r\n7. Now click on any armor slow (I chose Head again but any will do)\r\n     On the top of the window that appears listing the armor in question is a filter box and another sort drop window that has the same as the Comparisons but instead of listing \r\n         (Overall, Alphabetical, DPS and Survivability)\r\n\r\nMy screen has instead the following\r\n        (Overall, Alphabetical, Mitigation, Survival and Threat)\r\n\r\nas the sort options. I have to close the program each time I change form to correct this..",
+      "PostedDate": "2008-05-22T09:44:17.303-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-05-22T09:44:17.833-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-12-11T08:33:38.413-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T15:28:07.75-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:15:00.62-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:50.38-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:27:15.82-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

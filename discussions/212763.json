@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "443303",
+    "ThreadId": "212763",
+    "Html": "<p>With the release of <a href=\"http://spreadsheets.google.com/pub?key=t1fF8IXJ-xJycjxizYU2o9w&output=html\">Nihilum's spreadsheet</a> detailing the initial Mastery-per-talent calculations, and the approximate <a href=\"http://www.shadowpriest.com/viewtopic.php?f=66&p=225633\">lvl 80</a> and <a href=\"http://www.shadowpriest.com/viewtopic.php?f=66&t=27742\">81 mastery-per-percentage</a> calculations over at Shadowpriest.com, I am currently implementing a first run through on adding the mastery system into RAWR. This is just the bare minimum at this point (I'm not even going to attempt how to implement each mastery tier at this point). I currently have two questions. One is should I hard code the mastery-per-talent into each module or should I put is somewhere else (such as statconversion.cs. Secondly is what fuction in RAWR tells how many points are associated with each tree? If there isn't one availabe, which file would be the most likely place to have one?</p>",
+    "PostedDate": "2010-05-15T12:09:51.427-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "443389",
+    "ThreadId": "212763",
+    "Html": "<p>Mage model already has mastery support in (but not visible for normal users). For talents there is currently no easy way to get number of points. You can either go based on talent attributes as is done in the talent picker (slow) or if you know number of talents in each talent tree you can do something like this</p>\r\n<div style=\"color:black;background-color:white\">\r\n<pre>            <span style=\"color:blue\">int</span>[] talentData = MageTalents.Data;\r\n            <span style=\"color:blue\">int</span> arcane = 0;\r\n            <span style=\"color:blue\">for</span> (<span style=\"color:blue\">int</span> i = 0; i &lt;= 29; i++)\r\n            {\r\n                arcane += talentData[i];\r\n            }\r\n            <span style=\"color:blue\">int</span> fire = 0;\r\n            <span style=\"color:blue\">for</span> (<span style=\"color:blue\">int</span> i = 30; i &lt;= 57; i++)\r\n            {\r\n                fire += talentData[i];\r\n            }\r\n            <span style=\"color:blue\">int</span> frost = 0;\r\n            <span style=\"color:blue\">for</span> (<span style=\"color:blue\">int</span> i = 58; i &lt;= 85; i++)\r\n            {\r\n                frost += talentData[i];\r\n            }\r\n\r\n</pre>\r\n</div>",
+    "PostedDate": "2010-05-16T01:00:46.293-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

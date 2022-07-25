@@ -1,0 +1,135 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Mage",
+      "DisplayName": "Rawr.Mage"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-05-08T14:03:42.28-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I was trying to model the value of \"Incanter's Absorption\" which says \"When you absorb damage your spell damage is increased by 15% of the amount absorbed for 10 sec.  Total spell damage increase cannot exceed 5% of your health.\"   However, the current mage model only includes the \"frequency\" of resistable/binary encounter effects, not their damage.   Thus, it doesnt look to me like you can actually simulate the value of Incanter's Absorption currently.   \n \nDid I miss something?",
+    "LastUpdatedDate": "2017-11-27T11:01:46.86-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-03-24T16:45:43.043-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Mage] Incanter's Absorption - Model Unfinished",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 12872
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Correct, you can't in the current version. If anyone has any math indicating that it's a worthwhile talent for PvE, let us know, and we can prioritize implementing it.",
+      "PostedDate": "2009-03-24T17:53:57.447-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "No currently it's not able to model it. The resistable/binary effects is used to model magic absorption. For incanter's absorption we would need data on incoming damage, not just dps but frequency and damage spread and some way of specifying how you're receiving shields. You also have to take into account that some damage needs preemtive shielding to take effect of it and some that's more spreadout like dots can be reactive. If you have any suggestions on how to model this in terms of specification of these parameters I can see about implementing such a model.",
+      "PostedDate": "2009-03-24T18:38:02.367-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'd settle for a nominal resist amount as a third column next to the resist & binary raid damage frequency columns for each fo the damage types.",
+      "PostedDate": "2009-03-24T22:57:55.147-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well... nominal \"absorb\" amount that is.",
+      "PostedDate": "2009-03-24T22:58:22.73-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Is there any specific reason why you would like absorb for each different type compared to just one for all?",
+      "PostedDate": "2009-03-25T02:02:08.3-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "So you can model multiple raid damage types and frequencies?   Same reason you have them for the Magic Absorption talent I would expect.\r\nSome fights have recurring damage of differenet types (fire + shadow) on different DOT frequency timers and with different avg amounts.",
+      "PostedDate": "2009-03-25T12:06:46.383-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "For magic absorption it's there because you might have different resists to different schools. I'm not exactly sure what kind of interaction there should be between resistances and absorb amounts.",
+      "PostedDate": "2009-03-25T14:45:00.393-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I was thinking of fights with multiple types of raid damage like Sapphiron, Sartharion, and Kel'Thuzad where the raid is periodically hit with frost, shadow, and/or fire on different periodic frequencies and with different amounts.  Modeling that incoming damage based on the damage type would be easier than doing it for one dmg amount and one dmg frequency.",
+      "PostedDate": "2009-03-26T15:02:10.27-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Also, it may help to do it this way to properly calculate the interactions between resistance and absorption.   For instance, here is a comment from < http://www.wowwiki.com/Frost_Ward > that claims that \"Damage reduction due to spell resistances or Dampen Magic-like effects is calculated before damage is absorbed. \"",
+      "PostedDate": "2009-03-26T15:09:47.36-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "In addition to the current resistance rows shown, I would suggest adding a physical(/holy?) damage row with the same columns.",
+      "PostedDate": "2009-03-26T15:15:03.547-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "So if I understand correctly, you would want to use the current frequency for damage effects and then add two more columns, one for average damage amount done before resists and one for max amount of absorb available for it. Then modify the damage amount by resistance scores and clip by max absorb value and use that is input for incanter's absorption. Would something like that work?\r\n\r\nIt feels like this should be combined somehow with the incoming damage profile for survivability, but I don't have a good idea how to do that yet. Basically the only thing that survivability profile is missing is the frequency, it just uses a general granularity that affects all types of damage at the same time. Maybe if that is changed so that effect frequency from effect tab is moved to a new frequency column for survivability we can use the same profile for both purposes.",
+      "PostedDate": "2009-03-26T15:30:45.093-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yeah, that's very similar to what I meant and probably better.  I do think it's worth looking at the incoming damage profile stuff as well.  Since youre calling them \"profiles\", it might be worthwhile to have several of them pregenerated that we could \"select\" that match the current characteristics of known boss fights.  That way you could tune your gear versus particular encounters -- very useful if you use a gear mode (or Blizz's) to swap armor/weapon/(maybe talent specs).\r\n",
+      "PostedDate": "2009-03-26T16:39:26.517-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I implemented a basic model for Incanter's Absorption. Try it out in next version and let me know if it allows you to model what you had in mind.",
+      "PostedDate": "2009-04-01T16:57:53.5-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-05-08T14:03:42.28-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:25:35.78-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-21T00:00:17.077-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:35:05.777-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:59.187-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:01:46.86-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Enchants",
+      "DisplayName": "Rawr.Base.Enchants"
+    },
+    "ClosedComment": "Keeping it at 1.4 based on our testing",
+    "ClosedDate": "2011-06-05T17:14:53.2-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Windwalk enchant is currently modeled with a 1.4 proc-per-minute rate. The folks over at Maintankadin have determined that it has a 1.0 proc-per-minute rate: http://maintankadin.failsafedesign.com/forum/viewtopic.php?f=6&t=29319",
+    "LastUpdatedDate": "2013-05-16T05:17:59.983-07:00",
+    "PlannedForRelease": "Rawr 4.1.05.1",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-05-10T18:15:47.297-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Enchants] Windwalk proc-per-minute should be 1.0 not 1.4",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 20728
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Is there any disputing information elsewhere, like EJ?",
+      "PostedDate": "2011-05-11T09:59:43.54-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-11T10:14:13.467-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I raised this same issue back in January (http://rawr.codeplex.com/workitem/19836). I believe that the reason for the difference (as I commented in my ticket) is that the 1.0 PPM quoted in places like maintankadin is the PPM from white damage attacks only whereas I suspect for the purposes of allowing proper comparison of enchants, the RAWR value includes special attacks as well (not saying this is definitely so, just what my belief is).\r\n\r\nFrom wowpedia (http://www.wowpedia.org/Procs_per_minute): \"The PPM rate of a given effect is based on auto-attacks (\"white damage\" attacks) made with that weapon. However, an effect on the main-hand weapon can proc more often than its PPM rating, as instant attacks (Sinister Strike, Overpower, etc.) are all assumed to be made with the main hand, and therefore can trigger the proc.\".\r\n\r\nThat might be totally untrue for bears (although I dont believe it is) or my assertion that RAWR has the PPM _including_ special attacks might be wrong but I reckon thats why the difference.",
+      "PostedDate": "2011-05-12T09:12:41.737-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "@Jothay: Everything on EJ simply points to the maintankadin thread. In general the only class that would really be concerned about it are Feral Druids who are trying to decide between Windwalk and Mighty Agility. The Windwalk proc is weighted significantly higher than Mighty Agility in Rawr compared to other sources of feral theorycrafting (specifically Reesi's blog and forum thread) that state it is either worse or only marginally better depending on content.\r\n@Fuddy: I assume that Rawr computes the PPH for each attack to trigger Windwalk and then determines projected uptime by applying the PPH to number of determined white swings and PPM-triggering specials within the length of the fight. If so, then 'over-compensating' for yellow-damage hits by having the PPM at 1.4 instead of 1.0 is, in fact, double-dipping.",
+      "PostedDate": "2011-05-12T18:32:36.38-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I think I wasnt clear in what I was trying to say. My point was that they may use the value of 1.4 PPM to make the calculation simpler. You have made the assumption they are doing the calculations for white and yellow attacks separately and then applying the PPM value, my assumption is they are not in which case there is no double dipping or 'over-compensating'. However, both mine and your statements are both just assumptions in the end, needs one of the dev champs to determine how the value is being used.\r\n\r\nAs it happens I do have the latest codebase downloaded. If I get time I'll take a look at how it uses the value although I suspect one of the dev guys will answer before that.",
+      "PostedDate": "2011-05-13T01:58:08.877-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Having looked through the code it appears to come down to the chance of it procing being: \r\n\r\n                 -Chance / 60f * attackspeed (for PPM, chance is entered as a negative value within the codebase when defining the enchant to distinguish PPM special effects)\r\n\r\nwhere attackspeed is the \"Average unhasted attack speed\" specifically used for PPM calculations (not the same as melee attack speed). The attackspeed value for MeleeHit triggers (which windwalk uses) appears to be set specifically to 2.5f (e.g. its not calculated as such) - unfortunately this means I havent the faintest idea where this value comes from so I cant tell if it is accounting for yellow hits or not. I'm sure one of the dev's will be able to quickly say.\r\n\r\nI want to caveat this with the fact I am _not_ working on rawr and given that it is a very complicated implementation I may have followed the code flow incorrectly. Take what I've written with a pinch of salt, I am merely trying to be helpful (which hopefully I am rather than being a hinderance).",
+      "PostedDate": "2011-05-13T04:16:49.603-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It is indeed properly evaluating the PPM proc chance based on a Bear's static 2.5 speed, which is correct, and is accounting for both white and yellow attacks procing it (search for 'meleeHitInterval' in CalculationsBear). It's set at 1.4 PPM because that matches the results I got from testing in-game. Based on looking at my recent logs, that doesn't seem inaccurate at all, but I'd welcome any further testing on the matter.",
+      "PostedDate": "2011-05-13T08:42:10.543-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ah of course. I couldnt work out where 2.5 came from because I'd got it into my head that the attack speed was 1.0 but thats cats, not bears. \r\n\r\nI did look at meleeHitInterval and I did wonder if it included yellow attacks in there given that it was a lot more convoluted a calculation than I would expect if it was just white hit (although I'm not ashamed to admit I couldnt work out where the numbers in the meleeHitInterval calc come from to prove that thought).\r\n\r\nThanks for the info, was very interesting to go through the code - its an impressive implementation.\r\n",
+      "PostedDate": "2011-05-13T10:15:48.75-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "meleeHitInterval is actually a rather simple calculation. It's just white and yellow attacks, inverted to be an interval, rather than a 'per sec'.",
+      "PostedDate": "2011-05-13T19:26:09.977-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-06-05T17:14:53.2-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:25:04.943-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:17:59.983-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

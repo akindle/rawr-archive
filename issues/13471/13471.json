@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Tree",
+      "DisplayName": "Rawr.Tree"
+    },
+    "ClosedComment": "Fixed for 2.2.7.",
+    "ClosedDate": "2009-06-11T19:40:57.113-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "This is Tree model, V2.2.6.\n \nIt appears that if for some reason there is nothing equipped in the offhand slot, clicking on the offhand slot results in an exception as below.  This is true for tree and moonkin models at least, but not for bear or cat.  Also appears to happen in the mage model with the same gear set loaded.  Same thing happens if I try and view the offhand gear slot in the comparisons pane.\n \nSystem.NullReferenceException: Object reference not set to an instance of an object.\n   at Rawr.Character.GetRelevantItemInstances(CharacterSlot slot)\n   at Rawr.FormItemSelection.LoadItemsBySlot(CharacterSlot slot)\n   at Rawr.FormItemSelection.ItemCache_ItemsChanged(Object sender, EventArgs e)\n   at System.EventHandler.Invoke(Object sender, EventArgs e)\n   at Rawr.ItemCacheInstance.OnItemsChanged()\n   at Rawr.ItemCache.OnItemsChanged()\n   at Rawr.FormMain.Calculations_ModelChanged(Object sender, EventArgs e)\n   at System.EventHandler.Invoke(Object sender, EventArgs e)\n   at Rawr.Calculations.OnModelChanged()\n   at Rawr.Calculations.LoadModel(Type type)\n   at Rawr.FormMain.LoadModel(String displayName)\n   at Rawr.FormMain.comboBoxModel_SelectedIndexChanged(Object sender, EventArgs e)\n   at System.Windows.Forms.ComboBox.OnSelectedIndexChanged(EventArgs e)\n   at System.Windows.Forms.ComboBox.WmReflectCommand(Message& m)\n   at System.Windows.Forms.ComboBox.WndProc(Message& m)\n   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)\n   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)\n   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)\n \nWorkround is never to click on the off-hand slot if it's empty, and run the optimiser instead as that will usually equip a greyed-out offhand item.",
+    "LastUpdatedDate": "2017-11-27T11:05:39.133-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-06-11T08:35:24.73-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Tree] Exception if no offhand equipped",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13471
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

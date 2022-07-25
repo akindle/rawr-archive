@@ -1,0 +1,110 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtPaladin",
+      "DisplayName": "Rawr.ProtPaladin"
+    },
+    "ClosedComment": "30 days without response, if this is still an issue, please reopen with the relevant character file where the issue is seen",
+    "ClosedDate": "2009-10-01T08:55:28.243-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "No matter what buffs you add to the setup it's not adding them at all. Talents are also not calculating at all. You can also add more than the allowed number of talent points.  Seems this entire build for prot is wrong.",
+    "LastUpdatedDate": "2013-05-16T05:24:37.51-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-08-31T14:57:58.723-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtPaladin] Avoidance Calculation Bugged",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 3,
+    "Id": 14011
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "1) Buffs not being applied: I've not seen this issue before, does it happen with a fresh, new character?\r\n2) Talents not being applied: I've not seen this issue before, does it happen with a fresh, new character?\r\n3) Able to use more than 71 points: This is intentional and is for usability, all models do this.",
+      "PostedDate": "2009-08-31T16:34:06.567-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "All of the dodge calcs are either off terribly, or are not calculating at all, and for some reason it's also giving me an insane amount of armor. Even the parry is off, if you take my toon, http://www.wowarmory.com/character-sheet.xml?r=Detheroc&n=Hieradin\r\n\r\nOn the armory paperdoll, it's got, 25.73% dodge 487 rating, 20.34 parry 313 rating, 17.65 block 113 rating, and 711/544 def. 25487 Armor\r\nRawr is showing, 23.9214 dodge, 19.7681 parry, 17.0924 block, 545 def. 29939 armory\r\n\r\nNow add full raid buffs.\r\nIn rawr, my hp goes up to the correct number.\r\nArmor goes up to 37821, dodge, 23.9568, parry 19.7681, block, 17.0924.\r\n\r\nThere is something terribly wrong here.",
+      "PostedDate": "2009-08-31T22:05:59.997-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "A) Ignore the armory 'paper doll'. Compare only to in-game stats.\r\nB) Make sure that you're comparing with equal buffs. Unbuffed, and raid buffed are two standard points to compare at (assuming you make sure you know which raid buffs you're getting are improved)\r\nC) 1.8% dodge is 'terribly off, or not calculating at all'? That's definitely off (assuming 25.73% dodge is also the value in-game, not just on Armory), and we want to fix that, but am I missing something? You're making it sound like it's off by an order of magnitude or something.\r\n\r\nI'd guess the armor discrepancy would be caused by it applying armor multipliers to bonus armor, not just base armor. Can someone check on that?",
+      "PostedDate": "2009-08-31T22:22:21.65-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I just checked the Armor values, apparently the code was in GetCharacterStats twice in a row, deleting the second one makes it match how we are doing it in DPSWarr and ProtWarr, which I recently validated. The procs that provide armor (such as the Black Heart) may still not do this correctly.\r\n\r\nnitra, are you comparing your in-game values for Dodge, etc against Rawr with the Target Level 83? Change that to target level 80, this does have an effect on several offensive and defensive stats.\r\n\r\nAlso, your toon has trinkets (and a libram) that GIVE Dodge and Parry, these values are averaged out and added to the stats shown in Rawr. Take those items off and look at it again.",
+      "PostedDate": "2009-08-31T22:38:57.037-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Bonus armor in Rawr is being counted double (as stated in a separately tracked issue)\r\n\r\n737 defense rating in Rawr is being reported as 550 defense skill in 2.2.14 as opposed to the 549 defense skill in 2.2.13\r\n\r\nRawr lists Parry as only as good as Dodge on my character, while in game it's significantly better than dodge.  I agree that there are issues in the calcs, however it's closer than 2.2.13 was.  If I had to guess - dodge scaling was reduced, the base amount was left unchanged, parry scaling wasn't increased as it should have been.\r\n\r\nRealistically the bonus armor issue is a lot higher impact to me than the other two.",
+      "PostedDate": "2009-09-01T02:48:54.953-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-01T02:49:09.893-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The reason I said it's terribly off, fully buffed the dodge reaches 29% in game, whereas using the same dodge in Rawr it's off by 5.0432%\r\nAs you add buffs it only goes up 0.0354 dodge.  not near the value it should.\r\n",
+      "PostedDate": "2009-09-01T06:10:01.14-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "And yes, I did take the Librams off, in fact the Libram had no change at all, values were exactly the same.",
+      "PostedDate": "2009-09-01T06:22:12.463-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-16T07:27:41.587-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-01T08:55:28.243-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T16:20:12.54-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:24.073-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:21.06-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:37.51-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

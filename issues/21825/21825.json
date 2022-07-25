@@ -1,0 +1,65 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.TankDK",
+      "DisplayName": "Rawr.TankDK"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-11-30T00:33:55.213-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Using the Silverlight version (elitistjerks.com/rawr.php), an exception occurs when I try to load the predefined buff set \"Fully Buffed TankDK\".  This occurs even when loading from scratch (clearing Silverlight data area, loading new character from battle.net, select buffs tab, ...)\n \nI have performed the Suggested Fix and continue to receive this error. If I am posting this message without having performed the Suggested Fix I am aware that I am consuming the Developer(s) time in managing my Issue unnecessarily.\n \n== Version: 4.2.7.0 SL ==\n \n== Error Message ==\n[Arg_NullReferenceException]\nArguments: \nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.60831.0&File=mscorlib.dll&Key=Arg_NullReferenceException\n \n== StackTrace ==\n   at Rawr.Character.ValidateActiveBuffs()\n   at Rawr.UI.BuffsControl.SavedCombo_SelectionChanged(Object sender, SelectionChangedEventArgs e)\n   at System.Windows.Controls.Primitives.Selector.OnSelectionChanged(SelectionChangedEventArgs e)\n   at System.Windows.Controls.Primitives.Selector.InvokeSelectionChanged(List`1 unselectedItems, List`1 selectedItems)\n   at System.Windows.Controls.Primitives.Selector.SelectionChanger.End()\n   at System.Windows.Controls.Primitives.Selector.NotifyListItemSelected(ListBoxItem listBoxItem, Boolean isSelected)\n   at System.Windows.Controls.Primitives.Selector.OnIsSelectedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)\n   at System.Windows.DependencyObject.RaisePropertyChangeNotifications(DependencyProperty dp, Object oldValue, Object newValue)\n   at System.Windows.DependencyObject.UpdateEffectiveValue(DependencyProperty property, EffectiveValueEntry oldEntry, EffectiveValueEntry& newEntry, ValueOperation operation)\n   at System.Windows.DependencyObject.SetValueInternal(DependencyProperty dp, Object value, Boolean allowReadOnlySet)\n   at System.Windows.DependencyObject.SetValue(DependencyProperty property, Boolean b)\n   at System.Windows.Controls.Primitives.Selector.OnListBoxItemClicked(ListBoxItem item)\n   at System.Windows.Controls.ListBoxItem.OnMouseLeftButtonDown(MouseButtonEventArgs e)\n   at System.Windows.Controls.Control.OnMouseLeftButtonDown(Control ctrl, EventArgs e)\n   at MS.Internal.JoltHelper.FireEvent(IntPtr unmanagedObj, IntPtr unmanagedObjArgs, Int32 argsTypeIndex, Int32 actualArgsTypeIndex, String eventName)\n \n== These are the Steps that I have tried ==\nThis \"Reproduction Steps\" textbox needs to be multiline!!  1. Loaded new character from battle.net (Cenarius-US, Mainspank) 2. Saved to character file.  3. Clicked on Buffs.  4. Selected \"Fullly Buffed TankDK\" from dropdown and exception occurred.  5.  Cleared Silverlight data and repeated steps, same exception.",
+    "LastUpdatedDate": "2013-05-16T05:17:17.937-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-11-24T16:53:17.84-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[TankDK] Exception on dropdown Buffs -> Fully Buffed TankDK (10)",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 21825
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Associated with changeset 63952.",
+      "PostedDate": "2011-11-28T09:00:14.7-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-11-28T09:10:34.087-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-11-30T00:33:55.213-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:24:07.193-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:17:17.937-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

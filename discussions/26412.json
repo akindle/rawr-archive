@@ -1,0 +1,98 @@
+[
+  {
+    "Id": "88340",
+    "ThreadId": "26412",
+    "Html": "\r\nFirst off, I want to state that Astrylian, et al have compiled an amazing program. I looked at the source and there is some great coding going on for this project.<br /><br />What I would like to note however, is that mage calculations are a bit off base, especially for spell haste. Spell haste has been given a much lower weight than it should have. At the moment, it calculates <b>much</b> lower than spell damage. <br /><br />For instance:<br /><br />Robes of tempest: comparing robes of tempest with 2 orange haste gems (5 haste/6 sp dam) and 1 purple (6 spell dam, stam), with the 5 spell dam bonus, it should be equal in dps (or slightly more) than the same robe with 3 12 dam spinels. It currently shows that the 3 runed spinels give 4 more dps than socketing with spell haste. Removing latency from the calculation does nothing to increase spell hastes values higher, so that isn't the reason.<br /><br />Spell crit also seems to be weighed higher than it should be. <br />",
+    "PostedDate": "2008-04-22T14:05:54.227-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "88345",
+    "ThreadId": "26412",
+    "Html": "\r\nOn what grounds are you making those assessments? How are you deciding what it <i>should</i> be?<br />",
+    "PostedDate": "2008-04-22T14:14:08.1-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "88355",
+    "ThreadId": "26412",
+    "Html": "\r\nYou have to keep in mind that the values here represent the best models available.  That isn't to say there won't be bugs, but if you feel like the valuation is in error, you need to back it up with explanations why the model is wrong.  I personally don't know anything about the mage model (and relatively little about caster dps) but I do know that the model has been scrutinized by a lot of really smart people.  A lot of people pouring over these models have brought out some strange things that would not be obvious, but still prove to be true.  Spell haste is a really strange beast, since its value can change a lot depending on your rotation and how much of it you have.  The value of every item (generally) depends on everything else, which is the whole reason this project was started in the first place.<br />",
+    "PostedDate": "2008-04-22T14:35:04.93-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "88361",
+    "ThreadId": "26412",
+    "Html": "\r\nFirstly....<br /><br />Putting my stats in for my character/gear. (Pyrous - Stonemaul).<br /><br />Looking at gem comparisons:<br /><br />Reckless Pyrestone = 12.28<br />Runed Crimson Spinel = 11.58<br /><br />There is a .7 dps favor for the haste gem. <br /><br />However, when you plug those same gems into the Robes of Tempest, there is a 4 dps favor to the srimson spinels, which is simply bad math.<br /><br />Worse, when you look at the Cowl of tempest, which has 1 single yellow slot and meta, with no damage socket bonus, it calculates, a single red gem at 243.78 dps and the orage haste gem at 188.70 dps, which is blatantly an error.<br /><br />When you compare neck pieces, Sun King Talisman vs loop of cursed bones, vs hellfire-encased pendant, there is a big difference between the three: 63.04 vs 64.92 vs 74.25<br /><br />Stat wise, the hellfire pendant only has 10 more spell damage than the sun king talisman, and does 11 more dps, which makes sense. However the loop has 4 less spell damage, 24 less crit, but 32 more spell haste, yet it is consider on par with the sun king talisman (which is wrong, it should be ~ 10 more dps). It is also only 14 less spell damage and 24 less crit, and 32 more spell haste, yet its 10 less dps listed, whereas it should be on par with the pendant.<br /><br />Based on 1500 spell damage, 35% crit, 99% spell hit, 190 spell haste, my base calculations should look like: 1 Haste Rating = 1.24 Damage = 1.37 Crit<br /><br />It looks like theres really two underlying issues:<br /><br />1. Gems don't socket correctly and reflect their actual values.<br />2. Base stats for haste are lower than they should be (is there a fixed value? or does it scale based on other stats as it should?) and/or spell crit is valued higher than it should be (same quest as above).<br /><br />For Mages, stat calculations should be fluid based on the range of your current stats. If you are sporting more crit than optimum spell damage, spell dam should be weighed higher, likewise no spell haste should be valued much higher than hitting the 200 spell haste mark. IE a mage with no spell haste and the same stats I have listed above, would calculate at: 1 Haste Rating = 1.35 Damage = 1.37 Crit<br /><br />I like the program you all put together, but at the moment, its very misleading on which items are better to gear up.<br /><br />",
+    "PostedDate": "2008-04-22T14:44:28.263-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "88366",
+    "ThreadId": "26412",
+    "Html": "\r\nAnother case in point about the gem calculations. Gloves of tempest:<br /><br />With Orange haste gem and the 2 spell damage bonus - 177.93 <br /><br />This would imply that based on raw gem calculations, the orange haste gem should be 2.7 dps more than a Red Gem, since you gain the 2 spell damage socket bonus.<br /><br />With Red spell damage gem and no socket bonus - 176.73 only 1.2 less DPS, where is 'should' be 2.7 dps less.<br />",
+    "PostedDate": "2008-04-22T15:06:52.48-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "88368",
+    "ThreadId": "26412",
+    "Html": "\r\nI see the Item Budget tab now.<br /><br />Spell Haste Rating 11.09<br />Spell Damage 11.06<br />Spell Crit 7.72<br />Int 3.7<br />MP5 1.57 (how does this effect dps? I never have to pot, gem, or otherwise gain mana in 99.9% of my fights)<br />Spirit .95<br /><br />Removing buffs actually lowers spell haste against spell damage. Dropping to strictly self buffs only, the item budget moves to:<br /><br />Spell Haste Rating 8.24<br />Spell Damage 9.49<br />Spell Crit 5.91<br /><br />Haste being equal to or lower than spell damage is not consistant with any calculated models I've ever seen. Sorry guys.<br />",
+    "PostedDate": "2008-04-22T15:13:26.933-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "88369",
+    "ThreadId": "26412",
+    "Html": "\r\nFirst regarding Robes of Tempest:<br /><br />2 orange haste gems (5 haste/6 sp dam) and 1 purple (6 spell dam, stam), with the 5 spell dam bonus gives you 23 spell damage and 10 spell haste.<br /><br />Using your numbers for Reckless Pyrestone = 12.28, Runed Crimson Spinel = 11.58 you get 12 dmg = 11.58 dps, 5 haste + 6 dmg = 12.28 dps, so 5 haste = 6.49 dps. This means 23 dmg = 22.195 dps and 10 haste = 8.49 dps or together 30.685 dps.<br /><br />For 3 spinels we have 36 dmg = 34.74 dps.<br /><br />It is obvious to me that 3 spinels is better, why do you expect that the other should be better?<br /><br /><br />For Cowl of tempest I'm not sure what would be the case with the amount of information you gave. Can you send an xml file of your character where that is apparent if you can't find a problem on your side?<br /><br />For necks and the general 1500 dmg figures you again throw some numbers that <i>should</i> be. Where is that coming from?<br /><br />There are no fixed values for stats. All stats are used in modeling of all spells that you can inspect in spell info section. All is together used to calculate the dps and mps of each spell. Then based on all this information the best combination of spells and cooldown usage is selected to calculate the overall dps.<br />",
+    "PostedDate": "2008-04-22T15:17:35.473-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "88370",
+    "ThreadId": "26412",
+    "Html": "\r\nRegarding MP5 and spirit values, the values of those comes from not having to use mana consumables/evocation and being able to use flame cap and destro pots instead. But obviously as you can see getting MP5 or spirit for that purpose is not efficient use of item budget.<br />",
+    "PostedDate": "2008-04-22T15:22:37.273-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "88371",
+    "ThreadId": "26412",
+    "Html": "\r\nIt looks like your main argument is about haste. You have to understand that a main factor influencing how valuable haste is is if you have enough mana to support it. If you have to start using pots or gems because of more haste that will reduce the value of haste compared to situation where mana is a non issue. My guess is that the models where you're getting your numbers are not taking mana into consideration. If you really have so much mana maybe you forgot to set the option for how much mp5 you get from your shadow priest.<br />",
+    "PostedDate": "2008-04-22T15:28:07.32-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "88374",
+    "ThreadId": "26412",
+    "Html": "\r\nYes, I have problems with the way haste is calculated. Mana isn't influencing its value in your model (I pumped MP5 gains up to 25,000 and it still did not change the haste rating to be higher than spell damage). It seems to me, the amount of spell damage you have is your primary influence.<br /><br />However, It is statistically IMPOSSIBLE for spell haste to do less DPS than spell damage point for point. Until you hit the GCD cap, which is impossible to achieve in this version of WoW. <br /><br />What Im seeing from your stat model is that until you reach 1400 or more spell damage, spell haste is a complete waste of time to stack. Which is completely the opposite of reality. Spell haste gains is by far the second best stat gain beyond spell hit, until you reach the 200ish mark, then the gains start to flatten out. <br /><br />I would take a look at Lhivera's efforts here: http://www.manoutoftime.org/staticpages/index.php/tcom - for a better evalution of how mage stats work. That stat model better refects Mages casting situation. It also takes all factors into account, including group composition.<br /><br />The one thing I do like about your project is being able to compare items, which Lhivera isn't able to do. But, until the stat model is looked at closer, its worthless to me, sorry.<br /><br />I understand the defensiveness, but its blatantly obvious to me that there is a problem with the way haste is being calulated, which affects alot of our decissions on how to stack gear in the end game.<br />",
+    "PostedDate": "2008-04-22T15:45:39.467-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "88376",
+    "ThreadId": "26412",
+    "Html": "\r\nAs I expected you are using a model that does not take mana into account as absolute truth. Until you acknowledge the interactions between mana and haste you won't see why the situation is as predicted by this model. Many theorycrafters at elitistjerks have looked at this model and so far no errors regarding spell haste have been found.<br /><br />I don't see why you don't get spell haste higher than spell damage with sufficient mana input. If I load your gear from armory and set buffs I have haste slightly higher than damage and the difference increases when I increase mana input. Make sure you select all applicable buffs and reasonable options. If you still don't see haste higher than damage in item budget I would suggest you save the character in xml and send it here to see if you have something set wrong.<br />",
+    "PostedDate": "2008-04-22T16:10:51.07-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "88378",
+    "ThreadId": "26412",
+    "Html": "\r\nAlso another thing that you might not be taking into account is that spell haste does not scale linearly. You already have a high amount of haste and the more you have the lower its relative value.<br /><br />In a simplified fireball model if we only look at haste and damage we would have<br /><br />dps = multiplier * (base + 1.15 * damage) * (1 + haste / 1570)<br /><br />derivative over damage would be multiplier * (1 + haste / 1570) * 1.15 and derivative over haste would be multiplier * (base + 1.15 * damage) / 1570.<br /><br />You are saying it is impossible for point of haste to be lower than point of damage theoretically. Well if we set<br /><br />multiplier * (1 + haste / 1570) * 1.15 &gt; multiplier * (base + 1.15 * damage) / 1570<br /><br />or equivalently<br /><br />haste &gt; (base + 1.15 * damage) / 1.15 - 1570<br /><br />base is 735 so if haste &gt; damage - 930 then a point of damage will be more valuable than a point of haste. This does not apply in your case specifically, but you can see that even ignoring the mana issue it is theoretically possible for a point of damage to be better than a point of haste.<br />",
+    "PostedDate": "2008-04-22T16:36:59.79-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

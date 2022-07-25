@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "163378",
+    "ThreadId": "48925",
+    "Html": "The next thing on my current task list is implementing the Libram of Obstuction and it's surrounding buff.<div><br></div><div>Libram of Obstruction</div><div>Equip: Your Judgement ability also increases your shield block value by 352 for 5 sec.</div><div><br></div><div>To sum it up, I need to decide between &quot;average block value&quot; and &quot;immediate block value&quot; since I have two ways of doing this; and I have to use both.. I think.</div><div><br></div><div>I can have it so the libram adds (duration) divided by (judgement cooldown) multiplied by (judgement block value) and have that average value be applied straight to shield block value.</div><div>This has the benefit of being realistic over the course of the fight but the detriment of not providing an accurate or rounded block value at a given moment. This is also the way I have to value the item in order for it to show on the item comparison list and provide an accurate mitigation value of the libram.</div><div><br></div><div>and/or</div><div><br></div><div>I decide in my 18 second (696969696969) rotation that I use as the basis of my TPS calculations that exactly one Shield of Righteousness out of three gets the &quot;Judgement Block Value&quot; and the others do not. An easy way to see this is over at Tannyr's Paladin Tanking Guide's visual representation of the paladin threat rotation <a href=\"http://www.wow-pro.com/class_guides/tannyrs_paladin_tanking_guide\">http://www.wow-pro.com/class_guides/tannyrs_paladin_tanking_guide</a></div><div><br></div><div>The problem with this one is that Shield of Righteousness takes the Shield Block Value from the &quot;averaged benefit&quot; value and then *adds* the &quot;specific benefit value&quot; unless I decide to completely sperate those values.</div><div><br></div><div>The difference between the two methods is that Shield of Righteousness uses 1/3 * Judgement Block Value while Blocked Hits over the course of the fight would be 5/9 * JBV with 1/2 in Imp Judgement.</div><div><br></div><div>Frankly I've hit a snag in trying to determine this, so I'm a bit lost. Any suggestions on how to do the math for this or encouragement that I need to add additional variables to make this work would be greatly appreciated.<br></div>",
+    "PostedDate": "2009-03-01T23:51:19.11-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "163388",
+    "ThreadId": "48925",
+    "Html": "Yeah, sounds like you do need a new stat. Feel free to add a new enum+property to Stats.cs, for it. Something like Stats.BlockValueOnJudgment5Sec, with a value of 352. Then in the model, I'd suggest averaging it out, for the purposes of mitigation. If you want to be extra accurate about it, check whether it being active causes any fully blocked hits, and dropping its active value to the minimum required for the full block, before averaging it out (ie, you normally block 50, hits coming in do 60. If you get +100 block half the time, the average value is still only 5, not 50). Then, for threat, I'd work out how many abilities would gain its effect, like you described.<div><br></div><div>P.S. That guide is stunning. Tankadins are one of the classes/specs that I have the least knowledge of, and that was awesome to read.</div>",
+    "PostedDate": "2009-03-02T00:07:12.57-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "163392",
+    "ThreadId": "48925",
+    "Html": "The tentative solution I came up with was..<div><br></div><div>Using the Average Block Value method like normal..</div><div><br></div><div>and simply in my Shield of Righteousness Damage Calculation</div><div><code>cs.ShoRDamage = (stats.BlockValue + 300f) * damageMulti * SotT * holyMulti;</code></div><div><span style=\"font-family:-webkit-monospace;font-size:13px\"><br></span><div>changing it to</div><div><br></div><div><code>cs.ShoRDamage = ((stats.BlockValue - 0.22f * JudgementBlockValue ) + 300f) * damageMulti * SotT * holyMulti;</code></div><div>I came to the conclusion of 0.22 since it's the ratio of the difference between JBV * 5/9 and JBV * 1/3.. the ratio would be 0.17 with a 10 second judge cooldown and 0.29 with an 8 second judge cooldown but I'm drawing such a blank as to how the formula works for variable Judgement Cooldowns that it's hard for me to write down.</div><div><br></div><div>I guess I should give it a try.</div><div><br></div><div><span style=\"font-family:-webkit-monospace;font-size:13px\">Average JBV to ShoR JBV Ratio = 5 / JudgementCooldown - 1 / 3</span></div><div><span style=\"font-family:-webkit-monospace;font-size:13px\"><br></span></div><div>Or I can do the simple way and assume that judgement *cannot* be anything other than a 9 second cooldown for this entire matter because of how it works in the rotation and just leave the variable judge cooldown matter for later. <br></div><div><br></div><div>It's a terrible hack, but it just might have to do until I get to work on the variable judgement cooldown situation.</div></div>",
+    "PostedDate": "2009-03-02T00:18:28.363-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "163673",
+    "ThreadId": "48925",
+    "Html": "I've just been going with every 3rd shield slam has the buff for Threat.&nbsp; Giving it a 5/9 uptime for Mitigation.<br>\r\n",
+    "PostedDate": "2009-03-02T19:04:21.703-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "163763",
+    "ThreadId": "48925",
+    "Html": "2/3 of the shield slams should have the increased BV for threat.<br>\r\n",
+    "PostedDate": "2009-03-03T02:22:49.753-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "164955",
+    "ThreadId": "48925",
+    "Html": "<p>Hey Solieu ;o</p>\r\n<p>Current live build 3.0.9 (9551):</p>\r\n<p>The damage fomula for ShoR is (using your rawr variable names) cs.ShoRDamage = (stats.BlockValue + <strong>400f</strong>) * damageMulti * SotT * holyMulti; </p>\r\n<p>300 is the value used for rank 1, the corect value for rank 2 is 400. Sadly Cathela isn't updating her post on EJ anymore, if you happened to grab the values from there, be aware she only listed Rank 1 of that ability.</p>\r\n<p></p>\r\n<p>PTR build  0.1.0 (9626):</p>\r\n<p>The damage multiplier of SotT gets removed from the talent and folded into the base abilities. All in all the damage of the ability won't change.</p>\r\n<p>cs.ShoRDamage = (<strong>1.3f</strong> * stats.BlockValue + <strong>520f</strong>) * damageMulti * holyMulti;</p>\r\n<p><span style=\"text-decoration:underline\">About ShoR BV from judgement:</span></p>\r\n<p>What I did with the Libram in my previous Rawr versions was to manually edit the Libram and add 352 * 5 / 9 = 195 BV in the item properties. Most on use attack power trinkets average the bonus over their cooldown value and I personally was fine with that estimate for the block value as flat bonus.</p>\r\n<p>I don't think it's smart to change the formula for ShoR damage to include the judgement BV the way you did though, since it isn't really correct to have <em>all</em> ShoR hits be affected by  it on average. </p>\r\n<p>My suggestion is to add two new variables for now: </p>\r\n<p>cs.ShoRJBVDamage = (stats.BlockValue + 400f + JudgementBlockValue) * damageMulti * SotT * holyMulti;</p>\r\n<p>cs.ShoRJBVThreat = cs.ShoRDamage * holyThreatMod * (1f - cs.ToMiss + cs.ToCrit);</p>\r\n<p>and modify the section where you calculate your threat rotation (cs.Rot1TPS and cs.Rot1DPS), only here can you really know how many ShoR hits with increased BV from Judgement you have to take into account. It will also help once we implement an option for custom rotations. </p>\r\n<p>Side note about rotations: 9696 was developed as maximum average threat rotation, even though it drops two out of three possible JoV-&gt;ShoR moves. I think we're best off ignoring custom rotations for now an only implement the judgement glyph and keep an eye out for 3.1 glyphs.</p>\r\n<p><span style=\"text-decoration:underline\">About Mitigation from judgement block value:</span></p>\r\n<p>A paladin tank will always use HS and Judgement as a first priority in any mitigation calculation, first of all to increase the block chance and to debuff the attacker with Judgements of the Just (thunderclap).</p>\r\n<p>Currently damage when hit is calculated by cs.DamageWhenHit = cs.Block / beHit * cs.DamagePerBlock + cs.Hit / beHit * cs.DamagePerHit + cs.Crit / beHit * cs.DamagePerHit * 2;</p>\r\n<p>so it all boils down to cs.DamagePerBlock = cs.DamagePerHit - stats.BlockValue;  it's here that the Libram needs to be calculated for.</p>\r\n<p>To make it depend on talents spent in Improved Judgement and druation of the buff itself:, change it to:</p>\r\n<p>cs.DamagePerBlock = cs.DamagePerHit - (stats.BlockValue + 5f / (10f - talents.ImprovedJudgments) * JudgementBlockValue);</p>\r\n<p>What do you think ?</p>\r\n",
+    "PostedDate": "2009-03-05T10:01:43.263-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

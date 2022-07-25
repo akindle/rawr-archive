@@ -1,0 +1,130 @@
+[
+  {
+    "Id": "606814",
+    "ThreadId": "256234",
+    "Html": "<p>What is the core team's opinion of computationally expensive analytical models that are not simulations?<br /> <br /> I've recently replaced the matlabadin simulation code with a low-level model written in C#. As it is not a simulation, it does not suffer from the randomness present in simulations but due to it's low-level nature, is fairly computationally expensive.<br /> A weighted directed graph is generated where each node represents a unique configuration of resources, ability cooldowns and temporary buffs (eg [HolyPower=0; abilityA=2s; abilityB=3s; abilityC=0s, buffD=4s]) and vertices represent the probability of transitioning  from the source state to the destination state for the chosen ability usage (eg if we use abilityC in the previous example then we might transition to [HolyPower=1; A=0.5s; B=1.5s; C=3s; D=3.5s] if the ability hits [HolyPower=1; A=0.5s; B=1.5s; C=3s; D=3.5s],  [HolyPower=0; A=0.5s; B=1.5s; C=3s; D=3.5s] if the ability misses, or some other state if we get a proc that gives us a temporary buff.</p>\n<p><br /> Once the reachability graph is generated, the steady-state state probabilities are calculated using iterative approximation. Once state probabilities are known, the abilities chosen are aggregated with the final output being casts/sec for each ability used from which dps can be easily calculated  (technically we output more than that as we include damage-altering temporary buffs such as Inquisition and Sacred Duty in the output since they affect ability damage).<br /> As you can probably guess, taking such a brute-force approach is not cheap. For ProtPaladin we track Holy Power, 7 ability CDs (WoG,CS,J,AS,Cons,HW,HoW) and 4 temporary buffs (GC,SD,Inq,EG_ICD) which gives a total theoretical state space of ~10^16 state. Fortunately,  realistic rotations use between 20,000 and 150,000 states. 150k state rotations take ~0.5s to generate the graph and 3-4s to converge to steady-state state probabilities. For ProtPaladin, the graph only varies with ability rotation, hit, expertise, haste,  3 talents &amp; 1 glyph.</p>\n<p><br /> Further info and source code can be found at http://maintankadin.failsafedesign.com/forum/viewtopic.php?p=593320#p593320. The state generation code in matlabadin is C# as I have a .NET background and matlab was too slow. Incorporating it into Rawr  is feasible, it just might not desirable.<br /> <br /> <br /></p>",
+    "PostedDate": "2011-05-03T19:45:53.827-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "606838",
+    "ThreadId": "256234",
+    "Html": "<p>Sounds similar to what we already do for Mage, which (I believe) is a Markovian State Machine. I'm sure Kavan can comment further on it.</p>\r\n<p>I believe some level of optimization is needed to actually have it used in Rawr; I think it follows the full state machine for the main calculation, but assumes the rotation won't change for each item in a chart, unless the stats change significantly, or any known 'especially volatile' stats change (things like set bonuses, etc).</p>",
+    "PostedDate": "2011-05-03T21:21:04.377-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "606906",
+    "ThreadId": "256234",
+    "Html": "<p>I'm currently trying to model a good rotation for the ret module.&nbsp;</p>\r\n<p>For ret it would be Holy Power, 6 ability CDs (TV, CS, J, Cons, HW, HoW) and 5 temporary buffs (DP proc, Exo, Inq, Zeal, AW).&nbsp;</p>\r\n<p>But I don't have the mathematical background to implement this for retribution...</p>",
+    "PostedDate": "2011-05-04T00:52:26.78-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "607585",
+    "ThreadId": "256234",
+    "Html": "<p>I'm happy to do the backend state machine coding and I'm currently in the process of adding ret rotation capability to the prot capability in the&nbsp; C# matlabadin code. I notice you did not include GoAK, WoG(+Eternal Glory+Selfless Healer)&nbsp;in your list of abilities/buffs. I presume (unlike prot) ret ignore WoG a a rotation option. How are you intending to model GoAK?</p>\r\n<p>How do we incorporate this into Rawr? If we precompute state machine results, calculation is reduced to a simple lookup at runtime. Unfortunately, we would need to do a different calculation for each relevant talent (Inquiry of Faith, Divine Purpose, Sanctity of Battle, The Art of War, Sanctified Wrath = 384 combinations)(Zealotry/DS can be inferred from the rotation)&nbsp;and hit,exp,haste combination. Even if we only took 6 data points for haste/exp/hit and interpolated from there we would need 15+Mb in lookup tables per rotation (and at the very minimum we need 4 rotations to handle Zealotry/DS talents).</p>\r\n<p>It could be feasible if we precomputed results for standard talent builds but then we're looking at at least 30s get to a result for the Talents and Glyphs screen. Short of refactoring Rawr to use load indicators and perform calculations on a background thread, I don't see that being a usable experience.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-05-04T23:15:25.353-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "607723",
+    "ThreadId": "256234",
+    "Html": "<p>Yes, ret ignore WoG. GoAK strength bonus is handled as a flat bonus, the angel will be a pet. So it will not have something to do with the normal rotation.</p>\r\n<p>Well it would be nice to have it depending on every talent, but i'd say for 99% of all calculation it will be with a standard set of talents.</p>\r\n<p>&nbsp;</p>\r\n<p>Since haste decreases the cooldown of CS and DS for Ret, is it even possible to use this method?</p>",
+    "PostedDate": "2011-05-05T05:00:14.277-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "607863",
+    "ThreadId": "256234",
+    "Html": "<p>That's the inherent problem with Markovian States. While they would be great for general use in small scenarios, you get into the number of abilities we keep track of in Rawr models and you hit supercomputer requirements for processing the chain once (or more than once) per calc 5 <em><strong>million</strong></em> times in a row (during an optimize). You can do simplifying methods that would utilize a cached calc until a major change occurs, which is part of what Kavan does, to alleviate the computation weight on the processor but it's still not perfect.</p>\r\n<p>Precalculating the state spaces for all possible scenarios and just using a list of ability counts and uptimes out of that on your end, then flooding those numbers into Rawr wouldn't really be feasible either. That's a big chunk of data to have to put in it that would have to have new releases come out to update/fix when issues or new scenarios are identified.</p>\r\n<p>If you can finagle the settings of your state generator so that it can perform 20,000 iterations of itself in say 0.5 seconds (ah hell, lets shoot for&nbsp;1 second for now), lets give it a try and see how well it performs in Rawr.</p>",
+    "PostedDate": "2011-05-05T08:24:38.71-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "608066",
+    "ThreadId": "256234",
+    "Html": "<p>What you're describing is what Mage model does in cycle analyzer. I'm not sure how efficient iterative approximation is. I'm using direct solving for steady state via LU decomposition and I have&nbsp;a solver for it using unsafe C# code. You can check CycleGenerator, GenericCycle and for example ArcaneCycleGeneratorBeta in mage model. I've also branched some of that to Rawr.Base.Algorithms.MarkovProcess, but that doesn't include the improvements made since the branch.</p>\r\n<p>What mage model does in terms of caching calculations between small changes in gear is not related to cycle solving, that is on the level of cooldown stacking. I'm not using the generic cycles for general calculations. It's possible that it would be workable, but I haven't tried it. What I do instead for the complex cycles is decompose it into simpler models, trying to minimize for errors, until it's at a size that can be solved symbolically (or close to it).</p>\r\n<p>What you can do instead with such a complex model is use it for verification of your fast approximaiton models used for comparisons. Rawr already supports an asyncrhonous model. Whenever you make changes it first computes everything normally, and then if the model supports asyncrhonous mode it starts a background computation that is displayed after it's finished. You can use that to display more accurate data and also display some error characteristics of the approximation model.</p>",
+    "PostedDate": "2011-05-05T13:17:01.227-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "608333",
+    "ThreadId": "256234",
+    "Html": "<blockquote style=\"padding-bottom: 0px; font-style: italic; margin: 0.25em 1em 0px; padding-left: 0.25em; padding-right: 0.25em; padding-top: 0px; border: #ccc 0.1em solid;\"><strong>Kavan wrote:</strong><br />\r\n<p>I'm using direct solving for steady state via LU decomposition and I have&nbsp;a solver for it using unsafe C# code.</p>\r\n<p>What you can do instead with such a complex model is use it for verification of your fast approximaiton models used for comparisons. Rawr already supports an asyncrhonous model. Whenever you make changes it first computes everything normally, and then if the model supports asyncrhonous mode it starts a background computation that is displayed after it's finished. You can use that to display more accurate data and also display some error characteristics of the approximation model.</p>\r\n</blockquote>\r\n<p>We tried LU decomposition for prot but with 20-150k states but&nbsp;even matlab UMFPACK died due to the memory requirements hence why we're using brute-force iterative approximation.</p>\r\n<p>As for ret haste, I'm intended to approximate it by modelling only a 'nice' haste points that drop the CD in 0.1s increments to prevent the state space exploding and then interpolating those results to other haste values.</p>\r\n<p>It sounds very much like I'll have to do the analytical hard yards and come up with some functions that fit the raw data.</p>",
+    "PostedDate": "2011-05-06T01:22:04.217-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "613441",
+    "ThreadId": "256234",
+    "Html": "<p>How quickly do the \"answers\" change is my question?&nbsp; Does a 0.1s change in haste result in significantly different gear being optimal?&nbsp; If so by a lot or by a tiny margin?&nbsp; A statistically valid margin?</p>\r\n<p>Perhaps once can just solve for accuracy instead of precision and increase the \"equivalency\" windows further to reduce the state space.&nbsp; Whenever rawr says there is a ~1000 point difference in two pieces of gear out of the 1.5 million overall points for my character's current setup...those items are really effectively equivalent.&nbsp;&nbsp; Rawr simply isn't that precise...at least not to that degree.</p>",
+    "PostedDate": "2011-05-16T10:03:09.213-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "613596",
+    "ThreadId": "256234",
+    "Html": "<p>The main problem I think is the effect on user experience. The main desired property of Rawr models is that they're deterministic and that under small changes&nbsp;they produce similar results, except if there is an underlying discontinuity in the model. What you don't want is that by increasing&nbsp;crit rating&nbsp;by 1 you get a radically different result just due to noise introduced in the&nbsp;solver. Even worse is getting different results on repeated calculations of the same input.</p>",
+    "PostedDate": "2011-05-16T15:17:20.35-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "613665",
+    "ThreadId": "256234",
+    "Html": "<blockquote style=\"border: solid .1em #ccc; font-style: italic; margin: .25em 1em 0 1em; padding: 0 .25em 0 .25em;\"><strong>khanthal wrote:</strong><br />\n<p>A statistically valid margin? ....&nbsp;~1000 point difference in two pieces of gear out of the 1.5 million ...&nbsp;Rawr simply isn't that precise...at least not to that degree.</p>\n</blockquote>\n<blockquote style=\"border: solid .1em #ccc; font-style: italic; margin: .25em 1em 0 1em; padding: 0 .25em 0 .25em;\"><strong>Kavan wrote:</strong><br />\n<p>The main desired property of Rawr models is that they're deterministic and that under small changes&nbsp;they produce similar results, except if there is an underlying discontinuity in the model.&nbsp;</p>\n</blockquote>\n<p>The markov chain models themselves are exact* and will return the same result for each invocation. The accuracy depends on how many iterations we converge for which for the protpally rotations modeled&nbsp;is 1e-10. Differences of 2dps between different ability priorities  is meaningful even though actual RNG variance is a much more than that.</p>\n<p>Essentially, the calculation I am working on would return cast/s (+relevant short-term self-buffs) for each ability with the problem being it takes quite a lot of computation to get a result so is not suitable for direct usage by Rawr. From what I've analysed so far,  there doesn't appear to be any significant discontinuities in cast/s when varying hit/exp** so a simple set of functional approximations&nbsp;(probably exponential or polynomial from what I've seen so far) should give a good data fit and be fast enough for Rawr.</p>\n<p>*excluding unmodeled variables such as latency</p>\n<p>**the markov chain casts/s calculation I am working on uses meleehit% and rangehit% and not hit/exp directly and as such&nbsp;discontinuities at the&nbsp;hit cap &amp; exp soft/hard caps are not&nbsp;discontinuities in the model itself</p>",
+    "PostedDate": "2011-05-16T18:49:52.993-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "613666",
+    "ThreadId": "256234",
+    "Html": "<p>Uhh? What? imin, we definately use the hit/exp directly by converting it into the related percentages. Please don't say we do something by not doing something else, that just confuses people.</p>",
+    "PostedDate": "2011-05-16T18:58:43.08-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "613674",
+    "ThreadId": "256234",
+    "Html": "<blockquote style=\"border: solid .1em #ccc; font-style: italic; margin: .25em 1em 0 1em; padding: 0 .25em 0 .25em;\"><strong>Jothay wrote:</strong><br />\n<p>Uhh? What? imin, we definately use the hit/exp directly by converting it into the related percentages. Please don't say we do something by not doing something else, that just confuses people.</p>\n</blockquote>\n<p>\"the model\" I was referring to is the matlabadin markov chain casts/s calculation that I have been working and am discussing for suitability for Rawr, NOT any existing Rawr models. I have updated the wording on my post: apologies if my wording has caused any confusion.  My point was essentially that I don't have to worry about hit/exp cap as Rawr would convert hit/exp into percentages and by using these percentages, the hit/exp hard/soft caps get handled before being input into the markov chain cast/s calculation thus resulting in a nicer casts/s calculation that one using hit/exp directly.</p>",
+    "PostedDate": "2011-05-16T19:22:55.24-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "613675",
+    "ThreadId": "256234",
+    "Html": "<p>Ah, ok, that makes more sense. Lord knows if I read it that way, someone else would have</p>",
+    "PostedDate": "2011-05-16T19:24:04.077-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "613676",
+    "ThreadId": "256234",
+    "Html": "<p>Noise on the order of&nbsp;2 dps&nbsp;shouldn't be much of an issue, specially if you're planning to fit it with functional&nbsp;interpolation (I'd suggest some form of piecewise polynomial).</p>\n<p>EDIT: Never mind, I just realized the 2 dps was just an example of a meaningful difference even if rng variance is large.</p>",
+    "PostedDate": "2011-05-16T19:24:59.583-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "613725",
+    "ThreadId": "256234",
+    "Html": "<blockquote style=\"border: solid .1em #ccc; font-style: italic; margin: .25em 1em 0 1em; padding: 0 .25em 0 .25em;\"><strong>iminmmnni wrote:</strong><br />\r\n<blockquote style=\"border: solid .1em #ccc; font-style: italic; margin: .25em 1em 0 1em; padding: 0 .25em 0 .25em;\">\"the model\" I was referring to is the matlabadin markov chain casts/s calculation that I have been working and am discussing for suitability for Rawr, NOT any existing Rawr models. I have updated the wording on my post: apologies if my wording has caused  any confusion. My point was essentially that I don't have to worry about hit/exp cap as Rawr would convert hit/exp into percentages and by using these percentages, the hit/exp hard/soft caps get handled before being input into the markov chain cast/s calculation  thus resulting in a nicer casts/s calculation that one using hit/exp directly.</blockquote>\r\n</blockquote>\r\n<p>Yes, the ret module has a combattable implemented which will return %values for each attack. (Also every Cap should be in)</p>\r\n<p>I'd say we give it a try and see if the output is acceptable. (If iminmmnni will do the work, since I don't have enough background)</p>\r\n<p>I'd be happy to help you, wherever I can. (I do have more time again to work on the module, yay!)</p>",
+    "PostedDate": "2011-05-16T23:40:02.79-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,154 @@
+[
+  {
+    "Id": "254398",
+    "ThreadId": "74371",
+    "Html": "<p>Any Hunters with access to compile the unreleased code for 2.2.25 please download the current revision and test your Character against the model named HunterSE. This will be a major overhaul to the Hunter model for next release and I want to make sure there aren't any serious issues from you guys before I deactivate the current model. In my testing the model remains in line with the other theory-crafting sources (E.g.- A char doing ~3k dps still does ~3k dps in this model) and I don't see any issues myself with the handful of test characters I have been working with.</p>\r\n<p><span style=\"color:#ff0000\"><strong>You have 24 hours to post your major concerns here before I release it. NO CONCERNS = NEW MODEL POSTED and OLD ONE GONE.</strong></span></p>\r\n<p>The purpose of these changes are to separate Rawr from the Spreadsheets and make them utilize standard features available to Rawr, such as the SpecialEffects methods we have in place for all proc effects. I've also resolved several of the issues posted in the Issue Tracker, such as wrong ArP formula, hit issues, etc. I will be handling maintenance for the model until we get a new full-time Hunter Dev and will be taking some time to get it up to speed with some of the newer features that have come out in the last 5 or so versions.</p>",
+    "PostedDate": "2009-11-06T15:04:03.57-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254401",
+    "ThreadId": "74371",
+    "Html": "<p>I'll give it a cursory glance-over (as a total non-Hunter) when I get back later tonight, to see if I can find anything glaringly wrong.</p>",
+    "PostedDate": "2009-11-06T15:26:04.307-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254570",
+    "ThreadId": "74371",
+    "Html": "<p>The updates I made to the 2.2.24 code base does not seem to have been carried over to the Hunter SE model. Some probably shouldn't since the trinket procs and similar now uses central functionality as you stated (Banner of Victory and heroic Death's verdict addition).</p>\r\n<p>But there are other updates that I would say would still be valid in the SE model. Most notably is probably the Piercing shot talent. In hunter SE that talent does not give any dps while in Hunter it gives ~800-900 extra dps for a ~T9.5 fully buffed MM hunter (wolf pet).</p>\r\n<p>Not sure what the differences are with the new new module from the old one, and since the spreadsheet no longer can be used to validate things I don't know how to test it.</p>\r\n<p>I currently have a difference between ~8750 dps (Hunter) and ~6500 (Hunter SE) where the piercing talent, as mentioned above, probably can account for 800-900 of the delta. My guess is that the 2pT9 problem could account for some as well.</p>",
+    "PostedDate": "2009-11-07T12:14:39.417-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254571",
+    "ThreadId": "74371",
+    "Html": "<p>I actually did go thru and try to apply your last 2 patches to HunterSE but like you said, some of it doesn't carry over. Would you be able to write a new patch for me for that talent based on SE? I'll try to look at it while I'm working as well.</p>",
+    "PostedDate": "2009-11-07T12:18:34.853-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254576",
+    "ThreadId": "74371",
+    "Html": "<p>How quickly can you two get this worked out? Please contact each other directly!</p>",
+    "PostedDate": "2009-11-07T12:42:58.39-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254584",
+    "ThreadId": "74371",
+    "Html": "<p>I double-checked the Piercing Shots work, you were right it didn't carry over like I had intended. I've added that work and now the talent gives value (on my main dummy character it's givig 191.15 for thre 3rd point so ~573 DPS overall).</p>",
+    "PostedDate": "2009-11-07T13:26:07.55-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254586",
+    "ThreadId": "74371",
+    "Html": "<p>Well, I've identified some differences. In general rows following where the comments are // 29-10-2009 Drizz: Added for Piercing Shots.</p>\r\n<p>For example:</p>\r\n<p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre><span style=\"color:Green\">//29-10-2009 Drizz: Added for PiercingShots</span>\r\n            <span style=\"color:Blue\">double</span> steadyShotAvgNonCritDamage = steadyShotDamageNormal * steadyShotDamageAdjust*armorReductionDamageAdjust;\r\n            <span style=\"color:Blue\">double</span> steadyShotAvgCritDamage = steadyShotAvgNonCritDamage * (1 + steadyShotCritAdjust);\r\n            <span style=\"color:Green\">//021109 Drizz: Have to add the Mangle/Trauma buff effect.</span>\r\n            <span style=\"color:Blue\">double</span> steadyShotPiercingShots = (1+ statsBuffs.BonusBleedDamageMultiplier)*(character.HunterTalents.PiercingShots * 0.1)*steadyShotCritChance*steadyShotAvgCritDamage;\r\n\r\n            <span style=\"color:Green\">//Drizz: Add the piercingShots effect</span>\r\n            calculatedStats.steadyShot.damage = steadyShotDamageReal + steadyShotPiercingShots;\r\n</pre>\r\n</div>\r\n</p>\r\n<p>But the armorReductionDamageAdjust addition have been removed. ( at row 1779 in HunterSE vs 2058 in Hunter) My guess is that the armor reduction is meant to be taken care of somewhere else, not sure where though.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-11-07T13:32:24.917-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254588",
+    "ThreadId": "74371",
+    "Html": "<p>Drizz, double-check against last commit</p>",
+    "PostedDate": "2009-11-07T13:36:40.517-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254589",
+    "ThreadId": "74371",
+    "Html": "<p>....piercing shot damage need to be added to the Steady Shot, Aimed and Chimera shot section.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-11-07T13:37:15.78-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254590",
+    "ThreadId": "74371",
+    "Html": "<p>Hehe... you managed to post while I was writing my comment :)</p>\r\n<p>If there are big differences left I will create a ticket so that I can attach the character file I'm currently using.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-11-07T13:38:48.503-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254595",
+    "ThreadId": "74371",
+    "Html": "<p>I created a ticket and attached the character file.</p>\r\n<p>The dps reacts to changes on the talent now... but there must be something else.</p>\r\n<p>Oh. and the Interface on the Optionspanel looks strange. The grouping window cuts of some of the options so they can not be seen.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-11-07T13:53:40.09-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254613",
+    "ThreadId": "74371",
+    "Html": "<p>I'm trying to test the latest build, r38904 and it's giving me a Error message when compiling in the Program.cs file where it says &quot;Application.Run(new FormMain());&quot;</p>\r\n<p>&quot;Could not load file or assembly 'Rawr.Baase, Version=2.2.24.0, Culture=neutral, PublicKeyToken=null' or one of it sdependencies. The system cannot find the file specified.&quot;</p>\r\n<p>Not sure it this is because of the addition of the HunterSE module or not. Else I would test the module itself.</p>\r\n<p>Granted I'm working with the free version of Microsoft C# 2008 Express Edition so that maybe a factor there.</p>",
+    "PostedDate": "2009-11-07T15:23:54.273-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254615",
+    "ThreadId": "74371",
+    "Html": "<p>Hina try doing a clean checkout.</p>\r\n<p>Drizz, I've fixed the interface hiding stuff for being too small issue</p>",
+    "PostedDate": "2009-11-07T15:36:03.093-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254625",
+    "ThreadId": "74371",
+    "Html": "<p>Jothay, did you check the 2pT9 bonus? I had to update the name of the buff check for it to react correctly when I made the updates to 2.2.24. (i.e. the check was for the alliance version ... but it needed the Horde version of the gear... or vice versa.) I know I've seen code for &quot;normalizing&quot; those names but I'm not sure if that was only for ending up with one name in the core buff code...</p>\r\n<p>The 2pT9 bonus increases the serpent sting damage (since the serpent sting damage can now be a crit) and one part of Chimera SHot's damage is based on the serpent sting damage.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-11-07T16:20:30.957-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254628",
+    "ThreadId": "74371",
+    "Html": "<p>Serpent Sting had a bad modifier on it (causing it to zero out) for Chimera Shot, I found it and fixed it. Then I saw that I broke Auto-shot but I fixed that and it's within 1% now.</p>\r\n<p>So now the only major difference is Steady Shot, which I know to be a Frequency issue, still diving it to that.</p>",
+    "PostedDate": "2009-11-07T16:44:12.09-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254629",
+    "ThreadId": "74371",
+    "Html": "<p>Man... you are checking in new versions so fast I almost only have the time to download/unpack and rebuild :)</p>\r\n<p>Not sure if you have done it already, but it is a good idea to test with some good gear and close to full raid buffs (could use the char file I posted in the ticket). I ran into the trouble when I tested last time that everything looked fairly ok when I had not added any buffs... then, full buffs... the small errors got amplified.</p>\r\n<p>A possibility to save the buff configuration similar to what you can do with talents would help out testing greatly. But I think there is a ticket somewhere posted about that already.&nbsp; :)</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-11-07T16:50:13.097-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254630",
+    "ThreadId": "74371",
+    "Html": "<p>...oh and one more thing. Must say that I'm very happy to see some active dev on the Hunter module. :)</p>\r\n<p>/bow</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-11-07T16:51:49.287-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254634",
+    "ThreadId": "74371",
+    "Html": "<p>I am using your char file except for the settings I have to change so that both can match as closely as possible, and taking off the trinkets (cuz those are no way gonna be the same as before).</p>",
+    "PostedDate": "2009-11-07T17:20:22.747-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254636",
+    "ThreadId": "74371",
+    "Html": "<p>Last commit should be good to go, see the comparison data I got (total DPS was off by 0.63% though the individual parts more-so)</p>\r\n<p>http://rawr.codeplex.com/WorkItem/View.aspx?WorkItemId=14684</p>",
+    "PostedDate": "2009-11-07T17:35:51.503-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

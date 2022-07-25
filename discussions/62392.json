@@ -1,0 +1,178 @@
+[
+  {
+    "Id": "211778",
+    "ThreadId": "62392",
+    "Html": "<p>Hey all,</p>\r\n<p>&nbsp;Silverlight 3 was officially released a couple days ago. I've worked on getting Rawr3 upgraded. Here's what you need to do in order to get it running again:</p>\r\n<ol>\r\n<li>Uninstall everything named &quot;Microsoft Silverlight...&quot;, and &quot;Microsoft Expression Blend...&quot;</li>\r\n<li>Install (all linked from silverlight.net's Getting Started page)<ol>\r\n<li>Microsoft Silverlight (version 3)</li>\r\n<li>Microsoft Silverlight 3 SDK</li>\r\n<li>Microsoft Silverlight 3 Toolkit July 2009</li>\r\n<li>Microsoft Silverlight 3 Tools for Visual Studio 2008 SP1 (or Visual Studio Express, or Visual Web Developer, etc.</li>\r\n<li><strong>NOTE</strong>: Also linked on that page is the Microsoft Web Platform Installer. I *strongly* recommend that anyone who doesn't have a full copy of visual studio (ie, you're using express or web dev) use that to install everything at once, including the latest copy of express or web dev. You'll still have to install the Silverlight 3 Toolkit July 2009 afterwards.</li>\r\n</ol></li>\r\n<li>Goto your Rawr3 folder, and <strong>delete Rawr3.suo</strong>.</li>\r\n<li>Open each project folder, and <strong>delete bin, obj, and *.user</strong>.</li>\r\n<li>Launch VS, and <strong>Get Latest, BEFORE</strong> opening the Rawr3 solution.</li>\r\n<li><strong>There's some strange bug right now where opening a XAML file causes VS to crash on some machines. Very odd, will let everyone know if I find a fix. </strong>(EDIT: Thread about it here: <a href=\"http://silverlight.net/forums/p/110528/249593.aspx#249593\">http://silverlight.net/forums/p/110528/249593.aspx#249593</a>)</li>\r\n<li>Rawr!</li>\r\n</ol>\r\n<p>In terms of actual code changes, I had to fix a few things, but nothing too bad.</p>\r\n<p>&nbsp;</p>\r\n<p>P.S. Levva, could you please remove that Clipboard stuff in Rawr.Enhance? Either don't use the Clipboard, or find a native way to do it, please.</p>\r\n<p>&nbsp;</p>\r\n<p>EDIT: Bah, some of my changes didn't work right, hold off a bit longer, will fix it and check in when I get home tonight.</p>\r\n<p>EDIT 2: OK, there, checked in. Also fixed the broken armory parsing of characters.</p>",
+    "PostedDate": "2009-07-14T09:51:14.037-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "213768",
+    "ThreadId": "62392",
+    "Html": "<p>Sadly it will take some time for me to compile smoothly with Silverlight 3, because there ain't no german version out yet and the english one does not install.</p>",
+    "PostedDate": "2009-07-20T05:17:12.207-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "213779",
+    "ThreadId": "62392",
+    "Html": "<p>When did you last look at the clipboard bits? I thought I'd re-written it to use a Silverlight supported variation. Must admit though I've not looked near the Silverlight stuff for over a month.</p>\r\n<p>Edit: Just installing stuff as outlined above, and will see if I can work out what you mean. Actual links would have helped enormously btw as the links on that site are all over the place.</p>\r\n<p>&nbsp;</p>\r\n<p>Edit 2: Ok got Rawr3 stuff running. I can't see where you've hidden the Clipboard Export. It seems that quite a few options aren't implemented yet. I'd be enormously wary of releasing this version to the general user base, its going to get slated something rotten in the reviews section for missing lots of stuff, as well as being a lot slower. Looks nice though :)</p>\r\n<p>On a positive note I'll have a look at the list of outstanding things that need to be dealt with prior to release. I might actually be able to contribute to getting it ready, rather than sounding like a nay-sayer (which isn't my intent). It is just exceptionally daunting for someone who has never looked near any silverlight stuff and really doesn't want to either, to know what to do without breaking anything. I do <strong>want </strong>to help but have no clue where to start, as none of the xaml stuff looks familiar, and doesn't seem to have a graphcial editor??? (I must be missing an install??) For these reasons I tend to just stick to v2.2 updates instead.</p>\r\n<p>I know I'm not alone in this there are several of the other model developers who have expressed reservations about how we are expected to do stuff in Silverlight. I suppose really I'm asking for some guidanance that doesn't involve reading Microsoft documentation, as that is not a route I plan on going down. I will never ever use Silverlight in any professional capacity and so I don't wish to spend hours reading MS blurb just to get Rawr working.</p>\r\n<p>Just a bit lost and confused as to why you think this Silverlight stuff is a good way to go, as so, far other than it being new, I've not heard any reasons why its a good idea. I'm probably just missing the obvious though.</p>",
+    "PostedDate": "2009-07-20T05:57:36.833-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "213862",
+    "ThreadId": "62392",
+    "Html": "<p>&gt; Just a bit lost and confused as to why you think this Silverlight stuff is a good way to go, as so, far other than it being new, I've not heard any reasons why its a good idea. I'm probably just missing the obvious though.</p>\r\n<p>Cross platform support would be an obvious reason.&nbsp; WoW has an awful lot of folks playing it on a Mac, and running VMware just to have Rawr running is a bit of an overkill.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-07-20T09:17:38.73-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "213869",
+    "ThreadId": "62392",
+    "Html": "<p>The reasons for using Silverlight are pretty obvious. Everyone can use it, from any desktop machine.</p>\r\n<p>Helmchen: I'll look into this, I'm pretty sure there's a way.</p>\r\n<p>Levva: There is no clipboard export in Rawr3 yet, I just saw your Clipboard files. The XAML has no visual editor in VS 2008, they split it out into a separate app, Blend. VS2010 will have it thought. You really shouldn't need to do a whole lot with XAML, it's<strong> just</strong> for the calcopts panel for you. Once you have Rawr3 running, there really should be no difficulty. It's just a different subset of the framework. Don't frustrate yourself; ask for help.</p>",
+    "PostedDate": "2009-07-20T09:38:09.65-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "214020",
+    "ThreadId": "62392",
+    "Html": "<p>One concern I have, some of the modules are pretty slow in the current version, any additional slowdown will begin to make the optimizer and especially the upgrade list pretty useless.</p>\r\n<p>&nbsp;</p>\r\n<p>~Droid</p>",
+    "PostedDate": "2009-07-20T15:08:49.317-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "214021",
+    "ThreadId": "62392",
+    "Html": "<p>Performance on Silverlight should be 10-20% slower than Rawr2, which is far from 'pretty useless'. The WPF version of Rawr is still planned, and will be the same speed as Rawr2. Additionally, I expect we can improve the performance of specific modules, in most cases.</p>",
+    "PostedDate": "2009-07-20T15:10:52.417-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "214149",
+    "ThreadId": "62392",
+    "Html": "<p>With my current Rawr character file, and using the DPSWarr model, it takes approximately 20 minutes to do an optimization on fairly new SMP 8-core workstation (as a side note, I am quite impressed that Rawr can keep this machine at ~90% utilization), and it is very rare that the optimizer gets the optimal setup even at max thoroughness on the first attempt, so I end up running the optimizer 3-4 times. So if it currently takes me up to 80 minutes to do an optimization on a workstation that very few people would have access to, then adding 20% to this time is in my humble opinion, unacceptable.</p>\r\n<p>&nbsp;</p>\r\n<p>On this workstation it also takes around 4-6 hours to do a upgrade list, so again adding 20% is unacceptable, IMHO, as well.</p>\r\n<p>&nbsp;</p>\r\n<p>Just my two cents,</p>\r\n<p>~Droid</p>",
+    "PostedDate": "2009-07-20T23:23:06.61-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "214162",
+    "ThreadId": "62392",
+    "Html": "<p>Sounds like the DPSWarr model is in dire need of some performance optimization, then; that's far from what should be expected performance.</p>",
+    "PostedDate": "2009-07-20T23:46:03.547-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "214438",
+    "ThreadId": "62392",
+    "Html": "<p>20 minutes? &nbsp;Those numbers seem high to me. &nbsp;With max thoroughness and WoW running in the background, I was able to optimize in approximately 10minutes. &nbsp;That's with a few options in some slots, and one additional gem selected (which makes the optimizer complain about number of gems, but doesn't seem to be easily remedied as I'm just near the arpen&gt;str threshold and I'm a jewelcrafter, so I have a lot of gem options).</p>\r\n<p>Droidicus, is the optimizer giving you any warnings about having &quot;too many&quot; &lt;gearslot&gt; available?</p>",
+    "PostedDate": "2009-07-21T10:56:18.783-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "214445",
+    "ThreadId": "62392",
+    "Html": "<p>I'm also not a real fan of this migration (feel it distracts from the modelling effort). Agree that portability is nice, but the fact that it doesn't port natively, is in my opinion because of Microsoft. This doesn't break the company specific issue. Using a standard programming language, like C++ (with a portable GUI like QT or others) or even Java wouldn't have neccesitated this migration. (End anti-Microsoft rant). But I must admit this was my first introduction to C# and the language and combination of language/ide/debugger does have some interesting features, but unless another version of C++ is created, I doubt if I will use it outside Rawr.</p>\r\n<p>It appears that the Silverlight version was also fetching images from the Internet and with my low bandwidth and bad latency, this doesn't help, when looking at speed.&nbsp; So for me in the forseeable future, &quot;Rawr2.Tree&quot; will still be the main focus, with Rawr3.Tree just being a novelty optionspanel to the existing model.</p>\r\n<p>In terms of optimisation speeds, I would be dissapointed if the optimiser is more than 5-10% slower (that would mean bad compiler implemention): Most of what it should be doing (calling the model's calculation functions), should be standard code and libraries which shouldn't be different (in theory) for a Silverlight GUI.</p>\r\n<p>&nbsp;</p>\r\n<p>Levva, I used the Beta version of Blend to create the Options Panel for Tree. It works and gets easier over time, but possibly due to it being a beta version it had some issues:</p>\r\n<p>- Adding sliders/text boxes etc. to grid entries frequently resulted in weird sizing options being enabled. The moment it is inserted, trying resetting to default and then tweaking the size again if neccesary.</p>\r\n<p>-When data binding drop-down boxes to options in the code, make sure the array is created using a constructor and not statically defined, else you will not be able to see it from Blend.</p>\r\n<p>-There were a few times where I modified the XML file directly to get a specific entry to match an example I wanted to copy from one of the other models, since I couldn't figure out how to get the correct settings in the menus.</p>\r\n<p>-I had one issue where after I had data bound a field, I wanted to refactor the code and link it to a new entry in the code. This didn't become visible in Blend and I had to link the file a second time to make the new variables created in the code visible to Blend. (Ended up editing the XML for both parts to use the same mapping, instead of having 2 mappings). (Not sure if reloading Blend would have rescanned the first mapping and bypassed the need to remap the file a second time).</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-07-21T11:17:50.577-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "214466",
+    "ThreadId": "62392",
+    "Html": "<p style=\"margin-top:1em;margin-bottom:1em\"><em>&quot;I'm also not a real fan of this migration (feel it distracts from the modelling effort).&quot;</em></p>\r\n<p>Those model devs that are still working on getting their models right should be minimally impacted; just install Silverlight tools (I realize that can take significant time, but should be a 1-time cost), and create an options screen (shouldn't be a big deal, see below).</p>\r\n<p>&nbsp;</p>\r\n<p><em>&quot;Using a standard programming language, like C++ (with a portable GUI like QT or others) or even Java wouldn't have neccesitated this migration.&quot;</em></p>\r\n<p>Using C++ would have meant development would be too slow to keep pace with WoW, and would still have portability issues. Using Java would have had performance issues, and user-friendliness issues, both of which are very important to Rawr. C#/.NET is the only viable choice, for Rawr to meet its goals, and Silverlight lets us expand our audience.</p>\r\n<p>&nbsp;</p>\r\n<p><em>&quot;It appears that the Silverlight version was also fetching images from the Internet and with my low bandwidth and bad latency, this doesn't help, when looking at speed.&quot;</em></p>\r\n<p>You'd be downloading those images anyway. Silverlight caches them, so you only download them the first time, just like with Rawr2. The only difference is that Rawr2 starts with a huge collection of images out of the box. We may be able to do that for Rawr3, as well, but it's low priority.&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p><em>&quot;In terms of optimisation speeds, I would be dissapointed if the optimiser is more than 5-10% slower (that would mean bad compiler implemention): Most of what it should be doing (calling the model's calculation functions), should be standard code and libraries which shouldn't be different (in theory) for a Silverlight GUI.&quot;</em></p>\r\n<p>The difference is that Silverlight doesn't allow unsafe code (code working with pointers), which prevents us from doing some tricks to improve calculation performance.</p>\r\n<p>&nbsp;</p>\r\n<p><em>&quot;&lt;Issues with Blend&gt;&quot;</em></p>\r\n<p>I hear you there. XAML is a new language, that most devs here aren't familiar with, and the editors for it are still immature. I'd advise all model devs to just 'get it working', then let me know, and I'll clean it up, if you want.&nbsp;</p>",
+    "PostedDate": "2009-07-21T11:55:38.653-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "214479",
+    "ThreadId": "62392",
+    "Html": "<p><em>Droidicus, is the optimizer giving you any warnings about having &quot;too many&quot; &lt;gearslot&gt; available?</em></p>\r\n<p>Yes, I have a significant amount of gear available (only full-time DPS plate wearer in my guild), and with all the different combination of hit/expertise/ArmorPen/etc/etc/etc that Warriors need to balance I have a significant number of items and gems enabled. The character file I recently uploaded in the issue tracker is only a sub-set of what I usually use to optimize.</p>\r\n<p>&nbsp;</p>\r\n<p>~Droid</p>",
+    "PostedDate": "2009-07-21T12:21:45.477-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "214483",
+    "ThreadId": "62392",
+    "Html": "<p>I'd suspect that's your problem, more than anything else. &nbsp;Try narrowing down the options a bit if possible.</p>\r\n<p>Believe me that I understand there's a lot of DPS plate options available, often times it becomes pretty clear that your T7.5 won't compete with your T8.5 (legs being the exception if they don't make a set bonus), etc. &nbsp;Having too many options not only will hurt optimization time, but also leads to Optimizer not being accurate due to the nature of genetic algorithms.</p>\r\n<p>I've found that it's best to limit each slot to 3 items each, and to make sure your gemming templates are correctly set up (if you've got enough arpen gear to make arp&gt;str, you can safely remove the str gemming options. &nbsp;If on the other hand you won't make arpen&gt;str even when you maximize your arpen and put 16arp gems in every slot, there's no need for the arpen options). &nbsp;Gemming Templates and gem options can be a HUGE time-eater, especially if you don't need them.</p>",
+    "PostedDate": "2009-07-21T12:32:07.86-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "214536",
+    "ThreadId": "62392",
+    "Html": "<p>While it does sound like Droid's problems are largely because of the number of items marked as available, Rawr.DPSWarr could use some significant optimization from what I've seen.</p>\r\n<p>A Fury profile I just made with 2-3 items selected per slot and a reasonable number of gems took my relatively old dual core machine around 16.5 minutes to optimize with max thoroughness.&nbsp; A very similarly complex Cat profile took around 3.5 minutes.&nbsp; Just clicking on a gear slot or changing an option takes around a second, which gets extremely annoying for even basic functions.&nbsp; You can work around the delays when changing options by viewing an empty chart, but that doesn't really fix the problem.</p>",
+    "PostedDate": "2009-07-21T15:02:57.553-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "215098",
+    "ThreadId": "62392",
+    "Html": "<p>Just a quick note, but be wary of totally disabling all Str gem templates in favor of ArP (even if ArP is normally an up) if you have an ArP proc trinket enabled.&nbsp; This is obviously not related to the thread, but wanted to throw a quick warning out.</p>\r\n<p>I will also say that I've experienced noticeably slow performance, for both optimization and normal functions (selecting, opening a list, editing gems, etc.) in the DPSWarr module.&nbsp; This is with a full profile, but a) I keep my gemming options as sparse as possible, and b) I clean out my gear list often.</p>",
+    "PostedDate": "2009-07-22T22:48:27.953-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "215207",
+    "ThreadId": "62392",
+    "Html": "<p>Quote &quot;Using Java would have had performance issues, and user-friendliness issues, both of which are very important to Rawr.&quot;</p>\r\n<p>Java 6 running with default JIT compiler runs at near native (ie: C++) speeds. Comparable code in Java and C# show no substantial differences in various industry benchmark testing. So not sure where you get the performance issues from. User friendliness? Only issue I can think of would be making sure Java is installed on machine and that's no more of a battle than making sure .Net is installed on the machine. Granted the MS Visual Studio visual component editors tend to be more polished than the Java IDE editors but with SWT components these days you get a native environment look and feel quite easily.</p>\r\n<p>The primary pain with C# is that it isn't cross platform. Silverlight is the MS hack to try to address this but according to industry reports this is done at the cost of significant performance hits. Its also a rather new platform and thus liable to have significant issues arise. Still that said its always good to play with something new. However if that comes too painful its sometimes easier to just fall back on what you know. This is my current issue - finding the time or inclination to get up to speed with Silverlight, rather than there being no support. I am fully aware that Astrylian has done a magnificent job in helping and supporting his team of developers and I can't thank him enough for the help and support he has given me in the past to get things working.</p>",
+    "PostedDate": "2009-07-23T03:39:34.68-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "215520",
+    "ThreadId": "62392",
+    "Html": "<p>The main benefit of Silverlight is that it uses C#, so we can reuse <span style=\"text-decoration:underline\"><strong>HUGE</strong></span> amounts of code. Model developers should have to make very trivial changes to their, and mainly just need to implement a new options panel.</p>",
+    "PostedDate": "2009-07-23T16:26:48.91-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "215996",
+    "ThreadId": "62392",
+    "Html": "<p>Did the silverlight 3 release lose chrome support?</p>",
+    "PostedDate": "2009-07-25T07:37:45.593-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "216013",
+    "ThreadId": "62392",
+    "Html": "<p>No; SL did, and still does, support <em>running</em>&nbsp;on IE, FF, Safari, Chrome, Opera, but only <em>installs</em>&nbsp;from IE, FF, or Safari.</p>\r\n<p>ie, if you're a Chrome/Opera user, use IE to install it, then go back to Chrome/Opera.</p>",
+    "PostedDate": "2009-07-25T10:17:03.85-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "216038",
+    "ThreadId": "62392",
+    "Html": "<p>To address the performance issues in DPSWarr, Ebs has refactored a large number of Items in our CombatFactors file so that they only calculate once per instance instead of each function being run over and over again. This has so far yielded a net 25% boost in performance (20 Minutes becomes 15, 10 minutes becomes 7.5). He will be working more on this over the weekend and we'll see where we land on Monday.</p>",
+    "PostedDate": "2009-07-25T14:16:15.57-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "218743",
+    "ThreadId": "62392",
+    "Html": "<p>In case there are other german developers around:</p>\r\n<p><a href=\"http://www.microsoft.com/germany/net/silverlight/download.aspx\">http://www.microsoft.com/germany/net/silverlight/download.aspx</a></p>\r\n<p>Silverlight 3 Tools in german are available now.</p>",
+    "PostedDate": "2009-08-03T04:59:43.883-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

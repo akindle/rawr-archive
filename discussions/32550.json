@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "107935",
+    "ThreadId": "32550",
+    "Html": "Hi, using latest version (b15), and getting some strange issues with BoK and JoW.<br>\r\n<br>\r\nSee attached images.<br>\r\nNo Bok, No Jow:<a href=\"http://www.accountsportal.com/temp/NoBokNoJoW.jpg\"> </a><a href=\"http://img301.imageshack.us/img301/1217/noboknojowos3.jpg\">http://img301.imageshack.us/img301/1217/noboknojowos3.jpg</a><br>\r\n<br>\r\nNo Bok, Yes Jow: <a href=\"http://img375.imageshack.us/img375/3812/nobokyesjowth1.jpg\">http://img375.imageshack.us/img375/3812/nobokyesjowth1.jpg</a><br>\r\n<br>\r\nOk, so from No Bok and No Jow, I get max dps on my head piece as 178. If I add in Jow, the max DPS reduces to 138.<br>\r\n<br>\r\nYes Bok, No JoW: <a href=\"http://img402.imageshack.us/img402/2701/yesboknojowmo2.jpg\">http://img402.imageshack.us/img402/2701/yesboknojowmo2.jpg</a><br>\r\n<br>\r\nBack to first example (no Bok and no Jow) and I get max dps of 178. Add in Bok and the max DPS reduces to 141.<br>\r\n<br>\r\n<br>\r\n",
+    "PostedDate": "2008-07-30T04:47:58.16-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "107966",
+    "ThreadId": "32550",
+    "Html": "Can you open a new issue for this and upload the problematic character xml?<br>\r\n<br>\r\nI would guess that the problem is that you have edge conditions where improving regen just a bit lowers your consumption just enough that you can no longer get the last post in if you start the first one when you use enough mana for first pot. I'm not entirely satisfied with the current solution, but I haven't devised a better alternative yet. I can't tell whether the higher or the lower one is accurate. To get an accurate result enable cooldown segmentation and integral mana consumables for display, that will account for all (I should probably say most) edge cases and allows for starting the pots before enough mana is consumed&nbsp;and having overflow, but it's too slow to do comparisons, more a tool to analyze the situation once you have the gear selected already.<br>\r\n<br>\r\nSo upload the xml if you can&nbsp;and I'll see if I can get a better alternative working that will allow for overflow.\r\n",
+    "PostedDate": "2008-07-30T07:07:10.123-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "107978",
+    "ThreadId": "32550",
+    "Html": "Hi Kavan,<br>\r\n<br>\r\nNew issue opened at http://www.codeplex.com/Rawr/WorkItem/View.aspx?WorkItemId=10829<br>\r\n<br>\r\nXML also included<br>\r\n",
+    "PostedDate": "2008-07-30T08:14:29.59-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "108162",
+    "ThreadId": "32550",
+    "Html": "Ok I looked at the character and it is completely different than what I was expecting. It is not a bug. The situation is as follows:<br>\r\n<br>\r\nYou're currently wearing 2 piece T6, so removing the helm would remove the evocation set bonus. This means that value of set bonus is included in the comparison of helms. The situation is such that if you don't have bok or jow you have to use full evocation, but if you have that extra regen you only need half the evocation. This means that in the latter case the set bonus has no value and as a result the helm is not valued as high.\r\n",
+    "PostedDate": "2008-07-31T00:28:03.35-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "108165",
+    "ThreadId": "32550",
+    "Html": "Wow... We get reports all the time of odd results that look like bugs, and we look into them and find they're not bugs, it's just Rawr being more accurate than you expect, taking things into consideration that you didn't think of. 90% of the time, it's gaining/losing a metagem bonus... but this one is really really obscure! That's impressive! Thanks! :)<br>\r\n",
+    "PostedDate": "2008-07-31T00:48:58.847-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "108174",
+    "ThreadId": "32550",
+    "Html": "Seriously impressive stuff. <br>\r\n<br>\r\nBig thanks to all you guys who spend their time on this. Much kudo's.<br>\r\n",
+    "PostedDate": "2008-07-31T01:33:15.843-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

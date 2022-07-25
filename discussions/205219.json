@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "419119",
+    "ThreadId": "205219",
+    "Html": "<p>I have been asking that same question in various places, and can't seem to get a decent answer. So i'm resorting to asking it here :/</p>\r\n<p>According to Rawr, i should be doing ~8.8k dps in a perfect raid. In reality, i barely manage 5k in the same perfect raid. Even less if there is a lot of movement involved.</p>\r\n<p>So the question is - either i'm using Rawr wrongly, or i'm pressing the wrong buttons on my paladin. Now i'm pretty sure i am pressing the buttons on right order - all according to FCFR theorycraft from Elitist Jerks and whatnot. But maybe there are other issues at work i am not aware of?</p>\r\n<p>Anyone who could give me any tips on either how to configure Rawr properly, or how Rawr's model is different from what may actually be happening?</p>\r\n<p>I have uploaded the .xml with my character on Rapidshare for reference. It should be good for 10 downloads - http://rapidshare.com/files/364488943/AnfiniRet.xml.html</p>",
+    "PostedDate": "2010-03-17T03:03:02.583-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419226",
+    "ThreadId": "205219",
+    "Html": "<p>From the new Rawr.Retribution FAQ I've been planning to put up on EJ:</p>\r\n<p style=\"padding-left:30px\"><em><strong>Rawr is telling me my DPS should be X, when testing on a dummy I get Y (where X &lt; Y). What am I doing wrong?</strong></em><br>1) Make sure the dummy is not sitting at 1 health. Make sure you're the only one on the dummy. Position yourself so you won't be hitting any of the other dummies with Consecration or Divine Storm.<br>2) Doublecheck gear (and if the gear stats match in game, you could have an outdated item cache, see above), enchants, gems, active buffs, talents and glyphs. Make sure &quot;Stacked Trinket Resets&quot; is set to 1 (or higher if you have stacking trinkets and the buff falls off), or set it to 0, if you start your DPS test with SOV and trinkets fully stacked.<br>3) Get a rotation helper addon like [url=http://wow.curse.com/downloads/wow-addons/details/clcret.aspx]clcret[/url]. Set your FCFS priority, and follow it's ability suggestion meticulously.<br>4) With the above 3 in place, enable combat logging and have a 1 to 2 minute DPS session on the dummy. Inspect the combat log and see how far apart you typically hit an ability off CD after hitting a Melee ability. In an ideal setting, this should be precisely 1.5sec, lag and human response however will make this slightly more. Try to find a good average, subtract 1.5sec and input this value into the &quot;Delay&quot; box in Rawr.<br>5) Be aware that rawr does not model mana usage or using Divine plea in the rotation. Rawr always assumes you have mana to continue hitting buttons. If you run oom and need to slow down, or cut on ability usage, Rawr will be higher DPS. Note that clcret has a feature to stop suggesting to use Consecration under low mana conditions. For Rawr tests, you need to turn this feature off.<br>6) If your DPS meter has a feature to show how many times each ability got used, check to see if these amounts match up with the numbers Rawr is giving.&nbsp; If you're significantly below, then you probably set 'Delay' too low, or you're not following the rotation properly.<br>7) There is still the random element in game which rawr can't model. Rawr works off averages, a 5% variance in DPS is normal.</p>\r\n<p>Comparing to&nbsp;actual raid damage on a boss...&nbsp; you'll be moving &quot;to get out of fires&quot;&nbsp;which lowers DPS.&nbsp; You may temporarily loose buffs, the boss parameters may not match the actual boss you're comparing against, some bosses have extra armor or other ways of reducing incomming damage.</p>",
+    "PostedDate": "2010-03-17T07:16:48.293-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419359",
+    "ThreadId": "205219",
+    "Html": "<p>Thanks for the responce, i'll go through all the things you listed once again.</p>",
+    "PostedDate": "2010-03-17T11:31:02.163-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "443516",
+    "ThreadId": "205219",
+    "Html": "<p>I'm having the same problem myself. &nbsp;I tried all the steps above, didn't help. &nbsp;Even if I just look at auto melee component its still off by quite a bit.</p>\r\n<p>Rawr: 1577</p>\r\n<p>WoW: 1100</p>\r\n<p>The highest I've ever seen my character tooltip auto melee DPS is 1561 and that doesn't take armor into account.</p>",
+    "PostedDate": "2010-05-16T13:38:27.397-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "443527",
+    "ThreadId": "205219",
+    "Html": "<p>You're misunderstanding something, solidswindler. It sounds like you're looking at the 'character tooltip auto attack DPS', which is entirely useless. That's far from how much damage you do auto-attacking. For example, it doesn't include crits.</p>",
+    "PostedDate": "2010-05-16T14:36:55.303-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "443680",
+    "ThreadId": "205219",
+    "Html": "<p>I think the point &quot;active buffs&quot; should be mentioned in much more detail in this FAQ. If you are testing on a dummy, you won't have any raid buffs or debuffs. Maybe also mention the mob type, I'm sure most users changed this to undead because of ICC.</p>\r\n<p>Also, a good minimum test time should be mentioned. A one minute test doesn't give any realistic results. Maybe mention that a test should be ended just before the ICD of the trinkets is complete, so the trinket is correctly averaged out for the fight.</p>\r\n<p>PS: For me, Rawr is quite accurate, even a bit below what I can do on fights like Saurfang (I've set delay to something around 0.2).</p>",
+    "PostedDate": "2010-05-17T02:09:31.3-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "443733",
+    "ThreadId": "205219",
+    "Html": "<p>The Rawr.Retribution specific FAQ has been updated to individually specify (in bold) the need to check active buffs.</p>\r\n<p>I have also added an extra item concerning fight duration and the trinket ICD.</p>\r\n<p>The general Rawr.Retribution model page has also gotten a few updates regarding methodology (and future plans).</p>",
+    "PostedDate": "2010-05-17T05:02:50.55-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

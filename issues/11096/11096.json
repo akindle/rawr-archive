@@ -1,0 +1,110 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Hunter",
+      "DisplayName": "Rawr.Hunter"
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-09T17:28:28.433-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I noticed that Inspiring/Heroic Presence is implemented in all Rawr modules, but when using the Draenei as a race, the basic 1% hit (that does stack with one other Draenei Aura of the same type as well as one of the other type) is not used in the calculations. This is at least in the Hunter and Mage modules, which I had time to check.\n \nNow, using my Draenei mage in Rawr always gives the advice for more hit gems usually, even when I do not need them.",
+    "LastUpdatedDate": "2013-05-16T05:27:02.36-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-08-26T04:31:15.29-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Hunter] Draenei Racial Hit",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 11096
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "The draenei racial for +1% hit is accounted for in the hunter model if your race is selected as Draenei.  Are you saying (and I apologize, I play horde so I do not know the answer) that that buff can stack if there are other Draenei in the group?",
+      "PostedDate": "2008-08-27T17:47:00.73-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "If I check on \"Heroic Presence\" in the Buffs Section, nothing changes in item calculation and the +1% Hit is not shown in my stats. (Dwarf BM Hunter)\r\n\r\nWould be fine if you can fix this in the next release.",
+      "PostedDate": "2009-01-06T05:51:31.21-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Are you sure that 2 draenei in a group each get 2% hit? That's not how it worked previously, but we'll check it out.",
+      "PostedDate": "2009-01-06T08:32:20.333-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Multiple Draenai in the same group do not stack their auras. A Draenai always gets the +1% hit bonus, but never +2%. Rawr is modeling this stat properly. If you are a Draenai already, then selecting or unselecting 'Heroic Presence' in the buffs will do nothing, because that buff is always on you.\r\n\r\nHowever, it might be nice if Rawr disabled controls that were pointless. For example, a mage shouldn't have to select Arcane Intellect on the buff screen, and druids shouldn't have to select Mark of the Wild. When a Rawr.Mage has 'Automatic Armor' selected, the buffs tab could disable the mage's selection of armor.",
+      "PostedDate": "2009-01-08T11:20:22.51-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well, as far as selecting AI and MotW, just because you can cast those buffs, doesn't necessarily mean that you WILL have them.  If you were just battle rezzed, as an example, theres a chance you may not have them.  As well, there is the possibility of something that will dispel magic buffs, a la Garr back in MC.",
+      "PostedDate": "2009-01-09T00:05:39.49-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sure the Dreanei aura will not stack to 2%, that's true. I'll try to explain what problem I found.\r\n\r\nIf I load the Armory Data of a Dwarf Hunter (in this sample 217 unbuffed +hit), Rawr will show me a 98,62% hit chance for a lvl 83 mob (no Buffs checked on in Rawr Buffs Section).\r\nThis Stat is quite not correct while I only got + 6,62% with my 217 +hit witch results on a unbuffed +hit an a lvl 83 mob of 97,62%.\r\nWhen I now check on \"heroic presence\" in the Rawr Buffs section the Hit will remain on 98,62%, so it seams that Rawr always add the \"heroic presence\" +1% also to a Dwarf Hunter if the Buff is unchecked.\r\n\r\nI hope you can follow my discription now, i did my best to explain the problem in english ;-)\r\n\r\n",
+      "PostedDate": "2009-01-12T01:41:41.203-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That depends on the model. Some models include the hit% from being a draenei always, some include it only when checking the buff. Where is there an error in the calculations?",
+      "PostedDate": "2009-01-12T12:58:50.15-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Exactly that's the problem, if I load a \"Race Dwarf, Class Hunter and Model Hunter\" from the armory the 1% dreanei Hit is always included. So there is no opportunity to calculate Stats without the Dreanei +hit (Heroic Presence checked or unchecked does not change the hitchance in this model).That fits for a Draenei Hunter but not for a Dwarf Hunter.",
+      "PostedDate": "2009-01-14T00:09:19.827-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Oh, sorry, I misread Dwarf as Draenei everywhere! Ebo, can you take a look at this? Sounds like all races are getting the draenei hit buff in Rawr.Hunter?",
+      "PostedDate": "2009-01-14T10:30:35.747-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-09T17:28:28.433-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T18:48:18.99-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T18:48:22.44-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:33.297-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:27:02.36-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

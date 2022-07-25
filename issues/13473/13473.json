@@ -1,0 +1,121 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.HealPriest",
+      "DisplayName": "Rawr.HealPriest"
+    },
+    "ClosedComment": "This issue has been open for &#62; 30 days without response. If this is persists in current version please resubmit and provide any appropriate files.",
+    "ClosedDate": "2009-10-14T10:13:10.77-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When using the custom role option in the role section for priests, it is only weighting Survivability, and doing so in the most bizarre ways.\nIt seems any combination of spells in the Custom role section that total less than or equal to some number of casts (this depends upon the spell you are increasing or decreasing), the custom roles work perfectly. Any amount of spells, depending upon which piece of gear you are looking at, will change to survivability only above some number of casts of any combination of spells (this depends again on which spells you are using).\n \nIf this sounds confusing, below are examples and the xml file for the char in question, though this has happened with any holy priest i loaded from the armory.\n \n189  Casts of just greater Heal look perfect,  bump this number to 190 and the gear gets screwy, bump it again to 191 casts, and it is nothing but survivability, looking at shoulder upgrade\n158 Casts of just POH only and its fine, jump to 159 and nothing but survivability, looking at shoulder upgrade\nA real raid example of 15 Flash, 1 GH, 15 renew, 22 Prom, 87 POH, 3 PW:S, 85 COH, looks perfect in the shoulder upgrades, increase any one of those numbers by 1, and it goes back to screwy and then survivability\n \nHopefully this helps, but i have not been able to find any reproducible pattern at all.  The below char file works in 2.2.5",
+    "LastUpdatedDate": "2013-05-16T05:25:15.123-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-06-12T17:34:07.447-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[HealPriest] Custom Role",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13473
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1983,
+      "FileName": "Yaan.xml",
+      "DownloadUrl": ".\\1983"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I have just recently tried the Holy Priest - Custom role again for 2.2.7 and it is still calculating only survivability after a certain number of spell casts.\r\nSo the new Version has not fixed this yet.",
+      "PostedDate": "2009-06-26T10:42:32.387-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I can tell you the reproducible pattern (and its not something I plan to 'fix'):\r\n\r\nWhen the casts take longer to complete than the actual fight length, it will not evaluate the calculation as it is not valid. If you wish to do more casts, you need to increase the fight length.",
+      "PostedDate": "2009-06-26T11:30:54.607-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Does this Take into account Serendipity and blood lust and trinket procs to increase Haste? as well as the beams of light from hodir and such?\r\n\r\nI only noticed this because i put in an actual Hodir Fight, exact numbers from our WMO Combat log Parse, and it didn't work.\r\n",
+      "PostedDate": "2009-06-27T10:21:32.867-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "No, it does not take Hodir haste and Bloodlust into consideration as of now. I think I might need to change the logic somewhat in order to fix this up. Good Point.",
+      "PostedDate": "2009-06-28T08:37:59.03-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "for the custom role behavior, I would expect that you are picking the number of spells to execute in a sequence, and that the sequence is repeated for the duration of the fight, although apparently this isn't what happens.  Additionally, one significant issue is that you can't set an order of spell casting for modeling, i.e. do a PW:S then PoH as a disc, and have the 25% haste from borrowed time reflected in the cast time for the sequence.  It was only as a result of looking at this bug that I realized that the custom role is basically the total number of casts of a given spell expected in a given fight.  Ideally, the custom role window should allow you to create a spell cast sequence, and then the modeling will use this for the purposes of computing cast time, impact of crits on say mana use, etc.  I know this is a tall order but it would make the custom role much much more useful.",
+      "PostedDate": "2009-07-21T09:35:27.767-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Borrowed Time is added into consideration.",
+      "PostedDate": "2009-07-21T14:49:04.013-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "*added/taken",
+      "PostedDate": "2009-07-21T14:49:17.02-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-19T12:51:37.447-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-19T13:59:10.913-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-14T10:13:10.77-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-09T12:29:22.793-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T17:41:08.147-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:57:46.357-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:07.993-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:15.123-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,351 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Moonkin",
+      "DisplayName": "Rawr.Moonkin"
+    },
+    "ClosedComment": "Closing this, as it seems outdated.",
+    "ClosedDate": "2009-01-12T13:43:28.617-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "After having a look at the moonkin dps calculations, it seems that there are a few issues:\n \n- The crit damage modifier seems to be calculated wrong. average spell damage should be normal hit damage  * ( 1 + crit chance * crit multiplier)\n- Star fire dps calculation divides by the haste modifier twice, leading to a huger overestimation in the value of haste\n- DoTs accumulate their dot damage for their casting interval twice\n- Unseen Moon Proc calculation assumes that for each spell cast after Moonfire, you are reducing its proc chance (doh!)\n- Lightning capacitor proc handling is completely wrong, the static damage is converted into spell damage and then used as that in the calculations. The model would need to be updated to deal with that properly, until it is done correctly, it is probably best to simply ignore the capacitor.\n- The rotation calculations behave not as expected when you have two non-dots at their end. They second last spell should be repeated so long that the dots fall off just after the last spell is cast\n \nI have included a patch file with some fixes to the problems.",
+    "LastUpdatedDate": "2017-11-27T11:00:07.897-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "High",
+      "Severity": 150,
+      "Id": 3
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-04-30T10:45:41.713-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Moonkin] DPS Calculation",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 10101
+  },
+  "FileAttachments": [
+    {
+      "FileId": 948,
+      "FileName": "spell.patch",
+      "DownloadUrl": ".\\948"
+    },
+    {
+      "FileId": 953,
+      "FileName": "CSDTest.xml",
+      "DownloadUrl": ".\\953"
+    },
+    {
+      "FileId": 954,
+      "FileName": "spell.patch.18016.txt",
+      "DownloadUrl": ".\\954"
+    },
+    {
+      "FileId": 972,
+      "FileName": "spell.patch.18123.txt",
+      "DownloadUrl": ".\\972"
+    },
+    {
+      "FileId": 973,
+      "FileName": "MoonkinTalentsForm.cs.patch.18123.txt",
+      "DownloadUrl": ".\\973"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "The patch is for the Spell.cs file in the moonkin calculation dll, ofc.",
+      "PostedDate": "2008-04-30T10:50:24.493-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Which version is this a patch for? b13.1 or latest?",
+      "PostedDate": "2008-04-30T11:13:15.667-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "patch is for pretty much the latest version, revision 17960.",
+      "PostedDate": "2008-04-30T15:42:07.09-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "To answer these in order:\r\n- The crit damage multiplier is correct.  This is a different sort of calculation than the one you're expecting to see.  The reason it's done that way is because of the Chaotic Skyfire Diamond, where the coefficient becomes 1.045 instead of 1 in the \"1 + critDamageCoefficient  * critCoefficient\" that you inserted.\r\n- Grats on finding the bug with the haste calculations.  I'll fix this.\r\n- I do have issues handling the case where two different non-DoT spells are cast in the rotation.  I will work on this.\r\n- Lightning capacitor math is based on a mathematical formula that I found for converting the static damage into +spell damage.  If you can find a flaw in my math, point it out, otherwise I'm inclined to leave it in.\r\n- I was pretty sure I didn't double-count the DoTs.  I'll check again.\r\n- The Unseen Moon cannot proc on every spell in the rotation.  I want it to have a 50% chance to proc on a single spell cast.  The way you have it calculated is that it has a 50% chance to proc on any spell in the rotation.",
+      "PostedDate": "2008-05-01T06:57:27.55-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Okay, you're right about double-dipping DoTs and probably right about the Unseen Moon proc.  I'm still trying to wrap my head around it.",
+      "PostedDate": "2008-05-01T07:09:53.39-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "One final note.  I have fixed the double-dipping DoT's, the Unseen Moon, and the two different non-DoT spell handling.  This might also allow me to insert the Wyrmhide set bonus (chance on Wrath cast to reduce Starfire cast time by 1.5 sec).  I have NOT changed the crit damage multiplier (because of the aforementioned CSD behavior) or the Lightning Capacitor (because it's the most reliable math I've found).  If anyone can point me to a more reliable way to calculate the effective +spell damage equivalence of TLC, I'll gladly change the code; otherwise, this issue will be resolved as of beta 14.",
+      "PostedDate": "2008-05-01T12:20:19.043-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The LC math makes it the most valuable trinket by such a huge margin that it just cannot be right. How to fix it, I have no idea.\r\n\r\nThe crit damage multiplier change is needed for the CSD. It adds 3% critical damage, so it would give a 1.03 multiplier on all critical damage if I am not mistaken. So fully talented, crits should do 206% of their normal damage. So the average damage of a hit will be\r\n\r\nnormal * ( 1-crit chance) + normal * crit multiplier * crit chance \r\n\r\n<=> normal ( 1 + (crit multiplier - 1) * crit chance)\r\n\r\nbaseCrititicalMultiplier is supposed to be set to crit multiplier - 1 if I understand the code correctly (at least it comes out correctly as 1.0 with full vengeance, and 1.06 with full vengeance and CSD.)\r\n\r\nIt seems set wrongly though, currently you have:\r\nstarfire.CriticalHitMultiplier += calcs.BasicStats.BonusSpellCritMultiplier; // CSD bonus\r\nstarfire.CriticalHitMultiplier *= 1 + 0.2f * int.Parse(character.CalculationOptions[\"Vengeance\"]);\r\n\r\nit should be\r\nstarfire.CriticalHitMultiplier *= 1 + 0.2f * int.Parse(character.CalculationOptions[\"Vengeance\"]);\r\nstarfire.CriticalHitMultiplier *= 1 + calcs.BasicStats.BonusSpellCritMultiplier; // CSD bonus applied to crit bonus\r\nstarfire.CriticalHitMultiplier += calcs.BasicStats.BonusSpellCritMultiplier; // CSD bonus applied to base damage\r\n",
+      "PostedDate": "2008-05-02T05:43:57.29-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Your math on the CSD is incorrect.  Fully talented, a moonkin with a CSD actually does 209% of their normal damage on critical hit.  Therefore, the multiplier is 1.045.  I have verified that this multiplier is correct with and without a CSD present.",
+      "PostedDate": "2008-05-02T05:50:19.743-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "There are two more issues I found.\r\n\r\nFirstly there is no support for T5 bonus in the code. Below is my first attempt to calculate the bonus to starfire for each roation, it still needs some work in the SF W case to figure out whether the last Starfire will get the bonus or not.\r\n\r\n            // Check out for Starfire T5 proc\r\n            int numDots = 0;\r\n            bool hasWrath = false; Starfire curStarfire = null;\r\n            foreach( Spell curSpell in rotation.Spells ) {\r\n                if( curSpell.DoT != null ) {\r\n                    numDots++;\r\n                }\r\n                if( curSpell.Name == \"W\" )\r\n                    hasWrath = true;\r\n                if( curSpell.Name == \"SF\" )\r\n                    curStarfire = (Starfire) curSpell;\r\n            }\r\n            if( curStarfire != null ) {\r\n                if( numDots == 0 )\r\n                    curStarfire.damageModifier = 1.0f;\r\n                if( numDots == 2 )\r\n                    curStarfire.damageModifier = 1.0f + calcs.BasicStats.StarfireBonusWithDot;\r\n                if( numDots == 1 ) {\r\n                    if( hasWrath )\r\n                        curStarfire.damageModifier = 1.0f + calcs.BasicStats.StarfireBonusWithDot;\r\n                    else {\r\n                        float numDirectCasts = rotation.CastCount - numDots;\r\n                        curStarfire.damageModifier = 1.0f + (calcs.BasicStats.StarfireBonusWithDot * (numDirectCasts - 1)) / (numDirectCasts);\r\n                    }\r\n                }\r\n            }\r\n",
+      "PostedDate": "2008-05-02T05:55:51.43-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hmm...  I thought I put that back.  My bad.  Also, doing some napkin math on the Lightning Capacitor, I found that for a very average moonkin doing Moonfire/Starfire x4, with no haste and 25% crit, it adds about 30 dps.  It really is a _very_ good trinket - not the best, as the Skull of Gul'dan should beat it handily, but very good.  Hey, if the Dragonspine Trophy is best-in-slot for melee, who's to say a trinket off an out-of-the-way boss in Karazhan can't be one of the best for casters?",
+      "PostedDate": "2008-05-02T06:10:30.227-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The next problem noticed, is that the T6 bonus is double counted. I believe this is caused by the Character clone routine not handling set bonii correctly. The Character constructor calculates set bonuses, and then all currently active buffes are added to the set of bonuses of the clone, including all set bonuses, meaning all of these are doubly available",
+      "PostedDate": "2008-05-02T06:13:42.477-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You have data on what the bonus is with a CSD, but no Vengeance?",
+      "PostedDate": "2008-05-02T06:17:16.493-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Astrylian should have fixed that in the base code for the next release.  I will work on reimplementing the 4T5 set bonus - that really was my bad.  And I'll recheck the math for the Lightning Capacitor; I actually sat down with my notebook and worked out for myself what the formula should look like.  I'll write my notes here for you to digest and tell me where the flaw(s) in my logic are.\r\n\r\nFirst of all, TLC is affected by spell hit and spell crit.  So the base damage of a lightning bold, Bd, is 750*Sh, where Sh is the spell hit rate.  (750 is the average damage of a lightning bolt blast)  Now, TLC is not affected by spell damage or crit hit multipliers.  The average \"extra\" damage from a critical hit, therefore, would be 750*1.5*Sh*Sc, where Sc is the critical hit rate.  At a 25% crit rate and a 97.5% hit rate, this results in an average damage per bolt of (731.25+274.23) = 1005.48.\r\nNow, for the tricky part, calculating the time in between procs.  The time between procs is the time it takes to get 3 crits.  You cannot get your first charge less than 2.5 s after the blast occurs, so if our time per crit < 2.5, then we need to add 2.5 seconds to the time between procs.  For a given spell rotation, the average time between crits can be calculated as t / (Sh * Sc * n), where t is the duration of the rotation and n is the number of spells cast.  For the above given situation, this works out to be 11.08 seconds, which is >> 2.5 seconds, so we take 11.08*3 to get 33.24.  1005.48/33.24 = 30.25, which is our number in dps.\r\n\r\nAll very well and good, but somehow we need to convert that 1005.48 into spell damage.  So I guess my mistake was in not calculating how many spells are cast in 33.24 seconds.  So we'll do that by taking n / t * 33.24, which gives us 12.31.  Then we'll do 1005.48 / 12.31, which gives us 81.68, or the effective amount in +spell damage.  So you're right, the math was slightly incorrect, but it's still a great trinket. :)",
+      "PostedDate": "2008-05-02T06:26:27.803-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "With a CSD but no Vengeance, I believe the damage coefficient of a critical hit should be 1.53.",
+      "PostedDate": "2008-05-02T06:28:05.633-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "If the CSD gives you 1.545 crits without Vengeance, and 2.09 with Vengeance, then \r\na) BonusSpellCritModifier for the CSD is actually 0.045 and would need to be changed in the definition.\r\nb) The rest of the calculations to set CriticalHitMultiplier are correct\r\n\r\nYou should have a look at the crit damage multiplier in the dps calculations again, in the DPS function. Check the raw starfire dps with no Vengeance and full Vengeance on an empty character. Those should should almost match, do they?",
+      "PostedDate": "2008-05-02T06:59:32.65-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The tricky part is that the LC gives a fixed dps increase only dependent on the time between crits and your crit / hit rates. To refit that into an equivalent +damage, you would need to 1) calc the dps increase gained by 10 spell damage for this rotation (it will be different for each rotation) and 2) use that increase to calculate the spell damage for the rotation. \r\n\r\nYour calculation of the dps look correct, the conversion attempt not. You would take those 30 dps, and see that 10 spell damage give you a 6 dps increase => the trinket is equivalent to a 50 spell damage trinket.\r\n\r\nSounds to me quite complicated, so it would be better to refactor the code a bit to allow the trinket calc to return a flat dps increase as well, which is then added to the rotation dps. This would also allow the other direct damage proc trinkets (MgT one, the Scryer SSO neck) to be included more easily.",
+      "PostedDate": "2008-05-02T07:17:43.163-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I finally got my head wrapped around the math for the CSD; that will be fixed.  As for TLC, the SSO neck, and Timbal's... *sigh* I didn't want to do the \"raw DPS\" thing because that would get ugly, but I suppose it'd be a lot easier than doing what I'm trying to do in the code right now.  I'll go ahead and make the changes and get them checked in, along with the broken T5 set bonus.  Anything else?",
+      "PostedDate": "2008-05-02T07:47:27.773-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Also, to be technical, I suppose my \"conversion\" doesn't go into +spell damage, but rather into the average increase in damage per hit for each spell cast in the rotation, which would give the same net effect as a DPS increase.  For Starfire this is a direct translation into spell damage with the 1.0 coefficient, but the same is not true of the other spells.",
+      "PostedDate": "2008-05-02T07:51:48.743-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "And one last problem: The moonfury talent, as well as CoS / Misery should increase the spell damage coefficients as well, not only the base damage.",
+      "PostedDate": "2008-05-02T08:08:23.743-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm surprised you missed the one where I added the crit bonus from Chaotic Skyfire Diamond into the crit rating. :P I've known for some time that my CoS/Misery implementation was flawed.  I actually had never read (until now, of course) that Moonfury increased +spell damage damage as well as base damage.",
+      "PostedDate": "2008-05-02T08:11:39.85-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "as for adding a fixed dps addition, that should not be too difficult. An extra param in DoTrinketCalcs, and adding the returned valued to the currentDPS returned from rotation.DPS. That should be a 4 line change.",
+      "PostedDate": "2008-05-02T08:11:44.227-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Moonfury not scaling was a huge problem before 2.0 and one of the major reasons why Moonkins had a hard time doing good dps back then. But the scaling got fixed with 2.0",
+      "PostedDate": "2008-05-02T08:13:57.913-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yeah, after implementing it, it wasn't as ugly as I thought.  I dunno why I didn't just do it the easy way in the first place.  Also, I am making it so Misery properly gives bonuses to TLC/Timbal's/SSO neck, and that Timbal's and SSO neck will be properly affected by Curse of Shadow.  (Does anyone know if TLC consumes Stormstrike?)",
+      "PostedDate": "2008-05-02T08:20:36.663-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "OK, I am checking out 18016 now, and spell crit calculations are still wrong. You really do need to replace all those (critDamageCoefficient + critCoefficient) in the spell dps calculations with (1 + critDamageCoefficient * critCoefficient). And I would rename all those critCoefficient to curCritRate to make it more readeable. \r\n\r\nAlso in Wrath.DPS, it must read\r\nCastTime = unhastedCastTime / hasteCoefficient;\r\nThe old CastTime /= hasteCoefficient only seems to be correct because with 1.5s Wraths talented it is clipped at the GCD. You need to remember that the same Wrath object is called repeatedly for DPS calculations, leading to faster and faster Wraths as the calculation progresses from rotation to rotation. If you dont believe me, put two pure Wrath spam rotations at the top of the spell list in RecreateSpells, and see them return different dps with spell haste. (no talents please, though :P)\r\n\r\nI have attached a test file with some made up rings, where equipping one of them will give you close to 100% crit. \r\n\r\nBTW, you can write\r\nstarfire.CriticalHitMultiplier *= 1.0f + 1.5f / 0.5f * calcs.BasicStats.BonusSpellCritMultiplier;\r\nfor the CSD calculations, same result, but automatic param change as long as they dont change the mechanics.",
+      "PostedDate": "2008-05-03T00:59:54.89-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-05-03T00:59:55.517-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "OK, the test file doesnt work (I thought it would store the item definitions as well). But for test I created a dummy item with 2000 spell crit and an CSD, and another dummy with just 2012 spell crit, so CSD would be the only difference between them.",
+      "PostedDate": "2008-05-03T01:24:06.047-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-05-03T01:24:06.373-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It is my understanding that improved Moonfire also affects the scaling of the spell, is that correct?",
+      "PostedDate": "2008-05-03T02:42:48.03-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I don't know if Improved Moonfire is affected by scaling, but the change would be trivial with the new implementation.  About the Wrath thing, the CastTime /= Haste (paraphrased) is used because CastTime automatically clips at the GCD.  I'll look into why it's not behaving properly.  As for the crit... *sigh* That 1 is NOT a constant.  If you don't have the +crit damage talents, that 1 drops to a .75.  If you have a CSD with the talents, that 1 increases to a 1.045.  The reason that 1 is there in the first place, as noted in the file, is because Adoriele's math calculations over at EJ assume a 200% damage critical.  This is not always going to be the case, so I'm not going to use a constant multiplier in the code.  If it's incorrect, I'll look at it yet again, but you're never going to see a straight (1 + critConversion * critRating) like in Adoriele's math.  It should work out to be the same for a talented Moonkin with no CSD, though.",
+      "PostedDate": "2008-05-03T06:52:41.843-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "And then, after staring at the numbers for my Lightning Capacitor calculations, I realize how big of an idiot I am...  Appropriate changes will be made to the code forthwith.  And if you want to take over maintenance of the module (though I know it must be disgusting to read my code, heh), you're more than welcome to.",
+      "PostedDate": "2008-05-03T07:27:41.03-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The new general damage multiplier concept is quite nice, it makes the code more readeable and easier to maintain, also the new general dps calculations for LC and co are nice, LC now gives values that I feel are right.\r\n\r\nSorry for my insistance on the spell crit calculations, it might have been faster if I would have explained it better, but I am quite an impatient person. I appreciate your offer to take over the module, but unfortunately I normally do not have that much time spare to be a good maintainer. But I will check here from time to time, so if you want to start a discussion on any implementation issues, I hopefully will be able to give you some input :)",
+      "PostedDate": "2008-05-03T09:46:39.43-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hey, your insistence on my being wrong will probably have saved me a lot of grief compared to if the incorrect calculations went live.  I'm also going to try and finish the calculations for the Ashtongue trinket.",
+      "PostedDate": "2008-05-03T12:04:34.043-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm still working on the issue with Wrath, but I don't seem to be able to reproduce it.  Any quick ideas?",
+      "PostedDate": "2008-05-05T10:30:40.257-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-05-05T10:30:41.053-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "(Current revision: 18100)\r\n\r\na) The talent form seems to have Empowered Rejuv / Tree of Life with the wrong number of talent points\r\nI would also suggest, if it is not too much work, to highlight those talents that are actually taken into account in the dps calculations, but it is more of an icing on the cake request\r\n\r\nb) Wrath calculations are incorrect. Since the calculations are exactly the same as for Starfire (apart from the coefficients, which are set in the constructor, and not hard coded in the DPS function), you should just copy the body of Starfire.DPS over to Wrath.DPS, and be done with it. The spell.GCD is there to do all the haste capping that is needed, and I dont see any need for getting that last bit of performance out of it. And the calculations need to be exactly identical, or Starfire calculations would be wrong with more than 200% haste as well :P\r\n\r\nc) The damage calculations of crits is not correct\r\n\r\nCurrently you have: (I have taken all haste / cast time calculations out for better readeability\r\n            float damageCoefficient = (baseDamage + spellDamageMultiplier * spellDamage) * specialDamageModifier; // calculate the average damage of a normal hit\r\n            float critDamageCoefficient = 1 + baseCriticalMultiplier; // calculate the damage multiplier for a crit. This ranges from 1.5 to 2.09 depending on talents and CED\r\n            float critChanceCoefficient = baseCriticalChance + critRate; // spell specific crit chance\r\n            float hitCoefficient = hitRate; // general hit rate\r\n            return (damageCoefficient * (1 + critDamageCoefficient * critChanceCoefficient) * hitCoefficient) / baseCastTime; // here it goes wrong\r\n\r\nthe return statement can be rewritten as\r\nfloat avgDamage = damageCoefficient * (1 + critDamageCoefficient * critChanceCoefficient);\r\nreturn avgDamage * hitCoefficient / baseCastTime;\r\n\r\nNow you have\r\navg Damage = normal Damage * 100% + (normal Damage * critDamageCoefficient = crit damage) * critChance\r\ncounting a normal hit and a crit hit whenever you have a crit. So you should have instead:\r\nfloat avgDamage = damageCoefficient * (1.0f - critChanceCoefficient + critDamageCoefficient * critChanceCoefficient); or equivalently\r\nfloat avgDamage = damageCoefficient * (1 + (critDamageCoefficient - 1) * critChanceCoefficient);\r\n",
+      "PostedDate": "2008-05-07T06:21:12.697-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "18100 revision again.\r\n\r\nCastTime = (unhastedCastTime - naturesGraceTime * critChanceCoefficient * hitCoefficient) / hasteCoefficient + latency;\r\nin the starfire calculation is incorrect, it should be split into\r\nCastTime = (unhastedCastTime - naturesGraceTime * critChanceCoefficient * hitCoefficient) / hasteCoefficient;\r\nCastTime += latency;\r\nbecause you dont want latency to pad GCD.\r\n",
+      "PostedDate": "2008-05-07T06:24:48.637-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Okay, I fixed the cast time one (stupid me didn't realize the ramifications) and the incorrect crit ones, which also included changing the coefficients on Timbal's, TLC, and the SSO neck.  I'm still not sure where my Wrath calculations went wrong, unless you mean to say that it's that same incorrectness that bugged the Starfire calculations, in which case it has been fixed.  I'm hesitant to just flat-out copy the Starfire calculations because of the whole thing with Nature's Grace.",
+      "PostedDate": "2008-05-07T10:15:22.63-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The underlying issue of the Wrath calculation is that it starts of from the current cast time (CastTime), not the saved unhastedCastTime. Assuming no haste, and 0.5sec latency, by the time you reach your sixth rotation, the casting time has increased from 2s to 4.5s, because that same Wrath object gets its DPS function called for every rotation with wrath in it, padding the casting time more and more.\r\n\r\nThinking about it, there are still two issues with the Nature's Grace calculation. Firstly, it does not take into account Moonfire in the rotation. Moonfire can proc NG, but not consume it, thereby increasing the NG haste chance for the first spell from (normal crit) to (normal crit) + (1-normal crit)(moonfire crit). I believe that can be best incoorperated into the model by reducing the duration of the entire rotation by that extra crit chance ((1-normal crit)(moonfire crit))*0.5s, if there is a moonfire and a starfire in the rotation.\r\n\r\nThe other issue is the calculation of the clipping. This is not urgent as with 5/5 Starlight Wrath the current calc in Starfire.DPS will give the same results for all real configurations. But the calculation should be:\r\ncast time no NG = Max(unhasted time/haste, GCD); cast time NG = Max( no NG time - 0.5, GCD);cast time = (1-ng chance) * no NG time + ng chance * (NG time) + latency; //ng chance = crit chance * hit chance\r\nThis better calculation would produce different results for less than fully talented Wrath mainly, as well as for extremely hasted Starfires",
+      "PostedDate": "2008-05-08T01:24:21.213-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Very good, the changes have been incorporated.  Anything else?  I hope this can actually become accurate enough for real theorycrafters to use.",
+      "PostedDate": "2008-05-08T08:03:56.043-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "A few small issues I found in the latest build (18123):\r\n- the check whether the calculation for the rotation data has already run should be done against a variable that changes always, like _duration. I changed this so that the duration of a Wrath rotation is no longer inflated by multiple calculations caused by StarfireCount\r\n- I again reset the lastCastDuration to zero in the calculations, otherwise the early stop for Starfire would also apply to Wrath in the SF/W rotations, making the calc behave a bit strange. (like a rotation including MF lasting less than 12 seconds)\r\n- I noticed that you forgot to add latency to the cast times of IS and MF, I now added then when they are set (it might be better to add them to the DPS calcs for consistency)\r\n- I made a mistake with the calculation of a hasted NG proc, the proc is applied before haste effects, so haste will reduce the time savings from it. This has been corrected.\r\n- I put in an attempt to calculate the impact of the extra NG proc chance from MF and feed it back into the dps calculations as extra haste rating.\r\n\r\nSee spell.patch.18123.txt for the changes\r\n",
+      "PostedDate": "2008-05-11T01:19:31.057-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-05-11T01:19:32.76-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Currently open issues (18123):\r\n\r\n- IS/MF calculations do wait until the second DoT falls off to restart, while they should keep in mind that IS can be recast while MF still has 1s to run. \r\n- NG proc handling is a bit messy (as is the handling for haste procs, but including them properly would really go into writing a simulation :P)\r\n- The code does not check whether idling for a bit would be better than doing a new SF in DoT rotation, but I believe this to be a so minor issue to not be worth fixing (especially since you can adjust your gear to aim for haste sweet points)\r\n\r\nAs for the NG handling, I am wondering whether adjusting for its discrete nature in the calculations would make much difference? I was thinking along the lines of making a probabilities table for the number of NG procs in rotations, using that data to calculate the dps for each variant, and then summing the probabilty branches up again (weighted by their respective chance to occur ofc). It will certainly make the haste calculations less sticky, but I have no idea how much difference this much more complicated (and expensive) calculation will have on the actual dps being output. Might just be small enough to effectively ignore it. (It seems that NG contributes about 6% dps, and I guess the change would lead to at most 10% difference in calculated dps, so might not be worth it)\r\n",
+      "PostedDate": "2008-05-11T02:03:57.493-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-05-11T02:03:59.073-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I've been working on most of the issues and currently have code in place that I believe addresses most of them.  I may be incorrect, of course.  The real issue I have, and one that bothers me, is comments such as the ones you made concerning NG and haste.  If it would be more mathematically correct to model as a probability table, then can you tell me how Efejel's spreadsheet handles these calculations?  The original intent of these calculations was to reverse-engineer his math and add trinket/gear procs, which is what his spreadsheet is lacking.  I'm already looking at yet another rewrite of the spell calculation engine due to all the issues raised here (not for b14, but certainly later).",
+      "PostedDate": "2008-05-11T07:26:46.587-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Also, about haste procs, naturally it's going to be messy, because they run into a feedback loop.  Haste is ugly to deal with.  What's shown is my pitiful attempt at a second-order approximation.",
+      "PostedDate": "2008-05-11T07:34:06.2-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "As with any modelling, you have to strike a balance between accuracy and complexity. \r\n\r\nA probabilites table goes quite close to a simulation, and especially with trinket procs it would be inflated to so many different paths to become completely unworkeable. (and given how often a dps calc is called to get item dps info, there is a limit to the complexity the model can live with) \r\n\r\nThe current approach is quite nice to get a reasonable approximation to the values, and the only real issue it has at the moment is the stickyness of haste in MF/SF rotations when shortening the cast time a bit wont lead to an improvement. Maybe practically the best way forward is to check in rotation how close the last DoT fell off before the last cast landed, and if the optimal dps rotation has less than, say, half your latency slack put out a warning \"Optimal rotation is close to fall of points\" to enable people to see that adding 0.05 seconds to your latency might have a larget effect than espected.\r\n\r\nAs for the practical matter of preventing n-th order iteration, second order seems to be more than close enough for it, unless you have a lot of haste procs going around, in which case third order should be enough really.",
+      "PostedDate": "2008-05-12T02:44:04.153-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm actually looking at trying my hand at _real_ theorycrafting and discovering a closed-form limit equation to the problem of iterative haste.  If I can find something, I'll try to implement it in the next version of Rawr.  The more I think about it, the more I realize that the way I have things going at the moment isn't BAD per se, it's just that the problem of cast reduction time makes things messier than it should be.  If I can figure out a way to make that implementation clean and simple, then it would solve a lot of the anxiety I have about the code.",
+      "PostedDate": "2008-05-12T04:20:11.653-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The only item in game that poses this problem is the haste trinket from Underbog.\r\n\r\nAnd for all temporary haste buffs I believe there is a much greater error source in determining how long the effect is actually in effect, as the GCD for instant spells is determined at the moment it is cast, and the cast time of spell does not change if your haste changes while casting (that is Heroism does not make you cast your current spell faster, only the next one. And when heroism fades, the cast time of you current spell does not get increased. At least I believe so), leading to a misestimation of the actual effect for a 6s haste, as it could range from 3s (One starfire started just after the proc, one hasted, and too much latency to start the second hasted starfire in time) to 8.4 seconds (three hasted starfire crits in 6 seconds, and a normal starfire afterwards). ",
+      "PostedDate": "2008-05-12T10:27:51.11-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "From \"Nakedduck\" on the Blizz forums:\r\n\r\n\"This version is a lot better for moonkins, however, there's still a lot of weird results I'm getting. Setting the fight at 1 minute (i.e. no mana issues), It's still showing that stacking int is better than some haste/dmg gem configurations which i know can't be right.\"\r\n\r\nPlease respond at http://forums.worldofwarcraft.com/thread.html?topicId=2968113034&postId=64166169311&sid=1#365",
+      "PostedDate": "2008-05-12T17:12:52.18-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Astrylian: Short version: Setting the fight length to 1 min is no longer valid for eliminating mana issues as of b14.  Use the Raw DPS sort option.\r\nMiststorm: As for items, that's not strictly true - the Mystical Skyfire Diamond counts too, even though no moonkin in their right mind would use it.  Also, it's quite possible that additional trinkets would be added to the equation later.  As for the last point you made, about the variability of the timing, I've already given some thought to it.  I'm still working it out.",
+      "PostedDate": "2008-05-13T06:48:00.34-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "About variable haste timing, obviously that won't apply to the proc effects (Blade of Wizardry, Mystical Skyfire, Quagmirran's Eye, two of which no boomkin should ever touch anyway).  Also, on-use effects done by the caster, like Skull, wouldn't have variable timing because they cannot be used during a cast, only after the cast has completed.  The issue would be with external sources, such as someone else's Drums of Battle or Bloodlust/Heroism.  So I think what I'm going to do next (maybe tonight for b14.1) is to clean up the engine code as much as I can and take a look at some of the smaller things that have been highlighted to me.",
+      "PostedDate": "2008-05-13T12:08:14.09-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-01-12T13:43:28.617-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:10:35.043-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:03:27.03-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:58.25-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:27:22.05-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:00:07.897-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

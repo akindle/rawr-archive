@@ -1,0 +1,125 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Healadin",
+      "DisplayName": "Rawr.Healadin"
+    },
+    "ClosedComment": "Fixed.",
+    "ClosedDate": "2009-08-12T23:03:13.55-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "If the recent model used is Healadin (found in the user.config file under the setting \"RecentModel\"), Rawr 2.2.5.0 will not start up, crashing when you try.  Here's the details from Windows Vista:\n \nDescription:\n  Stopped working\n \nProblem signature:\n  Problem Event Name:\tCLR20r3\n  Problem Signature 01:\trawr.exe\n  Problem Signature 02:\t2.2.5.0\n  Problem Signature 03:\t4a19aab1\n  Problem Signature 04:\tRawr.Base\n  Problem Signature 05:\t2.2.5.0\n  Problem Signature 06:\t4a19aaa8\n  Problem Signature 07:\td73\n  Problem Signature 08:\t0\n  Problem Signature 09:\tSystem.IndexOutOfRangeException\n  OS Version:\t6.0.6000.2.0.0.256.1\n  Locale ID:\t1033\n \nRead our privacy statement:\n  http://go.microsoft.com/fwlink/?linkid=50163&clcid=0x0409",
+    "LastUpdatedDate": "2013-05-16T05:25:25.537-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-05-26T17:21:33.29-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Healadin] Startup crash",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13343
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Fixed the problem so it won't crash for 2.2.6.\r\n\r\nThis should be looked at by Healadin developers, the core problem comes from using negative value for trigger interval. Try to redesign your usage of that as behavior is unspecified in that case.",
+      "PostedDate": "2009-05-26T18:39:52.733-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "If it helps any, this did also happen in 2.2.4, but only after I did a get upgrades from WoWHead.  Once I did a clean 2.2.4 install and stopped getting upgrades, it worked fine, just that I didn't have new items in my cache.  My guess is that, since this now happens with 2.2.5 with the default install, this was triggered by an item that was added to WoWHead since the 2.2.4 release.",
+      "PostedDate": "2009-05-27T11:59:38.32-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Happenes for me to ._. Anyone know any workaround?",
+      "PostedDate": "2009-05-27T23:39:38.427-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Workaround is to delete your settings file. I have explained how to do this here:\r\nhttp://rawr.codeplex.com/WorkItem/View.aspx?WorkItemId=13334",
+      "PostedDate": "2009-05-28T09:30:25.54-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hm, It should never pass in a negative trigger interval. I have not encountered this problem myself, I will look into it when I get back to my Windows machine.",
+      "PostedDate": "2009-05-28T10:55:37.217-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Okay, I figured out what the issue was. It passes in a negative number when you don't have enough mana to support your rotation mandated spells (BoL, SS, etc) it then computes you spend negative time healing, I just ignored it before since it only occurred when you had no gear on, it wasn't until recently that this would produce an error.  ",
+      "PostedDate": "2009-05-28T11:02:41.333-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "With help from the other threads my workaround is to find the user.config file and delete it. After that is done it starts as normal again. Whenever u want to close the app then u need to load a retri/prot build before or u will have to delete the user.config again. :)\r\n\r\nThanks for a great app that help me alot to choose which gear to use!",
+      "PostedDate": "2009-05-29T01:17:26-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I have tried to fix this by folowing the link from CREMOR with no help. I have deleted the whole program from my PC and reload still with no help. The only difference is that I am still using XP rather than VISTA. Will it be fixed with the new update, how long will that be, or is there anything else I could do to help?",
+      "PostedDate": "2009-05-29T07:51:14.023-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Do not delete the Rawr programm folder, delete the Rawr settings folder. On XP it's located in C:\\Documents and Settings\\<user>\\Local Settings\\Application Data\r\nBut note: This will only fix it one time. If you close Rawr with active Healadin module again, you have to delete the settings folder again.\r\n\r\nBtw: Kavan also posted a workaround which may be a permanent one (haven't tried it yet). Link:\r\nhttp://rawr.codeplex.com/WorkItem/View.aspx?WorkItemId=13323",
+      "PostedDate": "2009-05-29T09:39:51.52-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The same problem happens with Windows XP SP3 as well - Healadin 2.2.5 crashes upon starting Rawr - I have defaulted back to using 2.2.4 until a more practical solution than deleting my settings folder comes up. Thanks for a great tool, though.",
+      "PostedDate": "2009-05-29T10:31:51.217-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "CREMOR thank you for your comments however I did not install rawr in my documents but in the windows c/windows. I cant find App.Data file in either place and not sure that it is App. data for only rawr or for all settings. Can someone tell me when the next (2.2.6?) issue will come out and will it fix this issue. Otherwise good work to those involved. ",
+      "PostedDate": "2009-05-29T13:55:12.043-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Redwing, it is completely unimportant where you installed/extracted Rawr. On Win XP it will always store its settings file in C:\\Documents and Settings\\<user>\\Local Settings\\Application Data\r\nNote: The folders \"Local Settings\" and \"Application Data\" are hidden, so make sure that your Explorer shows hidden files and folders.",
+      "PostedDate": "2009-05-30T06:26:52.807-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-12T23:03:13.55-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T17:49:02.85-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:18.067-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:20.13-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:25.537-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

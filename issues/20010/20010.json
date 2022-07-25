@@ -1,0 +1,221 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Warlock",
+      "DisplayName": "Rawr.Warlock"
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "YES, I know the Lock dev hasn't really even started in on the model yet.\nYES I know that means it's effectively broken and should not be used for gear decisions.\n \nFrom this thread: (http://rawr.codeplex.com/discussions/232935?ProjectName=rawr)\n\"What can you do in the meantime? If you're not a coder or a modeler, test out the model in its current limited state and open issues if you find anything that isn't already reported (following the posting guidelines, of course). If you have the time and the skills to send more detailed feedback, that's welcome too.\" -Erstyx himself\n\"You and others could do this for the warlock model. Use the accurate sim to find the issues in the model and post specific results (in the issues section not the discussions please) so that the developer doesn't have to waste his time finding these flaws he can concentrate on applying the fixes.\" -Levva\n \nWith that aim, I ran a numbers pass comparing Rawr's results with SimCraft's results.\nI got them as similar as possible by removing from SC the enchants that aren't implemented in the model yet, and leaving all buffs off for both. I limited the SC action list to what's implemented in the Rawr priority list, and I ran them both without execute phase - Using an execute phase seems to make rawr's numbers go *down*, and I figure it's simpler to get normal phase working first.\nThe profile I used is Lucifeltest.xml.\n \n[Edit: Numbers pass removed, because it was an ugly wall of text and also outdated. Pass for latest version coming soon.]\n \nNOTE - If you want to share your own comparisons too, great, but please do so in file attachments rather than huge comments, so it's clean and readable here.",
+    "LastUpdatedDate": "2017-11-27T11:00:43.707-08:00",
+    "PlannedForRelease": "Rawr 4.0.19 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-02-14T07:48:40.867-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Warlock] Initial numbers pass",
+    "Type": {
+      "Name": "Task",
+      "Id": 2
+    },
+    "VoteCount": 3,
+    "Id": 20010
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4618,
+      "FileName": "Lucifeltest.xml",
+      "DownloadUrl": ".\\4618"
+    },
+    {
+      "FileId": 4873,
+      "FileName": "Lucifel 4104.xml",
+      "DownloadUrl": ".\\4873"
+    },
+    {
+      "FileId": 4874,
+      "FileName": "numberspass 4-1-04.xls",
+      "DownloadUrl": ".\\4874"
+    },
+    {
+      "FileId": 4875,
+      "FileName": "numberspass no execute 4-1-04.xls",
+      "DownloadUrl": ".\\4875"
+    },
+    {
+      "FileId": 4876,
+      "FileName": "numberspass no procs 4-1-04.xls",
+      "DownloadUrl": ".\\4876"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Thanks for doing this. :) I'll take a look and see what I can come up with.",
+      "PostedDate": "2011-02-14T09:28:18.28-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-02-14T09:29:18.92-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-02-14T09:45:58.13-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Glad to contribute. I just don't have time to learn a new programming language these days, or I would do more.\r\nlet me know if there's anything else I can do, or if a simcraft number looks questionable and you want me to confirm via picking on a dummy.\r\nThank you for your hard work! All of you devs.",
+      "PostedDate": "2011-02-14T14:50:49.383-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "58130 fixes the issue with the enchants; I'll keep this open to continue looking into the other discrepancies",
+      "PostedDate": "2011-02-17T18:43:28.113-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "DPS Ranking:\r\n  20056 100.0%  Raid\r\n  20060  100.0%  menance\r\n\r\nPlayer: menance human warlock destruction 85\r\n  DPS: 20059.8  Error=24.3/0.1%  Range=1262/6.3%  DPR=10.6  RPS-Out=1884.2 RPS-In=1721.7  Resource=(mana) Waiting=0.0 ApM=45.5\r\n  Origin: http://us.battle.net/wow/en/character/arathor/menance/advanced\r\n  Talents: http://www.wowhead.com/talent#warlock-22000000000000000013200000000000000003322202312201310211\r\n  Core Stats:  strength=642|63(0)  agility=651|71(0)  stamina=6196|5200(4904)  intellect=4820|4181(3809)  spirit=187|187(1)  mastery=14.29|14.29(1128)  health=124542|110724  mana=91973|82988\r\n  Spell Stats:  power=7898|5903(1732)  hit=16.33%|16.33%(1673)  crit=22.42%|13.43%(948)  penetration=0|0(0)  haste=16.05%|7.31%(936)  mp5=1027|1027(0)\r\n  Attack Stats  power=1381|96(0)  hit=13.93%|13.93%(1673)  crit=16.21%|8.27%(948)  expertise=0.00|0.00(0)  haste=7.31%|7.31%(936)\r\n  Defense Stats:  armor=7538|7538(7538) miss=4.70%|4.70%  dodge=3.88%|1.97%(0)  parry=0.00%|0.00%(0)  block=0.00%|0.00%(0) crit=0.00%|0.00%\r\n  Glyphs: conflagrate/imp/incinerate/healthstone/soulstone/fear/drain_soul/unending_breath/ritual_of_souls\r\n  Priorities:\r\n    flask,type=draconic_mind/food,type=seafood_magnifique_feast/fel_armor/summon_imp\r\n    dark_intent/snapshot_stats/use_item,name=figurine__jeweled_serpent\r\n    volcanic_potion,if=buff.bloodlust.react|!in_combat|target.health_pct<=20\r\n    demon_soul/soulburn,if=buff.bloodlust.down/soul_fire,if=buff.soulburn.up\r\n    fel_flame,if=buff.tier11_4pc_caster.react&dot.immolate.remains<8\r\n    immolate,if=(remains<cast_time+gcd|!ticking)&target.time_to_die>=4&miss_react\r\n    conflagrate/bane_of_doom,if=!ticking&target.time_to_die>=15&miss_react\r\n    corruption,if=(!ticking|dot.corruption.remains<tick_time)&miss_react/shadowflame\r\n    soul_fire,if=buff.empowered_imp.react&buff.empowered_imp.remains<(buff.improved_soul_fire.remains+action.soul_fire.travel_time)\r\n    chaos_bolt/summon_infernal/soulburn,if=buff.bloodlust.down\r\n    soul_fire,if=buff.improved_soul_fire.remains<(cast_time+travel_time+action.incinerate.cast_time+gcd)&!in_flight\r\n    shadowburn/incinerate/life_tap,moving=1,if=mana_pct<80&mana_pct<target.health_pct\r\n    fel_flame,moving=1/life_tap\r\n  Actions:\r\n    bane_of_doom        Count=  7.3|61.19sec  DPE= 69859| 6%  DPET= 55382  DPR=  22.7  pDPS=1167  Miss=0.55%  TickCount=28  MissTick=0.0%  Tick=13813|10789|17957  CritTick=27500|21525|35824|33.8%  UpTime=95.0%\r\n    burning_embers      Count=299.5| 1.46sec  DPE=  1696| 6%  DPET=     0  DPR=   0.0  pDPS=1160  Miss=0.65%  TickCount=436  MissTick=0.0%  Tick=1165|234|1757  UpTime=99.5%\r\n    chaos_bolt          Count= 28.6|15.26sec  DPE= 17332| 6%  DPET= 13531  DPR=  12.1  pDPS=1133  Miss=0.74%  Hit=13175|10697|18770  Crit=27239|22621|37447|30.8%\r\n    conflagrate         Count= 47.4| 9.30sec  DPE= 22153|12%  DPET= 17575  DPR=   6.7  pDPS=2396  Miss=0.63%  Hit=15852|12988|28639  Crit=31672|25911|57134|40.5%\r\n    corruption          Count= 24.7|17.87sec  DPE= 19576| 6%  DPET= 15521  DPR=  15.9  pDPS=1104  Miss=0.78%  TickCount=172  MissTick=0.0%  Tick=2238|1864|3274  CritTick=4471|3718|6531|25.9%  UpTime=97.7%\r\n    demon_soul          Count=  4.1|120.94sec  DPE=     0| 0%  DPET=     0  DPR=   0.0  pDPS=   0  Miss=0.00%\r\n    immolate            Count= 28.6|15.38sec  DPE= 44088|14%  DPET= 34066  DPR=  26.8  pDPS=2881  Miss=0.68%  Hit=5558|4784|7754  Crit=11498| 9545|15470|32.0%  TickCount=173  MissTick=0.0%  Tick=4528|3877|6413  CritTick=9386|7735|12794|31.6%  UpTime=98.7%\r\n    incinerate          Count= 89.7| 4.72sec  DPE= 15506|16%  DPET= 11189  DPR=   5.4  pDPS=3176  Miss=0.70%  Hit=11874|10129|17528  Crit=24532|20208|34967|29.9%\r\n    infernal_awakening  Count=  1.0| 0.00sec  DPE= 22740| 0%  DPET=     0  DPR=   0.0  pDPS=  52  Miss=0.60%  Hit=18264|15352|19158  Crit=36246|31156|38221|25.5%\r\n    life_tap            Count= 12.1|30.24sec  DPE=     0| 0%  DPET=     0  DPR=   0.0  pDPS=   0  Miss=0.00%\r\n    shadowburn          Count=  5.0|18.05sec  DPE= 14925| 1%  DPET= 12549  DPR=   4.8  pDPS= 170  Miss=0.68%  Hit=12026|10042|17786  Crit=24072|20034|35483|24.7%\r\n    shadowflame         Count= 30.7|14.31sec  DPE= 18703| 7%  DPET= 14844  DPR=   3.6  pDPS=1310  Miss=0.66%  Hit= 964|   0|2479  Crit= 1931|    0| 4946|25.6%  TickCount=104  MissTick=0.0%  Tick=3823|3151|5539  CritTick=7632|6286|11051|26.0%  UpTime=39.1%\r\n    soul_fire           Count= 37.3|11.88sec  DPE= 18580| 8%  DPET=  8773  DPR=  10.0  pDPS=1584  Miss=0.63%  Hit=14054|12286|19424  Crit=28957|24511|38751|31.4%\r\n    soulburn            Count=  4.0|45.78sec  DPE=     0| 0%  DPET=     0  DPR=   0.0  pDPS=   0  Miss=0.00%\r\n   imp  (DPS=3458.8)\r\n    firebolt            Count=266.6| 1.64sec  DPE=  5679|100%  DPET=  3463  DPR=   9.0  pDPS=3459  Miss=0.98%  Hit=4519|4035|6724  Crit= 9030| 8049|13415|27.4%\r\n   infernal  (DPS=2479.6)\r\n    infernal_immolation  Count=  1.0| 0.00sec  DPE= 44862|33%  DPET=     0  DPR=   0.0  pDPS= 809  Miss=0.00%  MissTick=0.9%  Tick=2058|1859|3115\r\n    infernal_melee      Count= 52.0| 0.83sec  DPE=  1782|67%  DPET=  1058  DPR=   0.0  pDPS=1671  Miss=8.12%  Hit=1825|1728|2327  Crit= 3659| 3456| 4655|17.8%  Glance=1372|23.9%  Dodge=6.2%\r\n   ebon_imp  (DPS=182.5)\r\n    ebon_imp_melee      Count= 87.5| 0.85sec  DPE=   782|100%  DPET=   465  DPR=   0.0  pDPS= 183  Miss=7.86%  Hit= 801| 801| 801  Crit= 1602| 1602| 1602|18.0%  Glance= 601|23.9%  Dodge=6.5%\r\n  Constant Buffs: arcane_brilliance/blessing_of_kings/blessing_of_might/blessing_of_might_regen/dark_intent\r\n  Constant Buffs: dark_intent_feedback/fel_armor/focus_magic/fortitude/replenishment\r\n  Dynamic Buffs:\r\n    anhuurs_hymnal            : start=8.1  refresh=0.0   interval= 56.6 trigger=56.6  uptime=18%\r\n    backdraft                 : start=25.6 refresh=21.5  interval= 17.1 trigger=9.4   uptime=88%  benefit=92%\r\n    bloodlust                 : start=1.0  refresh=0.0   interval=  0.0 trigger=0.0   uptime= 9%\r\n    demon_soul_imp            : start=4.1  refresh=0.0   interval=120.9 trigger=120.9 uptime=18%  benefit=17%\r\n    empowered_imp             : start=10.3 refresh=0.4   interval= 38.5 trigger=37.0  uptime= 5%  benefit=11%\r\n    figurine__jeweled_serpent : start=4.1  refresh=0.0   interval=120.8 trigger=120.8 uptime=18%\r\n    hurricane_s               : start=9.2  refresh=0.0   interval= 49.7 trigger=49.7  uptime=25%\r\n    improved_soul_fire        : start=8.8  refresh=28.2  interval= 50.9 trigger=11.9  uptime=96%  benefit=94%\r\n    lightweave_embroidery     : start=8.9  refresh=0.0   interval= 51.6 trigger=51.6  uptime=30%\r\n    soulburn                  : start=4.0  refresh=0.0   interval= 45.8 trigger=45.8  uptime= 0%  benefit=14%\r\n    volcanic_potion           : start=2.0  refresh=0.0   interval=338.5 trigger=338.5 uptime=10%\r\n    imp-bloodlust             : start=1.0  refresh=0.0   interval=  0.0 trigger=0.0   uptime= 9%\r\n  Up-Times:\r\n      7.9% : backdraft_0                   \r\n     20.8% : backdraft_1                   \r\n     32.7% : backdraft_2                   \r\n     38.7% : backdraft_3                   \r\n  Procs:\r\n      5.5 |  64.07sec : ebon_imp\r\n     10.6 |  36.98sec : empowered_imp\r\n  Gains:\r\n     28497.0 : blessing_of_might\r\n      4500.0 : flask            \r\n      1350.0 : food             \r\n     86123.0 : initial_mana     \r\n    324884.2 : life_tap         \r\n     89761.0 : mp5_regen        \r\n     41338.4 : replenishment    \r\n    484797.5 : soul_leech         (overflow=21.2%)\r\n  Pet \"imp\" Gains:\r\n    67483.0 : initial_mana     \r\n     8686.8 : mana_spring_totem  (overflow=69.6%)\r\n    150224.5 : mp5_regen          (overflow=60.2%)\r\n     9446.1 : replenishment      (overflow=69.6%)\r\n  DPS Plot Data ( min=-200.0 max=200.0 points=21 )\r\n\r\n\r\n *** Targets *** \r\n\r\n\r\nTarget: Fluffy_Pillow humanoid enemy Unknown 88\r\n  DPS: 0.0  Error=0.0/0.0%  Range=0/0.0%  DPR=0.0  RPS-Out=19001.5 RPS-In=0.0  Resource=(health) Waiting=100.0 ApM=0.0\r\n  Core Stats:  strength=0|0(0)  agility=0|0(0)  stamina=0|0(0)  intellect=0|0(0)  spirit=0|0(0)  mastery=0.00|0.00(0)  health=0|9266278  mana=0|0\r\n  Spell Stats:  power=0|0(0)  hit=0.00%|0.00%(0)  crit=0.00%|0.00%(0)  penetration=0|0(0)  haste=0.00%|0.00%(0)  mp5=0|0(0)\r\n  Attack Stats  power=0|0(0)  hit=0.00%|0.00%(0)  crit=5.00%|5.00%(0)  expertise=0.00|0.00(0)  haste=0.00%|0.00%(0)\r\n  Defense Stats:  armor=11977|11977(0) miss=0.00%|0.00%  dodge=0.00%|0.00%(0)  parry=0.00%|0.00%(0)  block=5.00%|5.00%(0) crit=0.00%|0.00%\r\n  Priorities:\r\n    snapshot_stats\r\n  Actions:\r\n  Constant Buffs: bleeding/blood_frenzy_physical/critical_mass/earth_and_moon/hunters_mark/mangle/poisoned/replenishment\r\n  Constant Buffs: sunder_armor/thunder_clap\r\n  Dynamic Buffs:\r\n  DPS Plot Data ( min=-200.0 max=200.0 points=21 )\r\n\r\nAuras:\r\n  Constant: communion/demonic_Pact/leader_of_the_pack/mana_spring_totem/strength_of_earth/windfury_totem/wrath_of_air\r\n  Dynamic:\r\n\r\nWaiting:\r\n    All players active 100% of the time.\r\n\r\nBaseline Performance:\r\n  TotalEvents   = 9921664\r\n  MaxEventQueue = 32\r\n  TargetHealth  = 11115827\r\n  SimSeconds    = 437975\r\n  CpuSeconds    = 9.165\r\n  SpeedUp       = 47788\r\n\r\nRNG global Actual/Expected Roll=0.998833 Range=1.000000 Gauss=1.000331\r\n",
+      "PostedDate": "2011-02-19T22:19:16.793-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I know the post was a long one, but that is the numbers I ran on Simcraft today for destruction",
+      "PostedDate": "2011-02-19T22:20:11.02-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Between the two of us this issue post is getting really long. Let's use Attach File for our future SC results.",
+      "PostedDate": "2011-02-20T09:43:58.707-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yes, for anyone reading this, when making posts on Issues, use the Attachment feature for Walls of Text, just clearly label the file and reference it in your post.",
+      "PostedDate": "2011-02-20T15:27:06.547-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-16T16:43:54.91-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-16T17:20:18.253-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-04T20:52:59.887-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-16T17:51:17.54-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Erstyx - still gathering comparisons for version 4.1.04 after your stat tweaks. Health, Mana, Hit, Crit and Haste all match the character pane now. There's a difference still in Spell Damage, but I pinned down the cause.\r\nSpell Power is saying 6064 before procs, when it's 6702 in game. Rawr isn't counting Fel Armor's bonus of 638.\r\nI thought at first there might have been a difference in mastery, but realized it was because of a proc effect I'd forgotten. Would you mind throwing a 'before procs' number in the info for that one, like the other stats have?\r\n\r\nIndividual spell comparisons coming soon. In an attachment, this time.\r\n ",
+      "PostedDate": "2011-05-01T20:20:10.62-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-01T20:22:37.2-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-01T20:24:43.697-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-02T03:34:44.95-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Okay, so I took advantage of my insomnia tonight and scraped together a bunch of comparisons. I hope .xls is alright.\r\nComparison 1: \"numberspass 4-1-04.xml\", my first shot. No buffs or debuffs present, no flasks, foods, potions, etc. With some notes.\r\nComparison 2: \"numberspass no execute 4-1-04\". On a hunch I skimmed the profile down further to eliminate execute phase as a factor. No alternate filler, no Death's Embrace damage boost.\r\nComparison 3: \"numberspass no procs 4-1-04\". On another hunch I trimmed it even farther, removing everything at all proccy except for the Haunted debuff from Haunt, and Eradication. I wanted to see if the differences in spell damage values were due to your model handling spellpower or plus-damage proc uptimes differently than theirs.\r\nRawr profile used: \"Lucifel 4104.xml\"",
+      "PostedDate": "2011-05-02T03:34:46.357-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-02T03:35:47.2-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "(Upload)",
+      "PostedDate": "2011-05-02T03:35:48.517-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-02T03:36:18.577-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "(more upload)",
+      "PostedDate": "2011-05-02T03:36:21.313-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-02T03:36:50.323-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "(one more)",
+      "PostedDate": "2011-05-02T03:36:51.647-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "A couple more notes.\r\nEnchant Chest - Mighty Stats doesn't seem to be implemented.\r\nHaste doesn't seem to be effecting dot ticks correctly. bane of Doom is showing exactly 4.0 ticks per cast, which is what it would be at with zero haste. Unstable Affliction is also at 4.0. Its unhasted ticks per cast is 5.0, so it also looks like UA isn't lasting long enough.",
+      "PostedDate": "2011-05-02T13:47:33.7-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "OK, I've fixed the issue with the number of DOT ticks and Enchant Chest - X Stats not showing up. Will look into the others.",
+      "PostedDate": "2011-05-03T18:13:07.393-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm sure my sheer number of comments is approaching the fine line between 'helpful' and 'annoying', but one thing. I mentioned in the notes on one of my test runs that crit percentages were consistently much higher on rawr than SC. I did some checking in to it with the SC people, and it was partially a problem on their side (sim not properly applying Shadow and Flame off my shadowbolts), but part of it is in your model. Apparently (and this was news to me), boss-level mobs have an incoming spell crit reduction of 1.8%. So for instance a base crit chance of 25% on the character pane will crit 23.2% of the time. Patch notes mention it being in Rawr.Base as of 4.0.16.",
+      "PostedDate": "2011-05-03T23:29:53.553-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "No, you're fine. One thing, though, about the previous report -- Bane of Doom is not affected by haste. You can see this in-game -- even with ~15% haste, you'll see 4 ticks exactly 15 sec apart, not ~13 sec as would be expected.\r\n\r\nI know there are issues with Corruption's predicted damage, as well; something about how the mastery bonus interacts with the improved corruption talent. DrDamage gets it right, so I'm taking a look to see how it's doing the calculation.",
+      "PostedDate": "2011-05-04T08:28:38.433-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks for the tip on BoD. That's useful information to have.\r\n\r\nAs of .60775 debug build:\r\n\r\n*Fel Armor bonus to spell damage isn't included.\r\n\r\n*Something's off with mana usage. Rawr says I can go 500 seconds without a single Life Tap, but Simcraft estimates I'd need 17 in that time range.\r\n\r\n*Haste is still significantly undervalued, but I have an idea on that. Looking at things like the average time between casts on Unstable Affliction, it looks like the model is re-casting DoTs just *after* they fall off; which was the correct way in Wrath, when casting it early could clip the last tick off your DoT. But since they changed all periodic effects to 'refresh' like Corruption, rather than 'overwrite', that's not the way you want to do them anymore. When Haste shortens the time between ticks, it builds up fractions of ticks at the end of the DoT's duration. When you refresh them properly, those fractions are carried over and accumulate, resulting in extra ticks down the line. But if you let the DoT fall off, like the old behavior, those fractions of ticks are just lost.",
+      "PostedDate": "2011-05-18T18:37:17.857-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:25:55.943-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:00:43.707-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

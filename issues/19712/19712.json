@@ -1,0 +1,105 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.LoadCharacter",
+      "DisplayName": "Rawr.Base.LoadCharacter"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-01-16T16:26:05.963-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "== Error Message ==\n[Arg_IndexOutOfRangeException]\nArguments: \nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.51204.0&File=mscorlib.dll&Key=Arg_IndexOutOfRangeException\n \n== StackTrace ==\n   at Rawr.Bear.BearRotationCalculator.GetOptimalRotations(BearAbilityBuilder abilities)\n   at Rawr.Bear.CalculationsBear.CalculateThreat(StatsBear stats, Int32 targetLevel, CharacterCalculationsBear calculatedStats, Character character)\n   at Rawr.Bear.CalculationsBear.GetCharacterCalculations(Character character, Item additionalItem, Boolean referenceCalculation, Boolean significantChange, Boolean needsDisplayCalculations)\n   at Rawr.CalculationsBase.GetItemCalculations(ItemInstance item, Character character, CharacterSlot slot)\n   at Rawr.UI.ItemListControl.BuildListItems()\n   at Rawr.UI.ItemListControl.set_Character(Character value)\n   at Rawr.UI.ItemButtonWithEnchant.set_Character(Character value)\n   at Rawr.UI.MainPage.set_Character(Character value)\n   at Rawr.UI.MainPage.bnetLoad_Closed(Object sender, EventArgs e)\n   at System.Windows.Controls.ChildWindow.OnClosed(EventArgs e)\n   at System.Windows.Controls.ChildWindow.Close()\n   at System.Windows.Controls.ChildWindow.set_DialogResult(Nullable`1 value)\n   at Rawr.UI.BNetLoadDialog._armoryService_GetCharacterCompleted(Object sender, EventArgs`1 e)\n   at Rawr.Rawr4ArmoryService._webClient_DownloadStringCompleted(Object sender, DownloadStringCompletedEventArgs e)\n \n== These are the Steps that I have tried ==\nI looked up in the issue tracker that to fix this you need to reset the item cache. I did this and am still getting the error. Any more ideas?",
+    "LastUpdatedDate": "2013-05-16T05:19:00.37-07:00",
+    "PlannedForRelease": "Rawr 4.0.15 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-01-15T10:36:29.907-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[LoadCharacter] Bear Arg_IndexOutOfRangeException",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 19712
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Did you reset all caches, or just item cache? Make sure you do that.",
+      "PostedDate": "2011-01-15T11:14:05.05-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "All",
+      "PostedDate": "2011-01-15T11:19:39.89-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You must be using an old version. That issue was fixed a while ago and all you needed to do on your end was reset all caches. If you are still stuck on this, you must be somehow caching an old version of Rawr and the Silverlight cache. This is common with Google Chrome users and you need to force refresh the page with Shift+F5 after deleting the Silverlight Cache in the Silverlight Settings.",
+      "PostedDate": "2011-01-15T15:30:36.903-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thats odd, I got this computer 2 days ago. Not sure how it would get an old version. Tried that and am still getting the error.",
+      "PostedDate": "2011-01-15T15:52:58.037-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I find that it works fine with one of my armor sets, but with the other it fails.",
+      "PostedDate": "2011-01-15T16:54:49.96-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "1) What version of Rawr are you using. It says this in the bottom right hand corner of the view\r\n2) What is the armory information of the character you are trying to load so we can try to reproduce the issue?\r\n3) What is different in this \"other armory set\" that breaks it?",
+      "PostedDate": "2011-01-15T17:08:20.277-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-15T17:08:42.557-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "In case this helps anyone I was able to make an error very similar to this go away by using options-->Edit Items-->Add to add item number 49793, Tower of Mouldering Corpse.  It was Jothay's question asking what the difference between the working and broken armory sets that set me on the track to making the problem go away.  I went though the following grueling 3 hour process:  I tried everything listed here regarding cache.  I checked that all my software versions met requirements.  I checked to make sure I had the latest version of rawr.  I took all my armor off. Logged out.  Tried rawr.  It worked with no error.  Logged in and put on several pieces of armor.  Logged out.  Tried rawr.  Repeated until problem came back.  Removed several pieces until I narrowed it down to one piece of armor that caused the problem.  Discovered that particular piece of armor could not be edited.  In other words it was not in the cache.  I added it.  And then I could load my character.  The exact error I made go away with this method was:\r\n\r\n== Error Message ==\r\n[Arg_IndexOutOfRangeException]\r\nArguments: \r\nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.51204.0&File=mscorlib.dll&Key=Arg_IndexOutOfRangeException\r\n\r\n== StackTrace ==\r\n   at Rawr.Bear.BearRotationCalculator.GetOptimalRotations(BearAbilityBuilder abilities)\r\n   at Rawr.Bear.CalculationsBear.CalculateThreat(StatsBear stats, Int32 targetLevel, CharacterCalculationsBear calculatedStats, Character character)\r\n   at Rawr.Bear.CalculationsBear.GetCharacterCalculations(Character character, Item additionalItem, Boolean referenceCalculation, Boolean significantChange, Boolean needsDisplayCalculations)\r\n   at Rawr.UI.MainPage.character_CalculationsInvalidated(Object sender, EventArgs e)\r\n   at Rawr.UI.MainPage.set_Character(Character value)\r\n   at Rawr.UI.MainPage.bnetLoad_Closed(Object sender, EventArgs e)\r\n   at System.Windows.Controls.ChildWindow.OnClosed(EventArgs e)\r\n   at System.Windows.Controls.ChildWindow.Close()\r\n   at System.Windows.Controls.ChildWindow.set_DialogResult(Nullable`1 value)\r\n   at Rawr.UI.BNetLoadDialog._armoryService_GetCharacterCompleted(Object sender, EventArgs`1 e)\r\n   at Rawr.Rawr4ArmoryService._webClient_DownloadStringCompleted(Object sender, DownloadStringCompletedEventArgs e)\r\n",
+      "PostedDate": "2011-01-16T16:18:41.787-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-16T16:20:38.833-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I wasn't able to repro this, but I think I've fixed what would cause it (or at least benignly handled it). Please re-open if this still occurs in the next version.",
+      "PostedDate": "2011-01-16T16:25:59.59-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-16T16:26:05.963-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:21.77-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:00.37-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

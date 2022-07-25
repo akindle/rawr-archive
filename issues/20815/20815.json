@@ -1,0 +1,116 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-06-13T02:27:06.817-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi. I've just downloaded Rawr 4.1.05.60775 debug build. It seems there is a problem with items sorting. Here are corresponding lines of source code with my comments:\n \n(ComparisonGraph.xaml.cs, void DisplayCalcs(), line 300):\n\t    \n    ChangedSize(this, null);\n    IOrderedEnumerable<ComparisonCalculationBase> orderedCalcs;\n            if (Sort == ComparisonSort.Alphabetical) \n                orderedCalcs = calcs.OrderBy(calc => calc == null ? \"\" : calc.Name);\n            else if (Sort == ComparisonSort.Overall)\n                orderedCalcs = calcs.OrderByDescending(calc => calc == null ? 0 : calc.OverallPoints);\n            else if ((int)Sort >= calcs[0].SubPoints.Length)\n                // It's a combination one\n                if        (calcs[0].SubPoints.Length == 3) {\n                    switch ((int)Sort) {\n-- it's ok\n                        case 3: { orderedCalcs = calcs.OrderByDescending(calc => calc == null ? 0 : calc.SubPoints[0] + calc.SubPoints[1]); break; }\n\t\t\t...\n                    }\n                } else if (calcs[0].SubPoints.Length == 4) {\n                    switch ((int)Sort) {\n-- length = 4 here, but (int)sort >= length as mentioned above, so why there is \"case 3\"?\n                        case 3: { orderedCalcs = calcs.OrderByDescending(calc => calc == null ? 0 : calc.SubPoints[0] + calc.SubPoints[1]); break; }\n                        ...\n                    }\n                }\n                else /*if (calcs[0].SubPoints.Length == 5)*/ {\n                    switch ((int)Sort) {\n-- len = 5, (int)sort >= len, and again:\n                        case 3: { orderedCalcs = calcs.OrderByDescending(calc => calc == null ? 0 : calc.SubPoints[0] + calc.SubPoints[1]); break; }\n                        ...\n                    }\n                }\n            else\n                orderedCalcs = calcs.OrderByDescending(calc => calc == null ? 0 : calc.SubPoints[(int)Sort]);\n \nBy the way, there is similar part of code in CompareItemCalculations(), and it's implemented correctly.\n \nI have no experience in programming, so I can be wrong.",
+    "LastUpdatedDate": "2013-05-16T05:17:55.31-07:00",
+    "PlannedForRelease": "Rawr 4.1.05.1",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-05-22T13:18:05.853-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] Item sorting",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 20815
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4972,
+      "FileName": "dk-test.xml",
+      "DownloadUrl": ".\\4972"
+    },
+    {
+      "FileId": 4974,
+      "FileName": "diff.txt",
+      "DownloadUrl": ".\\4974"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Is this just you reading code and thinking there is a problem or are you actually seeing your item sorting in Rawr coming up wrong? If there is, please attach your character file and state the steps to reproduce.",
+      "PostedDate": "2011-05-22T15:54:57.78-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You are confused about what each thing is. The length of the subpoints determines how many combination points there are in the sort matrix. The actual selection the user makes is then what it sorts by.",
+      "PostedDate": "2011-05-22T16:05:19.537-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-22T22:09:05.663-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Here are some screenshots.\r\n\r\nRandom druid-bear (with cat talents though, but it's just an example):\r\n - mitigation: http://dl.dropbox.com/u/1850533/rawr/druid-mitigation.jpg\r\n - mitigation + survivability: http://dl.dropbox.com/u/1850533/rawr/druid-mitigation-surv.jpg\r\nSeems ok.\r\n\r\n\r\nRandom dk-tank:\r\n - mitigation + survivability: http://dl.dropbox.com/u/1850533/rawr/dk-mitigation-surv.jpg\r\n\tSeems little strange. Magma Plated Helmet is out of place, for example.\r\n\r\n - burst + threat: http://dl.dropbox.com/u/1850533/rawr/dk-burst-threat.jpg\r\n - survivability + threat: http://dl.dropbox.com/u/1850533/rawr/dk-surv-threat.jpg\r\n\tThese two are identical. Mitigation+threat and surv.+burst are identical too.",
+      "PostedDate": "2011-05-22T22:09:07.25-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "And little about the code above. Ok, let's make it look simple:\r\n\r\nstarting from line 306:\r\n\r\nif (sort >= len) {\r\nif (len == 3) {...} // not interesting\r\nif (len == 4) {\r\nswitch (sort) {\r\ncase 3: ... // ok, again: we have 2 conditions here: (sort >= len) and (len == 4), so sort >= 4 anyway. why there is \"case 3\"?\r\ndefault: ...\r\n}\r\n}\r\n}",
+      "PostedDate": "2011-05-22T22:20:16.327-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-23T12:08:36.36-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Don't ignore me xD\r\n\r\nFinally, I was able to compile rawr. There is diff file & screenshots of your version and fixed one:\r\nhttp://dl.dropbox.com/u/1850533/rawr/11.jpg - your\r\nhttp://dl.dropbox.com/u/1850533/rawr/22.jpg - fixed.\r\n\r\nI'm satisfied now and won't bother you again.",
+      "PostedDate": "2011-05-23T12:08:38.107-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-06-05T16:43:46.773-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "ohhhh, I get what you were doing. Your patch file was backwards!",
+      "PostedDate": "2011-06-05T17:01:55.12-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-06-05T17:04:26.24-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-06-13T02:27:06.817-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:24:58.89-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:17:55.31-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

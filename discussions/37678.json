@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "124944",
+    "ThreadId": "37678",
+    "Html": "Upgrading from Rawr b16 to Rawr v2.0.0, I'm now encountering this error when executing &quot;mono Rawr.exe&quot;:<br>\r\n<br>\r\n** (Rawr.exe:4324): WARNING **: The following assembly referenced from /Users/carpone/Desktop/Rawr v2.0.0/Rawr.exe could not be loaded:<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp; Assembly:&nbsp;&nbsp; Rawr.Base&nbsp;&nbsp;&nbsp; (assemblyref_index=4)<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp; Version:&nbsp;&nbsp;&nbsp; 2.0.0.0<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp; Public Key: (none)<br>\r\nThe assembly was not found in the Global Assembly Cache, a path listed in the MONO_PATH environment variable, or in the location of the executing assembly (/Users/carpone/Desktop/Rawr v2.0.0/).<br>\r\n<br>\r\n<br>\r\n** (Rawr.exe:4324): WARNING **: Could not load file or assembly 'Rawr.Base, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies.<br>\r\n<br>\r\nUnhandled Exception: System.TypeLoadException: A type load exception has occurred.<br>\r\n[whitestar:~/Desktop/Rawr v2.0.0] carpone% mono Rawr.exe<br>\r\n<br>\r\n** (Rawr.exe:4601): WARNING **: The following assembly referenced from /Users/carpone/Desktop/Rawr v2.0.0/Rawr.exe could not be loaded:<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp; Assembly:&nbsp;&nbsp; Rawr.Base&nbsp;&nbsp;&nbsp; (assemblyref_index=4)<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp; Version:&nbsp;&nbsp;&nbsp; 2.0.0.0<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp; Public Key: (none)<br>\r\nSystem error: Unknown error: 0<br>\r\n<br>\r\n** (Rawr.exe:4601): WARNING **: Could not load file or assembly 'Rawr.Base, Version=2.0.0.0, Culture=neutral' or one of its dependencies.<br>\r\n<br>\r\nUnhandled Exception: System.TypeLoadException: A type load exception has occurred.<br>\r\n<br>\r\n---<br>\r\n<br>\r\nI'm running Mono Framework 1.9.1_3 on OS X 10.5.3.<br>\r\n",
+    "PostedDate": "2008-10-14T04:48:32.38-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "125009",
+    "ThreadId": "37678",
+    "Html": "Looks like Mono isn't supporting looking in the Data folder for the DLLs... Try moving everything from the Data folder into the root Rawr folder, let me know if that fixes it.\r\n",
+    "PostedDate": "2008-10-14T08:03:14.627-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "125015",
+    "ThreadId": "37678",
+    "Html": "Moving the files causes Mono to exit quietly without running Rawr:<br>\r\n<br>\r\n% cd Rawr v2.0.0/Data<br>\r\n% mv * ..<br>\r\n% cd ..<br>\r\n% mono Rawr.exe<br>\r\n% echo $?<br>\r\n0<br>\r\n<br>\r\nIs there a Mono logfile that would have additional info?<br>\r\n<br>\r\n",
+    "PostedDate": "2008-10-14T08:22:22.42-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "125029",
+    "ThreadId": "37678",
+    "Html": "Try deleting the Rawr.exe.config file, as well as moving those files? Sorry this isn't working. :(<br>\r\n",
+    "PostedDate": "2008-10-14T08:55:57.867-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "125036",
+    "ThreadId": "37678",
+    "Html": "Removing Rawr.exe.config results in the splash screen appearing, and this dialog box:<br>\r\n<br>\r\n[when cat druid is FITE do not ask for HEEL and NINIRVATE!] &quot;Unable to find any model plug in dlls.&nbsp; Please check that the files exist and are in the correct location.&quot; <br>\r\n<br>\r\nRemoving the Data directory resulted in quiet exit from Mono (as above).<br>\r\n<br>\r\nDuplicating (not moving) the contents of the Data directory to the root directory allows it to run.<br>\r\n",
+    "PostedDate": "2008-10-14T09:06:18.06-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "125044",
+    "ThreadId": "37678",
+    "Html": "It might be a symptom of the above workaround, but Tools -&gt; Edit Item results in a crash:<br>\r\n<br>\r\n** (Rawr.exe:5324): WARNING **: Missing method System.Windows.Forms.Binding::WriteValue() in assembly /Library/Frameworks/Mono.framework/Versions/1.9.1/lib/mono/gac/System.Windows.Forms/2.0.0.0__b77a5c561934e089/System.Windows.Forms.dll, referenced in assembly /Users/carpone/Desktop/Rawr v2.0.0/Rawr.exe<br>\r\nTue Oct 14 12:26:10 whitestar.local mono[5324] &lt;Error&gt;: CGContextDrawImage: invalid context<br>\r\nTue Oct 14 12:26:10 whitestar.local mono[5324] &lt;Error&gt;: CGContextSynchronize: invalid context<br>\r\nTue Oct 14 12:26:10 whitestar.local mono[5324] &lt;Error&gt;: CGContextSynchronize: invalid context<br>\r\n<br>\r\n",
+    "PostedDate": "2008-10-14T09:31:37.603-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "125059",
+    "ThreadId": "37678",
+    "Html": "Actually, that one is just a mono bug. We're working on a workaround for it.<br>\r\n",
+    "PostedDate": "2008-10-14T10:57:31.033-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "125075",
+    "ThreadId": "37678",
+    "Html": "The only thing that you need to have duplicated is Rawr.Base.dll I think.\r\n",
+    "PostedDate": "2008-10-14T12:07:04.557-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "125078",
+    "ThreadId": "37678",
+    "Html": "Only moving ./Rawr v2.0.0/Data/Rawr.Base.dll to ./Rawr v2.0.0/Rawr.Base.dll works.<br>\r\n",
+    "PostedDate": "2008-10-14T12:18:25.473-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

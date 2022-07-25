@@ -1,0 +1,98 @@
+[
+  {
+    "Id": "429612",
+    "ThreadId": "208926",
+    "Html": "<p>I'm in the process of trying to clean up my copies of the data files (which appear to have picked up some junk from loading characters) but which also seem to come with a fair amount of junk in the default files.&nbsp; Since I'd like to not have to do the cleanup with every new release, I'd like to get some of the junk removed from the default files.&nbsp; But that requires some consensus on what's junk and what isn't.&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>Here are some of the categories that I'd like to see if others also consider junk to be removed.</p>\r\n<p>Talbards</p>\r\n<p>Shirts</p>\r\n<p>Items that can no longer be obtained e.g. Older season PVP weapons, one time world events that are over.</p>\r\n<p>Items with an item level below 200 i.e. less than T7 or equivalent.</p>\r\n<p>&nbsp;</p>\r\n<p>On a marginally related topic, how expensive (in time) is it to process the filters.&nbsp; I notice that there are filters in the distributed default data files that don't &quot;catch&quot; any items e.g. most of the non-heroic dungeon filters.&nbsp; If there's a time penalty during optimization or build upgrade list associated with processing the filters, then maybe those should be trimmed down as well.</p>",
+    "PostedDate": "2010-04-10T14:08:47.743-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "429640",
+    "ThreadId": "208926",
+    "Html": "<p>Having Tabards and Shirts in the default files prevents a lot of 'could be' errors from happening. Many of these items don't download well off the Armory and Wowhead servers.</p>\r\n<p>I agree to removing a lot of under iLevel 200 items of no consequence (meaning not trinkets, etc that obviously have value even when they are blues). These tend to bulk out the item cache, but are there really so many in there that it's worth taking the time to mess with the item caches and remove them?</p>\r\n<p>Filters are marginal at most in terms of processing time. There's no reason to remove them, in fact there are probably more to be made and gladly accepted. Just because the cache doesn't have the item in it now, doesn't mean that there won't be items added by users that would be caught on those filters.</p>",
+    "PostedDate": "2010-04-10T17:38:31.713-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "429650",
+    "ThreadId": "208926",
+    "Html": "<p>I use the &lt; 200 iLvl pieces to make some rough stat weights to use when leveling.&nbsp; Call me crazy.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-04-10T20:16:30.77-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "429655",
+    "ThreadId": "208926",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>xemnosyst wrote:</strong><br>\r\n<p>I use the &lt; 200 iLvl pieces to make some rough stat weights to use when leveling.&nbsp; Call me crazy.</p>\r\n<p>&nbsp;</p>\r\n</blockquote>\r\n<p>Ok. You're crazy :-)&nbsp; But seriously, if you plan to use rawr while leveling, you need to be aware that you'll only get accurate results if you're a level 80 character fighting level 80-boss level mobs.&nbsp; For one reason, the base stats build into the models assume a level 80 character.&nbsp; The models also assume you have max weapon skill/defense/etc.&nbsp; Also for things like hit cap and defense cap, it varies quite a bit by both you and your opponents level.&nbsp; For a more complete discussion on how much hit you need at level 70 vs. level 80, see http://www.wowwiki.com/Hit and for a discussion of how much defense you need to be capped at different levels, see http://www.wowwiki.com/Defense.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-04-10T20:50:49.673-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "429828",
+    "ThreadId": "208926",
+    "Html": "<p>For leveling, I make a dummy character in Rawr, give him the best quest &amp; crafted gear then use the &quot;Relative Stat Values&quot; in a Pawn scale for leveling.&nbsp;&nbsp;&nbsp;&nbsp; It's very rough, but it is good enough while leveling and gets me to 80 with about the right stats :)</p>\r\n<p>&nbsp;</p>\r\n<p>It also means only having to use Rawr once until I get to 80.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-04-11T17:07:02.037-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "429981",
+    "ThreadId": "208926",
+    "Html": "<p>the mob level is really only a representation of characterlevel+X.&nbsp; where characterlevel is assumed to be 80, but it'll work equally well at lower levels.&nbsp; If you're level 75, and fighting a level 76 mob, that's functionally equivalent to setting mob level to 81 (assumed 80 + 1).&nbsp; This will make rawr use appropriate values for defense, crit suppression etc.<br><br>Gear evaluations work reasonably well most of the time, but it is 'off' for all the rating conversions, and it's 'more off' the lower level you are.&nbsp; This means that any kind of &quot;X rating&quot; is typically going to be undervalued for your level and this will make rawr slightly prefer gear with &quot;plain stats&quot; over gear with &quot;rating stats&quot;.</p>",
+    "PostedDate": "2010-04-12T05:31:23.053-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "430047",
+    "ThreadId": "208926",
+    "Html": "<p>The above compounded by the lack of Ability Ranks learn-able at X level, lack of certain abilities used in your level 80 rotation at all at that level, etc.</p>",
+    "PostedDate": "2010-04-12T08:13:29.263-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "430060",
+    "ThreadId": "208926",
+    "Html": "<p>Why <em>are</em> shirts and tabards loaded, anyway? Seems like a waste of a UI element/data/loading time when they really don't do anything. Are they just there in case there's another Ulduar PTR uber shirt?</p>",
+    "PostedDate": "2010-04-12T08:46:52.397-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "430084",
+    "ThreadId": "208926",
+    "Html": "<p>You know what, you peolpe all need to stop raining on my parade!&nbsp; It's better than me completely guessing.&nbsp; Calling me crazy in one thing, but going on &amp; on about all reasons I'm crazy is just cruel!&nbsp; RareBeast and I are quite happy plugging not-good-but-better-than-complete-guesses into Pawn, so leave us alone.</p>",
+    "PostedDate": "2010-04-12T09:25:49.657-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "430094",
+    "ThreadId": "208926",
+    "Html": "<p>ZD, it's for Precious' Ribbon. It makes you &quot;Best in Show&quot;.</p>",
+    "PostedDate": "2010-04-12T09:39:28.207-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "430135",
+    "ThreadId": "208926",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Astrylian wrote:</strong><br>\r\n<p>ZD, it's for Precious' Ribbon. It makes you &quot;Best in Show&quot;.</p>\r\n</blockquote>\r\n<p>&nbsp;<em>Yeah</em> it frigging does.</p>",
+    "PostedDate": "2010-04-12T11:34:00.143-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "430336",
+    "ThreadId": "208926",
+    "Html": "<p>I'm finding my collection of self made tabard-of-various-stats pretty awesome to easily test/debug certain scenario's without messing up other gear info.</p>\r\n<p>Probably not what it was intended for, but I'll continue to abuse it for that just the same.</p>",
+    "PostedDate": "2010-04-13T00:36:09.103-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,156 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Optimizer",
+      "DisplayName": "Rawr.Base.Optimizer"
+    },
+    "ClosedComment": "Closing in favor of Issue 14759",
+    "ClosedDate": "2009-11-19T13:08:53.323-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Given that I have selected all relevant items and item enhancements as available to the Optimizer, I am experiencing a lowering of DPS by running an Optimize.\n \nNote that this does not ALWAYS happen... but it does, and quite frequently.\n \nVariables:\n \nThe Optimizer is set at full Thoroughness.\nWorking on r36113, though this does not seem to be particular to the current iteration/build.\nAs it might be relevant: I am currently using 58 activated gemming templates.  I am getting two warnings before an optimize, on Gems and on Legs.\nI am not forcing any requirements on the Optimizer whatsoever.\n \n \nComments:\n \nThis seems to most happen through the swapping of gems.  In this particular case, there are two changes made by the Optimizer.  First is a rearrangement of gems.  As these are all red gems that are simply playing musical chairs, there is no harm from a result standpoint.  Secondly, however, the Nightmare Tear (+10 all stats, matching a blue socket to activate the Relentless Earthsiege Diamond and the socket bonus for the piece of gear it is in) is being swapped from the chest (socket bonus: 6 Crit) to the legs (socket bonus: 6 Agi) for a net loss in DPS.\n \nAnother common mistake is in meta swappage.  Frequently, the Optimizer will select the Chaotic Skyflare Diamond in place of the Relentless Earthsiege Diamond.  Due to requiring two Blue gems, the Chaotic Skyflare lowers the total DPS, but still the Optimizer occasionally chooses to make the swap, despite the cost outweighing the benefit.\n \n \nPossible solution:\n \nHave a check, given that all items from pre-Optimize are available to the Optimizer, ensure that the new character profile's DPS is greater than the initial character profile's DPS.  Additionally, a warning could be implemented pre-Optimize if the current gear setup is not completely available to the Optimizer.  This might also reduce the number of \"I didn't select my gear/gems/enchants as available\" lowering of DPS through the use of the Optimizer that seems to love to pop up.",
+    "LastUpdatedDate": "2013-05-16T05:24:46.413-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-08-18T10:05:42.63-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Optimizer] Lowering DPS",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13909
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2106,
+      "FileName": "optimizerissuecompare.png",
+      "DownloadUrl": ".\\2106"
+    },
+    {
+      "FileId": 2108,
+      "FileName": "optimizerissuecompare2.png",
+      "DownloadUrl": ".\\2108"
+    },
+    {
+      "FileId": 2109,
+      "FileName": "Aero2 Arms.xml",
+      "DownloadUrl": ".\\2109"
+    },
+    {
+      "FileId": 2110,
+      "FileName": "GemmingTemplates.xml",
+      "DownloadUrl": ".\\2110"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "[Core], [Base], same thing.",
+      "PostedDate": "2009-08-18T10:11:39.92-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-18T10:12:03.267-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "58 Gemming templates? What?!?\r\n\r\nGem swapping will happen, it's not that big of a deal, but are you absolutely certain that the swap on one item with a socket bonus of +6 crit to the other item with a bonus of +6 AGI is the only change occurring there? It may not be an actual Net loss.\r\n\r\nWhat do you mean it will frequently select the Chaotic Skyflare in place of a red? Do you mean it puts it in a Red Socket or do you mean it isn't keeping enough blue/green/purple gems to keep it activated. If the latter is the case, make sure you have Enforce Meta Gem Requirements checked.\r\n\r\nAlso, the Optimizer is just trying to make a new number by using a random seed system, the fact that it makes a new number less than your previous one isn't it's fault and you do have the option of NOT selecting the new gear-set.\r\n\r\nAre you setting the additional requirement to ensure that you are hit/exp capped?",
+      "PostedDate": "2009-08-18T10:13:13.893-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yes, 58 active gemming templates for Arms.\r\n\r\nYes, in this example, the only real swap was the Nightmare Tear from the chest to the legs.  All other \r\n\r\nSorry, the RED meant Relentless Earthsiege Diamond (I had expanded it before, so did not think twice about shortening it.  My bad!  Fixed for clarity.)  Regardless, Enforce Gem Requirements is selected (as it should be by default... Grr!).\r\n\r\nI do absolutely have the option of not selecting the new gearset.  However, the Optimizer SHOULDN'T be recommending a lower DPS setup, and that really is the issue.  If it ends up with a lower DPS result, it should then run a check against the original set.  If the original set has an exactly equal or higher DPS, then the Optimizer should ignore the \"new\" gearset.  This is, of course, assuming that there is an initial check that the starting set is 100% available to the Optimizer.\r\n\r\nI am not setting ANY additional requirements, be it a chance to be missed, dodged, or a general avoidance check.  Updating the original issue to include this variable.\r\n\r\n\r\nAs a note, I just ran the optimizer again, and it tried to pull the Chaotic Skyflare deal.  Attaching an image to show the difference.  Again, there is swappage between where the JC gems are going, but the overall contribution from the red sockets remains the same.  The only \"real\" changes in this second image are A) the Relentless Earthsiege Diamond is being replaced by a Chaotic Skyflare Diamond in the helmet's meta socket, and B) the +20 ArP gem in the blue socket of the pants is being replaced by a Puissant Dreadstone (+10 Arp/+15 Stam), to activate the new meta (this also has the effect of picking up the pants' +6Agi socket bonus, but as you can see, this is still a net loss of DPS output effectiveness).\r\n\r\nI am also attaching my character file and my gemming templates file in a few minutes.  I am doing some... interesting... things with my talents to simulate a \"typical\" fight, and to account for some current rotational issues (Bloodrage/Berserker Rage current GCD usage issues, for example), but nothing model-breaking of course.",
+      "PostedDate": "2009-08-18T10:59:07.36-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-18T10:59:09.543-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "As a DPSWarrior, the ONLY meta gem you should have selected is Chaotic Skyflare Diamond, NO other Meta comes even close to the DPS increase that it gives:\r\n\r\nChaotic: 3% Crit Damage 21 Crit Rating\r\nRelentless: 3% Crit Damage 21 Agility\r\n\r\nAgility cannot catch up to Crit in it's relative value so there's no reason to select Relentless as an option.\r\n\r\nI'm looking at the rest of your addage now",
+      "PostedDate": "2009-08-18T11:45:05.393-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-18T11:47:17.413-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-18T11:47:19.167-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-18T11:49:39.357-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-18T11:49:41.06-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I will absolutely disagree with you on that fact, Jothay.  The issue comes with meeting the meta requirement, as comparing one against the other without taking this into account, the Chaotic absolutely wins.  When JC gems were prismatic made matching any meta requirement moot, then I am in the same camp as you.  However, you have to realize exactly the true tradeoff:\r\n\r\nChaotic Skyflare Diamond\r\nRequires 2 Blue gems\r\n\r\nRelentless Earthsiege Diamond\r\nRequires one of each gem color\r\n\r\nAs the Nightmare Tear is better than the next highest Blue Gem in terms of DPS contribution (be it Puissant or Sovereign, depending on your spec and gear level/particulars), it is your default first gem to meet any meta requirement.  With the Chaotic, you also need one more blue socket, which will be either Puissant or Sovereign.  However, the Nightmare Tear alone covers the entire Relentless meta requirement.  So, the real comparison here looks like this:\r\n\r\n21 Crit\r\nHalf of a blue gem component (15 Stam)\r\n\r\n21 Agi\r\nHalf of a red gem component (10 Str/ArP)\r\n\r\nMake sense?  Because you don't need to socket another blue gem, you have an entire half a gem socket that can convert the otherwise \"wasted\" blue component gem into tasty Str/Arp\r\n\r\nThere are absolutely many situations where the Chaotic wins out - hence my including them as options.  However, my current gearing is a prime example where the Relentless Earthsiege wins out.\r\n\r\nThe model even takes this difference into account - you can see the DPS difference in the second screen capture I posted.",
+      "PostedDate": "2009-08-18T12:00:47.63-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "\"ahhhh... i see\" said the blind man to the deaf dog.\r\n\r\nSince I'm not a JC, I didn't fully realize the way the new JC socketing stuff might be affected.",
+      "PostedDate": "2009-08-18T12:15:29.113-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This setup has a very large number of items selected, and you are getting the \"You have a very large number of items selected: Gems, Leg Items\" message. You need to remember that the Generic Algorithm is not exhaustive, and by selecting too many items you reduce the probability of the optimizer being able to find the optimal solution.\r\n\r\nThere may be a bug hidden in here, but I think you will find that by having a more refined set of starting conditions the optimizer will be able to find the optimal solution more often. That being said even with a fairly small set of items I always run the optimizer twice just to be sure.\r\n\r\n~Droid",
+      "PostedDate": "2009-08-18T14:31:30.76-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I think your real problem is the 58 gemming templates.  You'll have much better luck if you pick the templates, and then manually choose Nightmare Tear in the Gear Charts (by putting a green diamond next to it, same as you'd do with your other gear).  Also, manually choose the new meta in this fashion, and any other \"situational\" pieces like hit/expertise gems.\r\n\r\n(Note, I opened the template XML but I don't know all the itemIDs off the top of my head, I'm just recognizing a pattern here)  It looks to me as though you're creating gemming templates, then swapping out each blue gem for the tear, then swapping out the red for expertise, then swapping both red/blue for expertise and tear, then doing all 4 with a different meta, etc.  This is not the intended use of GemmingTemplates.\r\n\r\nThe way you're doing it is severely overloading the optimizer with gemming options, which is why it's suggesting a DPS loss.\r\n\r\nAnd you're right, we should have a check at the end to not suggest anything if it's a DPS loss AND every item in your original gearset is a valid optimizable set (ie, every item/gem/enchant combination is available).  We've been discussing this elsewhere.\r\n\r\nThis isn't a bug with DPSWarr at all, and that tag should probably be removed from the bug description.",
+      "PostedDate": "2009-08-19T06:48:37.807-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-19T07:59:28.203-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-19T13:08:53.323-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T16:06:26.327-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:32.08-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:46.413-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

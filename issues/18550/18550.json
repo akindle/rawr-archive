@@ -1,0 +1,75 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSDK",
+      "DisplayName": "Rawr.DPSDK"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-08-31T14:04:34.943-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Here's the current code:\n \n// Death Knight's Anguish\nSpecialEffect primary = new SpecialEffect(Trigger.PhysicalHit, new Stats() { }, 20f, 45f, 0.10f);\nSpecialEffect secondary = new SpecialEffect(Trigger.PhysicalHit, new Stats() { CritRating = 15, }, 20f, 0f, 1f, 10);\nprimary.Stats.AddSpecialEffect(secondary);\nstats.AddSpecialEffect(primary);\n \nThis causes the trinket to become over-valued.\nThis trinket shouldn't be worth any more than a raw 150 crit dur: 20 sec, CD: 45 sec; Chance: 10%\n \nHowever, not sure how to stack this differently to make it work that way.",
+    "LastUpdatedDate": "2017-11-27T11:04:43.513-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-08-23T13:46:35.797-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSDK] Death Knight's Anguish over-valued",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 18550
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Example I was looking at it using DPSDK, so it may be a problem w/ the way the module is dealing w/ the special effects.",
+      "PostedDate": "2010-08-23T13:51:27.347-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Umm no? What's there is correct:\r\nhttp://www.wowhead.com/item=38212/death-knights-anguish\r\n\"Equip: Chance on melee or ranged attack to enter Wracking Pains, during which your attacks will each grant 15 crit rating, stacking up to 10 times.  Expires after 20 sec.\"\r\n\r\nThe primary is the initial trigger chance which has a 45 second cooldown and limits the secondary duration to it's (the primary's) duration of 20 seconds.\r\nThe secondary is the actual Triggers for stacking up 15 CritRating to 10 stacks.",
+      "PostedDate": "2010-08-23T13:55:22.633-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok... then based on that then it's something internal to DPSDK.",
+      "PostedDate": "2010-08-23T15:19:31.25-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Resolved with changeset 53629.",
+      "PostedDate": "2010-08-31T14:04:34.943-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:27:39.17-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:01.963-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:04:43.513-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

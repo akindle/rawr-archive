@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "I&#39;ve fixed this locally but have not checked in. Please don&#39;t build WPF until a commit that says its ready is posted",
+    "ClosedDate": "2010-12-22T16:50:17.53-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "With the current top of tree (rev. 56404), I'm able to build the WPF version from source but when I try to execute it I'm getting the following exception:\n \nSystem.IO.IOException was unhandled\n  Message=Cannot open package because FileMode or FileAccess value is not valid for the stream.\n  Source=WindowsBase\n  StackTrace:\n       at System.IO.Packaging.Package.ValidateModeAndAccess(Stream s, FileMode mode, FileAccess access)\n       at System.IO.Packaging.Package.Open(Stream stream, FileMode packageMode, FileAccess packageAccess, Boolean streaming)\n       at System.IO.Packaging.Package.Open(Stream stream, FileMode packageMode)\n       at Rawr.UI.FileUtils.client_OpenReadCompleted(Object sender, OpenReadCompletedEventArgs e) in C:\\Rawr\\Rawr3\\Rawr.UI\\FileUtils.cs:line 118\n       at System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)\n       at MS.Internal.Threading.ExceptionFilterHelper.TryCatchWhen(Object source, Delegate method, Object args, Int32 numArgs, Delegate catchHandler)\n       at System.Windows.Threading.Dispatcher.WrappedInvoke(Delegate callback, Object args, Int32 numArgs, Delegate catchHandler)\n       at System.Windows.Threading.DispatcherOperation.InvokeImpl()\n       at System.Threading.ExecutionContext.runTryCode(Object userData)\n       at System.Runtime.CompilerServices.RuntimeHelpers.ExecuteCodeWithGuaranteedCleanup(TryCode code, CleanupCode backoutCode, Object userData)\n       at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean ignoreSyncCtx)\n       at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)\n       at System.Windows.Threading.DispatcherOperation.Invoke()\n       at System.Windows.Threading.Dispatcher.ProcessQueue()\n       at System.Windows.Threading.Dispatcher.WndProcHook(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)\n       at MS.Win32.HwndWrapper.WndProc(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)\n       at MS.Win32.HwndSubclass.DispatcherCallbackOperation(Object o)\n       at System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)\n       at MS.Internal.Threading.ExceptionFilterHelper.TryCatchWhen(Object source, Delegate method, Object args, Int32 numArgs, Delegate catchHandler)\n       at System.Windows.Threading.Dispatcher.WrappedInvoke(Delegate callback, Object args, Int32 numArgs, Delegate catchHandler)\n       at System.Windows.Threading.Dispatcher.InvokeImpl(DispatcherPriority priority, TimeSpan timeout, Delegate method, Object args, Int32 numArgs)\n       at MS.Win32.HwndSubclass.SubclassWndProc(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam)\n       at MS.Win32.UnsafeNativeMethods.DispatchMessage(MSG& msg)\n       at System.Windows.Threading.Dispatcher.PushFrameImpl(DispatcherFrame frame)\n       at System.Windows.Application.RunInternal(Window window)\n       at System.Windows.Application.Run()\n       at Rawr.WPF.App.Main() in C:\\Rawr\\Rawr4\\Rawr.WPF\\obj\\Debug\\App.g.cs:line 0\n       at System.AppDomain._nExecuteAssembly(RuntimeAssembly assembly, String[] args)\n       at Microsoft.VisualStudio.HostingProcess.HostProc.RunUsersAssembly()\n       at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean ignoreSyncCtx)\n       at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)\n       at System.Threading.ThreadHelper.ThreadStart()\n  InnerException:",
+    "LastUpdatedDate": "2013-05-16T05:19:26.547-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-12-22T08:37:32.823-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] Unhandled IOException in WPF version",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19415
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I was able to get past this by copying all the xml files in:\r\n  Rawr4/Rawr.Silverlight.Web/ClientBin/\r\nto\r\n  Rawr4/Rawr.WPF/bin/Debug/\r\n\r\nIf the files are not present, Rawr tries to get them from \"http://wowrawr.com/ClientBin/DefaultDataFiles.zip\" which does not appear to exist.",
+      "PostedDate": "2010-12-22T09:08:51.313-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yes, that's a remnant of Rawr3, we'll have to change that to either pull from EJ or Rawr4.",
+      "PostedDate": "2010-12-22T12:32:44.59-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-22T16:50:17.53-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:09:45.937-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:55.42-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:26.547-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

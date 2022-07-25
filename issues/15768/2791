@@ -1,0 +1,40 @@
+--- Rawr.Enhance/CalculationOptionsEnhance.cs	2010-01-14 16:56:12.000000000 -0800
++++ Rawr.Enhance/CalculationOptionsEnhance.cs	2010-01-15 09:38:30.746657217 -0800
+@@ -144,13 +144,31 @@
+ 
+         public void SortPriorities()
+         {
+-            _sortedList = new List<KeyValuePair<EnhanceAbility, Priority>>(_priorityList);
+-            _sortedList.Sort(
+-                delegate(KeyValuePair<EnhanceAbility, Priority> firstPair, KeyValuePair<EnhanceAbility, Priority> nextPair)
+-                {
+-                    return firstPair.Value.PriorityValue.CompareTo(nextPair.Value.PriorityValue);
++            if( Type.GetType("Mono.Runtime") == null ){
++                _sortedList = new List<KeyValuePair<EnhanceAbility, Priority>>(_priorityList);
++                _sortedList.Sort(
++                    delegate(KeyValuePair<EnhanceAbility, Priority> firstPair, KeyValuePair<EnhanceAbility, Priority> nextPair)
++                    {
++                        return firstPair.Value.PriorityValue.CompareTo(nextPair.Value.PriorityValue);
++                    }
++                );
++            } else {
++                List<KeyValuePair<EnhanceAbility, Priority>> srcList = new List<KeyValuePair<EnhanceAbility, Priority>>(_priorityList);
++                _sortedList = new List<KeyValuePair<EnhanceAbility, Priority>>();
++                KeyValuePair<EnhanceAbility, Priority> savedKVP = new KeyValuePair<EnhanceAbility, Priority>();
++                int savedPri = -1;
++                while (srcList.Count > 0) {
++                    foreach (KeyValuePair<EnhanceAbility, Priority> kvp in srcList) {
++                        if (kvp.Value.PriorityValue > savedPri) {
++                            savedPri = kvp.Value.PriorityValue;
++                            savedKVP = kvp;
++                        }
++                    }
++                    _sortedList.Add(savedKVP);
++                    srcList.Remove(savedKVP);
++                    savedPri = -1;
+                 }
+-            );
++            }
+         }
+ 
+         public static SerializableDictionary<EnhanceAbility, Priority> SetPriorityDefaults()

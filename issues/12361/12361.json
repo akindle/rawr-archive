@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-09T17:28:29.67-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I tried doing gem & enchant locking for the first time last night, and found a couple bugs.\n \nIf you have any gems selected Rawr ignores you and creates new gemmings for the items. For example, I went through and locked all the items in my bags, deleted duplicates (so the only available version was the locked version), and ran the optimizer. But it promptly ignored me and created new gemmings for those items. After much trial and error, I discovered that I needed to de-select all the gems before Rawr would take given gemmings.\n \nSkipping the very inconvenient and confusing way that works, the requirement to deselect all gems means that it's impossible to mix an optimization where you regem some equipment but not others. It would be nice if I could tell Rawr that I picked up a new chestpiece, and ask it how I should gem it given my existing gear. Currently this appears to be impossible.",
+    "LastUpdatedDate": "2013-05-16T05:26:27.55-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-01-12T10:26:27.1-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] Gem & Enchant Locking Half Broken",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 12361
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I'm sorry, I think there's some confusion going on here. Nothing you describe is how it actually works (and I don't see any bugs here, please correct me if I'm wrong).\r\n\r\nThe Optimizer will choose the best combination of Items/Enchants/Gems that you have marked as available. When marking items as available, a click will mark an item as available with any gemming/enchant. A ctrl-click will mark a specific gemming of an item as available. And a right-click will allow you to choose an enchant to force it to use for that gemming. \r\n\r\nNOTE: It is possible to mark both an item as available with any gemming, AND mark a specific gemming of that item as available. If you do that, the diamond for the specific gemming will be blue, and all other gemmings of that item will be green. However if you only have one gemming shown, you won't be able to tell that it is both universally and specifically available. Therefore, we suggest that you clear the diamond, and then ctrl-click it, to ensure that only the specific gemming is marked available, if that's what you want. >We fully realize that that is entirely unintuitive and cumbersome, and will be changing how that works.<\r\n\r\nAlso, in the Optimizer window, there are checkboxes for Override Regem and Override Reenchant. Checking these checkboxes will tell the optimizer to regem or reenchant all items, even the ones marked available only for a specific gemming or enchant. It will do nothing to items marked available for any gemming/enchant.",
+      "PostedDate": "2009-01-12T12:54:02.9-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok, I was unaware that an item could be set as both. That explains the bugs I thought I was seeing. And yeah... that's horribly confusing. In fact, that's downright useless. Can you explain the purpose of having an item unlocked AND locked simultaneously? I can't see any reason to ever mark an item available with a specific gemming... but also available for any gemming.\r\n\r\nWhen you set an item to a specific gemming, that should simultaneously make it unavailable for regemming (unless you click the appropriate 'Override' button on the Optimize screen).",
+      "PostedDate": "2009-01-14T11:32:58.033-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You can mark a specific gemming as available, which uses gems/enchants that you don't otherwise have available. That's a pretty obscure case though, but it's possible.\r\n\r\nRegardless, as I said, that whole gemming system is getting completely nuked and paved in Rawr 2.2; just put up with it until then.",
+      "PostedDate": "2009-01-14T11:52:20.167-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yea that situation was more common in TBC where for example you could have an item gemmed with some of the heroic drop gems, but didn't want to consider those gems for regemming.",
+      "PostedDate": "2009-01-14T14:01:49.197-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-09T17:28:29.67-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:44:23.38-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:35:47.61-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:27.55-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

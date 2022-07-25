@@ -1,0 +1,65 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-11-06T23:32:48.217-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have performed the Suggested Fix and continue to receive this error. If I am posting this message without having performed the Suggested Fix I am aware that I am consuming the Developer(s) time in managing my Issue unnecessarily.\n \n== Version: 4.2.6.0 WPF ==\n \n== Error Message ==\nThere is an error in XML document (45, 10).\nUnable to generate a temporary class (result=1).\nerror CS0016: Could not write to output file 'd:\\Documents and Settings\\Owner\\Local Settings\\Temp\\nqllpokn.dll' -- 'Access is denied. '\n \n \n== StackTrace ==\n   at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)\n   at System.Xml.Serialization.XmlSerializer.Deserialize(TextReader textReader)\n   at Rawr.Character.LoadFromXml(String xml)\n \n== These are the Steps that I have tried ==\nInstalled Rawr, opened Rawr, attempted to import character. Error. Character did not load. There was no suggested fix. It's a fresh install so there's not any more information I can give, and I haven't seen anything else while looking in the Issue Tracker - the import stops at \"Parsing Character Data\". I've attempted to load different characters and the result comes out the same each time. It's a fresh install.",
+    "LastUpdatedDate": "2013-05-16T05:17:19.227-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-11-06T17:09:10.003-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Character Import Stuck at Parsing Character Data",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 21749
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I'm not sure what exactly is happening here, I haven't seen it before. From some googling it seems like one possibility is that your virus scanner is killing the serializer, so I would try temporarily disabling that to see if it helps. Another option would be to try to run Rawr as administrator.",
+      "PostedDate": "2011-11-06T18:09:39.857-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Found the problem, Comodo was sandboxing Rawr without telling me - everything's working fine now.",
+      "PostedDate": "2011-11-06T20:48:48.603-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-11-06T23:32:48.217-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:24:08.98-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:17:19.227-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

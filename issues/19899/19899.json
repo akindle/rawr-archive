@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "fixed",
+    "ClosedDate": "2011-02-04T08:08:41.28-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Rawr 4 now requires Microsoft .NET Framework 4 full instead of client, and in fact crashes without full.\n \nSteps to Reproduce:\n1. Start Rawr 4.\n2. Import a character from the armory.\n \nExpected result:\nA successful importation.\n \nActual result:\ncrash\n \nThe crash has been noted in work item 19845, but the issue is more involved.\n \n \nThere is no information that Microsoft .NET Framework 4 full is required, either in the program or on the website.\n \nMicrosoft doesn't recommend the full version, they recommend the client version: \nhttp://blogs.msdn.com/b/jgoldb/archive/2010/04/12/what-s-new-in-net-framework-4-client-profile-rtm.aspx\n \nMost people have the client version.  It is installed with Windows 7.\n \nRawr 3 did not require the full version, so the existing user base doesn't expect to need it, and largely does not.  This is why work issue 19845 was filled, why I noticed it (and wasted a lot of time), and why duplicates were filed.\n \nThere's a couple of ways to resolve this bug:\n \n1. Remove the full version dependency.  It's probably not truly needed.  It's not recommended.  No one has it.  The existing Rawr 3 user base doesn't have it. There no documentation that it's needed or instructions where to get it.\n \n2. Add code to Rawr to check when the Microsoft .NET Framework 4 full version is missing and display a useful alert.  Then safely exit the app.  Update the web site with the needed information as well.",
+    "LastUpdatedDate": "2013-05-16T05:18:47.377-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-02-03T20:46:08.64-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Microsoft .NET Framework 4 full is currently required",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19899
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I believe the only functionality from System.Web we use is UrlEncode for communication with server so it shouldn't be too hard to remove the dependency.",
+      "PostedDate": "2011-02-03T21:11:25.557-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-02-04T08:08:41.28-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:04.91-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:47.377-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

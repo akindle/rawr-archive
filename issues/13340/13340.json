@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSDK",
+      "DisplayName": "Rawr.DPSDK"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-05-27T18:08:19.66-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When selecting a sort option multiple times, possibly by accident, the items are displayed in an unexpected order.  It looks like the sort options are being taken as a toggle.  However, since it appears that only one can be selected at a time, this behavior is unexpected.\n \nTo reproduce under DPSDK:\n \n1. Set Sort to Overall.\n2. Set Sort to DPS.\n3. Set Sort to DPS again.\n \nTo reproduce under Mage:\n \n1. Set Sort to Overall\n2. Set Sort to DPS.\n3. Set Sort to DPS again.\n \nFor even stranger behavior:\n4. Set Sort to Alphabetical.\n5. Set Sort to DPS\n6. Set Sort to DPS again.",
+    "LastUpdatedDate": "2017-11-27T11:04:21.19-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-05-26T14:28:34.443-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSDK] Strange behavior with selecting a Sort option multiple times",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13340
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I cannot reproduce the behavior for Mage. I can reproduce it by selecting Alphabetical several times in a row. The reason why the ordering changes is because when several items have the exact same value the ordering is arbitrary. Does this explain what you are seeing? If not can you attach a character xml where this happens or some screenshots?",
+      "PostedDate": "2009-05-26T18:25:11.533-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "No, that doesn't explain what I was seeing.  However, I could not reproduce for Mage with either 2.2.5 or revision 34193 or DPSDK with 2.2.5 on different machines.  \r\n\r\nI now suspect there's some strange bug with the build I have on the machine I was using this afternoon.  That build is using revision 34176.  One difference I see is that while the machines I've tested on show a check mark for the selected Sort options, no check mark was shown on that machine.  I'll poke more at that tomorrow.\r\n\r\nSorry for wasting your time.",
+      "PostedDate": "2009-05-26T19:51:04.953-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Cannot reproduce with 2.2.5 on the machine I observed this behavior on.  Conclusion, therefore, is that there's something strange going on with the local build.\r\n\r\nI have definitely wasted your time.  My apologies.",
+      "PostedDate": "2009-05-27T07:40:43.74-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-05-27T18:08:19.66-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:25:30.47-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:20.63-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:25.943-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:04:21.19-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

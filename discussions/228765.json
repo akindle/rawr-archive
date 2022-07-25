@@ -1,0 +1,106 @@
+[
+  {
+    "Id": "499114",
+    "ThreadId": "228765",
+    "Html": "<p>If you haven't been following along with Moonkin theorycraft (which would be most here, I imagine), the new and improved Nature's Grace reads thus:</p>\r\n<p>You gain 5/10/15% spell haste after you cast Moonfire or Insect Swarm, lasting 15 sec.&nbsp; This effect has a 1 min cooldown.&nbsp; When you gain Lunar or Solar Eclipse, the cooldown on Nature's Grace is instantly reset.</p>\r\n<p>This haste effect is cumulative; each proc reduces the time required to reach the next proc, although the delta decreases over time so the final effective uptime is finite and less than 100%.&nbsp; This is where I need the help; I want to model this as accurately as is practical.&nbsp; Surely there must be an analytical way to determine the limit without burning huge amounts of computational time.</p>",
+    "PostedDate": "2010-09-27T13:04:12.95-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "499127",
+    "ThreadId": "228765",
+    "Html": "<p>I would need to know more about the rotation and when/how often Moonfire and Insect Swarm are cast to help create a model. The way I understand it the placement of those will be very important on final uptime.</p>",
+    "PostedDate": "2010-09-27T13:29:06.463-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "499139",
+    "ThreadId": "228765",
+    "Html": "<p>Base dot duration for Moonkin is 12 seconds, talented is 18.&nbsp; The basic rotation in a standard model is: Refresh dots to maintain 100% uptime; cast Starsurge if off cooldown; cast Wrath if you are moving the Eclipse bar toward Lunar, Starfire otherwise.&nbsp; Variations on the rotation include refreshing dots only after Eclipse procs, either one or both; and using Starsurge to always move the bar into the next Eclipse, or out of the current Eclipse.</p>\r\n<p>Edit: Using the profile I have on my local computer, the full cycle lasts for 53 seconds with the current model.</p>",
+    "PostedDate": "2010-09-27T13:43:14.527-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "499211",
+    "ThreadId": "228765",
+    "Html": "<p>How exactly would you use this? Doesn't the 1 min cooldown pretty much dictate the max uptime? I'm probably missing something because you're talking about procs but to me it sounds like it is a guaranteed thing.</p>",
+    "PostedDate": "2010-09-27T16:47:13.537-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "499223",
+    "ThreadId": "228765",
+    "Html": "<p>I think what he means is that the default cooldown is 1 min, but when Lunar/Solar Eclipse occurs, the cooldown is reset and he can get the spell haste again (before that minute was up). I'm also gathering that it can stack with itself if Moonfire/Insect Swam can be casted soon enough.</p>",
+    "PostedDate": "2010-09-27T17:20:50.993-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "499228",
+    "ThreadId": "228765",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Jothay wrote:</strong><br>\r\n<p>I think what he means is that the default cooldown is 1 min, but when Lunar/Solar Eclipse occurs, the cooldown is reset and he can get the spell haste again (before that minute was up). I'm also gathering that it can stack with itself if Moonfire/Insect Swam can be casted soon enough.</p>\r\n</blockquote>\r\n<p>It does not stack, but it can refresh.&nbsp; So the absolute maximum uptime is 100%, but the uptime is mainly dictated by how fast you can hit your Solar/Lunar Eclipse procs, which is a function of the rotation duration, which itself is a function of haste.&nbsp; Therein lies the feedback loop.</p>",
+    "PostedDate": "2010-09-27T17:41:29.35-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "499231",
+    "ThreadId": "228765",
+    "Html": "<p>That's what proc settling is for :P</p>\r\n<p>Run a loop with the starting assumption of no uptime. Allow the loop to iterate with more and more procs (based on the rotation as changed by it's previous iteration). Eventually it will settle down to where there are no significant changes in the loop.</p>\r\n<p>I would also recommend the following on that:</p>\r\n<ul>\r\n<li>A loop counter with a limit of something like 50, to keep the loop from getting out of control in edge cases</li>\r\n<li>Specify Significant Change values. If the number of procs didn't change more than 0.1 or something, there's no reason to keep running the loop for the extra decimal points</li>\r\n</ul>\r\n<p>We do this in the DPSWarr Arms rotation, it's time consuming, but well worth it when you have a lot of abilities that are dependant on other abilities proc'ing certain ways.</p>\r\n<p>Specifically, we start the loop assuming you are doing nothing but your filler ability of Slam (you do that when there's nothing else). That takes care of the first loop iteration, which gives me solid numbers for how many times Overpowercan proc (from the Slams being Dodged/Parried) and Sword Spec can proc (from any melee attack). Next loop takes those two into consideration and actually runs with my ability priority list. It repeats by sending these numbers back into itself until the ability activations for everything stops significantly changing. In most cases, it only runs it 3-4 times.</p>",
+    "PostedDate": "2010-09-27T17:47:23.527-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "499249",
+    "ThreadId": "228765",
+    "Html": "<p>There's got to be a better way.&nbsp; I actually spent some time in BC analyzing some trinket - I can't remember which, now - but it was a chance-on-hit haste proc that worked similarly.&nbsp; I found a closed-form solution for the limit there, but I never got a chance to double-check my work or put it into the model, as I was busy revamping everything for Wrath.</p>",
+    "PostedDate": "2010-09-27T19:38:12.127-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "499624",
+    "ThreadId": "228765",
+    "Html": "<p>Well a closed form solution will be a Markov process stationary distribution&nbsp;in one way or another, so if you check any of the old threads about that you should get some info. I'm pretty sure I posted a few times on haste situations specifically. The thing is you need to be very explicit about the rotation. There's a question of whether you know what is optimal and you just need to find what uptime you get with a specific rotation or if you have to find what is optimal in the first place. I'm pretty sure to you it's very clear how it all works out, but at least to me with no knowledge about it I can't use the above information to create model from it (and yes if by chance I did some moonkin modeling a long time ago I already forgot all about it).</p>",
+    "PostedDate": "2010-09-28T13:02:09.417-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "499703",
+    "ThreadId": "228765",
+    "Html": "<p>Been thinking about what you're asking, wouldn't the first thing to do be calculate the rotation duration? If it comes in under 15 seconds then you could make the assumption that the Natures Grace haste benefit would be constant. I would also think that you could pretty much guarantee you'd be under the Natures Grace haste until your first eclipse because when you start your first rotation you only need half as many lunar/solar energy since you &quot;start in the middle&quot; and the first cast is almost always a MF or IS. I'd only look at more complex modeling if that test fails.</p>\r\n<p>In any case wouldn't the solar/lunar energy be the prime factor? So you'd work out an average amount of solar/lunar energy calculated per cast and then work out the number of casts based on that and then calculate the rotation duration.</p>\r\n<p>1. Working Lunar, something like Solar Energy per SF x euporia benefit which is 20 x 1.24, so five casts to generate enough energy to flip eclipse (actually its five casts regardless of whether you get euphoria or not). So on my rotation I'd need to model the duration for SFall, MF, IS +5 SF (factoring haste and lag) to see if that comes in under 15 seconds. Note: My rotation may not be &quot;right&quot; :-)</p>\r\n<p>2. Working Solar, it'd be lunar energy per WR x euphoria benefit which is 13 x 1.24, so 7 wraths to flip it (or 6 WR and one SS). In this case you'd probably model duration for MF, IS, SS, + 6xWR.</p>\r\n<p>As for the more complex situation - ie: where the rotation is longer than 15 seconds. Wouldn't you simply assume you had the haste benefit for 15 seconds and only spells outside that duration don't get it. So calculate the duration of the fixed portion of the rotation ie: Sfall, MF, IS, SS, deduct that from the natures grace duration and then work out how many natures graced SF or WR fit in the remaining duration then deduct that from the total number required (calculated in 1 &amp; 2 above). Only problem I see is that I can't quite squeeze the Starfall in every Lunar Eclipse, even with both glyphs the cooldown is just a tad too long...</p>\r\n<p>Note: I tried to get on the PTR to run through my rotation and double check my logic but they're down at the moment.</p>",
+    "PostedDate": "2010-09-28T18:10:09.643-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "499727",
+    "ThreadId": "228765",
+    "Html": "<p>What I wound up doing was an iterative process like what Jothay suggested.&nbsp; I'm not convinced it's 100% accurate in its current form, but the performance hit wasn't too big, so I'll probably keep the basic structure and tweak it until I get some decent numbers out of it.</p>",
+    "PostedDate": "2010-09-28T20:49:50.49-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "499733",
+    "ThreadId": "228765",
+    "Html": "<p>Honestly, it was the only thing that made any sense to work realistically. I had tried to create a Markov process with Kavans help but there were just too many states and users would have needed supercomputers to actually do calcs. The iterative process may be a bit of a performance hit but it's above 90% in accuracy for number of activates for each ability and thankfully factors in all the different aspects of things procing off of other things and procing off themselves (Sudden Death Executes could proc Sudden Death).</p>",
+    "PostedDate": "2010-09-28T20:59:45.673-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "500035",
+    "ThreadId": "228765",
+    "Html": "<p>Dopefish,</p>\r\n<p>I think you can get a very good answer without iteration, and your answer will be smoother (iterative solutions may see the score &quot;jump&quot; based on when you decide to exit the loop).</p>\r\n<p>Assumptions:</p>\r\n<p>A) If you know in advance what your average haste is and what your rotation (priority list) is, you can deterministically find the average time between Eclipses, and the average time between casts of any particular spell. (for example, 2.1 Eclipses/minute and 2.8 Insect Swarm casts per minute.</p>\r\n<p>B) The numbers you can compute in (A) tend to change slowly and approximately linearly with Haste. &nbsp;This is probably true except at haste <strong>breakpoints</strong> where DoTs gain an extra tick (and about 2s duration). &nbsp;However you can compute those breakpoints in advance, so we'll do that and adjust the algorithm accordingly.</p>\r\n<p>Algorithm:</p>\r\n<p>1) Do the computations for (A) assuming 0% Nature's Grace uptime, and assuming 100% Nature's Grace uptime. &nbsp;Assuming those two haste levels crossed one or more DoT <strong>breakpoints</strong>, do the computations for (A) at the haste levels just on either side of those breakpoints (breakpoint + .001% haste and breakpoint - .001% haste).</p>\r\n<p>2) The computations from (1) give you a continuous piecewise-linear function that gives you a very good approximation for Eclipse duration and spell mix as a function of average haste. &nbsp;I'll call this function <strong>SpellMix</strong>(haste). &nbsp;For a given spell-mix and Eclipse duration, you can compute.</p>\r\n<p><strong>Eq1</strong>: NGUptime = 25% * min(4, Dot_Casts_Per_Minute, max(eclipse_procs_per_minute, 1))</p>\r\n<p>This equation is too optimistic at very high haste levels (where NG procs might overlap), &nbsp;but I think it is a good starting point.</p>\r\n<p>Average haste is a linear function of NGUptime. &nbsp;Average haste is a continuous and piecewise-linear (it bends when (<strong>Eq1</strong>) makes a different min() or max() choice) function of <strong>SpellMix</strong>.</p>\r\n<p>3) You can now &quot;draw&quot; the continuous piecewise-linear function</p>\r\n<p><strong>Haste'</strong>(<strong>SpellMix</strong>(Haste))</p>\r\n<p>You have feasible solutions wherever <strong>Haste' </strong>= Haste. &nbsp;You are certain to have at least one feasible solution. &nbsp;In the rare cases where you get more than one, I'd be inclined to use the one with the highest DPS (almost certainly the one with the highest average haste), since the skilled Moonkin has an incentive to &quot;fudge&quot; his rotation to get there (perhaps with a well-timed haste potion).</p>\r\n<p>&nbsp;</p>\r\n<p>Kavan,</p>\r\n<p>I think the Moonkin simulator &quot;optimization&quot; has always been restricted to computing the total-damage from each of several fixed rotations, and choosing the rotation with the highest total damage.</p>\r\n<p>In Cata it will probably make sense to look at the DPS and DPM for each rotation, and find the mix of two rotations that is optimal for the mana situation. &nbsp;In LK there was very little point to that. &nbsp;LK Eclipse caused our highest DPS rotations to also be our highest DPM rotations. &nbsp;The overall optimum was to spend all your mana on the highest DPS rotation, and then melee (Rawr just calls melee &quot;oom&quot;, and treats it as zero DPS, which isn't a bad approximation).</p>\r\n<p>In Cata, Moonkin pick up a &quot;Scorch&quot; equivalent (Lunar Shower talent). &nbsp;It provides a filler that does fair dps (&gt;85% of our normal fillers) for very little mana. &nbsp;It is also likely that our highest DPS rotations will burn through mana at an unsustainable rate. &nbsp;In mana-limited fights, a good optimization would either add a variable-fraction of &quot;Scorch&quot; to normal rotations, or use a mixture of heavily-Scorched, and Scorchless rotations.</p>",
+    "PostedDate": "2010-09-29T08:06:01.84-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

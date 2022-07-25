@@ -1,0 +1,111 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Mage",
+      "DisplayName": "Rawr.Mage"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-09-08T13:21:05.747-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The calculation of the hit rate percentage for mages seems to be broken in the latest Rawr3 build. It reports my correct hit rating value of 339 fully buffed but upon first loading my profile from the armoury it reports this as 17.923% hit rate which is not correct. If I disable the Misery buff and re-enable it again the hit rating is still shown as 339 but is now reported as being the right hit rate of 16.923%. This affects all equipment choices it is making because on initial loading it thinks i am too far over the hit rating and is recommending i swap out gear with hit rating on.",
+    "LastUpdatedDate": "2017-11-27T11:02:03.183-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "High",
+      "Severity": 150,
+      "Id": 3
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-08-16T23:36:52.29-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Mage] Misery/Hit Calculation Incorrect",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 18498
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3886,
+      "FileName": "Phnom.xml",
+      "DownloadUrl": ".\\3886"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "In fact i think it might be the Heroic Presence buff with the problem, looking at my character XML file myself I see this buff listed twice in the list of active buffs, which is perhaps where it is getting the extra 1% hit rate from? I am a Draenei Mage and this buff is grayed out because I have this buff all the time.",
+      "PostedDate": "2010-08-16T23:40:20.607-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I think the problem isn't Mages fault but the Saved Buff Set system as I've seen a similar issue in DPSWarr. I am investigating a method to validate the buff set again, and to make it not check your Set Bonuses when saving/applying so changing your Set Bonus won't mess up the Saved Buff Set.",
+      "PostedDate": "2010-08-18T14:04:20.007-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "As a quick fix, try un-checking and re-checking the heroic presence buff, that should reset it to only using one.",
+      "PostedDate": "2010-08-19T09:21:02.2-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 53261.",
+      "PostedDate": "2010-08-19T10:53:12.233-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm fairly certain I have fixed this for next version, though it will probably need a second person's testing to be sure.",
+      "PostedDate": "2010-08-19T10:53:54.49-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T13:21:05.747-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-11-22T19:56:47.293-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T18:53:12.437-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:06:03.233-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-21T00:00:17.077-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:27:42.577-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:05.903-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:02:03.183-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

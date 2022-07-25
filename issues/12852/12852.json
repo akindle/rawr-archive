@@ -1,0 +1,81 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtPaladin",
+      "DisplayName": "Rawr.ProtPaladin"
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-09T17:30:58.223-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Beta 5 of Rawr suggests +32 sta +2% armor to be 2.5 times more valuable than 21 def, 5 blv meta. It also lists 104 AP, 15 crit to be much better than 15 def, 20 dodge shoulder patch. Same for most enchants and item upgrades. All recommendations suggest I replace def rating for str, agi and crit. And since I'm sitting on 541 defense atm, all those suggestions would take me under the def cap and make me crittable. Something sounds terribly wrong here, when DPS parts are placed higher than def ones.\nAttaching a char file aswell.",
+    "LastUpdatedDate": "2013-05-16T05:26:00.51-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-03-23T04:03:12.743-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtPaladin] Heartily suggests I go below def cap",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 12852
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1746,
+      "FileName": "TestKrisTank.xml",
+      "DownloadUrl": ".\\1746"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "A recent change to the way Ardent Defender affects survival points in build 32354 is to a minor degree responsible for this.  (it doesn't calculate increased damage when citically hit)\r\nI'll talk to Solieu and find a fix.\r\n\r\nRegarding your metagem choice, the ranking of the list doesn't take critability into consideration. \r\nYou're currently using the eternal earthstorm meta (12 def, 5% bv) and changing to 32 sta, 2% armor leaves you critable by 0.05%.\r\nHowever, the mitigation gained from 2% Increased Armor Value from Items outweighs the increase in average damage taken while critable by this miniscule amount.\r\nThis explains the higher overall ranking for the metagem at your current set options, Mitigation Scale (100%) and Boss Attack value (30k pre mitigation).\r\n\r\nAlso remember, when you right click the item and select 'evaluate upgrade' it takes your current optimizer settings (which is only 'overall' by default).\r\nGo to Tools -> Optimize...  and in the field 'Additional Requirements' click 'Add', select '% Chance to be Crit' and set it it to =< 0 and click 'cancel'.\r\nThis setting is now used by the optimizer when you use the 'Evaluate Upgade' and should not list anything that leaves you critable anymore.\r\n\r\n",
+      "PostedDate": "2009-03-23T07:41:06.837-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This bug also seems to affect prot warriors.  Optimizing for threat, % chance to be crit <=0 was added as a stipulation, and it's still recommending a gearset with 521 defense.  I did notice that it grabbed my pvp legs, perhaps the model is assuming resilience still reduces the crit cap?",
+      "PostedDate": "2009-03-27T11:26:45.533-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Can you explain what bug you're seeing, cwagon?  The intended way to make sure you're uncrittable is, as you say, to use the Optimizer, with a requirement of % chance to be crit <= 0. A gearset with 521 def and some significant chunk of resilience (Offhand I'd guess something like 30resil would be enough, but don't have the numbers in front of me) satisfies that requirement. So what's the bug?",
+      "PostedDate": "2009-03-27T11:39:59.597-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-09T17:30:58.223-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:41:26.953-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:35:08.04-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:00.51-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

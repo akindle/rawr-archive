@@ -1,0 +1,114 @@
+[
+  {
+    "Id": "139486",
+    "ThreadId": "42001",
+    "Html": "So my main is a druid, and maybe it's just in there somewhere and I can't find it, but the most annoying thing about Rawr to me, by far, is that I can't find a way to adjust how much a &quot;stat group&quot; (like Mitigation) counts for. For bears, it would be very nice to be able adjust Survivability to count for a lot less than it does by default rather than having to sort by Mitigation and adjust in my head when the Survivability of an item is disproportionately high. Also, I want to spec moonkin for PvP, but the moonkin stats are pure damage, with no survivability. Great for raiding, but completely worthless for PvP. (Also, I don't understand the difference between Damage and Raw Damage, but I imagine that information is available on the site somewhere.\r\n",
+    "PostedDate": "2008-12-10T15:19:13.317-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "139516",
+    "ThreadId": "42001",
+    "Html": "As far as the Damage vs. Raw Damage - Raw Damage is max damage with no mana worries where you can just go all out.   The damage part is based on the fight length and mana concerns including changes in rotation.  If you shorten the length of the fight, you should see the damage figure approaching the raw damage figure until you reach a fight length where you can use your max damage rotation for the entire fight without running out of mana.  An easy mistake to make is to sort by overall in the moonkin mode, in most cases you want to sort by damage as it will then correctly factor in the mana regen value and the length of the fight.  You could also make up one set on the damage value for boss fights and another on the raw damage value for trash fights (or very short fights).<br>\r\n<br>\r\nWith the bear issue, Astrylian is working in a fix to this soon hopefully - once you reach a certain level of survivability, it will reduce the value of survivability.  Basically it will reduce the value of stam etc once you reach a certain level (possibly user defined).  After all, no matter what your gear level, you don't want Rawr telling you that 1 Agi &gt; 100 Stam.<br>\r\n<br>\r\n<br>\r\n<br>\r\n",
+    "PostedDate": "2008-12-10T17:42:23.79-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "139582",
+    "ThreadId": "42001",
+    "Html": "It just seems to me like having the ability to let the user define things should be available regardless. It's nice to have defaults for people who don't really know much about it, but letting us do it ourselves is also nice. It doesn't even have to be complicated, just the ability to add a multiplier would be wonderful.<br>\r\n<br>\r\nAlso, adding in some kind of pvp support would be extremely nice for everything. Obviously just picking pvp items up is good, but you don't have any to start, and even if you get everything, there will be the occasional item from pve that's better. Right now I'm trying to gear my cat for pvp and I don't really see myself wearing Eviscerator's over Valorous, even if I don't get any resil, but I certainly would value stam a lot higher than I would in a raid or than Rawr does.\r\n",
+    "PostedDate": "2008-12-10T23:22:18.167-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "139626",
+    "ThreadId": "42001",
+    "Html": "The shadow priest module makes it really easy to make PvP sets.&nbsp; There is slider for the weight of survivability.&nbsp; I actually turn it off for my PvE sets and crank it up to max for my PvP sets.<br>\r\n<br>\r\nDefinitely a nice way of handling it.<br>\r\n<br>\r\nI also like the way it handles DPS.&nbsp; It has DPS, which is your quick burst DPS, and sustained DPS which includes your dots and mana pool.&nbsp; To me the description of the Moonkin &quot;Raw Damage&quot; sounds broken since there is no in-game way to acheive infinite mana.<br>\r\n<br>\r\n",
+    "PostedDate": "2008-12-11T02:28:10.267-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "139669",
+    "ThreadId": "42001",
+    "Html": "As far as moonkin &quot;Raw Damage&quot; goes, people wanted a way to override mana concerns in case they felt Rawr made a mistake in calculating time to OOM.&nbsp; Rather than having them set the fight length to 1 minute, which changes variables in the calculations and may give incorrect results, I decided to implement a rating that shows what their DPS would be if they didn't run out of mana.&nbsp; It's not meant to be _absolutely_ &quot;infinite mana&quot;, but &quot;infinite mana within the context of an X-minute fight.&quot;<br>\r\n",
+    "PostedDate": "2008-12-11T05:41:24.053-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "139822",
+    "ThreadId": "42001",
+    "Html": "AlexMc: There hasn't (and won't be) a slider for adjusting the value of mitigation vs survivability. The reason for this is that Rawr has a constant meaning for survivability, and mitigation is scaled to match survivability in value for equal-difficulty content, with good healers. However, you're not always doing equal-difficulty content, and you may have great or poor healers, which is why the desire for adjusting the value of survival/mitigation comes up. Instead of letting the user directly control (and need to constantly adjust that as gear changes) that, in the next version, we're introducing a configurable soft cap on the value of survivability. This provides a better solution, because that's really what the desire is, and accurately adjusts as your survivability adjusts (since that's what you want to do; you want to get 'enough' survivability, then focus more on mitigation). This is coming up so much right now, because the current tier of raid content is tuned for gear much lower than the gear you get from it and you get before it. (ie, it's easy, so you don't need much survivability)<br>\r\n<br>\r\nEDIT: Oh, dopefish, have you considered renaming those to Burst DPS and Sustained DPS? I think that would make them more explanatory.<br>\r\n",
+    "PostedDate": "2008-12-11T13:11:35.367-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "139866",
+    "ThreadId": "42001",
+    "Html": "To have a soft cap is not really good in some situations. <br>\r\n<br>\r\nExample:<br>\r\nI have 35k HP<br>\r\nI have low mitigation.<br>\r\n<br>\r\nI may feel that I should work on the mitigation more than the survivability in this case. So I'm setting the HP soft cap to 33kHP (it's ok to loose some HP to gain more mitigation)(perhaps it's a survivability cap and not a HP cap, but you get the point).<br>\r\nIf I find one item, which compared to what I have now has +1 armor and -100 stamina. Since I'm already above the soft cap the loss of 100 stamina is irrelevant. The +1 armor is good though, so it will recommend the new item. That is not a desired behaviour.<br>\r\n<br>\r\nAnother example is if I feel I haven't reached the soft cap for survivability, but I still want to emphasize my mitigation. I would like more HP, but I would like more mitigation more. <br>\r\n<br>\r\nWhat I would like is exactly feature that which you are saying that you won't implement. I want a slider to rate survivability versus mitigation. Scale one in comparison with the other. I don't care if Rawr has a constant meaning for mitigation compared to survivability, that is not what I as a user care about or is interested in. What I have started to do is to get the values from Relative Stats Values, rescale them manually (about 25% for me), and use lootrank.com to find the gear I'm interested in. <br>\r\nRawr is much better than that, but that's my only way to scale mitigation versus survivability - so that's what I'm using.<br>\r\n<br>\r\nPlease reconsider!<br>\r\n<br>\r\n",
+    "PostedDate": "2008-12-11T14:56:36.807-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "139881",
+    "ThreadId": "42001",
+    "Html": "You don't seem to understand what Astrylian means.   If you set your soft-cap (not yet implemented into Rawr!) to 33000, it doesn't suddenly make Stam worth zero once you pass the cap (that would be a hard cap).  Once you reach the soft cap, it reduces the value of survivabilty vs. mitigation and will focus on mitigation more.   Before the soft cap 10 Agi might be worse than 10 Stam, after the soft cap, 10 Agi might be worth more than 20 Stam.   Stam is still valued, but not as much as before the cap.<br>\r\n<br>\r\nWith the current optimiser, you can set a max health and optimise, but in that case it is a HARD cap and you get to the case you are talking about where you might get the +1arm, -100sta item offered as an upgrade.<br>\r\n<br>\r\n<br>\r\nFrankly, to me, what Astrylian is suggesting is ideal.<br>\r\n<br>\r\n",
+    "PostedDate": "2008-12-11T15:50:38.89-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "139893",
+    "ThreadId": "42001",
+    "Html": "Yep. What you just posted, Rooted, is exactly why it's a <strong>Soft Cap</strong>, not a hard cap. For example, the default soft cap will be 140k, I think. Up to 140k, everything works like it currently does. After that, the value of survivability gradually drops off, though never reaches 0. I believe with the current rate I'm using, to reach 160k actual survivability, you need 180k raw survivability. But it's not like it just drops to half value as soon as you hit the soft cap; it's a gradual curve.<br>\r\n",
+    "PostedDate": "2008-12-11T16:27:54.35-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "139924",
+    "ThreadId": "42001",
+    "Html": "dope,<br>\r\n<br>\r\nAfter thinking about this a bit I believe Moonkin and SPriest do the same thing but use different names.<br>\r\n<br>\r\nHowever there might be a difference in the weighting.&nbsp; If I set a really long fight length with no mana regen buffs then Rawr tells me to start stacking spirit and int really heavily.&nbsp; It somehow starts to revalue the sustained dps making it very clear that although you can do a lot of dps if you stack spellpower, crit, etc. you won't be able to last for the fight length you selected.<br>\r\n<br>\r\nOne of the best things about using Rawr is that it tells you when to break the rules based on the fights you anticipate.&nbsp; For example my spriest will probably never be hit capped because it's clearly better to stack crit and haste once you are near the cap than it is to be over the cap.&nbsp; (I didn't want to believe it at first, but WWS confirm Rawr's predictions.)<br>\r\n<br>\r\nAnyway, just some thoughts!<br>\r\n",
+    "PostedDate": "2008-12-11T20:14:09.11-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "139964",
+    "ThreadId": "42001",
+    "Html": "Ok, then I understand what you mean.<br>\r\n<br>\r\nI'm not entirely sure that it is what I want, but still, I don't really think I grasp the full concept - my mind is still working with a relative value between mitigation and survivability.<br>\r\n<br>\r\nOk, a few questions that has come up then.<br>\r\n<br>\r\nThe function with which the survivability scales in importance compared to mitigation, will that be a known function. <br>\r\nWill I as a user have any say in how fast the relation between surv and mit changes? You indicate that to reach 20k ofer the cap I need 40k raw - is that changable?<br>\r\n<br>\r\nTo me it's starting to look like an ok solution - but I still think that the slider would be a better one. Currently (at bosses) I seem to die about 60% to a cause which I relate to mitigation, and 40% where I get burst damage and would need more survivability. To me that indicates approximately how I should value mitigation compared to survivability, in order to slowly make my deaths come from mitigation and survivability equally much (which I think is a good sign of a good balance between mit and surv).<br>\r\n<br>\r\nBut, what should I set the soft cap at? Should I set it at my current surv? I have no idea how much that would make Rawr prefer mitigation.<br>\r\nOr should I set it slightly lower than my current surv just to make Rawr prefer mitigation even more. But how much lower to achive my desired percentage in valuing mit and stam? I would like to at least know what changes to cap makes to the valuing of mitigation and survivability.<br>\r\n<br>\r\nThe use of a gradual curve might be a good one, but the use of such a curve is very arbitrary. There's nothing that says that that curve will be absolutely best for me. The calculations of survivability and mitigation are exact (as exact as can be), but that curve is not exact. And since it's not exact, why not let the user control it.<br>\r\n<br>\r\nAlso, we as users are trusted with the task of deciding how important threat is for us. That's good. Why not let us decide about survivability and mitigation too?<br>\r\n",
+    "PostedDate": "2008-12-12T00:50:57.923-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "140122",
+    "ThreadId": "42001",
+    "Html": "No, I wasn't planning to let the function of how the value of surv drops off be user customizable. It's quite a complex function, and one which I think you can already tweak to your liking, just by adjusting the soft cap.<br>\r\n<em><br>\r\n&quot;To me it's starting to look like an ok solution - but I still think\r\nthat the slider would be a better one. Currently (at bosses) I seem to\r\ndie about 60% to a cause which I relate to mitigation, and 40% where I\r\nget burst damage and would need more survivability. To me that\r\nindicates approximately how I should value mitigation compared to\r\nsurvivability, in order to slowly make my deaths come from mitigation\r\nand survivability equally much (which I think is a good sign of a good\r\nbalance between mit and surv).&quot;<br>\r\n<br>\r\n</em>Oh, definitely not. Well balanced mitigation vs survival means that when you die and it's your fault, it's almost always due to lack of mitigation.<strong> The most basic idea of mitigation vs survival is that you want 'enough' survival to not be bursted down, and then stack as much mitigation as you can. </strong>How much 'enough' is varies by the boss, your healers, and luck during the fight. So there's no perfect cap for each boss or anything, and we want it to be a soft cap, not hard, because there's still random chance involved (stars could align and you get 20 undodged attacks in a row at the same time as son raid-wide aoe goes off or something; you wouldn't want to gear toward that situation, but it's possible, which contributes to why you'd take 100stam over 1armor, even if you were way over the soft cap).<br>\r\n<br>\r\nThreat's value is customizable, because it varies with external data (ie, what you're doing, and how much threat you need). There is a known relation between mit and surv, so those aren't customizable. Perhaps some charts will help explain things.<br>\r\n<br>\r\n<span style=\"text-decoration:underline\">Final Value of Survival vs Raw Value of Survival<br>\r\n</span>140k Soft Cap:\r\n<a href=\"http://dl-client.getdropbox.com/u/38028/Rawr.Bear.SurvSoftCap.140k.png\">http://dl-client.getdropbox.com/u/38028/Rawr.Bear.SurvSoftCap.140k.png</a><br>\r\n200k Soft Cap:\r\n<a href=\"http://dl-client.getdropbox.com/u/38028/Rawr.Bear.SurvSoftCap.200k.png\">http://dl-client.getdropbox.com/u/38028/Rawr.Bear.SurvSoftCap.200k.png</a><br>\r\n<br>\r\n<br>\r\n",
+    "PostedDate": "2008-12-12T10:30:11.953-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "144122",
+    "ThreadId": "42001",
+    "Html": "It is a old topic, but i think is better to reply to it instead to create a new one about same thing<br>\r\n<br>\r\nThe soft cap thing is a good (lazy) thing to find upgrades to actual gear, having in mind a fixed point (and hp) of progression, but isnt the best solution to plan individual new upgrades because it dont leave a choice to choose improve a particular thing that u think is missing, while u are doing a certain type of dungeons.<br>\r\n<br>\r\nFor example, if just got 80, have a very low hp (lets say 28k), and im making a list that a can farm. The 1st ones for actual rawr will be the polar set. Cool, that is really good, but after that i want focus a little in mitigation because isnt cool u have 35k hp and be killed in a blink in a aoe pull in heroics. So i will have to put a lower softcap, to find something else in list besides polar set and all 24sta gems. I can still find that the best will still be 24sta gems and polar set, changing other items ones of higher mitigation, but that is a thing that many people usually NEED to do.<br>\r\n<br>\r\nThat can work, but its a little strange change softcap to something low only to find gear with better mitigation, and if i get some more gear, raise my hp, ill have to recalc the softcap because the old one (that i used in 28k) will hurt surv more than i want.<br>\r\n<br>\r\nWith a simple ratio, ir even a multiplicator to surv, i can play with it, change it to 0.9, 0.8, until i fell confortable with the new gear options and i can keep that ratio til i fell that i need shift the priority a little more. I dont need change the ratio with new gear, and it can scale better because isnt (so) dependent from buffs that i can have or note (like fort, shouts) to make a balanced gear to actual tier of enconters that u need tank.&nbsp; <br>\r\n<br>\r\nAnd it can help even in optimizer... in a lazy way, i can put a ratio and run it. The result will have a hp...if i think that is high enough, i can force more mitigation without fixing a unknown softcap or one abirtrary fixed hp constrain, just changing ratio.<br>\r\n",
+    "PostedDate": "2009-01-03T09:18:17.7-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "144149",
+    "ThreadId": "42001",
+    "Html": "I understand that you're looking for finer control of the value of survival, but think more about <em>why</em> you want finer control. The end goal is to have 'enough' survivability for the content you're doing. That's what you can control with the softcap. Just let Rawr figure it out for you, and I think you'll be pleasantly surprised. <br>\r\n",
+    "PostedDate": "2009-01-03T14:09:34.7-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

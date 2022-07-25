@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "186305",
+    "ThreadId": "55187",
+    "Html": "Changeset 33665<div><br></div><div>I'm attempting to use Rawr while leveling my characters, particularly to choose whether the quest green I've just recieved is better than the blue I've been wearing since Outland.  I would also like to use it as a gauge of whether I'm putting out as much hurt as I should be, so I'm clicking the Food &amp; Elixirs/Flasks boxes in the optimizer.  Of course, the optimizer usually recommends Fish Feast and the raid flasks Endless Rage, Frostwyrm etc, so I've been commenting out those lines in the Buff class and rebuilding the solution.</div><div><br></div><div>I would like to wrap those lines in the class with a conditional to check the character's level and make those buffs available only to Level 80s.  What variable is available to the Buff class that would let me do this?</div><div><br></div><div>Thank you for your time and an excellent tool.</div>",
+    "PostedDate": "2009-05-03T10:48:20.28-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "186333",
+    "ThreadId": "55187",
+    "Html": "Remember, that Rawr isn't accurate at all for pre-80. It's intended only for level capped characters. You can, of course, still use Rawr before that, such as comparing quest rewards like you said. Implementing special features to aid lower levels isn't something we intend to do, however. Regardless, if you don't want it to optimize food/elixir/flasks, just uncheck that box in the optimizer for that. Food/Elixirs/Flasks that you have selected will be used still. And there's a Buffs chart, where you can compare different food/elixirs/flasks, if you have some subset of them available.<div><br></div><div>Let me know if this doesn't answer your question.</div>",
+    "PostedDate": "2009-05-03T14:58:53.21-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "186667",
+    "ThreadId": "55187",
+    "Html": "Thanks for the quick response (where do you guys find the time to play the game?).<div><br></div><div>As to the Rawr group modifying the code, I have been modifying the code, commenting out some buffs, and would never expect to have this become part of the project.  When I comment out the raid buffs, it means the exe is not applicable to my raiding toon, so I have to compile 2 different versions of Rawr.  If I could access a variable in the Buff class I could put a conditional around the buffs I'm currently commenting out.  But I don't know which variable would be appropriate and whether it is available to the Buff class.</div><div><br></div><div>If you could tell me the name of the variable that holds the characters level, then I would be out of your hair (for a few days, anyways).</div><div><br></div><div>Thank you for your time.</div>",
+    "PostedDate": "2009-05-04T13:07:21.127-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "186679",
+    "ThreadId": "55187",
+    "Html": "Well, there's a Level property on the Character object, but Buffs wouldn't have that, and I don't think that property even gets populated or is stored anywhere. So, basically, what you're looking for doesn't exist, I don't think. Sorry.",
+    "PostedDate": "2009-05-04T14:03:39.433-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "186729",
+    "ThreadId": "55187",
+    "Html": "Yeah, I was looking at the Character class and saw that the Level property was just set to 80.  For me to parse the XML &amp; populate it would be more trouble than my current practice of commenting and compiling 2 versions.<div><br></div><div>On another note, while I was studying the code I got interested in the XMLDocument that the Character class parses in order to populate the properties.  Would you be so kind as to point me to the schema of that XML document?  I tried looking at it's contents while debugging but wasn't able to find anything concrete.</div><div><br></div><div>Thanks again.</div>",
+    "PostedDate": "2009-05-04T16:19:48.437-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "186749",
+    "ThreadId": "55187",
+    "Html": "That's a question for Blizzard; that's the character xml from the armory. We don't have a schema for it, beyond just looking at the xml data.",
+    "PostedDate": "2009-05-04T17:32:07.707-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,105 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Items",
+      "DisplayName": "Rawr.Base.Items"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-04-25T01:06:40.277-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The update from armory code depends on the xml attribute armorBonus being test in the page/itemTooltips/itemTooltip/armor node but many items that should have bonus armor rather than armor don't have this tag set.  Apparently Blizzard decided that since all items other than armor could only have bonus armor they'd skip on setting this tag :-)\n \nAnyhow, adding the following:\n \n                if (slot == ItemSlot.Finger ||\n                    slot == ItemSlot.MainHand ||\n                    slot == ItemSlot.Neck ||\n                    (slot == ItemSlot.OffHand && type != ItemType.Shield) ||\n                    slot == ItemSlot.OneHand ||\n                    slot == ItemSlot.Trinket ||\n                    slot == ItemSlot.TwoHand)\n                {\n                    bBonusArmor = true;\n                }\n \n \nin Armory.cs after:\n \n                bool bBonusArmor = false;\n                foreach (XmlNode node in docItem.SelectNodes(\"page/itemTooltips/itemTooltip/armor\"))\n                {\n                    stats.Armor = int.Parse(node.InnerText);\n                    XmlNode nodeAttribute = node.Attributes.GetNamedItem(\"armorBonus\");\n                    bBonusArmor = (int.Parse(nodeAttribute.Value) > 0);\n                }\n \nwill resolve this issue (I believe).",
+    "LastUpdatedDate": "2013-05-16T05:21:01.64-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-04-18T18:09:27.223-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Items] Update from Armory does not correctly detect \"BonusArmor\" vs. \"Armor\" for many items",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17300
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I don't get what you're asking/proposing. It already counts any armor on those slots as Bonus Armory, and attempts to guess the Bonus/Normal split on Cloaks. What are you suggesting be changed?",
+      "PostedDate": "2010-04-18T20:36:37.837-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "An example item which depends on whether you refresh from Armory or Wowhead currently is \"Seal of Ulduar\" (item # 45871).  If you refresh from wowhead, Rawr correctly determines that it provides bonus armor.  If you refresh from the armory, it incorrectly determines that it provides armor.  If you refresh from one and then the other source, you'll get a pop-up box (if running single threaded) or a summary box after (if running multi-threaded) indicating that the stats have changed and you see it's flipping back and forth from providing armor vs. bonus armor.",
+      "PostedDate": "2010-04-18T21:42:58.987-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "After applying the above change, removing ItemSource.xml, doing a full refresh from the Armory, removing ItemSource.xml again, doing a full refresh from Wowhead, The below items have different stats based on refresh from armory vs. wowhead.  Note that 11 of the differences are due to BOA scaling gear.  For the other items, I have not yet looked to see which are due to different data on armory vs wowhead and which are due to the wowhead vs. armory parsers in rawr.\r\n\r\nBOA:\r\n==========================================================\r\n[42948] Devout Aurastone Hammer\r\nArmory: 28 Stamina, 42 Intellect, 343 Spell Power, 37 Mana per 5 sec\r\nWowhead: 28 Stamina, 42 Intellect, 343 Spell Power, 7 Mana per 5 sec\r\n\r\n[42951] Mystical Pauldrons of Elements\r\nArmory: 878 Armor, 64 Stamina, 43 Intellect, 50 Spell Power, 86 Mana per 5 sec\r\nWowhead: 878 Armor, 64 Stamina, 43 Intellect, 50 Spell Power, 17 Mana per 5 sec\r\n\r\n[44094] The Blessed Hammer of Grace\r\nArmory: 37 Stamina, 343 Spell Power, 37 Resilience, 49 Mana per 5 sec\r\nWowhead: 37 Stamina, 343 Spell Power, 37 Resilience, 9 Mana per 5 sec\r\n\r\n[44100] Pristine Lightforge Spaulders\r\nArmory: 1570 Armor, 64 Stamina, 50 Spell Power, 43 Resilience, 86 Mana per 5 sec\r\nWowhead: 1570 Armor, 64 Stamina, 50 Spell Power, 43 Resilience, 17 Mana per 5 sec\r\n\r\n[48677] Champion's Deathdealer Breastplate\r\nArmory: 68 Agility, 68 Stamina, 137 Attack Power, 45 Intellect\r\nWowhead: 1171 Armor, 68 Agility, 68 Stamina, 137 Attack Power, 45 Intellect\r\n\r\n[48718] Repurposed Lava Dredger\r\nArmory: 68 Agility, 103 Stamina, 91 Attack Power, 45 Armor Penetration Rating\r\nWowhead: 68 Agility, 103 Stamina, 91 Attack Power, 45 Armor Penetration Rating, 15 Fire Res\r\n\r\n[48683] Mystical Vest of Elements\r\nArmory: 52 Stamina, 52 Intellect, 80 Spell Power, 172 Mana per 5 sec\r\nWowhead: 1171 Armor, 52 Stamina, 52 Intellect, 80 Spell Power, 34 Mana per 5 sec\r\n\r\n[48685] Polished Breastplate of Valor\r\nArmory: 78 Stamina, 78 Strength, 68 Crit Rating\r\nWowhead: 2093 Armor, 78 Stamina, 78 Strength, 68 Crit Rating\r\n\r\n[48687] Preened Ironfeather Breastplate\r\nArmory: 52 Stamina, 52 Intellect, 68 Spirit, 80 Spell Power\r\nWowhead: 527 Armor, 52 Stamina, 52 Intellect, 68 Spirit, 80 Spell Power\r\n\r\n[48689] Stained Shadowcraft Tunic\r\nArmory: 103 Stamina, 137 Attack Power, 68 Hit Rating\r\nWowhead: 527 Armor, 103 Stamina, 137 Attack Power, 68 Hit Rating\r\n\r\n[48691] Tattered Dreadmist Robe\r\nArmory: 52 Stamina, 52 Intellect, 68 Spirit, 80 Spell Power\r\nWowhead: 280 Armor, 52 Stamina, 52 Intellect, 68 Spirit, 80 Spell Power\r\n\r\n\r\nOther:\r\n==========================================================\r\n[46051] Meteorite Crystal\r\nArmory: 111 Intellect, 300 Mana per 5 sec (20 Sec/2 Min)\r\nWowhead: 111 Intellect\r\n\r\n[47725] Victor's Call\r\n[47881] Vengeance of the Forsaken\r\nArmory: 83 Expertise Rating\r\nWowhead: 83 Expertise Rating, 5x 215 Attack Power (20 Sec on Melee Hit) (20 Sec/2 Min)\r\n\r\n[47726] Talisman of Volatile Power\r\n[47879] Fetish of Volatile Power\r\nArmory: 114 Crit Rating, 8x 57 Haste Rating (on Spell Cast) (20 Sec/2 Min)\r\nWowhead: 114 Crit Rating\r\n\r\n[47835] Bulwark of the Royal Guard\r\n[47910] Aegis of the Coliseum\r\nArmory: 7960 Armor, 100 Stamina, 51 Strength, 39 Parry Rating, 223 Block Value, 32 Defense Rating\r\nWowhead: 7960 Armor, 100 Stamina, 51 Strength, 39 Parry Rating, 324 Block Value, 32 Defense Rating\r\n\r\n[47946] Talisman of Volatile Power\r\n[48018] Fetish of Volatile Power\r\nArmory: 126 Crit Rating, 8x 64 Haste Rating (on Spell Cast) (20 Sec/2 Min)\r\nWowhead: 126 Crit Rating\r\n\r\n[47948] Victor's Call\r\n[48020] Vengeance of the Forsaken\r\nArmory: 83 Expertise Rating\r\nWowhead: 83 Expertise Rating, 5x 250 Attack Power (20 Sec on Melee Hit) (20 Sec/2 Min)\r\n\r\n[47978] Bulwark of the Royal Guard\r\n[48055] Aegis of the Coliseum\r\nArmory: 8309 Armor, 114 Stamina, 58 Strength, 44 Parry Rating, 232 Block Value, 38 Defense Rating\r\nWowhead: 8309 Armor, 114 Stamina, 58 Strength, 44 Parry Rating, 347 Block Value, 38 Defense Rating\r\n\r\n[49463] Purified Shard of the Flame\r\nArmory: \r\nWowhead: 510 Health per 5 sec\r\n\r\n[49464] Shiny Shard of the Flame\r\nArmory: \r\nWowhead: 576 Health per 5 sec\r\n\r\n[49487] Purified Onyxia Blood Talisman\r\nArmory: 108 Parry Rating, 69 Defense Rating, 15 Fire Res\r\nWowhead: 108 Parry Rating, 69 Defense Rating, 101 Health per 5 sec, 15 Fire Res\r\n\r\n[51408] Wrathful Gladiator's Grimoire\r\nArmory: 109 Stamina, 48 Intellect, 111 Spell Power, 63 Resilience\r\nWowhead: 109 Stamina, 48 Intellect, 111 Spell Power, 79 Spell Penetration, 63 Resilience\r\n\r\n[51531] Wrathful Gladiator's Piercing Touch\r\nArmory: 58 Stamina, 26 Intellect, 60 Spell Power, 34 Resilience\r\nWowhead: 58 Stamina, 26 Intellect, 60 Spell Power, 43 Spell Penetration, 34 Resilience\r\n\r\n",
+      "PostedDate": "2010-04-18T22:36:02.743-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Looks like a",
+      "PostedDate": "2010-04-19T01:56:01.943-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Looks like a fairly straightforward change to me.  \r\n\r\nThe changes to the other items mentioned is something that would need some more investigating, but there's some things going wrong there at least.  It's probably extra spaces or punctuation messing things up for the parser.",
+      "PostedDate": "2010-04-19T01:58:58.8-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Here's an update on the specific items listed above which parse with different stats between Armory & Wowhead:\r\n\r\nData on the Armory web site is bad:\r\n[49463] Purified Shard of the Flame\r\n[49464] Shiny Shard of the Flame\r\n[49487] Purified Onyxia Blood Talisman\r\n[42948] Devout Aurastone Hammer\r\n[42951] Mystical Pauldrons of Elements\r\n[44094] The Blessed Hammer of Grace\r\n[44100] Pristine Lightforge Spaulders\r\n[48677] Champion's Deathdealer Breastplate\r\n[48718] Repurposed Lava Dredger\r\n[48683] Mystical Vest of Elements\r\n[48685] Polished Breastplate of Valor\r\n[48687] Preened Ironfeather Breastplate\r\n[48689] Stained Shadowcraft Tunic\r\n[48691] Tattered Dreadmist Robe\r\n\r\nData on Wowhead web site is bad:\r\n[47835] Bulwark of the Royal Guard\r\n[47910] Aegis of the Coliseum\r\n[47978] Bulwark of the Royal Guard\r\n[48055] Aegis of the Coliseum\r\n\r\nData on Armory & Wowhead is correct, refresh from Armory parses wrong:\r\n[51408] Wrathful Gladiator's Grimoire\r\n[51531] Wrathful Gladiator's Piercing Touch\r\n[47725] Victor's Call\r\n[47881] Vengeance of the Forsaken\r\n[47948] Victor's Call\r\n[48020] Vengeance of the Forsaken\r\n\r\nData on Armory & Wowhead is correct, refresh from Wowehead parses wrong:\r\n[46051] Meteorite Crystal\r\n[47726] Talisman of Volatile Power\r\n[47879] Fetish of Volatile Power\r\n[47946] Talisman of Volatile Power\r\n[48018] Fetish of Volatile Power\r\n\r\n\r\n  ",
+      "PostedDate": "2010-04-19T20:25:46.363-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Armory Parsing Fixed:\r\nVictor's Call/Vengeance of the Forsaken (Wasn't reading the line correctly, fixed regex to read both armory and wowhead texts)\r\nWrathful Gladiator's Grimoire/Piercing Touch (Was the Spell Penetration, added parsing so any other items that use SplPen will be parsed too)\r\n\r\nWowhead Parsing Fixed:\r\nMeteorite Crystal (regex fix to read both armory and wowhead versions)\r\nTalisman/Fetish of Volatile Power (regex fix to read both armory and wowhead versions)",
+      "PostedDate": "2010-04-20T19:16:58.327-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Fixed Hp5 parsing. From what I can tell, the rest is literally just bad data.",
+      "PostedDate": "2010-04-20T19:29:08.147-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-22T08:32:07.38-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-25T01:06:40.277-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:21.047-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:28:49.17-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:01.64-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

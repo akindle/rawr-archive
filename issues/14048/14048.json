@@ -1,0 +1,116 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-09-16T19:03:27.99-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "With the attached character file I am seeing a total ArP rating of 761 in both v2.2.14 and r26457, however I am seeing an total armor penetration value of 92.79% in v2.2.14 and 85.37% in r26457. I am also seeing a relative stat value reduction from 1.85 in v2.2.14 to 1.51 in r26457.\n \nI have heard a rumor that there is currently a ArP nerf on the PTR, but last I heard this has not yet been confirmed by blizzard. In any case, this is not live yet.\n \n~Droid",
+    "LastUpdatedDate": "2013-05-16T05:24:33.347-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-09-03T22:17:05.897-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "ArP change between v2.2.14 and r26457",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14048
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2171,
+      "FileName": "droidicus_new.xml",
+      "DownloadUrl": ".\\2171"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Yes, they nerfed ArPen on PTR from +25% of original to only +10% of original. It's persisted for quite a while now; we're assuming it's going to go live like that, currently.",
+      "PostedDate": "2009-09-03T22:54:57.907-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I would not make such an assumtpion - rolling it into the Sword Spec change as an option when toggling PTR mode would be best for now, IMO.",
+      "PostedDate": "2009-09-04T11:57:17.877-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Re: There has been no direct comment from a design standpoint even recognizing a change.",
+      "PostedDate": "2009-09-04T11:57:50.087-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "To be clear, this change isn't just with DPSWarr, the ratings conversion in StatConversion was modified to this +10% vs +25% so all models in the unreleased code that use ArP should see this effect.\r\n\r\nI'm searching forums and can't find a blue post stating that it's intentional, only a lot of conjecture as to why Blizzard *may* have intentionally done it. There's still that blue post where the guy said it might just be a bug and he hasn't since responded on that thread or any other that i can find.",
+      "PostedDate": "2009-09-04T15:44:35.213-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-04T16:50:37.81-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Aye, we're waiting and seeing at this point. It's in the current codebase (since I expect that it will be left that way), but I won't release a new version with it like that, until it's confirmed.",
+      "PostedDate": "2009-09-04T18:38:11.84-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It is in fact confirmed by GC.  http://forums.worldofwarcraft.com/thread.html?sid=1&topicId=19717353372&pageNo=1  However, my point (from the DPSWarr discussion, gogo splitting discussions everywhere) still stands that this IS NOT LIVE, and so should not be defaulted without a way to revert it, even in the unreleased code.",
+      "PostedDate": "2009-09-04T20:05:27.917-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sorry, no. That's true of releases, not the checked in codebase. If you're building it yourself, you have a way to revert it. If we waited til releases to check in base-level patch changes, we'd always be behind.",
+      "PostedDate": "2009-09-04T20:53:09.57-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Maybe it is time to add an application-wide \"PTR Mode.\" It is in several of the models already, but it can be extremely frustrating when you need updates that have recently been commited, but there are also other random changes made that have no basis in reality with respect to the current live version of the game. We have no idea when 3.2.2 will be released, it could be this coming Tuesday (although unlikely), or it could be months from now, heck they could apply it TOMORROW if they really wanted to! The only people who know when it will be out aren't telling us.\r\n\r\n~Droid",
+      "PostedDate": "2009-09-04T22:19:11.51-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yeah, a base-level PTR mode is on my list of things to do. Not very high priority though.",
+      "PostedDate": "2009-09-04T22:24:36.313-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "If you want to revert this locally while compiling non-release builds, go to Rawr.Base/StatConversion.cs\r\nChange:\r\n\r\npublic const float RATING_PER_ARMORPENETRATION = 1231.6239f / (1.1f/1.25f) ; // 4.69512177f / 1.25f * LEVEL_80_COMBATRATING_MODIFIER * 100f;\r\n\r\nto\r\n\r\npublic const float RATING_PER_ARMORPENETRATION = 1231.6239f; // 4.69512177f / 1.25f * LEVEL_80_COMBATRATING_MODIFIER * 100f;\r\n",
+      "PostedDate": "2009-09-08T09:13:58.06-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-16T19:03:27.99-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:15.707-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:33.347-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

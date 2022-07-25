@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "141720",
+    "ThreadId": "42636",
+    "Html": "I am a bit new to this compiling stuff, but I figured out enough how to (somewhat) get Rawr compiled.<div><br></div><div>What I try to do is download the latest source code (or the second latest) and write &quot;csc program.cs&quot; but I get errors no matter what source code I try.</div><div>What do I write to successfully compile Rawr?</div>",
+    "PostedDate": "2008-12-18T17:22:09.457-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "141726",
+    "ThreadId": "42636",
+    "Html": "If you have c# installed (recommended) just open the Rawr.sln and compile from there.<br>\r\n<br>\r\nIf you only have the .NET framework try with this from command line &quot;msbuild Rawr.sln&quot;, you'll need to have environment settings correct for it to recognize msbuild or manually go to where it is installed (typically something like C:\\WINDOWS\\Microsoft.NET\\Framework\\v2.0.50727)\r\n",
+    "PostedDate": "2008-12-18T17:55:26.6-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "141729",
+    "ThreadId": "42636",
+    "Html": "I downloaded the .NET framework and tried with that, but that didn't work.<br><div><br></div><div>I'm installing Visual c# 2008 Express right now.</div>",
+    "PostedDate": "2008-12-18T18:13:16.487-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "141734",
+    "ThreadId": "42636",
+    "Html": "I somehow got it to work with C# Express, but it alerts me of that I need some 3.5 components. Do I need the 3.5 SDK too?<div><br></div><div>*EDIT*</div><div><br></div><div>It works - but it's a bit slow. It was just a warning, not an error :p</div><div><br></div><div>*EDIT2*</div><div><br></div><div>Only the items I load from CharacterProfiler seems to load - not any other item.</div>",
+    "PostedDate": "2008-12-18T18:25:05.937-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "141743",
+    "ThreadId": "42636",
+    "Html": "How to make it faster: In the toolbar in dropdown change from Debug to Release. To start it use Debug-&gt;Start without debugging or launch Rawr.exe directly.<br>\r\n<br>\r\nTo have all items copy the xml files from the Data folder in the downloadable version to where the files are compiled from source (should be Rawr\\Bin\\Release\\Data).\r\n",
+    "PostedDate": "2008-12-18T19:04:24.947-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "141745",
+    "ThreadId": "42636",
+    "Html": "That seemed to work... sorta. When I put it to release, it tells me that it could not find Rawr.exe. <div>Or quote:<br><br></div><div>&quot;Visual Studio cannot start debugging because the debug target 'C:\\Documents and Settings\\Adminstrator\\Desktop\\RAwr\\bin\\Release\\Rawr.exe' is missing. Please build the project and retry, [...]&quot;</div><div><br></div><div>I tried to build the project (F6) but instead I get 2 errors:</div><div><br></div><div>- Error<span style=\"white-space:pre\">\t</span>17<span style=\"white-space:pre\">\t</span>Assembly 'C:\\Documents and Settings\\Administrator\\Desktop\\RAwr\\bin\\Release\\Data\\Rawr.Base.XmlSerializers.dll' must be strong signed in order to be marked as a prerequisite.<span style=\"white-space:pre\">\t</span>Rawr</div><div>- Error<span style=\"white-space:pre\">\t</span>18<span style=\"white-space:pre\">\t</span>Assembly 'C:\\Documents and Settings\\Administrator\\Desktop\\RAwr\\bin\\Release\\Data\\Rawr.Base.dll' must be strong signed in order to be marked as a prerequisite.<span style=\"white-space:pre\">\t</span>Rawr</div><div><br></div><div>Does that mean I have to put those 2 .dll's into bin\\Release too then?</div><div><br></div><div>*EDIT*</div><div><br></div><div>Never mind... I put the rawr.exe from the 2.1.4 release into bin\\Release and it seemed to work. The bug I thought they had fixed does not seem to be fixed though (regarding haste for tree druids. Haste is a nearly useless stat for us)</div><div><br></div><div>Now... just to learn C# so I can help to this wonderful project :D</div><div><br></div><div>I appreciate your help Kavan.</div>",
+    "PostedDate": "2008-12-18T19:14:26.637-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

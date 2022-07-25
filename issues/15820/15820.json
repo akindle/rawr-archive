@@ -1,0 +1,76 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "Unable to reproduce in current code. It comes up fine",
+    "ClosedDate": "2010-01-19T10:04:53.633-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "An exception is thrown when Rawr attempts to build a tooltip for Tears of the Vanquished (a caster trinket).\nThis slightly annoying bug stems from an attempt to force a stat line to word-wrap (as it is too long to fit within the 309 pixel width Rawr allows for the tooltip) while assuming that any line that is too long to fit in the tooltip untouched must have more than 47 characters.\nThe assumption is clearly wrong for Tears of the Vanquished, meaning that a call of the form 'String.IndexOf(\" \", 47)' fails and triggers an exception.\n \nMy proposed solution is the following:\nChange lines 546-547 of ItemToolTip.cs to be:\n \n// Force stats that are in the 1st column that would STILL fall off to Text Wrap\nif (xPos + width > xGrid.end && xPos == xGrid.initial) { text = text.Insert(text.LastIndexOf(\" \") + 1, \"\\r\\n   \"); }\n \nWhile the use of String.LastIndexOf isn't a perfect solution, I feel that it doesn't assume too much about the string, only assuming that:\n1) A string that requires truncation in this manner has a space character in it.\n2) The last word of a string that requires truncation in this manner isn't too long to fit in a line of its own.\nTaking the nature of the strings likely to appear in item stat descriptions into consideration, I feel that these are much more reasonable assumptions.\n \nI hope this turns out to be useful (and that it gets accepted into the next release ;) ).\nSeagale.\n \n(BTW, Rawr is awesome kthxbai)",
+    "LastUpdatedDate": "2013-05-16T05:22:29.043-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-01-10T12:13:20.19-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] An exception is thrown and left unhandled when building a tooltip for Tears of the Vanquished",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15820
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2852,
+      "FileName": "seagale-healing.xml",
+      "DownloadUrl": ".\\2852"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "This still occurs for me in Rawr 2.3.8 when mousing over the item slot and when mousing over the item entry in the right-hand item list. It does not occur, however, when moving the mouse from the item's \"point bar\" to the item's name in the right-hand pane of Rawr. My guess is that in this case Rawr doesn't attempt to render a tooltip, but rather displays the cached tooltip (which is also incorrect).\r\n\r\nEither way, I have attached my character file, in which the bug occurs for me.",
+      "PostedDate": "2010-01-24T09:47:20.693-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-24T09:47:23.063-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T16:22:48.577-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:15.273-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:30:39.93-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:29.043-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

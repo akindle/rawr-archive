@@ -1,0 +1,106 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Warlock",
+      "DisplayName": "Rawr.Warlock"
+    },
+    "ClosedComment": "Fixed in 2.3.14.",
+    "ClosedDate": "2010-04-11T20:16:56.44-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I've attached a file that demonstrates this bug.\n \nThe Everlasting Affliction talent states that Drain Life, Drain Soul, Shadow Bolt, and Haunt all have (with 5 points) a 100% chance to reset the duration of Corruption. If you check the attached XML file, and look at the Mana Usage page, you can work out that over the course of the fight, we have the following spells cast:\n \nShadow Bolt: 64 casts\nHaunt: 32 casts\nUnstable Affliction: 17 casts\nCorruption: 18 casts\nCurse of Agony: 12 casts\n \nObviously there should only be the initial cast of Corruption, as the character is above the hit cap and it is impossible to drop Corruption without ceasing casting for its entire duration.",
+    "LastUpdatedDate": "2013-05-16T05:21:56.54-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-02-09T09:06:06.213-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Warlock] Everlasting Affliction: Refresh portion not implemented",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 16290
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2922,
+      "FileName": "Rawr.Warlock.xml",
+      "DownloadUrl": ".\\2922"
+    },
+    {
+      "FileId": 2923,
+      "FileName": "testlock.simcraft",
+      "DownloadUrl": ".\\2923"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Additionally, the expected numbers of casts as per a SimulationCraft run against the same character with identical gear (and please note neither uses a pet and neither has any item equipped with a proc or on-use effect, which apparently is what isn't yet implemented):\r\n\r\nShadow Bolt: 117.7 casts\r\nHaunt: 29.6 casts\r\nUnstable Affliction: 19.0 casts\r\nCurse of Agony: 12.2 casts\r\nLife Tap: 9.7 casts\r\nCorruption: 1 cast\r\n\r\nThat leads me to think that haste might just be being used as: work out DPS without haste, multiply by haste rating? Obviously that model can't work as the number of Shadow Bolts between DoT refreshes changes with differing values of haste.\r\n\r\nAlso, I know that Drain Soul executing isn't implemented, before you say anything - that isn't used in this model.",
+      "PostedDate": "2010-02-09T09:19:41.74-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-09T09:19:44.487-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Actually, if it's set up this way both Scraft and Rawr have it wrong.  Corruption should be cast twice during a tank & spank style fight; once at the start of fight [with NIC], once with the second NiC cast@ 35% [to take advantage of Death's Embrace, which doesn't trigger on rollover].  For a long enough fight, it may also be worth it to hold off the initial NIC'd cast for all the buffs to trigger [since it also does not refresh spellpower properly, from what I have been reading] but I could be wrong about that one.",
+      "PostedDate": "2010-02-10T08:04:35.897-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Doh!  I was going from old information, spellpower doesn't roll at all.  Here's information from a post I just read:\r\nTricks of the Trade 15% damage rolls\r\nDevious minds 10% damage (4set tier 10 bonus) rolls\r\nNever melting ice crystal 20% crit rolls\r\nWild Magic potion crit rolls\r\nImproved Shadow Bolt 5% crit rolls (people suggest casting a shadow bolt and giving it time to connect, aka cast other dots, before casting corruption)\r\nWeapon switching works too - a crit staff or similar.\r\n\r\nPersonally I'd shoot the rogue that ToTT'd me at the start of a fight, but I guess it wouldn't be terrible @ 35% in most cases.",
+      "PostedDate": "2010-02-10T08:31:36.16-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-10T09:13:57.963-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Right, I've had it in debug with destruction, as the rotation is a bit simpler and somewhat more obvious. I don't think the comparison I made with SimulationCraft is a fair one now I think about it, as that implements raid procs, which Rawr just doesn't do. So, a bit more information from the debugger.\r\n\r\nThe scheduler runs through, and comes up with the following:\r\n\r\nImmolate: 18 hits, 6 crits, 0 misses, 204038.891 damage for 10602.0 mana\r\nConflagrate: 14h 11c 0m 227477.672 damage for 24477.0 mana\r\nChaos Bolt: 14h 7c 0m 184789.687 damage for 29559.0 mana\r\nCurse of Doom: 3h 2c 0m 85302.25 damage for 32449.0 mana\r\nIncinerate: 46h 22c 0m 490775 damage for 65429.0 mana\r\n\r\nSo that's the following, using the (0.10sec lag-adjusted) cast times from the debugger also:\r\n\r\n68 Incin @ 1.93 seconds\r\n25 Conflag @ 1.32s\r\n18 Immo @ 1.32s\r\n21 CB @ 1.73s\r\n 5 CoD @ 1.32s\r\n\r\nThat's a total of 230.93 seconds fight time, 1192383.5 damage done. I don't know if I was looking in the right place but I couldn't see the Life Taps in there. I do know, however, that over the course of the fight I would expect to have to life tap around 6 or 7 times with the destro-replenishment spec if I was to use 65429 mana. So, given that there was 22.82% haste in there, if we put 10 Life Taps in there, that's another 13.2 seconds to add on, taking us to 244.13 seconds total. If we then multiply that time to imagine there was no haste at all, that gives us 299.8 seconds fight time, which is when the scheduler says it stops.\r\n\r\nSo that's the reason that we have a \"wrong\" DPS number for a warlock with no procs or pets - the scheduler is just stopping early, giving the effect of fighting with haste, but for a haste-adjusted period of time - haste is shortening fights. That's why it says this character would be doing 3974 DPS instead of 5163 DPS, which would be a little more \"believable\". What this does convince me of, however, is that the scheduler is working and making good choices given the caveat that some things are NYI, and once the missing things are implemented it'll be very good indeed.\r\n\r\nKick-ass work, ArPharazon, by the way. I like this scheduler a lot. :)",
+      "PostedDate": "2010-02-10T17:11:33.547-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Oh, and on an unrelated note, I don't think Curse of Doom should be critting there. I may be wrong, I'll check my sources.",
+      "PostedDate": "2010-02-10T17:16:05.91-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-11T20:16:56.44-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T14:48:22.717-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:30:01.517-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:56.54-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

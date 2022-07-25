@@ -1,0 +1,106 @@
+[
+  {
+    "Id": "237604",
+    "ThreadId": "69793",
+    "Html": "<p>I recently acquired a Tankard O' Terror and decided to try a new optimization of Rawr to see if I could put it to use.&nbsp; The problem is the optimization wants me to use it as both a main hand and off hand weapon.&nbsp; Obviously, if&nbsp;a second one drops, I'll try for it, but for now, how do I tell Rawr I have only one available for optimization?</p>",
+    "PostedDate": "2009-09-22T19:18:50.847-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "237607",
+    "ThreadId": "69793",
+    "Html": "<p>Right Click it. Edit. Check Unique. OK.</p>",
+    "PostedDate": "2009-09-22T19:36:42.467-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "238057",
+    "ThreadId": "69793",
+    "Html": "<p>On a related note, I have two of a given weapon that I use to dual weild, but with different enchants.&nbsp; How do I get the optimizer to stop giving me the same enchant on both weapons?&nbsp; I've tried marking them as unique as offered above but then it only allows me to use one of them and the optimizer switched me to a two hander.&nbsp; I have the enchants locked as I want them in both the main hand and off hand &quot;comparisons&quot; pane.</p>",
+    "PostedDate": "2009-09-23T15:20:07.09-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "238065",
+    "ThreadId": "69793",
+    "Html": "<p>That's another odd situation. Edit the item. Change its ID to something unique (80001 or something). Add the correct ID. Now you'll have two copies of the item. Mark the specific enchanting of the the first one, and the specific enchanting of the 2nd one.</p>",
+    "PostedDate": "2009-09-23T15:53:58.067-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "240850",
+    "ThreadId": "69793",
+    "Html": "<p>Each time i try to change item ID to someting else Rawr crashes. What do i do wrong?</p>\r\n<p>I right click item on my char panel and choose Edit.</p>\r\n<p>Then i change its ID&nbsp; to 80002 and its add '2' to its name.</p>\r\n<p>When i click OK Rawr crashes.</p>",
+    "PostedDate": "2009-10-01T04:19:55.157-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "240933",
+    "ThreadId": "69793",
+    "Html": "<p>I suspect it is doing a lookup and failing to get the ID. I saw this briefly before but it went away before I could fix it.</p>\r\n<p>Please submit an issue on the issue tracker and attach your XML file and the steps you take to reproduce the issue. This will enable us to fix it for the next version.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-10-01T07:43:11.067-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "240936",
+    "ThreadId": "69793",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Astrylian wrote:</strong><br>\r\n<p>That's another odd situation. Edit the item. Change its ID to something unique (80001 or something). Add the correct ID. Now you'll have two copies of the item. Mark the specific enchanting of the the first one, and the specific enchanting of the 2nd one.</p>\r\n</blockquote>\r\n<p>Might it be an idea for us to add a routine that runs on starting optimise, similar to the &quot;you have a lot of X it might take a while&quot; check, this routine would check weapons and if you have selected a non-unique one-hander as available it asks if you have one or two of them and sets a flag appropriately?</p>\r\n<p>On the two the same different enchants - surely if the optimiser is working out that you should use the same enchant on both then the one that changed was sub-optimal?</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-10-01T07:49:25.77-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "240950",
+    "ThreadId": "69793",
+    "Html": "<p>Rawr crashing upon changing itemIDs was covered previously. if you have an item equipped on your character sheet and you change its ID, Rawr will crash. You need to remove the item from its currently equipped slot, then change the ID.</p>",
+    "PostedDate": "2009-10-01T08:24:55.237-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "240951",
+    "ThreadId": "69793",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Levva wrote:</strong><br>\r\n<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Astrylian wrote:</strong><br>\r\n<p>That's another odd situation. Edit the item. Change its ID to something unique (80001 or something). Add the correct ID. Now you'll have two copies of the item. Mark the specific enchanting of the the first one, and the specific enchanting of the 2nd one.</p>\r\n</blockquote>\r\n<p>Might it be an idea for us to add a routine that runs on starting optimise, similar to the &quot;you have a lot of X it might take a while&quot; check, this routine would check weapons and if you have selected a non-unique one-hander as available it asks if you have one or two of them and sets a flag appropriately?</p>\r\n<p>On the two the same different enchants - surely if the optimiser is working out that you should use the same enchant on both then the one that changed was sub-optimal?</p>\r\n<p>&nbsp;</p>\r\n</blockquote>\r\n<p>In regard to the differing enchants, the DpsDK module does not currently implement the DW Frost weapon enchants properly. Optimal enchants should be Fallen Crusader MH / Razorice OH, but Rawr calculates the enchant as stacking when applied to both weapons. It is more of a DPS.DK module issue than a Rawr issue.</p>",
+    "PostedDate": "2009-10-01T08:27:23.02-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "241435",
+    "ThreadId": "69793",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Devwar wrote:</strong><br>\r\n<p>Rawr crashing upon changing itemIDs was covered previously. if you have an item equipped on your character sheet and you change its ID, Rawr will crash. You need to remove the item from its currently equipped slot, then change the ID.</p>\r\n</blockquote>\r\n<p>I tried everything, even changing this itemID without opening any character xml - always crashed.</p>\r\n<p>In the end i manually edited itemID and itemName in ItemCache.xml. After i loaded Rawr 1 more item with previous name and ID appeared dont know how and where from. But at least now i got 2 items with different IDs.</p>",
+    "PostedDate": "2009-10-02T11:49:12.27-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "241437",
+    "ThreadId": "69793",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>kruk wrote:</strong><br>\r\n<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Devwar wrote:</strong><br>\r\n<p>Rawr crashing upon changing itemIDs was covered previously. if you have an item equipped on your character sheet and you change its ID, Rawr will crash. You need to remove the item from its currently equipped slot, then change the ID.</p>\r\n</blockquote>\r\n<p>I tried everything, even changing this itemID without opening any character xml - always crashed.</p>\r\n<p>In the end i manually edited itemID and itemName in ItemCache.xml. After i loaded Rawr 1 more item with previous name and ID appeared dont know how and where from. But at least now i got 2 items with different IDs.</p>\r\n</blockquote>\r\n<p>My guess might be as that even if you start Rawr without opening a character xml, Rawr still holds open the last used module/character file. I'd have to yield that question to the actually developers though.</p>",
+    "PostedDate": "2009-10-02T11:53:21.593-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "241527",
+    "ThreadId": "69793",
+    "Html": "<p>It'll crash if you have the comparison chart open with the item on it. The problem however is fixed for next release.</p>",
+    "PostedDate": "2009-10-02T15:38:55.707-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "242318",
+    "ThreadId": "69793",
+    "Html": "<p>Well, I got unique versions of the weapons I wanted by unchecking the standard items and creating all new unique copies in the ItemCache.xml.&nbsp; Unfortunately when i optimize again it just gives me the two best weapons with Razorice enchants on them.&nbsp; We're getting there.</p>\r\n<p>&nbsp;</p>\r\n<p>Thanks for an amazing program.&nbsp; I dont know what i would do without it.&nbsp; Keep up the good work. =)</p>",
+    "PostedDate": "2009-10-05T15:06:15.97-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

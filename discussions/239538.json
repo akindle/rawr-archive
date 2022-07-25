@@ -1,0 +1,90 @@
+[
+  {
+    "Id": "540407",
+    "ThreadId": "239538",
+    "Html": "\r\n<p>Been playing around with the .12 &nbsp;DPSDK module. &nbsp;A couple things I noticed...</p>\r\n<p><br>\r\n- Seems to automatically try to reach the Hit and Expertise caps (8% and 26, respectively) without setting manual rules in the Optimizer. &nbsp;While this is a nice feature, most of the feedback from the EJ community and other sources has been that getting\r\n that 26 Expertise isn't the end-all-be-all thing. &nbsp;Getting there is nice, but at this point in Cata, the cost to reach 26 Exp. means having to reforge out a bunch of haste and crit. &nbsp;I for one would prefer the old optimizer style that didn't look\r\n at Hit and Exp so closely and just tried to do that most with Crit/Haste, while allowing me to use the Optimizer rules to reach those Hit and Exp caps if I wanted to.</p>\r\n<p><br>\r\n- The module also seems to give Mastery a much higher regard than what the EJ community and various offline-sims (I know, they're hated around here, but still...) and real-world testing would care to give it. &nbsp;Being able to hit harder (crit) and faster\r\n (haste) is preferred than trying to buff the minor amount of damage that diseases do, thus most DKs I see gem for Haste/Str, and reforge any Mastery into Haste (or Crit if Haste is already present). &nbsp;What is the module's justification for placing Mastery\r\n at a higher level?</p>\r\n",
+    "PostedDate": "2010-12-25T06:42:48.47-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "540415",
+    "ThreadId": "239538",
+    "Html": "\r\n<p>Yup, this is all pretty valid.&nbsp; Haste isn't properly implemented yet since my rotation code isn't finished. So we're not seeing the proper benefits from haste yet.&nbsp; I'm still working on the solver as it's proving trickier than I originally planned.&nbsp;\r\n Mastery should be in the ball-park, so my guess is that since other aspects aren't fully implemented, and the rotation isn't realistic at all currently, that's over-valuing mastery.&nbsp; Keep in mind that Disease damage mastery is Unholy specific.&nbsp; So\r\n that discrepency would be only for an unholy spec.</p>\r\n",
+    "PostedDate": "2010-12-25T07:59:19.97-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "540463",
+    "ThreadId": "239538",
+    "Html": "\r\n<p>Random aside:</p>\r\n<p>Actually, nobody here hates sims.&nbsp; Quality simulators are an invaluable community resource, one which most of us here on the dev team, especially the &quot;power users&quot; and &quot;hardcore raiders&quot; in our ranks, use frequently.&nbsp; They're not frowned upon by\r\n any means, and we've constantly used quality sims to double-check our results, to evaluate rotations, to refine our stat benefit determinations, etc.&nbsp; While we are adamant about not putting simulations into our program, that's not because we think that\r\n it's an inherently poor process, rather, that it is inefficient when attempting to make countless gear determinations in a timely manner.</p>\r\n<p>End aside.</p>\r\n",
+    "PostedDate": "2010-12-25T16:04:05.857-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "540473",
+    "ThreadId": "239538",
+    "Html": "\r\n<p>Completely agree with BrWarner. A lot of us are also programmers on relevant class Sims. For myself that was EnhSim, so it is very misguided to suggest we hate sims.</p>\r\n<p>Secondly can we PLEASE get away from this stupid notion that Rawr &quot;gives higher regard&quot; or &quot;more weight&quot; to stat X. Rawr doesn't give a flying xxxx for particular stats there are no weights no preferences for one stat over another. Rawr simply uses formulae\r\n to calculate dps/tanking/healing and works out the total dps/tanking/healing achievable with the gear equipped. At no point does it try to take stat A in preference to stat B.</p>\r\n<p>So the optimiser is not &quot;looking at hit and Exp closely&quot;, it doesn't consider &quot;placing mastery at a higher level&quot; these things simply\r\n<strong>DO NOT EXIST AT ALL</strong> in Rawr. PLEASE get that message rammed home.</p>\r\n",
+    "PostedDate": "2010-12-25T18:28:36.067-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "540474",
+    "ThreadId": "239538",
+    "Html": "\r\n<p>Agreed.&nbsp; I often use Kahorie's sim to make sure that my results are reasonable.&nbsp; EG.&nbsp; It's not rawr's job to tell you what the BEST rotation is.&nbsp; But the rotation should be &quot;Good Enough&quot; to tell you what you may want to change in your\r\n gear.</p>\r\n",
+    "PostedDate": "2010-12-25T19:02:59.923-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "540501",
+    "ThreadId": "239538",
+    "Html": "\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n<strong>Levva wrote:</strong><br>\r\n<p>Secondly can we PLEASE get away from this stupid notion that Rawr &quot;gives higher regard&quot; or &quot;more weight&quot; to stat X. Rawr doesn't give a flying xxxx for particular stats there are no weights no preferences for one stat over another. Rawr simply uses formulae\r\n to calculate dps/tanking/healing and works out the total dps/tanking/healing achievable with the gear equipped. At no point does it try to take stat A in preference to stat B.</p>\r\n<p>So the optimiser is not &quot;looking at hit and Exp closely&quot;, it doesn't consider &quot;placing mastery at a higher level&quot; these things simply\r\n<strong>DO NOT EXIST AT ALL</strong> in Rawr. PLEASE get that message rammed home.</p>\r\n</blockquote>\r\n<p>Fine, mea culpa :P</p>\r\n<p>I'll rephrase the original request: &quot;Change Rawr's formulae so that it doesn't calculate hit and expertise unless I create a rule in the optimizer&quot; and &quot;Rekerjigger the formulae so that it accounts for Haste properly&quot;. &nbsp;Better? &nbsp;^_^</p>\r\n",
+    "PostedDate": "2010-12-26T00:49:42.567-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "540552",
+    "ThreadId": "239538",
+    "Html": "\r\n<p>In that case, there's no way we'll take the first part into account.&nbsp; If it's accurately depicting the results, then the benefits of Hit / Exp are what they are.&nbsp; If there's a miscalculation, we'll address that as necessary, otherwise...</p>\r\n<p>The second part, as he noted, the formulae for his code isn't quite finished, so when it is, you should then expect a more accurate appraisal of the various stats across the board.</p>\r\n",
+    "PostedDate": "2010-12-26T07:51:51.137-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "540581",
+    "ThreadId": "239538",
+    "Html": "\r\n<p>I guess I gotta be different and fight the code myself then :P. &nbsp;I've found that setting Hit Rating &lt;= X and Exp Eating &lt;=Y is able to override the module's calculation of trying to achieve hit and expertise perfection. &nbsp;Thank you for the\r\n feedback.</p>\r\n",
+    "PostedDate": "2010-12-26T09:48:20.703-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "540588",
+    "ThreadId": "239538",
+    "Html": "\r\n<p>It's not that it's trying to achieve Hit &amp; Expertise perfection.&nbsp; It's trying to provide the best bang to improve the over-all score.&nbsp; Hit and expertise are both pretty easy to implement.&nbsp; Both were low-hanging fruit as I was re-building\r\n the model.&nbsp; Haste, on the other hand, is not as simple since it doesn't affect all time-based elements in the rotation.&nbsp; It affects Rune CD and Swing timer, but doesn't affect ability CD, GCD or RP generation.&nbsp; So it's a bit trickier to get\r\n right.&nbsp; Also, There are some builds (Frost) that are nearly GCD capped out the gate, so additional haste, while getting you runes sooner, won't provide much of a boost to DPS.</p>\r\n",
+    "PostedDate": "2010-12-26T10:06:01.41-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "540893",
+    "ThreadId": "239538",
+    "Html": "\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n<strong>luckton wrote:</strong><br>\r\n<p>I guess I gotta be different and fight the code myself then :P. &nbsp;I've found that setting Hit Rating &lt;= X and Exp Eating &lt;=Y is able to override the module's calculation of trying to achieve hit and expertise perfection. &nbsp;Thank you for the\r\n feedback.</p>\r\n</blockquote>\r\n<p>&nbsp;</p>\r\n<p>This is a really bad idea... As the developer for that particular model has already said, the haste calculations are currently not fully implemented.&nbsp; Until the dps is being calculated for all stats correctly, rawr will continue to give inaccurate results.&nbsp;\r\n No amount of forced stat maximums (hit &lt;= X) is going to fix that.&nbsp; When the calculations are *correct* for the DK model, then it will correctly calculate maximum DPS gains.&nbsp; At that time, if it is telling you to get max hit, then that means it\r\n will be the highest dps increase for your character.&nbsp; It's <strong><em>NOT </em>\r\n</strong>weighting hit higher than other stats - it's simply running a series of calculations and finds that certain combinations of stats will net you the greatest result.&nbsp; Attempting to circumvent this defeats the purpose of rawr.</p>\r\n<p>But again...it looks like the calculations aren't fully implemented, making the model not terribly useful yet :\\&nbsp; Since haste is such an important stat...you really might have to wait for that to be finished before using the DPSDK model :(</p>\r\n",
+    "PostedDate": "2010-12-27T10:40:42.747-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "541074",
+    "ThreadId": "239538",
+    "Html": "\r\n<p>^^^^ That.&nbsp; What the model is doing when it sees Haste is to plug it into its calculations, realize that there is an undefined (well, nil, actually) benefit to using Haste, and try to convert as much of that &quot;0&quot; value into something that might actually\r\n provide value - in this case, ANY other stat is better than the &quot;0&quot; that Haste is providing.&nbsp; Or, in other words, imagine that when the DPSDK model sees Haste on your character, that it's actually seeing Spirit.&nbsp; That's essentially what's happening.</p>\r\n<p>That does render the model unusable for any legitimate purpose, so until Haste is implemented, its (DPSDK's) recommendations are inapplicable to any live situation.</p>\r\n",
+    "PostedDate": "2010-12-27T23:49:25.253-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

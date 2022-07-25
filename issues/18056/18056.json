@@ -1,0 +1,196 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.ItemFilters",
+      "DisplayName": "Rawr.Base.ItemFilters"
+    },
+    "ClosedComment": "Should be fixed for next version",
+    "ClosedDate": "2010-07-05T11:43:04.55-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Items from unchecked filters are listed in the rankings window.\nEx:\nBoP Jewelcrafting and Alchemy trinkets in list - all crafts unchecked\nShadowmourne listed in main hand - every single subsection unchecked for t10 and quest rewards as well.\n \nRunning through Silverlight with Firefox 3.6.4",
+    "LastUpdatedDate": "2013-05-16T05:20:24.957-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-06-23T11:04:57.3-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ItemFilters] Filtered Items Showing Up in List",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 18056
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3714,
+      "FileName": "askledarea.xml",
+      "DownloadUrl": ".\\3714"
+    },
+    {
+      "FileId": 3724,
+      "FileName": "rawr.jpg",
+      "DownloadUrl": ".\\3724"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Can you clarify this? I'm not sure how you think you're seeing filtered items showing up in charts; that's kind of backwards. Are you trying to say that some items aren't properly considered part of certain filters? You'll have to be very specific about you see missing or wrong for us to be able to fix it.",
+      "PostedDate": "2010-06-23T11:30:29.617-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-06-23T18:25:12.427-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Example: For the Elemental module, disable Emblem of Frost Class tokens, yet Sanctified Frost Witch's Shoulderpads still show in the item list.\r\nSimilar for disabling the Trophy option for Emblem of Triumph, the 258 ilvl shoulders show in the list.\r\nHave attached my saved xml file.",
+      "PostedDate": "2010-06-23T18:25:13.56-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Check the Special _> Armor Token filter. The items your referring to are Armor Tokens. We added a filter to filter out specific Armor tokens. Most tier now falls under these Armor Tokens. There are a small handful that fall under VoA.",
+      "PostedDate": "2010-06-23T18:30:30.953-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I unchecked everything that could possibly include crafted items and they still show on the list.\r\nEvery box relating to a crafting profession was unchecked.\r\nBoP JC and Alch trinkets were listed.\r\nI do not \"think\" I am seeing them on the list. They are on the list. :) \r\nAnd yes, it's quite backwards. If it weren't I wouldn't be reporting it as a bug...\r\n\r\nSorry if this is coming off snarky, I'm confused about what you're asking to be clarified..\r\nI do not know if they're not considered part of certain filters: I'm unchecking the boxes, they are still there.\r\nThis is only happening on my Mac (which, of course I am away from so can't provide a screen shot)",
+      "PostedDate": "2010-06-25T15:32:33.833-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "We do really do need the clarification we asked for, in order to solve this. On one hand, you're saying that some items are being filtered out (so they don't show up), but they still show up (huh?).\r\n\r\nOn the other, you're saying things you expect to be filtered out by certain filters, aren't being filtered out. As we said, if this is the case, we really do need to know *exactly* what you're talking about.",
+      "PostedDate": "2010-06-25T16:00:21.803-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I think this is a simple case of misunderstanding and mis-communication.\r\n@cjbard- I opened the file you attached and looked at the trinket list. You are correct in that that list includes several JC/Alch/Eng trinkets such as figurines (serpent,owl,hare), Alchem. stones (Mighty & Mercurial), Enginneering (Noise Machine/Lightning Gen) (BTW these are the specifics Astry was asking for). I then looked at your filters from the attached file but contrary to your claim, the \"Crafted\" checkbox IS selected and therefore allowing crafted items (both BoP and BoE) to be listed. Unchecking the box causes ALL of these items to disappear from the list (as expected).\r\nIf by chance you were trying to filter out the crafted BoP trinkets, you can go further down the filter list and check the \"Disable BoP Crafted\" which removes all items except the Noise Machine (since it is BoE).\r\nAs for Shadowmourne, it is not listed under Main Hand for your posted character and i failed to get Shadowmourne to ever show up regardless of which filters were selected or deselected (which is actually a success since your a shaman).\r\nEverything you mentioned in the OP is working as intented with your attached toon and therefore unrepeatable to others. If you are still having problems, I suggest you restart your toon from scratch using Character Profiler and/or Armoury. If still having the issue, try a fresh download. \r\n\r\n@Binkenstein-Hinalover's comment applies to you. The items are listed in the posted toon for the shoulder slots but immediately are removed by deselecting the \"Armor Tokens\" box.",
+      "PostedDate": "2010-06-25T20:38:59.96-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The attached file is Askledarea, which is Binkenstein. That doesn't really matter for filters though, as filters are stored globally, not in the character files.",
+      "PostedDate": "2010-06-25T22:52:02.58-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thought you guys changed the filters recently to save per toon, if not my bad. In which case cjbard can you please attach your character so that we may assist you.",
+      "PostedDate": "2010-06-26T00:50:52.85-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-06-26T11:22:56.593-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It's not a problem with my character.\r\nI've attached a screenshot from a different character, this on a PC running XP\r\n\r\nBlood Queen's Crimson Choker is listed at the top - all the ICC checkboxes are unchecked.",
+      "PostedDate": "2010-06-26T11:22:57.633-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Blood Queen's Crimson Choker is a BoE item. Shoot you could get it from the weekly ICC quest reward bag (had a guildy get it a few weeks after those were implemented). True it normally drops from Blood Queen, but if you de-select BoE items, you will notice that the neck will disappear.",
+      "PostedDate": "2010-06-26T11:56:57.52-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "clbard, please post your character file, not a picture, so that we may better assist you.",
+      "PostedDate": "2010-06-26T15:48:41.98-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "...sigh.\r\n\r\nBrituck, I'm not sure why you are asking them to post character files. As I've said, repeatedly, nothing of any use to us here is in a character file.\r\n\r\n\r\nWe really need exactly what I said, and that's it.",
+      "PostedDate": "2010-06-26T18:22:35.443-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Would love it if everyone would stop talking past each other in this thread, and actually tell us what we need to know to solve the problem, if there is one.",
+      "PostedDate": "2010-06-26T18:35:10.477-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-06-29T16:48:45.117-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "OK I have the same issue and from reading the post in discussions I believe\r\na lot of other people are as well. I would like to point out that I think that rawr\r\nis a very valuable tool and so would like to help as much as possible in order that we\r\ncan resolve this problem fully.\r\n\r\nFirstly, I would like to tell you a little about how I use rawr. As a new user the only\r\nfeature I use at the moment is the comparisions pane. If I need to upgrade a piece of gear\r\nI simply select the gear slot from the drop down menu in the comparisions pane and go for \r\nthe top gear item on the list. Enchanted and gemmed as suggested by the pop up box when\r\nmousing over the item name.\r\n\r\nHere is what I have found. If I use the filter menu in the comparisions pane to filter out\r\nany category of items I am uneligble for, or just not interested in, occasionally the top\r\nitem on the list will be an item I would expect to have been filtered out.\r\n\r\nMy example: I need to gear my recently dual speced lvl 77 resto shaman for raiding 5man\r\nheroics.\r\n\r\nMy process:\r\nI imported my character from the armoury.\r\nI selected resto from the drop down menu in the stats pane.\r\nI deselected the following:\r\n*any 5man normal dungeon I am not yet eligable for due to lvl\r\n*all heroic dungeons\r\n*all tier 7 raids\r\n*all tier 8 raids\r\n*all tier 9 raids\r\n*all tier 10 raids\r\n*all VOA\r\n*all Onyxia's Lair\r\n*all Ruby sanctum\r\n*all special currency\r\n*all pvp\r\n*all disable BOP crafted\r\n\r\nAt this point, I have just learned while writing this that deselecting BOE (possible AH) will\r\nfilter out most of the unwanted items that are labled as drops from 25man raids etc. However\r\nI am still left with items that are quest rewards from higher level quests. Perhaps an\r\nextra filter could be added in this category? I understand there is an item filter editor\r\nbut I find it a bit too complicated to use at the moment. Specifically how to add the categories\r\nto filter out and how to set a max item lvl that relates to the lvl at which it becomes\r\nequipable and not the actual item lvl. Perhaps a tutorial video on this feature would be beneficial?\r\n\r\nI will have a look on the website to see if there is any further help available on this feature\r\nand I will test this method on my other characters soon just to make sure no other unwanted items\r\nare still showing and let you know the result. It could be that a help article that explains \r\nwhat the categories include is all that is needed as now I am no longer sure if this is actually\r\na bug or just lack of user knowledge. It just shows how making yourself follow your\r\nown method step by step can resolve at a lot of problems :P\r\n\r\nHopes this helps anyone who was having the same issue\r\n\r\n- Kim x\r\n",
+      "PostedDate": "2010-06-30T06:13:07.65-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "@Boo - Maybe the easiest and quickest way for you to filter the other items by their iLevel vice the toon level using them. Go back to your filter and select \"Disable by Item Level\" and start at the highest level and select them downward (probably leaving only heirloom and tier 1-6 unmarked). This will remove all the items iLevel 200 and up, leaving you with only quest and non-heroic items usually obtainable pre-level 80.\r\n\r\nI use something similar to this on my recently leveled Boomkin to guide me to quest rewards that I haven't done in Northrend and to particular instances that drop upgrades. Let me know if this helped you out.\r\n\r\n(BTW please remember that some things will be off a little or possibly a lot since Rawr is designed for lvl 80 characters.)",
+      "PostedDate": "2010-06-30T09:55:55.133-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Doo wrote: \"Specifically how to add the categories to filter out and how to set a max item lvl that relates to the lvl at which it becomes equipable and not the actual item lvl.\"\r\n\r\nRawr was designed for level 80's, so we don't store that data nor really should we, which is why you can't filter by that.\r\n\r\nAs far as the rest of your statement, you provided what you disabled, but not a list of what Items were still showing up for you that you were expecting to be hidden.",
+      "PostedDate": "2010-06-30T10:12:15.447-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T13:58:27.673-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T15:03:59.55-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T15:54:50.917-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I think the real problem here is that the posted (b8) XML files are out of date. I've asked Astry to post new XML files so we can close out these data related issues.",
+      "PostedDate": "2010-07-02T20:39:18.3-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-05T11:43:04.55-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-11-22T19:56:47.293-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T18:56:24.437-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T19:05:05.29-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:28:07.213-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:24.957-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

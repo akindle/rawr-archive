@@ -1,0 +1,190 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Retribution",
+      "DisplayName": "Rawr.Retribution"
+    },
+    "ClosedComment": "Out of Date",
+    "ClosedDate": "2010-11-20T17:01:41.947-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Just switched from 2.3.8 to 2.3.13, and time to build an upgrade list with 50% thoroughness has gone up from about 10 minutes to hours.\nEach item of gear is taking about  4 seconds to consider on a Q6600 quad core.\nStill slow on minimum thoroughness.\nAnything changed to justify this increase ?\n \n(This is on Windows 7 64 bit by the way)\n \nThanks",
+    "LastUpdatedDate": "2013-05-16T05:21:14.75-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-03-28T01:08:58.447-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Retribution] Very Slow to Optimize",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 6,
+    "Id": 17002
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "This started happening in 2.3.12 and is only affecting the retribution model as far as I can see.  It also means that build upgrade list takes over 24 hours to run.  Both processes seem to come up with the right answers, just are taking ~10 times longer than in previous builds.",
+      "PostedDate": "2010-03-28T15:34:57.577-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-28T15:35:05.067-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The introduction of T10 P2 setbonus is a major cause.  In order to support this, the fight length in the simulator has been increased significantly.\r\n\r\nAlso, changes in the FCFS simulator itself are causing things to be slower.\r\n\r\n",
+      "PostedDate": "2010-03-29T02:05:37.2-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-30T10:47:38.67-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Use the filters to limit the # of items being considered.   ie select Icecrown, Frost Emblems, & crafted gear.  You can also use the iLvl filter to get rid of the low level crafted gear.   This way 10 minutes at 4 secs per item = 150 items which should be about right.\r\n\r\nYou should only be looking at pieces that are available to you currently as by the time you gear up and more items become available, the upgrade list is out of date because your gear will have changed.\r\n\r\nI usually run a quick regular ICC10 regular upgrade list just before starting a run so I have a good list of which drops I want - it is even quicker if you only select the next boss for the upgrade list - 30sec-1 min.\r\n\r\n",
+      "PostedDate": "2010-03-30T16:25:47.68-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-01T15:48:30.143-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Using filters, switching to simple calculation methods and even turning down thoroughness for the optimizer all have only a neglibile effect on this problem. It simply takes ages to let it do *anything* besides clicking around in the GUI.",
+      "PostedDate": "2010-04-01T15:49:40.437-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-01T18:47:58.06-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-06T01:29:13.577-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I can confirm this happening on Vista SP2, AMD 64 dual core 2.6ghz, 4 Gb.  Not even doing an upgrade list, just a regular optimize with 2-3 extra pieces for comparison takes 20+ minutes in 2.3.13 and < 5 min in 2.3.11.  Task manager reports both cores at ~97% capacity.  Disabling all T10 pieces speeds the comparison up noticeably, back to < 5 min.",
+      "PostedDate": "2010-04-06T07:14:30.567-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-08T15:27:22.5-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-11T18:14:46.42-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Also confirmed on a Core i7 930 @ 2.8GHz (stock) with 12GB RAM.  The performance is abysmal.  It reduces Rawr from a hugely useful \"what-if\" tool that can be run on demand, to a once-a-week \"run it if I remember\" application.\r\n\r\nThis is simply not an acceptable level of performance.  There has to be a way to improve this without compromising Rawr's main utility.",
+      "PostedDate": "2010-04-11T18:21:43.3-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Oops, forgot to mention: Windows 7 64-bit.",
+      "PostedDate": "2010-04-11T18:22:39.43-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-16T15:24:12.06-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This is still an issue with Rawr v2.3.15.",
+      "PostedDate": "2010-04-28T17:49:34.34-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The optimize function for the Retribution module has been completely unusable for several iterations of Rawr now.  If this isn't currently being worked on for whatever reason, can you just revert the Retribution module back to the 2.3.11 version which actually worked?",
+      "PostedDate": "2010-04-30T23:19:19.73-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That actually gives me an idea.  Is it possible to support both versions and give a toggle in the UI?  As an example, if the old (faster) model is 95% accurate, and the new (slower) one is 98%, I'd be willing to give up the 3% gain in accuracy in exchange for faster optimizations.  Alternately, perhaps the fight length in the simulator could be turned into a UI option?  You could add a note explaining the preferred times for using and not using the T10 set.",
+      "PostedDate": "2010-05-01T08:14:34.483-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Just a note to clarify the state of things:\r\nThe FCFS part of Rawr.Retribution was being worked on by Orlangur.  He was very active for a while, but I haven't seen him around in the last handfull of weeks.  I didn't touch this part meanwhile since I assumed he was working on it. I'll see if I can contact him, but it's possible he's to be considered 'out'.\r\n\r\nFixing this isn't a matter of a couple pushes and prods in the code, it'll take some focussed time and effort to figure out what the real issues are.   Reverting isn't an option either since several changes have effects in pretty much all of the rawr.ret module.\r\n\r\nMaking the fight length variable isn't really an option either, there's reasons why the 'internal' fight length is the way it is. \r\nBTW, the fight length in the UI only serves to extrapolated the ability usage out of the internally determined fight length, so changing the fight length in the UI will have no influence on performance in the optimiser.\r\n",
+      "PostedDate": "2010-05-03T07:10:10.25-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Does this issue persist in 2.3.19? Will close on Sunday if no response.",
+      "PostedDate": "2010-07-02T15:38:30.94-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T15:50:44.123-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yes, the optimizer is still unusably slow in 2.3.20.",
+      "PostedDate": "2010-07-05T23:58:09.137-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yes it's still there.  Haste and 2T10 (making the haste issue worse by a lot) are the root cause as they require new ability usage table calculations.\r\nThe issue is also mentioned in the ret model docs.",
+      "PostedDate": "2010-07-06T01:43:09.637-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "DPS Fury Warrior optimizing run time is hugely excessive - starting not to use RAWR anymore.",
+      "PostedDate": "2010-07-11T07:05:20.54-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Fury Warrior optimizing or build upgrade list run times both long to the point of not using RAWR anymore",
+      "PostedDate": "2010-07-11T07:06:40.163-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Daane:\r\n\r\nThis is a [Retribution] thread, NOT a [DPSWarr] thread.  An issue with DPSWarr is very likely not a Retribution issue.  You obviously did not review our \"Posting Guidelines\".\r\n\r\nThat said, I would direct you to a currently active DPS Performance Issue thread (http://rawr.codeplex.com/workitem/18086), and to also note that the issue was both A) identified, and B) resolved for the upcoming 2.3.21 release.",
+      "PostedDate": "2010-07-11T14:39:40.85-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-11-20T17:01:41.947-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:40:45.093-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:29:05.45-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:14.75-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

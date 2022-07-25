@@ -1,0 +1,331 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSDK",
+      "DisplayName": "Rawr.DPSDK"
+    },
+    "ClosedComment": "Closing this task as it&#39;s an on-going thing.  As I get things more fine-tuned, I&#39;ll then work on refactoring to improve performance.",
+    "ClosedDate": "2011-01-16T16:39:45.387-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Prior to 2.3.6, the optimizer ran slow, but not too slow (would take about 3 hours to build an upgrade list for my Unholy DK build. Slow, but acceptable. As of 2.3.6, without changing any settings, the optimizer took 3-4 hours to fully complete. I then ran an upgrade list starting around 12pm, and right before raid time at 8pm it was around 30% completed. This is drastically different than the previous release, and I imagine the optimizer is not intended to run this slow.",
+    "LastUpdatedDate": "2013-05-16T05:22:17.543-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-01-19T07:41:52.833-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSDK] Check performance",
+    "Type": {
+      "Name": "Task",
+      "Id": 2
+    },
+    "VoteCount": 12,
+    "Id": 15982
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3749,
+      "FileName": "KaleBlood.xml",
+      "DownloadUrl": ".\\3749"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I can confirm this, was running it for a guildy last night and it was taking well over what I normally see in system resources and took a very long time.",
+      "PostedDate": "2010-01-19T08:06:09.82-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-19T08:06:31.897-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Using the DPSDK Module too, and 2.3.6 runs incredibly slow for everything I've done compared to 2.3.5 without changing any settings.  This includes Optimizer and  Upgrade list building as described by the op.\r\n\r\nAs well the Rawr becomes compleatly unresponsive for a much longer then \"normal\" amount when: Ticking on/off a single filter, right clicking an item and picking update from Armory (or Wowhead).  In 2.3.5 the update item would take about 1-3 seconds,  now it takes 37 seconds (just timed it).  As well ticking on/off a filter used to be very slow in 2.3.5, however my work around was to first set it to \"Slot: Gems V Normal V\" and then ticking filters on and off were relitively \"instant\",  now in 2.3.6 even this workaround has slowed to about 2-3 seconds per check-box...  And if you try to toggle one when you have \"Slot: Direct Upgrades V\" selected it will take about 32 seconds per checkbox.",
+      "PostedDate": "2010-01-20T10:51:13.063-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-20T10:52:28.837-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I don't know if its a matter of importance in regards to this issue, but in prior builds (2.3.0 and older) when I was still running DPSDK for a Frost DW build, the optimizer ran about 3x faster than for the Unholy and Blood builds I had attempted at the time. I could guess that maybe there are some talent/rotation changes that are causing this slowness, but I couldn't say for sure until I played around with things a bit.",
+      "PostedDate": "2010-01-20T11:44:34.473-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-20T15:50:11.363-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Just posting to say that this is a known issue, and it is a side affect of the model redesign that showed up in this release. I will be working on performance improvements, but primarily these will come as a tradeoff of calculation accuracy/thoroughness for speed as user options, though there are most probably many other optimizations to make in the code.",
+      "PostedDate": "2010-01-20T17:32:33.283-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-21T21:25:09.81-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This is still happening in 2.3.8.  Even on my Core i5, 4GB RAM, and having Rawr.exe elevated on processor priority, it's optimizing slower than my grandmother...and she's dead. ",
+      "PostedDate": "2010-01-24T17:45:29.04-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "1. Optimizers are taking ages [literally over an hour in some cases]. It seems to be based on talents or glyphs, as different specs take less time [Blood takes longest].\r\n\r\n2. Items with stacking procs such as the Sigil of the Hanged Man or Herkuml War Token have broken scaling issues. They are sometimes listed with almost three times as much value as the next-best item in slot.\r\n\r\n3. The dps rotation feature is simply GONE in the newest version. I don't know if it's automated now, but it doesn't seem to be using the right priority, or not properly taking into consideration boss level/armor.\r\n\r\n4. Tank module is dancing between avoidance [def, agi, dodge, depending on the color] and stam gemming [avoidance usually being a very, very bad suggestion].\r\n\r\n5. Tier set bonuses vs. cost are wrong [preferring to buy many non-tier items before even attempting a set bonus].\r\n\r\n6. CPU resource usage through the roof while processing anything. Where I could previously optimize or find upgrades in the background while watching a movie and playing WoW, it now sucks up everything available, even if set on lower priority.\r\n\r\n7. Importing via RPGO Character Profiler works every 5 attempts.\r\n\r\n8. Letting the Optimizer choose talents on its own causes it to arbitrarily place points, failing to recognize a useable spec.\r\n\r\nSo far 2.3.5 has yet to fail me, so I've been sticking with that. I'll do some testing later to see if I can find any more issues or solutions.",
+      "PostedDate": "2010-01-29T17:32:58.41-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I haven't focused on my DK in a bit and decided to check the status of his gear and noticed this issue as well. I decided to load him up in the current Rawr and compile an upgrade list and as it was being slow I went to bed. I woke up 8 hours later to see that it is only at 57%. I don't have a Core i5 like luckton does, and AMD has a history of being slower at complex mathematics than Intel, but it did strike me as incredibly odd since it wasn't slow like this in the past and the ret paladin model only took a few minutes to compile an upgrade list.",
+      "PostedDate": "2010-01-29T17:59:33.95-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Bloodysorc is aware of the performance issues, he's just extremely busy atm.",
+      "PostedDate": "2010-01-30T19:37:08.543-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I am having the same problem as tronage in the 2.3.8 model of the DPS.DK. I have a dps dk blood spec, and i cant even click on/off a buff in the Buffs window without it working for 30-40 sec. And the optimizer takes ages.\r\nHope it is fixed soon, thx for a good program.",
+      "PostedDate": "2010-02-05T00:38:15.147-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The last comment I see is Jan 19th.  I have to ask the question...why is it only the DKDPS model that seems to be broken as of 2.3.6ish?  I use to love RAWR and used it for all of my toons, but I can no longer do so cause of the system issues it causes and the exponential time it takes now.  The one post I do see to fix this says that it will reduce accuracy.  Does this not defeat the whole purpose of the application for DK DPSers then?\r\n\r\nI love this tool and I do not want to abandon it...but in the current state it is basically unusable for my main toon (system usage through the roof and waaaaaaaaay longer times to do anything like optimize)..but if the fix is loss of accuracy to speed up the time (and I hope reduce the resources it currrently uses, although I do not see that in the dev post, just faster)...then it will make your great tool unusable for DK DPSers.\r\n\r\nCan you please give an update on where we are in this fix getting implemented and what the impact is? Accuracy?  (also if you can explain what happened in 2.3.6ish that seemed to have only killed the DKDPS model, that would also be appreciated)\r\n\r\nThanks for the time you have put into this wonderful tool for others to benefit from!",
+      "PostedDate": "2010-02-09T13:30:49.703-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The models are each individually programmed with a basic set of rules, but those rules are VERY loosely defined and the model devs have almost absolute say on how to go about their own business.\r\n\r\nDPSDK made a change to remove user-set rotations (which were causing more problems than they were fixing) to a system that will generate the optimal rotation *for you*. However this rotation generation is causing rather hefty resource drags. Bloodysorc and/or Shazear (always get you two confused) is/are working on the issue of performance. The note that it would reduce accuracy is probably that the most immediate performance fix is to drop it to specific rotations only (instead of fully dynamically creating it based on talents and damage per ability and everything).",
+      "PostedDate": "2010-02-09T14:06:31.44-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Updating for 2.3.9...still taking forever to opt.",
+      "PostedDate": "2010-02-14T05:21:11.79-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Try lowering the fight duration to 1 min, it helped a lot for me.",
+      "PostedDate": "2010-02-14T22:31:59.53-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Wouldn't that skew the numbers in undesirable ways?  Most boss fights aren't going to last just 1 minute...",
+      "PostedDate": "2010-02-15T01:07:58.18-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It doesn't seem to have any negative side-effects.  You can always do a \"long run\" when you know you're going to be AFK for a while.",
+      "PostedDate": "2010-02-15T04:28:04.387-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Good idea to change the rotation to a static rotation, where do I go to see what my rotation is set to now?",
+      "PostedDate": "2010-02-16T12:12:27.747-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You don't, it's automatic.",
+      "PostedDate": "2010-02-16T18:21:16.093-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Is there any ETA on this being fixed?  There may have been issues with the user-supplied rotations, but it couldn't be bad enough to justify the current state of the dps dk module.  Can't rotation and gear be optimised separately, or does changing the rotation really make that big of a difference in gear choices?  The app runs so slowly now that I'd call it completely unusable in it's current state.  When an operation that used to take a few minutes now requires running the app overnight while I sleep, something is horribly wrong.",
+      "PostedDate": "2010-02-17T14:52:54.76-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "2.3.8 reproduced this, I haven't tried it on 2.3.9 yet. ",
+      "PostedDate": "2010-02-17T17:01:38.127-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-02T00:51:37.84-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Even on the lowest thoroughness setting, the optimiser is useless to me at the moment as it takes to long to be useful.   There is something definitely up with it at the moment.",
+      "PostedDate": "2010-03-02T00:56:05.597-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I've been playing around with this today.   Using about 1/3 thoroughness, only one item per slot marked available, 1 enchant per slot & 1 gemming template (all str gems).    Also no glyphs.   These were the times I got: -\r\n\r\n\r\nAll Blood Talents (75/0/0) -  4 mins 35 sec\r\nAll Frost Talents (0/77/0) - 4 mins 10 sec\r\nAll Undead Talents (0/0/79) - 3 mins 50 sec\r\n\r\nAll Blood Talents EXCEPT HEART STRIKE - 0 mins 10 sec\r\nAll Frost Talents EXCEPT FROST STRIKE - 0 mins 02 sec\r\nAll Undead Talents EXCEPT SCOURGE STRIKE - 0 mins 02 sec\r\n\r\n\r\nThis may help track down a way to improve the optimisation code.   It certainly seems to be due to the new rotation code.   \r\n\r\nHope this can be looked at soon as the module is only of limited use without being able to optimise (other than leaving it to run overnight).\r\n\r\nThanks\r\n\r\n",
+      "PostedDate": "2010-03-03T21:46:05.69-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-07T09:42:07.967-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-10T04:16:45.353-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Once again:  This is a known problem, Bloodysorc will work on it when he has time.",
+      "PostedDate": "2010-03-10T19:45:58.717-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-10T20:46:54.003-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I have noticed that armor proc trinkets seem to be part of the slowdown. Everytime the static armor + armor procc exceeds the cap of 1260 ( I can only confirm it for bloodspec ) I get incredibly high cpuusage and the app crashes or is near to crash ( not responding line in the title for minutes ). Does the new priority system try to use trinket proccs in order to optiminize other cooldowns ? ",
+      "PostedDate": "2010-03-12T11:15:10.463-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-17T19:54:35.363-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Does this issue persist in 2.3.19? Will close on Sunday if no response.",
+      "PostedDate": "2010-07-02T15:01:45.363-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T15:42:26.297-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm getting some pretty crazy-long wait times on doing anything within the model.  It's to the point of unusability.",
+      "PostedDate": "2010-07-05T09:56:27-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sorry, that's on 2.3.20, but been noticing it since 2.3.18.  Oddly enough, it wasn't happening before I added a bunch of items, yesterday.  Want me to upload my character profile?",
+      "PostedDate": "2010-07-05T09:57:29.097-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well certainly, that would probably help Shazear and Bloodysorc out.",
+      "PostedDate": "2010-07-05T10:06:58.817-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-05T12:24:37.12-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Posting profile \"KaleBlood\".",
+      "PostedDate": "2010-07-05T12:24:38.09-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-06T13:37:10.92-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That helps quite a bit.  I'm going to see if I can make some changes in the way the Special Effects are handled (and/or the combat rotation) to fix the optimizer performance.  ",
+      "PostedDate": "2010-07-06T14:23:51.157-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I have version 2.3.20 downloaded as of a few days ago- may have downloaded it into the RAWR folder before deleting previous versions - I'll do a complete delete and download a fresh version.  About 30 days ago the build gear upgrade optimizer started taking 45 minutes+ on a fast processor - 8 Gig RAM machine - any ideas on how to fix this long run time?  In earlier RAWR versions this upgrade gear run took less than 5 minutes.  Thanks.",
+      "PostedDate": "2010-07-10T07:36:17.39-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-11T07:11:16.99-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "No improvement in the excessive run times after I did a complete RAWR delete from my pc and downloaded the new version - this long run time issue started about a month ago :(.",
+      "PostedDate": "2010-07-11T07:12:52.647-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "ok... by the looks of things, using the Kale attachment, the key difference is \"refresh on Significant change\" is checked in the options.  This leads to the model re-calculating the rotation for every pass of everything under the sun.  I'm going to see if there's a way to cache the results or something so we don't deal with this as often.",
+      "PostedDate": "2010-07-16T16:21:20.837-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-17T19:55:26.713-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-20T00:14:14.56-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok... so, don't enable \"Refresh on Significant change\" and don't use a Needle Encrusted Scorpion... BAH.\r\nI'm working on trying to get this resolved, honest.  ",
+      "PostedDate": "2010-09-03T15:09:36.653-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T13:40:23.62-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-16T10:59:31.317-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "re-purposing this for performance checks once I get everything implemented.",
+      "PostedDate": "2010-10-13T10:32:27.033-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-11-22T20:06:40.67-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-27T22:34:17.563-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-16T16:39:45.387-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T19:56:52.25-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:30:24.953-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:17.543-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

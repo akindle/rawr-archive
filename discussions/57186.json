@@ -1,0 +1,386 @@
+[
+  {
+    "Id": "193221",
+    "ThreadId": "57186",
+    "Html": "<p>I just started to use Rawr and have some questions about how you weigh stats.&nbsp; I thought Rawr was based on a spreadsheet I published a while back but am learning that it is not.&nbsp; So specifics - you seem to over weight Crit and Haste.&nbsp; Let me give an example of Crit first.&nbsp; Using something easy like Head Gear enchants.&nbsp; Compare Arcanum of Burning mysteries (30 SP, 20 Crit) vs Arcanum of Blissful Mending (30 SP, 8 Mp5).</p>\r\n<p>Some simple math based on my character.</p>\r\n<p>-&nbsp; 47% Crit</p>\r\n<p>-&nbsp; HL spam with cost of HL spell being 786 Mana (after Seal, Libram, and 4 Piece Tier 7.5)</p>\r\n<p>-&nbsp; fight time = 6 minute</p>\r\n<p>-&nbsp; Total HL cast 137</p>\r\n<p>-&nbsp; HL13 size = 10524 (based on 2538 SP)</p>\r\n<p>Value of Mp5:</p>\r\n<p>HP healed = Mp5 / 5 * fight time / HL spell cost * average HL HP healed</p>\r\n<p>HP healed = 8 / 5 * 360 / 786 * 13014</p>\r\n<p>HP healed based on MP5 increase = 9537</p>\r\n<p>Value of Crit (a bit more complicated due to calculating mana returned and extra HP healed):</p>\r\n<p>Mana returned HP Healed = Crit / 45.91 / 100 * # of spells cast * 0.6 * Ave HL HP healed</p>\r\n<p>Mana returned HP Healed = 20 / 45.91 / 100 * 137 * 0.6 * 13014</p>\r\n<p>Mana returned HP Healed = 4660</p>\r\n<p>Extra HP Healed = Crit / 45.91 / 100 * # of spells cast * HL13 healed * 0.5 (to account for the crit increase) * 0.5 (to account for most of the increase being wasted)</p>\r\n<p>Extra HP Healed = 20 / 45.91 / 100 * 137 * 10524 * 0.5 * 0.5</p>\r\n<p>Extra HP Healed = 1570</p>\r\n<p>HP healed based on Crit increase = 6230</p>\r\n<p>&nbsp;</p>\r\n<p>Mp5 = 9537</p>\r\n<p>Crit = 6230</p>\r\n<p>&nbsp;</p>\r\n<p>Clear advantage to Mp5 for a 6 minute fight.&nbsp; Your tool suggests the Crit enchant is significantly better 81.76 vs 105.03.&nbsp; I don't get it.</p>\r\n<p>&nbsp;</p>\r\n<p>Darion</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-05-22T07:14:59.737-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "193236",
+    "ThreadId": "57186",
+    "Html": "<p>For each 2 mp5 you take, you could have gotten 5 crit rating. (That means, 1 mp5 costs 2.5x &nbsp;more than 1 crit rating.) See <a href=\"http://www.wowwiki.com/Formulas:Item_Values\">WoW Wiki - Item Values.</a></p>",
+    "PostedDate": "2009-05-22T07:42:16.93-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "193296",
+    "ThreadId": "57186",
+    "Html": "<p>Huh?&nbsp; I think we are in two different conversations.&nbsp; You don't actually&nbsp;use the stat values to do trade off between items - do you?&nbsp; If so - why would you bother asking for fight length, spell selection, etc.&nbsp; And using stat values based on how Blizzard itemizations is not a great method.&nbsp; Blizzard has to optimize across PVP, Heroics, Raids, etc.&nbsp; So for instance Crit is a great PVP stat but Mp5 sucks.&nbsp; In a 10 minute 25 man Raid boss fight - Mp5 becomes awesome (and Crit just good).</p>\r\n<p>The whole purpose of asking for things like fight length, regen time, spell selection is to let people customize their 'simulation'.&nbsp; If they are worried about a 3-4 minute hard mode Hodir then that is a different fight then a 10 minute assembly - and requires different equipment if you want to optimize.&nbsp;</p>\r\n<p>And so what I'm poking at is your model has an error in it somewhere.&nbsp; It's very easily verified.&nbsp; Just grab any character - for instance Darion on Hellscream.&nbsp; Then go to helmet enchants.&nbsp; Then open the Options tab and change the fight length.&nbsp; In very short fights - say one minute&nbsp;- Mp5 should have no value in the fight.&nbsp; But since you have enough mana to do a pure spam - probably a HL every 1.5 sec.&nbsp; You should see lots of value from Crit.&nbsp; But change the fight time to 10 minutes.&nbsp; Now you don't have enough mana to spam - your time between spells is probably more like every 3 sec.&nbsp; Mp5 has more time to 'add', and the relative number of times Crit comes into play is less.&nbsp; At that time Mp5 is a better stat then Crit.&nbsp; That should be reflected in your tool - but is not.</p>\r\n<p>I exchanged some emails with a developer of Rawr over a year ago.&nbsp; I had a published spreadsheet that took into account all the stuff I talked about above.&nbsp; I laid out why Rawr wasn't useful to me.&nbsp; I guess I thought the tool had changed but now I'm understanding it hasn't.&nbsp; If you are interested&nbsp;I can lay out the formulas and method for doing a proper simulation to 'weight' item values.&nbsp; If your not that's fine :-).&nbsp; BTW, I stopped updating the spreadsheet with Naxx.&nbsp; Just took too much time to add all the items.&nbsp; But all the formulas and method is there.</p>\r\n<p>Darion</p>",
+    "PostedDate": "2009-05-22T09:52:50.293-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "193332",
+    "ThreadId": "57186",
+    "Html": "<p>Hello, I am the Healadin developer. Excuse TNSE's comment, he thought you were comparing equal amount of crit and mp5, but you weren't, you were comparing 8 mp5 to 20 crit.</p>\r\n<p>You messed up your calculation for crit. It should be</p>\r\n<p>Crit Chance * Holy Light Casts * .6 * Base Holy Light Cost &nbsp;/ Average Holy Light Cost&nbsp;* Average Holy Light Heal</p>\r\n<p>You had</p>\r\n<p>Crit Chance * Holy Light Casts * .6 * Average Holy Light Heal</p>\r\n<p>Since Illumination returns mana from base cost not after cost reductions, and the extra heals cast can crit in turn, both of these effects are taken into account in the 768 average cost number.</p>\r\n<p>You must be casting some Flash of Lights which. Truly spamming Holy Light in a 6 minute fight will result in much more then 137 casts. 137 * 1.5 = 205, what are you doing the other 2+ minutes?</p>\r\n<p>You also&nbsp;arbitrarily&nbsp;saying that 1/2 of extra healing from crit is wasted. While it does have a higher overheal, there is no way to accurately determine the effect of overheal on increasing stats, so it is not included in any calculations.</p>\r\n<p>This is also still a simplistic model, since it assumes the gained casts from extra mana are being added on at the end of the fight, and not replacing casts that were previously FoL.</p>\r\n<p>Simple math can be very misleading, since it doesn't take into account many of the subtitles that effect different stats. That is the point of Rawr, it is based off of a powerful computing language (not napkin math) so it is able to model the picture much more completely (though nothing can come close to accurately completely modeling healing).</p>",
+    "PostedDate": "2009-05-22T11:46:25.23-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "193347",
+    "ThreadId": "57186",
+    "Html": "<p>Yeah, I didnt see you were comparing 8mp5 to 20 crit.</p>",
+    "PostedDate": "2009-05-22T12:25:16.363-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "193360",
+    "ThreadId": "57186",
+    "Html": "<p>Ermad - thanks for the reply.&nbsp; I didn't document very well - my fault.&nbsp; Let me try and explain. I look at&nbsp;crit doing two things for you.&nbsp; The first is to increase the average size of your healing spell.&nbsp; The 2nd is to return some amount of mana that can be recycled and used to cast another heal spell.&nbsp; So when I calculate the 'value' of crit I always bring it back to a number that corresponds to HP's healed.&nbsp; If the fight is 2 minutes long, total HP healed may be 620k (ignore effective healing for now).&nbsp; If the fight is 10 minutes long then the fight may be 2.6M.&nbsp; But in the end you can always get back to a HP healed number given you limited the fight to a certain length and assume that you end the fight at 0 mana (again, simpifying assmption for now).</p>\r\n<p>So big picture - the basic concept is to:</p>\r\n<p>1.&nbsp; Figure out what your mana budget is for the fight (fight length, Mp5, replenishment, potions, divine plea, etc)</p>\r\n<p>2.&nbsp; Given a mana budget, decide on how you allocate it (# of HL, FoL, HS, Beacon, Judgement, etc)</p>\r\n<p>3.&nbsp; Find out the number of HP's healed you do based on the spell allocation and mana budget (which determines number of spells cast).</p>\r\n<p>Once you have the number of HP's healed, spell allocations, and mana pool - you can start to assign a value to each attribute.&nbsp; For instance - for my character Darion on Hellscream in a 6 minute fight using HL spam and occasional HS with keeping BoL and Judgements up:</p>\r\n<p>1 point of&nbsp;SP = 228 additional HP's healed</p>\r\n<p>1 point of Mp5 = 1193 additional HP's healed</p>\r\n<p>1 point of Crit = 311 additional HP's healed (I do a 0.5 modifier on crit since most is wasted - you can increase to 390 if you don't like this)</p>\r\n<p>1 point of Int = 821 additional HP's healed</p>\r\n<p>1 point of Haste = 218 additional HP's healed (I don't like over valuing haste so put a 0.4 modifer on it.&nbsp; you can increase to 545 if you'd like)</p>\r\n<p>Make sense?&nbsp; Now what happens if I decide that a fight has to happen in 3 minutes instead of 6?&nbsp; I change that value in the spreadsheet and now the relative value between the attributes change.&nbsp; This is driven solely by my mana pool shrinking (but at a slower rate than the fight time).&nbsp; So the number of spells cast per second increases.</p>\r\n<p>1 point of&nbsp;SP =&nbsp;158 additional HP's healed</p>\r\n<p>1 point of Mp5 =&nbsp;596 additional HP's healed</p>\r\n<p>1 point of Crit =&nbsp;215 additional HP's healed (I do a 0.5 modifier on crit since most is wasted - you can increase to 390 if you don't like this)</p>\r\n<p>1 point of Int = 810 additional HP's healed</p>\r\n<p>1 point of Haste =&nbsp;151 additional HP's healed (I don't like over valuing haste so put a 0.4 modifer on it.&nbsp; you can increase to 545 if you'd like)</p>\r\n<p>The winner out of this change?&nbsp; Intellect (because of starting mana pool and replenishment being relatively linear) and Crit due to you casting a lot more spells per second than before.&nbsp; The loser is Mp5 - obviously because it's impact is linear to time.</p>\r\n<p>With all this said - does that make sense?&nbsp; I can certainly go into the Crit calculation and speak to it (I believe I'm correct).&nbsp; But if you don't agree to the big picture - it makes no sense to get into the nuances.&nbsp; So my core problem with your tool is that it doesn't seem to take time into account.&nbsp; Mp5 and Crit value keeps the same ratio - no matter if it's a 1 minute fight or a 10 minute fight.&nbsp; Because of that - your whole model is incorrect.&nbsp; Luckily - I'd call this a 2nd order effect problem.&nbsp; My BIS and your BIS are usually a couple of items off (driven by crit vs mp5 vs haste vs fight time).</p>\r\n<p>Darion</p>",
+    "PostedDate": "2009-05-22T13:12:18.847-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "193379",
+    "ThreadId": "57186",
+    "Html": "<p>I understood what you were doing, and the basic methodology is fine. I didn't agree with how you calculated your numbers.</p>\r\n<p>Did you not see the very obvious error in your crit healing calculation that I pointed out above? You were calculating mana returned by Illumination off of average cost instead of base cost. You didn't calculate the mana return from Flash of Lights cast.</p>\r\n<p>About the effect of overhealing on crits. True crits overheal for a larger percentage of the total heal, but the effect of that is much less complicated. If my tank gets overhealed by my crit it doesn't really matter since that tank wasn't going to die if the spell crit or not. When how much your spell heals for matters is when they don't overheal at all, and the spell critting or not, or hitting for a few hundred more of not can make the difference of your tank living or not. The value of crit versus sp in which keeps your tank alive more is vary difficult to compute in that regard, and is very dependent on fight specific factors. What Rawr fight healing analyzes is how much total healing you can do over the entire fight, not try to analyze the effect of when those heals lands. Burst healing gives additional subjective value to stats that&nbsp;ancillary&nbsp;values besides how much they increase your total fight healing.</p>",
+    "PostedDate": "2009-05-22T14:12:37.86-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "193416",
+    "ThreadId": "57186",
+    "Html": "<p>Yep - understand the mistake in the crit.&nbsp; Just checked it out online and I was wrong on what comes back in terms of illumination.</p>\r\n<p>I recalculated the example above and got this (I even removed the overheal modifier for you)</p>\r\n<p>Mp5 = 9537</p>\r\n<p>Crit = 10694</p>\r\n<p>Which is nice - crit slight above Mp5 levels assuming you believe that you get 100% of the value of a crit healing spell.&nbsp; My experience is I run about 50-60% over heal on my Holy Light.&nbsp; That's why I modify the crit number to 'average' the benefit (which of course moves 20 crit below 8 Mp5 for a&nbsp;6 minute fight).&nbsp; Any other concerns with my equation?&nbsp; Calculations below:</p>\r\n<p>Value of Crit (a bit more complicated due to calculating mana returned and extra HP healed):</p>\r\n<p>Mana returned HP Healed = Crit / 45.91 / 100 * # of spells cast * 0.6 * Ave HL HP healed * Base cost of HL / Avg cost of HL</p>\r\n<p>Mana returned HP Healed = 20 / 45.91 / 100 * 137 * 0.6 * 13014 * 1274 / 786</p>\r\n<p>Mana returned HP Healed = 7554</p>\r\n<p>Extra HP Healed = Crit / 45.91 / 100 * # of spells cast * HL13 healed * 0.5 (to account for the crit increase) * 0.5 (to account for most of the increase being wasted)</p>\r\n<p>Extra HP Healed = 20 / 45.91 / 100 * 137 * 10524 * 0.5 * 0.5</p>\r\n<p>Extra HP Healed = 3140</p>\r\n<p>HP healed based on Crit increase = 7554 + 3140 = 10694</p>\r\n<p>So from these equations I get that 8 Mp5 = 20 Crit at 7.5 minutes (based on your assumptions).&nbsp; Below 7.5 minutes and crit is better.&nbsp; Above 7.5 minutes, Mp5 is better.&nbsp; To get the 20% Mp5 worse than Crit I have to have a fight that is roughly 5 minutes in length.</p>\r\n<p>So let's get back to your model - does it take into account fight length and the sort of work I'm doing above?&nbsp; Basically changing the value of attributes based on the time of the fight (and mana pool and spell selection)?</p>\r\n<p>Darion</p>",
+    "PostedDate": "2009-05-22T16:15:27.92-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "193422",
+    "ThreadId": "57186",
+    "Html": "<p>You are not calculating the increased Illumination mana return from Flash of Light. In your OP you said you cast 137 Holy Lights over 6 minutes, presuming a 1.5 sec cast with lag and stuff that only takes 3.5 minutes. What are you doing for the other 2.5 minutes? You must be casting some Flash of Lights.</p>",
+    "PostedDate": "2009-05-22T17:26:17.213-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "193426",
+    "ThreadId": "57186",
+    "Html": "<p>I realized I never really answered how the model works, let me explain it. It does the following in this order</p>\r\n<ol>\r\n<li>Computes your stats from your current gear, averages value of procs assuming you can cast a spell every 1.5 seconds.</li>\r\n<li>Computes how much mana you have given the fight parameters.</li>\r\n<li>Computes the average amount healing, mana costs, etc that each cast of HL/FoL/HS use.</li>\r\n<li>Computes time/mana spent on keeping up BoL, JotP, and SS.</li>\r\n<li>Computes how much time/mana/healing done by HS based on the options set. User sets how often they cast HS.</li>\r\n<li>If Infusion of Light modeling is on, it calculates how many IoL procs you will get on average, then calculates how much mana used/healing done by the FoL/HL cast with IoL (ratio of the two is set by the user)</li>\r\n<li>Calculates the mana cost of HL during Divine Illumination. Computes how much time/mana/healing done is used assuming you spam Holy Light during Divine Illumination.</li>\r\n<li>With the remaining remaining mana that is not used by any of the previous steps it calculates how much time is spent on casting FoL and how much on HL presuming you use exactly all of your mana. It uses the following formula&nbsp;<span style=\"font-family:'Courier New';white-space:pre\">hl_time = (remainingMana - (remainingTime * fol_mps)) / (hl_mps - fol_mps)</span></li>\r\n<li>Tallies up all the healing done by the previous steps, computes average GHL heal, BoL heal, SS absorbs.</li>\r\n<li>Computes the average time in between casts.</li>\r\n<li>Repeats the whole thing 5 more times, but for the first step it estimates proc values using the average cast time calculated in step 10.</li>\r\n</ol>\r\n<p>It doesn't computer the mana return of Illumination outright, rather It uses the following formula to determine the average cost of the heal.</p>\r\n<p style=\"font-size:1em;font-family:'Courier New'\">((BaseMana * (DivineIllumination ? 0.5 : 1) - CostReduction) * (AbilityCostMultiplier - (GlyphOfSealOfWisdom ? .05f : 0f))) - BaseMana * .12 * PointsInIllumination * ChanceToCrit</p>",
+    "PostedDate": "2009-05-22T17:38:50.303-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "193427",
+    "ThreadId": "57186",
+    "Html": "<p>Nope - no FoL's.&nbsp; Holy Light and Holy Shock.&nbsp; I assume you must be in Heroic Ulduar?&nbsp; There is a lot of movement in the fights.&nbsp;&nbsp;&nbsp; Not like BT or SSC at all.&nbsp; Why are you so fixated on this?&nbsp; Is it relevant to how your model handles Mp5 and Crit over different length fights?</p>",
+    "PostedDate": "2009-05-22T17:41:43.91-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "193430",
+    "ThreadId": "57186",
+    "Html": "<p>I think you missed my 2nd previous post the I posted a few minutes before yours.</p>\r\n<p>Of course I am in Heroic Ulduar and doing a lot of hard modes, including getting the US 7th kill on Freya+3 elders. On all but trivial fights you should have to cast FoL sometime, so you have the mana to Holy Light when it matters and to not have to spam Divine Plea.</p>\r\n<p>Of course my model handles fight length, do you not see the option, do you not see it changing the value of your results when you change it.</p>",
+    "PostedDate": "2009-05-22T17:48:20.717-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "193434",
+    "ThreadId": "57186",
+    "Html": "<p>Cool - congrats on the Freya kill.&nbsp; It helps to understand you are experienced.&nbsp; I'm curious about how the model you set up let's you compare items?&nbsp; It seems you have hard coded the spell cast rate which is very dependent on your rotation.&nbsp; I tend to holy light spam so cast every 2-3 secs.&nbsp; With HS worked in for a quick tick when necessary.&nbsp; Variation in time is based on need.&nbsp; It sounds like you may be more of a SP / FoL healer.&nbsp; But none the less -&nbsp;can you really capture what happens in different fight lengths.&nbsp; Haven't you found that very short intense fights needs more crit where very long fights need Mp5?&nbsp; That is not what your model does.&nbsp; Because you've hard coded your cast speed - you will simply run out of mana sometime into the fight.&nbsp; And increaseing or decreasing the fight time doesn't make a difference - correct?</p>",
+    "PostedDate": "2009-05-22T18:35:06.167-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "193435",
+    "ThreadId": "57186",
+    "Html": "<p>You totally misunderstood something, not one thing is hard coded. I spam the hell out of Holy Light, but on Ulduar hard modes you don't have to mana to not cast FoL sometimes.</p>\r\n<p>edit: How does it not capture fight duration? If you set it to 3 mins it then computes accurately how much healing you can do with your stats. Increasing or decreasing the fight time very much makes a difference. One side note almost all difficult fights though are close to 10 minutes in length.</p>",
+    "PostedDate": "2009-05-22T18:40:08.437-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "193437",
+    "ThreadId": "57186",
+    "Html": "<p>Went through the algorithm again.&nbsp; Think I understand it better.&nbsp; but still don't understand how the relative value of Mp5 and Crit can't change when varying the fight time.&nbsp; So if I load my character into Rawr.&nbsp; Then just use the Gear - Enchant - Head.&nbsp; Then just watch the 'value' of Mp5 enchant vs the Crit enchant&nbsp;- they don't change relative to each other with varying fight time.&nbsp; Does that make sense?</p>",
+    "PostedDate": "2009-05-22T18:56:24.04-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "193440",
+    "ThreadId": "57186",
+    "Html": "<p>They do for me. I am guessing with the fight you have modelled that it calculates you can cast HL the entire time. Make sure activity and DP cooldown are properly set.</p>",
+    "PostedDate": "2009-05-22T19:09:29.63-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "193444",
+    "ThreadId": "57186",
+    "Html": "<p>Hmmm....Divine Plea set to 1.3 min.&nbsp; Activity set to 89%.&nbsp; So you see the Mp5 and Crit swap priority when you move the fight length?</p>",
+    "PostedDate": "2009-05-22T19:24:53.283-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "194067",
+    "ThreadId": "57186",
+    "Html": "<p>Obviously I have my settings messed up if you see Mp5 and Crit values varying (they stay in lockstep for me).&nbsp; I don't think it is Divine please or Activity problems.&nbsp; Is there some other setting I could mess up?</p>",
+    "PostedDate": "2009-05-25T19:49:13.89-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "194073",
+    "ThreadId": "57186",
+    "Html": "<p>Settings aren't messed up per se, it depends on what you do during the fight. Some fights you can DP more, some less, these will change the value of stats.</p>\r\n<p>Mp5 and crit are being accurately computed for the settings you give it. You have some preconceived values that you think should match your very inaccurate napkin math, not the other way around.</p>",
+    "PostedDate": "2009-05-25T20:28:29.633-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "194076",
+    "ThreadId": "57186",
+    "Html": "<p>If you really think the values are wrong, then show some evidence of it. Show that for a 6 minute fight with X mp5 I have a Y mana pool, but with X+10 mp5 I don't have a Y+720 mana pool. Or that average cost of a spell is getting reduced by an incorrect amount. Don't just keep on going back to your math doesn't take into account a lot of factors.</p>",
+    "PostedDate": "2009-05-25T20:33:29.3-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "194518",
+    "ThreadId": "57186",
+    "Html": "<p><span style=\"font-family:Helv;font-size:small\"><span style=\"font-family:Helv;font-size:x-small\">\r\n<p dir=ltr>Ermad - wow, you are touchy.</p>\r\n<p dir=ltr>Quote: &quot;You have some preconceived values that you think should match your very inaccurate napkin math,&quot;</p>\r\n<p dir=ltr>Sigh...my inaccurate napkin math was done in an Excel spreadsheet while your inaccurate napkin math was done in a C language program. As far as I can tell - both tools actually do math correctly - it's the model and equations that make a difference. Let's focus on that part of this. So in that vein - here is an example on how I believe your model isn't doing attribute values correctly.</p>\r\n<p dir=ltr>So I came up with two scenario's.</p>\r\n<p dir=ltr>Fight A:</p>\r\n<p dir=ltr>Fight length = 125 sec</p>\r\n<p dir=ltr>Character stats (buffed)</p>\r\n<p dir=ltr>47.3% HL Crit</p>\r\n<p dir=ltr>30998 Starting Mana pool</p>\r\n<p dir=ltr>2538 SP</p>\r\n<p dir=ltr>319 Mp5</p>\r\n<p dir=ltr>Mana pool for entire fight = 83762</p>\r\n<p dir=ltr>30998 Starting pool</p>\r\n<p dir=ltr>26535 Illumination add (iterated in spreadsheet with circular reference)</p>\r\n<p dir=ltr>7975 Mp5</p>\r\n<p dir=ltr>7749 Divine plea (used once in fight - I figure used at 45 sec into fight and every 90 sec after that)</p>\r\n<p dir=ltr>7265 Replenishment (75% up time)</p>\r\n<p dir=ltr>2340 Owl</p>\r\n<p dir=ltr>600 Meta gem (insightful procs on average every 65 sec)</p>\r\n<p dir=ltr>300 Je'Tze's Bell (procs on average every 70 sec)</p>\r\n<p dir=ltr>Support spell cost</p>\r\n<p dir=ltr>7944 Assumed 3 BoL, 3 Judgements, 6 Holy Shocks, 6 FoL (used crit and benediction or mana cost)</p>\r\n<p dir=ltr>HL spam</p>\r\n<p dir=ltr>I set the fight time in the spreadsheet to give me a 1.52 sec spam of HL (basically mana pool - support cost / iterated HL spell cost)</p>\r\n<p dir=ltr>I get 73.2 HL spells cast in the 125 sec fight assuming assumed 'overhead' of 6 FoL, 6 Holy Shocks, 3 Beacon's, 3 Judgements</p>\r\n<p dir=ltr>So now the math comparing 8 more Mp5 or 20 more Crit.</p>\r\n<p dir=ltr>Mp5 HP healed add = Mp5 / 5 * # of secs in fight / average HL cost * average HL HP healed</p>\r\n<p dir=ltr>= 8 / 5 * 125 / 740 * 13014</p>\r\n<p dir=ltr>= 3517 additional HP healed with 8 more Mp5</p>\r\n<p dir=ltr>Crit HP healed add (mana) = Crit / 45.91 / 100 * # of HL's cast * ave HP healed for HL * 0.6 * HL base cost / HL ave cost</p>\r\n<p dir=ltr>= 20 / 45.91 / 100 * 73.2 * 13014 * 0.6 * 1274 / 740</p>\r\n<p dir=ltr>= 4286</p>\r\n<p dir=ltr>Crit HP healed add (crit) = Crit / 45.91 / 100 * # of HL's cast * Crit overheal modifier * HL base heal * 0.5</p>\r\n<p dir=ltr>= 20 / 45.91 / 100 * 73.2 *0.5 * 10524 * 0.5</p>\r\n<p dir=ltr>= 839</p>\r\n<p dir=ltr>Mp5 HP healed add = 3517 vs Crit HP Healed add = 5125</p>\r\n<p dir=ltr>Clear advantage to Crit.&nbsp; Not&nbsp;a surprise&nbsp;since we are max'd out the cast rate of HL. Available mana allowed casting a HL every 1.52 sec which means I have lots of opportunity for Illumination to proc and give more mana back to do it all again. On the other side, a short fight minimizes the Mp5 mana contribution. Also, if you noticed - I included an overheal modifier on the Crit. You model is a bit too simplistic for my taste in dealing with overheal. I find I run roughly 50-60% overheal on HL. And 60-70% overheal when glyph, BoL, FoL, HS is added in. Ignoring that to give an 'advantage' to crit makes no sense to me. If you don't agree then you can double the 839 to increase the advantage to 5964 (Crit) to 3517 (Mp5)</p>\r\n<p dir=ltr>Now lets look at Fight B:</p>\r\n<p dir=ltr>Fight length = 600 sec</p>\r\n<p dir=ltr>Character stats (buffed)</p>\r\n<p dir=ltr>47.3% HL Crit</p>\r\n<p dir=ltr>30998 Starting Mana pool</p>\r\n<p dir=ltr>2538 SP</p>\r\n<p dir=ltr>319 Mp5</p>\r\n<p dir=ltr>Mana pool for entire fight = 238747</p>\r\n<p dir=ltr>30998 Starting pool</p>\r\n<p dir=ltr>70211 Illumination add (iterated in spreadsheet with circular reference)</p>\r\n<p dir=ltr>38280 Mp5</p>\r\n<p dir=ltr>54246 Divine plea (used at 45 sec into fight and every 90 sec after that)</p>\r\n<p dir=ltr>34873 Replenishment (75% up time)</p>\r\n<p dir=ltr>2340 Owl</p>\r\n<p dir=ltr>5400 Meta gem (insightful procs on average every 65 sec)</p>\r\n<p dir=ltr>2400 Je'Tze's Bell (procs on average every 70 sec)</p>\r\n<p dir=ltr>Support spell cost</p>\r\n<p dir=ltr>38132 Assumed 11 BoL, 11 Judgements, 30 Holy Shocks, 30 FoL (used crit and benediction or mana cost)</p>\r\n<p dir=ltr>HL spam</p>\r\n<p dir=ltr>2.93 sec per HL (basically mana pool - support cost / iterated HL spell cost)</p>\r\n<p dir=ltr>194.1 HL spells cast in the 600 sec fight assuming assumed 'overhead' of above support spells</p>\r\n<p dir=ltr>So now the math comparing 8 more Mp5 or 20 more Crit.</p>\r\n<p dir=ltr>Mp5 HP healed add = Mp5 / 5 * # of secs in fight / average HL cost * average HL HP healed</p>\r\n<p dir=ltr>= 8 / 5 * 600 / 740 * 13014</p>\r\n<p dir=ltr>= 16883 additional HP healed with 8 more Mp5</p>\r\n<p dir=ltr>Crit HP healed add (mana) = Crit / 45.91 / 100 * # of HL's cast * ave HP healed for HL * 0.6 * HL base cost / HL ave cost</p>\r\n<p dir=ltr>= 20 / 45.91 / 100 * 194.1 * 13014 * 0.6 * 1274 / 740</p>\r\n<p dir=ltr>= 11367</p>\r\n<p dir=ltr>Crit HP healed add (crit) = Crit / 45.91 / 100 * # of HL's cast * Crit overheal modifier * HL base heal * 0.5</p>\r\n<p dir=ltr>= 20 / 45.91 / 100 * 194.1 *0.5 * 10524 * 0.5</p>\r\n<p dir=ltr>= 2225</p>\r\n<p dir=ltr>Mp5 HP healed add = 16883 vs Crit HP Healed add = 13592</p>\r\n<p>Clear advantage to Mp5 in a 10 minute fight. Again - no surprise here. If you step back from the numbers - Illumination (ie: Crit) works best when given lots of opportunities to proc in a set time frame. If you slow down the number of spells cast per sec then Crit's value goes down. Mp5 is the flip side. It is constant no matter your cast rate. So if you slow down the cast rate then it's relative value goes up. Seem reasonable?&nbsp; I have all this on a spreadsheet that I'd be happy to send you.&nbsp; And if we can reach agreement on Crit vs Mp5 then I'd like to move on to Haste and intellect.</p>\r\n<p>Oh - and what do I see from Rawr?&nbsp; Same data near as I could make it shows Crit having clear advantage in a 2 minute fight and almost as good of an advantage in 10 minute fight.</p>\r\n</span></span></p>",
+    "PostedDate": "2009-05-26T14:07:33.3-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "194592",
+    "ThreadId": "57186",
+    "Html": "<p>You are still not showing how Rawr is incorrect, you are modeling fights differently and expect it to give the same results. It clearly shows the total mana pool, average mana cost, average amount healed, etc. Show that increasing stats (crit, mp5, etc) are not correctly effecting those amounts.</p>\r\n<p>You keep giving numbers from your spreadsheet that are totally unrelated because it uses a different set of assumptions. You can debate the merit of the assumptions I make, but you are not doing that either. I model fights fundamentally different then you, I presume you constantly cast during your active time and determine the maximum number of Holy Lights you can use, you just calculate how many Holy Lights you can cast.</p>",
+    "PostedDate": "2009-05-26T18:31:38.99-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "194604",
+    "ThreadId": "57186",
+    "Html": "<p>Wow - I'm trying to understand if you are just too busy (or proud) and you are blowing me off.&nbsp; Or if you live in blissful ignorance.&nbsp; You really can't see how your model in Rawr is giving incorrect advice to people?&nbsp; Your model tells people that no matter the length of the fight - the Crit head enchant is always better than the Mp5 head enchant.&nbsp;&nbsp; I just showed you a very reasonable example with documented equations, assumptions, and procedures that Rawr is telling people something wrong.&nbsp; Notice I&nbsp;didn't say - with a given set of assumptions you get a wrong answer - I mean just plain wrong.&nbsp;</p>\r\n<p>This isn't about a different set of assumptions - this is about you telling people something that isn't supported by the math.&nbsp; I'm been doing these sorts of calculations for 4 years.&nbsp; I don't always get them perfect (you found an error&nbsp;in my stuff).&nbsp; But I do have a decent feel of the big picture.&nbsp; And I've read a lot of posts by a lot of other people that have the same conclusion as I do.&nbsp; Crit works best in short, intense fights.&nbsp; Mp5 works best in long fights.&nbsp; This isn't a new revelation - the new revelation is your tool suggesting that in no cases is Mp5 better than Crit.&nbsp; It amazes me you are so focused on the trees and seem to be missing the forest.</p>\r\n<p>And the only one that has laid out his assumptions, equations, procedure is me.&nbsp; Your equations,&nbsp;assumptions, and procedures&nbsp;are in&nbsp;a black box.</p>\r\n<p>Let me give you another example of how your model is giving questionable advice.&nbsp; I looked at gem ranking for the same set of parameters I used for the HL example above.&nbsp; From 2 minutes to 8 minutes - it suggest that the 8 haste/3 Mp5 gem is equivalent to the 8 haste gem.&nbsp; I can only assume that means your tool believes the fight to be HL spam bound (ie: not mana limited) up through 8 minutes.&nbsp; I don't believe that - I suspect you don't either.&nbsp; At 8.5 minutes haste falls away and leaves the 8 int/ 3 mp5 gem there.&nbsp; You can easily recreate this on 2.2.4 with grabbing my character and using these settings:</p>\r\n<p>Burst Scale:&nbsp; 20%</p>\r\n<p>Activity:&nbsp; 74% (I set to minimize FoL casting to 3 per minute or so)</p>\r\n<p>Holy Shock 25%</p>\r\n<p>No model infusion of light</p>\r\n<p>Sacred shield Uptime:&nbsp; 0%</p>\r\n<p>Fight length 2 to 8.5</p>\r\n<p>GHL targets:&nbsp; 1.0</p>\r\n<p>Maintain JotP checked</p>\r\n<p>Mana potion:&nbsp; 0 mana</p>\r\n<p>Divine Plea:&nbsp; 1.5 minute CD</p>\r\n<p>Replenishment:&nbsp; 75%</p>\r\n<p>Lay on hands self not checked.</p>\r\n<p>Beacon of light uptime 100%</p>\r\n<p>Effectiveness 20%</p>\r\n<p>Look correct?&nbsp; I'm at a loss of how.&nbsp; It's a 8 minute fight and suggesting that the best gem is a 16 haste (20 Int gem is way, way down the list).&nbsp; I can only assume the model believes you have more mana than you can use to get that answer.&nbsp; In a 8 minute fight I would call that questionable.&nbsp; This sort of stuff doesn't set off alarm bells for you?</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-05-26T19:38:40.653-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "194617",
+    "ThreadId": "57186",
+    "Html": "<p>Rawr is the opposite of a black box, you can view the entire source code for the project and see exactly how it is calculating its numbers. I even gave you an 11 step walkthrough of how Rawr calculates it numbers. It would take 2-3 steps to represent your calculations the same way. Yet you are still expecting the numbers to be the same.&nbsp;You are basically saying your numbers are totally right (even though they use totally different assumptions and models the fights in totally different ways) and if Rawr doesn't match them then it is wrong. It also doesn't have notion of what my burst healing score represents.</p>\r\n<p>For someone is supposedly good at theorycrafting numbers you have a very difficult time interpreting the numbers that Rawr gives back. First, you don't need to assume Rawr is mana bound in the situation you described, there is an extremely easy to see section that breaks down the exact rotation Rawr computes you can sustain. When you get a full Divine Plea every 1.5 minutes, and are only casting for <strong>75% of the time</strong>, it is quite easy to spam Holy Light the whole time. In almost all realisitic challenging fights of that length, you will get much less effective DP use, and much more casting time.</p>\r\n<p>Out of all of your extremely long posts all the useful information can be summed up as &quot;I think crit or mp5 is valued incorrectly, since in long fights crit is still better then mp5&quot;. While that is fine, I have looked over the relevant code (and even posted some of it here) and didn't find anything being calculated incorrectly with it. I have told you ways that you can effectively give feedback if you think it is returning incorrect results, but you refuse to follow them.</p>",
+    "PostedDate": "2009-05-26T20:55:55.62-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "194800",
+    "ThreadId": "57186",
+    "Html": "<p>Ok - we aren't getting anywhere on this tack.&nbsp;&nbsp;I tried to walk through your code and frankly with it having no comments and me not being a coding expert - there isn't much chance of that being productive (I just went to the source code section.&nbsp; perhaps there is code somewhere that I missed that has comments in it?).&nbsp;</p>\r\n<p>So lets try something new.&nbsp; Deal purely with Rawr.&nbsp; I started by trying to understand Total mana from the Cycle Stats on the Stats page.&nbsp; I loaded Darion from Hellscream and then only touched the fight time and divine plea timers (left all other options as set by the tool when you start it fresh and load a character in from armory).&nbsp; This was on 2.2.4 (2.2.5 doesn't run consistently for me).</p>\r\n<p>As I played around with the Divine plea cool down, I&nbsp; determined that you use&nbsp;a hidden 1 minute to use for the first time rule.&nbsp; I can't tell if you actually do a plea at the 1 minute mark or if you just start the cool down timer from there.&nbsp; But after that one minute mark then I can see the mana pool jump at the points suggested by 1 minute + the cooldown - 0.1 minute.&nbsp;</p>\r\n<p><strong>Question #1:&nbsp; Do you do a Divine plea at 1 minute point?&nbsp; or do you start the cool down timer at that point and do the first plea at 1 minute + the CD time - 0.1?</strong></p>\r\n<p>Next, I tried to figure out the impact of my Figurine - Sapphire Owl.&nbsp; I used 2.2.4 with Darion from Hellscream with the only change of options from your base being fight time of 2 minutes.&nbsp; This gave me a 60587 mana pool.&nbsp; I then removed the figurine by selecting empty for that trinket slot.&nbsp; The mana pool dropped from 60587 to 57517.&nbsp; The delta being 3070.&nbsp; I can't figure out why this is so low.&nbsp; I have gemmed that trinket with 2 16 int gems.&nbsp; It has a base of 42 int.&nbsp; So (42 + 16 + 16)*1.1*1.15*15 = 1404.15&nbsp;mana.&nbsp; So the starting mana pool from that trinket is 1404.15.&nbsp; Then if you add 89% replenishment and 1 divine plea (remember just a 2 minute fight so the answer to question 1 above may effect this).&nbsp; Replenishment = 0.89 * 0.0025 * 120 * 1404.15 = 374.91.&nbsp; Divine plea = 1404.15 * 0.25 = 351.04.&nbsp; So the mana add to a 2 minute fight for the sapphire owl is 1404.15 + 374.91 + 351.04 = 2130.1.&nbsp; Next you should add some amount of mana for illumination effects.&nbsp; Unfortunately I didn't want to get into napkin math so I went back to my spreadsheet and found that illumination represent about&nbsp;1/3rd of my total mana pool in a 2 minute fight.&nbsp; I don't know how you model illumination into the mana pool shown on the stats page (if at all).&nbsp; But 2130.1 * 1.33333 = 2840.&nbsp; 2840 is close to 3070.&nbsp; But then that assumes you didn't 'use' the trinket to give you 2340 more mana.&nbsp; I&nbsp;couldn't come up with a combinition of plea, replenishment, starting base mana, illumination, and 'use' mana from the trinket that matched the 3070 mana pool drop.</p>\r\n<p><strong>Question #2:&nbsp; How do you model the Figurine - Sapphire Owl?&nbsp; I can't seem to get the mana pool delta seen by removing the owl to match what I believe the mana pool drop should be.</strong></p>\r\n<p>Next I played with removing my Je'Tze's Bell.&nbsp; When I removed it the mana pool dropped from 60587 to 59896.&nbsp; The delta being 691.&nbsp; This makes sense to me in that the trinket should proc twice with the spell cast rate in the 2 minutes allowed.&nbsp; That would return 600 mana.&nbsp; The extra 91 mana I assume comes from illumination.&nbsp;&nbsp;That seems a bit low to me.&nbsp; {Napkin math coming}&nbsp; 600 mana should allow the cast of 0.6 more HL (1034 cost with seal, 4 piece tier 7, and libram) which&nbsp;has a 46% crit which means&nbsp;600 / 1034 = 0.58 more 'HL spells'.&nbsp; 0.58 * 0.46 crit * 0.6 mana back * 1274 = 204 mana (and remember - I didn't iterate to show what 204 mana does with crit again).&nbsp; So my napkin math gives back about twice the mana in illumination than your model.&nbsp; Even factoring in the support spells which from the stats tab (rotation info) appear to be 4 HS, 4 Sacred shields, 2 BoL, and 2 Judgements, I don't come up with a modifier big enough to knock down 204 (plus a bit more) to 91.</p>\r\n<p><strong>Question #3:&nbsp; How do you model illumination?&nbsp; My napkin math seems to indicate larger returns that you show.&nbsp; Are our assumptions dramatically different?</strong></p>\r\n<p>Ok - that is as far as I got.&nbsp; It's hard to try and figure out the mana pool without answers to some of the questions above.&nbsp; Am I going down a constructive path for you?&nbsp; Or is this simply a waste of time?</p>",
+    "PostedDate": "2009-05-27T07:23:15.083-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "194928",
+    "ThreadId": "57186",
+    "Html": "<p>After reading this thread, glazing over the math slightly, it seems that the biggest sticking point model-wise is something that Ermad already referred to:</p>\r\n<p>Rawr's model assumes you never stop casting.&nbsp; Mana constraints cause you to cast FoL instead of HL, but under no circumstance are you ever NOT casting.</p>\r\n<p>Darion's model appears to assume that you are spamming HL with gaps in between that are determined by your available mana pool.</p>\r\n<p>&nbsp;</p>\r\n<p>I haven't looked into it, but I would expect these two approaches to show very different behavior from Illumination.</p>",
+    "PostedDate": "2009-05-27T13:26:14.02-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "194955",
+    "ThreadId": "57186",
+    "Html": "<p style=\"font-family:'Courier New';font-size:1em\">Ok - trying to walk through illumincation.&nbsp; Grabbed your equation from above.</p>\r\n<p style=\"font-family:'Courier New';font-size:1em\">((BaseMana * (DivineIllumination ? 0.5 : 1) - CostReduction) * (AbilityCostMultiplier - (GlyphOfSealOfWisdom ? .05f : 0f))) - BaseMana * .12 * PointsInIllumination * ChanceToCrit</p>\r\n<p style=\"font-family:'Courier New';font-size:1em\">Questions on the formula meanings:</p>\r\n<p style=\"font-family:'Courier New';font-size:1em\">Basemana is equal to??? I assume perhaps the total mana from the stats tab?</p>\r\n<p style=\"font-family:'Courier New';font-size:1em\">(DivineIllumination ? 0.5 : 1) means???&nbsp; I assume some sort of modifier.&nbsp; Not sure why a direct multiplier to Basemana since it should be a complicated modifier based on how long the fight is vs how many times you used it</p>\r\n<p style=\"font-family:'Courier New';font-size:1em\">CostReduction???&nbsp; No idea.</p>\r\n<p style=\"font-family:'Courier New';font-size:1em\">AbilityCostmultiplier???&nbsp; No idea.</p>\r\n<p style=\"font-family:'Courier New';font-size:1em\">(GlyphofSealofWisdom ? 0.05f : 0f)???&nbsp; I'm assuming this factors in the 5%&nbsp;healing spell cost&nbsp;reduction, but how?</p>\r\n<p style=\"font-family:'Courier New';font-size:1em\">ChancetoCrit???&nbsp; I assume the Crit chance from the stats page?&nbsp; Allow that doesn't make sense since your chance to crit is different for HS, HL, and FoL due to talents, tier bonus' etc.</p>\r\n<p style=\"font-family:'Courier New';font-size:1em\">So if I try to get this to real numbers (using Darion from Hellscream with only modifying the base settings to reduce fight time to 2 minutes):</p>\r\n<p style=\"font-family:'Courier New';font-size:1em\">((60587 * DivineIllumination - CostReduction) * (AbilityCostMultiplier - (GlyphOfSealOfWisdom))) -</p>\r\n<p style=\"font-family:'Courier New';font-size:1em\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - (60587 * 0.12 * 5 * ChancetoCrit)</p>\r\n<p style=\"font-family:'Courier New';font-size:1em\">I believe you said this doesn't directly add back the mana but reduces the average cost of a heal.&nbsp; So curious how you get that modifier from this.&nbsp; And do you use the modifier differently between FoL, HL, and HS?</p>",
+    "PostedDate": "2009-05-27T14:29:36.27-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "194966",
+    "ThreadId": "57186",
+    "Html": "<p>MisterMerf - thank you.&nbsp; I understood the activity bar as a control between FoL and HL spam but never framed it in my mind as the control mechanism for actual activity - dooh.&nbsp;</p>\r\n<p>And with the FoL / HL ratio being determined completely by available mana able to support 100% casting.&nbsp; I'm trying to wrap my mind around all the ramifications of that assumption.</p>\r\n<p>1.&nbsp; If you equip for mana (int, crit, Mp5) - you get a higher 'ratio' of HL to FoL (you have the ability to through more 'big' heals in a given time period).</p>\r\n<p>2.&nbsp; If you equip for throughput&nbsp;(SP, haste, crit) - you get a higher 'ratio' of FoL to HL (your mana pool is smaller, therefore you have to cast more FoL - but that plays to especially SP's advantage).</p>\r\n<p>But why force a 100% casting rate?&nbsp;&nbsp;I like the activity bar because you can model things like Hodir freeze movement or Ignis flame jets.&nbsp; Then you could have&nbsp;added another&nbsp;bar to force the ratio of FoL to HL's.&nbsp;&nbsp;This gives the user a chance to tune to their play style.&nbsp; I suspect there is a spectrum of 100% FoL users to 100% HL users with most in the middle (perhaps weighted a bit to HL side).&nbsp; Then the 'activity' ratio would be 100% or less depending on mana pool.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-05-27T15:04:00.233-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "194970",
+    "ThreadId": "57186",
+    "Html": "<p>All of these values are specific to the ability being modeled. I basically have one object (Heal object) and it set the parameters of it (like BaseMana, DivineIllumination or AbilityCostMultiplier) based on what spell in what circumstance I am computing.</p>\r\n<p>Base mana is the base mana cost of the spell. Like it is ~1200 for Holy Light (don't have exact number in front of my atm).</p>\r\n<p>(DivineIllumination ? 0.5 : 1) means if Divine Illumination is active multiply it by 0.5, otherwise by 1.</p>\r\n<p>CostReduction is the sum of all flat cost reduction effects, like Emblem Libram and Spark of Hope.</p>\r\n<p>AbilityCostMultiplier the ability specific cost multplier. So if the ability is Holy Light and you have 4T7 then it is .95 otherwise it is 1.</p>\r\n<p>(GlyphOfSealOfWisdom ? .05f : 0f) means if GSoW is active subtract .05 otherwise subtract 0.</p>\r\n<p>ChanceToCrit is the abilities chance to crit.</p>",
+    "PostedDate": "2009-05-27T15:08:16.077-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "194977",
+    "ThreadId": "57186",
+    "Html": "<p>I don't know why you would think Activity would me a control of FoL to HL ratio. It models the amount of time you cannot cast because of fight mechanics (ie Ground Tremor, or movement) and lag (even if you stood still spamming you would't have a 100% activity.</p>\r\n<p>I do my casting model the way I do because that is how I (and seemingly almost everyone heals). I never stop casting (except for aforementioned activity reasons), and if I think mana is going to be an issue I will cast FoL when the tank is relatively safe instead of Holy Lights.</p>\r\n<p><strong>Question #1:&nbsp; Do you do a Divine plea at 1 minute point?&nbsp; or do you start the cool down timer at that point and do the first plea at 1 minute + the CD time - 0.1?</strong></p>\r\n<p>NumberOfDivinePleas = Ceiling((FightLengthInSeconds - 60) / (60 * DivinePleaCDInMinutes))</p>\r\n<p><strong>Question #2:&nbsp; How do you model the Figurine - Sapphire Owl?&nbsp; I can't seem to get the mana pool delta seen by removing the owl to match what I believe the mana pool drop should be.</strong></p>\r\n<p>Mana from Illumination is not displayed in the mana pool section. As I said before I don't model it that way, rather I compute the average cost of casting one spell with the formula I posted above.</p>\r\n<p><strong>Question #3:&nbsp; How do you model illumination?&nbsp; My napkin math seems to indicate larger returns that you show.&nbsp; Are our assumptions dramatically different?</strong></p>\r\n<p>Explained in formula aboce.</p>",
+    "PostedDate": "2009-05-27T15:18:54.733-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195023",
+    "ThreadId": "57186",
+    "Html": "<p>Ermad - thank you for the reply.&nbsp; Since illumination isn't modeled in the mana pool then I guess that begs a couple of questions.</p>\r\n<p><strong>Question #1:&nbsp; How is Figurine - Sapphire Owl modeled?&nbsp; Math and details are all above.&nbsp; Bottom line is that removing the trinket takes 3070 mana away from the mana pool.&nbsp; The number should be 4470 (starting mana pool + replenishment + divine plea + one usage).</strong></p>\r\n<p><strong>Question #2:&nbsp; How is the Je'Tze's Bell modeled?&nbsp; Math and details are all above.&nbsp; Bottom line is that removing the trinket takes 691 mana way from the mana pool.&nbsp; The number should be 600.</strong></p>\r\n<p>Darion</p>",
+    "PostedDate": "2009-05-27T19:37:21.75-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195055",
+    "ThreadId": "57186",
+    "Html": "<p>1) Apparently On Use procs were still be calculated with no regard to fight duration. So it essentially was incorrectly just giving 2340 * 300 / FightDuration mana. I fixed this for next release.</p>\r\n<p>2) It is because you are assuming exactly 2 procs, where Rawr has a lot of complex math to more accurately judge how often it will proc on average.</p>",
+    "PostedDate": "2009-05-28T00:03:27.36-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195173",
+    "ThreadId": "57186",
+    "Html": "<p>Ermad - thank you for you reply.&nbsp; I'm concerned by your answers though.&nbsp; For both you are implying a lot of 'complex math' to 'more accurately' judge how often it will proc on average.&nbsp; With all due respect - there is no complex math here.&nbsp; The amount of time it takes to proc can be calculated&nbsp;and in the end you get a discrete set of 'procs'.&nbsp; Not a continuous stream of 'averaged' mana.&nbsp; My napkin math spreadsheet (complex math gives me hives) has these equations:&nbsp;</p>\r\n<p>mana returned from Sapphire Owl useage = (int((Fight time in sec - 60)/300)+1)*2340</p>\r\n<p>so if you have a 60 sec fight you get 1 usage (yeah - I know - it takes 12 sec for the mana return to finish - I simplified)</p>\r\n<p>if you have a 300 sec fight you get 1 usage = 2340 mana</p>\r\n<p>if you have&nbsp; a 420 sec fight you get 2 usages = 4680 mana</p>\r\n<p>For the Je'Tze's Bell proc's I do the same sort of thing:</p>\r\n<p>mana returned from Je'Tze's Bell procs = (int((fight time - (fight time / # of spells cast) / 10%))&nbsp;/ ((fight time / # of spells cast)&nbsp;/ 10% + cool down)) + 1)&nbsp;* mana returned</p>\r\n<p>so if you have a 60 sec fight you get 1 proc = 300 mana (a proc at approximately 15 sec's give your method)</p>\r\n<p>if you have a 300 sec fight you get&nbsp;5 procs = 15200 mana (a proc at 15, 75, 135, 195, 255)</p>\r\n<p>Seem reasonable?&nbsp; Numbers like 691 mana scare the crap out of me because&nbsp;it probably means you are 'averaging' the mana returned across the fight time and that's just wrong.</p>",
+    "PostedDate": "2009-05-28T06:13:07.623-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195185",
+    "ThreadId": "57186",
+    "Html": "<p><strong>Ermad quote:</strong></p>\r\n<p><strong>&quot;I don't know why you would think Activity would me a control of FoL to HL ratio. It models the amount of time you cannot cast because of fight mechanics (ie Ground Tremor, or movement) and lag (even if you stood still spamming you would't have a 100% activity.</strong></p>\r\n<p><strong>I do my casting model the way I do because that is how I (and seemingly almost everyone heals). I never stop casting (except for aforementioned activity reasons), and if I think mana is going to be an issue I will cast FoL when the tank is relatively safe instead of Holy Lights.&quot;</strong></p>\r\n<p>Let me try to document my concern with this.&nbsp; What your model does is take a fight time and reduce it to the actively casting time (you have set that to be 89% of your fight time).&nbsp; You then further reduce your active healing time by sacred shield, judgement, HS, and BoL casts.&nbsp; The rest of the 'time' is devoted to casting FoLand HL.&nbsp; Then you calculate&nbsp;your fight&nbsp;mana pool and subtract out all the 'support' spell costs.&nbsp; Now you have an amount of time you have to fill with HL and FoL and you have a remaining mana pool.&nbsp; Your model then puts as many HL and FoL as it can into that 'time' with the rule that you have to fill all the time with activity.&nbsp; What is the net result?</p>\r\n<p>The 'lower' your mana pool&nbsp;is the more FoL you cast.&nbsp; In essense you don't have a rotation at all.&nbsp; You simply fill all the time with casts and if it is a long fight and you equip'd haste / SP gear then your model assumes you cast&nbsp;a lot of FoL and very&nbsp;few HL.&nbsp; If you specc'd crit, Mp5, Int you would get relatively more HL activity with less FoL activity.&nbsp; I don't know how you call that a rotation.&nbsp; How does the user of your tool know that his 'rotation' is a flexible thing that is dependent on gear selection, fight time, fight mechanics, etc?&nbsp; And your telling me you actually cast this way?&nbsp; You don't have&nbsp;a FoL / HL rotation (with HS / HL kicker for burst damage control)?&nbsp;&nbsp;That is just one example - I&nbsp;could list a number of more common ones.&nbsp; But the point being - most people fall back to a set rotation in 'boring' times.&nbsp; Regardless of fight.&nbsp; You are basically saying you have a completely flexible rotation based on your knowledge of the fight, your gear, and your perceived mana pool.&nbsp; Wow.</p>",
+    "PostedDate": "2009-05-28T06:32:37.247-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195230",
+    "ThreadId": "57186",
+    "Html": "<div id=\"ctl00_ctl00_MasterContent_Content_PostRepeater_ctl56_BodyDiv\">\r\n<p><strong>Ermad quote:</strong></p>\r\n<p><strong>&quot;All of these values are specific to the ability being modeled. I basically have one object (Heal object) and it set the parameters of it (like BaseMana, DivineIllumination or AbilityCostMultiplier) based on what spell in what circumstance I am computing.</strong></p>\r\n<p><strong>Base mana is the base mana cost of the spell. Like it is ~1200 for Holy Light (don't have exact number in front of my atm).</strong></p>\r\n<p><strong>(DivineIllumination ? 0.5 : 1) means if Divine Illumination is active multiply it by 0.5, otherwise by 1.</strong></p>\r\n<p><strong>CostReduction is the sum of all flat cost reduction effects, like Emblem Libram and Spark of Hope.</strong></p>\r\n<p><strong>AbilityCostMultiplier the ability specific cost multplier. So if the ability is Holy Light and you have 4T7 then it is .95 otherwise it is 1.</strong></p>\r\n<p><strong>(GlyphOfSealOfWisdom ? .05f : 0f) means if GSoW is active subtract .05 otherwise subtract 0.</strong></p>\r\n<p><strong>ChanceToCrit is the abilities chance to crit.&quot;</strong></p>\r\n<p>Let's see if we come up with the same thing for how illumination is 'baked' into the averaged spell cost.</p>\r\n<p>My equation for Averaged HL Mana Cost (ignored Divine Illumination for now as well as things like spark):</p>\r\n<p>Averaged HL Mana Cost = Base cost - Libram (emblem) - Seal of Wisdom modifier - Tier 7 modifier - Illumination return</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 1274 - 113 - (1274*0.05) - (1274*0.05) - Illumination</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 1033.6 - Illumination</p>\r\n<p>Illumination&nbsp;=&nbsp;Base cost - (Base cost * (1 - HL Crit rate)) + (Base Cost * Crit Rate * 0.4))</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&nbsp;1274 - ((1274 * (1 - 0.473)) + (1274 * 0.473 * 0.4))</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&nbsp;361.56</p>\r\n<p>Averaged HL Mana Cost = 1033.6 - 361.56</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =&nbsp;&nbsp;672.04 (given a 47.3% crit rate, Tier 7 bonus, Seal bonus, Libram bonus)</p>\r\n<p>Does this look correct?&nbsp; I want to make sure we are on the same page when getting into the more complex parts of the model.</p>\r\n</div>",
+    "PostedDate": "2009-05-28T07:30:33.757-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195266",
+    "ThreadId": "57186",
+    "Html": "<p>For the procs you are just assuming its a 2 minute fight so you get exactly 2 procs, which is not correct. Rawr does a lot more advance modeling of the average proc interval, I can't really go into more detail because I didn't make that code.</p>\r\n<p>Your &quot;rotation&quot; is dependant on your mana, yes if you have more mana you cast HL more, if you have less you cast FoL. That is how Paladin healing works in game, you don't stop casting because you are low on mana, you can cast FoL instead.</p>\r\n<p>Your illumination return seems much more complex then it should be, though it gives the same number it the end. It can just be &quot;Base Cost * 0.6 * ChanceToCrit&quot;. You are also incorrectly calculating how various spell cost reduction stack with each other, you calculate your actual HL cost to be 1033.6, but you can see ingame that it is 1044.</p>",
+    "PostedDate": "2009-05-28T08:55:15.13-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195315",
+    "ThreadId": "57186",
+    "Html": "<p>Sigh - 2nd time this discussion board lost my post when I tried to submit it.&nbsp; Much shorter post this time.&nbsp; Bottom line on proc of Je'Tze's Bell - it appears the code Rawr is using is incorrect but since it isn't owned by you, I'll post on a separate thread.&nbsp; As for rotation - I believe I understand your philosophy.&nbsp; I don't agree with it but it isn't so out of bounds that I'm concerned about impact on the models output.&nbsp; My basic beef is 100% healing activity (after support costs / activity) isn't realistic.&nbsp; I find any number of fights I can time the boss blows to have my HL land 0.5 sec after the hit.&nbsp; I waste mana on dodge's, etc but frankly I'd waste mana if I'm in a pure FoL - HL - FoL - HL spam was well.</p>",
+    "PostedDate": "2009-05-28T10:51:02.657-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195328",
+    "ThreadId": "57186",
+    "Html": "<p>Thank you for the pointer on the 1044 vs 1033.&nbsp; I just did a quick check and if I use the 5% modifiers from Seal of Wisdom Glyph and Tier 7 4 piece on the (Base HL cost - Libram cost) I get 1044.9 Mana as the new base.&nbsp; I'm assuming some rounding going on there but 1044.9 is close enough to 1044 to be fine.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-05-28T11:09:38.133-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195418",
+    "ThreadId": "57186",
+    "Html": "<p>Ok - back on mana pool - trying to understand Rawr.&nbsp; I immediately ran into a little issue.&nbsp; Divine plea returns more mana then I would expect.&nbsp; So to recreate - load Darion from Hellscream on 2.2.4.&nbsp; Then lower fight time to 2.5 minutes.&nbsp; Mana pool is 65239.&nbsp; Now decrease the Divine plea cool down to 1.4 minutes.&nbsp; The transition from 1.5 to 1.4 should have given you a mana bump.&nbsp; I see a new mana pool of 72751.&nbsp; 72751 - 65239 = 7512.&nbsp; 7512 * 4 = 30048.&nbsp; My mana pool listed by the tool is 29768.&nbsp; It appears the Divine plea add should be 7442, not 7512.&nbsp; Small error - only 60 mana.&nbsp; But still incorrect near as I can tell.</p>\r\n<p>Weirdly enough I increased the fight time to 5 minutes and put the divine plea cool down back to 2 minutes.&nbsp; My mana pool was 96210.&nbsp; The lowered the cool down to 1.9 minutes and saw another plea come in with the mana pool being 103619 (7409 difference).&nbsp; Then lowered the divine plea cool down to 1.3 minutes and saw the mana pool go to 111040 (7421 difference).</p>\r\n<p>Three different divine plea's - 3 different results - 7409, 7421, and 7512.&nbsp; Is there some randomization going on?&nbsp; Or rounding errors?</p>",
+    "PostedDate": "2009-05-28T13:52:43.693-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195445",
+    "ThreadId": "57186",
+    "Html": "<p>I have your base mana pool as 30048.2</p>\r\n<p>With 2.5m fight and 1.5m CD I get you do one DP for 7512.05</p>\r\n<p>With 2.5m fight and 1.4m CD I get you do two DPs for 15024.1 total</p>\r\n<p>With 5m fight and 2m CD I get you do two DPs for 15024.1 total.</p>\r\n<p>You know there is a very easy way to see your mana pool break down by source? Click on the slot menu above the grap and choose mana pool breakdown.</p>",
+    "PostedDate": "2009-05-28T14:38:18.513-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195452",
+    "ThreadId": "57186",
+    "Html": "<p>Again - thank you for the prompt reply Ermad.&nbsp; I found the spot you pointed to and love it.&nbsp; But&nbsp;a number of&nbsp;questions.&nbsp; Why doesn't it match the Stats tab?&nbsp; For instance - the stats tab lists my Mana (Basic Stats) as 29,768, not the 30,048 found in the mana pool breakdown.&nbsp; Which is correct?&nbsp; Next question is - why does the Total mana pool on the stats page not match the addition of all the mana in the Mana pool breakdown?&nbsp; Lastly, why does the actual mana added for the divine plea's on the Total Mana item in the stats page not match the Divine plea on the Mana Pool Breakdown page?</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-05-28T15:01:57.44-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195470",
+    "ThreadId": "57186",
+    "Html": "<p>When you change how many Divine Pleas you do during the fight, the amount of change in Total Mana is not just the amount of mana of a Divine Plea. Say for example you add a Divine Plea, that means you are going to cast more HL over FoL. Which also means you have a longer average cast time, which for example will reduce the effect of IED.</p>\r\n<p>The stats that are display on the Stats tab are without the value of any procs, to make it easier to compare to ingame numbers (though it still won't match 100%). There was a display error between the two that I just fixed.</p>",
+    "PostedDate": "2009-05-28T15:29:40.007-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195490",
+    "ThreadId": "57186",
+    "Html": "<p>Thank you Ermad.&nbsp; I chalk up about 15 mistakes on my part and only a couple of booboo's on Rawr's part.&nbsp; I appreciate the time you are spending on this.&nbsp; I'll dig into the mana pool breakdown.&nbsp; I already see a number of disconnects between Replenishment you calculate and what I would expect.&nbsp; I suspect it may be back to activity?&nbsp; Perhaps not, have to dig into it further.</p>",
+    "PostedDate": "2009-05-28T16:13:36.097-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195779",
+    "ThreadId": "57186",
+    "Html": "<p>Ermad - another couple of questions based around the Mana&nbsp;Pool Breakdown window.</p>\r\n<p>Question #1:&nbsp; I loaded Darion from Hellscream into 2.2.4.&nbsp; I only changed fight length to 2 minutes.&nbsp; Then I looked at the mana pool breakdown.&nbsp; It's showing 30048.2 starting mana pool (which I think you said would be reflected on the Stats tab correctly on the next release).&nbsp; For Mp5 it shows 8059.6.&nbsp;&nbsp; Stats tab shows 307 Mp5.&nbsp; Doing the mana return calculation I get 307 / 5 * 120 = 7368.&nbsp; I'm assuming that the 691.6 mana delta (8059.6-7368) comes from the proccing of the Je'Tze's Bell trinket?&nbsp; Weird that it is in the Mp5 piece but I'm assuming it is that trinket?</p>\r\n<p>Question #2:&nbsp; But then that begs the question of what is in 'other'.&nbsp; Currently showing 2554.24.&nbsp; I'm assuming 1200ish of that 2554 is the insightful earthsiege gem.&nbsp; And sure enough - if I unequip the gem leaving the slot empty.&nbsp; The 'other'&nbsp;category goes from 2554 to 936 = 1618 delta.&nbsp;&nbsp;&nbsp; This I believes reflects your statitics saying there is a 70% chance (418 / 600) that IED will proc a 3rd time in the fight.&nbsp; Correct?</p>\r\n<p>Question #3:&nbsp; What makes up the remaining 936 mana?&nbsp; I assuming it is&nbsp;the incorrectly model Figure - Sapphire Owl that you said is fixed in the next version?&nbsp; The proc for that is 2340 mana.&nbsp; 2 minutes / 5 minutes = 40%.&nbsp; 2340 * 40% = 936.&nbsp; Correct?</p>\r\n<p>Question #4:&nbsp; When looking at replenishment - it shows 8113.01.&nbsp; I'll use the mana pool tab instead of the stats tab to get the max mana pool&nbsp;of 30048.&nbsp; I then calculate replenishment to be 30048.2 * 0.0025 * 120 * 0.89 = 8022.9.&nbsp; There is a 90.1 mana delta from what I would calculate vs what the tool shows me.&nbsp; Weirdly enough, as soon as I touch the replenishment slider - move it to any position - replenishment starts to be calculated correctly.&nbsp; I believe you have a bug in the initial setup of the window.&nbsp; And then when it is refreshed as you reposition the replenishment slider - the mana pool gets calculated correctly and displayed correctly.</p>\r\n<p>Thanks for your time.</p>",
+    "PostedDate": "2009-05-29T11:17:40.417-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195800",
+    "ThreadId": "57186",
+    "Html": "<p>Ermad - a set of questions on the Mana Usage Breakdown Window.</p>\r\n<p>Question #1:&nbsp; Beacon of Light is listed at consuming 2766.6 mana.&nbsp; I believe the base spell cost is 1537.9.&nbsp; Then you modify by benediction to get a cost of 1384.1.&nbsp; 1384.1 * 2 = 2768.2.&nbsp; That's close enough to 2766.6 in my book to state that you are assuming 2 casts of beacon in a 2 minute fight.&nbsp; And sure enough - if I increase the fight time to 2.5 minutes - I get one more beacon that pretty much matches an extra 1384.1 mana.&nbsp; Does this seem correct to you?</p>\r\n<p>Question #2:&nbsp; It appears you have elected to use&nbsp;a rule to cast the beacon at time 0:01.&nbsp; And then based on the Uptime - 100% uptime means you cast the next Beacon 1 minute later or at 1:01 fight time.&nbsp; And then so on from there.&nbsp; Correct?</p>\r\n<p>Question #3:&nbsp; Shouldn't the first beacon be cast at time 0:01?&nbsp; And then the next beacon at something less than 1 minute.&nbsp; I tend to refresh between 10 secs prior to beacon coming down to a couple secs after.&nbsp; The bulk of my refreshes come at about 55 sec into the beacon.&nbsp; If you assume you want 100% uptime on Beacon then I believe you need 3 casts in the 2 minute fight - not the two it&nbsp;seems you are modeling.&nbsp; In my spreadsheet I tend to assume beacon lasts 55 sec and refresh according to that schedule.&nbsp; Not the 1 minute mark.&nbsp; Equation is:&nbsp; (INT(Fight time / 55)+1)*1384.1.&nbsp; Does that seem like a better way to model and would you consider changing Rawr to do that?</p>\r\n<p>Question #4:&nbsp; I see that you have assumed&nbsp;2 casts of judgements for a 2 minute fight.&nbsp; I show judgement costing 219.7 * 0.9 for benediction = 197.7 mana.&nbsp; 197.7 * 2 = 395.5 by my calculation.&nbsp; 394.2 by yours - close enough.&nbsp; First - I have the same comment as above.&nbsp; You may consider reducing this from a pure 1 minute cast to something slightly less to keep up your Judgement of the Pure.&nbsp; But another thing you may have forgotten&nbsp;is actually keeping the judgement on the boss.&nbsp; Do you tend to melee all the bosses in Ulduar?&nbsp; If not then you have to continue to reapply judgements every 20 secs.&nbsp; I model in my spreadsheet that I do it every 30 secs.&nbsp; The dirty secret is that I usually don't noticed the judgement is down until I see the green healing buzz from Judgement of Light going away.&nbsp; Then I have to work it into my rotation safely.&nbsp; Best case is I reapply every 30 sec.&nbsp; Again - is this something you'd consider changing?&nbsp; Or at least adding an option that says - &quot;Check if you need to have judgements on boss at all times but don't melee&quot;.&nbsp; Reasonable?</p>\r\n<p>I don't use Sacred Shield but same sort of comments apply - do you really get a perfect 30sec out of it and if not you may consider tweaking.</p>\r\n<p>Quesiton #5:&nbsp; I guess I'm an idiot today.&nbsp; I can't see how you calculate HS rotation.&nbsp; I shows in a two minute fight that the rotation time is 3.81 sec.&nbsp; I assumed them meant 4 HS cast in 2 minutes and you used spell haste to reduce the cast time (although I thought 1 sec was the GCD min).&nbsp; Then&nbsp;with assuming 4 casts I went to the mana usage breakdown and saw a figure of 1388.04 mana.&nbsp; That doesn't make sense to me sinse Holy shock is 18% base mana cost which translates after benediction and a 50% crit rate to 474.6 mana cost.&nbsp; 4 * 474.6 = 1898.4.&nbsp; Can you help here please?&nbsp; I'm curious if perhaps you are modeling partial casts?&nbsp; Or something else that I am missing?</p>\r\n<p>Again - thank you for your time.</p>",
+    "PostedDate": "2009-05-29T12:21:37.313-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195841",
+    "ThreadId": "57186",
+    "Html": "<p>I am sorry, I realy don't have time to keep answering your incessant questions to make sure Rawr conforms to all of your personal quirks. If you think you found a specific bug, or something please post it and I'll look into it. If you want more detail on exactly how Rawr works (I already gave you a pretty detailed breakdown) please go read the source code (particularly Spell.cs and Rotation.cs in Rawr.Healadin). I am not going to change Rawr to conform to every single little quirk you want, no healing theorcrafting tool can ever be that accurately detailed because of the nature of healing. If you feel you really want it to do that, you can go download the source, make changes and run your own customized version.</p>\r\n<p>One thing I have been meaing to add for a while is an option to enable 100% Judgement debuff up time. It has been on the To Do list in Rawr.Healadin thread on EJ for a good few months now.</p>",
+    "PostedDate": "2009-05-29T13:48:57.217-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195855",
+    "ThreadId": "57186",
+    "Html": "<p>Ermad - no worries - I appreciate you have a real life and don't have time to deal with all these questions.&nbsp; Here are a list of bugs /&nbsp;suspected bugs / change requests.</p>\r\n<p>&nbsp;</p>\r\n<p>Bug #1:&nbsp; Incorrectly modeled Figurine - Sapphire Owl.&nbsp; Details above.&nbsp; You've said will be fixed in the next version.</p>\r\n<p>Bug #2:&nbsp; Incorrectly displaying mana on stats tab.&nbsp; Stats tab doesn't match Mana Pool Breakdown selection.&nbsp; You've said it will be fixed in the next version.</p>\r\n<p>Bug #3:&nbsp; Je'Tze's Bell is adding mana into the Mp5 tab.&nbsp; It's a proc like IED and should be in Other (my opinion).&nbsp; Perhaps this is better labeled a change request?&nbsp; You decide.</p>\r\n<p>Bug #4:&nbsp; Replenishment bar on Mana Pool Breakdown dispalys the incorrect mana value.&nbsp; Easily reproducable.&nbsp; Details above.</p>\r\n<p>&nbsp;</p>\r\n<p>Suspected Bug #1:&nbsp; It appears that either you have the incorrect mana cost for HS or you are modeling partial casts.&nbsp; For instance - if you set fight time to 1 minute on Darion of Hellscream - you get a mana outlay of 694 for HS.&nbsp; There simply is no way to get 694 Mana in a integer based number of casts.&nbsp; Either the number is wrong (not using illumination return for instance)&nbsp;or it is a partial cast.&nbsp; Increasing the fight time doesn't seem to converge the number to something I would recognize as a specific integer number of HS casts.</p>\r\n<p>&nbsp;</p>\r\n<p>Change request #1:&nbsp; Change Divine Please to assume something less than a 1 minute cast time.&nbsp; Most people will cast at least 10% faster than that and with the huge mana cost of Divine Please - this isn't a minor effect - equivalent to 10-12 Mp5.</p>\r\n<p>Change request #2:&nbsp; Add an option to allow keeping Judgement up on the boss while not meleeing.&nbsp; Basically this increases the Judgement mana cost by 3x - again, not a minor thing - equivalent to 60-70 Mp5.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-05-29T14:25:47.303-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195862",
+    "ThreadId": "57186",
+    "Html": "<p>Bug 1: Fixed.</p>\r\n<p>Bug 2: Fixed.</p>\r\n<p>Bug 3: Working as intended.</p>\r\n<p>Bug 4: On my mac atm, will check later.</p>\r\n<p>Suspect: Partial casts are modelled for everything but buff spells (SS/BoL/JotP)</p>\r\n<p>Request 1: I have no idea what you are saying.</p>\r\n<p>Request 2: &quot;<span style=\"color:#30332d\">One thing I have been meaing to add for a while is an option to enable 100% Judgement debuff up time. It has been on the To Do list in Rawr.Healadin thread on EJ for a good few months now.&quot;</span></p>",
+    "PostedDate": "2009-05-29T14:47:52.17-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

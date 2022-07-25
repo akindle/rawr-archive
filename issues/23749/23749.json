@@ -1,0 +1,111 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When I try to load a char I have this error:\n\nerror message\n\"\nThe index was out of interval. It must be non-negative and lesser than the collection size.\nParameter name: index\n\"\n\nstack trace\n\"\nem System.Collections.Generic.List`1.set_Item(Int32 index, T value)\nem Rawr.ItemSet.GenerateItemSetFromSavedString(String source)\nem System.Collections.Generic.List`1.ConvertAll[TOutput](Converter`2 converter)\nem Rawr.Character.LoadFromXml(String xml)\n\"",
+    "LastUpdatedDate": "2013-02-21T18:23:27.51-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2012-12-29T06:38:49.047-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Char not loading",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 3,
+    "Id": 23749
+  },
+  "FileAttachments": [
+    {
+      "FileId": 6146,
+      "FileName": "rawrerror.jpg",
+      "DownloadUrl": ".\\6146"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "What character/server/class? Where are you loading from?  If you're loading a previously saved XML (as it appears in the trace), know that you likely should re-download from Battle.Net as breaking changes have been made to allow compatibility with new MoP formats.",
+      "PostedDate": "2012-12-29T13:14:33.587-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm having same issue with quite different error massage:\nIndex was out of range. Must be non-negative and less than the size of the collection.\nParameter name: index\r\n\r\nNo Suggested Fix\r\n\r\n   at System.ThrowHelper.ThrowArgumentOutOfRangeException()\n   at Rawr.ItemSet.GenerateItemSetFromSavedString(String source)\n   at Rawr.Character.<LoadFromXml>b__30(String itemset)\n   at System.Collections.Generic.List`1.ConvertAll[TOutput](Converter`2 converter)\n   at Rawr.Character.LoadFromXml(String xml)\r\n\r\nCharacter: Freestyler\nServer: Taiwan - 寒冰皇冠 (Icecrown)\nClass: Mage\nThe saved XML was saved after loading from Battle.net with latest version of Rawr and optimizing the gears.",
+      "PostedDate": "2012-12-30T05:14:52.527-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-12-30T05:31:04.403-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-12-30T12:09:58.04-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-12-30T12:10:37.32-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "same issue as second post here is a pic.",
+      "PostedDate": "2012-12-30T12:10:38.783-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Darkfury, what character/server/class?",
+      "PostedDate": "2012-12-31T08:11:46.11-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "There's a bug in ItemSet.cs line 2081. The list needs to support Character.SlotCount entries.",
+      "PostedDate": "2012-12-31T11:43:42.96-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I had the same issue and tried multiple iterations and saves and opens and think it is linked to item upgrades\r\n\r\nAs soon as you either update any item stats manually or update from the armoury to  a 1/2 or 2/2 upgrade your saved xml does not load\r\n\r\n",
+      "PostedDate": "2013-01-02T00:24:00.307-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm getting the same error, both when I load my character file (that seemed to be working fine on Jan 1) and when downloading my character from battlenet (Hex/Lothar-US/druid).\r\n\r\nThis is the exact message from trying to open my character file:\r\n\r\nIndex was out of range. Must be non-negative and less than the size of the collection.\nParameter name: index\r\n\r\n   at System.Collections.Generic.List`1.set_Item(Int32 index, T value)\n   at Rawr.ItemSet.GenerateItemSetFromSavedString(String source)\n   at System.Collections.Generic.List`1.ConvertAll[TOutput](Converter`2 converter)\n   at Rawr.Character.LoadFromXml(String xml)",
+      "PostedDate": "2013-01-03T08:18:06.517-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Character name: Ashur\nServer: US-Thrall\nClass: Feral Druid",
+      "PostedDate": "2013-01-03T14:32:47.413-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I loaded my character from battle.net and then I saved the file, when I went back to load the saved character file is when I receive my posted error everytime.",
+      "PostedDate": "2013-01-03T14:34:12.83-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:23:27.51-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

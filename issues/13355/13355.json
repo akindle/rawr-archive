@@ -1,0 +1,146 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSDK",
+      "DisplayName": "Rawr.DPSDK"
+    },
+    "ClosedComment": "Fixed",
+    "ClosedDate": "2009-06-16T02:03:45.68-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "In the Comparisons window, if I select Slot: Gems, then type of Normal it displays the Normal Gem list as usual. If I then select type Meta, and switch back to type Normal (while changing nothing at all in Rawr) it now displays a completely reordered list of Normal Gems for me. I can keep doing this and every time it will show me a wholly different order to the Normal Gems.\n \nThe gem order is very wrong usually too... like 27 Agility > 27 Strength. My favorite ordering that was completely wrong I took a screenshot of... apparently 8 Agi / 8 Crit is now the best in slot gem for DPS DKs.... LOL. Sorry had to laugh at that one.\n \n*Added* - This also happens for Meta Gems. The order changes completely when I reselect to look at them.",
+    "LastUpdatedDate": "2017-11-27T11:04:21.467-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-05-27T15:01:46.133-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSDK] Gem Selection - The priority keeps changing when I reselect Normal/Meta Gem Type",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 3,
+    "Id": 13355
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1937,
+      "FileName": "DPSDK.JPG",
+      "DownloadUrl": ".\\1937"
+    },
+    {
+      "FileId": 1939,
+      "FileName": "devwar-dk-dw-upgrades.xml",
+      "DownloadUrl": ".\\1939"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Bloodsorc, did you add any sort of instability (Random?) to the DPSDK calculations?",
+      "PostedDate": "2009-05-27T15:23:24.47-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm also experiencing this.  It gives entirely nonsensical results sometimes, like attributing significant DPS values to dodge/stam gems.  This does not seem to happen if you start up Rawr and immediately look at gem, but the moment you start loading information from the armory, or existing Rawr profiles, the gems start getting strange values.",
+      "PostedDate": "2009-05-27T17:37:59.147-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-05-27T17:38:10.37-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I have also seen this problem when building an upgrade list for my DPSDK, sometimes it will list items that should be large upgrades as downgrades, because Rawr believes that 8agi/8crit gems are better than 16str gems.\r\n\r\nMy xml file is attached, if you want to see for yourself. Best way is to build the upgrade list as-is, and look at offhand weapons like Remorse, thats one I've noticed consistently suggesting improper gems.",
+      "PostedDate": "2009-05-28T09:12:30.43-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I have also seen this problem when building an upgrade list for my DPSDK, sometimes it will list items that should be large upgrades as downgrades, because Rawr believes that 8agi/8crit gems are better than 16str gems.\r\n\r\nMy xml file is attached, if you want to see for yourself. Best way is to build the upgrade list as-is, and look at offhand weapons like Remorse, thats one I've noticed consistently suggesting improper gems.",
+      "PostedDate": "2009-05-28T09:12:45.027-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-05-28T09:12:52.183-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Typically, \"instabilities\" like this involve certain calculated values not getting reset properly, or some non-thread-safe behavior in the model.  I've run into both cases with Moonkin and if I can lend a hand helping track down the source of the issue, I'd be more than happy to.",
+      "PostedDate": "2009-05-28T09:27:28.61-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks for the further updates everyone.  I hope that we can get this fixed, as it is definitely preventing me from using Rawr effectively for my DK right now; back to excel spreadsheets/etc right now and my brain begs for relief.  Keep voting this issue up please so we can get it fixed for the DK community.\r\n\r\nIf anyone needs further information on the issue, feel free to message me or ask in this thread.  Thanks again.",
+      "PostedDate": "2009-05-28T11:39:43.2-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I can reproduce this behavior in 2.2.5.  After looking at this, I am able to somewhat reproduce the odd Sort behavior as well.  They are probably related.\r\n\r\ndopefish, I'm not really brushed up on thread-safety in .NET or C# but if you can tell me something like what I should look for, I'd like to take a look if Bloodysorc doesn't get there first.",
+      "PostedDate": "2009-05-28T13:31:32.067-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-05-29T02:56:00.713-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "After adding my patch for issue 13346, I am no longer able to reproduce this issue.",
+      "PostedDate": "2009-05-29T11:24:56.07-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Fixed by Bloodysorc in revision 34473.",
+      "PostedDate": "2009-06-14T08:38:04.727-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-06-14T08:38:32.163-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-06-16T02:03:45.68-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:15:57.597-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:21:17.93-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:18.673-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:24.337-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:04:21.467-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

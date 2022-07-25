@@ -1,0 +1,86 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.HealPriest",
+      "DisplayName": "Rawr.HealPriest"
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-09T17:29:21.843-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "There is an error in Calculating the Value of Stats in this Version.\nFor all Stats the HPS-Sustained equals the HPS-Burst.\n \nI have:\nHaste Rating 1,34 + 1,34 = 2,68\nSpell Power 1,17 + 1,17 = 2,33\n \nThis issue makes the correct evaluation of Items impossible.\nI used 2.1.6 before 2.1.8 and in the older Version the Values looked correct, so the error was build in in 2.1.7 or 2.1.8.",
+    "LastUpdatedDate": "2013-05-16T05:26:20.047-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-01-28T01:20:34.667-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[HealPriest] Relative Stats Values",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 12491
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1643,
+      "FileName": "Peckar.xml",
+      "DownloadUrl": ".\\1643"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I did a change in 2.1.7/2.1.8 that made it easier for the model to get saturated on mana. Basically, with the given options you have set, the model believes you will not run out of mana. Change options to higher amount of time spent in FSR (you have it at default 85%), or increase length of fight.\r\n\r\nRelative stats are relative to your CURRENT gear. If Rawr believes you no longer need extra mana, it will stop suggesting taking MP5 (first of all) and devalue Intellect and Spirit. (They still give some crit & spell power). This means throughput stats like Haste and Spell Power will rise to the top. (Which is what you are seeing with your gear and options.)\r\n\r\nHope this explains.",
+      "PostedDate": "2009-01-28T02:35:22.513-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks, that helped :)",
+      "PostedDate": "2009-01-28T05:45:10.993-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-01-29T07:06:39.78-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-09T17:29:21.843-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:40:35.48-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:57:46.357-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:35:38.167-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:20.047-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

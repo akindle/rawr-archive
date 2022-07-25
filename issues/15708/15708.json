@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.LoadCharacter",
+      "DisplayName": "Rawr.Base.LoadCharacter"
+    },
+    "ClosedComment": "A different fix was implemented that performs a similar act",
+    "ClosedDate": "2010-02-22T13:10:09.907-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I dont know if this is the right place to post this - so apologies if not. This bug was annoying the hell out of me though so I decided to try and fathom what was wrong: especially as the profiler now seems to be unsupported.\n \nNote this I believe should also affect work item id# 15626 \n \nI've debugged the code and found that the characterprofiler I use (rpgo-Characterprofiler) has not exported talents. this means That Rawr throws an exception as it expects a \"Talents\" entry to have been created. Now obviously it's fair to argue that the add-on should export them - but in being defensive I changed the setTalentsFromTree function to the following:\n \nThe code is not perfect but it cures the problem and will import all the items - just need to make sure the talents are manually populated.\n \n \n\t\tvoid setTalentsFromTree(SavedVariablesDictionary characterInfo)\n\t\t{\n\t\t\t// default talent point count to be zero\n\t\t\tint points = 0;\n \n\t\t\t// placeholder if talents are supplied\n\t\t\tSavedVariablesDictionary talent_tree = null;\n\t\t\t\n\t\t\t// Do we have talents? (Should use TryGetValue really!)\n\t\t\tbool hasTalents = (characterInfo.ContainsKey(\"Talents\")) ? true : false;\n \n\t\t\t// Get reference to talent list if we have them\n\t\t\tif (hasTalents)\n\t\t\t\ttalent_tree = characterInfo[\"Talents\"] as SavedVariablesDictionary;\n \n\t\t\tTalentsBase Talents = m_character.CurrentTalents;\n \n\t\t\tif (Talents != null)\n\t\t\t{\n\t\t\t\tList<string> treeNames = new List<string>((string[])Talents.GetType().GetField(\"TreeNames\").GetValue(Talents));\n \n\t\t\t\tforeach (PropertyInfo pi in Talents.GetType().GetProperties())\n\t\t\t\t{\n\t\t\t\t\tTalentDataAttribute[] talentDatas = pi.GetCustomAttributes(typeof(TalentDataAttribute), true) as TalentDataAttribute[];\n\t\t\t\t\tif (talentDatas.Length > 0)\n\t\t\t\t\t{\n\t\t\t\t\t\tTalentDataAttribute talentData = talentDatas[0];\n \n\t\t\t\t\t\t// if we have talents use values supplied else default to zero\n\t\t\t\t\t\tif (hasTalents)\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tpoints = getTalentPointsFromTree(talent_tree, treeNames[talentData.Tree], talentData.Name);\n\t\t\t\t\t\t}\n\t\t\t\t\t\t// Set current talents - which mneans an empty tree\n\t\t\t\t\t\tm_character.CurrentTalents.Data[talentData.Index] = points;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}",
+    "LastUpdatedDate": "2013-05-16T05:22:36.463-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-01-04T06:32:35.05-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[LoadCharacter] CharacterProfiler loading failure: Potential code resolution",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15708
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

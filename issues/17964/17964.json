@@ -1,0 +1,111 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.TankDK",
+      "DisplayName": "Rawr.TankDK"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-06-15T16:51:36.683-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Working on a Blood Tank spec.\n \nWith no 'experimental' bits checked, Improved Icy Touch has a negative mitigation value.  Heart strike also has a negative mitigation value, as well as a pretty large negative threat value.\n \nWith Additive mitigation, Imp. Icy Touch is positive, but Heart Strike's still negative.\n \n'Experimental Code' shrinks Heart Strike's negative value by about 75% (still negative though), but Improved Icy Touch starts doing something really strange.  Whereas before, each point was around -180ish mit. & +75 threat,  the first point of Imp. Icy Touch is worth about *NEGATIVE 58K mitigation* & 0 threat. The second and third points each add back a little over 1k mit., so it's \"only\" -56k at 3/3.\n \nBoth experimental & additive together, the heart strike's about the same as experimental code alone,  and Imp. Touch tones down, to -12k mit. for the first point and a little over +200 each for the second and third.",
+    "LastUpdatedDate": "2017-11-27T11:04:40.433-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-06-12T13:32:07.51-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[TankDK] Negative talent values",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17964
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3681,
+      "FileName": "Seraphel.xml",
+      "DownloadUrl": ".\\3681"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Haste reduces mitigation because it increases Boss Parry attacks.",
+      "PostedDate": "2010-06-12T14:15:02.613-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Heart Strike and Improved Icy Touch don't have anything to do with haste.",
+      "PostedDate": "2010-06-12T22:53:54.27-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-06-12T22:56:54.87-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "...Though disabling parry haste does seem to put Imp. Icy Touch in to the positive, unless 'experimental' is checked.\r\n\r\nStill doesn't address what's up with Heart Strike.",
+      "PostedDate": "2010-06-12T22:59:23.43-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'll take a look.  But IIT does infact increase effective haste, by reducing the speed of the target affected by FF. However, you're right that we shouldn't see it being severely negative.  I had this stuff worked out at some point, but might have broken it while trying to get the new rotation stuff implemented.",
+      "PostedDate": "2010-06-13T08:41:11.38-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-06-13T08:41:39.237-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ahh... Figured out why there is probably a threat drop when using HS.  The rotation changes from a basic 2 IT, 2 PS, 2 BS type rotation without HS, to a 1,1,6 HS more normal \"blood rotation\" when HS is used since that's one of the key triggers that I use to determine which rotation to use as the baseline.  2 ITs are very valueable threat-wise, even if they don't make alot of sense to spam actually in-combat.   \r\n\r\nI'm not sure on the IIT, I need to do more digging.  Looking at your build, it seems odd that IIT would be so different.  Esp. since I'm not seeing those kind of numbers when I use my blood spec so it's probably a logic or rotation breakdown somewhere.",
+      "PostedDate": "2010-06-15T11:39:43.677-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Resolved with changeset 51405.",
+      "PostedDate": "2010-06-15T16:51:36.683-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:53:02.267-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:40:46.86-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:28:11.6-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:28.257-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:04:40.433-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

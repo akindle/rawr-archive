@@ -1,0 +1,156 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Optimizer",
+      "DisplayName": "Rawr.Base.Optimizer"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-07-02T19:18:02.407-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "This may somehow be related to the issue about options not being saved, but when running the optimizer with Enforce Gem Requirements selected and Enforce Profession Requirements selected, I ran the optimizer at about half thoroughness. The results were surprising — Rawr told me I should remove my ring enchants and replace all my gems with non-matching color gems. Screenshot attached. Running Mac OS X 10.6.2, using the offline install of Rawr3.",
+    "LastUpdatedDate": "2013-05-16T05:22:57.017-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-12-15T05:38:10.923-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Optimizer] Optimizer is un-optimizing",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15442
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2635,
+      "FileName": "Screen shot 2009-12-14 at 11.03.54 PM.png",
+      "DownloadUrl": ".\\2635"
+    },
+    {
+      "FileId": 2650,
+      "FileName": "Picture 1-57.png",
+      "DownloadUrl": ".\\2650"
+    },
+    {
+      "FileId": 2651,
+      "FileName": "Kol.xml",
+      "DownloadUrl": ".\\2651"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "1) Ring enchants: Are you sure you marked them as available to the optimizer? Are you sure you marked one of your Professions as Enchanter?\r\n2) Gems don't have to match socket colors, the only reason you do that is if you want the socket bonus. On many items, the socket bonus isn't worth it.",
+      "PostedDate": "2009-12-16T11:26:20.65-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "As far as I know, when I did the optimization, they were selected. I never unselected anything in either the Gear or Enchant chart area. I've run it about few times tonight, and it did it again twice, again without me even touching the \"Available to Optimizer\" diamonds.\r\n\r\nAs far as the gem requirements, are you saying the option doesn't enforce item socket bonus, just meta-gem? For instance, Cord of Biting Cold has a blue and a red socket, and filling those with their respective gems grants the bonus, but Rawr3 optimizer is telling me to use two reds, even with Enforce Gem Requirements on. Like I mentioned, this may be related to Issue 15417 (not saving options), or I might be not totally understanding Enforce Gem Requirements (is item 4 on the \"Enforce Gem Requirements Documentation\" page just another way of saying that it doesn't enforce item socket bonuses?).",
+      "PostedDate": "2009-12-16T20:39:18.737-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sorry, I'm dense. Totally disregard my gemming nonsense. However, I'm still going to try and work out why/how/if the seemingly random missing enchants occur.",
+      "PostedDate": "2009-12-16T20:45:51.58-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You say you didn't touch them, but can you just do a quick doublecheck to ensure that they are checked? If they are not, that would mean the warning's are not set up correctly rather than it deselecting them even though they are available.",
+      "PostedDate": "2009-12-16T20:56:39.87-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks Jothay. I've done what you asked and made sure I had Enchanting selected as my profession, made sure my currently equipped rings had the proper enchant, and had \"Greater Spellpower\" selected in the Enchants for both rings. All I've done is hit Optimize several times without exiting the Optimizer window, which made sure nothing was being deselected.\r\n\r\nWith Thoroughness set at max, my first optimization resulted in no change in the enchants (which is expected). I hit Keep Existing. Clicking Optimize again, my second optimization suggests I remove the ring enchants, but still shows the enchants as being selected in the background (see attached image). I hit Keep Existing. I click Optimize again, and again it removes the enchants from the optimized rings.",
+      "PostedDate": "2009-12-17T09:06:44.67-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-17T09:06:49.67-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Can you attach the character xml where this happens?",
+      "PostedDate": "2009-12-17T09:57:39.613-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sure thing. If I have time, I can even do a screen video if you'd like to see exactly what I'm doing.",
+      "PostedDate": "2009-12-17T10:50:20.837-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-17T10:50:22.57-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I can also report that the ring enchants have been a little buggy as of the last few mainline releases (just before v2.3.x).  Sometimes, Enchanting will randomly decide to not work, and even though Enchanting is selected, the ring enchants will not show as selectable, and will show the warning upon attempting to Optimize, even though I know at least one is marked as available.  It is easily resolved by toggling Enchanting off and then back on, and doesn't occur too regularly, but it is enough to take notice.",
+      "PostedDate": "2009-12-18T20:44:16.687-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That is, I notice this within Rawr2, I just now realized that this is labeled as a Rawr3 issue.  Regardless, I believe the issues may be related.",
+      "PostedDate": "2009-12-18T20:45:36.363-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-18T08:28:21.56-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Was this ever fixed?",
+      "PostedDate": "2010-07-02T13:53:55.407-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T15:55:53.04-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I no longer notice that Enchanting is acting like a Marilyn Manson trouble child on crack, so I'd say it's somehow been fixed since it was an issue. (Yay for an active power-user having a terrible melee DPS profession!)",
+      "PostedDate": "2010-07-02T18:42:04.57-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T19:18:02.407-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-11-22T19:56:47.293-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:40:45.093-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:17.717-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:57.017-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

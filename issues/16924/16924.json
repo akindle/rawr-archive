@@ -1,0 +1,105 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.LoadCharacter",
+      "DisplayName": "Rawr.Base.LoadCharacter"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-03-24T21:04:34.777-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Every time I try and load a character, the loading bar will begin to animate, and that it hangs, and when I mouse over the loading bar, I get the following error message:\n \n \n[HtmlPage_NotEnabled]\nArguments:\nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=8.0.50106.0&File=System.Windows.Browser.dll&Key=HtmlPage_NotEnabled\n \n   at System.Windows.Browser.HtmlPage.VerifyThreadAndEnabled()\n   at System.Windows.Browser.HtmlPage.get_Window()\n   at Rawr.Silverlight.App.ProcessBookmark()\n   at Rawr.Silverlight.App.LoadFinished(Object sender, EventArgs e)\n   at Rawr.UI.LoadScreen.filesLoaded(Object sender, EventArgs e)\n   at Rawr.UI.FileUtils.DownloadIfNotExists(EventHandler callback)\n   at Rawr.UI.LoadScreen.iq_Closed(Object sender, EventArgs e)\n   at Rawr.UI.LoadScreen.LoadFiles()\n   at Rawr.UI.LoadScreen.StartLoading(EventHandler callback)\n   at Rawr.Silverlight.App.Application_Startup(Object sender, StartupEventArgs e)\n   at System.Windows.CoreInvokeHandler.InvokeEventHandler(Int32 typeIndex, Delegate handlerDelegate, Object sender, Object args)\n   at MS.Internal.JoltHelper.FireEvent(IntPtr unmanagedObj, IntPtr unmanagedObjArgs, Int32 argsTypeIndex, String eventName)\n \n \n \nI have tried characters on different realms, and I have tried the offline version as well, all with the same results. My guess is there is something wrong with my Silverlight plugin. Running on Windows 7, tried in Chrome, Firefox and IE.\n \nEdit: I just now was able to load a character I had saved from Rawr 2.3.13\nEdit 2: Once I had my character loaded, I was able to load any character of the same class (druid in my case), but I wasn't able to load my mage, or DK.",
+    "LastUpdatedDate": "2013-05-16T05:21:19.897-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-03-23T06:55:25.717-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[LoadCharacter] Unable to load character",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16924
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "That error is the error from launching it locally (\"Install Offline\"), and is benign. What's the error on your load from armory, and what character?",
+      "PostedDate": "2010-03-23T09:59:46.593-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I actually get the same error (or one very similar to it) when I am running the web-based version, and it is the only error I get. The character load screen hangs at that point. ",
+      "PostedDate": "2010-03-23T10:50:25.35-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The character I was trying was Brickthrower from the US realm Agamaggan",
+      "PostedDate": "2010-03-23T10:52:44.497-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I've seen character load screen hanging if elitistarmory returns badrealm error response. I'm not sure if this is related.",
+      "PostedDate": "2010-03-23T14:53:03.107-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Someone posted another issue with a problem with loading characters wearing shirts.   Brickthrower is currently wearing a shirt on armory - might this be the issue?\r\n\r\n",
+      "PostedDate": "2010-03-23T15:10:23.987-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "@RareBeast\r\n\r\nNot too sure because I now have no problem loading any druid model. But if I try and load my DK (Throwbricks), I get the error message (even tried doing so with no gear equipped). Very interesting.",
+      "PostedDate": "2010-03-23T15:29:08.173-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Problem resolved. I took the advice from this thread and everything worked fine after that.\r\nhttp://rawr.codeplex.com/WorkItem/View.aspx?WorkItemId=16950",
+      "PostedDate": "2010-03-24T19:59:00.49-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-24T21:04:34.777-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:48:06.93-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-09T15:45:29.017-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:24.073-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:29:11.82-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:19.897-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

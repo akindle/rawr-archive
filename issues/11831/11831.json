@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Buffs",
+      "DisplayName": "Rawr.Base.Buffs"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-04-01T16:59:11.083-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Demonic Pact:\n \nCurrently increases magic damage done by 10% in Rawr.\nIt's actual behaviour in game is that increases raid wide spell power by 10% of the casting warlock's spell power without DP/FTTotem/ToW/IDS (likely intended) and without the spell power from the spirit part of Fel Armour (probably a bug).\n \nRune of Razorice:\nIt might make sense to add this as raid-wide 5% frost damage debuff. It stacks with everything.",
+    "LastUpdatedDate": "2013-05-16T05:26:44.85-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-12-02T14:30:39.85-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Buffs] Missing/wrong buffs",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 11831
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Any idea how to correct Demonic Pact?\r\nIf a Warlock who has Demonic Pact select the totem for example the Warlock module does calculate which one is better and will use that one, but ofcourse it would be better for accuracy if someone has to enter the SP of the Warlock providing the buff when selecting it.",
+      "PostedDate": "2009-03-17T05:07:38.337-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yeah, this is an odd situation, where the caster of the debuff controls how strong the debuff is. Survival Hunters' Expose Weakness used to be the same way, and we had to put a 'Survival Hunter's Agi' slider on every model, it sucked.\r\n\r\nI'd like to implement a slider under the buff to control it, but that's probably a ways off.\r\nIn the mean time, I'd be most comfortable letting it slide for now. Rawr.Warlock can calculate it right, but nobody else.",
+      "PostedDate": "2009-03-17T08:43:54.463-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Right now we have BonusSpellPowerMultiplier used in different ways by different models. I would suggest we split this into an actual multiplier on spell power for models that need it and a different one for use by Demonic Pact. That way we can implement option in the models to specify warlock spell power until we get a general solution for parameterized buffs.",
+      "PostedDate": "2009-03-25T00:38:59.71-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sounds good, go for it. :)",
+      "PostedDate": "2009-03-25T08:14:48.913-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-04-01T16:59:11.083-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T15:44:55.497-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:10.753-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:44.85-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

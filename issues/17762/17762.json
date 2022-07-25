@@ -1,0 +1,191 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSDK",
+      "DisplayName": "Rawr.DPSDK"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-06-15T11:12:05.37-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Whats happening is that when you select a buff it takes like 60 seconds or so for it to actually work. Rawr freezes for that long before you are able to select another buff. You basically get the hour glass while it takes its time. (although for vista is a spinning circular thing).\n \nAfter I load my character I start adding all of the buffs for a standard raid (those should really become pre-checked to save time). After abut the 7th buff or so it starts to get super slow and rawr becomes slow in general after that.\n \nAttached is my character file if it helps.",
+    "LastUpdatedDate": "2017-11-27T11:04:39.41-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-05-21T02:27:07.25-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSDK|TankDK] Takes an extremely long time to click buffs/filters etc",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17762
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3578,
+      "FileName": "meygaera frost3.xml",
+      "DownloadUrl": ".\\3578"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I also noticed the stat values are wrong for the DK. I'm frost and it shows haste at 2.96 hit at 2.87 then strength at 2.23. I also don't see anywhere to edit the rotation.",
+      "PostedDate": "2010-05-21T02:30:09.697-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-05-21T09:06:35.647-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "1) The \"Stat Values\" are an output, not an input.\r\n2) Haste is a very jumpy stat, in almost every model, sometimes it will be above STR and other times it won't, don't freak out unless it's like a 30:1 ratio or something.\r\n3) The Rotations are being generated automatically now instead of being something you enter, which is the cause for the slowdowns. The DK devs are working on more performance all the time.",
+      "PostedDate": "2010-05-21T09:47:30.49-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Another thing that can speed it up is to make sure you aren't on the \"Direct Upgrade\" panel when making changes as everytime you make a change, Rawr has to examine all available gear to see if it is an upgrade before displaying it.    Can really slow things down.\r\n\r\n",
+      "PostedDate": "2010-05-21T16:26:18.51-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "At least in TankDK, there are a handful of pre-set rotations, so it shouldn't be very expensive.  I didn't notice any significant impact, but I can take a look.  \r\nAlso, yeah, Haste is a really minor stat, so DPSDK is very different than TankDK.  so be sure you're specific which model is running.",
+      "PostedDate": "2010-05-21T21:44:15.86-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The direct upgrades window was not open when I experienced the slowness. Since you mentioned the direct upgrades window I tried clicking it and it froze up permanently. And yes I am running DPSDK.",
+      "PostedDate": "2010-05-21T22:05:49.36-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-05-22T06:57:33.08-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Which version of Rawr are you using?",
+      "PostedDate": "2010-05-22T21:08:06.337-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-05-26T03:24:21.56-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "everything I do with the dk form takes an extremely long time to update.  talent changes, gear changes, gem changes, enchant changes, upgrades, buffs, debuffs.  basically every single thing about the dk form is considerably slower than the mage or hunter forms.  I noticed there is a lack of available default talents listed for dks also.  on the mage / hunter form there were 3-4 defaults talent specs to choose.\r\n\r\nI'm using the latest version 2.3.18",
+      "PostedDate": "2010-06-14T07:53:38.18-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Are you referring to the DPS Model or the Tank Model?",
+      "PostedDate": "2010-06-14T08:04:55.7-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "specifically the dps model",
+      "PostedDate": "2010-06-14T11:42:16.927-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-06-14T15:57:08.833-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Shaz, I've heard of performance problems with both DPSDK and TankDK quite alot. Let me know if you need help doing performance optimization.",
+      "PostedDate": "2010-06-14T20:06:06.477-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hmmm... I haven't noticed any lag issues compared to Priest or Hunter when doing my other optimizations, but I'll certainly take a look.  My local VC9 project has instrumentation to help sort through perf logs, so I'll start there.  I'll re-assign this to TankDK so it's on my radar more directly, but I'll look at both DPS and Tank.",
+      "PostedDate": "2010-06-14T22:07:05.863-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hmmm... I haven't noticed any lag issues compared to Priest or Hunter when doing my other optimizations, but I'll certainly take a look.  My local VC9 project has instrumentation to help sort through perf logs, so I'll start there.  I'll re-assign this to TankDK so it's on my radar more directly, but I'll look at both DPS and Tank.",
+      "PostedDate": "2010-06-14T22:08:11.327-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I was playing around with it the other day.  I found that once I had BOTH trinket slots filled with special effect procs it suddenly became VERY slow.  I was an Orc, so that's another special effect ... not sure if there were any others.  The trinkets were ... I believe the Needle Encrusted Scorpion and ... Banner of Victory?  Sorry I don't have the character file on this computer.",
+      "PostedDate": "2010-06-15T00:00:14.19-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Just tested some more based on what Xemnosyst mentioned.  I have the needle encrusted scorpion on my dk as well.  I first removed all proc based items (including sigil of virulence, herkumi war token, needle encrusted scorpion, & ashen band of unmatched might), and was able to swap things around speedily like in other modelers.  Then I started adding things back to see where the slow down occurs.  I can add everthing back except the needle encrusted scorpion and the modeler performs fine.  As soon as the needle is added back it slows down again.\r\n\r\nIt is also worth noting that my hunter has the needle as well and that modeler does not experience this sort of slow down.  So it appears to be something directly related to the DK modeler.",
+      "PostedDate": "2010-06-15T07:17:24.72-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Agreed... Looking at the profiling in DPSDK, there is something funny going on in the SpecialEffects handling.  When I removed all the special code around it, looks like it clears up.  So I'll dig in a bit more there, see if something stands out in that model.  Thanks for the help on that.  Unfortunately, the same could not be said about TankDK.  I was able to reduce some of the extraneous calculations but didn't help the performance too much.  I'll need to dig deeper in there.  It might be just that there are so many things that act as special effects in TankDK, that I can't just remove it.  Might need to find a way to cache the results or something.  ",
+      "PostedDate": "2010-06-15T07:33:11.757-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "how about a method of allowing users to swap gear / talents / buffs / etc then when they want an updated stats page they click a button that does all the calculations then, instead of on the fly like it does currently?  i've seen several simulators that do similarly.",
+      "PostedDate": "2010-06-15T08:00:42.033-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "No, that goes against the principles of Rawr. We simply need to fix the performance bug here, that's it.",
+      "PostedDate": "2010-06-15T09:37:45.02-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Found it.  \r\nThe info regarding special effects from you guys really helped, and the needle encrusted Scorpion data confirmed my suspicions looking at the code.  I got a fix that looks like it works and is still thread-safe.  This fixes the severe problem in DPSDK.  As I mentioned, I put a tweak in TankDK, but it's not quite as noticeable, so if there's still a problem there, let's open up a new defect specific for that.",
+      "PostedDate": "2010-06-15T11:11:26.613-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Resolved with changeset 51393.",
+      "PostedDate": "2010-06-15T11:12:05.37-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "just tried out 2.3.19 and this issue still occurs.  swapping things around in dps dk model is just as slow in 2.3.19 as it was in 2.3.18.  the same thing applies, if I remove the needle encrusted scorpion everything is snappy again, that is until it gets added back.",
+      "PostedDate": "2010-06-22T13:52:43.997-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:53:02.267-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T19:05:05.29-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:28:23.337-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:39.083-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:04:39.41-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,161 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.RestoSham",
+      "DisplayName": "Rawr.RestoSham"
+    },
+    "ClosedComment": "Original issue closed and working correctly at the moment, issue in comments about Eye of Broodmother moved to issue 15076 to clear up confusion",
+    "ClosedDate": "2009-11-27T12:41:30.88-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "It appears that for Restoration Shaman than all On Use and Chance on X effects are being ignored.\n \nIn the screenshot attached I have shown an item that adds 128 Intellect and 599 Spell Power (20 Sec/2 Min Average: 93) being inferior to a PVP item that adds 111 Spell Power and 84 Resillience.\n \nAnother occurance is Meta Gems, Revitalising Skyflare Diamond (11 MP5 3% More Critical Healing) is being counted as higher than Insightful Earthsiege Diamond (21 Intellect and 600 Mana Restore (5% on Spell Cast/15 Sec) Average: 50 MP5 +/- 10).\n \nIn addition those effects aren't being shown on the tooltips anymore.\n \nI am currently working around this issue by manually adding the passive value that the effect would give (i.e. 50 MP5 on Insightgul Earthsiege Diamond). \n \nThank you for this excellent free program that serves for my and many other peoples number 1 choice for Character Customisation Theorycraft.\n \nEdit: I couldn't find a way to remove the first screen shot but in the second I showed the missing information on the tooltip in addition to the information on the first one.",
+    "LastUpdatedDate": "2013-05-16T05:24:30.143-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-09-08T06:54:04.55-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[RestoSham] Triggered Effects being ignored",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 14078
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2186,
+      "FileName": "Rawr.RestoSham.jpg",
+      "DownloadUrl": ".\\2186"
+    },
+    {
+      "FileId": 2187,
+      "FileName": "Rawr.RestoSham.jpg",
+      "DownloadUrl": ".\\2187"
+    },
+    {
+      "FileId": 2537,
+      "FileName": "restosham-dps-proc-bug.png",
+      "DownloadUrl": ".\\2537"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "They just haven't been modeled yet; we're working on it.",
+      "PostedDate": "2009-09-08T09:22:13.973-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-17T10:53:21.277-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-24T10:13:43.527-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Excluding the Mana Restore (I.e. Earthsiege, Tears of Vanquished, etc), are the Spellpower and other effects working?",
+      "PostedDate": "2009-11-19T15:20:12.593-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Fixed in Most recent commit (41467).  Issue will be closed as fixed by end of week if there are no further issues with it.",
+      "PostedDate": "2009-11-19T16:05:42.06-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Something odd I noticed yesterday. Sundial of the Exiled (84 Crit) is rated higher than the Eye of the Broodmother (87 Crit).\r\n\r\nThe procs nonwithstanding (one being useless and the other quite nice), I'm curious why 87 Crit alone would be rated lower than 84 Crit alone.\r\nI played around with both items, Removing the procs on both and giving the Eye a flat 125 SP. I even tried it with a completely new (blank) character profile. Everything produces the same results.\r\n\r\nI haven't built 41467 yet, which may mask this behavior. Wanted to let you know about this odd occurrence so you could take a look at it in an earlier revision and make sure it's not some other bug or something.\r\n",
+      "PostedDate": "2009-11-19T17:11:17.953-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I've done a bit more testing with the latest build (41536). It looks like DamageSpell* triggers are being counted. They don't show up in the item's tooltip, but in this build, removing the DamageSpellCast and DamageSpellHit triggers on Abyssal Rune and Sundial of the Exiled produce the expected results.\r\n\r\nI know I can keep Flame Shock up and toss a few Lava Bursts or Lightning Bolts, but triggering DamageSpell* effects should really be a toggleable option. ;)\r\n",
+      "PostedDate": "2009-11-20T09:20:27.307-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm not about to start modeling that my friend.  Until there is a reason to standardize across all models to have 'Optional DPS', don't expect that kind of option in Resto Sham.\r\nHowever, is a damage spell trinket is getting it's proc counted, then it's not picking up the proper special effect, that would need looked at.  If you are dead-set on using DPS trinkets for healing because you 1/2 dps, then I would recommend changing the special effect proc itself temporarily.\r\n\r\nAny other odd behavior then from trinkets, or everything on the issue working correctly finally?",
+      "PostedDate": "2009-11-21T14:07:17.653-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I was joking about a DPS option. Hence the \";)\" :P\r\n\r\nI tested with Abyssal Rune and Sundial of the Exiled. Removing their DPS procs in the item editor lowers their value.",
+      "PostedDate": "2009-11-21T15:00:54.307-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "So, the issue currently is that 84 crit is rating higher then 87 crit?  Just trying to make sure it's all covered before I close what could be a valid issue.",
+      "PostedDate": "2009-11-23T17:26:07.57-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The issue appears to be that triggered effects based on damage spells are being valued by the calculations.\r\n\r\nTest the issue: (I'm testing with rev 42059 this time to be current)\r\nStep 1: Start with an empty character. (Though it holds true in my saved characters too)\r\nStep 2: Turn off all item filters except for Emblem of Heroism and Razorscale (10-man).\r\nStep 3: Check the trinket list, why is Sundial of the Exiled valued higher than Eye of the Broodmother? Also notice that Mirror of Truth is down at the bottom, and it has the same stats as the Sundial sans the proc.\r\nStep 4: Remove the proc effect from Sundial in the item editor and the Sundial goes down to hang out with Mirror of Truth.\r\n\r\nFurther testing:\r\nStep 5: Turn on Trial of the Champion (Normal)\r\nStep 6: Holy crap Abyssal Rune!\r\nStep 7: Remove the DPS-triggered proc from Abyssal Rune in the item editor. Why does that change it's ranking?\r\n\r\nI attached a screenshot demonstrating what I'm seeing in case it doesn't match up with your results.\r\n\r\nHope that clarifies what I'm talking about. ^^",
+      "PostedDate": "2009-11-24T09:28:06.407-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-24T09:28:07.73-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I keep forgetting the most important question.  What burst style and sustained style are you using?",
+      "PostedDate": "2009-11-24T12:21:10.93-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I personally use RT+LHW/RT+CH+LHW, (the blank character in the above example defaults to CH/CH) but even if I change them, the effect is still the same. DPS trinkets still rank abnormally high until you manually remove their procs in the item editor.\r\n\r\nLooking at the RestoSham code, it looks like Trigger.SpellCast is being set okay (CalculationsRestoSham.cs line 765?). Maybe this is a bug in Base/SpecialEffects that is causing DamagingSpell* triggers to be evaluated even if it is not listed as a relevant trigger for the model? I'll build some other healing models and see if this happens there too.\r\n\r\nQuestion: Are you not seeing this behavior on your end? Do note that whenever I do testing for these bug reports, I use the latest SVN code off the \"Source Code\" page, not the release version, so this may be a bug that was introduced recently (though I remember this effect happening many weeks ago). Also, just to make sure we're not having a mis-communication, what exactly do you think the issue being discussed is at the moment? My earlier posts are likely confusing as I've been still learning the inner workings of Rawr as I try to describe what is going wrong.",
+      "PostedDate": "2009-11-24T14:43:10.203-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Aa HA! I found what was causing the problem. :)\r\n\r\nIn CalculationsRestoSham.cs: GetCharacterStats() on lines 642-645, procs aren't being checked for relevant triggers before being added to the character's stats. I pulled the trigger check from GetRelevantStats() and made it into it's own function and made both sections of code call it. Problem solved!\r\n\r\nPatch in the patches section. :)",
+      "PostedDate": "2009-11-24T16:09:22.13-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Patch was helpful, but it appears you found the actual error without knowing it.  Farther down is more code that is supposed to check for the triggers, it seems that bit you found was a remnant of when the special effects were internal to restosham, and it was calculating the intellect off DMC: Greatness.  \r\n\r\nHowever, if you could do me a favor, it appears that Eye of the Broodmother is still not working correctly, but this issue is quite long and might confuse those later with the same issue.  I'll be opening a work issue for Eye of the Broodmother seperately from this one, as the main bit of the original is fixed.  Let me know if any other abnormalities pop up.  \r\n\r\nAnd I was seeing the issue on this end, it was quite hair-raising I assure you.  Or is it hair-pulling...",
+      "PostedDate": "2009-11-24T17:30:54.137-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Glad I could help a little. I'll wait for the ticket you mentioned to pop up before working on that issue, though I didn't notice any problems with the Eye.\r\n\r\nPerhaps a bit off-topic, but I've taken an interest in expanding the capabilities of this model and have been looking over the source code and hacking stuff in for the last few days. It's pretty easy to get a handle on, but I have a bunch of questions about implementation (\"What does this piece of code do and why is it expressed like this?\", \"Where does this variable get it's information from and what format is it in?\" etc.). Is there a place I can ask developer-related questions? The \"Discussions\" and Documentation sections of this site seem more user-oriented and I'd hate to foul them up with developer-speak if that's not what they are for.\r\n",
+      "PostedDate": "2009-11-24T19:12:49.92-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "For developer speak, talk to Astrylian and Antivyrus directly, you can reach them via the contact information on this site",
+      "PostedDate": "2009-11-24T21:15:55.823-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-27T12:41:30.88-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:12.233-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:30.143-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

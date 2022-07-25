@@ -1,0 +1,121 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSDK",
+      "DisplayName": "Rawr.DPSDK"
+    },
+    "ClosedComment": "I see exactly what this is and it&#39;s already fixed",
+    "ClosedDate": "2010-03-22T09:37:00.383-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Description: Rawr crashes when i use DPSDK module after looking at TANKDK, also with this xml file my rotation and DPS was low in latest builds.\n \nSteps to Reproduce: \nLaunch Rawr , load attached XML\nSwitch between DPS and Tank mode and vice versa.\n \nObserve that Rawr Crashes\nAdditional Information: \nRawr v2.3.12 \nWindows 7 \n \nSystem.InvalidOperationException: Er is een fout opgetreden bij het genereren van het XML-document. \n---> System.InvalidOperationException: Het type Rawr.DoT werd niet verwacht. Gebruik het attribuut XmlInclude of SoapInclude om typen op te geven die niet statisch bekend zijn.\n   bij Microsoft.Xml.Serialization.GeneratedAssembly.XmlSerializationWriterCalculationOptionsTankDK.Write12_Attack(String n, String ns, Attack o, Boolean isNullable, Boolean needType)\n   bij Microsoft.Xml.Serialization.GeneratedAssembly.XmlSerializationWriterCalculationOptionsTankDK.Write13_BossHandler(String n, String ns, BossHandler o, Boolean isNullable, Boolean needType)\n   bij Microsoft.Xml.Serialization.GeneratedAssembly.XmlSerializationWriterCalculationOptionsTankDK.Write14_CalculationOptionsTankDK(String n, String ns, CalculationOptionsTankDK o, Boolean isNullable, Boolean needType)\n   bij Microsoft.Xml.Serialization.GeneratedAssembly.XmlSerializationWriterCalculationOptionsTankDK.Write15_CalculationOptionsTankDK(Object o)\n   --- Einde van intern uitzonderingsstackpad ---\n   bij System.Xml.Serialization.XmlSerializer.Serialize(XmlWriter xmlWriter, Object o, XmlSerializerNamespaces namespaces, String encodingStyle, String id)\n   bij System.Xml.Serialization.XmlSerializer.Serialize(TextWriter textWriter, Object o, XmlSerializerNamespaces namespaces)\n   bij System.Xml.Serialization.XmlSerializer.Serialize(TextWriter textWriter, Object o)\n   bij Rawr.TankDK.CalculationOptionsTankDK.GetXml()\n   bij Rawr.Character.SerializeCalculationOptions()\n   bij Rawr.FormMain.Calculations_ModelChanging(Object sender, EventArgs e)\n   bij Rawr.Calculations.OnModelChanging()\n   bij Rawr.Calculations.LoadModel(CalculationsBase model)\n   bij Rawr.Calculations.LoadModel(Type type)\n   bij Rawr.FormMain.LoadModel(String displayName)\n   bij Rawr.FormMain.comboBoxModel_SelectedIndexChanged(Object sender, EventArgs e)\n   bij System.Windows.Forms.ComboBox.OnSelectedIndexChanged(EventArgs e)\n   bij System.Windows.Forms.ComboBox.WmReflectCommand(Message& m)\n   bij System.Windows.Forms.ComboBox.WndProc(Message& m)\n   bij System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)\n   bij System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)\n   bij System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)",
+    "LastUpdatedDate": "2017-11-27T11:04:36.773-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-03-19T11:23:31.183-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSDK] InvalidOperationException",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 3,
+    "Id": 16859
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3211,
+      "FileName": "Rawr.MordiciaDps.xml",
+      "DownloadUrl": ".\\3211"
+    },
+    {
+      "FileId": 3221,
+      "FileName": "Rawr Error.doc",
+      "DownloadUrl": ".\\3221"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I see someone has exact same issue, he reported it under Item # 16869 ",
+      "PostedDate": "2010-03-20T06:09:12.19-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-20T17:35:37.087-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I've had this problem as well, thought I'd downloaded a trojan with the latest version of rawr.\r\n\r\nBasically from what I can gather it corrupts the security.confif.cch file in Microsoft.NET folder\r\n\r\npathway:\r\nWindows\\Microsoft.NET\\Framework/v2.0.50727\\CONFIG\\security.config.cch\r\n\r\nNot sure what to do about it.\r\n\r\nAny suggestions?\r\n\r\nI have tried deleting this file in safe mode ... then had an error with mscorlib.dll file",
+      "PostedDate": "2010-03-20T17:39:36.6-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-20T17:39:37.143-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I should probably add using Rawr v2.3.12 and windows xp service pack 3.\r\nThis is one of several symptoms Ive had with v2.3.12.\r\nOthers being I could download a character from Armoury ok and play around with items fine but as soon as I wanted to save my character I would get the XML error. \r\nSo far it just appears to be DK module, I have dl'ed mage and priest characters with no problems.\r\nHowever the security.config.cch file is now corrupted on my computer - I did a system restore to try and fix it as well then saved again .. still same problem.",
+      "PostedDate": "2010-03-21T14:26:01.44-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-21T19:29:00.953-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Uh... This has nothing to do with any 'security.config.cch' file, or any trojan or anything. It's just a bug with saving the xml files from the DPS DK model. Nothing to do with anything outside of Rawr.",
+      "PostedDate": "2010-03-21T19:46:56.307-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-22T09:36:48.267-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-22T09:37:00.383-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:39:31.72-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:21:17.93-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:29:18.407-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:25.16-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:04:36.773-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

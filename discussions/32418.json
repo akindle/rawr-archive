@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "107499",
+    "ThreadId": "32418",
+    "Html": "I am attempting to model some resist sets (for Hydross) and am having an issue with some of the enchants.&nbsp; I can for example load the 'Glyph of Frost Warding' as an item (29198) but this does not make it available as an enchant for a head item.&nbsp; The only way I can see to do so is to manually edit the Enchantcache.xml - am I missing something?<br>\r\n<br>\r\nTIA for any replies.<br>\r\n<br>\r\n-Lee<br>\r\n",
+    "PostedDate": "2008-07-28T09:26:44.247-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "107508",
+    "ThreadId": "32418",
+    "Html": "Ah, looks like we missed that enchant for the default enchant cache. You can add it yourself if you can handle editing the EnchantCache.xml. If you know of any others that are missing, let me know, I'll try to get em in for b15.1.<br>\r\n",
+    "PostedDate": "2008-07-28T10:03:10.05-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "107510",
+    "ThreadId": "32418",
+    "Html": "Thanks for the prompt reply.<br>\r\n<br>\r\nI'll add what I need and post the XML here.&nbsp; I believe there are a few more I'll be using.<br>\r\n",
+    "PostedDate": "2008-07-28T10:08:20.917-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "107528",
+    "ThreadId": "32418",
+    "Html": "I also noticed that when editing the XML file; if you have Rawr open it can be overwritten when it closes (or saves a character?).&nbsp; I imagine that is by design.&nbsp; Also, one must close then re-open Rawr to get it to recognize the XML changes.&nbsp; The combination of overwriting and a long reload process makes it sort of tedious.&nbsp; Maybe an option to reload the supporting XML files while open would be good? <br>\r\n<br>\r\nAnyway, here's what Ive added on my side that was missing:<br>\r\n<br>\r\n<pre>  &lt;Enchant&gt;\r\n    &lt;Id&gt;29487&lt;/Id&gt;\r\n    &lt;Name&gt;Nature Armor Kit&lt;/Name&gt;\r\n    &lt;Slot&gt;Chest&lt;/Slot&gt;\r\n    &lt;Stats&gt;\r\n      &lt;NatureResistance&gt;8&lt;/NatureResistance&gt;\r\n    &lt;/Stats&gt;\r\n  &lt;/Enchant&gt;\r\n  &lt;Enchant&gt;\r\n    &lt;Id&gt;29487&lt;/Id&gt;\r\n    &lt;Name&gt;Nature Armor Kit&lt;/Name&gt;\r\n    &lt;Slot&gt;Legs&lt;/Slot&gt;\r\n    &lt;Stats&gt;\r\n      &lt;NatureResistance&gt;8&lt;/NatureResistance&gt;\r\n    &lt;/Stats&gt;\r\n  &lt;/Enchant&gt;\r\n  &lt;Enchant&gt;\r\n    &lt;Id&gt;29487&lt;/Id&gt;\r\n    &lt;Name&gt;Nature Armor Kit&lt;/Name&gt;\r\n    &lt;Slot&gt;Hands&lt;/Slot&gt;\r\n    &lt;Stats&gt;\r\n      &lt;NatureResistance&gt;8&lt;/NatureResistance&gt;\r\n    &lt;/Stats&gt;\r\n  &lt;/Enchant&gt;\r\n  &lt;Enchant&gt;\r\n    &lt;Id&gt;29487&lt;/Id&gt;\r\n    &lt;Name&gt;Nature Armor Kit&lt;/Name&gt;\r\n    &lt;Slot&gt;Feet&lt;/Slot&gt;\r\n    &lt;Stats&gt;\r\n      &lt;NatureResistance&gt;8&lt;/NatureResistance&gt;\r\n    &lt;/Stats&gt;\r\n  &lt;/Enchant&gt;\r\n  &lt;Enchant&gt;\r\n    &lt;Id&gt;29487&lt;/Id&gt;\r\n    &lt;Name&gt;Glyph of Frost Warding&lt;/Name&gt;\r\n    &lt;Slot&gt;Head&lt;/Slot&gt;\r\n    &lt;Stats&gt;\r\n      &lt;FrostResistance&gt;20&lt;/FrostResistance&gt;\r\n    &lt;/Stats&gt;\r\n  &lt;/Enchant&gt;\r\n  &lt;Enchant&gt;\r\n    &lt;Id&gt;29487&lt;/Id&gt;\r\n    &lt;Name&gt;Glyph of Nature Warding&lt;/Name&gt;\r\n    &lt;Slot&gt;Head&lt;/Slot&gt;\r\n    &lt;Stats&gt;\r\n      &lt;NatureResistance&gt;20&lt;/NatureResistance&gt;\r\n    &lt;/Stats&gt;\r\n  &lt;/Enchant&gt;\r\n  &lt;Enchant&gt;\r\n    &lt;Id&gt;29187&lt;/Id&gt;\r\n    &lt;Name&gt;Inscription of Endurance&lt;/Name&gt;\r\n    &lt;Slot&gt;Shoulders&lt;/Slot&gt;\r\n    &lt;Stats&gt;\r\n      &lt;AllResist&gt;4&lt;/AllResist&gt;\r\n    &lt;/Stats&gt;\r\n  &lt;/Enchant&gt;\r\n  &lt;Enchant&gt;\r\n    &lt;Id&gt;27962&lt;/Id&gt;\r\n    &lt;Name&gt;Enchant Cloak - Major Resistance&lt;/Name&gt;\r\n    &lt;Slot&gt;Back&lt;/Slot&gt;\r\n    &lt;Stats&gt;\r\n      &lt;AllResist&gt;7&lt;/AllResist&gt;\r\n    &lt;/Stats&gt;\r\n  &lt;/Enchant&gt;\r\n</pre>\r\n",
+    "PostedDate": "2008-07-28T11:04:04.66-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "107725",
+    "ThreadId": "32418",
+    "Html": "<p>Found one more I needed:</p>\r\n<pre>  &lt;Enchant&gt;<br>    &lt;Id&gt;25081&lt;/Id&gt;<br>    &lt;Name&gt;Enchant Cloak - Greater Fire Resistance&lt;/Name&gt;<br>    &lt;Slot&gt;Back&lt;/Slot&gt;<br>    &lt;Stats&gt;<br>      &lt;FireResistance&gt;15&lt;/FireResistance&gt;<br>    &lt;/Stats&gt;<br>  &lt;/Enchant&gt;&lt;Enchant&gt;&lt;Stats&gt;&lt;FireResistance&gt;&lt;/FireResistance&gt;\r\n    &lt;/Stats&gt;\r\n  &lt;/Enchant&gt;</pre>\r\n",
+    "PostedDate": "2008-07-29T07:53:53.887-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

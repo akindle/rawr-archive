@@ -1,0 +1,85 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Fixed for v2.2.0.10",
+    "ClosedDate": "2009-04-19T16:19:47.583-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "It struck me that we should divorce the \"Enforce Gem Requirements\" from the max 3 dragons eye gems for Jewelcrafters. The reason is simple putting red gems in blue slots for instance is a user choice and perfectly permissible in game. Putting 4 dragons eye gems is not at all permissible in game, and thus should be enforced regardless of whether the box is ticked or not. ie: the tick box should mean whether or not you are happy to override gem colours in slot, not whether you want Rawr to allow impossible gem combinations.",
+    "LastUpdatedDate": "2013-05-16T05:25:49.25-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-04-16T04:47:37.233-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Jewelcrafter Gems & Enforce Gem Requirements",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 13027
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Absolutely in agreement.",
+      "PostedDate": "2009-04-16T13:20:15.733-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-04-18T11:48:41.28-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Putting gems in different color sockets is a *valid* user choice. Not meeting their meta requirements is an *invalid* user choice, just as much as using 4 Dragon's Eyes is, as far as theorycrafting is concerned. The point of being able to disable these requirements at all is just to quickly compare items, without worrying about the potential 'oddities' of item values created by meeting/breaking gem requirements.",
+      "PostedDate": "2009-04-18T12:04:21.127-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Not quite. Its perfectly valid and very very common to ignore socket colours for max dps gemming, as long as you've met meta requirements and many top dps BiS gear setups (if not most of them) will break gem slot colours to max dps. What they will not do and CANNOT do is have 4 dragons eyes.\r\n\r\nI'd suggest we need the max 3 dragons eyes constraint to be fixed in the code as the model and for instance the optimiser would be giving completely wrong gemming if it suggested 4 or more dragons eyes. The choice of whether to allow breaking slot colours is a user choice, some users will never break colour choices for gems so they ALWAYS get socket bonuses.\r\n\r\nFor instance. I want Rawr to be flexible in gem recommendations and suggest the best gemming regardless of slot colour. However it currently gives an invalid result by recommending every single slot has a dragons eye. To me it reflects poorly on the program that it suggests invalid results as its best itemisation. If instead I turn on Enforce Gem Requirements it meets the dragons eye requirements but then doesn't suggest the breaking of any colours.\r\n\r\nI want both. A valid result that maximises my dps. This is not currently possible in Rawr. You either get invalid results (checkbox off) or sub-optimal results (checkbox on).\r\n\r\nTo be even better it could have two checkboxes. eg: Enforce gem colours, Enforce meta requirement. This would give 3 possible states. (NB. I'd say if you tick enforce gem colours that it disables enforce meta gem requirement)\r\n\r\n1) If both are off it acts as now with unticked checkbox, but still enforces dragons eyes max.\r\n\r\n2) If Enforce meta gem is on but gem colours is off, then it can suggests different gem colours in different slots but will always ensure meta requirements are met if possible. \r\n\r\n3) If both are ticked then its rigid that all slot colours must be matched this is the same as current single box ticked.",
+      "PostedDate": "2009-04-18T16:20:32.883-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I think you might have misread what I wrote. I said that putting gems in mismatched color sockets *IS* a valid user choice (and typically optimal). It's the unmet Metas and 4 Dragon's Eyes that are *invalid* choices.",
+      "PostedDate": "2009-04-18T19:35:46.597-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yes sorry I misread that.",
+      "PostedDate": "2009-04-19T16:19:20.17-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-04-19T16:19:47.583-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:49.33-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:49.25-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

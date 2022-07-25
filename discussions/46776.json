@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "156410",
+    "ThreadId": "46776",
+    "Html": "This is an issue that probably affects a small number of users, but is a <strong>huge </strong>annoyance to me.&nbsp; I like to run Rawr from my highspeed USB flash drive, so I can download it there, and then take it to work to play with it, and bring it home with all of my configuration still in-tact to load it up again during a raid or whatever.<br>\r\n<br>\r\nHowever, I was noticing that it would take <strong><em>flipping forever </em></strong>to close the program when run from the Flash Drive.&nbsp; I thought it had frozen up because it had been non-responsive for a good 10 minutes (no exaggeration), so I would force-close it.&nbsp; Then, the next time I tried opening it I would get a 'corrupted itemcache.xml' error.&nbsp; So I opened up my item cache and sure enough, it was only partially complete, with some blatantly-missing closing tags at the end of the document.<br>\r\n<br>\r\nSo I grab a new item cache from the site, load up rawr, and this time when I close it, I navigate to the folder in my flash drive that it sits, and look up the 'properties' of itemcache.xml, which says something like 400 KB.&nbsp; So I refresh the view, and it changes to 500 KB&nbsp; (I'm estimating these numbers, but this is what happens).&nbsp; I refresh again and it says 600 KB.&nbsp; I have to wait for this flipping thing to get to 7,500 KB before rawr can actually be done closing (without corrupting the ItemCache) which takes approximately 15 minutes (soooo annoying!).<br>\r\n<br>\r\nThe app itself opens and runs *just* as fast from the flash drive as it does when saved and run on the desktop, but closing it takes only a couple of seconds from the desktop.&nbsp; Is there a reason rawr has to re-write the ItemCache.xml even when I didn't make any changes to it?&nbsp; Is there a way to write to that ItemCache in a more efficient manner that doesn't screw me over if I'm trying to be mobile =p&nbsp; I know this might be a bit of a technical impossibility or just highly difficult, I was just wondering if anyone else had some light to shed on the problem.<br>\r\n",
+    "PostedDate": "2009-02-10T13:17:29.267-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "156461",
+    "ThreadId": "46776",
+    "Html": "This sounds like a problem with your USB drive, not Rawr. There's nothing special about how it saves its data files, and 7.5mb should not take 15min (or even 15sec) to write to any modern storage device.<br>\r\n<br>\r\nMy best guess is that your USB drive's partition is <em>heavily</em> fragmented. USB Flash drives use FAT file system (not even FAT32), by default, which is an archaic file system, and extremely prone to fragmentation. As you add and delete files, especially lots of little files (like you're likely to put in a flash drive), the partition gets more and more fragmented. I expect that if you copy everything off of the flash drive, reformat it, and copy everything back, you'll see a gigantic write performance increase.<br>\r\n",
+    "PostedDate": "2009-02-10T15:57:39.867-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "158382",
+    "ThreadId": "46776",
+    "Html": "I actually think this guy is experiencing the same issue I am but misrepresenting it as a file issue.<br>\r\n<br>\r\nI have vista, NTFS, no weird flash drive mojo going on.<br>\r\n<br>\r\nIf I leave Rawr open for long periods of time, especially over night, when I try to close it will take a good 5-10 mins to close.  So long that windows prompts me to kill it since it is taking too long.  I have learned long ago NOT to force kill as it corrupts the itemcache just as he says.  If I wait ages, eventually, it closes.<br>\r\n<br>\r\nThe most common scenario that causes this for me would be: log into wow, do various things, alt-tab, open rawr, load some files, poke around a bit, alt-tab back in, go on a raid for many hours, raid is done, farm some stuff after raid for a while, maybe play in rawr a bit deciding how to gem what I've won, swap other gear around to compliment the new piece until I'm happy, save out my new current set, alt-tab back in to wow buy gems, get enchants, swap around gear, idle in dal chatting, close wow, try to close rawr.....wait forever....windows says wanna kill it? no....wait forever....finally it goes away. <br>\r\n<br>\r\nIf I jsut open and close rawr in a normal session of use it closes fine, pretty fast really, only when the above-like scenario happens does it take ages. \r\n",
+    "PostedDate": "2009-02-16T23:06:08.8-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "158387",
+    "ThreadId": "46776",
+    "Html": "I don't think this is it. I sometimes leave Rawr running for days and through hibernations and I never experienced this.\r\n",
+    "PostedDate": "2009-02-16T23:16:24.7-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "158516",
+    "ThreadId": "46776",
+    "Html": "I wish I could duplicate it then more exactly :(.<br>\r\n<br>\r\nIs there a debug mode for rawr that stamps out timestamps and actions rawr is taking to a file?  If so I could leave debug on and next time it happens perhaps we could see what is going on.\r\n",
+    "PostedDate": "2009-02-17T08:13:24.057-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "158522",
+    "ThreadId": "46776",
+    "Html": "I've also had Rawr take forever to close after it's been open for a long time.&nbsp; It seems to only happen after Windows has decided to swap it out to disk.&nbsp; More RAM, or perhaps some different virtual memory settings would probably help that, but it's still extremely annoying.<br>\r\n<br>\r\nEdit: This closing delay isn't only when Windows is scrambling to get everything back out of swap.&nbsp; If Rawr has been open for long enough to be swapped out, it will often be extremely slow to close even after the normal functions seem to have recovered.&nbsp; It seems like it could easily just be a Windows problem rather than a problem with Rawr, but an option to not write the item cache on exit would be nice either way.<br>\r\n<br>\r\nWould it also be possible to have Rawr write the item cache to a temporary file, then replace the real one with the temporary one once it's done writing?&nbsp; That seems like it would avoid corruption problems if Rawr does have to be killed while it's writing.<br>\r\n",
+    "PostedDate": "2009-02-17T08:29:52.47-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "158562",
+    "ThreadId": "46776",
+    "Html": "Given that this doesn't happen with any other program I use I'll have to disagree that it's a windows problem. <br>\r\n<br>\r\nI am running 4gigs (less of course due to 32bit windows, but regardless).  More RAM can't help me :).\r\n",
+    "PostedDate": "2009-02-17T10:30:04.59-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

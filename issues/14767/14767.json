@@ -1,0 +1,100 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Tree",
+      "DisplayName": "Rawr.Tree"
+    },
+    "ClosedComment": "Out of Date",
+    "ClosedDate": "2010-11-20T17:06:42.98-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Description: I do 10 man raids. I'm using the \"Raid heal with Rejuv (2 Tanks RJ/Roll LB)\" spell usage in the Rawr.Tree module, and it is simulating that I cast 34.53 Rejuvenations per minute, that I cannot use my primary heal 22% of the time because of mana, and considers mp5 my most valuable stat.  The problem here is that for 8 targets (the entire raid minus the tanks) I can keep rejuvenation up 100% with 27 casts per minute, which makes me think I am not actually mana limited, and that spellpower should now be my most valuable stat.\n \nSuggestion for fix: My first thought is to add an option for raid size, or for how many raid healing targets to consider.",
+    "LastUpdatedDate": "2013-05-16T05:23:26.897-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-11-11T14:26:18.76-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Feature Request.Tree] Raid Size",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 14767
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "First - I now realize I was a bit off in my problem statement above: I no longer believe \"Casts per minute until OOM\" is casts of the primary heal, but of all spells.  However, that does not change the actual problem: it is still doing calculations to optimize my gear assuming I have more than 8 raid targets, and is therefore favoring more spellcasts rather than more power spells.\r\n\r\nSecond - I finally realized I could calculate the amount of mp5 I need to keep up all the spells I want, then set a restriction on the optimizer not to give me more than that.  This helps a lot, but still leaves a lot to be desired.  Essentially, the gear compare features outside the optimizer still rank things without my mp5 restriction.  Also, every time my gear changes my mana pool changes, which then changes the mp5 I need, which can then change my gear, which can then change my mana pool ... you get the idea.\r\n\r\nI realize it may not lead to the theoretically highest output to simply stop casting once all my raid targets have rejuvenation, so an alternate technique could be to have a spillover spell to cast at those times, perhaps regrowth or nourish on raid targets, to top off anyone for whom rejuvenation alone isn't cutting it, or an extra nourish on the tanks.",
+      "PostedDate": "2009-11-12T10:05:56.01-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "RL been keeping me busy. Some thoughts on this:\r\nOn a practical point: Rawr.Tree assumes that you would still keep Rejuv on the tanks, thus you have 10 potential rejuv targets, which actually gives 10*60/18 = 33 casts/min needed to maintain Rejuv. (Assuming you have Nature's Splendor and Bliz doesn't nerf Rejuv duration in next patch. (Haven't been following details there so not sure what the latest thinking is). \r\n\r\nFrom a theoretical point: \r\nYes, you are correct that Rawr.Tree doesn't consider the group size, so you could get into a situation where everyone is already rejuved. \r\nBut assuming your using Wild Growths as extra raid healing and Swiftmend as spot heals, that gives another 14 potential casts per minute. And keeping the lifeblooms up is 12 casts/min (actually more, but a bloom now and again might not be bad). Then your already maxed out at 60 casts/min.\r\n\r\nI recently added the Idle percentage slider which might be a better way to handle this, since constraining mp5 might keep a good gear piece from being used, just because it pushes you over the edge. But probably of more value will be pushing the ratio slider more towards burst. This will drop the value of mp5.\r\n\r\nI have thought about limiting the raid size as part of trying to create a scenario where burst heals like nourish and regrowths on raid members are also of value. I'll see what I can do.\r\n",
+      "PostedDate": "2009-11-21T06:28:49.06-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-04T09:22:18.783-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-18T08:00:51.907-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T13:57:23.017-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T14:20:53.953-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T15:52:38.017-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-09T12:30:54.787-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-09T12:34:11.08-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-11-20T17:06:42.98-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:52.303-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:26.897-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

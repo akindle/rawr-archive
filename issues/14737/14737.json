@@ -1,0 +1,96 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Fixed in commit 44952",
+    "ClosedDate": "2009-12-25T22:29:55.733-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The Hand-Mounted Pyro Rocket hands enchant is being shown as 0 DPS, when the tooltip clearly reads:\n \nPermanently attaches a hand-mounted pyro rocket launcher to your gloves, allowing a skilled engineer to deal 1654 to 2020 Fire damage to an enemy at long range.  The rocket can only be fired once every 45 sec.\n \nThat would be 36.76 DPS to 44.89 DPS (or an average of 40.82 DPS), making it the BiS enchant for hunters (at least, probably other classes as well). However, the enchant currently shows up as 0.00DPS in the list, so the optimizer chooses the next best one.",
+    "LastUpdatedDate": "2013-05-16T05:23:28.617-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-11-10T09:03:23.53-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Hand-Mounted Pyro Rocket shown as 0 DPS",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 14737
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2469,
+      "FileName": "pyro.jpg",
+      "DownloadUrl": ".\\2469"
+    },
+    {
+      "FileId": 2476,
+      "FileName": "pyro2.jpg",
+      "DownloadUrl": ".\\2476"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "The proc is modelled as adding FireDamage stat. Since the vast majority of models don't use this stat it will add zero damage or not even show as a valid enchant. Effectively its an extra attack, to any model.\r\n\r\nWhat needs to be found out is what modifiers (if any) apply, eg: is it modified by crit rate? Can it crit? What's it's hit chance is it modified by users hit chance? Does it benefit from user's spellpower? etc etc etc.\r\n\r\nThese questions and more need to be answered before it can be accurately modelled.",
+      "PostedDate": "2009-11-10T09:48:58.903-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-10T10:31:17.37-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Attached is my info on the pyro rocket.",
+      "PostedDate": "2009-11-10T19:06:52-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-10T19:06:57.953-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Basically, let me type it out (view pyro2 for this information). It can crit, but it is the exact damage when it crits as normal. \r\n\r\nHowever. I had hit lower than the min and higher than the max, so it seems to be adjusted somehow (adjusted down by boss resistances? adjusted up by attack power?) \r\n\r\nYou can go here: http://www.wowhead.com/?spell=54998#comments:40   and look for a post by \"SavageFatBob\" however, he assumes it CAN crit for more, but it does't.",
+      "PostedDate": "2009-11-10T19:28:28.28-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I realized that the data in pyro 2 included the twins fight in toc 25. Based on the average damage of hits and crits, I would say that is DOES crit for more, and that the post by \"SavageFatBob\" is actually correct.",
+      "PostedDate": "2009-11-11T13:59:02.243-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-25T22:29:55.733-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:55.1-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:28.617-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "User Error, Dev Explained",
+    "ClosedDate": "2009-08-19T13:50:22.9-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Attempted to load a Hunter (Bellerine, Elune-US) from the Armory, and experienced an exception. I didn't catch what it was (if there's a storage . I instantly closed the program and restarted it, to see if it was a one-off or not. I now can no longer load Rawr itself (working with rev 35973), as it pops up this error approximately 1.5 seconds after the splash loading screen appears.\n \nDescription:\nStopped working\n \nProblem signature:\nProblem Event Name: CLR20r3\nProblem Signature 01: rawr.exe\nProblem Signature 02: 2.2.12.0\nProblem Signature 03: 4a7e6d90\nProblem Signature 04: Rawr.Base\nProblem Signature 05: 2.2.12.0\nProblem Signature 06: 4a7aaa24\nProblem Signature 07: 41\nProblem Signature 08: 0\nProblem Signature 09: System.MissingMethodException\nOS Version: 6.0.6002.2.2.0.256.1\nLocale ID: 1033\n \nWill attempt to create a new working directory of Rawr, first simply copying the existing directory's contents elsewhere, and then will try rebuilding the program from scratch. Can attach my working directory, if somebody would like it.",
+    "LastUpdatedDate": "2013-05-16T05:24:54.2-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-08-09T02:24:21.28-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] Program Loading Error",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13828
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2084,
+      "FileName": "HunterLoadingExceptionText08.09.09.txt",
+      "DownloadUrl": ".\\2084"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Just copied the entire contents to a new directory, and shazam - it works.  I try to bring up that Hunter profile again (loading from the Armory), and I come up with an exception, which I recognize as the same error as earlier.  Attaching the exception text at the end of this comment, and including the loaded assemblies as the first accompanying file.\r\n\r\nI am forced to close the entire program when this error pops up, as the \"loading from armory\" dialogue will not allow me to close it, and the entire thing sort of just sits there.\r\n\r\nMost troubling, as I try to open the program again, that same error pops up.  I can attempt to recompile, but I don't anticipate this fixing the issue.\r\n\r\n\r\n\r\n************** Exception Text **************\r\nSystem.MissingMethodException: Method not found: 'Single Rawr.Stats.get_MultiShotCooldownReduction()'.\r\n   at Rawr.Hunter.CalculationsHunter.GetCharacterCalculations(Character character, Item additionalItem, Boolean referenceCalculation, Boolean significantChange, Boolean needsDisplayCalculations)\r\n   at Rawr.Calculations.GetCharacterCalculations(Character character, Item additionalItem, Boolean referenceCalculation, Boolean significantChange, Boolean needsDisplayCalculations)\r\n   at Rawr.FormMain._character_ItemsChanged(Object sender, EventArgs e) in E:\\Program Files (x86)\\Rawr Raw Data\\35973\\FormMain.cs:line 443\r\n   at Rawr.FormMain.set_Character(Character value) in E:\\Program Files (x86)\\Rawr Raw Data\\35973\\FormMain.cs:line 293\r\n   at Rawr.FormMain.Calculations_ModelChanged(Object sender, EventArgs e) in E:\\Program Files (x86)\\Rawr Raw Data\\35973\\FormMain.cs:line 677\r\n   at System.EventHandler.Invoke(Object sender, EventArgs e)\r\n   at Rawr.Calculations.OnModelChanged()\r\n   at Rawr.Calculations.LoadModel(CalculationsBase model)\r\n   at Rawr.Calculations.LoadModel(Type type)\r\n   at Rawr.FormMain.LoadModel(String displayName) in E:\\Program Files (x86)\\Rawr Raw Data\\35973\\FormMain.cs:line 485\r\n   at Rawr.FormMain.comboBoxModel_SelectedIndexChanged(Object sender, EventArgs e) in E:\\Program Files (x86)\\Rawr Raw Data\\35973\\FormMain.cs:line 1774\r\n   at System.Windows.Forms.ComboBox.OnSelectedIndexChanged(EventArgs e)\r\n   at System.Windows.Forms.ComboBox.set_SelectedIndex(Int32 value)\r\n   at Rawr.FormMain._character_ClassChanged(Object sender, EventArgs e) in E:\\Program Files (x86)\\Rawr Raw Data\\35973\\FormMain.cs:line 315\r\n   at Rawr.FormMain.set_Character(Character value) in E:\\Program Files (x86)\\Rawr Raw Data\\35973\\FormMain.cs:line 281\r\n   at Rawr.FormMain.LoadCharacterIntoForm(Character character, Boolean unsavedChanges) in E:\\Program Files (x86)\\Rawr Raw Data\\35973\\FormMain.cs:line 835\r\n   at Rawr.FormMain.LoadCharacterIntoForm(Character character) in E:\\Program Files (x86)\\Rawr Raw Data\\35973\\FormMain.cs:line 829\r\n   at Rawr.FormMain.bw_ArmoryGetCharacterComplete(Object sender, RunWorkerCompletedEventArgs e) in E:\\Program Files (x86)\\Rawr Raw Data\\35973\\FormMain.cs:line 979\r\n   at System.ComponentModel.BackgroundWorker.OnRunWorkerCompleted(RunWorkerCompletedEventArgs e)\r\n   at System.ComponentModel.BackgroundWorker.AsyncOperationCompleted(Object arg)\r\n****End Exception Text****",
+      "PostedDate": "2009-08-09T03:24:40.1-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-09T03:24:42.743-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That sounds like you're mixing different versions of Rawr. I'd redownload it.",
+      "PostedDate": "2009-08-09T16:44:43.61-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sorry, missed your response, Astry.  This issue is persisting, even through grabbing new versions of Rawr.\r\n\r\nDownloaded a fresh copy of v2.2.13, overwrote the data files with a local-built r36113, did not import Gemming Templates/Caches/etc.  Attempt to load a Hunter - BOOM, down goes the program.\r\n\r\nThe current \"modus deathus\" - The character will load (3/3 stages completed on the load character dialogue), the gear will load in, the bars will appear under comparisons, but the loading window never disappears, and the exception pops up at this point.\r\n\r\n\r\nI am now getting a new error, but still related to Huntery goodness, and still remarkably similar.  This is attempting the same operation of an Armory Import of \"Bellerine, Elune-US\":\r\n\r\n************** Exception Text **************\r\nSystem.MissingMethodException: Method not found: 'Single Rawr.Stats.get_ManaRestoreFromBaseManaPPM()'.\r\n   at Rawr.Hunter.CalculationsHunter.GetCharacterCalculations(Character character, Item additionalItem, Boolean referenceCalculation, Boolean significantChange, Boolean needsDisplayCalculations)\r\n   at Rawr.Calculations.GetCharacterCalculations(Character character, Item additionalItem, Boolean referenceCalculation, Boolean significantChange, Boolean needsDisplayCalculations)\r\n   at Rawr.FormMain._character_ItemsChanged(Object sender, EventArgs e) in E:\\Program Files (x86)\\Rawr Version-Separate Data\\36113\\FormMain.cs:line 443\r\n   at Rawr.FormMain.set_Character(Character value) in E:\\Program Files (x86)\\Rawr Version-Separate Data\\36113\\FormMain.cs:line 293\r\n   at Rawr.FormMain.Calculations_ModelChanged(Object sender, EventArgs e) in E:\\Program Files (x86)\\Rawr Version-Separate Data\\36113\\FormMain.cs:line 677\r\n   at System.EventHandler.Invoke(Object sender, EventArgs e)\r\n   at Rawr.Calculations.OnModelChanged()\r\n   at Rawr.Calculations.LoadModel(CalculationsBase model)\r\n   at Rawr.Calculations.LoadModel(Type type)\r\n   at Rawr.FormMain.LoadModel(String displayName) in E:\\Program Files (x86)\\Rawr Version-Separate Data\\36113\\FormMain.cs:line 485\r\n   at Rawr.FormMain.comboBoxModel_SelectedIndexChanged(Object sender, EventArgs e) in E:\\Program Files (x86)\\Rawr Version-Separate Data\\36113\\FormMain.cs:line 1774\r\n   at System.Windows.Forms.ComboBox.OnSelectedIndexChanged(EventArgs e)\r\n   at System.Windows.Forms.ComboBox.set_SelectedIndex(Int32 value)\r\n   at Rawr.FormMain._character_ClassChanged(Object sender, EventArgs e) in E:\\Program Files (x86)\\Rawr Version-Separate Data\\36113\\FormMain.cs:line 315\r\n   at Rawr.FormMain.set_Character(Character value) in E:\\Program Files (x86)\\Rawr Version-Separate Data\\36113\\FormMain.cs:line 281\r\n   at Rawr.FormMain.LoadCharacterIntoForm(Character character, Boolean unsavedChanges) in E:\\Program Files (x86)\\Rawr Version-Separate Data\\36113\\FormMain.cs:line 835\r\n   at Rawr.FormMain.LoadCharacterIntoForm(Character character) in E:\\Program Files (x86)\\Rawr Version-Separate Data\\36113\\FormMain.cs:line 829\r\n   at Rawr.FormMain.bw_ArmoryGetCharacterComplete(Object sender, RunWorkerCompletedEventArgs e) in E:\\Program Files (x86)\\Rawr Version-Separate Data\\36113\\FormMain.cs:line 979\r\n   at System.ComponentModel.BackgroundWorker.OnRunWorkerCompleted(RunWorkerCompletedEventArgs e)\r\n   at System.ComponentModel.BackgroundWorker.AsyncOperationCompleted(Object arg)\r\n",
+      "PostedDate": "2009-08-16T03:25:12.513-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Err, if you're going to build it locally, build the whole thing and use that. That new error is because you're using a locally built version of Rawr.Hunter, and an old (v2.2.13) copy of Rawr.Base.\r\nThat stat, ManaRestoreFromBaseManaPPM, is one we added just last night, heh. :)",
+      "PostedDate": "2009-08-16T10:07:09.653-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well, using just a fresh build, it works.\r\n\r\nI'm missing something, then.  I'm forcing every new file that's available to overwrite the existing files.  Why should there be a problem?  It is building a new Rawr.Base, and all 5 files related to Rawr.Base that previously existed should be overwritten by the new Rawr.Base files, correct?",
+      "PostedDate": "2009-08-16T13:18:53.81-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "data file versions must match the app versions.\r\n\r\nif you want to use data files from the latest source version, you will also need to use the latest source app",
+      "PostedDate": "2009-08-16T17:05:09.24-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-19T13:50:22.9-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T18:37:26.123-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:15.273-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:43:02.207-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:42.763-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:54.2-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

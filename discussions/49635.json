@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "166154",
+    "ThreadId": "49635",
+    "Html": "So I'm putting any new mage-able items from the PTR (mainly using wowhead's &quot;Latest&quot; list for the PTR:&nbsp; http://ptr.wowhead.com/?latest=additions), and wanted to add the 81 spellpower staff enchant to see how staff + huge enchant, and 1H + Offhand + smaller enchant would compare.&nbsp; I added the enchant to the XML (because I don't believe there's an 'add enchant' interface of sorts in Rawr), hoping that because the enchant uses regular stats it wouldn't need specific coding like the lightweave embroidery did.&nbsp; This is the XML I added:<br>\r\n<br>\r\n&lt;Enchant&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;Id&gt;4000&lt;/Id&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;Name&gt;Greater Spellpower&lt;/Name&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;Slot&gt;TwoHand&lt;/Slot&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;Stats&gt;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;SpellPower&gt;81&lt;/SpellPower&gt;<br>\r\n&nbsp;&nbsp;&nbsp; &lt;/Stats&gt;<br>\r\n&nbsp; &lt;/Enchant&gt;<br>\r\n<br>\r\nI chose an arbitrary ID of '4000' because I couldn't figure out where any of the other enchants got their ID number from.&nbsp; Looking at those other enchants on wowhead, whether from the recipe, or from the spell detail, none of the enchants match (These are all 4-digit id numbers, wowhead tends to use 5-digit id numbers for it's enchant &quot;Spell&quot; id's.).&nbsp; Anyway, it appeared to work when I loaded up rawr, and showed the enchant in the comparisons chart and let me check and uncheck it for the optimizer.&nbsp; The only problem, though, is that rawr doesn't appear to honor the &quot;TwoHand&quot; slot type.&nbsp; The optimizer was sticking it on 1-handers, and I could manually put it on 1-handers.<br>\r\n<br>\r\nIt seems to me like the enchant code needs to be cleaned up some, it should honor both slot types *and* item types.&nbsp; Right now it tends to ignore if an item is &quot;held in offhand&quot; and tries to put enchants on those...It shouldn't be up to each individual models to handle what *item types* enchants can be placed on.&nbsp; This should be handled by the enchanting &amp; item code.&nbsp; There's also other item-type-specific enchants, like &quot;Shield&quot;-only enchants, and now this new &quot;Staff&quot;-only enchant.&nbsp; <br>\r\n<br>\r\n<br>\r\n\r\n",
+    "PostedDate": "2009-03-09T10:19:23.793-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "166161",
+    "ThreadId": "49635",
+    "Html": "What you describe is already how it works. The Mage model just hasn't been updated with restrictions about 1H vs 2H enchants.",
+    "PostedDate": "2009-03-09T10:32:54.29-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "166164",
+    "ThreadId": "49635",
+    "Html": "But why is it model-specific?&nbsp; Enchantments are not restricted based upon class or spec, but upon the item types they can be placed on.<br>\r\n",
+    "PostedDate": "2009-03-09T10:36:23.817-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "166179",
+    "ThreadId": "49635",
+    "Html": "Well, that's partly a good point. <em>Selection</em> of enchants needs to be model specific, but I could still enforce the requirements in the <em>calculation </em>of enchants. ie, only add the stats of the enchant if the enchant fits on the item.",
+    "PostedDate": "2009-03-09T10:56:31.02-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "166320",
+    "ThreadId": "49635",
+    "Html": "Selection of enchants is right now based on character slot only. Should we include an item slot filter on it?\r\n",
+    "PostedDate": "2009-03-09T17:56:36.637-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "166326",
+    "ThreadId": "49635",
+    "Html": "No, I think they should just have no value if they don't fit the item. It'd be annoying to have enchants get deselected, or not be selectable, which flipping between items.",
+    "PostedDate": "2009-03-09T18:55:34.48-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

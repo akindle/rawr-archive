@@ -1,0 +1,100 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Moonkin",
+      "DisplayName": "Rawr.Moonkin"
+    },
+    "ClosedComment": "Fixed in release 2.3.19.",
+    "ClosedDate": "2010-06-22T10:35:43.83-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Rawr has Starfall coded with a 37% coefficient, and is not using splash damage for single target fights.\n \nThe coefficients that went live were 30% and 13% (for splashes).\nhttp://elitistjerks.com/f73/t94208-moonkin_pve_discussion_3_3_3_a/p6/#post1600153\n \nA target hit by a big star will be splashed.  If the Moonkin is not hit-capped and the big star misses, there will be no splash.\nIf the big star hits, it is still possible for the splash to miss.\n \nHere is a Koralon log extract (single target fight), showing splash damage, and a splash miss.\n \n14:02:29.26\tSPELL_DAMAGE\tDirectSpellDamageEvent\tErdluf\tKoralon the Flame Watcher\tStarfall\t\t1879\t88110\n14:02:29.26\tSPELL_DAMAGE\tDirectSpellDamageEvent\tErdluf\tKoralon the Flame Watcher\tStarfall\t\t709\t88111\n14:02:30.51\tSPELL_DAMAGE\tDirectSpellDamageEvent\tErdluf\tKoralon the Flame Watcher\tStarfall\t\t4420\t88280\n14:02:30.51\tSPELL_DAMAGE\tDirectSpellDamageEvent\tErdluf\tKoralon the Flame Watcher\tStarfall\t\t1481\t88281\n14:02:31.30\tSPELL_DAMAGE\tDirectSpellDamageEvent\tErdluf\tKoralon the Flame Watcher\tStarfall\t\t3937\t88377\n14:02:31.30\tSPELL_DAMAGE\tDirectSpellDamageEvent\tErdluf\tKoralon the Flame Watcher\tStarfall\t\t1481\t88378\n14:02:32.44\tSPELL_DAMAGE\tDirectSpellDamageEvent\tErdluf\tKoralon the Flame Watcher\tStarfall\t\t1726\t88529\n14:02:32.44\tSPELL_DAMAGE\tDirectSpellDamageEvent\tErdluf\tKoralon the Flame Watcher\tStarfall\t\t709\t88530\n14:02:33.28\tSPELL_DAMAGE\tDirectSpellDamageEvent\tErdluf\tKoralon the Flame Watcher\tStarfall\t\t4084\t88646\n14:02:33.28\tSPELL_DAMAGE\tDirectSpellDamageEvent\tErdluf\tKoralon the Flame Watcher\tStarfall\t\t1481\t88647\n14:02:34.47\tSPELL_DAMAGE\tDirectSpellDamageEvent\tErdluf\tKoralon the Flame Watcher\tStarfall\t\t4536\t88794\n14:02:34.47\tSPELL_DAMAGE\tDirectSpellDamageEvent\tErdluf\tKoralon the Flame Watcher\tStarfall\t\t638\t88795\n14:02:35.16\tSPELL_MISSED\tDirectSpellMissedEvent\tErdluf\tKoralon the Flame Watcher\tStarfall\t\tMISS\t88891\n14:02:35.36\tSPELL_DAMAGE\tDirectSpellDamageEvent\tErdluf\tKoralon the Flame Watcher\tStarfall\t\t2158\t88917\n14:02:36.55\tSPELL_DAMAGE\tDirectSpellDamageEvent\tErdluf\tKoralon the Flame Watcher\tStarfall\t\t1951\t89133\n14:02:36.55\tSPELL_DAMAGE\tDirectSpellDamageEvent\tErdluf\tKoralon the Flame Watcher\tStarfall\t\t815\t89134\n14:02:37.31\tSPELL_DAMAGE\tDirectSpellDamageEvent\tErdluf\tKoralon the Flame Watcher\tStarfall\t\t2379\t89243\n \nEdit: I had a patch file to fix this (and some other things).  I think dopefish fixed the other things in the patch, and I think he may have moved the Starfall code, so my patch should probably be rejected.\n \nEdit2: I can't log in right now, but wowhead is showing base damage numbers 1 higher than rawr is using (and if memory serves, wowhead is right).\nhttp://www.wowhead.com/spell=53201",
+    "LastUpdatedDate": "2017-11-27T11:00:17.77-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-06-12T14:58:11.55-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Moonkin] Starfall Tweaks",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17965
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Hmm.  I just went by the Starfall coefficients that were released by Ghostcrawler.  I also was not 100% certain that star splashes affected a single target, and decided to err on the side of caution.  I will fix this in the next round of fixes, which will be late tonight or sometime tomorrow, depending on how exhausted I am after the raid.",
+      "PostedDate": "2010-06-12T17:31:13.593-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 51354.",
+      "PostedDate": "2010-06-12T18:14:23.867-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "GC confirmed that the numbers that went live were smaller than what he posted during the PTR\r\n\r\nGC's original post (37%): http://forums.worldofwarcraft.com/thread.html?topicId=23425633044&postId=234234955220&sid=1#33\r\n\r\nConfirmation that something else went live: http://forums.worldofwarcraft.com/thread.html?topicId=24038765550&pageNo=5&sid=1#86\r\n",
+      "PostedDate": "2010-06-12T18:21:56.573-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Dammit.  And here I was hoping I could catch him out in a lie. =P Fixed in latest source.",
+      "PostedDate": "2010-06-12T18:34:25.947-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-06-12T18:34:50.283-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-06-22T10:35:43.83-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:08:21.72-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:08:46.92-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:03:27.03-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:28:11.427-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:28.1-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:00:17.77-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

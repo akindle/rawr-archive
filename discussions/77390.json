@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "264556",
+    "ThreadId": "77390",
+    "Html": "<p>I noticed that the Rawr3 betas and source are not compatible with even bleeding edge (as in, SVN) versions of Mono/Moonlight. I've read that Rawr3 was designed to be cross-platform and I got all excited. :(</p>\r\n<p>I guess this is just a topic to discuss Mono support for Rawr3 in general. Since Mono/Moonlight is a long way off from supporting the technologies Rawr3 uses, is there anything that can be done to create some kind of support or are we Mac and Linux users hosed when Rawr3 comes out? If we're doomed, about how much longer do we have left?</p>",
+    "PostedDate": "2009-12-07T09:56:38.123-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "264562",
+    "ThreadId": "77390",
+    "Html": "<p>Rawr3 should be supported on your OS completely without the use of Mono. Mono would be necessary to generate the WinForms setup of Rawr2&nbsp; but Rawr3's Silverlight base should just be a package install for Linux and Mac based systems. Then it will run out of your web browser.</p>",
+    "PostedDate": "2009-12-07T10:19:32.277-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "264568",
+    "ThreadId": "77390",
+    "Html": "<p>Just wanted to add that Rawr3 beta has been running beautifully on my iMac. Had to download and install Silverlight, but that was 100 times easier than the mess I got into with Mono - which I eventually gave up on. For me it was the difference between not using Rawr at all and having it available at a moment's notice.</p>",
+    "PostedDate": "2009-12-07T10:39:40.467-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "264579",
+    "ThreadId": "77390",
+    "Html": "<p>I can't find a version of Silverlight for Linux. All references I can find point to Moonlight. Even Microsoft's own site links to the Moonlight download page when you try to install the &quot;Linux version&quot;. There seems to be a rumor that Microsoft is making a real Linux version, but the earliest release date I can find is in the mid-2010 range, and again, it's just a rumor.</p>\r\n<p>I guess I'm just out of luck since I'm in such a small minority. I'd hate to burden you guys with a separate UI project for just a few people. About how long do I have before I'm back to guessing stat weights? :\\</p>\r\n<p>On the other hand, I can just give you guys a big-ol' list of the compiler errors I get when compiling the Mono version of Rawr3 so you can possibly work around the incompatibilities, but I'm sure you wouldn't like not having some of the assemblies Mono is still missing. (I can't even /open/ the WPF version in the IDE, for example)</p>",
+    "PostedDate": "2009-12-07T11:00:36.89-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "264585",
+    "ThreadId": "77390",
+    "Html": "<p>http://www.go-mono.com/moonlight/</p>\r\n<p>Are you saying you downloaded that and it doesn't work? (leaving Mono completely out of this)</p>",
+    "PostedDate": "2009-12-07T11:16:18.553-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "264617",
+    "ThreadId": "77390",
+    "Html": "<p>Yes. I've used that version and the version at &quot;http://www.go-mono.com/moonlight-beta/&quot;.<br><br>Pointing my browser (Firefox 3.5.5/XULRunner 1.9.1.5) at the Rawr3 test site does nothing visible (nothing on the screen, no network/CPU activity) and sometimes it just makes Firefox crash.</p>\r\n<p>If you are curious, this is what the terminal says when I visit the test site:</p>\r\n<p>&nbsp;</p>\r\n<pre>Attempting to load libmoonloaderxpi<br>Moonlight: Installing signal handlers for crash reporting.\r\nMoonlight: Enabling MONO_DEBUG=keep-delegates.\r\nMoonlight: Plugin AppDomain Creation: OK\r\nCould not parse element Icon, attribute (null), error: Icon does not support text content.\r\nnot implemented: (ErrorEventArgs.lineNumber) plugin-class.cpp:766\r\nnot implemented: (ErrorEventArgs.methodName) plugin-class.cpp:779\r\nURL ClientBin/Rawr.Silverlight.xap downloaded successfully.\r\n</pre>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-12-07T12:53:41.14-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "264718",
+    "ThreadId": "77390",
+    "Html": "<p>Indeed, Rawr3 is effectively the end of Rawr for Linux users, unfortunately. Mac users will get it native now, but Mono/Moonlight are simply so far behind the actual .NET/Silverlight releases, that they're not useful anymore, so Linux users are left hanging. Rather disappointing that the Mono team has stalled so hard. According to their roadmap, they don't even plan to support WPF (yet they do plan to support .NET 3, in a few <em>years</em>, which seems pretty useless without WPF anyway), and they're not even up to Silverlight 2 support, let alone the massive rearchitecture of Silverlight that is Silverlight3.</p>\r\n<p>Pretty much the hope for linux users at this point is for someone to try to do a full port, which is a massive undertaking.</p>",
+    "PostedDate": "2009-12-07T19:02:02.277-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

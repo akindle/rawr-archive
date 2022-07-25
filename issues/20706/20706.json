@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "Rawr 4.1.05.1 Released",
+    "ClosedDate": "2011-05-09T10:11:47.31-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I am not able to save as, I can only open old files. Such issues appeared only on the previous version and this.\n \nThis version does not give the error window that often but it appears silently ignoring operations of that nature.\n \nThe web client appeared to have better behavior [actually, fully correct behavior], at least recently.\n \nedit: I wonder if the developer responsible operates mainly on the web client because I noticed no problem there at least on previous version.\n \nedit: Windows 7 64\n \nedit: It appears to be able to save (not save as) on an old file, but I can't vouch on stability.\n \nedit: It 'save's on an empty character setup after it automatically asks for a new file name. Explicitly trying to 'save as' on an empty character it gives: \n \n'Cannot access file because file name is null or empty.'\n \n   at Microsoft.Win32.SaveFileDialog.OpenFile()\n   at Rawr.UI.MainPage.SaveAsCharacter(Object sender, RoutedEventArgs args)\n   at System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)\n   at System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)\n   at System.Windows.Controls.MenuItem.InvokeClickAfterRender(Object arg)\n   at System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)\n   at MS.Internal.Threading.ExceptionFilterHelper.TryCatchWhen(Object source, Delegate method, Object args, Int32 numArgs, Delegate catchHandler)\n \nBut I do not know if it's related or an old issue with empty characters.",
+    "LastUpdatedDate": "2013-05-16T05:18:01.25-07:00",
+    "PlannedForRelease": "Rawr 4.1.05",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "High",
+      "Severity": 150,
+      "Id": 3
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-05-08T22:12:48.797-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] Still issues with Saving",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 20706
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I wrote that code and I only develope from the WPF version these days and just sync the changes over to the Silverlight version (where applicable).\r\n\r\nI am *not* getting the issue you describe.\r\n\r\nPlease describe the exact sequence of steps required to replicate the issue, starting from downloading the WPF version to your desktop and extracting it to a fresh folder (separate from any other downloads you may have already done).\r\n1. Launch program\r\n2. ....",
+      "PostedDate": "2011-05-09T08:29:05.947-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-09T08:53:37.173-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This scenario does not repro:\r\n1. Launch Rawr\r\n2. Click 'Save Character File...'\r\n- This should launch a back end check to see if this file was opened, which would give it a path to save back to. It wasn't, so it will pop the Save As box asking for a path\r\n- It popped the Save As box, which is correct\r\n3. Selected a path in My Documents\r\n4. Clicked OK\r\n- No errors observed\r\n5. Opened My Documents in Windows Explorer and navigated to where I saved the file.\r\n- Discovered file was there, opened it in Notepad++ to make sure it had contents, which it did",
+      "PostedDate": "2011-05-09T09:02:05.273-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I force-closed Rawr so that it wouldn't save any settings (like the last path variable). Now for Scenario 2 from the same default settings that come with Release packages:\r\n1. Launch Rawr\r\n.....\r\nCRAP\r\n.....\r\nError popped, it's applying the LastSavedPath to the file path it's trying to save to, instead of the other way around.\r\n\r\nFixing now and I'll remake the release",
+      "PostedDate": "2011-05-09T09:15:09.2-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-09T09:15:23.867-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-09T10:11:47.31-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:25:06.42-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:01.25-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

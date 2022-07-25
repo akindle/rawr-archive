@@ -1,0 +1,76 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Warlock",
+      "DisplayName": "Rawr.Warlock"
+    },
+    "ClosedComment": "Fixed by commit 50466.",
+    "ClosedDate": "2010-05-13T22:11:12.47-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I've been messing around with 2.3.16 today and noticed that my top DPS glyph is listed at life tap. It's probably been like tha tin other versions, but I never really looked at it, because I thought my glyph choices were solid. It's showing about 108 dps increate over my #3 glyph Conflag. I'm destro custom 0/13/58 (shadowfury for LK valks).\n \nMy question is really just whether or not this model is finished and stable. 142 dps increase seems nice, but it doesn't seem right to me, considering all of the other benefits of not consuming immolate when conflag is cast. \n \nI also don't know what to do with my priorites if I was to switch this out, because I'm used to only refreshing immolate when its failing off. Is the model suggesting that you refresh it each time conflag is about to be available, or any time immolate is down (immediately after conflag is available) - how does it work in the model? \n \nI may just not understand the mechanics of Immolate well enough. \n \nHere is what I know is affected by Immolate being up:\n \nBase cast - 460\nBase tick - 785/15s\nImproved - 30% increase (is this cast AND tick?)\nGlyph - 10% increase on tick. \n4pT10 player - 15% chance on each tick to increase dmg by 10%\n4pT10 pet - 15% chance on each tick to increase dmg by 10%\n \nAlso when glyphed, you only need to cast immolate 12x in a 3 minute fight in order to get 18x conflags out, which means 18x backdrafts for 12x immolates instead of 18x for 18x. That's 54 spells that are 30% shorter to cast, with 6x less immolates needed. \n \nI haven't looked that closely at the life tap glyph, because I've haven't recently considered it for destro. Just wondering if the model is finished and correct in this area.",
+    "LastUpdatedDate": "2013-05-16T05:20:44.84-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-05-13T15:12:47.497-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Warlock] Glyph of Lifetap over Conflag for Destro",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17661
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3535,
+      "FileName": "eyeSpy.xml",
+      "DownloadUrl": ".\\3535"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Thank you for the report, eyeSpy.  Thanks to this info and the character file, I found the bug: 4pT10 was being triggered as if immolate ticked 5 times even when Conflagrate clipped it.  I fixed it in the source, and Astralyian assures me it will be in tonight's release.  It now suggests your top four glyphs as:\r\n\r\n1) Life Tap, 147 dps\r\n2) Conflagrate, 145 dps\r\n3) Incinerate, 140 dps\r\n4) Immolate, 125 dps\r\n\r\nRegarding your other concerns/questions: \r\n\r\nI would not call the model stable yet.  There are bound to be bugs (like this one) since none of the new features have met any scrutinizing eyes but my own so far.\r\n\r\nAs far as \"suggested rotation\" - the model does not (yet?) suggest a rotation.  It simply uses the one you plug in (or that was provided by default).  So, given the rotation you have in your file, if you remove Glyph of Conflagrate, it would end up looking something like: Conf, Immo (because it was consumed and is highest priority), Incinerate x2, others.  In other words, you'd always press Immolate immediately after Conflagrate, because you know it \"fell off\" the target and it's the highest priority spell.\r\n\r\nAnd finally - about the correctness of the Glyph of Lifetap itself - as far as I know it is correct, but I welcome any math/feedback to confirm or deny it.",
+      "PostedDate": "2010-05-13T22:08:42.92-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-05-13T22:11:12.47-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T14:48:21.953-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:45:15.13-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:28:29.367-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:44.84-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.TankDK",
+      "DisplayName": "Rawr.TankDK"
+    },
+    "ClosedComment": "Really would be better if you marked it as closed so its doesn&#39;t still show up as an open item. Although actually it would be better if we could flag fixed as a closed status.",
+    "ClosedDate": "2009-08-07T07:16:14.1-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "On the TankDK Module, even sitting at 26 expertise skill is causing Rawr to still show the mob having a chance to dodge as if expertise was at 0. This interferes with the optimizer with any use of \"Target Dodge%\" condition as well.\n \nExample of Optimizer Weapon Glitch:\nI always use a condition of \"Target Dodge% <= 0\" in order to make sure I am at the softcap for dodge. However, in v2.2.7 with this condition up, regardless of the number set, the optimizer removes any weapon equipped and leaves the weapon slot blank in its calculations, then optimizes every other piece of gear to compensate around not having a weapon equipped. This includes stacking an enormous amount of defense rating to make up for the lack of Stoneskin Gargoyle cause there is no weapon for a weapon enchant to be used.",
+    "LastUpdatedDate": "2017-11-27T11:04:22.51-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-06-23T14:01:16.293-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[TankDK] Expertise not being counted, causing glitches with Optimizer",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13530
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Are you using the latest release 2.2.7? or the latest check in?  \r\nExpertise was broken in 2.2.7, but should be fixed as of changelist: \r\n34861 by Shazear \tMon at 4:21 PM \tTankDK: Fix for Defect: 13486 - Include mitigation value of expertise rating.",
+      "PostedDate": "2009-06-24T10:16:26.023-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Latest release I would imagine.",
+      "PostedDate": "2009-06-24T16:00:44.633-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Revision: 35031\r\nAuthor: SND\\Shazear_cp\r\nDate: 3:23:17 PM, Monday, June 29, 2009\r\nMessage:\r\nTankDK:\r\nFix for def: 13541 - Gear & Gem values constantly in flux. Significantly reduced window for multi-threaded problems.  There's still the occasional glitch, but much better than it was.\r\n\r\nFix for def: 13530 - Optimizer glitches from Expertise.  the real probablems were w/ the multi-threaded safety and that's gone now.\r\n\r\nPseudo-Fix for def 13528 - Values suddenly changed.  Values are still changing, but should be more reasonable now.\r\n----\r\nModified : /Rawr.TankDK/CalculationOptionsPanelTankDK.Designer.cs\r\nModified : /Rawr.TankDK/CalculationOptionsPanelTankDK.cs\r\nModified : /Rawr.TankDK/CalculationsTankDK.cs\r\nModified : /Rawr.TankDK/CharacterCalculationsTankDK.cs\r\nModified : /Rawr.TankDK/CombatTable.cs\r\nModified : /Rawr.TankDK/Readme.TankDK.txt\r\nModified : /Rawr.TankDK/RotationViewer.cs\r\nModified : /Rawr.TankDK/ShotRotation.cs\r\nModified : /Rawr.TankDK/StatsSpecialEffects.cs\r\n\r\nCounting as partial fix as I need to still validate the specific test case referenced here.",
+      "PostedDate": "2009-06-29T15:25:45.593-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Marking fixed, now that I verified that when expertise is 26, Target Dodge == 0%",
+      "PostedDate": "2009-08-06T18:17:29.983-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-07T07:16:14.1-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:43:43.147-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:39:00.11-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:03.937-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:11.627-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:04:22.51-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

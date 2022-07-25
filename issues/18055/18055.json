@@ -1,0 +1,136 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Moonkin",
+      "DisplayName": "Rawr.Moonkin"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-07-05T11:07:17.75-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I noticed after downloading the latest version of Rawr that some of the loot from Ruby Sanctum has been added. I went through the loot list on the armory and added in the remaining pieces for hardmodes etc. After doing so I noticed the optimizer slow down to the point where it takes 20 mins to complete when normally it takes around 2 mins on my settings. removing the items from the cache did not fix the slow down. So i re-downloaded a new copy and tried the optimizer again with no new items. Ran very fast. Added a couple of the new items and once again it slowed to a crawl. Even tried this with multiple classes, same effect. Multiple computer tests as well. Although the boomkin one seems to slow the most. I can upload the files if needed but i think this is pretty easy to recreate on your own.",
+    "LastUpdatedDate": "2017-11-27T11:00:17.9-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-06-23T10:25:18.5-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Moonkin] Significant Performance loss for this version [Fixed]",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 18055
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3712,
+      "FileName": "Boomkin.xml",
+      "DownloadUrl": ".\\3712"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "We're not able to recreate this. What items are in the cache has no impact on the Optimizing (but does very slightly for Building Upgrade List).\r\n\r\nIf it's taking 10x as long, something else is wrong. Please upload both the 2min and the 20min file, so we can identify the difference.",
+      "PostedDate": "2010-06-23T11:28:01.887-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-06-23T15:04:32.07-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Moving this from Discussions as the Issue Tracker was offline.\r\n********************\r\nSorry for posting this here but the Issue Tracker servers are unavailable and I wanted to post this before i forget. Will move it over when they are back up. The slowness i reported in the issue tracker doesn't seem to be related to the item cache. here's the steps i used:\r\n\r\n1) Downloaded a fresh copy of rawr 2. \r\n\r\n2) Changed Gemming template to only show 1 top gemming.\r\n\r\n3) Changed Max requests to 10 in http settings.\r\n\r\n4) Changed \"Display Gem Names\" and \"Extra item info\" in General Settings.\r\n\r\n5) Loaded fresh copy of character from armory (boomkin).\r\n\r\n6) Started going down the Buffs list and selecting buffs that aren't selected by default, by the time i get down to Mana Tide Totem Rawr begins to slow after each selection being made. Upwards of 15-20 seconds between each selection. Looking at the task manager i notice rawr using 90% + cpu usage and upwards of 200MB of memory. This slowness continues with everything being used in rawr. I will definitely move this over to the Issue tracker and provide a current file of what I'm using as soon as the issue tracker comes back up. This is also Windows 7 64 bit.\r\n**********************\r\n\r\nThe issue initially reported definitely wasn't an itemcache issue. It seems to appear after applying buffs. Hence the 2 min vs the 20 min thing. I am including the file I have been using for the last several versions of Rawr. The optimizer crawls with this file.",
+      "PostedDate": "2010-06-23T15:04:37.767-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Urgh.  If it's Moonkin, there was a performance regression in the last release.  That being said, Moonkin is still pretty slow all-around because I'm doing some pretty nasty computations in there.  I'm looking at a more performance-minded redesign, but that takes time, as we all know.",
+      "PostedDate": "2010-06-23T15:12:36.133-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The attached Boomkin.xls file has MoonkinSolver.Solve() called with 5 rotations and 9 attribute buffs.  The code dopefish mentions is called for each combination or rotation or buffs = 5*2^9, or about 25k times (and it is expensive).\r\n\r\nThere is some \"cheap\" code that deals with computing how much time is spent on each combination of procs.  It is hit fr each rotation, and most combinations of pairs of proc combinations = 5 * (2^9)^2 = 5*2^18, around a million times.\r\n\r\nThe code itself is much cheaper, but that is a lot of hits (and it has an inner loop that runs from 0-31, so that line is hit roughly 31e6 times, on each call to Solve).  I've submitted a patch that speeds up that code considerably.\r\n\r\nOf the nine procs, 3 are SP, 2 are Mana regen, 1 is Arcane/Nature damage, 1 is crit, and two are Haste.\r\n\r\nOut of that list, only the Haste and Crit changes affect the spell mix and timing in a rotation* (which spells are cast when).  Those expensive 5*2^9 pieces of code could (with substantial code rewrite) be reduced to 5*2^3 expensive pieces of code, (a factor of 10 less work).  Once those spell mixes had been computed, their DPS and MPS (as a function of SP, Mana regen, and damage multipliers) would be much less expensive to compute.\r\n\r\n(*) In principle a moonkin might decide to wait for a SP-proc before casting Starfall, but the current Rawr engine doesn't support that, so we can say that SP doesn't change the cast order in a rotation.",
+      "PostedDate": "2010-06-25T07:58:15.86-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "37 mins to complete with optimizer at max. 28 mins when optimizer is at medium. Hehe...brutal calcs there :)",
+      "PostedDate": "2010-06-28T09:21:19.33-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I am continuing to take a look at ways to reduce Moonkin performance issues, especially as there is a continuing inflation of special effects and the performance of Moonkin currently degrades exponentially as a function of how many effects are enabled.  I doubt it'll ever be linear due to the quadratic nature of the current combination calculator, but I'd at least like to get it out of exponential-land.",
+      "PostedDate": "2010-06-28T10:59:46.763-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-06-29T16:43:49.407-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "dopefish,\r\n\r\nI haven't tried your recent return, but it looks like it will really speed things up.\r\n\r\nI believe (not tested) you could also remove 100% procs, and 0% procs from your exponential set.\r\n\r\nChange\r\n\r\nelse if (proc.Activate != null){   activatedEffects.Add(proc); }\r\n\r\nto (goofy spacing to hopefully avoid word wrap issues)\r\n\r\nelse if(proc.Active != null){\r\n\r\n  float upTime = proc.UpTime(rot, calcs);\r\n\r\n  if(upTime == 1.f)  {\r\n\r\n    alwaysUp.Add(proc);               // Declare alwaysUp somewhere up above.\r\n\r\n    proc.Activate(character, calcs, ref currentSpellPower, ref baseHit, ref baseCrit, ref baseHaste);\r\n\r\n  }  else if(upTime > 0.f)  activatedEffects.Add(proc);\r\n\r\n}\r\n\r\nand somewhere near the bottom of the foreach(spellRotation) loop, deactivate all the alwaysUp procs.\r\n\r\nNote that t9 and t10 idols are either always up or always down, depending on the rotation.\r\n",
+      "PostedDate": "2010-06-30T10:32:15.793-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I probably could, you're right.  I'll definitely look into it.  I can say this: The existing changeset should show a performance increase between 50% and 550%, depending on how many special effects were being used.  Every effect I can cut out of the exponential loop will yield a similar benefit.",
+      "PostedDate": "2010-06-30T10:42:25.09-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Okay, the performance metrics for Moonkin look a lot better now in the latest source.  Hopefully we'll be releasing today, and if you could take a look at it and let me know if it's fixed so I can close it out.",
+      "PostedDate": "2010-07-02T12:01:36.287-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T15:49:52.6-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-05T11:07:17.75-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:48:47.153-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:03:27.03-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:28:07.38-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:25.083-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:00:17.9-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

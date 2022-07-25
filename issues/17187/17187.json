@@ -1,0 +1,86 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSDK",
+      "DisplayName": "Rawr.DPSDK"
+    },
+    "ClosedComment": "Don&#39;t optimize Talents... use Talent Specs and build out a set of cookie cutter builds you want to use",
+    "ClosedDate": "2010-04-14T07:01:45.26-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Loaded my DK (attached)\nChanged from TankDK to DPSDK\nSelected tools/optimizer - left at default setting of optimize DPS\nchecked the box for talents\nscrolled all the way to right on the thoroughness slider\nSelected Optimize\nOK to enchants missing message\nOK to gems not available message (only rares, and jewel crafter gems selected)\nRecommended score is 2444, previous was 532\nload optimized\ndo it again\nprevious 2444 recommended 916\nDPS Breakdown on stats tab only lists White, BCB, Necrosis, and Ghoul DPS\nload optimized\ndo it again\nprevious 916 recommended 886\nabove steps were repeated multiple times, reloading the character file that is attached at the begining of each iteration\n \n \nSame steps as above except\nSlide all the way to left then click on the slider line 10 times to move it right some\nPrevious 532 recommended 2320\nagain\nPrevious 2320 recommended 761\nagain\nPrevious 761 recommended 2107\n \nMost of DPS Breakdown on stats tab is populated",
+    "LastUpdatedDate": "2017-11-27T11:04:38.07-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-04-09T07:40:19.247-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSDK] Optimizations incorrect after initial character load",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17187
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3344,
+      "FileName": "skidtz gear3.xml",
+      "DownloadUrl": ".\\3344"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "It looks like DPSDK does not support talent optimizations well enough. There is a thread safety issue, the calculations store talents in calculation options which is not a thread safe operation since several calculations with different talents can be going on at the same time.\r\n\r\nAs a workaround you can go to Tools->Options->General Settings and disable Use Multithreading.",
+      "PostedDate": "2010-04-09T15:57:25.29-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-14T07:01:45.26-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:48:06.93-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:49:21.28-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:21:17.93-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:28:55.577-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:07.16-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:04:38.07-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

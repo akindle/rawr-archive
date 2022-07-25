@@ -1,0 +1,116 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Hunter",
+      "DisplayName": "Rawr.Hunter"
+    },
+    "ClosedComment": "Patch applied",
+    "ClosedDate": "2009-02-21T14:14:35.32-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The Hunter module is seriously outdated. Has it been abandoned?  To my knowledge the Hunter code has not been updated since WoTK was released.\n \nJust a few of the major changes last patch:\n \nSteady Shot now only scales at 10% AP rather than 20% as the hunter module still calculates.\n \nAlso Explosive shot now uses the following formula (as far as I know):\n[RAP*0.16+428.]-[RAP*0.16+516.0]\n \nThis is a change from the 0.8 used for scaling in the current code.\n \nAlso the hunter code does not allow for 2 x 1 hand weapons to be used in the optimizer.  It ignores the 2nd 1 hand slot no matter what weapon is equiped in the first slot.",
+    "LastUpdatedDate": "2013-05-16T05:26:21.667-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-01-23T11:14:00.69-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Hunter] Not Abandoned?",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 12451
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1691,
+      "FileName": "test.patch",
+      "DownloadUrl": ".\\1691"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Yeah, we'd love if someone would take up maintenance of Rawr.Hunter. Currently, it's abandoned.",
+      "PostedDate": "2009-01-23T13:22:25.683-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This might go towards explaining why the DPS calculation for auto-shot is just shudderingly off the mark.  I might be submitting some patches if a) I can make head or tail of .NET code and b) this thing will compile under Mono (not a deal-breaker, but it would be nice).  I know fixing this would be less painful than doing the calculus to figure out gear contribution by hand.",
+      "PostedDate": "2009-01-24T21:17:25.297-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "In case you are lacking of developers, I would try to recuit some in the ElitistJerksForum, perhaps some of the spreadsheet authors want to join. There is a lot of unused brainflow over there, and there are already various numbers of rawr threads in thier forums.",
+      "PostedDate": "2009-01-27T23:45:01.757-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-01-27T23:45:19.76-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "...that's because that's where we already do most Rawr discussion.",
+      "PostedDate": "2009-01-28T10:58:19.06-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": " If you hand me sort of application text, i´ll check some hunter forums out. Or other forums if there's further support needed.",
+      "PostedDate": "2009-01-29T03:22:27.797-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm not volunteering for anything here (for reasons I'll explain in a moment), but the two changes mentioned are fairly trivial.  Attached is a patch that Tortoise generated that should fix Steady Shot AP bonus as well as the values for Explosive Shot.  Personally, I am a much bigger fan of  diff -urN but it's Windows so I guess it's as correct as this collaboration framework needs it to be?\r\n\r\nAs to the rest, with Visual C# Express Edition I've managed to get the thing to _compile_, but it does /not/ run for me like the released version does, even when (what appears to be the way to be) compiled in release mode.  I can read the code just fine, but I'm still fairly lost when it comes to getting data from one scope to another in .NET, but I'm working on it.  Trimming out the files that the release version doesn't come with seems to keep it from trying to run slow as Christmas in debug mode (bin/release/rawr.exe or not) so it runs faster, but... even copying the cache files in from the 2.1.9 release doesn't appear to make it know about anything except the equipment the toon being evaluated is wearing.\r\n\r\nIf someone's got some suggestions of what might be going wrong here, I'm all ears.  I've got VC#EE installed, all the .NET stuff installed (and updated to the latest service packs), and Silverlight installed.",
+      "PostedDate": "2009-02-20T13:26:59.073-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-02-20T13:27:00.54-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "er yeah... if I can't build the thing properly I can't exactly volunteer for anything, and it adds a lot of overhead (time) to me making changes locally and then testing them, so I can't exactly \"maintain\" the whole thing.  About all I'm good for at the moment is locating the bits that are coming up wrong (no glyphs that I can see, shot rotation generator is a little nuts, two of the rotations aren't being calculated correctly as a result).\r\n\r\n(I am *FAR* more comfortable working under Linux so if someone's making this thing work under Mono they could become my hero by making a short list of what makes it \"go\" under that.)",
+      "PostedDate": "2009-02-20T13:32:01.647-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Rawr already does function under Mono. As for the data files, copy all the files from /Rawr/DefaultDataFiles/ to your data folder (ie /Rawr/bin/Debug/Data/).",
+      "PostedDate": "2009-02-20T14:08:29.433-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-02-21T14:14:35.32-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T18:31:19.963-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:35:40.023-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:21.667-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

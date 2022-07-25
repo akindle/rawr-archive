@@ -1,0 +1,95 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Items",
+      "DisplayName": "Rawr.Base.Items"
+    },
+    "ClosedComment": "Rawr 4.1.0 Released",
+    "ClosedDate": "2011-03-10T18:49:48.247-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "On selecting an item that has cogwheels it shows in the graph pane as item with nothing equipped in the sockets. Is this missing gemming template suitable for cogwheels? ie: should default gemming templates include cogwheels active if profession is engineering similar to JC gems active if JC profession?\n \nOn equipping the item an odd behaviour occurs. Add the first cogwheel eg: 208 hit rating as a simple example when way below hit capped and you correctly see the total hit increasing. It then STILL recommends the same cogwheel as top dps despite them being unique-equipped \"gems\". However on equipping a second version of the same cogwheel it correctly disables both, without much indication of why it disabled them or any visual indication that they are disabled.\n \nThis behaviour would probably cause the optimiser some issues.",
+    "LastUpdatedDate": "2013-05-16T05:19:28.843-07:00",
+    "PlannedForRelease": "Rawr 4.0.12 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-12-21T09:48:19.24-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Items] Engineering cogwheels not working properly",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19390
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Probably best if all gemming templates have cogwheels included (it doesn't hurt if the item doesn't actually use them).",
+      "PostedDate": "2010-12-21T10:10:22.437-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-21T16:19:40.263-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yes, all templates in all models need to include a cogwheel id just like they would gem ids for other color sockets. Not including it is like not including the Meta Gem on the template. If your template system is getting overly complicated to figger out all the different combinations with Cata Meta/gos etc. You can use the Gemming Template system from DPSWarr which dynamically creates and sorts them for you. I think Shazear stole them for DK's and liked it recently.",
+      "PostedDate": "2010-12-21T16:23:31.733-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It does seem that even when enabled in templates its still not picking up cogwheels as an item. Are they perhaps getting missed off the item cache data? ie: coding looks fine but no cogwheels are appearing in any template. So I'm guessing it may be a data issue. I've no idea where Silverlight stores its data cache so no clue at present how to debug this.",
+      "PostedDate": "2010-12-22T03:02:15.293-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Character class wasn't copying cogwheelId or HydraulicId from gemming template so wasn't using them. Fixed.\r\n\r\nHowever still have issue of uniqueness. Handling should similar to Nightmare Tear gem which is also unique-equipped. Will investigate further.",
+      "PostedDate": "2010-12-22T04:47:35.44-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I haven't been able to find the issue. The MeetsRequirements routine in Character looks ok and seems to correctly return the number of Cogwheels of that Id in use. However something is still wrong as the drop downs (clicking on cogwheel to get graph) shows positive value for adding another cogwheel which would break uniqueness and the main chart still shows items with two of the same cogwheel socketed.",
+      "PostedDate": "2010-12-22T06:44:21.573-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I think the double cog is due to the template only defining one cog, so it sees it as the one to use in both slots. I guess we need to make two cog slots for templates?",
+      "PostedDate": "2010-12-22T16:54:04.01-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-02T20:57:42.103-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-10T18:49:48.247-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:58.403-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:28.843-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

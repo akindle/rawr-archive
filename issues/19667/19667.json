@@ -1,0 +1,96 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Optimizer",
+      "DisplayName": "Rawr.Base.Optimizer"
+    },
+    "ClosedComment": "4.1.01 Released",
+    "ClosedDate": "2011-03-27T17:48:59.627-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Issue:\n-When Optimizer is ran using attached xml the optimizer will show a change in gear when there has been no change to that gear.  Looks to be tied to if a piece has a reforge or not.\n \nReplication:\n-Run attached xml with given optimizer values to get a high result of being reproduced.\n-Notice that neck and chest pieces (usually unchanged in this run) do not get reforged so are not shown in optimization list.\n-Notice that any piece that is reforged is shown even though no attributes are being changed.\n \nImpact:\n-Showing more information then is needed when deciding on gearing results and what is needed to change.",
+    "LastUpdatedDate": "2017-11-27T11:02:05.43-08:00",
+    "PlannedForRelease": "Rawr 4.0.15 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-01-11T05:15:20.633-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Optimizer] Showing items that do not require modification",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19667
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4401,
+      "FileName": "Naduta.xml",
+      "DownloadUrl": ".\\4401"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Just skimming this before I run off to work, but it sounds like this is working as intended; you're misunderstanding what Override Regem does. Look it up in the documentation. It overrides the specific gemmings marked available and will regem them.",
+      "PostedDate": "2011-01-12T09:57:05.083-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "@Astrylian - Thank you for the comment, I will remove the part about regem but the optimizer issue of showing items that do not need any modification are being shown due to reforging being active.",
+      "PostedDate": "2011-01-12T13:00:48.603-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-12T13:01:17.967-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Kavan and I have reviewed this. It is doing what it's supposed to do, there actually is an item change occurring. If you were to save the file after optimizing (and loading that new set) then run a Diff between the two files, you would see that while the stats didn't change, we reassigned the reforge id to the original - 56. That's because reforging id's are the same when you look at them 56 apart. So your Sandals of the Courier which are coming it with a reforge id of 147 are getting reassigned to 91.\r\n\r\nLooking into a solution where this shouldn't happen anymore.",
+      "PostedDate": "2011-03-12T20:41:46.767-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-12T21:06:07.107-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-27T17:48:59.627-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T22:45:43.24-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:27.457-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:04.73-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:02:05.43-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

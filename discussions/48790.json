@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "162928",
+    "ThreadId": "48790",
+    "Html": "Hi All<br>\r\n<br>\r\n(I partly wrote this in response to the issue http://rawr.codeplex.com/WorkItem/View.aspx?WorkItemId=11636&nbsp; but decided to post it under the discussions rather).<br>\r\n<br>\r\nThe cat model doesn't suggestion reaching the hit cap. But most sites that I have checked seems to suggest hitting the cap and my few own experiments also suggest that is the best way (missing a debuff, just causes a lot of confusion in adjusting the rotation to recover from that again).<br>\r\n<br>\r\nI was wondering how it is modelled in rawr.cat and after a bit of scratching found that missed attacks are used to scale the energy cost of attacks (is there something additional to this that I missed?). From a purely theorectical point of view, working with the total energy+damage of the fight as a whole, this is probably correct. But what does it means in practical terms, due to attacks occuring in sequence and costing discrete amounts of energy and a limited pool of energy and como points being available at any one time...<br>\r\nIf I do miss an attack, chances are my energy is too low to reapply it immediately (even getting some fraction back from a talent). This means seconds ticking by without the DoT or my Roar buff being up.&nbsp; The energy scaling accounts for the cost of reapplying it, but not for the loss in dps during this period until it can be reapplied. For example Rip misses, I reapply asap (lose a bit of bleed time there), but now don't have enough time to build the optimal combo points for Roar again, before it drops off (choose between a bit of time without roar, or going with a fewer point roar and then finding a few lucky crits in a row somewhere to recover). I would guess this loss is significant over the duration of a fight.<br>\r\n<br>\r\nWhat do the theorycrafters say on this issue? Or is it not really as bad as a miss feels in practice?<br>\r\n<br>\r\nIn the meantime, I'll probably stick with the workaround to have an additional contraint, to make avoided attack &lt;= 0. The drop in reported dps is probably less than the drop caused by my skill/latency etc. in practice in any case. <br>\r\n",
+    "PostedDate": "2009-02-27T14:37:52.007-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "162940",
+    "ThreadId": "48790",
+    "Html": "<em>If I do miss an attack, chances are my energy is too low to reapply it\r\nimmediately (even getting some fraction back from a talent).</em><br>\r\n<br>\r\nWith PP, an avoided attack costs 20% of a finisher's energy cost.&nbsp; That's 6 for Rip.&nbsp; For other abilities, it's around 18%, if I recall correctly.&nbsp; That's 6-8 for Mangle, Rake, and Shred.&nbsp; In all cases, you'll regenerate more energy during the GCD than you used on an avoided attack.\r\n",
+    "PostedDate": "2009-02-27T15:08:46.43-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "162960",
+    "ThreadId": "48790",
+    "Html": "Yeah, all the theorycraft for Cats agrees; hit/exp is rarely worth capping. The penalty for missing is just really low. Due to the energy regenned during the GCD of an attack, you will never not be able to recast the same attack immediately following a miss, with the only exception of finishers without PP.",
+    "PostedDate": "2009-02-27T16:17:23.573-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

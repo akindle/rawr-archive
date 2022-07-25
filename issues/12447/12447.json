@@ -1,0 +1,105 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Mage",
+      "DisplayName": "Rawr.Mage"
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-09T17:28:52.4-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Either the 4pT7 bonus (5% bonus crit damage) is being shortchanged, or the Skyflare meta gem is being overvalued.\n \nWith my current gear, Rawr calculates that a Chaotic Skyflare gem is worth 68dps. The Chaotic Skyflare gem provides 3% bonus crit damage, and 21 crit rating.\n \nHowever, the 4pT7 bonus (5% bonus crit damage) is valued at only 16dps, and a Smooth Dragon's Eye (27 crit BoP Jewelcrafter gem) is valued at a meager 8 dps. Despite being more bonus damage, and more crit, Rawr believes them to be valued at a mere 24dps total.\n \nEither the 4pT7 bonus is being severely undervalued, or the Chaotic meta gem is being severely overvalued. I suspect the former.",
+    "LastUpdatedDate": "2017-11-27T11:01:44.917-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-01-22T23:52:47.597-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Mage] T7 4pc Shortchanged",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 12447
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Just doing some in-my-head math, I first thought that Rawr was calculating the 4pT7 bonus as if it was only 1% bonus crit damage, rather than 5%. But even that doesn't work out, since if we assume that 1% bonus crit is valued at 14dps, the Chaotic Skyflare gem would work out to around 48dps, rather than 68dps. So I'm not sure where Rawr is getting its numbers, but I'm still certain it's lowballing the value of 4pT7.\r\n\r\nThat explains why it never recommended I bother trying to make the set.",
+      "PostedDate": "2009-01-22T23:58:39.437-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The 4pT7 crit damage is not the same as chaotic meta crit damage, they apply to different parts of the crit multiplier. This is well documented if you check the theorycrafting sites or you can test for yourself in game.",
+      "PostedDate": "2009-01-23T00:31:10.49-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It's always recommended that I make the set, but as Kavan already mentioned - the chaotic meta is \"3% increased critical damage\", which is a straight-up 3% more damage done on your crits after all your talent modifiers and everything are already taken into account.  However, the t7 4pc bonus is actually worded differently:  \"Your offensive spells gain an additional 5% increased critical strike bonus damage.\"  *bonus* being the operative word here, this is the term referred to when you say non-talented spells get 50% bonus crit damage.  They hit for 150%, but their \"bonus critical strike damage\" is 50%.  When you get a talent like Ice shards, your \"bonus critical strike damage\" is doubled, but that doesn't mean you're critting for 300%, it means the bonus is now 100%, making your crits 200%.\r\n\r\nLikewise, the 4pc t7 bonus simply adds 5% to this \"bonus\" of 50%, which is only 2.5%.  Therefore, a frost mage's crits will be doing 202.5% crits.\r\n\r\nGoing along this line, the 3% from the meta will do 3% on that full 200%, making your crits do 206% damage (frost mages).\r\n\r\nI'm pretty sure this is how it's calculated, I may be wrong slightly but this is the general idea, and this is why you may notice a discrepancy between the two.  The t7 bonus is not as great as you might think, but rawr still has yet to suggest anything other than 4pc t7 with other pieces for my mage.",
+      "PostedDate": "2009-01-23T12:43:38.683-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That helps explain it, thank you. However... the math still does not work out. Since I am a frost mage, the math is relatively simple, and just as you described: 2.5% extra crit damage from the set, and 6% extra crit from the Chaotic. However, the numbers are still short.\r\n\r\nWith a random gearset I just threw together and using the default Frostbolt talent spec, a Chaotic Skyflare is worth 75.95dps.\r\n\r\nThe 4pT7 bonus is rated at 20.55dps, and a Smooth Dragon's Eye is valued at 8.73dps (.323 dps per crit). If we subtract out the value of crit from the Skyflare, that drops its value by 6.79dps, leaving the value of the 3% crit damage at 69.16dps.\r\n\r\nAssuming your description was accurate, then the relative value of the crit damage should be in the ration of 6/2.5, or 12/5, or 2.4 times the value for the meta gem. Rawr is valuing the crit damage on the meta gem as being 3.37 times as good as 4pT7 bonus.\r\n\r\nDefinitely not the smoking gun I thought I was seeing, but it still seems off to me.\r\n\r\nI'm sad about the 4pT7 bonus though. It's a shame that it's so overshadowed by a meta gem... even more, it's greatly overshadowed by the 2pT7 bonus.",
+      "PostedDate": "2009-01-23T16:51:51.743-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This is the equation used by Rawr:\r\n\r\nFrostCritBonus = (1 + (1.5f * (1 + characterStats.BonusSpellCritMultiplier) - 1) * (1 + character.MageTalents.IceShards / 3.0f + 0.25f * character.MageTalents.SpellPower + 0.1f * character.MageTalents.Burnout + characterStats.CritBonusDamage))\r\n\r\nBonusSpellCritMultiplier is what you get from CSD, CritBonusDamage is from 4T7.",
+      "PostedDate": "2009-01-23T17:12:03.837-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "\"I'm sad about the 4pT7 bonus though. It's a shame that it's so overshadowed by a meta gem... even more, it's greatly overshadowed by the 2pT7 bonus.\" I believe this was addressed by Blizzard (not specifically, but generally) that they don't want to force people to wear 4T7 and have only one option for the 5th piece, but that the 'best' set for any class is more of a choice, i.e. 2T7 + 3 best-in-slot can as good or better than 4T7+1",
+      "PostedDate": "2009-01-24T06:27:06.453-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-09T17:28:52.4-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:25:35.78-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:27:20.607-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-21T00:00:21.103-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:35:40.59-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:22.09-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:01:44.917-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

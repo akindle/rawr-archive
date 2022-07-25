@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "87039",
+    "ThreadId": "25996",
+    "Html": "\r\nPlease adjust these to use two different stats, ThreatIncreaseMultiplier and ThreatReductionMultiplier, in order to meet the rule of more of a stat being better.<br />",
+    "PostedDate": "2008-04-15T19:13:20.603-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "87043",
+    "ThreadId": "25996",
+    "Html": "\r\nShould I add a new _rawInverseMultiplicativeData since the reduction multiplier stacks differently if we have it in this form (a + b - ab compared to a + b + ab)?<br />",
+    "PostedDate": "2008-04-15T20:12:25.543-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "87051",
+    "ThreadId": "25996",
+    "Html": "\r\nHmm... Could you implement it as ThreatMultiplier and ThreatDivisor? That would combine using normal multiplication, and still work, right? -2% Threat would just be 0.02040816 ThreatDivisor, I think? I'm not positive that that's right, just guessing while trying to raid. If that doesn't work, then just go ahead with what you suggest.<br />",
+    "PostedDate": "2008-04-15T20:59:22.327-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "87070",
+    "ThreadId": "25996",
+    "Html": "\r\nThat would work technically, but I think it would confuse people.<br />",
+    "PostedDate": "2008-04-16T00:12:25.177-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "87072",
+    "ThreadId": "25996",
+    "Html": "\r\nWhile we're talking about stat calculations it might make sense to convert the + operator to unsafe code to speed up the calculations. I'm guessing the bounding checks must cost quite a bit.<br />",
+    "PostedDate": "2008-04-16T00:53:09.913-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "87143",
+    "ThreadId": "25996",
+    "Html": "\r\nCoincidently, Bashui was going to look into making that change and seeing if it increased the speed much, about a week ago... What happened to that, Bashui?<br /><br />Regarding Threat... Gneh, sure, add a _rawInverseMultiplicativeData I guess.<br />",
+    "PostedDate": "2008-04-16T08:18:08.283-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "87570",
+    "ThreadId": "25996",
+    "Html": "\r\nI have done some performance timing and it seem like the best bet is unsafe, with:<br /><pre style=\"background-color:#ECECEC; border:dashed .1em #3E62A6; font-family:Consolas, Courier New, Courier, Monospace; font-size:1em; margin-top:0; padding:.5em; height:auto; overflow:auto; overflow-x:auto; overflow-y:auto;\">\r\nwhile(--i &gt;=0)\r\n{\r\n   c._rawAdditiveData[i] = a._rawAdditiveData[i] + b._rawAdditiveData[i];\r\n}\r\n</pre><br />I'll be checking this in shortly.<br />",
+    "PostedDate": "2008-04-18T07:43:02.163-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "87642",
+    "ThreadId": "25996",
+    "Html": "<br /><div class=\"quote\" style=\"border: dotted .1em #aaa; border-left: none; border-right: none; font-style: italic; margin: 1em 0em 2.5em 3em;padding: .2em;\"><br />Bashui wrote:<br />I have done some performance timing and it seem like the best bet is unsafe, with:<br /><pre style=\"background-color:#ECECEC; border:dashed .1em #3E62A6; font-family:Consolas, Courier New, Courier, Monospace; font-size:1em; margin-top:0; padding:.5em; height:auto; overflow:auto; overflow-x:auto; overflow-y:auto;\">\r\nwhile(--i &gt;=0)\r\n{\r\n   c._rawAdditiveData[i] = a._rawAdditiveData[i] + b._rawAdditiveData[i];\r\n}\r\n</pre><br />I'll be checking this in shortly.<br /><br /></div><br />The code you ckecked is not unsafe. Are you still working on it or did you find it doesn't improve performance?<br />",
+    "PostedDate": "2008-04-18T13:03:30.987-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

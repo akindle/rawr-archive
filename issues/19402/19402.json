@@ -1,0 +1,201 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Bear",
+      "DisplayName": "Rawr.Bear"
+    },
+    "ClosedComment": "Correction&#58; Was overestimating the value of stam by 7.8&#37;, not 14&#37;.",
+    "ClosedDate": "2010-12-31T19:43:51.22-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I came across this issue when testing out possible heroic gear. When I import my character into Rawr I noticed that the stats where differing greatly. The attack power is off, now I'm assuming that it is automatically adding full vengeance, but it is still off by a couple thousand. I also recommend adding an initial attack power as my main concern is going to be initial threat, not when I'm full vengeance. The stamina itself is off by 3k and the hp itself is up by 8k. Looking through the code for the bear calculations I've noticed a problem with the math \n \nBonusStaminaMultiplier = (1f + 0.02f * talents.HeartOfTheWild) * (1f + 0.02f * talents.SurvivalOfTheFittest) * (1f + 0.01f * talents.ImprovedMarkOfTheWild) - 1f,\n \nNow I believe it should read as Survival of the Fittest is gone as is Improved Mark of the wild\nBonusStaminaMultiplier = (1f + 0.06f * talents.HeartOfTheWild),\n \nNow these are totally wrong and don't have a replacement as far as I'm aware\nBonusAgilityMultiplier = (1f + 0.02f * talents.SurvivalOfTheFittest) * (1f + 0.01f * talents.ImprovedMarkOfTheWild) - 1f,\n                BonusStrengthMultiplier = (1f + 0.02f * talents.SurvivalOfTheFittest) * (1f + 0.01f * talents.ImprovedMarkOfTheWild) - 1f,\nBonusAttackPowerMultiplier = 0.02f * talents.ProtectorOfThePack,\n \nNow the other main problem I've noticed is that I do not see is Armor Specialization in the bear calculations or in the buffs, this is going to throw off the calculations for all classes by a lot, this is also going to effect the math on stam.\n \nLooking over the talents I dont see any problems, the main problem is that the talents and math for the calculations have not been updated.\nI've inclued a screenshot of my doll in game for you to compare. No problems i've seen on any defence stats\n \nWhiiplash-Hyjal",
+    "LastUpdatedDate": "2013-05-16T05:19:28.1-07:00",
+    "PlannedForRelease": "Rawr 4.0.12 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-12-21T19:03:40.78-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Bear] Stat Calculations",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19402
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4260,
+      "FileName": "WoWScrnShot_122110_215435.jpg",
+      "DownloadUrl": ".\\4260"
+    },
+    {
+      "FileId": 4261,
+      "FileName": "whiip.jpg",
+      "DownloadUrl": ".\\4261"
+    },
+    {
+      "FileId": 4262,
+      "FileName": "CalculationsBear.cs",
+      "DownloadUrl": ".\\4262"
+    },
+    {
+      "FileId": 4263,
+      "FileName": "whiip.xml",
+      "DownloadUrl": ".\\4263"
+    },
+    {
+      "FileId": 4318,
+      "FileName": "show.xml",
+      "DownloadUrl": ".\\4318"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I've also included the screenshot of my inital import into rawr",
+      "PostedDate": "2010-12-21T19:21:55.033-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-21T19:21:56.47-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'll never understand why people thing screenshots of their Rawr characters help us... Attach the actual file for us to be able to look at it at all.\r\n\r\nRegardless, it looks like you're looking at a very old version of the source code or something. The line in question is now:\r\nBonusStaminaMultiplier = (1f + 0.2f * talents.HeartOfTheWild) * (leatherSpecialization ? 1.05f : 1f) - 1f,\r\n\r\nAnd there are no talent-based lines for BonusAgilityMultiplier, or BonusStrengthMultiplier, and the line for BonusAttackPowerMultiplier is simply:\r\nBonusAttackPowerMultiplier = 0.25f,",
+      "PostedDate": "2010-12-21T19:44:54.87-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-21T20:20:57.15-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sorry I was trying to give as much info as possible. Anyways the rev I have is 56378. I've included the file I'm looking at. I may be mistaken in where the bear math was located, but that is what I'm still seeing atm.",
+      "PostedDate": "2010-12-21T20:20:58.39-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ah, yeah, you're prolly looking in ~/Rawr.Bear/. All the new stuff is in ~/Rawr4/Rawr.Bear/.",
+      "PostedDate": "2010-12-21T20:26:25.537-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The cs that I linked is the one I'm seeing in the solution explorer linked to Rawr.sln. Dunno it might be messed on my end",
+      "PostedDate": "2010-12-21T20:31:10.73-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Indeed, and ~/Rawr.sln is a very old version of Rawr. Everything we've been working on for months is in the ~/Rawr4/ branch. i.e., ~/Rawr4/Rawr4.sln.",
+      "PostedDate": "2010-12-21T20:35:47.067-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-21T20:37:39.183-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "..../Facepalm.. my bad",
+      "PostedDate": "2010-12-21T20:38:24.837-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-21T20:40:37.77-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "ok, sorry for the idoit moment, but yes the numbers on the HP and AP are off from in game buy a couple thousand",
+      "PostedDate": "2010-12-21T20:48:06.353-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "...Still need to attach your character?\r\n",
+      "PostedDate": "2010-12-21T21:09:12.87-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-21T21:18:40.843-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Here you go, You might also notice that the stam is inflated buy a large amount",
+      "PostedDate": "2010-12-21T21:18:42.07-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-30T22:59:10.307-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm unclear if this address's Whiiplash's original concerns completely but the line you posted Astrylian appears to still be in the Rawr4/Rawr.Bear/Properties/CalculationsBear.cs for Rawr 4.0.13.0b.\r\n\r\nIf I'm reading it correctly 'f' is current stam?  If that is the case that line is wrong and explains the problem with the stamina skyrocketing.\r\n\r\nI believe the line should read:\r\nBonusStaminaMultiplier = (1f + 0.02f * talents.HeartOfTheWild) * (leatherSpecialization ? 1.05f : 1f) - 1f\r\nwhere each addition point of HotW should give 2% bonus stamina and not 20%.\r\n\r\nI've checked myself versus in-game and it appears to be consistent.  For ease of checking here is a character file wearing no leather and having ~1000 stamina (1007).  By adding one point to HotW stamina should go up 2% to 1027 but it jumps to 1208 instead.\r\n",
+      "PostedDate": "2010-12-30T22:59:12.273-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "no \"f\" is the shorthand way of transforming an integer variable into a floating point variable.",
+      "PostedDate": "2010-12-30T23:14:42.26-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Alright, that makes more sense to me now Hinalover.  Thank you.\r\n\r\nHowever, I'm quite sure that line is incorrect now.  The multiplier should be 0.02 (2%) per talent point of HotW and not 0.2 (20%).",
+      "PostedDate": "2010-12-30T23:47:39.457-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Fixed for next release.",
+      "PostedDate": "2010-12-31T11:27:11.167-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-31T12:45:57.41-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-31T15:59:44.78-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Fixed for next release.\r\n\r\nAlso, as a note to users: This may sound like a huge bug and has been making Rawr grossly overestimate the value of stam... But there happened to be another bug which made Rawr grossly *under* estimate stam by a very large margin as well. I fixed that, and verified all the other stats as well, and fixed a few minor bugs. In total, Rawr was overestimating the value of stam by ~14%.\r\n\r\n\n\n** Closed by Astrylian 12/31/2010 3:59 PM",
+      "PostedDate": "2010-12-31T19:42:36.733-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-31T19:42:37.48-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-31T19:43:51.22-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:57.52-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:28.1-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSWarr",
+      "DisplayName": "Rawr.DPSWarr"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-10-16T14:49:56.77-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The only Rawr build that seems to support fury warriors is the 4.1 Debug build. I'm fine with using this and importing new items myself. It's annoying, but it's free etc so no complaints there. My only problem is since it's a 4.1 debug build, the t12 set bonuses are not in there. Is there a way to add them or to manually add a buff or something? I'm mainly referring to the t12 2pc for now. Thanks.",
+    "LastUpdatedDate": "2013-05-16T05:17:38.057-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-07-12T15:47:23.097-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSWarr.Fury] Fury Warrior Total DPS not populated",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 21153
+  },
+  "FileAttachments": [
+    {
+      "FileId": 5147,
+      "FileName": "fury.xml",
+      "DownloadUrl": ".\\5147"
+    },
+    {
+      "FileId": 5157,
+      "FileName": "Fury Example.jpg",
+      "DownloadUrl": ".\\5157"
+    },
+    {
+      "FileId": 5160,
+      "FileName": "Amati Fury.xml",
+      "DownloadUrl": ".\\5160"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "i want to add another fury issue.\r\n\r\nthe optimizer is messing up my weapons and rings.\r\ni have zinrokh and shalug doom equipped. but after optimization the optimization window shows 2x shalug doom.\r\nand for the rings its the same. i attached my character file.",
+      "PostedDate": "2011-07-12T17:32:48.85-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It would help if you described a bit what exactly isn't working.\r\n\r\nAs for the double use of weapons/rings, edit the item and mark it as unique.",
+      "PostedDate": "2011-07-12T17:47:56.51-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "thanks worked great!",
+      "PostedDate": "2011-07-13T12:41:47.29-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm saying that when I use the current build (4.2.1 i believe), it states fury is not cata ready and does not give me a dps number. So I use the 4.1.xxxx debug build because it spits out dps numbers. The problem I have using the debug build is that there is no t12 set bonuses in there. How can I manually add them etc?",
+      "PostedDate": "2011-07-13T12:46:40.34-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You cannot manually add them. I'd rather focus on why you're seeing 0 dps in the current version. There was a similar problem in 4.2 and that was fixed as far as I know. If you have a character xml that still gives 0 dps please attach it here so that we can investigate.",
+      "PostedDate": "2011-07-13T14:11:31.53-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "A quick look into this:\r\nI created a new Fury Warr in the latest silverlight release.  I'm showing dps values for the activated abilities as well as a dps value in the bottom bar next to survivability.  The only place that is showing \"Fury isn't Cata ready\" is in Total DPS in DPS Breakdown (General).  Looking at the code, this isn't affecting the calculations of the module in any way, it is simply a display mask.  The offending code is below (CharacterCalculationsDPSWarr.cs Line 571):\r\n\r\n#if DEBUG\r\n                dictValues.Add(\"Total DPS\", string.Format(\"{0:#,##0} : {1:#,###,##0}*\" + (!string.IsNullOrEmpty(Rot.GCDUsage) ? Rot.GCDUsage : \"No GCD Usage*\"), TotalDPS, TotalDPS * Duration));\r\n#else\r\n                dictValues.Add(\"Total DPS\",\r\n                    CombatFactors.FuryStance\r\n                    ? \"Fury isn't Cata Ready\"\r\n                    : string.Format(\"{0:#,##0} : {1:#,###,##0}*\" + (!string.IsNullOrEmpty(Rot.GCDUsage) ? Rot.GCDUsage : \"No GCD Usage\"), TotalDPS, TotalDPS * Duration)\r\n                    );\r\n#endif\r\n\r\nThe #if DEBUG is the reason why it was 'working' in the DEBUG build, but not in the RELEASE build",
+      "PostedDate": "2011-07-13T18:07:33.803-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-07-13T18:16:24.287-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Attaching image of my test.  Circled the mentioned parts in my previous comment.",
+      "PostedDate": "2011-07-13T18:16:25.697-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-07-14T09:33:18.28-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I don't think my specific xml would matter as it happens for every warrior I make with rawr, but I will upload it anyways.\r\n\r\nAlso, what Timetodance's picture shows, is my exact problem.",
+      "PostedDate": "2011-07-14T09:33:19.82-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok that is not an actual problem, that isn't affecting functionality in any way. The only difference in that debug build was that those numbers in the Stats tab weren't hidden, but that has no effect on any calculations.\r\n\r\nWhether Fury is Cata ready or not I can't really tell. I'll leave that to someone that is more familiar with the model.",
+      "PostedDate": "2011-07-14T14:14:35.26-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The only reason I posted this originally was because I never knew about you dps being at the bottom left of Rawr. So now that I know about that, the \"fury is not cata ready\" line doesn't even matter. Thanks for the help guys.",
+      "PostedDate": "2011-07-14T14:30:58.47-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-07-25T07:52:33.717-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Since this seems to be a simple change in coding, it would be nice if the offending part was either removed (or at least commented out) so that us users get to see all the pretty numbers where we expect to see them. :)",
+      "PostedDate": "2011-07-25T16:40:29.077-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I don't have a problem removing that as long as people don't view that as me saying that fury is cata ready. It might be or it might not be, I'm not familiar enough to answer that question.",
+      "PostedDate": "2011-07-25T17:34:27.857-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I have another issue.\r\n\r\nFor some reason in the newest version of rawr 4.2.5 , the gems seem to be messing up.  For some items, not all, gemming an inferno ruby +40 str, gives a negative dps value.  I believe there are other gemming issues, but this seems to be the most glaring.  ",
+      "PostedDate": "2011-09-29T23:41:11.067-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Changed for next version. It will state Fury is not Cata ready in the tooltip but still put the number on the pane.\r\n\r\nThis was originally put in to reduce the number of people submitting issues about Fury because it planely stated that it wasn't ready to be used yet.",
+      "PostedDate": "2011-10-09T10:52:33.443-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-10-09T10:53:14.32-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "abm, please submit an issue for your problem, do not utilize existing tickets unless they are for the same issue",
+      "PostedDate": "2011-10-09T10:53:58.447-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-10-16T14:49:56.77-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:24:37.507-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:17:38.057-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ShadowPriest",
+      "DisplayName": "Rawr.ShadowPriest"
+    },
+    "ClosedComment": "Fixed by TNSe",
+    "ClosedDate": "2009-12-08T10:15:27.77-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "2p T9 (6 seconds extra duration on VT) appears to dramatically increase the damage done by VT instead in all versions of Rawr that support spell haste on dots, including the recent 2.30.  This is consistantly reproducable on any shadow priest model - simply compare the damage and duration of VT oln the mouseover for VT on the main UI 'stats' tab before and after equipping 2p T9 shadow.  The bonus increases tick damage instead of duration.\n \nThe error appears to be in the void Calculate(Stats stats, Character character) method of the VampiricTouch class in Rawr.ShadowPriest.Spell.cs.\n \nThe problematic code as it exists in changesett 43464 is:\n \n            if (stats.PriestDPS_T9_2pc > 0)\n            {\n                DebuffDuration = BaseDebuffDuration + stats.PriestDPS_T9_2pc;\n                MinDamage *= DebuffDuration / BaseDebuffDuration;\n            }\n \n            MaxDamage = MinDamage;\n \nand later in the same method:\n \nDebuffDuration = BaseDebuffDuration / (1f + stats.SpellHaste);\n \nThis loses the previous change in duration, but keeps the higher spell damage, redistributing it across the remaining ticks - resulting in a gross overestimation of the value of the set bonus.",
+    "LastUpdatedDate": "2013-05-16T05:23:10.36-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-12-08T03:47:07.143-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ShadowPriest] Incorrect T9-2P Calculation",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15242
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Uh yeah. Thats one fatass bug. Fixed for next release. Ty for report.",
+      "PostedDate": "2009-12-08T04:21:48.2-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-08T10:15:16.187-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-08T10:15:27.77-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-09T12:30:18.8-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T14:22:14.8-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:34.86-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:10.36-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

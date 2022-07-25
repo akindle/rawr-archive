@@ -1,0 +1,115 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.ItemFilters",
+      "DisplayName": "Rawr.Base.ItemFilters"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-12-18T17:09:32.473-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The location of most of the gear from Heroic Cataclysm instances does not indicate that it's heroic so the current filters don't work to distinguish between regular and heroic.  If you remove the \"(?<! Heroic )\" clause from the regular and the corresponding clause from the heroic and set the item level field of the filters \"0-333\" for regular and \"334-1000\" for heroic, you'll get the proper distribution of items.",
+    "LastUpdatedDate": "2017-11-27T11:03:18.31-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-12-17T09:56:37.163-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ItemFilters] Not distributing gear between cataclysm regular and heroic properly",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19325
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I just did a fresh checkout of Rawr4 via SVN and did a scratch build.  I'm seeing the following filter for Dungeon:\r\n\r\n(?<! Heroic )(Throne of the Tides|Blackrock Caverns|Grim Batol|Halls of Origination|Lost City of the Tol'vir|The Stonecore|Vortex Pinnacle|Unknown - 4926|Unknown - 4950|Unknown - 4945|Unknown - 5396|Unknown - 5088|Unknown - 5004|Unknown - 5035)\r\n\r\nand the following for Dungeons(Heroic):\r\n\r\nHeroic.*(Throne of the Tides|Blackrock Caverns|Grim Batol|Halls of Origination|Lost City of the Tol'vir|Shadowfang Keep|The Deadmines|The Stonecore|Vortex Pinnacle|Unknown - 4926|Unknown - 4950|Unknown - 4945|Unknown - 5396|Unknown - 5088|Unknown - 5004|Unknown - 5035)\r\n\r\nThe level range on both is set to 0 - 1000.\r\n\r\nPressing \"Uncheck All\" under the filter section and the selecting just \"Dungeons\" is still causing all items from both regular and heroic versions of the dungeons to show up.\r\n\r\nWhat am I doing wrong?\r\n\r\nFor a few more details -- with all filters turned off and looking at \"Gear->Head\", Tsanga's Helm [359], Bloodied Leather Helm [339], Hood of the Crying Rogue[333], and Bloodied Wyrmhide Helm[339] are being shown.  When I check \"Dungeon\",  Helm of Numberless Shadows [346] and Helm of Numberless Shadows [316] both get added along with both versions of Willowy Crown",
+      "PostedDate": "2010-12-17T15:30:17.27-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This has already been fixed by a previous commit\r\n\r\n\n\n** Closed by Jothay 12/17/2010 11:26 AM",
+      "PostedDate": "2010-12-17T15:31:51.923-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "See new comment giving more details on results of a fresh scratch build after checking out current top of tree.",
+      "PostedDate": "2010-12-17T15:31:52.417-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I guarantee you its because they have bad source data. If you go in and edit the sources on those items to fix them, they will hide properly.",
+      "PostedDate": "2010-12-17T15:43:32.233-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "And since you are building from source, you have access to that stuff :)",
+      "PostedDate": "2010-12-17T15:43:50.777-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Is this a case where the checked in default source data has not been regenerated after other parts of Rawr have been fixed?",
+      "PostedDate": "2010-12-17T16:35:00.357-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That part hasn't been fixed yet, it won't automatically generate source data. Hinalover painstakingly went through every item by hand and added Item Source data but some of that didn't translate later on.",
+      "PostedDate": "2010-12-17T17:13:20.587-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-17T22:36:59.917-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-17T22:37:17.11-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-18T17:09:32.473-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T18:49:40.763-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T22:45:43.24-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:27:07.537-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:36.02-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:03:18.31-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

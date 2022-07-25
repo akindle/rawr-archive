@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "175864",
+    "ThreadId": "52341",
+    "Html": "I just checked in the ability for models to specify default buffs and glyphs (if using the new system) for character loaded from the Armory.<br>\r\n<br>\r\nHow to implement them yourself? There is a new virtual method in CalculationsBase, that is called whenever a character is imported from armory.<br>\r\n<pre><span style=\"color:blue\">public</span> <span style=\"color:blue\">virtual</span> <span style=\"color:blue\">void</span> SetDefaults(Character character)</pre>\r\nYou override that, and use it to set Buffs/Glyphs. The following is how Retribution does it.<br>\r\n<br>\r\n<pre>        <span style=\"color:blue\">public</span> <span style=\"color:blue\">override</span> <span style=\"color:blue\">void</span> SetDefaults(Character character)<br>        {<br>            character.ActiveBuffs.Add(Buff.GetBuffByName(<span style=\"color:#a31515\">&quot;Blessing of Might&quot;</span>));<br>            character.ActiveBuffs.Add(Buff.GetBuffByName(<span style=\"color:#a31515\">&quot;Improved Blessing of Might&quot;</span>));<br>            character.ActiveBuffs.Add(Buff.GetBuffByName(<span style=\"color:#a31515\">&quot;Blessing of Kings&quot;</span>));<br>            character.ActiveBuffs.Add(Buff.GetBuffByName(<span style=\"color:#a31515\">&quot;Mark of the Wild&quot;</span>));<br>            character.ActiveBuffs.Add(Buff.GetBuffByName(<span style=\"color:#a31515\">&quot;Windfury Totem&quot;</span>));<br><br>            character.PaladinTalents.GlyphOfJudgement = <span style=\"color:blue\">true</span>;<br>            character.PaladinTalents.GlyphOfConsecration = <span style=\"color:blue\">true</span>;<br>            character.PaladinTalents.GlyphOfSenseUndead = <span style=\"color:blue\">true</span>;<br>            character.PaladinTalents.GlyphOfExorcism = <span style=\"color:blue\">true</span>;<br>        }</pre>\r\nYou can also set Glyphs on a conditional basis. Like give the user ideal Arcane Glyphs if they are specced into Arcane Barrage.<br>\r\n<br>\r\nIf you are getting a null reference exception on line 1256 in Character.cs, that means you mispelled a Buffs name.<br>\r\n",
+    "PostedDate": "2009-04-05T12:01:53.743-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "175875",
+    "ThreadId": "52341",
+    "Html": "Very nice.\r\n",
+    "PostedDate": "2009-04-05T12:34:40.09-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

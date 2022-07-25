@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "614982",
+    "ThreadId": "258173",
+    "Html": "\r\n<p>Hello, I'm working on a new resto druid model (see patches), and I'm not sure how to best compute the trigger interval and chance of procs.</p>\r\n<p>The issue is that the proc interval depends on spell selection, which depends on stats, which depend on the proc interval.</p>\r\n<p>Furthermore in general the dependencies are nonlinear and difficult to express in a closed form.</p>\r\n<p>I could attempt to execute the model iteratively, and perhaps save the trigger interval across evaluations, but I'm afraid this will terribly affect performance.</p>\r\n<p>Currently, I'm just letting the user input the value; any tips on how I could do better?</p>\r\n",
+    "PostedDate": "2011-05-18T19:49:04.96-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "614983",
+    "ThreadId": "258173",
+    "Html": "<p>DPSWarr does it iteratively and maybe Mage? A couple of other models have moved to this as well. It's considered ok to do it because it make it more accurate, your procs *are* supposed to affect your procs.</p>",
+    "PostedDate": "2011-05-18T19:52:20.57-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "615163",
+    "ThreadId": "258173",
+    "Html": "<p>Moonkin does this with Nature's Grace procs, since it affects the rotation duration, which affects NG uptime, and so on ad infinitum.&nbsp; I just set a threshold value for when to cut off iterating and store that value for the remainder of the calculations, recalculating when necessary.</p>",
+    "PostedDate": "2011-05-19T05:29:38.147-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

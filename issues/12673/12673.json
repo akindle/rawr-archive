@@ -1,0 +1,96 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Mage",
+      "DisplayName": "Rawr.Mage"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-03-23T18:04:49.973-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I'm using the Mage model in 2.2.0b1.  I loaded my character that was last saved with 2.1.9, and look at Sequence.  The score at the bottom is 59.83, and at the top it say \"Sequence Reconstruction was not fully successful, it is recommended that you enable advanced solver by using segment cooldowns and integral mana consumables options!\"\n \nWhen I enable Segment Cooldowns for Display, I get an error that says \"SMP algorithm exceeded maximum allowed computation limit. Displaying the last working solution. Increase the limit in options if you would like to compute the correct solution.\"  I click OK, and Rawr thinks for a bit, then displays the error again.  The only way out is to End Proccess with the Task Manager.\n \nMy SMP Computation Limit is set to 300.  My SMP Search Method is BestBound. Bumping Computatoin Limit to 1000 gives the same result.  Bumping it to 30,000 makes it take a long time (first using a ton of CPU, then using almost none, but not responding) before it lets me look at the sequence.",
+    "LastUpdatedDate": "2017-11-27T11:01:45.937-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-02-24T14:59:58.78-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Mage] Hang with Segment Cooldowns",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 12673
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1705,
+      "FileName": "dejah arcane.xml",
+      "DownloadUrl": ".\\1705"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I can't reproduce this problem, most likely since there were several fixes and improvements for advanced solver since the beta. In any case you should check the rawr.mage wiki to learn more about how to use the advanced options. What you're describing, long work time and then it just ends responding but you're able to switch between tabs is an indicator that an out of memory exception happened while working on solution, which is very likely to happen with BestBound method and large limits. Arcane with the latest changes to AP cooldown duration is very hard to solve for sequence reconstruction, I would suggest you to use depth first method.",
+      "PostedDate": "2009-02-24T16:21:37.36-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-03-23T17:07:03.027-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-03-23T18:04:49.973-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:19:42.37-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:35:56.533-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:21.047-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-21T00:00:19.307-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:35:24.68-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:10.563-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:01:45.937-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

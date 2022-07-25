@@ -1,0 +1,2246 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf250
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\ql\qnatural\pardirnatural
+
+\f0\fs24 \cf0 Date/Time:       2010-03-23 11:16:39 +0100\
+OS Version:      10.6.2 (Build 10C540)\
+Architecture:    x86_64\
+Report Version:  6\
+\
+Command:         Firefox\
+Path:            /Applications/Firefox.app/Contents/MacOS/firefox-bin\
+Version:         3.6.2 (3.6.2)\
+Parent:          launchd [84]\
+\
+PID:             1285\
+Event:           hang\
+Duration:        4.77s (sampling started after 2 seconds)\
+Steps:           18 (100ms sampling interval)\
+\
+Pageins:         0\
+Pageouts:        0\
+\
+\
+Process:         firefox-bin [1285]\
+Path:            /Applications/Firefox.app/Contents/MacOS/firefox-bin\
+UID:             501\
+\
+\
+Process:         aosnotifyd [125]\
+Path:            /usr/sbin/aosnotifyd\
+UID:             501\
+\
+  Thread 8dd9b7c    DispatchQueue 1\
+  User stack:\
+    18 start + 52 (in aosnotifyd) [0x100001070]\
+      18 main + 806 (in aosnotifyd) [0x1000020e8]\
+        18 CFRunLoopRun + 70 (in CoreFoundation) [0x7fff874259b6]\
+          18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+            18 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+              18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 9c143d4    DispatchQueue 2\
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 _pthread_wqthread + 353 (in libSystem.B.dylib) [0x7fff86df3bb8]\
+        18 _dispatch_worker_thread2 + 244 (in libSystem.B.dylib) [0x7fff86df4286]\
+          18 _dispatch_queue_invoke + 185 (in libSystem.B.dylib) [0x7fff86df475c]\
+            18 kevent + 10 (in libSystem.B.dylib) [0x7fff86df2bba]\
+  Kernel stack:\
+    18 kevent + 97 [0x471745]\
+\
+  Thread 9c76000   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 select$DARWIN_EXTSN + 10 (in libSystem.B.dylib) [0x7fff86e1d9e2]\
+  Kernel stack:\
+    18 sleep + 52 [0x487f93]\
+\
+  Binary Images:\
+         0x100000000 -        0x100011fff  aosnotifyd ??? (???) <887126C0-8850-68A0-AF30-37FAF68F5FEA> /usr/sbin/aosnotifyd\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+      0x7fff873db000 -     0x7fff8754eff7  com.apple.CoreFoundation 6.6.1 (550.13) <1E952BD9-37C6-16BE-B2F0-CD92A6283D37> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation\
+\
+\
+Process:         AppleSpell [1127]\
+Path:            /System/Library/Services/AppleSpell.service/Contents/MacOS/AppleSpell\
+UID:             501\
+\
+  Thread 92ce7a8    DispatchQueue 1\
+  User stack:\
+    18 ??? (in AppleSpell + 5852) [0x1000016dc]\
+      18 ??? (in AppleSpell + 6508) [0x10000196c]\
+        18 -[NSSpellServer run] + 72 (in Foundation) [0x7fff84765796]\
+          18 CFRunLoopRun + 70 (in CoreFoundation) [0x7fff874259b6]\
+            18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+              18 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+                18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 996d7a8    DispatchQueue 2\
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 _pthread_wqthread + 353 (in libSystem.B.dylib) [0x7fff86df3bb8]\
+        18 _dispatch_worker_thread2 + 244 (in libSystem.B.dylib) [0x7fff86df4286]\
+          18 _dispatch_queue_invoke + 185 (in libSystem.B.dylib) [0x7fff86df475c]\
+            18 kevent + 10 (in libSystem.B.dylib) [0x7fff86df2bba]\
+  Kernel stack:\
+    18 kevent + 97 [0x471745]\
+\
+  Binary Images:\
+         0x100000000 -        0x1000a9fef  com.apple.AppleSpell 1.6.1 (61.1) <6DE57CC1-77A0-BC06-45E7-E1EACEBE1A88> /System/Library/Services/AppleSpell.service/Contents/MacOS/AppleSpell\
+      0x7fff846e6000 -     0x7fff84967fe7  com.apple.Foundation 6.6.1 (751.14) <767349DB-C486-70E8-7970-F13DB4CDAF37> /System/Library/Frameworks/Foundation.framework/Versions/C/Foundation\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+      0x7fff873db000 -     0x7fff8754eff7  com.apple.CoreFoundation 6.6.1 (550.13) <1E952BD9-37C6-16BE-B2F0-CD92A6283D37> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation\
+\
+\
+Process:         autofsd [40]\
+Path:            /usr/libexec/autofsd\
+UID:             0\
+\
+  Thread 8929000    DispatchQueue 1\
+  User stack:\
+    18 ??? (in autofsd + 5340) [0x1000014dc]\
+      18 ??? (in autofsd + 6461) [0x10000193d]\
+        18 CFRunLoopRun + 70 (in CoreFoundation) [0x7fff874259b6]\
+          18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+            18 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+              18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 8a22b7c    DispatchQueue 2\
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 _pthread_wqthread + 353 (in libSystem.B.dylib) [0x7fff86df3bb8]\
+        18 _dispatch_worker_thread2 + 244 (in libSystem.B.dylib) [0x7fff86df4286]\
+          18 _dispatch_queue_invoke + 185 (in libSystem.B.dylib) [0x7fff86df475c]\
+            18 kevent + 10 (in libSystem.B.dylib) [0x7fff86df2bba]\
+  Kernel stack:\
+    18 kevent + 97 [0x471745]\
+\
+  Binary Images:\
+         0x100000000 -        0x100001ff7  autofsd ??? (???) <29276FAC-AEA8-1520-5329-C75F9D453D6C> /usr/libexec/autofsd\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+      0x7fff873db000 -     0x7fff8754eff7  com.apple.CoreFoundation 6.6.1 (550.13) <1E952BD9-37C6-16BE-B2F0-CD92A6283D37> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation\
+\
+\
+Process:         blued [39]\
+Path:            /usr/sbin/blued\
+UID:             0\
+\
+  Thread 89293d4    DispatchQueue 1\
+  User stack:\
+    18 ??? (in blued + 5016) [0x100001398]\
+      18 ??? (in blued + 152265) [0x1000252c9]\
+        18 -[NSRunLoop(NSRunLoop) run] + 77 (in Foundation) [0x7fff84731903]\
+          18 -[NSRunLoop(NSRunLoop) runMode:beforeDate:] + 270 (in Foundation) [0x7fff84731a24]\
+            18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+              18 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+                18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 82277a8    DispatchQueue 2\
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 _pthread_wqthread + 353 (in libSystem.B.dylib) [0x7fff86df3bb8]\
+        18 _dispatch_worker_thread2 + 244 (in libSystem.B.dylib) [0x7fff86df4286]\
+          18 _dispatch_queue_invoke + 185 (in libSystem.B.dylib) [0x7fff86df475c]\
+            18 kevent + 10 (in libSystem.B.dylib) [0x7fff86df2bba]\
+  Kernel stack:\
+    18 kevent + 97 [0x471745]\
+\
+  Thread 8dd8000   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 select$DARWIN_EXTSN + 10 (in libSystem.B.dylib) [0x7fff86e1d9e2]\
+  Kernel stack:\
+    18 sleep + 52 [0x487f93]\
+\
+  Binary Images:\
+         0x100000000 -        0x100044fff  blued ??? (???) <ECD752C9-F98E-3052-26BF-DC748281C992> /usr/sbin/blued\
+      0x7fff846e6000 -     0x7fff84967fe7  com.apple.Foundation 6.6.1 (751.14) <767349DB-C486-70E8-7970-F13DB4CDAF37> /System/Library/Frameworks/Foundation.framework/Versions/C/Foundation\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+      0x7fff873db000 -     0x7fff8754eff7  com.apple.CoreFoundation 6.6.1 (550.13) <1E952BD9-37C6-16BE-B2F0-CD92A6283D37> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation\
+\
+\
+Process:         check_afp [1033]\
+Path:            /System/Library/Filesystems/AppleShare/check_afp.app/Contents/MacOS/check_afp\
+UID:             0\
+\
+  Thread c605b7c   \
+  User stack:\
+    18 ??? (in check_afp + 5596) [0x1000015dc]\
+      18 ??? (in check_afp + 12976) [0x1000032b0]\
+        18 ??? (in check_afp + 6664) [0x100001a08]\
+          18 ??? (in check_afp + 6520) [0x100001978]\
+            18 CFRunLoopRun + 70 (in CoreFoundation) [0x7fff874259b6]\
+              18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+                18 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+                  18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread c9c5000    DispatchQueue 356882\
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 _pthread_wqthread + 353 (in libSystem.B.dylib) [0x7fff86df3bb8]\
+        18 _dispatch_worker_thread2 + 244 (in libSystem.B.dylib) [0x7fff86df4286]\
+          18 _dispatch_queue_invoke + 185 (in libSystem.B.dylib) [0x7fff86df475c]\
+            18 kevent + 10 (in libSystem.B.dylib) [0x7fff86df2bba]\
+  Kernel stack:\
+    18 kevent + 97 [0x471745]\
+\
+  Thread c9c5b7c   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 ??? (in check_afp + 13071) [0x10000330f]\
+          18 mach_msg_server_once + 285 (in libSystem.B.dylib) [0x7fff86e1f417]\
+            18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread c9cd7a8   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 select$DARWIN_EXTSN + 10 (in libSystem.B.dylib) [0x7fff86e1d9e2]\
+  Kernel stack:\
+    18 sleep + 52 [0x487f93]\
+\
+  Binary Images:\
+         0x100000000 -        0x100004ff7  com.apple.check_afp 2.0 (2.0) <EE865A7B-8CDC-7649-58E1-6FE2B43F7A73> /System/Library/Filesystems/AppleShare/check_afp.app/Contents/MacOS/check_afp\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+      0x7fff873db000 -     0x7fff8754eff7  com.apple.CoreFoundation 6.6.1 (550.13) <1E952BD9-37C6-16BE-B2F0-CD92A6283D37> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation\
+\
+\
+Process:         configd [13]\
+Path:            /usr/libexec/configd\
+UID:             0\
+\
+  Thread 81f57a8    DispatchQueue 1\
+  User stack:\
+    18 start + 52 (in configd) [0x100001488]\
+      18 main + 2051 (in configd) [0x100001c9e]\
+        18 server_loop + 72 (in configd) [0x1000024f4]\
+          18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+            18 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+              18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 822e000    DispatchQueue 2\
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 _pthread_wqthread + 353 (in libSystem.B.dylib) [0x7fff86df3bb8]\
+        18 _dispatch_worker_thread2 + 244 (in libSystem.B.dylib) [0x7fff86df4286]\
+          18 _dispatch_queue_invoke + 185 (in libSystem.B.dylib) [0x7fff86df475c]\
+            18 kevent + 10 (in libSystem.B.dylib) [0x7fff86df2bba]\
+  Kernel stack:\
+    18 kevent + 97 [0x471745]\
+\
+  Thread 82d4000   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 plugin_exec + 1440 (in configd) [0x100003c5b]\
+          18 CFRunLoopRun + 70 (in CoreFoundation) [0x7fff874259b6]\
+            18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+              18 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+                18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 84b2b7c   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 _io_pm_force_active_settings + 2266 (in PowerManagement) [0x10050f968]\
+          18 CFRunLoopRun + 70 (in CoreFoundation) [0x7fff874259b6]\
+            18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+              18 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+                18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 894c000   \
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 __workq_kernreturn + 10 (in libSystem.B.dylib) [0x7fff86df39da]\
+  Kernel stack:\
+    18 workqueue_thread_yielded + 562 [0x4cb6ae]\
+\
+  Thread 894c7a8   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 select$DARWIN_EXTSN + 10 (in libSystem.B.dylib) [0x7fff86e1d9e2]\
+  Kernel stack:\
+    18 sleep + 52 [0x487f93]\
+\
+  Binary Images:\
+         0x100000000 -        0x100026ff7  configd ??? (???) <58C02CBA-5556-4CDC-2763-814C4C7175DE> /usr/libexec/configd\
+         0x10050c000 -        0x10051dfff  com.apple.SystemConfiguration.PowerManagement 160.0.0 (160.0.0) <0AC3D2ED-919E-29C7-9EEF-629FBDDA6159> /System/Library/SystemConfiguration/PowerManagement.bundle/Contents/MacOS/PowerManagement\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+      0x7fff873db000 -     0x7fff8754eff7  com.apple.CoreFoundation 6.6.1 (550.13) <1E952BD9-37C6-16BE-B2F0-CD92A6283D37> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation\
+\
+\
+Process:         coreaudiod [79]\
+Path:            /usr/sbin/coreaudiod\
+UID:             202\
+\
+  Thread 951d3d4    DispatchQueue -1609565611\
+  User stack:\
+    18 ??? (in coreaudiod + 3252) [0x100000cb4]\
+      18 ??? (in coreaudiod + 26505) [0x100006789]\
+        18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+          18 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+            18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 95a23d4    DispatchQueue -95051761\
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 _pthread_wqthread + 353 (in libSystem.B.dylib) [0x7fff86df3bb8]\
+        18 _dispatch_worker_thread2 + 244 (in libSystem.B.dylib) [0x7fff86df4286]\
+          18 _dispatch_queue_invoke + 185 (in libSystem.B.dylib) [0x7fff86df475c]\
+            18 kevent + 10 (in libSystem.B.dylib) [0x7fff86df2bba]\
+  Kernel stack:\
+    18 kevent + 97 [0x471745]\
+\
+  Thread 8a223d4   \
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 __workq_kernreturn + 10 (in libSystem.B.dylib) [0x7fff86df39da]\
+  Kernel stack:\
+    18 workqueue_thread_yielded + 562 [0x4cb6ae]\
+\
+  Binary Images:\
+         0x100000000 -        0x10001ffef  coreaudiod ??? (???) <A060D20F-A6A7-A3AE-84EC-11D7D7DDEBC6> /usr/sbin/coreaudiod\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+      0x7fff873db000 -     0x7fff8754eff7  com.apple.CoreFoundation 6.6.1 (550.13) <1E952BD9-37C6-16BE-B2F0-CD92A6283D37> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation\
+\
+\
+Process:         coreservicesd [58]\
+Path:            /System/Library/CoreServices/coreservicesd\
+UID:             0\
+\
+  Thread 8dd73d4    DispatchQueue 1\
+  User stack:\
+    18 ??? (in coreservicesd + 3756) [0x100000eac]\
+      18 _CoreServicesServerMain + 522 (in CarbonCore) [0x7fff8368f972]\
+        18 CFRunLoopRun + 70 (in CoreFoundation) [0x7fff874259b6]\
+          18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+            18 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+              18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 88fcb7c    DispatchQueue 2\
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 _pthread_wqthread + 353 (in libSystem.B.dylib) [0x7fff86df3bb8]\
+        18 _dispatch_worker_thread2 + 244 (in libSystem.B.dylib) [0x7fff86df4286]\
+          18 _dispatch_queue_invoke + 185 (in libSystem.B.dylib) [0x7fff86df475c]\
+            18 kevent + 10 (in libSystem.B.dylib) [0x7fff86df2bba]\
+  Kernel stack:\
+    18 kevent + 97 [0x471745]\
+\
+  Thread 8a227a8   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 fmodWatchConsumer + 347 (in CarbonCore) [0x7fff8364423f]\
+          18 __semwait_signal + 10 (in libSystem.B.dylib) [0x7fff86e149ee]\
+  Kernel stack:\
+    18 semaphore_wait_continue + 0 [0x22a0a5]\
+\
+  Thread 8a62b7c   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 read + 10 (in libSystem.B.dylib) [0x7fff86de4426]\
+  Kernel stack:\
+    18 lo64_unix_scall + 77 [0x29e3fd]\
+      18 unix_syscall64 + 617 [0x4ee947]\
+        18 read_nocancel + 158 [0x496add]\
+          18 write + 312 [0x49634d]\
+            18 get_pathbuff + 3054 [0x3023db]\
+              18 tsleep + 105 [0x4881ce]\
+                18 wakeup + 786 [0x487da7]\
+                  18 thread_block + 33 [0x226fb5]\
+                    18 thread_block_reason + 331 [0x226f27]\
+                      18 thread_dispatch + 1950 [0x226c88]\
+                        18 machine_switch_context + 753 [0x2a5a37]\
+\
+  Thread ca15b7c   \
+  User stack:\
+    17 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      17 __workq_kernreturn + 10 (in libSystem.B.dylib) [0x7fff86df39da]\
+  Kernel stack:\
+    17 workqueue_thread_yielded + 562 [0x4cb6ae]\
+\
+  Binary Images:\
+         0x100000000 -        0x100000fff  coreservicesd ??? (???) <D804E55B-4376-998C-AA25-2ADBFDD24414> /System/Library/CoreServices/coreservicesd\
+      0x7fff835e0000 -     0x7fff83912fef  com.apple.CoreServices.CarbonCore 861.2 (861.2) <39F3B259-AC2A-792B-ECFE-4F3E72F2D1A5> /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/CarbonCore.framework/Versions/A/CarbonCore\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+      0x7fff873db000 -     0x7fff8754eff7  com.apple.CoreFoundation 6.6.1 (550.13) <1E952BD9-37C6-16BE-B2F0-CD92A6283D37> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation\
+\
+\
+Process:         cvmsServ [69]\
+Path:            /System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/cvmsServ\
+UID:             0\
+\
+  Thread 8dd7b7c    DispatchQueue 1\
+  User stack:\
+    18 ??? (in cvmsServ + 4100) [0x100001004]\
+      18 ??? (in cvmsServ + 23081) [0x100005a29]\
+        18 mach_msg_server + 597 (in libSystem.B.dylib) [0x7fff86e571c8]\
+          18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Binary Images:\
+         0x100000000 -        0x100008fff  cvmsServ ??? (???) <6200AD80-4159-5656-8736-B72B7388C461> /System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/cvmsServ\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+\
+\
+Process:         DirectoryService [15]\
+Path:            /usr/sbin/DirectoryService\
+UID:             0\
+\
+  Thread 84377a8    DispatchQueue 1\
+  User stack:\
+    18 start + 52 (in DirectoryService) [0x10000da74]\
+      18 main + 3086 (in DirectoryService) [0x10000e68a]\
+        18 CFRunLoopRun + 70 (in CoreFoundation) [0x7fff874259b6]\
+          18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+            18 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+              18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 84b23d4    DispatchQueue 2\
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 _pthread_wqthread + 353 (in libSystem.B.dylib) [0x7fff86df3bb8]\
+        18 _dispatch_worker_thread2 + 244 (in libSystem.B.dylib) [0x7fff86df4286]\
+          18 _dispatch_queue_invoke + 185 (in libSystem.B.dylib) [0x7fff86df475c]\
+            18 kevent + 10 (in libSystem.B.dylib) [0x7fff86df2bba]\
+  Kernel stack:\
+    18 kevent + 97 [0x471745]\
+\
+  Thread 82343d4    DispatchQueue 6\
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 _pthread_wqthread + 353 (in libSystem.B.dylib) [0x7fff86df3bb8]\
+        18 _dispatch_worker_thread2 + 231 (in libSystem.B.dylib) [0x7fff86df4279]\
+          18 _dispatch_call_block_and_release + 15 (in libSystem.B.dylib) [0x7fff86e15ce8]\
+            18 syscall + 10 (in libSystem.B.dylib) [0x7fff86e162da]\
+  Kernel stack:\
+    18 sleep + 52 [0x487f93]\
+\
+  Thread 84b2000   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 DSLThread::_RunWrapper(void*) + 67 (in DirectoryServiceCore) [0x10017834b]\
+          18 DSCThread::Run() + 36 (in DirectoryServiceCore) [0x1001780ac]\
+            18 CPluginRunLoopThread::ThreadMain() + 150 (in DirectoryService) [0x10001d224]\
+              18 CFRunLoopRun + 70 (in CoreFoundation) [0x7fff874259b6]\
+                18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+                  18 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+                    18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 9c76b7c   \
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 __workq_kernreturn + 10 (in libSystem.B.dylib) [0x7fff86df39da]\
+  Kernel stack:\
+    18 workqueue_thread_yielded + 562 [0x4cb6ae]\
+\
+  Thread c9c33d4   \
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 __workq_kernreturn + 10 (in libSystem.B.dylib) [0x7fff86df39da]\
+  Kernel stack:\
+    18 workqueue_thread_yielded + 562 [0x4cb6ae]\
+\
+  Binary Images:\
+         0x100000000 -        0x100120fff  DirectoryService ??? (???) <493053C4-CC96-BD73-69D4-85250B2FBC6F> /usr/sbin/DirectoryService\
+         0x100170000 -        0x100181fff  com.apple.DirectoryServiceCore.Framework 3.6 (621.1) <8D337B0E-9E06-1829-2AC9-21929325488B> /System/Library/PrivateFrameworks/DirectoryServiceCore.framework/Versions/A/DirectoryServiceCore\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+      0x7fff873db000 -     0x7fff8754eff7  com.apple.CoreFoundation 6.6.1 (550.13) <1E952BD9-37C6-16BE-B2F0-CD92A6283D37> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation\
+\
+\
+Process:         diskarbitrationd [12]\
+Path:            /usr/sbin/diskarbitrationd\
+UID:             0\
+\
+  Thread 82de000   \
+  User stack:\
+    18 ??? (in diskarbitrationd + 4064) [0x100000fe0]\
+      18 ??? (in diskarbitrationd + 32876) [0x10000806c]\
+        18 CFRunLoopRun + 70 (in CoreFoundation) [0x7fff874259b6]\
+          18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+            18 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+              18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 8217000    DispatchQueue 2\
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 _pthread_wqthread + 353 (in libSystem.B.dylib) [0x7fff86df3bb8]\
+        18 _dispatch_worker_thread2 + 244 (in libSystem.B.dylib) [0x7fff86df4286]\
+          18 _dispatch_queue_invoke + 185 (in libSystem.B.dylib) [0x7fff86df475c]\
+            18 kevent + 10 (in libSystem.B.dylib) [0x7fff86df2bba]\
+  Kernel stack:\
+    18 kevent + 97 [0x471745]\
+\
+  Binary Images:\
+         0x100000000 -        0x10001bfef  diskarbitrationd ??? (???) <E59D4CB3-3CC5-03AD-DE45-91F98CC6B2F2> /usr/sbin/diskarbitrationd\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+      0x7fff873db000 -     0x7fff8754eff7  com.apple.CoreFoundation 6.6.1 (550.13) <1E952BD9-37C6-16BE-B2F0-CD92A6283D37> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation\
+\
+\
+Process:         distnoted [16]\
+Path:            /usr/sbin/distnoted\
+UID:             1\
+\
+  Thread 887a000    DispatchQueue 1\
+  User stack:\
+    18 ??? (in distnoted + 3620) [0x100000e24]\
+      18 ??? (in distnoted + 3717) [0x100000e85]\
+        18 CFRunLoopRun + 70 (in CoreFoundation) [0x7fff874259b6]\
+          18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+            18 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+              18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 887a3d4    DispatchQueue 2\
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 _pthread_wqthread + 353 (in libSystem.B.dylib) [0x7fff86df3bb8]\
+        18 _dispatch_worker_thread2 + 244 (in libSystem.B.dylib) [0x7fff86df4286]\
+          18 _dispatch_queue_invoke + 185 (in libSystem.B.dylib) [0x7fff86df475c]\
+            18 kevent + 10 (in libSystem.B.dylib) [0x7fff86df2bba]\
+  Kernel stack:\
+    18 kevent + 97 [0x471745]\
+\
+  Thread c9c57a8   \
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 __workq_kernreturn + 10 (in libSystem.B.dylib) [0x7fff86df39da]\
+  Kernel stack:\
+    18 workqueue_thread_yielded + 562 [0x4cb6ae]\
+\
+  Binary Images:\
+         0x100000000 -        0x100000fff  distnoted ??? (???) <EE257B76-1C20-2D83-6441-B6417788ABD9> /usr/sbin/distnoted\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+      0x7fff873db000 -     0x7fff8754eff7  com.apple.CoreFoundation 6.6.1 (550.13) <1E952BD9-37C6-16BE-B2F0-CD92A6283D37> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation\
+\
+\
+Process:         Dock [88]\
+Path:            /System/Library/CoreServices/Dock.app/Contents/MacOS/Dock\
+UID:             501\
+\
+  Thread 8919000    DispatchQueue 1\
+  User stack:\
+    18 ??? (in Dock + 17796) [0x100004584]\
+      18 ??? (in Dock + 18892) [0x1000049cc]\
+        18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+          18 __CFRunLoopRun + 5201 (in CoreFoundation) [0x7fff87427551]\
+            18 mshPerform + 11 (in HIServices) [0x7fff8104e6b1]\
+              18 ??? (in Dock + 89940) [0x100015f54]\
+                18 ??? (in Dock + 90530) [0x1000161a2]\
+                  18 ??? (in Dock + 138385) [0x100021c91]\
+                    18 ??? (in Dock + 223612) [0x10003697c]\
+                      18 ??? (in Dock + 379245) [0x10005c96d]\
+                        18 ??? (in Dock + 383189) [0x10005d8d5]\
+                          18 ??? (in Dock + 384878) [0x10005df6e]\
+                            18 _HandlePopUpMenuSelection7 + 665 (in HIToolbox) [0x7fff8203876f]\
+                              17 PopUpMenuSelectCore(MenuData*, Point, double, Point, unsigned short, unsigned int, Rect const*, unsigned short, unsigned int, Rect const*, Rect const*, __CFString const*, OpaqueMenuRef**, unsigned short*) + 1651 (in HIToolbox) [0x7fff8203847c]\
+                                15 TrackMenuCommon(MenuSelectData&, unsigned char*) + 3355 (in HIToolbox) [0x7fff81f149dc]\
+                                  15 IsUserStillTracking(MenuSelectData*, unsigned char*) + 175 (in HIToolbox) [0x7fff81f27cd1]\
+                                    15 ReceiveNextEventCommon + 310 (in HIToolbox) [0x7fff81edd853]\
+                                      15 RunCurrentEventLoopInMode + 333 (in HIToolbox) [0x7fff81edda4e]\
+                                        15 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+                                          15 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+                                            15 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+                                2 TrackMenuCommon(MenuSelectData&, unsigned char*) + 3460 (in HIToolbox) [0x7fff81f14a45]\
+                                  2 SelectItemAndRestoreAllMenuBits(MenuSelectData&) + 474 (in HIToolbox) [0x7fff81f2d4aa]\
+                                    2 FlashFeedback(MenuSelectData*) + 131 (in HIToolbox) [0x7fff81f2d6eb]\
+                                      2 HIView::SimulateClick(short, unsigned int, short*) + 167 (in HIToolbox) [0x7fff81f2d7f3]\
+                                        2 SendEventToEventTargetWithOptions + 51 (in HIToolbox) [0x7fff81eb5f97]\
+                                          2 SendEventToEventTargetInternal(OpaqueEventRef*, OpaqueEventTargetRef*, HandlerCallRec*) + 395 (in HIToolbox) [0x7fff81eb6126]\
+                                            2 DispatchEventToHandlers(EventTargetRec*, OpaqueEventRef*, HandlerCallRec*) + 1002 (in HIToolbox) [0x7fff81eb6bd7]\
+                                              2 HIView::EventHandler(OpaqueEventHandlerCallRef*, OpaqueEventRef*, void*) + 1700 (in HIToolbox) [0x7fff81ec7a00]\
+                                                2 HIView::SimulateClickSelf(short, unsigned int, short*) + 94 (in HIToolbox) [0x7fff81f2d90c]\
+                                                  2 SendControlSimulateHit(HIView*, short, unsigned int, short*) + 150 (in HIToolbox) [0x7fff81f2da54]\
+                                                    2 SendEventToEventTargetWithOptions + 51 (in HIToolbox) [0x7fff81eb5f97]\
+                                                      2 SendEventToEventTargetInternal(OpaqueEventRef*, OpaqueEventTargetRef*, HandlerCallRec*) + 395 (in HIToolbox) [0x7fff81eb6126]\
+                                                        2 DispatchEventToHandlers(EventTargetRec*, OpaqueEventRef*, HandlerCallRec*) + 1002 (in HIToolbox) [0x7fff81eb6bd7]\
+                                                          2 HIView::EventHandler(OpaqueEventHandlerCallRef*, OpaqueEventRef*, void*) + 1842 (in HIToolbox) [0x7fff81ec7a8e]\
+                                                            2 HIStandardMenuView::SimulateHitSelf(short, unsigned int, short*) + 188 (in HIToolbox) [0x7fff81f2db56]\
+                                                              2 HIMenuView::SimulateHitSelf(short, unsigned int, short*) + 111 (in HIToolbox) [0x7fff81f2dc19]\
+                                                                2 RunCurrentEventLoopInMode + 234 (in HIToolbox) [0x7fff81edd9eb]\
+                                                                  2 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+                                                                    2 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+                                                                      2 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+                              1 PopUpMenuSelectCore(MenuData*, Point, double, Point, unsigned short, unsigned int, Rect const*, unsigned short, unsigned int, Rect const*, Rect const*, __CFString const*, OpaqueMenuRef**, unsigned short*) + 1541 (in HIToolbox) [0x7fff8203840e]\
+                                1 TearDownMenuTracking(MenuSelectData&) + 27 (in HIToolbox) [0x7fff81f2f226]\
+                                  1 InitCursor + 16 (in QD) [0x7fff849b7be7]\
+                                    1 CGSInitCursor + 18 (in CoreGraphics) [0x7fff812ad261]\
+                                      1 CGSSetSystemDefinedCursor + 17 (in CoreGraphics) [0x7fff812ad2a2]\
+                                        1 CGSSetRegisteredCursor + 173 (in CoreGraphics) [0x7fff811a6301]\
+                                          1 _CGSSetRegisteredCursor + 181 (in CoreGraphics) [0x7fff811a63da]\
+                                            1 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 88ed000    DispatchQueue 2\
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 _pthread_wqthread + 353 (in libSystem.B.dylib) [0x7fff86df3bb8]\
+        18 _dispatch_worker_thread2 + 244 (in libSystem.B.dylib) [0x7fff86df4286]\
+          18 _dispatch_queue_invoke + 185 (in libSystem.B.dylib) [0x7fff86df475c]\
+            18 kevent + 10 (in libSystem.B.dylib) [0x7fff86df2bba]\
+  Kernel stack:\
+    18 kevent + 97 [0x471745]\
+\
+  Thread 99873d4   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 ??? (in Dock + 88219) [0x10001589b]\
+          18 __semwait_signal + 10 (in libSystem.B.dylib) [0x7fff86e149ee]\
+  Kernel stack:\
+    18 semaphore_wait_continue + 0 [0x22a0a5]\
+\
+  Binary Images:\
+         0x100000000 -        0x100171fff  com.apple.dock 1.7 (758) <8D023535-D5CF-D81C-8E4D-11C1C92451C2> /System/Library/CoreServices/Dock.app/Contents/MacOS/Dock\
+      0x7fff81016000 -     0x7fff81067fe7  com.apple.HIServices 1.8.0 (???) <113EEB8A-8EC6-9F86-EF46-4BA5C2CBF77C> /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/HIServices.framework/Versions/A/HIServices\
+      0x7fff81169000 -     0x7fff8185d537  com.apple.CoreGraphics 1.536.12 (???) <0DCA088B-0C6B-146F-0341-9E0212B5CA50> /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/CoreGraphics.framework/Versions/A/CoreGraphics\
+      0x7fff81eaf000 -     0x7fff821adfe7  com.apple.HIToolbox 1.6.2 (???) <D463A388-244E-047A-E49A-4DA6C15BD1BA> /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/HIToolbox.framework/Versions/A/HIToolbox\
+      0x7fff849b5000 -     0x7fff849f6fef  com.apple.QD 3.33 (???) <3F528878-21F5-B2B5-8A9B-DF067BF91922> /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/QD.framework/Versions/A/QD\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+      0x7fff873db000 -     0x7fff8754eff7  com.apple.CoreFoundation 6.6.1 (550.13) <1E952BD9-37C6-16BE-B2F0-CD92A6283D37> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation\
+\
+\
+Process:         dynamic_pager [34]\
+Path:            /sbin/dynamic_pager\
+UID:             0\
+\
+  Thread 89197a8    DispatchQueue 1\
+  User stack:\
+    18 ??? [0x1000013ec]\
+      18 ??? [0x1000023eb]\
+        18 ??? [0x100001cae]\
+          18 ??? [0x100001a30]\
+            18 ??? [0x10000198f]\
+              18 ??? [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+\
+Process:         Finder [90]\
+Path:            /System/Library/CoreServices/Finder.app/Contents/MacOS/Finder\
+UID:             501\
+\
+  Thread 962f7a8    DispatchQueue 1\
+  User stack:\
+    18 ??? (in Finder + 23776) [0x100005ce0]\
+      18 ??? (in Finder + 23837) [0x100005d1d]\
+        18 NSApplicationMain + 364 (in AppKit) [0x7fff856e7468]\
+          18 -[NSApplication run] + 395 (in AppKit) [0x7fff856ee747]\
+            18 -[NSApplication nextEventMatchingMask:untilDate:inMode:dequeue:] + 155 (in AppKit) [0x7fff85728b41]\
+              18 _DPSNextEvent + 708 (in AppKit) [0x7fff857291f2]\
+                18 BlockUntilNextEventMatchingListInMode + 59 (in HIToolbox) [0x7fff81edd70c]\
+                  18 ReceiveNextEventCommon + 310 (in HIToolbox) [0x7fff81edd853]\
+                    18 RunCurrentEventLoopInMode + 333 (in HIToolbox) [0x7fff81edda4e]\
+                      18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+                        18 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+                          18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 8a61b7c    DispatchQueue 2\
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 _pthread_wqthread + 353 (in libSystem.B.dylib) [0x7fff86df3bb8]\
+        18 _dispatch_worker_thread2 + 244 (in libSystem.B.dylib) [0x7fff86df4286]\
+          18 _dispatch_queue_invoke + 185 (in libSystem.B.dylib) [0x7fff86df475c]\
+            18 kevent + 10 (in libSystem.B.dylib) [0x7fff86df2bba]\
+  Kernel stack:\
+    18 kevent + 97 [0x471745]\
+\
+  Thread 951db7c   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 PrivateMPEntryPoint + 63 (in CarbonCore) [0x7fff835e6b4d]\
+          18 TSystemNotificationTask::SystemNotificationTaskProc(void*) + 514 (in DesktopServicesPriv) [0x7fff88028d86]\
+            18 CFRunLoopRun + 70 (in CoreFoundation) [0x7fff874259b6]\
+              18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+                18 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+                  18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 99a1000   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 select$DARWIN_EXTSN + 10 (in libSystem.B.dylib) [0x7fff86e1d9e2]\
+  Kernel stack:\
+    18 sleep + 52 [0x487f93]\
+\
+  Thread b982000   \
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 __workq_kernreturn + 10 (in libSystem.B.dylib) [0x7fff86df39da]\
+  Kernel stack:\
+    18 workqueue_thread_yielded + 562 [0x4cb6ae]\
+\
+  Thread c9cd000   \
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 __workq_kernreturn + 10 (in libSystem.B.dylib) [0x7fff86df39da]\
+  Kernel stack:\
+    18 workqueue_thread_yielded + 562 [0x4cb6ae]\
+\
+  Binary Images:\
+         0x100000000 -        0x1003aafe7  com.apple.finder 10.6.2 (10.6.2) <5FC801AA-3AEC-F9D6-6EDC-A4D0F708E490> /System/Library/CoreServices/Finder.app/Contents/MacOS/Finder\
+      0x7fff81eaf000 -     0x7fff821adfe7  com.apple.HIToolbox 1.6.2 (???) <D463A388-244E-047A-E49A-4DA6C15BD1BA> /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/HIToolbox.framework/Versions/A/HIToolbox\
+      0x7fff835e0000 -     0x7fff83912fef  com.apple.CoreServices.CarbonCore 861.2 (861.2) <39F3B259-AC2A-792B-ECFE-4F3E72F2D1A5> /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/CarbonCore.framework/Versions/A/CarbonCore\
+      0x7fff856e5000 -     0x7fff860d9fff  com.apple.AppKit 6.6.3 (1038.25) <2F7A5AC8-29E7-9B5F-D3F1-4C7F5821BB80> /System/Library/Frameworks/AppKit.framework/Versions/C/AppKit\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+      0x7fff873db000 -     0x7fff8754eff7  com.apple.CoreFoundation 6.6.1 (550.13) <1E952BD9-37C6-16BE-B2F0-CD92A6283D37> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation\
+      0x7fff88027000 -     0x7fff8810bfff  com.apple.DesktopServices 1.5.3 (1.5.3) <F443ED58-3761-116F-A8B2-C6DC29B7D119> /System/Library/PrivateFrameworks/DesktopServicesPriv.framework/Versions/A/DesktopServicesPriv\
+\
+\
+Process:         Folder Actions Dispatcher [109]\
+Path:            /System/Library/CoreServices/Folder Actions Dispatcher.app/Contents/MacOS/Folder Actions Dispatcher\
+UID:             501\
+\
+  Thread 99063d4    DispatchQueue 1\
+  User stack:\
+    18 ??? (in Folder Actions Dispatcher + 4636) [0x10000121c]\
+      18 NSApplicationMain + 364 (in AppKit) [0x7fff856e7468]\
+        18 -[NSApplication run] + 395 (in AppKit) [0x7fff856ee747]\
+          18 -[NSApplication nextEventMatchingMask:untilDate:inMode:dequeue:] + 155 (in AppKit) [0x7fff85728b41]\
+            18 _DPSNextEvent + 708 (in AppKit) [0x7fff857291f2]\
+              18 BlockUntilNextEventMatchingListInMode + 59 (in HIToolbox) [0x7fff81edd70c]\
+                18 ReceiveNextEventCommon + 310 (in HIToolbox) [0x7fff81edd853]\
+                  18 RunCurrentEventLoopInMode + 333 (in HIToolbox) [0x7fff81edda4e]\
+                    18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+                      18 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+                        18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 99877a8    DispatchQueue 2\
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 _pthread_wqthread + 353 (in libSystem.B.dylib) [0x7fff86df3bb8]\
+        18 _dispatch_worker_thread2 + 244 (in libSystem.B.dylib) [0x7fff86df4286]\
+          18 _dispatch_queue_invoke + 185 (in libSystem.B.dylib) [0x7fff86df475c]\
+            18 kevent + 10 (in libSystem.B.dylib) [0x7fff86df2bba]\
+  Kernel stack:\
+    18 kevent + 97 [0x471745]\
+\
+  Binary Images:\
+         0x100000000 -        0x100012ff7  com.apple.FolderActionsDispatcher 1.0.1 (1.0.1) <7C7173BB-48CF-32B2-2AD7-3C9F09B089D0> /System/Library/CoreServices/Folder Actions Dispatcher.app/Contents/MacOS/Folder Actions Dispatcher\
+      0x7fff81eaf000 -     0x7fff821adfe7  com.apple.HIToolbox 1.6.2 (???) <D463A388-244E-047A-E49A-4DA6C15BD1BA> /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/HIToolbox.framework/Versions/A/HIToolbox\
+      0x7fff856e5000 -     0x7fff860d9fff  com.apple.AppKit 6.6.3 (1038.25) <2F7A5AC8-29E7-9B5F-D3F1-4C7F5821BB80> /System/Library/Frameworks/AppKit.framework/Versions/C/AppKit\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+      0x7fff873db000 -     0x7fff8754eff7  com.apple.CoreFoundation 6.6.1 (550.13) <1E952BD9-37C6-16BE-B2F0-CD92A6283D37> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation\
+\
+\
+Process:         fontd [101]\
+Path:            /System/Library/Frameworks/ApplicationServices.framework/Frameworks/ATS.framework/Support/fontd\
+UID:             501\
+\
+  Thread 95a27a8    DispatchQueue -1609565611\
+  User stack:\
+    18 ??? (in fontd + 16156) [0x100003f1c]\
+      18 main_handler + 3919 (in libATSServer.dylib) [0x7fff87021646]\
+        18 CFRunLoopRun + 70 (in CoreFoundation) [0x7fff874259b6]\
+          18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+            18 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+              18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 951d7a8    DispatchQueue -95051761\
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 _pthread_wqthread + 353 (in libSystem.B.dylib) [0x7fff86df3bb8]\
+        18 _dispatch_worker_thread2 + 244 (in libSystem.B.dylib) [0x7fff86df4286]\
+          18 _dispatch_queue_invoke + 185 (in libSystem.B.dylib) [0x7fff86df475c]\
+            18 kevent + 10 (in libSystem.B.dylib) [0x7fff86df2bba]\
+  Kernel stack:\
+    18 kevent + 97 [0x471745]\
+\
+  Binary Images:\
+         0x100000000 -        0x100003fff  fontd ??? (???) <CE2B0453-8ABF-D809-6F98-32F2D6685922> /System/Library/Frameworks/ApplicationServices.framework/Frameworks/ATS.framework/Support/fontd\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+      0x7fff86f98000 -     0x7fff8704cfff  libATSServer.dylib ??? (???) <F065A2A1-73A6-7CC2-C564-25D8398A641B> /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ATS.framework/Versions/A/Resources/libATSServer.dylib\
+      0x7fff873db000 -     0x7fff8754eff7  com.apple.CoreFoundation 6.6.1 (550.13) <1E952BD9-37C6-16BE-B2F0-CD92A6283D37> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation\
+\
+\
+Process:         fseventsd [32]\
+Path:            /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/CarbonCore.framework/Versions/A/Support/fseventsd\
+UID:             0\
+\
+  Thread 890b000    DispatchQueue 1\
+  User stack:\
+    18 ??? (in fseventsd + 5572) [0x1000015c4]\
+      18 ??? (in fseventsd + 8776) [0x100002248]\
+        18 mach_msg_server + 597 (in libSystem.B.dylib) [0x7fff86e571c8]\
+          18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 8a3e000    DispatchQueue 2\
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 _pthread_wqthread + 353 (in libSystem.B.dylib) [0x7fff86df3bb8]\
+        18 _dispatch_worker_thread2 + 244 (in libSystem.B.dylib) [0x7fff86df4286]\
+          18 _dispatch_queue_invoke + 185 (in libSystem.B.dylib) [0x7fff86df475c]\
+            18 kevent + 10 (in libSystem.B.dylib) [0x7fff86df2bba]\
+  Kernel stack:\
+    18 kevent + 97 [0x471745]\
+\
+  Thread 82bf3d4   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 ??? (in fseventsd + 28948) [0x100007114]\
+          18 __semwait_signal + 10 (in libSystem.B.dylib) [0x7fff86e149ee]\
+  Kernel stack:\
+    18 semaphore_wait_continue + 0 [0x22a0a5]\
+\
+  Thread 89297a8   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 ??? (in fseventsd + 26011) [0x10000659b]\
+          18 CFRunLoopRun + 70 (in CoreFoundation) [0x7fff874259b6]\
+            18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+              18 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+                18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 8a087a8   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 ??? (in fseventsd + 39173) [0x100009905]\
+          18 ??? (in fseventsd + 38428) [0x10000961c]\
+            18 __semwait_signal + 10 (in libSystem.B.dylib) [0x7fff86e149ee]\
+  Kernel stack:\
+    18 semaphore_wait_continue + 0 [0x22a0a5]\
+\
+  Thread 8a107a8   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 ??? (in fseventsd + 28948) [0x100007114]\
+          18 __semwait_signal + 10 (in libSystem.B.dylib) [0x7fff86e149ee]\
+  Kernel stack:\
+    18 semaphore_wait_continue + 0 [0x22a0a5]\
+\
+  Thread 8a10b7c   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 read + 10 (in libSystem.B.dylib) [0x7fff86de4426]\
+  Kernel stack:\
+    18 lo64_unix_scall + 77 [0x29e3fd]\
+      18 unix_syscall64 + 617 [0x4ee947]\
+        18 read_nocancel + 158 [0x496add]\
+          18 write + 312 [0x49634d]\
+            18 get_pathbuff + 3054 [0x3023db]\
+              18 tsleep + 105 [0x4881ce]\
+                18 wakeup + 786 [0x487da7]\
+                  18 thread_block + 33 [0x226fb5]\
+                    18 thread_block_reason + 331 [0x226f27]\
+                      18 thread_dispatch + 1950 [0x226c88]\
+                        18 machine_switch_context + 753 [0x2a5a37]\
+\
+  Thread 99427a8   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 ??? (in fseventsd + 28948) [0x100007114]\
+          18 __semwait_signal + 10 (in libSystem.B.dylib) [0x7fff86e149ee]\
+  Kernel stack:\
+    18 semaphore_wait_continue + 0 [0x22a0a5]\
+\
+  Thread 996d3d4   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 ??? (in fseventsd + 28948) [0x100007114]\
+          18 __semwait_signal + 10 (in libSystem.B.dylib) [0x7fff86e149ee]\
+  Kernel stack:\
+    18 semaphore_wait_continue + 0 [0x22a0a5]\
+\
+  Thread 9987b7c   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 ??? (in fseventsd + 28948) [0x100007114]\
+          18 __semwait_signal + 10 (in libSystem.B.dylib) [0x7fff86e149ee]\
+  Kernel stack:\
+    18 semaphore_wait_continue + 0 [0x22a0a5]\
+\
+  Thread 99d93d4   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 ??? (in fseventsd + 28948) [0x100007114]\
+          18 __semwait_signal + 10 (in libSystem.B.dylib) [0x7fff86e149ee]\
+  Kernel stack:\
+    18 semaphore_wait_continue + 0 [0x22a0a5]\
+\
+  Thread 9c7ab7c   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 ??? (in fseventsd + 28948) [0x100007114]\
+          18 __semwait_signal + 10 (in libSystem.B.dylib) [0x7fff86e149ee]\
+  Kernel stack:\
+    18 semaphore_wait_continue + 0 [0x22a0a5]\
+\
+  Binary Images:\
+         0x100000000 -        0x10000ffff  fseventsd ??? (???) <FBB97819-5C10-2C3D-63C0-7D9569A94ED1> /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/CarbonCore.framework/Versions/A/Support/fseventsd\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+      0x7fff873db000 -     0x7fff8754eff7  com.apple.CoreFoundation 6.6.1 (550.13) <1E952BD9-37C6-16BE-B2F0-CD92A6283D37> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation\
+\
+\
+Process:         hidd [31]\
+Path:            /usr/libexec/hidd\
+UID:             0\
+\
+  Thread 890b3d4    DispatchQueue 1\
+  User stack:\
+    18 ??? (in hidd + 3756) [0x100000eac]\
+      18 ??? (in hidd + 3822) [0x100000eee]\
+        18 CFRunLoopRun + 70 (in CoreFoundation) [0x7fff874259b6]\
+          18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+            18 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+              18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 8a08b7c    DispatchQueue 2\
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 _pthread_wqthread + 353 (in libSystem.B.dylib) [0x7fff86df3bb8]\
+        18 _dispatch_worker_thread2 + 244 (in libSystem.B.dylib) [0x7fff86df4286]\
+          18 _dispatch_queue_invoke + 185 (in libSystem.B.dylib) [0x7fff86df475c]\
+            18 kevent + 10 (in libSystem.B.dylib) [0x7fff86df2bba]\
+  Kernel stack:\
+    18 kevent + 97 [0x471745]\
+\
+  Binary Images:\
+         0x100000000 -        0x100000fff  hidd ??? (???) <AB950B9C-2A8F-9549-CD2B-15887282443E> /usr/libexec/hidd\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+      0x7fff873db000 -     0x7fff8754eff7  com.apple.CoreFoundation 6.6.1 (550.13) <1E952BD9-37C6-16BE-B2F0-CD92A6283D37> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation\
+\
+\
+Process:         InterCheck [44]\
+Path:            /Library/Sophos Anti-Virus/InterCheck.app/Contents/MacOS/InterCheck\
+UID:             0\
+\
+\
+Process:         KernelEventAgent [29]\
+Path:            /usr/sbin/KernelEventAgent\
+UID:             0\
+\
+  Thread 890bb7c    DispatchQueue 1\
+  User stack:\
+    18 start + 52 (in KernelEventAgent) [0x100001174]\
+      18 main + 1130 (in KernelEventAgent) [0x1000030aa]\
+        18 CFRunLoopRun + 70 (in CoreFoundation) [0x7fff874259b6]\
+          18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+            18 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+              18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 8a073d4    DispatchQueue 2\
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 _pthread_wqthread + 353 (in libSystem.B.dylib) [0x7fff86df3bb8]\
+        18 _dispatch_worker_thread2 + 244 (in libSystem.B.dylib) [0x7fff86df4286]\
+          18 _dispatch_queue_invoke + 185 (in libSystem.B.dylib) [0x7fff86df475c]\
+            18 kevent + 10 (in libSystem.B.dylib) [0x7fff86df2bba]\
+  Kernel stack:\
+    18 kevent + 97 [0x471745]\
+\
+  Thread 8a07b7c   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 select$DARWIN_EXTSN + 10 (in libSystem.B.dylib) [0x7fff86e1d9e2]\
+  Kernel stack:\
+    18 sleep + 52 [0x487f93]\
+\
+  Binary Images:\
+         0x100000000 -        0x100006ff7  KernelEventAgent ??? (???) <20952F40-244C-DE8B-B7BA-05B8118647CF> /usr/sbin/KernelEventAgent\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+      0x7fff873db000 -     0x7fff8754eff7  com.apple.CoreFoundation 6.6.1 (550.13) <1E952BD9-37C6-16BE-B2F0-CD92A6283D37> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation\
+\
+\
+Process:         kextd [10]\
+Path:            /usr/libexec/kextd\
+UID:             0\
+\
+  Thread 80833d4    DispatchQueue 1\
+  User stack:\
+    18 ??? (in kextd + 5608) [0x1000015e8]\
+      18 ??? (in kextd + 9541) [0x100002545]\
+        18 CFRunLoopRun + 70 (in CoreFoundation) [0x7fff874259b6]\
+          18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+            18 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+              18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 81ed3d4    DispatchQueue 2\
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 _pthread_wqthread + 353 (in libSystem.B.dylib) [0x7fff86df3bb8]\
+        18 _dispatch_worker_thread2 + 244 (in libSystem.B.dylib) [0x7fff86df4286]\
+          18 _dispatch_queue_invoke + 185 (in libSystem.B.dylib) [0x7fff86df475c]\
+            18 kevent + 10 (in libSystem.B.dylib) [0x7fff86df2bba]\
+  Kernel stack:\
+    18 kevent + 97 [0x471745]\
+\
+  Binary Images:\
+         0x100000000 -        0x10001afff  kextd ??? (???) <E8C384D5-F62D-F608-507B-C658137806C1> /usr/libexec/kextd\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+      0x7fff873db000 -     0x7fff8754eff7  com.apple.CoreFoundation 6.6.1 (550.13) <1E952BD9-37C6-16BE-B2F0-CD92A6283D37> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation\
+\
+\
+Process:         launchd [1]\
+Path:            /sbin/launchd\
+UID:             0\
+\
+  Thread 8217b7c    DispatchQueue 1\
+  User stack:\
+    18 start + 52 (in launchd) [0x100001828]\
+      18 main + 1841 (in launchd) [0x100007c3c]\
+        18 launchd_runtime + 450 (in launchd) [0x10000b653]\
+          18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 8235b7c   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 select$DARWIN_EXTSN + 10 (in libSystem.B.dylib) [0x7fff86e1d9e2]\
+  Kernel stack:\
+    18 sleep + 52 [0x487f93]\
+\
+  Thread 82de3d4   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 update_thread + 22 (in launchd) [0x100007d3a]\
+          18 sleep + 61 (in libSystem.B.dylib) [0x7fff86e62090]\
+            18 __semwait_signal + 10 (in libSystem.B.dylib) [0x7fff86e149ee]\
+  Kernel stack:\
+    18 semaphore_wait_continue + 0 [0x22a0a5]\
+\
+  Binary Images:\
+         0x100000000 -        0x100029fe7  launchd ??? (???) <AED4A707-E3DE-4836-9343-90D184AF0438> /sbin/launchd\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+\
+\
+Process:         launchd [84]\
+Path:            /sbin/launchd\
+UID:             501\
+\
+  Thread 962fb7c    DispatchQueue 1\
+  User stack:\
+    18 start + 52 (in launchd) [0x100001828]\
+      18 main + 1841 (in launchd) [0x100007c3c]\
+        18 launchd_runtime + 450 (in launchd) [0x10000b653]\
+          18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 92b9b7c   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 select$DARWIN_EXTSN + 10 (in libSystem.B.dylib) [0x7fff86e1d9e2]\
+  Kernel stack:\
+    18 sleep + 52 [0x487f93]\
+\
+  Binary Images:\
+         0x100000000 -        0x100029fe7  launchd ??? (???) <AED4A707-E3DE-4836-9343-90D184AF0438> /sbin/launchd\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+\
+\
+Process:         LCDClock [129]\
+Path:            /Applications/Logitech/GamePanel Software/LCD Manager/Applets/LCDClock.app/Contents/MacOS/LCDClock\
+UID:             501\
+\
+\
+Process:         LCDManager [115]\
+Path:            /Applications/Logitech/GamePanel Software/LCD Manager/LCDManager.app/Contents/MacOS/LCDManager\
+UID:             501\
+\
+\
+Process:         LCDMediaPlayer [130]\
+Path:            /Applications/Logitech/GamePanel Software/LCD Manager/Applets/LCDMediaPlayer.app/Contents/MacOS/LCDMediaPlayer\
+UID:             501\
+\
+\
+Process:         loginwindow [28]\
+Path:            /System/Library/CoreServices/loginwindow.app/Contents/MacOS/loginwindow\
+UID:             501\
+\
+  Thread 88fc000    DispatchQueue 1\
+  User stack:\
+    18 ??? (in loginwindow + 18536) [0x100004868]\
+      18 ??? (in loginwindow + 19966) [0x100004dfe]\
+        18 -[NSApplication run] + 395 (in AppKit) [0x7fff856ee747]\
+          18 -[NSApplication nextEventMatchingMask:untilDate:inMode:dequeue:] + 155 (in AppKit) [0x7fff85728b41]\
+            18 _DPSNextEvent + 708 (in AppKit) [0x7fff857291f2]\
+              18 BlockUntilNextEventMatchingListInMode + 59 (in HIToolbox) [0x7fff81edd70c]\
+                18 ReceiveNextEventCommon + 310 (in HIToolbox) [0x7fff81edd853]\
+                  18 RunCurrentEventLoopInMode + 333 (in HIToolbox) [0x7fff81edda4e]\
+                    18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+                      18 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+                        18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 8a3eb7c    DispatchQueue 2\
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 _pthread_wqthread + 353 (in libSystem.B.dylib) [0x7fff86df3bb8]\
+        18 _dispatch_worker_thread2 + 244 (in libSystem.B.dylib) [0x7fff86df4286]\
+          18 _dispatch_queue_invoke + 185 (in libSystem.B.dylib) [0x7fff86df475c]\
+            18 kevent + 10 (in libSystem.B.dylib) [0x7fff86df2bba]\
+  Kernel stack:\
+    18 kevent + 97 [0x471745]\
+\
+  Binary Images:\
+         0x100000000 -        0x100077fef  com.apple.loginwindow 6.0 (6.0) <34D7A56E-DE5D-2C29-5328-CB913034CEFC> /System/Library/CoreServices/loginwindow.app/Contents/MacOS/loginwindow\
+      0x7fff81eaf000 -     0x7fff821adfe7  com.apple.HIToolbox 1.6.2 (???) <D463A388-244E-047A-E49A-4DA6C15BD1BA> /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/HIToolbox.framework/Versions/A/HIToolbox\
+      0x7fff856e5000 -     0x7fff860d9fff  com.apple.AppKit 6.6.3 (1038.25) <2F7A5AC8-29E7-9B5F-D3F1-4C7F5821BB80> /System/Library/Frameworks/AppKit.framework/Versions/C/AppKit\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+      0x7fff873db000 -     0x7fff8754eff7  com.apple.CoreFoundation 6.6.1 (550.13) <1E952BD9-37C6-16BE-B2F0-CD92A6283D37> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation\
+\
+\
+Process:         mDNSResponder [27]\
+Path:            /usr/sbin/mDNSResponder\
+UID:             65\
+\
+  Thread 88fc3d4    DispatchQueue 1\
+  User stack:\
+    18 start + 33 (in mDNSResponder) [0x100030645]\
+      18 _start + 224 (in mDNSResponder) [0x1000013f6]\
+        18 main + 2910 (in mDNSResponder) [0x100001f64]\
+          18 CFRunLoopRun + 70 (in CoreFoundation) [0x7fff874259b6]\
+            18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+              18 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+                18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 887b000    DispatchQueue 2\
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 _pthread_wqthread + 353 (in libSystem.B.dylib) [0x7fff86df3bb8]\
+        18 _dispatch_worker_thread2 + 244 (in libSystem.B.dylib) [0x7fff86df4286]\
+          18 _dispatch_queue_invoke + 185 (in libSystem.B.dylib) [0x7fff86df475c]\
+            18 kevent + 10 (in libSystem.B.dylib) [0x7fff86df2bba]\
+  Kernel stack:\
+    18 kevent + 97 [0x471745]\
+\
+  Thread 84b27a8   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 kevent + 10 (in libSystem.B.dylib) [0x7fff86df2bba]\
+  Kernel stack:\
+    18 kevent + 97 [0x471745]\
+\
+  Binary Images:\
+         0x100000000 -        0x100063fff  mDNSResponder ??? (???) <FAB6BC25-84BB-FD33-36AD-4E1436EFB731> /usr/sbin/mDNSResponder\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+      0x7fff873db000 -     0x7fff8754eff7  com.apple.CoreFoundation 6.6.1 (550.13) <1E952BD9-37C6-16BE-B2F0-CD92A6283D37> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation\
+\
+\
+Process:         mds [26]\
+Path:            /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Support/mds\
+UID:             0\
+\
+  Thread 88fc7a8    DispatchQueue 1\
+  User stack:\
+    18 ??? (in mds + 16520) [0x100004088]\
+      18 ??? (in mds + 48306) [0x10000bcb2]\
+        18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+          18 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+            18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 8a627a8    DispatchQueue 2\
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 _pthread_wqthread + 353 (in libSystem.B.dylib) [0x7fff86df3bb8]\
+        18 _dispatch_worker_thread2 + 244 (in libSystem.B.dylib) [0x7fff86df4286]\
+          18 _dispatch_queue_invoke + 185 (in libSystem.B.dylib) [0x7fff86df475c]\
+            18 kevent + 10 (in libSystem.B.dylib) [0x7fff86df2bba]\
+  Kernel stack:\
+    18 kevent + 97 [0x471745]\
+\
+  Thread 9a173d4   \
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 __workq_kernreturn + 10 (in libSystem.B.dylib) [0x7fff86df39da]\
+  Kernel stack:\
+    18 workqueue_thread_yielded + 562 [0x4cb6ae]\
+\
+  Thread b008000   \
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 __workq_kernreturn + 10 (in libSystem.B.dylib) [0x7fff86df39da]\
+  Kernel stack:\
+    18 workqueue_thread_yielded + 562 [0x4cb6ae]\
+\
+  Binary Images:\
+         0x100000000 -        0x1000cbff7  mds ??? (???) <254A5377-0E56-0079-6F5B-9A0E4AE1F008> /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Support/mds\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+      0x7fff873db000 -     0x7fff8754eff7  com.apple.CoreFoundation 6.6.1 (550.13) <1E952BD9-37C6-16BE-B2F0-CD92A6283D37> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation\
+\
+\
+Process:         mdworker [1228]\
+Path:            /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/mdworker\
+UID:             501\
+\
+  Thread c9c3b7c    DispatchQueue 1\
+  User stack:\
+    18 ??? (in mdworker + 4148) [0x100001034]\
+      18 ??? (in mdworker + 33709) [0x1000083ad]\
+        18 CFRunLoopRun + 70 (in CoreFoundation) [0x7fff874259b6]\
+          18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+            18 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+              18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 8a61000    DispatchQueue 2\
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 _pthread_wqthread + 353 (in libSystem.B.dylib) [0x7fff86df3bb8]\
+        18 _dispatch_worker_thread2 + 244 (in libSystem.B.dylib) [0x7fff86df4286]\
+          18 _dispatch_queue_invoke + 185 (in libSystem.B.dylib) [0x7fff86df475c]\
+            18 kevent + 10 (in libSystem.B.dylib) [0x7fff86df2bba]\
+  Kernel stack:\
+    18 kevent + 97 [0x471745]\
+\
+  Thread c5a2b7c   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 ??? (in mdworker + 41389) [0x10000a1ad]\
+          18 ??? (in mdworker + 42280) [0x10000a528]\
+            18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 9906000   \
+  User stack:\
+    17 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      17 __workq_kernreturn + 10 (in libSystem.B.dylib) [0x7fff86df39da]\
+  Kernel stack:\
+    17 workqueue_thread_yielded + 562 [0x4cb6ae]\
+\
+  Binary Images:\
+         0x100000000 -        0x10003bff7  mdworker ??? (???) <07400053-FC07-485E-F2B7-F3B4C93169BB> /System/Library/Frameworks/CoreServices.framework/Frameworks/Metadata.framework/Versions/A/Support/mdworker\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+      0x7fff873db000 -     0x7fff8754eff7  com.apple.CoreFoundation 6.6.1 (550.13) <1E952BD9-37C6-16BE-B2F0-CD92A6283D37> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation\
+\
+\
+Process:         notifyd [11]\
+Path:            /usr/sbin/notifyd\
+UID:             0\
+\
+  Thread 82bf000    DispatchQueue 1\
+  User stack:\
+    18 ??? [0x100000758]\
+      18 ??? [0x100001c67]\
+        18 ??? [0x7fff86df2bba]\
+  Kernel stack:\
+    18 kevent + 97 [0x471745]\
+\
+  Thread 8437000   \
+  User stack:\
+    18 ??? [0x7fff86e12e41]\
+      18 ??? [0x7fff86e12f8e]\
+        18 ??? [0x100001e7e]\
+          18 ??? [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+\
+Process:         ntpd [18]\
+Path:            /usr/sbin/ntpd\
+UID:             0\
+\
+  Thread 887a7a8    DispatchQueue 1\
+  User stack:\
+    18 ??? (in ntpd + 6356) [0x1000018d4]\
+      18 ??? (in ntpd + 36998) [0x100009086]\
+        18 __sigsuspend + 10 (in libSystem.B.dylib) [0x7fff86e39e7a]\
+  Kernel stack:\
+    18 sleep + 52 [0x487f93]\
+\
+  Binary Images:\
+         0x100000000 -        0x100056fef  ntpd ??? (???) <3BCDB850-F8F7-CF24-9E18-61AAE7668E14> /usr/sbin/ntpd\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+\
+\
+Process:         ocspd [1303]\
+Path:            /usr/sbin/ocspd\
+UID:             0\
+\
+  Thread 8a6c3d4    DispatchQueue 1\
+  User stack:\
+    18 ??? (in ocspd + 5776) [0x100001690]\
+      18 ??? (in ocspd + 12007) [0x100002ee7]\
+        18 ??? (in ocspd + 86379) [0x10001516b]\
+          18 ??? (in ocspd + 85665) [0x100014ea1]\
+            18 mach_msg_overwrite_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e46]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread bc9b7a8   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 ??? (in ocspd + 90654) [0x10001621e]\
+          18 ??? (in ocspd + 86798) [0x10001530e]\
+            18 ??? (in ocspd + 85665) [0x100014ea1]\
+              18 mach_msg_overwrite_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e46]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Binary Images:\
+         0x100000000 -        0x100038fff  ocspd ??? (???) <379B154D-225B-D579-FAE3-E857757948EA> /usr/sbin/ocspd\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+\
+\
+Process:         pboard [124]\
+Path:            /usr/sbin/pboard\
+UID:             501\
+\
+  Thread 9942b7c    DispatchQueue 1\
+  User stack:\
+    18 ??? (in pboard + 5860) [0x1000016e4]\
+      18 ??? (in pboard + 6062) [0x1000017ae]\
+        18 mach_msg_server + 468 (in libSystem.B.dylib) [0x7fff86e57147]\
+          18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Binary Images:\
+         0x100000000 -        0x100001fff  pboard ??? (???) <2B1550DB-E604-C592-07E9-944CFB25738A> /usr/sbin/pboard\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+\
+\
+Process:         rpc.statd [22]\
+Path:            /usr/sbin/rpc.statd\
+UID:             0\
+\
+  Thread 88ed7a8    DispatchQueue 1\
+  User stack:\
+    18 ??? (in rpc.statd + 4740) [0x1a7967284]\
+      18 ??? (in rpc.statd + 18439) [0x1a796a807]\
+        18 ??? (in rpc.statd + 11160) [0x1a7968b98]\
+          18 sleep + 61 (in libSystem.B.dylib) [0x7fff86e62090]\
+            18 __semwait_signal + 10 (in libSystem.B.dylib) [0x7fff86e149ee]\
+  Kernel stack:\
+    18 semaphore_wait_continue + 0 [0x22a0a5]\
+\
+  Binary Images:\
+         0x1a7966000 -        0x1a796cfff  rpc.statd ??? (???) <11A3775A-3C44-D7B6-269B-AF9577969BF4> /usr/sbin/rpc.statd\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+\
+\
+Process:         securityd [23]\
+Path:            /usr/sbin/securityd\
+UID:             0\
+\
+  Thread 88ed3d4    DispatchQueue 1\
+  User stack:\
+    18 ??? (in securityd + 5608) [0x1000015e8]\
+      18 ??? (in securityd + 7953) [0x100001f11]\
+        18 ??? (in securityd + 27083) [0x1000069cb]\
+          18 ??? (in securityd + 28091) [0x100006dbb]\
+            18 mach_msg_overwrite_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e46]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 9a047a8   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 ??? (in securityd + 33454) [0x1000082ae]\
+          18 ??? (in securityd + 33606) [0x100008346]\
+            18 ??? (in securityd + 28091) [0x100006dbb]\
+              18 mach_msg_overwrite_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e46]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Binary Images:\
+         0x100000000 -        0x1000e5fef  securityd ??? (???) <AF0F32E5-0D43-1B8B-9632-5A4B32E6A7F5> /usr/sbin/securityd\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+\
+\
+Process:         Skype [951]\
+Path:            /Applications/Skype.app/Contents/MacOS/Skype\
+UID:             501\
+\
+\
+Process:         SophosAntiVirus [43]\
+Path:            /Library/Sophos Anti-Virus/SophosAntiVirus.app/Contents/MacOS/SophosAntiVirus\
+UID:             0\
+\
+\
+Process:         SophosAutoUpdate [45]\
+Path:            /Library/Sophos Anti-Virus/SophosAutoUpdate.app/Contents/MacOS/SophosAutoUpdate\
+UID:             0\
+\
+\
+Process:         SophosUIServer [113]\
+Path:            /Library/Sophos Anti-Virus/SophosUIServer.app/Contents/MacOS/SophosUIServer\
+UID:             501\
+\
+\
+Process:         spindump [1313]\
+Path:            /usr/sbin/spindump\
+UID:             0\
+\
+  Thread 8df23d4    DispatchQueue 1892807808\
+  User stack:\
+    18 ??? (in spindump + 3752) [0x100000ea8]\
+      18 ??? (in spindump + 6427) [0x10000191b]\
+        18 CFRunLoopRun + 70 (in CoreFoundation) [0x7fff874259b6]\
+          18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+            16 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+              16 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+            2 __CFRunLoopRun + 3640 (in CoreFoundation) [0x7fff87426f38]\
+              2 _dispatch_main_queue_callback_4CF + 37 (in libSystem.B.dylib) [0x7fff86e27e4c]\
+                2 _dispatch_queue_serial_drain_till_empty + 9 (in libSystem.B.dylib) [0x7fff86df5127]\
+                  2 _dispatch_queue_drain + 251 (in libSystem.B.dylib) [0x7fff86df487a]\
+                    2 _dispatch_call_block_and_release + 15 (in libSystem.B.dylib) [0x7fff86e15ce8]\
+                      2 ??? (in spindump + 10090) [0x10000276a]\
+                        2 ??? (in spindump + 10652) [0x10000299c]\
+                          2 AudioObjectGetPropertyDataSize + 143 (in CoreAudio) [0x7fff81af9afb]\
+                            2 HALSystem::CheckOutInstance() + 364 (in CoreAudio) [0x7fff81ad7662]\
+                              1 HALSystem::InitializeDevices() + 9 (in CoreAudio) [0x7fff81adb74d]\
+                                1 HALPlugInManagement::Initialize() + 586 (in CoreAudio) [0x7fff81adb9aa]\
+                                  1 IOServiceAddMatchingNotification + 181 (in IOKit) [0x7fff80bb6179]\
+                                    1 io_service_add_notification + 369 (in IOKit) [0x7fff80bf5a35]\
+                                      1 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+                              1 HALRunLoop::Start() + 18 (in CoreAudio) [0x7fff81aef462]\
+                                1 CAAppWorkArounds::Needs6858274WorkAround() + 90 (in CoreAudio) [0x7fff81aef4de]\
+                                  1 _CSCheckFix + 19 (in CarbonCore) [0x7fff835e0ed7]\
+                                    1 GetBugsForOurBundleIDFromCoreservicesd + 533 (in CarbonCore) [0x7fff835e1137]\
+                                      1 _CFBundleCopyInfoDictionaryInResourceForkWithAllocator + 87 (in CoreFoundation) [0x7fff87468507]\
+                                        1 CFURLGetFSRef + 48 (in CoreFoundation) [0x7fff87428fe0]\
+                                          1 _CFGetFSRefFromURL + 829 (in CoreFoundation) [0x7fff8742932d]\
+                                            1 FSPathMakeRefInternal(unsigned char const*, unsigned int, unsigned int, FSRef*, unsigned char*) + 114 (in CarbonCore) [0x7fff835ec4c4]\
+                                              1 PathGetObjectInfo(char const*, unsigned int, unsigned int, short*, unsigned int*, unsigned int*, char*, unsigned int*, unsigned char*) + 296 (in CarbonCore) [0x7fff835ec695]\
+                                                1 FSMount::FSMount(unsigned int, FSMountNumberType, short*) + 73 (in CarbonCore) [0x7fff835edfc5]\
+                                                  1 FileIDTreeGetVRefNumForDevice + 72 (in CarbonCore) [0x7fff835ee07b]\
+                                                    1 FileIDTree_FindVolumeRecordFromDeviceID + 66 (in CarbonCore) [0x7fff835ee16b]\
+                                                      1 FSNodeEntry_FindByFileID + 161 (in CarbonCore) [0x7fff835ee237]\
+                                                        1 _SCUniverseGetEntryAddress + 113 (in CarbonCore) [0x7fff835e80da]\
+                                                          1 CSSharedUniverseSegmentMapper + 86 (in CarbonCore) [0x7fff835e8187]\
+                                                            1 _scclient_SCSessionUniverseMapSharedSegment_rpc + 97 (in CarbonCore) [0x7fff835e8200]\
+                                                              1 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    17 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+    1 lo64_mach_scall + 77 [0x29e44d]\
+      1 thread_setuserstack + 405 [0x292834]\
+        1 mach_msg_overwrite_trap + 274 [0x216a5a]\
+          1 ipc_kmsg_send + 111 [0x2107f7]\
+            1 ipc_kobject_server + 244 [0x21d65f]\
+              1 iokit_server_routine + 2260 [0x283e2e]\
+                1 IOServiceUserNotification::IOServiceUserNotification() + 425 [0x56703f]\
+                  1 IOService::addMatchingNotification(OSSymbol const*, OSDictionary*, bool (*)(void*, void*, IOService*, IONotifier*), void*, void*, long) + 68 [0x53b5a0]\
+                    1 IOService::installNotification(OSSymbol const*, OSDictionary*, bool (*)(void*, void*, IOService*, IONotifier*), void*, void*, long, OSIterator**) + 73 [0x53b545]\
+                      1 IOService::doInstallNotification(OSSymbol const*, OSDictionary*, bool (*)(void*, void*, IOService*, IONotifier*), void*, void*, long, OSIterator**) + 150 [0x53b4b6]\
+                        1 IOService::copyExistingServices(OSDictionary*, unsigned long, unsigned long) + 386 [0x535ab0]\
+                          1 IORegistryIterator::getNextObjectRecursive() + 94 [0x52f370]\
+                            1 lo_allintrs + 627 [0x29dc63]\
+                              1 i386_astintr + 47 [0x2a6a07]\
+                                1 ast_taken + 185 [0x218e86]\
+                                  1 thread_block_reason + 331 [0x226f27]\
+                                    1 thread_dispatch + 1950 [0x226c88]\
+                                      1 machine_switch_context + 753 [0x2a5a37]\
+\
+  Thread c9ee000    DispatchQueue 17\
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 _pthread_wqthread + 353 (in libSystem.B.dylib) [0x7fff86df3bb8]\
+        18 _dispatch_worker_thread2 + 244 (in libSystem.B.dylib) [0x7fff86df4286]\
+          18 _dispatch_queue_invoke + 57 (in libSystem.B.dylib) [0x7fff86df46dc]\
+            18 _dispatch_queue_drain + 261 (in libSystem.B.dylib) [0x7fff86df4884]\
+              18 _dispatch_queue_invoke + 185 (in libSystem.B.dylib) [0x7fff86df475c]\
+                18 _dispatch_source_invoke + 273 (in libSystem.B.dylib) [0x7fff86df539b]\
+                  18 ??? (in spindump + 16000) [0x100003e80]\
+                    18 syscall + 10 (in libSystem.B.dylib) [0x7fff86e162da]\
+  Kernel stack:\
+    18 lo64_unix_scall + 77 [0x29e3fd]\
+      18 unix_syscall64 + 617 [0x4ee947]\
+        18 stack_snapshot + 85 [0x460d1e]\
+          18 stack_snapshot2 + 147 [0x460c37]\
+\
+  Thread 8a623d4   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 ??? (in spindump + 8819) [0x100002273]\
+          18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 9ab13d4   \
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 _pthread_wqthread + 353 (in libSystem.B.dylib) [0x7fff86df3bb8]\
+        18 _dispatch_worker_thread2 + 244 (in libSystem.B.dylib) [0x7fff86df4286]\
+          18 _dispatch_queue_invoke + 185 (in libSystem.B.dylib) [0x7fff86df475c]\
+            18 kevent + 10 (in libSystem.B.dylib) [0x7fff86df2bba]\
+  Kernel stack:\
+    18 kevent + 97 [0x471745]\
+\
+  Thread ca157a8   \
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 __workq_kernreturn + 10 (in libSystem.B.dylib) [0x7fff86df39da]\
+  Kernel stack:\
+    18 workqueue_thread_yielded + 562 [0x4cb6ae]\
+\
+  Thread 99d9000   \
+  User stack:\
+    17 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      17 __workq_kernreturn + 10 (in libSystem.B.dylib) [0x7fff86df39da]\
+  Kernel stack:\
+    17 workqueue_thread_yielded + 562 [0x4cb6ae]\
+\
+  Thread 99d9000    DispatchQueue 11\
+  User stack:\
+    1 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      1 _pthread_wqthread + 353 (in libSystem.B.dylib) [0x7fff86df3bb8]\
+        1 _dispatch_worker_thread2 + 244 (in libSystem.B.dylib) [0x7fff86df4286]\
+          1 _dispatch_queue_invoke + 57 (in libSystem.B.dylib) [0x7fff86df46dc]\
+            1 _dispatch_queue_drain + 251 (in libSystem.B.dylib) [0x7fff86df487a]\
+              1 _dispatch_call_block_and_release + 15 (in libSystem.B.dylib) [0x7fff86e15ce8]\
+                1 ??? (in spindump + 18924) [0x1000049ec]\
+                  1 ??? (in spindump + 19041) [0x100004a61]\
+                    1 dispatch_barrier_sync_f + 79 (in libSystem.B.dylib) [0x7fff86e0ef4a]\
+                      1 ??? (in spindump + 19164) [0x100004adc]\
+                        1 ??? (in spindump + 19624) [0x100004ca8]\
+                          1 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    1 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Binary Images:\
+         0x100000000 -        0x100010ff7  spindump ??? (???) <085A350B-140A-7032-9863-78646EABC2D7> /usr/sbin/spindump\
+      0x7fff80bb1000 -     0x7fff80c0efef  com.apple.framework.IOKit 2.0 (???) <EBBEED67-D5BE-5F7F-96F4-9023BBA1B913> /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit\
+      0x7fff81ad6000 -     0x7fff81b55fff  com.apple.audio.CoreAudio 3.2.2 (3.2.2) <2633DFAC-F6A6-489D-8DF0-F12639CCD8C4> /System/Library/Frameworks/CoreAudio.framework/Versions/A/CoreAudio\
+      0x7fff835e0000 -     0x7fff83912fef  com.apple.CoreServices.CarbonCore 861.2 (861.2) <39F3B259-AC2A-792B-ECFE-4F3E72F2D1A5> /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/CarbonCore.framework/Versions/A/CarbonCore\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+      0x7fff873db000 -     0x7fff8754eff7  com.apple.CoreFoundation 6.6.1 (550.13) <1E952BD9-37C6-16BE-B2F0-CD92A6283D37> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation\
+\
+\
+Process:         spindump_symbolicator [1314]\
+Path:            /usr/libexec/spindump_symbolicator\
+UID:             0\
+\
+  Thread 13bd3b7c  \
+  User stack:\
+    18 ??? (in spindump_symbolicator + 5772) [0x10000168c]\
+      18 ??? (in spindump_symbolicator + 6159) [0x10000180f]\
+        18 CFRunLoopRun + 70 (in CoreFoundation) [0x7fff874259b6]\
+          18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+            18 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+              18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 9ab1000   \
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 _pthread_wqthread + 353 (in libSystem.B.dylib) [0x7fff86df3bb8]\
+        18 _dispatch_worker_thread2 + 244 (in libSystem.B.dylib) [0x7fff86df4286]\
+          18 _dispatch_queue_invoke + 185 (in libSystem.B.dylib) [0x7fff86df475c]\
+            18 kevent + 10 (in libSystem.B.dylib) [0x7fff86df2bba]\
+  Kernel stack:\
+    18 kevent + 97 [0x471745]\
+\
+  Thread 962f000   \
+  User stack:\
+    1 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      1 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        1 cleaner_thread_main(void*) + 36 (in CoreSymbolication) [0x7fff86b410d5]\
+          1 __semwait_signal + 10 (in libSystem.B.dylib) [0x7fff86e149ee]\
+  Kernel stack:\
+    1 semaphore_wait_continue + 0 [0x22a0a5]\
+\
+  Binary Images:\
+         0x100000000 -        0x100001fff  spindump_symbolicator ??? (???) <F714C29C-0C17-94A8-F8D0-6F88DD990C71> /usr/libexec/spindump_symbolicator\
+      0x7fff86b35000 -     0x7fff86ba7fef  com.apple.CoreSymbolication 2.0 (23) <06F8561E-4B36-7BF6-31BA-64091B3D8058> /System/Library/PrivateFrameworks/CoreSymbolication.framework/Versions/A/CoreSymbolication\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+      0x7fff873db000 -     0x7fff8754eff7  com.apple.CoreFoundation 6.6.1 (550.13) <1E952BD9-37C6-16BE-B2F0-CD92A6283D37> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation\
+\
+\
+Process:         SyncServer [1302]\
+Path:            /System/Library/Frameworks/SyncServices.framework/Versions/Current/Resources/SyncServer.app/Contents/MacOS/SyncServer\
+UID:             501\
+\
+  Thread bc9b000    DispatchQueue -1609565611\
+  User stack:\
+    18 ??? (in SyncServer + 3720) [0x100000e88]\
+      18 ??? (in SyncServer + 8332) [0x10000208c]\
+        18 -[NSRunLoop(NSRunLoop) run] + 77 (in Foundation) [0x7fff84731903]\
+          18 -[NSRunLoop(NSRunLoop) runMode:beforeDate:] + 270 (in Foundation) [0x7fff84731a24]\
+            18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+              18 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+                18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 8a10000    DispatchQueue -95051761\
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 _pthread_wqthread + 353 (in libSystem.B.dylib) [0x7fff86df3bb8]\
+        18 _dispatch_worker_thread2 + 244 (in libSystem.B.dylib) [0x7fff86df4286]\
+          18 _dispatch_queue_invoke + 185 (in libSystem.B.dylib) [0x7fff86df475c]\
+            18 kevent + 10 (in libSystem.B.dylib) [0x7fff86df2bba]\
+  Kernel stack:\
+    18 kevent + 97 [0x471745]\
+\
+  Thread 9a17000   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 select$DARWIN_EXTSN + 10 (in libSystem.B.dylib) [0x7fff86e1d9e2]\
+  Kernel stack:\
+    18 sleep + 52 [0x487f93]\
+\
+  Thread 9906b7c   \
+  User stack:\
+    2 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      2 __workq_kernreturn + 10 (in libSystem.B.dylib) [0x7fff86df39da]\
+  Kernel stack:\
+    2 workqueue_thread_yielded + 562 [0x4cb6ae]\
+\
+  Binary Images:\
+         0x100000000 -        0x100003fff  com.apple.syncserver 5.1 (578) <BD2227DA-49E1-A196-A406-956B286BAF13> /System/Library/Frameworks/SyncServices.framework/Versions/Current/Resources/SyncServer.app/Contents/MacOS/SyncServer\
+      0x7fff846e6000 -     0x7fff84967fe7  com.apple.Foundation 6.6.1 (751.14) <767349DB-C486-70E8-7970-F13DB4CDAF37> /System/Library/Frameworks/Foundation.framework/Versions/C/Foundation\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+      0x7fff873db000 -     0x7fff8754eff7  com.apple.CoreFoundation 6.6.1 (550.13) <1E952BD9-37C6-16BE-B2F0-CD92A6283D37> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation\
+\
+\
+Process:         syslogd [14]\
+Path:            /usr/sbin/syslogd\
+UID:             0\
+\
+  Thread 82167a8    DispatchQueue 1\
+  User stack:\
+    18 ??? (in syslogd + 2460) [0x10000099c]\
+      18 select$DARWIN_EXTSN + 10 (in libSystem.B.dylib) [0x7fff86e1d9e2]\
+  Kernel stack:\
+    18 sleep + 52 [0x487f93]\
+\
+  Thread 822e7a8   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 ??? (in syslogd + 45247) [0x10000b0bf]\
+          18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 84373d4   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 ??? (in syslogd + 46323) [0x10000b4f3]\
+          18 ??? (in syslogd + 36771) [0x100008fa3]\
+            18 __semwait_signal + 10 (in libSystem.B.dylib) [0x7fff86e149ee]\
+  Kernel stack:\
+    18 semaphore_wait_continue + 0 [0x22a0a5]\
+\
+  Thread 8437b7c   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 ??? (in syslogd + 35838) [0x100008bfe]\
+          18 _vprocmgr_log_drain + 80 (in libSystem.B.dylib) [0x7fff86f0465e]\
+            18 vproc_mig_log_drain + 95 (in libSystem.B.dylib) [0x7fff86f0504f]\
+              18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Binary Images:\
+         0x100000000 -        0x100013fff  syslogd ??? (???) <72261A58-D9C8-558F-A6F5-BCC33F0EE52D> /usr/sbin/syslogd\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+\
+\
+Process:         SystemUIServer [89]\
+Path:            /System/Library/CoreServices/SystemUIServer.app/Contents/MacOS/SystemUIServer\
+UID:             501\
+\
+  Thread 8929b7c    DispatchQueue 1\
+  User stack:\
+    18 ??? (in SystemUIServer + 71088) [0x1000115b0]\
+      18 ??? (in SystemUIServer + 72744) [0x100011c28]\
+        18 -[NSApplication run] + 395 (in AppKit) [0x7fff856ee747]\
+          18 -[NSApplication nextEventMatchingMask:untilDate:inMode:dequeue:] + 155 (in AppKit) [0x7fff85728b41]\
+            18 _DPSNextEvent + 708 (in AppKit) [0x7fff857291f2]\
+              18 BlockUntilNextEventMatchingListInMode + 59 (in HIToolbox) [0x7fff81edd70c]\
+                18 ReceiveNextEventCommon + 310 (in HIToolbox) [0x7fff81edd853]\
+                  18 RunCurrentEventLoopInMode + 333 (in HIToolbox) [0x7fff81edda4e]\
+                    18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+                      18 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+                        18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 8dd97a8    DispatchQueue 2\
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 _pthread_wqthread + 353 (in libSystem.B.dylib) [0x7fff86df3bb8]\
+        18 _dispatch_worker_thread2 + 244 (in libSystem.B.dylib) [0x7fff86df4286]\
+          18 _dispatch_queue_invoke + 185 (in libSystem.B.dylib) [0x7fff86df475c]\
+            18 kevent + 10 (in libSystem.B.dylib) [0x7fff86df2bba]\
+  Kernel stack:\
+    18 kevent + 97 [0x471745]\
+\
+  Thread 9931b7c   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 select$DARWIN_EXTSN + 10 (in libSystem.B.dylib) [0x7fff86e1d9e2]\
+  Kernel stack:\
+    18 sleep + 52 [0x487f93]\
+\
+  Binary Images:\
+         0x100000000 -        0x100066fef  com.apple.systemuiserver 1.6 (298.5) <4AB10D03-2489-58F3-57CB-5F679A5F49CA> /System/Library/CoreServices/SystemUIServer.app/Contents/MacOS/SystemUIServer\
+      0x7fff81eaf000 -     0x7fff821adfe7  com.apple.HIToolbox 1.6.2 (???) <D463A388-244E-047A-E49A-4DA6C15BD1BA> /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/HIToolbox.framework/Versions/A/HIToolbox\
+      0x7fff856e5000 -     0x7fff860d9fff  com.apple.AppKit 6.6.3 (1038.25) <2F7A5AC8-29E7-9B5F-D3F1-4C7F5821BB80> /System/Library/Frameworks/AppKit.framework/Versions/C/AppKit\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+      0x7fff873db000 -     0x7fff8754eff7  com.apple.CoreFoundation 6.6.1 (550.13) <1E952BD9-37C6-16BE-B2F0-CD92A6283D37> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation\
+\
+\
+Process:         thunderbird-bin [953]\
+Path:            /Applications/Thunderbird.app/Contents/MacOS/thunderbird-bin\
+UID:             501\
+\
+\
+Process:         usbmuxd [20]\
+Path:            /System/Library/PrivateFrameworks/MobileDevice.framework/Versions/A/Resources/usbmuxd\
+UID:             213\
+\
+  Thread 82d43d4    DispatchQueue 100\
+  User stack:\
+    18 ??? (in usbmuxd + 3973) [0x1f85]\
+      18 ??? (in usbmuxd + 4184) [0x2058]\
+        18 ??? (in usbmuxd + 8842) [0x328a]\
+          18 CFRunLoopRun + 84 (in CoreFoundation) [0x97c107a4]\
+            18 CFRunLoopRunSpecific + 452 (in CoreFoundation) [0x97c0a864]\
+              18 __CFRunLoopRun + 2079 (in CoreFoundation) [0x97c0b77f]\
+                18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x90a418da]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 8a55b7c    DispatchQueue 1634545000\
+  User stack:\
+    18 start_wqthread + 30 (in libSystem.B.dylib) [0x90a67336]\
+      18 _pthread_wqthread + 390 (in libSystem.B.dylib) [0x90a674f1]\
+        18 _dispatch_worker_thread2 + 234 (in libSystem.B.dylib) [0x90a67a68]\
+          18 _dispatch_queue_invoke + 163 (in libSystem.B.dylib) [0x90a67cc3]\
+            18 kevent + 10 (in libSystem.B.dylib) [0x90a680ea]\
+  Kernel stack:\
+    18 kevent + 97 [0x471745]\
+\
+  Thread 8ddab7c   \
+  User stack:\
+    18 thread_start + 34 (in libSystem.B.dylib) [0x90a6ee42]\
+      18 _pthread_start + 345 (in libSystem.B.dylib) [0x90a6efbd]\
+        18 select$DARWIN_EXTSN + 10 (in libSystem.B.dylib) [0x90a60856]\
+  Kernel stack:\
+    18 sleep + 52 [0x487f93]\
+\
+  Binary Images:\
+      0x1000 -     0xafff  usbmuxd ??? (???) <4344CCF1-B5DF-7098-E465-61FDCFE9DF68> /System/Library/PrivateFrameworks/MobileDevice.framework/Versions/A/Resources/usbmuxd\
+  0x90a41000 - 0x90be5feb  libSystem.B.dylib ??? (???) <D45B91B2-2B4C-AAC0-8096-1FC48B7E9672> /usr/lib/libSystem.B.dylib\
+  0x97bcf000 - 0x97d46fef  com.apple.CoreFoundation 6.6.1 (550.13) <AE9FC6F7-F0B2-DE58-759E-7DB89C021A46> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation\
+\
+\
+Process:         UserEventAgent [103]\
+Path:            /usr/libexec/UserEventAgent\
+UID:             501\
+\
+  Thread 890b7a8    DispatchQueue 1\
+  User stack:\
+    18 ??? (in UserEventAgent + 3740) [0x100000e9c]\
+      18 ??? (in UserEventAgent + 6152) [0x100001808]\
+        18 CFRunLoopRun + 70 (in CoreFoundation) [0x7fff874259b6]\
+          18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+            18 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+              18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 9931000    DispatchQueue 2\
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 _pthread_wqthread + 353 (in libSystem.B.dylib) [0x7fff86df3bb8]\
+        18 _dispatch_worker_thread2 + 244 (in libSystem.B.dylib) [0x7fff86df4286]\
+          18 _dispatch_queue_invoke + 185 (in libSystem.B.dylib) [0x7fff86df475c]\
+            18 kevent + 10 (in libSystem.B.dylib) [0x7fff86df2bba]\
+  Kernel stack:\
+    18 kevent + 97 [0x471745]\
+\
+  Thread 991bb7c   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 __NSThread__main__ + 1429 (in Foundation) [0x7fff846f6e99]\
+          18 RegisterAppTracker + 8174 (in ACRRDaemon) [0x1000455e5]\
+            18 -[NSRunLoop(NSRunLoop) run] + 77 (in Foundation) [0x7fff84731903]\
+              18 -[NSRunLoop(NSRunLoop) runMode:beforeDate:] + 270 (in Foundation) [0x7fff84731a24]\
+                18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+                  18 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+                    18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Binary Images:\
+         0x100000000 -        0x100001fff  UserEventAgent ??? (???) <D7E00D4C-D72A-B658-5BA2-3E0B9A6FA3EA> /usr/libexec/UserEventAgent\
+         0x100042000 -        0x100047fff  com.apple.CrashReporter.ACRRDaemonPlugin 10.6.2 (239) <91385300-943E-6AE9-D2A6-9BED0834A776> /System/Library/UserEventPlugins/ACRRDaemon.plugin/Contents/MacOS/ACRRDaemon\
+      0x7fff846e6000 -     0x7fff84967fe7  com.apple.Foundation 6.6.1 (751.14) <767349DB-C486-70E8-7970-F13DB4CDAF37> /System/Library/Frameworks/Foundation.framework/Versions/C/Foundation\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+      0x7fff873db000 -     0x7fff8754eff7  com.apple.CoreFoundation 6.6.1 (550.13) <1E952BD9-37C6-16BE-B2F0-CD92A6283D37> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation\
+\
+\
+Process:         WindowServer [60]\
+Path:            /System/Library/Frameworks/ApplicationServices.framework/Frameworks/CoreGraphics.framework/Resources/WindowServer\
+UID:             88\
+\
+  Thread 8a617a8    DispatchQueue 1\
+  User stack:\
+    18 start + 52 (in WindowServer) [0x100000f18]\
+      18 main + 9 (in WindowServer) [0x100000f29]\
+        18 CGXGetRootAdminCredentials + 0 (in CoreGraphics) [0x7fff81223ae6]\
+          18 CGXServerLoop + 139 (in CoreGraphics) [0x7fff812587c6]\
+            18 CGXRunOneServicesPass + 357 (in CoreGraphics) [0x7fff8124f956]\
+              13 CGXRunOneServerPass + 208 (in CoreGraphics) [0x7fff81252710]\
+                13 mach_msg_overwrite_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e46]\
+              5 CGXRunOneServerPass + 262 (in CoreGraphics) [0x7fff81252746]\
+                5 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 8dd83d4    DispatchQueue 2\
+  User stack:\
+    18 start_wqthread + 13 (in libSystem.B.dylib) [0x7fff86df3a55]\
+      18 _pthread_wqthread + 353 (in libSystem.B.dylib) [0x7fff86df3bb8]\
+        18 _dispatch_worker_thread2 + 244 (in libSystem.B.dylib) [0x7fff86df4286]\
+          18 _dispatch_queue_invoke + 185 (in libSystem.B.dylib) [0x7fff86df475c]\
+            18 kevent + 10 (in libSystem.B.dylib) [0x7fff86df2bba]\
+  Kernel stack:\
+    18 kevent + 97 [0x471745]\
+\
+  Thread 8a6c7a8   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 eventThread + 441 (in CoreGraphics) [0x7fff81235441]\
+          18 CFRunLoopRun + 70 (in CoreFoundation) [0x7fff874259b6]\
+            18 CFRunLoopRunSpecific + 575 (in CoreFoundation) [0x7fff87425c2f]\
+              17 __CFRunLoopRun + 1698 (in CoreFoundation) [0x7fff874267a2]\
+                17 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+              1 __CFRunLoopRun + 5201 (in CoreFoundation) [0x7fff87427551]\
+                1 __CFMachPortPerform + 366 (in CoreFoundation) [0x7fff8744ef7e]\
+                  1 kickMessageHandler + 54 (in CoreGraphics) [0x7fff812500c0]\
+                    1 __spin_lock + 53 (in commpage [libSystem.B.dylib]) [0x7fffffe00295]\
+  Kernel stack:\
+    17 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+    1 thread_switch + 588 [0x22b02a]\
+\
+  Thread 99a17a8   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 thread_fun + 34 (in QuartzCore) [0x7fff82d3fc52]\
+          18 CA::Render::Server::server_thread(void*) + 177 (in QuartzCore) [0x7fff82d3fd12]\
+            18 mach_msg_trap + 10 (in libSystem.B.dylib) [0x7fff86dd9e3a]\
+  Kernel stack:\
+    18 ipc_mqueue_receive_continue + 0 [0x210aa3]\
+\
+  Thread 9c763d4   \
+  User stack:\
+    18 thread_start + 13 (in libSystem.B.dylib) [0x7fff86e12e41]\
+      18 _pthread_start + 331 (in libSystem.B.dylib) [0x7fff86e12f8e]\
+        18 layer_blit_work_queue_server + 156 (in CoreGraphics) [0x7fff8130d0dc]\
+          18 layer_blit_work_queue_thread + 1023 (in CoreGraphics) [0x7fff8130cf9f]\
+            18 __semwait_signal + 10 (in libSystem.B.dylib) [0x7fff86e149ee]\
+  Kernel stack:\
+    18 semaphore_wait_continue + 0 [0x22a0a5]\
+\
+  Binary Images:\
+         0x100000000 -        0x100000fff  WindowServer ??? (???) <8EE67EB5-FD3B-C594-DACD-8DD8F83621C7> /System/Library/Frameworks/ApplicationServices.framework/Frameworks/CoreGraphics.framework/Resources/WindowServer\
+      0x7fff81169000 -     0x7fff8185d537  com.apple.CoreGraphics 1.536.12 (???) <0DCA088B-0C6B-146F-0341-9E0212B5CA50> /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/CoreGraphics.framework/Versions/A/CoreGraphics\
+      0x7fff82ced000 -     0x7fff83085fff  com.apple.QuartzCore 1.6.1 (227.8) <E296B174-F7CB-F021-D103-091CCB33BBEB> /System/Library/Frameworks/QuartzCore.framework/Versions/A/QuartzCore\
+      0x7fff86dd9000 -     0x7fff86f97ff7  libSystem.B.dylib ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+      0x7fff873db000 -     0x7fff8754eff7  com.apple.CoreFoundation 6.6.1 (550.13) <1E952BD9-37C6-16BE-B2F0-CD92A6283D37> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation\
+      0x7fffffe00000 -     0x7fffffe01fff  commpage [libSystem.B.dylib] ??? (???) <526DD3E5-2A8B-4512-ED97-01B832369959> /usr/lib/libSystem.B.dylib\
+\
+\
+Process:         kernel_task [0]\
+Path:            kernel_task\
+UID:             0\
+Version:         Darwin Kernel Version 10.2.0: Tue Nov  3 10:37:10 PST 2009; root:xnu-1486.2.11~1/RELEASE_I386\
+\
+  Thread 0         \
+\
+  Thread 863a80    \
+  Kernel stack:\
+    18 vm_pageout_continue + 0 [0x2769a0]\
+\
+  Thread 8082000   \
+  Kernel stack:\
+    18 thread_stack_enqueue + 90 [0x22e2bb]\
+\
+  Thread 80823d4   \
+  Kernel stack:\
+    18 thread_daemon_init + 214 [0x22e028]\
+\
+  Thread 80827a8   \
+  Kernel stack:\
+    18 assert_wait_deadline + 271 [0x227980]\
+\
+  Thread 8082b7c   \
+  Kernel stack:\
+    18 idle_thread + 0 [0x227e4a]\
+\
+  Thread 8083000   \
+  Kernel stack:\
+    18 IOWorkLoop::threadMain() + 0 [0x548626]\
+\
+  Thread 80837a8   \
+  Kernel stack:\
+    18 IOWorkLoop::threadMain() + 0 [0x548626]\
+\
+  Thread 8083b7c   \
+  Kernel stack:\
+    18 thread_call_initialize + 334 [0x22f76c]\
+\
+  Thread 81ed000   \
+  Kernel stack:\
+    18 IOWorkLoop::threadMain() + 0 [0x548626]\
+\
+  Thread 81ed7a8   \
+  Kernel stack:\
+    18 IOWorkLoop::threadMain() + 0 [0x548626]\
+\
+  Thread 81edb7c   \
+  Kernel stack:\
+    18 IOWorkLoop::threadMain() + 0 [0x548626]\
+\
+  Thread 81f4000   \
+  Kernel stack:\
+    18 IOWorkLoop::threadMain() + 0 [0x548626]\
+\
+  Thread 81f43d4   \
+  Kernel stack:\
+    18 vm_pageout_internal_start + 945 [0x275293]\
+\
+  Thread 81f47a8   \
+  Kernel stack:\
+    18 call_continuation + 28 [0x29d68c]\
+      18 com.apple.driver.AppleIntelCPUPowerManagement 96.0.0 + 20357 [0x11c6f85]\
+        18 thread_block + 33 [0x226fb5]\
+          18 thread_block_reason + 331 [0x226f27]\
+            18 thread_dispatch + 1950 [0x226c88]\
+              18 machine_switch_context + 753 [0x2a5a37]\
+\
+  Thread 81f4b7c   \
+  Kernel stack:\
+    18 IOWorkLoop::threadMain() + 0 [0x548626]\
+\
+  Thread 81f5000   \
+  Kernel stack:\
+    18 idle_thread + 0 [0x227e4a]\
+\
+  Thread 81f53d4   \
+  Kernel stack:\
+    18 call_continuation + 28 [0x29d68c]\
+      18 buf_strategy + 1042 [0x2c93ec]\
+        18 msleep + 157 [0x4882d6]\
+          18 wakeup + 334 [0x487be3]\
+            18 lck_mtx_sleep + 87 [0x2217b0]\
+              18 thread_block + 33 [0x226fb5]\
+                18 thread_block_reason + 331 [0x226f27]\
+                  18 thread_dispatch + 1950 [0x226c88]\
+                    18 machine_switch_context + 753 [0x2a5a37]\
+\
+  Thread 81f5b7c   \
+  Kernel stack:\
+    18 IOWorkLoop::threadMain() + 0 [0x548626]\
+\
+  Thread 8215000   \
+  Kernel stack:\
+    18 IOWorkLoop::threadMain() + 0 [0x548626]\
+\
+  Thread 82157a8   \
+  Kernel stack:\
+    18 IOWorkLoop::threadMain() + 0 [0x548626]\
+\
+  Thread 8215b7c   \
+  Kernel stack:\
+    18 IOWorkLoop::threadMain() + 0 [0x548626]\
+\
+  Thread 8216000   \
+  Kernel stack:\
+    18 IOWorkLoop::threadMain() + 0 [0x548626]\
+\
+  Thread 82163d4   \
+  Kernel stack:\
+    18 thread_call_initialize + 620 [0x22f88a]\
+\
+  Thread 8216b7c   \
+  Kernel stack:\
+    18 IOWorkLoop::threadMain() + 0 [0x548626]\
+\
+  Thread 82173d4   \
+  Kernel stack:\
+    18 m_freem + 15868 [0x4a7b6b]\
+\
+  Thread 82177a8   \
+  Kernel stack:\
+    18 call_continuation + 28 [0x29d68c]\
+      18 audit_worker_init + 956 [0x460332]\
+        18 _audit_cv_wait + 50 [0x4514e6]\
+          18 msleep + 157 [0x4882d6]\
+            18 wakeup + 334 [0x487be3]\
+              18 lck_mtx_sleep + 87 [0x2217b0]\
+                18 thread_block + 33 [0x226fb5]\
+                  18 thread_block_reason + 331 [0x226f27]\
+                    18 thread_dispatch + 1950 [0x226c88]\
+                      18 machine_switch_context + 753 [0x2a5a37]\
+\
+  Thread 8227000   \
+  Kernel stack:\
+    18 IOWorkLoop::threadMain() + 0 [0x548626]\
+\
+  Thread 82273d4   \
+  Kernel stack:\
+    18 IOWorkLoop::threadMain() + 0 [0x548626]\
+\
+  Thread 8227b7c   \
+  Kernel stack:\
+    18 call_continuation + 28 [0x29d68c]\
+      18 ifnet_detach_protocol + 1591 [0x3189cc]\
+        18 msleep + 157 [0x4882d6]\
+          18 wakeup + 334 [0x487be3]\
+            18 lck_mtx_sleep + 87 [0x2217b0]\
+              18 thread_block + 33 [0x226fb5]\
+                18 thread_block_reason + 331 [0x226f27]\
+                  18 thread_dispatch + 1950 [0x226c88]\
+                    18 machine_switch_context + 753 [0x2a5a37]\
+\
+  Thread 822e3d4   \
+  Kernel stack:\
+    18 call_continuation + 28 [0x29d68c]\
+      18 ifnet_detach_protocol + 1591 [0x3189cc]\
+        18 msleep + 157 [0x4882d6]\
+          18 wakeup + 334 [0x487be3]\
+            18 lck_mtx_sleep + 87 [0x2217b0]\
+              18 thread_block + 33 [0x226fb5]\
+                18 thread_block_reason + 331 [0x226f27]\
+                  18 thread_dispatch + 1950 [0x226c88]\
+                    18 machine_switch_context + 753 [0x2a5a37]\
+\
+  Thread 822eb7c   \
+  Kernel stack:\
+    18 call_continuation + 28 [0x29d68c]\
+      18 ux_handler_init + 475 [0x4d19f2]\
+        18 mach_msg_receive + 168 [0x216ca5]\
+          18 ipc_mqueue_receive + 101 [0x21191c]\
+            18 thread_block + 33 [0x226fb5]\
+              18 thread_block_reason + 331 [0x226f27]\
+                18 thread_dispatch + 1950 [0x226c88]\
+                  18 machine_switch_context + 753 [0x2a5a37]\
+\
+  Thread 82347a8   \
+  Kernel stack:\
+    18 IOWorkLoop::threadMain() + 0 [0x548626]\
+\
+  Thread 8234b7c   \
+  Kernel stack:\
+    18 com.apple.nke.applicationfirewall 2.1.11 + 23895 [0x141cd57]\
+\
+  Thread 8235000   \
+  Kernel stack:\
+    18 aio_return + 295 [0x4649ea]\
+\
+  Thread 82353d4   \
+  Kernel stack:\
+    18 aio_return + 295 [0x4649ea]\
+\
+  Thread 82357a8   \
+  Kernel stack:\
+    18 memory_object_recover_named + 18260 [0x26f55a]\
+\
+  Thread 82a0000   \
+  Kernel stack:\
+    18 ifnet_detach + 582 [0x31816e]\
+\
+  Thread 82a03d4   \
+  Kernel stack:\
+    18 call_continuation + 28 [0x29d68c]\
+      18 ifnet_detach_protocol + 1591 [0x3189cc]\
+        18 msleep + 157 [0x4882d6]\
+          18 wakeup + 334 [0x487be3]\
+            18 lck_mtx_sleep + 87 [0x2217b0]\
+              18 thread_block + 33 [0x226fb5]\
+                18 thread_block_reason + 331 [0x226f27]\
+                  18 thread_dispatch + 1950 [0x226c88]\
+                    18 machine_switch_context + 753 [0x2a5a37]\
+\
+  Thread 82a07a8   \
+  Kernel stack:\
+    18 aio_return + 295 [0x4649ea]\
+\
+  Thread 82a0b7c   \
+  Kernel stack:\
+    18 aio_return + 295 [0x4649ea]\
+\
+  Thread 82bf7a8   \
+  Kernel stack:\
+    18 IOWorkLoop::threadMain() + 0 [0x548626]\
+\
+  Thread 82bfb7c   \
+  Kernel stack:\
+    18 IOWorkLoop::threadMain() + 0 [0x548626]\
+\
+  Thread 82d47a8   \
+  Kernel stack:\
+    18 IOWorkLoop::threadMain() + 0 [0x548626]\
+\
+  Thread 82d4b7c   \
+  Kernel stack:\
+    18 vm_pageout_internal_start + 80 [0x274f32]\
+\
+  Thread 82de7a8   \
+  Kernel stack:\
+    18 thread_call_initialize + 620 [0x22f88a]\
+\
+  Thread 887b7a8   \
+  Kernel stack:\
+    18 IOWorkLoop::threadMain() + 0 [0x548626]\
+\
+  Thread 8919b7c   \
+  Kernel stack:\
+    18 IOWorkLoop::threadMain() + 0 [0x548626]\
+\
+  Thread 8a08000   \
+  Kernel stack:\
+    18 vm_pageout_internal_start + 80 [0x274f32]\
+\
+  Thread 8a557a8   \
+  Kernel stack:\
+    18 thread_call_initialize + 620 [0x22f88a]\
+\
+  Thread 8dd7000   \
+  Kernel stack:\
+    18 thread_call_initialize + 620 [0x22f88a]\
+\
+  Thread 8dd9000   \
+  Kernel stack:\
+    18 IOWorkLoop::threadMain() + 0 [0x548626]\
+\
+  Thread 8dda3d4   \
+  Kernel stack:\
+    18 IOWorkLoop::threadMain() + 0 [0x548626]\
+\
+  Thread 8ddb000   \
+  Kernel stack:\
+    18 IOWorkLoop::threadMain() + 0 [0x548626]\
+\
+  Thread 8ddb3d4   \
+  Kernel stack:\
+    18 IOWorkLoop::threadMain() + 0 [0x548626]\
+\
+  Thread 8ddb7a8   \
+  Kernel stack:\
+    18 IOWorkLoop::threadMain() + 0 [0x548626]\
+\
+  Thread 8ded3d4   \
+  Kernel stack:\
+    18 call_continuation + 28 [0x29d68c]\
+      18 com.apple.filesystems.autofs 2.1.0 + 24145 [0x1380e51]\
+        18 msleep + 157 [0x4882d6]\
+          18 wakeup + 286 [0x487bb3]\
+            18 lck_mtx_sleep_deadline + 104 [0x2211a8]\
+              18 thread_block + 33 [0x226fb5]\
+                18 thread_block_reason + 331 [0x226f27]\
+                  18 thread_dispatch + 1950 [0x226c88]\
+                    18 machine_switch_context + 753 [0x2a5a37]\
+\
+  Thread 8df2000   \
+  Kernel stack:\
+    18 IOWorkLoop::threadMain() + 0 [0x548626]\
+\
+Model: iMac8,1, BootROM IM81.00C1.B00, 2 processors, Intel Core 2 Duo, 3.06 GHz, 4 GB, SMC 1.30f1\
+Graphics: NVIDIA GeForce 8800 GS, NVIDIA GeForce 8800 GS, PCIe, 512 MB\
+Memory Module: global_name\
+AirPort: spairport_wireless_card_type_airport_extreme (0x14E4, 0x8C), Broadcom BCM43xx 1.0 (5.10.91.26)\
+Bluetooth: Version 2.2.4f3, 2 service, 1 devices, 1 incoming serial ports\
+Network Service: AirPort, AirPort, en1\
+Serial ATA Device: WDC WD5000AAKS-40YGA1, 465,76 GB\
+Parallel ATA Device: PIONEER DVD-RW  DVR-K06A\
+USB Device: USB to Serial-ATA bridge, 0x04fc  (SUNPLUS TECHNOLOGY CO., LTD.), 0x0c25, 0xfa400000\
+USB Device: Keyboard Hub, 0x05ac  (Apple Inc.), 0x1006, 0xfa200000\
+USB Device: Apple Keyboard, 0x05ac  (Apple Inc.), 0x0221, 0xfa220000\
+USB Device: Built-in iSight, 0x05ac  (Apple Inc.), 0x8502, 0xfd400000\
+USB Device: IR Receiver, 0x05ac  (Apple Inc.), 0x8242, 0x5d100000\
+USB Device: ROCCAT Kone, 0x1e7d, 0x2ced, 0x1d100000\
+USB Device: BRCM2046 Hub, 0x0a5c  (Broadcom Corp.), 0x4500, 0x1a100000\
+USB Device: Bluetooth USB Host Controller, 0x05ac  (Apple Inc.), 0x820f, 0x1a110000\
+}

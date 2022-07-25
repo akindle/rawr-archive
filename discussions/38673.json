@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "128299",
+    "ThreadId": "38673",
+    "Html": "Hi there,<br>\r\n<br>\r\nCan you please adjust the idol of the raven goddess to read as 20 crit to aura instead of just straight 20 crit rating?  It's more DPS than the Ivory Idol and Rawr should reflect that; when it's not showing that right now.  It's not showing any difference between raid dps and personal dps when i'm wearing that idol, which means it's not calculating it correctly.<br>\r\n<br>\r\nAnd I'm not sure if the program has this kind of capability but Darkmoon Crusade isn't worth 80 spell damage until you get 10 casts off, which makes it terrible for short fights.  It's not worth 80 spell damage and never will be because of those first 9 req casts to get it up to 80 in the first place.  But that's how it's being modeled in the program.  For a 2-3 minute fight it's worth 68-70 spell power max and worth more, very slowly, the longer the fight and less on shorter fights than 2-3 mins.  Any chance you can fix its value to be dependent on length of fight?<br>\r\n<br>\r\nAlso, why is exceptional stats being rated as double the damage of major spirit when it has less stats on it that are useful than major spirit (6 int-6spirit v 15 spirit)<br>\r\n<br>\r\n15 spirit to chest is worth 2.25 sp dmg, whereas exceptional stats is worth 0.9 sp dmg (not even 1) + whatever crit int is worth.  It's not as good as 15 spirit, rawr should reflect that.<br>\r\n<br>\r\nThanks alot! \r\n",
+    "PostedDate": "2008-10-28T07:39:26.103-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "128322",
+    "ThreadId": "38673",
+    "Html": "Re: Idol of the Raven Goddess, Rawr doesn't know how much DPS the raid will gain from 20 crit rating, that's left up to you to calculate.<br>\r\n<br>\r\nRe: Crusade Card, that has to be handled on an individual model basis, so instead of asking all the model developers to handle it, I just set it to always on, effectively. It's not worth our time to build a special case for that item, in every relevant model, only to not use it again in 2 weeks. If there's another similar item in WotLK, you can bet it will be correctly modeled for each model (eventually, anyway).<br>\r\n<br>\r\nRe: 15spr vs 6stats, there's nothing special here, it's calculating these just like any other stats. <br>\r\n",
+    "PostedDate": "2008-10-28T08:49:55.973-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "128329",
+    "ThreadId": "38673",
+    "Html": "<span style=\"background-color:#d8d0c8\">\r\n<p>That's cool, but it is rating something wrong to make that enchant worth more, because that enchant isn't as good as 15 spirit and I've just told you why.  That 6 stats to chest isn't worth double the damage of 15 spirit; 15 spirit is worth more than that other enchant, especially if you're using your own innervate.  Whether it's rating things 'just like any other stat' is irrelevant; both the chest enchants are being rated incorrectly.  Which means that, if it is rating these two enchants 'like any other stat' then that means the entire rating system is wrong because 15 spirit to chest is worth more damage than 6 stats to chest.  Especially post 3.0 when mana and mana regen isn't a factor whatsoever, seeing as 99% of our fights are now 1-3 minutes.</p>\r\n<p>Anyways, it's fine; I didn't realize just how many things were wrong about it til this time around, I don't have to use it.  If it's not going to be accurate then there is no point in using it.</p>\r\n</span>\r\n",
+    "PostedDate": "2008-10-28T09:12:11.583-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "128337",
+    "ThreadId": "38673",
+    "Html": "Heh, easy there. We want it to absolutely accurate. If you think it's valuing stats wrong, can you explain how?<br>\r\n<br>\r\nAssuming you're talking Moonkin, I don't see where you're getting the value of spirit (forgive me, I'm furry, not feathery). Moonkins have quite a few multipliers on Int, but I don't see any on Spirit. And spirit is only useful for its out of combat regen, otherwise, which you don't get while casting, except 30% if you have Intensity.<br>\r\n<br>\r\nLike I said, we want Rawr to be totally accurate. It would help us identify any problems if you posted your character file (attach it to an issue here), and described what calculations you see wrong, and what the correct math should be, so we can make sure everything is right.<br>\r\n",
+    "PostedDate": "2008-10-28T09:23:54.527-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "128392",
+    "ThreadId": "38673",
+    "Html": "Assuming mana is a non issues then, 15 spirit gives 2.25 Spell Damage and 6 stats gives 1.56 Spell Damage and .09% crit. And .09% crit is about 1/5th of a 10 crit gem, and .6 Spell Damage is about 1/20th of a 12 spell damage gem. It doesn't really seem wrong to me that .09% crit &gt; .6 spell damage, but I am not too experienced with moonkins.",
+    "PostedDate": "2008-10-28T12:31:41.877-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "128494",
+    "ThreadId": "38673",
+    "Html": "First things first.&nbsp; RDPS is not Raid DPS, but Raw DPS.&nbsp; It is meant to be a display of DPS without consideration of mana constraints, because Rawr.Moonkin was originally based on Efejel's old Moonkin spreadsheet which calculated Time to OOM and used that as a weighting factor.&nbsp; You won't be seeing any Raid DPS calculations now or any time in the foreseeable future from this tool; try SimulationCraft.<br>\r\n<br>\r\nSecondly, the Darkmoon Card is indeed very terrible for short fights.&nbsp; For fights of the length we're talking about, though, ramp-up time is a small enough portion that it's safely ignored.&nbsp; I have gone back and added model-specific effects to some items in the past, but when it came to DM:C, I figured it wasn't worth the (admittedly rather trivial) effort it would take to model the &quot;true&quot; spell damage value of the trinket.<br>\r\n<br>\r\nThirdly, 6 stats is comparable to 15 spirit as far as raw damage is concerned.&nbsp; 15 spirit = 2.25 raw spell power.&nbsp; 6 stats = 6 spirit (.9 spell power), 6 int (.72 spell power + 0.09% crit).&nbsp; 0.09% crit is roughly 2 crit rating.&nbsp; According to the results, 2 crit rating is roughly 1.4 spell power, for a total of 2.02 raw spell power from 6 stats.&nbsp; Okay, so 15 spirit still looks better on paper, but you also have to figure that Intellect counts against Replenishment, JoW, your initial mana pool, Dreamstate and Intensity if you took one/both, whereas Spirit only counts if you have Intensity or are getting an Innervate.&nbsp; All this, not to mention that personal mana regen is based on both Intellect AND Spirit, so having 6 of both is better than having 15 of one unless your gear is seriously out of balance.&nbsp; In truth, if you look at it, I see a 1.4 dps difference between Stats and Spirit for the specific test case on my screen - hardly game-breaking, eh?<br>\r\n<br>\r\nLastly, you aren't going to hurt my feelings or make me change one line of code in my program by telling me vaguely how wrong I am or that you're not going to use my program.&nbsp; None of this math is my own; it's a transliteration to code of Efejel's and Adoriele's hard work from over at EJ.&nbsp; Adoriele has worked with me on making sure that the program's algorithms are reasonably correct and up-to-date, and I've had in-game verification by a Moonkin tester that gives me high confidence that the math is correct.&nbsp; You can choose not to believe it if you like, but there's no good reason not to.<br>\r\n",
+    "PostedDate": "2008-10-28T21:03:06-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

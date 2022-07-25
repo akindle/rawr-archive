@@ -1,0 +1,125 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.TankDK",
+      "DisplayName": "Rawr.TankDK"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-09-16T18:17:49.02-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi, I've noticed that when I do an import of my blood specced DK tank 55/8/8 it defaults the rotation to a frost.\nThen when I change it to the blood rotation the threat values get screwy, for example my threat values of 3200 jump to 200000.",
+    "LastUpdatedDate": "2017-11-27T11:04:23.533-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-07-19T16:00:37.547-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[TankDK] Blood Threat Values",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13673
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Before you enter the rotation screen, no actual rotation is selected, even if it shows Frost the first time you enter it.",
+      "PostedDate": "2009-07-19T20:05:25.533-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ahh ok, is there some reason the threat values between the rotations is so different? I'm just trying to establish if 200000 is a valid value to work from.",
+      "PostedDate": "2009-07-19T22:03:58.5-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "In regards to your threat value of 200000, it really means nothing. The problem with the DK Tank module currently, is there is no set \"baseline\" value to evaluate upgrades against. I've currently settled into using threat weighting of 0.025, and survival weighting of 0.15, but it still doesn't seem \"right\". This overall unsureness often results in me going back to older versions of the module for upgrade suggestions, such as 2.2.5.\r\nThis is an issue the module developers are aware of.",
+      "PostedDate": "2009-07-20T12:55:31.59-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Agreed.  The rotation code and such still needs alot of work, so a defect like this doesn't surprise me.  Now that I'm back from 3.5 weeks away, I'll get back to getting the tankDK stuff better.",
+      "PostedDate": "2009-08-03T19:56:04.597-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-19T12:50:41.79-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-26T09:37:37.643-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-26T12:52:47.713-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm just popping in to say that this appears to be a problem that's still going on. When I set the Threat weight to 0.00 and the Survival Weight to 1.00, the optimizer works great. However, if I even up the Threat Weight to .01, the optimizer will give me an entirely different optimization each time run it (optimizer is set to full thoroughness). When I first came across this topic, I too went back to 2.2.5 for my TankDK optimizing/upgrade list needs. However, the game has changed enough since then that I find myself needing to use 2.2.14, so getting this issue sorted would be hugely helpful to me. \r\n\r\nI am posting this here as I believe the issues I'm having are tied to the issue in this thread. If I need to create a separate work item, I will happily do so. ",
+      "PostedDate": "2009-09-07T01:08:45.003-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-09T10:54:49.453-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Completed: At revision: 36584  \r\n\r\nNote: This fix only addresses the bloated DeathStrike values.  Not the general problem w/ the shotrotation in the optimizer.  That's being handled by the other Threat values defect in the queue.",
+      "PostedDate": "2009-09-09T15:24:34.663-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "\"Note: This fix only addresses the bloated DeathStrike values. Not the general problem w/ the shotrotation in the optimizer. That's being handled by the other Threat values defect in the queue.\"\r\n\r\nWhat I'm taking from this, is there's also a separate known issue in regards to the threat values and the optimizer. Is there a work item somewhere I can follow for updates on this? \r\n\r\nI assume the queue you mention is the queue that work items are currently in. Is there anything I can do move it to the front of the queue? I'm not any sort of programmer, but I could help test, or if money would speed things along, I could always make another donation, or anything else a layman could do to help, I would. \r\n\r\nMy threat is currently ok just by knowing my class and gearing entirely for survival/mitigation, taking threat stats on my gear as they happen to come. However, I can see that at some point I'm going to need to start targeting gear with at least some threat stats on it, and would like to be able to do so optimally. ",
+      "PostedDate": "2009-09-10T00:47:36.097-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I hear you.  Right now I'm focusing on the Shotrotation class to resolve both this and the hit-cap/DW optimization issue.  I believe they are linked, but not sure what the best solution is at this point.  I appreciate your desire to help.  Each dev on the team has their own self-managed queue of work-items.  How they are handled is up to that individual.  My focus is the TankDK module, so with that, the shot rotation problems are currently my top priority.  You can watch all the Rawr.TankDK items to see what is currently in my queue.  \r\n\r\nThey vary from simple defects to full work projects like porting to the new Rawr3 setup.  ",
+      "PostedDate": "2009-09-10T17:11:45.16-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-16T18:17:49.02-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:39:00.11-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:54.75-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:03.633-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:04:23.533-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

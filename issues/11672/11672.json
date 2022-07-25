@@ -1,0 +1,120 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.LoadCharacter",
+      "DisplayName": "Rawr.Base.LoadCharacter"
+    },
+    "ClosedComment": "Resolved.",
+    "ClosedDate": "2008-11-24T09:54:56.233-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Wonder if you can help, When i try to load my armory profile i get the below error report. I have attempted to use Rawr twice, Both times after recieving the error message I am unable to load Rawr at all, I get the splash screen but nothing happens after that. I restarted my computer and unistalled and reinstalled .Net framework. The first time it happened was yesterday, and i couldnt run the program again even after doing the things i mentioned previously, but on a whim i ran the program again today and it did actually start, but gave me the same error when loading my armory profile and now it does not load Rawr at all again.\n \nAny Suggestions?\n \nSee the end of this message for details on invoking \njust-in-time (JIT) debugging instead of this dialog box.\n \n************** Exception Text **************\nSystem.NullReferenceException: Object reference not set to an instance of an object.\nat Rawr.StatConversion..ctor(Character _character)\nat Rawr.Character.get_StatConversion()\nat Rawr.HolyPriest.CalculationsHolyPriest.GetCharacterStats(Character character, Item additionalItem)\nat Rawr.HolyPriest.CalculationsHolyPriest.GetCharacterCalculations(Character character, Item additionalItem)\nat Rawr.CalculationsBase.GetCharacterCalculations(Character character)\nat Rawr.Calculations.GetCharacterCalculations(Character character)\nat Rawr.FormMain._character_ItemsChanged(Object sender, EventArgs e)\nat System.EventHandler.Invoke(Object sender, EventArgs e)\nat Rawr.Character.OnCalculationsInvalidated()\nat Rawr.FormMain.set_Character(Character value)\nat Rawr.FormMain.Calculations_ModelChanged(Object sender, EventArgs e)\nat System.EventHandler.Invoke(Object sender, EventArgs e)\nat Rawr.Calculations.OnModelChanged()\nat Rawr.Calculations.LoadModel(Type type)\nat Rawr.FormMain.LoadModel(String displayName)\nat Rawr.FormMain.comboBoxModel_SelectedIndexChanged(Object sender, EventArgs e)\nat System.Windows.Forms.ComboBox.OnSelectedIndexChanged(EventArgs e)\nat System.Windows.Forms.ComboBox.set_SelectedIndex(Int32 value)\nat Rawr.FormMain._character_ClassChanged(Object sender, EventArgs e)\nat Rawr.FormMain.set_Character(Character value)\nat Rawr.FormMain.bw_ArmoryGetCharacterComplete(Object sender, RunWorkerCompletedEventArgs e)\nat System.ComponentModel.BackgroundWorker.OnRunWorkerCompleted(RunWorkerCompletedEventArgs e)\nat System.ComponentModel.BackgroundWorker.AsyncOperationCompleted(Object arg)",
+    "LastUpdatedDate": "2013-05-16T05:26:49.193-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-11-22T10:27:54.233-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[LoadCharacter] Error on loading Armory Profile",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 11672
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Can you possibly let us know your Character name and Server name and location?",
+      "PostedDate": "2008-11-22T10:31:42.873-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yes its Elyena, Doomhammer, EU.\r\n\r\nI have however just noticed something. If i change the path, or just the folder name i can load Rawr again. and i just got the same error by simply selecting the Undead, Priest, Holy Priest model. S i guess its not an issue relating to armory.\r\n\r\nThx for the quick response",
+      "PostedDate": "2008-11-22T10:36:24.403-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I just loaded a warrior from the armory using the protwarrior model and it worked fine.",
+      "PostedDate": "2008-11-22T10:49:49.293-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "First off, an amazing program, used it with druid for a long time, so happy to finally see someone tackle shadowpriest. Hope my input helps.\r\n\r\nI too have the exact same problem with regards to the crashing, then only the load screen coming up without the main application ever executing after experiencing the error. After changing the path it did open, instead of loading from armoury I attempted to manually enter in the details, as soon as I selected priest from the class drop down list I got this error.\r\n\r\nSee the end of this message for details on invoking \r\njust-in-time (JIT) debugging instead of this dialog box.\r\n\r\n************** Exception Text **************\r\nSystem.NullReferenceException: Object reference not set to an instance of an object.\r\n   at Rawr.StatConversion..ctor(Character _character)\r\n   at Rawr.Character.get_StatConversion()\r\n   at Rawr.HolyPriest.CalculationsHolyPriest.GetCharacterStats(Character character, Item additionalItem)\r\n   at Rawr.HolyPriest.CalculationsHolyPriest.GetCharacterCalculations(Character character, Item additionalItem)\r\n   at Rawr.CalculationsBase.GetItemCalculations(Item item, Character character, CharacterSlot slot)\r\n   at Rawr.FormItemSelection.LoadItemsBySlot(CharacterSlot slot)\r\n   at Rawr.FormItemSelection.Show(ItemButton button, CharacterSlot slot)\r\n   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)\r\n   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)\r\n   at System.Windows.Forms.Control.WndProc(Message& m)\r\n   at System.Windows.Forms.ButtonBase.WndProc(Message& m)\r\n   at System.Windows.Forms.Button.WndProc(Message& m)\r\n   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)\r\n   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)\r\n\r\n\r\n************** Loaded Assemblies **************\r\nmscorlib\r\n    Assembly Version: 2.0.0.0\r\n    Win32 Version: 2.0.50727.1433 (REDBITS.050727-1400)\r\n    CodeBase: file:///C:/WINDOWS/Microsoft.NET/Framework64/v2.0.50727/mscorlib.dll\r\n----------------------------------------\r\nRawr\r\n    Assembly Version: 2.1.1.0\r\n    Win32 Version: 2.1.1.0\r\n    CodeBase: file:///D:/Craig's%20Stuff/Rawr%20v2.1.1/Rawr.exe\r\n----------------------------------------\r\nSystem.Windows.Forms\r\n    Assembly Version: 2.0.0.0\r\n    Win32 Version: 2.0.50727.1433 (REDBITS.050727-1400)\r\n    CodeBase: file:///C:/WINDOWS/assembly/GAC_MSIL/System.Windows.Forms/2.0.0.0__b77a5c561934e089/System.Windows.Forms.dll\r\n----------------------------------------\r\nSystem\r\n    Assembly Version: 2.0.0.0\r\n    Win32 Version: 2.0.50727.1433 (REDBITS.050727-1400)\r\n    CodeBase: file:///C:/WINDOWS/assembly/GAC_MSIL/System/2.0.0.0__b77a5c561934e089/System.dll\r\n----------------------------------------\r\nSystem.Drawing\r\n    Assembly Version: 2.0.0.0\r\n    Win32 Version: 2.0.50727.1433 (REDBITS.050727-1400)\r\n    CodeBase: file:///C:/WINDOWS/assembly/GAC_MSIL/System.Drawing/2.0.0.0__b03f5f7f11d50a3a/System.Drawing.dll\r\n----------------------------------------\r\nRawr.Base\r\n    Assembly Version: 2.1.1.0\r\n    Win32 Version: 2.1.1.0\r\n    CodeBase: file:///D:/Craig's%20Stuff/Rawr%20v2.1.1/Rawr.Base.DLL\r\n----------------------------------------\r\nRawr.Base\r\n    Assembly Version: 2.1.1.0\r\n    Win32 Version: 2.1.1.0\r\n    CodeBase: file:///D:/Craig's%20Stuff/Rawr%20v2.1.1/Data/Rawr.Base.dll\r\n----------------------------------------\r\nSystem.Xml\r\n    Assembly Version: 2.0.0.0\r\n    Win32 Version: 2.0.50727.1433 (REDBITS.050727-1400)\r\n    CodeBase: file:///C:/WINDOWS/assembly/GAC_MSIL/System.Xml/2.0.0.0__b77a5c561934e089/System.Xml.dll\r\n----------------------------------------\r\nRawr.Bear\r\n    Assembly Version: 2.1.1.0\r\n    Win32 Version: 2.1.1.0\r\n    CodeBase: file:///D:/Craig's%20Stuff/Rawr%20v2.1.1/Data/Rawr.Bear.DLL\r\n----------------------------------------\r\nRawr.Cat\r\n    Assembly Version: 2.1.1.0\r\n    Win32 Version: 2.1.1.0\r\n    CodeBase: file:///D:/Craig's%20Stuff/Rawr%20v2.1.1/Data/Rawr.Cat.DLL\r\n----------------------------------------\r\nRawr.DPSDK\r\n    Assembly Version: 2.1.1.0\r\n    Win32 Version: 2.1.1.0\r\n    CodeBase: file:///D:/Craig's%20Stuff/Rawr%20v2.1.1/Data/Rawr.DPSDK.DLL\r\n----------------------------------------\r\nRawr.Enhance\r\n    Assembly Version: 2.1.1.0\r\n    Win32 Version: 2.1.1.0\r\n    CodeBase: file:///D:/Craig's%20Stuff/Rawr%20v2.1.1/Data/Rawr.Enhance.DLL\r\n----------------------------------------\r\nRawr.Healadin\r\n    Assembly Version: 2.1.1.0\r\n    Win32 Version: 2.1.1.0\r\n    CodeBase: file:///D:/Craig's%20Stuff/Rawr%20v2.1.1/Data/Rawr.Healadin.DLL\r\n----------------------------------------\r\nRawr.HolyPriest\r\n    Assembly Version: 2.1.1.0\r\n    Win32 Version: 2.1.1.0\r\n    CodeBase: file:///D:/Craig's%20Stuff/Rawr%20v2.1.1/Data/Rawr.HolyPriest.DLL\r\n----------------------------------------\r\nRawr.Hunter\r\n    Assembly Version: 2.1.1.0\r\n    Win32 Version: 2.1.1.0\r\n    CodeBase: file:///D:/Craig's%20Stuff/Rawr%20v2.1.1/Data/Rawr.Hunter.DLL\r\n----------------------------------------\r\nRawr.Mage\r\n    Assembly Version: 2.1.1.0\r\n    Win32 Version: 2.1.1.0\r\n    CodeBase: file:///D:/Craig's%20Stuff/Rawr%20v2.1.1/Data/Rawr.Mage.DLL\r\n----------------------------------------\r\nRawr.Moonkin\r\n    Assembly Version: 2.1.1.0\r\n    Win32 Version: 2.1.1.0\r\n    CodeBase: file:///D:/Craig's%20Stuff/Rawr%20v2.1.1/Data/Rawr.Moonkin.DLL\r\n----------------------------------------\r\nRawr.ProtWarr\r\n    Assembly Version: 2.1.1.0\r\n    Win32 Version: 2.1.1.0\r\n    CodeBase: file:///D:/Craig's%20Stuff/Rawr%20v2.1.1/Data/Rawr.ProtWarr.DLL\r\n----------------------------------------\r\nRawr.Retribution\r\n    Assembly Version: 2.1.1.0\r\n    Win32 Version: 2.1.1.0\r\n    CodeBase: file:///D:/Craig's%20Stuff/Rawr%20v2.1.1/Data/Rawr.Retribution.DLL\r\n----------------------------------------\r\nRawr.ShadowPriest\r\n    Assembly Version: 2.1.1.0\r\n    Win32 Version: 2.1.1.0\r\n    CodeBase: file:///D:/Craig's%20Stuff/Rawr%20v2.1.1/Data/Rawr.ShadowPriest.DLL\r\n----------------------------------------\r\nRawr.Tankadin\r\n    Assembly Version: 2.1.1.0\r\n    Win32 Version: 2.1.1.0\r\n    CodeBase: file:///D:/Craig's%20Stuff/Rawr%20v2.1.1/Data/Rawr.Tankadin.DLL\r\n----------------------------------------\r\nRawr.Tree\r\n    Assembly Version: 2.1.1.0\r\n    Win32 Version: 2.1.1.0\r\n    CodeBase: file:///D:/Craig's%20Stuff/Rawr%20v2.1.1/Data/Rawr.Tree.DLL\r\n----------------------------------------\r\nSystem.Configuration\r\n    Assembly Version: 2.0.0.0\r\n    Win32 Version: 2.0.50727.1433 (REDBITS.050727-1400)\r\n    CodeBase: file:///C:/WINDOWS/assembly/GAC_MSIL/System.Configuration/2.0.0.0__b03f5f7f11d50a3a/System.Configuration.dll\r\n----------------------------------------\r\nculgthob\r\n    Assembly Version: 2.0.0.0\r\n    Win32 Version: 2.0.50727.1433 (REDBITS.050727-1400)\r\n    CodeBase: file:///C:/WINDOWS/assembly/GAC_MSIL/System/2.0.0.0__b77a5c561934e089/System.dll\r\n----------------------------------------\r\nzihptkwb\r\n    Assembly Version: 2.0.0.0\r\n    Win32 Version: 2.0.50727.1433 (REDBITS.050727-1400)\r\n    CodeBase: file:///C:/WINDOWS/assembly/GAC_MSIL/System/2.0.0.0__b77a5c561934e089/System.dll\r\n----------------------------------------\r\nvovndr45\r\n    Assembly Version: 2.0.0.0\r\n    Win32 Version: 2.0.50727.1433 (REDBITS.050727-1400)\r\n    CodeBase: file:///C:/WINDOWS/assembly/GAC_MSIL/System/2.0.0.0__b77a5c561934e089/System.dll\r\n----------------------------------------\r\nkmqtys__\r\n    Assembly Version: 2.0.0.0\r\n    Win32 Version: 2.0.50727.1433 (REDBITS.050727-1400)\r\n    CodeBase: file:///C:/WINDOWS/assembly/GAC_MSIL/System/2.0.0.0__b77a5c561934e089/System.dll\r\n----------------------------------------\r\nlo7rte9z\r\n    Assembly Version: 2.1.1.0\r\n    Win32 Version: 2.0.50727.1433 (REDBITS.050727-1400)\r\n    CodeBase: file:///C:/WINDOWS/assembly/GAC_MSIL/System/2.0.0.0__b77a5c561934e089/System.dll\r\n----------------------------------------\r\ncxbt_hyu\r\n    Assembly Version: 2.1.1.0\r\n    Win32 Version: 2.0.50727.1433 (REDBITS.050727-1400)\r\n    CodeBase: file:///C:/WINDOWS/assembly/GAC_MSIL/System/2.0.0.0__b77a5c561934e089/System.dll\r\n----------------------------------------\r\ntvfjjkcj\r\n    Assembly Version: 2.1.1.0\r\n    Win32 Version: 2.0.50727.1433 (REDBITS.050727-1400)\r\n    CodeBase: file:///C:/WINDOWS/assembly/GAC_MSIL/System/2.0.0.0__b77a5c561934e089/System.dll\r\n----------------------------------------\r\n_g6m_28m\r\n    Assembly Version: 2.0.0.0\r\n    Win32 Version: 2.0.50727.1433 (REDBITS.050727-1400)\r\n    CodeBase: file:///C:/WINDOWS/assembly/GAC_MSIL/System/2.0.0.0__b77a5c561934e089/System.dll\r\n----------------------------------------\r\n92cdacef\r\n    Assembly Version: 2.1.1.0\r\n    Win32 Version: 2.0.50727.1433 (REDBITS.050727-1400)\r\n    CodeBase: file:///C:/WINDOWS/assembly/GAC_MSIL/System/2.0.0.0__b77a5c561934e089/System.dll\r\n----------------------------------------\r\n\r\n************** JIT Debugging **************\r\nTo enable just-in-time (JIT) debugging, the .config file for this\r\napplication or computer (machine.config) must have the\r\njitDebugging value set in the system.windows.forms section.\r\nThe application must also be compiled with debugging\r\nenabled.\r\n\r\nFor example:\r\n\r\n<configuration>\r\n    <system.windows.forms jitDebugging=\"true\" />\r\n</configuration>\r\n\r\nWhen JIT debugging is enabled, any unhandled exception\r\nwill be sent to the JIT debugger registered on the computer\r\nrather than be handled by this dialog box.\r\n\r\nAnyways, it seems to be an issue with the priest model and has nothing to do with armoury parsing, as I never got it to parse the armoury.",
+      "PostedDate": "2008-11-23T01:24:39.82-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I've got the same problem: Irstyx, Earthen Ring, US\r\n\r\nI similarly can't restart Rawr after the crash happens until I delete the user.config file (documents and settings\\{user}\\Local Settings\\ApplicationData\\Rawr\\...) -- it seems having one of the priest models in the RecentModel section is enough to prevent rawr from starting for me.",
+      "PostedDate": "2008-11-23T13:08:17.333-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I was able to reproduce this with the current release 2.1.1, but when trying to track the bug down, it seems to be gone. I will watch out for this bug if it returns, but right now it seems to be resolved.",
+      "PostedDate": "2008-11-23T15:12:31.35-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I am able to reproduce this bug on the 2.1.1 release, however when trying to track it down, the bug seems to be gone in the current code. I will keep an eye out of for this bug if it returns, but right now it seems like it will be fixed for next release.",
+      "PostedDate": "2008-11-23T15:14:41.88-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-11-24T09:54:56.233-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yup, this happens for my priest as well. In fact, you should be able to reproduce this without loading an armory at all. Just select priest from the \r\ndrop-down and you should see the error (you might have to select Holy Priest as the Model). Once this error occurs, the app will just hang until\r\nyou kill it. After that, if you try to start it up, the process will start, the splash-screen will come up and then the proces will silently die a few seconds later. After that, your only option is to move the distribution to a new file location in order for it to come up again. ",
+      "PostedDate": "2008-11-25T14:51:23.95-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T18:49:23.54-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T18:49:26.347-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T18:49:48.14-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T18:50:08.497-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:21.047-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:15.847-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:49.193-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

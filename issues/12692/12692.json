@@ -1,0 +1,111 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Moonkin",
+      "DisplayName": "Rawr.Moonkin"
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-09T17:30:17.57-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Using a character I loaded from 2.1.9 and then chose new options for in 2.2.0, I keep having the optimizer crash whenever I try to use it. This is the error:\n \n************** Exception Text **************\nSystem.IndexOutOfRangeException: Index was outside the bounds of the array.\nat Rawr.Optimizer.GetPossibleGemmedItemsForItem(Item item, String gemmedId, Item[] gemItems, Item[] metaGemItems)\nat Rawr.Optimizer.PopulateAvailableIds(List`1 availableItems, Boolean overrideRegem, Boolean overrideReenchant)\nat Rawr.Optimizer.InitializeItemCache(Character character, List`1 availableItems, Boolean overrideRegem, Boolean overrideReenchant, Boolean templateGemsEnabled, CalculationsBase model)\nat Rawr.FormOptimize.buttonOptimize_Click(Object sender, EventArgs e)\nat System.Windows.Forms.Control.OnClick(EventArgs e)\nat System.Windows.Forms.Button.OnClick(EventArgs e)\nat System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)\nat System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)\nat System.Windows.Forms.Control.WndProc(Message& m)\nat System.Windows.Forms.ButtonBase.WndProc(Message& m)\nat System.Windows.Forms.Button.WndProc(Message& m)\nat System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)\nat System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)\nat System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)\n----------------------------------------\n \nAnd I have attached my character file.\n \nThank you for the hard work!",
+    "LastUpdatedDate": "2017-11-27T11:00:11.913-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-02-25T13:08:26.48-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Moonkin] Optimizer Crash",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 12692
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1708,
+      "FileName": "mes-boomkin-boe.xml",
+      "DownloadUrl": ".\\1708"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I can confirm the same problem. I experience it every time I run optimizer for my boomkin. It does not matter whether I use my older XML file or load my character from the armory.",
+      "PostedDate": "2009-02-26T14:06:21.583-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-02-26T14:08:51.24-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Looks like this has to do with the new gemming system and isn't specifically related to Rawr.Moonkin.  It could be that I didn't provide the proper defaults or something...  Astrylian, any ideas?",
+      "PostedDate": "2009-02-27T06:25:25.667-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Oops. Fixed, checked in. I think you may be able to work around it in the mean time, by unequipping your tabard, but I'm not sure. Otherwise, just wait until v2.2.0b2 in a couple days.",
+      "PostedDate": "2009-02-27T11:51:48.027-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I tried unequipping my tabard but that didn't seem to resolve the issue. I'll wait for b2 or if I'm feeling ambitious take a stab at downloading the source from SVN and compiling. Just wanted to let you guys know: \"You rock!! Thank you so much for developing this program!\"",
+      "PostedDate": "2009-02-27T14:34:47.453-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I have confirmed that Astrylian's checked in fix resolves the issue.",
+      "PostedDate": "2009-02-28T11:51:02.057-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-09T17:30:17.57-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T15:38:38.51-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:48:47.153-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:03:27.03-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:35:23.92-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:09.933-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:00:11.913-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

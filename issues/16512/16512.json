@@ -1,0 +1,101 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Hunter",
+      "DisplayName": "Rawr.Hunter"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-03-01T12:25:35.947-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I've been noticing some odd behavior lately on both my hunter and ret pally with trinket ratings and such.  Yesterday I got a new bow for my hunter which dropped my hit rating down so I was looking over my gear in rawr 2.3.10 to see what I could do to improve my hit.  Anyway,  most items were suggesting that I should gem for haste.  So, I  went through the gemming templates and deselected all the sets with haste gems.  That helped, but I'm still seeing haste being too strong on several items.  Then I looked at the Relative Stat Values, and wow, haste was rated at 32.84 dps per point.  I know that can't be right.",
+    "LastUpdatedDate": "2013-05-16T05:21:43.667-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-02-24T01:04:39.9-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Hunter] Haste is overrated",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16512
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3014,
+      "FileName": "TakeiteasySV.xml",
+      "DownloadUrl": ".\\3014"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "It would seem that the Shot Rotation was at a point where adding about 20 haste would create a short but distinct spike in dps before falling back to typical values.  It seems to me that there are many in game situations that make this untenable.  But anyway, the simple fix is to disable the \"Use Shot Rotation Test instead of Frequiences\" option on the Options/Basics tab.   So now I guess I just have a basic question:  When working with the ret pally module, does the \"Effective Cooldowns\" button do basically the same thing?",
+      "PostedDate": "2010-02-24T06:25:49.967-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "http://rawr.codeplex.com/Thread/View.aspx?ThreadId=80205",
+      "PostedDate": "2010-02-24T10:36:09.227-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-24T10:36:22.21-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You seem to add the issue for 2 models at once, which is not the right way to do it. Models evaluate stats independently. So please add another one for Retribution and leave this one for Hunter only. The Retribution Haste situation is discussed at EJ currently: http://elitistjerks.com/f76/t52371-rawr_retribution_model/p22/",
+      "PostedDate": "2010-02-24T16:48:32.303-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Notes from examining your file:\r\n* Haste at 32.83 with Intellect in 2nd at 1.05 found, ergo issue duplicated\r\n* You have only the following Buffs enabled: Guru's Elixir, Attack Power Food, Toughness (auto-activated by your Mining Profession). This fails against article 4 in the link I previously provided. Also, Guru's Elixir? wtf? and Attack Power food isn't nearly as good as Agility food. If you meant to select Fish Feast for raids (instead of providing your own food) that would make more sense.\r\n* Your Hit Rating is 47 low, but you mention that in your issue as the reason this whole thing was discovered (while trying to find replacement for that hit rating).\r\n* Your Pet doesn't have any active buffs, this fails against article5 in the linked page.\r\n* Your Spec needs some consideration, you lack talent points that would be rather obvious considerable upgrades. Such as Hunting Party, which you have at 2/3 instead of 3/3 and Expose Weakness which is at 1/3 instead of 3/3.\r\n\r\nAs it stands, if you look on the Options Pane in the Basics Tab, you will see an area named Stats Graph. Click the 'Display Stats Graph' button to show the chart. With the default settings on my screen, Hate is the green line and is the only one showing any form of weirdness. That weirdness is wholly to \r\nbe expected at this time due to the methodology behind the rotation code. Its the same thing you see in many other models in that at specific Haste amounts, it may be able to add or remove abilities that increase DPS but in some cases lose a shot over time. This is in fact true of the game but we would like more smooth applications of Haste in Rawr. DPSWarr has an excellent example of Haste running in a more smooth method and I hope to have Hunter running on a similar process soon, it's just very time-consuming to build that process essentially from scratch.\r\n\r\nWe already have an issue open about the Hunter Rotations code so I will be closing it at this time.\r\n\r\nYou should also note that while you see the same thing in Ret, they suffer the same cause as do most of the models. An extra issue about it isn't going to help, so I would recommend you just put a Vote up on an existing one or learn to live with it as it isn't likely to be fixed for any model anytime soon.",
+      "PostedDate": "2010-02-24T17:48:39.897-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Jothay, thanks for your feedback.  I am in a new guild with no expectation on what buffs will be brought to a raid.  It's very likely 7% hit is enough, but I would rather be at 8% just in case.  As far as my spec, I have selected mana replenishment as a priority for now.  I think selecting frequencies is a satisfactory option for me right now, as I really dont care if rawr shows me what my max dps might be.  I need rawr to help me make gear and gemming choices for a wide variety of situations. So IMO your required steps in 80205 are not applicable.  Selecting frequencies and using the graph you mention takes all the hiccups out of haste.",
+      "PostedDate": "2010-02-27T06:37:51.407-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-01T12:25:35.947-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T17:35:57.21-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:18.067-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:29:45.953-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:43.667-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

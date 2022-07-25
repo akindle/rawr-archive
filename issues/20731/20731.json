@@ -1,0 +1,106 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Tree",
+      "DisplayName": "Rawr.Tree"
+    },
+    "ClosedComment": "Old Rawr.Tree model replaced with rewrited model.",
+    "ClosedDate": "2011-06-04T08:31:15.6-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hello, this is a patch containing a full rewrite of Rawr.Tree, resulting in an apparently working model designed for WoW 4.1 with experimental 4.2 PTR support\n \nI believe this code should generally be substantially more maintainable, much better designed and much more accurate than the current Rawr.Tree, which seems to be pretty much broken and designed around a pre-Cataclysm environment.\n \nThis is an initial version, but it should pretty much already qualify for \"Mostly\" status (after review and bug fixing) and soon progress to \"Fully\".\n \nAlmost nothing of the old Rawr.Tree has been preserved, and instead the Rawr-facing parts have been adapted from Rawr.Moonkin, while the resto-specific parts have been written from scratch based on formulas in Hamlet's TreeCalcs spreadsheet.\n \nGear is evaluated using 4 subscores with configurable weighting: Raid Sustained, Raid Burst, Tank Sustained and Tank Burst.\n \nRaid vs Tank does the obvious, while Burst assumes infinite mana (but doesn't assume that procs are always up, currently).\n \nCurrently there is no Survival score since I don't think anyone considers that beyond deciding whether to take Perserverance.\n \nThe models are pretty simple, and essentially consist of performing several actions on cooldown/expiration (lifebloom refresh, tank rejuvenation refresh, swiftmend, wild growth, tranquility, clearcast HTs, regrowths for Nature's Grace) plus filling the remaining time and mana budgets with the best filler possible among Nourish, Healing Touch and for raid Rejuvenation. Lifebloom is assumed to be always up with 3 stacks and appropriately refreshed in all models.\n \nIn other words they are pretty similar to TreeCalcs, with the exception that the fillers and filler times are automatically selected to maximize HPS while going OOM exactly at the end of the fight (depending on boss handler): this allows to account for both healing power and regen in a single score.\n \nThis is performed by using an cast-time-fraction action distribution framework, which could be shared among all models, which include a solver that computes the best way to add fillers across all \"divisions\" of the fight using a simple greedy algorithm.\n \nThe approach in this code is thus only statistical and less accurate than performing a spell-by-spell simulation, but that would be much slower and anyway of dubious use unless raid damage is also appropriately modeled, which is quite hard to do in a meaningful way.\n \nLet me know what you think of this, any bugs, possible improvements or suggestions, and whether you would consider merging this.",
+    "LastUpdatedDate": "2013-05-16T05:17:59.683-07:00",
+    "PlannedForRelease": "Rawr 4.1.05.1",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-05-11T06:02:00.643-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Tree] Rewrite of Rawr.Tree",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 2,
+    "Id": 20731
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4936,
+      "FileName": "rawr_tree.patch",
+      "DownloadUrl": ".\\4936"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Please post patches in the source control section, on the patch page. And make sure to post it in the proper format; we don't use '.patch' files. Please post as a zip of changed files. This sounds great, eager to see it.",
+      "PostedDate": "2011-05-11T08:54:42.69-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "(Trying to read through the .patch file... Hard to read, but this does indeed look great at first glance. Can't wait to give it a try)",
+      "PostedDate": "2011-05-11T09:00:58.38-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yes, please submit the patch as a Zip file containing the changed files (it makes it so we just have to do DIFFs on each file to swap stuff over, applying a .patch file is not easy for most of us). In looking over your notes and the first few pages of the Patch I definately want to see what your code can do.",
+      "PostedDate": "2011-05-11T10:07:01.327-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-11T10:07:29.43-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Posted an improved version in the source control section.\r\n",
+      "PostedDate": "2011-05-12T00:57:23.503-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Wonderful, thanks!",
+      "PostedDate": "2011-05-12T01:24:59.15-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "anything further on this? (I am just itching for a better tree model)",
+      "PostedDate": "2011-05-25T13:53:42.143-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-25T15:55:48.023-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Just uploaded a new version (see source code section), which I think should pretty much have adequate features and code organization for a release.\r\n\r\nHowever, it probably needs some testing and bug fixing.\r\n",
+      "PostedDate": "2011-05-26T01:17:00.303-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-06-04T08:31:15.6-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:25:04.62-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:17:59.683-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

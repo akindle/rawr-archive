@@ -1,0 +1,85 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "fixed in release 13",
+    "ClosedDate": "2008-04-11T11:42:03.23-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "An ItemEditor opened in that manner is 'bugged' in that clicks don't register on its item selection popups. I'm guessing the ItemEditor needs to be parented to the main form instead of the item selection popup, because the ItemEditor is popping the item selection up again which you can't click on because it's its parent.",
+    "LastUpdatedDate": "2013-05-16T05:27:29.413-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-03-18T08:49:20.653-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Editing an item in the item selection popup opens 'bugged' editor",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 9695
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I played around with this a lot tonight, and the only way I was able to get it to work properly was not to use the same instance between the main form and the item editor.  I created a new FormItemSelection form every time and it worked correctly.  The only issue is how to set the character on the ItemSelection correctly, or how to tweak the logic to ignore character if not there.  Someone with more knowledge of how all of those pieces tie together might want to take a stab at it.  I will continue tomorrow to try to find a good solution.\r\n\r\nUsing the Bear Model, and modifying the ItemButton as shown below worked.  I wasn't sure of a way of getting the calculation options from within the item button as thats part of the main form Character property setter, and setting the character on the button itself from the character passed to the ItemSelection form caused the gem buttons to not work. \r\n\r\nvoid ItemButton_MouseClick(object sender, MouseEventArgs e)\r\n\t\t{\r\n\t\t\tif (e.Button == MouseButtons.Left)\r\n\t\t\t{\r\n                FormItemSelection fis = new FormItemSelection();\r\n                fis.Items = ItemCache.RelevantItems;\r\n                fis.Character = this.Character != null ? this.Character : new Character() ;\r\n                if (!fis.Character.CalculationOptions.ContainsKey(\"TargetLevel\"))\r\n                    fis.Character.CalculationOptions[\"TargetLevel\"] = \"73\";\r\n                if (!fis.Character.CalculationOptions.ContainsKey(\"EnforceMetagemRequirements\"))\r\n                    fis.Character.CalculationOptions[\"EnforceMetagemRequirements\"] = \"No\";\r\n                fis.Show(this, CharacterSlot);\r\n\t\t\t\t//FormItemSelection.Instance.Show(this, CharacterSlot);\r\n\t\t\t}\r\n\t\t\telse if (e.Button == MouseButtons.Right && SelectedItem != null)\r\n\t\t\t{\r\n\t\t\t\tItemContextualMenu.Instance.Show(SelectedItem, Character.CharacterSlot.None, false);\r\n\t\t\t}\r\n\t\t}\r\n\r\n",
+      "PostedDate": "2008-03-26T21:35:58.67-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I believe I came up with a viable solution for this actually. I'll try it and update the issue later.",
+      "PostedDate": "2008-03-27T03:34:21.653-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The solution was to create a form controller that could hold onto the static values and create a new form object each time.  The form would then in turn grab its values from the static controller to create its UI properties.  I'll check it in when I get home.",
+      "PostedDate": "2008-03-27T05:30:14.17-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Resolved with changeset 17175.",
+      "PostedDate": "2008-03-27T14:54:09.317-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "\r\n\r\n** Closed by Dwin 3/27/2008 2:54 PM",
+      "PostedDate": "2008-04-02T18:53:42.557-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This isn't a viable solution. As described in the initial issue description, the editor needs to be parented to the main form, not the FormItemSelection. Creating a new FormItemSelection each time is a *huge* drain on resources.\r\n\r\nI'm reverting to the previous version, and making the necessary changes, please take a look when I get it checked in.",
+      "PostedDate": "2008-04-02T18:53:42.853-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-04-11T11:42:03.23-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:37:07.21-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:27:29.413-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

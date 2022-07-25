@@ -1,0 +1,86 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-09-16T18:11:02.223-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "when i start it up i load my char from the armory or click on any thing i get a message saying \"microsoft resource file to COFF object converison utility has stopped working\" and then another message comes up after i click close program and it sais\n \n See the end of this message for details on invoking \njust-in-time (JIT) debugging instead of this dialog box.\n \n************** Exception Text **************\nSystem.InvalidOperationException: Unable to generate a temporary class (result=1).\nerror CS1583: 'c:\\Users\\trevor\\AppData\\Local\\Temp\\CSC9710.tmp' is not a valid Win32 resource file\n \n   at System.Xml.Serialization.Compiler.Compile(Assembly parent, String ns, XmlSerializerCompilerParameters xmlParameters, Evidence evidence)\n   at System.Xml.Serialization.TempAssembly.GenerateAssembly(XmlMapping[] xmlMappings, Type[] types, String defaultNamespace, Evidence evidence, XmlSerializerCompilerParameters parameters, Assembly assembly, Hashtable assemblies)\n   at System.Xml.Serialization.TempAssembly..ctor(XmlMapping[] xmlMappings, Type[] types, String defaultNamespace, String location, Evidence evidence)\n   at System.Xml.Serialization.XmlSerializer.GenerateTempAssembly(XmlMapping xmlMapping, Type type, String defaultNamespace)\n   at System.Xml.Serialization.XmlSerializer..ctor(Type type, String defaultNamespace)\n   at Rawr.CalculationOptionsBear.GetXml()\n   at Rawr.Character.SerializeCalculationOptions()\n   at Rawr.FormMain.Calculations_ModelChanging(Object sender, EventArgs e)\n   at Rawr.Calculations.OnModelChanging()\n   at Rawr.Calculations.LoadModel(Type type)\n   at Rawr.FormMain.LoadModel(String displayName)\n   at Rawr.FormMain.comboBoxModel_SelectedIndexChanged(Object sender, EventArgs e)\n   at System.Windows.Forms.ComboBox.OnSelectedIndexChanged(EventArgs e)\n   at System.Windows.Forms.ComboBox.WndProc(Message& m)\n   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)\n   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)\n \n// MOVED EXCESSIVE TEXT TO A FILE",
+    "LastUpdatedDate": "2013-05-16T05:24:38.843-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-08-30T12:49:59.603-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "rawr crashing when i click on any thing or load any thing on it",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14000
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2151,
+      "FileName": "error.txt",
+      "DownloadUrl": ".\\2151"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Somehow, your user permissions are screwed up. Your user doesn't have permissions to write to its own temp folder. Try using Run as Administrator.",
+      "PostedDate": "2009-08-30T14:11:20.747-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "i did it does the same thing although it works fine on xp im using vista",
+      "PostedDate": "2009-08-30T23:00:02.66-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yeah, somehow your users' temp folder has gotten locked.",
+      "PostedDate": "2009-08-30T23:23:49.653-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-31T05:35:23.447-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-31T05:35:25.183-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-16T18:11:02.223-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:22.61-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:38.843-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

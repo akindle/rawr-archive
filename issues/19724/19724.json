@@ -1,0 +1,86 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.AddOn",
+      "DisplayName": "Rawr.AddOn"
+    },
+    "ClosedComment": "Fixed in v0.62",
+    "ClosedDate": "2011-01-17T01:40:55.563-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I'm having an issue when using the rawr addon.  The tooltips do not show the rawr info as seen in this thread:\n \nhttp://rawr.codeplex.com/Thread/View.aspx?ThreadId=240488\n \nI disabled all of my other addons.  I've attached some screens to highlight what I'm seeing.\n \nNow there are also some LUA errors popping up.  Not sure if these are related so I will post them here.\n \nThis first error I get anytime I mouse over an equipped item on the rawr paper doll.  You'll notice the count of 139.\n.\n.\n.\nMessage: Interface\\AddOns\\Rawr\\Frame.lua:222: attempt to perform arithmetic on local 'oldvalue' (a nil value)\nTime: 01/16/11 21:10:03\nCount: 139\nStack: Interface\\AddOns\\Rawr\\Frame.lua:222: in function `AddDifferenceText'\nInterface\\AddOns\\Rawr\\Frame.lua:178: in function `AddRawrTooltipData'\nInterface\\AddOns\\Rawr\\Frame.lua:105: in function `ItemSlots_OnEnter'\n[string \"*:OnEnter\"]:1: in function <[string \"*:OnEnter\"]:1>\n \nLocals: self = <table> {\n SetMinorUpgradeSound = <function> defined @Interface\\AddOns\\Rawr\\Options.lua:358\n defaults = <table> {\n }\n regions = <table> {\n }\n WarnUpgradeFound = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:417\n UpgradesScrollBarScrolled = <function> defined @Interface\\AddOns\\Rawr\\Frame.lua:487\n SecureHook = <function> defined @Interface\\AddOns\\ArkInventory\\Externals\\Ace3-AceHook\\AceHook-3.0.lua:339\n CHAT_MSG_WHISPER = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:331\n CHAT_MSG_PARTY = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:311\n GetRegion = <function> defined @Interface\\AddOns\\Rawr\\Options.lua:277\n SetUpgradeSound = <function> defined @Interface\\AddOns\\Rawr\\Options.lua:331\n CHAT_MSG_RAID_LEADER = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:323\n CreateTooltips = <function> defined @Interface\\AddOns\\Rawr\\Frame.lua:73\n IsEnabled = <function> defined @Interface\\AddOns\\ArkInventory\\Externals\\Ace3-AceAddon\\AceAddon-3.0.lua:467\n SetRegion = <function> defined @Interface\\AddOns\\Rawr\\Options.lua:281\n LOOT_OPENED = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:288\n RegisterMessage = <function> defined @Interface\\AddOns\\DataStore\\libs\\CallbackHandler-1.0\\CallbackHandler-1.0.lua:118\n UnregisterMessage = <function> defined @Interface\\AddOns\\DataStore\\libs\\CallbackHandler-1.0\\CallbackHandler-1.0.lua:181\n GetDebug = <function> defined @Interface\\AddOns\\Rawr\\Options.lua:260\n hooks = <table> {\n }\n DebugPrint = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:500\n ImportRawrData = <function> defined @Interface\\AddOns\\Rawr\\Import.lua:35\n db = <table> {\n }\n CharacterFrameOnHideOld = <function> defined @Interface\\FrameXML\\CharacterFrame.lua:128\n SetEnabledState = <function> defined @Interface\\AddOns\\ArkInventory\\Externals\\Ace3-AceAddon\\AceAddon-3.0.lua:440\n Hook = <function> defined @Interface\\AddOns\\ArkInventory\\Externals\\Ace3-AceHook\\AceHook-3.0.lua:277\n SetDebug = <function> defined @Interface\\AddOns\\Rawr\\Options.lua:264\n BANKFRAME_CLOSED = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:339\n ExportEquipped = <function> defined @Interface\\AddOns\\Rawr\\Export.lua:333\n GetColour = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:526\n PrintWarning = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:575\n OnEnable = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:242\n AddDifferenceText = <function> defined @Interface\\AddOns\\Rawr\\Frame.lua:221\n DisplayExportWindow = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:356\n OnInitialize = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:194\n NewModule = <function> defined @Interface\\AddOns\\ArkInventory\\Externals\\Ace3-AceAddon\\AceAddon-3.0.lua:256\n GetWarningColour = <function> defined @Interface\\AddOns\\Rawr\\Options.lua:386\n GetMajorUpgradeValue = <function> defined @Interface\\AddOns\\Rawr\\Options.lua:286\n CreateButton = <function> defined @Interface\\AddOns\\Rawr\\Frame.lua:6\n optionsFrame = <unnamed> {\n }\n CheckChangedEquippedItem = <function> defined @Interface\\AddOns\\Rawr\\Frame.lua:357\n ItemSlots_OnClick = <function> defined @Interface\\AddOns\\Rawr\\Frame.lua:135\n GetName = <function> defined @Interface\\AddOns\\ArkInventory\\Externals\\Ace3-AceAddon\\AceAddon-3.0.lua:300\n GetOptions = <function> defined @Interface\\AddOns\\Rawr\\Options.lua:60\n AddRawrUpgradeTooltipData = <function> defined @Interface\\AddOns\\Rawr\\Frame.lua:192\n name = \"Rawr\"\n AddRawrTooltipData = <function> defined @Interface\\AddOns\\Rawr\\Frame.lua:171\n Disable = <function> defined @Interface\\AddOns\\ArkInventory\\Externals\\Ace3-AceAddon\\AceAddon-3.0.lua:330\n GetModelName = <\n.\n.\n.\nThe second error I get whenever mousing over the direct upgrade list.\n.\n.\n.\nMessage: Interface\\AddOns\\Rawr\\Frame.lua:199: attempt to perform arithmetic on field 'overall' (a nil value)\nTime: 01/16/11 21:10:02\nCount: 90\nStack: Interface\\AddOns\\Rawr\\Frame.lua:199: in function `AddRawrUpgradeTooltipData'\nInterface\\AddOns\\Rawr\\Frame.lua:103: in function `ItemSlots_OnEnter'\n[string \"*:OnEnter\"]:1: in function <[string \"*:OnEnter\"]:1>\n \nLocals: self = <table> {\n SetMinorUpgradeSound = <function> defined @Interface\\AddOns\\Rawr\\Options.lua:358\n defaults = <table> {\n }\n regions = <table> {\n }\n WarnUpgradeFound = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:417\n UpgradesScrollBarScrolled = <function> defined @Interface\\AddOns\\Rawr\\Frame.lua:487\n SecureHook = <function> defined @Interface\\AddOns\\ArkInventory\\Externals\\Ace3-AceHook\\AceHook-3.0.lua:339\n CHAT_MSG_WHISPER = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:331\n CHAT_MSG_PARTY = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:311\n GetRegion = <function> defined @Interface\\AddOns\\Rawr\\Options.lua:277\n SetUpgradeSound = <function> defined @Interface\\AddOns\\Rawr\\Options.lua:331\n CHAT_MSG_RAID_LEADER = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:323\n CreateTooltips = <function> defined @Interface\\AddOns\\Rawr\\Frame.lua:73\n IsEnabled = <function> defined @Interface\\AddOns\\ArkInventory\\Externals\\Ace3-AceAddon\\AceAddon-3.0.lua:467\n SetRegion = <function> defined @Interface\\AddOns\\Rawr\\Options.lua:281\n LOOT_OPENED = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:288\n RegisterMessage = <function> defined @Interface\\AddOns\\DataStore\\libs\\CallbackHandler-1.0\\CallbackHandler-1.0.lua:118\n UnregisterMessage = <function> defined @Interface\\AddOns\\DataStore\\libs\\CallbackHandler-1.0\\CallbackHandler-1.0.lua:181\n GetDebug = <function> defined @Interface\\AddOns\\Rawr\\Options.lua:260\n hooks = <table> {\n }\n DebugPrint = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:500\n ImportRawrData = <function> defined @Interface\\AddOns\\Rawr\\Import.lua:35\n db = <table> {\n }\n CharacterFrameOnHideOld = <function> defined @Interface\\FrameXML\\CharacterFrame.lua:128\n SetEnabledState = <function> defined @Interface\\AddOns\\ArkInventory\\Externals\\Ace3-AceAddon\\AceAddon-3.0.lua:440\n Hook = <function> defined @Interface\\AddOns\\ArkInventory\\Externals\\Ace3-AceHook\\AceHook-3.0.lua:277\n SetDebug = <function> defined @Interface\\AddOns\\Rawr\\Options.lua:264\n BANKFRAME_CLOSED = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:339\n ExportEquipped = <function> defined @Interface\\AddOns\\Rawr\\Export.lua:333\n GetColour = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:526\n PrintWarning = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:575\n OnEnable = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:242\n AddDifferenceText = <function> defined @Interface\\AddOns\\Rawr\\Frame.lua:221\n DisplayExportWindow = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:356\n OnInitialize = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:194\n NewModule = <function> defined @Interface\\AddOns\\ArkInventory\\Externals\\Ace3-AceAddon\\AceAddon-3.0.lua:256\n GetWarningColour = <function> defined @Interface\\AddOns\\Rawr\\Options.lua:386\n GetMajorUpgradeValue = <function> defined @Interface\\AddOns\\Rawr\\Options.lua:286\n CreateButton = <function> defined @Interface\\AddOns\\Rawr\\Frame.lua:6\n optionsFrame = <unnamed> {\n }\n CheckChangedEquippedItem = <function> defined @Interface\\AddOns\\Rawr\\Frame.lua:357\n ItemSlots_OnClick = <function> defined @Interface\\AddOns\\Rawr\\Frame.lua:135\n GetName = <function> defined @Interface\\AddOns\\ArkInventory\\Externals\\Ace3-AceAddon\\AceAddon-3.0.lua:300\n GetOptions = <function> defined @Interface\\AddOns\\Rawr\\Options.lua:60\n AddRawrUpgradeTooltipData = <function> defined @Interface\\AddOns\\Rawr\\Frame.lua:192\n name = \"Rawr\"\n AddRawrTooltipData = <function> defined @Interface\\AddOns\\Rawr\\Frame.lua:171\n Disable = <function> defined @Interface\\AddOns\\ArkInventory\\Externals\\Ace3-AceAddon\\AceAddon-3.0.lua:330\n GetModelName = <function> defined @Interface\\AddOns\\Rawr\\Export.lua:156\n GetWarn\n.\n.\n.\nTL:DR, guessing something is broken on my end.  No clue what.  Help?",
+    "LastUpdatedDate": "2013-05-16T05:18:59.83-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-01-16T19:21:29.28-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Addon] Tooltip not showing rawr info",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19724
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4441,
+      "FileName": "rawr1.jpg",
+      "DownloadUrl": ".\\4441"
+    },
+    {
+      "FileId": 4442,
+      "FileName": "rawr2.jpg",
+      "DownloadUrl": ".\\4442"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "added second screen.",
+      "PostedDate": "2011-01-16T19:22:56.867-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Maybe an issue with an old save file.  I started a new prot model, exported my character to rawr then imported upgrades to game and it worked.  Sorry for the wall 'O text.",
+      "PostedDate": "2011-01-16T19:39:52.72-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yeah looks like you may have had data imported from an early version which initially just imported the item Ids and not the scores. So it was trying to add the scores to the tooltip and found nothing to display. As you say when you export new data it works. \r\n\r\nI'll add a catch all here just in case so that if the value is nil it traps that and skips the line in the tooltip. \r\n\r\nBoth errors are the same thing - the \"overall\" score field is empty so it cannot do calcultations with it.\r\n\r\nFixed in v0.62.",
+      "PostedDate": "2011-01-17T01:40:41.477-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-17T01:40:55.563-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T18:42:44.223-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:21.067-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:59.83-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

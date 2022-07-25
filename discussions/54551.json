@@ -1,0 +1,122 @@
+[
+  {
+    "Id": "183934",
+    "ThreadId": "54551",
+    "Html": "Hey guys,<br>\r\n<br>\r\nI haven't really taken a look at the code for rawr, but how hard would it be to add a pvp function to some of the models, to rank gear towards pvp ( ie resil, pen rating, etc.) instead of raid numbers?<br>\r\n",
+    "PostedDate": "2009-04-26T23:01:39.183-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "183947",
+    "ThreadId": "54551",
+    "Html": "Very. There's a bit of PvP support in some of the holy priest models, but it's just basic stuff like counting resilience toward survivability. It doesn't really help with any non-obvious gear decisions, as far as I'm aware (I want to wear arena gear for pvp? Whodda thunk?!). Correct me if I'm wrong, TNSe. :)<div><br></div><div>Mostly, PvP just isn't reliably modelable. Much of what's valuable in PvP isn't quantitative.</div>",
+    "PostedDate": "2009-04-27T00:01:08.967-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "183996",
+    "ThreadId": "54551",
+    "Html": "Yeah I understand that I was thinking about the new Wintergrasp pvp gear so people can know how that stacks against the different levels of gladiator gear from the major city vendors, That and the wide amount of trinkets available in game for pvp reasons.<br>\r\n<br>\r\n",
+    "PostedDate": "2009-04-27T02:19:06.36-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "183998",
+    "ThreadId": "54551",
+    "Html": "Indeed, the Priest models contain a survival rating which you can adjust how much you value. Survival rating is based on your health and resilience (and I'll probably add armor/resistance some time in the future).\r\n",
+    "PostedDate": "2009-04-27T02:25:10.997-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "184252",
+    "ThreadId": "54551",
+    "Html": "All you really need to do is to create a pvp survival rating and then allow people to adjust how much they want to weigh it compared to their dps. Is it ideal? No, but it does give a basis to start valuing the PvE gear until you do get arena gear and no longer need it. IMO, Rawr should allow people to adjust the weighting of things anyway, whether it's if you want to put a small amount of value on survivability for a mage or if you want to slightly change how a stat such as haste is valued. People have their own opinions on how to weight things, and even if they're mathematically wrong, you should let them do it!\r\n",
+    "PostedDate": "2009-04-27T15:24:20.313-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "184272",
+    "ThreadId": "54551",
+    "Html": "Quote &quot;if\r\nyou want to slightly change how a stat such as haste is valued. People\r\nhave their own opinions on how to weight things, and even if they're\r\nmathematically wrong, you should let them do it!\r\n&quot;<br>\r\n<br>\r\nNO. NO. NO. NO. NO.<br>\r\n<br>\r\nRawr does not in ANY WAY SHAPE OR FASHION work based on weightings. You cannot change how much haste is valued because haste HAS NO VALUE to change. <br>\r\n<br>\r\nRawr works by performing a series of fixed calculations, most models have some variables you can tweak like fight length, skill rotations etc. What you cannot and would never ever want a user to do is to corrupt the model by making the formulae invalid.<br>\r\n<br>\r\nFor haste for instance Rawr doesn't say oh haste is worth about 1.7 therefore that item that has 50 haste is worth 85. Rawr works by working out the damage from an ability eg: a spell, and how much damage that does. If you then add an item with 50 haste it works out how much better that spell is now that you have 50 haste more. So lets say a spell does 1000 damage and has a 3 second cast thats 1000/3 = 333.33 dps. An item with 50 haste will reduce your cast time by 1.52% to approx 2.95 seconds. So the dps is now 1000/2.95 = 338.98 dps a 5.65 dps increase for that 50 haste.<br>\r\n<br>\r\nTHAT'S how Rawr calculates things, we go to great length to model exactly how abilities work and work out their contribution to your dps. Spell haste in the above example is known to be exactly 32.78998947 haste rating = 1% haste. How on earth would changing this to a COMPLETELY WRONG figure help???&nbsp; See http://elitistjerks.com/f31/t29453-combat_ratings_level_80_a/ for details of combat stats ratings.<br>\r\n",
+    "PostedDate": "2009-04-27T16:24:36.007-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "184509",
+    "ThreadId": "54551",
+    "Html": "In BC I had a PvP incoming damage model (pre-crit/mitigation) based on several combat logs.  The pre-crit/mitigation/avoidance attacks were split into<br>\r\n<br>\r\nAttacks that ignore armor, don't crit, and can't be dodged (ex: Insect Swarm): 16.8%<br>\r\nAttacks that ignore armor, don't crit and can be dodged (ex: Rip from front when not CC'd): 7.8%<br>\r\nAttacks that ignore armor, can crit, and cannot be dodged (ex: Wrath): 17.6%<br>\r\nAttacks that can crit and are mitigated by armor, but can't be dodged (ex: Shred while I am casting): 21.7%<br>\r\nAttacks that can crit, are mitigated by armor, and can be dodged (ex: Auto Attack while I'm strafing): 36.1%<br>\r\n<br>\r\nYou can certainly argue about those percentages. but you can take numbers like that, combined with damage level, crit percentages, heals and stamina to generate TTL.<br>\r\nTTL combined with DPS (which needs to factor in CC/LoS issues) gives you an analytic model for damage done before death.<br>\r\n<br>\r\nNow Rawr Moonkin says some of my relative Stat Values in my PvE gear is<br>\r\n<br>\r\nSP: 1, Armor 0, Resil 0, Haste 0.76<br>\r\n<br>\r\nI implicitly use those values for my raid DPS gear (I let the Rawr optimizer pick my gear).<br>\r\n<br>\r\nFor PvP my analytic model applied to my current PvP gear gives me these values:<br>\r\n<br>\r\nSP: 1, Armor 0.14, Resil 0.42, Haste 0.63<br>\r\n<br>\r\nHaste lost value (relative to its value in a PvE raid) because in PvP:<br>\r\n 1) I use more instant casts, which don't benefit nearly as much from Haste.<br>\r\n 2) I am in serious danger of going OOM, and Haste doesn't help much in mana-constrained fights.<br>\r\nNotice that Haste is still better than Resil (PvP gear may not be the best choice), but with that high weight on armor, I won't wear much cloth.<br>\r\n<br>\r\n<br>\r\nMy PvP model is far from perfect, but it is almost certainly better (for PvP) than the Rawr PvE model.<br>\r\n<br>\r\nIdeally, someone would put my PvP model (or a better one) into Rawr, and I could let Rawr pick my PvP gear.  The barrier to adding a new model to Rawr is fairly high (particularly for an audience as limited as PvP Moonkin).  On the other hand I (and I suspect many others) would find it very valuable to use Rawr with custom weights.\r\n",
+    "PostedDate": "2009-04-28T06:21:52.28-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "184713",
+    "ThreadId": "54551",
+    "Html": "[quote]How on earth would changing this to a COMPLETELY WRONG figure help???  [/quote]<br>\r\n<br>\r\nA. A person should have the power to be wrong if they want to.<br>\r\n<br>\r\nB. Presumably you are making assumptions about rotations that may be incorrect for that specific player. For example:<br>\r\n<br>\r\nPlayer A and Player B are both Frostfire mages, with the same spec and gear. One of them is the Scorch bitch, and the other never casts Scorch. Is haste going to be worth the same to them? Maybe, I don't know, but maybe not. Is crit going to be worth the same? Definitely not as the Scorch bitch will proc more Hot Streaks due to lower average cast time and the other mage will get a lot more FFB crits which have a much higher bonus from crit than Scorch does. Is hit going to be the same for them? Probably not, because although it's actually going to be the same dps for each, if the Scorch bitch misses a Scorch, the whole raid's dps suffers slightly, making that spell hitting more important. Do you have a way to account for all of this? Maybe there's a place in Rawr to input your rotation, but I can't find it, and since little things like this exist for many class/specs, it only makes sense to allow people to fudge the numbers if they think something else would be closer to ideal.<br>\r\n<br>\r\nAnyway, this was just a throw away comment that had little to do with the real point of my post, which is including surviability and allowing people to value that how they wish. (something that already exists for DK tanks at least, IDK about anyone else)\r\n",
+    "PostedDate": "2009-04-28T14:17:04.167-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "184800",
+    "ThreadId": "54551",
+    "Html": "A. Obvious troll is obvious.<div><br></div><div>B. There's a &quot;Maintain Scorch&quot; checkbox in Rawr.Mage.</div><div><br></div><div><br></div><div>No, there's no way in hell we are implementing arbitrary stat weightings in Rawr. Rawr is for optimizing your character, not for being wrong.</div>",
+    "PostedDate": "2009-04-28T19:58:50.663-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "185706",
+    "ThreadId": "54551",
+    "Html": "Well, as a fellow developer/programmer/whatever we're called these days, I can understand your position to put out a product that does what the majority of your users want it to do: somehow optimize your characters usings all the variables you can account for (talents, buffs, gear, enchants, gems, etc.)  For most classes, it works pretty damn good.  For others, it needs a bit of polish (but it's being worked on).  As a mage, I appreciate all the work that you guys have put into this program.  But you did one extra thing for us.  You put it in SVN.<br>\r\n<br>\r\nAnd alexmc, because you have access to the code, you can try and implement your changes and provide variable weighting for different factors.<br>\r\n<br>\r\nThat's the beauty of Open Source!\r\n",
+    "PostedDate": "2009-04-30T14:01:57.65-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "191475",
+    "ThreadId": "54551",
+    "Html": "<p>This thread is the primary reason i just registered....because I just have to say in response to this absurd garbage:</p>\r\n<p><em>A. A person should have the power to be wrong if they want to.<br><br>B. Presumably you are making assumptions about rotations that may be incorrect for that specific player.</em></p>\r\n<p>To A, yes a person should have the power to be wrong if they wish...they can do that simply by not using an awesome tool such as RAWR in the first place.&nbsp; However, I highly doubt that a person that wants to screw up calculations with numbers full of emotions rather than a meaningful value would have little success...and like you and I ...be here downloading RAWR.</p>\r\n<p>&nbsp;</p>\r\n<p>To B., I'm sorry I&nbsp; missed where they claimed this was 100% in terms of validity.&nbsp; Just curious, the work I assume you are doing on your own...what's the current percentage of validity? especially with your magic numbers?</p>",
+    "PostedDate": "2009-05-18T07:30:02.947-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "191824",
+    "ThreadId": "54551",
+    "Html": "<p>banginglife, I must say you are 100% right. In the same vein, you would be 100% right to insist on customizing your pocket calculator to answer 5 for 2+2; or using Microsoft Word as a video editor. You would be 100% right in claiming the right to be wrong doing so.</p>\r\n<p>But then, it would be futile to request Microsoft to add video editing features to Word, because, oh, iMovie is so much better at it. (and no, I would not preclude MS complying with such a request).</p>\r\n<p>If you think Rawr should let the user balance attributes weight, then you probably don't get what Rawr is. Rawr has no *magic numbers*. Rawr does basically two things:</p>\r\n<p>1- implements a model of the current understanding of theorycrafting for a given (gear, talent, buff)&nbsp;t-uple&nbsp;to yield an output which can have from one to several metrics (e.g. dps, threat, mitigation, survivability). The input of the model is all the attributes of the t-uple (stats, procs&hellip;). The modeling is subject to a number of potential weaknesses which may affect its validity:</p>\r\n<p>\r\n<ul>\r\n<li>accuracy of the theorycrafting it's based upon</li>\r\n<li>simplifying&nbsp;assumptions necessary to have a working model in practice</li>\r\n<li>ability for the player to perfectly replicate what the models assesses as the best course of action</li>\r\n<li>designed variations between different fights</li>\r\n<li>random variations for the same fight</li>\r\n</ul>\r\n<p>Note: each class/spec must have its own model&nbsp;developed.</p>\r\n<p><br>2- iterates the chosen model over a specific set of&nbsp;(gear, talent, buff) variations, using brute force, in search of the *one* element in the search set with the best output. For tractability reasons, that set has to be limited, and Rawr provides a number of ways to help the user builds a reasonable set. Also for tractability reasons, the search is not exhaustive and might miss the absolute best.</p>\r\n<p>&nbsp;</p>\r\n</p>\r\n<p>Rawr does nothing else. So where is the room for letting the user &quot;be wrong&quot;? To some extent, for those models which have more than one output (e.g. druid bear), you have to weigh those outputs (eg survivability vs mitigation vs threat). Some models let the user choose that weight (I choose to ignore threat as a bear). Or not. But those weight are for the output metrics, not the input attributes.</p>\r\n<p>Yet as you can see, it's all in the model's hands. So *you* can go ahead and do it, if you really want to be wrong. Build your own model, which will let the user affect fixed weight to each t-uple attribute and yield a score with an affine function. Or you don't even need Rawr for that. In a few minutes, you can have a basic spreadsheet that does just that.&nbsp;Garbage in, garbage out. While you are doing so, you might go fancy: rather than using dull affine functions there, why not injecting more fun? Use polynomials, or even sine, cosine, even logarithms, or heaven forbids, Euler's function. Real fun awaits.</p>\r\n<p>Back to the OP request, is it possible to develop a model for PvP purposes? It might, but it's difficult, if at least because there is no definite theorycrafting for PvP in most cases. But why not... go ahead, you are welcome trying. It's probable that this will require a different model for each class/spec, but also for each opponent class/spec, and possibly for each arena team composition, and opponent team composition. You are facing major combinatorial explosion here.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-05-19T03:06:05.41-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "192030",
+    "ThreadId": "54551",
+    "Html": "<p>I think you missed the whole reason I posted.&nbsp; RAWR is more than amazing...and insisting that it have an amount of fail worked into it is stupid.&nbsp; If they'd like to do that (they being the people above that want to add in numbers that are wrong [those being the 'magic numbers' {my sarcasm in initial post}]) then take the source code and go make their own...that outputs trashy lies.</p>",
+    "PostedDate": "2009-05-19T11:43:31.273-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "192046",
+    "ThreadId": "54551",
+    "Html": "<p>As noted above, I think any sort of actual model would have to take into account so many team and strat combinations as to be unfeasible.&nbsp; And sustained dps is rather meaningless in pvp.</p>\r\n<p>Best support I could see is having the following:</p>\r\n<p>1. Gear filter for resilience items&nbsp;-&nbsp;already is a pvp item filter, I'm not sure what this includes/excludes trinketwise.&nbsp; Might add a res gem pvp gem filter.</p>\r\n<p>2. Output stats that you need in pvp as well as pve, such as hp, mana regen, size of hits, etc - mostly already provided.&nbsp; The only uncomputed numbers&nbsp;I can think of off the top of my head are the resilience reduction and spell pen.</p>\r\n<p>So Rawr is already pretty close to providing the data that you'd need for pvp use.&nbsp;</p>\r\n<p>The harder questions for pvp are the ones like 'Should I wear +20 resilience or +60ap?' and those aren't really modelable.</p>",
+    "PostedDate": "2009-05-19T12:29:35.507-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "192373",
+    "ThreadId": "54551",
+    "Html": "<p>Banginglife, I totally misread your post, and I apologize for that. I'm glad we actually agree :-)</p>",
+    "PostedDate": "2009-05-20T07:21:07.857-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

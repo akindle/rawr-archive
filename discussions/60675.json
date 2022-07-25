@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "205516",
+    "ThreadId": "60675",
+    "Html": "<p>When&nbsp;using Rawr last night (build 34917),&nbsp;I noticed that for some values of fight length, HPS-Sustained (blue bar) exceeded HPS-Burst (red bar) for some items. I'm by no means an expert on how these values are calculated, but it seems to me that the HPS-Sustained value would be bounded by the value of HPS-Burst.</p>\r\n<p>Is this expected behavior?&nbsp;If not, I'll provide the exact settings used when I get home this evening.</p>",
+    "PostedDate": "2009-06-25T09:03:39.903-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "205638",
+    "ThreadId": "60675",
+    "Html": "<p>HPS-Sustained is potentially improved by pure regen stats like mp5 and so those stats often lengthen the blue bar compared to burst.</p>",
+    "PostedDate": "2009-06-25T13:36:06.63-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "205655",
+    "ThreadId": "60675",
+    "Html": "<p>Key word here is: Some items.</p>\r\n<p>&nbsp;</p>\r\n<p>If you got a trinket with 42mp5 and compare it to an item with 100 haste, you will see a huge difference in Burst and Sustained. 100 Haste is nearly only Burst, while 42mp5 is entirely Sustained.</p>",
+    "PostedDate": "2009-06-25T14:15:02.897-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "205670",
+    "ThreadId": "60675",
+    "Html": "<p>Thanks for the responses.</p>\r\n<p>I'll get some exact numbers&nbsp;later, but one example was my current helm Hood of Rationality. Under non-mana bound conditions, Rawr reported that it was providing roughly 850 HPS-Burst and the same amount of HPS-Sustained which made sense to me. However, as I pushed the time horizon out into mana constrained territory, the HPS-Sustained value actually started increasing and peaked in the 1200 HPS-Sustained range which seemed counterintuitive.</p>\r\n<p>The only plausable explanation that I can think of for this is that the helm is providing a larger portion of my regen than it is providing of my throughput which is entirely possible due to the meta gem, but it doesn't seem reasonable for this phenomenon to occur on all of my gear. That would seem to indicate that my HPS increases as I become mana constrained. I'll get some more numbers and see if it's&nbsp;limited to helms or if it's something that occurs across all of my gear.</p>",
+    "PostedDate": "2009-06-25T15:03:31.853-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "205693",
+    "ThreadId": "60675",
+    "Html": "<p>Ok, I've confirmed that on mana constrained fights every item that I have equipped except for my main hand and one of my trinkets has a HPS-Sustained value that exceeds the HPS-Burst value.&nbsp; Out of curiosity, I went through and added together the HPS-Sustained value of each item that I have equiped and came up with a value of 13677 which exceeds my total calculated sustained HPS of 9838 according to the stats tab. Unless I'm misunderstanding what the meaning of the HPS-Sustained value assigned to each item represents, there seems to be something wrong with the calculation.</p>\r\n<p>Character file for reference using Rawr 2.2.7 release: http://marginalfutility.com/wow/Andrek.xml</p>",
+    "PostedDate": "2009-06-25T16:30:36.66-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "205863",
+    "ThreadId": "60675",
+    "Html": "<p>I think I'll try to explain what you see when you look at the list over potential items for a slot.</p>\r\n<p>&nbsp;</p>\r\n<p>Basically, what you see, is the improvement when you equip that item over having NO item equipped in that slot. So adding together the HPS-Sustained values will not give you any valid number for any purpose. If you look at the Head slot, you will see it is giving you a huge amount of sustainable healing, which is because the Metagem proc is extremely powerful. When you look at weapons, you will see its mostly equal between burst and sustainability. Thats because weapons give incredible amounts of spell power.</p>\r\n<p>&nbsp;</p>\r\n<p>When I loaded your character file, it showed me that you are running a 550mp5 deficit in order to keep on going for 480 seconds (8 minutes). &nbsp;This means any increase in mana regeneration (Int/MP5/Spirit) is going to have a very strong effect on your sustainability. So everything looks fine here, please let me know if I managed to explain it.</p>",
+    "PostedDate": "2009-06-26T05:03:15.643-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

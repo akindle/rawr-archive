@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "191658",
+    "ThreadId": "56702",
+    "Html": "<p>There appears to be a problem with certain amounts of haste causing the model to rank Elemental shaman items and dps negatively.&nbsp; There seems to be a threshold at 386 haste - which for my shaman shows 2534 dps, but dropping it to 385 haste shows 2590 dps.&nbsp; I first noticed this when it ranked my old weapon (titansteel guardian- 457 sp, crit 29) over my current one (hammer of the astral plane&nbsp; - 461 sp, crit 42, haste 31, int 44) which is obviously incorrect.</p>",
+    "PostedDate": "2009-05-18T15:29:58.197-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "191951",
+    "ThreadId": "56702",
+    "Html": "<p>386 haste - 2534 dps with Titansteel Guardian</p>\r\n<p>385 haste - 2590 dps with Hammer of Astral Plane</p>\r\n<p>Your info appears to be flawed, if the only change made was weapon swapping.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-05-19T08:37:26.663-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "192096",
+    "ThreadId": "56702",
+    "Html": "<p>I was trying to figure out how the titansteel guardian could be ranked higher than a hammer of the astral plane, which is a superior weapon in every regard (+4 sp, +13 crit, +31 haste, +44 int difference).&nbsp; So, I manually edited the haste on one of the weapons until I ran into that threshold of 385/386.&nbsp; Keeping everything else the same it showed my char as 2590 dps at 385 haste, then editing the haste on the weapon to 1 higher at 386 dropped my dps to 2534.</p>",
+    "PostedDate": "2009-05-19T14:21:06.113-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "192113",
+    "ThreadId": "56702",
+    "Html": "<p>I posted on an issue related to this yesterday:</p>\r\n<p>(Conclusions based on what I see on the GUI, I haven't looked at the model)</p>\r\n<p>It appears the model is trying to determine the best rotation to use, based on haste (and possibly other factors). This drop in dps, seems to be related to a switch in the rotation (on the profile I looked at, went from 4LB to 5. The round up settings also seemed to affect this. Essentially I suspect it is a rounding issue, where another rotation is being selected based on some criteria, but when the full calculation is performed using the new rotation, the resulting dps actually is lower.</p>\r\n<p>I don't know if there is a workaround from the user side.</p>\r\n<p>Hopefully the developer will be able to find the &quot;rounding&quot; issue shortly. I believe Trolando is working on the elemental model, but I haven't seen him around much recently. Or is someone else looking at this model and I got confused with names again?</p>",
+    "PostedDate": "2009-05-19T15:27:54.83-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "192184",
+    "ThreadId": "56702",
+    "Html": "<p>It is indeed Trolando who is working on the addon, although from what I can tell he hasn't been around here or on EJ for a while.</p>\r\n<p>When you do come back - or if someone else could - can 'minimum hit' be added as an optimizer variable? I hate running around under the hit cap, but currently there is only Overall Rating, Burst DPS Rating and Sustained DPS Rating available.</p>\r\n<p>Also, the Totem of Wrath glyph is missing from the glyph choices in Options&gt;Fight. It is showing up in the Talents&gt;Glyphs pane yet none of those tickboxes actually appear to change anything.</p>",
+    "PostedDate": "2009-05-19T21:11:32.323-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

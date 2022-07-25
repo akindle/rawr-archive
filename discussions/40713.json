@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "135034",
+    "ThreadId": "40713",
+    "Html": "Doing a massive &quot;Update Item Cache&quot;, I discover after the next launch of Rawr that all the source of item was gone and the file was nearly empty.<div><br></div><div>Trying to trace the error, it seems that there is an exception that is raise during the &quot;Load&quot; in the ItemLocation.cs file.</div><div>Exactly this is line 855 wich seem to raise the Exception :</div><div><div><span style=\"white-space:pre\">\t</span>sourceInfo = (SerializableDictionary&lt;string, ItemLocation&gt;) serializer.Deserialize(reader);</div><div><br></div><div>As their is an exception, the old content wasn't read and is delete during the next save.</div><div><br></div><div>Faerian</div><div><br></div></div>",
+    "PostedDate": "2008-11-25T01:05:40.53-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "135059",
+    "ThreadId": "40713",
+    "Html": "Kavan, guessing this is from your serialization optimization changes?<br>\r\n",
+    "PostedDate": "2008-11-25T02:23:22.7-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "135086",
+    "ThreadId": "40713",
+    "Html": "I guess I can't use the same &quot;trick&quot; here. Reverted to old serialization for item source, it should fix the problem.\r\n",
+    "PostedDate": "2008-11-25T04:40:10.307-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

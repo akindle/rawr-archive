@@ -1,0 +1,90 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtPaladin",
+      "DisplayName": "Rawr.ProtPaladin"
+    },
+    "ClosedComment": "Doing it right this time.baseDamage &#61; &#40;Stats.WeaponDamage &#47; Character.MainSpeed&#41; &#42;4&#59;Committed in r45790",
+    "ClosedDate": "2010-01-21T12:13:01.47-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Currently in Rawr, The base damage of Hammer of the Righteous is modelled in\nline 69 of AbilityModel.CS in Rawr.ProtPaladin as\n \nbaseDamage        = Stats.WeaponDamage / Character.MainHand.Speed;\n \nThis goes against the tooltip which says \"causing 4 times your main hand damage per second as Holy damage.\" This to me should be modelled as\n                         \nbaseDamage = (Stats.WeaponDamage  / Character.MainSpeed) *4;\n \nThe Current Calculation only models the DPS of the Weapon and not FOUR times the DPS.",
+    "LastUpdatedDate": "2017-11-27T11:04:05.623-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-01-21T01:56:43.787-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtPaladin] Hammer of the Righteous Damage/Threat is Incorrect",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16017
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Oh, hmm, NM, AP is already calculated in Stats.WeaponDamage.  (Stats.WeaponDamage / Character.MainSpeed) *4.0f; is right.",
+      "PostedDate": "2010-01-21T12:10:02.077-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It also scales with attack power:\r\n\r\n                    baseDamage        = ((Stats.WeaponDamage / Character.MainHand.Speed) + (AP / 14.0f)) * 4.0f;\r\n\r\nCommitted in r45788.\r\n\r\n\r\n\n\n** Closed by roncli 1/21/2010 12:08 PM",
+      "PostedDate": "2010-01-21T12:10:49.197-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-21T12:10:50.02-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-21T12:13:01.47-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T16:22:51.48-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:24.073-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-21T00:00:21.103-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:30:21.457-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:13.993-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:04:05.623-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtWarrior",
+      "DisplayName": "Rawr.ProtWarrior"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-07-04T17:10:16.437-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "See attached image, I included the mitigation weights on the screen shot.",
+    "LastUpdatedDate": "2017-11-27T11:00:52.163-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-01-13T19:17:18.133-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtWarr] RSV's show different total values than sum of parts",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15893
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2776,
+      "FileName": "odd-values.png",
+      "DownloadUrl": ".\\2776"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "To clarify for the Jothay-speak challenged... Look at the 4 threat-only stats. Only part of their threat seem to be adding only part of their value to the ComparisonCalculationProtWarr.OverallRating, but full value to the individual subpoint.\r\n\r\nAlways, always, always, OverallRating *must* be exactly the sum of the SubPoints array.",
+      "PostedDate": "2010-01-13T19:40:12.917-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I think the weights are being counted in one area but not another.",
+      "PostedDate": "2010-01-13T19:40:57.16-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Considering the code is:\r\n\r\ncalculatedStats.OverallPoints = calculatedStats.MitigationPoints + calculatedStats.SurvivalPoints + calculatedStats.ThreatPoints;\r\nreturn calculatedStats;\r\n\r\n...I am initially a bit confused about how this is at all possible. :P\r\n\r\nWill look into it when I'm at home, but what it appears to be is phantom negative values exisiting for Mitigation which are not being plotted visually. With Mitigation Scale at 0.0 I could never get any differences in the numbers, and cranking up the Mitigation Scale introduced lower values on some lines. Doesn't make much sense, so it's probably some odd fringe-case bug with some value being carried over when it shouldn't or something. Will debug it tonight.",
+      "PostedDate": "2010-01-14T03:19:33.653-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I am rather certain this is not a bug with ProtWarr but a bug with the RSV code itself--or some strange interaction somehow. I could not reproduce on any other report within more than a decimal place rounding error. Yet there are large errors, especially on the ArP line, in the RSV report.\r\n\r\nI change OverallPoints to be:\r\n\r\npublic override float OverallPoints\r\n        {\r\n            get { return _subPoints[0] + _subPoints[1] + _subPoints[2]; }\r\n...\r\n\r\nso there is really no reason why it should ever end up different, yet in the RSV chart it definitely does. Given that the code there seems to do some various dividing and such, I'm wondering if there is not some strange logic there which would cause odd results or perhaps an exacerbated rounding error of some sort.\r\n\r\nI certainly can't see an 'easy' explanation.\r\n",
+      "PostedDate": "2010-01-14T15:11:04.973-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T15:47:35.06-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Resolved with changeset 51753.",
+      "PostedDate": "2010-07-04T17:10:16.437-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:24.073-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:30:34.887-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:26.047-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:00:52.163-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

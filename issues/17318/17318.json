@@ -1,0 +1,116 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ShadowPriest",
+      "DisplayName": "Rawr.ShadowPriest"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-04-24T05:06:41.99-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Prior to 2.3.14, the trinket optimization seemed ok, but starting with 2.3.14 and now 2.3.15, the optimization routine is selecting Talisman of Resurgence over other trinkets that should have much better DPS attributes. What's up with this ? I have attached my most recent file for Bofa.",
+    "LastUpdatedDate": "2013-05-16T05:20:59.92-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-04-20T08:32:48.83-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ShadowPriest] Strange Trinket selection in Optimization",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17318
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3397,
+      "FileName": "bofa current apr18 10531.xml",
+      "DownloadUrl": ".\\3397"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Without looking at your toon but looking at the item, it probably wants your INT to be higher for a bigger mana pool?",
+      "PostedDate": "2010-04-20T10:55:46.533-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-20T10:56:09.793-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "A bigger mana pool does nothing for shadow priest DPS, and I am never in danger of running OOM.",
+      "PostedDate": "2010-04-20T14:23:56.577-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I just looked into this.\r\n\r\nAbyssal is 590 SP over 10s every ~55s (107 SP avg.), vs Talismans 599 over 20s every 120s (100 SP avg.) So the proc is fairly equal, and its down to 84 Haste vs 128 int.\r\n\r\nYou would and should expect 84 Haste to beat 128 Int, but the fact is, for your exact settings, the extra haste will not change your DPS as much as 128 int will. Changing brain lag up to 350ms will put Abyssal in front again, heck, if I remove bloodlust/heroism it suggests you use the Mag'hari Chieftain Staff instead.\r\n\r\nRawrs Model isn't perfectly applicable to reality, its an approximation, it wont always get everything right. In this case however, I agree with the model that these 2 trinkets are fairly equal, and the controllability of a Use vs a proc might in some cases be advantageous (Use w/heroism/shadowfiend/haste potion) ,while personally I believe more in passive procs.\r\n\r\nTLDR; I agree the choice is weird, but I wont say its wrong, your final DPS will probably be quite similar with either.",
+      "PostedDate": "2010-04-21T06:40:00.9-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hmm, ok let's compare Talisman to the Eye of the Broodmother, the 87 Crit from Eye adds 1.89% to crit chance , while RAWR says the 128 int adds .84% chance to crit. The SP buff on Broodmother averages out to +125 pretty quickly, while the SP buff from Talisman is slightly under 100 on average. Yet, RAWR tells me that I lose 133 DPS when I replace the Talisman with the Eye. I don't see how this could possibly be correct",
+      "PostedDate": "2010-04-21T07:10:27.157-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sorry, but what you're saying just isn't true.\r\n\r\nMana is an issue for DPS, not having enough means you'll have to slow down casting, or use GCD's/cast time on mana replenishment abilities. If the model accounts for mana spending and mana intake over time, then it may indeed suggest you don't have enough mana to last a fight and suggest to use items with more int, spi, mp5 or other manareturn.\r\n\r\nDouble check you have all the buffs you would have in a raid. Even seemingly 'useless' buffs like manastream, JoW on the boss etc, can make a big difference.\r\nAlso check the fight settings, in particular fight length, as that's an important factor on whether or not you'll run OOM.\r\n\r\n",
+      "PostedDate": "2010-04-21T08:57:28.623-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "OReubens - I took the fight length down to 2 minutes, and left 100% up-time for fiend and replenishment, RAWR still thinks that ToR is worth far more DPS to me than EotB. In this special 2 minute case, there is simply no way that I am even close to being mana constrained in a 2 minute fight where I use my Shadowfiend and have full replenishment. So, given no way that I could possibly go OOM, RAWR must be calculating that somehow 128 INT plus the on use is greater than the DPS characteristics of EotB, but that is simply wrong. \r\n\r\nRAWR did not assume that this trinket was superior in 2.3.13, it started with 2.3.14 and has continued into 2.3.15. Something has changed, and in my opinion this change must be in error. \r\n\r\nWhile it is quite easy for me to disallow ToR from my optimization runs, the fact that I must do so leads me to question what else may have gone wrong that I don't know about, hence my concern. It's not what I know is wrong that concerns me so much; what really concerns me is what else might be wrong that I don't know is wrong, but that I currently think is correct, that's where real harm can come in. Because this error has come up in this way, it leads me to be concerned about other errors occurring that are not specific just to this trinket.\r\n\r\nOf course, I may be wrong , and ToR may in fact be the superior DPS trinket to EotB, but please explain why that would be, because I don't understand how it could be correct.",
+      "PostedDate": "2010-04-21T14:49:45.157-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "One thing I didnt think of I need to check later, just writing here to let me remember. I need to check if the special effect for some reason gets handled twice. (which means Rawr would assume its 128 int + ~200 avg spell power)",
+      "PostedDate": "2010-04-21T14:52:06.973-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Fix will be in for next release. Clicky Spell Power trinkets were being overrated.",
+      "PostedDate": "2010-04-24T04:25:46.047-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-24T05:06:41.99-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-09T12:30:18.8-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T14:22:13.15-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:28:46.58-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:59.92-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

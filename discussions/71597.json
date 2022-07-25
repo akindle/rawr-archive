@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "244183",
+    "ThreadId": "71597",
+    "Html": "<p>I noticed in the Elemental Shaman calculations that the gems are listed by item id rather than by name. It occured to me that we were using the item id and I was able to look up the gem names via wowhead.com. While I know there are a lot of items in the game I was wondering if we wanted to have a name space and classes for items. That way people don't have to remember 41285 is Chaotic Skyflare diamond. For example,</p>\r\n<pre><br>namespace Meta.Gems\r\n{\r\n   class Meta\r\n   {\r\n       public static int ChaoticSkyflare = 41285;\r\n   }\r\n\r\n   class CommonRed\r\n   {\r\n       public static int RunedBloodstone = 39911;\r\n       public static int PerfectRunedBloodstone = 41438;\r\n   }\r\n\r\n   class RareRed\r\n   {\r\n       public static int RunedScarletRuby = 39998;\r\n   }\r\n\r\n   class EpicRed\r\n   {\r\n       public static int RunedCardinalRuby = 40113;\r\n   }\r\n<br>   class JC<br>   {<br>       public static int RunedDragonEye = 42144;<br>   }<br>}</pre>\r\n<p>That way we can replace code like:</p>\r\n<p>&nbsp;</p>\r\n<pre>int[] runed= { 39911, 41438, 39998, 40113, 42144 };</pre>\r\n<p>&nbsp;</p>\r\n<p>with</p>\r\n<pre>int [] runed = { Meta.Gems.CommonRed.RunedBloodstone,<br>    Meta.Gems.CommonRed.PerfectRunedBloodstone,<br>    Meta.Gems.RareRed.RunedScarletRuby,<br>    Meta.Gems.EpicRed.RunedCardinalRuby };</pre>\r\n<p>So far I still learning the code. So I don't know where gems are also used beyond the character classes (e.g. CalculationsElemental.cs) but it would make for readable code. It would reduce the probability that we could enter an off by one entry (e.g. 42145 instead of 42144).</p>",
+    "PostedDate": "2009-10-10T07:55:56.29-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "244192",
+    "ThreadId": "71597",
+    "Html": "<p>Hey. These are only used in that one single spot, to create the default gemming templates. Therefore, we prefer to keep them in-line. If we used them more places, I'd agree that we should have them in a shared set of constants.</p>",
+    "PostedDate": "2009-10-10T08:10:18.203-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "244193",
+    "ThreadId": "71597",
+    "Html": "<p>Ok. Where should I be focusing my time? Understanding and improving Rawr 2 or 3?</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-10-10T08:15:09.907-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "244196",
+    "ThreadId": "71597",
+    "Html": "<p>Well the difference between Rawr 2 and 3 is 99% UI, so looking at the model code will apply to both. That's probably easiest to do in Rawr2, however it'd probably be handy to get Rawr3 running if you have time.</p>",
+    "PostedDate": "2009-10-10T08:26:43.9-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

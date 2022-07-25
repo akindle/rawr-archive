@@ -1,0 +1,135 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "Will not fix, by design.",
+    "ClosedDate": "2009-01-19T15:23:33.11-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I've generated a very large (13,000+ items) ItemCache.xml so as to see what I could do if I gave Rawr a full list of all of the equippable items in the game, and while I can use Rawr normally (albeit a lot slower), when I try to edit an item, either by right-clicking the item or using the \"Tools\" dropdown option, the Item Editor either fails to open at all (and crashes Rawr), or it takes several minutes to open - and I'm running on a modern powerful gaming computer.  Additionally, if the Item Editor opens at all, if I try to put a gem into a socket, the Item Editor crashes.  If you need crashdumps, I will happily supply them in this thread.\n \nI have uploaded two of my \"UberCache\" files - the one named \"ItemCache\" is a standard itemcache, listing all of the uncommon or better equippables.  The one named \"UberCache\" is an itemcache listing all 23,200+ WoW base items, irrespective of whether they're equippable or not - I realize this isn't what Rawr cares about (it doesn't need to know about quest items and critter parts), but I thought while I was uploading the data for you guys, you might as well get the whole thing in case you want to play with it.\n \nWhile futzing with these new variables, I had a few ideas and thought I'd pitch them to see where they land.\n \n1.) Adding new items in bulk could definitely be easier.  While personally I did it with minimal difficulty, I had to use some advanced text editing tricks, an excel spreadsheet, and a hail mary download from the wowarmory to do it - most users wouldn't have the knowhow to do what I did, and it took nearly 2 hours for Rawr to completely update the itemcache.\n \n2.) There needs to be just a bit more granularity in the ItemCache information - it would be beneficial for some purposes to be able to exclude items that don't meet certain criteria - being able to ignore items with an itemlevel below 110, being able to use Rawr well below level 70 by turning off items outside of a specific character level range.  Presently, internal item level and character level requirements aren't stored, and they would need to be in order to use that kind of filtering.\n \n3.) ItemCache.xml could be made modular, in a similar fashion to the Rawr.Basetype.dll format you're using for the class math.  A bear druid doesn't need to load the ItemCache.xml for a retribution paladin (or a survival hunter or other future modules).\n \n It would ease the load considerably on the item editor if you could select ItemCache modules or \"working filters\" instead of a full item list, although there probably needs to be made some fixes for ItemEditor so it can handle more than a thousand items or so in the first place, which I expect may become an issue as more modules are added.\n \nIn the short term, a set of checkboxes detailing broad item types would probably suffice - cloth/leather/mail/plate/gems/weapons, or a simple class-based switch such as for hiding or deleting mail/plate/axes/swords for a druid, and showing mail/plate/swords/maces and hiding cloth/leather/daggers/staves for a pally (optionally those show/hide \"profiles\" would be user-configured and save-able, so that if a pally wanted to add leather to their kit they could).  Having a large ItemCache.xml that a user can pull a custom ItemCache_User1.xml out of and then use that subset for Rawr's normal use would save a lot of processing work.\n \nItemCache.zip (447k) @ http://www.thefbi.org/games/ItemCache.zip\nUberCache.zip (672k) @ http://www.thefbi.org/games/UberCache.zip",
+    "LastUpdatedDate": "2013-05-16T05:27:19.54-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-05-11T08:50:48.963-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] Item Editor cannot utilize a large ItemCache.xml",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 10169
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Why would you do that? There's no point in adding thousands of entirely useless items to Rawr's ItemCache, unless you're just trying to crash it. So, no, no change is needed to support artificially inflated itemcache sizes.\r\n\r\nRegarding filtering of what shows up, that's already being done, on a model-specific level. We'd like to make the filtering customizable, but that's low priority at the moment. We've toyed with the idea of splitting the itemcache by model, but ultimately dropped it because people do use multiple models.\r\n\r\nRegarding using Rawr pre-70... There's no need for it pre-70.",
+      "PostedDate": "2008-05-11T10:03:32.677-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I fully admit that I broke Rawr trying to do something that it probably wasn't intended to do, and I'm fine with the ItemCache being small like it is - but it does (at least on my machines) have a serious issue with larger caches.  Additionally, in the future with an reasonable 5,000 items (500 items each for 9 classes, plus gems), the present version of Rawr wouldn't be able to handle the load.  As it stands now, as a kara/heroic-geared druid tank that keeps a kitty set, my presently downloaded Rawr database has 1800+ items - how much is that going to increase with the addition of a handful of lvl 70 alts?\r\n\r\nAs a test, I just now renamed the ItemCache and opened Rawr, imported my character, and pulled beargear upgrades from the Armory - this imported 281 items.  I run the same test on a buddy's newly leveled 70 druid, and I get 680 items...  Right in that one maneuver with one character I've gone past the 500 items I pulled out of the air earlier, on ONE character.  When I add a random few level 70 people from my guild (a hunter, mage, and pally), I'm up to 1983 items.\r\n\r\nIf I were to import 10 people from my guild into my Rawr, to simulate having ten differently-geared and specc'ed characters, I bet I'm going to be up near 4000+ items, and I've not even started on gemming anything, and I've not added in any items by hand that aren't in the armory upgrade lists yet.\r\n\r\nI'm not trying to bust your hump or make you mad or upset or anything - I'm just trying to illustrate that if Rawr is going to hopefully expand to optimally deal with more (and hopefully all) of the builds that can be built, then it's going to have to be able to deal with a large itemcache.xml, and it appears that it presently doesn't work well with a large database.\r\n\r\nA to using Rawr pre-70?  I have at least a dozen ingame friends that aren't even level 70 yet (some aren't even 60!) using Rawr to gear themselves more efficiently - there's DEFINITELY a pre-70 userbase, whether you intended one or not... Rawr is an incredibly useful tool regardless of your level, and even if your tool isn't quite right for the job, you're also the only tool in the toolbox, so they're going to use it :-)",
+      "PostedDate": "2008-05-11T13:35:04.487-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Rawr's calculations are for 70 *only*, and any gearing choices based on it, pre-70, are flawed (and pretty useless anyway, since you could get to 70 naked for all it matters. Theorycrafting pre-70 is a waste of time).\r\n\r\nWe're up to 1994 items in the default itemcache, which is a wide variety of items/gemmings for the 9 different classes/specs. A few of those are pretty early, so don't have a whole lot of items, so I expect it'd actually be closer to 2500. That's still a tenth of the massive number of items you're talking about. When we get a dozen more models, and the itemcache doubles in size, that's still reasonable and handleable by Rawr.\r\n\r\nYou tried to intentionally break a program by feeding it extremely absurd data, and succeeded. Grats.",
+      "PostedDate": "2008-05-11T14:53:57.407-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "For people like me who have a large number of characters from a variety of classes approaching level 70, it's not unreasonable to expect larger item caches. As things stand now, I already require multiple installations of Rawr with separate ItemCaches (or must manually swap out the ItemCache files and restart the application) in order to maintain an acceptable level of performance from the application. (I have a dual-core 3.6GHz processor and 2GB of RAM.) I tend to be a \"jack of all trades and master of none\", so an application like Rawr is especially useful to me in understanding exactly how to make the most of my classes' talents, abilities, and available gear.\r\n\r\nAlso, if you absolutely insist that Rawr has no use pre-70 and that anyone using it pre-70 is somehow mentally impaired, it might be wise for the application to refuse to import armory data and upgrades for characters who are not yet level 70. Perhaps you could even include a friendly error message along the lines of, \"What are you, stupid? We don't want fools like you using this application. There is no possible way it could benefit you. Come back when you've reached level 70 (if someone of your IQ can make it that far) and we might consider letting you use it.\"\r\n\r\nI'm only suggesting this because neither the application's description on this web site, nor in its readme.txt file mention a level 70 requirement.",
+      "PostedDate": "2008-05-11T18:31:53.39-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I didn't say you were retarded for using it pre-70, just that the calculations you get from it are flawed, and that I think it's a waste of time.\r\n\r\nDo you still have to split up your itemcache with b14? We've made a number of improvements in that regard.",
+      "PostedDate": "2008-05-11T18:52:19.86-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I had become accustomed to simply deleting the entire ItemCache.xml file each time a new build of Rawr was released, and did so again in this case. So far, I've only imported a small number of items that are used for my druid in Bear and Cat models. (I'm to the point on my feral druid where there are at most 5-10 potential upgrades for any given slot, so the cache is very small. This greatly improves the optimizer process, since I can afford to give it some pretty exacting specifications at this level of gear.)\r\n\r\nI'll continue adding items for my other characters to this same cache and report back if I encounter any slowdowns that might otherwise make me want to split them out.\r\n\r\n(And no, I didn't think you were calling me retarded. It was just tongue-in-cheek commentary about the perceived importance of being level 70 to use Rawr, when that fact is mentioned nowhere in the application, its description, or its documentation. And also the fact that it happily imports characters and armory upgrades at lower levels, and still provides a potentially useful relative comparison of such items.)",
+      "PostedDate": "2008-05-11T19:08:20.03-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "For a new player, or somebody who doesn't even know what theorycrafting is, a tool like Rawr is invaluable - especially at middle levels 40+ where gear actually starts to matter.  I have a friend that I bought WoW when he got divorced so he could get new friends and have something to do, and it's the first time he's played an RPG of any substance, much less one as complex (gear and stat-wise) as WoW can be.  I've given him rough guidelines as to what he wants in a piece of gear, but I can't be there all the time to answer questions, and when I'm not, something like Rawr or one of my Excel sheets comes in extremely handy - it tells him what gear he wants out of several possible choices, so he can make the purchase or quest reward choices without me being there and when I am there he can ask why XYZ piece of loot was better.\r\n\r\nI can't tell you how many people I know that have level 70 characters that don't have the first idea what they actually -need- gearwise - they just get whatever they can, and hope that their choices when that need/greed button comes up are worthwhile.  Almost everybody has guildies that don't get into Heroics or Karazhan because they either don't have the time, or the raider mentality, or they're just new to being 70, and a utility like Rawr is invaluable.  We all make fun of them behind their backs with comments whispered to other guildies \"I dunno how he got to 70\", or if we meet somebody undergeared in a PUG, \"I dunno how he got into this group\" etc etc... Rawr can help people like that make informed gear choices pre-70, because even if the numbers don't crunch perfectly, it's much more useful than just grabbing anything they can and possibly selling old stuff that's actually better even though the new gear's stats were higher in different places, or the new piece is one of those bad world-drop epics that pop up sometimes and it's \"gotta be better because it's purple\".\r\n\r\nAll I'm saying is to please don't say that \"theorycrafting pre-70 is a waste of time\", because to a new player who doesn't know that there's a whole separate WoW after 70, that's all that they know, and they think it's wonderful and exciting to get a new piece of loot, even if it's just something that we've ignored for a couple years out of SM, ST or even just normal Underbog.  Rawr can help them, and \"kicking them out of our club\" because we've been 70 for a long time and now know more than they do is neither nice, nor fair to them.",
+      "PostedDate": "2008-05-13T03:48:05.2-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I would also like to add one more comment (hopefully!)...  Having model-based itemcaches would allow you to gem the same pieces of gear in bulk with different gems depending on model - I would very much like to have the entire database of druid gear gemmed for cat, bear, and resto kit simultaneously, but presently can't do so without manually merging three separately-gemmed databases by hand, or by manually duplicating and gemming individual items.",
+      "PostedDate": "2008-05-13T03:56:10.95-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Right, people can use Rawr pre-70, there's nothing stopping them from doing so, but I'm not going to be making any adjustments to it for them. They'll get semi-wrong results, but it's not that big a deal. I understand how it can be helpful for the people that don't have a clue how to gear themselves. ",
+      "PostedDate": "2008-05-13T08:19:06.09-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'd like to add that while Rawr (or other TC) is fun to play with pre-70, it doesn't work.\r\n\r\nSpecifically, the various models would be massively harder to write. Rather than just assuming that you have every spell, they'd have to figure out which spells you have, which ranks you can cast, etc. They'd have to include the calculations for how ratings change as you level up. They'd need to factor in not even HAVING critical skills, like modeling a hunter without Steady Shot.\r\n\r\nAnd for what? So that you can choose which gear is best for 3 hours before you level out of it?\r\n\r\nThe only people who could make significant use out of this would be PvP twinks, and Rawr wasn't even written to handle PvP properly for most models. Many spells work differently in PvP. What your asking is for all the model developers to put in 5 times the work to make a tool that was designed for PvE raiding comparison work for lowbies... and they're doing it for free!\r\n\r\nSorry, but I think if you want this, you'll need to make it yourself. You're free to take Rawr and alter it... the source code is out there, released under the Apache license. As long as you clearly state you've modified it, you can fork it and start your own project to do exactly what you want. But I don't think it's reasonable to expect these volunteers to put in a massive amount of extra work making a tool that they don't need (a tool that very few people need really).",
+      "PostedDate": "2008-05-13T10:20:17.433-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Normally, in the time it would take you to use theorycraft to choose which of two pieces are better as a lowbie, you could have leveled again, making it obsolete. The only exception to this is when either you can't play but can theorycraft (hi boss!), or the theorycrafting is really really fast. If you keep it updated as you go along, don't mind editing in all the green suffixes, and don't mind that the results are probably significantly off, Rawr can be fast enough to use for lowbies. So I don't plan to specifically break support for using it by lowbies. But really, it's not a big deal. It doesn't matter if you're going through scarlet monastery with 30% dodge and 5000 armor, or 35% dodge and 4000 armor.",
+      "PostedDate": "2008-05-13T10:39:25.933-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I assume that as soon as WotLK comes out, most of this theorycrafting will be trash anyway, so I appreciate everyone's hard work creating these models that will be obsolete less than a year from now. I hope Rawr will still be around to create new and better models for level 80 when that time comes! :)",
+      "PostedDate": "2008-05-14T04:22:32.24-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'd vote for separate ItemCaches for a few good reasons:\r\n\r\n1) Remove the item-hiding-by-suitability functionality and just show all items in the particular ItemCache.  Cull items not *equippable* during cache update.  Leave items that are equippable but \"inappropriate\".\r\n2) The add/edit/remove items process should become swifter due to the ItemCache only containing items for your class/spec.\r\n",
+      "PostedDate": "2008-06-02T12:45:27.42-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Rawr b14.1 is much more capable of the large itemcaches than b13 was - I have 5600-ish items in my cache right now (I made a new one without all of the non-gear and sub-55 stuff) and other than a few long seconds loading the itemcache when I first open the item editor, it's otherwise been very well behaved.  I doubt that the optimizer would like my itemcache, but I don't use the optimizer, so don't know how it would work out.\r\n\r\nI wouldn't want to have Rawr automatically deleting items that I can't use, because if I were to switch from my druid to my hunter, there wouldn't be any mail, or axes or swords or whatnot - keeping them separate by spec would be ok, because then the hunter could see mail and leather, but not plate, and the druid could see leather and cloth.\r\n\r\nPresently when I make my mini caches, I have one each for cloth, leather, mail, plate, gems, weapons, and one for stuff that everybody can use - cloaks, rings, trinkets, relics and such.  Having the option in Rawr to turn on or off various of such mini caches would be better than just having Rawr load the whole large cache, or having it delete/sort things that the present spec can't or wouldn't use.",
+      "PostedDate": "2008-06-03T03:31:56.317-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-01-19T15:23:33.11-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T18:36:06.13-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:21:12.76-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:55.037-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:27:19.54-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

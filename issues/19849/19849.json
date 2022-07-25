@@ -1,0 +1,86 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "4.0.18 Released",
+    "ClosedDate": "2011-02-03T21:11:32.143-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi, I have found an issue whereby on attempting to add an item to the item browser an exception is produced.\nThis is done as follows:\n \n1) Load Rawr (downloadable zip client).\n2) Do or do not select a character to load.\n3) Options > Edit Items\n4) Add Item (either speciffy an item id or hit cancel)\n5) Add Item button a second time\n6) Exception occurs on button press\nalso: exception now will occur if the Edit item menu is selected from this point onward.\n \n* Character can be saved, and it all works after a reload.\n* This issue did not occur on the online version @ http://elitistjerks.com/rawr.php\n* This means that you can only add one item per load of RAWR.\n* version is 4.0.17\n \nIf you wish for me to perfom additional tests to isolate the problem I am more than happy to.\n \nUpdate: The original error was producted on windows 7 64bit on a new machine with an install less than a week old and all the latest updates. I have since tested on another machine of mine running the same OS and with updates, this problem also occured on that machine, so it is unlikely to be my local software configuration causing the problem.\n \nUpdate 2: Silverlight V 4.0.51204.0\n \nI have performed the Suggested Fix and continue to receive this error. If I am posting this message without having performed the Suggested Fix I am aware that I am consuming the Developer(s) time in managing my Issue unnecessarily.\n \n== Error Message ==\nCannot set Visibility or call Show, ShowDialog, or WindowInteropHelper.EnsureHandle after a Window has closed.\n \n== StackTrace ==\n   at System.Windows.Window.ShowDialog()\n   at System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)\n   at System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)\n   at System.Windows.Controls.Button.OnClick()\n   at System.Windows.Controls.Primitives.ButtonBase.OnMouseLeftButtonUp(MouseButtonEventArgs e)\n   at System.Windows.RoutedEventArgs.InvokeHandler(Delegate handler, Object target)\n   at System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)\n   at System.Windows.UIElement.ReRaiseEventAs(DependencyObject sender, RoutedEventArgs args, RoutedEvent newEvent)\n   at System.Windows.RoutedEventArgs.InvokeHandler(Delegate handler, Object target)\n   at System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)\n   at System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)\n   at System.Windows.UIElement.RaiseTrustedEvent(RoutedEventArgs args)\n   at System.Windows.Input.InputManager.ProcessStagingArea()\n   at System.Windows.Input.InputProviderSite.ReportInput(InputReport inputReport)\n   at System.Windows.Interop.HwndMouseInputProvider.ReportInput(IntPtr hwnd, InputMode mode, Int32 timestamp, RawMouseActions actions, Int32 x, Int32 y, Int32 wheel)\n   at System.Windows.Interop.HwndMouseInputProvider.FilterMessage(IntPtr hwnd, WindowMessage msg, IntPtr wParam, IntPtr lParam, Boolean& handled)\n   at System.Windows.Interop.HwndSource.InputFilterMessage(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)\n   at MS.Win32.HwndWrapper.WndProc(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)\n   at MS.Win32.HwndSubclass.DispatcherCallbackOperation(Object o)\n   at System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)\n   at MS.Internal.Threading.ExceptionFilterHelper.TryCatchWhen(Object source, Delegate method, Object args, Int32 numArgs, Delegate catchHandler)\n \n== These are the Steps that I have tried ==\n[Please fill in steps here]\n \nUpdate 3:\nTried a different machine.\nTried a clean extraction of rawr (ie without additional wowhead items).\nTried using the interface without actually downloading any new items.\nTried a different model rogue as opposed to druid.\nTried using a loaded character vs no loaded character.\n \nAll paths caused the exception.",
+    "LastUpdatedDate": "2013-05-16T05:18:51.59-07:00",
+    "PlannedForRelease": "Rawr 4.0.17 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-01-29T21:36:07.423-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[WPF] Exception on Second attempt to add item to item browser",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19849
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4527,
+      "FileName": "RAWR-exception.PNG",
+      "DownloadUrl": ".\\4527"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "can you provide the item number your trying to add as well?",
+      "PostedDate": "2011-01-29T22:27:20.117-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Its not related to items.\r\nIts related to the interface to view items. If you go:\r\nOptions -> Edit Items\r\nClose Edit Items frame\r\nOptions -> Edit Items (Exception).\r\n\r\nor \r\nOptions -> Edit Items\r\nAdd Item \r\nClose Add Items frame\r\nAdd Item (Exception).\r\n\r\nThere is no need to add an item number or actually get it to perform the search for the item whatsoever.",
+      "PostedDate": "2011-01-29T22:36:11.73-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-29T22:39:24.23-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-30T10:05:17.44-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Fixed by commit 57670",
+      "PostedDate": "2011-01-30T10:27:43.69-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-02-03T21:11:32.143-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:10.49-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:51.59-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

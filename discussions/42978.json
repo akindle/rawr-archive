@@ -1,0 +1,114 @@
+[
+  {
+    "Id": "142830",
+    "ThreadId": "42978",
+    "Html": "I was thinking if it could be a version of Rawr compatible with the different distributions of Linux.<br>\r\n<br>\r\nIt would be nice ^^U<br>\r\n",
+    "PostedDate": "2008-12-24T06:08:30.81-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "142910",
+    "ThreadId": "42978",
+    "Html": "Rawr already works on Mono, so you can use it on Linux, just like on OSX.<br>\r\n",
+    "PostedDate": "2008-12-24T16:34:31.43-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "142948",
+    "ThreadId": "42978",
+    "Html": "Well, I installed it but I incurred in this error:<br>\r\nhttp://i223.photobucket.com/albums/dd57/Vynkasmyn/Pantallazo-1-2.png<br>\r\n<br>\r\nIn the console: ** (Rawr.exe:6689: WARNING **: Missing method .ctor in assembly /home/vynka/.wine/drive_c/Rawr v2.1.4/Rawr.exe, type System.Windows.Forms.DrawToolTipEventHandler<br>\r\n<br>\r\n<br>\r\nHow may I fix it?<br>\r\n<br>\r\n<br>\r\n<br>\r\n",
+    "PostedDate": "2008-12-25T05:36:03.833-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "142995",
+    "ThreadId": "42978",
+    "Html": "Don't use wine, use mono.<br>\r\n<br>\r\nhttp://mono-project.com/Main_Page<br>\r\n<br>\r\n\r\n",
+    "PostedDate": "2008-12-25T22:56:53.097-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "143016",
+    "ThreadId": "42978",
+    "Html": "I'm using mono, but I have the Rawr copied in the wine-directory.<br>\r\n<br>\r\nChanging it to the Desktop I'm getting the same error.<br>\r\n<br>\r\nMaybe I didn't installed it correctly?<br>\r\n<br>\r\n<br>\r\n",
+    "PostedDate": "2008-12-26T05:44:19.147-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "143079",
+    "ThreadId": "42978",
+    "Html": "Here is how I got it running under Ubuntu&nbsp; 8.10. I am sitting at a windows machine so I have no way to double check but I think the instructions are correct. <br>\r\n<br>\r\nInstall libmono-winforms2.0-cil<br>\r\n<br>\r\n<strong>sudo apt-get install libmono-winforms2.0-cil<br>\r\n</strong><br>\r\nIf you are not using Ubuntu check if your distribution got a similar named package. Can't say if this is a problem specific to Ubuntu.<br>\r\n<br>\r\nI also had another problem, but I can't recall if that was with Mono or when trying to run rawr via wine. The solution to that problem was to delete the file &quot;Rawr.exe.config&quot; from the Rawr folder. The program apparently ran fine without the file. But before erasing that file try to install the package above and see if that is enough to get it running :) \r\n",
+    "PostedDate": "2008-12-26T17:49:52.2-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "143118",
+    "ThreadId": "42978",
+    "Html": "The problem persists.<br>\r\n<br>\r\n&quot;The current BuffCache.xml file was made with a previous version of Rawr, which is incompatible with the current version. It will be replaced with buff data included in the current version&quot;<br>\r\n<br>\r\n<br>\r\n",
+    "PostedDate": "2008-12-27T04:49:25.447-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "143123",
+    "ThreadId": "42978",
+    "Html": "That error really means, technically, that it wasn't able to successfully read the BuffCache.xml. For most people, that means that it's trying to read a BuffCache.xml made with an older version of Rawr. However, it could mean anything that would stop it from reading the BuffCache.xml. In your situation, I'd guess perhaps file permissions? Rawr needs to run as a user which has permission to read all of the files in its directory and subdirectories.<br>\r\n",
+    "PostedDate": "2008-12-27T05:03:06.447-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "143156",
+    "ThreadId": "42978",
+    "Html": "I tryed with &quot;sudo mono Rawr.exe&quot;, but I dinged the same error.<br>\r\n",
+    "PostedDate": "2008-12-27T15:25:54.903-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "143576",
+    "ThreadId": "42978",
+    "Html": "It's not file permissions, and it's not a bad file. I had the same problem, renamed the file, and tried again. I got no error (not surprising) and it wrote out a new copy of BuffCache.xml which was exactly identical to the old one. On next launch, it gave me the error again with its new file.<br>\r\n<br>\r\nRawr is usable even with the error, although I don't know if it's any more or less accurate or if data is missing as a result of that file having only its default values.<br>\r\n<br>\r\nAlso, completely unrelated, the drop-down menus extend past the bottom of my screen, and the down-arrow either isn't appearing at all or is off the bottom of the screen as well. Not sure what to do about that, as I am very inexperienced with Mono.<br>\r\n",
+    "PostedDate": "2008-12-30T11:53:16.247-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "145704",
+    "ThreadId": "42978",
+    "Html": "I've now reinstalled the last Ubuntu version on my laptop, I downloaded the newest rawr and mono; now it only seems to open but it immediately closes :\\<br>\r\n",
+    "PostedDate": "2009-01-09T07:18:51.403-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "145770",
+    "ThreadId": "42978",
+    "Html": "Just as a reminder: Did you delete Rawr.exe.config before running it?<br>\r\n<br>\r\nWish I knew why that file mucked things up so much... it's a tad annoying to archive it when I'm in Linux, and unarchive when I'm booted into Windows.\r\n",
+    "PostedDate": "2009-01-09T11:27:27.67-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "145797",
+    "ThreadId": "42978",
+    "Html": "Could the BuffCache.xml issue be a file encoding issue? I am not sure what you encode the files as (I am assuming UTF-8), but if it was something strange (like UTF-16), it could cause strange behavior on Linux. I would think Mono should handle this itself, but who knows.<br>\r\n<br>\r\nThe only other thing I could think of is to 'chown' the file to yourself, or 'chmod 777' it (which is a terrible UNIX security hack, I am aware).<br>\r\n<br>\r\nedit: Now that I think about it, it could be a file separator issue as well. I am not sure if Mono correctly handles enoding '\\' as '/' on UNIX. If you are using a string literal for that, you may want to use either Path.DirectorySeparatorChar (which is platform specific), or Path.Combine which actually uses Path.DirectorySeparatorChar.<br>\r\n<br>\r\nThese are just completely random thoughts without actually looking at the code.<br>\r\n",
+    "PostedDate": "2009-01-09T12:51:50.36-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "145823",
+    "ThreadId": "42978",
+    "Html": "We did actually switch to using all Path.DirectorySeparatorChar and Path.Combine() everywhere, a while ago, in order to get it working on Mono on OSX. (As far as I know anyway; if anyone wants to double-check and finds anywhere we're still explicitly using /'s or \\'s in paths, let me know, but I'd expect that that'd break on OSX too.)<br>\r\n<br>\r\nFile encoding is UTF-8 for everything, I'm pretty sure.<br>\r\n",
+    "PostedDate": "2009-01-09T14:17:10.86-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

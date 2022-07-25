@@ -1,0 +1,146 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Moonkin",
+      "DisplayName": "Rawr.Moonkin"
+    },
+    "ClosedComment": "I&#39;m closing this out because the new release hit, and no updates have since been posted.",
+    "ClosedDate": "2009-11-19T21:57:35.37-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "With new version Rawr calculates a higher dps (why?). Additionally, the 100% crit-cap is only usefully reachable with 2xT8. But Rawr calculates 1 hasterating ~= 1 critrating with 4xT9. But even with 2xT8 there should be crit~=haste and not haste>>crit, like implemented in latest version (think of Solar isnt crit-capped an crit increases eclipse- and grace of nature-uptime). Version 2.2.21 doesnt show that effects and calculates lower dps. Someone should look at the implementation, there seemes to be an error.\n \nOllidrood, EU/Zuluhed\n \nEdit: \"Crit is typically stronger than haste provided that you are over the soft haste cap, but still weaker than spellpower. Above the Lunar crit cap, crit becomes roughly equal in value to post-cap haste...\" from Arawethion (http://elitistjerks.com/f47/t66856-moonkin_pve_dps/)",
+    "LastUpdatedDate": "2017-11-27T11:00:14.847-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-10-17T09:33:44.77-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Moonkin] New Lunar-Crit-Cap implemented wrong",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14459
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2372,
+      "FileName": "Olli-2xT8_2xT9.xml",
+      "DownloadUrl": ".\\2372"
+    },
+    {
+      "FileId": 2373,
+      "FileName": "Olli-4xT9.xml",
+      "DownloadUrl": ".\\2373"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "First of all, your DPS went up because a few calculations changed, most notably the time spent in Eclipse and time spent refreshing DoTs.  This was not in the release notes, but was mentioned on the EJ thread for Rawr.  Secondly, I load your character from the armory and I see you as both crit- and haste-capped with full 25-man raid buffs.  It shows you have 47.57% crit (the soft crit cap is 45% with 2T8) and 26.84% haste (the soft haste cap is 25%).  Furthermore, looking at the Relative Stats Values chart, it shows Crit ~= Haste.  Am I missing something, or did you miss a buff such as Wrath of Air Totem?",
+      "PostedDate": "2009-10-17T10:43:28.327-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The problem is, that Rawr calculates with latest version haste>crit (2,49>1,94 in relative stats-table) with 2xT8 and all raid-buffs/-debuffs (except bloodlust). I cant imagine, when you are above the haste- and crit-cap, that this could be right. With 4xT9 you dont hit crit-cap while lunar phase, but Rawr says haste~=crit (2,36<2,4). That must be wrong, cause crit should be definitely better than haste, like version 2.2.21 offers.",
+      "PostedDate": "2009-10-17T14:45:14.203-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Edit: My 4xT9 template has 569 haste-rating and 788 crit-rating. So Rawr should definitely rate crit>haste.",
+      "PostedDate": "2009-10-17T14:49:54.05-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "We almost always need to see your character file to identify the issue. Everyone, please always post your character file.",
+      "PostedDate": "2009-10-17T18:13:23.497-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-17T18:59:14.263-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-17T18:59:15.033-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-17T18:59:52.483-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-17T18:59:53.417-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Done. Try both templates with version 2.2.21 and 2.2.23 (i didnt use 2.2.22). I almost think, that the lunar-crit-cap is set too low (perhabs 85% ? :x), so that Rawr calculates haste>crit.",
+      "PostedDate": "2009-10-17T19:05:14.12-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well, I can't reproduce it in my local working directory, so I would guess that the latest change I made (which is NOT in 2.2.23) fixes the issue.  To be specific, the crit cap isn't the problem, the problem is that DoTs aren't correctly responding to Nature's Grace.  This devalues crit in almost all situations, because it grossly inflates the cast time of Insect Swarm and Moonfire and causes Rawr to calculate less time spent in Eclipse.  With the change to allow DoTs to be affected by NG, this problem goes away, so I would expect 2.2.24 to behave more as expected.  My apologies in the meantime.",
+      "PostedDate": "2009-10-17T21:46:49.85-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "One last update: I reverted my DoT-NG change and tested it again, and got results similar to what you're seeing now.  So while you are correct that there is a problem, it's not the problem you were thinking of.  It will be resolved in the next version.",
+      "PostedDate": "2009-10-17T22:03:15.243-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok, thank you, even that i cant imagine, that applying dots every 14/15sec have so much influence on haste-scaling (you thinking of decreasing the GCD after applying dots while natures grace is up, dont you?). I'll take a closer look at next version :>.",
+      "PostedDate": "2009-10-18T08:46:45.147-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The thing is, the DPS of Lunar Starfire and Solar Wrath is so high that even a fraction of a second extra spent applying DoTs is a pretty steep loss.  In addition to making the instant cast spells scale with Nature's Grace, the fix also removes the double latency penalty that was applied to them when you hit the haste cap, which I think will also resolve the weird haste stepping issues I've seen and that have been logged.",
+      "PostedDate": "2009-10-18T14:10:33.9-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-19T21:57:35.37-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:04:19.403-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:03:27.03-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:32:21.51-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:48.36-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:00:14.847-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

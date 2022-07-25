@@ -1,0 +1,96 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtWarrior",
+      "DisplayName": "Rawr.ProtWarrior"
+    },
+    "ClosedComment": "Closing",
+    "ClosedDate": "2009-12-31T10:08:01.827-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I've been able to break the comparisons window completely by forcing an \"infinity\" gear score in ProtWarr.  Put on an Anub set with full shield block, and set the raw damage option low enough that you fully absorb/block every attack.  Click on \"Tank Points\" in the options, and you get a gear score of \"infinity\" and the comparisons graph breaks forever (overflow errors when calling (int)Math.Round(Infinity/Infinity))",
+    "LastUpdatedDate": "2013-05-16T05:23:35.607-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-10-29T09:41:58.88-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtWarr] Comparisons Graph Breaks",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14579
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2425,
+      "FileName": "brokenComparisons.xml",
+      "DownloadUrl": ".\\2425"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Indeed, it's probably possible to do this for both Tank Points and Burst Time models as graphing infinity is difficult! I will look into a solution, thanks.",
+      "PostedDate": "2009-11-02T03:29:42.373-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Suggested Fix: Make a check just before you set the Overall for calculatedStats.TotalMitigation == 1. If it is (meaning all damage is 100% mitigated) then set the Mitigation part to 1 million (arbitrary number that should be bigger than anything else). This prevents it from breaking the charts and gives a nice round number for people to shoot for when they see their sets hitting that in specific situations.",
+      "PostedDate": "2009-12-24T19:59:14.537-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Probably does this in ProtPaladin too, I'll have to check it later.",
+      "PostedDate": "2009-12-28T15:38:45.61-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Reproduced in ProtPaladin as well.\r\n\r\nI'm going to fix this by capping SurvivalPoints, MitigationPoints, ThreatPoints, and OverallPoints to one billion in GetCharacterCalculations.  I'm going to a billion because we're getting pretty close to one million in some scores right now.",
+      "PostedDate": "2009-12-30T17:42:20.9-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Correction, I'm capping SurvivalPoints, MitigationPoints, and ThreatPoints.  OverallPoints can still add those billions okay.",
+      "PostedDate": "2009-12-30T17:44:06.933-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "ProtPaladin fixed in r44807",
+      "PostedDate": "2009-12-30T18:06:13.09-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Fixed in Changeset 44828",
+      "PostedDate": "2009-12-31T10:07:45.783-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-31T10:08:01.827-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:32:05.627-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:35.607-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

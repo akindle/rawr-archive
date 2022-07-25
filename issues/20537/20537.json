@@ -1,0 +1,86 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.TankDK",
+      "DisplayName": "Rawr.TankDK"
+    },
+    "ClosedComment": "Rawr 4.1.04 Released",
+    "ClosedDate": "2011-04-29T22:02:20.247-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have performed the Suggested Fix and continue to receive this error. If I am posting this message without having performed the Suggested Fix I am aware that I am consuming the Developer(s) time in managing my Issue unnecessarily.\n \n== Version: 4.1.3.0 ==\n \n== Error Message ==\n[Arg_BogusIComparer]\nArguments: ComparisonCalculationBase,System.Array+FunctorComparer`1[Rawr.ComparisonCalculationBase]\nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.60129.0&File=mscorlib.dll&Key=Arg_BogusIComparer\n \n== StackTrace ==\n   at System.Collections.Generic.ArraySortHelper`1.Sort(T[] keys, Int32 index, Int32 length, IComparer`1 comparer)\n   at System.Array.Sort[T](T[] array, Int32 index, Int32 length, IComparer`1 comparer)\n   at System.Collections.Generic.List`1.Sort(Comparison`1 comparison)\n   at Rawr.UI.GraphDisplay.FilterTopXGemmings(List`1 listItemCalculations, Int32 countOverride)\n   at Rawr.UI.GraphDisplay.UpdateGraphGear(String subgraph)\n   at Rawr.UI.GraphDisplay.UpdateGraph()\n   at Rawr.UI.ChartPicker.SetCurrentGraph()\n   at Rawr.UI.ChartPicker.Grid_MouseLeftButtonUp(Object sender, MouseButtonEventArgs e)\n   at MS.Internal.CoreInvokeHandler.InvokeEventHandler(Int32 typeIndex, Delegate handlerDelegate, Object sender, Object args)\n   at MS.Internal.JoltHelper.FireEvent(IntPtr unmanagedObj, IntPtr unmanagedObjArgs, Int32 argsTypeIndex, Int32 actualArgsTypeIndex, String eventName)\n \n== These are the Steps that I have tried ==\nThe suggested fix was \"No Suggested Fix\".\nAttaching the character file.\nThe error occurs when the Equipment Graph sort order is set to mitigation+threat, and I try to view trinkets.",
+    "LastUpdatedDate": "2017-11-27T11:04:49.623-08:00",
+    "PlannedForRelease": "Rawr 4.1.03",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-04-18T08:42:22.153-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[TankDK] Exception when sorting trinkets by mitigation+threat.",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 20537
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4850,
+      "FileName": "Professional-Tank.xml",
+      "DownloadUrl": ".\\4850"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Unable to sort because the IComparer.Compare() method returns inconsistent results. Either a value does not compare equal to itself, or one value repeatedly compared to another value yields different results. x: '',  x's type: 'ComparisonCalculationBase', IComparer: 'System.Array+FunctorComparer`1[Rawr.ComparisonCalculationBase]'.\r\n\r\nYeah, probably something I'm doin' wrong here. ",
+      "PostedDate": "2011-04-18T13:25:27.45-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 59785.",
+      "PostedDate": "2011-04-18T14:12:56.093-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok.  Fixed this specific problem.  I still see some funny behavior when going in to select the sorting method, but I'll deal w/ that separately.  ",
+      "PostedDate": "2011-04-18T14:14:52.93-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-29T22:02:20.247-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:39:00.11-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:25:18.147-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:10.23-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:04:49.623-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

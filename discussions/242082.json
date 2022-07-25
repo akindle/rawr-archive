@@ -1,0 +1,90 @@
+[
+  {
+    "Id": "550541",
+    "ThreadId": "242082",
+    "Html": "\r\n<p>Sould we be working SOLELY off of the Rawr4 source branch, or is there some intermingling going on? The dev guide indicates Rawr4, but It seems some of the forms,etc are referenceing the main rawr trunk.</p>\r\n<p>Should I disreguard anything not under the Rawr4 branch as an inactive build?</p>\r\n<p>&nbsp;</p>\r\n<p>thanks</p>\r\n",
+    "PostedDate": "2011-01-17T06:25:48.507-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "550548",
+    "ThreadId": "242082",
+    "Html": "\r\n<p>Many files that are not in the Rawr4 branch are linked into the projects. if you work from the Rawr4 directory and its projects then you will be working on the right code. you do not need to copy over the files from other branches. We will be doing a branch\r\n merge in a month or two, its a lot of work and there are other priorities until then.</p>\r\n",
+    "PostedDate": "2011-01-17T06:39:24.147-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "550551",
+    "ThreadId": "242082",
+    "Html": "\r\n<p>I ask mostly because the majority of the ret stuff is still in the old trunk, including the UI stuff</p>\r\n",
+    "PostedDate": "2011-01-17T06:44:53.53-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "550972",
+    "ThreadId": "242082",
+    "Html": "\r\n<p>The latest code is always what's actually in-use in the latest solution, which is Rawr4.sln.</p>\r\n",
+    "PostedDate": "2011-01-17T20:00:21.883-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "551094",
+    "ThreadId": "242082",
+    "Html": "\r\n<p>Would it be an idea for models where there are linked files to the previous Rawr2 or Rawr3 project to move those files into Rawr4 and get rid of the link back to Rawr2/3? My thought is this would minimise later work to merge the files in the main body of\r\n the code.</p>\r\n",
+    "PostedDate": "2011-01-18T01:49:29.423-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "551097",
+    "ThreadId": "242082",
+    "Html": "\r\n<p>&quot;We will be doing a branch merge in a month or two, its a lot of work and there are other priorities until then.&quot;</p>\r\n",
+    "PostedDate": "2011-01-18T01:53:33.017-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "551128",
+    "ThreadId": "242082",
+    "Html": "\r\n<p>Yes I read that. I just thought that if individual model authors were to fix their model to remove links to files in Rawr2/3 it would reduce the work required &quot;in a month or two&quot;. Especially for people like Rigamonk who is essentially starting from a relatively\r\n clean slate and re-organising things may help him make better sense of it.</p>\r\n",
+    "PostedDate": "2011-01-18T02:48:33.633-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "551316",
+    "ThreadId": "242082",
+    "Html": "\r\n<p>It would help us out to have that taken care of by devs doing their own model, BUT only if you really have the time as it works the way it is. Getting the models brought up to &quot;mostly&quot; status is more important right now.</p>\r\n",
+    "PostedDate": "2011-01-18T08:31:25.53-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "551998",
+    "ThreadId": "242082",
+    "Html": "\r\n<p>I have no problem cleaning out the tree as long as I know whether the &quot;old but valid&quot; base code is in the trunk or lost in a branch somewhere.</p>\r\n<p>I didn't really intend to make things this complicated, I just wanted to know where to build, since I was getting conflicting (ret specific) class names from outside the rawr4 branch</p>\r\n",
+    "PostedDate": "2011-01-19T08:55:24.73-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "552004",
+    "ThreadId": "242082",
+    "Html": "\r\n<p>The Source Code Files linked into the Rawr4.sln solution and the Rawr4.WPF.sln solution are the ones you need to worry about. None of the other .sln files you see anywhere else in the entire SVN matter. Reason being: they are for Rawr2 or Rawr3 which is\r\n all WotLK builds.</p>\r\n<p>The actual .cs files you need may be linked in from the following places:</p>\r\n<ul>\r\n<li>.\\Rawr4\\Rawr.Retribution\\<em>filename</em>.cs </li><li>.\\Rawr3\\Rawr.Retribution\\<em>filename</em>.cs </li><li>.\\Rawr.Retribution\\<em>filename</em>.cs&nbsp; (This is the Rawr2 file) </li></ul>\r\n<p>The hierarchy of what files are correct is in the same order. Rawr4 is a for-sure Cataclysm file. Rawr3 and Rawr2 are older files but we tried to make sure that all files were directly compatible with each other. We shared code heavily between Rawr2 and\r\n Rawr3 for portability. This shared code transitioned into being shared into Rawr4 as well.</p>\r\n<p>Since we shared code, you will see tags like '#if SILVERLIGHT' in the code. The SILVERLIGHT tag is defined in the Rawr3 &amp; Rawr projects, but not in the Rawr2 or Rawr4.WPF projects. You shouldn't actually see it very often as it only really comes into\r\n play with some thread safety points in base and some XML Serialization. If you see tags of '#if RAWR3 || RAWR3' that was a separation between Rawr2 and Rawr3 (we did replace alls to put the RAWR4 tag on it too when we created that solution file, which was\r\n literally a copy of Rawr3.sln, then making the necessary changes to call it Rawr4).</p>\r\n<p>Rigamonk, if you have added in additional files beyond what was there when you started working from the Rawr2 and/or Rawr3 project folders, you probably linked something in that you didn't need to and should drop those files. If you need to make new files,\r\n make them in the Rawr4 folders and include them in Rawr4.sln and Rawr4.WPF.sln. If you want to bring up the files from Rawr2 or Rawr3 to the Rawr4 directory so that you are only working in one directory you can, but of course only grab what you need and then\r\n change how they are linked into the project. and ALWAYS ALWAYS make sure code fully compiles when checking in. If you add/move/delete files, make sure that that gets into the commit. Sometimes people add files to a project but then don't check them in.</p>\r\n<p>NOTE: We WILL be taking this stuff down to reduce confusion and simplify the SVN, BUT that's a pain in the ass and there are a lot of repercussions with making those changes, deleting files, etc. We want to get Rawr4 working in all models first, at least\r\n to a Mostly status. There are 10 models that still need to be brought up to Mostly from either Non or Partially.</p>\r\n",
+    "PostedDate": "2011-01-19T09:16:07.843-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "553490",
+    "ThreadId": "242082",
+    "Html": "\r\n<p>It's probably this confusion of where files go or having opened the wrong solution file that has caused Rigamonk to commit changes that now break Rawr and prevent compilation. It would be useful Rigamonk if you could open the Rawr4.sln file and verify your\r\n model and commit the fixes so that the Rawr actually compiles as its rather frustrating that your commit broke Rawr.</p>\r\n<p>Please note we've all done similar things, so this is NOT a pissed off person screaming at you its a fellow coder hoping to help you understand how things work. Jothay's explanation should tell you everything you need if not just post here and we'll get\r\n you sorted out soon so that Rawr compiles again.</p>\r\n",
+    "PostedDate": "2011-01-21T16:14:01.647-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

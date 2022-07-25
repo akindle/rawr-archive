@@ -1,0 +1,106 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtPaladin",
+      "DisplayName": "Rawr.ProtPaladin"
+    },
+    "ClosedComment": "This appears to be a Blizzard bug, not a Rawr bug.",
+    "ClosedDate": "2009-11-10T10:32:25.373-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have attached a screenshot showing stamina calculation in the Prot Paladin mod to be off.",
+    "LastUpdatedDate": "2013-05-16T05:23:30.257-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-11-08T21:27:39.8-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtPaladin] Stam Calculation Off",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14700
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2463,
+      "FileName": "PP Stam.jpg",
+      "DownloadUrl": ".\\2463"
+    },
+    {
+      "FileId": 2466,
+      "FileName": "InspiratoriaProt.xml",
+      "DownloadUrl": ".\\2466"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "10g says it's a missing socket bonus.\r\n\r\nCan you post your character file?",
+      "PostedDate": "2009-11-09T09:17:40.297-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I checked vs. the Armory, and I cannot explain why Rawr is coming up 6 short here.  Your base health is correct, 141 * 1.1448 is about 161.  Your items have 2770 stamina on them.  2770 * 1.1448 is about 3171.  3171 + 161 = 3332.  Yet your toon is reporting 3338.\r\n\r\nYou might want to try to pinpoint the problem by removing items, one at a time, from both your toon and from Rawr, and see where the discrepancy is.  If it's gradual, that means there's a rounding error somewhere.  But if one item is the problem, we can look into fixing that item.\r\n\r\nI pulled another toon and it did not have any stamina issue.",
+      "PostedDate": "2009-11-09T10:17:24.677-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Here's the character file.  I noted that there does indeed seem to be a discrepancy with Nexus War Champion Beads.  \r\n\r\nI will be able to take it apart item by item sometime this evening and see what the results are.",
+      "PostedDate": "2009-11-09T17:19:21.07-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-09T17:19:26.67-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I switched to my ret spec to simplify calculation and checked stam given by Nexus War Champion Beads.  Ingame, it is giving me 6 stamina more than it should be.  I should be receiving 145 stam from it, I'm getting 151.",
+      "PostedDate": "2009-11-09T17:49:05.123-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Interesting, because the socket bonus on that is +6 stamina.  The socket is red and the gem is blue, you shouldn't be getting the bonus.  But here we are.\r\n\r\nSeemes Elitist Jerks has identified this as a bug with Blizzard: http://www.mmo-champion.com/class-warrior/15-stam-100-hp/msg1284561/#msg1284561  Basically, any gear you had socketed with a Solid Dragon's Eye before patch 3.2's change to make dragon's eyes no longer prismatic are still acting as though they are prismatic.",
+      "PostedDate": "2009-11-10T10:03:17.873-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Did I say Elitist Jerks?  I meant MMO Champion.  Oops.",
+      "PostedDate": "2009-11-10T10:05:16.283-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-10T10:32:25.373-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T16:40:16.797-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:57.773-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:30.257-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

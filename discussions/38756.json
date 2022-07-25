@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "128570",
+    "ThreadId": "38756",
+    "Html": "Hi there. I'm not sure where to post bug so i figure I would make a thread here.<br>\r\n<br>\r\nMy priest is Disc spec with<br>\r\n<span style=\"color:rgb(255, 216, 0)\" id=copyURL>053020313030512250120523025100500000000000000000000000000000000000000000000000000</span><br>\r\nas the spec<br>\r\n<br>\r\nWhen I import the data into Rawr 2.0.3 it's stating that my Power Word: Shield absorb 3173 which is quite a bit too high. With 952 spell dmg the shield should absorb around 2200<br>\r\n<br>\r\nThere are 2 talents that affect PW:Shield absorption and 1 that affect its mana cost<br>\r\n- Imp. PW:Shield which increase amount absorb by 5/10/15%&nbsp;&nbsp; (this would be the 1.05, 1.1, and 1.15 multiplicative)<br>\r\n-Borrowed time which is give 8/16/24/32/40% of spell power to PW:Shield absorption. (This one actually increase the spell coef. from 20% to 60%)<br>\r\n-Mental Agility which reduce the spell cost since it's instant<br>\r\n<br>\r\nMy character has both of the increase absorption talents maxed out so my final amount absorb is actually<br>\r\n[1315 + (952 x 1.6) ] x 1.15 <br>\r\n<br>\r\n",
+    "PostedDate": "2008-10-29T05:02:20.283-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "128635",
+    "ThreadId": "38756",
+    "Html": "<p>The base value of PW:Shield is 1265 (http://wotlk.wowhead.com/?spell=25218).</p>\r\n<p>PW:Shield has a coefficient of 1.5/3.5, and benefits from Spell Power as a Healing Spell (*1.88) (New in 3.0)</p>\r\n<p>PW:Shield also benefits from Twin Disciplines, Focused Power (New in Beta 3.0.3, NYI in Rawr) and Borrowed Time.</p>\r\n<p></p>\r\n<p>[1265*1.15 + 952 * (1.5/3.5 + 0.4) * 1.88] x 1.15x1.04 ~= 3513</p>\r\n<p></p>\r\n<p>However the implementation in 2.0.3 is incorrect because they changed PW:Shield somewhere between some betas that I didnt catch.</p>\r\n<p></p>\r\n<p></p>\r\n",
+    "PostedDate": "2008-10-29T08:32:18.083-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "128664",
+    "ThreadId": "38756",
+    "Html": "Ok so I have Glyph of PW:Shield on my priest. this Glyph make your shield heal you for 20% of the total absorbed amount when you cast the shield. <br>\r\nIf by the calculation you provide my shield should absorb 3513 my shield would heal for approximately 700. This is not the case however, my shield heal for roughly 490 which put the total absorbed amount around 2400 <br>\r\n<br>\r\nThe Twin Disciplines and Focused Power part, are those in the Beta only and not on live?<br>\r\n<br>\r\nwill do some testing as soon as I can get on to provide more data.<br>\r\n",
+    "PostedDate": "2008-10-29T09:58:03.51-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "128684",
+    "ThreadId": "38756",
+    "Html": "If you go by the Glyph, you assume its not bugged. The Glyph may be bugged. The testing I did to get my numbers, was to put pw: shield on myself, and get hit on by an elite, and sum up how much was absorbed.\r\n",
+    "PostedDate": "2008-10-29T11:26:04.58-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "128844",
+    "ThreadId": "38756",
+    "Html": "TNSe, you are absolutely correct. the glyph is bugged.<br>\r\n<br>\r\nSo after getting beat on for about half hour with various talents I found out that the formula is like this<br>\r\n<br>\r\n[((coef + BorrowedTime)*SpellPower)*Imp.PW:S + BaseAbsorb*Imp.PW:S] * TwinDisc<br>\r\n<br>\r\nThe reason that I distribute the Imp.PW:S is because that talent modify the tooltip of the base amount absorption.<br>\r\nI also found the Coef. to be around 80.67%<br>\r\n<br>\r\nFocused Power currently does not apply to PW:S. I'm not sure if this is an oversight of Blizz or working as intended.<br>\r\n<br>\r\nso Rawr seem to use <br>\r\n[[1265 + SpellPower * (1.5/3.5 + BorrowedTime) * 1.88] * Imp.PW:S * TwinDisc<br>\r\n<br>\r\nwhich put it waaay off since the BorrowedTime extra 40% should not get multiply by that 1.88.&nbsp; (according to live)<br>\r\n<br>\r\n<br>\r\n&quot;[1265*1.15 + 952 * (1.5/3.5 + 0.4) * 1.88] x 1.15x1.04 ~= 3513&quot;<br>\r\n<br>\r\nTNSe, what's the 1.88 in this formula that you use, My knowledge is limited so I was quite confuse of what the 1.88 is for, sorry if this is a silly question?<br>\r\n<br>\r\n<br>\r\n",
+    "PostedDate": "2008-10-30T02:54:59.517-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "128873",
+    "ThreadId": "38756",
+    "Html": "<p>The only silly question is the one you never asked :)</p>\r\n<p></p>\r\n<p>After they changed healing spells to use Spell Power instead of Bonus Healing, they scaled Spell Power by a fixed amount on Heals. This amount is normally referred to as 1.88. The exact origin for 1.88 is the itemization cost of Spell Power (0.855) divided by itemization cost of Bonus Healing (0.455). So every heal gets 1.88xSpell Power added based on their coefficient.</p>\r\n<p></p>\r\n<p>1.5/3.5*0.855/0.455 = 0.8053, or 80.53%.</p>\r\n<p></p>\r\n<p>Live results may vary from Beta results, but remember, we are currently aiming at getting things right for WotlK @ level 80. On PTR Focused Power also boosts PW: Shield by an additional 2/4%.</p>\r\n<p></p>\r\n<p>I redid all my testing on PTR yesterday, and the formula I came up with was:</p>\r\n<p>Base Absorb (BA) = 1265<br>\r\nImproved PW: Shield (IP)<br>\r\nSpell Power (SP)<br>\r\nBorrowed Time (BT)<br>\r\nFocused Power (FP)<br>\r\nTwin Disciplines (TD)</p>\r\n<p>[BA*(1+IP*0.05) + SP*(1.5/3.5 + BT*0.08)*1.88]*(1+IP*0.05)*(1+FP*0.02)*(1+TD*0.01)</p>\r\n",
+    "PostedDate": "2008-10-30T04:54:47-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

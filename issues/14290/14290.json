@@ -1,0 +1,121 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Enhance",
+      "DisplayName": "Rawr.Enhance"
+    },
+    "ClosedComment": "0.2&#37; dps difference not worth pursuing.",
+    "ClosedDate": "2009-10-10T08:05:20.46-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "As requested in http://rawr.codeplex.com/Thread/View.aspx?ThreadId=69797\n \nThis file has me with a MH-Masticator with OH-Frostbite Hatchet (245) giving me 60 more DPS than MH-Frostbite Hatchet (245) with OH-Vulmir.  Which is not the case in practice.",
+    "LastUpdatedDate": "2013-05-16T05:24:05.163-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-09-29T10:50:06.133-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Enhance] Weapons",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14290
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2280,
+      "FileName": "Yamagata (now).xml",
+      "DownloadUrl": ".\\2280"
+    },
+    {
+      "FileId": 2287,
+      "FileName": "Yamagata.zip",
+      "DownloadUrl": ".\\2287"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Thanks for the report I'll investigate. Can you tell me how you determined that this \"is not the case in practice\" what did you do to work out that Rawr was wrong? Have you some test data to support an error or an EnhSim config that shows the error? The more info I have the easier it is to work out where to look.",
+      "PostedDate": "2009-09-30T09:13:52.797-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-30T09:15:49.243-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'll try to get you a wws or wol parse of me beating on a target dummy as soon as I can.  A bit pressed for time during the week, so it may not be until the weekend.  I ran both sets through EnhSim (sans ToQE because it wasn't an option) and they come out very close, less than 5 DPS difference.",
+      "PostedDate": "2009-09-30T11:54:34.333-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Any thoughts for me on how you want me to test this?  Last night I had 15mins before raid, so I went to Orgrimmar and whacked on Target Dummies for 5mins with each weapon set.  MH-Masticor gave me 1180 DPS, while OH-Vulmir gave me 1460 DPS.  Note that these both had Frostbite Hatchet (245) as the other weapon.  Now, all I did was keep all my gear on, drop no totems, and auto-attack the dummy only, no specials.  This weekend I may be able to actually do attack chains and record a log.",
+      "PostedDate": "2009-10-01T08:17:40.177-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thats not really a valid test. Sure on pure white damage MH Masticator is probably worse, but on a real test using all your abilities is that really true?\r\n\r\nYour XML that you submitted has all your buffs checked. If you are testing vs target dummies you need to compare like with like and uncheck the buffs as you wont have them on the dummies.\r\n\r\nI also noted that the difference is not 60dps but 16 dps. Are you confusing Overall Points and DPS points? The main difference seems to come from the Orc racial and the fact that you aren't expertise capped on OH with Vulmir setup. \r\n\r\nAnother very minor issue you also ticked Unleashed Rage - Are you sure you really mean you have a second Enhancement Shammy in the raid that is providing that buff? If you meant that YOU provide the buff then untick that option so that it can calculate your own Unleashed Rage benefit and not use a default one.",
+      "PostedDate": "2009-10-01T08:39:46.1-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "1) Yeah, I'm aware that's not a \"real\" test, which is why I asked if it was still kind of valid.  The only other thing I can do is my regular attack chain on a Dummy when I have time, but this too may not be a \"real\" test as I will be missing all my raid buffs.  I'll try it this weekend though.\r\n\r\n2) They have all buffs checked because I want to know for a raiding enviornment, so they are all checked with both Masticator and Vulmir when I do my EnhSims.  No problem there.\r\n\r\n3) No, I was looking at DPS Points.  I get 7994 with Masticator and 7934 with Vulmir.  I included both XML files in a zip with this posting.  I realize I'm not Expertise capped with Vulmir, and that's why I was curious if Masticator would make up the DPS of my 245 axe by being 0.1 slower and having both weapons Expertise capped.  The fact is that it says the Masticator setup is better than Vulmir, which I am not convinced of.  Seems to me taking the Expertise hit on my OH and putting my best weapon in my MH is better, even though Rawr says differently.\r\n\r\n4) We actually do run with another Enhancement Shaman in our raid, but I can't see how that makes a difference, since my UR is up 100%.  We also have Trueshot Aura from a Hunter and we have like 2-3 Blood DKs running around giving their proc buff.  No problem there.\r\n\r\nI'll see what we're raiding tonight, and I'll try the two different weapon combos if it's a progression fight, as I'll be able to see from the logs after, if I can remember which weapon set I used for which wipe.  And that's only if it's a relatively simple strat fight with low mobility and no gimmick buffs/debuffs.",
+      "PostedDate": "2009-10-01T09:53:54.27-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-01T09:53:56.853-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok I've run your XML files in the current version of Rawr v2.2.20-pre-release (build 37105) and the difference is showing as 17 dps in Masticators favour. Running it in EnhSim gives 8 dps in Vulmir's favour. So a very very slight difference. I can investigate why a difference but we are only talking about +/- 0.2% dps difference which to be honest is well within the tolerance of the sims. Basically they are showing as equally good.\r\n\r\nPart of the issue you are seeing in v2.2.19 is a problem with the Greatness card's stats being a bit \"jumpy\" which I fixed last night. This is why the variances I am getting are less than you are seeing.",
+      "PostedDate": "2009-10-02T02:15:34.733-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-07T11:19:42.543-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-10T08:05:20.46-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-14T09:57:11.99-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T19:50:11.67-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:32:42.41-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:05.163-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

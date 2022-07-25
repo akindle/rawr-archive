@@ -1,0 +1,71 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Rogue",
+      "DisplayName": "Rawr.Rogue"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-11-12T12:33:27.177-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I upgraded directly from 2.2.24 to 2.2.26 but went back to test 2.2.25 and this version has the same issue:\n \nUsing a combat rogue (Ninari on Burning Steppes EU) I can model everything fine but the very moment I put deadly poison on my offhand, the Build upgrade list feature of  the optimizer crashes after runnig for a few seconds. I've tried various things and boiled it down to the deadly poison on offhand causing the issue. Once i remove it, no problems.\n \nIn 2.2.24 this issue wasn't there, but in 2.2.25 and 2.2.26 I get the crash.\n \nThe error log:\n \nSystem.NullReferenceException: Object reference not set to an instance of an object.\n   ved Rawr.Optimizer.ItemInstanceOptimizer.PostProcess(OptimizerCharacter bestIndividual)\n   ved Rawr.Optimizer.OptimizerBase`3.OptimizeGA(TIndividual injectIndividual, Single injectValue, Single& bestValue, TValuation& bestValuation, Boolean& injected)\n   ved Rawr.Optimizer.OptimizerBase`3.Optimize(TIndividual injectIndividual, Single injectValue, Single& bestValue, TValuation& bestValuation, Boolean& injected)\n   ved Rawr.Optimizer.ItemInstanceOptimizer.PrivateComputeUpgrades(Character character, String calculationToOptimize, OptimizationRequirement[] requirements, Int32 thoroughness, Item singleItemUpgrades, Exception& error)\n \n// DO NOT POST FULL WALL OF TEXT ERRORS INTO YOUR ISSUES, ATTACH THEM INSTEAD",
+    "LastUpdatedDate": "2013-05-16T05:23:29.473-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-11-09T13:54:53.433-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Rogue] Deadly Poison makes the optimizer crash",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14719
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2467,
+      "FileName": "error.txt",
+      "DownloadUrl": ".\\2467"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Kavan added a Null reference check but someone needs to do a deeper dive to find the actual issue",
+      "PostedDate": "2009-11-10T07:41:58.577-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hi, I just checked v2.2.27 and it's working here without crashing now. Hope you find the real cause for the bug, and cheers for quick response! :)",
+      "PostedDate": "2009-11-12T10:51:19.28-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-12T12:33:27.177-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:56.403-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:29.473-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

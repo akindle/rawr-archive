@@ -1,0 +1,96 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Closing because this is an issue with randomly enchanted gear, which should be fixed in 5.4.2.  If it continues to be a problem, open a new issue.",
+    "ClosedDate": "2013-11-27T09:18:10.717-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Turned off all my add ons and only turned on rawr add on, this is the error i get\n\nMessage: Interface\\AddOns\\Rawr\\Export.lua:161: attempt to call global 'GetPrimaryTalentTree' (a nil value) Time: 05/31/13 18:03:01 Count: 1 Stack: Interface\\AddOns\\Rawr\\Export.lua:161: in function `GetModelName' Interface\\AddOns\\Rawr\\Export.lua:137: in function `ExportBasics' Interface\\AddOns\\Rawr\\Export.lua:121: in function `ExportToRawr' Interface\\AddOns\\Rawr\\Frame.lua:21: in function `ButtonClick' Interface\\AddOns\\Rawr\\Frame.lua:14: in function <Interface\\AddOns\\Rawr\\Frame.lua:14>\n\nLocals: self = <table> { SetMinorUpgradeSound = <function> defined @Interface\\AddOns\\Rawr\\Options.lua:366 defaults = <table> { } regions = <table> { } WarnUpgradeFound = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:458 UpgradesScrollBarScrolled = <function> defined @Interface\\AddOns\\Rawr\\Frame.lua:496 SecureHook = <function> defined @Interface\\AddOns\\Rawr\\Libs\\AceHook-3.0\\AceHook-3.0.lua:339 CHAT_MSG_WHISPER = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:366 CHAT_MSG_PARTY = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:346 GetRegion = <function> defined @Interface\\AddOns\\Rawr\\Options.lua:285 SetUpgradeSound = <function> defined @Interface\\AddOns\\Rawr\\Options.lua:339 CHAT_MSG_RAID_LEADER = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:358 CreateTooltips = <function> defined @Interface\\AddOns\\Rawr\\Frame.lua:73 IsEnabled = <function> defined @Interface\\AddOns\\Rawr\\Libs\\AceAddon-3.0\\AceAddon-3.0.lua:467 SetRegion = <function> defined @Interface\\AddOns\\Rawr\\Options.lua:289 LOOT_OPENED = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:323 RegisterMessage = <function> defined @Interface\\AddOns\\Rawr\\Libs\\CallbackHandler-1.0\\CallbackHandler-1.0.lua:117 UnregisterMessage = <function> defined @Interface\\AddOns\\Rawr\\Libs\\CallbackHandler-1.0\\CallbackHandler-1.0.lua:180 GetDebug = <function> defined @Interface\\AddOns\\Rawr\\Options.lua:268 hooks = <table> { } DebugPrint = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:547 ImportRawrData = <function> defined @Interface\\AddOns\\Rawr\\Import.lua:38 db = <table> { } CharacterFrameOnHideOld = <function> defined @Interface\\FrameXML\\CharacterFrame.lua:132 SetEnabledState = <function> defined @Interface\\AddOns\\Rawr\\Libs\\AceAddon-3.0\\AceAddon-3.0.lua:440 Hook = <function> defined @Interface\\AddOns\\Rawr\\Libs\\AceHook-3.0\\AceHook-3.0.lua:277 SetDebug = <function> defined @Interface\\AddOns\\Rawr\\Options.lua:272 BANKFRAME_CLOSED = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:374 ExportEquipped = <function> defined @Interface\\AddOns\\Rawr\\Export.lua:335 GetColour = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:573 PrintWarning = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:622 OnEnable = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:277 AddDifferenceText = <function> defined @Interface\\AddOns\\Rawr\\Frame.lua:228 DisplayExportWindow = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:391 OnInitialize = <function> defined @Interface\\AddOns\\Rawr\\Rawr.lua:226 NewModule = <function> defined @Interface\\AddOns\\Rawr\\Libs\\AceAddon-3.0\\AceAddon-3.0.lua:256 GetWarningColour = <function> defined @Interface\\AddOns\\Rawr\\Options.lua:394 GetMajorUpgradeValue = <function> defined @Interface\\AddOns\\Rawr\\Options.lua:294 CreateButton = <function> defined @Interface\\AddOns\\Rawr\\Frame.lua:6 optionsFrame = <unnamed> { } CheckChangedEquippedItem = <function> defined @Interface\\AddOns\\Rawr\\Frame.lua:366 ItemSlots_OnClick = <function> defined @Interface\\AddOns\\Rawr\\Frame.lua:136 GetName = <function> defined @Interface\\AddOns\\Rawr\\Libs\\AceAddon-3.0\\AceAddon-3.0.lua:300 GetOptions = <function> defined @Interface\\AddOns\\Rawr\\Options.lua:60 AddRawrUpgradeTooltipData = <function> defined @Interface\\AddOns\\Rawr\\Frame.lua:196 name = \"Rawr\" AddRawrTooltipData = <function> defined @Interface\\AddOns\\Rawr\\Frame.lua:172 Disable = <function> defined @Interface\\AddOns\\Rawr\\Libs\\AceAddon-3.0\\AceAddon-3.0.lua:330 GetModelName = <function> defined @Interface\\AddOns\\Rawr\n\nI also get the following error when trying to load my Character Bibbens on US server Galakrond from battle net directly into the client\n\nSystem.IndexOutOfRangeException: Index was outside the bounds of the array. at Rawr.RandomSuffix.GetStatValue(Item item, Int32 id, AdditiveStat stat) in C:\\Rawr-5.0\\Rawr.Base\\RandomSuffix.cs:line 681 at Rawr.Reforging.CurrentStatValue(Item baseItem, Int32 randomSuffixId, AdditiveStat stat) in C:\\Rawr-5.0\\Rawr.Base\\Reforging.cs:line 243 at Rawr.Reforging.ApplyReforging(Item baseItem, Int32 randomSuffixId) in C:\\Rawr-5.0\\Rawr.Base\\Reforging.cs:line 186 at Rawr.ItemInstance.OnIdsChanged() in C:\\Rawr-5.0\\Rawr.Base\\Items\\Item.cs:line 1399 at Rawr.ItemInstance.set_ReforgeId(Int32 value) in C:\\Rawr-5.0\\Rawr.Base\\Items\\Item.cs:line 1359 at Rawr.ItemInstance..ctor(String gemmedId) in C:\\Rawr-5.0\\Rawr.Base\\Items\\Item.cs:line 1688 at Rawr.Character.SetGemmedId(CharacterSlot slot, String gemmedId) in C:\\Rawr-5.0\\Rawr.Base\\Character.cs:line 689 at Rawr.Character.sethead(String value) in C:\\Rawr-5.0\\Rawr.Base\\Character.cs:line 692 at Rawr.Server.Controllers.CharacterController.ConvertBattleNetJsonToCharacter(String json, String region) in C:\\Rawr-5.0\\Child Projects\\Rawr.Server\\Rawr.Server\\Controllers\\CharacterController.cs:line 393 at Rawr.Server.Controllers.CharacterController.HandleBattleNetCharacterRequest(String characterRegionServer) in C:\\Rawr-5.0\\Child Projects\\Rawr.Server\\Rawr.Server\\Controllers\\CharacterController.cs:line 97\n\nLoaded a previously saved character xml which was saved before i upgraded my weapon twice and before i got a 516 generic head piece from a Heroic Scenario. wondering if the head piece is the problem or if both are an issue. the following error is what i got after loading the saved xml and trying to refresh from battle net\n\n   at Rawr.RandomSuffix.GetStatValue(Item item, Int32 id, AdditiveStat stat)\n   at Rawr.Reforging.ApplyReforging(Item baseItem, Int32 randomSuffixId)\n   at Rawr.ItemInstance.get_Item()\n   at Rawr.ItemInstance.Clone()\n   at Rawr.Character.SetItems(Character character, Boolean allSlots, Boolean invalidate)\n   at Rawr.UI.MainPage.ReloadCharacter(Character character)\n   at Rawr.UI.MainPage.bnetReload_Closed(Object sender, EventArgs e)\n   at System.Windows.Window.WmDestroy()\n   at System.Windows.Window.WindowFilterMessage(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)\n   at System.Windows.Interop.HwndSource.PublicHooksFilterMessage(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)\n   at MS.Win32.HwndWrapper.WndProc(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)\n   at MS.Win32.HwndSubclass.DispatcherCallbackOperation(Object o)\n   at System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)\n   at MS.Internal.Threading.ExceptionFilterHelper.TryCatchWhen(Object source, Delegate method, Object args, Int32 numArgs, Delegate catchHandler)",
+    "LastUpdatedDate": "2013-11-27T09:18:10.717-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2013-05-31T15:17:29.49-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Fixed"
+    },
+    "Summary": "Cannot Load Character through addon or battlenet",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 24353
+  },
+  "FileAttachments": [
+    {
+      "FileId": 6424,
+      "FileName": "RAWR Puke.jpg",
+      "DownloadUrl": ".\\6424"
+    },
+    {
+      "FileId": 6425,
+      "FileName": "RAWR Puke.jpg",
+      "DownloadUrl": ".\\6425"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Good luck I get a straight up Microsoft crash when I try to load my character off of battlenet.  It won't even show me the RAWR error code or message.  Imagine how incredibly annoying this is after having updated both Silverlight AND unistalling AND REINSTALLING .Net Framework.  \r\n\r\nI loathe Mr. Robot and I don't trust it for a minute, but hey, at least it WORKS.",
+      "PostedDate": "2013-06-18T12:38:11.783-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "If you're using the Silverlight version of Rawr, I haven't been able to publish the latest version since I took over build management; Elitist Jerks informs me that they have been having trouble on their end.  In any case, I do not know the state of the addon.",
+      "PostedDate": "2013-06-19T05:28:15.447-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-06-19T10:38:15.23-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I had rewritten the addon for self use about 3 or 4 months into MoP, the problem was that RAWR  itself was not updated for it.  The only thing I really did was correct the weapon slots (wands, guns that used to be off hand items for warriors, etc) and a few other things that at this point I honestly cannot recall.  It worked enough to ctrl-c the character and self bag slots in game, but I had not gotten it to successfully scan the bank at that point.  \r\n\r\nThat is beside the point, however.  Sorry for my post the other day I was just extremely frustrated with what was going on.  I am using the RAWR.WPF.exe file, this is what is crashing.  I can't even USE the Silverlight version because as you mentioned, it's not available at the moment on Elitist Jerks, regardless of how old or new (I tried older versions as well as the latest version) your version of Silverlight is.  \r\n\r\nNow I can't even use RAWR.WPF.exe.  I am going to submit a screen shot of the error I am getting, I am going to open it up while I am typing this and attempt to load my alt character, my mage, this seems to be the only character that this crash is happening on.  My Death Knight loads absolutely perfectly, though I don't need to use RAWR with him.  :)  I apologize I did not provide any valuable information yesterday, there were about 10 things going on that were already building up pressure, then I just kind of went off when this kept crashing despite my greatest efforts.  \r\n\r\nCharacter:  Chagoul  Realm:  Exodar US\r\n\r\nAlso, here is a copy/paste of everything that was in that white window of the Windows error just for reference:\r\n\r\nProblem signature:\n  Problem Event Name:\tCLR20r3\n  Problem Signature 01:\trawr.wpf.exe\n  Problem Signature 02:\t5.2.1.0\n  Problem Signature 03:\t51b4a1e9\n  Problem Signature 04:\tRawr.Base.WPF\n  Problem Signature 05:\t5.2.1.0\n  Problem Signature 06:\t51b4a18e\n  Problem Signature 07:\t164c\n  Problem Signature 08:\t17\n  Problem Signature 09:\tSystem.IndexOutOfRangeException\n  OS Version:\t6.1.7601.2.1.0.256.1\n  Locale ID:\t1033\n  Additional Information 1:\t51fd\n  Additional Information 2:\t51fd30c58a303a1311847c9bd82d8869\n  Additional Information 3:\t5544\n  Additional Information 4:\t554444cb0c865314a19f3db2de42d71f",
+      "PostedDate": "2013-06-19T10:38:16.503-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-06-19T10:45:23.073-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Interesting, I had added the screenshot but it did not take, this is just a post to attempt to post the screen shot once again...  For the record, if the screen shot does not load for whatever reason it chooses not to (it is only 524 KB, no where NEAR the 4MB limit), I have also uploaded it to Tinypic and included the link here.  \r\n\r\nhttp://tinypic.com/r/35mmgk4/5",
+      "PostedDate": "2013-06-19T10:45:23.497-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "...and now I see that in loading it the second time it pushed BOTH through.  Splendid.  :)  For future query, is there any way you can implement an \"Edit\" feature to these comments?  I hate double and triple posting and to be able to edit an original post would be much more \"pleasant\" in more ways than one.  Just curious.",
+      "PostedDate": "2013-06-19T10:48:19.007-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Looks like there's yet another new set of randomly enchanted gear that I'm guessing was introduced with 5.3 that is causing problems.  Perhaps the set from the Barrens?  If you have any of these pieces, try swapping them out and trying again until I can get all the new random enchantment data loaded.",
+      "PostedDate": "2013-06-22T08:02:22.903-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-11-27T09:18:10.717-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

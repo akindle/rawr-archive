@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "declined suggestion",
+    "ClosedDate": "2009-10-14T10:20:46.953-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Since many of the multipliers apply to the base stats themselves, it would be useful to have a map that corresponds those together.\nAs well as a method in Stats to Apply the multipliers to their stats.  So that modules don't have to do it themselves.\n \nIf this already exists, I wasn't able to find it, so please just point me in the right direction.\nIf not, I  may end up getting around to doing it, but I wanted it written up either way.",
+    "LastUpdatedDate": "2013-05-16T05:25:24.06-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-05-28T10:59:16.6-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Feature Request] Create a map from Additive Stat to corresponding Multiplier if exists",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 13360
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I'd be hesitant to do that, since the logic involved is commonly subtly different for each class/spec.",
+      "PostedDate": "2009-05-28T11:10:51.583-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "So if I understand what you meant:\r\n\r\nCurrently we are doing this in GetCharacterStats per model:\r\n\r\n// Stamina\r\nfloat totalBSTAM = statsTotal.BonusStaminaMultiplier;\r\nfloat staBase    = (float)Math.Floor((1f + totalBSTAM) * statsRace.Stamina             );\r\nfloat staBonus   = (float)Math.Floor((1f + totalBSTAM) * statsGearEnchantsBuffs.Stamina);\r\nstatsTotal.Stamina = staBase + staBonus;\r\n\r\nYou would want to add a function to the effect of (just throwing this together, not really fine-tuning anything):\r\n\r\nfloat Stats.GetFullStamina(Stats statsTotal, Stats statsRace, Stats statsRace, Stats statsGearEnchantsBuffs, Stats statsOther,...) {\r\n float totalBSTAM = statsTotal.BonusStaminaMultiplier;\r\n float staBase    = (float)Math.Floor((1f + totalBSTAM) * statsRace.Stamina             );\r\n float staBonus   = (float)Math.Floor((1f + totalBSTAM) * statsGearEnchantsBuffs.Stamina);\r\n statsTotal.Stamina = staBase + staBonus;\r\n return statsTotal.Stamina;\r\n}\r\n\r\nor something very similar to that which the models could call out to when they need to know the full amount of Stamina after buffs, etc.\r\n\r\nWhile this does sound like a good idea, I think we would run into the issue that Astrylian described with classes/specs needing theirs to be customized.",
+      "PostedDate": "2009-08-26T08:44:20.13-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-14T10:20:46.953-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T19:40:14.677-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:18.36-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:24.06-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

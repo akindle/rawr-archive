@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "706001",
+    "ThreadId": "281508",
+    "Html": "\r\n<p>Name: Karasiros on Quel'dorei. &#65279;Am I missing something? Ever since 4.2.4 I have not been able to get the optimizer to optimize for the proper stat values. I loaded rawr from the in-game addon. Example using new 4.3, I used the gear that I have on and added\r\n Rockhide Bracers (from new Raid) and a few pieces from the new heroics to the gear that I have available (not equipped). I set buffs to Fully buffed DPSDK. All enchants to BiS. The top 4 of each gem color are checked too. I looked at the &quot;Relative Stat Values&quot;\r\n graph and I see Str: 1.86, Crit: 1.22, AP: 0.82, Mast: 0.74, Agil: 0.55, Hit: 0.26, Haste: 0.06.&nbsp;I understand that since my haste value is high(1708) that Rawr may say that haste now is not a priority so it is set to 0.06.&nbsp;&nbsp;I then ran the optimizer\r\n which preceded to change most of my haste to crit. My crit is now 2011 and haste down to 845. The new &quot;Rel Stat Values&quot; are Haste: 10.19, STR: 2.06, EXP: 1.69, Hit 1.46, AP 0.9, Crit 0.87,&nbsp;Mast: 0.84, Agil: 0.72,&nbsp;Agil 0.55. Now&nbsp;Haste is valued\r\n really high so I ran the optimizer again thinking now it will optimize haste but no luck...almost the same results and now haste is down to 598. I ran this in only 1x optimize(not 10x) in both Frost and Unholy presence with the same results. In no way should\r\n I be reforging mastery and haste into crit with haste at 598 (as it was when I did the second optimize in unholy pres).&nbsp;Is there something I am missing or doing wrong? Shouldn't the optimizer be &quot;dynamic&quot; and change values as they drop or raise above\r\n caps?<br>\r\nThank you,</p>\r\n<p>&nbsp;Karasiros</p>\r\n",
+    "PostedDate": "2011-12-01T10:33:04.487-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "706183",
+    "ThreadId": "281508",
+    "Html": "<p>There's already a defect about this: 21785&nbsp; DW Frost does favor haste to a point. You should be in UH presence.&nbsp; After you reach a certain threshold, Haste appears to be less valuable than crit.&nbsp; I'm currently working on improving the rotation to deal w/ higher haste levels.&nbsp; Currently, the rotation will GCD cap with the available resources.&nbsp; After that point, Haste is less valuable.&nbsp; It may be worth trying to sacrifice lower-value abilities (like FS/Rime) to get in more Oblits.&nbsp; I'm working on that implementation now.</p>",
+    "PostedDate": "2011-12-01T17:48:34.817-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "706190",
+    "ThreadId": "281508",
+    "Html": "<p>I've been trying to add a couple questions to 21785, but when I press Save it it keeps hanging on the \"saving...\" dialog.&nbsp; So here they are:</p>\r\n<p>Let's say haste has reached a point where more haste will not allow any more specials.&nbsp; Won't it still cause more damage via faster weapon swings (= more damage, more procs)?&nbsp; Shouldn't its stat weight at least be above zero?&nbsp; (mine is negative.)<br /><br />I checked SimulationCraft, which has some results posted for iLvl 410.&nbsp; The modeled DK there has stacked haste, and has lots more than I do.&nbsp; Yet it computes haste, mastery, and crit as all having very similar levels of contribution.&nbsp; If its correct, it wouldn't seem haste can truly be capped, at least at the relatively low levels I have of it at iLvl 368.<br /><br />Is the issue that haste has a stair-step function where you need a lot more vs. a little more to see a result?&nbsp; If so, not reforging for it if you can't get to the next stair step makes sense.&nbsp; But although this bug is about reforging, I believe the zero-value haste is being reflected in all of Rawr's optimizer functions:&nbsp; which gear to equip, which items are upgrades, what to gem, etc.&nbsp; The optimizer will try to remove all sources of haste (equipping non-haste gear, reforging out of it on every item, etc), presumably pushing you well below the plateau even if there really is one. The result is that the answers from each of those functions seem pretty suspect.</p>",
+    "PostedDate": "2011-12-01T18:14:41.147-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "706205",
+    "ThreadId": "281508",
+    "Html": "<p>If you look at the Options tab, there's a stat graph.&nbsp; If you look at the graph for just Haste (or compare it to other things like Crit and Mastery) you will see that stair step as you mention.&nbsp; But also you can see the trend line is steeper than Crit or Mastery most of the time until you reach a certain point.&nbsp; Then that trend line decreases.&nbsp; Haste is never worth 0 for the most part.&nbsp; Don't use the RSVs as your basis.&nbsp; Use the stat graph on the option pane.&nbsp; And Like I mention in the defect, I'm working on getting the rotation to handle the trade off after GCD cap.</p>",
+    "PostedDate": "2011-12-01T18:49:57.163-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "706216",
+    "ThreadId": "281508",
+    "Html": "<p>For the character Alathas.xml I attached:</p>\r\n<p>At the default range of 100, the trend line for Haste is flat, from very slightly above zero to very slightly below zero.</p>\r\n<p>If I expand the range to 500, the trend line acquires a very, very tiny \"step\" at -350 and +350.&nbsp; But its still basically zero the whole way through.</p>\r\n<p>At range 1,000, there is small negative trend line appearing at -900.</p>\r\n<p>The haste line has both the smallest slope and is the closest to zero of all the stat lines.</p>",
+    "PostedDate": "2011-12-01T20:14:09.827-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "706228",
+    "ThreadId": "281508",
+    "Html": "<p>Thank you Shazear for responding so quickly. I am always in Unholy pres but did test both unholy and frost in the optimizer to see if I could get diff results. After doing the first optimize and putting on all the gear that Rawr recomended I was then very high crit and low haste (598) which has to be below any haste cap so shouldn't a second optimize then try to raise haste? Also, even if I was \"haste capped\" shouldn't the Optimizer try to up Mastery next instead of crit (assuming I am hit and exp capped)?<br />I thought the general view was STR&gt;HASTE&gt;MASTERY&gt;CRIT&gt;HIT(YELLOW) assuming you are hit and exp capped. Why would the optimizer recomend reforging mastery into crit? <br />Thank you so much,</p>\r\n<p>Karasiros</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-12-01T21:03:04.487-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "706701",
+    "ThreadId": "281508",
+    "Html": "<p>I still can't comment to 21785.&nbsp; I've tried both Firefox and Chrome.&nbsp; Maybe there's a bug specific to my user account?&nbsp; It obviously worked fine earlier.&nbsp; Anyway, here's what I tried to add:</p>\r\n<p>Thanks Shazear for the continuing efforts.&nbsp; I'm looking forward to trying out the new build once its available (I'm not set up to compile on my own.)<br /><br />I'm perhaps under-qualified to comment, but your findings that GCD cap and KM cap are achievable and maybe even come with pretty low levels of haste strike me as suspicious.&nbsp; The KM cap should show up in parses, but after a casual examination of WoL I was unable to see anything close to 100% Oblit/FS crit rates.<br /><br />As to GCD cap, according to the current rawr build my DK is past that cap by some 950 haste, yet I've never had a prolonged fight that did not involve some waiting on runes.&nbsp; The ilvl 410 parse on simulation craft (which is a haste build) has 4.5% gcd loss due to waiting, and half that again for Horn of Winter usage.<br /><br />I also looked for some theorycraft posts showing where the GCD cap was reached.&nbsp; I didn't find anything scholarly.&nbsp; The informal discussions just seemed to take it for granted the cap wasn't reachable.&nbsp; That's not definitive, but on the other hand if there was a cap or plateau that lots of people were already over / stuck in, I suspect it would've been easier to find lots more discussion about it.<br /><br />I wish I was better able to argue one way or the other on my own, I'll see if I can get more educated this weekend.</p>",
+    "PostedDate": "2011-12-02T15:24:59.757-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "706703",
+    "ThreadId": "281508",
+    "Html": "<p>Fair enough.&nbsp; I was going purely theoretical that there is an amount of haste and it can get crit over 100% for OB/FS.&nbsp; I wasn't using real gear to achieve those numbers.&nbsp; More just to see what happened to the curve when hitting that point.&nbsp; My latest check up updates the proc rate of KM to match what I've been  seeing in the WOL logs.&nbsp; Which is higher than the 5 PPM that I  originally had.</p>\r\n<p>RE: GCD cap, It may be something where I tone down the amount of effective rune regen granted via RE.&nbsp;</p>",
+    "PostedDate": "2011-12-02T15:30:57.077-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

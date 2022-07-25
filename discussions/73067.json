@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "249643",
+    "ThreadId": "73067",
+    "Html": "<p>I did some reading on Latency and it's effect on spell casts. (http://elitistjerks.com/f31/t33457-simulationcraft_model_development/p9/#post1309223)</p>\r\n<p>There is a built-in spell queue in WoW, that queues a spell right after the one you are currently casting under certain circumstances:</p>\r\n<ol>\r\n<li>You can't queue a spell during the first second of the GCD.  This gives you a Not Ready message.</li>\r\n<li>You can't queue a spell while your previous spell has more than about 0.3s left to complete. This gives you an &quot;Another action is in progress&quot; message.</li>\r\n<li>You can queue a spell during the GCD as long as you satisfy both (1) and (2) above.</li>\r\n</ol>\r\n<p>For a queued spell latency is close to nonexistent. Simcraft models this latency with a standard deviation of 25% centered around 0.075 s. An instant is modeled with 0.150 s and a channeled spell with 0.250 s as default value.</p>\r\n<p>Then I did some testing, but since I don't have an owl I could not get my Lightning Bolt cast time below 1s. However testing showed a few facts, that are implied by the above, but still worth mentioning:</p>\r\n<ul>\r\n<li>You can queue instants after spells with cast time.</li>\r\n<li>I was not able to queue a spell after an instant.</li>\r\n<li>I was not able to queue a spell after a channeled spell. Instead the new spells cast begins as soon as the server receives the message.</li>\r\n</ul>\r\n<p>I would be happy to see some input on this. Perhaps someone of you is already modeling lag in a similar way.</p>",
+    "PostedDate": "2009-10-26T02:46:31.217-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "249701",
+    "ThreadId": "73067",
+    "Html": "<p>Mage model is using that kind of latency model.</p>",
+    "PostedDate": "2009-10-26T04:41:58.383-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "249960",
+    "ThreadId": "73067",
+    "Html": "<p>I don't recall if the exact &quot;allowance&quot;/&quot;tolerance&quot; that is provided by the Blizz server is 250 ms or 300ms.&nbsp; I've gone back to read up on it's inception and development, but it happened before my time.</p>",
+    "PostedDate": "2009-10-26T15:33:18.433-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "250201",
+    "ThreadId": "73067",
+    "Html": "<p>There is one other oddity worth mentioning: TigaFin did some testing with Frost Bolt spam and inserting instant-cast Brain Freeze Fireballs.&nbsp; He was able to show occurrences of FrB1-BFF-FrB2 in which FrB2 started earlier than expected.&nbsp; The FrB2 was not &quot;queued&quot; during the GCD of BFF. Rather, it appeared that the GCD initiated by BFF began when it was queued near the end of the FrB1 cast.</p>\r\n<p>Summary: While spamming instants does result in a minimum gap of 150ms, the lag cost of a single instant is on par with queued spells.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-10-27T08:20:45.833-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "251117",
+    "ThreadId": "73067",
+    "Html": "<p>Is there a way to measure the different latency types?</p>",
+    "PostedDate": "2009-10-29T04:24:55.17-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "251168",
+    "ThreadId": "73067",
+    "Html": "<p>http://www.wowinterface.com/downloads/info8539-SLDataText.html is one of many addons that has a latency module to measure the time it takes to talk to your WoW server (network latency).</p>\r\n<p>http://www.bbc.co.uk/science/humanbody/sleep/sheep/reaction_version5.swf measures your reaction time (human latency).</p>",
+    "PostedDate": "2009-10-29T06:43:34.89-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "251177",
+    "ThreadId": "73067",
+    "Html": "<p>Thank you, but that is not really the type of latency we want to measure here. We need the difference between the expected spell cast time and the real spell cast time, when multiple spells are cast one after another. These times are different for channeled, instant and spells with cast time.</p>\r\n<p>I mean we need the latency value where the tolerance, as you named it earlier, is already taken into account.</p>",
+    "PostedDate": "2009-10-29T06:53:03.283-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "251211",
+    "ThreadId": "73067",
+    "Html": "<p>Ah, gotcha.&nbsp; ;)</p>\r\n<p>The best method to get the answer we can use in the program would be to somehow isolate the internal queue using an extremely low-latency, rock-stable connection and a variety of tests for various types of spells.&nbsp; The casting would preferably be performed by program that can repeat keypresses at regular, methodical intervals.&nbsp; By extremely low-latency, rock-stable connection, I mean something that's only a few hops away from the server, and experiencing ridiculously low pings (to the tune of sub-30 with little &quot;jitter&quot;, or fluctuation, which is totally doable if you're geographically situated correctly).</p>",
+    "PostedDate": "2009-10-29T08:38:24.47-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

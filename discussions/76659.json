@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "262151",
+    "ThreadId": "76659",
+    "Html": "<p>Hi everyone,<br><br>After having a look through the discussion topics using &quot;downgrade mono&quot;, &quot;ubuntu 9.10&quot;, &quot;ubuntu mono&quot; and a few other search keys I didn't quite find a solution to my problem. I apologize if I overlooked a relevant discussion thread and would deeply appreciate to be redirected there if it exists.<br><br>I've recently installed the newest version of Ubuntu (9.10 karmic koala) which unfortunately comes with the 2.4 version of Mono. In order to run rawr normally I have been trying to downgrade mono to 2.2. Usually, when I am confronted to this sort od issue, I try the &quot;apt-cache showpkg&quot; command to see if any previous versions of a software are available in the repositories.<br><br>Alas, it would appear that only the 2.4.2.3 version of mono is available, which basically means I am screwed if I want to force a simple downgrade to 2.2 using synaptic.<br><br>Would someone perhaps know of a different solution to my problem?<br><br>Many thanks in advance.</p>",
+    "PostedDate": "2009-11-30T22:25:30.6-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "262153",
+    "ThreadId": "76659",
+    "Html": "<p>If you can compile Rawr from source, I *think* there may be a fix in since the last time we made a release... Or perhaps there's a patch on the Patches page for it; one of the two. I know there was a patch for mono 2.4 workaround, not sure if we applied it yet.</p>",
+    "PostedDate": "2009-11-30T22:54:07.177-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "262167",
+    "ThreadId": "76659",
+    "Html": "<p>The patch was supplied by a user familiar enough with code to correct the primary crashing issue on his own box. He gave it to us apparently some months after doing it :P</p>\r\n<p>I applied the patch and he compiled the code afterwards, remarking back to us that there was no longer a crash.</p>",
+    "PostedDate": "2009-12-01T00:16:32.993-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "262173",
+    "ThreadId": "76659",
+    "Html": "<p>Thank you both for your answers.<br><br>On your suggession, I have compiled the latest source with MonoDevelop.<br><br>Unlike with the pre-compiled release (which, I realise, is a couple of days older than the patch you were talking about), rawr does no longer crash on start-up.<br><br>However I am faced this time with another issue: almost all the text in the program does not display (the only exceptions would be tab titles and input text fields). I hope this is a trivial issue, but I do not know what could be causing it or how to solve it. Any ideas ?<br><br>Anyway, thanks for your help so far.</p>",
+    "PostedDate": "2009-12-01T00:38:09.313-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "262311",
+    "ThreadId": "76659",
+    "Html": "<p>Haven't heard of that one. :(</p>\r\n<p>(And can't think of what it could be)</p>",
+    "PostedDate": "2009-12-01T07:58:24.203-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "262338",
+    "ThreadId": "76659",
+    "Html": "<p>Heh. Didn't realize you guys were interested in Mono support until recently. :P :)</p>\r\n<p>About the text thing, if you're using an Intel video card, there's a bug in the driver that does exactly what you're describing. It's fixed in xf86-video-intel-2.9.1. Maybe Ubuntu hasn't put that in their package manager yet? I think it depends on a certain revision of X.org though, so maybe that's why.</p>",
+    "PostedDate": "2009-12-01T08:36:35.87-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "262758",
+    "ThreadId": "76659",
+    "Html": "<p>Yes, after some research I found that it is common problem in mono with Ubuntu 9.10. After following the instructions I found on <a href=\"http://www.nanowrimo.org/eng/node/3373197\">this site</a>, everything is in order again. Thanks for your help.</p>",
+    "PostedDate": "2009-12-02T07:24:17.61-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

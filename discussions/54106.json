@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "182237",
+    "ThreadId": "54106",
+    "Html": "Hi,<div><br></div><div>I try without success to make this features works.</div><div>I have a wowhead filter : qu=3:4;ty=2;minle=160;maxle=200;ub=11;cr=86;crs=11;crv=0</div><div>When I put it in the dialogbox I've got an error : Error interpreting the data return by wowhead</div><div><br></div><div>Can someone help me ?</div><div><br></div><div>Thanks</div>",
+    "PostedDate": "2009-04-22T03:26:23.083-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "182258",
+    "ThreadId": "54106",
+    "Html": "Strange that filter works for me. If you're able can you put a breakpoint in Wowhead.cs line 1684 and post the message from the exception?\r\n",
+    "PostedDate": "2009-04-22T04:17:58.91-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "182267",
+    "ThreadId": "54106",
+    "Html": "Ok, just do the test.<div>It seem that it don't use my proxy to access Wowhead using this fonctionnality.</div><div>Proxy is well defined because I can read from the armory or add manualy item from the armory.</div><div><br></div><div>The french message (from ex.base) is :</div><div><div><div>+<span style=\"white-space:pre\">\t\t</span>base<span style=\"white-space:pre\">\t</span>{&quot;Le serveur distant a retourné une erreur : (502) Passerelle incorrecte.&quot;}<span style=\"white-space:pre\">\t</span>System.InvalidOperationException {System.Net.WebException}</div><div><br></div></div><div>which I translate in english to something like  : &quot;Distant server return an error : (502) Bad gateway&quot;</div></div>",
+    "PostedDate": "2009-04-22T05:08:28.39-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "182281",
+    "ThreadId": "54106",
+    "Html": "It's the line 714 of WebRequest.cs who launch the exceptions :<div>returnDocument.LoadXml(xml.Replace(&quot;&amp;&quot;,&quot;&quot;));</div><div><br></div><div>Must LoadXml requires some Proxy settings ???<br><div><br></div><div><br></div><div>Hope this help</div></div>",
+    "PostedDate": "2009-04-22T05:25:50.767-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "182308",
+    "ThreadId": "54106",
+    "Html": "Ok, after a lot of research, I find a solution. The XmlResolver of the XmlDocument must be set to null as we dont want to validate the Document.<div>With this change, it works well for me.<br><div><br></div><div>I change line 714-715 of WebRequest.cs to :</div><div><div>                        returnDocument = new XmlDocument();</div><div>                        returnDocument.XmlResolver = null;</div><div>                        returnDocument.LoadXml(xml.Replace(&quot;&amp;&quot;,&quot;&quot;));</div><div><br></div><div><br></div><div>I you can test this and commit it if it works for you ?</div><div><br></div><div>Thanks</div></div></div>",
+    "PostedDate": "2009-04-22T06:11:40.183-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "182411",
+    "ThreadId": "54106",
+    "Html": "Change tested and committed. Seemed to work just fine. BTW in future PLEASE use an issue to post these sorts of problems NOT a discussion.<br>\r\n",
+    "PostedDate": "2009-04-22T09:21:19.193-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

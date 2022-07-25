@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Cat",
+      "DisplayName": "Rawr.Cat"
+    },
+    "ClosedComment": "Fixed for next version.",
+    "ClosedDate": "2010-08-22T12:43:06.977-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The damage of Ferocious Bite is adjusted twice for the amount of CPs used.\n \nThe first adjustment lowers the amount of Bites that are done to compensate for biting with lower CPs:\nfloat biteDamageMultiplier = Math.Min(1f, \n     (BiteStats.DamagePerSwing + BiteStats.DamagePerSwingPerCP * averageBiteCP) /\n     (BiteStats.DamagePerSwing + BiteStats.DamagePerSwingPerCP * 5f));\nbiteCount += bitesFromAvailableCP * biteDamageMultiplier;\n \nThe second adjustment lowers the damage per bite when a lower amount of CPs is used:\nfloat biteDamageTotal = biteCount * (BiteStats.DamagePerSwing + BiteStats.DamagePerSwingPerCP * biteCP);",
+    "LastUpdatedDate": "2017-11-27T10:59:37.183-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-08-11T00:39:07.993-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Cat] Bite damage adjusted twice for lower CPs",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 18459
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

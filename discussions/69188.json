@@ -1,0 +1,130 @@
+[
+  {
+    "Id": "235409",
+    "ThreadId": "69188",
+    "Html": "<p>I can't seem to find how to enfore the hit cap of 8%&nbsp;(262ish rating)&nbsp;and expertise of 6.50% dodge, 26, or the rating requirement.</p>\r\n<p>I've tried them in the 'optimization' as requirements, and I always either get &quot;optimizer could not meet requirements&quot; or it ignores it and gems pure strength regardless of the fact I need expertise gems to make that cap.</p>\r\n<p>How&nbsp; can I make the program know that I desire these minimums?</p>",
+    "PostedDate": "2009-09-16T20:12:01.047-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "235410",
+    "ThreadId": "69188",
+    "Html": "<p>What model? There may be a bug, or confusion about how to input the requirements. Regardless, why do you want to force it to hit those caps, if it's a DPS loss?</p>",
+    "PostedDate": "2009-09-16T20:19:26.797-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "235412",
+    "ThreadId": "69188",
+    "Html": "<p>If you are trying to use DPSWarr (as well as some of the other models) you need to set the requirement '% Chance to be Avoided &lt;= 0' to meet these caps.</p>",
+    "PostedDate": "2009-09-16T20:24:37.59-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "235413",
+    "ThreadId": "69188",
+    "Html": "<p>It's not, or at&nbsp;least shouldn't be,&nbsp;a dps loss, hitting the caps is close to a requirement&nbsp;of a raid dps that results from the level of the enemy. Benefitting from having less either means that I'm close enough to the cap that it's overlookable or that the item in its place is significantly better than the expertise or hit item. I have it set to level 83, but it doesn't seem to recognize that overcoming the soft cap on hit and expertise are huge to a melee dps spec.</p>\r\n<p>I'm using 2.2.16 for&nbsp;DPS DK, it seems universal for all specs.</p>",
+    "PostedDate": "2009-09-16T20:24:49.693-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "235415",
+    "ThreadId": "69188",
+    "Html": "<p>Did you mark Hit and Expertise (and cross versions of these) Gems as available to the optimizer?</p>",
+    "PostedDate": "2009-09-16T20:31:12.377-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "235417",
+    "ThreadId": "69188",
+    "Html": "<p>I see the issue now but can't resolve it.</p>\r\n<p>Under stats, Expertise is showing as a static of 0% dodge chance, so it assumes that the enemy already cannot dodge my attacks and thus does not need expertise I guess, where it should have 6.50% base chance for a raid boss?</p>",
+    "PostedDate": "2009-09-16T20:33:51.303-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "235418",
+    "ThreadId": "69188",
+    "Html": "<p>Hit/Exp-capping is far from optimal DPS for many classes, which is why I asked.</p>\r\n<p>So, two issues here:</p>\r\n<p>A) Using &quot;Target Miss % &lt;= 0&quot; and &quot;Target Dodge % &lt;= 0&quot;, I was able to make it optimize to 0% avoided attacks. (Sidenote, DPSDK devs, is there any functional difference between a dodge and a miss to a DK? If not, please combine those two optimizable values. Also, convert the optimizable values for ratings to %s, since that's what actually matters, and remove the hit/exp ones, since they're redundant with the target avoidance ones)</p>\r\n<p>B) Everything I see shows that Hit/Exp capping is actually not optimal DPS for DPSDKs, at least of most (if not all) specs. This is a common misconception, since it actually is ideal for many classes/specs. If you have solid evidence to share to show that any of Rawr's calculations are wrong, please share it.&nbsp;</p>",
+    "PostedDate": "2009-09-16T20:37:04.417-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "235420",
+    "ThreadId": "69188",
+    "Html": "<p>For blood death knights it is very close to, if not, optimal because their damage consists of primarily melee attacks (HS, DS, white damage)&nbsp;whereas frost and unholy use more spell damage.</p>\r\n<p>Though it's not necessarily priority to all specs, it's necessary in order to reduce dodges to 0%, so I should still see __% to be dodged by my opponent if I am below 26 expertise, which I'm not seeing.</p>\r\n<p>I'm not clear on how to modify it to require this dodge/miss % but it seems to assume that they already are at 0% so changing that isn't going to help I think.</p>",
+    "PostedDate": "2009-09-16T20:44:39.793-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "235422",
+    "ThreadId": "69188",
+    "Html": "<p>If you're saying that it's not calculating the % chance to be dodged based on your expertise correctly, please post the character file demonstrating that as an Issue, and we can take a look. My quick tests so far tonight show that it is correctly calculating it.</p>",
+    "PostedDate": "2009-09-16T20:48:15.623-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "235425",
+    "ThreadId": "69188",
+    "Html": "<p>I'm saying that a raid boss has a 6.50% chance to dodge a melee attack from the back side, base. Currently, my Rawr seems to be telling me this is not true, that they have a 0% chance to dodge my attacks, base.</p>\r\n<p><a href=\"http://img193.imageshack.us/img193/2969/dodgev.jpg\">http://img193.imageshack.us/img193/2969/dodgev.jpg</a></p>\r\n<p>Here's an image displaying that I am 10 expertise under the cap, and it's still displaying 0% chance to be dodged.</p>\r\n<p>I'm not sure if A) It's working incorrectly or B)&nbsp;I don't have certain settings selected to dictate that this is on a raid boss. I just want it to recognize that in order to reach 0% dodge I need roughly 214 expertise on my gear (a bit less with&nbsp;talents that increase my expertise by 6%) but that will also display in my 'expertise' total on my character sheet, since it's accurately displaying what I have in the same gear in-game.</p>",
+    "PostedDate": "2009-09-16T20:57:13.147-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "235427",
+    "ThreadId": "69188",
+    "Html": "<p>Part of this could be:</p>\r\n<p>Veteran of the Third War: 2 Expertise per point at 3 points is 6 Expertise</p>\r\n<p>Without your character file we can't fully investigate</p>",
+    "PostedDate": "2009-09-16T21:02:46.753-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "235429",
+    "ThreadId": "69188",
+    "Html": "<p>Again, post your character file. Nothing in the image you posted shows a bug. Just below where you have it cropped off is &quot;Avoided Attacks&quot; which shows the % of attacks which are avoided, and mousing over it breaks it down by miss/dodge. Your picture just shows 18 exp negating 4.61% dodge, which looks correct.</p>",
+    "PostedDate": "2009-09-16T21:06:51.21-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "235430",
+    "ThreadId": "69188",
+    "Html": "<p>VotTW is included in the expertise total, the issue is still present with a 0/0/0 talent build which puts me at 20 expertise whereas I am at 26 with the talent, but experimenting with different gem combinations (any less expertise) I still get 0%.</p>\r\n<p><br>You can import my character from armory as Disgust, Llane, US.</p>",
+    "PostedDate": "2009-09-16T21:07:12.18-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "235431",
+    "ThreadId": "69188",
+    "Html": "<p>So, again, what's the problem here? Loading your character from the Armory, I see you with 20exp, which negates 5.06% dodge, and 1.44% avoided attacks (1.44% dodge, 0.0% miss). 1.44+5.06=6.5. Where's the issue?</p>",
+    "PostedDate": "2009-09-16T21:09:43.537-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "235432",
+    "ThreadId": "69188",
+    "Html": "<p>Why does the expertise mouse-over still display 0% chance to be dodged when the math dictates I need 26 expertise to reach this, and the 'avoided' attacks is 1.44%? Shouldn't mousing over expertise, likewise, display &quot;1.44% dodge chance&quot; ?</p>",
+    "PostedDate": "2009-09-16T21:17:23.763-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "235434",
+    "ThreadId": "69188",
+    "Html": "<p>Are you confusing the offhand dodge negation for a % chance for the target to dodge, perhaps?</p>",
+    "PostedDate": "2009-09-16T21:31:19.263-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

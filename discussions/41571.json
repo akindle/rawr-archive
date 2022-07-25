@@ -1,0 +1,82 @@
+[
+  {
+    "Id": "137951",
+    "ThreadId": "41571",
+    "Html": "Sorry if this has already been covered but I couldn't find it anywhere. The expertise enchant for bracers is showing as threat only. Surely expertise gives some damage reduction as well, against most bosses, as it reduces parries and therefore avoids the swing reset.\r\n",
+    "PostedDate": "2008-12-05T03:44:59.863-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "138061",
+    "ThreadId": "41571",
+    "Html": "If you can find any math to quantify this, please let me know.<br>\r\n",
+    "PostedDate": "2008-12-05T09:10:31.007-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "139162",
+    "ThreadId": "41571",
+    "Html": "I'm not sure what Astrylian means by his answer, but I have one of my own:<br>\r\n<br>\r\nI do not think Rawr makes many assumptions about your attacker (other than its level and the corresponding avoidance/armor changes).&nbsp; The effect which you are noting for expertise is essentially a debuff to your attacker's damage and has no place in the model as of now.<br>\r\n",
+    "PostedDate": "2008-12-09T17:07:37.84-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "139181",
+    "ThreadId": "41571",
+    "Html": "Astrlian is saying that yes, we all know about the mitigation value in expertise, but nobody has yet come up with a remotely simple model to quantify it.    It is hard enough when the parry % of a boss is not really even confirmed as yet.  Then measuring the amount of extra damage taken due to the increase in swing speed for that hit (will vary depending on how hard the boss hits).  All in all, it just goes into the too hard basket and you have to try and take it into account yourself.   Not ideal, but other than that, Rawr would just be making up a mitigation value with no real numbers to back it up.<br>\r\n<br>\r\nUnless we can get the maths behind the mechanic and it's value, Rawr reall can't easily handle it.<br>\r\n<br>\r\n        \r\n",
+    "PostedDate": "2008-12-09T20:43:51.017-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "139358",
+    "ThreadId": "41571",
+    "Html": "Yeah. Expertise <em>does</em> reduce the total damage you take. But the question is, <em>by how much?</em> If anyone can provide solid math to quantify the value of expertise on damage taken, I'd love to hear it.<br>\r\n",
+    "PostedDate": "2008-12-10T09:34:10.617-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "139978",
+    "ThreadId": "41571",
+    "Html": "Do we even have a ballpark figure for the relative value of expertise in mitigation? I guess if Blizzard goes as far as removing the swing reset from bosses like Mother and Patchwerk it must be significant. Would be nice to know at what point this becomes worth considering over agility. Would including a guess be more misleading than having no mitigation? I suppose it would reduce the overall credibilty of rawr to include approximations or guesswork.\r\n",
+    "PostedDate": "2008-12-12T01:30:03.253-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "140036",
+    "ThreadId": "41571",
+    "Html": "Ballpark estimate?&nbsp; 100 expertise is worth about 0.25% - 0.75% mitigation.<br>\r\n<br>\r\nThis is modelled (rather than calculated) from a 5000 event spreadsheet, with the following factors:<br>\r\nBoss Attack Speed : 1.0 (0.25%) - 2.0 (0.75%)<br>\r\nBear Attack Speed: 2.41 effective (120 haste rating, also using an instant attack every GCD)<br>\r\nBoss Parry Rate: 11.25% (Rawr estimate)<br>\r\nProportion of Damage from Swing Attacks: 40% (Patchwerk Swing vs. Hateful Strike)<br>\r\n<br>\r\n(This is, of course, assuming I haven't made a stupid mistake in a formula somewhere)<br>\r\n<br>\r\nIt's not so much the overall % increase, it's about giving the boss burst damage potential.&nbsp; Resetting the swing timer several times in a row sucks.<br>\r\n",
+    "PostedDate": "2008-12-12T06:57:46.727-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "140136",
+    "ThreadId": "41571",
+    "Html": "Parsec, you should go duke it out with Farothin<br>\r\nhttp://www.tankspot.com/forums/f14/42209-numbers-expertise-reducing-damage.html<br>\r\n<br>\r\nI haven't dug into his stuff much, but he seems to be finding expertise to be valued an order of magnitude higher than you find.<br>\r\n",
+    "PostedDate": "2008-12-12T11:31:19.653-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "140183",
+    "ThreadId": "41571",
+    "Html": "This isn't EJ, but I'll bite.&nbsp; Following Farothin's calculations for a\r\nbear with no haste (faster effective weapon speed) and a boss with a\r\n2.0 attack speed (slower than the 2.5 that Farothin used):<br>\r\n<br>\r\nMythical boss Q: hits for 5k, 16% base parry chance, 2.0 attack speed,\r\n3 minute fight (this last figure is irrelavent, as fractional swings\r\nare used).<br>\r\nBears have 2 sets of attacks: white/maul every 2.5 s and yellow every\r\n1.5 s, for an average swing rate of 0.9375 s/swing, or 192 swings for\r\nthe fight.<br>\r\nMeans 90 normal swings (no parry haste) totaling 450k damage<br>\r\nQ's 16% parry chance means that 30.72 of your attacks will be parried adding 61.44k damage<br>\r\nSo, a total of 511.44k damage taken with no expertise<br>\r\n<br>\r\n100 expertise rating (which is clearly what Parsec meant) is worth just\r\nover 3% anti-parry (I'm going to use the nice round number).<br>\r\nSo, Q's 13% parry chance means that 24.96 of your attacks will be parried adding 49.92k damage<br>\r\nSo, a total of 499.92k damage taken with ~100 expertise rating, or 97.75% of the no expertise damage (2.25% mitigation).<br>\r\n<br>\r\nParsec went on to further assume that only 40% of the damage was swing\r\nbased, so 60% of Q's damage is unaffected by parries (AoE, specials,\r\nspells, etc.).&nbsp; So, Q is actually dealing 1125k damage with no parry\r\nhaste, 1186.44k with 16% parry and 1174.92k with 13% parry, giving 3%\r\nanti-parry worth about 1% mitigation.&nbsp; This is a little higher than\r\nParsec's 0.75%, but\r\nnot by much.<br>\r\n<br>\r\nFurther, the 40% increase in damage is probably faulty.&nbsp; Also from\r\nTankSpot but\r\na little older:\r\nhttp://www.tankspot.com/forums/f14/37427-effective-weapon-speed-due-parry.html\r\n,\r\ngiving a 24% increase in damage based on the mechanics of parry\r\nhaste (see http://elitistjerks.com/f31/t15257-melee_combat_riddle_me_parry_mechanics/ ).&nbsp; As I have no idea if this is accurate, I'll take this as the lower\r\nbound for parry's value with the original 40% increase as the upper\r\nbound.&nbsp; Recalculating: 36.86k with 16% and 29.95k with 13%, giving 100\r\nexpertise rating a value of 0.61% mitigation.<br>\r\n<br>\r\nSo Parsec's ballpark figure (0.75%)&nbsp; is about the\r\nsame as Farothin's calculations (0.61-1%) once we add additional\r\nfactors to Farothin's incomplete model.&nbsp; Having a faster attack speed\r\n(via haste) and decreasing the baseline parry (2.5% anti-parry\r\nvia 10 exp from talents) should increase the value of expertise.<br>\r\n",
+    "PostedDate": "2008-12-12T14:25:39.29-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "140217",
+    "ThreadId": "41571",
+    "Html": "Yeah, afterwards I also did some calculation estimates based on the tankspot 24% effective haste per parry figures and compared them against the event-based model - and the calculations are slightly higher (but not by much).<br>\r\n<br>\r\nEssentially there's an issue with the dependency of the two sets of Bear attacks - the calculations treat them as independent events when in practice there's going to be numerous times where a white and a yellow bear attack are both parried within a single boss attack window, so only one attack can give a haste effect.&nbsp; This effect appears to be minimized when the two attack rates become asynchronous (hence the inclusion of haste rating in the model - and yes, it is supposed to be &quot;expertise rating&quot; too).&nbsp; I have no idea (*cough*can'tbebothered*cough*) how to factor that into the calculations so I'm not really  adding anything of value to the TankSpot discussions.<br>\r\n<br>\r\nIt's also almost certainly going to have to be calculated on a\r\nboss-by-boss basis due to the influence of boss attack speed and\r\nproportion of damage that can benefit from the parry haste.<br>\r\n<br>\r\nI guess the bottom line is that these calculations only give the illusion of accuracy - they can spit out a number, but they are so flawed the result is not really comparable to other Rawr calculations that are (or are supposed to be ;)) accurate.&nbsp; <br>\r\n<br>\r\n(Oh, and it also looks like Expertise Rating will probably never become more valuable than Agility)<br>\r\n",
+    "PostedDate": "2008-12-12T21:15:07.46-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

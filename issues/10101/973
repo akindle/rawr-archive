@@ -1,0 +1,80 @@
+Index: MoonkinTalentsForm.cs
+===================================================================
+--- MoonkinTalentsForm.cs	(revision 18155)
++++ MoonkinTalentsForm.cs	(working copy)
+@@ -215,5 +215,75 @@
+                 Visible = false;
+             }
+         }
++
++        private void btnDefaultTalents_Click( object sender, EventArgs e )
++        {
++            CalculationOptionsMoonkin calcOpts = Character.CalculationOptions as CalculationOptionsMoonkin;
++            calcOpts.StarlightWrath = 5;
++            calcOpts.ForceofNature = 1;
++            calcOpts.WrathofCenarius = 5;
++            calcOpts.ImprovedFF = 3;
++            calcOpts.MoonkinForm = 1;
++            calcOpts.Dreamstate = 3;
++            calcOpts.BalanceofPower = 2;
++            calcOpts.Moonfury = 5;
++            calcOpts.Moonglow = 3;
++            calcOpts.NaturesGrace = 1;
++            calcOpts.LunarGuidance = 3;
++            calcOpts.CelestialFocus = 0;
++            calcOpts.Vengeance = 5;
++            calcOpts.NaturesReach = 2;
++            calcOpts.InsectSwarm = 1;
++            calcOpts.Brambles = 0;
++            calcOpts.ImpMoonfire = 2;
++            calcOpts.FocusedStarlight = 2;
++            calcOpts.ControlofNature = 3;
++            calcOpts.ImpNaturesGrasp = 0;
++            calcOpts.NaturesGrasp = 0;
++            calcOpts.Ferocity = 0;
++            calcOpts.FeralAggression = 0;
++            calcOpts.FeralInstinct = 0;
++            calcOpts.BrutalImpact = 0;
++            calcOpts.ThickHide = 0;
++            calcOpts.FeralSwiftness = 0;
++            calcOpts.FeralCharge = 0;
++            calcOpts.SharpenedClaws = 0;
++            calcOpts.ShreddingAttacks = 0;
++            calcOpts.PredatoryStrikes = 0;
++            calcOpts.PrimalFury = 0;
++            calcOpts.SavageFury = 0;
++            calcOpts.FeralFaerieFire = 0;
++            calcOpts.NurturingInstinct = 0;
++            calcOpts.HotW = 0;
++            calcOpts.SotF = 0;
++            calcOpts.PrimalTenacity = 0;
++            calcOpts.LotP = 0;
++            calcOpts.ImprovedLotP = 0;
++            calcOpts.Mangle = 0;
++            calcOpts.PredatoryInstincts = 0;
++            calcOpts.TreeofLife = 0;
++            calcOpts.ImprovedMotW = 5;
++            calcOpts.EmpoweredRejuv = 0;
++            calcOpts.Furor = 0;
++            calcOpts.NaturalPerfection = 0;
++            calcOpts.Naturalist = 0;
++            calcOpts.Swiftmend = 0;
++            calcOpts.NaturesFocus = 2;
++            calcOpts.LivingSpirit = 0;
++            calcOpts.NaturalShapeshifter = 3;
++            calcOpts.ImprovedRegrowth = 0;
++            calcOpts.Intensity = 3;
++            calcOpts.EmpoweredTouch = 0;
++            calcOpts.Subtlety = 1;
++            calcOpts.ImpTranquility = 0;
++            calcOpts.OmenofClarity = 0;
++            calcOpts.GiftofNature = 0;
++            calcOpts.TranquilSpirit = 0;
++            calcOpts.NaturesSwiftness = 0;
++            calcOpts.ImprovedRejuv = 0;
++
++            LoadCalculationOptions();
++            Character.OnItemsChanged();
++        }
+     }
+ }

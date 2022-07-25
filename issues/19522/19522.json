@@ -1,0 +1,101 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtWarrior",
+      "DisplayName": "Rawr.ProtWarrior"
+    },
+    "ClosedComment": "Closing this as all the issues mentioned were really side-effects of the Toughness issue.",
+    "ClosedDate": "2011-01-07T11:42:58.39-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I was comparing my spec to the listed protwarr spec and noticed mty survival was far below eventhough both specs had same/similar survival/mitigation talents selected. Upon further investigation I found some strange results in both talent and glyph graphs with quite few showing negative values when selected (~-425 surv and ~-70 threat).",
+    "LastUpdatedDate": "2013-05-16T05:19:16.383-07:00",
+    "PlannedForRelease": "Rawr 4.0.14 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-01-02T13:46:54.643-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtWarr] Talents and Glyphs show negative Survival/Threat",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19522
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4337,
+      "FileName": "Turambar Tank.xml",
+      "DownloadUrl": ".\\4337"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "What talents are showing what? Many of them do have positive impacts on one value and negative on another, that's normal.",
+      "PostedDate": "2011-01-02T13:56:56.547-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-02T13:57:15.407-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Glyphs: All - All Un-equiped Glyphs show +425 surv and Equipped Glyphs show -425 Surv; un-equipped +68 threat, equipped -68 threat except shield slam(+205) revenge (+55) devastate (+40), which I am assuming the threat is right for those 3.\r\n\r\nInd. Talents (Full) - Toughness, Bastion of Def., War Acad., Incite, DW, S&B, Hold the Line, Cruelty, Imp. Revenge and Shield Special. show Surv/Mitig/Threat values (IDK if they are right?) while Everything else shows 0 value (including Field Dressing, Last Stand, and Shockwave?)\r\n\r\nInd. Talents - All un-selected talents show +425 Surv/+68 Threat while selected talents show -425 Surv/-68 Threat except for the same talents aslready listed except on this graph Shockwave shows (+) Threat while Shield Special. shows (-).",
+      "PostedDate": "2011-01-02T15:33:27.897-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The \"all showing the same value, whatever that value is\" is a bug with how a talent is being used somewhere in the model. I never have traced what normally causes those things but they usually go away after doing other work.\r\n\r\nField Dressing has no value because it's a healing received bonus, not a damage mitigation bonus and it doesn't increase your health pool so it doesn't have Survivability.\r\nLast Stand would come under the heading of Burst Survival which isn't modeled in any Tank model. That's also why Shield Wall and other such effects aren't modeled.\r\nShockwave should certainly have a value, but that's probably just a minor fix for Evan",
+      "PostedDate": "2011-01-02T16:14:00.973-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Will look into the issue with Shockwave, that sounds odd. (Should have a minor threat value, since it dynamically changes the rotation.)\r\n\r\nThe glyph issue sounds quite bizzare. Honestly sounds like more of a bug with the Glyph graph than a bug with the model code. I can't think of anything off the top of my head that could possibly cause all glyphs to show that. I will investigate though.\r\n\r\nI've personally never seen the 'all things the same value' bug, and if it's transient as Joathy mention it sounds like a bit of a bizzare case. Hopefully I can reproduce it with the save file. :)",
+      "PostedDate": "2011-01-06T13:15:04.37-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Trying to figure out what caused it, but something appears to be wrong with your save file. Simply changing your buff loadout or reloading your character from the armory seems to the issues with the Survival/Threat scores.",
+      "PostedDate": "2011-01-06T16:46:37.447-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Might have been a hiccup in the file or it could have been something else. Reloaded from armoury and everything looks right (no same values and no big negative values). Will also try resaving/reloading using Rawr addon and see if it is still showing more appropriate info.",
+      "PostedDate": "2011-01-06T18:43:25.513-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I see what happened!\r\n\r\nIn your saved file there are absolutely no buffs active at all, but you are a Miner, which means you should have the Toughness Buff active at all times. Since any significant change to your character would automatically check the buff, any chart like talents or whatever will show that there will be a nice fat value change because it turns on Toughness. To fix your file, go change a buff by turning something on and then off and it will be fine because Toughness will turn on and stay on.",
+      "PostedDate": "2011-01-06T20:00:39.14-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-07T11:42:58.39-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:41.737-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:16.383-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

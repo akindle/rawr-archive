@@ -1,0 +1,111 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Retribution",
+      "DisplayName": "Rawr.Retribution"
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-09T17:30:18.973-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "OS: Vista64 Home Premium\n \nWith the latest 2.1.9 build of Rawr, the Paladin module defaults back to Holy, regardless of what model was saved in the character file for some reason.\n \nAlso, When loading the Paladin module OR changing the Paladin model, I'm given three errors, all the same: \"Rawr encountered an error while attempting to load a saved image. If you encounter this error multiple times, please ensure that Rawr is unzipped in a location that you have full file read/write access, such as your Desktop, or My Documents.\"  As a consequence to this, the Protection tree shows as a giant red X on a white background, tossing an Unhandled Exception error: \"Value cannot be null. Parameter name: image.\" (The debug from this error is attached), but clicking Continue allows Rawr to keep working just fine.\n \nI've tried placing it in a ton of locations, even loading Rawr under admin rights to check, re-downloaded 2.1.9 several times, and even changed all files to not be read-only, even modified the Windows rights for the folder, but it still gives the errors.",
+    "LastUpdatedDate": "2017-11-27T10:59:46.5-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-02-26T22:01:31.013-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Paladin] Image access rights and Model resets",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 12707
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1713,
+      "FileName": "rawrerror.txt",
+      "DownloadUrl": ".\\1713"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "The bug with the selected model not getting loaded correctly will be fixed in a later version.\r\n\r\nYour issue with images really just seems to be Rawr not being able to load its images. Have you tried fully unzipping a brand new copy of Rawr, to My Documents, and running it as Administrator? You should have a Data folder next to Rawr.exe, and an images folder inside of that. If you don't get that, you need to fully unzip Rawr.zip.",
+      "PostedDate": "2009-02-27T11:30:10.107-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks for the upcoming bugfix.\r\n\r\nAs for the image thing.  After downloading Rawr, I ensure to \"Unblock\" the zip, as Windows adds some kind of security measure for downloaded files.  Once unpacked, I have tried making sure all files were -not- read-only (as many are in the initial files for whatever reason).  Once that is done, I have tried (a) running it directly, (b) right click \"Run as Administrator\" on it, and (c) logging into an Administrator account on the system.  Since none of this was allowing it to operate as it should, I have also modified the user access rights for both the initial zip and subsequently the extracted files in order to be owned by everyone, just to see if it helped, but it did not.\r\n\r\nNOTE:  This -only- affects the Paladin module, none of the others cause any errors of any sort, so I assume there are only ~3 files which are being quirky.  The only visible damage appears to be to the Retribution tree itself, though this does cause issues, of course.  Since it does not affect other modules, I can assume it's only a few files/images which are causing problems? And if so, why those in particular and no others?  I will continue to tinker with this and see if I can find any solutions.",
+      "PostedDate": "2009-03-02T09:00:14.51-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Do you have unobstructed internet access from that machine?",
+      "PostedDate": "2009-03-02T09:23:05.773-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Okay, I went though and checked each folder, as well as the .exe itself and the ret tree icons/background images, and found that although I applied NOT read-only for the main folder with \"All subfolders and files as well\" checked, it did -not- change the subfolders.  I guess the issue is just that Rawr unzips with everything read-only by default, and Windows doesn't like to actually apply that change to everything like it says. :p  If it were possible to have the archive without the read-only flag enabled, that would bypass the problem I ran into.  Again, thanks for verifying that my other issue, the selected module thing, will be fixed later.",
+      "PostedDate": "2009-03-02T09:28:55.753-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Can you see if v2.2.0b3 has this problem, please?",
+      "PostedDate": "2009-03-02T10:49:06.363-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Before releasing b3, I made sure to mark all files/subfolders as not read only, but I did so using the same method you were using, and now that I look again, subfolders were left marked read only... kind of. It's odd, the properties for a folder say that files in the folder are marked read only, yet none of the files in that folder say they're marked read-only. Is this some weird bug with Vista, perhaps? o.O",
+      "PostedDate": "2009-03-02T10:54:18.827-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Went and snagged 2.2.0b3, and it seems 'idiotproofed' now.  I simply downloaded, extracted, and ran it without checking read-only flags or permissions, or even moving it from <username>\\Downloads folder, so whatever ya did, it seems to be cleared up in 2.2.0b3, thanks!\r\n\r\nIn the past, I haven't ever encountered a situation where Windows didn't -actually- apply the folder properties changes to the contents & subdirs like this.  It could very well be something in my(/your/our) Vista, no clue.  Thanks for pointing out the subdir folders, as it wouldn't have dawned on me to check their attributes otherwise.  Happy to see it fixed in the beta!",
+      "PostedDate": "2009-03-02T14:18:01.86-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-09T17:30:18.973-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:09:45.937-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-21T00:00:21.103-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:35:22.713-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:09.1-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T10:59:46.5-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

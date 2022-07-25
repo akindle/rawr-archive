@@ -1,0 +1,146 @@
+[
+  {
+    "Id": "196230",
+    "ThreadId": "58041",
+    "Html": "<p>I got tired of alt-tabbing after each boss to see if the items dropped are an upgrade so I wrote a short program that opens the upgrade xml file and converts it into a lua saved variable file for LootPlan addon. It's not release quality as it is hardcoded for my case, but I've decided to share the source in case anyone finds it useful. All you need to do is add a reference to Rawr.Base.</p>\r\n<p>using System;<br>using System.Collections.Generic;<br>using System.Linq;<br>using System.Text;<br>using Rawr;<br>using Rawr.Optimizer;<br>using System.IO;<br>using System.Xml.Serialization;</p>\r\n<p>namespace LootPlanImport<br>{<br>&nbsp;&nbsp;&nbsp; [Serializable]<br>&nbsp;&nbsp;&nbsp; public class SerializationData<br>&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public string[] CustomSubpoints;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public List&lt;string&gt; Keys;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public List&lt;ComparisonCalculationUpgrades[]&gt; ItemCalculations;<br>&nbsp;&nbsp;&nbsp; }</p>\r\n<p>&nbsp;&nbsp;&nbsp; class Program<br>&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; static void Main(string[] args)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string file = @&quot;insert path to your upgrade xml&quot;;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (args.Length &gt; 0) file = args[0];<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SerializationData data = new SerializationData();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; using (StreamReader reader = new StreamReader(file, Encoding.UTF8))<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; XmlSerializer serializer = new XmlSerializer(typeof(SerializationData));<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; data = (SerializationData)serializer.Deserialize(reader);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; reader.Close();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; StreamWriter sw = new StreamWriter(@&quot;insert path to LootPlan.lua&quot;);</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sw.WriteLine(@&quot;LootPlanDB = {<br>&nbsp;[&quot;&quot;char&quot;&quot;] = {<br>&nbsp;&nbsp;[&quot;&quot;Kavan - Kilrogg&quot;&quot;] = {<br>&nbsp;&nbsp;&nbsp;[&quot;&quot;lootpercat&quot;&quot;] = {<br>&nbsp;&nbsp;&nbsp;&nbsp;[5] = {&quot;);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; foreach (var list in data.ItemCalculations)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; foreach (var item in list)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sw.WriteLine(item.ItemInstance.Id + &quot;,&quot;);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sw.WriteLine(@&quot;&nbsp;&nbsp;&nbsp;&nbsp;},<br>&nbsp;&nbsp;&nbsp;},<br>&nbsp;&nbsp;&nbsp;[&quot;&quot;itemnotes&quot;&quot;] = {&quot;);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; foreach (var list in data.ItemCalculations)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; foreach (var item in list)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sw.WriteLine(@&quot;[&quot;&quot;5:{0}&quot;&quot;] = &quot;&quot;{1} Dps&quot;&quot;,&quot;, item.ItemInstance.Id, item.OverallPoints);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sw.WriteLine(@&quot;&nbsp;&nbsp;&nbsp;},<br>&nbsp;&nbsp;},<br>&nbsp;},<br>&nbsp;[&quot;&quot;profileKeys&quot;&quot;] = {<br>&nbsp;&nbsp;[&quot;&quot;Kavan - Kilrogg&quot;&quot;] = &quot;&quot;Kavan - Kilrogg&quot;&quot;,<br>&nbsp;},<br>&nbsp;[&quot;&quot;profiles&quot;&quot;] = {<br>&nbsp;&nbsp;[&quot;&quot;Kavan - Kilrogg&quot;&quot;] = {<br>&nbsp;&nbsp;&nbsp;[&quot;&quot;noteintooltip&quot;&quot;] = true,<br>&nbsp;&nbsp;},<br>&nbsp;},<br>}&quot;);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sw.Close();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>&nbsp;&nbsp;&nbsp; }<br>}</p>",
+    "PostedDate": "2009-05-31T20:03:05.7-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "196552",
+    "ThreadId": "58041",
+    "Html": "<p>Hi Kavan,</p>\r\n<p>This was something i metnioned as a &quot;wishlist&quot; in some other post i wrote a while ago. Unfortunately I simply lack the aptitude to do anything with the code above other that stare and perhaps drool a little. While I completley understand you have your hands full, is there any chance you could create an addon for this or perhaps someone else maybe?</p>\r\n<p>This would be a a HUGE timesaver.</p>",
+    "PostedDate": "2009-06-01T13:29:47.6-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "197289",
+    "ThreadId": "58041",
+    "Html": "<p>I'm experimenting with this utility and find it very interesting. &nbsp;First of all because I didn't know there was an addon like LootPlan.</p>\r\n<p>As you note, the character name &amp; realm are hardcoded, if the authors of the Optimizer module could add the characters name and realm to the output of the Build Upgrade List functionality then this could be a real fine utility.</p>\r\n<p>How about it Optimizer authors, can we get the name and realm added to the output file? &nbsp;</p>\r\n<p>Thanks to all involved.</p>",
+    "PostedDate": "2009-06-03T08:08:59.5-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "197425",
+    "ThreadId": "58041",
+    "Html": "<p>Well I am the author of the optimizer :) Adding in name and realm is not really a problem, you can just make a form for the user to enter it and select the xml file. The real problem with making it useful for general public is having it work for people that use more than one character. It would have to load existing lua file and just change the part for the character that is being updated. Definitely doable, but I'm not sure that I have time to do it right now.</p>",
+    "PostedDate": "2009-06-03T13:35:25.667-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "197947",
+    "ThreadId": "58041",
+    "Html": "<p>&lt;&lt;fingers crossed&gt;&gt; I sure hope someone does have the time, i've even looked at how to write addons and to be honest after staring blankly at the guides i've read for 20 minutes i'd still had no clue.</p>",
+    "PostedDate": "2009-06-04T14:13:52.483-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "198706",
+    "ThreadId": "58041",
+    "Html": "<p>Hi.</p>\r\n<p>In version 0.4.0 of LootPlan I have added functionality to import a list of items formatted like this:</p>\r\n<p>itemID1:note;<br>itemID2:note;<br>itemID3:note;</p>\r\n<p>In the in-game interface you can paste such a list&nbsp;and&nbsp;choose which category to add the items to.</p>\r\n<p>So, instead of overwriting the LootPlan savedvariables file, you could try this form of input. This also 'solves' the multiple-character problem.</p>\r\n<p>Arthic</p>",
+    "PostedDate": "2009-06-07T03:25:17.183-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "198790",
+    "ThreadId": "58041",
+    "Html": "<p>Sounds great, I'll add an export option for upgrade lists that exports in this format.</p>",
+    "PostedDate": "2009-06-07T12:56:57.717-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "198798",
+    "ThreadId": "58041",
+    "Html": "<p>I've added the export option to the export dropdown in upgrade list. It copies the list to clipboard in the above format. It seem to work ok except for items that haven't been seen yet. When I was setting them in saved variables directly they showed up in the interface fine with icon and information, but with the import it skips them and says item does not exist.</p>",
+    "PostedDate": "2009-06-07T13:34:30.51-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "204179",
+    "ThreadId": "58041",
+    "Html": "<p>I like the added LootPlan option, but could you make it to add the notes such as &quot;Drops from Razorscale in Heroic Ulduar&quot; instead of the &quot;Upgrade Score&quot; which would provide more useful information. Example:</p>\r\n<p>45150:(235.06) Drops from Razorscale in Heroic Ulduar;<br>or<br>45150:[235.06] Drops from Razorscale in Heroic Ulduar;<br>or<br>45150:235.06 - Drops from Razorscale in Heroic Ulduar;</p>\r\n<p>Also trunicate the Rawr Upgrade Score to the nearest 100ths would be nice... I am not sure of acceptable characters for LootPlan, but to have the Rawr Upgrade Score incased in parentheses or brackets or even fallowed by a hyphen would just make it look nice...</p>",
+    "PostedDate": "2009-06-22T12:00:50.603-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "208523",
+    "ThreadId": "58041",
+    "Html": "<p>Has there been any further work on this? or is it compelteld or shelved or what?</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-07-04T07:56:58.987-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "208547",
+    "ThreadId": "58041",
+    "Html": "<p>For now I have created a Access Database that I import the Rawr Upgrade List into then export a text file with my above information, and it works very well in helping me to both find and track my desired upgrades...</p>\r\n<p>I would still like to see it as a defualt format, due to the fact that for now, I am the only one that I know that has it in this format, and I consider it an advantage over everyone else and would just like to level the playing fields...</p>\r\n<p>Not to mention, not everyone owns Microsoft Office, or has access to it...</p>",
+    "PostedDate": "2009-07-04T11:55:19.763-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "208555",
+    "ThreadId": "58041",
+    "Html": "<p>Why exactly do you need information about where it drops to be exported from Rawr? That information is already&nbsp;shown in LootPlan if you have LibPeriodicTable.</p>",
+    "PostedDate": "2009-07-04T13:29:37.49-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "208582",
+    "ThreadId": "58041",
+    "Html": "<p>could the export to lootplan option be added elsewhere to?</p>\r\n<p>&nbsp;</p>\r\n<p>for example to the post-optimisation screens? (is it posible to export gem/enchant optimiseation with it?)</p>",
+    "PostedDate": "2009-07-04T15:41:23.593-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "208621",
+    "ThreadId": "58041",
+    "Html": "<p>Hello all,</p>\r\n<p>I must be missing something.</p>\r\n<p>I have been using rawr for a while now and am familiar with the program, am currently running 2.2.9.</p>\r\n<p>Loaded my toon from a character profile, ran an optimization, made an upgrade list&nbsp; and tried to export it to lootplan (got it installed and working in wow).</p>\r\n<p>Doesn't seem to do anything.</p>\r\n<p>&nbsp;</p>\r\n<p>Any thoughts?</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-07-04T22:07:55.643-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "208627",
+    "ThreadId": "58041",
+    "Html": "<p>When you click on export to LootPlan it will copy the data to the clipboard. You should paste that data in the LootPlan import dialog.</p>",
+    "PostedDate": "2009-07-04T23:15:52.54-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "208633",
+    "ThreadId": "58041",
+    "Html": "<p>Ah thanks I will try that.</p>",
+    "PostedDate": "2009-07-04T23:54:53.867-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "208683",
+    "ThreadId": "58041",
+    "Html": "<p>I will add the LibPeriodicTable and give that a try too. I actually know where the items are, but just thought it would be more useful to have it in the information section that Rawr exports already...</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-07-05T08:53:56.407-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "275384",
+    "ThreadId": "58041",
+    "Html": "<p>I just started using lootplan for viewing my RAWR upgrade lists in-game, and ran into the same issue with unseen items. Until the author returns, here's a small hack that works for me. *REPLACE* line 150 of Options_Import.lua with the following: <br> <br>if not addon:tcontains(addon.db.char.lootpercat[addon.importCatId], itemId) then <br>&nbsp; addon:AddItem(addon.importCatId, itemId, itemNote) <br>&nbsp; addon:Print( itemId.. &quot; (???): &quot; ..L[&quot;import_log_succes&quot;] ) <br>else <br>&nbsp; addon:Print( itemId.. &quot; (???): &quot; ..L[&quot;import_log_alreadyincat&quot;] ) <br>end <br> <br>With this change, the import code will unconditionally add import items to the list, regardless of whether they are known to the game client. The practical result of this is that *until* an item becomes known to the client, it will be in the lootplan list but invisible. Once the item has been seen, it will become visible in the list. Most importantly, when the item drops it will then be seen by the client, and you'll get the lootplan notice in the tooltip. <br> <br>I'm not familiar with addon packaging -- if somebody else wants to put together a &quot;fan update&quot; or something, feel free to use this.</p>",
+    "PostedDate": "2010-01-10T10:32:44.973-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

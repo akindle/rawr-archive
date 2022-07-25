@@ -1,0 +1,106 @@
+[
+  {
+    "Id": "134707",
+    "ThreadId": "40609",
+    "Html": "It seems that on live Frostfire gets an extra 3% (or possibly more) from Elemental Precision. I wanted to add this hit rating into Rawr, but I was not sure how to go about doing so. I attempted to modify the xml to add my own buff, but whenever I reloaded Rawr the xml file was reverted. I understand that adding a flat 80 hit rating effects Living Bomb and Pyroblast incorrectly, but is there an easier way to add a flat 80 hit rating? I'm not positive, but I would think that +80 hit to Frostfire Bolt would require some modification of the source, no?",
+    "PostedDate": "2008-11-24T01:36:42.133-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "134708",
+    "ThreadId": "40609",
+    "Html": "Were you able to find any controlled tests that would prove that Frostfire gets extra hit? I only remember seeing some rumors on EJ, I've never seen any final confirmation about it.\r\n",
+    "PostedDate": "2008-11-24T01:44:54.99-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "134727",
+    "ThreadId": "40609",
+    "Html": "How large of a sample size would you consider a valuable test? I did near 500 frostfire bolts on a dummy and found that my hit was ~3.2% higher than expected (this is from vague memory). I would be willing to spam more frostfire bolts and record the results for the sake of information, if you would like.",
+    "PostedDate": "2008-11-24T03:23:02.443-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "134733",
+    "ThreadId": "40609",
+    "Html": "It depends. What was your expected hit rate and what did you get? Ideally you would have enough hit rate to cap under assumption that Elemental Precision gives double value. If you don't get a single miss with 1000+ hits I'd say that is good enough.\r\n",
+    "PostedDate": "2008-11-24T03:50:09.39-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "134769",
+    "ThreadId": "40609",
+    "Html": "I used yesterday in naxx 25 1026 Frostfirebolts and had 19 misses = 1.8 %<br>\r\nI have 158 hit   / 6.02 %  and with elemental precison and shadow my hit goes to around 15 % I had no drenai in group . So it should prove that that ghost hit bug seems to really existst in the moment :)<br>\r\nI changed target level to lvl  80 to correct the hit falues in Rawr is that right to to it that way ? ( My english isn`t that great ^^)<br>\r\n<br>\r\n",
+    "PostedDate": "2008-11-24T06:57:23.077-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "134834",
+    "ThreadId": "40609",
+    "Html": "<div>Apparently I misread what you wrote and tested it with whatever hit gear I had on. If this invalidates it, I can try and wear 11% hit and do it over. Either way, here's what I got:</div><div><br></div>http://i35.tinypic.com/2gu9ldi.jpg<div><br></div><div>1000 casts, 40 resists</div><div>147 hit rating (5.60%)</div><div><br></div><div>17% = 5.60% + 4.0% + EP</div><div>EP = 7.4%</div><div><br></div><div>Let me know if you need more data.</div>",
+    "PostedDate": "2008-11-24T10:09:45.86-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "134947",
+    "ThreadId": "40609",
+    "Html": "What was giving the 4% hit? Were you grouped with draenei and shadow priest? Was hit debuff always up? Or are you draenei and the 4% is draenei + elemental precision?<br>\r\n<br>\r\nIf it's the latter then this is a good suggestive evidence that you're getting extra hit from somewhere. It's not a proof that it's double, but that would be the most reasonable explanation.\r\n",
+    "PostedDate": "2008-11-24T17:13:15.617-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "134950",
+    "ThreadId": "40609",
+    "Html": "The 4.0% was from the 40 resists / 1000 casts. I did not have the draenei aura and there was no misery or imp FF (I used the Darnassus Dummy). ",
+    "PostedDate": "2008-11-24T17:32:12.557-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "134963",
+    "ThreadId": "40609",
+    "Html": "Ok I understand what you meant now.<br>\r\n<br>\r\nUnder assumption that elemental precision works the likelihood of your sample beeing so far from the mean is 10^-6.<br>\r\nUnder assumption that elemental precision gives 6% the likelihood of your sample beeing so far from the mean is about 5%.<br>\r\n<br>\r\nSo this is just on the border of 95% confidence interval. We can disprove that EP gives 3%, but we can't either prove or disprove the 6% hypothesis. We would need a larger sample or a sample with 11% hit gear to get higher confidence. For now I'll implement the ghost hit in, but this needs further testing.\r\n",
+    "PostedDate": "2008-11-24T18:48:57.403-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "135346",
+    "ThreadId": "40609",
+    "Html": "i had the exact same question as pigmonkey. gear with hit on it gets rated high, though im already 40 over 'frostfire cap'. since over half my damage done is from frostfire bolt, this effectively halves the value for hit (right?). this would result in gear with hit rating getting a 'penalty'(for overcapping) instead of a 'bonus' they get now because hit is just an important stat. wheter or not its smart to not cap the other fire spells can be discussed somewhere else. <br>\r\n<br>\r\nwithout hit being listed as top stat (or very close to spellpower) spellpower would be the only good remaining stat with (for me) ~1,5 times the value of crit and haste.<br>\r\n<br>\r\n<br>\r\ni did some tests on the dummy as well, its late so i stopped at 500 casts. managed to get the exact right 289 hit rating (288 is too low) with some older gear :). anyway not a single full resist.<br>\r\n<br>\r\nscreenshot:<br>\r\nhttp://img361.imageshack.us/img361/5694/frostfirehitip9.jpg<br>\r\n<br>\r\nalso logged wws:<br>\r\nhttp://wowwebstats.com/wek4vutsuifu0<br>\r\n<br>\r\nthere's a thread about it on EJ as well. its not just some rumors anymore, it really seems like 6% (or more) is the new number.<br>\r\nhttp://elitistjerks.com/f75/t37364-frostfire_bolt_thread/<br>\r\n<br>\r\n<br>\r\ni was wondering if there is any way in rawr to set it to 6% or do we have to wait for the next release? i think its pretty important, everyone is using the program now for loads of new gear etc. you know yourself.<br>\r\n<br>\r\nanyway i hope you can use the test i did. good luck with implementing it :) <br>\r\n",
+    "PostedDate": "2008-11-25T17:36:00.137-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "135387",
+    "ThreadId": "40609",
+    "Html": "Depending on what else is in your spell sequence (scorch and pyroblast maybe?) hit may be quite valuable even after frostfire is capped.<br>\r\nI don't believe there's anything you can do besides wait for the next release. The ghost hit only affects frostfire, not any other spells in the sequence so anything you could do outside the code would be inaccurately applied to those spells as well.\r\n",
+    "PostedDate": "2008-11-25T20:00:14.117-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "135945",
+    "ThreadId": "40609",
+    "Html": "I downloaded the latest Rawr Source, compiled it, and noted the Ghost Hit change. But for some reason, things aren't being calculated correctly. I set up an optimized gear set, and my FFB hit was at 103%. I then removed the 38 hit rating from my gloves, and things changed a lot, although they shouldn't have. Here's the direct comparison:<div><br></div><div><span style=\"font-weight:bold;text-decoration:underline\">Before (272 hit rating)</span></div><div><span style=\"font-weight:bold\"><div><span style=\"font-weight:normal\">Frostfire Bolt: <span style=\"text-decoration:underline\">4350.75 Dps</span></span></div><div><span style=\"font-weight:normal\">19.45 Mps</span></div><div><span style=\"font-weight:normal\">3534.27 Tps</span></div><div><span style=\"font-weight:normal\">2.42 sec</span></div><div><span style=\"font-weight:normal\">318.83 Mana</span></div><div><span style=\"font-weight:normal\">4101.38 - 4261.96 Hit</span></div><div><span style=\"font-weight:normal\">14674.24 - 15248.75 Crit</span></div><div><span style=\"font-weight:normal\">122.14 Dot</span></div><div><span style=\"font-weight:normal\">1.36x Amplify</span></div><div><span style=\"font-weight:normal\">57.02% Crit Rate</span></div><div><span style=\"font-weight:normal;text-decoration:underline\">103.00% Hit Rate</span></div><div><span style=\"font-weight:normal\">3.58 Crit Multiplier</span></div><div><span style=\"font-weight:normal\"><br></span></div><div><span><span style=\"text-decoration:underline\">After (</span><span style=\"text-decoration:underline\">234 hit rating</span><span style=\"text-decoration:underline\">)</span></span></div><div><span style=\"font-weight:normal\"><div>Frostfire Bolt: <span style=\"text-decoration:underline\">4305.15 Dps</span></div><div>19.45 Mps</div><div>3497.33 Tps</div><div>2.42 sec</div><div>318.83 Mana</div><div>4101.38 - 4261.96 Hit</div><div>14674.24 - 15248.75 Crit</div><div>122.14 Dot</div><div>1.36x Amplify</div><div>57.02% Crit Rate</div><div><span style=\"text-decoration:underline\">101.92% Hit Rate</span></div><div>3.58 Crit Multiplier</div><div><br></div><div>Additionally, it seems to be rating Hit Rating in the Item Budget higher than ever when I removed it: 22.11 dps per 10 rating.</div></span></div></span></div>",
+    "PostedDate": "2008-11-27T13:11:24.697-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "135994",
+    "ThreadId": "40609",
+    "Html": "The above issue was fixed, thanks.",
+    "PostedDate": "2008-11-27T21:09:14.807-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

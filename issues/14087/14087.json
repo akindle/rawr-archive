@@ -1,0 +1,106 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ShadowPriest",
+      "DisplayName": "Rawr.ShadowPriest"
+    },
+    "ClosedComment": "Bad &#40;Yet somewhat good&#33;&#41; Jothay &#58;P",
+    "ClosedDate": "2009-09-11T03:52:18.47-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Vampiric Touch and Vampiric Embrace both exist in the Spell Priority list.  However, when looking at Slot: DPS Sources Vampiric Touch is not present.  Vampiric Embrace is present twice, doing 0.00 DPS (as it should) in each case.\n \nUnder Simulation>Rotation it does not list Vampiric Touch and lists Vampiric Embrace twice.  Also, removing Vampiric Touch from the talent spec did not change either the Simulation>DPS or Simulation>SustainDPS numbers.\n \nI noticed this because Optimizer chose a weird 21/00/50 shadow priest spec.  Putting points into the Improved Mind Blast talent lowered DPS some with each point.  Putting a single point into the Pain and Suffering talent lowered DPS drastically, putting any additional points had no effect.  Neither of these talents should be able to lower DPS.",
+    "LastUpdatedDate": "2013-05-16T05:24:29.597-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-09-08T21:48:04.44-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ShadowPriest] Missing Vampiric Touch and other problems",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14087
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2191,
+      "FileName": "Whambulance.xml",
+      "DownloadUrl": ".\\2191"
+    },
+    {
+      "FileId": 2199,
+      "FileName": "MaxedSPriest.xml",
+      "DownloadUrl": ".\\2199"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Can you post character files demonstrating this?",
+      "PostedDate": "2009-09-08T22:32:36.637-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I can confirm that adding/removing a point in Vampiric Touch does not change either the Burst DPS or the sustained DPS figures.  I can also confirm that hovering over the Rotation in the Stats pane indeed does not show Vampiric Touch, but shows Vampiric Embrace twice.  However removing it from the Spell Priority changes both the DPS values - it increases them!! - and removes the second Vampiric Embrace in the Rotation \"box\".\r\n\r\nI also can confirm that putting points into Pain and Suffering lowers DPS.  However putting points into Imp Mind Blast decreases dps until you put all five points in.\r\n\r\nNOTE:  I do not actually play a shadow priest, but was board at work and decided to do something \"constructive\".  I've attached my housemates spriest's xml.",
+      "PostedDate": "2009-09-08T23:41:58.087-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-08T23:42:00.97-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Here is a character file with as maximized gear as I could find in order to make the DPS differences as large as possible.  It currently has one excess point in Psychic Horror in order to remove all the points from Improved Mind Blast and Pain and Suffering.\r\n\r\nI did a quick check using this file of the percentage of SustainDPS you have with points in these talents.\r\n\r\n100% SustainDPS if 0 points in Improved Mind Blast and 0 points in Pain and Suffering\r\n98.30% SustainDPS if 1 point in Improved Mind Blast\r\n96.98% SustainDPS if 2 points in Improved Mind Blast\r\n94.39% SustainDPS if 3 points in Improved Mind Blast\r\n94.39% SustainDPS if 4 points in Improved Mind Blast\r\n92.30% SustainDPS if 5 points in Improved Mind Blast\r\n72.00% SustainDPS if 1-3 points in Pain and Suffering\r\n73.77% SustainDPS if 1 point in Improved Mind Blast and 1-3 points in Pain and Suffering\r\n72.98% SustainDPS if 2 points in Improved Mind Blast and 1-3 points in Pain and Suffering\r\n73.49% SustainDPS if 3 points in Improved Mind Blast and 1-3 points in Pain and Suffering\r\n71.85% SustainDPS if 4 points in Improved Mind Blast and 1-3 points in Pain and Suffering\r\n78.12% SustainDPS if 5 points in Improved Mind Blast and 1-3 points in Pain and Suffering\r\n\r\nHope this helps.",
+      "PostedDate": "2009-09-09T20:02:19.8-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-09T20:02:22.353-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks for report. I found the problem, someone had cleaned up my code and Typoed Vampiric Embrace instead of Vampiric Touch. Now to add set bonuses for T9...",
+      "PostedDate": "2009-09-11T03:51:55.233-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-11T03:52:18.47-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T14:19:24.69-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:57:46.357-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:11.58-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:29.597-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

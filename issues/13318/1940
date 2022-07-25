@@ -1,0 +1,141 @@
+Index: Rawr.DPSDK/CombatTable.cs
+===================================================================
+--- Rawr.DPSDK/CombatTable.cs	(revision 443)
++++ Rawr.DPSDK/CombatTable.cs	(revision 444)
+@@ -79,26 +79,22 @@
+                 if (character.MainHand != null)
+                 {
+                     chanceDodged = MH.chanceDodged;
+-                }
+ 
+-                if (character.OffHand != null)
+-                {
+-                    if (character.MainHand != null)
++                    if (DW)
+                     {
+                         chanceDodged += OH.chanceDodged;
+                         chanceDodged /= 2;
+                     }
+-                    else
+-                    {
+-                        chanceDodged = OH.chanceDodged;
+-                    }
+                 }
++                else if (character.OffHand != null)
++                {                    
++                    chanceDodged = OH.chanceDodged;                    
++                }
+ 
+                 calcs.DodgedAttacks = chanceDodged;
+ 
+-                float chanceMiss = 0f;
+-                if (character.OffHand == null) chanceMiss = .08f;
+-                else chanceMiss = .27f;
++                float chanceMiss = .08f;
++                if (DW) chanceMiss = .27f;                
+                 chanceMiss -= StatConversion.GetPhysicalHitFromRating(stats.HitRating);
+                 chanceMiss -= hitBonus;
+                 chanceMiss -= stats.PhysicalHit;
+@@ -199,6 +195,9 @@
+             MH = new Weapon(null, null, null, 0f);
+             OH = new Weapon(null, null, null, 0f);
+ 
++            DW = character.MainHand != null && character.OffHand != null &&
++                character.MainHand.Slot != Item.ItemSlot.TwoHand;
++
+             if (character.MainHand != null)
+             {
+                 MH = new Weapon(character.MainHand.Item, stats, calcOpts, MHExpertise);
+@@ -213,27 +212,36 @@
+ 
+                 float OHMult = .05f * (float)talents.NervesOfColdSteel;
+                 OH.damage *= .5f + OHMult;
+-                DW = true;
+ 
+-                //need this for weapon swing procs
+-                //combinedSwingTime = 1f / MH.hastedSpeed + 1f / OH.hastedSpeed;
+-                //combinedSwingTime = 1f / combinedSwingTime;
+-                combinedSwingTime = (MH.hastedSpeed + OH.hastedSpeed) / 4;
+                 calcs.OHAttackSpeed = OH.hastedSpeed;
+                 calcs.OHWeaponDamage = OH.damage;
+                 calcs.OHExpertise = OH.effectiveExpertise;
+             }
+-            else
++
++            if (character.MainHand != null)
+             {
+-                MH.damage *= 1f + (.02f * talents.TwoHandedWeaponSpecialization);
+-                combinedSwingTime = MH.hastedSpeed;
+-                calcs.OHAttackSpeed = 0f;
+-                calcs.OHWeaponDamage = 0f;
+-                calcs.OHExpertise = 0f;
++                if (DW)
++                {
++                    //need this for weapon swing procs
++                    //combinedSwingTime = 1f / MH.hastedSpeed + 1f / OH.hastedSpeed;
++                    //combinedSwingTime = 1f / combinedSwingTime;
++                    combinedSwingTime = (MH.hastedSpeed + OH.hastedSpeed) / 4;
++                }
++                else
++                {
++                    MH.damage *= 1f + (.02f * talents.TwoHandedWeaponSpecialization);
++                    combinedSwingTime = MH.hastedSpeed;
++                    calcs.OHAttackSpeed = 0f;
++                    calcs.OHWeaponDamage = 0f;
++                    calcs.OHExpertise = 0f;
++                }
+             }
+-
+-            if (character.MainHand == null && character.OffHand == null)
++            else if (character.OffHand != null )
+             {
++                combinedSwingTime = OH.hastedSpeed;
++            }
++            else if (character.MainHand == null && character.OffHand == null)
++            {
+                 combinedSwingTime = 2f;
+                 MH = new Weapon(null, stats, calcOpts, 0f);
+             }
+Index: Rawr.DPSDK/CalculationsDPSDK.cs
+===================================================================
+--- Rawr.DPSDK/CalculationsDPSDK.cs	(revision 443)
++++ Rawr.DPSDK/CalculationsDPSDK.cs	(revision 444)
+@@ -313,7 +313,8 @@
+ 
+             //shared variables
+             DeathKnightTalents talents = calcOpts.talents;
+-            bool DW = character.MainHand != null && character.OffHand != null;
++            bool DW = character.MainHand != null && character.OffHand != null && 
++                character.MainHand.Slot != Item.ItemSlot.TwoHand;
+             float missedSpecial = 0f;
+ 
+             float dpsWhiteBeforeArmor = 0f;
+@@ -504,11 +505,14 @@
+ 
+                 #region Off Hand
+                 {
+-                    float dpsOHglancing = (0.24f * combatTable.OH.DPS) * 0.75f;
+-                    float dpsOHBeforeArmor = ((combatTable.OH.DPS * (1f - calcs.AvoidedAttacks - 0.24f)) * (1f + combatTable.physCrits)) + dpsOHglancing;
+-                    dpsWhiteMinusGlancing += dpsOHBeforeArmor - dpsOHglancing;
+-                    dpsWhiteBeforeArmor += dpsOHBeforeArmor;
+-                    OHDPS = dpsOHBeforeArmor * mitigation;
++                    if (DW || (character.OffHand != null && character.MainHand == null))
++                    {
++                        float dpsOHglancing = (0.24f * combatTable.OH.DPS) * 0.75f;
++                        float dpsOHBeforeArmor = ((combatTable.OH.DPS * (1f - calcs.AvoidedAttacks - 0.24f)) * (1f + combatTable.physCrits)) + dpsOHglancing;
++                        dpsWhiteMinusGlancing += dpsOHBeforeArmor - dpsOHglancing;
++                        dpsWhiteBeforeArmor += dpsOHBeforeArmor;
++                        OHDPS = dpsOHBeforeArmor * mitigation;
++                    }
+                 }
+                 #endregion
+ 
+@@ -526,7 +530,7 @@
+             {
+                 float dpsMHBCB = 0f;
+                 float dpsOHBCB = 0f;
+-                if (combatTable.OH.damage != 0)
++                if ((combatTable.OH.damage != 0) && (DW || combatTable.MH.damage == 0))
+                 {
+                     float OHBCBDmg = combatTable.OH.damage * (.25f + .125f * calcOpts.rotation.avgDiseaseMult);
+                     dpsOHBCB = OHBCBDmg / combatTable.OH.hastedSpeed;

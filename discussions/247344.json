@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "571215",
+    "ThreadId": "247344",
+    "Html": "\r\n<p><strong>Prime Glyphs</strong></p>\r\n<p>Elitist Jerks &nbsp;(<a href=\"http://elitistjerks.com/f47/t66856-druid_balance_pve_updated_cataclysm_release/#Prime_Glyphs\">http://elitistjerks.com/f47/t66856-druid_balance_pve_updated_cataclysm_release/#Prime_Glyphs</a>)&nbsp;reports that IS and MF are\r\n the best prime glyphs. My Rawr (4.0.20.0b) is telling me that IS is the worst and&nbsp;SF &gt; MF &gt; SS &gt; W &gt; IS. I'm not sure which is correct, but I thought I'd bring up the discrepancy for your review.</p>\r\n<p><strong>4.0.6 &#43; Mastery</strong></p>\r\n<p>I'm not even sure what is live and what is not. I know that Mastery was buffed in 4.0.6 (I believe the amount of value you get from the Mastery on gear), but I believe that Blizzard was nerfing the Mastery effect in general. I have no idea what the state\r\n of the current Rawr code is in implementing these changes. Any updates/comments?</p>\r\n<p>BTW - It is relevant for me since I'm trying to decide between the Vibrant Alchemist stone (which has the wrong info -- but I already see a bug report for that) and 359 Theralion's Mirror. I'm guessing that the Vibrant Alchemist stone is going to come out\r\n on top.</p>\r\n<p><strong>Theralion's Mirror</strong></p>\r\n<p>It is my understanding that the Mastery proc only helps us if we initiate an eclipse during the proc. Assuming this is true, is this taken into consideration in the model or is Rawr just computing a static mastery value?</p>\r\n<p>I'm not sure how long it takes me to swing from Eclipse to Eclipse while standing still w/ raid buffs, but I imagine there are ample opportunities to miss any advantage from the buff due to timing or movement.</p>\r\n<p>Based on my WoL parses (i.e. proc uptime), I'm getting an equivalent of 316 static mastery on Theralion's Mirror BTW.</p>\r\n<p><strong>Relative Stat Values</strong></p>\r\n<p>I noticed that Mastery is missing from the list</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2011-02-23T18:34:58.12-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "571427",
+    "ThreadId": "247344",
+    "Html": "<p><span style=\"font-size: x-large; font-weight: bold;\">Welcome to the Rawr Discussion Board</span><br /> <span style=\"font-size: large; font-weight: bold;\">&gt;&gt;Please read the <a title=\"Posting Guidelines\" href=\"../wikipage?title=PostingGuidelines&amp;referringTitle=Documentation\"> Posting Guidelines</a> before posting&lt;&lt;<br /> &gt;&gt;Do not post bugs, feature requests, or other issues here, post them in the <a title=\"Issue Tracker\" href=\"../WorkItem/AdvancedList.aspx\" target=\"_blank\"> Issue Tracker</a>&lt;&lt;</span></p>\r\n<p>After reading the <a title=\"Posting Guidelines\" href=\"../wikipage?title=PostingGuidelines\" target=\"_blank\"> Posting Guidelines</a>, there are several places to look for answers <em>before</em> posting. Search the existing threads here. Search the existing issues in the <a title=\"Issue Tracker\" href=\"../WorkItem/AdvancedList.aspx\" target=\"_blank\"> Issue Tracker</a>. Look through the documentation on the <a title=\"Documentation\" href=\"../documentation\" target=\"_blank\"> Documentation</a> tab, and in the Help menu in Rawr. Then, and only after reading the <a title=\"Posting Guidelines\" href=\"../wikipage?title=PostingGuidelines\" target=\"_blank\"> Posting Guidelines</a>,  please feel free to post here. Note that threads in the Retired  category are considered to be out of date and may provide information  that is no longer valid.</p>",
+    "PostedDate": "2011-02-24T04:12:03.373-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "571681",
+    "ThreadId": "247344",
+    "Html": "<p>I will create an issue for the \"Mastery\" missing from the Relative Stat Values (assuming one isn't already present).</p>\r\n<p>The other three points are not necessarily issues -- they are requests for more information or meant to be informative.</p>\r\n<p>Glyphs - there may not be any problem, but I wanted to point out that there is a discrepancy w/ other reputable sources.</p>\r\n<p>Mastery - wanted to know if the current code base has implemented the mastery changes to moonkin</p>\r\n<p>Theralion's mirror - wanted to know how the trinket is modeled (i.e. there might need to be some moonkin specific logic)</p>\r\n<p>Are these three subjects relevant for the discussions section?</p>",
+    "PostedDate": "2011-02-24T11:21:14.193-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "571689",
+    "ThreadId": "247344",
+    "Html": "<p>Glyphs - if you want to point out a discrepancy, raise an issue. &nbsp;It's a faster and cleaner way to get me to respond to your issue, as it prevents forum clutter and also raises visibility on my end.</p>\r\n<p>Mastery and Theralion's Mirror - your questions show that you don't really follow the workings of Rawr that much. &nbsp;Yes, the mastery changes are in, and if you knew how Rawr.Moonkin worked you'd know that it doesn't compute stat weights for trinket procs. &nbsp;Instead, it calculates the real DPS increase from the trinket being active and multiplies that by the expected trinket uptime to get the final DPS \"value\" of the trinket. &nbsp;In the case of Theralion's Mirror, the uptime could be slightly overestimated, but it does correctly weight the proc as only effecting Eclipse casts.</p>",
+    "PostedDate": "2011-02-24T11:36:02.673-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "571721",
+    "ThreadId": "247344",
+    "Html": "<p><strong>Glyphs</strong></p>\r\n<p>I will create an issue for the Glyphs.</p>\r\n<p><strong>Mastery/Theralion's Mirror</strong></p>\r\n<p>Re: inner workings -- very true. I was making some guesses based upon some comments from the Elemental Shaman developer for how Elemental Mastery was modeled.</p>\r\n<p>You wrote \"it does correctly weigh the proc as only effecting Eclipse casts\". I&nbsp; read (although the sources could be mistaken) that the proc only creates a beneficial effect if it happens and then we enter eclipse (i.e. if you were already in eclipse and the proc happens and you do not enter another eclipse then it will have no effect). I'm not sure if the logic I've described and what you described are the same or even if the logic I described is correct.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-02-24T12:11:53.417-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

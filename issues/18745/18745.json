@@ -1,0 +1,116 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSWarr",
+      "DisplayName": "Rawr.DPSWarr"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-09-23T08:56:42.843-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "At first I noticed that NES looks suspiciously powerful according to Rawr.  I went to the Landsoul's DPS spreadsheet and compared a bunch of trinkets, and some of them match, while some are showing huge differences.  Here are a few examples - first value Rawr, second Landsoul:\nTwilight scale:  845 / 829\nDeath's Verdict:  587 / 587\nHerkuml:  558 / 583\nDBW:  770 / 663\nNES:  755 / 509   (Mjolnir's has almost identical numbers)\nIncisors :  508 / 274\n \nAttached is my character data",
+    "LastUpdatedDate": "2013-05-16T05:19:51.75-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-09-13T01:53:43.863-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSWarr.Fury] Some trinkets values look strange",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 18745
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4033,
+      "FileName": "Pixxie dps.xml",
+      "DownloadUrl": ".\\4033"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Everything is running like it should. Rawr handles ArP procs better than the Spreadsheet because it can better read the scaling of the ArP\r\n\r\n\n\n** Closed by Jothay 9/13/2010 6:44 AM",
+      "PostedDate": "2010-09-13T07:25:31.913-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Gee, that reply was pure genius.\r\n\r\nNow do the following exercise to observe the fantastic scaling of ArPen in Rawr:\r\n\r\n1. pump up ArPen to 1400, keep NES equipped.  For my random gear selection that was showing 11150 dps, and the NES value on the right gear comparison pane = 266\r\n2. remove one ArPen gem (-20). I see dps going UP by one(!) and trinket value going up to 332.  \r\n3. remove another 20ArPen gem.  DPS goes up by 1 again, and NES = 397\r\n4. another gem, NES now shows value 460\r\n\r\nYou can see that the trinket value is completely bogus.  Please check it up a little more thoroughly",
+      "PostedDate": "2010-09-13T07:25:32.373-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-13T09:03:55.813-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "A) Don't get pissy with me, that's definitely not how to get things done with us\r\nB) We worked a LOT on getting the ArP procs to be handled correctly\r\nC) What you described in 1-4 doesn't surprise me at all. If you are ArP capped without the proc and start taking ArP off of course NES's value is going to jump up. Your DPS changing by 1 is probably just a rounding error and I'm not gonna fix it. If it were changing it in large orders of magnitude (100+) it would be worth looking at. Look at the Gems comparison chart and see how much DPS value a Fractured Cardinal Ruby is worth (after taking the first one off). I'm betting it will be roughly 332-266=66 DPS.\r\n\r\n\n\n** Closed by Jothay 9/13/2010 9:03 AM",
+      "PostedDate": "2010-09-14T03:08:50.863-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You still don't get it, do you?  \r\nYou take off 20 ArPen, and the DPS goes UP.  You think this is correct?  It should drop down by the dps value of 20 ArPen, minus the value of the trinket proc, which is in this case 20ArPen times the trinket uptime - something like 17% IIRC.  Similarly, the trinket value should only increase by that same 20ArPen * uptime.\r\nThis is clearly not the case, so something is wrong.\r\nAnd of course I get pissy, because I spend effort to prepare a bug report, which is closed without a single thought and with an irritating attitude.",
+      "PostedDate": "2010-09-14T03:08:51.393-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I tell you what: If you don't want to get an irritating attitude from us, why don't you stop giving us an attitude?  Jothay has worked really hard on DPSWarrior's trinket handling system - I think it's gone through more iteration than any other segment of code in the codebase - and it's definitely not the right way to go about it to just waltz in here and start throwing around accusations of inaccuracy with a really nasty attitude.",
+      "PostedDate": "2010-09-14T04:18:22.167-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Nowakus, when you're at ArPen cap, and you remove an ArPen gem, of *course* the value of NES is going to go up. The proc is providing more value.\r\n\r\nTake the time to fully understand that. When you fully understand that, then review whether you still see a problem. If you do, post a new bug report, in a clear, non-abrasive manner, that distinctly shows the problem you think you observe.\r\n\r\nClosing this one.",
+      "PostedDate": "2010-09-14T14:09:09.413-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-14T14:10:08.06-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Explained the user's problem to him. If there's still a problem, open a new issue in an appropriate manner.\r\n\r\n\n\n** Closed by Astrylian 9/14/2010 2:10 PM",
+      "PostedDate": "2010-09-23T08:02:23.727-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well well, I hoped if somebody else with a fresh mind comes along, he may actually understand the problem.  Alas,\r\nAs for being impressed by someone working hard on the trinkets, getting it still wrong, and then unable to see the mistake, then yes - I am really suitably impressed. \r\nI am not going to open a new ticket - everything you need was already explained here. If you don't want to fix the problem, it's your choice.  It's your program that's broken, not mine. I'm out of here, I don't want to waste more time and I am definitely not going to be a Rawr user.\r\nThe only thing I can add at this point is that what I see suggests the trinket acting like it had 100% uptime. Maybe only when the proc puts you over the cap. You can test that if you want.",
+      "PostedDate": "2010-09-23T08:02:24.363-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-23T08:56:42.843-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T19:11:26.157-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:27:24.843-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:51.75-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

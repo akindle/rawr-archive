@@ -1,0 +1,95 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.LoadCharacter",
+      "DisplayName": "Rawr.Base.LoadCharacter"
+    },
+    "ClosedComment": "By design.",
+    "ClosedDate": "2010-04-25T01:21:33.527-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Trying to load my character from the armory I get the following error:\nStep: Get Item\nDetail: No item returned from Armory for 2587.\n \nAlthough Rawr is downloading character data from eu.wowarmory.com item data requests are made against the US armory (I believe).  At time of posting the US armory is in maintenance.\n \nhttp://eu.wowarmory.com/item-info.xml?i=2587  resolves correctly\n \nhttp://www.wowarmory.com/item-info.xml?i=2587 redirects to armory maintenance page.\n \nIs there any application setting either in Rawr or the .exe.config where I can stipulate which armory to query for Item data? If not, then could this be made an option or re-factor so that the armory queried\nis dependant on the Region selected (in the Load from armory dialog).",
+    "LastUpdatedDate": "2013-05-16T05:23:45.83-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-10-20T12:36:53.583-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[LoadCharacter] EU Character load affected by US Armory maintenance",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14491
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "No.  Our localization only affects item names, and only when the item is found.  I'll leave this open in case Astry wants to comment on future plans or how easy this would be to implement (it looks fairly easy, but I don't have the time to dig in right now)",
+      "PostedDate": "2009-10-20T13:46:39.457-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I recognize the issue, and we could make a setting for which Armory to pull item data from, but we don't right now due to simplicity, and more importantly, due to differing data. I'd rather standardize the item data to just the US Armory, since data can be different between armory region. We'll definitely consider making this an option in the future, but at least that's why it's not right now. You can always work around the issue in the mean time by manually adding whichever items it can't find.\r\n\r\nActually, come to think of it, didn't we add recently a feature that on armory load, if an item couldn't be found, it tried Wowhead instead? Jothay, was that you who did that?",
+      "PostedDate": "2009-10-20T14:33:57.087-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yea it was Jothay\r\n\r\nBuild: 37513 - \"Rawr.Base:\r\n- Added check for item import from armory that if armory load fails, try the item on Wowhead, if both fail throw normal error.\"",
+      "PostedDate": "2009-10-20T14:53:40.8-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "If item data being different between armory regions is a concern, shouldn't the item be loaded from the armory region the character is residing on to ensure that the calculations for the character are correct (maybe with the US armory and WoWHead as a fallback)?",
+      "PostedDate": "2009-10-22T03:43:20.22-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "EU Wow in game won't have different data, it's just the different armory servers have bad/conflicting data so no that won't help.",
+      "PostedDate": "2009-10-22T07:59:20.617-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-14T10:18:55.36-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-04T09:19:45.067-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-25T01:21:33.527-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-09T15:44:00.157-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:32:18.04-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:45.83-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

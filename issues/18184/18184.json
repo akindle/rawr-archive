@@ -1,0 +1,76 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSWarr",
+      "DisplayName": "Rawr.DPSWarr"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-09-08T13:07:49.7-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Jothay, I know how you enjoy a periodic \"reality\" check on the model, so thought I'd throw you a bone.  You've obviously been bored, what with how much free time you've had with all of these other Rawr... SIDE-projects.  :P\n \nhttp://worldoflogs.com/reports/av3eurseijz03ki1/sum/damageDone/?s=6104&e=6328#Soleniae\n \nNotes:\nv2.3.20\nI set up the file to accurately represent the actual fight data, including fight length, current raid buff, etc.  I enabled Flooring for this comparison in particular, just thought I'd point it out.\nAs I recall, and looking at the logs, I never got the Spore, so didn't have to move for that.  However, I did not include any movement modeling within Rawr, as it seems that \"movement\" in Rawr actually means \"time offtarget\".  It'd be good to have a \"movement - on target\" (can't use abilities aside from instants) and \"movement - offtarget\" (can't use any abilities) modifier.  We (melee) actually swapped which foot we were hitting him from on every single ball'o'slime that was thrown, about every 7-10s, so that reduced Slam usage somewhat.\nThere were indeed two Indestructible uses, as evidenced by the uptime.  Only one was registered during the fight.\nThis isn't a perfect execution by any means... but it's pretty damn close.  If I were to grade my own performance, I'd rate it at about a 95-97.",
+    "LastUpdatedDate": "2013-05-16T05:20:19.093-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-07-09T14:43:01.417-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSWarr.Arms] Model File / Real-World Log",
+    "Type": {
+      "Name": "Task",
+      "Id": 2
+    },
+    "VoteCount": 1,
+    "Id": 18184
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3759,
+      "FileName": "AeroSol Arms.xml",
+      "DownloadUrl": ".\\3759"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "How far off are we? (Too busy to mess with the file right now)",
+      "PostedDate": "2010-07-14T17:07:57.027-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Quickly running over it, some notables:\r\n\r\nTotal output: Actual 13110, Rawr 13512 (if you happen to open the profile, make sure to toggle off Enraged Regen maintenance). \r\n\r\nDeep Wounds: Expected damage is 70.5k under actual.  Actual average damage 3656,  Rawr 2052.\r\n\r\nHeroic Strike usage was remarkably similar.\r\n\r\nRawr keeps Rend up WAY more than I do.  I had 92% uptime of Rend, while the program looks to be aiming for closer to 100%.  I personally look to weave other abilities in before Rend re-application, as much as possible, which would explain the discrepancy.\r\n\r\nSlam: Ignoring totals, due to no appropriate movement modeling in-program.  HOWEVER, while I was expected to use 36, critting 52% of the time, I ended up with 29, critting twice as much as I hit.  Without busting out my mad statistics skills, I'm going to say that's way outside of even two standard deviations.  My only theory is that Paragon happened to proc more heavily for Agi than normal (out of 5 procs, a change from 2.5 to 4 would affect my Agi, and therefore my Crit, quite a bit), but the log parse doesn't show the breakdown of the procs (just lists Paragon, and assumes the Str proc).\r\n\r\nExecute: Ignoring, due to no sub-20% Execute modeling in-program.",
+      "PostedDate": "2010-07-15T00:04:00.21-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Run your comparisons again against the new code I just checked in with Execute Spam active. :P",
+      "PostedDate": "2010-07-31T14:27:23.887-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T13:07:49.7-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:27:59.327-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:19.093-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

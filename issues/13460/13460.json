@@ -1,0 +1,81 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Mage",
+      "DisplayName": "Rawr.Mage"
+    },
+    "ClosedComment": "Not an issue, dev explained",
+    "ClosedDate": "2009-10-14T10:11:47.683-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Frost cycles are computing incredibly slowly. That's a vague statement, I realize, but it's the best summary I can think of. So here's the deal from the start:\n \nI have Global Optimizations, Incremental Optimizations, Reconstruct Sequence, all enabled. I have SMP Computation Limit set to 1000. SMP Search Method is on Best Bound. Integral Mana Consumables/Segment Cooldowns are enabled for Display. Advanced Constraints is set to 5 for both Comparison and Display. Maximum Parallel Threads is set to 2.\n \nAll of these settings are for my FB/TTW talent spec, and I can switch out items and talents and run optimize just fine (takes ~30 sec to run Optimize). However... under these exact same settings, if I switch the spec to Frostbolt (18/0/53) and then, for instance, remove some points from Enduring Winter, or anything else -- just switching an item, it fails to compute the DPS, and I usually get an error message, \"SMP algorithm exceeded maximum allowed computation limit.\" It doesn't seem to like any talent changes -- if I drop points from Spell Impact, it gives me that message.\n \nI get the same thing when I switch out equipment. And then, even more confusing, I disabled Reconstruct Sequence and enabled Depth First, and my DPS computes to 4430.18. Now, when I go to my glyphs tab and set my third glyph to Water Elemental (having had only Frostbolt and Molten Armor glyphs enabled), my DPS actually drops to 4409.34. With 1 point in Enduring Winter and 2 points in Cold as Ice, Water Elemental has a 34.72% uptime. Adding the glyph increases the uptime to 43.86%. Naturally, a 9.14% increased uptime in Water Elemental shouldn't decrease DPS by 20.84.",
+    "LastUpdatedDate": "2017-11-27T11:01:50.607-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-06-09T15:56:00.187-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Mage] Frost Cycles",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13460
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1979,
+      "FileName": "Enthorn (10) - 21.0.50.xml",
+      "DownloadUrl": ".\\1979"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Ok let's start. Advanced Constraints has no effect if you don't have either Integral Mana Consumables or Segment Cooldowns enabled, so for comparison you're using the basic solver (which you should).\r\n\r\nFor any complex spec (which is basically anything except FB/FFB) I would recommend Depth First optimization and not Best Bound.\r\n\r\nI never finished the advanced solver support for frost, namely Cold Snap constraints are not completely implemented. It's detected when they are broken, but not enforced.\r\n\r\nOk that was the pretext. Now I'll give you a bit more information which you need to understand when dealing with advanced solver. Whenever the solver ends with sequence reconstruction lower than 100 this means that whatever the dps of the result says is not actually accurate. There are several combinations what it actually means depending on what optimization mode you're using. One thing that will help you understand what is going on is to look at the overall damage in the solution and look at the tooltip. It will tell you lower bound and upper bound. If those are not the same then it means that solver can only guarantee you that accurate result is between lower bound and upper bound (if the reconstruction gives 100% score).\r\n\r\nNow let's examine the options and what it means.\r\n\r\nBest Bound:\r\n\r\nThis will try to prove the accurate solution by lowering the upper bound. It will look what constraints are broken and try to fix them, in the process lowering the upper bound. There are two options.\r\n\r\nIf it finds a solution that meets all constraints then it guarantees you that that is the optimum solution, i.e. lower bound is equal to upper bound. If sequence reconstruction also gives no errors then this is the true optimum. If sequence reconstruction gives errors this is an indication that there are some constraints that are broken that the optimizer doesn't know about. This in some cases can be fixed by changing segmentation if you understand which constraints are broken, sometimes it indicates that something is missing in the optimizer.\r\n\r\nIf it does not find a solution (reaches computation limit) then it will report the last known result corresponding to upper bound. In this case lower bound will be 0 because it has no idea how much lower the true optimum is. In this case sequence reconstruction will always have errors.\r\n\r\nDepth First:\r\n\r\nThis will try to prove the accurate solution by improving the lower bound. It will only consider solutions that meet all constraints based on advanced constraints level (which is all when set to 5). Given the current best solution that meets all constraints it tries to prove that there is nothing better.\r\n\r\nIf depth first method reaches computation limit it will give you the best known solution that meets all constraints. That is it will give you a solution corresponding to the lower bound (opposed to upper bound as in best bound case). This means that it tells you the worst case.\r\n\r\nIf it finds the solution then upper bound will be equal to lower bound and the meaning is the same as in best bound case. Again if advanced constraint level is below 5 or if reconstruction score is below 100% that means that this is the optimum only in respect to the constraints that the solver was working with. When taking all constraints into account the actual accurate optimum would be lower.\r\n\r\nKnowing all this, what is actually slow about frost is the advanced solver, mainly due to cold snap. Similarly arcane would be very slow. However comparisons and optimization should still be fast since you're only using the basic solver. When the main screen shows ... in the solution section this means that the basic solver is finished and now you're just waiting for the advanced solver to prove a solution that meets all advanced constraints. You can check the advanced solver log to see what it is doing.",
+      "PostedDate": "2009-06-09T17:17:58.907-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-19T12:53:37.987-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-14T10:11:47.683-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-21T00:00:17.077-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:08.79-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:15.817-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:01:50.607-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

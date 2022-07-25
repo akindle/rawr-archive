@@ -1,0 +1,90 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtPaladin",
+      "DisplayName": "Rawr.ProtPaladin"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-06-13T02:29:44.083-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "http://theincbear.com/vengeance-cap-theorycraft/\n \nBlues have replied about veng calcs being a little misleading and the true calc is now known. Source above has the formula. Not sure if the 4 tanking module owners are aware.\n \nBasically: vengeance = stamina + 0.1 * base health \n \nThe fact that stamina was buffed to 14 hp per stam late in beta did not change the original vengeance calc (10 per). This was intended. Talents and buffs and the like do not add to vengeance.",
+    "LastUpdatedDate": "2013-05-16T05:19:04.123-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-01-11T09:58:33.82-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtPaladin] Potential Veng issue",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19671
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "yeah, saw the post, haven't updated TankDK just yet.  Since that only is the math for Max Veng and I think we're still looking to improve the formula for average vengeance.",
+      "PostedDate": "2011-01-11T10:16:00.58-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-11T10:19:20.687-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This is already changed in ProtWarr locally and will go into my next commit.",
+      "PostedDate": "2011-01-13T15:09:11.257-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Updated Vengeance in TankDK as per changelist: 57188 \r\nAlso I updated the DymanicAttack.AttackSpeed to be the interval for all incoming attacks rather than just the average AttackSpeed if the boss only used each of his attacks once:\r\n\r\nExample:\r\nAttack 1: Melee at 2.0 speed\r\nAttack 2: AOE at 45 sec\r\nAttack 3: Direct at 120 Sec.\r\nOld way:  2 + 45 + 120 / 3 = 55.67\r\nNew Way: What's the interval of all attacks coming in during the fight:\r\n1/(1/2 + 1/45 + 1/120)= 1.885 AttackSpeed.\r\n\r\nThis will give us the intervals for strikes when dealing w/ Vengeance drop offs and things like that.\r\n",
+      "PostedDate": "2011-01-16T08:07:52.603-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "ProtPaladin doesn't yet model Vengeance, but I'll be sure to check this out when I put it in.  Thanks.",
+      "PostedDate": "2011-02-07T13:29:29.323-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-14T15:37:12.807-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-15T16:53:49.543-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-06-13T02:29:44.083-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:26.78-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:04.123-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

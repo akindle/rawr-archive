@@ -1,0 +1,90 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Cat",
+      "DisplayName": "Rawr.Cat"
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-08T07:17:21.19-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi.\nIn my current gear (Naxx10/Naxx25 with 8700 AP, 40% crit unbuffed, and 50 ArP), each armor penetration is valued as 0.04 DPS in the Cat Model (as seen in Relative Stat Value chart). This value is way too low, and seems wrong to me for gear calculation. \n \nFor example: 44 ArP rating (as in the Hateful Gladiator's Dragonhide Helm) results in about 3% reduced armor at Lv80 rating conversions. For a 11000 armor boss, this results in 330 armor avoided. Assuming no other armor debuffs (such as Faerie Fire or Sunder Armor), 330 less armor on such boss is a flat 0.7% extra DPS for phisical hits (not for bleeds). This value grows as armor decreases by other means (Expose armor, Sunder, Faerie Fire...)\nIn contrast, 45 Crit Rating for example is a 1% extra critical chance, which should result in about 0.8%-1.2% extra phisical DPS (also not for bleeds) depending on talents.\n \nAs such, ArP rating should be valued about as good as Crit Rating (probably a bit below, but on the same level nevertheless, depending on talents).\n \nAs comparision for my spec, each crit Raing point is right now valued 0.25 dps, and ArP rating only 0.04 dps, (thus, making Items with ArP rating underscored in charts).\n \nRegards\n \nLocksley",
+    "LastUpdatedDate": "2017-11-27T10:59:26.53-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-12-15T03:09:07.053-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Cat] Armor Penetration stat value wrong",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 4,
+    "Id": 12029
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Hi again.\r\n\r\nI've found the issue browsing the code. In fact it only matters for the Relative Stat Value chart, as the code for the GetCharacterCalculations method seems OK.\r\n\r\nIn the method GetCustomChartData() for Rawr cat, for the \"Relative Stat Values\" chart, for the ArP you are increasing the ArmorPenetration value by 1 (this is the OLD 2.x stat, which substract a lineal 1 to target armor), but you should increase the ArmorPenetrationRating by 1 (the new 3.x stat).\r\n\r\nAlso, I've seen another minor glitch in the GetCharacterCalculations method. You use calcOpts.TargetLevel for the Armor reduction calculations (modArmor variable). But acording to Wowwiki ( http://www.wowwiki.com/Armor ), the armor reduction formulas depends on *attacker* level, not on the *target* level.\r\n\r\nRegards.\r\n\r\nL",
+      "PostedDate": "2008-12-15T04:05:07.757-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-12-17T06:37:44.887-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-12-18T14:29:59.2-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-12-18T15:36:00.777-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-08T07:17:21.19-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:51:41.47-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T22:45:40.733-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:02.89-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:38.907-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T10:59:26.53-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

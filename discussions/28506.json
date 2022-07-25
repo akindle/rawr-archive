@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "95054",
+    "ThreadId": "28506",
+    "Html": "Just something I would like to see.  While one piece of gear may appear to be superior to another, it may cause some other drawbacks.<br>\r\n<br>\r\nFor example, Maximize Armor subject to Hit rating [XXX], and/or Defense rating [YYY] and/or ???<br>\r\n<br>\r\nThis would in turn not generate just a list of superior gear, but a cohesive set of gear that meets certain criteria.<br>\r\n<br>\r\nComments?\r\n",
+    "PostedDate": "2008-05-27T15:01:04.03-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "95073",
+    "ThreadId": "28506",
+    "Html": "Can you clarify this more? As far as I can tell, everything that you're asking for is already implemented. Did you miss the Additional Requirements section of the Optimizer?",
+    "PostedDate": "2008-05-27T16:16:33.02-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "95268",
+    "ThreadId": "28506",
+    "Html": "It may be that he is asking to add something like the constraints, but in the comparison graph.&nbsp; Something like:<br>\r\n<br>\r\nIn Rawr.Bear, if you set the constraint % chance to be crit &lt;= 0, then any item that would make the condition false would be filtered out/moved to the bottom.&nbsp; <br>\r\n<br>\r\nI have found on occasion that something like that might be useful, but overall, I don't see a problem keeping that in the optimizer.<br>\r\n",
+    "PostedDate": "2008-05-28T10:00:39.177-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "95273",
+    "ThreadId": "28506",
+    "Html": "Yeah, that's really a job for the optimizer, because you commonly want to swap a few pieces of gear around to maintain uncrittability, or whatever requirement.",
+    "PostedDate": "2008-05-28T10:15:31.747-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "95332",
+    "ThreadId": "28506",
+    "Html": "I stand mildly corrected.  I DL'd a version a couple of weeks ago and the optimizer then lacked some functionality.<br>\r\n<br>\r\nCurrently it looks to be better, but apparently im having some operator error issues :-P.<br>\r\n<br>\r\nI ran this scenerio 5-6 times with similar outcomes.<br>\r\n<br>\r\nOptimize for :  Hit Rating or Overall Rating<br>\r\n<br>\r\nSubject to:  Hit Rating: &gt;= 142<br>\r\nSubject to:  % Chance to be Crit &lt;= 0<br>\r\nSubject to:  Mitigation % from Armor &gt;= 50<br>\r\n<br>\r\nRun the optimizer and get varying results for gear each time, and all with Hit ratings under 80.<br>\r\n<br>\r\nI did include the Season 3 and 4 gear which has a substantial amount of hit on it for ferals, and all the top tier gems/and enchants with +hit rating.<br>\r\n<br>\r\nTwo Examples I can give from the last test I ran:  (force socket or metagem reqs are not checked. Only known gem combinations run)<br>\r\n    Season 3/4 Helm Included; Optimizer chose Cowl of Beastly Rage with 5agi/4hit (only the 5agi/5hit gem made available for optimizer) and 12agi/3% crit.<br>\r\n    Both Belt of Natural Power and Waistguard of the Great Beast are available for the optimizer, which chose the Belt of Natural Power (no +hit) and then socketed it with 2x 5agi/7stam gems (were made available.)<br>\r\n<br>\r\nIts been a couple of years since I did excel solver set-up in collage but then general gist was maximize X subject to certain critera.  Im sure this is what your going for with your optimizer, which will be great when working.  <br>\r\n<br>\r\nIn the long term I would like to see the solver maximize (for ferals) agility subject to 142 hit rating, and be uncrittable (either through Def or Resil or a combination of the two (which is low w/ SotF)); or maximize Armor subject to XXX (which conseqently would take AGI into account).  <br>\r\n<br>\r\nHow this is implemented is probably the most difficult matter.  Can the system value the trade off between (purely example) bracers that have 6 hit rating and a yellow socket (+10 hit rating gem) vs. picking up the head enchant (ignoring the 34AP), and recalculating the most effective piece of armor to now wear in the wrist slot given that the +hit requirement has been met; possibly moving on to meeting the next constraint.<br>\r\n<br>\r\nIf this is unclear or if I'm just asking for the impossible let me know.  Im a reasonable person, and would certainly understand if you said that my request is unreasonable, or if I just need to put the crack pipe down. :-)\r\n",
+    "PostedDate": "2008-05-28T14:59:57.113-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "95342",
+    "ThreadId": "28506",
+    "Html": "Everything you're asking for is possible. Sounds like you're having some trouble properly using it though. If you provide the character file in question, and the exact optimizer settings you're using, I can provide more help. But at first glance, it sounds like you're mixing up all gemmings and known gemmings. You mention using known gemmings, yet you also mention which gems are provided, which is backwards. Known gemmings uses gemmings that are known. All Gemmings uses all gemmings that are available.",
+    "PostedDate": "2008-05-28T15:49:27.207-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "95583",
+    "ThreadId": "28506",
+    "Html": "<br>\r\n<div style=\"border-style:dotted none;border-color:rgb(170, 170, 170) -moz-use-text-color;border-width:0.1em medium;margin:1em 0em 2.5em 3em;padding:0.2em;font-style:italic\"><br>\r\nAstrylian wrote:<br>\r\nKnown gemmings uses gemmings that are known. All Gemmings uses all gemmings that are available.<br>\r\n<br>\r\n</div>\r\nYour saying that <strong>known gemming's</strong> uses the CURRENT gems that are in the item cache as they are displayed ONLY; and that <strong>all gemming's</strong> uses the item with all possible gemming combinations correct irregardless of how they are&nbsp; listed in the item cache. I was going off that basis but maybe I am wrong somewhere? <br>\r\n",
+    "PostedDate": "2008-05-29T12:28:29.5-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "95619",
+    "ThreadId": "28506",
+    "Html": "Correct, except All Gemmings will only use gems that you mark as Available.",
+    "PostedDate": "2008-05-29T14:00:29.213-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

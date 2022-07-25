@@ -1,0 +1,151 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Optimizer",
+      "DisplayName": "Rawr.Base.Optimizer"
+    },
+    "ClosedComment": "Fixed with commit 36743",
+    "ClosedDate": "2009-09-16T17:29:33.357-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "For a few versions, there's been an odd thing about optimizing my gear as a healdin: the feet item may stay the same, but the optimized version doesn't show any enchantment. However, other items are properly displayed with their enchantment or even new items with their proper new enchantment. Is this a known bug already?",
+    "LastUpdatedDate": "2013-05-16T05:25:11.767-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-06-22T19:40:03.07-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Optimizer] Optimizer removes feet item enchantment",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13529
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2004,
+      "FileName": "01.JPG",
+      "DownloadUrl": ".\\2004"
+    },
+    {
+      "FileId": 2005,
+      "FileName": "02.JPG",
+      "DownloadUrl": ".\\2005"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Sounds like you don't have any boot enchants marked as available.",
+      "PostedDate": "2009-06-22T19:56:57.41-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I have marked two boot configurations, both enchanted with the same enchant, but of course with different gemming. With all other items (head, chest, shoulder piece) the suggested changes do have an enchant, just not the boots.",
+      "PostedDate": "2009-06-23T01:17:53.13-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Again, it sounds like you don't have any boot ENCHANTS marked as available. Mark 1+ boot enchants as available.",
+      "PostedDate": "2009-06-23T09:30:57.05-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Could rawr generate a warning on this? Or at least, have an option to auto-add the currently selected options to the list of available gear/enchants.",
+      "PostedDate": "2009-06-23T09:35:21.317-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I believe it does; when you start to Optimize, it warns you that you have nothing marked available for \"x\" slots. You can turn those warnings off in the Options, which it sounds like you have turned off.",
+      "PostedDate": "2009-06-23T11:21:07.78-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I believe that you do not understand me, Astrylian. Let me explain step by step what I am doing.\r\n\r\n1. Right click on the green diamond in front of a selected item you want to include in the optimization process. \r\n\r\n2. Note how it has the \"Any\" line checked, meaning that Rawr will consider any of the enchants listed below. If that's not what it means, please tell me what it does mean.\r\n\r\n3. Optimize.\r\n\r\n4. Note how all chosen items that have been marked with a green diamond and the \"Any\" selection have an enchantment in the optimized right hand side of the window. All but the feet. \r\n\r\nWhich brings me back to my initial question: is this a known bug? If not, is it on the to be fixed shortlist?",
+      "PostedDate": "2009-06-23T16:11:49.783-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "robur, you are mistaken: In the selection list on the right side of the screen, click the SLOT tab and select ENCHANT. Then, per each slot of gear, pick the enchants you'd like the optimizer to include in its optimizations. While the items you're selecting will include any enchant you SELECT, if you don't SELECT any enchants, it won't optimize for any. You need to select enchants/gems for optimization, just like items.",
+      "PostedDate": "2009-06-23T18:01:07.103-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Devwar, thanks for the clarification. My mistake indeed, apologies to you and Astrylian. Your hint also helped to pinpoint down the strange optimization behaviour.\r\n\r\nI've uploaded two screenshots that will hopefully explain what I experience after freshly importing my character from the Armory, without selecting any enchant or gear I have in the bank.\r\n\r\nPicture 1 shows the head item enchant list, with one already marked. I did not mark this. :-) I assume Rawr automatically picks this one?\r\n\r\nPicture 2 shows the feet item enchant list, with none marked at all. Now, on my feet item I've got good old Tuskarr's Vitality, an enchant not in the list at all. My conclusion: Would that one have been in the list, it would have been automatically highlighted as well, correct? Then my takeaway is: Rawr does not know all possible enchants for an item, one has to enter them oneself.",
+      "PostedDate": "2009-06-23T19:56:13.713-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-06-23T19:56:15.893-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Pic 02",
+      "PostedDate": "2009-06-23T19:56:53.363-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-06-23T19:56:54.55-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Items and enchants that you have equipped when you load from armory are automatically marked available. You do not have a boot enchant available by default because *you did not have a boot enchant when you loaded from Armory*.",
+      "PostedDate": "2009-06-23T22:17:57.457-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "\"You do not have a boot enchant available by default because *you did not have a boot enchant when you loaded from Armory*.\"\r\n\r\nHere's the kicker: my boots are enchanted. Check my Armory page. Robur, Lightbringer server. All enchants are being recognized BUT the feet ones. Why can we not agree on this?\r\n\r\nI have to say: I am really amazed about the attitude I've been receiving here. I merely wanted to help out make a great tool even greater and not to point fingers at anybody.",
+      "PostedDate": "2009-06-24T03:07:56.207-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ah, I see the problem here. This has nothing to do with availability, or the optimizer. The Healadin model just current doesn't see that enchant as relevant. Ermad, can you fix that?",
+      "PostedDate": "2009-06-24T09:44:26.223-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-09T22:02:22.62-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-16T17:29:33.357-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T17:51:52.087-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T19:25:40.17-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:04.14-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:11.767-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

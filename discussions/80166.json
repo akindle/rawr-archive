@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "274738",
+    "ThreadId": "80166",
+    "Html": "<p>Given that now the new wing is open and people have been able to do actual in game testing of trinkets and weapons and the various hotfixes that Blizzard have done this week. Once we are confident that they have been updated in the various models can we have a new release this weekend please as lots of people are asking what the changes mean for their gearing.</p>\r\n<p>It may be an idea to catalog the things that need checking. eg:</p>\r\n<p><br>Deathbringer's Will proc is it updated for all models?</p>\r\n<p>Tiny Abomination in a Jar - has the special effect been implemented? Does this need special handling in models?</p>\r\n<p><a rel=\"http://db.mmo-champion.com/i/50709/bryntroll-the-bone-arbiter//tooltip/js\" href=\"http://db.mmo-champion.com/i/50709/bryntroll-the-bone-arbiter/\"><strong><span style=\"color:#a335ee\">Bryntroll, the Bone Arbiter</span></strong></a> - has the fix for Ret pallys and Unholy DKs been implemented in those models &quot;We have found a bug with Bryntroll where it procs too often for Retribution paladins or Unholy DKs. For example both portions of Scourge Strike could cause a proc, which is unintended. Bryntroll seems to account for about ~3-4% of dps for a typical Icecrown Fury warrior. That's more of where it should be for other melee.&quot;</p>\r\n<p>Black Bruise - I've updated this weapons proc rate for next version as per testing.</p>\r\n<p>Are we implementing the rogue changes - or are we still leaving the rogue model alone as we have no rogue developer? &quot;</p>\r\n<ul style=\"margin-top:0pt;margin-bottom:0pt\">\r\n<li>The base damage bonus from Hunger for Blood has been reduced from 10% to 5%.</li>\r\n<li>The bonus damage rogues gain from attack power for poisons has been decreased. This applies to Instant Poison, Deadly Poison, and Wound Poison.</li>\r\n</ul>\r\n<p>There are probably others that should go in the quick checklist that I'm not aware of - ie: things that should be &quot;hotfixed&quot; before we release the v2.3.6.</p>",
+    "PostedDate": "2010-01-08T04:46:31.96-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "274803",
+    "ThreadId": "80166",
+    "Html": "<p>Changes to the Rogue model are on a community basis. When someone posts a patch that fixes a problem, I'll throw it at the model and hope it sticks.</p>",
+    "PostedDate": "2010-01-08T07:41:54.317-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "275036",
+    "ThreadId": "80166",
+    "Html": "<p>After&nbsp;the Bryntroll has been fixed,&nbsp;I&nbsp;had&nbsp;run some test&nbsp;on this.</p>\r\n<p>As a Ret-Paladin, I think the '15% on melee hit' should be changed to '15% on physical hit'</p>\r\n<p>Thses&nbsp;links show that the Bryntroll proc after melee, CS and DS</p>\r\n<p><a href=\"http://image.playforum.net:8080/gallery/echo/10152016/1400/CS.jpg\">http://image.playforum.net:8080/gallery/echo/10152016/1400/CS.jpg</a></p>\r\n<p><a href=\"http://image.playforum.net:8080/gallery/echo/10152016/1400/ds.jpg\">http://image.playforum.net:8080/gallery/echo/10152016/1400/ds.jpg</a></p>\r\n<p><a href=\"http://image.playforum.net:8080/gallery/echo/10152016/1400/ds2.jpg\">http://image.playforum.net:8080/gallery/echo/10152016/1400/ds2.jpg</a></p>\r\n<p>&nbsp;</p>\r\n<p>This is a thread for comparing&nbsp;of the Bryntroll and the Shadow edge at WowInven (sorry it's korean, but&nbsp; you'll see what I've been through)</p>\r\n<p><a href=\"http://www.inven.co.kr/board/powerbbs.php?come_idx=48&query=view&p=1&category=&sort=PID&orderby=&where=&name=&subject=&content=&keyword=&sterm=&iskin=&l=29109\">http://www.inven.co.kr/board/powerbbs.php?come_idx=48&amp;query=view&amp;p=1&amp;category=&amp;sort=PID&amp;orderby=&amp;where=&amp;name=&amp;subject=&amp;content=&amp;keyword=&amp;sterm=&amp;iskin=&amp;l=29109</a></p>\r\n<p>&nbsp;</p>\r\n<p>So, I think it is reasonable to&nbsp;assume that the&nbsp;fixed fourmula would be '&nbsp;Bryntroll Proc&nbsp;=&nbsp;(melee&nbsp;+&nbsp;CS&nbsp;+&nbsp;DS)&nbsp;*&nbsp;15% '.</p>",
+    "PostedDate": "2010-01-08T19:47:29.007-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "275044",
+    "ThreadId": "80166",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Levva wrote:</strong><br>\r\n<p>Tiny Abomination in a Jar - has the special effect been implemented? Does this need special handling in models?</p>\r\n</blockquote>\r\n<p>The proc rate was identified as 45% by Landsoul and 50% by the enhancement shaman community on EJ.&nbsp; So somewhere in there.</p>\r\n<p>It probably does need special handling because it generates swings that can proc anything...including itself.&nbsp;</p>\r\n<p>The swings it generates are basic yellow hit table swings that can crit or miss or whatever just like yellow swings.&nbsp; It has a 50/50 chance to use main or offhand weapon.</p>",
+    "PostedDate": "2010-01-08T20:41:26.783-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "275047",
+    "ThreadId": "80166",
+    "Html": "<p>I'll probably wind up writing in weapon-specific handling for both brnytrolls due to the many unusual ways they behave; I'll aim to get it in with the overhauls of DPSDK that I'm doing currently.</p>",
+    "PostedDate": "2010-01-08T21:00:50.207-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "275298",
+    "ThreadId": "80166",
+    "Html": "<p>Along the questions of the trinkets in plagueworks.&nbsp; The Disloged Foreign Object of 25 Rotface doesn't seem to be calculating the 2nd epuip effect.&nbsp; If it is, then I guess I'm really surprised at what the numbers say it is for arc mages.&nbsp; I thought that not only is 155 haste really nice, but the 105 stacking up to 1050 sp was really nice as well.&nbsp;</p>",
+    "PostedDate": "2010-01-10T01:58:36.463-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "275711",
+    "ThreadId": "80166",
+    "Html": "<p>Are there any reports from non-dual wielders? Did Landsoul test both DW Fury and 2H? Otherwise the early reports of Tiny Abomination are... abominable for many (most?) classes.&nbsp;</p>",
+    "PostedDate": "2010-01-11T07:37:46.497-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "275719",
+    "ThreadId": "80166",
+    "Html": "<p>I have to agree with ChuckB above, the Dislodged Foreign Object seems like the 155 haste would be stronger then some of the other stats.</p>\r\n<p>http://www.wowhead.com/?item=50353#comments</p>\r\n<p>With some stats on the ICD and proc rate</p>\r\n<p>I just received this on our first kill of Rotface.<br><br>From testing on a dummy:<br>Internal cooldown seems to be 45 sec.<br>Proc rate must be around 30-40%.<br><br>Buff's name is &quot;Surge of Power&quot;</p>",
+    "PostedDate": "2010-01-11T07:57:49.747-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

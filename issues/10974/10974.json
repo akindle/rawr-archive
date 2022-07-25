@@ -1,0 +1,101 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Mage",
+      "DisplayName": "Rawr.Mage"
+    },
+    "ClosedComment": "Closing this, if b16 does not sufficiently solve this problem please open a new issue.",
+    "ClosedDate": "2008-08-20T15:11:12.9-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I stumbled uppon this in the Beta 15 - and now I see it in the Beta 15.1 aswell.\n \nOnce I have set up the buff and what not im saveing my char and going to the \"Advanced\" tab to enable the Sequencer. Uppon doing this Rawr just freezes up. I know this feature is letting the system work abit (as I remember it from the 14.1) so I have had it \"work\" for up to 10-15 mins. But it all ends in the ap. freezing.\n \nI have tryed it on my Vista system and now on my XP aswell (two different systems). \n \nI have attached the xml for your scrutiny. What did I miss - it must be me doing something wrong I guess\n \nAny imput is much appreciated since I really love this application\n \n/Darcan",
+    "LastUpdatedDate": "2017-11-27T11:01:40.69-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-08-11T10:52:41.913-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Mage] Freezes after enabling the Reconstruct Sequence",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 10974
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1220,
+      "FileName": "Darcan.xml",
+      "DownloadUrl": ".\\1220"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "It looks like this character is too complex for reconstruction without the additional information the cooldown segmentation provides. When the reconstruction is determining the ordering of cooldowns it has too many options to examine which is the apparent freeze. It's actually working, but it is making very slow progress. I'll probably add in some checks and just disable sequence reconstruction if there are too many cooldown options and cooldown segmentation is not available.\r\n\r\nUnfortunately the 15.1 version apparently doesn't handle this character very well even with cooldown segmentation. I checked in some fixes that resolve this issue, so you'll have to get the latest dev build to get this working for your character. Here's the solution I get (note that currently SCB trinket is not supported, i.e. it won't align mana gems with trinket activations):\r\n\r\n00:00.000: Icy Veins+Hex Shrunken Head+Arcane Blast (13916 mana)\r\n00:05.000: Icy Veins+Arcane Power+Serpent-Coil Braid+Hex Shrunken Head+Destruction Potion+Arcane Blast (12441 mana)\r\n00:09.730: Mana Gem (10841 mana)\r\n00:09.730: Icy Veins+Arcane Power+Serpent-Coil Braid+Hex Shrunken Head+Destruction Potion+Arcane Blast (13841 mana)\r\n00:20.000: Arcane Blast (10370 mana)\r\n01:00.730: Evocation (1602 mana)\r\n01:10.110: Arcane Blast (13916 mana)\r\n01:46.530: ABFrB3FrBSc (6074 mana)\r\n02:04.000: Arcane Blast (7309 mana)\r\n02:09.730: Mana Gem (6074 mana)\r\n02:09.730: Arcane Blast (9074 mana)\r\n02:39.120: ABFrB3FrBSc (2746 mana)\r\n02:59.120: Arcane Blast (4160 mana)\r\n03:04.080: Idle Regen (3093 mana)\r\n03:20.000: Heroism+Icy Veins+ABFrB3FrBSc (7169 mana)\r\n03:40.000: Heroism+Hex Shrunken Head+Arcane Blast (7386 mana)\r\n03:45.000: Heroism+Arcane Power+Serpent-Coil Braid+Hex Shrunken Head+Destruction Potion+Arcane Blast (5714 mana)\r\n04:00.000: ABFrB3FrBSc (0 mana)\r\n04:04.790: Arcane Blast (339 mana)\r\n04:05.880: ABFrB3FrBSc (105 mana)\r\n04:09.730: Mana Gem (378 mana)\r\n04:09.730: ABFrB3FrBSc (3378 mana)\r\n05:23.080: Arcane Blast (8561 mana)\r\n05:37.920: Idle Regen (5367 mana)\r\n05:40.000: Icy Veins+Hex Shrunken Head+Arcane Blast (5900 mana)\r\n05:45.000: Icy Veins+Serpent-Coil Braid+Hex Shrunken Head+Destruction Potion+Arcane Blast (4425 mana)",
+      "PostedDate": "2008-08-12T04:36:54.193-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "\"It looks like this character is too complex for reconstruction\"\r\nHow is that? Is it the gear or the spec making it that hard? Is there anything I can do (swop in some gear or what ever) to make it reconstruct easyer? You mention \"too many cooldowns\"\r\n\r\n\"...you'll have to get the latest dev build to get this working for your character\"\r\nWhere do I find that? I tryed downloading the source code - but im no C# wiz so I couldnt find heads or tails in it - and didnt know if that was executable somehow, but I guess it needs to be compiled first.",
+      "PostedDate": "2008-08-19T23:55:34.79-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "\"Cooldowns\" mean any activatable effect like talents and trinkets. Main cause in this case is Cold Snap I believe.\r\n\r\nTo compile the source you'll need http://www.microsoft.com/express/vcsharp/ or you can wait for b16 release which should be later this month.",
+      "PostedDate": "2008-08-20T00:32:56.93-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok thanks Kavan - I guess ill wait for the b16 then. And thanks for all the good work you put into this! Its really a big help for us \"non-theoricrafters\" :P",
+      "PostedDate": "2008-08-20T03:05:05.057-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-08-20T15:11:12.9-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:19:42.37-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:06:03.233-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-21T00:00:17.077-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:35.103-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:27:03.887-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:01:40.69-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

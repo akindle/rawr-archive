@@ -1,0 +1,111 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Moonkin",
+      "DisplayName": "Rawr.Moonkin"
+    },
+    "ClosedComment": "Fixed in 2.3.14.",
+    "ClosedDate": "2010-04-12T12:01:46.423-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Attached Moonkin is wearing 4t10 (ungemmed and unenchanted) and not much else (weapon and trinket for hit cap against level 80 target).  Talents are 0/0/11 (Omen of Clarity for 2t10).\n1206 SP, 13.54% crit\n \nExpected average starfire, ignoring 2t10 is\nnon-crit = (base+sp*coef) = (1130 + 1206*1) = 2336\ncrit = non-crit * 1.5 * 1.07 (1.07 from 4t10) = 3749.28\nOverall = non-crit*(100%-13.54%) + crit*13.54% = 2527.36\n \nrawr / stats tab/ spell info /, starfire / average hit says 2527.35\n \nConclusion: Rawr gives no benefit from 2t10.  Benefit should be casts/minute * 0.1 minute duration * 6% Omen proc rate * 15% extra damage from set bonus, or about 3-4% extra damage.",
+    "LastUpdatedDate": "2017-11-27T11:00:16.02-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-02-23T18:20:53.03-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Moonkin] Ignores 2t10",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16506
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3011,
+      "FileName": "oops.xml",
+      "DownloadUrl": ".\\3011"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I don't envy anyone trying to model 2T10 for rawr.\r\nThe proc of Omen seems to be variable also depending on the group size, both the player's group and the mob group. Not to mention people poping GotW on 25man raids to force a proc.",
+      "PostedDate": "2010-03-18T09:00:09.473-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The code is in there, as far as I remember.  There have been several problems with misspellings in the set bonuses, so I'll take another look at this.",
+      "PostedDate": "2010-03-28T12:34:59.16-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Okay, I figured out what the issue is, and to be honest, it's not an easy one to solve.  It's actually a display issue.  The deal is, internally, 2T10 is modeled as a proc: 6% chance on damaging spell cast to proc 15% arcane/nature damage for 6 seconds.  Rawr.Moonkin handles procs by running them through a nifty little mathematical filter, but the display products are all done outside of that filter, which means the average spell hit/cast time displays, etc., are all based on the calculations done with no procs up at all.  This is definitely misleading, because your average Starfire hit should reflect the set bonus on the display if it's being calculated.  I assure you that the set bonus is working - equip the 2-set and check the Buffs > All Buffs display.",
+      "PostedDate": "2010-03-29T04:47:27.303-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I see the problem.\r\n\r\nWould it be possible to add a chart for the set bonuses (showing how much they'd be worth to the overall score if \"toggled\" for the current character)?\r\n\r\nPresumably, I could do that manually by editing items and adding or removing \"Lasherweave Regalia\", but I'd hate to mess up and leave my item cache in a bad state.",
+      "PostedDate": "2010-03-29T05:41:11.09-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I fixed the display issue.  My concern is that the specific issue you reported, namely that Starfire average hit doesn't change, may or may not be fixed.  I noticed that in my testing, sometimes unequipping the 2T10 set caused my spell's damage to go _up_.  I think that the effect of the set bonus at high levels of gear may be a bit underwhelming compared to the variance in stats on some of the pieces.",
+      "PostedDate": "2010-03-29T05:57:21.497-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Also, I didn't see your post, but in the latest version of Rawr, at least, there's a chart Buffs > Set Bonuses.",
+      "PostedDate": "2010-03-29T05:58:01.673-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-29T05:59:15.32-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-12T12:01:46.423-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:04:19.403-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:03:29.053-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:29:46.473-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:44.077-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:00:16.02-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

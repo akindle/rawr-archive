@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "146220",
+    "ThreadId": "43965",
+    "Html": "After trying to find an answer to this at EJ, the Issue Tracker, and this forum, I still have no idea how Optimize is intended to be used. Although I love what Rawr is trying to do, I can't help but find the program itself incredibly unintuitive and clunky. Hopefully you guys will be able to get some better documentation up for newbs like me.<br>\r\n<br>\r\nFrom these two issue tracker threads there seems to be a disconnect between the author and the users:<br>\r\nhttp://www.codeplex.com/Rawr/WorkItem/View.aspx?WorkItemId=12309<br>\r\nhttp://www.codeplex.com/Rawr/WorkItem/View.aspx?WorkItemId=12292<br>\r\n<br>\r\nThe issue: <br>\r\nTo optimize you should click the diamonds next to all the gear you currently have in your possession so it can find the best possible combination. However, this set of &quot;possessions&quot; always resets when you reload your character from the Armory. So you have to go back to &quot;Chart: Current Gear/Enchants/Buffs&quot; and manually check off each and every item you have once again...this is frustrating and annoying.<br>\r\n<br>\r\nSo, someone suggested that it automatically check off all the gear you have when you reload the armory. This makes total sense right? <strong>The armor you have equipped are obviously items you have &quot;available&quot;.</strong> However, Astrylian responds in this thread: http://www.codeplex.com/Rawr/WorkItem/View.aspx?WorkItemId=12236<br>\r\n<br>\r\n<em><span style=\"display:inline-block;width:99%\" id=\"ctl00_ctl00_MasterContent_Content_CommentsRepeater_ctl00_MessageLabel\">&quot;Again, no. The\r\nmore items you have available, the slower and more inaccurate the\r\noptimizer is. Do *not* mark everything as available. Select only items\r\nwhich are potentially useful.&quot;<br>\r\n<br>\r\n</span></em><span style=\"display:inline-block;width:99%\" id=\"ctl00_ctl00_MasterContent_Content_CommentsRepeater_ctl00_MessageLabel\">Err...what? The guy is suggesting that all currently equipped gear imported from the Armory be auto-checked so that you don't have to do it every time. Also, it should SAVE all of the items you've ever checked even after reloading your character. I have about 7-8 trinkets in my bank that I have to look up every time I reload my character, just to add it to the &quot;available&quot; list so it's counted when optimizing. Can you please make it save your &quot;checks&quot; between sessions? And yes, I know there is a &quot;save character&quot; option. It still resets your checks every time you reload your character. </span><br>\r\n<br>\r\n<br>\r\n<br>\r\nhttp://www.codeplex.com/Rawr/WorkItem/View.aspx?WorkItemId=12292\r\n",
+    "PostedDate": "2009-01-12T00:56:13.017-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "146311",
+    "ThreadId": "43965",
+    "Html": "Not saying that your suggestion is not good, I think it is great and hopefully Astrylian will do something like this.<br>\r\n<br>\r\nMeanwhile you could use rpgo-Character Profiler and save your character data and then import this from within Rawr (File =&gt; Load from Character Profiler).<br>\r\n<br>\r\nThis way you would have a profile where every single piece of armor you own is checked. Unfortunately this does not put a check (diamond) next to the enchants you already have or the gems you are already wearing but at least it saves you a lot of time.<br>\r\n",
+    "PostedDate": "2009-01-12T07:09:28.967-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "146371",
+    "ThreadId": "43965",
+    "Html": "There are two things going on here:<br>\r\n<br>\r\nA) Marking gear equipped on the Armory as available. That's a great suggestion, and is already done, and will be in the next version.<br>\r\n<br>\r\nB) Available items being 'reset' when reloading from the Armory, or re-opening your character, or really ever. This is a bug. I've heard of a few people encountering this, but I've never been able to reproduce it. Can anyone give more details about this bug? How do you make it 'reset' your available items? When you say reset, are we understanding the same thing (all available items are cleared; nothing is marked available)?<br>\r\n",
+    "PostedDate": "2009-01-12T09:49:37.137-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "146416",
+    "ThreadId": "43965",
+    "Html": "I'll do a few tests today when I get home from work, but yes -<br>\r\n<br>\r\nYou have a character open with a bunch of diamonds checked as available.<br>\r\nYou go into the menu and click &quot;Reload Character from Armory&quot;<br>\r\nALL your diamonds are now cleared (not available)<br>\r\n<br>\r\nI'm not sure if it's reset when loading a saved character. I don't think it is. It's mainly <strong>reloading</strong> the character from the armory.<br>\r\n",
+    "PostedDate": "2009-01-12T12:17:22.933-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "146579",
+    "ThreadId": "43965",
+    "Html": "I recently responded to <span><a href=\"http://www.codeplex.com/Rawr/WorkItem/View.aspx?WorkItemId=12309\">Issue #2309</a>, which has to do with this, including how I am able to reproduce it 100%.</span>",
+    "PostedDate": "2009-01-12T23:29:33.217-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "147228",
+    "ThreadId": "43965",
+    "Html": "1. I load my character from the Armory<br>\r\n2. I choose buffs, fight duration and stuff<br>\r\n2. I select available items<br>\r\n3. I optimize -&gt; my gear gets changed<br>\r\n4. Now I reload my character from the armory (in order to get my old gear back)<br>\r\n5. The buffs, fight duration and stuff stay as they should, but the available items get cleared/unselected.<br>\r\n<br>\r\nHappens to me every time...<br>\r\n<br>\r\n",
+    "PostedDate": "2009-01-14T17:58:49.54-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "147248",
+    "ThreadId": "43965",
+    "Html": "Already been fixed.<br>\r\n",
+    "PostedDate": "2009-01-14T21:02:44.073-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

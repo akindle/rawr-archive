@@ -1,0 +1,105 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Retribution",
+      "DisplayName": "Rawr.Retribution"
+    },
+    "ClosedComment": "Fixed&#58; &#39;Melee Avoid &#37;&#39; has been removed and new optimizable labels have been added.",
+    "ClosedDate": "2010-06-18T04:46:24.81-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I'm finding that the \"Melee Avoid %\" optimizer setting is trying to cap out my Expertise so that my attacks aren't Parried or Dodged.  While I believe it's an obtainable goal for both, it does rather limit my gear options to strive for both.\n \nI see in the DK models that you can set the optimizer to just reaching the Dodge cap, or just setting a certain Expertise skill level to achieve.  I don't want to turn this into a \"you don't need Expertise\" thread.  All I want to know is if this is this something that can be done with the Ret model?",
+    "LastUpdatedDate": "2013-05-16T05:20:29.91-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-06-09T12:17:49.497-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Retribution] Optimizer Separate Dodge/Parried attacks",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17938
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "You can't be parried when attacking the back of a mob. It sounds like either...\r\nA) You've got it set to be attacking from the front. You should fix that.\r\nor\r\nB) There's a bug with the Melee Avoid % calculation that's making it calculate as if you were attacking from the front.",
+      "PostedDate": "2010-06-09T12:21:15.307-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I've got the \"Time in front of mob\" set to 0%.  Maybe I'm not setting the optimizer right...I should have \"Melee Avoid % <= 0.00\", right?",
+      "PostedDate": "2010-06-09T12:45:45.75-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm gonna go for bug right now...I've flagged every item in the game with Expertise on it as available for the Optimizer to crunch, selected all expertise enchants and even selected Glyph of Vengeance with Vengeance as the active seal, and it still can't optimize it successfully..the calc gets to about -76.3125 before giving up.",
+      "PostedDate": "2010-06-09T13:13:45.84-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yeah, sounds like a bug then.",
+      "PostedDate": "2010-06-09T14:05:15.037-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-06-10T00:37:33.283-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Expertise is working normally.  Dodge and parry are indeed separate and accounting for mob level.  Parry is guided entirely by the '% time in front' setting.\r\n\r\nIt's weird... I'm not sure atm why Ermad implemented it like this, but it would appear that the \"melee avoid%\" optimizable stat is currently implemented as a \"chance for melee hit to land%\" and it's used inside the ret module in several places as precisely that. (even though the name would indicate otherwise).\r\nSo you would currently want to optimise using \"melee avoid%\" >= 100% (up to 2.3.18 and on until the ret release notes say otherwise).\r\n\r\nThis stat accounts for dodge, parry and misses. So it'll optimise both hit and  expertise.  There's currently no way to force meeting the expertise cap, but not caring about the hit cap.\r\n\r\nI'm unsure about how to best fix this atm.  Change the name, or flip the stat around, or separate miss and dodge/parry as optimisable stats.\r\n\r\n",
+      "PostedDate": "2010-06-10T02:05:36.337-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Setting it to >=100% does make it work proper.  Weird, but at least it works :D",
+      "PostedDate": "2010-06-10T06:24:54.587-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Please rename it, un-mark it an optimizable stat, and make a new optimizable stat named Avoided Attacks %, which returns the inverse of the old one. ",
+      "PostedDate": "2010-06-10T18:25:19.567-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Please see \"The Fight for Uniformity\" thread in discussions.",
+      "PostedDate": "2010-06-11T09:24:06.247-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-06-18T04:46:24.81-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:40:45.093-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:28:13.26-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:29.91-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

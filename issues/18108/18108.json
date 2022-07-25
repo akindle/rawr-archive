@@ -1,0 +1,180 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSWarr",
+      "DisplayName": "Rawr.DPSWarr"
+    },
+    "ClosedComment": "I&#39;m going to go ahead and close this. It won&#39;t be worked on before Cata, where it won&#39;t exist anyway.",
+    "ClosedDate": "2010-09-16T12:35:10.51-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Looking for a mode (similar to the \"PTR mode\" in the past) to factor in the live bugged behavior of Fury.  In particular, there are two major issues (reference: http://elitistjerks.com/f81/t37680-depth_fury_dps_discussion/p128/#post1672984):\n \nBug 1: If HS is queued while the OH hits, the OH white hit follows the yellow hit table.  This factors into both rage generation and Crit mechanics (nullifying the so-called Crit Cap).  Seems pretty straightforward to force this behavior into the model.  Fury only issue.\n \nBug 2: If Deep Wounds is refreshed within .2-.25s after a tick, you get free DW damage.  I won't go into the specifics here, but read the second half of the post linked above.  The effects of this increase Crit even further, and means that we're putting out even more damage than modeled.  This seems trickier to to implement, but could be roughly implemented by implementing a \"(C/5)*A\", where C is Crits per Second and A is Average DW Inflation.  I have no idea how well that would actually work out in practice (I predict that it's overvaluing the benefit by quite a bit; a potential fix to help throttle it until more detailed analysis can be performed would be to simply halve that resulting number).  Fury and Arms issue.\n \nThese issues are >NOT TRIVIAL<.  The net effect is a removal of the Crit Cap and a further inflation of Crit beyond that (very realistically pushing Crit to be more valuable than Str), Hit over the Yellow cap being completely worthless (literally almost zero, far less than is even currently providing), as well as increased rage generation from the offhand to the point of essentially infinite rage in most normal situations.  The first issue is an easy fix, but a short longevity (will be gone come pre-Cata patch, whenever that may be), while the latter is a more convoluted implementation, but is expected to stay around for some time.\n \n----\n \nAs a random aside, DW Munching (basically the opposite of the DW Inflation, whereby nearly simultaneous crits only trigger one instance of DW, most often when swing timers are synced or both hands of a WW land, and both hands crit in each instance) isn't currently modeled, is it?\n \nAs a further aside, I have an inkling that the DK on-next-swing mechanic with Rune Strike has the same issue, though I doubt it's quite so far-reaching, given the fundamental differences between the two abilities.",
+    "LastUpdatedDate": "2013-05-16T05:20:23.413-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-07-01T05:24:02.41-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Feature Request.DPSWarr.Fury] Enable \"Bugged Mode\"",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 2,
+    "Id": 18108
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "To give an idea of how big a deal this is, it makes the model currently unusable at ICC25HM gear levels, because our best stat is believed (and rightfully should be, but is not in practice) to be soft-capped, instead of what actually happens, which is a ramping up of the stat's value at this point.",
+      "PostedDate": "2010-07-01T11:13:20.68-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T10:48:33.557-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T13:57:14.71-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T14:27:44.427-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T15:26:21.387-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T15:44:34.057-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Would it be possible to at least get the first bug implemented (I can't believe I actually just requested a bug being intentionally placed into a program) before the build tomorrow?",
+      "PostedDate": "2010-07-02T18:50:39.903-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "ya... no. Ebs is on vacation and I don't have the direct expertise with Fury to implement it in his magic box",
+      "PostedDate": "2010-07-02T19:18:47.343-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "*tear*  Ah, well.  :)",
+      "PostedDate": "2010-07-02T22:33:21.847-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Forgive me for being out of sync with this stuff, I've actually quit playing WoW back in March; if there's something I'm missing please let me know.\r\n\r\nBug 1 seems difficult to nail down without somehow determining how often HS is queued.  There's a difference between HS usage and HS queue time.  It is possible to have 100% \"HS Usage\", in the sense that you can re-queue HS in the period between when HS goes off and when your next white attack would be.  But that will not be instantaneous, so 100% HS Usage does not correlate with 100% HS Queue Time.\r\n\r\nIf you're using a scroll wheel or some other way to be constantly hitting your HS hotkey, that's still not 100% HS Queue Time (although it is calculatable, it's (SwingTimer-Lag)/SwingTimer)\r\n\r\nThe biggest danger with Bug1 is the side effect it would have when you do not have 100% HS usage.  50% HS Usage means that 50% of your white swings are converted...but at what point do you queue them?  Right after a white swing?  Halfway between white swings?  The timing would be inhuman.\r\n--\r\nBug 2 is also difficult to handle right now, but more doable.  We'd need to analyze the frequency of ability/white hits within 0.25s of each other.  I'm sure there's a simple way, I just don't know it off the top of my head :P\r\n\r\nAs for the DW Munching (same speed weapons and whirlwind), if it's not already happening that should be a super easy fix.",
+      "PostedDate": "2010-07-08T12:07:43.69-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-09T12:30:42.78-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-09T12:32:47.13-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "For issue one, even if it's a rough hard-coded \"85%\" or whatever, that would be infinitely better than the \"0%\" that is effectively currently in effect.\r\n\r\nFor issue two, you'd want to make sure that it's within .20 (probably a safer number to work with), and not at exactly the same time (double WW crits).\r\n\r\nI don't think DW munching is currently in, but you guys would know better than I would.\r\n\r\n",
+      "PostedDate": "2010-07-09T14:09:10.12-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Actually, as to bug 1, I've found that stealing a trick from the DK playbook almost ensures an 85%+ queue time, and that's just turning all abilities into macros and adding /castrandom !Heroic Strike   at the end of them.  This is essentially what most DK tanks do to Rune Strike to ensure they use it every chance they can without having to constantly push the button.  Also, if you understand this bug, you can get to the infinite rage situation a lot faster then you'd think with even a T9 geared 80.  Also, I believe the same happens for Cleave, but Cleave doesn't get the bonus from Glyph of Heroic Strike.  That said, I have seen some higher up start using cleave on single targets though due to threat issues.",
+      "PostedDate": "2010-07-20T12:35:58.6-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "DKs and RS is a totally different ballgame from Warriors and HS/Cleave.\r\n\r\nCleave affects MH hits the same way HS does.  Macroing all abilities as (for example):\r\n\r\n/run Whirlwind\r\n/run !Heroic Strike  OR  /run !Cleave\r\n\r\n...is possible, and I personally do it is SPECIFIC situations, but only if you know your rage, can ensure that you hit is consistently and insanely rapidly, and is adjustable to your situation.  I personally run three copies of my main action bar, and just change the bar according to my needs.  If I have a set single target and can ensure constant rage generation, I use the bar with HS macroed.  If I know that I'll be repeatedly using Cleave, I'll switch to that bar.  and if I'm changing, or ever have any doubts whatsoever as to the consistency of my rage gen, then I go to the bar with no auto-queuing, and manually HS/Cleave.\r\n\r\nWe shouldn't be having issues with HS and pulling.  If it ABSOLUTELY comes down to it, we have Pally Salv us.  The whole \"HS causes a truckload of bonus threat ZOMG!\" is a bunch of phalooey.  Stop trusting Blizzard tooltips.",
+      "PostedDate": "2010-07-20T21:46:30.43-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It's definitely not inhuman timing.\r\n\r\nIt's not necessary to have 100% HS (/cleave) queue time, only that it is queued prior to your offhand hit.  In the best case scenario, where your offhand hits slightly before your main hand, you have almost your entire swing time to queue HS.  With Titan's Grip, even accounting for haste and flurry, this is 2+ seconds.\r\n\r\nThe difference in weapon speed of your weapons becomes important.  If you have a 3.7 MH and a 3.6 OH, you start out in the best case scenario, and slowly drift away from it until 36 swings (over a minute) later when you are in sync and start again.  If you disengage combat at any time you return to the best case scenario.\r\n\r\nThe worst case scenario is if you have identical speed weapons, in which case they sync up immediately unless you play difficult tricks to desync them, and you never get any benefit from the bug.",
+      "PostedDate": "2010-07-26T00:40:54.15-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "No, with identical speed weapons, it depends on how you engage combat.  If you engage combat correctly, it starts off perfectly desynced (MH hits instantly, OH hits exactly 1/2 its swing timer after the MH hits).  It's too much hassle to deal with on a normal basis for it to be worth the minuscule gains (read: you'd have to re-engage correctly any target you switch to another target, or any time you move out of range of a target), though it was certainly worth it back in BC.\r\n\r\nWorking off of a more typical different-speed MH/OH setup... Yes, sometimes you may have ~3.6 seconds to queue up HS.  Just as often as that happens, though, will be the situation where you only have ~.1 second to queue up a HS, between the time that your MH consumes the previous HS queue and an impending OH swing lands.\r\n\r\nAs it's a hack anyways, I'm totally okay with a 75-80% \"ugly hack\" to assign the rate manually.  But sooner would be better in this case, as it's severely mis-calculating (in regards to actual ingame mechanics) our performance and how best to optimize it.  I currently am completely ignoring everything Rawr.DPSWarrior is telling me in regards to Fury and gemming, and will start to have to completely ignore it for completely for all gear recommendations, once I get an ArP trinket and have gear flexibility.",
+      "PostedDate": "2010-07-26T15:20:37.28-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Read: I'm in a situation where I'm gearing and gemming for ArP, and as soon as I have a massive amount of itemization freed up for other stats, Haste/Crit/Str/Hit will all be mis-valued, and I won't be able to trust most of what Rawr is telling me.",
+      "PostedDate": "2010-07-26T15:23:16.65-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You are right about a perfect combat engage (no weapon swing queued unless you are guaranteed to be in melee range) leaving you 50% opposed.  In any realistic fight with movement that is extremely difficult and not a proven DPS gain.\r\n\r\nYou have made the mistake of averaging over too long a period when you say \"just as often as that happens, though, will be the situation where you only have ~.1 second to queue up a HS\".  With 0.1 speed difference and reasonable values of haste and flurry uptime you have over a minute before you even get to the 50% desynced scenario.  Re-engaging at any time (target switch, out of range, spin around) puts you back in the best case timing.  Combat log analysis shows it's quite normal to have 95%+ use of this bug.\r\n\r\nI'm not content with a hard-coded value.  Can it be modeled that off-hand hits use the yellow hit table if you had enough rage when they hit to queue heroic strike (but not consume the rage)?  I assume this is how Heroic Strike itself is modeled -- that it just checks for the rage to use the ability when it would have fired off.  Or is there otherwise somewhere in the code with the idea of a queued on-next-attack ability?",
+      "PostedDate": "2010-07-28T02:09:16.153-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You have made the mistake of averaging over too long a period when you say \"just as often as that happens, though, will be the situation where you only have ~.1 second to queue up a HS\". With 0.1 speed difference and reasonable values of haste and flurry uptime you have over a minute before you even get to the 50% desynced scenario. Re-engaging at any time (target switch, out of range, spin around) puts you back in the best case timing. Combat log analysis shows it's quite normal to have 95%+ use of this bug.\r\n\r\nWell, when I noted that the swing timers go through the gamut of timing of swing landing times relative to each other, that's not to say that I don't think that I don't think that it's possible to achieve a very high rate of HS queue affecting OH white hits ratio.  Anywhere from 75-80+ should be completely doable, and I have a feeling that ~90% is totally possible.  I haven't quite looked at the numbers yet (because the nature of the mechanics make browsing through lots of logs a very annoying thing to be sure, though looking through logs to see actual vs expected OH hit rate would be able to give some quick, easy insight).  I'd actually prefer a a quick, easy box that we can input a XX% rate, which would represent how often our OH melee swings are affected by the yellow hit table instead of the typical white OH one.\r\n\r\nI'd normally agree with you on the \"no hard-coded, hacky style of implementation\", but... Not in this case.  It's an implementation of a bug that will be around for a MAXIMUM of 2-3 months.  On top of that, the  nature of this particular mechanic mean that the rate of how often HS is queued in relation to OH swings is not exactly based off of lag, or reaction, but off of a spammable button, which has a totally different timing associated with it, as far as I can tell.",
+      "PostedDate": "2010-07-28T06:53:27.44-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Nix the first paragraph of that last message.  I really hate this text entry system.  *sigh*",
+      "PostedDate": "2010-07-28T06:54:05.583-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-08-01T03:36:23.24-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Fury's still completely unusable without the first bug implemented.  :(",
+      "PostedDate": "2010-08-11T13:13:21.053-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I believe the correct way to implement the hacked \"assume 100% queue\" version is to change CombatTable.cs around line 106 to something like the following, resulting in OHAtkTable getting the yellow miss chance:\r\n\r\n            if (useSpellHit) {\r\n                Miss = Math.Min(1f - tableSize, Math.Max(0.17f - (StatConversion.GetHitFromRating(StatS.HitRating, Char.Class) + StatS.SpellHit), 0f));\r\n            } else if (isWhite && !isMH && calcOpts.OHNoMissPenalty) {\r\n                Miss = Math.Min(1f - tableSize, combatFactors._c_ymiss);\r\n            } else {\r\n                Miss = Math.Min(1f - tableSize, isWhite ? combatFactors._c_wmiss : combatFactors._c_ymiss);\r\n            }\r\n\r\nin this example I've added a calcOpts.OHNoMissPenalty option that can be created in the various CalculationOptions... files.  You could leave that out to hard code it on.  Such an option would be added similarly to how PTRMode is implemented.",
+      "PostedDate": "2010-08-25T01:16:38.87-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-16T12:35:10.51-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "IHATEYOUJOTHAY WHYWOULDYOUCLOSETHISACTIVEISSUE RAHRAHRAH ICAN'TBELIEVEYOUWOULDDOTHISTOME THISISANAFFRONTTODPSWARRIORSEVERYWHERE\r\n\r\nYeah, I think I'm don.e  No biggie.  :P",
+      "PostedDate": "2010-09-16T14:16:31.503-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:28:05.2-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:23.413-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

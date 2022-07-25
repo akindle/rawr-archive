@@ -1,0 +1,146 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Mage",
+      "DisplayName": "Rawr.Mage"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-06-01T16:34:49.397-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "During some otimisation with the latest version I noticed a very odd suggestion on gemming and enchanting. It turns out the stats Mp5, Intellect and Spirit are much higher than ever expected. Unfortunately this led to a generally lower dps ratings, which were expected afterwards. In addition Haste Rating had been set to negative value, which seems even more irritating.\n \nThe current values of the Fireball Template are: Mp5 16.23, Intellect 10, Spirit 8.18, Spell Power 2.6, Crit Rating 2.54, Haste Rating -2.55 . Only Spell Power and Crit Rating seem reasonable (maybe the absolute value of Haste Rating as well, but without the sign of course).\n \nCurrently I'm looking for a possibility to manually change these values, otherwise the optimiser remains useless. How (else) can this be fixed? Could be an overflow somewhere in the datafile be the reason?\n \nPS: the values for other equipments are fine (eg. Frostfire Bolt or Frostbolt). I use them less often.",
+    "LastUpdatedDate": "2017-11-27T11:02:02.62-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-06-01T11:21:59.063-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Mage] Odd relative stat values",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17877
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3665,
+      "FileName": "sig_fb_bad.xml",
+      "DownloadUrl": ".\\3665"
+    },
+    {
+      "FileId": 3666,
+      "FileName": "Seldrien_Fireball_fixed.xml",
+      "DownloadUrl": ".\\3666"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Please attach character file to assist in isolating the possible issue.",
+      "PostedDate": "2010-06-01T12:31:29.77-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "In order to fix this, I have accidentally overwritten the old file with new character information from the Armory. The good thing: it worked. On the other hand I cannot attach it any more, because failed to make a backup. I'm sorry for this unprofessional work.",
+      "PostedDate": "2010-06-01T13:42:25.383-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Either way, I can pretty much guarantee it was because you didn't have your mana replenishment buffs activated.",
+      "PostedDate": "2010-06-01T14:13:23.93-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yeah, you just need to readthe giant red disclaimer on the stat values chart. This doesn't sound like a bug, it sounds totally accurate. ",
+      "PostedDate": "2010-06-01T16:30:40.323-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-06-01T16:33:37.543-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "\r\n\r\n\n\n** Closed by Jothay 6/1/2010 4:33 PM",
+      "PostedDate": "2010-06-01T16:34:08.543-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "meow mix meow mix please deliver!",
+      "PostedDate": "2010-06-01T16:34:09.053-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-06-01T16:34:49.397-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-06-08T09:22:13.6-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I know this was marked as closed, but I recently xfered my Troll mage to play with some alliance buddies and 2.3.18 has been giving me weird results as mentioned.  It is not just the relative stat values if you look at any idividual slot and see the sorted list on the right it is easily off.  Same running optimization.\r\n\r\nGood news is I think I have debugged it.  I re-loaded myself in from the Armory and it was fine.  Then I started adding things back for myself such as flame cap etc.  When I checked \"enable hasted evocation\" which I always had before relative stat values and the lists went all wonky.  Uncheck and it was back to normal.  This happens with or without Advanced constraints.   Not sure if there are any other triggers, but this is an easily repeatable bug.  Check it out.  \r\n\r\nUploaded the bad one with Hasted Evocation checked.  Know I know this is a fire spec config so no Veins, but I get the same error in my arcane configs in 2.3.18 as well and am assuming it should be set for speed pots, HSA and Lust anyway.\r\n\r\n",
+      "PostedDate": "2010-06-08T09:22:14.18-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Did you follow the workaround listed in the other bug, about disabling incremental optimizations until 2.3.19? (I think that's the right name, check the other bug of this). ",
+      "PostedDate": "2010-06-08T12:44:01.533-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-06-09T00:11:04.21-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I remember to improve the treatment of spirit for my human mage, which corresponds with jhall's problem changing racial traits. In my opinion this should not lead to any overestimation of both Mp5 or Intellect. To clarify this again: this was the overestimation done by the optimiser not any manually implemented relative stat values. These were given by the tool and I only looked at them because of the odd behaviour of the optimiser.\r\n\r\nSome guess on this issue because of the speed in which the optimiser comes to a solution: I worked on a quite old template - I did optimisations over and over again and saved them in the same template. Maybe there are information stored over the time which leed to this miscalculation. Because the \"refresh\" from the Armory fixed both the misscalculation and the time in which the solutions are performed.",
+      "PostedDate": "2010-06-09T00:11:04.73-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:16:44.847-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:21.047-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-21T00:00:19.307-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:28:17.58-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:32.66-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:02:02.62-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,266 @@
+[
+  {
+    "Id": "461696",
+    "ThreadId": "217867",
+    "Html": "<p>Would it be possible to release the next one relatively fast? I kinda destroyed the Combat tree in .19 and fixed this now.</p>",
+    "PostedDate": "2010-06-30T08:23:35.35-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "461711",
+    "ThreadId": "217867",
+    "Html": "I could use a new release as well.  I had a bad performance regression in .19 on top of Moonkin's already bottom-of-the-pile performance.  All of that should be fixed now.",
+    "PostedDate": "2010-06-30T09:13:08.067-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "461723",
+    "ThreadId": "217867",
+    "Html": "I'll try to fix a few of the items that were acting up in the last build this evening, though it maybe later than sooner (since I just recently bought a new i7 with motherboard, so I would like to install that before raid tonight.",
+    "PostedDate": "2010-06-30T09:45:19.627-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "461745",
+    "ThreadId": "217867",
+    "Html": "<p>The DPSWarr ArP issue kind of begs a new release too but I'd rather wait a tick to see if the fury optimize issue can be looked at by Ebs.</p>",
+    "PostedDate": "2010-06-30T10:34:30.92-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "461787",
+    "ThreadId": "217867",
+    "Html": "I, too, would like to see a new release, as I did work on the Ruby Sanctum trinkets today, implementing the caster dps trinket, fixing the healing trinket, and making the tank trinket work in ProtPaladin.",
+    "PostedDate": "2010-06-30T12:48:43.28-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "461794",
+    "ThreadId": "217867",
+    "Html": "<p>Lets plan for Saturday. So check in by Sat morning, please.</p>",
+    "PostedDate": "2010-06-30T13:03:59.113-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "461871",
+    "ThreadId": "217867",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>dopefish wrote:</strong><br>I had a bad performance regression in .19 on top of Moonkin's already bottom-of-the-pile performance.</blockquote>\r\n<p>Is it any worse than Warlock's performance?&nbsp; It's pretty slow now-a-days.&nbsp; I tried what I thought would be a huge improvement, before moving on to finer performance details, but instead it made it worse :(.</p>",
+    "PostedDate": "2010-06-30T15:01:01.17-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "461878",
+    "ThreadId": "217867",
+    "Html": "<p>WTB Performance Analysis (Analysises? Analysisses? Analysi?) for each model and the top 3-5 most performance intensive functions listed in a standard calculation. Then we can discuss ways to make those functions more performant. However we might want to move that to a new thread.</p>",
+    "PostedDate": "2010-06-30T15:15:01.87-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "462057",
+    "ThreadId": "217867",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Jothay wrote:</strong><br>\r\n<p>WTB Performance <span style=\"text-decoration:underline\">Anal</span>ysis (<span style=\"text-decoration:underline\">Anal</span>ysises? <span style=\"text-decoration:underline\">Anal</span>ysisses? <span style=\"text-decoration:underline\">Anal</span>ysi?) for each model and the top 3-5 most performance intensive functions listed in a standard calculation. Then we can discuss ways to make those functions more performant. However we might want to move that to a new thread.</p>\r\n</blockquote>\r\n<p>&nbsp;reported for anal spam :)</p>",
+    "PostedDate": "2010-07-01T01:52:25.413-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "462060",
+    "ThreadId": "217867",
+    "Html": "<p>Ret has a&nbsp;performance issue with haste.&nbsp; Each discrete value of haste causing the calculation of a new ability usage table. (cached in memory per value of haste).</p>\r\n<p>And 2T10 causing a large (variable) number of calculations of ability usage tables for each discrete value of haste. (and I don't even understand the reasoning/math behind why it's doing things like this).</p>\r\n<p>&nbsp;</p>\r\n<p>Last few weeks I've been working on a linear optimisation approach to calcualting the ability usage table, and while it looked great on paper and worked a charm (and fast) on the LO engine used in my company, it seems to be performing awfull in performance on C# .NET&nbsp; Still working on it</p>",
+    "PostedDate": "2010-07-01T02:01:13.313-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "462322",
+    "ThreadId": "217867",
+    "Html": "<p>Can you elaborate a bit what kind of linear optimisation you're doing and how you're doing it in C#? I'm asking because Mage model is more or less a large LP solver and if you need something similar I could transfer some of it to the Base.</p>",
+    "PostedDate": "2010-07-01T12:22:50.8-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "462573",
+    "ThreadId": "217867",
+    "Html": "<p>The basics behind it...&nbsp; you feed the LO engine a possible solution (in my case, hit each ability once, then wait for everything to come off cd, and repeat). And let it optimize this solution. Specifically, squeeze more abilities into the time constraint.</p>\r\n<p>The results I'm getting from the LO engine are identical to the sim ret is doing now (without 2T10). With a minor tweak to the rules, I can even turn the jagged haste curve into a smoothed out curve.&nbsp; The nice part is that the LO solver can handle 2T10 while only adding a very small amount of calculation time. Whereas the ret sim now makes 2T10 take 10-15 more time than a non 2T10 setup.</p>\r\n<p>The LO engine finds the&nbsp;result just a bit faster than the ret sim does now. But that LO engine is highly tuned C++ code.<br>I translated a part of the LO engine to a C# class, and compared performance to just using that same part in the LO engine.<br>Extrapolating the result, translated to C#, the LO solver would end up being a factor 50+ times slower than the already slow 2T10 sim.&nbsp; From what I can see, the vast majority of time is being wasted in the .NET memory allocator and garbage collector.&nbsp; The C++ code uses a hand crafted assembler and multi thread aware class purpose allocator/deallocator and barely spends any time in memory management, even though it's doing tons of new/delete's.</p>\r\n<p>It was an interesting experiment, but I'm going to have to cancel this line of thought.</p>\r\n<p>&nbsp;</p>\r\n<p>I'll try poking you on MSN over the weekend to&nbsp;talk about this and have a see&nbsp;if your mage&nbsp;LP might do the trick.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-07-02T03:34:42.293-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "462743",
+    "ThreadId": "217867",
+    "Html": "<p>If C# is ever 50x slower than C++, it means you're doing something different/wrong in the C#. Feel free to ask us for help on optimizing that.</p>",
+    "PostedDate": "2010-07-02T10:38:50.09-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "463362",
+    "ThreadId": "217867",
+    "Html": "<p>Re: Build?</p>",
+    "PostedDate": "2010-07-05T00:12:10.277-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "463426",
+    "ThreadId": "217867",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Astrylian wrote:</strong><br>\r\n<p>If C# is ever 50x slower than C++, it means you're doing something different/wrong in the C#. Feel free to ask us for help on optimizing that.</p>\r\n</blockquote>\r\n<p>It's more a matter that there's no way to work around the memory manager, which is where the major speed is to be gained.<br>If I disable the special allocator/deallocator in the C++ code, and let it use the regular new/delete's, it slows down by a factor 7-10.&nbsp; There's some more 'tricks' that have been used in the C++ code that have no equivalent in C# which if I disable those, bring the speed down even more.<br><br>But someone at work pointed out a flaw in my approach to begin with.&nbsp; I was trying to&nbsp;LO a sim. not trying to&nbsp;LO a system. I get the results I want, but they're the same as the sim, so I could just as well use the sim itself, which is always going to be faster.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-07-05T05:11:18.407-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "473898",
+    "ThreadId": "217867",
+    "Html": "<p>Sorry for dragging up the old post but I know how y'all dislike discussion board clutter.</p>\r\n<p>With several of the performance/optimization issues resolved and the Boss handler updates, I was wondering if a new release is coming soon. In the Issue Tracker there was a comment about releasing .21 on Monday but its now Wednesday and nothing new. All of your hard work is appreciated and I am looking forward to the improvements in both the Rawr2 and Rawr3 programs.</p>",
+    "PostedDate": "2010-07-28T14:25:32.153-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "473967",
+    "ThreadId": "217867",
+    "Html": "<p>We actually have an internal Developer discussion on the very subject.&nbsp; Just getting all of our ducks in a row, or whatever.&nbsp; You can expect a new release build extremely soon (within the next few days).</p>",
+    "PostedDate": "2010-07-28T19:07:02.507-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "473975",
+    "ThreadId": "217867",
+    "Html": "Yeah, I tried to release .21 on Mon, and just wasn't able to. Same on Tue. Trying again tonight. ",
+    "PostedDate": "2010-07-28T19:31:45.977-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "474081",
+    "ThreadId": "217867",
+    "Html": "<p>...And tonight's attempt failed too. Trying again tomorrow night, sorry guys.</p>",
+    "PostedDate": "2010-07-29T01:21:29.87-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "474093",
+    "ThreadId": "217867",
+    "Html": "Heh.  ",
+    "PostedDate": "2010-07-29T01:44:18.3-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "474304",
+    "ThreadId": "217867",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Astrylian wrote:</strong><br>\r\n<p>...And tonight's attempt failed too. Trying again tomorrow night, sorry guys.</p>\r\n</blockquote>\r\n<p>&nbsp;Translation: I'm trying to beat my friends at SC2.</p>",
+    "PostedDate": "2010-07-29T08:10:27.79-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "474310",
+    "ThreadId": "217867",
+    "Html": "Which reminds me, I really need to get going with the story mode. I'm only 7 missions into the storyline....",
+    "PostedDate": "2010-07-29T08:16:20.287-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "474316",
+    "ThreadId": "217867",
+    "Html": "I completed the campaign last night, now to go back for some achievements I missed",
+    "PostedDate": "2010-07-29T08:35:33.27-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "474330",
+    "ThreadId": "217867",
+    "Html": "Curses for being on business travel.  I only just finished downloading and installing SC2.  ",
+    "PostedDate": "2010-07-29T09:18:00.923-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "474340",
+    "ThreadId": "217867",
+    "Html": "<p>Haven't even bought SC2. So no, that's not it.</p>",
+    "PostedDate": "2010-07-29T09:39:30.87-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "474341",
+    "ThreadId": "217867",
+    "Html": "<p>I've been weaving missions in between raids, but tonight I've specifically set aside for focusing on one thing: STARCRAFT.&nbsp; Sorry guild, raid progression can wait, I've got Zerg to slaughter.</p>",
+    "PostedDate": "2010-07-29T09:40:24.687-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "474358",
+    "ThreadId": "217867",
+    "Html": "<p>Meh our guild has already felt the Starcraft syndrome. Canceled Monday's raid because of people attending the Midnight release and yesterday's raid was cut short early (only did Halion 25 on normal and didn't attempt Lich King 25 HM attempts) because of lack of people playing Starcraft.</p>",
+    "PostedDate": "2010-07-29T10:17:55.573-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "474503",
+    "ThreadId": "217867",
+    "Html": "<p>Tuesday's raid was completely canceled (which was fine for me, as I wasn't around anyways - it was my 21st BDay!)&nbsp; Wednesday, we have everyone sign on, but as soon as raid time comes, we get an announcement that we're nixing raid for the night.&nbsp; Ugh.&nbsp; If we're not raiding, just tell us beforehand, so I don't block off the night to raiding.&nbsp; Thanks, guys.&nbsp; :/</p>",
+    "PostedDate": "2010-07-29T16:44:25.163-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "474552",
+    "ThreadId": "217867",
+    "Html": "<p>Try being specifically recruited only to find out your second (sometimes even third ) string blocking off the time several nights each week (just in case), then having to try to find a PuG over the weekend.</p>",
+    "PostedDate": "2010-07-29T20:32:06.263-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "474561",
+    "ThreadId": "217867",
+    "Html": "<p>My guild's attendance has been even, if not slightly up, from before SC2's release. &nbsp;Only one person I'm aware of has been playing SC2, and he has been raiding this week.</p>",
+    "PostedDate": "2010-07-29T20:55:28.36-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "474568",
+    "ThreadId": "217867",
+    "Html": "<p>Make that three days in a row of no raiding, though this third day has less to do with SCII than with a confluence of standard MIAs.&nbsp; :P</p>",
+    "PostedDate": "2010-07-29T21:10:51.42-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "475414",
+    "ThreadId": "217867",
+    "Html": "<p>No chance at SC2 here.&nbsp;&nbsp; Got my WOW beta key, so whatever bits of free time I have, are gonna go into that :)</p>",
+    "PostedDate": "2010-08-02T05:57:25.84-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "477829",
+    "ThreadId": "217867",
+    "Html": "<p>.21 made the Muti rogue pretty much unusable, which seems to be fix'd on the Source Code (go Fes!), but I guess fixing one model isn't reason enough to make a whole new release so soon?</p>",
+    "PostedDate": "2010-08-08T16:28:23.233-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

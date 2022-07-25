@@ -1,0 +1,82 @@
+[
+  {
+    "Id": "226139",
+    "ThreadId": "66563",
+    "Html": "<p>Need someone to insert this snippet into the AbilityModel.cs, but before you do, please confirm I can type if statements as I did (where'd then go?)&nbsp;and that a power function exists via ^.&nbsp; I've never coded in C#, but I pulled this ShoR from TheckHD's Matlab TPS Analysis - <a href=\"http://sites.google.com/site/theckhd/mfiles/ability_recalc.m?attredirects=0\">http://sites.google.com/site/theckhd/mfiles/ability_recalc.m?attredirects=0</a>&nbsp;- and inserted it into the code as I think it should look.</p>\r\n<p>It's not exactly clear what ShieldOfRighteousnessBlockValue and JudgementBlockValue are unless those are set from T8 Set bonus and Libram proc, respectively, then I have to ask where Stats.HolyShieldBlockValue went.&nbsp; *shrug*&nbsp; Regardless, as long as all of that combined is a final block value, this is the code you want.&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>case Ability.ShieldOfRighteousness:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>&nbsp; if (Stats.BlockValue + Stats.ShieldOfRighteousnessBlockValue + 1f / 3f * Stats.JudgementBlockValue) + 520f) &lt; 2400f<br>&nbsp;&nbsp;&nbsp; {baseDamage = (Stats.BlockValue + Stats.ShieldOfRighteousnessBlockValue + 1f / 3f * Stats.JudgementBlockValue) + 520f;}<br>&nbsp; elseif (Stats.BlockValue + Stats.ShieldOfRighteousnessBlockValue + 1f / 3f * Stats.JudgementBlockValue) + 520f) &lt; 3160f<br>&nbsp;&nbsp;&nbsp; {baseDamage = 2400 + (Stats.BlockValue + Stats.ShieldOfRighteousnessBlockValue + 1f / 3f * Stats.JudgementBlockValue) + 520f - 2400f)*.95 - 6.25f*10f^(-4f)*((Stats.BlockValue + Stats.ShieldOfRighteousnessBlockValue + 1f / 3f * Stats.JudgementBlockValue) + 520f - 2400)^2f;}<br>&nbsp; else<br>&nbsp;&nbsp;&nbsp; {baseDamage = 2761f;}<br>&nbsp; DamageMultiplier *= (1f + Stats.BonusHolyDamageMultiplier);<br>&nbsp; critMultiplier = 2.0f;<br>&nbsp; break;</p>",
+    "PostedDate": "2009-08-20T20:23:30.733-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "226412",
+    "ThreadId": "66563",
+    "Html": "<p>Does that code include the cap on damage that's involved at high levels of Block Value?&nbsp; That way it won't show an item as having a lot more threat if the person is capped?</p>",
+    "PostedDate": "2009-08-21T10:02:10.033-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "226432",
+    "ThreadId": "66563",
+    "Html": "<p>Yes</p>",
+    "PostedDate": "2009-08-21T10:31:20.05-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "227241",
+    "ThreadId": "66563",
+    "Html": "<p>Is anyone able to confirm if this has been added to the Prot Paladin module for the next build?</p>",
+    "PostedDate": "2009-08-24T15:29:04.29-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "230802",
+    "ThreadId": "66563",
+    "Html": "<p>I can confirm that this has not been added yet. &nbsp;So can you: Go to <a href=\"http://rawr.codeplex.com/SourceControl/ListDownloadableCommits.aspx\">http://rawr.codeplex.com/SourceControl/ListDownloadableCommits.aspx</a>, click &quot;Browse&quot; on the right side, and navigate to AbilityModel.cs.</p>\r\n<p><span style=\"color:#30332d\">Stats.ShieldOfRighteousnessBlockValue is the T8 4-piece bonus, Libram of the Sacred Shield, or&nbsp;Venture Co. Libram of Protection. &nbsp;I have some concern about this stat because according to the code, the T8 4-piece bonus does not appear to stack with any libram, while discussions around the web seem to indicate that they do stack.</span></p>\r\n<p><span style=\"color:#30332d\">Stats.JudgementBlockValue covers Libram of Obstruction and Tome of the Lightbringer.</span></p>\r\n<p><span style=\"color:#30332d\">Holy Shield block value only applied to the Tier 5 set, which is obsolete in WotLK. &nbsp;Holy Shield itself does not provide block value, it is a separate damaging ability modeled elsewhere.</span></p>\r\n<p><span style=\"color:#30332d\"><span style=\"color:#000000\">According to the file you linked, the +520 is coming from the Shield of Righteousness ability itself, it's not involved in the calculation of diminishing returns.</span></span></p>\r\n<p>Also, according to <a href=\"http://www.worldofwarcraft.com/patchnotes/#3.2.0\">http://www.worldofwarcraft.com/patchnotes/#3.2.0</a>,&nbsp;the values 2400 and 2761 are actually supposed to be 30 times and 34.5 times the character level respectively. &nbsp;However, 34.5 * 80 = 2760. &nbsp;2761 is what you get from the formula,&nbsp;baseDamage = 30 * Character.Level + (0.95f * (blockValue - 2400)) - (0.000625f * (float)Math.Pow(blockValue - 2400, 2)) + 520; when you plug in a blockValue of 3160. &nbsp;After doing some poking around on World of Logs, I am seeing people hitting for 2761 + 520 = 3281.</p>\r\n<p>With that said, I would also guess that the 3160 value is 39.5 times the character level. &nbsp;I have not been able to confirm this, but will use this anyway.</p>\r\n<p>Cleaning up the pseudo-code and adjusting for these values gives the following, which I have not tested in any way, shape, or form:</p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre><span style=\"color:Blue\">case</span> Ability.ShieldOfRighteousness:\r\n    float blockValue = Stats.BlockValue<br>                     + Stats.ShieldOfRighteousnessBlockValue<br>                     + 1f / 3f * Stats.JudgementBlockValue;<br>    if (blockValue &lt; 30 * Character.Level) {<br>        baseDamage = blockValue + 520;<br>    } else if (blockValue &lt; 39.5 * Character.Level) {<br>&nbsp;       baseDamage = 30 * Character.Level<br>                   + (0.95f * (blockValue - 30 * Character.Level))<br>                   - (0.000625f * (float)Math.Pow(blockValue - 30 * Character.Level, 2))<br>                   + 520;<br>    } else {<br>        baseDamage = 30 * Character.Level<br>                   + (0.95f * 9.5f * Character.Level)<br>                   - (0.000625f * (float)Math.Pow(9.5 * Character.Level, 2))<br>                   + 520;<br>    }<br>    DamageMultiplier *= (1f + Stats.BonusHolyDamageMultiplier);<br>    critMultiplier = 1.0f;<br>    <span style=\"color:Blue\">break</span>;</pre>\r\n</div>\r\n<p>&nbsp;</p>\r\n<div id=\"_mcePaste\" style=\"left:-10000px;top:0px;width:1px;height:1px;overflow-x:hidden;overflow-y:hidden\">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;case Ability.ShieldOfRighteousness:</div>\r\n<div id=\"_mcePaste\" style=\"left:-10000px;top:0px;width:1px;height:1px;overflow-x:hidden;overflow-y:hidden\">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;float blockValue = Stats.BlockValue + Stats.ShieldOfRighteousnessBlockValue + 1f / 3f * Stats.JudgementBlockValue;</div>\r\n<div id=\"_mcePaste\" style=\"left:-10000px;top:0px;width:1px;height:1px;overflow-x:hidden;overflow-y:hidden\">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (blockValue &lt; 30 * Character.Level) {</div>\r\n<div id=\"_mcePaste\" style=\"left:-10000px;top:0px;width:1px;height:1px;overflow-x:hidden;overflow-y:hidden\">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;baseDamage = blockValue + 520;</div>\r\n<div id=\"_mcePaste\" style=\"left:-10000px;top:0px;width:1px;height:1px;overflow-x:hidden;overflow-y:hidden\">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;} else if (blockValue &lt; 39.5 * Character.Level) {</div>\r\n<div id=\"_mcePaste\" style=\"left:-10000px;top:0px;width:1px;height:1px;overflow-x:hidden;overflow-y:hidden\">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;baseDamage = 30 * Character.Level + (0.95f * (blockValue - 2400)) - (0.000625f * (float)Math.Pow(blockValue - 2400, 2)) + 520;</div>\r\n<div id=\"_mcePaste\" style=\"left:-10000px;top:0px;width:1px;height:1px;overflow-x:hidden;overflow-y:hidden\">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;} else {</div>\r\n<div id=\"_mcePaste\" style=\"left:-10000px;top:0px;width:1px;height:1px;overflow-x:hidden;overflow-y:hidden\">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;baseDamage = 34.5f * Character.Level + 520;</div>\r\n<div id=\"_mcePaste\" style=\"left:-10000px;top:0px;width:1px;height:1px;overflow-x:hidden;overflow-y:hidden\">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>\r\n<div id=\"_mcePaste\" style=\"left:-10000px;top:0px;width:1px;height:1px;overflow-x:hidden;overflow-y:hidden\">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;DamageMultiplier *= (1f + Stats.BonusHolyDamageMultiplier);</div>\r\n<div id=\"_mcePaste\" style=\"left:-10000px;top:0px;width:1px;height:1px;overflow-x:hidden;overflow-y:hidden\">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;critMultiplier = 1.0f;</div>\r\n<div id=\"_mcePaste\" style=\"left:-10000px;top:0px;width:1px;height:1px;overflow-x:hidden;overflow-y:hidden\">\r\n<p>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n</div>",
+    "PostedDate": "2009-09-03T11:26:12.843-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "230902",
+    "ThreadId": "66563",
+    "Html": "<p>I spoke with solieu via email about the mulitplication on Stats.JudgementBlockValue. &nbsp;Apparently, that's a pre-3.2 model that accomodated the fact that in a 969 rotation the libram would not be up the entire time.</p>\r\n<p>In patch 3.2 it is up the entire time, so I believe we should drop the 1/3 out of the equation.</p>\r\n<p>I'm going to test this some and see how it works.</p>",
+    "PostedDate": "2009-09-03T15:19:07.18-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "231164",
+    "ThreadId": "66563",
+    "Html": "<p>I'll have a quick chat with Solieu on MSN as to if he thinks he'll have time to get this in. I have some code in ProtWarr that can basically be copied over since the formula is the same, so if he doesn't I can try to get it in for him. :)</p>",
+    "PostedDate": "2009-09-04T08:21:09.703-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "231167",
+    "ThreadId": "66563",
+    "Html": "<p>I uploaded patch 3754 to address this yesterday.</p>",
+    "PostedDate": "2009-09-04T08:31:45.543-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "231224",
+    "ThreadId": "66563",
+    "Html": "<p>3754 &amp; 3769 applied</p>",
+    "PostedDate": "2009-09-04T10:56:40.197-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "231245",
+    "ThreadId": "66563",
+    "Html": "<p>Thank you! :)</p>",
+    "PostedDate": "2009-09-04T12:04:03.117-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

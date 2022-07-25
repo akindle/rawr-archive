@@ -1,0 +1,96 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Buffs",
+      "DisplayName": "Rawr.Base.Buffs"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-12-08T09:28:35.363-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "If I understood the new Chill of the Throne mechanic correctly, it would not reduce the dodge percentage below 0, and you would at most end up at 0. however, as you can see in the enclosed XML file, my +/- 16% dodge from gear and talents (carefully chosen for no dodge rating) turn into -4% dodge from gear. is this just a graphical display error, or does Rawr actually reduce my avoidance by 4%?\n \nenclosed, you will find an XML file with no dodge rating at all, to illustrate my point.",
+    "LastUpdatedDate": "2013-05-16T05:23:10.063-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-12-08T06:55:24.54-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Buffs] chill of the throne dodge goes below 0%",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15245
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2596,
+      "FileName": "chill_of_the_throne_error_2.3.0_paladin.xml",
+      "DownloadUrl": ".\\2596"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Rawr is probably reducing your avoidance by 4%.  There is nothing to my knowledge that will push your avoidance under 0%, so I'm going to update ProtPaladin to not allow for dodge chance under 0%.\r\n\r\nOther tank model devs may want to check this out as well.",
+      "PostedDate": "2009-12-08T09:02:14.05-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hmm, this isn't going to be as easy a fix as I thought.  Agility's contribution to dodge percent happens outside of the ProtPaladin model.  This means we are going to have to model Chill of the Throne differently.",
+      "PostedDate": "2009-12-08T09:17:45.243-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-08T09:22:09.5-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Alright, this is fixed for the next version, just had to modify the dodge calculation to not go below 0%.",
+      "PostedDate": "2009-12-08T09:28:24.95-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-08T09:28:35.363-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T16:03:24.19-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-09T15:32:37.58-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:06:03.233-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:34.507-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:10.063-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

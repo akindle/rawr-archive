@@ -1,0 +1,81 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Hunter",
+      "DisplayName": "Rawr.Hunter"
+    },
+    "ClosedComment": "Fixed in commit 51475",
+    "ClosedDate": "2010-06-20T11:47:41.513-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The talents graph is showing The Beast Within as increasing my dps by 555 and my pet's dps by 550 in the attached character sheet.  I'm skeptical about this, since the tool tip leads me to believe the 10% passive bonus is only for the hunter, and *certainly* sounds like the 10% extra during Bestial Wrath is only for the hunter.  I would expect it to not affect pet dps at all.  Is the tooltip correct, or is Rawr correct?\n \nI did some google-ing but couldn't find anything trustworthy that either confirmed or denied my suspicions.  In 1 more level my hunter will hit 80, at which point I'll be respecing anyway and I'd be happy to test this.",
+    "LastUpdatedDate": "2013-05-16T05:20:27.663-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-06-12T16:16:23.1-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Hunter] The Beast Within Affects Pets",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17967
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3682,
+      "FileName": "commande bm.xml",
+      "DownloadUrl": ".\\3682"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Looks like you are right, I'm making the change now",
+      "PostedDate": "2010-06-12T19:48:13.587-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "ok so I'm editing the Pet Stats to specifically take this modifier back out of it's calcs, and the change is as follows:\r\nOrig: Hunter 553.40 Pet 548.49\r\nNew: Hunter 553.40 Pet 406.83\r\n\r\nSo while taking the modifier directly out, it's still a big benefit to pets. So I went into where I'm handling Bestial Wrath and took it out of the pet modifier again there and we get\r\n\r\nNewNew: Hunter 553.40 Pet 378.87\r\n\r\nBut I don't think that should have been done so I'm going back to the first edit.",
+      "PostedDate": "2010-06-12T20:03:12.257-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "If anyone has some real world testing on this I'd love to see it.",
+      "PostedDate": "2010-06-12T20:03:41.34-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Alrighty, my hunter is now 80.  Here's some data from a target dummy.  I turned off all pet specials except the focus dump, and I did nothing but melee with my daggers.\r\n\r\n    Before the beast within: pet melee hit for 291 avg (103 hits), I melee hit for 253 avg (176 hits).\r\n    After the beast within: pet melee hit for 290 avg (200 hits), I melee hit for 279 avg (253 hits).\r\n\r\nThen I did some testing with Bestial Wrath up (and therefore also The Beast Within): \r\n    Pet melee hit for 436 avg (51 hits), I melee hit for 299 avg (74 hits).  \r\nThat's a 7.1% buff for me, and a 50.3% buff for my pet.  Notice that a 65% buff (which we'd expect if The Beast Within stacked with Bestial Wrath on the pet) would give my pet 478 avg damage, much larger than the tests showed.  (7.1% is less than we'd expect for my personal buff - I guess the sample size was small enough for a 3% error?)\r\n\r\nThese were hits only, not counting any crits, misses, dodges, etc.  I'm guessing these sample sizes are large enough to conclude that The Beast Within only ever buffs the hunter's damage, never the pet's.",
+      "PostedDate": "2010-06-15T00:27:47.6-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-06-20T11:47:41.513-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:28:11.07-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:27.663-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

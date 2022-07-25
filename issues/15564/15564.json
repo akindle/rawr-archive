@@ -1,0 +1,85 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Enhance",
+      "DisplayName": "Rawr.Enhance"
+    },
+    "ClosedComment": "Issue fixed. Thanks Jothay.",
+    "ClosedDate": "2009-12-22T04:22:10.417-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I've not done many updates to Enhance lately I've been focusing on other things. However I had a small tweak to make and I was shocked to discover that updates to Enhance are now taking around 70 seconds to calculate compared with around 1-2 seconds previously. Now this MUST be a change in base behaviour as I have made no changes to Enhance.\n \nI'm in the process of tracking down where the issue is but not having the profiling option its hard. If someone with a profiler can assist it would be really helpful.\n \nTo let you know Rawr 2.3.3 has 1-2 second behaviour, commit 43395 has 70 second behaviour. Commit 44303 has 1-2 second behaviour, commit 44348 has 70 second behaviour, so I'm gradually honing in on which commit caused the issue. I'll update this as I find out more. Meantime if someone with a profiler can have a look it might speed things up.\n \nEdit : commit 44309 has 70 second behaviour so the bug is in commit 44306 or 44308 both by Jothay. Are you able to help Jothay working out where the big performance drop is given that its in one of these two commits. I'm working to further narrow it down to one of these.\n \nEdit 2: The culprit is commit 44306. \"Rawr.Base: Added some more logic for Devs when updating Item Data to have the option of keeping original data per item\"\n \nI used windiff to see what changed between 44306 & 440303. It seems there were various location source changes to wowhead.cs, a 1 line change to uncomment a test in itemupdater.cs and various changes to item.cs to do with itemsource changes. I can't see at present why this is happening. WTB a profiler.",
+    "LastUpdatedDate": "2013-05-16T05:22:50.547-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "High",
+      "Severity": 150,
+      "Id": 3
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-12-21T09:14:57.18-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Enhance] Dramatic performance drop 1-2sec -> 70 seconds",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15564
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "The extra time probably comes from new code in the item comparison between old and new data when refreshing data from one or the other as it had to call out to the ItemSource cache to get the original data, store it, then run a comp on it.\r\n\r\nI've added another #if DEBUG wrapper on that section so it will only occur on Debug builds (release won't see the performance decrease).",
+      "PostedDate": "2009-12-21T15:10:25.747-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Fix checked in, let me know if that helps",
+      "PostedDate": "2009-12-21T22:20:28.693-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Errr.... Wait... What? None of what you changed be run when calculating, Jothay...",
+      "PostedDate": "2009-12-21T22:21:26.513-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Exactly, that was the problem, which I think I fixed",
+      "PostedDate": "2009-12-21T23:13:45.75-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-22T04:22:10.417-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T20:00:21.087-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T20:01:09.953-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:09.407-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:50.547-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

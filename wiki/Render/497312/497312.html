@@ -1,0 +1,215 @@
+<div class="wikidoc">
+<h1>Rawr.DPSDK</h1>
+<p>Rawr.DPSDK is a tool to help DPS Death Knights choose and optimize their gear, from brand new 85s, to endgame raiders.</p>
+<p><span style="font-weight:bold; font-size:large">Current Status</span></p>
+<p>This model is currently <span style="color:#008000">FULLY </span>functional, consistently maintained by
+<strong>Shazear</strong>, and you can safely rely on it for your gear choices in Cataclysm. There may be some specific defects and if such instances are found, please post them to the Issue Tracker with the affected character file per the Posting Guidelines.</p>
+<p><span style="font-weight:bold; font-size:large">Current ToDo's</span></p>
+<ul>
+<li>&quot;CurrentHandHit&quot; trigger </li></ul>
+<p><span style="font-weight:bold; font-size:large">Options Pane</span></p>
+<table border="0" width="100%">
+<tbody>
+<tr>
+<td valign="top"><img src="http://dl.dropbox.com/u/25280040/DPSDK.png" alt="DPSDK Options Panel"></td>
+<td width="100%" valign="top">
+<p><strong>Presence:</strong>&nbsp; Dropdown - Choose which presence to use for ability/rotation evaluation.</p>
+<p><strong>Bad Item Filters:&nbsp; </strong>Filter out gear from the available options as specified.&nbsp;</p>
+<p><strong>Stat Graph:</strong>&nbsp; Select which stats you wish to graph.&nbsp; Increment is how far you want the graph to extend.&nbsp; Then click the button to show the graph in a new window.</p>
+<p><strong>Rotation Report:</strong>&nbsp; The rotation used to evaluate the Damage and threat values.&nbsp; Does not necessarily list abilities in order of use.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span style="font-weight:bold; font-size:large">Frequently Asked Questions</span></p>
+<p>This section has not yet been written.</p>
+<p><span style="font-weight:bold; font-size:large">Known Issues</span></p>
+<p>There are presently no known major Issues with DPSDK except those on the TODO list. Please see the Issue Tracker for any new issues that have been opened since this writing.</p>
+<p><span style="font-weight:bold; font-size:large">Troubleshooting</span></p>
+<p>This section has not yet been written.</p>
+<p><span style="font-weight:bold; font-size:large">Recent Changes<br>
+</span></p>
+<p><strong>Rawr 4.2.7:<br>
+</strong>- Adding DND to Unholy rotation.&nbsp; It's not a complete fix, but just an experimental start to deal w/ UH numbers.<br>
+- Adding Damage object.&nbsp; Plan is to implement this as a global damage value that can be used as a core value esp for any ability that may have multiple damage sources from a single ability.<br>
+- Wrap the 4.3 changes w/ the PTR Mode flag from general options incase we have another release before 4.3<br>
+- Update Blood Rotation for Outbreak change. (1 more DS since we have those runes free)<br>
+- Fix the RP math in the rotations.<br>
+- Start the T13 work.<br>
+- Defect : Fix the KM crit rate.<br>
+<strong>Rawr 4.2.6:<br>
+</strong>- Trying to fix the odd pet numbers. <br>
+- Fix for some inflated White Hit values due to hit rating providing benefits past cap.<br>
+* Mark JC gemming template if JC<br>
+- All models JC templates groups renamed to &quot;Jewelcrafter&quot; if not previously named that<br>
+- All models Cog templates groups renamed to &quot;Engineer&quot; if not previously named that<br>
+- On UpdateProfessions, JC/Eng templates will now auto-enable/disable based on character's professions<br>
+- Gut the solver to make room for the possibility of using a Markov process for priorities.<br>
+- Tweak the hit/crit code to see if yet another simple change may fix some of the odd values.<br>
+- Disable the BloodTap code because it was screwing with haste.<br>
+<strong>Rawr 4.2.5:<br>
+</strong>- Fix DS crit rate<br>
+- Simplified Specialization function, and added a bit of documentation in SpecialEffects.<br>
+- Fix combat table priority of Hit Vs Crit.<br>
+- defect 21427: Melee haste was wrong.<br>
+<strong>Rawr 4.2.4:<br>
+</strong>- Update Deathstrike values.<br>
+<strong>Rawr 4.2.3:<br>
+</strong>- Code Review defect found by Caromina:&nbsp; Math formatting Error in GetTotalSpecialsPerSecond()<br>
+- Hanging on imports, so hopefully this resolves that issue.<br>
+<strong>Rawr 4.2.2:</strong><br>
+- Improve rotation calculations to include partial valued spells. This should smooth out some Haste issues, but not all.<br>
+- Little bit of cleanup.<br>
+- Switch SpecialEffect handling to use the new dictionary methods.<br>
+- Improve KM handling<br>
+- Improve Runic Corruption handling.<br>
+- Fix for 21173: DMC:Hurricane was not properly handling the proc.&nbsp; Now it does and it's scary for DWFrost!<br>
+- Fix for 21069: Switch SD procs from cheaper DCs to be like Rime, which means extra DCs.<br>
+- Partial fix for defect 21185: A bug where a possible negative crit chance could cause issues in Hit and therefore translate to Expertise being worth more than it should.<br>
+- Defect 21131: Reduce problems with stacking Razorice, Cinderglacier, and Fallen Crusader<br>
+- Reduce issues with creating a new character.<strong><br>
+Rawr 4.2.1:<br>
+</strong>- Defect 21071: Presence wasn't properly being handled in all cases.&nbsp; Even if UH spec should always be in UH presence, it's best to give the option to see the difference.<br>
+- Defect 21074: Orc racial too high.<br>
+- Defect 21076: Exception on Load/create new character.<br>
+- Update status to fully supported.<br>
+- Defect 21069: Unholy Blight wasn't actually plugged into the rotation.<br>
+<strong></strong><strong>Rawr 4.2.0:</strong><br>
+<strong>Rawr 4.1.06:</strong><br>
+- Some initial t12 set bonus work.<br>
+- Clean up t11 set bonus implementation.<br>
+- Update the new graphs<br>
+- Fix from EJ Frost Post: Frost Haste (Icy Talons) doesn't translate to faster runes.&nbsp; (Still can't confirm that UH is the preferred presence with my gear while DW.)<br>
+- Fix White Damage being so far, far off from tested values.<br>
+- Fixed stat display.&nbsp; Wasn't applying ratings to BasicStats before displaying them.<br>
+- Fix for Issue 20738: Double-Dipping for Buff/Talent Brittle Bones<br>
+- Replaced the GetBuffsStats framework in DPSDK to what DPSWarr uses to prevent conflicting buff/talents. Set up Brittle Bones as the first.<br>
+- Fixed the Set Bonuses implementation, was looking for &gt; 2 not &gt;= 2 as it should have been<br>
+- Resolve some unittest failures.<br>
+- Fix Haste affects on RuneCD.&nbsp; And display value for comparison w/ in-game values.<br>
+- Adjust rotation reporting slightly.<br>
+- Fix display issue w/ DPS breakdown and Damage Per Use.&nbsp; Some of the structures were over-lapping in usage.&nbsp; Now it's discrete and values should make more sense.<br>
+- Further White Damage fixes.<br>
+- Haste fix<br>
+- Significant work on Rotation and ability displays has me confident to upgrading Unholy to be on-par with Frost at &quot;Mostly&quot; Cata ready.<br>
+- Fixed Health and a few other displays.<br>
+- Completely rebuild present Unholy priority.&nbsp; It's not very performant, but it's much more accurate to testing.<br>
+- Fixed UH mastery.<br>
+- Unittests for a new static function in rotation. <br>
+- Update UH numbers based on logs... Adjusting Per-hit numbers for SS that were &gt; 5% off from what I was seeing in BWD last night.&nbsp;
+<br>
+- Update UH rotation to not be so expensive.&nbsp; :(&nbsp; The dynamic version is much more accurate, but also much more expensive.<br>
+- Additional tweaks for the rotation.&nbsp; Some Unholy, and some Frost. <br>
+- Adding Stat graph like what Jothay added for TankDK.<br>
+- Null check when selecting new character after looking at an existing DPSDK.<br>
+<strong>Rawr 4.1.05:</strong><br>
+<strong>Rawr 4.1.04:</strong><br>
+- Fix for Issue 20443: Crash on selecting Unholy Talent Spec - Dark Transformation wasn't passing in CombatState as part of the constructor. When calling GetTotalThreat later, would fail on null error.<br>
+- Additional Pet implementation<br>
+- Fix custom charts<br>
+- Update UH rotation to only call Dark Transform if spec'd for it<br>
+- 4.1 Talents update<br>
+- 4.1 Frost DeathRune Rotation update &amp; Howling Blast/Frost Strike Update<br>
+- Cost bug in Festering Strike<br>
+- Default Talents were broken.&nbsp; Fixed.<strong><br>
+Rawr 4.1.03:</strong><br>
+- Fix for Neg DPS values in some cases<br>
+- Recent chance had importing values that were already in the local instance<br>
+<strong>Rawr 4.1.02:</strong><br>
+- Fine Tuning base stats. More to do here.<br>
+- Implement Runic Empowerment.<br>
+- Fix Presence Combobox.&nbsp; It actually changes presences now.<br>
+- Fix Presence custom chart.<br>
+- Fix white swing hit chance to properly use WhiteHit rather than Yellow Hit.<br>
+- Cleanup VampiricBlood implementation<br>
+- Add Rotation list null checks.<br>
+- Fix OnUse Trigger evaluation.<br>
+<strong>Rawr 4.1.01:</strong><br>
+- Work for T11 Set Bonuses<br>
+- Fix a problem with DCs.<br>
+- Fix the T11 set bonuses<br>
+- Fix triggers so that we can trigger on Death Runes.<br>
+- Broke the RP &amp; DeathRune counters. <br>
+- Implement Killing Machine<br>
+- Implement Sudden Doom<br>
+- Tweak Defaults for BossOptions.<br>
+- Implement DPS breakdown.&nbsp; It's not perfect due to some hax in other areas, but at least there's some infrastructure.<br>
+- Fix Rime implementation in Frost rotation so it's less hacky.<br>
+- Fix BuildCosts() so it can be called repeatedly within a given solver progression.<br>
+- New Highest Secondary Stat variable<br>
+- Fix the options pane to use Accordion UI<br>
+- Tweaks for BossHandler<br>
+<strong>Rawr 4.1.00:</strong><br>
+- Implement CinderGlacier<br>
+- Fix RazorIce<br>
+- Implement Rime (it's super hacky right now)<br>
+- Fix for 20007: Rune of Fallen Crusader wasn't working or being excluded properly.<br>
+- Fix a null reference problem on clean characters.<br>
+- Fix for 20091: DamageModifier problem causing ability value inflation causing HUGE values in most abilities.<br>
+<strong></strong><strong>Rawr 4.0.20b:</strong><br>
+- Fix for Issue 20005: Implement filters like DPSWarr for gear<br>
+- Associate for 19726: Some additional fleshing out of ghoul data<br>
+- Adjustments to the Unholy rotation. It's really screwy, but far better than it was<br>
+<strong>Rawr 4.0.19b:</strong><strong><br>
+</strong>- No significant changes<br>
+<strong>Rawr 4.0.18b:<br>
+</strong>- Basic Ghoul code started.&nbsp; Not plugged in yet.<br>
+- Adjust some additional talent tweaks based on in-game values.<br>
+- Implement Rage of Rivendare<br>
+- Fix for Defect 19598: validate White swing code.<strong><br>
+Rawr 4.0.17b:<br>
+</strong>- Pulling out unused Files.<br>
+- Fix for 19773: Nerves of Cold Steel was not implemented despite what my comments had suggested.<br>
+- Null checking in the fix for NoCS.<br>
+<strong>Rawr 4.0.16b:<br>
+</strong>- Adding in rough of T11 set bonuses.<br>
+- Implmenting some of the 4.0.6 changes.<br>
+- Implement BonusWhiteDamageMultiplier<br>
+<strong>Rawr 4.0.15b:</strong><br>
+- Tweak the GetSpec() function<br>
+- Add Mastery to Paperdoll output on TankDK<br>
+- Add SpellDamageTakenMultiplier so that Effluent Meta is properly evaluated<br>
+- Update Gem Template slightly<br>
+- Pull out dead function<br>
+- Adding in initial rough of DRW<br>
+- Adding in rough of T11 set bonuses<br>
+- Implmenting some of the 4.0.6 changes<br>
+- Fixed RuneTap implementation SE<br>
+<strong></strong>- Work for Issue 19414: Models using old crit reductions - Updated DPSDK to pass BossOptions around so Target Level could be pulled from it and used for calcs.<br>
+<strong></strong><strong>Rawr 4.0.14b:</strong><br>
+- Fix issue w/ Base damage valuation for Spell v. Physical hit.<br>
+- Rotations: Provide pre-set rotations to help until solver is handled.<br>
+- Fix issue w/ rotation math coming up w/ weird values for rotation duration.<br>
+- Implement initial Scent of Blood work.<br>
+- Gem Templates for TankDK using new gems.<br>
+- Updated Relevant stats for DPSDK to exclude defensive stats.<br>
+- White damage wasn't properly included in the rotation outputs.<br>
+- Fixed base stats... they'll need some further tweaking.<br>
+- Fix for melee/spell special counts<br>
+- Use Pre-made blood rotation in DPSDK when in a Blood Spec.<br>
+- Update discription of TankDK DPS &amp; Threat values to include max Vengeance.<br>
+- Fix for 16078: Display the rotation on the options tab and it's working w/o going crazy.<br>
+- Solver is now actually doing some work. The rotations don't always make alot of sense and it's way big on the DPS numbers, but it's now a working set.<br>
+- Setting TankDK as 'Mostly' since Survival and Mitigation values are looking reasonable. And threat is OK as long as it's using the pre-set rotation. DPSDK on the other hand still needs work. It's work will dial in the Threat on TankDK.<strong><br>
+</strong><strong></strong><strong>Rawr 4.0.13b:<br>
+</strong>- No Significant Changes<br>
+<strong>Rawr 4.0.12b:<br>
+</strong>- No Significant Changes<br>
+<strong>Rawr 4.0.11b:</strong><br>
+- Fix for Defect 19241: Items not showing on list - This was due to bad gemming templates. So I shamelessly stole the template format from DPSWarr. It works great!<br>
+- Fix for possible rotation exception Found during new unit test.<br>
+- Fix for sorting issue in sorting by DPS/TPS<br>
+- Fix for BB weirdness.<br>
+- Fix bug w/ exception in rotation cost evaluation. Found during unittest.<br>
+- Fixed Tanking runes<br>
+- Fixed special effects handler<br>
+- Fixed Blood Parasite implementation<br>
+- Implemented basic RPP5 code<br>
+- Implemented combined swing time for DW.<br>
+- Implemented Mitigation Subvalues like the survival subvalues.<br>
+- Fix for 19288: Hang when looking at trinkets.<br>
+- Unittests failing because of a config change.<br>
+<strong>Rawr 4.0.10b:<br>
+</strong>- No Significant Changes<strong><br>
+</strong></p>
+</div><div class="ClearBoth"></div>

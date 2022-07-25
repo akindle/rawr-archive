@@ -1,0 +1,155 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Optimizer",
+      "DisplayName": "Rawr.Base.Optimizer"
+    },
+    "ClosedComment": "This should no longer be an issue in .12",
+    "ClosedDate": "2010-12-18T22:36:07.74-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When running the optimizer, Rawr is recommending reforging hit->spirit on one piece of gear and spirit->hit on other pieces of gear.  Also during one run of the optimizer it'll recommend reforging mastery->spirit on several pieces of gear but if I accept the gear and run the optimizer again, it continues to recommend mastery->spirit for some gear but now recommends mastery->hit on some that it had previously recommended mastery->spirit.",
+    "LastUpdatedDate": "2017-11-27T11:02:04.227-08:00",
+    "PlannedForRelease": "Rawr 4.0.09 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-12-16T11:53:11.04-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Optimizer] Giving odd suggestions, at least for Moonkin",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19318
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I see this behavior on my Arms Warrior. What is almost always the case is that reforging the gear this way is putting you right at the perfect threshold of Hit and Expertise. Since that doesn't apply the same way to your Moonkin, I can only assume that its doing what it needs to find the right amount of Hit and Mana Regen?",
+      "PostedDate": "2010-12-16T12:31:20.537-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Mana Regen from Spirit doesn't work in combat so for all intents and purposes Spirit and Hit rating are equal for Rawr's calculations. Rawr's prolly just confused due to having the same numbers for two different stats, much like say if you need 2 blue gems for your metagem to be active and have 3 blue sockets to put them on each time you run the optimizer it'll change which slots have blue gems and which has the red gem.\r\n\r\nThat said, you can interpret what you're getting in reforging as this:\r\nIf Rawr says reforge mastery->spirit or mastery->hit, its the same, choose whichever you want.\r\nIf Rawr says reforge hit->spirit or spirit->hit, don't reforge at all.\r\n\r\nPersonally though I prefer spirit over hit since when out of combat (as in when doing quests or whatever) it'll give me more regen between each combat but in a raid setting this is irrelevant.",
+      "PostedDate": "2010-12-16T20:20:30.417-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "When I run optimizer for Boomkin, stats tab, the DPS values of different items on the right side, relative stat values etc show 0.\r\n\r\nSometimes it wouldn't equip a ring or a trinket, sometimes it would.",
+      "PostedDate": "2010-12-16T22:35:24.21-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "http://img708.imageshack.us/i/95419633.png/\r\n\r\nHere is the link to what I'm talking about",
+      "PostedDate": "2010-12-16T22:41:21.85-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Because hit and spirit have exactly the same DPS value, how is the optimizer supposed to tell them apart?  Just be smart about it for now, and I'll look into it when I get some time.  It's a fairly low-priority issue because, well, they're exactly the same.",
+      "PostedDate": "2010-12-17T04:15:17.873-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "If they are completely identical what I would do is override GetStatsToReforgeTo and in that list only include one of the two, will also speed up other calculations.",
+      "PostedDate": "2010-12-17T04:37:36.22-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Never mind I just realized in some cases you might want to use both if for example you already have hit on it, but would want to reforge to hit and can only do it by going to spirit.",
+      "PostedDate": "2010-12-17T04:39:09.407-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yeah, it's a bit more complex than even I realized at first blush.  Maybe adding a GetRelevantReforges(Item) where I can specify on a case-by-case basis what is and is not allowed to be reforged would work?  That would involve getting into some base code, which I'm less familiar with.",
+      "PostedDate": "2010-12-17T05:30:47.073-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'll try adding another override where you can specify specific from=>to allowed pairs which will by default use the existing methods.",
+      "PostedDate": "2010-12-17T13:38:00.483-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That will solve the issue of hit->spirit and spirit->hit just fine, but what about the case with, say, mastery->hit/spirit?  I don't want to always be switching back and forth between those two on items that have neither hit nor spirit, but they both need to be valid in case one or the other is present.",
+      "PostedDate": "2010-12-17T16:09:05.267-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The optimizer process in general supports the concept of post processing, which is what we do with gem reshuffling to minimize changes. This is a bit different because it applies only to one specific model, but if there is interest I can expose a method on CalculationsBase that allows a model to do additional postprocessing like changing reforge to hit if both hit and spirit are options.",
+      "PostedDate": "2010-12-17T18:02:41.13-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Another option would be to expose the reforge restrictions in a way that takes actual item in effect. So basically you would get passed a list of all possible reforges for an item and then you could do some model specific filtering on that list. Either that or an option to generate the reforge options in the first place.",
+      "PostedDate": "2010-12-17T18:04:59.827-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I think Reforge Restrictions would be better as that would save on calculations all over the place. For instance, I could tell it to never reforge to Haste in DPSWarr, but still allow people to do that manually if they wanted to.",
+      "PostedDate": "2010-12-17T18:46:32.837-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hm ok well then we need more options as currently the same process is used to generate reforges to choose from in ui and reforges to use for optimization.",
+      "PostedDate": "2010-12-17T18:55:48.27-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You can now override GetReforgingOptions to specify custom reforging restrictions for an item (but currently it applies to both optimizer and ui).",
+      "PostedDate": "2010-12-17T19:25:27.043-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That's what I had in mind.  It should fix this issue when I implement it in Moonkin (I assume tomorrow).",
+      "PostedDate": "2010-12-17T19:37:02.567-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Maybe I'm jumping the gun since this hasn't been closed but I noticed that a change was checked in for this but after picking it up, I'm now getting a null pointer reference here:\r\n\r\n== StackTrace ==\r\n   at Rawr.Moonkin.CalculationsMoonkin.<GetReforgingOptions>b__3(Reforging rf)\r\n   at Rawr.ListUtils.RemoveAll[T](List`1 list, Predicate`1 match)\r\n   at Rawr.Moonkin.CalculationsMoonkin.GetReforgingOptions(Item baseItem)\r\n   at Rawr.Character.GetRelevantItemInstances(CharacterSlot slot)\r\n   at Rawr.UI.GraphDisplay.UpdateGraphGear(String subgraph)\r\n\r\nIt looks like this is due to the element 0 of the reforge list is null (see public static List<Reforging> GetReforgingOptions(Item baseItem, AdditiveStat[] reforgeStatsFrom, AdditiveStat[] reforgeStatsTo))\r\n\r\nwhile RemoveAll tries to evaluate the predicate \"rf => rf.ReforgeTo == AdditiveStat.Spirit\" on all entries starting at 0 (the null entry).",
+      "PostedDate": "2010-12-18T18:01:25.337-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Not just element 0.  I fixed the fix and it'll be in the next build, which Astrylian has told me will be \"Soon (tm)\".",
+      "PostedDate": "2010-12-18T20:48:42.78-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-18T22:36:07.74-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:03:27.03-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:27:08.073-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:36.457-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:02:04.227-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

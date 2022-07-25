@@ -1,0 +1,29 @@
+Index: Rawr.Base/SpecialEffects.cs
+===================================================================
+--- Rawr.Base/SpecialEffects.cs	(revision 446)
++++ Rawr.Base/SpecialEffects.cs	(working copy)
+@@ -999,6 +999,11 @@
+                 line = line.Substring("Reduces the mana cost of your spells by ".Length);
+                 stats.SpellsManaReduction = float.Parse(line);
+             }
++                // Hard-coded Sigil of Haunted Dreams
++            else if (line.StartsWith("Your Blood Strike and Heart Strikes have a chance to grant 173 critical strike rating for 10 sec."))
++            {
++                stats.AddSpecialEffect(new SpecialEffect(Trigger.BloodStrikeOrHeartStrikeHit, new Stats() { CritRating = 173 }, 10f, 0f, .15f));
++            }
+             else
+             {
+                 #region Prototype Sigil Code:
+Index: Rawr.DPSDK/StatsSpecialEffects.cs
+===================================================================
+--- Rawr.DPSDK/StatsSpecialEffects.cs	(revision 447)
++++ Rawr.DPSDK/StatsSpecialEffects.cs	(working copy)
+@@ -53,7 +53,7 @@
+                         break;
+                     case Trigger.BloodStrikeOrHeartStrikeHit:
+                         trigger = (rotation.BloodStrike + rotation.HeartStrike) / rotation.curRotationDuration;
+-                        chance = 0.15f;
++                        chance = 1f;
+                         break;
+                     case Trigger.PlagueStrikeHit:
+                         trigger = rotation.PlagueStrike / rotation.curRotationDuration;

@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "170880",
+    "ThreadId": "50994",
+    "Html": "<p>This is not a program error, but the trinket &quot;Wrathstone&quot; does not have it's stats completed on the PTR.  We (the community, not the developers of Rawr, as I am not one ;D) are guessing that the AP should be an on-use effect, the value staying the same, with a duration of 20 second, and a cooldown of 2 minutes.  If any end user wishes to fix this for themselves, right-click on the item, select &quot;edit&quot;, and change the AP benefit to (856 * (1/6)) = 142.67.  This models the trinket by averaging out the AP boost, assuming it is used on every cooldown, and then you simply multiply the proc by it's uptime (20 seconds out of 120 seconds).</p>\r\n<p>We don't know the correct value of the cooldown and the uptime, but it's a fair assumption puts it in line with the rest of the trinkets (right up near, if not at the top of the heap).  Plus, gives those who have not played with the &quot;Edit Items&quot; tool a chance to apply a simple fix, and more acurately model future gearings.</p>\r\n",
+    "PostedDate": "2009-03-23T08:18:24.097-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "170888",
+    "ThreadId": "50994",
+    "Html": "As a model developer I am unlikely to implement any new trinkets/relics/on use/proc effect items until far closer to launch there is simply too much changing between one patch and the next to know for sure if we are seeing final versions of stats. Due to the way Rawr works all such things are often coded on an individual model basis and typically not coded independent of model. Having a universal Trinket/Relic/on-use/proc effect database of items would be particularly useful for new patches that introduce new items however that is still just on the to do list at present as its a very large body of co-ordinated work to get that implemented, and the filter system is currently the next highest priority.<br>\r\n<br>\r\nFor now simply use the edit items tool as you suggested.<br>\r\n<br>\r\nRule of Thumb : Chance to add +x ABC rating for y seconds. Typically is coded as +x*y/45 ABC rating.<br>\r\n",
+    "PostedDate": "2009-03-23T08:34:36.687-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "170909",
+    "ThreadId": "50994",
+    "Html": "<p>I was thinking that the items were in fact calculated by more than a flat averaging of the proc, but looked around for a way to implement it.  I just decided to use this as a workaround in the meantime.</p>\r\n<p>Also, the calculation you suggest is for an on-chance with the standard internal cooldown - the prevailing theory on this item is that it's an on-use proc with a 20-second duration and a 2 min cooldown, but it is most speculation at this point.  Calculating it as the on-use :20/2:00 does, however, put it in line with the rest of the trinkets (albeit as among the top of the heap).</p>\r\n<p>And the program is dealing with the information as it sees it, no worries there! http://ptr.wowhead.com/?item=45263</p>\r\n",
+    "PostedDate": "2009-03-23T09:20:46.367-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "170931",
+    "ThreadId": "50994",
+    "Html": "Oh lots of the items are calculated by more than a flat average of the proc thats what I meant by it being model specific. Some models use the most basic of calcs some use a lot more involved calcs. <br>\r\n",
+    "PostedDate": "2009-03-23T10:31:25.613-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

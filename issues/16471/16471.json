@@ -1,0 +1,106 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Hunter",
+      "DisplayName": "Rawr.Hunter"
+    },
+    "ClosedComment": "Fixed in commit 47059",
+    "ClosedDate": "2010-03-03T14:35:43.643-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Even if the 4pT10 bonus is not the \"hottest\" thing for hunters... In 2.3.10 it only provides a 9 DPS increase. (when looking at Slot: Buffs Set Bonuses.) Can that really be correct?",
+    "LastUpdatedDate": "2013-05-16T05:21:46.59-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-02-22T02:41:08.517-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Hunter] T10 4P Bonus",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16471
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2999,
+      "FileName": "Rethlon 100222 - MM.xml",
+      "DownloadUrl": ".\\2999"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "As far as I have been able to tell, yes that's correct\r\n>.<",
+      "PostedDate": "2010-02-22T11:08:37.3-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hm...\r\nIf I look the Armory on my character (Rethlon at EU-Dragonblight) it states that I currently have 5072 in ranged attack power. And the tooltip states that it increases damage of ranged weapons with 362 DPS (i.e. 5072/14).\r\nThe 4pT10 have 10s 20% increase of AP with a 5% chance to proc. 3s between the Serpent Sting ticks leads to that on average each 20th tick should proc meaning time between procs 60s... 10/60 -> roughly 16,6% uptime. So 16.6% of 20% should give the average AP benefit of the proc. = 3.3%. \r\n3.3% out of 5072 is... 167 divided by 14.... = 11.9 added dps.... so already there we're above the 9dps increase stated by Rawr... and AP affects the special shots as well with different %... which should provide a benefit as well.\r\n\r\nA quick comparison could be made to the trinket Mark of Supremacy... it has 1024 increased AP for 20s with 2min cooldown.... it shows as 135 DPS in the trinket list in Rawr.... 1024 is roughly 20% of 5072.... and 20seconds with 120s coolddown is the same expected uptime... ~16%.... so we have the same figures.... 20% increase of AP with 16% uptime...\r\n",
+      "PostedDate": "2010-02-23T11:00:44.29-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I understand why you would make that comparison however we're talking apples and oranges. Multipliers can get absolved into various other multipliers and averages and it doesn't work the same as just adding a straight AP value. I can't explain in more depth right now as I'm at work but I'll try and give more detail tonight",
+      "PostedDate": "2010-02-23T11:33:42.107-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well, I realize that I might be over-simplifying things... \r\nSome more imput.... I removed the procing ring, and my 2 trinkets to reduce some procing... and watched my ingame AP while firing serpents stings at the target dummy.\r\nWhen 4pt10 proced (Stinger the buff is called) it increased from 5211 to 6253 (1042) So the AP increase is at least reported ingame as 20%.\r\n\r\nWeirdly enough, when I equip the Mark of Supremacy... and use it the reported AP increases from 5211 to 6338 (1127) not quite sure what happened there (tried several times... Mark of Supremacy repetedly provides me with 1127 AP when used...) \r\n\r\nAnyway, \"talk\" to you later :)\r\n",
+      "PostedDate": "2010-02-23T12:39:34.553-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "There is indeed something wrong with the 4p bonus calculation. The 16.6% uptime is correct and matches what I see in my logs. The overall 3.33% AP increase should lead to a DPS gain of slightly above 2% according to other tools like Shandara's spreadsheet.",
+      "PostedDate": "2010-02-28T07:10:49.747-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Holy crap..... I think I found the problem. The bonus attack power proc on that was only being applied to other AP value procs, not your base (unproc'd) AP. Now that I've added that check in and using the file provided on this issue, the DPS chart for it shows 169.65 instead of 9.12 as it did originally.\r\n\r\nDoes that sound better to you guys?",
+      "PostedDate": "2010-03-03T14:33:29.05-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-03T14:35:43.643-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Excellent, Tnx for the fix!\r\n",
+      "PostedDate": "2010-03-05T11:13:40.033-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T18:25:10.727-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:18.067-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:29:49.303-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:46.59-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

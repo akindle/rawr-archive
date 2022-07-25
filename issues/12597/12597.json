@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "fixed when gem system reworked so is duplicate of alternate issues.",
+    "ClosedDate": "2009-02-16T04:40:04.337-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I was working on the Rawr.Enhance module and starting by checking basic stats. I noted some discrepancies which I eventually tracked down to missing socket bonuses. In Armory.cs I'm reaching the test with a InnerXML value of \n \n\"<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?><?xml-stylesheet type=\\\"text/xsl\\\" href=\\\"/layout/item-tooltip.xsl\\\"?><page globalSearch=\\\"1\\\" lang=\\\"en_us\\\" requestUrl=\\\"/item-tooltip.xml\\\"><itemTooltips><itemTooltip><id>40520</id><name>Valorous Earthshatter Grips</name><icon>inv_gauntlets_25</icon><overallQualityId>4</overallQualityId><bonding>1</bonding><classId>4</classId><equipData><inventoryType>10</inventoryType><subclassName>Mail</subclassName></equipData><damageData /><bonusAgility>53</bonusAgility><bonusStamina>60</bonusStamina><bonusIntellect>43</bonusIntellect><armor armorBonus=\\\"0\\\">804</armor><socketData><socket color=\\\"Red\\\" /></socketData><durability current=\\\"0\\\" max=\\\"50\\\" /><allowableClasses><class>Shaman</class></allowableClasses><requiredLevel>80</requiredLevel><bonusCritRating>39</bonusCritRating><bonusHasteRating>31</bonusHasteRating><spellData><spell><trigger>1</trigger><desc>Increases attack power by 134.</desc></spell></spellData><setData><name>Earthshatter Battlegear</name><item name=\\\"Earthshatter Chestguard\\\" /><item name=\\\"Earthshatter Faceguard\\\" /><item name=\\\"Earthshatter Grips\\\" /><item name=\\\"Earthshatter Shoulderguards\\\" /><item name=\\\"Earthshatter War-Kilt\\\" /><setBonus desc=\\\"Your Lightning Shield damage is increased by 10%.\\\" threshold=\\\"2\\\" /><setBonus desc=\\\"Your Flurry effect provides an additional 5% melee haste.\\\" threshold=\\\"4\\\" /></setData><itemSource value=\\\"sourceType.vendor\\\" /></itemTooltip></itemTooltips></page>\"\t\n \nThe test is looking for a path in the XML of  \"page/itemTooltips/itemTooltip/socketData/socketMatchEnchant\" as you will note \"page/itemTooltips/itemTooltip/socketData\" is present but \"page/itemTooltips/itemTooltip/socketData/socketMatchEnchant\" isn't. I'm very new to looking at this code so I'm a bit lost. Is this an armory issue? \n \nIt would seem to affect the viability of ALL models, if its missing all socket bonuses from every item. Can someone who knows the code better verify if something is going wrong with the code or I'm doing something wrong.",
+    "LastUpdatedDate": "2013-05-16T05:26:14.313-07:00",
+    "PlannedForRelease": "Rawr 2.1.9.0",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "High",
+      "Severity": 150,
+      "Id": 3
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-02-12T08:28:09.687-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] XML Parse not picking up Gem Socket Bonuses",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 12597
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Since about patch 3.0.4, the Armory hasn't included socket bonus. Not on their pages, not on their xml data. For some reason, Armory just forgot socket bonuses existed. That's why I've usually been suggesting people load data from Wowhead instead of Armory, lately. We're hoping they fix it soon.",
+      "PostedDate": "2009-02-12T09:38:00.57-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ah ok, having downloaded the code using Visual Studio 2008 of course I had no cache in the working directory, unlike the folder with the release version. I did note one other bug however on using your solution. I clicked Tools | Update Item Cache from Wowhead and it did indeed update the cache, however it didn't then refresh the data for the loaded character, I needed to exit the program and restart to see the cached data. This suggests a missing call to refresh the loaded character data after using the \"Update Item Cache from Wowhead\" perhaps?",
+      "PostedDate": "2009-02-13T02:03:06.18-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yes and no. That's a design issue with our current gemming system; I haven't bothered to fix it, because that system is going away soonish.",
+      "PostedDate": "2009-02-13T09:55:23.217-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ah ok - issued closed.",
+      "PostedDate": "2009-02-16T04:39:22.87-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-02-16T04:40:04.337-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T19:54:57.983-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:35:30.107-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:14.313-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

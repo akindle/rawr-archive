@@ -1,0 +1,140 @@
+Index: Spell.cs
+===================================================================
+--- Spell.cs	(revision 17960)
++++ Spell.cs	(working copy)
+@@ -249,7 +249,7 @@
+ 
+             float damageCoefficient = baseDamage + spellDamageMultiplier * spellDamage;
+             // Adoriele's DPS calculations assume a 200% damage crit, we need to modify that
+-            float critDamageCoefficient = (baseCriticalOffset + baseCriticalMultiplier) / 2.0f;
++            float critDamageCoefficient = baseCriticalMultiplier; // (baseCriticalOffset + baseCriticalMultiplier) / 2.0f;
+             float critCoefficient = baseCriticalChance + critRate;
+             float naturesGraceTime = naturesGrace ? 0.5f : 0.0f;
+             float hitCoefficient = hitRate;
+@@ -258,7 +258,7 @@
+             // Use the property so that haste over the haste cap will clip at the current GCD, if possible to achieve for Starfire
+             CastTime = (unhastedCastTime - naturesGraceTime * critCoefficient * hitCoefficient) / hasteCoefficient;
+ 
+-            return (damageCoefficient * (critDamageCoefficient + critCoefficient) * hitCoefficient) / ((baseCastTime - naturesGraceTime * critCoefficient * hitCoefficient) / hasteCoefficient);
++            return (damageCoefficient * ( 1 + critDamageCoefficient * critCoefficient) * hitCoefficient) / baseCastTime;
+         }
+     }
+ 
+@@ -285,7 +285,7 @@
+         {
+             float damageCoefficient = baseDamage + spellDamageMultiplier * spellDamage;
+             // Adoriele's DPS calculations assume a 200% damage crit, we need to modify that
+-            float critDamageCoefficient = (baseCriticalOffset + baseCriticalMultiplier) / 2.0f;
++            float critDamageCoefficient = baseCriticalMultiplier; // (baseCriticalOffset + baseCriticalMultiplier) / 2.0f;
+             float critCoefficient = baseCriticalChance + critRate;
+             // Nature's Grace is ignored for Moonfire, because it is an instant cast
+             float hitCoefficient = hitRate;
+@@ -293,7 +293,7 @@
+             // Calculate DoT component
+             float dotEffectDPS = dotEffect.NumberOfTicks * (dotEffect.DamagePerTick + dotEffect.SpellDamageMultiplierPerTick * spellDamage) / dotEffect.Duration;
+             // Moonfire DPS is calculated over the duration of the DoT
+-            return (damageCoefficient * (critDamageCoefficient + critCoefficient) * hitCoefficient) / dotEffect.Duration + dotEffectDPS;
++            return (damageCoefficient * (1 + critDamageCoefficient * critCoefficient) * hitCoefficient) / dotEffect.Duration + dotEffectDPS;
+         }
+     }
+ 
+@@ -320,16 +320,16 @@
+ 
+             float damageCoefficient = baseDamage + spellDamageMultiplier * spellDamage;
+             // Adoriele's DPS calculations assume a 200% damage crit, we need to modify that
+-            float critDamageCoefficient = (baseCriticalOffset + baseCriticalMultiplier) / 2.0f;
++            float critDamageCoefficient = baseCriticalMultiplier; // (baseCriticalOffset + baseCriticalMultiplier) / 2.0f;
+             float critCoefficient = baseCriticalChance + critRate;
+             // Nature's Grace is ignored for Wrath, because it does not reduce the GCD
+             float hitCoefficient = hitRate;
+             float hasteCoefficient = 1 + hasteRating;
+ 
+             // Use the property so that haste over the haste cap will clip at the current GCD
+-            CastTime /= hasteCoefficient;
++            CastTime = unhastedCastTime / hasteCoefficient;
+ 
+-            return (damageCoefficient * (critDamageCoefficient + critCoefficient) * hitCoefficient) / baseCastTime;
++            return (damageCoefficient * ( 1 + critDamageCoefficient * critCoefficient) * hitCoefficient) / baseCastTime;
+         }
+     }
+ 
+@@ -399,6 +399,14 @@
+             float accumulatedDamage = 0.0f;
+             float accumulatedManaUsed = 0.0f;
+             float accumulatedDuration = 0.0f;
++            bool lastTwoAreNotDoTs = false;
++            float lastSpellDuration = 0.0f;
++            // check whether the last two spells are non-dots
++            if( spells.Count > 1 && spells[spells.Count - 2].DoT == null && spells[spells.Count - 1].DoT == null ) {
++                lastTwoAreNotDoTs = true;
++                lastSpellDuration = spells[spells.Count - 1].CastTime;
++            }
++
+             Dictionary<float, float> activeDots = new Dictionary<float,float>();
+             foreach (Spell sp in spells)
+             {
+@@ -421,6 +429,10 @@
+                         if (pair.Value > dotDuration)
+                             dotDuration = pair.Value;
+                     }
++                    if( lastTwoAreNotDoTs ) {
++                        dotDuration -= lastSpellDuration;
++                        lastSpellDuration = 0;
++                    }
+                     while (timeSpentCasting < dotDuration)
+                     {
+                         timeSpentCasting += sp.CastTime;
+@@ -447,7 +459,8 @@
+                 {
+                     activeDots[key] -= timeSpentCasting;
+                 }
+-                accumulatedDamage += currentSpellDPS * timeSpentCasting;
++                if( sp.DoT == null)
++                    accumulatedDamage += currentSpellDPS * timeSpentCasting; // dot damage already added above, prevent double counting
+                 accumulatedManaUsed += sp.ManaCost * numberOfCasts;
+                 accumulatedDuration += sp.CastTime * numberOfCasts;
+             }
+@@ -462,6 +475,14 @@
+         }
+         private void CalculateRotationalVariables()
+         {
++            bool lastTwoAreNotDoTs = false;
++            float lastSpellDuration = 0.0f;
++            // check whether the last two spells are non-dots
++            if( spells.Count > 1 && spells[spells.Count - 2].DoT == null && spells[spells.Count - 1].DoT == null ) {
++                lastTwoAreNotDoTs = true;
++                lastSpellDuration = spells[spells.Count - 1].CastTime;
++            }
++
+             Dictionary<float, float> activeDots = new Dictionary<float, float>();
+             foreach (Spell sp in spells)
+             {
+@@ -474,6 +495,10 @@
+                         if (pair.Value > dotDuration)
+                             dotDuration = pair.Value;
+                     }
++                    if( lastTwoAreNotDoTs ) {
++                        dotDuration -= lastSpellDuration;
++                        lastSpellDuration = 0;
++                    }
+                     while (timeSpentCasting < dotDuration)
+                     {
+                         timeSpentCasting += sp.CastTime;
+@@ -812,7 +837,7 @@
+             // Unseen Moon proc
+             if (rotation.HasMoonfire && calcs.BasicStats.UnseenMoonDamageBonus > 0)
+             {
+-                float numberOfProcs = 0.5f / rotation.CastCount;    // 50% proc chance on one spell in the whole rotation
++                float numberOfProcs = 0.5f; // / rotation.CastCount;    // 50% proc chance on one spell in the whole rotation
+                 float timeBetweenProcs = rotation.Duration / numberOfProcs;
+                 effectiveArcaneDamage += calcs.BasicStats.UnseenMoonDamageBonus * 10.0f / timeBetweenProcs;
+                 effectiveNatureDamage += calcs.BasicStats.UnseenMoonDamageBonus * 10.0f / timeBetweenProcs;
+@@ -822,7 +847,7 @@
+             if (calcs.BasicStats.LightningCapacitorProc > 0)
+             {
+                 float baseDamage = (694 + 806) / 2.0f;
+-                float averageDamage = baseDamage + (baseDamage * 1.5f * calcs.SpellCrit);
++                float averageDamage = baseDamage * (1.0f + 1.5f * calcs.SpellCrit);
+                 float castsBetweenProcs = 1 / (rotation.AverageCritChance + calcs.SpellCrit) * 3.0f;
+                 effectiveArcaneDamage += averageDamage / castsBetweenProcs;
+                 effectiveNatureDamage += averageDamage / castsBetweenProcs;

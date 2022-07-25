@@ -1,0 +1,95 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Moonkin",
+      "DisplayName": "Rawr.Moonkin"
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-08T07:16:40.367-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "To fix, in CalculationsMoonkin.cs, change:\n \n            calcs.ArcaneDamage = stats.SpellPower + stats.SpellArcaneDamageRating + stats.SpellDamageFromIntellectPercentage * stats.Intellect + stats.SpellDamageFromSpiritPercentage * stats.Spirit;\n            calcs.NatureDamage = stats.SpellPower + stats.SpellNatureDamageRating + stats.SpellDamageFromIntellectPercentage * stats.Intellect + stats.SpellDamageFromSpiritPercentage * stats.Spirit;\n \nto:\n            float bonusSpellPower = (float)Math.Floor(stats.SpellDamageFromIntellectPercentage * stats.Intellect) + (float)Math.Floor(stats.SpellDamageFromSpiritPercentage * stats.Spirit);\n            calcs.ArcaneDamage = stats.SpellPower + stats.SpellArcaneDamageRating + bonusSpellPower;\n            calcs.NatureDamage = stats.SpellPower + stats.SpellNatureDamageRating + bonusSpellPower;\n \n \nNote that you do need to take the floor of both the contribution from intellect and the contribution from spirit individually to match the in-game numbers.",
+    "LastUpdatedDate": "2017-11-27T11:00:09.773-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-12-05T08:00:41.7-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Moonkin] Rounding error in arcane/nature damage",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 11882
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I actually didn't bother with rounding on these numbers, assuming that the floating point precision would more closely match game performance and that the display would be \"close enough\".  Also, although I admit it's kinda nice that you're going to the effort to suggest code changes, I'd rather you just give a verbose plain-language description of the fix (like the last line in this report).  Sometimes the needed fix for some of these issues isn't exactly as you describe, e.g. the total health issue you discovered a while back.",
+      "PostedDate": "2008-12-05T09:56:52.81-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Actually from my testing with Arcane Missiles I'm quite certain that spell power internally is not rounded and is rounded just for display purposes in game.",
+      "PostedDate": "2008-12-05T13:59:36.27-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I suppose it's possible that they have different routines for calculating spell power to use vs. calculating spell power to display but I'd be more inclined to believe that they calculate once and just round to display.  The problem with this theory is that I did test the corner cases on the display where the contributing components came out (for instance) to 2.6 and 2.8 with the final result being shown as 4.  If they just rounded to display, the number would have been 6; if they truncated to display, the number would have been 5 rather than the observed value of 4.  If on the other hand they use totally different routines for display vs. use, all bets are off.  The reason I'd advocate matching the calculation to the display is it's very easy to visualy compare the number shown by rawr with the number shown by WoW.  On the other hand, trying to compare performance in Rarw to performance on WoW at these scales is very likely to be overshadowed by the games rng.",
+      "PostedDate": "2008-12-05T14:28:51.147-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I went ahead and implemented the change, as the difference at these magnitudes is going to be small at worst.  I would assume that spell power is implemented in integral amounts in-game, similar to defense skill or expertise skill, and that Int and Spirit work as \"ratings\" in the sense that they do not provide partial points of spell power.  This differs from hit/crit/haste ratings because we know they are maintained as at least partial floating-point percentages.",
+      "PostedDate": "2008-12-05T14:41:54.6-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-08T07:16:40.367-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:08:21.72-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:08:46.92-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:03:27.03-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:08.88-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:43.453-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:00:09.773-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

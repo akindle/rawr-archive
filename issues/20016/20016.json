@@ -1,0 +1,131 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtPaladin",
+      "DisplayName": "Rawr.ProtPaladin"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-03-25T14:49:15.003-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "(I think)\n \nAccording to EJ :\nIf you are not at the block cap/full combat table coverage reforge—in this order—haste, crit, expertise, hit, dodge/parry into mastery. IMPORTANT: When reforging from dodge/parry make sure to reforge from the stat that has the most rating since it will be the stat suffering from the most diminishing returns. \n \nI am attaching a prot pally file, but this problem isn't with my file, since no matter who's prot pally I load up, the Optimizer will reforge INTO Dodge and Parry, and gem/enchant for it, even if my Dodge and Parry are already over the \"magic\" 950 score (the point where dodge and parry give less advantage than Mastery).\n \nBest to see by setting boss level to 87, and use Seal of Righteousness (because Seal of truth is known to be broken in Rawr as of 4.0.19)\n \nor am I totally misunderstanding EJ's post?  http://elitistjerks.com/f76/t110338-cataclysm_tanking_protection_field_manual_updated_feb_9_2011_4_0_6_a/#Mastery",
+    "LastUpdatedDate": "2013-05-16T05:18:40.167-07:00",
+    "PlannedForRelease": "Rawr 4.0.19 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-02-14T17:24:04.973-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtPaladin] Not Following Expected Reforging Rules",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 20016
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4624,
+      "FileName": "Fyre-prot.xml",
+      "DownloadUrl": ".\\4624"
+    },
+    {
+      "FileId": 4627,
+      "FileName": "theck.xml",
+      "DownloadUrl": ".\\4627"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "We don't have \"rules\" like that set in place, it just does what it needs to find the highest score. Did you check to see if the RSV's change around where you hit this 950 point?\r\n\r\nWe shouldn't be testing a raid environment variable using boss level of 87, since that affects all the ratings values (dodge, parry, hit, crit, everything).",
+      "PostedDate": "2011-02-14T17:36:12.303-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I just do not personally have a toon that is far enough geared to use as a referance vs 88 bosses.  however, in my limited testing, I think that the measurements used in the Prot Pally might be a bit off at lvl 88 as well - enought for me to post this example.  (the goals of survivial vs Mitagation have changed since the original cata beta).   Roncli had asked for Issuses to be posted if it was felt that the Protpally module was missing the mark.\r\n\r\n",
+      "PostedDate": "2011-02-14T21:55:22.26-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-02-15T10:51:51.22-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "in order to provide a fully geared raid-ready example, I have uploaded a second file. \r\nif you run Optimize against this toon, you will see that it is reforgeing OUT of Mastery into Dodge/parry.   which is agaist all theorys of ProtPally.    (you might recognize the toon I selected).",
+      "PostedDate": "2011-02-15T10:51:53.477-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-02-15T12:46:41.097-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I agree with Fyre and his assessment that mastery is being severely undervalued. This problem seems to be occurring not just in reforging but overall in gear selection as well. According to Theck mastery should overtake all other stats as you reach the the highest tier level.",
+      "PostedDate": "2011-02-15T12:59:03.413-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Found this, will fix it as soon as I get home.  Instead of *adding* the additional censure damage to the seal's base damage, I'm *multiplying* that damage.  WHOOPS!!!",
+      "PostedDate": "2011-02-25T14:07:57.95-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Errr, ignore my last post.  Wrong issue.  Although, incidentally, it may *help* this one.  We'll see.",
+      "PostedDate": "2011-02-25T14:11:00.937-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "After fixing Seal of Truth...\r\n\r\nI just did a default optimization with the development build.  There are no pieces in Theck's build out that do not reforge to mastery when it can.  If you see it doing things like reforging parry to dodge on one piece and dodge to parry on another, that's the optimizer trying to find that perfect balance point where diminishing returns is equal on both.  It might be over-valuing threat, but a run in with the threat slider should take care of that.  Also, he has a piece from TotFW which Rawr has yet to support.\r\n\r\nGems seem to be favoring stamina at 1.0 on the mitigation slider and mastery at 2.0.  Just bump that slider up and you should be okay.\r\n\r\nDid I get everything? :)",
+      "PostedDate": "2011-02-25T16:02:19.32-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "TotFW should be working at the moment, if you have any problems with those open an issue about it.",
+      "PostedDate": "2011-02-25T16:08:19.38-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It's possible the save file was before it was added.",
+      "PostedDate": "2011-02-25T19:10:59.07-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "When the mitigation slider is at 2.0 it values block/parry/dodge etc above stamina which is completely wrong. It should always be Stamina and Mastery as #1 and #2 stats and vice versa.",
+      "PostedDate": "2011-02-25T21:26:02.633-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Is this still an issue in 4.1.0?",
+      "PostedDate": "2011-03-12T20:07:11.533-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-25T14:49:15.003-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:25:55.233-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:40.167-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Cat",
+      "DisplayName": "Rawr.Cat"
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-09T17:31:40.92-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "It appears you are backing into Hit/Exp based on energy costs and modeling that way.  however there is soemthing wrong with the calc.  Lets take a simple situation:\n20 attacks, 40 energy cost, total chance to avoid 5%, \nnet: 19 hit, 800 energy spent, average energy per hit 42.10526316\n \nThe calc in rawr for average energy is RawEnergy*cpgEnergyCostMultiplier\ncpgEnergyCostMultiplier = 1f + ((1f / chanceNonAvoided) - 1f) * 0.2f;\n \nIn our example above we have 40* (1+((1/.95)-1)*0.2 = 40.42105263\n \nThat's off by rather a lot and thus undervalues hit/exp a lot.",
+    "LastUpdatedDate": "2017-11-27T10:59:27.597-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-04-16T13:34:51.787-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Cat] Hit/Exp undervalued",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13032
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "(Also posted in the discussion, but repeated here, to have everything together on this issue).\r\nI think I know where the problem cames from:\r\nThe 0.2 scale factor that is used since for missed finishers, you only use 20% of the energy.\r\nBut this factor should:\r\na) Be tied to the primal precision talent and not always be included if you don't have the talent.\r\nb) Only apply to finishers and not to combo generators.\r\n\r\nI'm sure Astrylian will look at fixing this, as soon as he gets a gap.",
+      "PostedDate": "2009-04-16T14:30:19.523-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I appologize that this is in two places.  I posted once to discussions to see if anyone else had noticed anything.  It hadn't gotten a reply and fell off the front page so I assumed no one else agreed/no one had time to look.\r\n\r\nWith everyone so busy I figured I could provide more value if I looked into the source and tried to see if I could find anything that looked wrong myself.  Then it could be handled one way or another more quickly.\r\n\r\nThis issue report arose from that digging.",
+      "PostedDate": "2009-04-16T17:01:35.673-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "http://elitistjerks.com/f31/t13352-druid_why_hit_good_dps/\r\n\"Yellow damage\r\nWhen you miss a special, or it gets dodged or parried, approximately 82% of the energy is returned. That is, the miss cost 18% of the energy of the attack.\"\r\n\r\n20 attacks, 40 energy cost, total chance to avoid 5%,\r\nnet: 19 hit, _767.2_ energy spent, average energy per hit _40.378947_",
+      "PostedDate": "2009-04-17T09:57:26.547-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That post is nearly 2 years old, is it definitly still true?  From what I understand hit changed in a number of ways when LK came out.",
+      "PostedDate": "2009-04-17T12:41:17.917-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I did some checking ingame, wearing my resto set, with 0 hit and expertise (for most misses). Shred spamming whenever I get above 60 energy. Misses seemed to only drop me to about 50 energy, thus it looks like the energy refund, resulting in only 20% energy being used for misses, still seems to be the current situation., even 2 years later. \r\n\r\nBased on this, it seems like the formula in the code, is still accurate.",
+      "PostedDate": "2009-04-17T15:33:21.833-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Correct. You only lose 20% of the energy cost of a combo point generator on a miss (whether you have Primal Precision or not). For finishers, it's 100% by default, 20% if you have 2/2 Primal Precision. If you see any way that this doesn't match the code, let us know.",
+      "PostedDate": "2009-04-18T11:37:53.777-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-09T17:31:40.92-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:33:04.973-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T22:45:40.733-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:49.003-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:48.98-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T10:59:27.597-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

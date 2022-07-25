@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtPaladin",
+      "DisplayName": "Rawr.ProtPaladin"
+    },
+    "ClosedComment": "Added a check in the Rawr FormMain to make sure the player does not already have Heroic Presence checked before applying a second Heroic Presence buff to a character that is changing their race to Draenei.  Expected release&#58; 2.2.28.",
+    "ClosedDate": "2009-11-19T19:47:36.083-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "In the prot paladin module, when you are a Draenei paladin and check the buff \"Heroic presence\" (which is on by default), 2 % hit is granted instead of 1 %.",
+    "LastUpdatedDate": "2013-05-16T05:24:46.82-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-08-18T02:38:28.627-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtPaladin] Hit from Heroic presence and Draenei stacks",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 13906
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "In my overhaul to push a set of code, I noticed that several models were handling Draenei's Heroic Presence internally, which didn't seem necessary but I left it alone.",
+      "PostedDate": "2009-08-18T12:17:41.807-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-26T09:33:57.937-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-26T09:34:12.21-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-16T07:29:11.467-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This is not a model issue, but rather a bug with the way Rawr itself applies Heroic Presence when you select Draenei as a race.  The ProtPaladin module checks to see if the player is a Draenei and forces that toon to have the Heroic Presence buff.  The problem exists is after it does that, it goes back to Rawr itself, notices that you selected Draenei, and applies the Heroic Presence buff.... a second time.\r\n\r\nIn any model, you can change the race between Draenei and an alliance race back and forth many times, and eventually you'd have a cap'd out hit rating when naked!  Kind of a funny bug.\r\n\r\nWhat Jothay is referring to is that some models, like the ProtPaladin model, force heroic presence on Draenei.  In models that don't do this, you can uncheck Heroic Presence as a Draenei, and the model won't automatically turn it on for you.",
+      "PostedDate": "2009-11-19T19:45:17.313-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-19T19:47:36.083-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:32.63-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:46.82-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

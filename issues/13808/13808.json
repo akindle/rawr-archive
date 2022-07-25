@@ -1,0 +1,110 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.TankDK",
+      "DisplayName": "Rawr.TankDK"
+    },
+    "ClosedComment": "Closing fixed issue.",
+    "ClosedDate": "2009-08-12T23:13:12.467-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Steps to reproduce:\n1) Start Rawr\n2) Load from Armory\n3) Character Name: Beyondlight, Realm: Llane, Region: US, OK\n4) Tools -> Optimize\n5) Calculation to Optimize: Overall Rating\n6) Click \"Build Upgrade List\"\n \nIt fails a few items in. Able to reproduce this consistently.",
+    "LastUpdatedDate": "2017-11-27T11:04:24.273-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-08-07T08:45:56.01-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[TankDK] Build Upgrades Crash",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13808
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Praise to you for discrete steps to reproduce!\r\n\r\nRepro'd in the debugger, I'm gonna take a look at this.",
+      "PostedDate": "2009-08-07T11:08:58.833-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm a developer as well so I know the importance of clear concise steps to reproduce a problem. On a side note, I've started going through the rawr code and hopefully in the future I'll be able to contribute to this amazing project! Thanks! :)",
+      "PostedDate": "2009-08-07T11:36:33.037-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Found that along the optimizer paths, there are chances for NULL objects in certain places where the objects aren't being validated.  I'm rooting them out, but there's some specific objects (around 10% for me) where the null instances start creeping in.  Might be middle of the weekend before I have a fix.  \r\n\r\nI know this doesn't happen w/ DPS DK so I know there's also something I should be tweaking in my module code as well as hardening the optimizer code.",
+      "PostedDate": "2009-08-07T15:25:11.34-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Shaz, I'd be careful of that, consult with Kavan before checking in any changes to the Optimizer code. It sounds instead like the TankDK is throwing an exception, and your changes are just making the Optimizer eat it.",
+      "PostedDate": "2009-08-07T15:55:49.713-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Fixed by changelist: 35957",
+      "PostedDate": "2009-08-07T16:12:23.15-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "If the only change was masking nulls in optimizer then this cannot be considered fixed.",
+      "PostedDate": "2009-08-07T17:03:23.573-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Agreed... I'm preventing the crash, so that part is fixed, but now I need to figure out why the module is returning null.",
+      "PostedDate": "2009-08-07T17:32:03.047-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Found a divide by zero error.  Unfortunately, those errors don't actually throw, they just mark things as NaN and continue, so made it hard to track down.\r\nSo I've tracked down a few divide by zero issues, mostly revolving around offhands. \r\nFixed with changelist:\r\nCompleted: At revision: 35962  \r\n",
+      "PostedDate": "2009-08-07T20:26:18.447-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-12T23:13:12.467-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:39:31.72-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:39:00.11-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:45.793-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:56.533-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:04:24.273-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

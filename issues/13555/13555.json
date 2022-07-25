@@ -1,0 +1,141 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSWarr",
+      "DisplayName": "Rawr.DPSWarr"
+    },
+    "ClosedComment": "Hit and Exp issues resolved by _eBs2002_",
+    "ClosedDate": "2009-07-01T12:01:49.553-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Right, since DPSWarrior is actually supposedly up to date now, I figure you actually want bug reports. So here goes.\n \nI can't say I've \"done the math\" myself, but:\n- The guys that supposedly \"know it\" at EJ will tell you to hit&expcap yellows, since their relative value is ~=1.2 STR at T7.5 levels of gear\n \nFor the attached \"Miklenne Fury2.xml\" lvl78 warrior in blues (neither hit nor exp capped):\n- The \"SimulationCraft\" simulator, which is fairly well respected, comes out valuing both exp&hit at 0.9 STR pre-cap\n- Rawr 2.2.7 itself values hit at 0.9 STR, but exp only at 0.52. To me, this makes no sense.\n \nFor the attached \"Foranaxehead.xml\" lvl80 values in uld25 gear:\nNote that he's at 7.85% hit so not hitcapped without heroic presence.\n- Turn all buffs off: str=1.04, hit=0.65\n- Turn LotP or Rampage on: str=1.11, hit=1.12\n- Now turn Strength of Earth on: str=1.14 hit=0.70\n- Enable Hit Food: str=1.14, hit=0.22    ... this might be about right but i'm a bit fuzzy about hit value postcap\n \nOh, and toggling Heroic Presence on/off does nothing. I'm guessing it's not included in the model at all?\n \n \nGenerally, you might want to trial run your results against SimulationCraft and see if there's differences, and if so, investigate why. Either one is obviously wrong :)",
+    "LastUpdatedDate": "2013-05-16T05:25:11.053-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-06-27T10:38:05.053-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSWarr] hit & expertise problems",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13555
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2007,
+      "FileName": "Miklenne Fury2.xml",
+      "DownloadUrl": ".\\2007"
+    },
+    {
+      "FileId": 2008,
+      "FileName": "Foranaxehead.xml",
+      "DownloadUrl": ".\\2008"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Next attachment...",
+      "PostedDate": "2009-06-27T10:38:36.987-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-06-27T10:38:39.537-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ebs has been investigating whether or not the hit and exp values under the cap should really be the greatest thing since sliced bread. Since I started working on Rawr.DPSWarr I cannot recall a time when either ever had an SEP greater than 0.75. Presently, we have an attack table being used for all the different things that can occur (Dodge, Parry, Hit, Glance, etc.) which is appropriately changed by the presence of hit and exp and it all looks like it's supposed to but we don't see this 1.x SEP under the cap like landsoul's sheet provides.",
+      "PostedDate": "2009-06-28T11:03:29.567-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Why would the pre-cap value of hit/exp be different? They both provide the same increase in hits landed. Is there something odd where you lose the rage cost of a missed attack but not a dodged attack or something?",
+      "PostedDate": "2009-06-28T11:22:52.853-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "@Jothay: Yet SimulationCraft, which actually runs the hits&misses&glances one by one, comes out with exp/hit being >1SEP at T7+ levels. Are you perhaps not taking into account the missed rage gain?\r\n\r\n@Astrylian: I don't have hard data to back this up, but I _imagine_ it could be related to double wield. For whites, some of the +hit goes into offhand hits, which hit for less AND generate less rage. At least that's my guess. (On the other hand, it gets offset back a bit by the fact that e.g. 80%->81% hits is a bigger increase than e.g. 99%->100%)\r\n",
+      "PostedDate": "2009-06-28T12:06:37.523-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Additionally, the independently developed \"DPSSim\" ( http://elitistjerks.com/f81/t40895-dpssim_simulation_tool/ ) tool gives hit/exp values of 1.3+ SEP .... at least after setting the default fight length to something meaningful (like 50000 seconds instead of 3000), and running with negative deltas for exp/hit.\r\n\r\n(Granted, it is of course entirely possible that they both made the same mistake, but.. yeah.. you know what I'm saying)",
+      "PostedDate": "2009-06-28T12:22:50.233-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Can't offhand hits both be dodged and miss, just like mainhand hits? There really should be no difference between hit and exp value, as far as I know, until caps.",
+      "PostedDate": "2009-06-28T12:27:06.91-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sorry for the spam... at the very least you have a very nasty border case somewhere, where hit shoots from 0.65 to 1.12 just because you gain some crit. (My original post)\r\n",
+      "PostedDate": "2009-06-28T12:41:33.213-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "@Astrylian: Hrm yeah I think I managed to secondguess my own logic there. 1% more hit = only 0.5% more hit on mainhand out of the total swings.... but the mainhand was only 50% of the swings to begin with, so 0.5% more on 50% is still +1%.  so... nevermind my ramblings.  \r\n\r\nYes, it _sounds_ like they should be the same (provided not meleeing something in the face of course)\r\n\r\nDPSSim reports them as equal. (1.4 SEP @ T8ish levels)\r\nSimCraft reports them as equal. (1.3 SEP @ T8ish levels)\r\n\r\nYeah I don't have the same gear loaded in DPSSim and SimCraft. They're both heaps of fun to configure >.<",
+      "PostedDate": "2009-06-28T13:43:23.757-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm looking into this issue across multiple settings.  Unfortunately, hit below the cap is not something normally on my radar, because reaching the hit cap is so easy at my gear level that I can't easily swap hit gear out.\r\nThe Expertise and Hit not being equal when below the hit cap is no longer an issue and will be fixed in 2.2.8.  I wasn't able to download your XML file, but I synced up with Miklenne of EU-Bloodhoof, and added some two-handed weapons (2x Rune Edge, no enchant), and I have Strength = 0.5, Exp/Hit = 0.35.  Note that loading character <lvl80 can have unexpected results, but regardless the issue of \"hit and exp are giving different results\" has been addressed.\r\n\r\nI was able to download Foranaxehead, and using the latest beta:\r\n\"Note that he's at 7.85% hit so not hitcapped without heroic presence.\" -- This is incorrect, as he has precision and is over the hit cap (10.84%).\r\nWith him over the hit cap, we have:\r\n- Turn all buffs off: str=0.92, hit=0.32\r\n- Turn LotP or Rampage on: str=0.98, hit=0.32\r\n- Now turn Strength of Earth on: str=1.01 hit=0.34\r\n- Enable Hit Food: str=1.02, hit=0.33\r\n\r\nIf I spec out of precision to put you below the hit cap...\r\nNo buffs: str=0.91, hit=0.94 (equal to 1.03 SEP)\r\n+Rampage: str=0.97, hit=1.00 (equal to 1.03 SEP)\r\n+SOE: str=0.99, hit=1.08 (equal to 1.09 SEP)\r\n+Hit Food: str=1.01, hit=0.78 (equal to 0.77 SEP -- you just meet the hit cap at this point).\r\n\r\nI'm not sure what exact bugs were causing this issue, but in the past few days I have scoured the hit and expertise calculations (expertise below cap, and hit above cap), and made a lot of changes before I got to reproducing your issue.  Rest assured, it looks like it's been fixed :)\r\n\r\nThere is still a concern with how low the SEP is for hit post-cap.  I'm typically getting anywhere between 0.25 and 0.33 at ~200'ish hit + 3/3 precision.  Most other resources are giving me a number higher than this, so I'm worried that there's a bug somewhere in my HeroicStrike/Rage, or WhiteDPS calculations.  I'm still looking, but haven't found it yet.",
+      "PostedDate": "2009-06-29T12:53:16.807-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sorry to double-post, but it looks like my SEP value for hit matches what DPSSim shows, so maybe the higher numbers that landsoul's sheet reports is actually inflated, and my numbers are right.  Regardless, I'm checking in now :)",
+      "PostedDate": "2009-06-29T13:18:13.757-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It's possible that you're hitting a case that cannot be solved with a mathematical model and actually needs a simulation: rage caps and, primarily, rage starvation. In the real world, you get situations where you used up all your rage and need a white swing to land for more rage..  and then get three misses in a row. With weapons that take upwards of 4 seconds per swing.\r\n\r\nThe question, I guess, is how often it happens. And if there's a sane solution to it at all.",
+      "PostedDate": "2009-06-30T01:19:17.41-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Rage Starvation is actually being modeled.  It calculates the chance that you'll have a double-white miss, triple-white miss, and quadruple-white miss.  It looks at the recovery time for those three scenarios, and has a percentage for RageSlippage derived from that.  Your frequency of HS, BT, WW and Slam procs are modified by that slip value (typically a percentage between 90-100%)\r\n\r\nRage caps is harder to calculate, because the amount of rage intake over a period of time depends on where you are in your rotation.  You may only use 10 rage per second to keep your rotation going, but the rage expenditures come in bursts (15 for slam, 20 for BT, 25 for WW).  A string of 2 crits may starve you if you don't have Slam/BT/WW available between them, or you may be fine if you time your HS and get a WW off between them.  It's mathematically possible to model this, but it hasn't been done yet.  For this reason, Heroic Strike damage is a \"best case scenario\", and may be higher than real-world circumstances.",
+      "PostedDate": "2009-06-30T09:54:13.117-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-07-01T12:01:49.553-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T16:36:56.553-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:15.273-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:03.14-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:11.053-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

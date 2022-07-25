@@ -1,0 +1,101 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Enhance",
+      "DisplayName": "Rawr.Enhance"
+    },
+    "ClosedComment": "v2.2.7 looking a lot better.",
+    "ClosedDate": "2009-06-20T18:04:33.8-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The current module for Enhance Shaman is claiming that caster weapons are BiS for enchance shaman. This may be something already being addressed as the latest version eliminated this issue with Armor.",
+    "LastUpdatedDate": "2013-05-16T05:25:16.767-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-06-08T15:39:36.177-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Enhance] Weapon Evaluation",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13450
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1987,
+      "FileName": "Khrys.xml",
+      "DownloadUrl": ".\\1987"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "As far as I know, this is accurate (but I'm not personally up on EnhSham theorycraft). If you think this is false, beyond the gut-reaction 'wrongness' of it, please provide evidence to the contrary.",
+      "PostedDate": "2009-06-08T17:19:44.98-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "quite false.....export data to Enhsim with wraithstrike vs Angry Dread/Crippling Grasp and you will see the difference.  The change was in how flametongue weapon was calculated. Before, having a fast offhand and a caster(spellpower) mainhand was quite good...now its crap.   \r\n\r\nAlso, this issue extends to Dying Curse and Sundial etc....... Equip both and run Enhsim, then equip  Mirror and Meteoritic whetstone....no contest whatsover.....SP is good for Enh shaman, but not as good as AGI/STR/Crit. Not enough spells being cast to take advantage of it.\r\n\r\n",
+      "PostedDate": "2009-06-09T19:07:59.893-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "As has been said many many many times here and on the principal forums for Rawr.Enhance on Elitist Jerks http://elitistjerks.com/f79/t45421-enhancement_rawr_enhance_thread/ and MMO-Champion http://www.mmo-champion.com/index.php?topic=38241.0 there is an issue with Spellpower and hit rating calcs giving higher dps than expected. I have yet to determine why this is.\r\n\r\nIt would be helpful if you could assist diagnosis of where the problem is so that we can get it fixed. To do this I need specifics of amounts of spell power and attackpower is it over calculating the amount of spellpower you have? Is it adding too much for spell co-efficients? Some hard facts would be useful rather than \"its wrong\".",
+      "PostedDate": "2009-06-16T02:11:05.893-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Perhaps this could shed some light on the issue.\r\n\r\nFully raid buffed, I'm at 5.8k AP, 430 (Spell/Yellow Cap exceeded) Hit, 227 Haste, 25.98% spell crit, and expertise capped.\r\nCurrently, I'm a cheap person and use Mongoose on both weapons (tons of old mats lying around).  It notes Wrath Strike as a 108.68 DPS upgrade over Kel'thuzad's Reach.\r\n\r\nHere is teh DPS change laid out.\r\n\r\n                     Pre-WS     Post-WS    Diff\r\nWindfury Attack:     509.3      457.89    -51.41\r\nFlametongue Attack:  537.09     597        59.91\r\nLightning Bolt:      777.1      881.07    103.97\r\nEarth Shock:         679.36     745.39     66.03\r\nSearing/Magma Totem: 389.96     447.87     57.91\r\nStormstrike:         365.01     333.3     -31.71\r\nSpirit Wolf:         230.54     229.23     -1.31\r\nLightning Shield:    287.71     324.64     36.93\r\nLava Lash:           257.27     254.69     -2.58\r\nTotal DPS:          5618.83    5727.51    108.68\r\n\r\nIt does not simply appear to be just flametongue, as that would only net a 59 DPS increase, which is more then off-set by the loss in windfury, stormstrike, and lava lash.  However, the bonus to Lighting Bolt, Earth Shock, and Lightning shield is significant.  I've attached the XML of the character used for this, as it's my own toon.  I'm not doing something like wearing spellcasting gear, hope this helps.",
+      "PostedDate": "2009-06-16T05:23:37.537-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-06-16T05:23:39.133-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Note, when dropping into Enhsim, and putting my specific rotation I play with, I get ~15 DPS upgrade from wraith strike.  Perhaps if the original poster adds his character and enh sim setups for priority, we can see what he's seeing.",
+      "PostedDate": "2009-06-16T05:45:50.057-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Its looking like it might be down to not yet modelling global cooldown interference. ie: at present a perfect use of every ability is assumed. If I was to add in GCD interference (ie: you can do ES or SS but not both if they are both off CD) then it would reduce the dps of spell damage abilities which should make spellpower a lot lower in the grand scheme of things. Thus solving the wraith strike issue.",
+      "PostedDate": "2009-06-17T09:29:07.997-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-06-20T18:04:33.8-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T19:49:28.59-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:09.903-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:16.767-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Fixed for next version by commit 36750",
+    "ClosedDate": "2009-09-16T19:10:22.79-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Affected version: 2.2.15\n \nSteps to reproduce:\n \n1. Open Rawr\n2. Left click any gear slot\n3. Choose any piece of gear\n4. Right click on item and select \"Equip Custom Gemming...\" menu option\n5. In the \"Customize item...\" dialog, right click on the item\n \nReproducible: Always\n \n************** Exception Text **************\nSystem.NullReferenceException: Object reference not set to an instance of an object.\n   at Rawr.ItemContextualMenu.Show(Character character, ItemInstance item, CharacterSlot equipSlot, ItemInstance[] characterItems, Boolean allowDelete)\n   at Rawr.ItemContextualMenu.Show(Character character, ItemInstance item, CharacterSlot equipSlot, Boolean allowDelete)\n   at Rawr.ItemButton.ItemButton_MouseClick(Object sender, MouseEventArgs e)\n   at System.Windows.Forms.Control.OnMouseUp(MouseEventArgs e)\n   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)\n   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)\n   at System.Windows.Forms.Control.WndProc(Message& m)\n   at System.Windows.Forms.ButtonBase.WndProc(Message& m)\n   at System.Windows.Forms.Button.WndProc(Message& m)\n   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)\n   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)\n   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)",
+    "LastUpdatedDate": "2013-05-16T05:24:27.973-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-09-09T14:11:25.043-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Unhandled Exception in Customize Item Dialog",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14099
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

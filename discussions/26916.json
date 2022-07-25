@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "89994",
+    "ThreadId": "26916",
+    "Html": "\r\nIt seems that Rawr is using way too many USER objects, the official 13.1 release often crashes because Rawr has 10 000 user objects open, preventing the creation of new ones, with rev 17922 that has been greatly improved, but it still can keep 5000+ objects open at the same time.<br /><br />My suspicion is that the popup item selection lists are too blame, as they can become very large, and seem to create one control for each item.<br />",
+    "PostedDate": "2008-05-01T01:32:55.593-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "90044",
+    "ThreadId": "26916",
+    "Html": "\r\n\"with rev 17922 that has been greatly improved, but it still can keep 5000+ objects open at the same time.\"<br /><br />Please provide repro steps.<br />",
+    "PostedDate": "2008-05-01T07:57:52.47-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "90197",
+    "ThreadId": "26916",
+    "Html": "\r\nThere are not many steps to reproduce that.<br /><br />You need a relatively full ItemCache, I am using the standard b13.1 files and then filled them up with Armory upgrades and optimiser runs allowing him to create new gemmings (that makes my cache contain 2330 different combinations).<br /><br />Then you open Rawr, click on every single slot so that the popup appears, and watch the user handles go up. I end up with around 4600 user handles each time, feels like there is a control created for every single item in the cache.<br />",
+    "PostedDate": "2008-05-02T04:47:27.887-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "90230",
+    "ThreadId": "26916",
+    "Html": "\r\nNo, I mean repro steps for <b>after</b> rev 17922. There still seems to be lost memory, but not handles, doing what you describe.<br />",
+    "PostedDate": "2008-05-02T08:19:31.583-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "90236",
+    "ThreadId": "26916",
+    "Html": "\r\nI have 17960 currently building (with changes to the moonkin calc modules, but these dont affect UI at all), and it is with that version that I am seeing those 4600 USER handles flying around on Vista SP1. And I am really not doing anything else but popping up the lists for all slots one after each other, with the moonkin calculation model active. After having opened all those lists, the handle count seems to stabilise around 4600, with it no longer growing when I reopen lists.<br /><br />With the previous version (the b13.1 release), it was so bad that it would crash quite often because it hit the 10K handle limit.<br /><br />Have you checked how many items you have cached?<br />",
+    "PostedDate": "2008-05-02T08:35:24.13-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "90241",
+    "ThreadId": "26916",
+    "Html": "\r\nHow are you measuring the handles? Using task manager, the most I can get it up to is 212 with my itemcache, though I realize that scales with how many items you have in a single slot (like 1800 total items for me, so with your 2330 I could see like 250 handles maybe)<br />",
+    "PostedDate": "2008-05-02T08:49:29.66-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "90243",
+    "ThreadId": "26916",
+    "Html": "\r\nAh, you're referring to USER objects, not handles. Yes, that does hit up to about 3k for me, and doesn't keep increasing from re-opening popups. It does however look like it's losing about 500 when it switches models... I'll look into that, probably the buff controls and the calculation display controls being recreated.<br />",
+    "PostedDate": "2008-05-02T08:56:34.86-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

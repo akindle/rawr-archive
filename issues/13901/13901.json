@@ -1,0 +1,95 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSWarr",
+      "DisplayName": "Rawr.DPSWarr"
+    },
+    "ClosedComment": "Change committed in 36179. Bloodrage no longer pulls cooldowns.You will still see the number of activates on the GCD Summary but with a statement next to it that it didn&#39;t use a GCD.Let&#39;s discuss Trinkets in a different issue.",
+    "ClosedDate": "2009-08-19T11:19:55.287-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "If you check Bloodrage in the Ability Maintenance tab it lowers your DPS because in Rawr it uses GCDs (checked this by hovering over Total DPS, it showed Bloodrage using 4 of 189 total GCDs).\nThis is a wrong behavior because ingame Bloodrage is not on the GCD, so it shouldn't reduce DPS at all.",
+    "LastUpdatedDate": "2013-05-16T05:24:47.463-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-08-17T08:55:50.493-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSWarr] Bloodrage wrongly using GCDs",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13901
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I'm wondering if it's also doing this for trinkets.  I know that Wrathstone doesn't use a GCD",
+      "PostedDate": "2009-08-17T14:34:26.023-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok, so I just loaded up WoW and manually checked this issue out:\r\n\r\nBloodrage: Did not trigger the GCD\r\nBerserker Rage: Did trigger the GCD\r\n\r\nHowever, having clicked Bloodrage, I then had to click something else (either with a mouse or with the keyboard) so there is SOME delay between Bloodrage and the next ability. The question is, what do we want to use to simulate this delay?\r\n\r\n1. Simple: Leave it alone and let it consume a GCD\r\n2. Simple: Use a modifier against the GCD usage of divide by 2 or divide by 3, so having multiple Bloodrages over time will total up to a GCD. I already have GCD mod code in place for other abilities and can just set the same here.\r\n3. Complex: Rewrite/Add a GCDUsage function that only pulls the Latency calc ((Lag+max(0,React-250))/1000) and does not include a 1.5 second consumption.\r\n4. Option 3 but adding to the React time some amount of millisec (like 250 or 500).",
+      "PostedDate": "2009-08-18T11:56:23.85-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "However, try this.  Use some ability that activates the GCD.  Now, while you're within the GCD, you can activate activate Bloodrage, so it does not touch the GCD at all, and does not affect any other ability usage in a negative way.\r\n\r\nIt can therefore even be exempt from the latency penalty, unless a user's latency is astronomically high (to the point that after using some ability, receiving confirmation from the server that the client is correctly the GCD, using Bloodrage, and THEN having to wait PAST the original ability's GCD to receive confirmation that Bloodrage did not in fact activate the GCD).\r\n\r\nBerserker Rage would, however, act exactly as you mentioned, because while it does not activate the GCD, it cannot be used on the GCD in the way that Bloodrage can, if I remember correctly.\r\n\r\nEbs, most (if not all) trinkets work exactly how you mention - they don't use a GCD at all, but there is a reaction time to use on ability and then immediately another.\r\n\r\nThere was also something tricky about ordering how you use your cooldowns together as Fury.  For myself as Arms, it's usually a rend refresh into a simple Shattering Throw, spam my trinket and immediately my first ability order (usually MS when above 30 rage, sometimes OP or an SD proc of Execute that is about to expire).  For Fury, though, I remember having a particular order for DW, Recklessness, and trinket, because of how the GCD worked with each of the abilities.  I just don't happen to remember the order/rules, probably just from being out of practice with Fury.\r\n\r\nI should go fix that...",
+      "PostedDate": "2009-08-18T12:24:16.567-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I think this opens up the issue of \"play style\" vs what we model. I would have used Bloodrage because I didn't have the rage to to MS or whatever, then popped that ability so there would be a delay. You state that someone else would pop their ability then pop Bloodrage where it can't affect the GCD (or maybe to a near negligible affect).\r\n\r\nUnfortunately, without creating a new option on the panel, we can't have both. I don't really wanna make a new option on the panel for this but I think Option 3 might be a decent compromise, only giving the near-negligible delay into account and taking off the 1.5 seconds of an actual GCD.\r\n\r\nWe can figure this out for Bloodrage then use the same logic for Trinkets. However, we need actual testing to be sure that Trinkets with a Trigger.Use don't consume a GCD. Whenever I manually popped a trinket, I saw the 1.5 GCD go off in game (however I no longer have a trinket that does that as I'm using all passive trinkets on my toon). It's possible that there are some trinkets that do consume GCDs and some that don't. If that's the case, then I'd have to create a list of all trinkets in game and whether or not they consume GCDs, which would be a REAL pain.\r\n\r\nSo the real question is: Who can cite the best website with information regarding this issue (for Bloodrage and for Trigger.Use trinkets separately).",
+      "PostedDate": "2009-08-18T12:38:29.143-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I was actually thinking a lot while typing up that last reply to the same general tune - there's times where one might need that Bloodrage to start a rotation, to maintain a rotation, to stave off a foreseen lull in rage regeneration (Uh-oh, I'm not going to have enough rage for my next GCD's WW, I should Bloodrage during this BT's GCD so as not to stall the rotation), or to aid in the recovery of a rotation (I just lost all of my rage and am sitting without using GCDs with a WW waiting off CD, I can't wait for another white hit to start back in).\r\n\r\n(I'm talking about this using Fury as an example, but the same exact concepts apply to Arms.)\r\n\r\nThe only human decision that comes into play is whether to save it in case the rotation needs saving, or to use it as early as possible.  There's no question that using a Bloodrage when not at the rage cap will grant more damage.  The\"player usage\" issue comes up when it's deciding between using it for the extra rage dumping (be it HS, Cleave, Execute in execute phase, or more HS along with Execute in Execute phase).  Which sorta leads into my next question.\r\n\r\nIn this case, I don't think these two are mutually exclusive, but I'm working under some very basic, and possibly very wrong, assumptions on how the model works in reference to some very basic Warrior functions, and in its actual modeling of the rotations in relation to our energy source.  Basically, it comes down to the logic in the model as to when and where the rage infusion would best be spent, and on how the model handles, if at all, the spiky nature of our rage income compared to the rather restrictive container for that rage (I almost said the \"granularity\" of rage generation, since that seems to be the word of the day xD).\r\n\r\nThis very well might be better off in Discussions in a fresh topic.",
+      "PostedDate": "2009-08-18T13:26:19.027-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Latency should not be a difference between ability usage.  \r\n\r\nLatency measures the time between when an ability comes off of CD and when your computer recognizes that it is off CD and lets you use the ability.  \r\nReaction measures how quickly you can react to a triggered ability (ie, Slam! for fury, Sudden Death for arms -- Overpower is up for debate, I'd surmise that it's part of a rotation and is dependable, every 6secs it triggers.  How that reflects in the real world is another story).\r\n\r\nYou shouldn't have Bloodrage take any part of the GCD.  What you *should* do is have the Rage Per Second that Bloodrage gives you be:\r\nragePerUse * FightLength/(cooldown + latency + reaction)",
+      "PostedDate": "2009-08-18T13:42:42.8-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "If a player is \"consuming\" a GCD with bloodrage then that is due to them playing sub-optimally. We should not be modeling sub-optimal play, we should be modeling the game as it is, and in the game bloodrage does not not consume a GCD. I use bloodrage two ways, either in-between GCDs when I see that I won't have the rage for the next slot in my rotation, or I will use it at the same time as another ability if we need burst DPS or heroism has been triggered just to boost my rage pool.\r\n\r\nNeither of these consume a GCD or are effected my latency in any way. Modeling as it current stands is simply incorrect. The way that I look at it, is that the warrior model doesn't currently allow you to prioritize Heroic Strike over MS or BT, since that is sub-optimal. A player is free to do that if they wish while playing the game, but we don't support that play style in the DPSWarr model since it is not the optimal play style.\r\n\r\n~Droid",
+      "PostedDate": "2009-08-18T14:21:16.897-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-19T11:19:55.287-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T16:41:47.643-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:33.607-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:47.463-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

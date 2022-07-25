@@ -1,0 +1,161 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Mage",
+      "DisplayName": "Rawr.Mage"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-05-07T19:02:17.423-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Loading this XML, crit is valued at 1.46 dps, and haste is valued at 1.42 dps. \nSwitching the shoulder gem from sp/haste to sp/crit (8haste for 8crit), changes the relative stat values to 1.44 dps for crit, and 1.57 dps for haste.\nWhile I understand this config may be very close to the crit vs haste threshold point, is the huge difference expected?",
+    "LastUpdatedDate": "2017-11-27T11:01:49.043-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-05-06T00:15:27.28-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Mage] Relative Stat Values showing unexpected threshold points",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13177
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1866,
+      "FileName": "relativestats.xml",
+      "DownloadUrl": ".\\1866"
+    },
+    {
+      "FileId": 1869,
+      "FileName": "screenies.jpg",
+      "DownloadUrl": ".\\1869"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "For me it's crit=1.46, haste=1.42 in both cases (with change less than 0.01). It could be that you're hitting some numerical instability on your computer. If you're compiling yourself are you making sure that you're running a release build and not from visual studio (or if you're running from VS that you have JIT optimizations enabled).\r\n\r\nIf nothing of this helps can you post the section from copy to clipboard that shows the solution spell cycles for both cases.",
+      "PostedDate": "2009-05-06T01:20:31.043-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I get the same, on both debug and release builds. The difference seems to be that with the sp/crit gem, Rawr chooses to evocate which presumably increases the relative value of haste.",
+      "PostedDate": "2009-05-06T05:04:03.157-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yes this is with Build->Release/AnyCPU, then running the executable outside MSVC. Wisk pointed out the reason: the 8haste-->8crit change causes the sequencer to not need Evocate, which really affects the relative value of haste. I attached a screenshot for this scenario.\r\n\r\nNow here's an even worse scenario:\r\n- Load the same XML, and tick \"Integral Mana Consumable - Comparison\". I get 1crit=1.53dps, and 1haste=0.52dps (!).\r\n- Then, switching the shoulder gem from 8haste to 8crit, I get 1Crit=1.44dps, and 1haste=1.57dps.\r\nThe numbers are different, but the cause is still the same: the first uses Evo, the second doesn't.",
+      "PostedDate": "2009-05-06T10:30:44.003-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-05-06T10:30:49.917-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This is expected behavior. You're right on the edge of maintainability. When you use sp/crit gem you still have room for a few extra haste rating before you hit the edge, with sp/haste you're over the edge. Specially when you have integral mana consumables it means that you can't use that extra haste to get more damage because you don't have enough mana to support it. The only way to get that extra mana is by having one tick of evocation, but gives way more than what you need and would be mostly wasted, so overall it's better to not evocate and just waste the haste. That's why haste has low value.",
+      "PostedDate": "2009-05-06T13:57:03.69-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I should also note that this only matters for small changes in haste, which is what the relative stat chart shows you. Over bigger increases in haste the value of haste is on average higher because when you get enough extra haste it begins to be worth it to use the full tick of evocation. This is also the reason why I don't recommend using integral mana for comparisons, using the partial evocations gives you the more desired average value instead of having to deal with these micro changes which only apply at the very exact fight parameters.",
+      "PostedDate": "2009-05-06T14:01:31.937-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I understand we expect extreme differences when Integral Mana Consumables is ticked. But even without it, the crit/haste (1.46,1.42)--->(1.44,1.57) transition seems a bit too large to be useful. Would it help to average the Relative Stat Values over a larger range, i.e. [(dpsValue(currentStats + N haste) - dpsValue(currentStats) ) / N], with N somewhere between 20 and 30?",
+      "PostedDate": "2009-05-06T16:00:36.943-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "No, relative stat values are not meant to be used for anything other than exactly what they are - value of stat at micro level changes.",
+      "PostedDate": "2009-05-06T16:27:22.013-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Can you explain what you're trying to do with this number? If you need it for gems you have the gem chart or you can use the item budget.",
+      "PostedDate": "2009-05-06T16:31:04.293-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I wish there was a way to edit comments...\r\n\r\nI'm not sure why you say that this change is not expected. The dps gradient with respect to haste has a nonsmooth change at that point and the value actually changes by that big value. You can check the scaling vs haste graph and you'll see that you're exactly on the boundary (although the resolution of that graph is very rough to see the finer details).",
+      "PostedDate": "2009-05-06T16:36:33.66-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I was using relative stat values more as a macro-level indicator of stat scaling. E.g. comparing FFB to Fire/ttw, and ignoring the sp->dps factor for a moment, I wanted to compare [haste_value+crit_value+spirit_value]_ffb to [haste_value+crit_value+spirit_value]_fireball, to get an idea of spec scaling over the next tier of raiding gear. But more simply, I used it for gems and general gearing guidelines, because it's more structured and concise than going through the gem chart.",
+      "PostedDate": "2009-05-06T19:19:22.483-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Omniaa, please read the giant red warning message on the Relative Stat Values chart.",
+      "PostedDate": "2009-05-06T19:39:53.203-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm not misunderstanding the current implementation or disclaimer, but rather questioning the purpose of the chart as implemented :-)  It just seems relative stat values would be more useful as a macro-level stat scaling indicator (i.e. over a larger range). But if people are finding it appropriate or otherwise useful as it stands now, I'll have no qualms about it; I just won't use it.",
+      "PostedDate": "2009-05-06T23:52:56.353-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Is the resolution of Item Budget chart good for your purposes?\r\n\r\nI just want to make sure we're on the same page what is going on. If you enable incremental mana you'll get a very step like behavior in gradient near the edge, which results in huge changes in stat value over small stat changes. When you average that the value you get is equal to having incremental mana disabled. The jump from 1.57 to 1.42 for haste is accurate and indeed exists when you cross the edge where you need to start using evocation.",
+      "PostedDate": "2009-05-07T14:05:55.947-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I admit I have been using Relative Stat Values chart instead of the more appropriate Item Budget chart. (The difference is not intuitive!) Item Budget definitely works for my purposes, although I would personally prefer it to be over 20- or 30-point deltas (except for mp5 ofc) to reflect common gemming opportunities and to smooth boundary cases.\r\n\r\nAnyway, thanks Kavan for all the detail on this. I apologize for not comparing the two charts in detail before posting; I wrongly assumed there just were straight scaling factors between them.",
+      "PostedDate": "2009-05-07T18:17:41.913-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-05-07T19:02:17.423-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:32:49.537-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:34:22.25-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-21T00:00:19.307-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:37.093-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:39.427-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:01:49.043-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

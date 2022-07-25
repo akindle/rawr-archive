@@ -1,0 +1,21 @@
+Index: Rawr.DPSDK/CombatTable.cs
+===================================================================
+--- Rawr.DPSDK/CombatTable.cs	(revision 446)
++++ Rawr.DPSDK/CombatTable.cs	(working copy)
+@@ -192,7 +192,7 @@
+             }
+ 
+ 
+-            MH = new Weapon(null, null, null, 0f);
++            MH = new Weapon(null, stats, calcOpts, 0f);
+             OH = new Weapon(null, null, null, 0f);
+ 
+             DW = character.MainHand != null && character.OffHand != null &&
+@@ -243,7 +243,6 @@
+             else if (character.MainHand == null && character.OffHand == null)
+             {
+                 combinedSwingTime = 2f;
+-                MH = new Weapon(null, stats, calcOpts, 0f);
+             }
+         }
+     }

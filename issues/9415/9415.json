@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2008-02-27T17:26:27.02-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I'm having trouble tracking this bug down. Here's the reproduction steps:\n \ndelete ItemCache.xml\nopen Item Editor\nAdd 24257\nSelect it\nAdd 24257\nSelect the top item again\n \nYou'll notice the socket bonus disappears. It must be some strange connection because when I try to step through I can't trace the point when the socket stats disappear. This will happen randomly just clicking on items in the item editor and the socket bonuses start disappearing.\n \nEDIT:\n \nOk after I've temporarily expanded the socket bonus from automatic property I was able to track the problem down to FormItemEditor.cs, line 448. My understanding is that in line 432 you already store the socket bonus for previously selected item. Doing it again in 448 after you already added the new binding (without loading the new data) will store old values into the new Stats object, corrupting the data. Perhaps you meant to do ReadValue() instead? I don't know all the implications of this code so I'll let you do the fix.",
+    "LastUpdatedDate": "2013-05-16T05:27:33.713-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-02-26T00:58:17.73-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "SocketBonus & Item Editor bug",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 9415
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "It looks like what is happening is that the assignment at line 86 was not getting pushed through (the data-binding only works for ui widgets, not simple assignments like this).  I came up with a more simple test case:\r\n\r\nopen Item Editor\r\nAdd 24257\r\nClose and reopen item editor (select the item you added if it isn't already selected).",
+      "PostedDate": "2008-02-26T14:54:22.707-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-02-26T14:54:23.47-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-02-27T17:26:27.02-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T22:28:03.673-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:37:13.373-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:27:33.713-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

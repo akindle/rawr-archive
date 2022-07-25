@@ -1,0 +1,115 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Mage",
+      "DisplayName": "Rawr.Mage"
+    },
+    "ClosedComment": "Closing as resolved. If any new information for Combustion modeling become available open a new issue.",
+    "ClosedDate": "2011-02-13T18:19:20.02-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I see on my spell breakdowns one of the cycles is \"Combustion+FBLBPyro\", which is some 2k higher dps than usual FBLBPyro. I'm guessing that this is still the old working of combustion where it gave increasing chance on crits? If I'm wrong please disregard the rest of this issue and close it. But the damage seems a little low since you can get 10k+ dps out of this, that's why I am doubting it.\n \nThe new working of combustion is explained very well in the fire mage compendium at EJ\nhttp://elitistjerks.com/f75/t110326-cataclysm_fire_mage_compendium/#Combustion:_Fires_2_Minute_Cooldown\n \nBriefly I would like to suggest that it is modeled as follows:\n- treat it as a separate spell, remove it as a modifier\n- presume combustion is cast after cooldown, immediately following the next crit from fireball or a pyroblast! ignite\n- presume LB is up, average the dps\n- presume FFB dot is up, if the glyph is present (regardless if the main rotation is FFB)\n- calculate dps from ignite by averaging fireball and pyroblast ignite dps\n- could also add an option under spells and buff to ask the user if they want to always assume waiting for pyroblast!",
+    "LastUpdatedDate": "2017-11-27T11:02:05.323-08:00",
+    "PlannedForRelease": "Rawr 4.0.14 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-01-03T06:16:36.417-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Mage] Combustion DPS",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19534
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "It's using the new Combustion mechanic, but it's quite possible the model for it is not good enough. It is treated as a separate spell already, Combustion+FBLBPyro means cast combustion and continue with rotation, its duration equal to the combustion dot duration. The reason why it's treated that way is to allow cooldown stacking instead of just having it averaged overall.",
+      "PostedDate": "2011-01-03T09:22:08.673-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-03T11:03:10.043-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "My bad then, but consider that Rawr is showing that combustion is only 1% of overall fire mage damage, while most WoL parses are showing mages who get 5% of their damage from combustion. Simcraft goes even higher, predicting over 8% of fire mage damage from combustion alone. So if you have time it might be worth looking into :)",
+      "PostedDate": "2011-01-03T13:12:29.85-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yea it is on the list of things to do. I've recently made some fixes to fire that change things a bit, but I think it's still too low.",
+      "PostedDate": "2011-01-03T13:29:56.94-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I saw in the latest source that you've adjusted the calculation in SpellData.cs, but I saw that after summing the dot effects, you just multiply by 10. This should be adjusted for haste as well. With 359 gear this is maybe around 13 ticks. Just to be sure, may I ask if you are also applying mastery and crits to the final damage?\r\n\r\nFor your reference, here is an excerpt from a combat log provided by my guildmates last night:\r\n[20:48:42.504] Snajka casts Combustion on Maimgor\r\n[20:48:42.782] Snajka Combustion Maimgor *16716*\r\n[20:48:43.563] Maimgor afflicted by Combustion from Snajka\r\n[20:48:44.447] Snajka Combustion Maimgor 4427\r\n[20:48:45.309] Snajka Combustion Maimgor *9099*\r\n[20:48:46.137] Snajka Combustion Maimgor 4428\r\n[20:48:47.011] Snajka Combustion Maimgor 4428\r\n[20:48:47.841] Snajka Combustion Maimgor 4428\r\n[20:48:48.729] Snajka Combustion Maimgor 4428\r\n[20:48:49.590] Snajka Combustion Maimgor *9098*\r\n[20:48:50.441] Snajka Combustion Maimgor 4428\r\n[20:48:51.301] Snajka Combustion Maimgor 4428\r\n[20:48:52.098] Snajka Combustion Maimgor 4428\r\n[20:48:52.983] Snajka Combustion Maimgor 4428\r\n[20:48:53.814] Snajka Combustion Maimgor *9099*\r\n[20:48:53.814] Snajka's Combustion fades from Maimgor\r\n\r\n[20:48:55.411] Gagnråd casts Combustion on Maimgor\r\n[20:48:55.668] Gagnråd Combustion Maimgor *11017*\r\n[20:48:56.427] Maimgor afflicted by Combustion from Gagnråd\r\n[20:48:57.290] Gagnråd Combustion Maimgor *11560*\r\n[20:48:58.113] Gagnråd Combustion Maimgor *11560*\r\n[20:48:58.960] Gagnråd Combustion Maimgor *11560*\r\n[20:48:59.799] Gagnråd Combustion Maimgor 5626\r\n[20:49:00.637] Gagnråd Combustion Maimgor *11560*\r\n[20:49:01.448] Gagnråd Combustion Maimgor 5626\r\n[20:49:02.280] Gagnråd Combustion Maimgor 5626\r\n[20:49:03.146] Gagnråd Combustion Maimgor 5626\r\n[20:49:04.012] Gagnråd Combustion Maimgor 5626\r\n[20:49:04.830] Gagnråd Combustion Maimgor 5626\r\n[20:49:05.636] Gagnråd Combustion Maimgor *11560*\r\n[20:49:06.508] Gagnråd Combustion Maimgor 5626\r\n[20:49:06.508] Gagnråd's Combustion fades from Maimgor\r\n",
+      "PostedDate": "2011-01-05T03:33:33.233-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Those numbers in spell data are before haste. If you look in by spell breakdown you'll see that it actually gets more ticks than 10. I'm applying crits and ignite to combustion ticks. Regarding mastery are you saying that it should double dip from it (i.e. mastery when computing dps of individual dots and then additionally on top of it for combustion)? At least from what I looked in simc they don't have it as double dipping.",
+      "PostedDate": "2011-01-05T04:27:18.323-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sorry, to correct myself, it seems to be 12 ticks. The first damage is the initial \"955 to 1131 Fire damage\".",
+      "PostedDate": "2011-01-05T04:28:16.657-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sorry it took me a while to get time to research some evidence.\r\n\r\nsourcename=\"Lioncourt\" and fulltype=SPELL_PERIODIC_DAMAGE\r\n[21:13:16.912] Lioncourt Living Bomb Atramedes 4502\r\n[21:13:19.534] Lioncourt Living Bomb Atramedes 4502\r\n[21:13:22.176] Lioncourt Living Bomb Atramedes 4503\r\n[21:13:24.795] Lioncourt Living Bomb Atramedes 4503\r\n[21:13:26.907] Lioncourt Pyroblast Atramedes 1760\r\n[21:13:27.168] Lioncourt Ignite Atramedes 8513\r\n[21:13:27.430] Lioncourt Living Bomb Atramedes 4503\r\n[21:13:27.959] Lioncourt Combustion Atramedes *14501*\r\n[21:13:28.787] Lioncourt Combustion Atramedes 7268\r\n\r\nHer Living Bomb is 4503 / 3 = ~1501dps. Her Ignite is 8513 / 2 = ~4256dps. Her Pyroblast tick is 1760 / 3 = ~587. That's total ~6344dps, but her combustion is ticking for 7268. Her mastery rating is 923 which gives 5.15 mastery or 12,875% increase in damage. So that comes out for me that combustion ticks should be ~7161.\r\n\r\nI'm not sure where the extra 100dps comes from. Quite possibly I shouldn't just divide by 3 when calculating dot dps based on logs. It's probably also a calculation based on haste. But it's clear, to me at least, that it is double-dipping, since the combustion ticks are much higher than the combined dps of the original dots.",
+      "PostedDate": "2011-01-07T03:37:27.997-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Of course, I don't need to work out the haste, I can look at the times in the logs of the pyroblast and LB ticks. Ignite is always every 2 seconds and is unaffected by haste.\r\n\r\n[21:13:24.795] Lioncourt Living Bomb Atramedes 4503\r\n[21:13:27.430] Lioncourt Living Bomb Atramedes 4503\r\nLB 4503 / 2.635 = 1708.92 dps\r\n\r\n[21:13:26.907] Lioncourt Pyroblast Atramedes 1760\r\n[21:13:29.440] Lioncourt Pyroblast Atramedes 1760\r\nPyroblast 1760 / 2.533 = 694.83 dps\r\n\r\n1709 + 695 + 4256 = 6660 is the sum of the dots.\r\n\r\nI also realised that my mastery calculation below shouldn't be just 12.875% because you get 20% from flashburn just for being fire specced, so the multiplier should be 32,875%. That means that the combustion ticks, if they really did double-dip, would be like ~8850 which they are clearly not. So I'm afraid I'm not really helping you come to a conclusion about the combustion calculation.",
+      "PostedDate": "2011-01-07T05:06:23.877-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Here's another example:\r\n\r\n[22:22:22.269] Lucid Ignite Atramedes 5364\r\n[22:22:22.314] Lucid Flame Orb Atramedes 2365\r\n[22:22:22.658] Lucid casts Combustion on Atramedes\r\n[22:22:22.751] Lucid's Critical Mass fades from Atramedes\r\n[22:22:22.759] Lucid Combustion Atramedes 6745\r\n[22:22:23.080] Lucid's Power Torrent fades from Lucid\r\n[22:22:23.184] Lucid Pyroblast! Atramedes 2524\r\n[22:22:23.409] Lucid casts Replenish Mana\r\n[22:22:23.507] Atramedes afflicted by Combustion from Lucid\r\n[22:22:23.507] Lucid Flame Orb Atramedes *4508*\r\n[22:22:23.554] Lucid gains 12168 mana from Lucid's Replenish Mana\r\n[22:22:23.554] Lucid Living Bomb Atramedes 5194\r\n[22:22:24.107] Lucid begins to cast Scorch\r\n[22:22:24.180] Lucid Combustion Atramedes 5409\r\n[22:22:24.267] Atramedes's Ignite is refreshed by Lucid\r\n[22:22:24.267] Lucid Ignite Atramedes 5364\r\n\r\nSo adding up dots you get 5364/2+2524/3+5194/3=5254.666, the actual combustion tick being almost exactly 3% higher than that. This mage has about 36% Flashburn so the extra value almost certainly doesn't come from doubledipping on that. But it's clear that there is something else going on and I'm not quite sure what it is.\r\n\r\nRegardless the latest checked in version of Combustion should more closely match simc results.\r\n\r\nOne thing that worries me is that the scaling values are still quite different between Rawr and simc even though the overall numbers are similar. Simc in the latest build however also values haste above mastery in 372 gear.",
+      "PostedDate": "2011-01-07T07:07:38.393-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-02-13T18:19:20.02-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-21T00:00:17.077-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:40.61-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:15.363-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:02:05.323-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

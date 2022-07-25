@@ -1,0 +1,96 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Charts",
+      "DisplayName": "Rawr.Base.Charts"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-12-11T20:32:38.95-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have performed the Suggested Fix and continue to receive this error. If I am posting this message without having performed the Suggested Fix I am aware that I am consuming the Developer(s) time in managing my Issue unnecessarily.\n \n== Version: 4.2.5.0 WPF ==\n \n== Error Message ==\nIndex was outside the bounds of the array.\n \n== StackTrace ==\n   at Rawr.UI.ComparisonGraph.<DisplayCalcs>b__15(ComparisonCalculationBase calc) in C:\\Users\\alex_bender\\Documents\\Rawr\\Rawr.UI\\ComparisonGraph.xaml.cs:line 332\n   at System.Linq.EnumerableSorter`2.ComputeKeys(TElement[] elements, Int32 count)\n   at System.Linq.EnumerableSorter`1.Sort(TElement[] elements, Int32 count)\n   at System.Linq.OrderedEnumerable`1.<GetEnumerator>d__0.MoveNext()\n   at Rawr.UI.ComparisonGraph.DisplayCalcs(ComparisonCalculationBase[] calcs) in C:\\Users\\alex_bender\\Documents\\Rawr\\Rawr.UI\\ComparisonGraph.xaml.cs:line 337\n   at System.Windows.RoutedEventArgs.InvokeHandler(Delegate handler, Object target)\n   at System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)\n   at System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)\n   at System.Windows.Controls.ComboBox.OnSelectionChanged(SelectionChangedEventArgs e)\n   at System.Windows.Controls.Primitives.Selector.SelectionChanger.End()\n   at System.Windows.Controls.Primitives.Selector.SelectionChanger.SelectJustThisItem(Object item, Boolean assumeInItemsCollection)\n   at System.Windows.Controls.ComboBoxItem.OnMouseLeftButtonUp(MouseButtonEventArgs e)\n   at System.Windows.RoutedEventArgs.InvokeHandler(Delegate handler, Object target)\n   at System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)\n   at System.Windows.UIElement.ReRaiseEventAs(DependencyObject sender, RoutedEventArgs args, RoutedEvent newEvent)\n   at System.Windows.RoutedEventArgs.InvokeHandler(Delegate handler, Object target)\n   at System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)\n   at System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)\n   at System.Windows.UIElement.RaiseTrustedEvent(RoutedEventArgs args)\n   at System.Windows.Input.InputManager.ProcessStagingArea()\n   at System.Windows.Input.InputProviderSite.ReportInput(InputReport inputReport)\n   at System.Windows.Interop.HwndMouseInputProvider.ReportInput(IntPtr hwnd, InputMode mode, Int32 timestamp, RawMouseActions actions, Int32 x, Int32 y, Int32 wheel)\n   at System.Windows.Interop.HwndMouseInputProvider.FilterMessage(IntPtr hwnd, WindowMessage msg, IntPtr wParam, IntPtr lParam, Boolean& handled)\n   at System.Windows.Interop.HwndSource.InputFilterMessage(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)\n   at MS.Win32.HwndWrapper.WndProc(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)\n   at MS.Win32.HwndSubclass.DispatcherCallbackOperation(Object o)\n   at System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)\n   at MS.Internal.Threading.ExceptionFilterHelper.TryCatchWhen(Object source, Delegate method, Object args, Int32 numArgs, Delegate catchHandler)\n \n== These are the Steps that I have tried ==\n-- Progressive upgrade has to run overnight for my DKs.  So I'll work on figuring it out unless someone else has an idea.",
+    "LastUpdatedDate": "2013-05-16T05:17:21.18-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-10-15T07:22:00.513-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ComparisonGraph] Progressive Upgrade out of index range when sorting by character.",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 21643
+  },
+  "FileAttachments": [
+    {
+      "FileId": 5386,
+      "FileName": "ProgUpgrade-Unshiz.xml",
+      "DownloadUrl": ".\\5386"
+    },
+    {
+      "FileId": 5393,
+      "FileName": "testdata.zip",
+      "DownloadUrl": ".\\5393"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "ok... Figured out what's going on, and it's visible in the attached XML.\r\nSome items only have 1 subpoint, other items have 2.  My initial idea is that the items that only have 1 sub point are items that are only upgrades for the 2nd character.\r\nI'll look into that process.",
+      "PostedDate": "2011-10-15T15:52:10.97-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That is almost definitely not the case. Can you post the xmls used in the progressive update?",
+      "PostedDate": "2011-10-16T13:55:52.353-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Actually it might be related to that in combination with one handed weapons. Currently if the item is not an upgrade on the first character, it is entered us 0 value under slot Character.GetCharacterSlotByItemSlot(item.Item.Slot). I'm not exactly sure how this interacts with one handed weapons, but it's possible it doesn't get recorded correctly.",
+      "PostedDate": "2011-10-16T14:08:44.873-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-10-16T14:24:12.86-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Here's a zip of both XMLs plus the batch container and the progupgrade xml above.",
+      "PostedDate": "2011-10-16T14:24:14.237-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I implemented a potential solution, but I can't be sure without a test case.",
+      "PostedDate": "2011-10-16T14:46:13.87-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-12-11T20:32:38.95-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:24:11.41-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:17:21.18-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

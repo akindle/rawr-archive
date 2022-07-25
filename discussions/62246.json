@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "211249",
+    "ThreadId": "62246",
+    "Html": "<p>I know this has to have been discussed but I searched and did not see it. I have been an Arcane Mage for a long time (Edmerlin on Nazgrel). Because maxdps.com does not cover arcane mages in WoTLK, I dont use it. But recently I switched to fire. I am using RAWR 2.2.9. When I compare the gear from the two sites now (because maxdps.com does support WoTLK fire mages), I see huge differences and I dont know why. Here is what I do to compare (you can look up my char for exact stats) with a specific example (but many of&nbsp;the items are like this).</p>\r\n<p>On Maxdps.com I enter my approximate stats for a raid buff situation for my 18/53/0 Fire spec. I enter&nbsp;spell power of 2550, Hit of 368, Crit of 41%, and Haste of 426 and fireball as my primary spell. I&nbsp;submit those and then look at the gear. I note that the Crown of Luminescence is listed as the best head item with a dps of 433.58 for me. I also note that the Conqueror's Kirin'dor Hood (which I currently have)&nbsp;is&nbsp;shown as the 16th best item with a dps for me of 333.77 (77% of the Crown).</p>\r\n<p>Then I load 2.2.9 of RAWR and load in my character as fire mage and make sure the raid buffs are set. I go to the comparisons section and select head. It shows the&nbsp;&nbsp;Conqueror's Kirin'dor Hood as the best item for me with a dps for me of 821.89 and it shows the Crown of Luminescence as the 8th best head item with a dps of 769.37 (93.6% of the Conqueror's).</p>\r\n<p>So I have very conflicting information. How am I to know which one to trust? Anyone have any insite on this?</p>\r\n<p>Thank you,</p>\r\n<p>Edmerlin</p>",
+    "PostedDate": "2009-07-12T16:07:32.27-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "211262",
+    "ThreadId": "62246",
+    "Html": "<p>Maxdps is terrible, last I looked. <br>Rawr.Mage is stellar, for sure, as anyone in the theorycrafting community can tell you.</p>\r\n<p>The choice is pretty clear.</p>",
+    "PostedDate": "2009-07-12T18:17:54.43-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "211270",
+    "ThreadId": "62246",
+    "Html": "<p>Ya...Maxdps is incredibly inaccurate.&nbsp; Last I checked it was still using TBC hit conversions to decide your hit cap (level 70).&nbsp; Not to mention the way maxdps and rawr decide best items are completely different (Rawr's being the more accurate way).&nbsp; Maxdps will only show you individual item upgrades, while rawr will look at all your available gear as a whole.</p>\r\n<p>let's take this simple example:</p>\r\n<p>You are wearing these items:</p>\r\n<p>Item A (shoulder):<br>10 hit rating<br>10 spell power</p>\r\n<p>Item B (legs):<br>10 haste rating<br>10 spell power</p>\r\n<p>You have this item in your bags:</p>\r\n<p>Item C (legs):<br>10 hit rating<br>13 spell power</p>\r\n<p>You are hit capped, so either way Item C is not worth using at the moment.<br><br>You want to evaluate the upgrade value of this item:<br><br>Item D (shoulder):<br>13 haste rating<br>10 spell power<br><br>maxdps.com will tell you that the item in question is not an upgrade at all, because it only looks at your current equipped stats as a whole, and figured you will be 10 hit below the hit cap if you equip this item.<br><br>rawr sees the other items you have available, and knows that if you swapped your legs out for the one with hit, you can equip this new shoulder and still be hit capped, so it tells you the item is a decent upgrade.</p>\r\n<p>This is an overly simplistic example, but it conveys the point:&nbsp; rawr is FAR superior to maxdps.com.&nbsp; Not only is maxdps's calculations highly inaccurate to begin with, but so are it's algorithms for deciding gear upgrades.&nbsp; Rawr is the clear choice here for true theorycrafters.</p>",
+    "PostedDate": "2009-07-12T19:07:16.513-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "211286",
+    "ThreadId": "62246",
+    "Html": "<p>@Zifnab - Maxdps is even more simplistic than that.&nbsp; All it does is calculate relative stat values, then calculates the DPS of every item on its list based soley off those values, and ranks them.</p>\r\n<p>&nbsp;</p>\r\n<p>Example: Lets say that you are 3 hit rating away from cap, and each point of hit rating increases dps by 1.5.&nbsp; IF a certain peice of gear on maxdps has 80 hit, it will calculate to 120 dps, regardless of the fact that you will do over hit cap.&nbsp; Rawr would only calculate 4.5 dps in the same situation.&nbsp; It gets worse, in the fact that, if you are hit caped, it will calculate hit at 0, and it doesnt know what actual peices you are wearing.&nbsp; So, if you are hit capped, it will calculate any peice with hit on it lower than it should.</p>\r\n<p>&nbsp;</p>\r\n<p>Also, maxdps doesnt add computation for set bonuses, which may be the OP's problem: if you have if you have 2 or 4 peices, each of those set peice's dps will be computed with the whole dps boost from that set bonus.</p>",
+    "PostedDate": "2009-07-12T21:15:49.437-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "211424",
+    "ThreadId": "62246",
+    "Html": "<p>In order for a system like maxdps to give any form of meaningful values where caps/stats interactions are involved, you would need to configure your total stats with that particular slot empty. In that way the system can POTENTIALLY decide the best item for that slot (in the same way Rawr calculates the normal item charts).</p>\r\n<p>When you move to the next slot, you would need to recalculate and re-enter your stats with that slot empty again.</p>\r\n<p>I haven't used maxdps since TBC, so don't know whether they check for hit capping etc.</p>\r\n<p>Then you still have the problem of set bonusses and the swop-out options Zifnab explained.</p>\r\n<p>&nbsp;</p>\r\n<p>Thus to me it sounds like rawr is by far easier and your best choice. (But please continue doing some sanity checks every now and again. Just be extremely careful you have things configured similarly when dealing with boundary conditions (capping, switching rotations, etc.)).</p>",
+    "PostedDate": "2009-07-13T11:45:21.593-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

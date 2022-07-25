@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "165040",
+    "ThreadId": "49334",
+    "Html": "I've seen a number of confusing Rawr behaviors regarding offhand enchants for spellcasters:<br>\r\n<br>\r\n1.&nbsp; The optimizer will apply enchants that are valid for the main hand weapon, like +63 spell power, to offhand items as well (which is invalid because caster offhands are not melee weapons and thus can not be enchanted by &quot;enchant melee weapon&quot; enchants.)<br>\r\n<br>\r\n2.&nbsp; Once applied to the offhand item, it does not seem possible to remove it by manually selecting &quot;No enchantment&quot;.&nbsp; Clicking on No Enchantment is just ignored.&nbsp; Strangely, it is possible to instead select any of the other enchantments (which are equally invalid.)<br>\r\n<br>\r\n3.&nbsp; Although there are two separate charts for Enchant &gt; Main Hand and Enchant &gt; Off Hand, it seems they are linked in that changes made to availability status on one is immediately reflected in the other.&nbsp; Thus, it is not possible to disable the incorrectly applied enchants for the offhand by marking them as unavailable.<br>\r\n<br>\r\nI'm not sure, but I think it may be the case that although Rawr is displaying these offhand enchants in the main character tab and in optimizer suggestions, it is actually ignoring them in calculations.&nbsp; That would be a good thing.&nbsp; But I could be wrong.<br>\r\n<br>\r\nMy experience is with the Shadow Priest module, in case this behavior is class specific.<br>\r\n<br>\r\n",
+    "PostedDate": "2009-03-05T13:29:09.437-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "165093",
+    "ThreadId": "49334",
+    "Html": "I've noticed this in the moonkin model as well, and I think it *used* to happen in the Mage model.&nbsp; However, now no enchants show up for offhands in the mage model at all, You can't select them on the paper doll, and the optimizer doesn't sneak them in.&nbsp; So somehow it was fixed for mages, but still seems to show up for other classes.&nbsp; There should be a way to remove them separately as being available to the optimizer from the Main Hand/Offhand.&nbsp; For instance, sometimes a shaman might dual-wield, but sometimes he might be holding a weapon + offhand, depending on his specc - I would think rawr would recognize that &quot;held in offhand&quot; cannot be enchanted, but other offhand weapons can be.<br>\r\n<br>\r\n<br>\r\nedit:&nbsp; As a fix on my moonkin I was just selecting something useless like &quot;stamina&quot; since I wasn't allowing any survivability points to be counted, since it wouldn't let me un-enchant it.<br>\r\n",
+    "PostedDate": "2009-03-05T15:46:22.413-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "165138",
+    "ThreadId": "49334",
+    "Html": "Yeah, this is a model-specific problem, I believe. Which models have this issue? Moonkin and... warlock? Spriest? Hpriest?",
+    "PostedDate": "2009-03-05T17:38:13.107-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "165907",
+    "ThreadId": "49334",
+    "Html": "After a quick tour looks like affected classes are for sure boomkin, holy priest, shadow priest, warlock.&nbsp; Elemental shaman and all 3 paladin types are hybrids in that I believe they can and in some cases might want to equip some of these &quot;held in off-hand items&quot;, but they also can equip other items like shields or weapons which are eligible for enchants.<br>\r\n<br>\r\nI tried one other way of working around it, which was setting the &quot;red dot&quot; enchantment availability to &quot;no enchant&quot; on the offhand items.&nbsp; That didn't work though - the optimizer still applied the enchants anyway.<br>\r\n<br>\r\n<br>\r\n",
+    "PostedDate": "2009-03-08T20:14:18.05-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "165930",
+    "ThreadId": "49334",
+    "Html": "Dopefish, Fes, TNSe, add this to CalculationsWhatever:<div><br></div><div><span style=\"color:rgb(48, 51, 45);font-family:'segoe ui';font-size:13px\">public override bool EnchantFitsInSlot(Enchant enchant, Character character, Item.ItemSlot slot)<br>{<br>if (slot == Item.ItemSlot.OffHand || slot == Item.ItemSlot.Ranged) return false;<br>return base.EnchantFitsInSlot(enchant, character, slot);<br>}<br><br>public override bool ItemFitsInSlot(Item item, Character character, Character.CharacterSlot slot)<br>{<br>if (slot == Character.CharacterSlot.OffHand &amp;&amp; item.Slot == Item.ItemSlot.OneHand) return false;<br>return base.ItemFitsInSlot(item, character, slot);<br>}</span></div>",
+    "PostedDate": "2009-03-08T22:14:46.033-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "169359",
+    "ThreadId": "49334",
+    "Html": "It seems that this issue continues to exist in the Elemental Shaman model provided with 2.2.0.4.&nbsp; The Upgrade List generator also disregards the inability for 'held in off-hand' items to be enchanted.&nbsp; It also seems to choose some strange illegal enchants ('SoulFrost' [frost power] listed as shadow damage both of which are no benefit?).<br>\r\n<br>\r\nI'm sure a different issue, but the upgrade list also does not seem to respect the fact that two-hand items cannot be equipped at the same time as an off-hand item.<br>\r\n",
+    "PostedDate": "2009-03-18T04:01:43.58-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "169460",
+    "ThreadId": "49334",
+    "Html": "In Rawr, twohand weapons and onehand/offhand items *can* be equipped at the same time; the offhand's stats are just not calculated. This is so that when comparing items for the mainhand slot, twohand items will be valued appropriately against onehand items. You should notice that the offhand is grayed out in these cases.<div><br></div><div>Same deal with enchants; though we don't want it to be selecting offhand enchants at all, really. Trolando, you may need to add the same code I pasted above to Rawr.Elemental.</div>",
+    "PostedDate": "2009-03-18T08:47:05.323-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "169479",
+    "ThreadId": "49334",
+    "Html": "Doen.\r\n",
+    "PostedDate": "2009-03-18T09:52:10.913-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

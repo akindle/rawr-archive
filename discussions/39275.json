@@ -1,0 +1,178 @@
+[
+  {
+    "Id": "130317",
+    "ThreadId": "39275",
+    "Html": "Now that you got a chance to play with our first implementation of item filtering we would like to hear if you have any ideas for how to make it even better. We can improve functionality, but we're limited with the data that is provided by armory so take that into account.<br>\r\n<br>\r\nOne idea I had was to have a separate filter selection for items and gems, so you could for example select to not show crafted items, but still show crafted gems.\r\n",
+    "PostedDate": "2008-11-05T13:28:44.907-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "130366",
+    "ThreadId": "39275",
+    "Html": "I would assume you're getting type data from armory (cloth/leather/etc), any chance we could get that added as a filter? Obviously no point allowing Mail or plate to show for a druid, but it'd be good if we could filter in/out the cloth and leather. And once my paladin is high enough I'd be wanting to limit my choices to mail and plater and remove cloth and leather entirely.<br>\r\n<br>\r\nAlso wouldn't mind allowing a custom filter (this is definitely outside of Armory data - sorry). Add a boolean field to each item and let us toggle it on/off. This should allow us to leave crafted items turned on but turn off the items we can't make. eg: I'd like to see LW items but not engineering ones. Although, maybe it's possible to add a &quot;Crafted by&quot; filter as well (engineering/LW/Tailoring/etc)? Not sure if the armory provides profession info.<br>\r\n",
+    "PostedDate": "2008-11-05T16:09:41.31-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "130369",
+    "ThreadId": "39275",
+    "Html": "That option is already available, go to Tools-&gt;Refine Types of Items Listed.<br>\r\n<br>\r\nThe filtering is completely customizable. You can see the filters by going to Tools-&gt;Edit Item Filters. The filters are defined by using regular expressions and are matched against armory source information and user note. If you're not familiar with regular expressions you can find the details here <a href=\"http://msdn.microsoft.com/en-us/library/xbyh1eyc.aspx\">http://msdn.microsoft.com/en-us/library/xbyh1eyc.aspx</a>. I guess it would be of value to add polarity to the filters, so that it's easier to create filters that instead of adding items to the list prevents them from listing. That way you could for example create a filter with pattern &quot;don't show&quot; and add a note &quot;don't show&quot; to items that you don't want to list for some reason.\r\n",
+    "PostedDate": "2008-11-05T16:42:31.623-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "130658",
+    "ThreadId": "39275",
+    "Html": "One thing that annoys me, and might be solvable by filters, is the number of duplicate items.<br>\r\n<br>\r\nWhen I download a new version of Rawr, or copy the folder to launch a 2nd copy, I get a ton of duplicate items, many with odd gemmings.&nbsp; <br>\r\n<br>\r\nI copy Rawr 2.0.3, launch the new copy, and load my character (a Mage) from a file.&nbsp; The 2nd listed headpiece is a Dark Conjurer's Collar with a 12 agi/3% crit meta and a 5 agi/7stam purple gem.&nbsp; Agility on a Mage hat?&nbsp; Look over at chests, move down a bit, and there's a Sunfire Robe with 3 10 agi gems.<br>\r\n<br>\r\nPlease give me a way to trim all the chaff.&nbsp; Also please double check the item lists so crazy gemmings like that aren't in the default files.<br>\r\n",
+    "PostedDate": "2008-11-06T14:14:41.123-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "130995",
+    "ThreadId": "39275",
+    "Html": "There is functionality for it that is included in the latest build. The current release version has a bug with&nbsp;\r\ncertain items (1-handed, 2-handed). <br>\r\nIf you can compile the program, the latest build has fixed it. If you're not using items of these types on this toon, the current release version <br>\r\nshould be able to do exactly what you're requesting.<br>\r\n<br>\r\nTo do so:<br>\r\n<br>\r\nGo to &quot;Set Default Gems for Equipment&quot; in the Tools Menu<br>\r\nAdd the gemmings that you're looking for<br>\r\nClick the &quot;Delete non-listed gemmings&quot; checkbox<br>\r\n<br>\r\nThis will clear out the gemmings that you're not looking for and re-gem all the items you're interested in to a style more to your taste. <br>\r\n",
+    "PostedDate": "2008-11-08T01:09:15.793-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "131006",
+    "ThreadId": "39275",
+    "Html": "Excellent, I should have delved deeper. Sorry I only really looked at the filters on the main screen and the Tools-&gt;Edit Item Filters. Thanks Kavan.<br>\r\n",
+    "PostedDate": "2008-11-08T04:10:37.28-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "135737",
+    "ThreadId": "39275",
+    "Html": "I went through and tried to improve the item filters. Please note that some filters were not implemented because I don't play that kind of character... for example, I didn't create a Leatherworking filter because my main is a mage.<div><br></div><div>One problem is that there's currently no way to negate a capture. In particular, this makes it impossible to separate the loot from 'Dungeons' and 'Heroic Dungeons', because I can't tell it to find me A or B or C but not Heroic. One possible solution would be to use the hash character (#). It is not used in RegExp syntax, nor is it a character we will need to filter on. You could put all the positive matches before the hash, and all the negative matches after. So the Raid filters might become:</div><div><br></div><div>Raids (10): Naxxramas|Eye of Eternity|Obsidian Sanctum|Archavon#Heroic<br></div><div>Raids (25): Heroic Naxxramas| Heroic Eye of Eternity|Heroic Obsidian Sanctum|Heroic Archavon<br></div><div><br></div><div>Regardless, I think these filters will be a nice improvement over the existing filters included with Rawr.</div><div><br></div><div>===========================================================================<br></div><div>Burning Crusade:  Sunwell|Yrma|Theremis|Tydormu|Black Temple|Hyjal|Veynna Dawnstar|Tempest Keep|Serpentshrine Cavern|Zul'Aman|G'eras|Anwehu|Badge of Justice|Asuur|Karazhan|Gruul's Lair|Magtheridon's Lair|Old Hillsbrad Foothills|Blood Furnace|Slave Pens|Arcatraz|Underbog|Shattered Halls|Hellfire Ramparts|Magisters' Terrace|Auchenai Crypts|Shadow Labyrinth|Sethekk Halls|Steamvault|Mana-Tombs|Botanica|Mechanar|Black Morass|Spirit Shard</div><div><br></div><div>Crafted:  Created</div><div><br></div><div>PvP:  Points|Griz Gutshank<br></div><div><br></div><div>World Drop:  World Drop</div><div><br></div><div>Dungeons:  The Oculus|Azjol-Nerub|Ahn'kahet|Drak'Tharon|Gundrak|Stratholme|The Nexus|Violet Hold|Halls of Lightning|Halls of Stone|Utgarde Keep|Utgarde Pinnacle</div><div><br></div><div>Raids:  Naxxramas|Eye of Eternity|Obsidian Sanctum|Archavon</div><div><br></div><div>Badges:  Adurin|Brightlink|Brasae|Emblem of Heroism</div><div><br></div><div>Heroid Badges:  Paldesse|Emblem of Valor</div><div><br></div><div>Engineer:  BoP crafted Engineering</div><div><br></div><div>Tailoring:  BoP crafted Tailoring</div><div><br></div><div>Jewelcrafting:  BoP crafted Jewelcrafting</div><div><br></div><div>Inscription:  BoP crafted Inscription</div><div><br></div><div>Faction:  Friendly|Honored|Revered|Exalted</div><div><br></div><div>Quest:  Reward from</div><div><br></div><div>Unknown:  please refresh|not found on armory</div><div><br></div><div>Classic:  Zul'Gurub|Ahn'Qiraj</div><div><div>===========================================================================<br></div><div><br></div></div>",
+    "PostedDate": "2008-11-26T18:14:06.623-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "135758",
+    "ThreadId": "39275",
+    "Html": "One thing I'd like to see would be an option to have my equipped gear (alt. my available gear) always in the lists, regardless of whether I've filtered out its source. E.g., I want to see which Northend items are upgrades to what I have right now, so I filter out Tier 4/5/6, etc., but I still want to see where my pieces fit in the list.<br>\r\n",
+    "PostedDate": "2008-11-26T19:59:08.003-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "135760",
+    "ThreadId": "39275",
+    "Html": "You can do match for non-heroic instance. For example &quot;(?&lt;! Heroic )Oculus&quot; will match only drops from normal Oculus.\r\n",
+    "PostedDate": "2008-11-26T20:12:35.773-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "135988",
+    "ThreadId": "39275",
+    "Html": "I want to not only be able to always show my equipped gear, but also the gear that is marked as &quot;available&quot; to the optimizer.<br>\r\n<br>\r\n",
+    "PostedDate": "2008-11-27T20:24:52.597-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "136012",
+    "ThreadId": "39275",
+    "Html": "A filtering for dummies, operating on checkboxes for different types of\r\ninstances/gear would be great. This kind of filtering allows players to\r\nlimit the upgrade results to the one that they're able to get (eg. if\r\nIm not able to get to Naxx25 then I uncheck Naxx25 loottable). Here's a\r\nlist (copied,pasted&amp;adopted from maxdps.com) that might be usefull:<br>\r\n<br>\r\n[x] 25 Man Tier 7 Instances (including: Naxxramas, Obsidian Sanctum, Malygos)<br>\r\n[x] 10 Man Tier 7 Instances (including: Naxxramas, Obsidian Sanctum, Malygos)<br>\r\n[x]\r\n5 Man Heroic Instances<br>\r\n[x]\r\n5 Man Normal Instances<br>\r\n[x]\r\nToken gear: Emblem of Heroism<br>\r\n[x]\r\nToken gear: Emblem of Valor<br>\r\n[x]\r\nPVP Reward<br>\r\n[x]\r\nReputation Reward<br>\r\n[x]\r\nCrafted<br>\r\n[x]\r\nQuested<br>\r\n[x] Other<br>\r\n<br>\r\nAnyway - great job people!<br>\r\n<br>\r\nBest regards, W. Kamień<br>\r\n",
+    "PostedDate": "2008-11-28T00:22:14.893-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "136116",
+    "ThreadId": "39275",
+    "Html": "Kavan, I can't seem to find any documentation for the ?&lt;! ... &gt; syntax you describe. Can you point me to a page discussing it? I'm on MSDN, and can't seem to find it.",
+    "PostedDate": "2008-11-28T08:40:08.687-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "136137",
+    "ThreadId": "39275",
+    "Html": "I like tarix' suggestion. Some filters based on Rawr status would be nice. Also, though this would probably be better in a different interface, a way to filter based on required level or iLevel would also be nice.",
+    "PostedDate": "2008-11-28T10:42:36.107-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "136162",
+    "ThreadId": "39275",
+    "Html": "Check out this tutorial if you're interested in creating regular expressions.&nbsp; They come in handy quite often, like text editors, etc. <br>\r\n<br>\r\nhttp://www.regular-expressions.info/tutorial.html<br>\r\n<br>\r\nI'm certainly no expert but here's a quick explanation of his example:<br>\r\n<br>\r\nIn Kavan's example, he's using a 'negative lookbehind construct'.&nbsp; The (?&lt;!....)....&nbsp; is the lookbehind syntax.&nbsp; The part outside the parenthesis is what the expression is trying to match.&nbsp; Once it finds a match it 'looks behind' to see if the part in the parenthesis (the part after the !) comes before the match.&nbsp; If it doesn't, the match succeeds.&nbsp; If it does exist, the match fails.&nbsp; So in the example, the filter looks for Oculus, when it finds a match, it then looks directly before it to see if&nbsp; Heroic&nbsp; is there.&nbsp; If there is a Heroic found, the match fails -- thus it only returns non-heroic instances. Note: notice the spaces before and after Heroic within the paranthesis.<br>\r\n<br>\r\nA positive lookbehind is similar (?&lt;=....).... <br>\r\nAs is a positive lookahead ....(?=....)<br>\r\nand negative lookahead ....(?!....)<br>\r\n<br>\r\nYou can see it's not as cryptic as you first think.&nbsp; (?)&nbsp; is the basic syntax.&nbsp; You add a &lt; if you want a lookbehind.&nbsp; = means postive search, ! means a negative one.&nbsp; <br>\r\n<br>\r\n<br>\r\n\r\n",
+    "PostedDate": "2008-11-28T13:44:59.383-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "136163",
+    "ThreadId": "39275",
+    "Html": "Ruiza explained it well and that tutorial page is probably the first thing to look at if you're not familiar with regular expressions. If you need any .NET specific details you can check <a href=\"http://msdn.microsoft.com/en-us/library/bs2twtah.aspx\">http://msdn.microsoft.com/en-us/library/bs2twtah.aspx</a>\r\n",
+    "PostedDate": "2008-11-28T13:54:34.493-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "137248",
+    "ThreadId": "39275",
+    "Html": "I have been playing around with the filtering and have 2 suggestions which would improve this.<br>\r\n<br>\r\n1. Allow the filtering to include the name of the item. This would create an easy way to get rid of certain classes of unwanted items (e.g. Gladiator's).<br>\r\n2. Allow mass editing of the Note field from the edit items screen. If you select multiple items everything else greys out except the note field.<br>\r\n<br>\r\nEither or both of these would really help eliminate some of the monotony of updating items so that my filtering works as desired.<br>\r\n",
+    "PostedDate": "2008-12-03T06:14:38.137-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "137254",
+    "ThreadId": "39275",
+    "Html": "How about letting the filter hit the notes as well so we can filter out the new pvp items that are not even availble yet.\r\n",
+    "PostedDate": "2008-12-03T06:26:35.527-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "137332",
+    "ThreadId": "39275",
+    "Html": "The filter <em>does</em> already hit the Notes field as well.\r\n",
+    "PostedDate": "2008-12-03T09:51:48.453-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "137402",
+    "ThreadId": "39275",
+    "Html": "I too would love to see the default filters updated to be wotlk-centric, vs. the current BC categories.  The list from wkamien several posts above would be great.<div><br></div><div>As a new 80 just starting to progress, its a bit frustrating to have to read so far down the direct item upgrade chart to get to the ones that are current possibilities.</div>",
+    "PostedDate": "2008-12-03T12:38:10.21-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "137461",
+    "ThreadId": "39275",
+    "Html": "Can anyone elaborate on the filter syntax?&nbsp; I'm looking to try to do a Tier 7 and a Tier 7.5 filter.&nbsp; Right now I just do:<br>\r\nNaxxramas|Sartharion|Malygos|...and so on.&nbsp; Can I put something in there so it only uses either &quot;Naxxramas&quot; or &quot;Heroic Naxxramas&quot;.&nbsp; Putting Heroic Naxxramas only gives me heroic.&nbsp; But just putting Naxxramas gives both regular and heroic.<br>\r\n",
+    "PostedDate": "2008-12-03T15:06:37.703-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "137473",
+    "ThreadId": "39275",
+    "Html": "As discussed above you're looking for (?&lt;! Heroic )Naxxramas.\r\n",
+    "PostedDate": "2008-12-03T15:46:04.82-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "137648",
+    "ThreadId": "39275",
+    "Html": "Ideally I'd like to be able to filter on item level and perhaps on quality<br>\r\n<br>\r\nepic and 200 <br>\r\nsuperior and 200<br>\r\nilvl 187<br>\r\nilvl 213+<br>\r\n<br>\r\nall of the above would help me build lists like &quot;what should I look for in 5 mans and crafting?&quot; or what should i look for here there and everywhere :) <br>\r\n<br>\r\nlooks like kavan's got a good version of the answer - though iLvl would still be nice IMO. <br>\r\n",
+    "PostedDate": "2008-12-04T06:14:14.787-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

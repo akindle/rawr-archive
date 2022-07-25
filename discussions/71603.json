@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "244203",
+    "ThreadId": "71603",
+    "Html": "<p>I am looking at HasRelevantStats in CalculationsElemental.cs in the Rawr.Elemental directory. From what I see so far I cannot see a reason this function will return a false value. When I look at Stats.cs in Rawr.Base I see that each of the stats values has a default, a set range and get/set methods for them. What conditions are necessary for this function to return TRUE and FALSE?</p>",
+    "PostedDate": "2009-10-10T10:03:24.563-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "244220",
+    "ThreadId": "71603",
+    "Html": "<p>Stats is the container object for stat data of 'something', from an item, to a character, to whatever. An item with 10int, 15crit, 20spellpower would have a Stats object with all values 0, except for Intellect=10, CritRating=15, and SpellPower=15.</p>\r\n<p>HasRelevantStats() is called with the Stats object of a wide variety of things, including Items, Enchants, and Buffs. It typically sums up all the stats on the passed object that the model considers relevant, and if that sum is greater than 0, returns true. Otherwise, it returns false. So in the Elemental model, if an item with 10agi and 10spirit was passed in, it would return false, since neither of those are considered relevant. But if an item with 10agi and 10int was passed in, it would return true, since it has at least one relevant stat. You can get more complex in how you determine whether a Stats has relevance, but that's the basic design, and is what Elemental uses.</p>\r\n<p>The result of HasRelevantStats() is used to determine whether to hide or show whatever the Stats object came from. ie, we don't show irrelevant items, buffs, or enchants (and of course don't bother doing any calculations for them).</p>",
+    "PostedDate": "2009-10-10T11:08:54.47-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "244226",
+    "ThreadId": "71603",
+    "Html": "<p>Ok. that makes sense i will put this into the note for the function. I am documenting the functions so I can help remember what they do.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-10-10T11:48:43.06-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "244228",
+    "ThreadId": "71603",
+    "Html": "<p>Where in the code are the values given that mark a stats importance? I figure that an elemental shaman needs to focus on:</p>\r\n<ul>\r\n<li>stamina</li>\r\n<li>intellect</li>\r\n<li>hit rating</li>\r\n<li>spell power</li>\r\n<li>critical strike rating</li>\r\n<li>haste rating</li>\r\n</ul>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-10-10T11:53:53.077-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "244230",
+    "ThreadId": "71603",
+    "Html": "<p>You are describing Stat Weights which Rawr does not <strong>IN ANY WAY</strong> use, <strong>EVER</strong>. Instead we use those stats you describe (and the rest listed in GetRelevantStats) and determine how they actually affect your abiltiies, then use those abilities in a Rotation to determine actual averaged DPS.</p>",
+    "PostedDate": "2009-10-10T11:57:07.783-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "244232",
+    "ThreadId": "71603",
+    "Html": "<p>GetCharacterCalculations() is where it takes the total stats for the character, and then uses them to determine the character's performance. That's probably what you're looking for.</p>",
+    "PostedDate": "2009-10-10T12:03:32.437-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

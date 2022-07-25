@@ -1,0 +1,106 @@
+[
+  {
+    "Id": "136331",
+    "ThreadId": "41115",
+    "Html": "Is there some way to export the 'Relative Stat Values'?<br>\r\nI want to use them in game whit pawn, and also whit other gear comparison tools.<br>\r\nBut right now i have to copy it by hand, can't even select the text whit the mouse :-(<br>\r\n<br>\r\nIf it isn't, are there going to be? or in what source file could i try to add this?<br>\r\n",
+    "PostedDate": "2008-11-30T02:56:00.32-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "136357",
+    "ThreadId": "41115",
+    "Html": "Personally I do what you just said, copy them by hand. It doesnt take so much time to do.\r\n",
+    "PostedDate": "2008-11-30T07:07:54.123-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "136365",
+    "ThreadId": "41115",
+    "Html": "No plans at the moment to add any text output for charts, sorry.<br>\r\n",
+    "PostedDate": "2008-11-30T08:39:20.28-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "137073",
+    "ThreadId": "41115",
+    "Html": "I think i fixed it my self now, if someone else is intrested, this is the diff list of the main changes (dame tool did alot of other changes to the code to)<br>\r\n<br>\r\ndiff -r org/FormMain.cs new/FormMain.cs<br>\r\n1587a1588,1599<br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; private void copyRelativeStatsValuesToClipboardToolStripMenuItem_Click(object sender, EventArgs e)<br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; StringBuilder sb = new StringBuilder();<br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sb.AppendLine(Calculations.GetCharacterRStatsString(Character));<br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Clipboard.SetText(sb.ToString(), TextDataFormat.Text);<br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (Type.GetType(&quot;Mono.Runtime&quot;) != null)<br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //Clipboard isn't working<br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.IO.File.WriteAllText(&quot;rstats.txt&quot;, sb.ToString());<br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>\r\n&gt; <br>\r\ndiff -r org/FormMain.Designer.cs new/FormMain.Designer.cs<br>\r\n148,173c174<br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.copyRelativeStatsValuesToClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();<br>\r\n1653,1654c1653,1663<br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // <br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // copyRelativeStatsValuesToClipboardToolStripMenuItem<br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // <br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.copyRelativeStatsValuesToClipboardToolStripMenuItem.Name = &quot;copyRelativeStatsValuesToClipboardToolStripMenuItem&quot;;<br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.copyRelativeStatsValuesToClipboardToolStripMenuItem.Size = new System.Drawing.Size(322, 22);<br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.copyRelativeStatsValuesToClipboardToolStripMenuItem.Text = &quot;Copy Relative Stats Values to Clipboard&quot;;<br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this.copyRelativeStatsValuesToClipboardToolStripMenuItem.Click += new System.EventHandler(this.copyRelativeStatsValuesToClipboardToolStripMenuItem_Click);<br>\r\n1658c1667<br>\r\n1834a1844<br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; private System.Windows.Forms.ToolStripMenuItem copyRelativeStatsValuesToClipboardToolStripMenuItem;<br>\r\ndiff -r org/Rawr.Base/Calculations.cs new/Rawr.Base/Calculations.cs<br>\r\n271,275c271,280<br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public static string GetCharacterRStatsString(Character character)<br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return Instance.GetCharacterRStatsString(character);<br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>\r\n828,829c833,847<br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public virtual string GetCharacterRStatsString(Character character)<br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; StringBuilder stats = new StringBuilder();<br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stats.AppendFormat(&quot;Character:\\t\\t{0}&quot;, character.Name);<br>\r\n&gt; <br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; foreach (ComparisonCalculationBase ccb in GetCustomChartData(character, &quot;Relative Stat Values&quot;))<br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stats.AppendFormat(&quot;\\r\\n{0}:\\t\\t{1}&quot;, ccb.Name, ccb.OverallPoints);<br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>\r\n&gt; <br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return stats.ToString();<br>\r\n&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>\r\n<br>\r\n",
+    "PostedDate": "2008-12-02T15:59:44.117-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "137289",
+    "ThreadId": "41115",
+    "Html": "I'd find this super useful, too. Any chance that patch (or something close) will get rolled into mainline?<br>\r\n",
+    "PostedDate": "2008-12-03T07:55:12.18-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "137334",
+    "ThreadId": "41115",
+    "Html": "Something like that is planned, yes. (As well as an image export)<br>\r\n<br>\r\nFor the text output, I'm thinking item ID, item Name, overall rating, maybe source, and the subratings, as a CSV. Is that what people would want? I <em>really</em> don't want to have this blossom into some huge data dump functionality or something.\r\n",
+    "PostedDate": "2008-12-03T09:56:19.613-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "137368",
+    "ThreadId": "41115",
+    "Html": "That's not exactly what I'm looking for (or what I think the OP was looking for). Your proposed CSV dumps ratings for *items*, whereas we're looking for ratings on *stats*. (1 stam is worth X much, 1 int is worth Y much, etc.) Part of the issue is that it seems there's no unified framework for that in Rawr, instead each module implements (or doesn't implement it) on their own.<br>\r\n<br>\r\nAnd just to be clear, I get that simple stat values can't capture all the subtleties, it depends on the gear you have, etc. But it's a good approximation for use in game where there is no Rawr addon. :)<br>\r\n",
+    "PostedDate": "2008-12-03T11:31:20.433-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "137374",
+    "ThreadId": "41115",
+    "Html": "I meant anything that shows up in the charts, not just items specifically (they're all considered 'items' to the chart, but you wouldn't know that, sorry). That would cover what you're looking for.<br>\r\n",
+    "PostedDate": "2008-12-03T11:37:44.137-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "137399",
+    "ThreadId": "41115",
+    "Html": "In case it helps set some context for the original request:<div><br></div><div>Pawn is a (very nicely done) addon that computes overall item scores using user-provided stat weights and displays the totals in the item tooltips.  Users can provide 1 or more sets of scales (ie., strength = 1; int = 2; stam = 1.5; etc).  It's a fair guess that there's a decent overlap between Rawr users and Pawn users.</div><div><br></div><div>It already has a facility to import stat weights via a specifically formatted text string.  It would be a very nice touch if Rawr could make this string available to copy, or just directly put it onto the clipboard.  I'm not sure if the code above does this.</div><div><br></div><div>So, for this specific request, providing a generic CSV output would probably not be any more helpful than just manually copying over the weights.</div><div><br></div><div>While I agree this would be one of those smile-inducing, extra polish, nice touches, I also haven't found it much of a hardship to retype the stat weights.</div><div><br></div><div><br></div>",
+    "PostedDate": "2008-12-03T12:31:35.453-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "137407",
+    "ThreadId": "41115",
+    "Html": "as brucek2 says, CSV is junk for me, i want it for PAWN,<br>\r\n<br>\r\nthe code above just dump the relative stats, one per row, in the format<br>\r\n&lt;stat name&gt; : &lt;tab&gt; &lt;tab&gt; &lt;non normailzed value&gt; &lt;newline&gt;<br>\r\n<br>\r\nto get a output that can be inserted directly to pawn, someone need to make a<br>\r\nrawr to pawn stat name table, and some option dialog for name of the<br>\r\nscale, and what value to normalize to.<br>\r\n<br>\r\nand my skills in c# or what the code was writen in dosn't cover that,<br>\r\nso i made a php-code that can read the east output i was able to make,<br>\r\nand the php code normalize and translates it to pawn, the way i want<br>\r\nit.<br>\r\n<br>\r\nis there someone whit c# skills and knowledge of pawn, that can finish<br>\r\nwhat i started?<br>\r\n<br>\r\n(i tried to email this reply, but it didn't work, hope it dosn't get posted twise now)<br>\r\n<br>\r\nFor you who want to try it, i put the files at:<br>\r\nhttp://rawr.tuffsruffs.se/<br>\r\n<br>\r\n<a href=\"http://rawr.tuffsruffs.se/rawr/rawr_src_whit_rstat_dump.7z\">rawr_src_whit_rstat_dump.7z</a> is the complete source code (24843) whit above code added <br>\r\n<a href=\"http://rawr.tuffsruffs.se/rawr/rawr_exe_whit_rstat_dump.7z\">rawr_exe_whit_rstat_dump.7z</a> is the exe file of above code (for you that trust me, and don't want to compile your own.) <br>\r\n<br>\r\n\r\n",
+    "PostedDate": "2008-12-03T12:57:00.903-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "137438",
+    "ThreadId": "41115",
+    "Html": "Obviously a string that you could import directly into pawn would be the most smile-inducing. ;) But there are other tools that take stat weights in other formats; wowhead and thottbot come to mind. CSV has flexibility in that you could add some spreadsheet goo on top to turn it into whatever string format you wanted, and it keeps Rawr out of the business of trying to support every format under the sun.<br>\r\n<br>\r\nMy issue (which could just be a noob issue) is that I don't think the stat weights even *exist* for all modules, i.e. it's not a standard chart. If it is, please let me know that I'm being dumb.<br>\r\n",
+    "PostedDate": "2008-12-03T14:13:02.447-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "137453",
+    "ThreadId": "41115",
+    "Html": "Ok, so the first step should be to standalize the Relative stats chart, almost all got one, but the name isn't the same<br>\r\n<br>\r\nRelative Stat Values<br>\r\nRawr.Bear\\CalculationssCat.cs(653)<br>\r\nRawr.Bear\\CalculationsBear.cs(781)<br>\r\nRawr.Moonkin\\CalculationsMoonkin.cs(329)<br>\r\nRawr.Hunter\\CalculationsHunter.cs(188)<br>\r\nRawr.HolyPriest\\CalculationsHolyPriest.cs(320)<br>\r\nRawr.Enhance\\CalculationsEnhance.cs(488)<br>\r\n<br>\r\nStat Relative Weights, Stat Values<br>\r\nRawr.RestoSham\\CalculationsRestoSham.cs(439)<br>\r\nRawr.ShadowPriest\\CalculationsShadowPriest.cs(125)<br>\r\n<br>\r\nItem Budget, Stats (Item Budget)<br>\r\nRawr.Mage\\CalculationsMage.cs(750)<br>\r\nRawr.Warlock\\CalculationsWarlock.cs(616)<br>\r\nRawr.Retribution\\CalculationsRetribution.cs(754)<br>\r\nRawr.ProtWarr\\CalculationsProtWarr.cs(792)<br>\r\nRawr.DPSWarr\\CalculationsDPSWarr.cs(684)<br>\r\nRawr.DPSDK\\CalculationsDPSDK.cs(999)<br>\r\n<br>\r\nNone<br>\r\nRawr.Rogue\\CalculationsRogue.cs(630)<br>\r\nRawr.Healadin\\CalculationsHealadin.cs(357)<br>\r\nRawr.Tankadin\\CalculationsTankadin.cs(376)<br>\r\nRawr.Tree\\CalculationsTree.cs(297)<br>\r\n",
+    "PostedDate": "2008-12-03T14:39:09.847-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "137469",
+    "ThreadId": "41115",
+    "Html": "Aye, quite true, and we're working on that.<br>\r\n",
+    "PostedDate": "2008-12-03T15:23:47.83-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,45 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Enhance",
+      "DisplayName": "Rawr.Enhance"
+    },
+    "ClosedComment": "This is fixed for v2.2.25. As it now no longer exports priorities given lack of ES_SS &#38; MW4_LB etc.",
+    "ClosedDate": "2009-11-06T06:48:41.16-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "For an Enhancement Shaman using the Enhance model in Rawr 2.2.24.\n \nWhen I load a saved character, go to the Options tab and then the EnhSim sub-tab, click on Export to EnhSim, the resulting clipboard content contains an invalid rotation:\n \nrotation_priority_count         9\nrotation_priority1              XX\nrotation_priority2              XX\nrotation_priority3              XX\nrotation_priority4              XX\nrotation_priority5              XX\nrotation_priority6              XX\nrotation_priority7              XX\nrotation_priority8              XX\nrotation_priority9              XX\n \nThis is not valid and will break EnhSim if imported into the simulator.\n \nThis seems only to happen if I Open a saved character XML. If I have an empty profile, use Load From Armory... and load my toon, then click Export to EnhSim the clipboard contains the correct rotation:\n \nrotation_priority_count         9\nrotation_priority1              SR\nrotation_priority2              SW\nrotation_priority3              MW5_LB\nrotation_priority4              FS\nrotation_priority5              SS\nrotation_priority6              ES\nrotation_priority7              LL\nrotation_priority8              MT\nrotation_priority9              LS\n \nThe toon I loaded was \"Kam\" on \"Aszune\" EU. I've attached the saved XML file I load to export and find the error.",
+    "LastUpdatedDate": "2013-05-16T05:23:32.05-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-11-06T05:19:00.31-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Enhance] Export to EnhSim has invalid rotation after loading Opening character",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14644
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2446,
+      "FileName": "kam_rot_bust.xml",
+      "DownloadUrl": ".\\2446"
+    }
+  ],
+  "Comments": []
+}

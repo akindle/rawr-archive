@@ -1,0 +1,91 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Buffs",
+      "DisplayName": "Rawr.Base.Buffs"
+    },
+    "ClosedComment": "Rawr 4.0.17 Released. If this is still an issue in this new version, please reopen the issue per the Posting Guidelines with all of the necessary information.",
+    "ClosedDate": "2011-01-28T20:08:47.77-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I recently noticed that if I change a buff to on or off my Overall DPS went from 25000 to 21000. Looking at the buff list I noticed that a few things that were turned on were now off. Reload my character, check again and there we go, double buffs.\n \nAttached I posted the images of after loading and after removing and reapplying PWFortitude for example.\n \nLoaded it lists me with 25095 DPS, after dropping and reapplying the buff, 20940.\n \nDouble buffs before reapplying:\n- Horn of Winter AND Battle Shout\n- Blessing of Kings AND Mark of the Wild\n- Faerie Fire AND Sunder Armor\n \nIt looks as after loading a character a \"check buffs\" function call is missing, because changing ANY buffs solve the problem.\n \nI hope this is not duplicated and if it is I'm very sorry. I hope it helps and thanks so much for Rawr.",
+    "LastUpdatedDate": "2013-05-16T05:19:02.123-07:00",
+    "PlannedForRelease": "Rawr 4.0.15 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-01-14T10:24:11.25-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Buffs] Presets Double Buffing",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19699
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4421,
+      "FileName": "Screen shot 2011-01-14 at 12.16.30 PM.jpg",
+      "DownloadUrl": ".\\4421"
+    },
+    {
+      "FileId": 4422,
+      "FileName": "20100112 cat.xml",
+      "DownloadUrl": ".\\4422"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I also noted that this is happened with a particular saved file. I'm attaching it too.",
+      "PostedDate": "2011-01-14T10:29:57.08-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-14T10:54:19.483-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You say presets, what do you mean? Did you use the Buffset selector and then it happened?\r\n\r\nYour file has both Horn of Winter and Battle shout in it, so I'll see about adding another conflicting buff verification on character load.\r\n\r\nThe thing I don't understand is how you got to having two checked in the first place.",
+      "PostedDate": "2011-01-14T11:21:23.73-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hi Jothay, thanks for your reply.\r\n\r\nAll I did a few days ago was load my character from the armory. I didn't select any presets in the buff selection combo or changed anything.\r\n\r\nI had a discussion with some guildies about this and that and went for rawr for some more testings, that is when I found the problem as we were discussing about pots and flasks.\r\n\r\nI saved the character after fixing the buffs and true enough, the problem is gone.\r\n\r\nI wonder if there is anything to do with loading from armory.\r\n\r\nPlease let me know if there is any other information or help I can provide.",
+      "PostedDate": "2011-01-14T12:23:12.473-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Added another ValidateActiveBuffs call at the end of character loading. This should prevent this issue in the future on the off-chance it happens.",
+      "PostedDate": "2011-01-28T10:35:39.193-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-28T20:08:47.77-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:23.713-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:02.123-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

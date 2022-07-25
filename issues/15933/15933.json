@@ -1,0 +1,126 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Optimizer",
+      "DisplayName": "Rawr.Base.Optimizer"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-03-10T10:50:32.16-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Build Progressive Upgrade List in batch tools does not display results.\n \n1)Open Rawr --> Batch tools.\n2)Open Earthspine-Heal and Earthspine-DPS as the first and second items.\n3)Select \"Build Progressive Upgrade List\"\n4)Read War and Peace while the upgrade runs.\n5)Come back to see there is no update list displayed.\n6) Try to alt-tab to it close all other windows, look at the task manager in order to try and find the missing window, but be unsucessful\n \nRawr version is 2.3.5\nOS is Windows Vista Home Premium (Boo!  Hiss!)\nAlso, I am using a dual monitor setup.\nI do not get any error message, just no results",
+    "LastUpdatedDate": "2013-05-16T05:22:23.45-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-01-15T23:43:08.543-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Optimizer.Batch] Build Progressive Upgrade List does not display results.",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15933
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2797,
+      "FileName": "Earthspine-Heal.zip",
+      "DownloadUrl": ".\\2797"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "This works ok for me. It's possible that a particular item is crashing it. Can you try the following:\r\n\r\nDeselect filters until only a few items remain and try again with minimum thoroughness so that it finishes fast and see if it completes and shows results.\r\nTry running upgrade list on individual characters from the base optimizer.",
+      "PostedDate": "2010-01-16T14:16:55.03-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I de-selected all the items except for ones that drop in ICC-10 normal modes.  I then opened up batch tools, set things up, and set Throughness and MaxRounds to minimum.  I then ran Build Progressive Upgrade List and actually sat there as it ran.  It produced a correct list.  I've enabled my normal items and am trying it again with minimum thoroughness and 1 Max Rounds.  I'll update again once that finishes running.  If there is a particular item that is giving an error, how do I tell what that is?  There's no errors logged in the Windows event viewer.\r\n\r\nThis happens with all my characters, this is just an example.",
+      "PostedDate": "2010-01-16T14:55:58.17-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Unfortunately if it just silently cancels there is no easy way to tell which item it was other than from the status bar. But even if you can narrow it down to which zone it is from or something it would help for me tracking it down.",
+      "PostedDate": "2010-01-16T14:59:45.743-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Also if it's item specific it's most likely that it would crash in the normal optimizer upgrade list as well which is usually faster and easier to track down.",
+      "PostedDate": "2010-01-16T15:01:29.23-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Huh.  Just tried it again and it ran perfectly.  I guess the dozens of other times were just flukes.  Trying again with my normal settings.\r\n\r\nThe issue could be that I don't actually have a character loaded in the main Rawr window this time, whereas previously there was a character loaded when I ran batchtools.",
+      "PostedDate": "2010-01-16T15:54:12.11-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It stopped halfway through the run this time.  I had thoroughness at 2/3 of the way up and max rounds at 2.  Setting max rounds to 1 and trying again.",
+      "PostedDate": "2010-01-16T18:00:59.75-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Max rounds has no effect on upgrade lists, only thoroughness.",
+      "PostedDate": "2010-01-16T19:37:07.593-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I have found the culprit!  It's in the Armor Tokens section, and I think the item is Nobundo's Grips of Conquest, since it doesn't show up when I do an Item Comparison in the main window.  I shall purge the item from the database and try again.",
+      "PostedDate": "2010-01-17T10:49:12.64-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I've just run progressive upgrade list on armor tokens section (21 items) at medium thoroughness and there was no problem. It's possible that there was some change made recently, I would advise trying again with the new release.",
+      "PostedDate": "2010-01-17T11:50:42.347-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Confirmed.  Nobundo's Grips of Conquest (and Velen's Raiments of Conquest) will crash the upgrade builder.  Deleting them causes the upgrade builder to run fine.",
+      "PostedDate": "2010-01-17T12:13:18.67-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Whoops!  Didn't see your comment. As I said,  I am using 2.3.5 (freshly downloaded and unzipped into a new folder, no less) with the only change I did making Polished Dragonslayer's Signet unique so the optimizer won't try to make me equip it twice (shouldn't the optimizer treat all quest rewards as unique?)  Should I try to manually re-download the items from Wowhead or something?",
+      "PostedDate": "2010-01-17T12:16:58.317-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-10T10:50:32.16-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T18:02:20.357-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:15.273-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:30:31.95-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:23.45-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

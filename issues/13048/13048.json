@@ -1,0 +1,96 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Mage",
+      "DisplayName": "Rawr.Mage"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-04-19T15:40:36.747-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "After running a long optimizing crash, I get a crash in the MSCORLIB with out of memory.  The system still has plenty of free memory (Commit Charge 1477M / 5982M).  I forced the Just-in-time debugger to give me a stack dump with symbols.   Notice the 17MB string size of the log!\n \n>\tmscorlib.dll!string.GetStringForStringBuilder(string value, int startIndex = 0, int length = 17302683, int capacity) + 0x1e bytes\t\n \tmscorlib.dll!System.Text.StringBuilder.Append(string value = \"Full search complete at round = 2\") + 0x9f bytes\t\n \tmscorlib.dll!System.Text.StringBuilder.AppendLine(string value) + 0xd bytes\t\n \tRawr.Mage.dll!Rawr.Mage.SolverLogForm.TextBoxWriter.WriteLine(string value) + 0x10 bytes\t\n \tSystem.dll!System.Diagnostics.TextWriterTraceListener.WriteLine(string message) + 0x30 bytes\t\n \tSystem.dll!System.Diagnostics.TraceInternal.WriteLine(string message = \"Full search complete at round = 2\") + 0xb9 bytes\t\n \tSystem.dll!System.Diagnostics.Trace.WriteLine(string message) + 0x5 bytes\t\n \tRawr.Mage.dll!Rawr.Mage.Solver.BestBoundSearch() + 0x268 bytes\t\n \tRawr.Mage.dll!Rawr.Mage.Solver.RestrictSolution() + 0x30 bytes\t\n \tRawr.Mage.dll!Rawr.Mage.Solver.GetCharacterCalculations(Rawr.Item additionalItem, Rawr.Mage.CalculationsMage calculations) + 0x77 bytes\t\n \tRawr.Mage.dll!Rawr.Mage.Solver.GetCharacterCalculations(Rawr.Character character, Rawr.Item additionalItem, Rawr.Mage.CalculationOptionsMage calculationOptions, Rawr.Mage.CalculationsMage calculations, string armor, bool segmentCooldowns, bool integralMana, int advancedConstraintsLevel, bool useIncrementalOptimizations, bool useGlobalOptimizations, bool needsDisplayCalculations, bool needsSolutionVariables) + 0x54 bytes\t\n \tRawr.Mage.dll!Rawr.Mage.CalculationsMage.GetCharacterCalculations(Rawr.Character character, Rawr.Item additionalItem, Rawr.Mage.CalculationOptionsMage calculationOptions, string armor, bool useIncrementalOptimizations, bool useGlobalOptimizations, bool needsDisplayCalculations, bool needsSolutionVariables) + 0x44 bytes\t\n \tRawr.Mage.dll!Rawr.Mage.CalculationsMage.GetCharacterCalculations(Rawr.Character character, Rawr.Item additionalItem, bool computeIncrementalSet, bool ignoreIncrementalSet, bool useGlobalOptimizations, bool needsDisplayCalculations) + 0x9b bytes\t\n \tRawr.Mage.dll!Rawr.Mage.CalculationsMage.GetCharacterCalculations(Rawr.Character character, Rawr.Item additionalItem, bool referenceCalculation, bool significantChange, bool needsDisplayCalculations) + 0x6a bytes\t\n \tRawr.Base.dll!Rawr.Optimizer.ItemInstanceOptimizer.GetValuation(Rawr.Optimizer.OptimizerCharacter individual) + 0x4c bytes\t\n \tRawr.Base.dll!Rawr.Optimizer.OptimizerBase<object,Rawr.Optimizer.OptimizerCharacter,Rawr.CharacterCalculationsBase>.GetThreadPoolValuation(object state) + 0x48 bytes\t\n \tmscorlib.dll!System.Threading._ThreadPoolWaitCallback.WaitCallback_Context(object state) + 0x2f bytes\t\n \tmscorlib.dll!System.Threading.ExecutionContext.Run(System.Threading.ExecutionContext executionContext, System.Threading.ContextCallback callback, object state) + 0x6f bytes\t\n \tmscorlib.dll!System.Threading._ThreadPoolWaitCallback.PerformWaitCallbackInternal(System.Threading._ThreadPoolWaitCallback tpWaitCallBack) + 0x53 bytes\t\n \tmscorlib.dll!System.Threading._ThreadPoolWaitCallback.PerformWaitCallback(object state) + 0x59 bytes",
+    "LastUpdatedDate": "2017-11-27T11:01:48.307-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-04-18T20:50:35.95-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Mage] Optimizer crash",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13048
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1819,
+      "FileName": "Sorbe.80.boss.55-3-13.endgame.xml",
+      "DownloadUrl": ".\\1819"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "To repro, just set the Rawr Optimizer \"Thoroughness\" slider to the far right, no other options set and hit the \"Optimize\" button.  100% repro for me.",
+      "PostedDate": "2009-04-18T21:09:39.5-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This is from Version 2.2.0.9 downloaded yesterday.",
+      "PostedDate": "2009-04-18T21:20:28.03-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I know why this is happening, I'll have a fix in later today.",
+      "PostedDate": "2009-04-18T22:54:54.64-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-04-19T15:40:36.747-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:25:35.78-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:27:20.607-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-21T00:00:19.307-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:46.887-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:47.463-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:01:48.307-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

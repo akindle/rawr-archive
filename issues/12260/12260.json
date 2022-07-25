@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-08T07:18:18.897-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "In function RebuildItemList()\nAttempting to sort an empty item list by a value not defined in ComparisoncalculationBase.SubPoints generates a IndexOutOfRangeException.  \n \n \nexamples:\nDKDPS attempted to sort an empty list by mitigation.\n...\n\tif (visible)\n\t{\n\t            float calcRating;\n                    if (Sort == ComparisonGraph.ComparisonSort.Overall || this.Sort == ComparisonGraph.ComparisonSort.Alphabetical)\n\t\t\t\tcalcRating = calc.OverallPoints;\n\t\t     else\n                                  calcRating = calc.SubPoints[(int)Sort];    // error is generated here with sort = 1 with SubPoints being an array with only one element.\n\t\t      maxRating = Math.Max(maxRating, calcRating);\n\t\t      }\n        }\n \n \n \nDKDPS sorting populated list by mitigation.\n \n\t\tprotected int CompareItemCalculations(ComparisonCalculationBase a, ComparisonCalculationBase b)\n\t\t{\n\t\t\tif (Sort == ComparisonGraph.ComparisonSort.Overall)\n\t\t\t\treturn a.OverallPoints.CompareTo(b.OverallPoints);\n\t\t\telse if (Sort == ComparisonGraph.ComparisonSort.Alphabetical)\n\t\t\t\treturn b.Name.CompareTo(a.Name);\n\t\t\telse\n\t\t\t\treturn a.SubPoints[(int)Sort].CompareTo(b.SubPoints[(int)Sort]);  // Sort  = 2, SubPoints has only element 0.\n\t\t}",
+    "LastUpdatedDate": "2013-05-16T05:26:33.393-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-12-30T18:41:46.98-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Item Sort Error",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 12260
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Ah, THAT's what you meant. Not a bug with that function at all; the bug is that the list of sorts in the dropdown doesn't get refreshed when you change models.",
+      "PostedDate": "2008-12-30T20:22:40.12-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hum.  I'll look into how easy that will be to fix.",
+      "PostedDate": "2008-12-31T10:40:41.943-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Would it be possible to call UpdateItemFilterDropDown() upon event comboBoxClass_SelectedIndexChanged?",
+      "PostedDate": "2008-12-31T11:47:25.32-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-08T07:18:18.897-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:35:55.6-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:33.393-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

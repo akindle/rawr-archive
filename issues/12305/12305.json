@@ -1,0 +1,90 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Tree",
+      "DisplayName": "Rawr.Tree"
+    },
+    "ClosedComment": "This is no longer an issue. Haste overvaluation is fixed with new Rawr.Tree that has different spell rotations. GCD cap of 1.0 should be in working fine.",
+    "ClosedDate": "2009-01-12T12:01:27.017-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "With the full talented \"gift of earthmother\", it's not necessary to increase haste above 15.38% (505 rating).\nTo this cap the GCD is at 1 sec  for the tree's main spell, WG, Rejuv and Lifebloom.\nMaibe it will be a good thing to implement this limit, according to the presence of some external haste buff, like shamy totem, or moonkin aura.",
+    "LastUpdatedDate": "2017-11-27T11:05:37.73-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-01-07T02:07:43.687-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Tree] Haste Cap",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 12305
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Are you certain that this isn't already taken into account? (I don't have a resto druid, so I apologize for my ignorance of Rawr's druid model)\r\n\r\nTo put it another way, in Rawr.Mage, there is no 'hit cap' setting. However, once you hit the cap with talents, buffs, and equipment then hit is valued at 0. In other words, Rawr won't gem for it count it on the stats for items when it does nothing to help you. No setting is needed, Rawr does this automatically.\r\n\r\nThe same may be true for RestoDruid.",
+      "PostedDate": "2009-01-08T11:10:43.81-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Why would you want to 'cap' this?  Are you never casting Regrowth and/or Nourish?  Those spells don't benefit at all from GOTEM. Granted it would be worthwhile knowing when the haste cap has been reached for the 'instants' if only because one might consider different gear or dropping a point or two in GOTEM but as far as it not being necessary to increase haste beyond 505 rating that is debatable.",
+      "PostedDate": "2009-01-08T14:28:37.39-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "@Calaziar, i agree you, i use regrowth (a lot) and nourish (sometimes), but maybe this \"cap\" can be implemented on a \"on demand\" way with a radio button or somthing like that.\r\n@MyrddinE, There is no Real Haste cap (other than 1sec GCD for all spells) for a resto druid, this cap is only available for instant spell whis a full talented GOTEM.\r\nI realise that this thread should have been posted in the \"Discussions\" section.\r\n\r\nBy the way i think the haste is a little overevaluated in the rawr model.\r\nPS: Thanks to the rawr developpement team for this wonderful tool !\r\nPPS : Sorry for my poor english...",
+      "PostedDate": "2009-01-09T07:52:45.463-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Also see my comments in issue 12005. (Sorry I have been a bit busy and haven't followed-up properly to make sure the patch gets into the code base. Hope to get that in this weekend, if I can arrange access.)\r\n\r\nIn terms of how haste seems to be handled from rawr.tree: Haste reduces the cast time and reduces the gcd, which ultimately gets capped at 1 second. Other than that haste has no inherent value assigned to it, from what I saw. \r\n\r\nWhy does it appear that haste is being overvalued then? I believe the main reason is that the default spell rotation is a healing touch spam.  Thus it tries to optimise the raw HpS for a healing touch, for which haste seems to be the most effective manner.  Change that to an instant cast spell (use the SpellRotationEditor, it is working in the current version, just slightly tricky to realise you need to select entry 0 to see the list of spells) and haste drops significantly in effectiveness. (But having hots in the rotation, without pauses, tends to cause refreshing them too early, causing other weird effects. My patch adds the option to pause).\r\n\r\n",
+      "PostedDate": "2009-01-10T08:09:52.313-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-01-12T12:01:27.017-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T18:15:26.483-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:03:27.03-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:35:52.483-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:30.93-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:05:37.73-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

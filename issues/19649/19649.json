@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "Rawr 4.0.17 Released. If this is still an issue in this new version, please reopen the issue per the Posting Guidelines with all of the necessary information.",
+    "ClosedDate": "2011-01-28T20:08:50.703-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "ProtWarr gave me an incorrect damage reduction from armor. I noticed this model uses StatConversion.GetArmorDamageReduction to calculate the damage reduction. But GetArmorDamageReduction is using an old formula:\nArmorConstant = 400 + 85 * TargetLevel + 4.5f * 85 * (TargetLevel - 59) \nthe simplified version of this formula is:\nWotLK\tArmorConstant = Armor / (Armor + MobLevel * 467.5 - 22167.5)\n \nThe new formula for the current expansion is:\nCata\tArmorConstant = Armor / (Armor + MobLevel * 2167.5 - 158167.5)",
+    "LastUpdatedDate": "2013-05-16T05:19:06.053-07:00",
+    "PlannedForRelease": "Rawr 4.0.15 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-01-10T05:31:24.82-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] Incorrect formula for damage reduction from armor",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19649
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Not at a computer to check but right now, but are you sure that's in use in the Rawr4 copy of StatConversion? We've had a ton of false reports lately, due to people looking at old code. ",
+      "PostedDate": "2011-01-10T10:05:58.717-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The Rawr4 version of the file is using:\r\nArmorConstant = 400 + 85 * TargetLevel + 4.5f * 85 * (TargetLevel - 59) ",
+      "PostedDate": "2011-01-10T10:21:07.403-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-12T10:01:04.437-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I checked in a new formula based on RatingsBuster:\r\n\r\nfloat ArmorConstant = AttackerLevel + (4.5f * (AttackerLevel - 59f)) + (20f * (AttackerLevel - 80f));\r\nTargetArmor *= (1f - ArmorIgnoreDebuffs);\r\nfloat ArPCap = Math.Min((TargetArmor + ArmorConstant) / 3f, TargetArmor);\r\nTargetArmor -= ArPCap * Math.Min(1f, ArmorIgnoreBuffs);\r\nfloat temp = TargetArmor / (85 * ArmorConstant + 400);\r\nfloat armorReduction = temp / (1f + temp);\r\nif (armorReduction > 0.75f) { armorReduction = 0.75f; }\r\nreturn armorReduction;",
+      "PostedDate": "2011-01-13T18:09:12.977-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Marking this as fixed unless someone can prove it wrong",
+      "PostedDate": "2011-01-28T10:04:13.143-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-28T20:08:50.703-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:28.993-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:06.053-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

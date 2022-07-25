@@ -1,0 +1,95 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Warlock",
+      "DisplayName": "Rawr.Warlock"
+    },
+    "ClosedComment": "Fixed in 49580.Maleficus - thanks for the report.Kavan - thanks for the fix.",
+    "ClosedDate": "2010-04-17T06:27:24.457-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The Buff-Option Potion of Speed (Double Pot Trick) seems to disable the Potion of Speed completely.\nE.g. adding the Potion of Speed \"Buff\" increases the DPS, while adding the Potion of Speed (Double Pot Trick) resets the DPS to the same value as if it had no Potion of Speed Buff at all.",
+    "LastUpdatedDate": "2013-05-16T05:21:02.723-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-04-16T00:40:51.85-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Warlock] Potion of Speed (Double Pot Trick)",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17267
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "How odd.  Perhaps a dev out there can answer this question for me: when I call\r\n  SpecialEffect.GetAverageCombinedUptimeCombinations(\r\n    (potion, double-trick potion), // effects\r\n    (0, 0), // intervals\r\n    (1, 1), // chances\r\n    (0, 0), // offsets\r\n    (1, 1), // scales\r\n    2, // attack speed\r\n    300, // fight duration\r\n    (500, 500)); // value\r\n\r\nIt returns ((1, 0), (0, 500), (0, 500), (0, 1000)).  Why does it gave a 100% chance to the value zero, and 0% chance to the values 500 and 1000?",
+      "PostedDate": "2010-04-16T07:07:14.477-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Why are you combining these two? The Double Pot Trick is meant so that you can get more total uptime, not double the power of a single uptime. The effects of 2 haste pots don't stack (if you can even do it quickly enough to activate it again).",
+      "PostedDate": "2010-04-16T08:00:24.563-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yes, this is true, and I realize & fixed that shortly after making my last post.  Now the \"offsets\" parameter is (0, .75 * fightLength).  But the result is still the same: 100% chance of 0, 0% chance of everything else.",
+      "PostedDate": "2010-04-16T08:22:14.49-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Oh - and I'm using that method *at all* because there may be more haste effects than just the pots that get passed into that method, then I combine their effects with those of the haste% effects' combined uptimes to finnaly arrive at a list of all the possible haste values and their weights.",
+      "PostedDate": "2010-04-16T08:24:38.15-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ah, ok now that makes more sense",
+      "PostedDate": "2010-04-16T09:04:23.397-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Added support for on use effects to SpecialEffect.GetAverageCombinedUptimeCombinations. Still need to provide an offset for it to actually work as intended.",
+      "PostedDate": "2010-04-16T23:50:26.393-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-17T06:27:24.457-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T14:51:22.93-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:06:03.233-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:28:50.53-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:02.723-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

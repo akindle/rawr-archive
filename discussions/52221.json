@@ -1,0 +1,82 @@
+[
+  {
+    "Id": "175404",
+    "ThreadId": "52221",
+    "Html": "This is definitely a min/max'er feature, but I thought I'd throw it out there anyway.  There are times when there is a very small difference between two different gemming (this is also sometimes true with enchants, but less often).  I'd like to have a way to specify a preferred gemming (or perhaps, &quot;current gemming&quot;) and then only have the optimizer choose an alternate gemming if it's more than a certain threshold.  I don't want to go blow 100g on a new gem if it's only going to be a small upgrade.<div><br></div><div>Currently, I work around this by looking at my armory, regemming each item back a slot at a time, and seeing how much my values change.  If it's not much, I can skip the trip to the AH.  But it would be nice to have an automated way to do this.</div>",
+    "PostedDate": "2009-04-03T11:40:15.373-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "175412",
+    "ThreadId": "52221",
+    "Html": "It's not exactly what you were envisioning, I think, but that need is (I think) filled:<div><br></div><div>Mark all your items as available only for the specific gemming/enchanting that you have them in (ie, clear the green diamond, then ctrl-click the diamond to mark it with a blue diamond, indicating that only that specific gemming is available, then right click the diamond to choose a specific enchant to mark available).</div><div>That way when you Optimize, it'll only use the specific gemmings that you already have.</div><div>After you Optimize that way, you can then check the boxes &quot;Override Regem&quot; and &quot;Override Reenchant&quot; in the Optimizer dialog, and optimize again. That will make it regem/reenchant anyway, and you can see the dps gain of that 'trip to the AH'. If it's worth it to you, regem/reenchant. :)</div><div><br></div><div>How does that sound? Does that solve it for you?</div>",
+    "PostedDate": "2009-04-03T11:52:55.95-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "175434",
+    "ThreadId": "52221",
+    "Html": "It's very close, but what I'm really trying to do is cut out the second optimization step.  I'd like to say &quot;here's my current gemming&quot; (the blue diamond is fine for that) but when I click &quot;Override regem&quot;, I'd like to be able to specify a threshold value for override.  If the improvement by switching from my marked items isn't more than my threshold, then it's ignored.<div><br></div><div>Does that make sense?</div><div><br></div><div>Again, this is more of a &quot;nice to have&quot; feature and not something that I feel is critical for the next release.</div>",
+    "PostedDate": "2009-04-03T13:00:01.513-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "175447",
+    "ThreadId": "52221",
+    "Html": "<p>Astrylian, this tends to fall into the feature request that I was making about a side-by-side comparison.  I do what dfscott does:  I take my current gear config (and save it) and then do an optimization including the possible regeming and reenchanting (and save that).  Then I flip back and forth between profiles to see the differences in stats and DPS.  Like dfscott, if it's not a big difference then I don't get new gems, etc.</p>\r\n<p>As for a threshold, dfscott, you can specify Additional Requirements on the Optimize window.  So if you're looking for HR or Haste or something else, you can specify that threshold you're wanting to optimize along with the primary (for me, DPS Rating).</p>\r\n",
+    "PostedDate": "2009-04-03T13:21:06.01-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "175449",
+    "ThreadId": "52221",
+    "Html": "The problem is that in general you can't do those decisions on per item basis. If you decide that you won't change gems on one item you might invalidate all other item values. I don't think it's possible to achieve what you have in mind without doing two passes of optimization. The closest to what you're saying is having a postprocess step looking at impact of not changing gemmings on any individual item, but as I said the problem is that it very much depends on the order you look them in. For example if you start with head piece you might see that if you don't change it your value is under threshold and after you decide not to change head piece the value of changing chest piece is above threshold. But if you would have started with chest piece it would not be.\r\n",
+    "PostedDate": "2009-04-03T13:26:16.843-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "175456",
+    "ThreadId": "52221",
+    "Html": "True, but you could &quot;fake it.&quot;  IOW, increase the score of all your &quot;already gemmed&quot; items by the threshold amount and use that for comparison.  I realize that it might not be 100% accurate (as increasing one stat and lowering another could provide a equal gear score but have very different overall effects), but it seems like it would be close.  Ofc, I may be oversimplifying the scoring process.",
+    "PostedDate": "2009-04-03T13:32:26.537-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "208150",
+    "ThreadId": "52221",
+    "Html": "<p>I want to use this feature for a couple reasons:</p>\r\n<p>&nbsp;</p>\r\n<p>1. &nbsp;I play a druid, full T8/T7 in almost all 3 specs, but Healing is my lowest priority. &nbsp;Gear selection for healing comes down to whatever Tier items are for healing and either what is left from Boomkin or what is current Boomkin, but I don't want to rechant/regem boomkin gear for a 5 man or Ulduar 10 run.</p>\r\n<p>&nbsp;</p>\r\n<p>2. &nbsp;I just started raiding on my SP for Ulduar 25, well, I decimated 2 sets of gear (Healing was my main) to make the best SP set I could. &nbsp; I don't have a compelte healing offset yet and again want to use what I have available from healing and what I can from my Current main set, without rechanting and regem just to heal for 1 fight in 10 man ulduar.</p>\r\n<p>&nbsp;</p>\r\n<p>Ultimately, I would like to take my SP, and what he is wearing and &quot;Lock&quot; those items and let it optomize between whatever else I have available for optomizer vs what i am wearing and make a set from that. &nbsp;Setting the blue diamonds has worked, but a little harder to keep up with.</p>",
+    "PostedDate": "2009-07-02T16:15:29.78-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "208152",
+    "ThreadId": "52221",
+    "Html": "<p>Take a look at batch tools, particularly the progressive batch optimize option. You can read about it in the help documentation.</p>",
+    "PostedDate": "2009-07-02T16:30:59.603-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "208511",
+    "ThreadId": "52221",
+    "Html": "<p>dfscot, remember that values are assigned to a complete set of gear as a whole. So if you where to try to fake it like you suggest, the optimiser might still say to make the change, but the change involves 5 gems. Whereas with only 1 or 2 changes you might get the most bang for buck and the rest aren't really worthwhile.&nbsp;</p>\r\n<p>Another explanation of some of the complexity: The optimiser might suggest you swap a red and blue gem around (in itself no DPS increase). But this is done to get the socket bonus for one of them. It might even be for your gear the red gem is in general better than the blue one, so 2 reds might even be better, unless your meta reguires that blue.</p>\r\n<p>&nbsp;</p>\r\n<p>The way to do this properly without faking it (and without extra optimisation passes) would be: To optimise the bag for buck (score delta/upgrade price). But on my server rare quality gems range in price from 10g to 90g, depending on the type. So I'm guessing using a flat cost per gem will give very inaccurate results. That implies configuring the price per gem for your realm into raw, which means a lot of work. Ok, coming to think of it, that will only let you be the most money efficent and have no guarantees on how far from optimal in dps you would be. The users perceived value of gold versus value of dps would still be needed to combine the dps and money scores. (Or you need to optimise for the max dps and then on a second pass optimise for the best cost saving/dps drop from the peak. Or optimise with a constrained budget)...</p>\r\n<p>Maybe it comes down to: You need to decide what is quicker: Spending the time to grind gold and get all the upgrades or spending the time considering possible alternative partial upgrade paths.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-07-04T03:52:55.373-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "208521",
+    "ThreadId": "52221",
+    "Html": "<p>Whoah, thread-rez! &nbsp;I had to go back and re-read the thread.</p>\r\n<p>I don't buy the &quot;which is quicker&quot; argument -- my time spend with Rawr doesn't take away from my time gaming (since I can rawr at work!). :)</p>\r\n<p>But seriously, I see what you're getting at regarding the level of complexity.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-07-04T07:32:26.94-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

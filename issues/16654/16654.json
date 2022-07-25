@@ -1,0 +1,116 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.LoadCharacter",
+      "DisplayName": "Rawr.Base.LoadCharacter"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-03-07T17:21:00.01-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When trying to load a character from the armory I get an error, \"No character returned from the Armory.\"  This is even though I can access the armory on my computer.\n \nEdit: Character I tried to load, Lpsijan from Moonrunner realm, US region.  Used the File menu.  Version is of rawr 2.3.11, was also having the same issue on 2.3.10 immediately before I upgraded.",
+    "LastUpdatedDate": "2013-05-16T05:21:35.617-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-03-04T16:25:10.137-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "load from armory error",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16654
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3098,
+      "FileName": "System.Net.log",
+      "DownloadUrl": ".\\3098"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "http://rawr.codeplex.com/wikipage?title=Troubleshooting&referringTitle=Documentation",
+      "PostedDate": "2010-03-04T16:28:41.893-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Step Name: Get Character\r\nDescription: No character returned from the Armory. Is the Armory down?\r\nException: No Exception\r\n\r\nWeb Client:\r\nException: Unable to connect to the remote server\r\n\r\nSame steps as above, ensured Armory was not down.  Not using a proxy, firewalls allow Rawr.",
+      "PostedDate": "2010-03-04T16:37:25.17-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The current error reporting is probably insufficient to tell what exactly is going on. I think we should add full exception report with call stack and inner exceptions displayed to help in debugging these issues.",
+      "PostedDate": "2010-03-04T17:05:40.567-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "If you would like to resolve this issue before we add further error reporting please try the following to enable network logging:\r\n\r\nOpen Rawr.exe.config file in a text editor (i.e. notepad). Insert the following before the last line of the document (so it is nested inside the configuration element):\r\n\r\n<system.diagnostics>\r\n  <sources>\r\n    <source name=\"System.Net\" switchValue=\"Verbose\">\r\n      <listeners>\r\n        <add name=\"System.Net\"/>\r\n      </listeners>\r\n    </source>\r\n    <source name=\"System.Net.Sockets\" switchValue=\"Verbose\">\r\n      <listeners>\r\n        <add name=\"System.Net\"/>\r\n      </listeners>\r\n    </source>\r\n  </sources>\r\n  <sharedListeners>\r\n    <add name=\"System.Net\"\r\n          type=\"System.Diagnostics.TextWriterTraceListener\"\r\n          initializeData=\"System.Net.log\"/>\r\n  </sharedListeners>\r\n  <trace autoflush=\"true\" />\r\n</system.diagnostics>\r\n\r\nand then start Rawr again and try to open character from armory.\r\n\r\nEither try to analyze the generated System.Net.log file yourself or attach it here.",
+      "PostedDate": "2010-03-04T17:18:37.38-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Here is the attached file, thank you for your assistance.",
+      "PostedDate": "2010-03-04T18:26:10.03-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-04T18:26:11.2-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This is the relevant info pertaining to your issue:\r\n\r\nAn attempt was made to access a socket in a way forbidden by its access permissions 12.129.242.20:80\r\n\r\nTo me this sounds either like a firewall problem or something with security policy on your machine. To check security policy you can go to administrative tools in control panel and open Microsoft .NET Framework 2.0 Configuration. On the left menu select Runtime Security Policy. Look for anything that would be related to Socket Access being disabled. Most likely the settings under Machine node will be the one relevant, but by default Rawr should fall under My Computer Zone which is given FullTrust permission. If this is a corporate computer or something it's possible that admins might have set some special policies.",
+      "PostedDate": "2010-03-04T19:11:36.87-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Another thing you can try out is to run with administrator permissions, not sure if that would change anything.",
+      "PostedDate": "2010-03-04T19:17:32.593-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Actually it looks like this is not code access security issue, but a winsock error which has the following explanation:\r\n\r\nPermission denied. \r\nAn attempt was made to access a socket in a way forbidden by its access permissions. An example is using a broadcast address for sendto without broadcast permission being set using setsockopt(SO_BROADCAST). \r\nAnother possible reason for the WSAEACCES error is that when the bind function is called (on Windows NT 4 SP4 or later), another application, service, or kernel mode driver is bound to the same address with exclusive access. Such exclusive access is a new feature of Windows NT 4 SP4 and later, and is implemented by using the SO_EXCLUSIVEADDRUSE option.\r\n\r\nThis is rather strange for port 80. I'm not sure exactly what could be going on. You can try running NETSTAT -ano from command prompt and write down the PID number and check in task manager what process is having the PID.\r\n\r\nI would still suspect some firewall could be blocking the port.",
+      "PostedDate": "2010-03-04T19:34:36.12-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thank you for the assistance, the issue is resolved, something cleared my firewall setting that allowed Rawr.",
+      "PostedDate": "2010-03-07T16:46:50.833-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-07T17:21:00.01-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-09T15:39:30.307-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:29:34.617-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:35.617-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

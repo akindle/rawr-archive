@@ -1,0 +1,161 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Cat",
+      "DisplayName": "Rawr.Cat"
+    },
+    "ClosedComment": "Should be fixed for next version. The specific bug was that if there was only a single special effect &#40;proc&#41; that affected crit chance, it would only value the crit chance from the proc as 1 stack of the proc. This meant that if your only crit-affecting proc was Idol of the Crying Moon, you&#39;d get the full AP&#47;Armor from Agi out of it, but only 44agi worth of crit.",
+    "ClosedDate": "2010-08-22T13:40:48.21-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "In various gear setups Mongoose will suddenly triple in value.  From my limited testing this appears to be mostly or solely due to strange interactions with trinkets - I was unable to reproduce this problem by changing gems, enchants, or any non-trinket gear slots (though admittedly I did little testing on this).  The attached XML will have this problem, but is fixed by replacing either trinket with a Deathbringer's Will or Death's Verdict.  On the other hand, the problem will persist if either trinket is replaced with a Comet's Trail or Whispering Fanged Skull.  Working through numerous other trinkets I cannot find any pattern as to which will cause the issue and which ones won't.\n \nThis is occurring in versions 2.3.11 and 2.3.13.",
+    "LastUpdatedDate": "2017-11-27T10:59:35.7-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-03-27T07:43:07.54-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Cat] Mongoose significantly overvalued",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 5,
+    "Id": 16991
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3269,
+      "FileName": "Mongoose.xml",
+      "DownloadUrl": ".\\3269"
+    },
+    {
+      "FileId": 3726,
+      "FileName": "CryingMoonBug.xml",
+      "DownloadUrl": ".\\3726"
+    },
+    {
+      "FileId": 3728,
+      "FileName": "fellcat.xml",
+      "DownloadUrl": ".\\3728"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Ok, played around a little more and, at least with the character XML I linked, I think I've found a pattern.  Mongoose will always be worth 2-3 times as much as the 2nd best enchant unless you equip a trinket with a crit or Agi proc.  So DBW, Death's Verdict, Dark Matter, and DMC:Greatness will all cause Mongoose to be worth about the same as other enchants, while any setup without at least one of these trinkets (including having no trinkets equipped at all) will show Mongoose being worth much more than any other enchants.",
+      "PostedDate": "2010-03-27T07:56:35.793-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-27T08:07:18.423-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sorry for all the added comments.  After testing this issue some more it appears that this problem only comes up if you have Idol of the Crying Moon equipped.  Swapping it to Idol of Mutilation, I was unable to reproduce this issue under any circumstances.",
+      "PostedDate": "2010-03-27T08:13:10.2-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Again, sorry for all the comments.  After playing around in multiple gear levels the issue is with Idol of the Crying Moon, not Mongoose.  It's not modeled correctly unless you have a crit or Agi proc somewhere.  Without such a proc, Crying Moon shows up much lower than Idol of Mutilation/the Corruptor.  Under these conditions anything with a crit/Agi proc is vastly overvalued since it fixes the modeling of Crying Moon.",
+      "PostedDate": "2010-03-27T09:37:34.09-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Interesting, thanks for all the investigation!",
+      "PostedDate": "2010-03-27T14:59:26.603-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-28T04:00:36.85-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-28T16:34:00.8-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-18T07:53:52.803-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-05-21T21:17:30.31-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-06-17T01:47:35.96-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-06-27T22:07:58.87-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "New character file close to my own with this issue, still occurring in v2.3.19.  And in fact just starting a blank feral cat in Rawr and checking the ordering of idols will show this issue - Crying Moon will be lower than Mutilation on a 0/0/0 naked cat with no buffs, which obviously should never be the case unless the fight time is set extremely short.",
+      "PostedDate": "2010-06-27T22:08:00.833-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-06-28T15:20:38.84-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Another example, in case you're curious, with exactly the same behavior as above. ",
+      "PostedDate": "2010-06-28T15:20:39.853-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T11:37:13.693-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T15:41:54.66-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-08-22T13:40:48.21-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T22:45:40.733-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:29:06.637-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:15.97-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T10:59:35.7-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

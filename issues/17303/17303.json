@@ -1,0 +1,86 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.RestoSham",
+      "DisplayName": "Rawr.RestoSham"
+    },
+    "ClosedComment": "Ah, yes, that appears to be the case.  It&#39;s an unfortunate part of the way RT is handled, but it seems now-a-days that casting RT on cooldown is becoming standard for shaman.  What might also change that spike as well is Latency.  I&#39;ll close the issue for now that I&#39;ve gotten to the bottom of it and it appears that it&#39;s working semi-correctly &#40;Haste giving you more time between RT&#39;s does indeed change things greatly&#41;.  If it begins to do it on non-RT rotations, most definitely post another issue.",
+    "ClosedDate": "2010-04-24T07:22:07.843-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "RestoSham is giving me some bizarre gear rankings. For instance, valuing Heroic Darkbane Pendant 200 \"burst points\" over Soulcleave Pendant, despite having no haste and lower of other stats. So I decided to check out the stat weights, everything looks fine. However, the Burst Stat Graph (and consequently the Overall Stat Graph) have a bit of an oddity.\n \nhttp://img11.imageshack.us/img11/2360/restoshamwat.png\n \nIs this a known issue? Basically, any item choice that lets me drop ~50 haste somehow gets its rating bumped up a lot.",
+    "LastUpdatedDate": "2013-05-16T05:21:01.173-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-04-19T00:25:18.36-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[RestoSham] Burst Stat Graph issue",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17303
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3409,
+      "FileName": "delresto.xml",
+      "DownloadUrl": ".\\3409"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Generally, this means you are going OOM from that 50 haste in the model, could you also post your character.xml?",
+      "PostedDate": "2010-04-21T22:06:20.427-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm not sure where to find how long it takes to go OOM in RestoSham. However, I tried setting the fight length to different values and it didn't change. However, changing the modeling for Burst to RT+CH, or any of the non-RT models, removes this spike.",
+      "PostedDate": "2010-04-22T00:06:03.85-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-22T00:06:05.557-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Burst stats ignore mana, so that can't be the reason.  My (unprofessional) guess is that the drop in the graph is where he has just enough haste to start an extra HW cast before RT is off cooldown.  RT has a higher healing-done-per-cast-time, especially when raid healing because they tick to their full duration, so starting that extra cast (and thereby decreasing the number of RTs) is actually counter-productive.  It would be better to sit there doing nothing for a fraction of a second waiting for that RT to come off cooldown.\r\n\r\nIf my guess is right, I would think the way to fix it is to have the model check whether waiting before casting that RT is better, and do that instead.  Then there would be a flat spot in the graph from -40 all the way to 140, which would be an improvement ... but still not ideal for picking gear, because that extra haste does actually help you, just not in total throughput.",
+      "PostedDate": "2010-04-22T06:20:01.993-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "xemnosyst, that actually sounds quite reasonable. Presumably if I got some more haste I would eventually see (on the right side) another peak followed by a drop, as my ability to fit a full extra HW approaches. I'll check that out and see. I'm not sure how they could fix that in the modelling, although I suppose since my methodology of raid healing is typically more along the lines of RT+CH, I could just change to that and put this all behind me! :P",
+      "PostedDate": "2010-04-22T22:37:04.89-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-24T07:22:07.843-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:28:48.29-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:01.173-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

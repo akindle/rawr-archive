@@ -1,0 +1,156 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-08-28T14:13:16.353-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "After equipping and optimizing the Moonwell Chalice (http://www.wowhead.com/item=70142), I've been running into some problems:\n \n- Optimizations are a little weird. Running Batch optimizations, it goes on forever. Running regular optimizations, it always gets the same \"result\" but the end number is slightly different.\n- Building upgrade lists results in items I already have equipped on the lists.\n \nThere's the possibility that it has nothing to do with the Chalice and I just hit some weird breaking point that's messing up Rawr.\n \nAny ideas?",
+    "LastUpdatedDate": "2013-05-16T05:17:35.8-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-07-22T08:39:50.207-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Arcane Mage] Equipping Moonwell Chalice is messing up upgrade lists",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 21213
+  },
+  "FileAttachments": [
+    {
+      "FileId": 5188,
+      "FileName": "KoreyWPF.xml",
+      "DownloadUrl": ".\\5188"
+    },
+    {
+      "FileId": 5192,
+      "FileName": "upgrade10.xml",
+      "DownloadUrl": ".\\5192"
+    },
+    {
+      "FileId": 5208,
+      "FileName": "KoreyWPF5.xml",
+      "DownloadUrl": ".\\5208"
+    },
+    {
+      "FileId": 5209,
+      "FileName": "upgrade11.xml",
+      "DownloadUrl": ".\\5209"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I don't think this has anything to do with Moonwell Chalice.\r\n\r\nThe reason why optimizations go longer is because calculations take longer with one extra cooldown (each item-based cooldown basically doubles calculation time).\r\n\r\nThe number being slightly different is a known issue that is due to the nature of the quadratic optimizer. It's possible that is something else and I'll keep an eye on it, but from my testing it doesn't have any significant effect on accuracy. If you want to understand the difference take a look at stats graph with and without incremental optimizations. In general you'll want incremental optimizations enabled to counter those problems, even if they can't be 100% eliminated in all cases.\r\n\r\nIf building upgrade list results in items that you already have equipped then that means your current set is not optimal. Try equipping the set with that item that is suggested as better and see what happens. If the total value drops there may be an actual discrepancy between incremental optimizations and without it. In general in those cases even if the main score is lower the incremental result is usually the correct one.\r\n\r\nI hope this explains a bit what is happening. If you have any further questions feel free to ask or join on the irc channel.",
+      "PostedDate": "2011-07-22T12:59:32.98-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Actually I just realized that the fix for comparison calculations is not live yet. What this means is that the different number you're seeing in optimizer as it is optimizing is an actual bug and it is due to an error with gcd caps on Arcane Blasts. This should be fixed in the next version which is most likely this weekend (the other source of differences mentioned above will still exist though).",
+      "PostedDate": "2011-07-22T13:12:45.82-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok, I'll wait for the fix before complaining further, however about the upgrade list: I am already equipping the optimal set (after running several optimizations), but maybe it's not the optimal set due to the bug?",
+      "PostedDate": "2011-07-22T13:22:25.053-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yes that would be my guess that it's not optimal. The upgrade list should show you the complete item set that goes with it, so you should be able to try that change and see what happens.",
+      "PostedDate": "2011-07-22T13:51:43.513-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-07-22T15:56:32.603-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-07-22T15:56:34.03-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That's strange, I looked and the sets in the upgrade list are the same as I have equipped.\r\n\r\nI've uploaded a list (upgrade10.xml). If you load both my char sheet and the upg list, you can see that near the bottom are three items with the green diamond filled in. And if you hover over them they have the same set, which is what I'm wearing.\r\n\r\nOh well, thanks for your help so far and I'll see if the next client fixes it.",
+      "PostedDate": "2011-07-22T15:59:13.583-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I've seen similar things like that before and I'm not exactly sure what causes it. One thing that might be the cause is from special effects calculations. Those are calculated based on a cached interpolation grid and sometimes during the course of optimizations it needs to get value for something outside its current bound where it needs to recalculate the grid. This will cause the values to be slightly different. I'm not sure if this is what's happening, but it's one possibility.",
+      "PostedDate": "2011-07-22T17:26:39.447-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-07-29T14:16:50.013-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "With 4.2.3, this is happening again.\r\n\r\n- Running optimizer on batch tools (with just the one character file) goes on forever\r\n- Running build upgrade list normally returns with a bunch of items I already have equipped.",
+      "PostedDate": "2011-07-29T14:16:51.627-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-07-29T14:17:57.84-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-07-29T14:17:59.517-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Please take a look at my recent files\r\n\r\nKoreyWPF5.xml and upgrade11.xml",
+      "PostedDate": "2011-07-29T14:18:44.507-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This is a pretty normal speed for optimizing Arcane profile. If you're used to optimizing Fire I can understand why it seems slow, but Arcane is several orders more complex to solve.\r\n\r\nIf I'm thinking correctly what you're reffering to batch tools going on indefinitely is not that it's stuck, but that it continues running several optimizations, finishing each one successfully, but never stops running them. I believe what is happening is the optimizer found an upgrade (wand reforge mastery->crit, using the incremental optimizations during optimization), but then when it tried to equip it and solve without incremental optimizations (as is the case always for reference calculations displayed on the stats pages) it didn't actually increase the score. Batch tools currently keep running while improvements are found so I think this is what was causing it to loop forever.\r\n\r\nThere's an additional problem that the solver on the main reference calculation doesn't find the true optimum, but slightly suboptimal, which is probably the reason that is causing existing items to appear on upgrade list. If you look at stats graph you'll see that the 0,0 point is at a slight dip compared to true optimum and you can also see it's having quite a bit of trouble finding it in general even with incremental enabled in this case. You'll see that with mastery line for some reason it never finds the true optimum, which is probably why it's trying to suggest that mastery->crit reforge, because it thinks that switching to crit will improve dps, while it only gives solver the opportunity to find a more optimal cooldown stacking.\r\n\r\nI hope this explains a bit behind the scenes why this is happening. Unfortunately there is no silver bullet. At the core is the Mana Adept making this a quadratic problem and there not existing a quadratic solver that could guarantee to find true global optimum without making it exponentially slower than it already is. What to take away from this is to use some human judgement when using arcane and keep an eye on the stats graph to see how much problems the solver is having. In general it's better to trust long term general trends in the stats graph than local anomalies.",
+      "PostedDate": "2011-07-29T14:48:59.437-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Actually looking closer what appears to be happening is with no reforge it thinks Mastery->Crit is better, but after it changes it thinks no reforge is better and it keeps doing this forever.",
+      "PostedDate": "2011-07-29T14:58:20.857-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I would suggest trying out the Simple Stacking mode in the next version. It's still very experimental, but it seems to give much better results in the case that you posted about.",
+      "PostedDate": "2011-08-14T16:40:06.663-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-08-28T14:13:16.353-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:24:34.463-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:17:35.8-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

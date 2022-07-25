@@ -1,0 +1,120 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.RestoSham",
+      "DisplayName": "Rawr.RestoSham"
+    },
+    "ClosedComment": "This was fixed some time back.",
+    "ClosedDate": "2010-03-17T14:21:23.397-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I noticed that there are a couple of items missing.  I tried to update the database from Wowhead, but that didn't seem to work.\n \nI found it when I tried to see how the trinket set Purified Shard of the Gods would affect my shaman's healing.  The Purified Shard of the Scale was in the database, but Purified Shard of the Flame was not.\n \nIn addition to my question about how to include this item, my other question would be:  Does the program support the calculations for the set bonuses on these trinkets?\n \nExample Set Bonus from the set Purified Shard of the Gods:\n2 pieces: Increases spell power by 222.\n2 pieces: Your direct heals have a chance to cause Cauterizing Heal. Your direct damage spells have a chance to cause Searing Flame.",
+    "LastUpdatedDate": "2013-05-16T05:22:54.093-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-12-18T05:42:21.643-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[RestoSham] Purified & Shiny Shard of the Gods",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15510
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "These procs are being handled model specific, which model are you need it in?",
+      "PostedDate": "2009-12-18T10:35:39.96-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "nvm, you said \"shaman's healing\"\r\n\r\nhuked on fonikz werked 4 me!",
+      "PostedDate": "2009-12-18T10:46:00.58-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-18T10:46:50.42-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "To be honest, I'd also be curious about how it would affect the elemental DPS as well.",
+      "PostedDate": "2009-12-18T12:29:34.32-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Shard of the Flame does not show up because it has no stats the RestoSham model finds relevant.\r\n\r\nWhat is the stat type for health per 5 sec? It's not HealthRestore.\r\n",
+      "PostedDate": "2009-12-18T12:30:15.24-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Therein lies the problem.  The model should also be considering the set bonuses of the items.  In the end, this issue could cause problems for a wide array of items and models.",
+      "PostedDate": "2009-12-18T13:06:45.817-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Only like, 2 models actually support Hp5 as relevant (and that's the name of the stat in Rawr) and I think 1 of those is a tank, the other is DPSWarr (for Survivability calcs).\r\n\r\nNo Items are considered for relevancy based on their set bonuses, I'm not even sure how we would go about making that happen.",
+      "PostedDate": "2009-12-18T13:39:33.517-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well, I could add Hp5 as a relevant stat, but I'm not sure how I'd model it.\r\n\r\nTo be honest, I patch the survivability stuff out of my local copies of the non-tanking models I use because I'm not interested in items and gems being listed just because they have +Stam on them. Makes my lists longer for no real reason.\r\n\r\nActually, this ticket reminds me of a feature I've found myself wanting several times: Sometimes I want to equip a specific item even though It is filtered out for some reason. I suggest a slot right-click menu item for \"Equip Specific Item\" that would let you type in the name or item number of an item and equip it in that slot regardless of it's relevance. When I find myself needing to do this now, I have to edit my character's XML file manually.",
+      "PostedDate": "2009-12-18T15:03:24.73-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Generally, when I have a tirnket like that I just add 1 stamina to the trinkent to make it show up.  My model doesn't contain Hp5, but I'll see about adding it at least to relevant to allow it to be equipped.",
+      "PostedDate": "2009-12-18T17:41:59.79-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Honestly, in the near future (maybe with Rwar3) we should probably enforce a Survivability value in each model that doesn't already have it, and add standardized counts onto each, with a Scale mod (like we do in DPSWarr). This way we reduce some of these extraneous issues like what happens here.",
+      "PostedDate": "2009-12-18T17:50:55.877-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Survivability is scalable in my model at this time I believe.  As to the Hp5, I'm not exactly sure how you could effectively handle it in a healing model.  Perhaps make the survivability equal to the total amount healed over the fight length / some number (10 for stamina?).  That's the only way I can think to really set it to working.",
+      "PostedDate": "2009-12-19T13:04:38.157-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-17T14:21:23.397-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T17:42:21.01-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:40:45.093-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:13.827-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:54.093-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

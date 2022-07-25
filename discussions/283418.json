@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "714054",
+    "ThreadId": "283418",
+    "Html": "\r\n<p>I've been throwing some code Shazear's way trying to help get a Masterfrost rotation into the DPSDK module. &nbsp;My first attempt, after a tweak, was decent. &nbsp;It picked all the right gear, but the wrong reforging. &nbsp;I believe I've figured out why,\r\n but unfortunetly I also think I need a completely different algorithm to solve it. &nbsp;I'm not a great math guy, so I'm hoping by sharing the problem somebody else will see how to solve it.</p>\r\n<p>The problem is how to best use 4 resources: runes, runic power, rime procs and gcds. &nbsp;Here's a sample table of ability costs to choose from.</p>\r\n<pre>    Runes R.P. Rimes GCDs Value\r\nOB     -2   30   .72   -1    53\r\nFS    .45  -32     0   -1    52 \r\nHBr     0   10     1   -1    32\r\nHB     -1   20     0   -1    32\r\n</pre>\r\n<p>And, again for example, the solver might be given 27.5 runes, 36.4 rp and 64 gcds to start with. &nbsp;There must be some generalized kind of algorithm that can come up with an optimal solution, right?</p>\r\n",
+    "PostedDate": "2011-12-18T23:18:11.323-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "714058",
+    "ThreadId": "283418",
+    "Html": "<p>It's a linear program, we have a solver for it in Rawr, although for such a small one you could also special case it. The solver is in mage model only at the moment, but I could move it to base.</p>",
+    "PostedDate": "2011-12-18T23:23:10.787-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "714357",
+    "ThreadId": "283418",
+    "Html": "<p>I could use the state generator and move it over to that.&nbsp; I think it's feasible.</p>\r\n<p>At least we got something started.&nbsp; The stat graph looked appropriate for the most part what we would expect from this kind of rotation.</p>",
+    "PostedDate": "2011-12-19T10:53:20.09-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

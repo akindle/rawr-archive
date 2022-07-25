@@ -1,0 +1,121 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Enhance",
+      "DisplayName": "Rawr.Enhance"
+    },
+    "ClosedComment": "Old issue. The model has undergone dramatic changes to priorities and adding mana concerns. I&#39;d need new data if this issue raises its head again.",
+    "ClosedDate": "2009-10-23T04:25:20.327-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "There seems to be no relation between \"relative stat values\" and the actual gems it chooses to use. It might say expertise is #1 by a long shot, but then go and put a 16AP+8Haste gem in a red slot with a stam socket bonus...what gives? \n \nMight be unrelated but i have a saved file where agility/haste/crit all give negative dps values under \"relative gem values\" and agility/expertise/hit/haste give negative dps values under \"relative stat values\". As soon as you change some stats they pop up to normalish values. Very odd.\n \nP.S. For future reference, how do i specify the Component/Release etc? I always look and never see the option to change them. All i get is a description window and an attach file window.\n \nEdit: Seem to be having the same exact problems under 2.2.16.",
+    "LastUpdatedDate": "2013-05-16T05:24:17.99-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-09-17T05:34:45.427-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Enhance] Negative DPS Values",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14180
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2233,
+      "FileName": "trybe test.xml",
+      "DownloadUrl": ".\\2233"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I don't think normal users can set Component themselves, a dev has to assign it (like I just did)",
+      "PostedDate": "2009-09-17T10:28:29.55-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This is because Relative Stat Values has absolutely nothing what so ever to do with what you should gem. You should always gem for what gives you the highest dps increase not what has a meaninglessly random high EP value.",
+      "PostedDate": "2009-09-18T07:33:24.737-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Just looked at you XML file.\r\n\r\nYou are miles away from being expertise capped so your dps will be exceptionally poor. Also your talent build is exceptionally mana heavy and lower dps than optimal do you really run out of mana every 60 seconds so that you need all those mana regen talents? Drop Elemental Focus, 1 in Imp. SS, and 2 in Ancestral Knowledge put them in call of flame and Imp. Shields for a dps boost. PS. Totem of Splintering is worse than the lvl 70 trinket.\r\n\r\nMay I suggest you read the Enhancement Shaman FAQ to assist you understand your character better. It may help you know where to look for improvements. http://www.mmo-champion.com/class-shaman/*pve-enhancement-shaman-in-wrath-faq*/\r\n\r\nThe Relative Gem Values issue is interesting I shall investigate further. Many thanks for the heads up.\r\n\r\nQuote \"P.S. For future reference, how do i specify the Component/Release etc? I always look and never see the option to change them. All i get is a description window and an attach file window.\"\r\n\r\nI have no clue what you mean by this. Are you suggesting a user should be able to change a program's version number? You would never ever want to change Word 2007's version to say Word 2009 so why would you change Rawr's version number? Have I misunderstood you? What are you wanting to do?",
+      "PostedDate": "2009-09-18T07:44:14.43-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "\"meaninglessly random high EP value\"\r\n\r\nCan you explain why you think that? Relative stat values should show what adding 1 of any stat would increase your dps by, or really what stats will increase your dps the most. Otherwise what use would they be? Their relationship to each other, or their relativity to each other, the point of the chart, is based on the dps they add to your character at it's current stat level, correct? If i'm horribly mistaken as to the use of the Relative stat values chart then please tell me, but i'm not some blind bat who thinks that Relative Stat Values are WoW's bible, and will make my character a god. I know how to read them and i know that gems are not going to ultimately match the stat values to a \"t\", but they should come at least close. \r\n\r\nI've used Rawr extensively on other toons and the chart has always seemed reasonable, this does not.",
+      "PostedDate": "2009-09-18T07:48:39.653-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This is an alt, i'm not trying to optimize my character right at this moment, i was just messing around and noticed some funky things, however i do appreciate the tips.\r\n\r\nNow, if i'm really low on expertise, then relative stat values shows expertise to be number 1. Makes sense, why then, would it then go and try to put an AP/Haste gem in a red sot when i could put an expertise gem instead? The charts says go expertise, the auto gem selection and subsequent dps numbers say differently. That's what i'm not understanding. \r\n\r\nJothay answered my question about the component, I was trying to better file the issue, by giving it a categories like the specific version and component number. I didn't realize we weren't able to do that.",
+      "PostedDate": "2009-09-18T07:56:31.84-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Quote \"why then, would it then go and try to put an AP/Haste gem in a red sot when i could put an expertise gem instead? The charts says go expertise, the auto gem selection and subsequent dps numbers say differently.\"\r\n\r\nNot quite sure what you mean by \"auto gem selection\"? \r\n\r\nAll the charts I look at with your level of gear put an expertise gem top.\r\n\r\nThere does seem to be something a bit odd with the crit, it looks like with your exact level of gear adding the extra crit (from AGI or crit) is triggering a small change in the number of abilities used and so the sequencing of abilities is off. I'll need to do further investigation especially as it does something strange with stamina too. Thanks again for the test data really useful.\r\n\r\nMeantime I did note that I'd forgotten to change the totem refresh CD which is now 1sec rather than 3 as we can drop 3 totems at once in patch 3.2. So this is fixed for Rawr 2.2.18.",
+      "PostedDate": "2009-09-18T08:31:53.937-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Re: Relative Stat Values. The problem with RSV is that they are hugely volatile, the instant you change ANYTHING on your character they change. Some people try to get a set of EP values then religiously stick to those values regardless of changes in gear. These people are characterised by the \"I regemmed for XXXX\" brigade. ie: they see a stat is top of the EP values and they regem everything for that stat thinking that will up their dps. Not realising that the second they change the first gem all their EP values changed and so they need to see what the effect of each change is. Far too many people fall into this trap change around their gems then never bother to check the new result.\r\n\r\nThe biggest problem with EP values is that they do indeed calculate what adding 1 of a stat does. What they completely fail to do is to calculate what removing 1 of the other stat means. In WoW you typically never just add a stat, you are always replacing one stat for another - eg: replacing a 20 AGI gem for a 20 crit gem. It is useless to know that adding 20 AGI gives more dps than adding 20 crit as that is NOT what you are doing. What you need to know is what the value of reducing crit by 20 and increasing AGI by 20 is vs what you have. That is radically different from adding 20 AGI vs adding 20 crit. Do you see what I mean. This is where EP values fail as you aren't actually comparing what you are really doing. \r\n\r\nIt is quite common to find situations where removing X of one stat lowers your dps by more than adding X of the other stat. Even when the second stat should up your dps according to EP values. The reason is usually to do with thresholds and uptimes of various abilities. \r\n\r\nSince EP values are so unreliable RAWR DOES NOT USE EP VALUES, the chart is there as a convenience, it is NOT part of Rawr's mentality and there are NO functions in Rawr that use EP values to compute your dps.",
+      "PostedDate": "2009-09-18T08:46:54.043-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "When i say \"Auto Gem Selcection\" i was really just referring to rawrs choice of a gem, if you clicked on an item and chose the top one of say 3 different gemming choices. \r\n\r\nAs for recreating the AP/Haste selection, I took the uploaded file and replaced the neck gem with 12 expertise and set the chest gem slot to empty. Then when you go to select a gem for the chest piece it says Ap/haste is the best. Wheras I would have chosen Expertise/Hit if it were up to me, since they are the top 2 stats on RSV before and even after the AP/Haste gem was put on.\r\n\r\nI do understand Rawr does not run off of the EP values, and that they change the instant any other stat changes. Often times i leave them up to the right while i change around gear, sometimes to get an idea of how things change as your gear does, or what stats I might be lacking in. It was by this method that I noticed the oddities I stated. And yes RSV's drawbacks, more specifically the give and take calculations that it won't show, but rawr does behind the scenes, are a little more clear to me now. \r\n\r\nThat said, as i keep messing around with gems, RSV is extremely eratic. Like haste being 20 times larger on the RSV than any other stat. Take out the chest gem and add a 16 expertise gem to the neck piece to get that. Drastic changes like hit/expertise caps or haste soft caps for casters make sense, it affects their rotation, but i wouldn't expect such huge jumps from melee. /shrug\r\n\r\nI guess i'm done messing around with it for now, i'm sure i've bugged you enough. Thanks for the help.",
+      "PostedDate": "2009-09-18T09:51:22.353-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I still intend working out why there were negative numbers as this should not be the case. \r\n\r\nFurther guidance however you really need to tick the buffs you have, your XML file shows almost no buffs and this will dramatically alter what is good and what isn't.\r\n\r\nI've loaded your file and changed the gems as you suggested - however unsure about a 12 expertise gem??? Does such a thing exist? You can't be using green quality gems surely? I'm assuming thats a mistype and you meant 16 expertise? I then clicked to equip custom gemming on the empty chest socket and all the options were expertise.\r\n\r\nIf you aren't seeing that can you give exact step by step instructions to tell me what you see. ie: say equip X gem (name it) as well as stating stat so I know what you are doing. \r\n\r\nAre you aware that the gems available are limited by what you have selected as available in the gemming templates? Check to see that the expertise gems are available in your gemming templates.",
+      "PostedDate": "2009-09-21T04:49:41.327-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-23T04:25:20.327-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-14T09:57:11.99-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T19:52:38.783-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:18.067-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:32:58.44-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:17.99-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

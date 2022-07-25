@@ -1,0 +1,100 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.TankDK",
+      "DisplayName": "Rawr.TankDK"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-03-08T19:51:26.723-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Given the theorycrafting done at other sites, mastery should be super sweet.  But for whatever reason, my code is sitting with it pretty low on the chart.",
+    "LastUpdatedDate": "2017-11-27T11:04:46.927-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-01-17T08:30:51.817-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[TankDK] Mastery seems undervalued.",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19736
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Similar issue with Strength. I may be misunderstanding the theorycrafting behind DK tank numbers these days, but Strength still boosts Parry, doesn't it?",
+      "PostedDate": "2011-01-23T11:41:39.61-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Misinterpretation of the results ? :)\r\n\r\nCan't say much for DK, don't even know what the mastery is for DK.  For paladins it's block%  While mastery is good, and makes you easier to heal due to less spikey damage intake, from a pure tanking POV it's less desirable than parry/dodge.  \r\n\r\nA paladin tank trying to max out mastery to get \"block capped\" will statistically take MORE damage than the same paladin tank with all the mastery rating converted to avoidance.  It seems counter productive, but the idea behind it is not one of avoiding everything, but making the damage intake smoother.  Spikey damage intake means healers need to use their inefficient heals. A block capped pala tank may need more total healing, but the healing comes from a more steady stream of 'cheap' healing tather than bursts.\r\n",
+      "PostedDate": "2011-01-24T06:25:58.887-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The effect of TankDK mastery is similar, it reduces overall damage taken by placing a blood shield on the tank.  The size of this shield is relative to the damage healed by Death Strike which is relative to the damage taken recently. Unlike Pallys, there is no cap for how large this shield can be.  It's effectively like a priest's bubble with some determinism available to the tank as to when to DS so he can maximize the size of the shield, and therefore how much damage can be absorbed over the next (max 10) seconds.  In most theory crafting circles, it's considered quite good.  I trust Considers & Satorri's work on the subject, so trying to figure out why I'm not seeing the same kinds of results in the model.",
+      "PostedDate": "2011-01-24T07:39:30.727-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "@ midnightlynx:  Note that a majority of Strength's value is mitigation, that's the indication that it's contribution to Parry rating is being included.  Otherwise it would only be a threat value.",
+      "PostedDate": "2011-01-24T08:55:34.39-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "No problem. I guess I just thought it was contributing more to parry than it actually was.\r\nGood luck with the Mastery. Anything we non-coders can do to help?",
+      "PostedDate": "2011-01-24T15:09:25.837-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It looks to me like holy shield is not being accounted for.  The damage from \"blocked attacks\" is 70% of normal attacks.  Taking vs. not taking the talent also has no impact on stat weights.  Even if it's hard to fix, I'd like hardcoding it as a 40% baseline and assuming every paladin will have it up all the time would be a better solution that what we have currently.  In my gear, Parry=1.68, Dodge=1.7, and Mastery=1.49.  If mastery got a 1/3 bump from blocks stopping 40%, Mastery=1.99.  That sounds more like where it should be.  Also, Agility is getting valued super high.  It appears to still be providing 2 bonus armor, which is outdated.  After accounting for the bonus armor, the avoidance seems a smidge low, perhaps not using the cata Agi->Dodge conversion?",
+      "PostedDate": "2011-03-08T13:57:01.193-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This threat showed up in response to me constraining my search to paladin, not sure what went wrong, ignore my comment.",
+      "PostedDate": "2011-03-08T14:01:59.113-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-08T19:51:26.723-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:42:14.79-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:19.727-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:58.743-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:04:46.927-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

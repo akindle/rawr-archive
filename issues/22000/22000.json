@@ -1,0 +1,65 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2012-01-14T01:36:13.83-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "RAWR is calculating total avoidance (miss+dodge+parry+block) until 100% only, but the correct is 102,4% for raid bosses (it seems it is not taking into account the level difference). I checked the boss level config and it is set at 88.\n   If I respec/regem/enchant as RAWR points out, some avoidance will be missing.",
+    "LastUpdatedDate": "2013-05-16T05:17:09.557-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-12-30T04:35:00.59-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "(prot warrior) CTC calculations stop at 100%",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 22000
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I might be wrong, but I think the displayed number in Rawr already takes level difference in account. The 102.4% you're referring to is what you would see in game which is against same level target.",
+      "PostedDate": "2011-12-30T06:46:58.41-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You might be right, but I after the RAWR proposed gearing was setup, I ran this macro in-game:  \"/run DEFAULT_CHAT_FRAME:AddMessage(\"Need 102.4 combat table coverage. Currently at: \"..string.format(\"%.2f\", GetDodgeChance()+GetBlockChance()+GetParryChance() +5))\" and the macro result was (close to) 100, not 102.4\r\n   Unless the macro do the same, but since it seems to get the raw chance, I believe it doesn't.",
+      "PostedDate": "2011-12-30T09:03:02.197-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Resolved with changeset 64560.",
+      "PostedDate": "2012-01-14T01:36:13.83-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:23:55.12-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:17:09.557-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

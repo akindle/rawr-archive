@@ -1,0 +1,106 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Cat",
+      "DisplayName": "Rawr.Cat"
+    },
+    "ClosedComment": "11 versions old and Dev explained reasoning",
+    "ClosedDate": "2009-08-19T12:45:16.527-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "in the cat module when you add mangle in buffs the dps shown will go down",
+    "LastUpdatedDate": "2017-11-27T10:59:28.383-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-05-04T11:07:10.603-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Cat] Bleed damage multiplier",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13166
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1862,
+      "FileName": "Tsugo-Feral DPS.xml",
+      "DownloadUrl": ".\\1862"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "This is kind of a bug, but not in the way that you think. In those cases, Mangling yourself actually does provide more DPS (due to the high value on combo points in certain rotations and situations). The bug is just that it doesn't find the optimal ratio of mangles to shreds to fill in.",
+      "PostedDate": "2009-05-04T14:28:15.41-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I see the same effect when adding Trauma or Mangle.  The highest optimal DPS value is without Trauma or Mangle (6455), which doesn't seem to be correct at all.  \r\n\r\nWhen Trauma is added, the optimal rotation adjusts to leave out Mangle but I'm still seeing identically lower numbers to the rotation which includes Mangle (6342).  \r\n\r\nDPS numbers are quoted for 2.2.1.  2.2.2 has slightly higher values due to (I'm assuming) further scaling adjustments for ArPen based on how the gear rankings have shifted but the effective delta is the same.  This issue is present in 2.2.1 and 2.2.2.  I've attached my xml for reference.",
+      "PostedDate": "2009-05-04T15:00:09.18-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-05-04T15:00:11.737-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Trauma and Mangle buffs are identical, no difference at all between them. They just make you mangle yourself. And the point of this is that mangling yourself can actually be higher DPS than not.\r\n\r\nIdeally, Rawr would use the optimal amount of mangles, but it doesn't yet.",
+      "PostedDate": "2009-05-04T17:34:45.607-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks for the reply, Astrylian and thanks for all your great work on Rawr.  \r\n\r\nI understand the effects of Mangle and Trauma are identical (30% increase to bleed damage) but perhaps I didn't articulate the problem clearly. \r\n\r\nWhat I'm seeing is that the model is calculating the absence of the debuff is actually higher dps than having the debuff up, which can't be correct given the proportion of our total damage which is bleed-based and all other things being equal (I'm using typical 25m raid buffs for the calculation).  Am I missing something?\r\n\r\nAdditionally, it would follow that the druid not having to mangle (ie. arms warrior or manglebot in the raid) would be higher dps as that energy/gcd would be used for a shred (more often than a rake/rip/roar) which has higher DPE.  \r\nThe optimal rotation adjusts to exclude Mangle (and accurately shows 0% damage done), but the Optimal Rotation DPS is the same as with Mangle and LESS than having either Trauma or Mangle up.\r\nAgain, please beat me about the head and shoulders if I'm way off base.",
+      "PostedDate": "2009-05-04T18:15:58.637-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Oh, there's no disagreement that there should be mangle, either from someone else, or yourself, in order to do decent DPS.\r\n\r\nThe issue is that despite what you'd expect, mangling actually provides more DPS than letting someone else mangle. Shred does have a higher DPE than Mangle, so you'd expect trading Mangle for Shred would increase your DPS, but it doesn't always. Mangle provides more combo points per energy than Shred does, and the value of those combo points can't be ignored. Quite surprisingly, even if someone else is maintaining mangle/trauma, you'd still do more DPS by including some Mangles, due to the extra combo points. Not alot of mangles, mind you, but a few. Right now, Rawr just doesn't use mangle if someone else is applying it, which actually does lower your DPS. I'm planning on having it figure out the ideal ratio of mangles to shreds, that's just rather complex.",
+      "PostedDate": "2009-05-04T21:58:53.04-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-19T12:45:16.527-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:22:00.237-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T22:45:40.733-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:38.48-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:40.55-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T10:59:28.383-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

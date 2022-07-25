@@ -1,0 +1,130 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtPaladin",
+      "DisplayName": "Rawr.ProtPaladin"
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-09T17:31:08.717-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Rawr.ProtPaladin is now ready for common use and Rawr.Tankadin will be removed before the next Beta release\n \nGeneral\n-Decide on final name of module (ProtPaladin, ProtPally, Tankadin?)\n-Agree on icon (Judgments of the Just just looks cooler)\n \nTalents\n-Implement Target Type for further accuracy of Crusade talent// done\n-Model (or decide whether to model) Ardent Defender// in progress\n-Revise Tankadin's Reckoning and implement into ProtPaladin // done\n \nBase Stats\n-*stat calculations are completed and accurate*\n-Add support for JudgementBlockValue from Librams // done\n-Add display of \"Taunt Chance to hit\" //spell hit chance implemented, it's targetlevel dependent\n \nComplex Stats\n-Implement EHB - Effective Health with Block - support & option\n-Tweak Threat Scale for Paladins /- 1HWS acts funny with theat (invers)\n \nSpells/Abilities\n-Add support for Judgement Block Value // done\n-Implement new rotations - 8/10, FCFS, \"Prioritise Defense\"\n-Add support for varied ability cooldowns - Imp Judgment and Consecrate Glyph\n-Add Exorcism replacement support into rotations\n \nGlyphs:\n-Glyph of Seal of Righteousness // done\n-Glyph of Consecration\n-Glyph of Righteous Defense\n-Glyph of Avenger's Shield\n-Glyph of Sense Undead\n \nEnchants:\n-solve the stamina enchant issue for certain slots.\n \nSpellschool tanking\n-add option for boss spell attacks ?",
+    "LastUpdatedDate": "2013-05-16T05:26:00.08-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-03-23T13:46:52.92-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtPaladin] TODO List",
+    "Type": {
+      "Name": "Task",
+      "Id": 2
+    },
+    "VoteCount": 1,
+    "Id": 12857
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I don't understand. Why is this a different model? What is it that you're trying to do here? Can you explain why there are two different protection paladin models? There should only be one.",
+      "PostedDate": "2009-03-23T14:56:14.7-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It's a different model because I was working on Tankadin 3.1 updates at the same time as working on this rewrite. I'm trying to replace Tankadin because I found that ProtWarr's DefendModel, ParryModel, and other functions share a lot in common with what I want the Tanking Paladin model to be, so I asked EvanM about it and he said it was okay with him. I'll be removing Rawr.Tankadin from the SVN as soon as I finish a few major bugs with ProtPaladin.",
+      "PostedDate": "2009-03-23T17:26:02.7-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm very concerned about this. Why would you do it that way? Why have a separate model at all? Why aren't improvements being made to the correct model?",
+      "PostedDate": "2009-03-23T17:35:28.81-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I plan to remove Rawr.Tankadin before the next Beta push. I kept both models in because it made for very easy testing because they shared gear and talent sets between the \"Old\" model and the \"New\" model.",
+      "PostedDate": "2009-03-23T17:53:22.66-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "But why did you choose to do it that way? This will cause potentially alot of bugs and have to redo alot of effort. We've replaced models in the past, but only when the old model has sucked. (And I don't think that's the situation here, is it?) Why weren't these upgrades applied directly to Tankadin?",
+      "PostedDate": "2009-03-23T17:58:20.05-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "From what I understand he wanted to revamp a lot of what I had already re-implemented over the last many months. \r\n\r\nSince Paladin and Warrior mechanics are so similar, he asked me how applicable it would be and I assume he found it easier to copy over ProtWarr and make the needed AbilityModel changes and a few constant tweaks rather than try to port a few 1000 lines of code into an existing module. Seems to generally make sense to me if he wanted major calculation overhauls.",
+      "PostedDate": "2009-03-23T18:03:22.537-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "What are the major calculation overhauls?\r\n\r\nI hope you understand the situation here, and why I'm asking all this. The Tankadin model has generally been well accepted, well used, and overall liked, as far as I've seen, and I don't like the idea of throwing that all away. What's wrong with it?",
+      "PostedDate": "2009-03-23T21:48:04.417-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "From what I understand, there were a number of issues in the way calculations happened, and a lot of inconsistencies with the modeling of stuff like block and average TPS, incoming damage, etc. You'd probably have to talk to Solieu for specifics, but my code structure is generic enough that almost all my modeling is portable with changes to the AbilityModel and relevant class-specific Lookup values.\r\n\r\nFrom my experience in looking over Tankadin, it seemed like a pretty minimalistic model so I don't think anything is really being \"lost\" in the process. \r\n\r\nI would imagine from a user perspective nothing will particularly change other than the numbers being more accurate, provided Solieu is modeling everything correctly. I would imagine he's trying to keep the same options structure, output numbers, etc. :)",
+      "PostedDate": "2009-03-24T04:53:26.973-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-03-24T08:32:45.96-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-03-25T01:37:11.76-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-03-25T01:39:40.347-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-03-26T00:53:40.123-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-04-01T12:27:17.233-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "What's the status of this? Please rename Tankadin to TankadinOld, and ProtPaladin to Tankadin, when you feel it's ready to be in the next beta.",
+      "PostedDate": "2009-04-01T13:44:37.823-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-09T17:31:08.717-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T16:38:12.86-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:35:07.363-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:00.08-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

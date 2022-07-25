@@ -1,0 +1,346 @@
+[
+  {
+    "Id": "493196",
+    "ThreadId": "227135",
+    "Html": "<p><span style=\"color:#808080;font-size:8pt\"><em>(This post is mostly for the developers, but I've left it public for anyone building the source code themselves, or just otherwise interested)</em></span></p>\r\n<p>Hello, gentlemen.</p>\r\n<p>&nbsp;I've just made the initial check-in of Rawr4. The solution to open is at $/Rawr4/Rawr4.sln. It contains all the same projects as Rawr3, which all of the files linked to the copies in $/ (for files shared from Rawr2), or $/Rawr3/ (for files shared from Rawr3). Basically, it's a branch, just like Rawr3 is.</p>\r\n<p>&nbsp;</p>\r\n<p><strong>What to do:</strong>&nbsp;Start making changes for Cataclysm! The Cataclysm is approaching quickly, and we need to get rolling on Rawr4!</p>\r\n<p><strong>What about Rawr2? </strong>Maintenance changes only at this point, please. I'll continue doing releases every couple weeks as necessary, but there really shouldn't be much changing here.</p>\r\n<p><strong>For minor changes:</strong>&nbsp;Add/change the code in the existing files that are linked in the Rawr4 projects, and wrap it in '#if RAWR4' and '#endif' lines. (All existing compile conditionals like this that used RAWR3 have been changed to use RAWR3 or RAWR4)</p>\r\n<p><strong>For major changes:</strong>&nbsp;If it's replacing an existing file, remove the linked file and add a new one to the Rawr4 project. If it's brand new, just add the new file to the Rawr4 project.</p>\r\n<p>&nbsp;</p>\r\n<p>Let me know if you have any questions.</p>\r\n<p>&nbsp;</p>\r\n<p>P.S. I didn't implement WPF versions of the sln or project. The WPF version of Rawr3 has fallen far enough out of sync with the Silverlight version that it doesn't compile anymore; lets leave it be and we'll tackle the Silverlight-&gt;WPF conversion in Rawr4 later on. Rawr4.Silverlight should be our primary focus going forward.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>EDIT:&nbsp;</p>\r\n<p><span><strong>Devs, read this, important!</strong></span></p>\r\n<p>&nbsp;Looks like there's a bug in Team Explorer; if you remove a linked file from a project, and that file is source controlled, it also adds a pending change to delete that file (but doesn't delete it locally).&nbsp;<strong>So when you remove a linked file (such as to make room for adding a copy of it directly), make sure that you goto your Pending Changes tab, find the change for deleting that file, and Right Click-&gt;Undo.</strong></p>",
+    "PostedDate": "2010-09-14T01:12:45.903-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "493237",
+    "ThreadId": "227135",
+    "Html": "<p>Can I just ask for some clarification, as perhaps I am still confused...</p>\r\n<p>Up until now, I have been downloading the SVN and batch compiling everything under the root using Rawr.SLN but I should be using the Rawr.SLN from under the Rawr directory??</p>\r\n<p>And moving forward for Cataclysm I should be using the Rawr.SLN under the Rawr directory??&nbsp; (with compile conditionals for Rawr4)</p>\r\n<p>&nbsp;</p>\r\n<p>Thanks in advance!?</p>",
+    "PostedDate": "2010-09-14T03:50:29.863-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "493255",
+    "ThreadId": "227135",
+    "Html": "<p>that is correct. However you do need to have the silverlight development information installed in order for RAWR 3 and RAWR 4 SVN to work correctly. I know Jothey posted something about this a few weeks ago for anyone who wished to compile RAWR 3 on their own.</p>",
+    "PostedDate": "2010-09-14T04:39:08.42-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "493271",
+    "ThreadId": "227135",
+    "Html": "<p>So does this mean Rawr2 is getting scrapped come Cata and we're going to online/Silverlight versions only?</p>",
+    "PostedDate": "2010-09-14T05:10:37.77-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "493422",
+    "ThreadId": "227135",
+    "Html": "<p>Only until we build the Rawr4.WPF.sln which is the actual replacement for Rawr2 type installs.</p>",
+    "PostedDate": "2010-09-14T10:45:10.3-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "493439",
+    "ThreadId": "227135",
+    "Html": "<p>I never asked this before, because I basically only used Rawr for my own personal use... but since I do my own hosting, and have placed SIMULATIONCRAFT online (via web interface / php) would it also be &quot;OKAY&quot; for me to compile / run / and host my own Rawr online for use?</p>\r\n<p>Just wondering, as I have always personally just used the local compiled version, but since we are moving away from this.....?</p>",
+    "PostedDate": "2010-09-14T11:11:12.577-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "493442",
+    "ThreadId": "227135",
+    "Html": "<p>Seriously guys, it's &quot;Rawr&quot;, not &quot;RAWR&quot;.</p>\r\n<p>Rawr2 has been planned to be replaced for a long time.</p>\r\n<p>No, please do not post your own copy of Rawr online. There's no need to do so; you can still use Rawr3/4.Silverlight locally.</p>",
+    "PostedDate": "2010-09-14T11:13:58.883-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "493515",
+    "ThreadId": "227135",
+    "Html": "<p>It's those darn compile conditionals in your original post that got me started using the ALL CAPS for RAWR.</p>\r\n<p>But, realistically, based on the license, we could place it on our own websites???&nbsp; (sorry, I'm not trying to be obtuse, just trying to verify)</p>",
+    "PostedDate": "2010-09-14T14:06:13.91-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "493518",
+    "ThreadId": "227135",
+    "Html": "<p>Legally you 'could', but there really is no reason to do so, and doing so is destructive to Rawr's community. If you think you have a reason to do so, bring it up; it's something we'll want to solve too.</p>",
+    "PostedDate": "2010-09-14T14:12:16.917-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "493520",
+    "ThreadId": "227135",
+    "Html": "<p>The ONLY real reasons I could see are as follows....</p>\r\n<p>1) To collect the ad revenue like Elitistjerks does from the banner at the top of the page.</p>\r\n<p>2) Promote your own Guild / Website.</p>\r\n<p>&nbsp;</p>\r\n<p>These are really the only valid reasons I can see.....</p>\r\n<p>I would NOT do anything that would be destructive to the Rawr community, it has been such a pleasant and helpful community to myself and so many others.</p>",
+    "PostedDate": "2010-09-14T14:15:18.217-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "493525",
+    "ThreadId": "227135",
+    "Html": "<p>Not sure why you're bringing this up then, especially in this threat.</p>\r\n<p>Anyone profiting from Rawr in any way is not something that we would allow.</p>",
+    "PostedDate": "2010-09-14T14:20:08.077-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "493527",
+    "ThreadId": "227135",
+    "Html": "<p>The only reason WHY I brought it up is because you ASKED....&nbsp;&nbsp;&nbsp; You stated... &quot;<em>If you think you have a reason to do so, bring it up; it's something  we'll want to solve too.</em>&quot;</p>\r\n<p>Feel free to delete my posts if you wish, I was simply responding, and have garnered my answer.&nbsp; Thank you.</p>",
+    "PostedDate": "2010-09-14T14:27:16.51-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "493531",
+    "ThreadId": "227135",
+    "Html": "<p><span style=\"text-decoration:underline\"><strong>Devs, read this, important!</strong></span></p>\r\n<p>&nbsp;Looks like there's a bug in Team Explorer; if you remove a linked file from a project, and that file is source controlled, it also adds a pending change to delete that file (but doesn't delete it locally). <strong>So when you remove a linked file (such as to make room for adding a copy of it directly), make sure that you goto your Pending Changes tab, find the change for deleting that file, and Right Click-&gt;Undo.</strong></p>",
+    "PostedDate": "2010-09-14T14:31:11.333-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "493557",
+    "ThreadId": "227135",
+    "Html": "<p>Sounds good, will start working on it as soon as possible. That bug sounds annoying though. :P</p>\r\n<p>Just checking, but what's the general guideline for when the changes are major enough to look at just making the file unique to the Rawr4 branch rather than linking? (I'm inclined to just properly branch off almost everything due to how many changes are touched everywhere, but perhaps that isn't the correct thing to do.)</p>",
+    "PostedDate": "2010-09-14T15:58:36.32-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "493585",
+    "ThreadId": "227135",
+    "Html": "<p>That's pretty much up to you. Duplicate code is bad if you have to fix bugs in it in two places. I'd say probably just start from a copy when you intend to replace most, if not all, of the code in the file.</p>",
+    "PostedDate": "2010-09-14T17:12:41.49-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "493615",
+    "ThreadId": "227135",
+    "Html": "<p>I'm building automation to create the ClassTalents.cs file for Cata, based on wowtal.com. So don't worry about making the talent classes for your model, everyone.</p>",
+    "PostedDate": "2010-09-14T19:22:05.817-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "493719",
+    "ThreadId": "227135",
+    "Html": "<p>Alright, well, that works well. I've finished my wowtal.com parser and code generator for ClassTalents.cs, and it works beautifully. So, on the upside, I've now got a ClassTalents.cs including all the new Cata talents for all classes. On the downside, I've now got <strong>1122 build errors</strong>&nbsp;in Rawr4.sln, that look like: &quot;'Rawr.PriestTalents' does not contain a definition for 'MindFlay'...&quot;</p>\r\n<p>Thoughts on how to handle this?</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-09-15T02:00:33.263-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "493731",
+    "ThreadId": "227135",
+    "Html": "<p>I went ahead and checked in. This means that Rawr4.sln doesn't build. Everyone, please work on fixing your model up to at least build (ignoring talents if you have to).</p>\r\n<p>I've also just checked in the changes required to make Bear build with the Cata talents. Please update your own models similarly!</p>",
+    "PostedDate": "2010-09-15T02:24:10.83-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "493759",
+    "ThreadId": "227135",
+    "Html": "<p>Hey Astrylian, a question.&nbsp; How are we going to handle the specialization bonuses?&nbsp; For example, for Moonkin, we get a +25% arcane/nature spell damage modifier, as well as the 100% crit damage bonus.&nbsp; Right now I have these hardcoded directly into the model, should we just leave them that way?</p>",
+    "PostedDate": "2010-09-15T04:19:54.977-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "493934",
+    "ThreadId": "227135",
+    "Html": "<p>Yes. Detect which tree has the most points in it, and add the appropriate spec bonuses.</p>",
+    "PostedDate": "2010-09-15T09:40:55.963-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "493945",
+    "ThreadId": "227135",
+    "Html": "<p>If you need example code for this, I have it in both DPSWarr and Hunter, though I'd have to look up where. DPSWarr is using it to know if you are in Battle or Berserker Stance and Hunter is using it to know if it needs to change its rotation to another spec's preset.</p>",
+    "PostedDate": "2010-09-15T09:58:36.677-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "494006",
+    "ThreadId": "227135",
+    "Html": "<p>Still don't understand one thing: Is the goal to replace the application by the Silverlight solution completely by Rawr 4 or is the plan to have both at a later point?</p>",
+    "PostedDate": "2010-09-15T11:44:53.623-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "494012",
+    "ThreadId": "227135",
+    "Html": "<p>Pre-Cata, you want Rawr3.Silverlight, which is what is presently being hosted on ElitistJerks.com (see the giant link at the top of Discussions). This can be run from the Browser or right-click &gt; Install Locally to run as a system app. This automatically updates when we post a new version to EJ. Rawr3.WPF was meant to replace the actual local install type (gives you an EXE) that is Rawr2. Sadly, we let the solutions file for Rawr3.WPF fall out of date so we're just no gonna try and get it back and running and focus on Rawr4.WPF.</p>\r\n<p>Post-Cata, Rawr3.Silverlight will be obsolete because it's designed to work with WotLK info. Rawr4.Silverlight will be the new version to work with, operating the same way as mentioned above for Rawr3.Silverlight. We'll also be making a Rawr4.WPF to serve as a locally installed version (that works with Cata info).</p>\r\n<p>We will have both Rawr4.Silverlight to work online, and Rawr4.WPF to work offline.</p>\r\n<p>Why do we have Silverlight and WPF versions and not just use Silverlight online and locally? Because WPF is ~20% faster, but can't be run online like Silverlight.</p>",
+    "PostedDate": "2010-09-15T11:50:35.943-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "494050",
+    "ThreadId": "227135",
+    "Html": "<p>TL:DR version: Rawr3 is dead, Rawr2 lives to Cata, long live Rawr 4 in both online Silverlight and offline executable post-Cata.</p>\r\n<p>Right?</p>",
+    "PostedDate": "2010-09-15T12:36:50.993-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "494062",
+    "ThreadId": "227135",
+    "Html": "<p>Rawr3 lives to Cata too...</p>",
+    "PostedDate": "2010-09-15T12:58:50.317-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "494228",
+    "ThreadId": "227135",
+    "Html": "<p>Just checked in Cat building with Cata talents. The following model still need to be updated to build with Cata talents. Again, you don't need to actually implement the new talents, but at least get it building please.</p>\r\n<ul>\r\n<li>ShadowPriest</li>\r\n<li>HealPriest</li>\r\n<li>RestoSham</li>\r\n<li>Elemental</li>\r\n<li>Warlock</li>\r\n<li>Retribution</li>\r\n<li>Tree</li>\r\n<li>Enhance</li>\r\n<li>Rogue</li>\r\n<li>Mage</li>\r\n</ul>",
+    "PostedDate": "2010-09-15T20:15:46.5-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "494328",
+    "ThreadId": "227135",
+    "Html": "<p>I plan to start as soon as I get my bearings on healing shaman. &nbsp;They jacked our healing tactics 5 ways from sunday, and everything that I thought I knew basically gets thrown out the window. &nbsp;As soon as I get some groundwork laid on how to heal, I'll get a model building on gearing a healer, but it's going to be rocky a bit.</p>\r\n<p>Also, as of last commit(53905), Rawr2 was not building.</p>",
+    "PostedDate": "2010-09-16T01:59:08.303-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "494412",
+    "ThreadId": "227135",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Antivyris wrote:</strong><br>\r\n<p>Also, as of last commit(53905), Rawr2 was not building.</p>\r\n</blockquote>\r\n<p>That would probably be my bad.&nbsp; I'll look at that right now before I get back to work on Rawr4.</p>",
+    "PostedDate": "2010-09-16T05:17:12.227-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "494525",
+    "ThreadId": "227135",
+    "Html": "<p>DK Checked in and building.&nbsp; Broken to all hell, but building.</p>",
+    "PostedDate": "2010-09-16T08:46:12.737-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "494538",
+    "ThreadId": "227135",
+    "Html": "<p>Healadin now compiles, will work on ProtPaladin after lunch.</p>",
+    "PostedDate": "2010-09-16T09:08:13.083-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "494567",
+    "ThreadId": "227135",
+    "Html": "<p>ProtPaladin also compiles.</p>",
+    "PostedDate": "2010-09-16T10:06:15.797-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "495221",
+    "ThreadId": "227135",
+    "Html": "<p>We already have MasteryRating, but do we want Mastery as part of the Stats Object?</p>",
+    "PostedDate": "2010-09-17T14:40:40.913-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "495256",
+    "ThreadId": "227135",
+    "Html": "<p>Rogue compiles.</p>",
+    "PostedDate": "2010-09-17T16:32:34.063-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "495257",
+    "ThreadId": "227135",
+    "Html": "<p>No, if anything it would be part of the StatConversion.cs file. So converting it inside the Stats object is really bloat. However each spec gains more or less % towards their mastery value than others. ie: Feral druids gain 2.5% or something like that per Mastery point. I know of others that is less than that. So those calculations would be within each model. But the conversion of Mastery Rating to Mastery Points should stay in the StatConversion file.</p>",
+    "PostedDate": "2010-09-17T16:33:03.343-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "495403",
+    "ThreadId": "227135",
+    "Html": "<p>We may still need both stats, though, since there is a base amount of Mastery and there may be things in the future that simply increase Mastery rather than MasteryRating. Obviously the conversion should be in statconversion though.</p>\r\n<p>On that note, I presume from observations on Beta that Mastery is like Expertise in that although it's converted to an arbitrary number the partial points are still applied. (e.g. even though the UI doesn't show it, you should be able to have 10.412 Mastery, for instance.)</p>",
+    "PostedDate": "2010-09-18T07:00:50.51-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "496147",
+    "ThreadId": "227135",
+    "Html": "<p>Unless or until we get confirmation to the contrary, I would start with the assumption that Mastery acts like Expertise in the way that Evan described in the post above mine.</p>",
+    "PostedDate": "2010-09-20T11:58:21.147-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "496237",
+    "ThreadId": "227135",
+    "Html": "<p>In the current version of beta, Mastery is shown as decimal now. (e.g. 'Mastery: 10.17') So that should be a safe assumption.</p>",
+    "PostedDate": "2010-09-20T15:32:33.86-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "496356",
+    "ThreadId": "227135",
+    "Html": "<p>RestoSham compiles. &nbsp;Unable to debug at this time, but figured that's currently intended.</p>",
+    "PostedDate": "2010-09-21T01:00:53.783-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "496769",
+    "ThreadId": "227135",
+    "Html": "<p>Elemental should compile with the newest check in. &nbsp;It's just a temporary bandaid fix for now.</p>",
+    "PostedDate": "2010-09-21T18:43:33.567-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "498506",
+    "ThreadId": "227135",
+    "Html": "<p>Just in case some devs are checking this thread for info, Rawr4 should compile completely now, so if you were waiting for that to get working on it, it's able to be worked on. &nbsp;Caught that on the source code page, just throwing the update here.</p>",
+    "PostedDate": "2010-09-25T23:48:52.33-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "498516",
+    "ThreadId": "227135",
+    "Html": "<p>I just checked in a bunch of changes, including updated StatConversions, and a rudimentary conversion of item stats from WotLK to Cata.</p>\r\n<p>Again, this conversion is very very rudimentary. Since we don't have a good way to populate the itemcache with cata item data yet, I just made a method that (on initial item cache load), applies some changes to all the existing items. It multiplies the armor on cloth/leather/mail gear by the right factor, it drops attack power and spellpower, adds some more stamina, replaces armor penetration with crit or haste and mastery, and replaces def rating with dodge rating.</p>\r\n<p>It definitely won't make the stats on gear match what you see on beta/PTR, but the idea is that it at least gives you a mix of stats that at least in the same ballpark. The really big deal is dropping ArPen, AP, and SP.</p>",
+    "PostedDate": "2010-09-26T01:18:34.66-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "498529",
+    "ThreadId": "227135",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Antivyris wrote:</strong><br>\r\n<p>Just in case some devs are checking this thread for info, Rawr4 should compile completely now, so if you were waiting for that to get working on it, it's able to be worked on. &nbsp;Caught that on the source code page, just throwing the update here.</p>\r\n</blockquote>\r\n<p>I didn't think this was the case. &nbsp;Pretty sure we haven't seen a couple of modules with any Rawr4 related check-ins.</p>\r\n<p>&nbsp;</p>\r\n<p>Unless you were talking about &quot;Change Set 54043&quot; by Anaeradranax&nbsp;(Changes for Rawr4 to stop compile errors. No functionality changes for Rawr2 or Rawr3.). &nbsp;That was only a check-in to make the Elemental module compile.</p>",
+    "PostedDate": "2010-09-26T03:03:28.617-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "498600",
+    "ThreadId": "227135",
+    "Html": "<p>Correct, there are still a few models that do not build. After this weekend, if they still aren't building, I'll just disable them in the repository, and leave instructions on how to reenable them for those devs here.</p>",
+    "PostedDate": "2010-09-26T10:24:29.757-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

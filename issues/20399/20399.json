@@ -1,0 +1,65 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.RestoSham",
+      "DisplayName": "Rawr.RestoSham"
+    },
+    "ClosedComment": "Rawr 4.1.03 Released",
+    "ClosedDate": "2011-04-04T21:17:27.243-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "This happens in both the web and the download version. When I change from being Elemental spec (which I know isn't supported) to my Resto spec (under basic information), any time I mouse over things, it throws up different errors.\n \nCharacter: Shadowpsyche on Trollbane EU\n \nI have performed the Suggested Fix and continue to receive this error. If I am posting this message without having performed the Suggested Fix I am aware that I am consuming the Developer(s) time in managing my Issue unnecessarily.\n \n== Version: 4.1.2.0 ==\n \n== Error Message ==\n[Arg_NullReferenceException]\nArguments: \nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.60129.0&File=mscorlib.dll&Key=Arg_NullReferenceException\n \n== StackTrace ==\n   at Rawr.RestoSham.CalculationsRestoSham.GetRelevantStats(Stats stats)\n   at Rawr.UI.ItemTooltip.UpdateTooltip()\n   at Rawr.UI.ItemButtonWithEnchant.MainButton_MouseEnter(Object sender, MouseEventArgs e)\n   at MS.Internal.CoreInvokeHandler.InvokeEventHandler(Int32 typeIndex, Delegate handlerDelegate, Object sender, Object args)\n   at MS.Internal.JoltHelper.FireEvent(IntPtr unmanagedObj, IntPtr unmanagedObjArgs, Int32 argsTypeIndex, Int32 actualArgsTypeIndex, String eventName)\n \n== These are the Steps that I have tried ==",
+    "LastUpdatedDate": "2013-05-16T05:18:18.667-07:00",
+    "PlannedForRelease": "Rawr 4.1.02",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-04-04T06:12:58.027-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[RestoSham] Crashing on any action",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 20399
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "1) Why are you switching from one to the other in Rawr? Are you downloading your Elemental gear then trying to optimize it using RestoSham? Why not just wear your Resto gear and talent spec before logging out?\r\n2) You say \"mouse over things\". What things?\r\n3) You say \"different errors\". Are there errors other than what was pasted here?\r\n\r\nI I believe I have found the core reason why this issue is here. The RestoSham devs had implemented a Relevant Stats search mechanism that read them by strings of their names. When the Stats section gets updated with new names or if a stat is taken then this obviously becomes invalid. Removed this process and placed a better practice.",
+      "PostedDate": "2011-04-04T10:19:40.96-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Fixed for next version",
+      "PostedDate": "2011-04-04T10:22:14.14-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-04T21:17:27.243-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:25:27.127-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:18.667-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

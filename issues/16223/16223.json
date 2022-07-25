@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtPaladin",
+      "DisplayName": "Rawr.ProtPaladin"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-02-04T08:42:05.81-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Please allow us to set a requirement for expertise in the optimizer that doesn't effect hit as well. I'm trying to make a \"BiS\" set and as a pally it's ok to not have 100% hit so I would like to use the optimizer to make sure I am at the expertise soft cap while also keeping my melee hit around 97.5% if possible. Thanks.",
+    "LastUpdatedDate": "2013-05-16T05:21:59.957-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-02-02T17:21:02.817-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtPaladin] Expertise in the Optimizer",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16223
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "All you have to do is juggle the appropriate optimizer numbers to make it work.  Here's some optimizer requirements that does what you're looking for:\r\n\r\n% Hit Chance >= 97.00\r\n% Hit Chance <= 98.00\r\n% Chance to be Avoided <= 9.50\r\n\r\nYou can squeeze the range a bit, but keep in mind the hit rating's range needs to be a certain minimum value because if you make the range too small, the optimizer may not find a solution.  That number is around 0.32% if you use orange and green hit gems, and 0.63% if you use only yellow hit gems.  This also won't work if your gear has enough hit to put you over the maximum hit chance value.\r\n\r\nNormally 7.5% is the maximum number you'd want for % chance to be avoided, but since you don't want to be hit capped, you need to add in enough \"miss\" so that the optimizer doesn't try to cover the gap with expertise.  Just subtract the maximum hit chance from 100 and add the result to 7.5%.  Here, (100 - 98) + 7.5 = 9.5.\r\n\r\nFor this example, my toon's file got a 97.88% hit rate and a 26.93 expertise rating.",
+      "PostedDate": "2010-02-03T09:07:16.543-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks!",
+      "PostedDate": "2010-02-03T22:56:57.85-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-04T08:42:05.81-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T16:22:29.06-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:30:05.383-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:59.957-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

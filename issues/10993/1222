@@ -1,0 +1,540 @@
+Index: FormMain.cs
+===================================================================
+--- FormMain.cs	(revision 21926)
++++ FormMain.cs	(working copy)
+@@ -222,6 +222,7 @@
+ 			LoadComparisonData();
+ 
+ 			calculationDisplay1.SetCalculations(calcs);
++            mainStatusStrip1.SetCalculations(calcs);
+ 
+ 			this.Cursor = Cursors.Default;
+ 			//and the ground below grew colder / as they put you down inside
+Index: FormMain.Designer.cs
+===================================================================
+--- FormMain.Designer.cs	(revision 21926)
++++ FormMain.Designer.cs	(working copy)
+@@ -30,6 +30,7 @@
+         {
+             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
+             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
++            this.mainStatusStrip1 = new Rawr.MainStatusStrip();
+             this.tabControlCharacter = new System.Windows.Forms.TabControl();
+             this.tabPageStats = new System.Windows.Forms.TabPage();
+             this.label32 = new System.Windows.Forms.Label();
+@@ -200,6 +201,7 @@
+             // 
+             // toolStripContainer1.ContentPanel
+             // 
++            this.toolStripContainer1.ContentPanel.Controls.Add(this.mainStatusStrip1);
+             this.toolStripContainer1.ContentPanel.Controls.Add(this.tabControlCharacter);
+             this.toolStripContainer1.ContentPanel.Controls.Add(this.itemButtonBack);
+             this.toolStripContainer1.ContentPanel.Controls.Add(this.itemButtonChest);
+@@ -223,11 +225,11 @@
+             this.toolStripContainer1.ContentPanel.Controls.Add(this.itemButtonMainHand);
+             this.toolStripContainer1.ContentPanel.Controls.Add(this.itemButtonWrist);
+             this.toolStripContainer1.ContentPanel.Controls.Add(this.groupBox4);
+-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(859, 659);
++            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(859, 678);
+             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
+             this.toolStripContainer1.Name = "toolStripContainer1";
+-            this.toolStripContainer1.Size = new System.Drawing.Size(859, 683);
++            this.toolStripContainer1.Size = new System.Drawing.Size(859, 702);
+             this.toolStripContainer1.TabIndex = 4;
+             this.toolStripContainer1.Text = "toolStripContainer1";
+             // 
+@@ -235,6 +237,14 @@
+             // 
+             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.menuStripMain);
+             // 
++            // mainStatusStrip1
++            // 
++            this.mainStatusStrip1.Location = new System.Drawing.Point(0, 656);
++            this.mainStatusStrip1.Name = "mainStatusStrip1";
++            this.mainStatusStrip1.Size = new System.Drawing.Size(859, 22);
++            this.mainStatusStrip1.TabIndex = 4;
++            this.mainStatusStrip1.Text = "mainStatusStrip1";
++            // 
+             // tabControlCharacter
+             // 
+             this.tabControlCharacter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+@@ -246,7 +256,7 @@
+             this.tabControlCharacter.Location = new System.Drawing.Point(79, 3);
+             this.tabControlCharacter.Name = "tabControlCharacter";
+             this.tabControlCharacter.SelectedIndex = 0;
+-            this.tabControlCharacter.Size = new System.Drawing.Size(222, 577);
++            this.tabControlCharacter.Size = new System.Drawing.Size(222, 574);
+             this.tabControlCharacter.TabIndex = 3;
+             // 
+             // tabPageStats
+@@ -257,7 +267,7 @@
+             this.tabPageStats.Location = new System.Drawing.Point(4, 22);
+             this.tabPageStats.Name = "tabPageStats";
+             this.tabPageStats.Padding = new System.Windows.Forms.Padding(3);
+-            this.tabPageStats.Size = new System.Drawing.Size(214, 551);
++            this.tabPageStats.Size = new System.Drawing.Size(214, 548);
+             this.tabPageStats.TabIndex = 0;
+             this.tabPageStats.Text = "Stats";
+             this.tabPageStats.UseVisualStyleBackColor = true;
+@@ -266,7 +276,7 @@
+             // 
+             this.label32.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+             this.label32.AutoSize = true;
+-            this.label32.Location = new System.Drawing.Point(3, 535);
++            this.label32.Location = new System.Drawing.Point(3, 532);
+             this.label32.Name = "label32";
+             this.label32.Size = new System.Drawing.Size(131, 13);
+             this.label32.TabIndex = 4;
+@@ -701,7 +711,7 @@
+             this.groupBox4.Controls.Add(this.toolStripItemComparison);
+             this.groupBox4.Location = new System.Drawing.Point(383, 3);
+             this.groupBox4.Name = "groupBox4";
+-            this.groupBox4.Size = new System.Drawing.Size(464, 644);
++            this.groupBox4.Size = new System.Drawing.Size(464, 641);
+             this.groupBox4.TabIndex = 2;
+             this.groupBox4.TabStop = false;
+             this.groupBox4.Text = "Comparisons";
+@@ -1217,7 +1227,7 @@
+             this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+             this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+-            this.newToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
++            this.newToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
+             this.newToolStripMenuItem.Text = "&New";
+             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
+             // 
+@@ -1227,7 +1237,7 @@
+             this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+             this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+-            this.openToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
++            this.openToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
+             this.openToolStripMenuItem.Text = "&Open";
+             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+             // 
+@@ -1237,7 +1247,7 @@
+             this.loadFromArmoryToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+             this.loadFromArmoryToolStripMenuItem.Name = "loadFromArmoryToolStripMenuItem";
+             this.loadFromArmoryToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+-            this.loadFromArmoryToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
++            this.loadFromArmoryToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
+             this.loadFromArmoryToolStripMenuItem.Text = "&Load from Armory...";
+             this.loadFromArmoryToolStripMenuItem.Click += new System.EventHandler(this.loadFromArmoryToolStripMenuItem_Click);
+             // 
+@@ -1245,19 +1255,19 @@
+             // 
+             this.loadFromCharacterProfilerToolStripMenuItem.Name = "loadFromCharacterProfilerToolStripMenuItem";
+             this.loadFromCharacterProfilerToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
+-            this.loadFromCharacterProfilerToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
++            this.loadFromCharacterProfilerToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
+             this.loadFromCharacterProfilerToolStripMenuItem.Text = "Load from Character &Profiler";
+             this.loadFromCharacterProfilerToolStripMenuItem.Click += new System.EventHandler(this.loadFromCharacterProfilerToolStripMenuItem_Click);
+             // 
+             // toolStripSeparator
+             // 
+             this.toolStripSeparator.Name = "toolStripSeparator";
+-            this.toolStripSeparator.Size = new System.Drawing.Size(220, 6);
++            this.toolStripSeparator.Size = new System.Drawing.Size(256, 6);
+             // 
+             // toolStripSeparator8
+             // 
+             this.toolStripSeparator8.Name = "toolStripSeparator8";
+-            this.toolStripSeparator8.Size = new System.Drawing.Size(220, 6);
++            this.toolStripSeparator8.Size = new System.Drawing.Size(256, 6);
+             // 
+             // saveToolStripMenuItem
+             // 
+@@ -1265,26 +1275,26 @@
+             this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
++            this.saveToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
+             this.saveToolStripMenuItem.Text = "&Save";
+             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+             // 
+             // saveAsToolStripMenuItem
+             // 
+             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
++            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
+             this.saveAsToolStripMenuItem.Text = "Save &As...";
+             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
+             // 
+             // toolStripSeparator2
+             // 
+             this.toolStripSeparator2.Name = "toolStripSeparator2";
+-            this.toolStripSeparator2.Size = new System.Drawing.Size(220, 6);
++            this.toolStripSeparator2.Size = new System.Drawing.Size(256, 6);
+             // 
+             // exitToolStripMenuItem
+             // 
+             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
++            this.exitToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
+             this.exitToolStripMenuItem.Text = "E&xit";
+             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+             // 
+@@ -1451,7 +1461,7 @@
+             this.calculationDisplay1.Location = new System.Drawing.Point(0, 134);
+             this.calculationDisplay1.Name = "calculationDisplay1";
+             this.calculationDisplay1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
+-            this.calculationDisplay1.Size = new System.Drawing.Size(214, 398);
++            this.calculationDisplay1.Size = new System.Drawing.Size(214, 395);
+             this.calculationDisplay1.TabIndex = 5;
+             // 
+             // buffSelector1
+@@ -1569,7 +1579,7 @@
+             this.itemButtonRanged.Character = null;
+             this.itemButtonRanged.CharacterSlot = Rawr.Character.CharacterSlot.Ranged;
+             this.itemButtonRanged.ItemIcon = null;
+-            this.itemButtonRanged.Location = new System.Drawing.Point(231, 586);
++            this.itemButtonRanged.Location = new System.Drawing.Point(231, 583);
+             this.itemButtonRanged.Name = "itemButtonRanged";
+             this.itemButtonRanged.SelectedItem = null;
+             this.itemButtonRanged.SelectedItemId = 0;
+@@ -1640,7 +1650,7 @@
+             this.itemButtonOffHand.Character = null;
+             this.itemButtonOffHand.CharacterSlot = Rawr.Character.CharacterSlot.OffHand;
+             this.itemButtonOffHand.ItemIcon = null;
+-            this.itemButtonOffHand.Location = new System.Drawing.Point(155, 586);
++            this.itemButtonOffHand.Location = new System.Drawing.Point(155, 583);
+             this.itemButtonOffHand.Name = "itemButtonOffHand";
+             this.itemButtonOffHand.SelectedItem = null;
+             this.itemButtonOffHand.SelectedItemId = 0;
+@@ -1739,7 +1749,7 @@
+             this.itemButtonMainHand.Character = null;
+             this.itemButtonMainHand.CharacterSlot = Rawr.Character.CharacterSlot.MainHand;
+             this.itemButtonMainHand.ItemIcon = null;
+-            this.itemButtonMainHand.Location = new System.Drawing.Point(79, 586);
++            this.itemButtonMainHand.Location = new System.Drawing.Point(79, 583);
+             this.itemButtonMainHand.Name = "itemButtonMainHand";
+             this.itemButtonMainHand.SelectedItem = null;
+             this.itemButtonMainHand.SelectedItemId = 0;
+@@ -1771,7 +1781,7 @@
+             this.itemComparison1.Dock = System.Windows.Forms.DockStyle.Fill;
+             this.itemComparison1.Location = new System.Drawing.Point(3, 41);
+             this.itemComparison1.Name = "itemComparison1";
+-            this.itemComparison1.Size = new System.Drawing.Size(458, 600);
++            this.itemComparison1.Size = new System.Drawing.Size(458, 597);
+             this.itemComparison1.Sort = Rawr.ComparisonGraph.ComparisonSort.Overall;
+             this.itemComparison1.TabIndex = 3;
+             // 
+@@ -1779,10 +1789,10 @@
+             // 
+             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+-            this.ClientSize = new System.Drawing.Size(859, 683);
++            this.ClientSize = new System.Drawing.Size(859, 702);
+             this.Controls.Add(this.toolStripContainer1);
+             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+-            this.MinimumSize = new System.Drawing.Size(867, 717);
++            this.MinimumSize = new System.Drawing.Size(867, 736);
+             this.Name = "FormMain";
+             this.Load += new System.EventHandler(this.FormMain_Load);
+             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
+@@ -1964,6 +1974,7 @@
+ 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
+ 		private System.Windows.Forms.ComboBox comboBoxRegion;
+         private System.Windows.Forms.ToolStripMenuItem batchToolsToolStripMenuItem6;
++        private MainStatusStrip mainStatusStrip1;
+     }
+ }
+ 
+Index: FormMain.resx
+===================================================================
+--- FormMain.resx	(revision 21926)
++++ FormMain.resx	(working copy)
+@@ -117,6 +117,9 @@
+   <resheader name="writer">
+     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+   </resheader>
++  <metadata name="mainStatusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
++    <value>17, 54</value>
++  </metadata>
+   <metadata name="toolStripItemComparison.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+     <value>152, 17</value>
+   </metadata>
+@@ -705,4 +708,4 @@
+         AAAAAAAAAAAAAAAAAAAAAAAA
+ </value>
+   </data>
+-</root>
+\ No newline at end of file
++</root>
+Index: MainStatusStrip.cs
+===================================================================
+--- MainStatusStrip.cs	(revision 0)
++++ MainStatusStrip.cs	(revision 0)
+@@ -0,0 +1,141 @@
++﻿using System;
++using System.Collections.Generic;
++using System.Text;
++using System.Windows.Forms;
++
++namespace Rawr
++{
++    public class MainStatusStrip : StatusStrip
++    {
++
++        public MainStatusStrip()
++        {
++            InitializeComponent();
++            BuildControls();
++            Calculations.ModelChanged += new EventHandler(Calculations_ModelChanged);
++        }
++
++        void Calculations_ModelChanged(object sender, EventArgs e)
++        {
++            BuildControls();
++        }
++
++        ToolStripStatusLabel[] LabelLabels = new ToolStripStatusLabel[0];
++        ToolStripStatusLabel[] ValueLabels = new ToolStripStatusLabel[0];
++        Nullable<float>[] StoredPointValues = new Nullable<float>[0];
++        private void BuildControls()
++        {
++            this.Items.Clear();
++
++            if (Calculations.Instance == null) return;
++
++            LabelLabels = new ToolStripStatusLabel[Calculations.SubPointNameColors.Keys.Count + 1];
++            ValueLabels = new ToolStripStatusLabel[Calculations.SubPointNameColors.Keys.Count + 1];
++            StoredPointValues = new Nullable<float>[Calculations.SubPointNameColors.Keys.Count + 1];
++
++            int index = 0;
++
++            {
++
++                ToolStripStatusLabel labelLabel = new ToolStripStatusLabel();
++                labelLabel.Text = "Overall";
++                LabelLabels[index] = labelLabel;
++                this.Items.Add(labelLabel);
++
++                ToolStripStatusLabel labelValue = new ToolStripStatusLabel();
++                labelValue.Text = "...";
++                ValueLabels[index] = labelValue;
++                this.Items.Add(labelValue);
++
++                StoredPointValues[index] = null;
++
++                index++;
++
++            }
++
++            foreach (string SubpointLabel in Calculations.SubPointNameColors.Keys)
++            {
++
++                ToolStripStatusLabel labelLabel = new ToolStripStatusLabel();
++                labelLabel.Text = SubpointLabel;
++                LabelLabels[index] = labelLabel;
++                this.Items.Add(labelLabel);
++
++                ToolStripStatusLabel labelValue = new ToolStripStatusLabel();
++                labelValue.Text = "...";
++                ValueLabels[index] = labelValue;
++                this.Items.Add(labelValue);
++
++                StoredPointValues[index] = null;
++
++                index++;
++
++            }
++
++        }
++
++        private CharacterCalculationsBase lastCalcs = null;
++        public void SetCalculations(CharacterCalculationsBase characterCalculations)
++        {
++            this.lastCalcs = characterCalculations;
++            for (int index = 0; index < LabelLabels.Length; index++)
++            {
++                float NewValue = index == 0 ? characterCalculations.OverallPoints : characterCalculations.SubPoints[index - 1];
++                
++                if (NewValue > StoredPointValues[index])
++                {
++                    ValueLabels[index].ForeColor = System.Drawing.Color.Green;
++                }
++                else if (NewValue < StoredPointValues[index])
++                {
++                    ValueLabels[index].ForeColor = System.Drawing.Color.Red;
++                }
++                else
++                {
++                    ValueLabels[index].ForeColor = System.Drawing.Color.Black;
++                }
++                ValueLabels[index].Text = NewValue.ToString() + (StoredPointValues[index] == null ? "" : " (" + (NewValue - StoredPointValues[index]).ToString() + ")");
++
++            }
++        }
++
++        private void InitializeComponent()
++        {
++            this.SuspendLayout();
++            // 
++            // MainStatusStrip
++            // 
++            this.Click += new System.EventHandler(this.MainStatusStrip_Click);
++            this.ResumeLayout(false);
++
++        }
++
++        private void MainStatusStrip_Click(object sender, EventArgs e)
++        {
++            if (lastCalcs != null)
++            {
++                MouseEventArgs me = e as MouseEventArgs;
++                for (int index = 0; index < LabelLabels.Length; index++)
++                {
++                    if (me.Button == MouseButtons.Right)
++                    {
++                        StoredPointValues[index] = null;
++                    }
++                    else if (me.Button == MouseButtons.Left)
++                    {
++                        if (index == 0)
++                        {
++                            StoredPointValues[index] = lastCalcs.OverallPoints;
++                        }
++                        else
++                        {
++                            StoredPointValues[index] = lastCalcs.SubPoints[index - 1];
++                        }
++                    }
++                }
++                SetCalculations(lastCalcs);
++            }
++        }
++
++    }
++}
+Index: MainStatusStrip.resx
+===================================================================
+--- MainStatusStrip.resx	(revision 0)
++++ MainStatusStrip.resx	(revision 0)
+@@ -0,0 +1,123 @@
++<?xml version="1.0" encoding="utf-8"?>
++<root>
++  <!-- 
++    Microsoft ResX Schema 
++    
++    Version 2.0
++    
++    The primary goals of this format is to allow a simple XML format 
++    that is mostly human readable. The generation and parsing of the 
++    various data types are done through the TypeConverter classes 
++    associated with the data types.
++    
++    Example:
++    
++    ... ado.net/XML headers & schema ...
++    <resheader name="resmimetype">text/microsoft-resx</resheader>
++    <resheader name="version">2.0</resheader>
++    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
++    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
++    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
++    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
++    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
++        <value>[base64 mime encoded serialized .NET Framework object]</value>
++    </data>
++    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
++        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
++        <comment>This is a comment</comment>
++    </data>
++                
++    There are any number of "resheader" rows that contain simple 
++    name/value pairs.
++    
++    Each data row contains a name, and value. The row also contains a 
++    type or mimetype. Type corresponds to a .NET class that support 
++    text/value conversion through the TypeConverter architecture. 
++    Classes that don't support this are serialized and stored with the 
++    mimetype set.
++    
++    The mimetype is used for serialized objects, and tells the 
++    ResXResourceReader how to depersist the object. This is currently not 
++    extensible. For a given mimetype the value must be set accordingly:
++    
++    Note - application/x-microsoft.net.object.binary.base64 is the format 
++    that the ResXResourceWriter will generate, however the reader can 
++    read any of the formats listed below.
++    
++    mimetype: application/x-microsoft.net.object.binary.base64
++    value   : The object must be serialized with 
++            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
++            : and then encoded with base64 encoding.
++    
++    mimetype: application/x-microsoft.net.object.soap.base64
++    value   : The object must be serialized with 
++            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
++            : and then encoded with base64 encoding.
++
++    mimetype: application/x-microsoft.net.object.bytearray.base64
++    value   : The object must be serialized into a byte array 
++            : using a System.ComponentModel.TypeConverter
++            : and then encoded with base64 encoding.
++    -->
++  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
++    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
++    <xsd:element name="root" msdata:IsDataSet="true">
++      <xsd:complexType>
++        <xsd:choice maxOccurs="unbounded">
++          <xsd:element name="metadata">
++            <xsd:complexType>
++              <xsd:sequence>
++                <xsd:element name="value" type="xsd:string" minOccurs="0" />
++              </xsd:sequence>
++              <xsd:attribute name="name" use="required" type="xsd:string" />
++              <xsd:attribute name="type" type="xsd:string" />
++              <xsd:attribute name="mimetype" type="xsd:string" />
++              <xsd:attribute ref="xml:space" />
++            </xsd:complexType>
++          </xsd:element>
++          <xsd:element name="assembly">
++            <xsd:complexType>
++              <xsd:attribute name="alias" type="xsd:string" />
++              <xsd:attribute name="name" type="xsd:string" />
++            </xsd:complexType>
++          </xsd:element>
++          <xsd:element name="data">
++            <xsd:complexType>
++              <xsd:sequence>
++                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
++                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
++              </xsd:sequence>
++              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
++              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
++              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
++              <xsd:attribute ref="xml:space" />
++            </xsd:complexType>
++          </xsd:element>
++          <xsd:element name="resheader">
++            <xsd:complexType>
++              <xsd:sequence>
++                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
++              </xsd:sequence>
++              <xsd:attribute name="name" type="xsd:string" use="required" />
++            </xsd:complexType>
++          </xsd:element>
++        </xsd:choice>
++      </xsd:complexType>
++    </xsd:element>
++  </xsd:schema>
++  <resheader name="resmimetype">
++    <value>text/microsoft-resx</value>
++  </resheader>
++  <resheader name="version">
++    <value>2.0</value>
++  </resheader>
++  <resheader name="reader">
++    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
++  </resheader>
++  <resheader name="writer">
++    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
++  </resheader>
++  <metadata name="$this.TrayLargeIcon" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
++    <value>False</value>
++  </metadata>
++</root>
+\ No newline at end of file

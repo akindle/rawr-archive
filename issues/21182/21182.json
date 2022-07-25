@@ -1,0 +1,66 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtWarrior",
+      "DisplayName": "Rawr.ProtWarrior"
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "It seems that there is a current bug on ProtWarr where it will cap out on mastery at a certain level. On my current character builder, which I will attach, I was attempting to see if with reforging correctly and mastery stacking, in a full set of 378 gear I could hit the avoidance cap of 102.4% block/dodge/parry combined.\n \nPlease use my following character file attached below, and notice that you can remove 80 mastery from either of my two trinkets, and the block % will not go down. You can also add a bunch of mastery rating and it will not increase either. It seems that for some reason it sits at 66.11% block as a cap, when I'm obviously not unhittable.",
+    "LastUpdatedDate": "2013-02-21T18:24:35.383-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-07-17T02:16:14.643-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtWarr] Mastery Bug",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 21182
+  },
+  "FileAttachments": [
+    {
+      "FileId": 5162,
+      "FileName": "Zainw 378 bis mastery stack bug 66.11.xml",
+      "DownloadUrl": ".\\5162"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "There are a few things that I believe you might be misunderstanding.\r\n   First, there is and almost always be a difference between in-game character sheet percentages and Rawr percentages due to in-game stats being calculated versus a level 85 NPC while Rawr will use whatever level is selected in the Boss Handler for its calculations. Due to this, the \"magic\" 102.4% that people use for theorycrafting does not necessarily correspond directly to the percentages displayed in Rawr.\r\n   Secondly, the percentages seen on the character sheet in Rawr are reflections of the Combat Table Coverage (in Rawr) such that:\r\n          Dodge% + Parry% + Block% + Miss% + Hit% = 100% or Hit% = 100% - (Dodge% + Parry% + Block% + Miss%)\r\nUsing your character file, we get: 100% - (14.39%+15.50%+65.72%+4.40%) = 100%-100.01% = -.01% => Unhittable\r\nReforging Mastery to Dodge:      100% - (15.03%+15.50%+64.92%+4.40%) = 100%-99.85% = .15% =>Approximately .15% of the attacks will hit\r\nYou can see both of these equations represented as graphs under the ProtWarr Specific > Combat Tables. Hope this clarifies things for you.",
+      "PostedDate": "2011-07-25T16:07:23.223-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "So is there an actual issue here or is it just tha he read it wrong?",
+      "PostedDate": "2011-10-09T11:01:01.47-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The ProtWarr module does cap the mastery during the combat calculations, but I think it only applies to trinket procs.",
+      "PostedDate": "2011-10-24T09:37:06.22-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:24:35.383-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

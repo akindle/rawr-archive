@@ -1,0 +1,138 @@
+[
+  {
+    "Id": "444077",
+    "ThreadId": "212961",
+    "Html": "<p>(This discussion is for developers and other contributors, but I'm making it public because many of the people involved are not (yet) flagged as developers)</p>\r\n<p>&nbsp;</p>\r\n<p>OK, this is getting absurd.</p>\r\n<p>First of all, everyone who is interested in helping maintain the ItemCache/Filters needs to say so here, and I'll give them dev access, and you need to make your changes directly, not through patches or e-mails.</p>\r\n<p>Second, you all need to get on the same page about who's doing what, when, etc. So frequently, people show up, say they want to help, do something, then disappear. If you're going to do something, do it. If you're not going to do something, say so, so that others know it needs to be done, or at least knows that it isn't being done.</p>\r\n<p>Third, appreciate each others' work.</p>\r\n<p>&nbsp;</p>\r\n<p>Now, some notes about specific things:</p>\r\n<p><strong>ItemCache.xml (EDIT: And ItemSource.xml; forgot those were in separate files)</strong>: DO NOT MODIFY THIS DIRECTLY. Your changes will just be overwritten the next time someone updates from the armory or wowhead. If any data here is wrong, the *parsing* needs to be updated to parse correctly. You shouldn't need to know any more than very very basic C# and Regexes to handle parsing. This file should only be updated by running a full update from Armory or Wowhead (whichever is more accurate at the time). Also make sure that you update parsing in both places; the only difference between Wowhead and Armory loading of an item should be where they actually have different data. <strong>This includes both item stats and source data.</strong></p>\r\n<p><strong>ItemFilters.xml</strong>: This is the big one. There's a lot of discussion needed to be had about how to properly organize items. But, there are a few guidelines here. Most importantly, <span style=\"text-decoration:underline\"><strong>everything should be visible by default. Stop submitting ItemFilters.xml where there is anything at all filtered out by default. Make sure you fully understand how filters work before checking any changes to them in.</strong></span></p>\r\n<p>&nbsp;</p>\r\n<p><span>Please discuss who wants to do what, how to clean things up, etc, here.</span></p>",
+    "PostedDate": "2010-05-17T20:03:16.827-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "444101",
+    "ThreadId": "212961",
+    "Html": "<p>I'm willing to help with either, doesn't matter to me. Only thing I would say for the ItemCache actual default file is to make sure the file has all items, period. I'm not talking about just the stats, or source data, I'm talking about is the item in the database period. It would involve the going through the armory/wowhead to make sure that all items are in the system (at least 175+)</p>",
+    "PostedDate": "2010-05-17T21:51:23.107-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "444585",
+    "ThreadId": "212961",
+    "Html": "I was still wanting to do this... I never gave any indication I didn't.  When haven't I done something I said I would?  Only moment I can think of was when I needed to break for 2 weeks for my sister's wedding, and my email from work letting you know this didn't go through (Quite common at my job sadly).  I still caught you after the first week on hotmail.\r\n\r\nDev access would've been great!  The first time I told you I was interested, you said to email the files to you, so I continued.  If you had wanted otherwise, why didn't I get access then?  All this is making me feel unappreciated.  The only thing I've done wrong is forget to click all the filters back on before sending you the files.  Well, my bad - it was my first time.  I understand how all the filters work, and the way you have that written, you act like I did this multiple times.  Check the filters right now - they're awesome!  I just forget to click them all back before emailing you the file and now you want to replace me?\r\n\r\nAnd what do you mean about modifying files directly?  Who's going to update from armory/wowhead?  The whole &quot;Update item cache&quot; option should be ripped out because if anyone does that, it'll mess it all up (I'm only talking about removing the mass update option; not per item by right clicking).  Sure, 2/3rds of the items will update correctly using armory/wowhead, and no, I did not just pull that figure out of my butt; I tried it.  The rest will either lose their special procs (Tiny Abom is a good example) or source data (World drops, trash drops, items that can drop from multiple bosses, or items that don't have source data on wowhead/armory).  That means 1/3rd of the files (That's more than 2k items) I had to go in and manually change the source data or return the special procs after doing a full update.  You say the big one is ItemFilters, but it's actually ItemSource and C# or regex knowledge isn't needed to fix it.  Filters are easy as hell, but it doesn't mean jack if so many items have bad source data.\r\n",
+    "PostedDate": "2010-05-18T15:07:24.297-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "444602",
+    "ThreadId": "212961",
+    "Html": "<p>It would be a lot more productive if you listed&nbsp;the items that are not updated correctly from armory/wowhead so that we can fix the parsing.</p>",
+    "PostedDate": "2010-05-18T15:43:33.07-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "444608",
+    "ThreadId": "212961",
+    "Html": "I suppose what you really need for item maintenance is someone who can regularly correct the way items update off wowhead/armory, which would not be me because I've no knowledge on programming or how parsing works.\r\n\r\nHowever, I can get that list created by the end of this weekend (Raid during the week).  It's going to be huge, but I'll try and group them as best I can.",
+    "PostedDate": "2010-05-18T16:02:47.607-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "444609",
+    "ThreadId": "212961",
+    "Html": "<p>Yea, if you notice that several items follow the same pattern in the way the data is wrong&nbsp;there's no need to list them all. Fixing one should fix all, which is why fixing the parsing is a lot more efficient than fixing items one by one.</p>",
+    "PostedDate": "2010-05-18T16:11:40.777-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "444615",
+    "ThreadId": "212961",
+    "Html": "Yeah, and I originally thought about bringing up fixing how Rawr communicates with the sites, but I wasn't sure what to do about all the items with no data.  I mean something like a multiple boss item in Naxx is easy - just make it go off the first or maybe there's a way to tag all bosses to that item. However, there really are items that have no info on wowhead and aren't loaded on armory.  I only knew where it came from because of recognizing it or comments.  I guess that's in someone else's hands now, though.  Perhaps source types like World Drop can have certain IDs linked with them, so no matter what comes from the site, it will still appear correctly in Rawr.",
+    "PostedDate": "2010-05-18T16:39:17.493-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "444630",
+    "ThreadId": "212961",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Dyzek wrote:</strong><br>I was still wanting to do this... I never gave any indication I didn't.  When haven't I done something I said I would? &nbsp;</blockquote>\r\n<p>I wasn't pointing that at you, FYI. Neither was most of my post. It was all in a very general sense.</p>",
+    "PostedDate": "2010-05-18T17:49:21.76-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "444632",
+    "ThreadId": "212961",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Dyzek wrote:</strong><br>I suppose what you really need for item maintenance is someone who can regularly correct the way items update off wowhead/armory, which would not be me because I've no knowledge on programming or how parsing works.  However, I can get that list created by the end of this weekend (Raid during the week).  It's going to be huge, but I'll try and group them as best I can.</blockquote>\r\n<p>You might want to take a look at what it involves before you dismiss it. As I said in the OP, the 'programming' skill required for parsing changes should be almost nothing, and we can help out where necessary, and make it easier where it's programmer-y.</p>\r\n<p>Hina/Dyzek, you're now both Developer rank, so can check in. Please chat with me on instant messenger, and I can help you get setup to assist directly.</p>",
+    "PostedDate": "2010-05-18T17:52:58.997-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "444641",
+    "ThreadId": "212961",
+    "Html": "<p>I just work on the ItemFilter.xml and have been for a long while now. Already lots of the suggestion I made have been incorporated into the parsing side and have made it very useful for the filters to work and keep sorted. As for the how to handle the initial source pull, it has been wowhead as the main source, but the filters work for both sources.</p>\r\n<p>As far as my understanding of Regex, I think I got that covered.</p>\r\n<p>Some small suggestions for the parsing people:</p>\r\n<p>First off, excellent work. The addition of&nbsp; Key words like &quot;Purchasable with&quot;, &quot;PVP&quot;, &quot;Reward&quot; and what type of currency combined with the newer info to include &quot;and&quot; which added further information for items requiring multiple items to obtain. As for the PVP stuff, you are rock on.</p>\r\n<p>&quot;Purchasable with 1 [Vanquisher's Mark of Sanctification] and 1 [Sanctified Lasherweave Headguard] &quot; &lt;---very useful and very clear</p>\r\n<p>&quot;Purchasable for 13200 Honor Points and 770 Arena Points&quot; &lt;---Awsome</p>\r\n<p>&quot;Purchasable for 4670 Arena Points and Requires an Arena Rating of 2200&quot; &lt;---Most excellent</p>\r\n<p>The parsing could still use some changes that will aid in getting the right information to the people. We all know that some items that drop in raids can also be purchasable, and that some items that are purchasable can be purchased with different types of currency. But these things don't get caught by the filters because it only filters them for one or the other. Examples would be the T10(251/264) drops in VOA that the 251 can also be purchased for EOF. So I would push for the &quot;or&quot; to be added to the source.</p>\r\n<p>&quot;Drops from Toravon the Ice Watcher in Vault of Archavon (10) <strong><span style=\"text-decoration:underline\">or</span></strong> Purchasable with 95 [Emblem of Frost]&quot;</p>\r\n<p>&quot;Drops from Toravon the Ice Watcher in Vault of Archavon (25) <strong><span style=\"text-decoration:underline\">or</span></strong> Purchasable with 1 [Vanquisher's Mark of Sanctification] and 1 [Lasherweave Legguards]&quot;</p>\r\n<p>Another thing in parsing from wowhead, items that have resilience need to start of with the &quot;PVP Item&quot;. Also in parsing from wowhead most of the items &quot;No Longer Available to Players&quot; should get striped of all other information and just be listed as &quot;No Longer Available to Players&quot; so they can be filtered out.</p>\r\n<p>As for covering all the needs of just about anyone, I think the filters are setup to do just that. But as always, I am open to criticism and suggestions.</p>\r\n<p>If the information I suggest on parsing needs to be further explained, just let me know.</p>\r\n<p>As for the question of would I like to be added to the dev and continue to assist in making Rawr the most excellent tool it already is.... Sure</p>",
+    "PostedDate": "2010-05-18T18:12:08.87-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "444664",
+    "ThreadId": "212961",
+    "Html": "<p>Yea OR for item source will be useful. We already at some point changed ItemLocation to be a list of ItemLocation. This was initially meant to support several tokens from same item source, but that was now changed so that a single ItemLocation contains all token information. We could now use the different ItemLocations to indicate separate variants of item sources which is also more natural than what we had before with tokens. I'll see about adding this when I get some time.</p>",
+    "PostedDate": "2010-05-18T20:15:02.713-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "444666",
+    "ThreadId": "212961",
+    "Html": "<p>We also still need to merge the ItemCache and ItemSource xml files.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-05-18T20:16:57.327-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "444669",
+    "ThreadId": "212961",
+    "Html": "<p>Yea, this was because&nbsp;initially there were several copies in item cache for each gemming/enchant combination and we didn't want a separate source data for each.</p>",
+    "PostedDate": "2010-05-18T20:20:36.547-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "444753",
+    "ThreadId": "212961",
+    "Html": "<p>The lack of proper 'OR' support in the item filters is pretty much why I'm not using them atm.&nbsp; They simply don't work the way I expect them to.&nbsp; I just leave it all enabled and 'muddle through'. <br><br>If I enable ICC and disable VOA I should still be able to see the full T10 set.<br>If I disable ICC and enable VOA I should still be able to see the T10 parts that drop in VOA.</p>\r\n<p>The 'disable' filters are equally confusing. They should really be 'enable' filters as well like all the others, removing the checkbox removes the associated items. Not the other way around.&nbsp; That should also fix: <a href=\"http://rawr.codeplex.com/WorkItem/View.aspx?WorkItemId=17724\">http://rawr.codeplex.com/WorkItem/View.aspx?WorkItemId=17724</a></p>\r\n<p><br>it also annoys me that the filters have no single parent to easily enable/disable all.</p>\r\n<p>It should really be something like:</p>\r\n<ul>\r\n<li>All filters \r\n<ul>\r\n<li>by location \r\n<ul>\r\n<li>Dungeons</li>\r\n<li>T7</li>\r\n<li>T8</li>\r\n<li>...</li>\r\n</ul>\r\n</li>\r\n<li>by type \r\n<ul>\r\n<li>Gems \r\n<ul>\r\n<li>JC Bop</li>\r\n<li>JC Other \r\n<ul>\r\n<li>Epic</li>\r\n<li>Rare</li>\r\n<li>Common \r\n<ul>\r\n<li>Regular</li>\r\n<li>Perfect</li>\r\n</ul>\r\n</li>\r\n</ul>\r\n</li>\r\n<li>PVP</li>\r\n<li>World drop</li>\r\n</ul>\r\n</li>\r\n<li>Crafted items \r\n<ul>\r\n<li>BoE \r\n<ul>\r\n<li>Alchemy</li>\r\n<li>Blacksmithing</li>\r\n<li>Tailoring</li>\r\n<li>...</li>\r\n</ul>\r\n</li>\r\n<li>BoP \r\n<ul>\r\n<li>Alchemy</li>\r\n<li>Blacksmithing</li>\r\n<li>Tailoring</li>\r\n<li>...</li>\r\n</ul>\r\n</li>\r\n</ul>\r\n</li>\r\n<li>...</li>\r\n</ul>\r\n</li>\r\n<li>by Item level \r\n<ul>\r\n<li>...</li>\r\n</ul>\r\n</li>\r\n<li>by Bind type \r\n<ul>\r\n<li>...</li>\r\n</ul>\r\n</li>\r\n</ul>\r\n</li>\r\n</ul>\r\n<p>The top level is just a convenient means to enable all</p>\r\n<p>The 2nd level filters are exclusive.&nbsp; Meaning if you enable everything (via top) then disable Bind type BoE, it'll not show BoE's even if they drop in the instances you selected.&nbsp; If you enable all (via top) and disable ICC, it would not show BOE drops from ICC even though you have BOE drops enabled.</p>\r\n<p>But the filters below a particular 2nd level aren't exclusive.&nbsp; That should work like I said at the top.&nbsp; Disabling VoA should not simply remove all items that drop in VoA if they also drop elsewhere.</p>",
+    "PostedDate": "2010-05-19T01:43:57.817-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "444956",
+    "ThreadId": "212961",
+    "Html": "I really like that setup, especially consolidating the crafted items and gems.  Having both enable and disable filters has potential to confuse a lot of users, and I don't see why they couldn't be all be converted into enable.  The inclusion of 'OR' could create some problems with having enable Tier filters, though.  When I last touched the filters, I remember having issues filtering the different PvP seasons.  The only method I know that makes them work with Rawr currently is adding notes to each item.  Since we want everything to work with a full item cache update, I suggest adding an additional option to the filter editor.  Alongside Additive Filter, you could have something like &quot;Source Filter&quot; or &quot;Location Filter&quot; that is checked by default.  When unchecked, it applies the filter to item names instead of source (which would be explained with a mouseover box).  This will also help prepare Rawr for Cataclysm when there will be hero/valor points instead of emblems.  Could make it so we're only updating a couple filters instead of half or more every major patch in Catalysm.<br><br>\r\nAs a side note, I changed my mind on separating PvP gear by seasons, but I do think there should be filters for arena rating and Wintergrasp.  Parsing still doesn't pull that from wowhead.  The Emblem of Frost gear parses wonderfully, but it doesn't apply the emblem amount to the new item cost feature yet.  Thanks for all the great work so far and what's to come!  After I get with Astrylian, I'll see how much help I can be on the technical side of things, but either way I'll still continue to scout the xml data for ways we can improve pulling from the sites.",
+    "PostedDate": "2010-05-19T08:56:52.74-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "444979",
+    "ThreadId": "212961",
+    "Html": "<p>I have already uploaded the new filters for the next patch. Take a look at them and lets continue our discussion from them. You will find that a lot of the things you are talking about are already in the filters I submitted.</p>\r\n<p>So lets all get on the same page. The problem I see here is that you want to change the structure of the filters and have some filtering options that just might not be useful to everyone. Also you need to include filters for the things you do not want to see else you will have no way to filter them out.</p>\r\n<p>The idea of Top Level filters sounds good, but you can only really combine Dungeon and Heroic Dungeon, and Burning Crusade and Classic. If you combine the raids you will break the filters, not that it can not be fixed, just not really needed. As for the desire to enable and disable large categories of filters, remember the implementation of filter states will now be saved to the characters xml.</p>\r\n<p>Also you can not have a top level filter for all. Doing so will make it impossible to have exclusion filters. Perhaps a better ALL-ternitive would be to have an option to right-click in the filter drop down select Check-ALL or Uncheck-ALL. As far as that goes the need to have gray boxes for partial selected filters is long overdue. Just how easy would it have been for user to see that the filters where only partially selected if the boxes where gray.</p>",
+    "PostedDate": "2010-05-19T09:26:15.077-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "445029",
+    "ThreadId": "212961",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>MTRazeR wrote:</strong> As far as that goes the need to have gray boxes for partial selected filters is long overdue. Just how easy would it have been for user to see that the filters where only partially selected if the boxes where gray.</blockquote>\r\n<p>This is physically impossible with Rawr2, the control that creates the check trees doesn't allow intermediate states (the shaded box). Someone would have to create a custom control to &quot;reinvent the wheel&quot; and make this happen.</p>",
+    "PostedDate": "2010-05-19T10:52:34.517-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

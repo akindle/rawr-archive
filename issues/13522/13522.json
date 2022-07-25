@@ -1,0 +1,75 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Optimizer",
+      "DisplayName": "Rawr.Base.Optimizer"
+    },
+    "ClosedComment": "This issue has been open for 60&#43; days without response. If this is still an issue, please resubmit with current files and references to the versions affected.",
+    "ClosedDate": "2009-09-16T17:06:20.733-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "In both the online and offline versions, the Optimizer funcitonality seems drastically slower than v2.6.  The Silverlight version also seems to be using noticeably less processor time than v2.6, so that's probably related (is the Silverlight version multithreaded like v2.6?).",
+    "LastUpdatedDate": "2013-05-16T05:25:12.33-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-06-21T16:56:00.12-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Silverlight: Optimizer performance issues compared to v2.6",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13522
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Possibly related, there's also a noticeable pause (about a full second's worth) in-between clicking an item slot and having the item selection window pop up. It only happens when clicking on a new slot. When you click on a slot you already have open, it closes and reopens the item list almost instantly (approximately the same speed as v2.6).  If you click on a different slot, then back to the first one, you get hit with the pause both when you click on the different slot and when you click back to the original item slot.  Happens on both versions.",
+      "PostedDate": "2009-06-21T17:44:58.373-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Silverlight is not yet multithreaded, we haven't done nearly any performance improvements past the initial implementation.",
+      "PostedDate": "2009-06-21T19:21:01.703-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I did some testing on item list control. It seems like most of they delay isn't from the calculations themselves, but from building the list items themselves. I replaced all Calculations with empty ones, and the popup took nearly as long to respond and popup.",
+      "PostedDate": "2009-06-22T14:52:51.98-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-16T17:06:20.733-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-09T16:03:17.383-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:04.89-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:12.33-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

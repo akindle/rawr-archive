@@ -1,0 +1,120 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSWarr",
+      "DisplayName": "Rawr.DPSWarr"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-10-26T16:56:02.42-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Regarding the \"Hide Enchants Based on Professions\" - it's not working correctly.\n \nWhen initially loading an existing profile in under the latest build, all profession-related BoP item enhancements are hidden.  When going into Options, toggling the feature anddictating the professions keeps all hidden.  Turning the entire thing back off enables standard Rawr functionality.  Playing with other professions besides the ones I actually have does not help.\n \nCan attach Character Profile if requested.",
+    "LastUpdatedDate": "2013-05-16T05:24:02.153-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-10-06T09:28:24.087-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSWarr] Hide Enchants Based on Professions not working correctly",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14338
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I would like to reopen this issue.  Under 37713, profession-specific item enhancements are still not being activated given that \"Hide Enchants Based on Professions\" is toggled on, and any given professions are selected.  For example, even though Enchanting, Engineering, or Inscription may be set as one of the two professions, the ring enchants, boot/glove/back gizmos, and shoulder inscriptions are not showing in their respective places for selection.  Only when the Hide Enchants selection is toggled off do the item enhancements become available again.\r\n\r\nThis happens on both existing profiles, and freshly loaded characters.",
+      "PostedDate": "2009-10-21T22:53:45.533-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Gently bumping this, as I understand that closed issues can easily be overlooked.  :)",
+      "PostedDate": "2009-10-25T12:20:47.677-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "fixed in commit 37321\r\n\r\nThe back end variable was accidentally set to true instead of false for default\r\n\r\n\n\n** Closed by Jothay 10/6/2009 9:41 AM",
+      "PostedDate": "2009-10-25T12:21:15.763-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Oh, hey, >I< can reopen a Work Item.  Imagine that.",
+      "PostedDate": "2009-10-25T12:21:16.913-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "So you are saying that this is an issue again?",
+      "PostedDate": "2009-10-25T18:18:27.737-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Actually, I had never seen this actually get fixed, as I recall.  You called the fix with commit 37321 and closed it, and I just assumed it fixed.  No big deal.  =D",
+      "PostedDate": "2009-10-26T00:44:48.797-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-26T09:48:49.21-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Results of Attempting to Repro:\r\n\r\n1. New Blank Char (defaults 'Hide Enchants...' to off with no selected professions, all enchants should be available to toon)\r\n2. Select JusticeBringer Axe (so we can calc dps, otherwise its always zero)\r\n3. Changed the Comparisons Chart to Enchants > Fingers\r\n- All the Enchanting Only Enchants are listed (Assault, Stamina, Stats, Striking)   || Behavior Correct for this point of test, all enchants are available to toon\r\n4. Checked 'Hide Enchants...' option, no professions selected.\r\n- Enchanting Only Enchants disappeared   || Behavior Correct for this point of test, All Profession Specific Enchants are hidden\r\n5. Selected Primary Profession as Enchanting\r\n- Enchanting Only Enchants re-appeared    || Behavior Correct for this point of test, Enchanting enchants came back and other professions are still hidden\r\n6. Selected Secondary Profession as Engineering\r\n- Engineering Only Enchants re-appeared  (Looked at hands, hyperspeed accelerators)   || Behavior Correct for this point of test, Enchanting and Engineering enchants are both shown while other professions are still hidden\r\n\r\nThis all seems to be working as intended.",
+      "PostedDate": "2009-10-26T09:59:19.87-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "We found out what you may be experiencing, there is a cachedChar involved that isn't staying the same for some reason (it's hitting a point and thinking that you have no professions).",
+      "PostedDate": "2009-10-26T11:15:59.16-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "commit 37850 should fix the issue",
+      "PostedDate": "2009-10-26T11:49:51.087-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I confirm this is resolved.",
+      "PostedDate": "2009-10-26T15:29:12.46-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-26T16:56:02.42-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-09T12:30:42.78-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T16:08:54.537-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:32:38.697-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:02.153-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

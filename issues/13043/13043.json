@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Optimizer",
+      "DisplayName": "Rawr.Base.Optimizer"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-04-19T15:18:18-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Still errors out on my Red Sword of Courage, as in last issue report. DK - DPS.\n \nSee the end of this message for details on invoking \njust-in-time (JIT) debugging instead of this dialog box.\n \n************** Exception Text **************\nSystem.NullReferenceException: Object reference not set to an instance of an object.\nat Rawr.Optimizer.ItemInstanceOptimizer.GetValuation(OptimizerCharacter individual)\nat Rawr.Optimizer.OptimizerBase`3.GetOptimizationValue(TIndividual individual)\nat Rawr.Optimizer.OptimizerBase`3.OptimizeGA(TIndividual injectIndividual, Single injectValue, Single& bestValue, TValuation& bestValuation, Boolean& injected)\nat Rawr.Optimizer.OptimizerBase`3.Optimize(TIndividual injectIndividual, Single injectValue, Single& bestValue, TValuation& bestValuation, Boolean& injected)\nat Rawr.Optimizer.ItemInstanceOptimizer.PrivateComputeUpgrades(Character character, String calculationToOptimize, OptimizationRequirement[] requirements, Int32 thoroughness, Item singleItemUpgrades, Exception& error)",
+    "LastUpdatedDate": "2013-05-16T05:25:48.16-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-04-18T08:51:19.09-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Optimizer] Unhandled exception when building upgrade list",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13043
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I still can't reproduce this problem. You'll have to explain more in detail what you're doing and what options you're selecting in the optimizer.",
+      "PostedDate": "2009-04-18T16:40:09.857-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "ok....I found the problem.  When I optimize it replaces titansteel bonecrusher/red sword of courage (dual wield, main/off) with Runeblade of Demonstrable power (main) but the Red Sword of courage stays in the offhand but grayed out.  If I then run upgrade list it aborts on the Red Sword of Courage.  If I go to the equipped items and select empty for the offhand it works fine.",
+      "PostedDate": "2009-04-19T12:33:39.453-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks for the detailed report. I was now able to reproduce the problem. It will be fixed in next release.",
+      "PostedDate": "2009-04-19T15:17:58.807-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-04-19T15:18:18-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T14:53:42.42-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:24.073-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:47.927-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:48.16-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

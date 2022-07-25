@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "149703",
+    "ThreadId": "44926",
+    "Html": "<p>I really wonder how the dps value of agility is calculated. I guess I've became too comfortable with Rawr, and never had the time to do the math of my own, but it seems reasonable that strength would be far better than agility with the use of Savage Roar. However, I've noticed some strange behaviour with the latest version of Rawr, and have a couple of questions:</p>\r\n<p>1. How is the dps value calculated for agility? It seems that agility, even with Blessing of Kings, should be valued about 0.5 * strength + 0.64 * crit rating. What am I missing to take in consideration here?</p>\r\n<p>2. With my current gear, str is valued for ~0.64, and agility for ~0.39, without correct raid buffs. Crit rating is valued for ~0.29. However, if I boost my AP even slightly, i e adding Elixir of Mighty Strength (but really, any AP buff will do), the value for agility changes radically. Now str is about the same (0.63), while agility has gone from 0.39 to 0.60. And still, crit rating is valued for ~0.3. How can a small AP buff change the value for agility drastically? Without fully knowing the math behind, it seems like you could double the crit contribution from agility, and it still shouldn't get the same high value. What am I missing?</p>\r\n<hr>\r\n<p>3. It seems like Mirror of Truth became worthless in the latest version, dropping the average AP proc.</p>\r\n<p>4. Editing any item, i e changing the gemming, will result in an error next time you use a dropdown menu, or trying to edit another item again.</p>\r\n<p>5. Would it be possible to add the feature of Relative Stat Values table to allow the user to change how many of each stat to be valued? I e, let's say I would like to see the stat value of 10 of everything. Being only a couple of points from both hit and expertise cap would make 1 of thoose valuable, when 10 of each would make it rather unworth.</p>\r\n<p></p>\r\n<p>EDIT: Turning on more raid buffs actually gives agility &gt; arength. However, 27 str &gt; 27 agility.</p>\r\n",
+    "PostedDate": "2009-01-22T05:03:46.56-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "149842",
+    "ThreadId": "44926",
+    "Html": "1. I cannot stress this enough: <span style=\"text-decoration:underline\"><strong>Rawr does not use relative stat values internally.</strong></span> There's no calculations for the 'value of some stat'. The entire character is valued, not individual stats.<br>\r\n<br>\r\n2. Sounds like you're seeing some weirdness with rounding or something; apart from hit/exp when they get capped, nothing in Cat should drastically change in value with only minor changes to the character.  Can you post the character file, along with what buff to turn on/off to reproduce this drastic change? That chart is brand new, so I'm not surprised if there are a bug or two there.<br>\r\n<br>\r\n3. They changed the wording on the item, so Rawr lost its proc value. You can edit it and add it back.<br>\r\n<br>\r\n4. That's a bug with an old version of the .NET Framework. Uninstall your current version, then download and install the latest version from Microsoft.<br>\r\n<br>\r\n5. Perhaps, we'll keep this in mind.<br>\r\n",
+    "PostedDate": "2009-01-22T10:47:31.683-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "149998",
+    "ThreadId": "44926",
+    "Html": "<p>1. I understand, but still it seems weird why agility should Not be approximately 0.5 * strength + 0.64 * crit rating, since you are still adding just 1 of the stat. Is there some else benefit of agility?</p>\r\n<p>2. I uploaded my char file at www.rickardnilsson.se/Feral.xml. Adding strength food (or even agility) should produce the error, boosting agility unreasonable high. Are you sure this is just a problem with the chart? Even other items in my comparasion table seems to adapt to this behaviour.</p>\r\n<p>3. Yes I did, just wanted to notice.</p>\r\n<p>4. Ok, nice, will do!</p>\r\n",
+    "PostedDate": "2009-01-22T16:41:00.737-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "150269",
+    "ThreadId": "44926",
+    "Html": "Crits build CPs faster.&nbsp; In addition, a static scaling like that will never make sense because there is kind of a feedback loop between str/AP and agi/crit.&nbsp; Even without the CP calculation, the higher your AP, the more valuable it is to add crit, and vice versa.&nbsp; It is pretty easy to visualise with extreme examples.&nbsp; If you have 1 AP and 1% crit, would you rather get 1 more AP or 1% more crit?&nbsp; Conversely, if you have 10000AP and 1% crit, would you rather get 1 AP or 1% more crit?<br>\r\n",
+    "PostedDate": "2009-01-23T08:02:40.147-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "150330",
+    "ThreadId": "44926",
+    "Html": "What mysticum is talking about isn't just static scaling, though.&nbsp; Agility essentially gives you 1 AP and ~0.57 crit rating per actual point (the values for one point on gear change depending on HotW, SotF, and kings, obviously), so it seems to me like you should be able to add the appropriate amounts of the weights for AP and crit to roughly get the value of agi.<br>\r\n<br>\r\nI think the problem is that it's difficult to get the relative stat weights page to give you any useful information.&nbsp; If you look at the gem page instead, it's listing 54 AP as being worth 14.58 (0.27 per point) for me, 27 agi as 11.15 (0.41296), and 27 crit as 6.27 (0.2322).&nbsp; The relative stat weights page shows AP as 0.27, agi as 0.32, and crit as 0.23.&nbsp; If I uncheck the Mark of the Wild buff, agi shoots up to 0.50.<br>\r\n<br>\r\nIf you use the weights taken from the gem page, 1.03 * AP + 0.5839 * crit (SotF, no kings) gets you 0.4137, which is close enough to 0.41296 for me considering there was probably some amount of rounding error for the gem.<br>\r\n<br>\r\nEdit: forgot to multiply the AP portion of the last calculation by SotF.<br>\r\n",
+    "PostedDate": "2009-01-23T10:43:00.47-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "150421",
+    "ThreadId": "44926",
+    "Html": "I have found this with a lot of the models.  The Relative Stat Value page often seems strange (sometimes showing Agi worth significantly more than Str for my kitty).  I have just been using the gem page to work out stat values as that seems much more accurate and gives expected results.<br>\r\n<br>\r\nAstrylian, is there much difference in they way the gems are valued and the Stat Value page?  The gems values vary much more gradually with various buffs being selected and de-selected whereas the stat value page seems to jump all over the place a lot more and give some strange results.<br>\r\n<br>\r\n    \r\n",
+    "PostedDate": "2009-01-23T16:22:08.76-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "150440",
+    "ThreadId": "44926",
+    "Html": "Yeah, there is. Gems are valued in terms of how much Agi they give. The Relative Stat Values page tries to find the current value of agi, by comparing up and down a few agi. How that 'few' is reached is complex, and we're still tweaking.<br>\r\n",
+    "PostedDate": "2009-01-23T18:04:39.477-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "150442",
+    "ThreadId": "44926",
+    "Html": "<p>Bashui: <em>Sorry, but you seem to have misunderstood how I meant. I do understand everything you just wrote, but the face that crits build combo points faster does Not change the fact that agility never can be better than 0.64 * critraing. How could it, since agility ~= 0.64 crit rating, and in terms of CP generator, builds the same amount of CP (due to the same given crit rating)?</em></p>\r\n<p>kbranch38: <em>Yeah, gems seems more reasonable to compare, but still I can't find why the offset even exists.</em></p>\r\n<p>Let me try to explain what I really want explained to me. I do understand that the realtive stat values are not static values in any means, and that changing any factor, or stat, changes all the relative stat values as well. That is how the modelling should, and indeed does work.</p>\r\n<p>But adding 1 of any stat, i e agility, never changes the values for strength/crit rating in a drastically way. Therefore it should be a fair approximation to assume that adding 1 agility would be about the same as adding 0.5 * strength + 0.64 * crit rating. The problem here is that agility does not match that formula even for an approximation. So clearly, (and still I understand there is no calculation for agility directly based from other stat values), there are another factors that matters for agility that is not the direct value of AP, or the crit benefit it serves. And I do Not state that anything is wrong with the modelling. In fact, I trust it very well, and that's why I'm looking for an explanation, since agility therefore seems to have another benefit when you wieght in all the other factors as well.</p>\r\n",
+    "PostedDate": "2009-01-23T18:18:18.94-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "150451",
+    "ThreadId": "44926",
+    "Html": "You also can't use that '0.5str+.64critrating' comparison, unless you have no BoKings and no SotF.<br>\r\n",
+    "PostedDate": "2009-01-23T18:59:37.323-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

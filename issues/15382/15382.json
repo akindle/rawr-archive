@@ -1,0 +1,101 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Tree",
+      "DisplayName": "Rawr.Tree"
+    },
+    "ClosedComment": "xemnosyst appears to be happy now, so closing issue",
+    "ClosedDate": "2010-01-09T08:33:21.43-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "It seems the only glyph that I can (un)check to change my healing numbers at all is Glyph of Lifebloom.  I'm sure this shouldn't be the case, since Wild Growth is my top priority spell, so I'm sure it's glyph should have an effect.  So should Rejuventation.\n \nSteps to reproduce: load up the file I attached & click around in the glyphs section.",
+    "LastUpdatedDate": "2017-11-27T11:05:40.817-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-12-12T13:43:56.28-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Tree] Malfunctioning Glyphs?",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15382
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2622,
+      "FileName": "tree-t8.xml",
+      "DownloadUrl": ".\\2622"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Scratch that about rejuvenation.  It doesn't affect sustained healing because haste doesn't affect healing output given a fixed number of casts.  Wild growth, though, that one I don't understand unless it's bugged.",
+      "PostedDate": "2009-12-12T13:58:17.33-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "First, I notice in the attached file that you did not select the Wild Growth spell. Now I understand that you cannot cast Wild Growth in such cases ;)\r\n\r\nYou do not appear to go out of mana. I will have to add information about this in the appropriate tab, but I can see it in the debugger. You can also see it when you look at relative stat values: mp5 is not important. You can see in the \"mana sources\" break down where your mana comes from. I have my doubts about the spirit healing, it appears to be too high. Also, you didn't select \"Use own innervate\" so innervate wasn't calculated. Maybe I do have a bug there where it may not account for mana from glyph.\r\n\r\nYou selected a target single target healing of 0. Why was that? If you mean \"I'm not interested\", I can add that to the model if you like. Glyph of Nourish and Glyph of Swiftmend only appear if you select a higher value here anyway. They don't matter for sustained dps, because you did not add them in your fight profile.\r\n\r\nAlso , you selected an idle time of 100%. This forbids casting of Nourish. Set it to 0 for Nourish use. However, you will see no results then, because you still have a total hot casting percentage >= 100% and wild growth selected. If you decrease the cast time spent on hots, you will allow casting time for the primary spell.\r\n\r\nDoes this provide you with the appropriate answer to your issue?",
+      "PostedDate": "2009-12-12T14:54:59.957-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Whoa.  Those talent choices are definitely not what I selected.  I optimized for talents at once point, then forgot to go check what it chose for me.  Sorry for making you find my own error for me!\r\n\r\nIn answer to your question, there are definitely times when I don't care about single-target healing.  And thanks for taking the time to give all the extra information :).",
+      "PostedDate": "2009-12-12T15:09:48.157-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-14T23:50:09.97-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-09T08:33:21.43-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-09T12:30:54.787-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T18:07:41.653-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:09:45.937-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:24.887-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:02.713-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:05:40.817-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-09T17:31:30.813-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Many of the dialogs in Rawr end up sized incorrectly when the system is set to something other than 96 DPI.  I've seen in other issues the idea that setting your DPI is a mistake on the part of the user.  This is incorrect, the problem can be fixed easily from within Rawr itself.\n \nTo fix the \"Edit Items\" dialog for example, using Visual C# Express:\n \n1. Under the \"Rawr\" project in the Solution Explorer, double-click on FormItemEditor.\n2. Right-click on the background of dialog editor, outside the dialog itself, and select \"Properties\".  This will bring up the properties editor it is not already visible, and highlight it if it is.\n3. In the properties editor, find the \"AutoSize\" setting.\n4. Set AutoSize to \"True\".\n5. Save the dialog and rebuild the project.\n \nWith this change the dialog will be the correct size whatever DPI is set in Windows.  The same fix should apply to most dialogs that in Rawr that end up the wrong size.  I've tested under Windows XP, I imagine it's the same under Vista.",
+    "LastUpdatedDate": "2013-05-16T05:25:52.24-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-04-13T04:31:05.69-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "DPI and incorrect dialog sizing, fix included",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 12985
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

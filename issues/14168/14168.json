@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Items",
+      "DisplayName": "Rawr.Base.Items"
+    },
+    "ClosedComment": "User stated issue was resolved.",
+    "ClosedDate": "2009-09-16T05:12:35.147-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The following seems to have been accidentally spammed all through ItemCache.xml : \n \n <Warlock2T9>0</Warlock2T9>\n <Warlock4T9>0</Warlock4T9>",
+    "LastUpdatedDate": "2013-05-16T05:24:20.213-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-09-15T23:09:01.61-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Items] ItemCache.xml \"Warlock2T9\" spam",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14168
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "It appears something in the code is adding those lines whenever the file is saved.",
+      "PostedDate": "2009-09-15T23:19:06.593-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This seems to fix it, not sure if there are any side-effects though.\r\n<code>\r\n--- old/Rawr.Base/Stats.cs\tWed Sep 16 16:30:11 2009\r\n+++ new/Rawr.Base/Stats.cs\tWed Sep 16 16:29:23 2009\r\n@@ -3695,7 +3695,7 @@\r\n             set { _rawMultiplicativeData[(int)MultiplicativeStat.Warlock4T8] = value; }\r\n         }\r\n \r\n-        [System.ComponentModel.DefaultValueAttribute(0.10f)]\r\n+        [System.ComponentModel.DefaultValueAttribute(0f)]\r\n         [Percentage]\r\n         [DisplayName(\"% increase to your pet's critical strike chance with its abilities\")]\r\n         [Category(\"Warlock\")]\r\n@@ -3705,7 +3705,7 @@\r\n             set { _rawMultiplicativeData[(int)MultiplicativeStat.Warlock2T9] = value; }\r\n         }\r\n \r\n-        [System.ComponentModel.DefaultValueAttribute(0.10f)]\r\n+        [System.ComponentModel.DefaultValueAttribute(0f)]\r\n         [Percentage]\r\n         [DisplayName(\"% increase to damage done by your Immolate, Corruption and Unstable Affliction spells\")]\r\n         [Category(\"Warlock\")]\r\n</code>",
+      "PostedDate": "2009-09-15T23:34:06.533-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Can you upload that code to the Patches section please?",
+      "PostedDate": "2009-09-15T23:53:32.98-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "nvm it's been fixed already (my file was a little old).\r\n\r\nPlease Close.",
+      "PostedDate": "2009-09-16T01:23:05.647-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-16T05:12:35.147-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T15:47:52.617-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:00.887-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:20.213-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

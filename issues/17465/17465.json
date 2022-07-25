@@ -1,0 +1,101 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.LoadCharacter",
+      "DisplayName": "Rawr.Base.LoadCharacter"
+    },
+    "ClosedComment": "Closed, unable to reproduce and a new version has been posted",
+    "ClosedDate": "2010-07-02T13:14:18.703-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "On attempting to load my character in Rawr3, either from a saved XML from Rawr2 or from the Armory, I get the following error. Once it occurs, I can't do anything meaningful within the program without prompting the error to reappear. All of my gear appears to load, as do my talents, but I'm a Warlock and staring at gear listing Mitigation, Survival, and Threat, so something is clearly not going right.\n \nSteps to Reproduce:\n1. Launch Rawr3, either in browser or from desktop.\n2. Load attached character file, or load US/Aegwynn/Deowyn from the Armory.\n3. Observe error message and ensuing behavior.\n \nAdditional Information:\nRawr3 Beta\nWindows XP\nFirefox 3.6.3 (or launched via start menu)\n \nError Message:\n[InvalidOperation_IComparerFailed]\nArguments:\nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=3.0.50106.0&File=mscorlib.dll&Key=InvalidOperation_IComparerFailed\n \nat System.Collections.Generic.ArraySortHelper`1.Sort(T[] keys, Int32 index, Int32 length, IComparer`1 comparer)\nat System.Array.Sort[T](T[] array, Int32 index, Int32 length, IComparer`1 comparer)\nat System.Collections.Generic.List`1.Sort(Comparison`1 comparison)\nat Rawr.UI.GraphDisplay.FilterTopXGemmings(List`1 listItemCalculations)\nat Rawr.UI.GraphDisplay.UpdateGraphGear(String subgraph)\nat Rawr.UI.GraphDisplay.UpdateGraph()\nat Rawr.UI.MainPage.ItemCacheInstance_ItemsChanged(Object sender, EventArgs e)\nat Rawr.ItemCacheInstance.OnItemsChanged()\nat Rawr.ItemCache.OnItemsChanged()\nat Rawr.UI.MainPage.EnsureItemsLoaded(String[] ids)\nat Rawr.UI.MainPage.OpenCharacter(Object sender, RoutedEventArgs args)\nat Rawr.UI.MainPage.FileMenu_SelectionChanged(Object sender, SelectionChangedEventArgs e)\nat System.Windows.Controls.Primitives.Selector.OnSelectionChanged(SelectionChangedEventArgs e)\nat System.Windows.Controls.Primitives.Selector.InvokeSelectionChanged(List`1 unselectedItems, List`1 selectedItems)\nat System.Windows.Controls.Primitives.Selector.SelectionChanger.End()\nat System.Windows.Controls.Primitives.Selector.NotifyListItemSelected(ListBoxItem listBoxItem, Boolean isSelected)\nat System.Windows.Controls.ListBoxItem.OnIsSelectedChanged(Boolean oldValue, Boolean newValue)\nat System.Windows.Controls.Primitives.Selector.OnIsSelectedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)\nat System.Windows.DependencyObject.RaisePropertyChangeNotifications(DependencyProperty dp, Object newValue, Object oldValue)\nat System.Windows.DependencyObject.SetValueInternal(DependencyProperty dp, Object value, Boolean allowReadOnlySet, Boolean isSetByStyle, Boolean isSetByBuiltInStyle, PropertyInvalidationReason reason)\nat System.Windows.DependencyObject.SetValueInternal(DependencyProperty dp, Object value)\nat System.Windows.DependencyObject.SetValue(DependencyProperty property, Boolean b)\nat System.Windows.Controls.ListBoxItem.set_IsSelected(Boolean value)\nat System.Windows.Controls.Primitives.Selector.OnListBoxItemClicked(ListBoxItem item)\nat System.Windows.Controls.ListBoxItem.OnMouseLeftButtonDown(MouseButtonEventArgs e)\nat System.Windows.Controls.Control.OnMouseLeftButtonDown(Control ctrl, EventArgs e)\nat MS.Internal.JoltHelper.FireEvent(IntPtr unmanagedObj, IntPtr unmanagedObjArgs, Int32 argsTypeIndex, String eventName)\n \n[Arg_NullReferenceException]\nArguments:\nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=3.0.50106.0&File=mscorlib.dll&Key=Arg_NullReferenceException\n \nat Rawr.UI.ComparisonGraph.CompareItemCalculations(ComparisonCalculationBase a, ComparisonCalculationBase b)\nat System.Array.FunctorComparer`1.Compare(T x, T y)\nat System.Collections.Generic.ArraySortHelper`1.QuickSort(T[] keys, Int32 left, Int32 right, IComparer`1 comparer)\nat System.Collections.Generic.ArraySortHelper`1.Sort(T[] keys, Int32 index, Int32 length, IComparer`1 comparer)",
+    "LastUpdatedDate": "2013-05-16T05:20:52.123-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-04-28T20:38:11.803-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[LoadCharacter] InvalidOperation on Load of Character, Prevents Further Use",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17465
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3455,
+      "FileName": "Deowyn.xml",
+      "DownloadUrl": ".\\3455"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I managed to open your saved file into Rawr3 but got errors on reload, even when trying to reload the original file. Not the greatest workaround but I had no problems opening and refreshing from Armoury using 2.3.15, maybe you can save file using Rawr2 then open with Rawr3 if you need to from there.",
+      "PostedDate": "2010-04-28T21:38:38.947-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-29T01:50:20.503-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The attached XML file comes from 2.3.15.  I have no problems opening it and working with it in Rawr2.",
+      "PostedDate": "2010-04-29T05:09:19.487-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I can't reproduce this. Opening the attached xml in http://elitistjerks.com/rawr.php correctly opens in Warlock model.",
+      "PostedDate": "2010-05-01T17:59:40.217-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Not getting it with the XML file now, but still getting it when I try to load from Armory.",
+      "PostedDate": "2010-05-05T09:44:50.193-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T13:14:18.703-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T15:55:08.447-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-11-22T19:56:47.293-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:40:45.093-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:28:37.833-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:52.123-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

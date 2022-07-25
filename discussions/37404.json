@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "124111",
+    "ThreadId": "37404",
+    "Html": "I'm leaving for BlizzCon this afternoon, but will be working on Rawr on the way. Hopefully tonight I can check in the new buffs system. It's very important that models check that they're handling all the relevant stats, and expecting the right scale of values from each stat. (ie, 5% crit is Crit=0.05, not Crit=5).<br>\r\n<br>\r\nI'll be off of instant messanger, but will be checking e-mail and this site and EJ often, and continuing to work on Rawr with every spare moment.<br>\r\n",
+    "PostedDate": "2008-10-09T11:01:50.843-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "124316",
+    "ThreadId": "37404",
+    "Html": "What do we have to change for things to work with the &quot;new buffs system&quot;?<br>\r\n",
+    "PostedDate": "2008-10-10T08:20:54.89-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "124337",
+    "ThreadId": "37404",
+    "Html": "The main thing I noticed was the introduction of PhysicalCrit and SpellCrit. You should check that you are using the right one.<br>\r\n<br>\r\nExtra remark: Removed. Was stupid.<br>\r\n",
+    "PostedDate": "2008-10-10T09:13:51.013-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "124340",
+    "ThreadId": "37404",
+    "Html": "There is replenishment.&nbsp; It's ManaRestoreFromMaxManaPerSecond.&nbsp; Also, Judgement of Wisdom, while still named the same (ManaRestorePerHit), is now a percentage of max mana restored per hit.&nbsp; So instead of the old value of 37, it now carries 0.02.&nbsp; There's other changes in there as well, but nothing terribly breaking.<br>\r\n",
+    "PostedDate": "2008-10-10T09:28:38.19-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "124432",
+    "ThreadId": "37404",
+    "Html": "My suggestion is to just look at Buffs.cs, in the GetDefaultBuffs() method. It's all collapsed into regions, so you can quickly skim through each catagory of buff. Just look at buffs that you know your model cares about, see what stats it's using, and make sure you're handling them.$0Crit now comes from PhysicalCrit, SpellCrit, and CritRating.$0$0Same for haste with PhysicalHaste, SpellHaste, and HasteRating.$0$0But again, just look through the default buffs, should be quick with everything collapsed so you can just skim to buff catagories your class can use.$0",
+    "PostedDate": "2008-10-11T00:59:29.21-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

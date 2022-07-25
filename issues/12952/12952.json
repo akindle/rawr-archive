@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Fixed for v2.2.0.9",
+    "ClosedDate": "2009-04-16T08:14:39.167-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "If rawr is close to the right edge of the screen and you mouse over gear, the tooltip can be placed over the cursor.  This appears to cause the tooltip to constantly redraw and eventually \"give up\" displaying.\n \nMay be hard to recreate.  I think it occurs in all modules, but i was looking at rawr.mage",
+    "LastUpdatedDate": "2013-05-16T05:25:54.3-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-04-06T13:21:25.817-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Tooltip flicker",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 12952
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I see... Alright, I'll see what we can do about that.",
+      "PostedDate": "2009-04-06T22:19:32.813-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I've noted that the issue is that when the window is near to the right of the screen the tooltip X coordinates are moved so that the tooltip appears to the left of the item hovered over. This is correct and as expected behaviour. The only issue is that the position of the X coordinate of the tooltip appears so that for item slots the tooltip's right edge is anchored to the right of the item slot instead of the left of the item slot. As a result the tooltip appears over the item slot and so the mouse appears over the tooltip, this then causes recursive redrawing of the tooltip.\r\n\r\nWith the graphs the right edge of the tooltip is anchored to the middle of the item text again this causes the issue of tooltip redrawing if the user moves the cursor over the tooltip.\r\n\r\nSo the solution is simple if you have to change the default anchoring then anchor the right of the tooltip to the left of the item that it is hovering over.",
+      "PostedDate": "2009-04-13T15:01:20.297-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yep, sounds right.",
+      "PostedDate": "2009-04-13T15:53:05.503-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-04-16T08:14:39.167-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:58.973-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:54.3-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

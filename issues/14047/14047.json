@@ -1,0 +1,100 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Retribution",
+      "DisplayName": "Rawr.Retribution"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-09-17T12:05:04.33-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Minor issue, but base stats for retribution paladin are a little off.  Listed below are my base stats from armory/ingame vs when imported into Rawr, with all buffs unchecked:\n(armory/ingame vs Rawr)\nStrength: 1839 vs 1840\nAttack Power: 4385 vs 4407\nCrit Chance: 30.30% vs 25.50%\nDodge Chance: 0.25% vs 0.19% (taken from having Seal of Corruption up, giving 25 expertise (6.25%). 6.5%-6.25%=0.25%)\nAttack Speed: 3.08 vs 2.98\n \nAll these discrepencies seem to be throwing off final numbers after buffs, etc.  Anyone else able to verify this or replicate this issue?\n \nhttp://www.wowarmory.com/character-sheet.xml?r=Lightninghoof&n=Heng",
+    "LastUpdatedDate": "2013-05-16T05:24:33.47-07:00",
+    "PlannedForRelease": "Rawr 2.2.14",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-09-03T20:57:33.673-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Retribution] Base Stats Off",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14047
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Str/AP will be slightly off due to rounding issues. 20ap difference is significant enough that it's not rounding though, so there's something off slightly there.\r\nCrit is correct; you get 4.8% less crit against 83s.\r\nExpertise does work in fractional portions, despite what the character screen says.\r\nAttack Speed difference sounds like a missing buff? ie, Swift Retribution?",
+      "PostedDate": "2009-09-03T21:26:36.21-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The attack speed difference is most likely caused by averaging the effect of Bloodlust over the whole fight. This can be disabled from the options panel.\r\n\r\nThe only difference that doesn't make sense is the Attack Power, I will check that out later.",
+      "PostedDate": "2009-09-04T10:19:04.69-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-04T10:22:29.22-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The difference is Berserking",
+      "PostedDate": "2009-09-04T10:41:23.25-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Berserking should not effect what is listed in the calculations pane, since the stats displayed are before averaging special effects.",
+      "PostedDate": "2009-09-04T11:41:02.07-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ah sorry, didn't realize you had limited that",
+      "PostedDate": "2009-09-04T14:22:49.82-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Wow, you guys are really on top of these posts!  Thank you for the prompt and detailed responses.  After checking, Ermad, you're correct.  Unchecking Bloodlust brings speed to match what's listed on my character screen/armory.  I appreciate the work you guys do and the attention to details in your work.  Thanks from a devout user.",
+      "PostedDate": "2009-09-04T19:14:45.52-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-17T12:05:04.33-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T17:17:54.187-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:40:45.093-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:15.887-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:33.47-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

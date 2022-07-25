@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "155953",
+    "ThreadId": "46670",
+    "Html": "The Rawr.Moonkin module has now entered its third real iteration of development with the advent of Spell Calculation Engine 3.0.&nbsp; This spell calculation system is based on Adoriele's incomparable WrathCalcs spreadsheet math, combined with a novel new way of handling trinket procs in an attempt to model them as accurately as possible.&nbsp; I've just checked in the basics of the calculation engine, and I'd like to hear feedback from anyone who has a mind to download the source and test it.&nbsp; Post your results in this thread, and I'll check back here often and update you guys as finalization work progresses.<br>\r\n<br>\r\nTHINGS I ALREADY KNOW ABOUT:<br>\r\nI believe the damage increases for using DoT spells and Eclipse are overestimated.&nbsp; If things look way off when looking at IS/MF/SF and IS/MF/W rotations, I'm already looking into it.<br>\r\n<br>\r\nDPM and mana usage for Eclipse rotations are not currently calculated.&nbsp; Mana regen charts will not work if one of these rotations is selected, and may cause Rawr to crash.&nbsp; Please don't.<br>\r\n<br>\r\nTHINGS I'D LIKE TO KNOW ABOUT:<br>\r\nCheck the trinkets out.&nbsp; I've only re-modeled the Lich King trinkets, so if you have a BC trinket, I dropped support for it in this release.&nbsp; Sorry.&nbsp; I can re-add these on an as-needed basis, though.<br>\r\n<br>\r\nPlay around with the spam Eclipse rotations.&nbsp; It was hard work translating the convoluted formulas in that Excel spreadsheet into C# code.&nbsp; I feel confident about those particular numbers, but I want to make sure.<br>\r\n<br>\r\nWith that, let the games begin!<br>\r\n",
+    "PostedDate": "2009-02-09T12:49:43.053-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "156232",
+    "ThreadId": "46670",
+    "Html": "I found the bug related to overestimated DPS for DoT + Eclipse rotations and checked in the fix.&nbsp; Please feel free to test out using those rotations.<br>\r\n",
+    "PostedDate": "2009-02-10T06:49:33.273-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "156315",
+    "ThreadId": "46670",
+    "Html": "Were I a moonkin, you'd make me a happy moonkin.<br>\r\n",
+    "PostedDate": "2009-02-10T09:46:20.777-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "156406",
+    "ThreadId": "46670",
+    "Html": "That's the idea. :)<br>\r\n<br>\r\nNew update:&nbsp; I have added full mana calculations for spam Eclipse rotations, and everything except Omen of Clarity for DoT+Eclipse rotations.&nbsp; MP5 and Mana Gain charts should work, Time To OOM should update correctly, etc.&nbsp; The numbers on DoT+Eclipse will be slightly off of reality because I didn't calculate the effects of Omen, which is noticeable, but it's a long formula that I don't have time to unravel today.&nbsp; Coming soon.<br>\r\n",
+    "PostedDate": "2009-02-10T13:13:29.39-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "156459",
+    "ThreadId": "46670",
+    "Html": "I haven't tested from your source or anything, but how are you going to show &quot;dynamic&quot; spell rotation switches?&nbsp; For instance, eclipse will obviously change what spell rotation you're using, as might improved insect swarm.&nbsp; Also, it's possible that during certain phases of a fight or during certain trinket procs or 'use' effects, a different rotation would be &quot;optimal&quot; than might otherwise be the case.&nbsp; I just hope you take all of this into account with your moonkin model, since my 80 alt is a resto/moonkin swapper (dependin' on what the raid needs), I'd like to make sure I have good gear for it.&nbsp; If you look at the mage model, it does a <em>phenomenal</em> job of showing how the different rotations and cooldowns stack with each other and are used in conjunction with each other.&nbsp; Hopefully you'll be able to implement some way of showing this sort of thing :)<br>\r\n",
+    "PostedDate": "2009-02-10T15:48:57.697-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "156476",
+    "ThreadId": "46670",
+    "Html": "Sorry, but the Moonkin model is nowhere near as sophisticated as the Mage model, for the simple reason that Moonkin DPS is nowhere near as sophisticated as Mage DPS.&nbsp; Rawr is also primarily a gear selection tool, not a rotation calculator.&nbsp; If you're looking for advice as to exactly what spell gets cast at exactly what time, or when the best time to pop your trinkets/cooldowns is, Rawr can't really help you.&nbsp; As opposed to Mages, who live on cooldown stacking and careful timing of their abilities to maximize DPS, Moonkin pretty much just faceroll the same handful of buttons, and so trinkets/CD's are used as they come off cooldown.<br>\r\n",
+    "PostedDate": "2009-02-10T17:33:21.457-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "156678",
+    "ThreadId": "46670",
+    "Html": "I added in the calculations for Omen of Clarity with DoT+Eclipse rotations.&nbsp; This makes the rewrite feature-complete, so now I'm just looking for people to find issues with the code so I can fix them before release.&nbsp; I will note that in certain circumstances, the Relative Stat Values charts display an incorrect value for Intellect.&nbsp; I am unsure why this stat is so different or what boundary conditions are causing the issue, but for now, if you notice Intellect being shown as higher than spell power, please save that XML file and send it to me so that I can find some commonalities.<br>\r\n",
+    "PostedDate": "2009-02-11T07:50:33.543-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

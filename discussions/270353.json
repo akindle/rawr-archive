@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "663147",
+    "ThreadId": "270353",
+    "Html": "\r\n<p>Is the order of the listed information of importance?</p>\r\n<p>I understand most lines are &quot;this combination should be used and it should be used for X seconds&quot;.</p>\r\n<p>But, when?&nbsp;</p>\r\n<p>I suspect a lot of it is a result of&nbsp;</p>\r\n<p>1. &quot;The line that has most cooldowns together and the highest DPS&quot; has priority</p>\r\n<p>2. &quot;When one of the coooldowns drops off [because it simply had shorter duration], keep using the other line with less cooldowns&quot;</p>\r\n<p>and so on</p>\r\n<p>But it sounds cryptic.</p>\r\n<p>Also, could a graph of the combinations over each combination's duration be useful? I thought of asking for such a feature but since I don't understand spell cycles well, I'd rather make this question instead.</p>\r\n<p>How exactly is it read? Is there a &quot;rotation&quot; hidden there?</p>\r\n",
+    "PostedDate": "2011-08-25T04:14:25.96-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "663422",
+    "ThreadId": "270353",
+    "Html": "<p>There is no priority implied, just how long each combination was used in the result from the solver.</p>\r\n<p>To get a graph of it check the mage specific sequence reconstruction chart (you will have to enable sequence reconstruction in advanced options). First you should notice that the default solver result looks a bit like a mess, because there's not much reconstruction going on, basically some more costly constraints are broken. It's fast to get calculations, but it's trading some accuracy to achieve that.</p>\r\n<p>If you're asking yourself what would be the best way to use cooldowns then I would suggest the following. First in advanced options there's a new experimental feature for Simple Stacking. That will give you very naive stacking, which is in general suboptimal, but will give you an idea how much you can get out of trinkets if you're not playing exactly perfect. Next would be to enable genetic solver in advanced options. That should give you the optimal way to use the cooldowns. I'd suggest running it several times to make sure you got the best result (you can monitor the progress of calculations in solver log tab).</p>\r\n<p>Let me know if you have any more questions.</p>",
+    "PostedDate": "2011-08-25T12:19:33.047-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "663740",
+    "ThreadId": "270353",
+    "Html": "<p>Is Simple Stacking simpler than the default or a more complex way of doing it? If don't understand why one would use it if it's simpler. Or is it only when one tries to simulate a more \"clumsy\" way of playing as you said?</p>\n<p>Genetic Solver appears to produce a very complex list of spell cycles. [It also appears to higher DPS but this does not affect the optimizer. This appears to make it tricky to use it to adjust gear.]</p>\n<p>&nbsp;</p>\n<p>I'm still back at the basics. After all those options affect the Spell Cycles list, how is it read? \"Use the line with the highest DPS and then go gradually down with DPS\"? If that's the case I guess it should be sorted by DPS. But it's not. I wonder if  the list order has any significance.</p>",
+    "PostedDate": "2011-08-26T04:27:38.61-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "664009",
+    "ThreadId": "270353",
+    "Html": "<p>Ok let me try to explain what's going on. When you're playing you obviously have to use a cooldown and it lasts for certain amount and then you have to wait until it's ready again. Now the default solver doesn't look at things quite in the same way. It is more similar to the following looking at the big picture. If I used this cooldown maximum possible time in this fight, how many seconds total of uptime would that be. Now for these two cooldowns together, how long could I use them together without losing any uptime on individual cooldowns. After it computes this it kind of forgets about activations and cooldowns and just thinks in terms of limits on how long can any particular combination be activated at max. Now it tries to solve for overall optimum stacking of all cooldowns, using the above as constraints. Since it doesn't care about activations and cooldowns at that point anymore it'll mess things up, i.e. it will come up with activation orders that aren't quite possible to execute in reality. In general it gives a close upper bound on the actual optimum. Advanced solver (cooldown segmentation and advanced constraints) can then further finesse that result and add any missing constraints that it missed to get the true optimum).</p>\r\n<p>Simple Stacking takes a completely different approach. It goes basically like this. It tells solver that it doesn't want it to mess with cooldowns at all, I'll give you exactly the order in which things are activated. The way it does this is on each burn it activates all things together, followed by any on use things that were put on cooldown and then evocation. It repeats this until the end of fight. It then tells the solver not to touch this and just tell me which spell cycles to use if one would activate cooldowns in this way. Also if you have more than one on use effect it'll try all combination in which order you activate them and give the best one. The way it works is guaranteed to give you something that you can actually execute in practice, but it will also be very naive since it only considers a very limited number of options.</p>\r\n<p>Both the default solver and simple stacking work on display calculations and on comparison calculations, so you can use either one for optimizations. Genetic solver on the other hand is a lot slower and will only work for display calculations, so it won't affect optimizations in any way. It works similar to simple stacking, except it considers all possible ordering of activations/deactivations of all cooldowns. It also considers overlapping of cooldowns with evocation which neither of the other solvers do at the moment and is probably why it's giving you higher results than default solver.</p>\r\n<p>Now to the basics on how to read the results. I would suggest not to look at Spell Cycles at all. As I said before there is no implied priority in that listing. Like I said what I do usually is enable sequence reconstruction and look at the sequence reconstruction chart. That should tell you a lot more clearly in what order to use your cooldowns. Were you able to get the sequence reconstruction chart to work?</p>",
+    "PostedDate": "2011-08-26T11:50:52.213-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "669948",
+    "ThreadId": "270353",
+    "Html": "<p>Thank you very much for the long reply, you are very kind.</p>\r\n<p>Yes, I have made the reconstruction graph to show.&nbsp;</p>\r\n<p>So, if I&nbsp;understand&nbsp;this correctly, an optimal way to read results is to use genetic solver and reconstruction and see intuitively on the graph the points in time cooldowns are used that result to the damage shown on the graph.</p>",
+    "PostedDate": "2011-09-09T18:25:26.3-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "670567",
+    "ThreadId": "270353",
+    "Html": "<p>Yes I find reading the chart the easiest. You can check the sequence reconstruction field in solution for exact times and cycles, but I find that more difficult to get a good overview impression.</p>",
+    "PostedDate": "2011-09-12T05:54:32.317-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

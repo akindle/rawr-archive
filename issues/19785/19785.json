@@ -1,0 +1,186 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Moonkin",
+      "DisplayName": "Rawr.Moonkin"
+    },
+    "ClosedComment": "I&#39;m going to close this for the following reasons&#58;1&#41; Discussion on the topic of what, exactly, treant hit scales off of is not appropriate here.  See me at EJ to continue the topic.2&#41; The request for displaying treant hit &#37;&#47;rating to cap is fulfilled.3&#41; The issue of preferring spirit vs. hit is left as-is due to two different conflicting user requirements - I can&#39;t satisfy everyone all the time.",
+    "ClosedDate": "2011-01-26T07:35:31.917-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I noted that when comparing what should have been identical gems \"Purified\" vs \"Veiled\" cuts, that the Veiled cut was rated marginally higher than the Purified. The difference in the cut is Purified is Spirit & Int, Veiled is Hit & Int.\n \nI did a bit of digging and found that the difference seems to be down to the fact that Treants are coded as using physical hit. Now assuming this is true it will be a dps increase for some players to have some spirit changed to hit rating. It won't effect our spell hit rating but it will affect the treants.\n \nI thought it would therefore be a good idea to show Treant hit rating percentage so that we know if we are capped or not. I've not tested it but I'd assume it counts as a special and is therefore 8% hit, although I notice that they are currently coded as \n \nfloat missRate = Math.Max(0f, StatConversion.WHITE_MISS_CHANCE_CAP[bossLevel - playerLevel] - meleeHit);\n \nWhich suggests its using the 8% hit.\n \nSo basically looking for an extra display item added to CharacterCalculationsMoonkin that shows Treant Hit chance.",
+    "LastUpdatedDate": "2013-05-16T05:18:55.817-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-01-21T06:41:38.363-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Feature Request.Moonkin] Treants hit rating",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 19785
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4488,
+      "FileName": "just_spirit_based_hit.jpg",
+      "DownloadUrl": ".\\4488"
+    },
+    {
+      "FileId": 4489,
+      "FileName": "no_hit_at_all.jpg",
+      "DownloadUrl": ".\\4489"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "This would also suggest that the default priority for reforging should perhaps be \"reforge hit over spirit\"",
+      "PostedDate": "2011-01-21T06:50:29.147-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Or on thinking about it more does it not suggest that hit is actually more valuable up to the cap, albeit marginally and thus we should be able to change reforges from crit->spirit to crit->hit to see what the actual effect is.",
+      "PostedDate": "2011-01-21T07:13:15.877-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm planning on leaving the default as spirit over hit because the delta is so small, and because many moonkin prefer to use spirit because their offspec is resto and the hit rating would be worse than useless.  That being said, I'll consider the feature request for adding treant hit/miss chance to the display, though again, since it's such a small delta, I wouldn't expect it to be hugely important.",
+      "PostedDate": "2011-01-21T07:56:01.167-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I appreciate its a small value however people have been known to change things around for even smaller tweaks in their gear - The more money than sense crowd ;) \r\nFrom my own perspective I find it interesting to see how a simple reforging decision could add a few extra dps. Just changing reforges of spirit to hit on my own lowly 346 gear added extra 43 dps.",
+      "PostedDate": "2011-01-21T08:39:26.073-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-22T07:13:45.147-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "When you say the treants are coded to use physical hit are you saying \"Coded in WoW\" or \"Coded in Rawr\"? I'd think this needs testing in game to confirm before making changes (going to check now).",
+      "PostedDate": "2011-01-22T18:21:37.927-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok, I just tested this (only once so it's not concrete - will test a few more times once cooldowns are back up).\r\n\r\nTreants on a Raiding (??) dummy - 29 attacks, 21 hits, 7 glancing and 1 crit. No misses (at least not that recount recorded).\r\n\r\nI have ~13.5% spell hit and ~2.7% melee hit. On the face of it, it looks like the treants are using spellhit to get over the 8%. The majority of my hit comes from spirit not straight hit. I'll try again naked so I've got no hit, and again making sure I've *only* got spirit related hit on me and post results.",
+      "PostedDate": "2011-01-22T18:31:51.807-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok, tested zero hit for both melee and spell;\r\nTreants: 28 hit, 13 glancing, 4 miss, 1 dodge. Miss is 8.7%\r\n\r\nTested with just spirit based hit which gives me ~9.1% spellhit and 0% melee.\r\nTreants: 25 hit, 8 glancing, 1 dodge - No misses.\r\n\r\nI know these are small tests but seems to me that the treants are using our spellhit and it doesn't matter whether it comes from spirit.",
+      "PostedDate": "2011-01-22T18:42:37.71-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I did comprehensive testing with both melee and spell hit and I can tell you they're using our melee hit, which is from hit rating only.  I did the testing myself.",
+      "PostedDate": "2011-01-22T20:16:37.54-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I took some time to do longer tests, sorry I couldn't post them earlier. I'm curious what sort of stats you were seeing Dopefish, because I just don't see the 8% miss chance. I *DID* see more misses once I did longer testing but nowhere near 8%. Again, tested with 0% melee hit and 9.1% spellhit. I made sure there were no buffs on the dummy that could account for extra hit. Maybe the test was too short, but out of a dozen treant casts it seemed pretty consistent.\r\n\r\n580 attacks\r\n356 hits 61.4%\r\n161 Glancing 27.8%\r\n17 Parry 2.9%\r\n16 Dodge 2.8%\r\n16 Miss 2.8%\r\n10 Crit 1.7%\r\n4 Blocked 0.7%\r\n\r\nI also retested with 0 Melee and 0 spellhit and was seeing much closer to 8%:\r\n582 attacks\r\n307 hits 52.7%\r\n149 Glancing 25.6%\r\n47 Dodge 8.1%\r\n44 Miss 7.6%\r\n19 Parry 3.3%\r\n8 Crit 1.4%\r\n8 Blocked 1.4%\r\n\r\nIn both sets of testing it would obviously vary a little from cast to cast. But the worst miss rate with 9.1% spellhit was ~4% with a couple casts having no misses at all. With zero spellhit my worst cast gave me ~11% miss and the best ~4%. Possibly I've still used too small a test set (happy to test more) but it seems pretty consistent. So I'm wondering whether something has changed? Maybe blizzard are now factoring some spellhit into it?\r\n\r\nI can also test further in my set that has 2.7% melee and 13.5% spell hit if its worthwhile.",
+      "PostedDate": "2011-01-22T23:34:30.393-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I was actually testing level 80 vs. level 80, but what I was able to verify is that when I was over the spell hit cap but with 0 melee hit, I still got misses.  When I was at 5% melee hit, I got no misses.  That's how I know it follows the melee hit table, which therefore implies an 8% miss rate vs level+3 mobs.",
+      "PostedDate": "2011-01-23T09:31:11.363-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Is it possible however that with the big change in Cataclysm where we are expected to get spirit and not hit rating that they made a change and its now spell hit? I suspect new testing such as Carnacki has done is required to verify the situation in Cataclysm.\r\n\r\nIt would make a lot of sense if they changed this to be spell hit given its a lot less likely we would be melee hit capped.",
+      "PostedDate": "2011-01-24T02:04:48.163-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You didn't read what I said, did you.  I said, I was _spell hit capped_ with _0 melee hit_ - that is, ALL of my hit rating was from Spirit.  I got misses.  That means that they do _not_ use our spell hit from spirit.  Please, people, I understand how badly you want to be right, but I did spend quite a bit of time testing all this.",
+      "PostedDate": "2011-01-24T04:16:28.733-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Dopefish, I do understand what you're saying but in the last test cases I ran there was a noticeable drop in misses when I equipped more spellhit. But I was testing against the raid dummy, so it was 85 v 88 not 80 v 80. If you were just testing 80 v 80 its apples/oranges. I'm happy to be proved wrong, but the tests I've done so far don't bear that out.\r\n\r\nWhen I had zero hit of *any* kind it sat pretty nicely on the 8% mark, but once I equipped spellhit *but* still zero melee hit the miss rate dropped considerably. I know the very first test I ran was flawed since it was only one treants cast at each amount of hit, but the second testing was about a dozen treant casts with each gear set and the percentages I was seeing were fairly consistent within themselves.\r\n\r\nAnd as I said, I'm more than happy to run further testing if it's of use. I'm actually trying to build a high spirit set for healing so I'll be able to test spellhit capped if you want - in about 3 days time though.",
+      "PostedDate": "2011-01-24T05:43:35.433-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The actual level delta isn't important, as long as you observe the proper hit caps.  There's no magical mechanic when fighting against a higher-level mob as compared to one of the same level, just different amounts of hit needed.  I will also comment that I ran multiple tests of ~200 swings each, and saw considerable variation in miss rates between all of these tests that had absolutely no correlation to the amount of Hit I had on my gear.  For example, one test was over the spell cap but only 3.5% melee hit, 1.5% short of the melee cap.  I got a 5.5% miss rate.  On the very next test, again over the spell hit cap, I had 0% melee hit, but only a 1.5% miss rate.  Random number generator is random, I guess.",
+      "PostedDate": "2011-01-24T06:03:20.077-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I think there is some warrant of suspicion because you said \"level 80 vs level 80\".  That would make it reasonable to assume that you did these tests back in Wotlk, and not with the actual live 4.0.x\r\n\r\nEven the last beta didn't have all the changes fixed in.\r\n\r\nI'm also finding this suspicious since I recall very clearly some statement of a blue saying something along the lines of \"For all intents and purposes, if you are hitcapped your pet will be hitcapped also\".\r\n\r\nIf you indeed tested with live cata release, then just say so :)\r\n\r\nActually, considering the cap issues, it wouldn't even be unreasonable to state that if indeed you can be spell capped, but the treants are not, that could be argument against current ingame behaviour and needs a fix and it should follow your spellhit rating.",
+      "PostedDate": "2011-01-24T06:07:58.193-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The testing was done 2 weeks ago, on live Cataclysm.  The only reason I didn't test on the raid-boss dummy is because I haven't leveled my moonkin to 85 yet.  I tested multiple combinations of hit ratings, and for sure, being spell hit capped did not cause the treants to be hit capped.  Even if I was spell hit capped purely with hit rating, it didn't work.  If someone wants to build a set where they are over the 8% melee cap but under the 17% spell cap, go out and try 200-500 treant melee swings on the raid boss dummy, and if you get misses in that data set, I will retract my statements.",
+      "PostedDate": "2011-01-24T06:17:37.167-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sorry dopefish not in anyway trying to get at you only there was room for confusion in your statements hence the questions. Perfectly willing to accept your results. For those wanting to prove what you say for themselves suitable tests on raid target dummy would be ... (NB. I'd expect these to fail given dopefish's testing ie: you'd disprove the hypothesis)\r\n\r\n1) 0 melee hit and 17% spirit hit - if you get zero misses on 500 odd treant swings you have proved it is spirit not physical hit\r\n2) 0 melee hit and 8% spirit hit - if you get zero misses on 500 odd treant swings you have proved its 8% cap on spirit - if you get some misses particularly if the rate is around 53% miss then you have proved the rate is proportional to the spirit hit\r\n3) 8% melee hit and < 17% spirit hit - if you get any misses on 500 odd treant swings you have proved it is not physical hit\r\n\r\nAgain I'd expect all those tests to fail given dopefish's testing.",
+      "PostedDate": "2011-01-24T07:58:05.973-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm not trying to sound defensive, either.  I can be wrong.  I just want to be SURE I'm wrong, rather than changing the application every which way based on the data set of the hour.  I do appreciate the work you guys are putting in to helping nail down the answers to all these questions.",
+      "PostedDate": "2011-01-24T09:32:54.947-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-24T16:29:28.093-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "All good Dopefish, I understand you wanting to be sure and I understand that statistics need a large set to be \"trustworthy\". The only reason I' pushing this is the numbers I see when I test don't bear out the 8% melee hit requirement. On a side note, I agree with you that 3 levels higher is three levels higher, so the mob delta shouldn't change anything. However, I'd be concerned that blizzard changed the actual treant abilities so once they hit 85 they may be performing different calculations behind the scenes.\r\n\r\nThe figures in my sunday 5:34 post are with 12 treant casts producing approximately 580 melee swings. Is that a large enough data set for you to feel confident about the results? I've attached screenies of the overall results (they're about 400k each).\r\n\r\nI'll definitely run more tests and post results. I've been working to try to reach hit cap so I have a 17% set now, I think it's about 6% from hit and 11% from spirit. I'll run tests with that tonight and again once I have a 17% purely spirit based set.",
+      "PostedDate": "2011-01-24T16:29:29.61-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-24T16:30:09-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Just attaching second file...",
+      "PostedDate": "2011-01-24T16:30:10.34-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-26T07:35:31.917-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:48:47.153-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:15.82-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:55.817-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

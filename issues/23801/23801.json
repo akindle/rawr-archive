@@ -1,0 +1,65 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Not a bug.  User error.",
+    "ClosedDate": "2013-01-21T14:49:40.697-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The recent change to add ECLIPSE_BASE_PERCENT to the eclipseBonus calculation is causing the base 15% mastery to get double counted.  To most easily see this, run under the debugger and set a breakpoint at\nfloat eclipseBonus = 1 + MoonkinSolver.ECLIPSE_BASE_PERCENT + masteryPoints * 0.01875f;\nwhen you hit the breakpoint, step and you'll see that eclipseBonus has a value of 1.30 where it should have a value of 1.15.  This is because masteryPoints has a value of 8 (which it should for all classes and all specs.  the multiplier 0.01875 is specific to balanace druids and the result of this is the 15% base value.  Adding gear and buffs increases masteryPoints by the correct amount but you end up always having an extra 15% to the bonus that you shouldn't have.   For instance, fully geared and buffed, both the game and Rawr report that mastery is 31.25% but the breakpoint at the above code shows that the calculated bonus is 1.4625 (a 46.25% bonus) which is again 15% too high.",
+    "LastUpdatedDate": "2013-05-16T05:16:54.41-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2013-01-20T08:16:21.887-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Balance druid getting double credit for base mastery",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 23801
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I made this change fairly recently because I noticed that the DPS figures for my test characters were far too low.  I believe that it actually mirrors the correct behavior of the game.  The mastery increases your Eclipse damage bonus; I believe that if you have 0 mastery, the Eclipse bonus would still be 15% base.  Thus, your initial 8 mastery would add another 15% on top of that.  If you check WrathCalcs, it calculates mastery in the same fashion, and thus I believe it is correct.",
+      "PostedDate": "2013-01-21T05:47:17.39-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I see now.  The base 15% damage bonus from Eclipse doesn't show up on the character sheet but only on the tooltip for eclipse on the \"specialization\" page and the total bonus also does not appear on the character sheet but in the tooltip for the buff itself.  I guess it's just coincidence that the base eclipse bonus is 15% and the bonus from ungeared/unbuffed mastery is another 15% for a true base bonus of 30% (as I was seeing under the debugger).",
+      "PostedDate": "2013-01-21T14:48:27.62-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-01-21T14:49:40.697-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:23:26.59-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:16:54.41-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.RestoSham",
+      "DisplayName": "Rawr.RestoSham"
+    },
+    "ClosedComment": "A single change on the character fixes the issue, final fix will be in next re-write of triggers in RestoSham",
+    "ClosedDate": "2010-05-21T18:15:50.427-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I'm experiencing a really weird problem with the value of Mp5 on the stats pane (and hence the MApS).  Using change-set 46409.\nUsing the .xml of Minake (one of my guildies). \nI load it into rawr. \nStats pane shows me at 495 Mp5 and 369 MApS.\nI go to buffs and notice that Improved Blessing of Wisdom isn't checked.  I check it.\nBack to stats and now my Mp5 is showing as 638.5826 and my MApS is 398.\nI go back and uncheck Imp BoW.  Mp5 is now 620.5854 and MApS is 395.\nNo other values are changing.\nLoad in my character (Timetodance).  The above does not occur.  I go from 586 Mp5 to 604 and back to 586 (as I would expect).\n \nI can't figure out why this is happening to one character but not the other.  Doing a compare between the two .xml's the only difference is the available gear.",
+    "LastUpdatedDate": "2013-05-16T05:21:54.953-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-02-11T22:27:25.177-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[RestoSham] MP5 not correct on initial load.",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16313
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2937,
+      "FileName": "Minake - Testing.xml",
+      "DownloadUrl": ".\\2937"
+    },
+    {
+      "FileId": 2938,
+      "FileName": "1a - Timetodance - Resto.xml",
+      "DownloadUrl": ".\\2938"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Evidently the initial load on that character sheet is not pulling the correct MP5 in the first place.  If you again check and uncheck, you'll notice the values staying correct this time and only move by the proper amount.  I assume it's Solace of the Fallen/Defeated that's doing this initially, as changing an MP5 value probably forces it to calculate correctly.  Actually, changing anything on that character, a single tick here or there, even upping a slide-bar by 1 and back fixes it.  I'll keep the issue open to see if it appears with any other item, but I'm defiantely leaning toward it being another issue in the model with Solace, it's been my bane for a while now.\r\n\r\n",
+      "PostedDate": "2010-02-12T20:14:33.507-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-12T20:15:27.873-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ahh, that makes sense.  I'll keep a look out to see if occurs with any other item.",
+      "PostedDate": "2010-02-12T22:47:42-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This appears to be a thread safety issue of some kind. Solace is being processed, giving it's ~125 mp5 then it's losing the value it's getting from that. Compare it with Battle Master's Ruination (both have 150 SP) and they have same value in the chart.",
+      "PostedDate": "2010-04-14T12:44:41.927-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Is this still happening as of most recent release/commit?",
+      "PostedDate": "2010-04-21T22:16:46.433-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-05-21T18:15:50.427-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:29:59.7-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:54.953-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

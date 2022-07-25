@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-10-11T15:33:02.59-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I haven't looked in detail, but I get a NullReferenceException from GetBaseStats, line 29. What happens is one thread already sets _lastLevel, _lastClass, _lastRace and _lastForm, but did not yet compute the _lastStats, the next thread then goes in and expects _lastStats to already be set and to be correct.\n \nTo reproduce start Rawr with class already set to Mage, then change to Warrior for example.",
+    "LastUpdatedDate": "2013-05-16T05:23:54.88-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-10-11T00:19:38.687-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "GetBaseStats Multithreading Issue",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14397
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

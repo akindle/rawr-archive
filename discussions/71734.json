@@ -1,0 +1,122 @@
+[
+  {
+    "Id": "244753",
+    "ThreadId": "71734",
+    "Html": "<p>I am working on cleaning up the Elemental shaman code (e.g. add comments, consistent bracing) but I am not sure if there is a code style guide I should be following. For example I noticed there are some variables that are public, others are hidden behind properties and others just used auto-implemented properties. I don't know which one is the preferred method.</p>",
+    "PostedDate": "2009-10-12T10:13:23.06-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "244757",
+    "ThreadId": "71734",
+    "Html": "<p>Well it is a mix of code written by me and code from Trolando.</p>\r\n<p>Could you go more into detail on what you are referring to?</p>",
+    "PostedDate": "2009-10-12T10:19:28.58-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "244762",
+    "ThreadId": "71734",
+    "Html": "Well I want to be sure that the work I do fits the prefer style. At work<br>we have a set style guide for coding. For example it is preferred to put<br>braces on new lines for if statements and always included them for each<br>case:<br><br>(bad style - work)<br>if ( a = 4 ) {<br>\t... do something<br>}<br>else<br>\t.. do another thing<br><br><br>(good style - work)<br>if ( a = 4 )<br>{<br>\t... do something<br>}<br>else<br>{<br>\t... do another thing<br>}<br><br>Second example is to not put more than one class in a file. The reason<br>behind this was that it is much easier to locate where a class is<br>defined by searching for a file with the same name.<br><br>Final example is to use predefined constants instead of magic numbers<br>(e.g. using public static int MaxValue = 5 instead of using the number 5<br>all over in the code).<br><br>These are the kinds of things I was wondering about.",
+    "PostedDate": "2009-10-12T10:28:56.733-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "244766",
+    "ThreadId": "71734",
+    "Html": "<p>If you are going to be the person taking over Ele then do it how you feel most comfortable. Judging from the above statement you are heading in the direction I would ask for personally and I'm probably one of the most OCD people on the team.</p>",
+    "PostedDate": "2009-10-12T10:45:09.987-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "244769",
+    "ThreadId": "71734",
+    "Html": "<p>Amagad you are the one that's been OCD'in in my code!</p>\r\n<p>&nbsp;</p>\r\n<p>I'm slightly OCD about code as well and I prefer the second one with</p>\r\n<p>if ()<br>{<br>}<br>else<br>{<br>}</p>\r\n<p>&nbsp;</p>\r\n<p>Although I think Jothay likeys the</p>\r\n<p>if () {<br>}<br>else {<br>}</p>\r\n<p>&nbsp;</p>\r\n<p>as I suddenly found some of them in my code :P</p>\r\n<p>&nbsp;</p>\r\n<p>Honestly? It doesn't matter much for me as the indenting is what I read code by anyway. Indentation happens exactly the same, although Jothay's way takes less vertical screen space.</p>",
+    "PostedDate": "2009-10-12T10:49:59.3-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "244773",
+    "ThreadId": "71734",
+    "Html": "On Mon, 2009-10-12 at 10:45 -0700, Jothay wrote:<br>&gt; From: Jothay<br>&gt; <br>&gt; If you are going to be the person taking over Ele then do it how you<br>&gt; feel most comfortable. Judging from the above statement you are<br>&gt; heading in the direction I would ask for personally and I'm probably<br>&gt; one of the most OCD people on the team.<br><br>I have played an elemental shaman for the last year. So I think I have<br>good background to do. Right now I don't understand how the internal<br>code works but that takes time while starting up something new.",
+    "PostedDate": "2009-10-12T10:56:56.717-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "244775",
+    "ThreadId": "71734",
+    "Html": "<p>You only just now noticed those TNSe? That happened like, a LONG time ago...</p>\r\n<p>and to clarify:</p>\r\n<p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre><span style=\"color:Blue\">if</span> (thisValue &gt;= 0) {\r\n    <span style=\"color:Green\">// exec statement</span>\r\n} <span style=\"color:Blue\">else</span> {\r\n    <span style=\"color:Green\">// exec other statement</span>\r\n}\r\n</pre>\r\n</div>\r\nnice, neat, concise, less scrolling, who <em>wouldn't</em> want that?</p>",
+    "PostedDate": "2009-10-12T11:05:35.893-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "244781",
+    "ThreadId": "71734",
+    "Html": "<p>I know, I had to fix up a typo in my own suddenly modified code XD.</p>\r\n<p>&nbsp;</p>\r\n<p>And I agree, ideal is probably if () {, but I'm not so sold on the } else { one. Indenting is the most important &nbsp;for me.</p>",
+    "PostedDate": "2009-10-12T11:18:22.82-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "244785",
+    "ThreadId": "71734",
+    "Html": "<p>The general rule throughout Rawr is to follow Microsoft standard practices.</p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre><span style=\"color:Blue\">public</span> <span style=\"color:Blue\">int</span> PublicMethod(<span style=\"color:Blue\">int</span> input)\r\n{\r\n<pre><span style=\"color:Blue\">    if</span> (<span style=\"color:Blue\">true</span>)\r\n    {\r\n        <span style=\"color:Blue\">int</span> localVariable = 0;\r\n        DoThis();\r\n    }\r\n    <span style=\"color:Blue\">else</span>\r\n    {\r\n        DoThat();\r\n    }</pre>\r\n}</pre>\r\n</div>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre><span style=\"color:Blue\">private</span> <span style=\"color:Blue\">int</span> _privateField = 0;\r\n<span style=\"color:Blue\">public</span> <span style=\"color:Blue\">int</span> PublicField = 0;\r\n<span style=\"color:Blue\">public</span> <span style=\"color:Blue\">int</span> PublicProperty { <span style=\"color:Blue\">get</span>; <span style=\"color:Blue\">set</span>; }\r\n</pre>\r\n</div>\r\n<p>However, in models' code, it's really up to the model developer(s), since they're the ones working on it the most.</p>",
+    "PostedDate": "2009-10-12T11:38:34.07-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "244832",
+    "ThreadId": "71734",
+    "Html": "<p>I try to stick as much as possible to the model Astrylian put forth as an example for ProtWarr, just because that's what has been required at all the various places I've worked so it's force of habit.</p>\r\n<p>I find it to be the most readable overall.</p>\r\n<p>Although sometimes some shorthand stuff (especially with single if() statements doing one thing) sneaks in now and again.</p>",
+    "PostedDate": "2009-10-12T14:47:29.557-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "244866",
+    "ThreadId": "71734",
+    "Html": "<p>I'm not that picky about what coding style others use, but I'm less forgiving about naming guidelines. It would be nice if more people working on Rawr.Base followed the Microsoft guidelines <a href=\"http://msdn.microsoft.com/en-us/library/xzf533w0(VS.71).aspx\">http://msdn.microsoft.com/en-us/library/xzf533w0(VS.71).aspx</a></p>",
+    "PostedDate": "2009-10-12T17:07:43.2-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "244872",
+    "ThreadId": "71734",
+    "Html": "<p>Bracing practices are a religious debate.&nbsp; You like your ways, and I like mine, and what reads well for someone, might make another dev's eyes bleed.&nbsp; If you're the only one in there, then have your way with it.&nbsp; If you have to share space, then come to a consensus.&nbsp; I know at work, we *tend* to brace as per Astry's latest example.&nbsp; And I have a personal pet peeve about seeing the brace start on the same line as the declaration, or statement.&nbsp; But again, that's just me.&nbsp;</p>",
+    "PostedDate": "2009-10-12T17:24:46.6-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "244873",
+    "ThreadId": "71734",
+    "Html": "<p>I personally don't really care as to the placement of the braces. When I first started programming I left the braces on the next line. However now-a-days, I tend to keep the braces right next to the parenthesis.</p>",
+    "PostedDate": "2009-10-12T17:30:27.48-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "245026",
+    "ThreadId": "71734",
+    "Html": "<p>Err you know that I am the current Elemental developer, right?</p>",
+    "PostedDate": "2009-10-13T05:14:19.333-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "245325",
+    "ThreadId": "71734",
+    "Html": "No. I was not aware that there was an elemental shaman developer. The<br>site said there was need of one. Since I am one and can code in C# I<br>applied.",
+    "PostedDate": "2009-10-13T16:06:37.293-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

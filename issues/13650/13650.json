@@ -1,0 +1,130 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.LoadCharacter",
+      "DisplayName": "Rawr.Base.LoadCharacter"
+    },
+    "ClosedComment": "Taiwan Armory is not updated to new talent format as all of the region&#39;s Armories. Use 2.2.8 until it gets updated.",
+    "ClosedDate": "2009-08-08T18:13:03.42-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I am using 2.2.9. The armory webpage displayed well. But either load from armory, or update from armory failed, with error \"Rawr encountered an error retrieving the Character - *** from the armory.\nThanks.",
+    "LastUpdatedDate": "2013-05-16T05:25:05.667-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-07-14T00:52:33.887-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Failed to update from armory.",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13650
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "What character? Are you sure that Rawr is able to contact the Armory (ie, no typos, no firewalls or routers blocking it, etc)?",
+      "PostedDate": "2009-07-14T08:09:18.72-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sorry I cannot type the character's name right now.\r\nI do not know if there is any settings for rawr to use firewalls or whatsoever. My browser still works.",
+      "PostedDate": "2009-07-14T18:20:39.893-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Browser working doesn't matter; try using the Proxy settings in Tools > Options.",
+      "PostedDate": "2009-07-14T19:56:49.96-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The option did not help.... I have never set them, and now I confirmed them to be no proxy.\r\nBTW, I think it really awful that rawr wrap all the errors, and just gives out something meanless.",
+      "PostedDate": "2009-07-15T18:50:09.07-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Probably some sort of virus protection, firewall, etc. Bottom line is that there's something on your end which is blocking Rawr from accessing the Armory.\r\n\r\n\"BTW, I think it really awful that rawr wrap all the errors, and just gives out something meanless.\"\r\nHuh? Clarify?\r\n",
+      "PostedDate": "2009-07-15T20:22:28.67-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "For example, browser always tell us, it is looking up the DNS, it is connecting, it is receiving data, etc.\r\nRawr says, on the other hand, \"Something is wrong!\".\r\nSince there is no log, it is really hard for me to analyze the problem. As you said, probably something is wrong on my end, but with no clue, how could I resolve it....",
+      "PostedDate": "2009-07-16T00:07:53.743-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well, there's no log, because there's nothing to tell. If you can't load any characters from the Armory, it means it's not able to connect at all.",
+      "PostedDate": "2009-07-16T01:09:08.173-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "OK. The armory down helps.\r\nJust now, the armory tw was down. When I opened my character with the browser, it showed an error page. The same time, rawr update told me \"no character returned\". I think this definitely means that my network is OK.\r\nThen, later, the armory was back to normal. I could see my character on web page. The same time, rawr reported the old error.\r\nAnd, as we talked before, rawr is awful on the log thing. There are three steps to load a character, and I do not think the error here means it failed on the first step.",
+      "PostedDate": "2009-07-17T00:01:45.42-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well then, we're back to the original question, What character?",
+      "PostedDate": "2009-07-17T00:06:52.997-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sorry. The character is using the encode sometime I cannot input. 8-)\r\nHere is it. Char: 脫垂. Realm: 世界之樹. Region: TW.",
+      "PostedDate": "2009-07-17T05:59:58.737-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Dude, I have found the problem for you.\r\nArmory.cs, Line 172, the xpath should be like this: \"page/characterInfo/talentGroups/talentGroup[@active='1']\".",
+      "PostedDate": "2009-07-19T07:59:38.89-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks, but you got it backwards. :)\r\n\r\nLooks like the TW armory hasn't been updated to the new armory version yet. I expect it will, soon. Until then, use Rawr 2.2.8 to load your character.",
+      "PostedDate": "2009-07-19T11:21:40.737-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ah, that is weird. I was thinking about maybe TW was different....",
+      "PostedDate": "2009-07-19T18:17:20.28-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Same problem happened to me.  It's seems the issue after 2.2.8.  I tried version. 2.2.9 & 2.2.10, same problem that cannot load the character from Armory of WoW Taiwan.  But when I reinstall 2.2.8, no problem at all.",
+      "PostedDate": "2009-07-26T06:59:40.95-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-08T18:13:03.42-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-09T15:39:30.307-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:57.65-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:05.667-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

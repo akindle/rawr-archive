@@ -1,0 +1,161 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-10-01T13:36:54.527-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Using 2 models for 1 character:\nPrimary: TankDK\nSecondary: DPSDK\n \nSteps:\n- Uncheck all item filters \n- Import Spec 1 (tank) from Addon, adjust buff settings & Select T12 10M Average Boss & Save character XML\n- New Character\n- item filters should still be unchecked\n- Import Spec 2 (DPS) from addon, adjust buff & Presence on options, & Save XML\n- Launch batch tools & Import both Tank then DPS saved XMLS\n- Run progressive optimize.\n \nExpected:\nProgressive optimize should optimize based on the 1st character XML, and then lock those gear selections in for what's possible for the 2nd character.\n \nActual Results:\n1st character optimized correctly as expected, but 2nd character is optimized oddly. Gem & enchants selections match the 1st character model. \n \nHard to explain, I'll post XMLs that hopefully better explain.  I'm thinking that Enchants and Gem Templates are only using the 1st model, but I haven't diffed the actual expected vs actual results XMLs in Araxis yet.",
+    "LastUpdatedDate": "2013-05-16T05:17:30.267-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-08-16T07:25:29.8-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Batch Optimizer] Gear selections not appropriate for 2ndary models.",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 21351
+  },
+  "FileAttachments": [
+    {
+      "FileId": 5257,
+      "FileName": "BatchTools-Unshiz.xml",
+      "DownloadUrl": ".\\5257"
+    },
+    {
+      "FileId": 5258,
+      "FileName": "unshiz-tankDK.xml",
+      "DownloadUrl": ".\\5258"
+    },
+    {
+      "FileId": 5259,
+      "FileName": "unshiz-DPSDK_FrostDW.xml",
+      "DownloadUrl": ".\\5259"
+    },
+    {
+      "FileId": 5263,
+      "FileName": "Batch_UnshizTest.xml",
+      "DownloadUrl": ".\\5263"
+    },
+    {
+      "FileId": 5262,
+      "FileName": "unshiz_testTank1.xml",
+      "DownloadUrl": ".\\5262"
+    },
+    {
+      "FileId": 5261,
+      "FileName": "unshiz_testDPS1.xml",
+      "DownloadUrl": ".\\5261"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Adding Batch XML",
+      "PostedDate": "2011-08-16T07:33:04.25-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-08-16T07:33:32.283-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Adding Optimized (expected) Tank XML",
+      "PostedDate": "2011-08-16T07:33:34.507-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-08-16T07:34:07.057-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "DPS XML",
+      "PostedDate": "2011-08-16T07:34:08.267-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Of course, now that I'm trying to repro what I saw last night, I can't... ",
+      "PostedDate": "2011-08-16T08:18:53.94-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I've pretty much given up on the batch tools now.  I find it buggy and there have been times when after completing and saving some characters I reload that file and it is blank and I have to recreate my character all over again.    Haven't been able to reproduce it consistantly so I haven't done a bugreport sorry.  \r\n\r\n",
+      "PostedDate": "2011-08-16T16:15:16.117-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm using batch tools almost exclusively and I've never had any problems. If you do find a repro case I'd most definitely like to fix it.",
+      "PostedDate": "2011-08-16T16:43:21.773-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-08-17T08:27:00.647-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-08-17T08:28:00.38-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-08-17T08:45:46.53-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'll have another go at some stage (with backups of my char files in case).    Being a hybrid, I have always liked the batch tools.\r\n\r\n",
+      "PostedDate": "2011-08-17T16:08:13.727-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok I see what you mean. The way Batch Tools currently work is it uses available items from the first character and uses that for all of them. If it would be more useful we could make it so it combines the available lists from all characters, it wouldn't however limit choices for each individual character to only items it has marked available.",
+      "PostedDate": "2011-08-28T14:12:07.22-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I always mark all the gear availale in the first profile then use the \"set available items\" option.  That marks all the same items available in the other profiles as well.   \r\n\r\nOne hassle I have is that for items like the firelands rep stuff and molten front rewards, it is fairly cheap to buy two of an item and just reforge it differently for each spec.   This isn't easily handled with the batch tools.    You could duplicate the item with a different name but for rings and trinkets the optimiser may try to use both for the one spec.\r\n\r\n",
+      "PostedDate": "2011-08-31T22:13:18.39-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yea I'm aware of that. It's been on the todo list for a long time, maybe one of these days.",
+      "PostedDate": "2011-09-01T01:55:45.84-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-10-01T13:36:54.527-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:24:23.363-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:17:30.267-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

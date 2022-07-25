@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "261036",
+    "ThreadId": "76363",
+    "Html": "<p>With the upcoming migration to Rawr3 and the BossHandler system, I think it's time to overhaul how the user interacts with the DPS DK model. Currently, the user inputs the average number of abilities they use in a fixed amount of time. This combination of abilities and given time is then checked against the GCD, both in terms of haste for spell abilities, the GCD reduction of unholy presence, and the effective increase of GCD from dodged/missed attacks. It then calculates the number of disease ticks per rotation, and calculates all strike damage assuming that the provided diseases are up when the strikes are done. Ability damage then takes into account all appropriate damage modifiers, with cooldown-limited modifiers averaged in. Ghoul damage is calculated and scaled by uptime (dependent on talents and user control). Gargoyle damage is calculated and scaled by uptime, and DRW damage is calculated and scaled by uptime. Damage is then calculated from all of this and spat out to the user.</p>\r\n<p>Now, the things I don't like about this system:</p>\r\n<ol>\r\n<li>It's not very intuitive.</li>\r\n<li>It can't give weight to a number of talents that have been borderline talents for a while, and thus need accuracy - primarily death rune talents, but also talents like improved unholy presence.</li>\r\n<li>The GCD usage spacing in a DK rotation is not evenly spaced - in some parts, GCDs will be in high demand, while in others, they're not.</li>\r\n<li>The current modelling for proc-dependent ability usage (pretty much only Rime procced howling blasts) is clunky.</li>\r\n<li>It currently lacks any way of optimizing rotations in any way - this makes comparisons between talent specs meaningless, and it's a feature I'd like to implement if reasonably possible.</li>\r\n<li>Current system won't translate to a bosshandler environment well at all.</li>\r\n</ol>\r\n<p>#1 could probably be resolved through a better interface, but I'd rather just make it a non-issue. #2 is much harder in the current system, and would require the module to assume a lot of things about the player's rotation that may not be valid assumptions. #3 isn't too big of a deal; clashing rune cooldowns tend to naturally space themselves out. However, it could turn into a problem for some rotations, as it makes some assumptions about disease uptime that aren't necessarily valid. Also, appropriately implementing this would provide a more accurate weighting for unholy presence, haste, hit, and expertise. #4 again assumes things about the player's rotation that aren't necessarily true - currently, the module emulates a player using a rime procced howling blast immediately, but many players would be inclined to save it for a killing machine proc or simply not react fast enough. #5 may simply be beyond the scope of the model, but it's something I'd like to get done.</p>\r\n<p>#6 is probably the most important issue. Currently, I can't think of any good way of telling the model &quot;okay, DPS for 1 minute then take a 15 second break, then AOE 5 targets for 15 seconds&quot; and then expect it to have any valuation of things like run speed modifiers, nor how to logically input or determine appropriate AOE ability usage.</p>\r\n<p>As the model currently stands, I've abstracted all of the relevant DPS abilities to the type RuneAbility, as I thought this would be useful for improving the model, although it's currently completely unused by everything.</p>",
+    "PostedDate": "2009-11-26T20:39:13.32-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "261214",
+    "ThreadId": "76363",
+    "Html": "<p>Very good ideas here.&nbsp; I have some similar work going on in the tank area, and we can probably over-lap.&nbsp; I've only done the base ability class and started on implementing a class for each specific ability.&nbsp; Including Damage or Threat per Cost (rune, RP, time, etc).&nbsp; I think we could combine this work to meet both our needs.</p>\r\n<p>My classes as well are only being used by a couple unittests and I hope to have some time to do some fleshing out more this weekend, but it depends on how work related stuff goes.</p>\r\n<p>I'll take a look at what you have checked in and see where a good merge can happen.</p>",
+    "PostedDate": "2009-11-27T12:39:57.507-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "261241",
+    "ThreadId": "76363",
+    "Html": "<p>We're using teh class structure in DPSWarr, check our base class for some ideas on implementations.</p>",
+    "PostedDate": "2009-11-27T16:06:18.903-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "262074",
+    "ThreadId": "76363",
+    "Html": "<p>I haven't looked at your stuff yet.&nbsp; I wanted to get my ideas out before getting confused.&nbsp; So I've checked my base-class and a couple placeholder implementation classes for IT, PS, BS, and FF, BP to get started.&nbsp; They're not fully fleshed out yet, and it may require refactoring the base to make work.&nbsp; But now that I have my ideas &quot;on paper&quot; I'll take a look at what you have and start comparing notes.</p>",
+    "PostedDate": "2009-11-30T16:34:40.777-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "274681",
+    "ThreadId": "76363",
+    "Html": "<p>Time to resurrect this thread. In my local copy, I've come up with a simulator-esque arrangement that produces expected ability usage over a given timeframe, but instead of taking the usual simulator approach and /randoming for all the events associated, it weights each possible outcome of combat with that outcome's probability; for example, each time the system adds an obliterate usage, it branches in two direction, one with a weight of rime probability * current weight with rime = true, and one with current weight - rime probability * current weight and rime = false. While this system produces very nice results, there's a glaring issue: it's O(2^N). I've worked around that somewhat by checking whether or not rime (or KM) are procced when the triggering event occurs, and by only updating probable ability usage when significantChange or needsDisplayCalculations are true, but the performance is still rather terrible, hence why I have not committed it.</p>\r\n<p>However, I feel like there's almost certainly a better solution to the issue I'm running into (procs-on-ability that are independent of previous events and determine future events), and I suspect some of the other models have already solved this. Also, most of you are much better computer scientists than I; how can I make this not awful? Any hints?</p>",
+    "PostedDate": "2010-01-08T01:34:12.017-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "274837",
+    "ThreadId": "76363",
+    "Html": "<p>Partial removal of the ability it would replace the % of the time it would replace it, and add in the % of the replacing ability.</p>\r\n<p>If you have a 30% chance to Proc B, and that replaces A, you get 70% A and 30% B.</p>\r\n<p>Improve for complexity.</p>",
+    "PostedDate": "2010-01-08T09:01:11.807-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "274965",
+    "ThreadId": "76363",
+    "Html": "<p>I think this is the problem that all the models face and it is the fundamental question of how to model your class. Unfortunatelly there is no simple answer. It all depends on what kind of abilities you have to model and how they interact with each other. Whether the focus is on scheduling, proc interaction, short-long term cooldowns and other complexities. Each has different ways to tackle them and usually to get a great model you'll have to combine different approaches unique to your model in trying to balance accuracy and efficiency.</p>\r\n<p>One good approach to modeling proc and cooldown interaction&nbsp;is setting up a markovian state space, transitions and solving for stationary distribution. The hard part of this as some here have found out the hard way is that the state space can get very complex very fast and to get a workable solution you'll most likely have to partition the whole problem in several different ways, emphasising different aspects of it&nbsp;and solving each simplified subproblem and recombining the results into an overall solution.</p>",
+    "PostedDate": "2010-01-08T13:52:00.94-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "208461",
+    "ThreadId": "61448",
+    "Html": "<p>Thanks for a very nice program.</p>\r\n<p>But im having some issues with the elemental profiler.</p>\r\n<p>Despite going thrue all the options, i just cant get it to give me a proper dps calculation. Im at 2700sp self buffed, yet the calculator claims i only do 2600dps. When i infact do roughly 4.3k</p>\r\n<p>There also seems to be some issues regarding the items, the values of a lot of items just seem flawed. Theres several items with less dps stats that are given a higher score than clearly better items.</p>\r\n<p>Example, Spectral seal of the prophet: 51sp is rated higher than Band of Guile: 50haste 59sp</p>\r\n<p>Crit, why is that stat valued so much? from what i see its rated a lot higher than haste.</p>\r\n<p>Why are some items given a negative score?</p>\r\n<p>Any help would be appreciated</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-07-03T20:27:52.417-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "208476",
+    "ThreadId": "61448",
+    "Html": "<p>Unfortunately, we have no Elemental dev at the moment, so Rawr.Elemental is in dire need of fixes and improvements. It's pretty useless at the moment.</p>",
+    "PostedDate": "2009-07-03T23:15:21.567-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "208477",
+    "ThreadId": "61448",
+    "Html": "<p>Aha, thanks for the clarification =) i was sure i was doing something wrong.</p>",
+    "PostedDate": "2009-07-03T23:17:20.597-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "208610",
+    "ThreadId": "61448",
+    "Html": "<p>So when can we expect an ele shaman dev?</p>",
+    "PostedDate": "2009-07-04T20:28:47-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "208617",
+    "ThreadId": "61448",
+    "Html": "<p>When someone with the appropriate knowledge set that plays an Elemental Shaman and has the spare time and patience to become the dev and actually *knows* about Rawr comes out of the woodworks.</p>",
+    "PostedDate": "2009-07-04T21:01:22.623-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "208638",
+    "ThreadId": "61448",
+    "Html": "<p>elemental spell haste calculation is incorrect.</p>\r\n<p>currently if you add spell haste, the way the calculation works, your cast time is going UP instead of down.</p>\r\n<p>&nbsp;</p>\r\n<p>line 177 of spells.cs should probably be more like</p>\r\n<p>&nbsp;float Speed = stats.SpellHaste + (1f + stats.HasteRating * 0.000304971132f);</p>\r\n<p>&nbsp;</p>\r\n<p>( note. this still isn't ending up with quite the right value, but it's a step in the right direction.&nbsp; in game my 639 haste reduces cast time of LB to 1.59 seconds, in rawr it seems to be 1.61 )</p>\r\n<p>edit:</p>\r\n<p>&nbsp;</p>\r\n<p>looking at the change history it looks like the previous change to spells.cs got it exactly wrong. the previous formula was correct.&nbsp; if it is</p>\r\n<p>&nbsp;float Speed = (1f + stats.SpellHaste) * (1f + stats.HasteRating * 0.000304971132f);</p>\r\n<p>that gives the correct value of 1.59</p>",
+    "PostedDate": "2009-07-05T00:37:31.047-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

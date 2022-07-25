@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Optimizer",
+      "DisplayName": "Rawr.Base.Optimizer"
+    },
+    "ClosedComment": "User misconception",
+    "ClosedDate": "2010-01-18T19:59:27.77-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I'm not sure, but I think there might be an issue using the Cost >= filter.  Either that, or I'm using the feature wrong.\n \nMy objective is to determine which of a known set of items is the best overall upgrade for me.  This may be one piece, or more than one.  However, I'm only interested in results that include one or more of the items with a cost.\n \nHere's how I envision doing this.  Optimize your character using your preferred settings. Go into the item filters, set costs for all the items you're interested in.  Go to the Optimize screen, set your max cost (if applicable), and set Cost >= 1 (to indicate that you only want item sets that include an item with a cost).  Click Build Upgrade List, then peruse that to find your optimal mix.\n \nHowever, I'm running into a problem.  Every time I try to do this, I get zero results.  I've been able to reduce this to a reproducible test case.\n \nSteps to reproduce:\n-----------------------\nLoad a character.\nEnsure no Frost emblem items are equipped or marked available.\nEnsure that Frost emblem items are visible in the item lists (i.e., that they're not filtered out).\nOptimize the character using your preferred parameters, and equip Rawr's suggestions.\nClick Tools Menu -> Item Cost -> Reset\nClick Tools Menu -> Item Cost -> Load Emblem of Frost\nClick Tools Menu -> Optimize\nSet a filter for Cost >= 1\nClick Build Upgrade List.\n \nExpected result:\n------------------\nThe upgrade list displays, showing possible upgrades that cost at least one Emblem of Frost.\n \nActual result:\n----------------\nZero items display.  Or, if your character is not optimized, a list of items appears showing an identical benefit for all combinations (based on the optimize calculation).",
+    "LastUpdatedDate": "2013-05-16T05:22:29.19-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-01-10T12:02:39.79-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Optimizer] Item Cost >= filter not working as expected",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15819
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Cost constraint has no effect on upgrade list, what you actually want is click on Optimize.",
+      "PostedDate": "2010-01-10T12:40:08.72-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Interesting.  That worked, thank you.\r\n\r\nHaving said that, it kind of changed how I look at Rawr's optimization options.  \"Optimize\" always meant to me \"look at what gear is available and produce the best combination.\" Cost by definition applies to items you do not own yet.  In my mind, that belongs in the Build Upgrade List feature, which evaluates items you don't own yet.",
+      "PostedDate": "2010-01-12T05:30:55.703-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yes I agree that the cost constraints cross the boundary between the two. The main distinction between optimize and upgrade list is that optimize can only give the best output while upgrade list gives value of upgrade for all possible options. The cost constraints optimizations are only able to give you the best setup with a given cost constraint, it can't give you value of different combinations of nonavailable items, which is why the optimize is more appropriate. In the background it actually makes the nonzero cost items available, but imposes the cost constraint on how many are used.",
+      "PostedDate": "2010-01-12T16:52:19.863-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-18T19:59:27.77-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-09T16:03:17.383-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T19:05:05.29-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:30:40.09-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:29.19-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

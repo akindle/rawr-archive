@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "4.1.01 Released",
+    "ClosedDate": "2011-03-27T17:48:43.323-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Trying to edit the item source in the WPF version of Rawr 4.0.20.0b Errors out:  \n \n== Error Message ==\nNo matching constructor found on type 'System.String'. You can use the Arguments or FactoryMethod directives to construct this type.\nNo default constructor found for type 'System.String'. You can use the Arguments or FactoryMethod directives to construct this type.\n \n== StackTrace ==\n   at System.Windows.Markup.XamlReader.RewrapException(Exception e, IXamlLineInfo lineInfo, Uri baseUri)\n   at System.Windows.Markup.WpfXamlLoader.Load(XamlReader xamlReader, IXamlObjectWriterFactory writerFactory, Boolean skipJournaledProperties, Object rootObject, XamlObjectWriterSettings settings, Uri baseUri)\n   at System.Windows.Markup.WpfXamlLoader.LoadBaml(XamlReader xamlReader, Boolean skipJournaledProperties, Object rootObject, XamlAccessLevel accessLevel, Uri baseUri)\n   at System.Windows.Markup.XamlReader.LoadBaml(Stream stream, ParserContext parserContext, Object parent, Boolean closeStream)\n   at System.Windows.Application.LoadComponent(Object component, Uri resourceLocator)\n   at Rawr.UI.ItemSourceEditorChild.InitializeComponent()\n   at Rawr.UI.ItemSourceEditorChild..ctor()\n   at Rawr.UI.ItemSourceEditor.BT_Add_Click(Object sender, RoutedEventArgs e)\n   at System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)\n   at System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)\n   at System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)\n   at System.Windows.UIElement.RaiseEvent(RoutedEventArgs e)\n   at System.Windows.Controls.Primitives.ButtonBase.OnClick()\n   at System.Windows.Controls.Button.OnClick()\n   at System.Windows.Controls.Primitives.ButtonBase.OnMouseLeftButtonUp(MouseButtonEventArgs e)\n   at System.Windows.UIElement.OnMouseLeftButtonUpThunk(Object sender, MouseButtonEventArgs e)\n   at System.Windows.Input.MouseButtonEventArgs.InvokeEventHandler(Delegate genericHandler, Object genericTarget)\n   at System.Windows.RoutedEventArgs.InvokeHandler(Delegate handler, Object target)\n   at System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)\n   at System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)\n   at System.Windows.UIElement.ReRaiseEventAs(DependencyObject sender, RoutedEventArgs args, RoutedEvent newEvent)\n   at System.Windows.UIElement.OnMouseUpThunk(Object sender, MouseButtonEventArgs e)\n   at System.Windows.Input.MouseButtonEventArgs.InvokeEventHandler(Delegate genericHandler, Object genericTarget)\n   at System.Windows.RoutedEventArgs.InvokeHandler(Delegate handler, Object target)\n   at System.Windows.RoutedEventHandlerInfo.InvokeHandler(Object target, RoutedEventArgs routedEventArgs)\n   at System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)\n   at System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)\n   at System.Windows.UIElement.RaiseTrustedEvent(RoutedEventArgs args)\n   at System.Windows.UIElement.RaiseEvent(RoutedEventArgs args, Boolean trusted)\n   at System.Windows.Input.InputManager.ProcessStagingArea()\n   at System.Windows.Input.InputManager.ProcessInput(InputEventArgs input)\n   at System.Windows.Input.InputProviderSite.ReportInput(InputReport inputReport)\n   at System.Windows.Interop.HwndMouseInputProvider.ReportInput(IntPtr hwnd, InputMode mode, Int32 timestamp, RawMouseActions actions, Int32 x, Int32 y, Int32 wheel)\n   at System.Windows.Interop.HwndMouseInputProvider.FilterMessage(IntPtr hwnd, WindowMessage msg, IntPtr wParam, IntPtr lParam, Boolean& handled)\n   at System.Windows.Interop.HwndSource.InputFilterMessage(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)\n   at MS.Win32.HwndWrapper.WndProc(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)\n   at MS.Win32.HwndSubclass.DispatcherCallbackOperation(Object o)\n   at System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)\n   at MS.Internal.Threading.ExceptionFilterHelper.TryCatchWhen(Object source, Delegate method, Object args, Int32 numArgs, Delegate catchHandler)\n \n== These are the Steps that I have tried ==\nNo suggested fix supplied, made sure that windows xp, silverlight and all .net related runtimes are up to date.\n \nI also tested it in the standard silverlight online version and the Item Source Editor works fine there, so priority is low. \n \nSteps to reproduce:\nDownload Rawr 4.0.20.0b WPF Version\nRun Rawr\nGo to Options -> Edit Items...\nSelect random item and click on \"Edit\"\nClick on the \"Edit\" button under the \"Item Source Locations\" section\nClick \"Add\" to see error\nselect existing entry and click \"Edit\" to see error",
+    "LastUpdatedDate": "2013-05-16T05:18:26.983-07:00",
+    "PlannedForRelease": "Rawr 4.0.20 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-03-16T08:07:12.38-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] Item Source Editor in WPF version",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 20249
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "4.0.20 is not the current version",
+      "PostedDate": "2011-03-16T08:37:42.293-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Argh.  Now I feel like a right idiot.  Somehow 4.10 got stuck in my head as 4.0.10.  Thanks Jothay.  I'll check with 4.1.0 and if it still bugs out I'll report it,",
+      "PostedDate": "2011-03-16T09:12:14.447-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-16T09:23:04.673-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Error persists in 4.1.0 file that i downloaded.  Version is given as 4.0.21.0b at the bottom.",
+      "PostedDate": "2011-03-16T10:39:23.017-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-18T17:28:16.493-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-27T17:48:43.323-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:25:39.287-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:26.983-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Hunter",
+      "DisplayName": "Rawr.Hunter"
+    },
+    "ClosedComment": "Old Hunter is now gone and HunterSE is active as Hunter",
+    "ClosedDate": "2009-11-08T15:37:51.607-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Still a big difference. The calculated dps now reacts to changes to the piercing talent. But the difference is still large.\nAttaching character file I use for comparison.",
+    "LastUpdatedDate": "2013-05-16T05:23:31.2-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-11-07T13:51:48.05-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Hunter] Differences between Hunter and HunterSE",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14684
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2457,
+      "FileName": "Reth 091103 Current (MM Optim).xml",
+      "DownloadUrl": ".\\2457"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Hunter/HunterSE\r\n\r\nRanged AP:          8334 / 9067\r\nPet AP:                 4639 / 5045\r\nAutoShot DPS:     2130 / 2220\r\nAimed Shot (Rotation DPS) :   794   /   644\r\nSerpent Sting :                      501   /   307\r\nSteady:                                 1885  /  653\r\nKillshot:                                 317   / 341\r\nChimera:                                1582  /  811",
+      "PostedDate": "2009-11-07T14:03:09.637-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Last commit made the differences smaller but they are still evident, especially Steady Shot and Chimera Shots.\r\n\r\nUnfortunately, I don't see where the issue lies.\r\n- Steady: The frequency is dropping significantly but the code is roughly the same.\r\n- Chimera: The Damage is about half what was in Hunter, which is where the big drop occurs, but the code is roughly the same.\r\n\r\nAnyone have a WWS log I can see for a MM to see if I'm just correcting a mistake in Hunter or if Hunter was right and HunterSE is wrong?",
+      "PostedDate": "2009-11-07T15:39:05.607-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I think I found the last of the major issues:\r\n\r\nProcables Off / Hunter / HunterSE / Delta\r\n\r\n7951 / 8611 / 7.66% | Ranged AP\r\n4706 / 4908 / 4.12% | Pet AP\r\n1954 / 2051 / 4.73% | AutoShot\r\n0748 / 0774 / 3.36% | Aimed Shot\r\n0481 / 0499 / 3.61% | Serpent Sting\r\n1786 / 1662 / -7.46% | Steady Shot\r\n0297 / 0313 / 5.11% | Killshot\r\n1523 / 1584 / 3.85% | Chimera Shot\r\n\t\t\t\r\n7109 / 7201 / 1.28% | Hunter DPS\t\r\n1108 / 1072 / -3.36% | PetDPS\r\n8217 / 8273 / 0.68% | Total\t DPS\r\n",
+      "PostedDate": "2009-11-07T17:34:57.817-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-08T15:37:51.607-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T18:26:22.44-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:59.5-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:31.2-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

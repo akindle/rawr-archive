@@ -1,0 +1,86 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Mage",
+      "DisplayName": "Rawr.Mage"
+    },
+    "ClosedComment": "Closing this as by design.",
+    "ClosedDate": "2009-05-29T18:30:35.403-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have a character file that I'm running optimize on, and I have all the items I want selected. These are very specific items -- all non-hard mode items. Now, the best DPS I've been able to get out of this setup is 7268.87. However, I have to uncheck Sandals of Rash Temperament to get there. I'll run Optimize, for instance, without Sandals checked, and it comes back and it says, a build has been found with 7266.92 DPS, etc. or 7268.87 DPS. I click accept and the calculated DPS in the Solution panel is exactly those numbers.\n \nHowever, when I give the okay to include Sandals of Rash Temperament in Optimize, everything goes screwy. It will tell me, \"We've found a build with 7263 DPS\" and when I hit accept, it switches all the gear and Solution DPS is 7251 -- note, that's with Spellslinger's Slippers. That's the funny part... when I don't have Sandals checked, the high DPS on 7268 is with Slippers (since they are the only feet item selected). When I run Optimize with Sandals and Slippers, most often it comes back with a build that uses Sandals, and the DPS is in the range of 7260-7263.\n \nWhy would enabling one item cause Optimize (repeatedly -- I've ran it 10+ times) to discard a higher DPS configuration? Attached is the XML file of the 7268.87 DPS set, with Sandals of Rash Temperament disabled. You should be able to enable them, run Optimize, and get worse results consistently.",
+    "LastUpdatedDate": "2017-11-27T11:01:49.937-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-05-20T20:52:33.763-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Mage] Optimize - very odd issue",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13297
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1912,
+      "FileName": "19.52.0 - Non-Hard Mode 7268.87.xml",
+      "DownloadUrl": ".\\1912"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "There are two things going on. One is the ability to achieve optimum solution, another is difference in value between what optimizer shows and what the solution score in main window shows.\r\n\r\nAbility to achieve optimum solution mainly depends on number of options it has. The more items available the less likely it is that the optimum will be found. It will almost always find something very close to optimum, but those last few points might be very hard to get if there are too many options. Specifically in your case you have a lot of gems set as available. I would try optimizing with most common gems first and only after you get a good solution with that try expanding to see if you possibly missed something. That said there are still some rooms for improvement in the optimization algorithm and we're always looking for options to get better results even when it has to deal with a lot of combinations.\r\n\r\nThe optimizer actually thought the value it got with Sandals was 7263 dps. The reason why main form showed different is because you're using advanced solver for display. Optimizer will use settings for comparison and most likely you don't want to use advanced solver for comparisons for performance reasons. The relationship between the two is that basic solver will give an upper bound on the actual dps, but it has to ignore some complex to evaluate constraints. Advanced solver can take those into account and will give the actual value under all constraints. This value in general will be lower than the one given by basic solver. For fire it's mostly the same because buff stacking isn't very complex for it, mostly it will be just some border conditions with mana that will give different result between basic and advanced solver. For arcane on the other hand the difference can be bigger, sometimes up to 1%.",
+      "PostedDate": "2009-05-21T19:19:37.757-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Another thing to note is that when sequence reconstruction gives score below 100% that means that advanced solver is missing some constraints to generate an actually feasible solution. In most cases that can be resolved by either shortening segment duration or manually setting additional segment splits.",
+      "PostedDate": "2009-05-21T20:58:53.453-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-05-29T18:30:35.403-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:19:42.37-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-21T00:00:19.307-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:25.82-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:29.81-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:01:49.937-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

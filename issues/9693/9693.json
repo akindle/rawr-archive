@@ -1,0 +1,95 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Bear",
+      "DisplayName": "Rawr.Bear"
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-08T06:50:43.573-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have added additional enchants in EnchantCache.xml, but they are not available to select when editing my character in Bear model. Even if I manually edit the character's XML file to change the enchant, it is not visible and its stats are not included. I am trying to add the various resistance armor kits for modeling my tanking of Hydross the Unstable's adds.\n \nIt appears the enchants (or at least \"valuable\" stats from enchants) are hard-coded in the model DLLs.",
+    "LastUpdatedDate": "2013-05-16T05:27:29.54-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-03-18T02:37:54.683-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Bear] New enchants do not appear",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 9693
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "In the meantime, I must resort to making copies of every combination of item and enchant I wish to consider for a slot and manually add in the resistances to the base item.",
+      "PostedDate": "2008-03-18T02:38:53.653-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Bashui, when you added the resistance stuff to bear, did you add the resists as relevant stats in the CalculationsBear?",
+      "PostedDate": "2008-03-18T08:11:47.78-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "As a temporary workaround, I've found that by adding <Health>0.000000001</Health> to the enchant's stats, I can cause the enchants to appear in the bear model without significantly affecting relative values.",
+      "PostedDate": "2008-03-20T01:49:36.573-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Okay, although the enchants appear when I add an insignificant amount of health to their stats, the resistances are still not included in the Basic Stats totals, nor do they appear to be valued in the [School] Survival totals in the Complex Stats section.",
+      "PostedDate": "2008-03-20T02:04:56.34-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "All of the resists appear to be in the relevant stat list.  I added the Frost Armor kit to the enchant file and it showed up in the bear stat tab..\r\n\r\nI modified the Enchant cache to load in the saved values and then compare the default values to the saved and add in any that were added to the default that aren't yet in the saved cache so users don't lose custom enchants and we can still add new default enchants and have them merge.",
+      "PostedDate": "2008-04-02T11:55:09.42-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I think I added it before the relevant stats stuff.  I know that the enchants were not updating the stats on the main page, but I have put in a fix for that.  I will take a look at the relevant stats to verify that they are added.",
+      "PostedDate": "2008-04-02T12:45:11.953-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 17359.",
+      "PostedDate": "2008-04-02T15:09:45.51-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-08T06:50:43.573-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T16:00:23.65-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:37:07.46-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:27:29.54-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

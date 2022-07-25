@@ -1,0 +1,106 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Retribution",
+      "DisplayName": "Rawr.Retribution"
+    },
+    "ClosedComment": "Closing as duplicate to 17002",
+    "ClosedDate": "2010-09-08T13:46:21.563-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": ".21 doesn't seem all that improved from the optimizer performance issues from .20, but setting the optimizer only 3 or 4 ticks from the left does make it go as fast as 2.2.18 went at 60% to the right.\n \nAlso, I noticed that optimizing with no other gear available (so just optimizing gems) - at the results comparison it is also showing gear where the gems didn't actually change from before/after. I thought maybe this could be contributing to the slow down if it was double-counting stuff, etc.\n \nSorry for the vague info - let me know if there's other easy stuff to check!\nThanks",
+    "LastUpdatedDate": "2013-05-16T05:20:12.023-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-08-01T21:52:30.41-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Retribution] Optimize performance/gemming",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 18348
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3840,
+      "FileName": "fruit.xml",
+      "DownloadUrl": ".\\3840"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "You need to attach your character file, as always.",
+      "PostedDate": "2010-08-01T22:25:21.217-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "ok, I'm at work now but I'll do that when I get home tonight.",
+      "PostedDate": "2010-08-02T06:22:19.94-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Nothing has changed to ret performance since several versions.  I was looking at replacing the FCFS simulator with another system, but it didn't work out the way I had hoped.\r\n\r\nTied up at work until at least half september, so with cata in mind, i've pretty much given up on trying to optimise the 2T10 chance permutation + FCFS sim that's the root cause of the performance issues.  \r\nWith what we know of Cata so far, it looks like FCFS will be chucked out the door in favour of simpler, more random in practice, but more deterministic to model damage system.",
+      "PostedDate": "2010-08-02T06:54:49.73-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-08-02T06:57:37.763-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-08-02T08:38:59.843-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-08-03T17:37:21.247-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "attached file, in case it helps.\r\nThe FCFS model was still active in 2.2.18 and that works fine. Can I disable any part of the T10, etc, to mitigate it for now?",
+      "PostedDate": "2010-08-03T17:37:22.18-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The major problem is the 2T10 bonus, so you can disable that by not equipping 2T10 or removing the bonus from the T10 set.\r\nAlternatively, you can also solve it by not using the FCFS sim and use the static ECD table instead.  Take a couple mins on a target dummy and punch in the numbers you got.  It's very reliable this way for as long as you don't change to another weapon with a different swing time or get massive changes on haste.\r\n\r\nThe ret model is still for the current live Wow, so yes, still based on FCFS.  I was referring to somewhat long term plans for the cata pre-patch changes.  Cata rotation isn't based around FCFS anymore.  It's too early to lock down on anything yet, since spells and cd's are still being changed a lot.",
+      "PostedDate": "2010-08-04T00:48:19.737-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T13:46:21.563-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:40:45.093-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:27:50.4-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:12.023-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

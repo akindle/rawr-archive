@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-08T06:56:21.033-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Both these talents have a max of 3 talent points rather than 5 (like they had early in beta/ptr).  Please update ClassTalents.cs to for these 2 talents to be:\n \n        [TalentData(15, \"Moonfury\", 3, 0, 2, 6, -1, new string[] {\n@\"Increases the damage done by your Starfire, Moonfire and Wrath spells by 3%.\",\n@\"Increases the damage done by your Starfire, Moonfire and Wrath spells by 6%.\",\n@\"Increases the damage done by your Starfire, Moonfire and Wrath spells by 10%.\",})]\n        public int Moonfury { get { return _data[15]; } set { _data[15] = value; } }\n \n \nand\n \n        [TalentData(26, \"Earth and Moon\", 3, 0, 2, 10, -1, new string[] {\n@\"Your Wrath and Starfire spells have a 100% chance to apply the Earth and Moon effect, which increases Arcane, Fire, Frost, Nature and Shadow damage done to the target by 4% for 12 sec. Also increases your spell damage by 1%.\",\n@\"Your Wrath and Starfire spells have a 100% chance to apply the Earth and Moon effect, which increases Arcane, Fire, Frost, Nature and Shadow damage done to the target by 9% for 12 sec. Also increases your spell damage by 2%.\",\n@\"Your Wrath and Starfire spells have a 100% chance to apply the Earth and Moon effect, which increases Arcane, Fire, Frost, Nature and Shadow damage done to the target by 13% for 12 sec. Also increases your spell damage by 3%.\",})]\n        public int EarthAndMoon { get { return _data[26]; } set { _data[26] = value; } }\n \n \nNote that the actual calculations involved for these two talents is correct.  The problem is only in allowing selection of more than 3 via the talent selection tab.",
+    "LastUpdatedDate": "2013-05-16T05:26:49.33-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-11-22T06:18:28.45-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Moonfury and EarthAndMoon: Wrong number of possible talent points",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 11671
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Urgh.  Alright, enough already. :P It's been fixed and will be in the next version.",
+      "PostedDate": "2008-11-24T12:18:16.67-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-08T06:56:21.033-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:16.01-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:49.33-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

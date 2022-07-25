@@ -1,0 +1,100 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.LoadCharacter",
+      "DisplayName": "Rawr.Base.LoadCharacter"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-02-22T13:07:36.313-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I've been running into this for a few versions now. Rawr won't get past my proxy to get to the armory.  I've tried using IE settings as well as entering the proxy host manually. I've tried with default credentials as well as manually entering credentials. Am I missing something or is there an issue with the proxy authentication piece?\n \nFull Error:\n \nStep Name: Get Character\nDescription: No character returned from the Armory. Is the Armory down?\nThe remote server returned an error: (407) Proxy Authentication Required.\n   at System.Net.WebClient.DownloadDataInternal(Uri address, WebRequest& request)\n   at System.Net.WebClient.DownloadString(Uri address)\n   at System.Net.WebClient.DownloadString(String address)\n   at Rawr.WebRequestWrapper.DownloadText(String URI)\nThe token supplied to the function is invalid\n   at System.Net.NTAuthentication.GetOutgoingBlob(Byte[] incomingBlob, Boolean throwOnError, SecurityStatus& statusCode)\n   at System.Net.NTAuthentication.GetOutgoingBlob(String incomingBlob)\n   at System.Net.NtlmClient.DoAuthenticate(String challenge, WebRequest webRequest, ICredentials credentials, Boolean preAuthenticate)\n   at System.Net.NtlmClient.Authenticate(String challenge, WebRequest webRequest, ICredentials credentials)\n   at System.Net.AuthenticationManager.Authenticate(String challenge, WebRequest request, ICredentials credentials)\n   at System.Net.AuthenticationState.AttemptAuthenticate(HttpWebRequest httpWebRequest, ICredentials authInfo)\n   at System.Net.HttpWebRequest.CheckResubmitForAuth()\n   at System.Net.HttpWebRequest.CheckResubmit(Exception& e)",
+    "LastUpdatedDate": "2013-05-16T05:23:08.01-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-12-09T11:31:31.48-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[LoadCharacter] Armory: Problems with Proxy auth",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15269
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "It's Rawr, not RAWR",
+      "PostedDate": "2009-12-09T11:43:50-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "If you are using a Domain, did you Enter DOMAINNAME\\user_name or just user_name ?",
+      "PostedDate": "2009-12-09T11:44:34.797-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Be sure you are specifying the domain name in the domain field where you fill out the authentication form. (I just had to write code that needed to authenticate Http.Request using a domain name and password the other day.)",
+      "PostedDate": "2009-12-09T15:34:30.163-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I tried both domain\\username and just username.  Yes, I am specifying the domain in the domain field.  Still no luck.  I am downloading 2.3.1 right now to see if that is any different.",
+      "PostedDate": "2009-12-10T09:25:30.827-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Just tried 2.3.1.  Same issues there\r\n",
+      "PostedDate": "2009-12-10T09:34:31.617-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It it possible that your proxy host has an exception on it for Rawr stating that no traffic from this program can pass thru? I'm just trying to think of alternatives because we can't test your environment. I'm at work right now and my proxy stuff works.",
+      "PostedDate": "2009-12-14T10:30:26.28-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-14T10:31:01.89-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-04T09:19:13.897-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-22T13:07:36.313-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-09T15:44:00.157-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:31.767-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:08.01-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

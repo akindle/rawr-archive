@@ -1,0 +1,90 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Fixed.",
+    "ClosedDate": "2009-01-19T15:36:18.903-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "If you click on a inventory item too quickly, the whole app crashes.  More specifically if you just changed one setting and then attemp to change something else, before it has recomputed everything(a few seconds), the applacation will become unresponsive and will terminate within 10-30 seconds.\n \nThis probably means there are missing mutexes or other interlocks between the computation and UI elements.",
+    "LastUpdatedDate": "2013-05-16T05:27:29.94-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-03-17T04:56:19.92-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Crashes if you click too fast",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 9680
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "All UI and computation is on the same single thread. What UI elements are you clicking too fast on?",
+      "PostedDate": "2008-03-17T08:18:24.937-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Just rapidly click on each of the equipment item button on the left in turn for a bit...\r\n\r\nEventType : clr20r3     P1 : rawr.exe     P2 : 1.12.1.0     P3 : 47d1f0e4     \r\nP4 : system.windows.forms     P5 : 2.0.0.0     P6 : 461ef203     P7 : 16b7     \r\nP8 : 159     P9 : system.componentmodel.win32     \r\n",
+      "PostedDate": "2008-03-18T11:34:07.607-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This sometimes happens right away.. sometimes it can take 10 or more clicks.",
+      "PostedDate": "2008-03-18T11:49:52.31-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well, perhaps it's cause I have a beefy machine, but I had to click several hundred times to get this to happen, but it did happen. Looks like I ran Windows out of window handles (!). It's basically running out of memory... I'll figure out what's causing that and fix it.",
+      "PostedDate": "2008-03-18T16:39:21.53-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Odd.  I can get it happen fairly early and easily.  My machine is an AMD 64 x2 5000 w/4GB.\r\n",
+      "PostedDate": "2008-03-21T04:41:35.773-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I think the number of clicks it takes depends greatly on how many options are being shown on the list.  Since I've created a half dozen gemming variants of each mage item, my magic items lists may be much longer than yours and thus exhault the handles quicker.\r\n",
+      "PostedDate": "2008-03-21T04:51:35.37-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "*exhaust",
+      "PostedDate": "2008-03-21T04:51:59.98-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-01-19T15:36:18.903-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:37:08.187-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:27:29.94-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

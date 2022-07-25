@@ -1,0 +1,1386 @@
+[
+  {
+    "Id": "413520",
+    "ThreadId": "203628",
+    "Html": "<p>It's time for me to start recruiting some help for my attempt at a fully-functional Warlock model.&nbsp; Don't get excited yet, it's FAR from fully functional right now.</p>\r\n<p>Currently I would love for anyone to look over what I've done so far and find mistakes.&nbsp; To do that you'd have to get the Rawr source and look it over, and/or compile it with my temporary model and play with it.&nbsp; Actually, for now it's probably best to focus on behavior rather than code, since the code structure will likely keep changing for a while.&nbsp; Ideally I'd like to devote my time to the coding, but that would mean others out there would need to be testing for accuracy.&nbsp; I can dream, right?</p>\r\n<p>To see what should be working so far watch for my commit comments in the Source Code link at the top of the page.&nbsp; I'll update in this thread as I think of specific questions I have, or specific parts of the model I suspect could be inaccurate.</p>\r\n<p>Now, if something is showing zero benefit or zero dps, that's probably just something I haven't modeled yet (which is most things) and I already realize it.&nbsp; What I'm looking for is help with the things I HAVE tried to model.&nbsp; Thanks in advance to anyone who cares to spend time helping!</p>",
+    "PostedDate": "2010-03-02T23:01:58.927-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "413874",
+    "ThreadId": "203628",
+    "Html": "<p>I might be able to help a bit, but I have no programming knowledge outside of basic Excel formulas.&nbsp; I can try to make sure you've accounted for all of the variables though.&nbsp; I'm usually pretty good at figuring out formulas, and there's information all over the place about this stuff.</p>",
+    "PostedDate": "2010-03-03T14:36:24.367-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "413916",
+    "ThreadId": "203628",
+    "Html": "<p>Awesome.&nbsp; Any help is appreciated.&nbsp; For &quot;formulas&quot; you'll want to look at the file WarlockSpell.cs.&nbsp; Anyone who is willing to help can contact me on MSN: xemnosyst@live.com.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-03-03T17:09:29.353-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "414217",
+    "ThreadId": "203628",
+    "Html": "<p>Question for the developers out there: do we already have code somewhere that solves a linear system of 2 equations?&nbsp; I only have 2 variables, so I coded in a (non-matrix) solution, but if we already have the code (or it's built into C#?) I'll use that instead.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-03-04T08:59:09.92-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "414337",
+    "ThreadId": "203628",
+    "Html": "<p>Even if we had it, for just&nbsp;2 equations an explicit solution is better. If you ever need it for something more complex (i.e. 10+ equations)&nbsp;take a look at&nbsp;LU class in Base.Algorithms (not much in terms of documentation, look at example of use in MarkovProcess). We also have an LP solver, but I haven't&nbsp;generalized&nbsp;that to base yet.</p>",
+    "PostedDate": "2010-03-04T13:06:37.727-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "414546",
+    "ThreadId": "203628",
+    "Html": "<p>i'm working too on lock module.</p>\r\n<p>i'll contact you from msn.</p>",
+    "PostedDate": "2010-03-05T04:15:35.203-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "414763",
+    "ThreadId": "203628",
+    "Html": "<p>I can't help with the theory but I can write code to a spec or write unit tests etc. One of my warlocks is level 80 and just hit a 5k GS so I can try things out if necessary.</p>",
+    "PostedDate": "2010-03-05T13:55:00.22-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "414868",
+    "ThreadId": "203628",
+    "Html": "<p>That's great, Mark.&nbsp; Within the next couple days I hope to figure out C# reflection enough to make it very easy to add spells to the model.&nbsp; If you get in touch with me over MSN I'll point you to the examples I've done.&nbsp; That's the closest thing to code with a &quot;spec&quot; I can think of; it's basically just researching the different coefficients &amp; related talents &amp; plugging them into a constructor call.&nbsp; Is wowwiki a good source for that info, does anyone know?</p>",
+    "PostedDate": "2010-03-05T20:18:35.69-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "414871",
+    "ThreadId": "203628",
+    "Html": "<p>Here is an algorithm I came up with for calculating the average delay between a spell coming off cooldown and being cast.&nbsp; Please critique, all you accomplished theorycrafters!&nbsp; I wanted to translate into pseudo code, but I just couldn't think of good ways to do that for most of it.&nbsp; Sorry :/</p>\r\n<p>\r\n<pre>/// avgSpellCastTime = &lt;param name=&quot;avgSpellCastTime&quot; /&gt;\r\n/// The average spell casting time for *lower* priority spells.\r\nprivate float GetCollisionDelay(float avgSpellCastTime) {\r\n\r\n    List castTimes = *the (actual average) cast time of each higher priority spell*;\r\n    List frequencies = *NumCasts / FightLength of each higher priority spell*;\r\n\r\n    // Create a map of the probability of randomly choosing a point in\r\n    // time while key[0] is being cast, and key[1-n] are all queued up\r\n    // after it.  This assumes 1) spells have an equal chance of coming\r\n    // off cooldown at any given point in time, and 2) no spell on a\r\n    // cooldown can show up twice in the same string of spellcasts.  (1)\r\n    // is a simplifying assumption.  I believe (2) holds true for any\r\n    // in-game warlock.\r\n    Dictionary probablities\r\n        = new Dictionary();\r\n    IntList allSpells = *a list from 0 to NumHigherPrioritySpells - 1*;\r\n    foreach (\r\n        IntList spellString\r\n        in GetLongerPermutations(new IntList(), allSpells)) {\r\n\r\n        // first calculate the probability of the given spell string\r\n        int spell = spellString[0];\r\n        float stringLength = castTimes[spell];\r\n        float probability = stringLength * frequencies[spell];\r\n        for (int i = spellString.Count; --i &gt; 0; ) {\r\n            spell = spellString[i];\r\n            probability *= stringLength * frequencies[spell];\r\n            stringLength += castTimes[spell];\r\n        }\r\n\r\n        // then subtract the probability of it being the start\r\n        // of a longer string of spellcasts\r\n        foreach (\r\n            IntList longerString\r\n            in GetLongerPermutations(spellString, allSpells)) {\r\n\r\n            probability -= probablities[longerString];\r\n        }\r\n        probablities[spellString] = probability;\r\n    }\r\n\r\n    // Use the probabilites to calculate a weighted average of how long\r\n    // THIS spell will have to wait between coming off cooldown and\r\n    // and being cast.\r\n    float weightedAverage = 0f;\r\n    float totalProbability = 0f;\r\n    foreach (KeyValuePair pair in probablities) {\r\n        IntList spellString = pair.Key;\r\n        float probability = pair.Value;\r\n        float delay = castTimes[spellString[0]] / 2;\r\n        for (int i = spellString.Count; --i &gt; 0; ) {\r\n            delay += castTimes[spellString[i]];\r\n        }\r\n        weightedAverage += probability * delay;\r\n        totalProbability += probability;\r\n    }\r\n    weightedAverage\r\n        += (1 - totalProbability)\r\n            * (AvgCastTime + Mommy.Options.Latency) / 2;\r\n    return weightedAverage;\r\n}\r\n\r\n/// \r\n/// Creates all permutations longer than &quot;stem&quot; that can be made\r\n/// by appending values in &quot;values&quot; that are not already included in\r\n/// &quot;stem&quot;.\r\n/// \r\n/// &lt;param name=&quot;stem&quot; /&gt;A subset of &quot;values&quot;.\r\n/// &lt;param name=&quot;values&quot; /&gt;The universe of values to permute.\r\n/// \r\n/// The order of permutations returned will be from longest to shortest.\r\n/// \r\nprivate List GetLongerPermutations(IntList stem, IntList values);</pre>\r\n</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-03-05T20:34:53.793-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "414873",
+    "ThreadId": "203628",
+    "Html": "<p>Any chance you can post the original C# for that? Your Pseudo-code is rather hard for me to understand at first glance. :)</p>",
+    "PostedDate": "2010-03-05T20:41:18.407-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "414883",
+    "ThreadId": "203628",
+    "Html": "<p>Ha!&nbsp; I assume that was sarcastic - but just in case it wasn't - you can find the almost-identical code in the WarlockTmp folder of the source, in the Spells.cs file, in the Spell class.&nbsp; :)</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-03-05T21:47:34.697-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "414926",
+    "ThreadId": "203628",
+    "Html": "<p>The last programming language I taught myself was DOS BASIC, so I'll be useless for coding purposes.</p>\r\n<p>But I'll be glad to help Afffliction Lock accuracy-testing.</p>",
+    "PostedDate": "2010-03-06T01:57:20.407-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "415097",
+    "ThreadId": "203628",
+    "Html": "<p>Great, thanks midnight.&nbsp; I'll post a message here when it's ready for that!</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-03-06T21:23:42.543-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "415257",
+    "ThreadId": "203628",
+    "Html": "<p>Ditto <strong>midnightlynx</strong>.&nbsp; I'm a fair hand at Python or PHP, but C#/C++ are still beyond my ken (though I expect that will be changing in the near future).&nbsp;</p>\r\n<p>But I, too, am an interested Affliction-speced (Demo off-spec) Warlock, so any help I can provide, just ask!</p>",
+    "PostedDate": "2010-03-07T16:35:00.473-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "415326",
+    "ThreadId": "203628",
+    "Html": "<p>OK I'd like to have (at least) one of you aff. locks help me test now!&nbsp; I believe I have everything modeled for an affliction rotation except the part of Everlasting Affliction that refreshes Corruption, any on-use or on-proc affects (other than Nightfall), tier bonuses, and pets.&nbsp; But, even with those things missing I'm sure you'll find other problems for me to fix!&nbsp; And probably other things that I didn't realize I'm missing.&nbsp; Please contact me over MSN (xemnosyst@live.com) or the email link on Codeplex here and I'll send you a .zip.&nbsp; Or if you're savvy enough, grab the source &amp; I won't have to keep sending you .zips for testing.&nbsp; After you grab source, if you're using Visual Studio (or the express version), right click on the solution -&gt; &quot;Add Existing Project&quot; -&gt; add WarlockTmp.&nbsp; Thanks!</p>",
+    "PostedDate": "2010-03-07T23:54:56.447-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "415348",
+    "ThreadId": "203628",
+    "Html": "<p>Probably I could be of some help by providing&nbsp;a&nbsp;download page for the latest nightly build of rawr (of course including WarlockTmp support)?</p>\r\n<p>Sorry I cannot provide&nbsp;more help at this time, even if I'm a C/C++ programmer playing a (destro) warlock as main char -&nbsp;but as I'm&nbsp;damn busy at the moment, I don't have a good mind to develop &quot;after hours&quot; ;-)</p>",
+    "PostedDate": "2010-03-08T01:10:53.017-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "415459",
+    "ThreadId": "203628",
+    "Html": "<p>I can definitely help out. C++/C# developer by day; my main is a Demonology Warlock with no real off-spec ( as the only 'Lock in the raid, I pretty much never spec out of Demo cuz of DP ).&nbsp;</p>",
+    "PostedDate": "2010-03-08T06:33:47.167-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "415544",
+    "ThreadId": "203628",
+    "Html": "<p>Maleficus: That would be nice, thank you.</p>\r\n<p>Shadowwolf: great.&nbsp; Let me know when you're ready to start and I'll give you an assignment ;).&nbsp; I'd post my next-priority changes for you now, but so far it seems popular to offer help but not follow through right away.&nbsp; So again, please contact me over MSN (xemnosyst@live.com) or email (link on my user page).</p>",
+    "PostedDate": "2010-03-08T09:58:44.353-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "415680",
+    "ThreadId": "203628",
+    "Html": "<p>I set up a small page and uploaded my latest build (Commit 47266, which happens to be the latest change of the WarlockTmp module).<br>I'll try to update it with every change of the WarlockTmp module.</p>\r\n<p>[edit]removed Download-URL[/edit]</p>\r\n<p>@Astrylian:&nbsp;Sorry, didn't think about it.<br>@All interested testers: Contact me to get the Download-Location.</p>",
+    "PostedDate": "2010-03-08T14:56:17.807-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "415690",
+    "ThreadId": "203628",
+    "Html": "<p>Please do not post dev builds publically like this, to prevent user confusion. Please send it to testers like this directly.</p>",
+    "PostedDate": "2010-03-08T15:08:13.54-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "415713",
+    "ThreadId": "203628",
+    "Html": "<p>Sorry. I removed the link and changed the download location.</p>",
+    "PostedDate": "2010-03-08T16:06:25.347-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "415740",
+    "ThreadId": "203628",
+    "Html": "<p>Perhaps one of the other devs out there has seen a problem like this before and can help me fix it.&nbsp; When displaying gear in the right-most pane it becomes fairly likely that Rawr will encounter an exception in my code that I can't figure out.&nbsp; And it never happens when displaying talents or glyphs.&nbsp; There's code that looks like this:</p>\r\n<p>\r\n<pre>CalculateDps() {\r\n    if (Dps &gt;= 0) {\r\n        return Dps;\r\n    }\r\n    ... a bunch of calculations ...\r\n    Dps = 3000 or whatever;\r\n    return Dps;\r\n}</pre>\r\nThe exception happens during the &quot;bunch of calculations&quot;, and the debugger is telling me Dps = 3000-something at that point.&nbsp; If you're paying attention, that means it shouldn't have been executing that code in the first place.&nbsp; It's as though when displaying gear choices in the right-hand panel, it's calling CalculateDps() in two different threads on the same CharacterCalculations object at the same time (which I was definitely not anticipating).&nbsp; Have any of you seen this before, and if so can you tell me how to fix it?</p>",
+    "PostedDate": "2010-03-08T18:44:16.157-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "415748",
+    "ThreadId": "203628",
+    "Html": "\r\nSet a breakpoint and find out by reproducing it while running under the debugger?<br> <br>\r\n<hr id=stopSpelling>\r\nFrom: [email removed]<br>To: [email removed]<br>Date: Mon, 8 Mar 2010 18:44:17 -0800<br>Subject: Re: Warlocks, Take 3 [Rawr:203628]<br><br>\r\n\r\n\r\nFrom: xemnosyst<br>\r\n<div id=ecxThreadNotificationPostBody>\r\nPerhaps one of the other devs out there has seen a problem like this before and can help me fix it.  When displaying gear in the right-most pane it becomes fairly likely that Rawr will encounter an exception in my code that I can't figure out.  And it never happens when displaying talents or glyphs.  There's code that looks like this:<br>\r\n<pre>CalculateDps() {\r\n    if (Dps &gt;= 0) {\r\n        return Dps;\r\n    }\r\n    ... a bunch of calculations ...\r\n    Dps = 3000 or whatever;\r\n    return Dps;\r\n}</pre>The exception happens during the &quot;bunch of calculations&quot;, and the debugger is telling me Dps = 3000-something at that point.  If you're paying attention, that means it shouldn't have been executing that code in the first place.  It's as though when displaying gear choices in the right-hand panel, it's calling CalculateDps() in two different threads on the same CharacterCalculations object at the same time (which I was definitely not anticipating).  Have any of you seen this before, and if so can you tell me how to fix it?\r\n<p><br></div>\r\n<div id=ecxThreadNotificationFooter>\r\nRead the <a href=\"http://rawr.codeplex.com/Thread/View.aspx?ThreadId=203628&ANCHOR#Post415740\">full discussion online</a>.<br>\r\nTo add a post to this discussion, reply to this email (<a href=\"mailto:Rawr@discussions.codeplex.com?subject=[Rawr:203628]\">Rawr@discussions.codeplex.com</a>)<br>\r\nTo start a new discussion for this project, email <a href=\"mailto:Rawr@discussions.codeplex.com\">Rawr@discussions.codeplex.com</a><br>\r\nYou are receiving this email because you subscribed to this discussion on CodePlex. You can <a href=\"http://www.codeplex.com/site/discussions/thread/unsubscribe/203628\">unsubscribe</a> on CodePlex.com.<br>\r\nPlease note: Images and attachments will be removed from emails. Any posts to this discussion will also be available online at CodePlex.com<br></div> \t\t \t   \t\t  ",
+    "PostedDate": "2010-03-08T19:47:47.613-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "415755",
+    "ThreadId": "203628",
+    "Html": "<p>There is a single instance of CharacterCalculations and it can be called from multiple threads at the same time. You should make GetCharacterCalculations thread-safe.</p>",
+    "PostedDate": "2010-03-08T20:22:05.843-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "415770",
+    "ThreadId": "203628",
+    "Html": "<p>You do mean Dps = -something, likely -1.0, and not Dps = 3000-something?</p>\r\n<p>Also, it would be helpful to know what the exception is, and where it is occurring. &nbsp;Short of that, follow Markdall's suggestion, and step through the code.</p>",
+    "PostedDate": "2010-03-08T21:28:17.043-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "415772",
+    "ThreadId": "203628",
+    "Html": "<p>Kavan pointed me in the right direction.&nbsp; Fixed.&nbsp; Thank you.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-03-08T21:37:56.92-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "415779",
+    "ThreadId": "203628",
+    "Html": "<p>AHHHHH!&nbsp; Pets are driving me crazy.&nbsp; Does anybody know an up-to-date source of pet stats and how they scale?&nbsp; I'm currently naked and untalented in Undercity trying to figure this stuff out.&nbsp; I have some decent stats for the basic pets' base stats and how their health &amp; mana scales with their own stamina &amp; intellect, but this is taking forever.&nbsp; And I still don't know how each pet's stats scale with the Warlock's own stats, but I do know that the character sheet completely lies about it.&nbsp; E.g. my character sheet goes from &quot;increases your pets intellect by 46&quot; to &quot;329&quot; when I put my gear on, an increase of 283.&nbsp; However, my pet's actual intellect goes from 415-689, an increase of 274.&nbsp; For stamina: 27-310 (283 increase) vs. 185-895 (710 increase).&nbsp; Grr.&nbsp; I also cannot figure out how to cancel Fel Intelligence :(.</p>\r\n<p>I think I'll work on on-proc/on-use effects next and come back to this .... much later.&nbsp; Say - anybody else want to just take care of pets?</p>",
+    "PostedDate": "2010-03-08T21:57:49.53-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "415795",
+    "ThreadId": "203628",
+    "Html": "<p>Cancelling Fel Int &nbsp;- Open pet spell book and disable auto-cast?</p>\r\n<p>I'd actually ask you to do pets first before you complete rest of model.</p>\r\n<p>If you are Gnome/Human you might suffer additional problems with Int/Spirit scaling. I'm pretty sure someone has figured out pet scaling somewhere on EJ forums, We'd just have to sneak around and use the search a bit.</p>",
+    "PostedDate": "2010-03-08T23:01:19.343-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "415804",
+    "ThreadId": "203628",
+    "Html": "<p>Since you already have the pet base stats, here are the scaling stats:</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #region minion scaling factors<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /// &lt;summary&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /// minion inherits 75% of the master's stamina.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /// &lt;/summary&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; protected const float InheritedStamina = 0.75f;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /// &lt;summary&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /// minion inherits 30% of the master's intellect.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /// &lt;/summary&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; protected const float InheritedIntellect = 0.30f;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /// &lt;summary&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /// minion inherits 35% of the master's armor.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /// &lt;/summary&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; protected const float InheritedArmor = 0.35f;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /// &lt;summary&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /// minion inherits 40% of the master's resistances.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /// &lt;/summary&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; protected const float InheritedResistances = 0.40f;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /// &lt;summary&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /// minion inherits 15% of the master's spell power.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /// &lt;/summary&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; protected const float InheritedSpellDamage = 0.15f;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /// &lt;summary&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /// minion attack power is increased by 57% of the master's spell power.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /// &lt;/summary&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; protected const float InheritedAttackPower = 0.57f;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /// &lt;summary&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /// The minion's crit chance is increased by 10/20/30% of the master's crit chance,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /// but only if the master has the Improved Demonic Tactics talent(s).<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /// &lt;/summary&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; protected float InheritedCriticalStrikeChance;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /// &lt;summary&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /// minion inherits 100% of the master's spell penetration.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /// &lt;/summary&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; protected const float InheritedSpellPenetration = 1.00f;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /// &lt;summary&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /// minion inherits 40% of the master's resilience.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /// &lt;/summary&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; protected const float InheritedResilience = 0.40f;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /// &lt;summary&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /// minion inherits 100% of the master's hit chance - so if the master is hit capped, then the minion is too.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /// This applies to Expertise too (according to the 3.2 patch notes), however warlocks dont have expertise ...<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /// &lt;/summary&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; protected const float InheritedHitChance = 1.00f;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #endregion</p>",
+    "PostedDate": "2010-03-08T23:57:29.173-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "415833",
+    "ThreadId": "203628",
+    "Html": "<p>The reference to Expertise above works the same way as it does for Hunters. Basically, your Hit % against your Miss % affects the pet's dodges and parries. Instead of using Expertise to fill those gaps like a normal melee DPS would, you use your Hit instead.</p>\r\n<p>So, if you are at the Spell Hit Cap (17% @ 83), then your pet will never miss and ALSO never be dodged/parried (for it's melee). If you are at Half that 17% which is 8.5%, then your pet's Miss gap will only be half filled and same for his Dodge/Parry gaps, half filled.</p>",
+    "PostedDate": "2010-03-09T01:11:46.7-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "415875",
+    "ThreadId": "203628",
+    "Html": "<p>[edit] Problem is already solved, I should have read _all_ emails before answering -.- [/edit]</p>",
+    "PostedDate": "2010-03-09T03:31:47.887-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "416060",
+    "ThreadId": "203628",
+    "Html": "<p>If you can't get fel int off by disabling autocast, try getting a mage and priest to int/spirit buff you. fel int doesn't stack with them, so your number won't change.</p>",
+    "PostedDate": "2010-03-09T11:58:48.977-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "416125",
+    "ThreadId": "203628",
+    "Html": "<p>Bah nevermind, I had messed up my enlistment in some profound way.</p>",
+    "PostedDate": "2010-03-09T14:29:18.16-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "416195",
+    "ThreadId": "203628",
+    "Html": "<p>So I &quot;improved&quot; the modeling of missed spells so that it mimics re-casting higher priority spells when they miss (if cooldowns don't forbid it).&nbsp; However, this change has shifted the value of hit to be slightly lower than spell power, with which no other theorycraft seems to agree.&nbsp; So I fear I'm doing something wrong.&nbsp; Last time I posted code I got no responses, but this time I think it should be easier to follow.&nbsp; Let me know if anyone sees something wrong with the way I'm doing this:</p>\r\n<p>&nbsp;</p>\r\n<pre>collisionDelay = avg time waiting for higher priority spells\r\nrecastPeriod = minimum time between successful spell casts\r\navgCastTime = the average casting time of your spells (estimated)\r\nperiod = Max(recastPeriod, cooldown) + collisionDelay\r\nif (canMiss &amp;&amp; cooldown &lt; recastPeriod) {\r\n\r\n    // Decrease time between casts if this spell can miss, and\r\n    // its cooldown is shorter than than we'd be casting it again\r\n    // anyway.\r\n    periodAfterMiss = Max(Cooldown, avgCastTime / 2) + collisionDelay\r\n    period = WeightedSum(\r\n        period, hitChance,\r\n        periodAfterMiss, missRate);\r\n}\r\nnumCasts = fightLength / period;<br><hr><br>[Edit 1]: Nothing like expressing your thoughts to make you revise them.<br>I don't really know why I was trying to factor in double misses; the<br>period of any one spellcast is not affected by how many misses are in a<br>row.  Changed above, though hit is even less important now.<br></pre>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-03-09T20:04:18.213-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "416231",
+    "ThreadId": "203628",
+    "Html": "<p>I solved this somewhat different for ShadowPriest. Any misses on recastable spells eat damage out of the filler spell. Non-recastable (MB for SP f.ex) have their damage entirely lost. Makes modelling a lot more simple, and most people want to be hit capped anyway, thus modelling works perfectly at hit cap :P</p>",
+    "PostedDate": "2010-03-09T23:19:22.587-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "416421",
+    "ThreadId": "203628",
+    "Html": "<p>Sounds like roughly the same effect.&nbsp; I want to be as accurate as possible determining NumCasts, though, especially with a spell like Haunt, which causes you to looses a big damage boost when it misses.&nbsp; It is also the only spell taking advantage of the &quot;normal&quot; recast time (which I currently have set to 10 seconds) being longer than the cooldown (8 seconds), which may help you understand the code above a little better.&nbsp; And when I say &quot;recast time&quot;, I mean the time at which a player sort of queues up the spell, after which s/he is still going to have to wait until s/he finishes whatever cast s/he was in the middle of.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-03-10T07:48:48.897-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "417115",
+    "ThreadId": "203628",
+    "Html": "<p>@ xemnosyst,&nbsp; do you think any changes to Warlock model will be released anytime soon?&nbsp; Just curious...</p>",
+    "PostedDate": "2010-03-11T11:45:05.587-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "417127",
+    "ThreadId": "203628",
+    "Html": "<p>Xemnosyst is not changing the current Lock model, he's making a new one from scratch utilizing all the current fun stuff that we've discovered over the course of Rawr's history.</p>\r\n<p>ArPharazon is still working on the current Lock model.</p>",
+    "PostedDate": "2010-03-11T11:58:42.08-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "417197",
+    "ThreadId": "203628",
+    "Html": "<p>ArPharazon has not done anything for months now.&nbsp; If we are waiting on him&nbsp;it will never be completed.&nbsp; &nbsp;I'm putting my faith in Xemnosyst as we can see that he&nbsp;IS working hard on the new one.</p>",
+    "PostedDate": "2010-03-11T14:56:18.18-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "417199",
+    "ThreadId": "203628",
+    "Html": "<p>Not only is he working hard, it's looking pretty damn nice. Well... the 1/4 of it that's actually there.</p>",
+    "PostedDate": "2010-03-11T15:19:03.007-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "417250",
+    "ThreadId": "203628",
+    "Html": "<p>It is definitely looking very good.</p>",
+    "PostedDate": "2010-03-11T18:54:18.777-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "417256",
+    "ThreadId": "203628",
+    "Html": "<p>Blizzard hates theorycrafters.</p>\r\n<p>[Later Edit]</p>\r\n<p>So I just want to vent here.&nbsp; I just got done figuring out exactly which talents &amp; buffs get added together vs. multiplied.&nbsp; Blizzard hates theorycrafters.&nbsp; I wrote down all the craziness so I could vent about it:</p>\r\n<p>The +damage% multipliers from talents (that do not manifest as buffs or debuffs) are added together, then multiplied with your +damage% buffs and the target's debuffs to get the final multiplier.&nbsp; EXCEPT for malediction (a talent which is multiplied) and grand spellstone (a buff which is added).&nbsp; Also, grand spellstone does not get applied to curse of agony (??!?!!).<br><br>Also of interest is that when Empowered Corruption says &quot;Increases the damage ... by an amount equal to x% of your spell power&quot;, that percentage gets divided among the ticks.&nbsp; HOWEVER, when Everlasting Affliction says &quot;&lt;spell list&gt; gain an additional x% of your bonus spell damage&quot;, that gets applied to EACH tick.</p>\r\n<p>In conclusion, Blizzard hates theorycrafters.</p>",
+    "PostedDate": "2010-03-11T19:08:37.033-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "417287",
+    "ThreadId": "203628",
+    "Html": "<p>You could have saved a lot of time and hassle if you had re-used the existing spell templates which had already been theorycrafted and validated via DrDamage.</p>",
+    "PostedDate": "2010-03-11T21:53:48.07-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "417450",
+    "ThreadId": "203628",
+    "Html": "<p>This is true.&nbsp; I honestly forgot that I could probably get my info by looking at the spell objects in the current warlock model (which is really dumb of me, I know).&nbsp; Also, now that I've spent a lot of time &amp; know how these things work it'll probably be easier for me to understand the code.&nbsp; I just downloaded DrDamage &amp; checked it out; it indeed has everything I mentioned in my last post already factored into its calculations, except that Grand Spellstone does not apply to Curse of Agony.&nbsp; I will definitely be using these two sources of info to speed along the development of Demo &amp; Destro.</p>\r\n<p>*Xemnosyst runs off to look at the original model's code...*</p>\r\n<p>Yes, this will be helpful, but I don't think I'll just copy-paste and forget it.&nbsp; Btw, I think AvgDirectDamage() is wrong.&nbsp; Say I cast a spell 5 times and it score 10, 15(crit), 0(miss), 10, 10.&nbsp; That's 80% hit rate and 25% crit rate.&nbsp; We can see that average damage = (10+15+0+10+10)/5 = 45/5 = 9.&nbsp; Using the code I see, AvgDirectDamage = AvgHit*(HitChance-CritChance)+(AvgCrit*CritChance) = 10*(.8-.25)+(15*.25) = 5.5+3.75 = 9.25.</p>",
+    "PostedDate": "2010-03-12T06:44:24.953-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "417502",
+    "ThreadId": "203628",
+    "Html": "<p>20% crit rate, not 25%. Fixing that in your calculation shows the same result as AvgDirectDamage().</p>",
+    "PostedDate": "2010-03-12T08:07:49.537-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "417514",
+    "ThreadId": "203628",
+    "Html": "<p>Correct me if I'm wrong, but I believe that's the difference between a 1-roll and 2-roll system.&nbsp; For spells, you have to hit to crit, right?&nbsp; So the crit rate is only applied to the 4 casts that actually hit, in the example above.&nbsp; In the case of melee, you are absolutely correct.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-03-12T08:22:32.74-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "417536",
+    "ThreadId": "203628",
+    "Html": "<p>I have recently seen added to DrDamage the option to select the 2 roll system for casters.&nbsp; Unless Blizz has made some changes, the standard for casters has been a 1 roll system for as long as I have known.&nbsp; Some of those misses could have been crits.</p>",
+    "PostedDate": "2010-03-12T09:33:26.73-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "417566",
+    "ThreadId": "203628",
+    "Html": "<p>Well that's an important piece of information to get straight!&nbsp; <a href=\"http://www.wowwiki.com/Spell_hit#The_effect_of_Hit_chance_on_Critical_Hit_chance\">This page</a> says it's a 2 roll system.&nbsp; Can anybody show it is wrong?</p>",
+    "PostedDate": "2010-03-12T10:18:49.793-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "417638",
+    "ThreadId": "203628",
+    "Html": "<p>Casters had a&nbsp;2 roll system for as long as I know.</p>",
+    "PostedDate": "2010-03-12T13:55:27.52-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "417658",
+    "ThreadId": "203628",
+    "Html": "<p>Yup - its been a 2 roll system from the start.</p>",
+    "PostedDate": "2010-03-12T14:49:32.5-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "417733",
+    "ThreadId": "203628",
+    "Html": "<p>It's 2 roll indeed, I was wrong. Posting while talking to a customer ftl :)</p>",
+    "PostedDate": "2010-03-13T03:39:18.997-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "418092",
+    "ThreadId": "203628",
+    "Html": "<p>Ok I'm having a lot of trouble figuring out Conflagrate + Firestone.&nbsp; Maybe if I post the numbers here one of you can figure out how to calculate them.&nbsp; Here's a scenario:</p>\r\n<ul>\r\n<li>Without talents, buffs or debuffs, Immolate ticks 5 times for 695.6 each.</li>\r\n<li>With talents: 15% Emberstorm + 30% Improved Immolate + 6% Aftermath = 51% =&gt; 1050.3 ticks.</li>\r\n</ul>\r\n<p>Without Firestone, Conflagrate's direct portion hits for 1050.3 * 5 * .6 = 3150.9, as we would expect.&nbsp; HOWEVER, with Firestone the direct portion hits for 3177-3178, and I cannot figure out how to calculate that.&nbsp; Can anyone offer some insight?&nbsp; I looked over the original warlock code &amp; DrDamage code, but it was not immediately apparent to me how it's being calculated there.</p>",
+    "PostedDate": "2010-03-15T00:43:52.503-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "418141",
+    "ThreadId": "203628",
+    "Html": "<p>The formula DrDamage uses is:</p>\r\n<p>(695.6 * 1.51 [Emberstorm + Improved Immolate + Aftermath]) * (1.01 [Spellstone] - 0.0015 [Emberstorm again]) * 5 * 0.6 = 3177,85</p>",
+    "PostedDate": "2010-03-15T03:32:02.613-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "418964",
+    "ThreadId": "203628",
+    "Html": "<p>Sorry I forgot to respond to that last post, Maleficus.&nbsp; Thank you very much!&nbsp; And WOW, Blizzard hates theorycrafters.</p>\r\n<p>New question: given the frequency of a Corruption reset trigger (e.g. once per 3 seconds), the non-rolling duration of Corruption, and the % chance a trigger will actually work, I need a formula for Corruption's average rolling duration.&nbsp; Can anybody help?</p>",
+    "PostedDate": "2010-03-16T18:01:54.553-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "418976",
+    "ThreadId": "203628",
+    "Html": "<p>Or, equivalently, a formula for how many times I'll have to cast it (on average) in an X minute fight :).</p>\r\n<p>[edit]</p>\r\n<p>No wait - maybe that's not equivalent.&nbsp; Ok I need a formula for the second one, not the first.&nbsp; For how many times I'll be casting it, on average.</p>\r\n<p>[edit]</p>\r\n<p>Oh yeah, yeah, it's equivalent.&nbsp; :)</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-03-16T18:45:41.133-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419074",
+    "ThreadId": "203628",
+    "Html": "<p>That depends on whether the proc-chance is per tick or per cast.</p>\r\n<p>If its per tick, I could think of the following (pseudo-code follows):</p>\r\n<p>Assume, you have the following variables initialized:</p>\r\n<p>float initial_duration = [Duration of the Corruption spell]<br>float trigger_freq = [Frequency of the reset trigger]<br>float proc_chance = [Chance of the trigger]<br>float fight_duration = [Maximum duration of the fight]&nbsp;</p>\r\n<p>You could try the following:</p>\r\n<p>&nbsp;</p>\r\n<div id=\"_mcePaste\" style=\"left:-10000px;top:0px;width:1px;height:1px;overflow-x:hidden;overflow-y:hidden\">completeduration = initialduration;</div>\r\n<div id=\"_mcePaste\" style=\"left:-10000px;top:0px;width:1px;height:1px;overflow-x:hidden;overflow-y:hidden\">for (int i = triggerfreq; i &lt; completeduration; i += triggerfreq) {</div>\r\n<div id=\"_mcePaste\" style=\"left:-10000px;top:0px;width:1px;height:1px;overflow-x:hidden;overflow-y:hidden\">&nbsp;&nbsp; &nbsp;remaining = completeduration - i;</div>\r\n<div id=\"_mcePaste\" style=\"left:-10000px;top:0px;width:1px;height:1px;overflow-x:hidden;overflow-y:hidden\">&nbsp;&nbsp; &nbsp;would_add_duration = initialduration - remaining;</div>\r\n<div id=\"_mcePaste\" style=\"left:-10000px;top:0px;width:1px;height:1px;overflow-x:hidden;overflow-y:hidden\">&nbsp;&nbsp; &nbsp;completeduration += would_add_duration * procchance;</div>\r\n<div id=\"_mcePaste\" style=\"left:-10000px;top:0px;width:1px;height:1px;overflow-x:hidden;overflow-y:hidden\">\r\n<p>}</p>\r\n<p>&nbsp;</p>\r\n</div>\r\n<p>\r\n<p>float complete_duration = initial_duration;</p>\r\n<p>for (int i = 0; i &lt; complete_duration &amp;&amp; i &lt;&nbsp;fight_duration; i += trigger_freq) {<br>&nbsp;&nbsp; &nbsp;float time_remaining = complete_duration - i;<br>&nbsp;&nbsp; &nbsp;float would_add_duration = initial_duration -&nbsp;time_remaining;<br>&nbsp;&nbsp; &nbsp;complete_duration +=proc_chance *&nbsp;would_add_duration;<br>}</p>\r\n<div>I cannot think of a formula for now, as the loop condition changes within the loop, but someone might have a better idea...</div>\r\n<div></div>\r\n<div>Oh, btw, if you implement it like this, you would like to start the loop at 'trigger_freq' instead of 0, as a proc on i=0 would have absolutely no effect.</div>\r\n<div></div>\r\n<div>(Re-read the piece of code a couple of times and it still makes sense to me, so I just submit this reply - However I just got up, so forgive any cerebral blackouts) ;-)</div>\r\n</p>",
+    "PostedDate": "2010-03-17T01:27:08.437-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419276",
+    "ThreadId": "203628",
+    "Html": "<p>I got excited thinking you solved it, but that can't be true.&nbsp; Your loop would predict infinite duration for any proc_chance &gt;= trigger_freq / (initial_duration - trigger_freq), since at that point it will be adding at least trigger_freq every time through the loop.&nbsp; Sample values for those could be 3 / (12 - 3)&nbsp;= .33.&nbsp; That would mean only 2 points in Everlasting Affliction would be more than enough to guarantee 100% uptime, which is obviously not true.&nbsp; The only way to guarantee that is with proc_chance = 100%.</p>",
+    "PostedDate": "2010-03-17T09:10:35.207-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419403",
+    "ThreadId": "203628",
+    "Html": "<p>I have very limited knowledge about Warlocks so I'm not really sure what you're talking about, but if you explain more in detail what you're trying to model I can help you with the math.</p>",
+    "PostedDate": "2010-03-17T13:27:43.463-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419412",
+    "ThreadId": "203628",
+    "Html": "<p><span style=\"font-size:x-small\">\r\n<p>Corruption&nbsp;lasts D seconds. (D for Duration)</p>\r\n<p>Every T seconds it has a chance of P to be reset to D seconds. (T for trigger, P for probability)</p>\r\n<p>How long will the effect end up lasting, on average? To put it another way, how long until it goes a full D seconds without being reset?</p>\r\n<p>Given those rules it's clear that if P is 0, the answer is D. If P is 1 and T &lt;= D, the answer is infinity.</p>\r\n<p>Interesting to note is that even if T &gt; D it still has a chance to trigger a single reset, since the first trigger may occur anywhere from 0-T seconds after the effect starts.</p>\r\n<p>It's actually a simplifying assumption that the trigger will occur exactly T second apart.&nbsp; In reality it will *average* T seconds apart, so if you care to tackle that problem be my guest!&nbsp; However, you'd then have to know what distribution it follows, and I cannot give you that information.</p>\r\n</span></p>",
+    "PostedDate": "2010-03-17T13:49:10.763-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419418",
+    "ThreadId": "203628",
+    "Html": "<p>I believe EA procs per tick for channeled spells Drain Life and Drain Soul (<a href=\"http://www.wowwiki.com/Everlasting_Affliction#Patch_changes\">source</a>), but per cast for Haunt and <a href=\"http://www.wowhead.com/?spell=47205#comments:id=917936\">Shadow Bolt</a>.&nbsp; I will try to test this tonight if I get a chance.&nbsp; Also, worth noting that EA will wait to reset Corruption's duration until the next tick, thereby not robbing you of DPS.&nbsp; It will never reset mid-tick.&nbsp; (<a href=\"http://www.wowhead.com/?spell=47205#comments:id=561719\">Source</a>) You may know all of this already. ;)</p>\r\n<p>As to Maleficus's example, I think infinite duration is actually correct for that <em>particular view</em> of the model.&nbsp;</p>\r\n<p>Each time you have the chance to proc (per cast of Haunt, for example), the model should effectively add corruption_duration * proc_chance to the existing corruption.&nbsp; So, if you have 3 ranks of EA (60%), each proc opportunity (Haunt cast) should add 10.8 seconds to Corruption's duration -- 60% of Procs, over time, will add 18 seconds; thus over time you gain an average of 10.8 seconds.&nbsp; Since Haunt is being re-cast every cooldown (9-10 seconds or so, including casting time), which is less than added duration, Corruption should never fall off from the model.&nbsp; Granted, this doesn't factor in Haunt travel time, mistimed casting, etc.</p>\r\n<p><em>On balance</em>, this should work out to be true, in the same way that one models crit damage as an overall damage boost per cast (i.e. average damage * odds of not critting + average damage * odds of critting * crit multiplier = average overall damage).&nbsp; Consequently, even one rank of EA would be enough to kick Corruption into essentially infinite uptime, as far as that version of the model is concerned.</p>\r\n<p>The only thing worrying me is the whole additive chance/probability approach vs. subtractive (i.e. a 20% chance to proc means an 80% chance to <em>not</em> proc).&nbsp; I have a sneaking suspicion that this is more important...</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-03-17T14:12:01.803-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419431",
+    "ThreadId": "203628",
+    "Html": "<p>Shame to me. However, I discussed the topic with two colleagues (one of them promoted in Maths) and they both came to the same result ^^</p>\r\n<p>But of course you're right. And I think I see the problem: You cannot add &quot;proc_chance * would_add_duration&quot; in every loop, but you'll have to consider, that it may have procced before.</p>\r\n<p>Given an initial_duration of 10, trigger_freq of 3 and possibility of 50, the correct durations should be as follows:</p>\r\n<p>t0 (no trigger so far) -&gt; 10 seconds<br>t0 + 3s (first trigger) -&gt; 10 seconds + (3 seconds * proc_chance) -&gt; 11.5 seconds. Up to &nbsp;here, the algorithm from above is perfect :) However:<br>t0 + 6s (2nd trigger) -&gt; the chance to add 6 seconds is only 25% (no proc at t0+3), and there is a 25% chance to add 3 seconds (procced at t0). The chance, that it doesn't proc is still 50%.<br>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; So, the duration after this proc would be 11.5 seconds + 9*0.25 = 13.75 seconds<br>t0 + 9s (3rd trigger) -&gt; there is a 12.5% chance to add 9 seconds (if no proc has been there before), a 12.5% chance to add 6 seconds (if the 2nd proc succeeded while the 1st one didn't),&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;another 12.5% chance to add 6 seconds (if the 1st AND the 2nd proc succeeded), and a 12.5% chance to add 3 seconds (if the 1st proc succeeded, while the 2nd one didn't).<br>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; So, the duration after this proc would be 13.75 seconds + 9*0.125 + 2*6*0.125 + 3*0.125 = 16.75 seconds<br>t0 + 12s (4th trigger) -&gt; We have a chance to add 9 seconds (22 instead of 13, if only the 1st succeeded), a chance to add 6 seconds (22 instead of 16, if either only the 2nd or both the 1st AND<br>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; the 2nd chance procced), a chance to add 3 seconds (22 instead of 19, if the 3rd succeeded, independently of the two chances before that).<br>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; So, the duration after this proc would be 16.75 seconds + 9*0.0625 + 2*6*0.0625 + 4*3*0.0625 = 17.5 seconds</p>\r\n<p>*thinking*</p>\r\n<p>f(0) = 10<br>f(1) = 11.5 = &nbsp; f(0) + 1.5<br>f(2) = 13.75 = f(1) + 2.25<br>f(3) = 16.75 = f(2) + 3<br>f(4) = 17.5 = &nbsp; f(3) + 0.75</p>\r\n<p>Weird... I think, I'll have to leave the numbers alone for a night or two, probably tomorrow will be a better day to solve things like that *rolleyes*<br>I think, it'd be easier to implement than trying to solve this in an editor. ;-)&nbsp;</p>",
+    "PostedDate": "2010-03-17T14:31:11.423-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419453",
+    "ThreadId": "203628",
+    "Html": "<p>McC - Thanks for the info about drain soul.&nbsp; As for the rolling corruption problem, I'm afraid I don't really follow what you're saying :(.&nbsp; At any rate, I know that Meleficus' loop does not give me the answer I need.&nbsp; In your example, it only takes one Haunt non-proc to make Corruption's length non-infinite, therefore in that example, given the 40% chance of a non-proc, the average length of Corruption is clearly not inifinity.</p>\r\n<p>Maleficus - good luck tomorrow!</p>\r\n<p>For anyone working on the problem, here is some Java code that estimates the answer, to check your work against.&nbsp; At least, I think this estimates the answer!</p>\r\n<p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre><span style=\"color:Blue\">public</span> <span style=\"color:Blue\">class</span> CorruptionDurationCalc {\r\n\r\n    <span style=\"color:Blue\">public</span> <span style=\"color:Blue\">static</span> <span style=\"color:Blue\">void</span> main(String[] args) {\r\n\r\n\t<span style=\"color:Blue\">double</span> procRate = .4;\r\n\t<span style=\"color:Blue\">double</span> triggerPeriod = 3;\r\n\t<span style=\"color:Blue\">double</span> duration = 12;\r\n\t<span style=\"color:Blue\">int</span> numTests = 100000;\r\n\r\n\t<span style=\"color:Blue\">double</span> totalUptime = 0;\r\n\t<span style=\"color:Blue\">for</span> (<span style=\"color:Blue\">int</span> i = 0; i &lt; numTests; ++i) {\r\n\t    <span style=\"color:Blue\">double</span> durationRemaining = duration;\r\n\t    <span style=\"color:Blue\">double</span> timeAdvance = Math.random() * triggerPeriod;\r\n\t    <span style=\"color:Blue\">while</span> (durationRemaining &gt;= timeAdvance) {\r\n\t\ttotalUptime += timeAdvance;\r\n\t\t<span style=\"color:Blue\">if</span> (Math.random() &lt; procRate) {\r\n\t\t    durationRemaining = duration;\r\n\t\t} <span style=\"color:Blue\">else</span> {\r\n\t\t    durationRemaining -= timeAdvance;\r\n\t\t}\r\n\t\ttimeAdvance = triggerPeriod;\r\n\t    }\r\n\t    totalUptime += durationRemaining;\r\n\t}\r\n\r\n\tSystem.out.printf(<span style=\"color:#A31515\">&quot;experimental duration = %f\\n&quot;</span>, totalUptime\r\n\t\t/ numTests);\r\n    }\r\n}\r\n\r\n</pre>\r\n</div>\r\n</p>",
+    "PostedDate": "2010-03-17T15:12:12.683-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419457",
+    "ThreadId": "203628",
+    "Html": "<p>There might be a more elegant way to solve this, but here is the closed form solution. There are some divisions by P in the process so this'll only hold for 0 &lt; P &lt; 1. For edge cases you'll need special (but trivial) alternative.</p>\r\n<p>I'm assuming that the trigger occurs every T seconds, but not at time=0.</p>\r\n<p>Let N = D/T be max duration in terms of trigger interval. Let E(i) be expected duration of corruption if it currently has i trigger intervals left on the counter and we're at the point where we have a trigger. Then we have:</p>\r\n<p>E(i) = T + P * E(N-1) + (1 - P) * E(i-1), for i &gt; 0, i &lt; N<br>E(0) = 0<br>E(N) = T + E(N-1)</p>\r\n<p>We solve this recurrence relation:</p>\r\n<p>Let K := T + P * E(N-1)</p>\r\n<p>Then we have</p>\r\n<p>E(0) = 0<br>E(i) = K + (1 - P) * E(i-1)</p>\r\n<p>First we solve the homogeneous part</p>\r\n<p>E(i) = (1 - P) * E(i-1)</p>\r\n<p>for which we have (1 - P)^i.</p>\r\n<p>Now we need a particular solution, for which we'll use method of undetermined coefficients.</p>\r\n<p>The solution will have the form E(i) = A * (1 - P)^i + B</p>\r\n<p>This gives us:</p>\r\n<p>E(0) = A + B = 0<br>E(1) = A * (1 - P) + B = K</p>\r\n<p>B = -A<br>A * (1 - P) - A = K</p>\r\n<p>- A * P = K<br>A = -K/P<br>B = K/P</p>\r\n<p>So this gives us the solution to recurrence:</p>\r\n<p>E(i) = K/P * (1 - (1 - P)^i)</p>\r\n<p>The recurrence only holds up to N-1. First we need to eliminate K:</p>\r\n<p>E(N-1) = K/P * (1 - (1 - P)^(N-1))</p>\r\n<p>K = T + P * E(N-1)<br>E(N-1) = (K - T) / P</p>\r\n<p>(K - T) / P = K/P * (1 - (1 - P)^(N-1))<br>T = K * (1 - P)^(N-1)</p>\r\n<p>K = T / (1 - P)^(N-1)</p>\r\n<p>This gives</p>\r\n<p>E(N-1) = (T / (1 - P)^(N-1))/P * (1 - (1 - P)^(N-1))</p>\r\n<p>Let R := (1 - P)^(N-1)</p>\r\n<p>Then E(N-1) = T*(1 - R)/(R*P)</p>\r\n<p>Finally</p>\r\n<p>E(N) = T + E(N-1)<br>&nbsp;&nbsp;&nbsp;&nbsp; = T + T*(1 - R)/(R*P)<br>&nbsp;&nbsp;&nbsp;&nbsp; = T * (1 + (1 - R)/(R*P))<br>&nbsp;&nbsp;&nbsp;&nbsp; = T * (1 - R*(1 - P))/(R*P)</p>",
+    "PostedDate": "2010-03-17T15:14:56.057-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419462",
+    "ThreadId": "203628",
+    "Html": "<p>That math is definitely over my head.&nbsp; I don't understand the recurrance you set up, and I *certainly* don't remember how to solve recurances, so I'm afraid I can't help you check your work.&nbsp; However, my RNG-based simulator comes up with wildly different answers than your equation.&nbsp; For a couple examples:</p>\r\n<p>With P=.4, T=3, D=12: my code gives 49ish and yours gives 30.222222.</p>\r\n<p>With P=.8, T=3, D=12: my code gives 2300ish and yours gives 468.0.</p>\r\n<p>So - since I'm unable to look for where you may have gone wrong - can you find where I may have?</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-03-17T15:35:23.54-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419464",
+    "ThreadId": "203628",
+    "Html": "<p>Actually I might have missed some subtlety. Can the last tick of Corruption, when it would normally expire also extend itself? If so then&nbsp;I'll&nbsp;have to redo the equations.</p>",
+    "PostedDate": "2010-03-17T15:37:51.453-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419466",
+    "ThreadId": "203628",
+    "Html": "<p>What you're doing in that simulation is you choose a random time between 0 and T, this means on average it is T/2 with a uniform distribution on [0, T]. Is that intended?</p>",
+    "PostedDate": "2010-03-17T15:39:11.86-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419468",
+    "ThreadId": "203628",
+    "Html": "<p>Corruption can never extend itself, and I don't know if a trigger occurring at EXACTLY the same time as the last tick would extend it - but on average that happens 0% of the time anyway :).</p>\r\n<p>My simulation chooses a random number [0, T) for the *first* trigger, then once it gets to the bottom of the first loop resets it to the full T.&nbsp; Why [0, T) instead of [0, T]?&nbsp; Because that's easy to code.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-03-17T15:43:37.163-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419473",
+    "ThreadId": "203628",
+    "Html": "<p>I think you're going in an interesting direction, <strong>Maleficus</strong>, but I'm not sure about the conclusion.</p>\r\n<p><span style=\"text-decoration:underline\"><strong>Disclaimer:</strong></span> I have no idea if I'm even on the right track with this.&nbsp; I haven't logic-checked it, just math-checked it. ;)</p>\r\n<table style=\"float:left;margin-right:1em\" border=0>\r\n<tbody>\r\n<tr>\r\n<th>t</th> <th>time<br>added</th> <th>remaining<br>duration</th>\r\n</tr>\r\n<tr>\r\n<td style=\"text-align:right\">0</td>\r\n<td style=\"text-align:right\">0</td>\r\n<td style=\"text-align:right\">18.0</td>\r\n</tr>\r\n<tr>\r\n<td style=\"text-align:right\">3</td>\r\n<td style=\"text-align:right\">1.5</td>\r\n<td style=\"text-align:right\">16.5</td>\r\n</tr>\r\n<tr>\r\n<td style=\"text-align:right\">6</td>\r\n<td style=\"text-align:right\">3.0</td>\r\n<td style=\"text-align:right\">15.0</td>\r\n</tr>\r\n<tr>\r\n<td style=\"text-align:right\">9</td>\r\n<td style=\"text-align:right\">4.5</td>\r\n<td style=\"text-align:right\">13.5</td>\r\n</tr>\r\n<tr>\r\n<td style=\"text-align:right\">12</td>\r\n<td style=\"text-align:right\">6</td>\r\n<td style=\"text-align:right\">12.0</td>\r\n</tr>\r\n<tr>\r\n<td style=\"text-align:right\">15</td>\r\n<td style=\"text-align:right\">7.5</td>\r\n<td style=\"text-align:right\">10.5</td>\r\n</tr>\r\n<tr>\r\n<td style=\"text-align:right\">18</td>\r\n<td style=\"text-align:right\">9.0</td>\r\n<td style=\"text-align:right\">9.0</td>\r\n</tr>\r\n<tr>\r\n<td style=\"text-align:right\">21</td>\r\n<td style=\"text-align:right\">10.5</td>\r\n<td style=\"text-align:right\">7.5</td>\r\n</tr>\r\n<tr>\r\n<td style=\"text-align:right\">24</td>\r\n<td style=\"text-align:right\">12.0</td>\r\n<td style=\"text-align:right\">6.0</td>\r\n</tr>\r\n<tr>\r\n<td style=\"text-align:right\">27</td>\r\n<td style=\"text-align:right\">13.5</td>\r\n<td style=\"text-align:right\">4.5</td>\r\n</tr>\r\n<tr>\r\n<td style=\"text-align:right\">30</td>\r\n<td style=\"text-align:right\">15.0</td>\r\n<td style=\"text-align:right\">3.0</td>\r\n</tr>\r\n<tr>\r\n<td style=\"text-align:right\">33</td>\r\n<td style=\"text-align:right\">16.5</td>\r\n<td style=\"text-align:right\">1.5</td>\r\n</tr>\r\n<tr>\r\n<td style=\"text-align:right\">34.5</td>\r\n<td style=\"text-align:right\">--</td>\r\n<td style=\"text-align:right\">0.0</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>Consider the table to the left.  <em>Initial Duration</em> is 18 seconds (i.e. Corruption's length), <em>Frequency</em> of the trigger event is 3 seconds, and <em>Proc Chance</em> is 50%.  Each <em>frequency</em> interval has a <em>proc_chance</em> of adding <em>proc_chance * elapsed_time</em> to the remaining time.&nbsp;</p>\r\n<p style=\"clear:both\">The formula driving this (from Excel) is <span style=\"font-family:monospace\">f(t) = init_dur - t + proc_chance*frequency*floor(t/freq)</span>.&nbsp; <span style=\"font-family:monospace\">floor(t/freq) = num_procs</span> for a given value of <span style=\"font-family:monospace\">t</span>.&nbsp; I don't know, off hand, how one inverts this to get it purely in terms of t, unfortunately, due to the presence of the floor operation.&nbsp;</p>\r\n<p>What you want to do is set <span style=\"font-family:monospace\">f(t) = 0</span> and solve the equation.</p>\r\n<p>So</p>\r\n<pre style=\"border:1px dashed green;background:#ffd\">  0 = 18 - t + 0.5*3*floor(t/3)\r\n-18 = -t + 1.5*floor(t/3)\r\n</pre>\r\n<p>It may be possible to deconstruct floor().&nbsp; See the final formula in this <a href=\"http://en.wikipedia.org/wiki/Floor_function#Series_expansions\">Wikipedia article</a>.</p>",
+    "PostedDate": "2010-03-17T15:53:38.787-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419477",
+    "ThreadId": "203628",
+    "Html": "<p>Here is a revised version of the code, that takes into account McC's info that it will actually reset the duration of corruption starting from the next tick:</p>\r\n<p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre><span style=\"color:Blue\">public</span> <span style=\"color:Blue\">class</span> CorruptionDurationCalc {\r\n\r\n    <span style=\"color:Blue\">public</span> <span style=\"color:Blue\">static</span> <span style=\"color:Blue\">void</span> main(String[] args) {\r\n\r\n\t<span style=\"color:Blue\">double</span> P = .5;\r\n\t<span style=\"color:Blue\">double</span> T = 3;\r\n\t<span style=\"color:Blue\">double</span> D = 16;\r\n\t<span style=\"color:Blue\">int</span> numTests = 100000;\r\n\r\n\t<span style=\"color:Blue\">double</span> totalUptime = 0;\r\n\t<span style=\"color:Blue\">double</span> tickLen = D / 6;\r\n\t<span style=\"color:Blue\">for</span> (<span style=\"color:Blue\">int</span> i = 0; i &lt; numTests; ++i) {\r\n\t    <span style=\"color:Blue\">double</span> durationSoFar = 0;\r\n\t    <span style=\"color:Blue\">double</span> durationRemaining = D;\r\n\t    <span style=\"color:Blue\">double</span> timeAdvance = Math.random() * T;\r\n\t    <span style=\"color:Blue\">while</span> (durationRemaining &gt;= timeAdvance) {\r\n\t\tdurationSoFar += timeAdvance;\r\n\t\t<span style=\"color:Blue\">if</span> (Math.random() &lt; P) {\r\n\t\t    <span style=\"color:Blue\">double</span> tillNextTick = tickLen - durationSoFar % tickLen;\r\n\t\t    durationRemaining = D + tillNextTick;\r\n\t\t} <span style=\"color:Blue\">else</span> {\r\n\t\t    durationRemaining -= timeAdvance;\r\n\t\t}\r\n\t\ttimeAdvance = T;\r\n\t    }\r\n\t    durationSoFar += durationRemaining;\r\n\t    totalUptime += durationSoFar;\r\n\t}\r\n\r\n\tSystem.out.printf(<span style=\"color:#A31515\">&quot;experimental duration = %f\\n&quot;</span>, totalUptime\r\n\t\t/ numTests);\r\n\t<span style=\"color:Blue\">double</span> N = D / T;\r\n\t<span style=\"color:Blue\">double</span> R = Math.pow(1 - P, N - 1);\r\n\t<span style=\"color:Blue\">double</span> En = T * (1 - R * (1 - P)) / (R * P);\r\n\tSystem.out.printf(<span style=\"color:#A31515\">&quot;closed-form duration  = %f\\n&quot;</span>, En);\r\n    }\r\n}\r\n\r\n</pre>\r\n</div>\r\nAnd here are revised numbers: P=.4, T=3, D=12 =&gt; 50ish.&nbsp; P=.8, T=3, D=12 =&gt; 2300ish.</p>\r\n<p>And for McC's latest post, P=.5, T=3, D=16 =&gt; 210ish.&nbsp; I'm not following your logic exactly, but it looks like you thought it would be 34.5 in that case.</p>",
+    "PostedDate": "2010-03-17T16:07:22.753-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419494",
+    "ThreadId": "203628",
+    "Html": "<p>I just saw the comment about refresh delaying until next tick. This simplifies things a bit. Basically the interesting value is the chance that a proc will happen in duration of one corruption tick.</p>\r\n<p>For this purpose I'll rephrase the variables I was using. Let N&nbsp;be max number of corruption ticks. Let E(i) be expected duration of corruption in terms of&nbsp;ticks when we have&nbsp;i ticks left on the counter and we're at the point where the tick just happened.</p>\r\n<p>Let S be the chance that a proc happens in duration of one corruption tick. If triggers happen on average every T seconds and TC is corruption tick interval, you can compute this as S = 1 - (1 - P) ^ (TC / T), alternatively you can go with Poisson model if you preferred depending on what distribution of triggers you want to model.</p>\r\n<p>Then we have</p>\r\n<p>E(i) =&nbsp;1 +&nbsp;S * E(N) + (1 - S) * E(i-1), for i &gt; 0,<br>E(0) = 0</p>\r\n<p>The system is almost the same as above and we solve it similarly:</p>\r\n<p>Let K :=&nbsp;1 +&nbsp;S * E(N)</p>\r\n<p>Then we have</p>\r\n<p>E(0) = 0<br>E(i) = K + (1 - S) * E(i-1)</p>\r\n<p>First we solve the homogeneous part</p>\r\n<p>E(i) = (1 - S) * E(i-1)</p>\r\n<p>for which we have (1 - S)^i.</p>\r\n<p>Now we need a particular solution, for which we'll use method of undetermined coefficients.</p>\r\n<p>The solution will have the form E(i) = A * (1 - S)^i + B</p>\r\n<p>This gives us:</p>\r\n<p>E(0) = A + B = 0<br>E(1) = A * (1 - S) + B = K</p>\r\n<p>B = -A<br>A * (1 - S) - A = K</p>\r\n<p>- A *&nbsp;S = K<br>A = -K/S<br>B = K/S</p>\r\n<p>So this gives us the solution to recurrence:</p>\r\n<p>E(i) = K/S * (1 - (1 - S)^i)</p>\r\n<p>This recurrence holds all the way to N.&nbsp;&nbsp;We eliminate K:</p>\r\n<p>E(N) = K/S * (1 - (1 - S)^N)</p>\r\n<p>K =&nbsp;1 +&nbsp;S * E(N)<br>E(N) = (K - 1) / S</p>\r\n<p>(K - 1) /&nbsp;S = K/S * (1 - (1 - S)^N)<br>1 = K *&nbsp;(1 - S)^N</p>\r\n<p>K =&nbsp;1 / (1 - S)^N</p>\r\n<p>This gives</p>\r\n<p>E(N) = (1 / (1 - S)^N)/S * (1 - (1 - S)^N)</p>\r\n<p>Let R := (1 - S)^N</p>\r\n<p>Then E(N) =&nbsp;(1 -&nbsp;R) / (R*S)</p>\r\n<p>Also R =&nbsp;(1 - P) ^ (N*TC / T) = (1 - P) ^ (D/T)</p>\r\n<p>So for&nbsp;P=.4, T=3, D=12 we get S = 1 - (1 - P) ^ (TC / T) = 1 - 0.6 = 0.4. This gives R =&nbsp;0.1296 and E(N) =&nbsp;16.79 ticks or 50.37 sec.</p>\r\n<p>For P=.8, T=3, D=12 we have S = 0.8, R = 0.0016, E(N) = 780 ticks or 2340 sec.</p>\r\n<p>I think this matches the simulation quite well.</p>",
+    "PostedDate": "2010-03-17T17:56:02.47-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419496",
+    "ThreadId": "203628",
+    "Html": "<p>I haven't tried to parse through all of the new formulae, but I'm happy to be incorrect in any part of it, if there seems to be a promising lead. ;)</p>\r\n<p>I'm a little surprised that I would get 34.5 rather than something several orders of magnitude larger, but my calculations were all fast-and-loose in Excel.&nbsp; I'll parse through <strong>Kavan</strong>'s stuff later on and see where mine and his diverge.</p>\r\n<p>Sounds like everything's on the right track, though.</p>",
+    "PostedDate": "2010-03-17T18:16:09.39-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419501",
+    "ThreadId": "203628",
+    "Html": "<p>Kavan - This is getting close!&nbsp; One problem is that TC is not 3, it is D/6 (it gets hasted right along with corruption's duration).&nbsp; When I set D to 18 (unhasted corruption), your solution works perfectly!&nbsp; As soon as I set it lower, though, the numbers are off.</p>\r\n<p>Huh - but if I just hard code in 3 for the two places TC shows up, it works even with hasted corruption!&nbsp; Lol.&nbsp; Sweet.&nbsp; Not sure why it would work when hard-coding 3 but not hard-coding any other number.</p>\r\n<p>Now your number is always just a shade off.&nbsp; Close enough for me - we're talking 18 instead of 17.5, or for a different value of D, 32.4 instead of 32.6.&nbsp; Thanks a million!</p>",
+    "PostedDate": "2010-03-17T18:33:31.68-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419508",
+    "ThreadId": "203628",
+    "Html": "<p>Oh I see. Well then for P=.4, T=3, D=12&nbsp;you would have&nbsp;S = 1 - (1 - P) ^ (TC / T) = 0.2886, R remains the same R =&nbsp;0.1296 and E(N) =&nbsp;23.27 ticks or&nbsp;46.54 sec.</p>\r\n<p>Now the question is why does this differ from simulation. Simulation uses a very specific distribution of triggers. It has a trigger in two consecutive dot intervals and then one without. That nonuniformity is what skews the numbers I believe.</p>\r\n<p>I guess the better question is why does using a hardcoded TC=3 better approximate it. I think that's very specific for the case T=3. If you use some other T that probably&nbsp;won't be the case.</p>",
+    "PostedDate": "2010-03-17T19:39:28.02-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419516",
+    "ThreadId": "203628",
+    "Html": "<p>If we redo the whole thing for the specific distribution you're using we get this:</p>\r\n<p>Let E(t,p) be expected duration of corruption in terms of seconds when we have t seconds left on the counter and we're at the point where the tick just happened and there is p seconds until next trigger. What we're looking for then is E(D, offset).</p>\r\n<p>TC = D/6</p>\r\n<p>E(t, p) = t, for t &lt; TC and p &gt; t<br>E(t, p) = TC + P * E(D, p + T - TC) + (1 - P) * E(t - TC, p + T - TC), for p &lt; TC (assuming T &gt; TC)<br>E(t, p) = TC + E(t - TC, p - TC), for p &gt; TC</p>\r\n<p>Now let's try to solve this for our particular example.</p>\r\n<p>D = 12<br>TC = 2<br>T = 3<br>offset = 0.2</p>\r\n<p>E(12, 0.2) = 2 + P * E(12, 1.2) + (1 - P) * E(10, 1.2)<br>E(12, 1.2) = 2 + P * E(12, 2.2) + (1 - P) * E(10, 2.2)<br>E(12, 2.2) = 2 + E(10, 0.2)</p>\r\n<p>E(10, 0.2) = 2 + P * E(12, 1.2) + (1 - P) * E(8, 1.2)<br>E(10, 1.2) = 2 + P * E(12, 2.2) + (1 - P) * E(8, 2.2)<br>E(10, 2.2) = 2 + E(8, 0.2)</p>\r\n<p>E(8, 0.2) = 2 + P * E(12, 1.2) + (1 - P) * E(6, 1.2)<br>E(8, 1.2) = 2 + P * E(12, 2.2) + (1 - P) * E(6, 2.2)<br>E(8, 2.2) = 2 + E(6, 0.2)</p>\r\n<p>E(6, 0.2) = 2 + P * E(12, 1.2) + (1 - P) * E(4, 1.2)<br>E(6, 1.2) = 2 + P * E(12, 2.2) + (1 - P) * E(4, 2.2)<br>E(6, 2.2) = 2 + E(4, 0.2)</p>\r\n<p>E(4, 0.2) = 2 + P * E(12, 1.2) + (1 - P) * E(2, 1.2)<br>E(4, 1.2) = 2 + P * E(12, 2.2) + (1 - P) * E(2, 2.2)<br>E(4, 2.2) = 2 + E(2, 0.2)</p>\r\n<p>E(2, 0.2) = 2 + P * E(12, 1.2)<br>E(2, 1.2) = 2 + P * E(12, 2.2)<br>E(2, 2.2) = 2</p>\r\n<p>We solve this and get</p>\r\n<p>E(12, 0.2) = 2 + P * E(12, 1.2) + (1 - P) *(2 + P * E(12, 2.2) + (1 - P) * (2 + 2 + P * E(12, 1.2) + (1 - P) * (2 + P * E(12, 2.2) + (1 - P) * 2)))<br>E(12, 1.2) = 2 + P * E(12, 2.2) + (1 - P) * (2 + 2 + P * E(12, 1.2) + (1 - P) * (2 + P * E(12, 2.2) + (1 - P) * (4 + P * E(12, 1.2))))<br>E(12, 2.2) = 2 + 2 + P * E(12, 1.2) + (1 - P) * (2 + P * E(12, 2.2) + (1 - P) * (2 + 2 + P * E(12, 1.2) + (1 - P) * (2 + P * E(12, 2.2))))</p>\r\n<p>E(12, 0.2) = (2*P^12-20*P^11+92*P^10-256*P^9+476*P^8-622*P^7+596*P^6-448*P^5+290*P^4-162*P^3+70*P^2-24*P+12)/(P^8-6*P^7+16*P^6-24*P^5+22*P^4-14*P^3+8*P^2-4*P+1)</p>\r\n<p>which for P = 0.4 gives 49.07635092227576 and for P = 0.8 gives 2338.502719692604</p>\r\n<p>Now the problem is I have no idea how to get a closed form solution for arbitrary&nbsp; D, T and offset. Probably a better question is if this particular distribution is representative of triggers in real life situations. If you can assume that triggers are more uniform then my previous model should be good enough most likely.</p>",
+    "PostedDate": "2010-03-17T19:59:17.407-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419524",
+    "ThreadId": "203628",
+    "Html": "<p>So I see.&nbsp; I guess I'll un-hard-code the 3.&nbsp; After experimenting a bit I find your equation is quite good for lower values of P, but begins to diverge more at larger values.&nbsp; Some examples (results given as simulation vs. equation):</p>\r\n<ul>\r\n<li>P=.2, T=6, D=12: 16 vs 15.6</li>\r\n<li>P=.2, T=6, D=12: 25 vs 22.7</li>\r\n<li>P=.6, T=6, D=12: 50 vs 39.8</li>\r\n<li>P=.8, T=6, D=12: 178 vs 115.6</li>\r\n<li>P=.2, T=4, D=16: 28 vs 27.8</li>\r\n<li>P=.4, T=4, D=16: 66 vs 62.1</li>\r\n<li>P=.6, T=4, D=16: 253 vs 222.0</li>\r\n<li>P=.8, T=4, D=16: 3121 vs 2528.9</li>\r\n<li>P=.2, T=3, D=8: 11 vs 11.5</li>\r\n<li>P=.4, T=3, D=8: 18 vs 19.1</li>\r\n<li>P=.6, T=3, D=8: 33 vs 41.9</li>\r\n<li>P=.8, T=3, D=8: 116 vs 188.1</li>\r\n</ul>\r\n<p>I'm very grateful for the time you've put in, so if you feel done with the exercise I'll just use what you've already come up with.&nbsp; Thanks!</p>\r\n<p>[Edit]: Was writing this up as you wrote your last post, so it pertains to the one above it.</p>",
+    "PostedDate": "2010-03-17T20:15:42.823-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419528",
+    "ThreadId": "203628",
+    "Html": "<p>I can try to answer your last question if you define &quot;distribution&quot; and &quot;uniform&quot; in regard to triggers.&nbsp; Also, what are you defining as &quot;offset&quot;?</p>\r\n<p>[Edit]: Oh now I understand &quot;offset&quot;.&nbsp; Can we say it's T/2 to come up with the average case?&nbsp; And would that help make things any easier?&nbsp; Lol.</p>",
+    "PostedDate": "2010-03-17T20:22:41.733-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419533",
+    "ThreadId": "203628",
+    "Html": "<p>For the specific case above with D=12, T=3 the offset doesn't matter, because D and T are &quot;synced&quot; together. It doesn't simplify the problem though if you assume it is T/2. By uniformity I mean if overall chance of trigger inside dot interval is 2/3. A uniform distribution would be when any particular interval has 2/3 chance of the trigger being in it. Nonuniform would be the case used in simulation where you have a perfect pattern. So showing as a stream of probability of a trigger in dot interval, then 2/3, 2/3, 2/3, 2/3, 2/3, 2/3, ... would be uniform; 1, 1, 0, 1, 1, 0, 1, 1, 0,... would not be. In practice this'll mean the more off-sync it is with corruption ticks the more it'll fit the uniformity.</p>",
+    "PostedDate": "2010-03-17T20:47:57.427-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419534",
+    "ThreadId": "203628",
+    "Html": "<p>One thing you can do for experiment is modify your simulation so that you set timeAdvance = T * (0.8 + 0.4 * Math.random()); in every loop and see&nbsp;what effect&nbsp;unsyncing has.</p>",
+    "PostedDate": "2010-03-17T20:49:36.69-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419539",
+    "ThreadId": "203628",
+    "Html": "<p>Your suggestion to try setting timeAdvance to random values is a great one!&nbsp; I used timeAdvance = T + T * (2 * J * Math.random() - J),&nbsp; (J stands for jitter) and here's an example run with 10,000,000 tests each:</p>\r\n<ul>\r\n<li>P=0.600000, T=4.000000, D=10.000000, J=0.000000: 37.795414</li>\r\n<li>P=0.600000, T=4.000000, D=10.000000, J=0.200000: 40.159212</li>\r\n<li>P=0.600000, T=4.000000, D=10.000000, J=0.400000: 42.490884</li>\r\n<li>P=0.600000, T=4.000000, D=10.000000, J=0.600000: 39.902384</li>\r\n<li>P=0.600000, T=4.000000, D=10.000000, J=0.800000: 37.080535</li>\r\n<li>closed-form duration&nbsp; = 46.645842</li>\r\n</ul>\r\n<p>And if I run the exact same thing again I get pretty much the same results (as one might expect at 10,000,000 tests each):</p>\r\n<ul>\r\n<li>P=0.600000, T=4.000000, D=10.000000, J=0.000000: 37.785414</li>\r\n<li>P=0.600000, T=4.000000, D=10.000000, J=0.200000: 40.162506</li>\r\n<li>P=0.600000, T=4.000000, D=10.000000, J=0.400000: 42.486532</li>\r\n<li>P=0.600000, T=4.000000, D=10.000000, J=0.600000: 39.902318</li>\r\n<li>P=0.600000, T=4.000000, D=10.000000, J=0.800000: 37.067252</li>\r\n<li>closed-form duration&nbsp; = 46.645842</li>\r\n</ul>\r\n<p>As you can see, J has an odd effect on the result.</p>",
+    "PostedDate": "2010-03-17T21:24:19.523-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419585",
+    "ThreadId": "203628",
+    "Html": "<p>I'm a bit tired to try and follow the code logically to see exactly what you are accounting for but i figured i'd pass on info about corruption to make sure everything is accounted for that can be.</p>\r\n<p>Corruption is affected by haste(when glyphed), crit (with talent to be critable), spell power, and dmg % boost (for example tier 10 4 piece, or curse of elements and equivilent from boomchicken/unholy dk). without the glyph or talent, the only things affecting corruption is spell power and spell %, but the same rules apply that are mentioned next in thhe paragraph for each of them. Big problem with modeling corruption though is that when corruption refreshes automatically, only spell power and haste (when glyphed still) are factored in. The crit and dmg % from the very initial cast will stay exactly the same throughout the life of the refreshing corruption. This also applies to death embrace talent which increases dmg when a mob's health is below 35%. to take advantage of that talent on corruption, you need to cast a brand new corruption so the dmg % actually gets applied, since it doesn't refresh dmg % or crit each time. So that can complicate things a bit dmg wise when factoring in item values, talents, and buffs, because certian things need to be factored in at certain times only. Spell power is the only natural stat that affects corruption and recalculates automatically on every refresh. The other 3 have special circumstances on being recalculated or staying the same through the entire duration.</p>\r\n<p>The refreshing corruption is one of the more complicated things they could have added, and even took them a cuple tries to get it right since the initial way was putting locks over 10k almost automatically when not even using the best gear.&nbsp;</p>\r\n<p>Corruption refresh is not a chance on proc, as its 100% refresh chance based on 4 abilities when they actually do the dmg, but the refresh will not apply until after the next tic of corruption causes dmg. It will refresh 100% of the time when a haunt or shadow bolt lands, but also keep in mind there is a slight delay in it landing from being cast since it has a little travel time from the player to the mob like an arrow. Drain Soul and Drain life can also cause it to refresh 100% of the time on each damaging tick.</p>\r\n<p>Tommorow i'll take a look at the code and see if i can follow logically what is being done to help out. i'm not very experienced in C but i do a lot of vb and shell scripting with work, so i should be able to eventually follow what you guys are doing:)&nbsp; Either way, i should be able to help with warlock info at the very least.</p>\r\n<p>One of the biggest problems with the old version was that even though haste was stat valued well, an item with haste on it was almost always given negative item value automatically. For example, i just did a optimize on an old version where 15 haste enchant was giving 5dps, but the 20 haste enchant was -10dps. which logically makes no sense. Even if that extra 5 haste meant nothing to your char in way of being able to get another cast in, it would be valued negatively. It would just have no additional value over the 15 haste enchant. The reason i bring it up to make sure its checked is because obviously right now or affliction haste is huge do to it affecting corruption.</p>",
+    "PostedDate": "2010-03-18T01:23:50.477-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419670",
+    "ThreadId": "203628",
+    "Html": "<p>Thanks for all the info/input, asteru.&nbsp; When I get to that point, I was planning on using <a href=\"http://forums.wow-europe.com/thread.html?topicId=12304521598&sid=1\">this info</a> to determine the damage Corruption does.&nbsp; It's almost the same as what you just said, except that %damage debuffs on the target are updated throughout corruption's span (%damage buffs on yourself, such as Tricks of the Trade, still stick through the entire duration).</p>\r\n<p>As for the 100% chance to refresh when Haunt or Shadow Bolt do damage, that's only true when you have all 5 points invested in Everlasting Affliction.&nbsp; Each point gives you a 20% chance.&nbsp; Also, miss chance is factored into P when applying the formulas above.</p>\r\n<p>Again, thanks for the input, and I do hope you get the chance to look over code!&nbsp; The more critical eyes, the better.</p>",
+    "PostedDate": "2010-03-18T04:35:42.533-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419850",
+    "ThreadId": "203628",
+    "Html": "<p>You are absolutely correct.</p>\r\n<p>Note to self: don't post when half asleep lol.</p>",
+    "PostedDate": "2010-03-18T09:37:18.47-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419901",
+    "ThreadId": "203628",
+    "Html": "<p>Kavan - in your solution you define S = 1 - (1 - P) ^ (TC / T), which makes sense to me&nbsp;when T &lt; TC.&nbsp; But when T &gt; TC, it seems to me like it should be P * TC / T.&nbsp; According to my simulations, I'm wrong, that makes things worse, but I'm curious to know why.</p>\r\n<p>Explanation: when T&lt;TC there can be 2 triggers during the same tick, but only 1 can count, so you have to compute the chance of ZERO successfull triggers and take the compliment.&nbsp; However, every successfull trigger counts when T &gt;=TC, so my intuition tells me to just take the chance of a trigger during 1 tick and mulitply it by P.&nbsp; Why am I wrong?</p>",
+    "PostedDate": "2010-03-18T11:37:00.667-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419907",
+    "ThreadId": "203628",
+    "Html": "Even if it may be too late right now, I tried a totally different (recursive) approach.\r\n\r\nC-Code follows:\r\n\r\nfloat calc(float baselen, float proc_chance, float trig_freq, float curlen, float now) {\r\n    if (now &gt;= max_dur)\r\n        return max_dur;\r\n    if (now &gt; curlen)\r\n        return curlen;\r\n    float res1 = calc(baselen,proc_chance,trig_freq,now+baselen,now+trig_freq);\r\n    float res2 = calc(baselen,proc_chance,trig_freq,curlen,now+trig_freq);\r\n    float res = res1*proc_chance+res2*(1-proc_chance);\r\n    return res;\r\n}\r\n\r\nconst float base_dur = 10.0f;\r\nconst float proc_chance = 0.6f;\r\nconst float trig_freq = 3.0f;\r\n\r\ncalc(base_dur, proc_chance, trig_freq, base_dur, 0.0f + trig_freq);\r\n\r\nThe 1st three parameters are constant. the curlen is the actual duration of the spell, now is the current timestamp.\r\nIt's pretty hard to explain, but I hope, it's selfexplanatory enough. If you have questions, just ask. If you no longer care, also ok for me ;-)\r\n\r\nThis algorithm is terribly slow as it's written above. I used a pretty simple caching algorithm, making it really fast. If you're interested in the original sourcecode, give me a hint.",
+    "PostedDate": "2010-03-18T11:45:23.52-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419951",
+    "ThreadId": "203628",
+    "Html": "<p>Well - I started running your solution, ran Oculus, and it's still running!&nbsp; What did you set for max_dur?</p>",
+    "PostedDate": "2010-03-18T13:11:48.65-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "420026",
+    "ThreadId": "203628",
+    "Html": "<p>First of all sorry for the awful indentation in my last post, but those code-formatting gimmicks don't work with Firefox (at least not in the linux version).<br>Yeah, I know the original algorithm is damn slow with values for max_dur &gt; 200.0f.</p>\r\n<p>However, I tested with 300.0f, which is the default setting in rawr, using the caching algorithm I mentioned above.<br>The cache algorithm is pretty fast, as lots of iterations try to calculate the same, however in different iteration depths:</p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre>#include &lt;stdio.h&gt;\r\n#include &lt;stdlib.h&gt;\r\n#include &lt;map&gt;\r\n\r\n<span style=\"color:Blue\">const</span> <span style=\"color:Blue\">float</span> max_dur = 300.0f;\r\n\r\n<span style=\"color:Blue\">typedef</span> std::pair&lt;<span style=\"color:Blue\">float</span>,<span style=\"color:Blue\">float</span>&gt; cache_key_t;\r\n<span style=\"color:Blue\">typedef</span> std::map&lt;cache_key_t,<span style=\"color:Blue\">float</span>&gt; cache_t;\r\ncache_t cache;\r\n\r\n<span style=\"color:Blue\">float</span> calc(<span style=\"color:Blue\">float</span> max_dur, <span style=\"color:Blue\">float</span> baselen, <span style=\"color:Blue\">float</span> proc_chance, <span style=\"color:Blue\">float</span> trig_freq, <span style=\"color:Blue\">float</span> curlen, <span style=\"color:Blue\">float</span> now)\r\n{\r\n     cache_key_t cache_key = std::make_pair(now,curlen);\r\n     cache_t::iterator cr = cache.find(cache_key);\r\n     <span style=\"color:Blue\">if</span> (cr != cache.end())\r\n         <span style=\"color:Blue\">return</span> cr-&gt;second;\r\n\r\n     <span style=\"color:Blue\">if</span> (now &gt; curlen)\r\n         <span style=\"color:Blue\">return</span> curlen;\r\n     <span style=\"color:Blue\">if</span> (now &gt;= max_dur)\r\n         <span style=\"color:Blue\">return</span> max_dur;\r\n\r\n     <span style=\"color:Blue\">float</span> res1 = calc(max_dur, baselen, proc_chance, trig_freq, now + baselen, now + trig_freq);\r\n     <span style=\"color:Blue\">float</span> res2 = calc(max_dur, baselen, proc_chance, trig_freq, curlen, now + trig_freq);\r\n     <span style=\"color:Blue\">float</span> res = res1 * proc_chance + res2 * (1 - proc_chance);\r\n\r\n     cache.insert(std::make_pair(cache_key, res));\r\n\r\n     <span style=\"color:Blue\">return</span> res;\r\n}\r\n\r\n<span style=\"color:Blue\">const</span> <span style=\"color:Blue\">float</span> max_dur = 300.0f;\r\n<span style=\"color:Blue\">const</span> <span style=\"color:Blue\">float</span> base_dur = 10.0f;\r\n<span style=\"color:Blue\">const</span> <span style=\"color:Blue\">float</span> proc_chance = 0.6f;\r\n<span style=\"color:Blue\">const</span> <span style=\"color:Blue\">float</span> trig_freq = 3.0f;\r\n\r\ncalc(base_dur, proc_chance, trig_freq, base_dur, 0.0f + trig_freq);\r\n</pre>\r\n</div>",
+    "PostedDate": "2010-03-18T15:56:20.89-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "420064",
+    "ThreadId": "203628",
+    "Html": "<p>I've run Maleficus' code, and it seems about as accurate as Kavan's formula.&nbsp; It takes longer to run, but I really like the fact it considers the fight length to be maximum duration, since that strongly impacts the result at high values of P and is closer to reality.&nbsp; Can anyone (Kavan?) solve Maleficus' recurrence?&nbsp; If not, I'll work on making it run as fast as I can in its recursive form.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-03-18T18:21:34.863-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "420071",
+    "ThreadId": "203628",
+    "Html": "<p>Maleficus, that looks like a runtime solution for the static interval trigger (the one I showed closed form solution above for D = 12,TC = 2,T = 3,offset = 0.2). If it's fast enough this should work well given that you want to model this particular trigger distribution.</p>\r\n<p>As for the S = 1 - (1 - P) ^ (TC / T). I'm not sure if I have a good explanation for why P * TC / T gives worse results. At the core of the problem here is that we're trying to approximate a discrete distribution with a uniform&nbsp;continous distribution. If we assume that chance of proc only depends on time interval (i.e. independent of actual time position, i.e. uniform), then the following must hold:</p>\r\n<p>Let&nbsp;P(t) be chance that a proc happens in time interval t. If we have time intervals t1 and t2, then P(t1 + t2) has to be 1 - (1 - P(t1))*(1 - P(t2)). Problem with P * TC / T is that it doesn't satisfy that requirement. With some deduction you can get that instead the following has to hold:&nbsp;P(k * t) = 1 - (1 - P(t))^k. So if you know P at a particular time interval that gives you value for all time intervals. If not then either it won't be uniform or you'll break some base probability properties.</p>",
+    "PostedDate": "2010-03-18T18:48:54.83-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "420524",
+    "ThreadId": "203628",
+    "Html": "<p>Concerning runtime, the recursive form is inacceptable in most cases, because it tries to walk a tree with 2^(max_dur / trig_freq) nodes.<br>In fact the number of nodes is limited, as not every proc succeeds and as most nodes calculate the same result, you can speed it up quite a lot if using a simple cache.</p>\r\n<p>One of the bad things is, that the real runtime cost cannot really be forecast (or at least I did not try to find out). Another thing is the size of the cache, which can grow very quickly.</p>\r\n<p>I changed it to an linear algorithm with ((max_dur / trig_freq) + 1) * ((baselen / trig_freq) + 1) iterations.<br>This is of course not as fast as your (Kavan) solution, which I think should run in O(1), but should be fast enough in every case. Its also using a small cache, but the cache size is limited to 2 * ((baselen / trig_freq) + 1).</p>\r\n<p>Some statistics from the &quot;real world&quot;:</p>\r\n<p>D=12, T=3, fight length = 300<br>&nbsp;&nbsp; Recursive solution: 781 function calls, 390 cache entries, 288 cache hits<br>&nbsp;&nbsp; Iterative solution: 505 loops, 10 cache entries</p>\r\n<p>D=12, T=3, fight length = 3000<br>&nbsp;&nbsp; Recursive solution: 7981 function calls, 3990 cache entries, 2988 cache hits<br>&nbsp;&nbsp; Iterative solution: 5005 loops, 10 cache entries</p>\r\n<p>D=12, T=3, fight length = 30000<br>&nbsp;&nbsp; Recursive solution: 79981 function calls, 39990 cache entries, 29988 cache hits<br>&nbsp;&nbsp; Iterative solution: 50005 loops, 10 cache entries</p>\r\n<p>D=12 T=1, fight length = 300<br>&nbsp;&nbsp; Recursive solution: 7045 function calls, 3522 cache entries, 3212 cache hits<br>&nbsp;&nbsp; Iterative solution: 3913 loops, 26 cache entries</p>\r\n<p>D=12, T=6, fight length = 300<br>&nbsp;&nbsp; Recursive solution: 195 function calls, 97 cache entries, 47 cache hits<br>&nbsp;&nbsp; Iterative solution: 153 loops, 6 cache entries</p>\r\n<p>D=12, T=7, fight length = 300<br>&nbsp;&nbsp; Recursive solution: 85 function calls, 42 cache entries, 0 cache hits<br>&nbsp;&nbsp; Iterative solution: 86 loops, 6 cache entries</p>\r\n<p>D=12, T=8, fight length = 300<br>&nbsp;&nbsp; Recursive solution: 59 function calls, 29 cache entries, 0 cache hits<br>&nbsp;&nbsp; Iterative solution: 75 loops, 6 cache entries</p>\r\n<p>As you can see, there is the slight possibility that the recursive solution runs faster than the iterative one. However, for most cases, the iterative way takes less iterations, it cannot produce a stack overflow and keeps the memory consumption very low.</p>\r\n<p>But it still would be great to get this one running in O(1) :-)<br>Kavan FTW :D</p>\r\n<p>[edited as Firefox (Linux) obviously eats every newline] -.-</p>",
+    "PostedDate": "2010-03-20T05:05:05.247-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "420850",
+    "ThreadId": "203628",
+    "Html": "<p>To the devs out there: <span style=\"font-size:small\">Is there a way to do GetAverageCombinedUptimeCombinations for multiplicitive stats?</span></p>",
+    "PostedDate": "2010-03-20T14:42:19.96-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "420905",
+    "ThreadId": "203628",
+    "Html": "<p>It's possible, but it's not exposed in the api, I'll add some overloads for it. Can you tell me what specifically you're trying to do?</p>",
+    "PostedDate": "2010-03-21T02:01:57.41-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "421695",
+    "ThreadId": "203628",
+    "Html": "<p>I'm trying to handle haste trinkets/effects.&nbsp; My plan is to take the output from a function like that, calc the cast time of each each spell under each combination, and average it together to get a more realistic average cast time.</p>",
+    "PostedDate": "2010-03-21T11:55:59.877-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "421789",
+    "ThreadId": "203628",
+    "Html": "<p>Most haste trinkets are haste rating based and haste rating is additive, not multiplicative, so be careful how you implement this.</p>",
+    "PostedDate": "2010-03-21T13:42:12.713-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "421922",
+    "ThreadId": "203628",
+    "Html": "<p>Yeah, I haven't quite figured it out yet.&nbsp; I could use the additive functions get all the combinations of haste rating effects - and now I could use the multiplicitive function to get the combinations for the haste % effects (bloodlust, erradication &amp; backdraft are the ones I know of off the top of my head).&nbsp; But how do I get the combinations of the two of them together?</p>",
+    "PostedDate": "2010-03-21T16:06:13.38-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "421928",
+    "ThreadId": "203628",
+    "Html": "<p>You'll need special case logic for this, this is too specific to be in general api. Keep in mind that average combinations wasn't intended to be used for on use effects like bloodlust. It won't do any stacking or similar to position the on use effects, it'll just use them whenever cooldown is ready.</p>",
+    "PostedDate": "2010-03-21T16:20:26.153-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "421933",
+    "ThreadId": "203628",
+    "Html": "<p>Here is what I came up with.&nbsp; I think I have the idea right:</p>\r\n<p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre>WeightedStat[] finalUpStats<br>    = <span style=\"color:Blue\">new</span> WeightedStat[ratings.Length * percentages.Length];<br><span style=\"color:Blue\">for</span> (<span style=\"color:Blue\">int</span> p = percentages.Length, f = 0; --p &gt;= 0; ) {<br>    <span style=\"color:Blue\">for</span> (<span style=\"color:Blue\">int</span> r = ratings.Length; --r &gt;= 0; ++f) {<br>        finalUpStats[f]= new WeightedStat();<br>        finalUpStats[f].Chance\r\n            = percentages[p].Chance * ratings[r].Chance;\r\n        finalUpStats[f].Value\r\n            = (1 + percentages[p].Value)\r\n                * (1 + StatConversion.GetHasteFromRating(\r\n                        ratings[r].Value + Stats.HasteRating,\r\n                        CharacterClass.Warlock));\r\n    }\r\n}\r\n\r\n</pre>\r\n</div>\r\nAs for smarter utilization of on-use effects ... at some point I may make it smarter, but just this will be a big improvement for me right now.</p>",
+    "PostedDate": "2010-03-21T16:31:33.037-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "421950",
+    "ThreadId": "203628",
+    "Html": "<p>This isn't ideal, but it'll work as an approximation. Basically you're making an assumption that rating based and percentage based uptimes are independent which isn't the case.</p>",
+    "PostedDate": "2010-03-21T18:07:01.02-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "427165",
+    "ThreadId": "203628",
+    "Html": "<p>Does Conflagrate consume Immolate even when it misses?</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-04-03T23:08:06.307-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "427649",
+    "ThreadId": "203628",
+    "Html": "<p>I don't think Conflag can miss or if it can i would assume it wouldn't consume the immolate because of the wording on the spell.&nbsp; But in all honesty not 100% sure i have personally never had mine miss.&nbsp; and for a while I was at about +10% hit which is 7-8% below optimal.&nbsp;</p>",
+    "PostedDate": "2010-04-05T17:43:24.597-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "428402",
+    "ThreadId": "203628",
+    "Html": "No conflagrate does not consume immolate when missed, I went streaking through SW bear back (black war bear, so quite literally) and with an empty glyph slot to test this on the dummies. conflagrate missed 3 times and immolate stayed on each time. Thanks for all the hard work, I love rawr on my druid and pally and look forward to using it for my lock!",
+    "PostedDate": "2010-04-07T10:36:49.777-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "428581",
+    "ThreadId": "203628",
+    "Html": "<p>Excellent, thank you very much for your research!</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-04-07T18:21:05.383-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "429068",
+    "ThreadId": "203628",
+    "Html": "<p>The new Warlock model is going live at the next release.&nbsp; Please go easy on me!</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-04-08T19:47:28.46-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "429154",
+    "ThreadId": "203628",
+    "Html": "<p>YAY! Has a release date been set yet? /so excited</p>",
+    "PostedDate": "2010-04-09T01:23:32.73-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "429224",
+    "ThreadId": "203628",
+    "Html": "<p>Awesome news!&nbsp; Can't wait :)</p>",
+    "PostedDate": "2010-04-09T05:15:45.027-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "429271",
+    "ThreadId": "203628",
+    "Html": "<p>Good to hear!</p>\r\n<p>Thanks for putting your free time into this!</p>\r\n<p>/salute</p>",
+    "PostedDate": "2010-04-09T07:02:07.603-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "429343",
+    "ThreadId": "203628",
+    "Html": "<p>Thanks. I tried to build the latest SVN version and I have the problem that its only the &quot;WarlockOld&quot; model that is being loaded.</p>",
+    "PostedDate": "2010-04-09T10:33:59.987-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "429370",
+    "ThreadId": "203628",
+    "Html": "<p>Now just remember, &quot;going live&quot; does not mean &quot;done&quot;.&nbsp; It only means that all the features that were present in the old model are now also present in the new one (as far as I know).&nbsp; There's still the issues of pets, the execute stage, and others that are unimplemented.&nbsp; So don't be dissapointed by that!&nbsp; I do expect it to give better results than the old model, though, so you can be excited about that part :).</p>\r\n<p>Krendar - hmmmm.&nbsp; I thought I took care of that, but apparently not.&nbsp; This was my first experience with C# build configurations, so I'm not surprised.&nbsp; I can't remember the screen very well and I'm not at home to look at it right now, but there is a drop down next to the green play button that has &quot;Debug&quot;, &quot;Release&quot; and &quot;Configure something something&quot; in it.&nbsp; Click on the configure one, uncheck the WarlockOld box and check the Warlock box.&nbsp; Now press that play button and you should be good to go.&nbsp; The WarlockOld model may not go away unless you delete it's .dll from your build folder.</p>",
+    "PostedDate": "2010-04-09T12:03:33.193-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "429399",
+    "ThreadId": "203628",
+    "Html": "<p>It appears that Configuration Manager isn't where the issue lies... it's the mixture of the Rawr.Warlock namespace with the Rawr.WarlockOld namespace in the Rawr.Warlock project. &nbsp;Specifically, you'll find the WarlockOld namespace used in SpellPriorityForm.cs (and .Designer.cs) and SpellStatistics.cs.</p>",
+    "PostedDate": "2010-04-09T13:54:42.533-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "429447",
+    "ThreadId": "203628",
+    "Html": "<p>Nice, Thanks!</p>\r\n<p>I ended up figuring how to build rawr from source (meh. express is terrible. that or I'm really out of touch with current source/compliers.) I'm currently running a build from 49228 checkin. It doesn't look like any of your more current checkins effect calculations, is that assumption true?</p>\r\n<p>Also, would you say at this point it's pretty much okay to depend on the gear the optimizer chooses for Destruction except when it effects Pets? (2P T9 for instance?).</p>\r\n<p>From what I've seen from my testing it matches pretty closely with what is expected. (Selected the T10 Warlock BiS gear, from elitistjerks) and the optimizer correctly selected the gear, and *almost* matched the gemming that the BiS gear has set. (and the reason it was almost might be a difference in the build, eg. Suppression or rotation that I didn't match perfectly.. they didn't say how they came up with the BiS list.)</p>\r\n<p>I noticed with the Optimizer that it's pretty slow, verses some models and the old lock model.. is this due to the new calculation style? I ran the Optimizer at ~25% 50% and 75% and it came up with the same exact stats every time.. is Thoroughness actually used in the current model?</p>\r\n<p>There were a few things I noticed, but I think I'll wait until release before I report them, in case I messed up my copy somehow. I'm hoping we'll see a new release soon with this new model in it.</p>\r\n<p>Again @Xemnosyst, thanks a lot for all of your work, it's great having an active devoloper keeping an eye on us, and one that works with and is friendly with the community.</p>",
+    "PostedDate": "2010-04-09T17:28:30.383-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "429471",
+    "ThreadId": "203628",
+    "Html": "<p>Roncli - thanks for figuring that out.&nbsp; Looks like Kavan did some work with the project files - probably tomorrow I'll check out if the issue still remains.</p>\r\n<p>Bugmenot2 - thank you for that encouraging report!&nbsp; I would not say it's OK to depend on my model for Destruction; it may be, but it's too early for me to declare that.&nbsp; However, your report that it almost exactly matches other people's reports for BiS makes it sound much more likely!&nbsp; You will definitely want to update your source, though.&nbsp; Revision 49246 fixed a bug that basically ignored haste buffs (e.g. Wrath of Air Totem &amp; Swift Retribution).&nbsp; Unfortunately the file format changed since the revision you used, so you'll have to re-make your character.</p>\r\n<p>The speed of the model is one of my concerns.&nbsp; Not sure where exactly where that will fall on my priority list, because it is bearable, but I know there are several things that can be optimized and I will do that at some point.&nbsp; As for thoroughness, that has nothing to do with individual models, so it should be functioning just fine.&nbsp; I don't know anything about how it works, so I can't answer the question of why it gives you the same gear set at 25% as 100%.</p>",
+    "PostedDate": "2010-04-09T21:52:41.913-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "429478",
+    "ThreadId": "203628",
+    "Html": "<p>So now that you've caught up to the existing model and gone live...</p>\r\n<p>Pets are priority one, right?</p>\r\n<p>*begs*</p>\r\n<p>lack of pets makes Demo specs pretty much useless to run through Rawr, even when all talents are initialized. And to a lesser extent, it seems to me Destro depends more than a little on Machine Gun Imp and his crit rating.</p>",
+    "PostedDate": "2010-04-09T22:57:05.24-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "429651",
+    "ThreadId": "203628",
+    "Html": "<p>I wouldn't say they are my first priority.&nbsp; I'm warming up to the idea of implementing them slowly, piece by piece - but not priority one.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-04-10T20:17:34.533-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "429657",
+    "ThreadId": "203628",
+    "Html": "<p>Aww.</p>\r\n<p>So what *is* your first priority?</p>",
+    "PostedDate": "2010-04-10T21:17:06.937-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "429783",
+    "ThreadId": "203628",
+    "Html": "<p>Pets are very important and they have been missing for forever it seems now.&nbsp; I would think it would be a top priority.&nbsp; At any rate, as usual, we will wait.&nbsp; Xemnosyst has done an awesome job and devoted a lot of time to this project.&nbsp; /Salute!&nbsp; Didn't you say earlier that releases will not include Warlocks until pets are done?&nbsp;</p>",
+    "PostedDate": "2010-04-11T12:23:51.677-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "429825",
+    "ThreadId": "203628",
+    "Html": "<p>I recall him saying from the begining that pets would not be a priority.&nbsp; He even asked if I recall correctly, for help regarding this undertaking due to the amount of time/agony involved in implementing pets.</p>\r\n<p>IMO its great to have them, however I am one to believe that they are (other than T9_2P, a set that will be used for a limited timeframe anyway) a predefined DPS value.&nbsp; As our gear goes up, they go up in direct proportian.&nbsp; (I wont say exactly, no, but should almost scale smoothly with gear.)&nbsp; If we select gear based on personal DPS, reselect gear thats better, our pets will feel this increase.&nbsp; To have them to show us total (player + pet) DPS, all good, however when selecting gear even as Demo, I cant see a scenario where I'd try to at any time select gear that would enhance my pets DPS specafically.</p>\r\n<p>If im doing 6.5k with selected gear and my pet is doing 800 DPS.. If just fine to 'AssUMe' that if Im&nbsp;now&nbsp;doing 7.0k, my pet is doing ((7K/6.5K)*800).</p>\r\n<p>Thanks again Xemnosyst, and all others involved in the project.&nbsp; I'm very much so looking foreward to giving it a test run upon release.</p>",
+    "PostedDate": "2010-04-11T16:08:46.167-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "429839",
+    "ThreadId": "203628",
+    "Html": "<p>My only concern was that Astrylian said she would not release the warlock model until pets were done.&nbsp; That is why I&nbsp;thought it was very important.&nbsp; I would be more than happy to have it w/o pets.&nbsp; I'm hoping this will be release whether pets&nbsp;are included or not.&nbsp;</p>",
+    "PostedDate": "2010-04-11T17:54:46.227-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "429842",
+    "ThreadId": "203628",
+    "Html": "<p>Xemno's work will be in today's release.</p>\r\n<p>Going forward, pets will be at the top of the priority list.</p>",
+    "PostedDate": "2010-04-11T18:07:48.627-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "429877",
+    "ThreadId": "203628",
+    "Html": "<blockquote style=\"border:0.1em solid #cccccc;font-style:italic;margin:0.25em 1em 0pt;padding:0pt 0.25em\"><strong>JustAnotherToon wrote:</strong><br>\r\n<p>IMO its great to have them, however I am one to believe that they are  (other than T9_2P, a set that will be used for a limited timeframe  anyway) a predefined DPS value.&nbsp; As our gear goes up, they go up in  direct proportian.&nbsp; (I wont say exactly, no, but should almost scale  smoothly with gear.)&nbsp; If we select gear based on personal DPS, reselect  gear thats better, our pets will feel this increase.&nbsp; To have them to  show us total (player + pet) DPS, all good, however when selecting gear  even as Demo, I cant see a scenario where I'd try to at any time select  gear that would enhance my pets DPS specifically.</p>\r\n</blockquote>\r\n<p>&nbsp;</p>\r\n<p>I agree with you there. But what about, say, comparing a demo spec to a destro spec? Pretty impossible without the pet info activated, other than by manually testing in game. And if you can't really afford to respec/regem to do that...</p>\r\n<p>Or deciding if going demo hybrid is worth the loss of felguard...</p>\r\n<p>I'm personally satisfied with Affliction, but I can't only think of myself here. Think of the children, man. The children! *tears*</p>",
+    "PostedDate": "2010-04-11T22:17:27.343-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "430298",
+    "ThreadId": "203628",
+    "Html": "<p>Demo lock here. I used the same set of equipment I had available in the last Rawr release (old Warlock).</p>\r\n<p>Following Simcraft (and raid tonight reflects it as well), my pre-newlock profile got about 11k, my newlock profile gets 11.5k. And it told me to utilize my 4xT10 properly, where the old one told me to ignore 4xT10, stick with 2xT10 and stack SP instead.</p>\r\n<p>So great work, you improved my DPS even if you seem to think your release is still broken. :)</p>\r\n<p>I guess the point is... Even if it is broken, it seems to at least work better than the old one already :D</p>\r\n<p>Thanks, and keep up the great work!</p>",
+    "PostedDate": "2010-04-12T22:51:50.23-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "430965",
+    "ThreadId": "203628",
+    "Html": "<p>As far as gear selection goes, it is unlikely that pets are required for such choices. Even though the Felguard does 20% or so of my damage output on most fights, it's not something that gearing would actually affect. That said, pets are definitely very important long-term because there are many glyphs and talents that directly buff them. For example, what if there's some gearing threshold over which Improved Demonic Tactics is no longer much of a DPS increase? Or what about Glyph of Imp? Rawr could answer that question for me instead of having to run two entire simulationcraft tests just to see what the differences would be.</p>\r\n<p>I think it's definitely above the &quot;It'd be nice to have&quot; but probably below the &quot;Is this module even relatively functional?&quot;</p>",
+    "PostedDate": "2010-04-14T08:06:08.027-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "430967",
+    "ThreadId": "203628",
+    "Html": "<p>Xioustic: Thanks for the good report!&nbsp; I'm glad it has already helped you :).&nbsp; It'll be interesting to see how much adding pets changes its gear recommendation (if at all).</p>",
+    "PostedDate": "2010-04-14T08:07:19.623-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "431004",
+    "ThreadId": "203628",
+    "Html": "<p>ShadowWolf: I wouldn't be too surprised if pets made some small changes to gear.&nbsp;&nbsp;For example&nbsp;SP should become&nbsp;even more valuable than haste than it already is, because Haste does not buff your pet.&nbsp; So, if there is a haste pieces that the model currently rates slightly higher than one with more SP, adding in pets may (correctly) shift the balance to recommending the SP piece.</p>",
+    "PostedDate": "2010-04-14T09:19:08.207-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "432360",
+    "ThreadId": "203628",
+    "Html": "<p>In my anecdotal experience, that's really only the case for Trinkets. Most items of the same iLevel have the same spellpower, so you're really just comparing haste to crit or spirit. There may be some variance, but I don't think those would be the normal case.</p>\r\n<p>to add: I think that, if two items were close enough that pets mattered, you're probably talking less than 20 DPS between the two of 'em.</p>",
+    "PostedDate": "2010-04-17T22:15:09.127-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "432373",
+    "ThreadId": "203628",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>shadowwolf wrote:</strong><br>\r\n<p>In my anecdotal experience, that's really only the case for Trinkets. Most items of the same iLevel have the same spellpower, so you're really just comparing haste to crit or spirit. There may be some variance, but I don't think those would be the normal case.</p>\r\n<p>to add: I think that, if two items were close enough that pets mattered, you're probably talking less than 20 DPS between the two of 'em.</p>\r\n</blockquote>\r\n<p>This is a link to wowhead items filtered for Ilevel 264 items, grouped by slot:</p>\r\n<p>http://www.wowhead.com/items&amp;filter=qu=4;minle=264;maxle=264;ub=9;cr=123;crs=1;crv=0;gb=1#chest</p>\r\n<p>Every slot has 2 possible values of spell power at a given item level, but in addition to that the variance in spell power values between slots is very large.Do you wear the chest that uses the higher sp value with spirit/crit plus the bracers that have the lower sp value +hit instead of the pants with low sp value haste/crit and shoulders with low sp value haste/crit?You -are- comparing different sp values: 32 different ones.</p>\r\n<p>In this case if you remove pets the value on the items that are sp heavy will be undervalued and be more significant to your gear selection than you'd think. Pets also scale with more than just spell power or more than with crit if you're demo. Pets scale with stam, int, and more importantly, possibly more than sp, hit . Now by ignoring pets your not just taking out accuracy for sp scaling, your taking out accuracy with hit scaling and no it's simply not enough to know that hit is the most valuable stat.</p>\r\n<p>Here's a H festergut kill from my guild this week: http://www.wowmeteronline.com/combat/13818571#damageout</p>\r\n<p>the two affliction locks I was raiding with had 9.3% and 11.6% of their damage on this fight done by their pets even if we assume gear only accounted for half of those percents that's a 4-5% difference in your output from gear.</p>\r\n<p>Also, 20 dps does matter, maybe not for your average 5 man player but  for a raider 20 dps per person in the raid can make or break a fight  thus accurately knowing which item will give you the greater dps return  is important as opposed to not caring because its just a difference of  less than 20.</p>\r\n<p>Warlocks are a pet class. We're becoming more and more of a pet class over time and its probably going to continue to happen in the future since that seems to be the direction blizzard wants to go taking the last 3-4 patches into considering; not taking pets into account means not seeing the whole picture.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-04-18T00:49:09.513-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "433799",
+    "ThreadId": "203628",
+    "Html": "<p>Just started playing with 2.3.15 release.. is there any reason you made the Glyph of Life Tap a default? Importing a character does not remove the check mark next to it, and leaves you with 4 active Glyphs which totally throws off your stats.&nbsp;</p>\r\n<p>Lifetap for Destruction at t10 is pretty weak, and has went from being a mandatory to optional glyph. I don't mind switching spellstones, because I'm use to going through the buffs and turning those on anyways.. but I could see myself forgetting and not unchecking that glyph.&nbsp;</p>\r\n<p>I believe if this is left as default your going to end up seeing a lot of bug reports from people that don't notice it...&nbsp;</p>",
+    "PostedDate": "2010-04-21T11:31:28.27-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "433823",
+    "ThreadId": "203628",
+    "Html": "<p>Thanks for this good info and insight.&nbsp; I'll remove it.</p>",
+    "PostedDate": "2010-04-21T12:24:16.433-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "433950",
+    "ThreadId": "203628",
+    "Html": "<p>I upload my character and it shows my dps should be like 2700, lolwtf</p>",
+    "PostedDate": "2010-04-21T19:44:48.203-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "434005",
+    "ThreadId": "203628",
+    "Html": "<p>wow, could you be any less helpful roflicer? it might be a good idea to list specifics like what you expect your DPS to be, and also what spec you are playing. If it's Demo, it's not fully modeled yet. Also, did you go set up your rotations, etc? If you didn't then you should.</p>\r\n<p>Further, if you are not Demo, have set up your rotations and buffs, then you need to save your character.xml file, and create an issue and post your file. &quot;lolwtf&quot; will not get anything resolved.</p>",
+    "PostedDate": "2010-04-21T23:13:53.367-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "434483",
+    "ThreadId": "203628",
+    "Html": "<p>Woah buddy I was told If I downloaded it all I had to do was upload character and Rawr did everything else. No the guy is affliction, i expect it to be over 9000, and it already has the rotation set up.</p>",
+    "PostedDate": "2010-04-22T23:31:41.053-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "434712",
+    "ThreadId": "203628",
+    "Html": "<p>Firstly, the Warlock model has been in development (this version, for a little over a month now, and has come a long way) and is not quite 100% yet so the DPS calculations are bound to be off some (but not 2k dps verses 9k). You'll notice that your pet's DPS is showing up as 0, if it's like the Destruction Imp, that accounts for ~600DPS or more, that's not being added to your DPS.&nbsp;</p>\r\n<p>Second, I suspect your 9000DPS is raid buffed? quite possibly 25m raid buffed? Did you go to the buff tab and select all the buffs you are expecting to have during your raid? That will make a big difference in your DPS.</p>\r\n<p>If you get this setup, and your still seeing a extreme difference I'd suggest posting a issue with your character file, that will get you the best result for getting help. Keep in mind though, that pets, and&nbsp;execute&nbsp;phase are not currently in Rawr and will make some difference to your over all DPS.</p>",
+    "PostedDate": "2010-04-23T10:20:30.103-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "434723",
+    "ThreadId": "203628",
+    "Html": "&quot;some&quot; difference.\r\n\r\nDepending on gear and buffs, it can be off by anywhere from 3 to 7k DPS, and that's for Affliction (ie, the spec with the least important pet now that LT has been buffed).  The Demo model is currently practically worthless, the Destruction model is mostly good but probably has an incorrect value for crit and overvalues haste.  [Demo really, REALLY needs pets/execute, and Destro needs pets - they get a 100% crit buff when the pet crits]\r\n\r\nPlease note that I'm not actually meaning to complain - the devs are doing a great job of fixing things, it's just taking a while.  The affliction rankings are pretty close to accurate, with a few VERY significant exceptions (NMIC, for example).  Unfortunately, my life has gotten insane, so I wasn't able to do any of the help I mentioned higher in this thread.",
+    "PostedDate": "2010-04-23T10:54:01.607-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "434756",
+    "ThreadId": "203628",
+    "Html": "<p>Roflicer - it is not true that you just load your character from the armory and Rawr does everything else.&nbsp; As bugmenot said, you must select your buffs &amp; set up your rotation just to get your baseline.&nbsp; Then to actually USE Rawr for anything you'll need to select other gear you have available or set up filters, all of which is explained in the documentation (link at the top of this page).</p>\r\n<p>Karindra - I wouldn't mind seeing a character file for an aff. lock that's off by 7K dps.&nbsp; Could you open an issue and attach it?&nbsp; 2.3.15 has a bug that *severly* mis-calculates the crit chance of corruption, but I don't expect that explains a full 7K dps.</p>",
+    "PostedDate": "2010-04-23T12:21:47.89-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "434824",
+    "ThreadId": "203628",
+    "Html": "<p>You should set up defaults for buffs and rotations. It shouldn't be perfect, but it should be a baseline to ease the configuration for users.</p>",
+    "PostedDate": "2010-04-23T15:58:28.907-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "436066",
+    "ThreadId": "203628",
+    "Html": "<p>I'm looking for opinions about handling pet buffs.&nbsp; One option is to add in all the melee buffs to the normal buffs tab and assume you &amp; your pet get the same buffs.&nbsp; Another option is to create a whole other tab to set up exactly which buffs your pet gets, similar to the hunter model.&nbsp; I can see benefits &amp; drawbacks to both methods.&nbsp; Any input?</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-04-27T10:20:44.897-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "436087",
+    "ThreadId": "203628",
+    "Html": "<p>Personally I would go with the separate tab but specifically lable the tab as pet buffs or whatever. Also to have a standard set of buffs and debuffs with the pet (Intellect, Might, etc)</p>",
+    "PostedDate": "2010-04-27T11:11:30.487-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "436128",
+    "ThreadId": "203628",
+    "Html": "<p>Why is that?&nbsp; The drawback I see for using a single tab&nbsp;is that user may not realize&nbsp;s/he should be selecting melee buffs for his/her pet.&nbsp;&nbsp;The drawback I see for using&nbsp;two tabs is that user has to sift through all the buffs twice.</p>\r\n<p>Right now I'm leaning toward having a single tab.&nbsp; I can't think of a situation, off the top of my head, were one would have a buff that the other shouldn't (aside from potions, elixirs &amp;&nbsp;set bonuses,&nbsp;but that's easy enough to special-case).&nbsp; Having&nbsp;extra attack power&nbsp;won't hurt the warlock, and having extra spell haste won't hurt the felguard.&nbsp; I CAN see inconsistancies arising from having two separate tabs, though, where a raid-wide buff is only selected for either the warlock or his pet.</p>",
+    "PostedDate": "2010-04-27T12:42:21.877-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "436143",
+    "ThreadId": "203628",
+    "Html": "<p>Since Hunter is the only other model that has this, look at it. Hunter uses a Pet Buffs tab in Options. We keep this stuff separate because it doesn't migrate well from parent and Pets aren't affected by buffs the same way. There's also all the internal changes where a parent has x * y * z BonusAttackPower multipliers and pet has Q * x * y. It just doesn't line up like you would want it to.</p>",
+    "PostedDate": "2010-04-27T13:18:47.39-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "436172",
+    "ThreadId": "203628",
+    "Html": "<p>I do not play a warlock but I do have a Hunter and often I have a different buff than a given pet depending on situation and group make-up. I see the warlocks as wanting Blessing of Kings while their Felguard has Blessing of Might or Imp has Blessing of Wisdom. Having different setups for toon vs pet allows the user to tinker with the buffs to see which is best in a given situation.</p>",
+    "PostedDate": "2010-04-27T14:16:09.333-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "436205",
+    "ThreadId": "203628",
+    "Html": "<p>Do pally buffs have to be a pain in the butt not only to the pallies who maintain them, but now to me also?!</p>",
+    "PostedDate": "2010-04-27T15:42:45.53-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "436212",
+    "ThreadId": "203628",
+    "Html": "<p>sorry, Xemonsyst, but I have to agree with brituck.&nbsp; When I am on my Pally dungeon and raid members are always asking for different buffs depending on the pet, just as brituck mentioned.</p>\r\n<p>also I dont give them 30 min version, just the 10 (not going to use a reagent on a pet)</p>",
+    "PostedDate": "2010-04-27T16:00:31.34-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "436367",
+    "ThreadId": "203628",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>fyre wrote:</strong><br>\r\n<p>sorry, Xemonsyst, but I have to agree with brituck.&nbsp; When I am on my Pally dungeon and raid members are always asking for different buffs depending on the pet, just as brituck mentioned.</p>\r\n<p>also I dont give them 30 min version, just the 10 (not going to use a reagent on a pet)</p>\r\n</blockquote>\r\n<p>&nbsp;30min blessings on pets wouldn't even work because they're 'classed' and a greater blessing would also replace the greater blessing on the players of that class. So pets need to have regular blessings so they can have different/independant ones.</p>\r\n<p>&nbsp;</p>\r\n<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>xemnosyst wrote:</strong><br>\r\n<p>Do pally buffs have to be a pain in the butt not only to the pallies who maintain them, but now to me also?!</p>\r\n</blockquote>\r\n<p>&nbsp;YES!&nbsp;&nbsp; Bend over ! ;-)</p>",
+    "PostedDate": "2010-04-28T01:09:44.117-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "436412",
+    "ThreadId": "203628",
+    "Html": "<p>Warlock minions do not work in the same way as hunter pets.&nbsp; Warlock minions get the same buffs as their master, so cannot be seperately buffed with Pali buffs.&nbsp; This is why, with enough Palis in the raid, I also like to have Might - no use to me, but I have to have it for my Felpup to get it.</p>",
+    "PostedDate": "2010-04-28T03:07:44.933-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "436685",
+    "ThreadId": "203628",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>xemnosyst wrote:</strong><br>\r\n<p>Karindra - I wouldn't mind seeing a character file for an aff. lock that's off by 7K dps.&nbsp; Could you open an issue and attach it?&nbsp; 2.3.15 has a bug that *severly* mis-calculates the crit chance of corruption, but I don't expect that explains a full 7K dps.</p>\r\n</blockquote>\r\n<p>&nbsp;</p>\r\n<p>The 7k difference is a fight-specific one actually (BQL) ; I realized I should have said that in my comment.&nbsp; You might be surprised what a huge difference properly-buffed and rolled Corruption can make (with NMIC + 2-pot Potion of WM + lucky procs of other things that buff crit).&nbsp; I know I was; for me, the difference between a rolled crit and unrolled crit is approximately 11k vs. 8k 25-man buffed, higher with fight-specific buffs like BQL's.&nbsp; (Hell, we wiped pre-execute one time I got the buff, and I still had 13k DPS..)</p>\r\n<p>As for pets getting buffs - with at least one and possibly three exceptions - get warlock-based buffs.&nbsp; Felpups, Imps, Succubus and Voidwalker count as Warlocks.&nbsp; Felguards count as *Warriors*, which frequently prompts people questioning why Warriors have Wisdom (at least in Pugs my paladin is in that have other paladins handling might/kings/sanc), and I don't know which classes the other ones count as.</p>\r\n<p>On a side note, Hunter pets IIRC count as Hunters, except (unless this has been changed?) Ferocity pets (which are warriors).&nbsp; DK ghouls are rogues of all things.</p>",
+    "PostedDate": "2010-04-28T11:49:11.74-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "436776",
+    "ThreadId": "203628",
+    "Html": "<p>This just in: for the short term minions will get the same buffs as the warlock, as selected in the existing buffs tab.&nbsp; Because of the transition to Rawr3 I have been told that any effort on Rawr2 options tabs is wasted, and I don't feel like wasting my time!</p>",
+    "PostedDate": "2010-04-28T15:28:36.323-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "436793",
+    "ThreadId": "203628",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>xemnosyst wrote:</strong><br>\r\n<p>This just in: for the short term minions will get the same buffs as the warlock, as selected in the existing buffs tab.&nbsp; Because of the transition to Rawr3 I have been told that any effort on Rawr2 options tabs is wasted, and I don't feel like wasting my time!</p>\r\n</blockquote>\r\n<p>Honestly, even as a long term solution that's probably fine.&nbsp; Aside from a few anal-retentive warlocks I've run with (including, at times, myself), 99% of raids won't know or care about making sure pet buffs are properly set up.&nbsp; The only exception I can see is the Food buff - there's several treats available that can buff the pets.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-04-28T16:43:34.907-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "441746",
+    "ThreadId": "203628",
+    "Html": "Can someone point me to the formulae used to calculate average melee damage?  Some quick testing with the felguard showed me that its &quot;white&quot; hits can glance, but it's &quot;yellow&quot; hits cannot.  &quot;Yellow&quot; can be blocked, and I certainly assume the white can, too.  I'm not used to theorycrafting melee.  I checked out the code for cat & rogue, but it was a little hard for me to understand and I'm sure much more complicated than I need, since warlock pets will never be crit capped.",
+    "PostedDate": "2010-05-11T17:46:54.59-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "441786",
+    "ThreadId": "203628",
+    "Html": "<p>general melee crit calculations against a lvl 83 boss mob are as such</p>\r\n<p>white: 100% - 24% glancing - hit/expertise + 4.8% crit reduction</p>\r\n<p>yellow: 100% - hit/expertise + 4.8% crit reduction</p>\r\n<p>So basically 24% of all white attacks will glance (no matter what) but yellow attacks do not glance.</p>\r\n<p>In the case of warlocks, you would not have to worry about expertise. But for hit, I know that pets are affected by base hit that is show on their stat sheet in game. However, I don't think it's affect by say Misery or Imp FF. I could be wrong about that though.</p>\r\n<p>For RAWR, don't bother with block mechanics. Just assume that your felguard will be behind the boss at all times.</p>\r\n<p>What I would do is take the attack speed of the felgaurd (I'm not sure if a felguard's attack speed is decreased by haste or not), divide that by the length of the fight. then use the above white formula.</p>",
+    "PostedDate": "2010-05-11T20:08:16.87-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "441819",
+    "ThreadId": "203628",
+    "Html": "I'm having some trouble turning what you wrote into formulae for average damage.  Why subtract hit/expertise?  And you just get a 4.8% damage bonus from something called a &quot;crit reduction&quot;?  Also, if 24% of your hits glance that turns into less than a 24% reduction in damage.",
+    "PostedDate": "2010-05-11T22:29:00.457-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "441824",
+    "ThreadId": "203628",
+    "Html": "<p>Look at the StatConversion class in Base, you should find methods to build the combat table. That's what you need.</p>",
+    "PostedDate": "2010-05-11T22:44:59.533-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "441825",
+    "ThreadId": "203628",
+    "Html": "<p>Ok this is basically for Crits but the same applies to hits.</p>\r\n<p>Say as an example you have 60% crit on you Felguard raid buffed(hypothetically speaking) and you have 0% your attacks avoided(the &quot;-hit/expertise&quot; = 0%).</p>\r\n<p>Hits = 100 - 24 - 0 - 60 = 16% of all the white attacks would hit</p>\r\n<p>Crits = 60%</p>",
+    "PostedDate": "2010-05-11T22:45:46.317-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "442320",
+    "ThreadId": "203628",
+    "Html": "I'm gaining on it.  Wowwiki says that the damage reduction from a glancing blow averages 10% per level difference.  Is there a function/constant already defined for that I should be using?  I see .7 is just hard-coded into the Cat model.",
+    "PostedDate": "2010-05-12T17:39:34.883-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "443641",
+    "ThreadId": "203628",
+    "Html": "I notice the glyph for Felguard isn't listed.  Considering the support for pets so far, I can understand this.\r\n\r\nWhat I'm really missing is having Soul Fire buffed by Decimation in my rotation.  Considering that SimulationCraft shows that it's almost 20% of my dps, that seems important.  I will attempt to do research to give you more than just a complaint.",
+    "PostedDate": "2010-05-17T00:09:00.837-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "443823",
+    "ThreadId": "203628",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>xemnosyst wrote:</strong><br>I'm gaining on it.  Wowwiki says that the damage reduction from a glancing blow averages 10% per level difference.  Is there a function/constant already defined for that I should be using?  I see .7 is just hard-coded into the Cat model.</blockquote>\r\n<p>Sorry for not getting back to you sooner, but yes it is already in RAWR</p>\r\n<p>StatConversion.cs</p>\r\n<p>\r\n<div style=\"color:black;background-color:white\">\r\n<pre>        <span style=\"color:blue\">public</span> <span style=\"color:blue\">static</span> <span style=\"color:blue\">readonly</span> <span style=\"color:blue\">float</span>[] WHITE_GLANCE_CHANCE_CAP          = <span style=\"color:blue\">new</span> <span style=\"color:blue\">float</span>[] { 0.1000f, 0.1500f, 0.2000f, 0.2400f }; <span style=\"color:green\">// 25%</span>\r\n        <span style=\"color:green\">//public static readonly float[] WHITE_GLANCE_CHANCE_CAP_BEHIND   = WHITE_GLANCE_CHANCE_CAP;</span>\r\n        <span style=\"color:blue\">public</span> <span style=\"color:blue\">static</span> <span style=\"color:blue\">readonly</span> <span style=\"color:blue\">float</span>[] YELLOW_GLANCE_CHANCE_CAP         = <span style=\"color:blue\">new</span> <span style=\"color:blue\">float</span>[] { 0.0000f, 0.0000f, 0.0000f, 0.0000f }; <span style=\"color:green\">//  0% Yellows don't glance</span>\r\n        <span style=\"color:green\">//public static readonly float[] YELLOW_GLANCE_CHANCE_CAP_BEHIND  = YELLOW_GLANCE_CHANCE_CAP;</span>\r\n</pre>\r\n</div>\r\n</p>",
+    "PostedDate": "2010-05-17T08:02:49.087-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "444005",
+    "ThreadId": "203628",
+    "Html": "Torin - thank you for the feedback.  The felguard is at the top of my list.  He'll be modeled at least as well as the other pets soon enough (which is still not perfectly - but that will probably come fairly soon as well).  Modeling the execute stage is also on my list (which you can find by clicking on &quot;Documentation&quot; above, then finding the link to &quot;Models&quot;, then &quot;Warlock&quot;).\r\n\r\nHinalover - I did find that code after following the lead Astylian gave me.  That gives the me *chance* for a hit to glance, not the average damage reduction for a hit that *does* glance.  Wowwiki says a glancing blow will average 10% damage reduction per level difference.  Is that in the common code somewhere?",
+    "PostedDate": "2010-05-17T15:09:48.063-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "444058",
+    "ThreadId": "203628",
+    "Html": "<p>I notice Corruption is in the default Destro rotation.&nbsp; With the exception of high movement fights, using Corruption is a net DPS loss for Destrolocks, so you might wanna take it out at some point...</p>",
+    "PostedDate": "2010-05-17T18:20:06.303-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "444105",
+    "ThreadId": "203628",
+    "Html": "That's interesting, midnight.  On my toon, corruption is a net dps gain (or at least, that's what my model is telling me).  Are you saying corruption is a loss because Rawr tells you so, because some theorycrafting elsewhere tells you so, or because you've tried it and seen the results?",
+    "PostedDate": "2010-05-17T22:00:01.74-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "444277",
+    "ThreadId": "203628",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>xemnosyst wrote:</strong><br>Torin - thank you for the feedback. The felguard is at the top of my list. He'll be modeled at least as well as the other pets soon enough (which is still not perfectly - but that will probably come fairly soon as well). Modeling the execute stage is also on my list (which you can find by clicking on &quot;Documentation&quot; above, then finding the link to &quot;Models&quot;, then &quot;Warlock&quot;). Hinalover - I did find that code after following the lead Astylian gave me. That gives the me *chance* for a hit to glance, not the average damage reduction for a hit that *does* glance. Wowwiki says a glancing blow will average 10% damage reduction per level difference. Is that in the common code somewhere?</blockquote>\r\n<p>&nbsp;I think you're misunderstanding some parts in wowwiki (or wowwiki is wrong).</p>\r\n<p>Pre 3.0 glancing blows had 10% chance to occur per level -15%.&nbsp; So a lvl+3 mob would have 30-15 or 15% glancing chance.&nbsp; (the same calculation as crushing blows btw).<br>Post 3.0 this changed, the glance chance table in rawr is correct.&nbsp; +0: 10%, +1: 15%, +2: 20% and +3: 24%.<br>This is assuming you have maxed weapon skill and there's no special mechanics in place to change glancing blows happening (iirc, Vezzax has an increased chance at getting glancing blows).</p>\r\n<p>Pre 3.0 the gancing damage was 76% of a normal blow, Post 3.0 it's 70%...<br>I don't recall the Pre 3.0 situation on this, but currently, glancing blows are now said to be 70% damage, it doesn't matter what level the target is.<br><br>I seem to vaguely recall that it's actually <strong><span style=\"text-decoration:underline\">not</span> </strong>a flat X% reduction, this is only an approximation of how much damage gets reduced to.&nbsp; Iirc,&nbsp;the Lower end and higher end damage of the weapon get changed (and not to the same proportion, the lower end gets changed more). At least that's the pre 3.0 situation I'm talking about now.&nbsp; It's possible this is still the case and the difference from Pre 3.0 (76%) and now (70%) are caused by the changed weapon damages.&nbsp;&nbsp; So it's even possible that with ICC weapons the 70% percentage is no longer entirely true either.&nbsp; it's not a part of the theory i've really been keeping up to date on tho.</p>\r\n<p>The simple story:<br>Vs a boss 24%&nbsp;of melee autoattacks (whites) will be glancing blows (70% damage done).&nbsp; Yellow attacks can't be glancing blowse.<br>Glancing blows are right after pure avoided attacks on the attack roll. So nomatter what you do, the 24% glancing will always be there.&nbsp; So after boss avoidance (miss, dodge, parry) and the 24% glancing, that's at most what you can crit. I'm not sure how much crit% warlock pets inherit from their masters and if warlocks can get high enough that it would cause their pet crit to exceed 76%-miss%-dodge% (pet will allways attack from the back so parry is a no factor), I also don't know if warlock pets get dodged.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-05-18T05:26:41.797-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "444424",
+    "ThreadId": "203628",
+    "Html": "<p>Both my RAWR results and EJ Theorycrafting say Corruption is out for Destros unless you're moving and wanna pop out an instant.</p>\r\n<p>A Destro with points in Improved Corruption might change that up, I'm not sure.</p>",
+    "PostedDate": "2010-05-18T09:55:08.857-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "444726",
+    "ThreadId": "203628",
+    "Html": "Midnight - cool, thank you for the info.  Could you post that as a feature request, please, including your character file?  I'd like to play with it and find out what circumstances affect it.\r\n\r\nOReubens - I am now torn.  Wowwiki says, &quot;These attacks only do 70% of their normal damage versus a mob that is 3 levels above you. (10% per mob level).&quot;  A recent post on Wow.com says, &quot;When you land a glancing blow, it will deal 30% less damage than normal against a raid-level mob, with the damage reduction being reduced by 10% for every level closer to yours the target is.&quot;  Those seem to be the best results google is giving me.  Where is the info saying that it's 70% no matter the level?",
+    "PostedDate": "2010-05-19T00:12:45.547-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "444748",
+    "ThreadId": "203628",
+    "Html": "<p>It's a major problem with doing much of anything in rawr really... getting factual data and not guestimates.&nbsp;&nbsp; On top of that, facts change when blizzard changes how things work and this doesn't cause all the webpages out there to get updated.&nbsp; Bad data gets perpetuated as well so even recent posts can get it wrong.<br><br>Like I said, I have not been keeping up to date on that particular aspect of melee damage.&nbsp; If it is variable for mob level,&nbsp;then this really should be a variable in StatConversions (it should be even if it isn't).&nbsp; From what I can see at a glance (pun intended)&nbsp;melee models in rawr now have hardcoded 0.7 modifiers for glancing blows (ret has 0.75, and I'm not sure if this is is an old value that didn't get changed or trying to compensate for something).&nbsp; So either they all assume you'll only ever hit level 83 mobs (then why have a mob level selection) or they're all wrong.</p>",
+    "PostedDate": "2010-05-19T01:30:01.52-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "447119",
+    "ThreadId": "203628",
+    "Html": "<p>2.3.18 marks the first version of Rawr that I think might be getting close for Demonology locks.&nbsp; Could I get some comments, please, saying just how close or far away it really is?&nbsp; Melee haste effects (i.e. Bloodlust and Demonic Empowerment) are not yet modeled, but I think I've accounted for everything else.</p>\r\n<p>It has been 3 months since I started this project, and I'm finally starting to see light at the end of the tunnel!&nbsp; My Warlock is an alt, but what finally convinced me to work on this was wanting to spend his frost badges for his own gear anyway.&nbsp; What a long way to go for that goal!&nbsp; Lol.&nbsp; Just a little more effort on pet dps, throw in an execute stage, then I'll feel comfortable calling the model complete.&nbsp; Then I can add in raid damage buffs to the overall score, THEN I'll be where I wanted to be able to pick my frost gear :).&nbsp; I'm going to guess 1 more month and then my Warlock will be SWEET.&nbsp; :)&nbsp; Then it would be nice to make some performance improvements, and it really should model Judgement of Wisdom, and maybe pet mana usage ...</p>",
+    "PostedDate": "2010-05-25T07:40:59.747-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "447289",
+    "ThreadId": "203628",
+    "Html": "<p>You are a champion, Xemno. :)&nbsp; I can't express how much this warlock, at least, appreciates all the work you have done.</p>",
+    "PostedDate": "2010-05-25T13:15:02.867-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "447978",
+    "ThreadId": "203628",
+    "Html": "<p>Unless I missed it for Demo, (and sorry in advance if I missed it) I didn't see Soul Fire under 35%.</p>",
+    "PostedDate": "2010-05-26T23:17:16.65-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "448001",
+    "ThreadId": "203628",
+    "Html": "<p>You did not miss it.&nbsp; It has not yet been implemented.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-05-27T00:08:26.837-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "448227",
+    "ThreadId": "203628",
+    "Html": "<p>Hey, btw not directly related to your lock module, but think you can talk them into adding Demonic Pact to the buff list? Seems to be the most commonly used&nbsp;SP buff, but isn't found in the options... Is it because of the endless variable of the buff that makes it hard to implement? Maybe a check box + fill in the blank for buff value option might work?</p>",
+    "PostedDate": "2010-05-27T08:37:02.997-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "448514",
+    "ThreadId": "203628",
+    "Html": "<p>I don't know if &quot;we&quot; can convince &quot;them&quot;, but cast your vote for the existing issue (found by searching issues for &quot;Demonic Pact&quot;) and maybe it will become more important for someone to implement :P.</p>\r\n<p>http://rawr.codeplex.com/WorkItem/View.aspx?WorkItemId=15752</p>",
+    "PostedDate": "2010-05-27T22:58:16.693-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "452708",
+    "ThreadId": "203628",
+    "Html": "<p>OReubens - I just took my felguard for a spin on a lvl 83 target dummy: 283 hits @ 960 avg damage vs 112 hits @ 722 avg damage (25% less damage on a glance).&nbsp; Then I took him to the lvl 81 &amp; 82 elites on the wall between Crystalsong and Icecrown: 265 hits @ 947 avg damage vs 49 hits @ 854 avg damage (10% less damage on a glance).&nbsp; I'm guessing my sample size is large enough to conclude that lvl difference DOES affect the amount of damage reduced by a glancing blow, and that all Rawr models are wrong.&nbsp; Also interesting is that my testing lines up with the Retribution number of 75%, not everyone else's number of 70%.</p>",
+    "PostedDate": "2010-06-07T15:37:38.957-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "452875",
+    "ThreadId": "203628",
+    "Html": "<p>283+112 (395 hits) is still a&nbsp;small sample size.&nbsp; Anyone can get a statistical confidence level on that ?</p>\r\n<p>I remember having had a quick look at other melee models, and I could't spot any code to account for level in the glance calculations.&nbsp; Maybe it is there, but then it's hidden a bit deeper than a casual glance (again, pun intended) revealed.</p>\r\n<p>Something like this is easier to test with a player.&nbsp; You can equip a weapon with a very narrow damage range (some entry level weapons even have no variance at all) so you can get a pretty accurate value on how much less damage a glancing blow does. Glance chance is still a matter of whacking something long enough to get a decent confidence level.&nbsp; Might need a new (private) post to get melee models updated on this...</p>",
+    "PostedDate": "2010-06-08T02:20:27.903-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "452975",
+    "ThreadId": "203628",
+    "Html": "<p>wowwiki says glancing blows average 10% per level difference, but there are notes that indicate that is possibly obsolete. &nbsp;It seems reasonable to suspect the 0.7 in various Rawr modules is a leftover from TBC.</p>\r\n<p>If I'm reading their code correctly, Simulationcraft uses damage-delivered for a glancing blow at +3 is 65-85%. &nbsp;At +2 is 90-99%.</p>\r\n<p>Look at&nbsp;<a href=\"http://code.google.com/p/simulationcraft/source/browse/trunk/engine/sc_action.cpp\">http://code.google.com/p/simulationcraft/source/browse/trunk/engine/sc_action.cpp</a>&nbsp;and search for&nbsp;<span>&nbsp;&quot;</span><span>if</span><span> </span><span>(</span><span> result </span><span>==</span><span> RESULT_GLANCE </span><span>)&quot;</span></p>",
+    "PostedDate": "2010-06-08T07:14:02.643-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "453059",
+    "ThreadId": "203628",
+    "Html": "<p>I wouldn't be surprised (or care, really), if glancing calculations were wrong for 81s and 82s. If they're wrong for 83s, (30% vs 25%), lets do more testing to confirm, and get that fixed.</p>",
+    "PostedDate": "2010-06-08T09:20:08.633-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "453064",
+    "ThreadId": "203628",
+    "Html": "<p>What you see in StatConversion.cs is correct for the level differences in glancing, that was placed there after a lot of research in various sites and manual testing done by me and a couple others.</p>",
+    "PostedDate": "2010-06-08T09:32:57.013-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "453082",
+    "ThreadId": "203628",
+    "Html": "If I'm reading it correctly, StatConversion.cs says how likely a glancing blow is.  Most of the theorycraft and reported test results agree with StatConversion.cs and say 24%.\r\n\r\nI think the last few posts are asking how much damage a glancing blow does.  I couldn't find any controlled test results (other than Xemno's, above) but it seems that everyone uses either\r\n75% (Rawr.ret, simulationcraft) or 70% (a few other Rawr modules, askmrrobot, wowwiki, recent wow.com article).  I didn't notice anything in StatConversion.cs that attempts to answer that\r\nquestion.  Perhaps I missed it.\r\n",
+    "PostedDate": "2010-06-08T09:56:37.1-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "453147",
+    "ThreadId": "203628",
+    "Html": "Everywhere I read it's 10% for each level above you that reduces the amount of white damage for glancing blows (90% for +1 lvl mobs, 80% for +2 lvl mobs, and 70% for +3 lvl mobs). Even found a rogue article from early 2007 about Glancing blows and they were saying the same thing then.<br>\r\n<br>\r\nEdit:<br>\r\n<br>\r\nFound an old EJ thread (dating back to the TBC Beta) That shows that glancing blows were doing about 75% damage<br>\r\n<br>\r\nhttp://elitistjerks.com/f31/t11008-new_glancing_blow_mechanics/#post327528<br>\r\n<br>\r\nEdit 2:<br>\r\n<br>\r\nOk, I took a looked at a recent Festergut HM attempt from our guild and I'm definetly noticing a most white attacks are glancing for ~75% damage. Even our kitty druid was averaging at 77% glancing damage. So having it at 75% would be correct instead of the 70% mentioned everywhere else. It won't change the overall dps that much, maybe 100-200 dps but still.<br>\r\n<br>\r\nhttp://www.worldoflogs.com/reports/loq5183f7bkiktvr/details/39/?s=7186&e=7422",
+    "PostedDate": "2010-06-08T12:06:35.58-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

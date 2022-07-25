@@ -1,0 +1,111 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSDK",
+      "DisplayName": "Rawr.DPSDK"
+    },
+    "ClosedComment": "Closing old Fixed defects.... Esp. since there&#39;s been quite a few builds since these were marked fixed.  Any new instances of those issues should be created in new defects.",
+    "ClosedDate": "2009-08-07T18:01:33.183-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Okay, this one is my fault.  I completely missed this when I was doing my work.\n \nSigil of Haunted Dreams is currently modeled as having a 100% chance on use of BS or HS to add 173 crit rating for 10 seconds.\n \nAccording to wowhead, the proc only has a 15% chance to occur.  No cooldown is mentioned there but it may have the standard 45s internal cooldown.\n \nShazear, I'd write a patch for this but I don't know how this would affect the sigil code you wrote since it's general purpose and I'd probably just end up hard-coding in a definition like I did originally.\n \nReferences:\nhttp://www.wowhead.com/?spell=60826",
+    "LastUpdatedDate": "2017-11-27T11:04:20.73-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-05-22T11:58:36.393-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSDK] Sigil of Haunted Dreams has wrong proc chance",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13308
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1944,
+      "FileName": "dkhaunteddreams.patch",
+      "DownloadUrl": ".\\1944"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "In StatsSpecialEffects --> getSpecialEffects :\r\n                        case Trigger.BloodStrikeOrHeartStrikeHit:\r\n                        trigger = (rotation.BloodStrike + rotation.HeartStrike) / rotation.curRotationDuration;\r\n                        chance = 0.15f;\r\n                        break;\r\nI hard-coded the 15% chance in the DPSDK model, even though I shouldn't've",
+      "PostedDate": "2009-05-22T12:15:44.733-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That would explain why manually changing the proc chance in my local copy didn't result in a large change for the sigil's rating.",
+      "PostedDate": "2009-05-22T12:44:21.79-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Attached dkhaunteddreams.patch fixes this issue by:\r\n1. Hard-coding a condition for the Sigil of Haunted Dreams special effect.\r\n2. Changing the chance in StatsSpecialEffects for Trigger.BloodStrikeOrHeartStrikeHit to 1f.",
+      "PostedDate": "2009-05-29T13:57:32.133-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-05-29T13:57:34.597-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Patch applied.",
+      "PostedDate": "2009-06-19T07:15:37.763-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-06-19T07:16:08.533-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-07T18:01:33.183-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:48:06.93-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:49:21.28-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:21:17.93-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:24.57-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:29.007-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:04:20.73-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

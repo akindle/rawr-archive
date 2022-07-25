@@ -1,0 +1,105 @@
+diff -urw 44769/Rawr.Enhance/CalculationOptionsEnhance.cs 44777/Rawr.Enhance/CalculationOptionsEnhance.cs
+--- 44769/Rawr.Enhance/CalculationOptionsEnhance.cs	2010-01-07 13:03:45.000000000 -0800
++++ 44777/Rawr.Enhance/CalculationOptionsEnhance.cs	2010-01-07 13:04:27.000000000 -0800
+@@ -37,6 +37,7 @@
+         private bool _useMana = true;
+         private bool[] _statsList = new bool[] { true, true, true, true, true, true, true, true, true, true };
+         private SerializableDictionary<EnhanceAbility, Priority> _priorityList = SetPriorityDefaults();
++        private List<KeyValuePair<EnhanceAbility, Priority>> _sortedList;
+ 
+         #region Getter/Setter
+         public string BossName { get { return _bossName; } set { _bossName = value; OnPropertyChanged("BossName"); } }
+@@ -107,11 +108,16 @@
+ 
+         public int GetAbilityPriorityValue(EnhanceAbility abilityType)
+         {
+-            Priority p = new Priority();
+-            _priorityList.TryGetValue(abilityType, out p);
+-            if (p == null)
++            int priority = 0;
++            foreach (KeyValuePair<EnhanceAbility, Priority> kvp in _sortedList)
++            {
++                Priority p = kvp.Value;
++                if (p.Checked && p.PriorityValue > 0) 
++                    priority++;
++                if (p.AbilityType == abilityType)
++                    return p.Checked ? priority : 0;
++            }
+                 return -1;
+-            return p.Checked ? p.PriorityValue : 0;  // return 0 if priority not in use
+         }
+ 
+         public void SetAbilityPriority(EnhanceAbility abilityType, Priority priority)
+@@ -133,7 +139,18 @@
+             return activePriorities;
+         }
+ 
+-        private static SerializableDictionary<EnhanceAbility, Priority> SetPriorityDefaults()
++        public void SortPriorities()
++        {
++            _sortedList = new List<KeyValuePair<EnhanceAbility, Priority>>(_priorityList);
++            _sortedList.Sort(
++                delegate(KeyValuePair<EnhanceAbility, Priority> firstPair, KeyValuePair<EnhanceAbility, Priority> nextPair)
++                {
++                    return firstPair.Value.PriorityValue.CompareTo(nextPair.Value.PriorityValue);
++                }
++            );
++        }
++
++        public static SerializableDictionary<EnhanceAbility, Priority> SetPriorityDefaults()
+         {
+             SerializableDictionary<EnhanceAbility, Priority> priorityList = new SerializableDictionary<EnhanceAbility, Priority>();
+             if (priorityList.Count == 0)
+diff -urw 44769/Rawr.Enhance/CalculationOptionsPanelEnhance.cs 44777/Rawr.Enhance/CalculationOptionsPanelEnhance.cs
+--- 44769/Rawr.Enhance/CalculationOptionsPanelEnhance.cs	2010-01-07 13:03:45.000000000 -0800
++++ 44777/Rawr.Enhance/CalculationOptionsPanelEnhance.cs	2010-01-07 13:04:27.000000000 -0800
+@@ -351,7 +351,7 @@
+             _loadingCalculationOptions = true;
+             btnUp.Enabled = false;
+             btnDown.Enabled = false;
+-            _calcOpts.PriorityList = new SerializableDictionary<EnhanceAbility, Priority>();
++            _calcOpts.PriorityList = CalculationOptionsEnhance.SetPriorityDefaults();
+             LoadPriorities();
+             _loadingCalculationOptions = false;
+             Character.OnCalculationsInvalidated();
+diff -urw 44769/Rawr.Enhance/CombatStats.cs 44777/Rawr.Enhance/CombatStats.cs
+--- 44769/Rawr.Enhance/CombatStats.cs	2010-01-07 13:03:34.000000000 -0800
++++ 44777/Rawr.Enhance/CombatStats.cs	2010-01-07 13:04:15.000000000 -0800
+@@ -282,10 +282,14 @@
+             float stormstrikeSpeed = firstPass ? (_talents.Stormstrike == 1 ? 8f : 0f) : AbilityCooldown(EnhanceAbility.StormStrike);
+             float shockSpeed = firstPass ? BaseShockSpeed : AbilityCooldown(EnhanceAbility.EarthShock);
+             float lavaLashSpeed = firstPass ? (_talents.LavaLash == 1 ? 6f : 0f) : AbilityCooldown(EnhanceAbility.LavaLash);
+-            float magmaSearingSpeed = firstPass ? (_calcOpts.Magma ? 20f : 60f) :
+-                    (_calcOpts.Magma ? AbilityCooldown(EnhanceAbility.MagmaTotem) : AbilityCooldown(EnhanceAbility.SearingTotem));
+             float fireNovaSpeed = firstPass ? BaseFireNovaSpeed : AbilityCooldown(EnhanceAbility.FireNova);
+-            fireTotemUptime = _calcOpts.Magma ? 20f / magmaSearingSpeed : 60f / magmaSearingSpeed;
++            if (_calcOpts.PriorityInUse(EnhanceAbility.MagmaTotem))
++                fireTotemUptime = firstPass ? 1.0f : 20f / AbilityCooldown(EnhanceAbility.MagmaTotem);
++            else if (_calcOpts.PriorityInUse(EnhanceAbility.SearingTotem))
++                fireTotemUptime = firstPass ? 1.0f : 60f / AbilityCooldown(EnhanceAbility.SearingTotem);
++            else if (_calcOpts.PriorityInUse(EnhanceAbility.RefreshTotems)) // if no Searing or Magma totem use refresh of Flametongue totem.
++                fireTotemUptime = firstPass ? 1.0f : 300f / AbilityCooldown(EnhanceAbility.RefreshTotems); 
++            
+             float mwPPM = 2 * _talents.MaelstromWeapon * (1 + _stats.Enhance4T8 * 0.2f);
+             float flurryHasteBonus = .05f * _talents.Flurry + _stats.Enhance4T7;
+             float edCritBonus = .03f * _talents.ElementalDevastation;
+@@ -360,7 +364,7 @@
+                 staticShocksPerSecond = (HitsPerSMH + HitsPerSOH) * staticShockChance;
+                 flameTongueHitsPerSecond = (_calcOpts.MainhandImbue == "Flametongue" ? HitsPerSMH : 0f) +
+                     ((_calcOpts.OffhandImbue == "Flametongue" && _talents.DualWield == 1) ? HitsPerSOH : 0f);
+-                spellAttacksPerSec = (1f / secondsToFiveStack + 1f / shockSpeed + 1f / fireNovaSpeed + staticShocksPerSecond + flameTongueHitsPerSecond)
++                spellAttacksPerSec = (1f / secondsToFiveStack + 1f / shockSpeed + 1f / fireNovaSpeed + staticShocksPerSecond) // + flameTongueHitsPerSecond)
+                                    * (1f - chanceSpellMiss);
+                 float couldCritSpellsPerS = spellAttacksPerSec - staticShocksPerSecond; // LS procs from Static Shock cannot crit
+                 edUptime = 1f - (float)Math.Pow(1 - chanceSpellCrit, 10 * couldCritSpellsPerS);
+diff -urw 44769/Rawr.Enhance/Priority.cs 44777/Rawr.Enhance/Priority.cs
+--- 44769/Rawr.Enhance/Priority.cs	2010-01-07 13:03:34.000000000 -0800
++++ 44777/Rawr.Enhance/Priority.cs	2010-01-07 13:04:15.000000000 -0800
+@@ -36,6 +36,7 @@
+             float fireElementalCD = _talents.GlyphofFireElementalTotem ? 300f : 600f;
+             float gcd = Math.Max(1.0f, 1.5f * (1f - StatConversion.GetSpellHasteFromRating(_stats.HasteRating)));
+ 
++            _calcOpts.SortPriorities(); // call sort before processing priorities
+             int priority = _calcOpts.GetAbilityPriorityValue(EnhanceAbility.ShamanisticRage);
+             if (priority > 0 && _talents.ShamanisticRage == 1)
+                 abilities.Add(new Ability(EnhanceAbility.ShamanisticRage, 60f, 1.5f, 0f, priority, false, true));

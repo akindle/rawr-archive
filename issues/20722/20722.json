@@ -1,0 +1,76 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Mage",
+      "DisplayName": "Rawr.Mage"
+    },
+    "ClosedComment": "This will be fixed in next release, no workaround exists.",
+    "ClosedDate": "2011-05-10T19:04:18.513-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "If I use Fire talent spec, Rawr working correctly.\nThe problem is with Arcane spec.\n \n \nSteps to reproduce:\nRun Rawr\nOpen Character File\nOptimizer - Optimize \nAfter Optimize (any level of Thoroughness) before displaying results:\n \nRawr,exe crash\n \nRawr offline error message:\nI have performed the Suggested Fix and continue to receive this error. If I am posting this message without having performed the Suggested Fix I am aware that I am consuming the Developer(s) time in managing my Issue unnecessarily.\n \n== Version: 4.1.5.0 ==\n \n== Error Message ==\n[Arg_IndexOutOfRangeException]\nArgumenty: \nLadění zdrojových řetězců není k dispozici. Dostatečné informace pro diagnostiku potíží často poskytují klíč a argumenty. Viz také http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.60310.0&File=mscorlib.dll&Key=Arg_IndexOutOfRangeException\n \n== StackTrace ==\n   v Rawr.Mage.LP.ComputevQv(Int32 incoming, Double direction)\n   v Rawr.Mage.LP.ComputeQuadraticLimit(Int32 incoming, Double direction)\n   v Rawr.Mage.LP.ReducedGradientStep(Int32 maxj, Double direction, Double eps, Int32& mini, Int32& bound, Boolean& changeBasis, Boolean& checkTermination)\n   v Rawr.Mage.LP.SolvePrimalQuadraticCGUnsafe()\n   v Rawr.Mage.LP.SolvePrimalQuadratic(Int32 mpsRow, Int32[] sort, Double k, Boolean skipLinear, Int32 maximizeColumn, Double targetValue, Int32 globalRestarts)\n   v Rawr.Mage.SolverLP.SolvePrimalQuadratic(Int32 mpsRow, Int32[] sort, Double k, Boolean skipLinear, Int32 maximizeColumn, Double targetValue)\n   v Rawr.Mage.Solver.SolveQuadratic()\n   v Rawr.Mage.Solver.GetCharacterCalculations(Item additionalItem)\n   v Rawr.Mage.Solver.GetCharacterCalculations(Character character, Item additionalItem, CalculationOptionsMage calculationOptions, CalculationsMage calculations, String armor, Boolean segmentCooldowns, Boolean segmentMana, Boolean integralMana, Int32 advancedConstraintsLevel, Boolean useIncrementalOptimizations, Boolean useGlobalOptimizations, Boolean needsDisplayCalculations, Boolean needsSolutionVariables, Boolean solveCycles)\n   v Rawr.Mage.CalculationsMage.GetCharacterCalculations(Character character, Item additionalItem, CalculationOptionsMage calculationOptions, String armor, Boolean useIncrementalOptimizations, Boolean useGlobalOptimizations, Boolean needsDisplayCalculations, Boolean needsSolutionVariables, Boolean solveCycles)\n   v Rawr.Mage.CalculationsMage.GetCharacterCalculations(Character character, Item additionalItem, Boolean referenceCalculation, Boolean significantChange, Boolean needsDisplayCalculations)\n   v Rawr.UI.OptimizerResults..ctor(Character oldCharacter, Character newCharacter)\n   v Rawr.UI.OptimizeWindow.optimizer_OptimizeCharacterCompleted(Object sender, OptimizeCharacterCompletedEventArgs e)\n   v Rawr.Optimizer.ItemInstanceOptimizer.OnOptimizeCharacterCompleted(OptimizeCharacterCompletedEventArgs e)\n   v Rawr.Optimizer.ItemInstanceOptimizer.PrivateOptimizeCharacterCompleted(Object state)\n \nRawr online in FireFox error message:\nI have performed the Suggested Fix and continue to receive this error. If I am posting this message without having performed the Suggested Fix I am aware that I am consuming the Developer(s) time in managing my Issue unnecessarily.\n \n== Version: 4.1.5.0 ==\n \n== Error Message ==\n[Arg_IndexOutOfRangeException]\nArgumenty: \nLadění zdrojových řetězců není k dispozici. Dostatečné informace pro diagnostiku potíží často poskytují klíč a argumenty. Viz také http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.60310.0&File=mscorlib.dll&Key=Arg_IndexOutOfRangeException\n \n== StackTrace ==\n   v Rawr.Mage.LP.ComputevQv(Int32 incoming, Double direction)\n   v Rawr.Mage.LP.ComputeQuadraticLimit(Int32 incoming, Double direction)\n   v Rawr.Mage.LP.ReducedGradientStep(Int32 maxj, Double direction, Double eps, Int32& mini, Int32& bound, Boolean& changeBasis, Boolean& checkTermination)\n   v Rawr.Mage.LP.SolvePrimalQuadraticCGUnsafe()\n   v Rawr.Mage.LP.SolvePrimalQuadratic(Int32 mpsRow, Int32[] sort, Double k, Boolean skipLinear, Int32 maximizeColumn, Double targetValue, Int32 globalRestarts)\n   v Rawr.Mage.SolverLP.SolvePrimalQuadratic(Int32 mpsRow, Int32[] sort, Double k, Boolean skipLinear, Int32 maximizeColumn, Double targetValue)\n   v Rawr.Mage.Solver.SolveQuadratic()\n   v Rawr.Mage.Solver.GetCharacterCalculations(Item additionalItem)\n   v Rawr.Mage.Solver.GetCharacterCalculations(Character character, Item additionalItem, CalculationOptionsMage calculationOptions, CalculationsMage calculations, String armor, Boolean segmentCooldowns, Boolean segmentMana, Boolean integralMana, Int32 advancedConstraintsLevel, Boolean useIncrementalOptimizations, Boolean useGlobalOptimizations, Boolean needsDisplayCalculations, Boolean needsSolutionVariables, Boolean solveCycles)\n   v Rawr.Mage.CalculationsMage.GetCharacterCalculations(Character character, Item additionalItem, CalculationOptionsMage calculationOptions, String armor, Boolean useIncrementalOptimizations, Boolean useGlobalOptimizations, Boolean needsDisplayCalculations, Boolean needsSolutionVariables, Boolean solveCycles)\n   v Rawr.Mage.CalculationsMage.GetCharacterCalculations(Character character, Item additionalItem, Boolean referenceCalculation, Boolean significantChange, Boolean needsDisplayCalculations)\n   v Rawr.UI.OptimizerResults..ctor(Character oldCharacter, Character newCharacter)\n   v Rawr.UI.OptimizeWindow.optimizer_OptimizeCharacterCompleted(Object sender, OptimizeCharacterCompletedEventArgs e)\n   v Rawr.Optimizer.ItemInstanceOptimizer.OnOptimizeCharacterCompleted(OptimizeCharacterCompletedEventArgs e)\n   v Rawr.Optimizer.ItemInstanceOptimizer.PrivateOptimizeCharacterCompleted(Object state)\n \nRawr online in IE32 error message:\nI have performed the Suggested Fix and continue to receive this error. If I am posting this message without having performed the Suggested Fix I am aware that I am consuming the Developer(s) time in managing my Issue unnecessarily.\n \n== Version: 4.1.5.0 ==\n \n== Error Message ==\n[Arg_IndexOutOfRangeException]\nArgumenty: \nLadění zdrojových řetězců není k dispozici. Dostatečné informace pro diagnostiku potíží často poskytují klíč a argumenty. Viz také http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.60310.0&File=mscorlib.dll&Key=Arg_IndexOutOfRangeException\n \n== StackTrace ==\n   v Rawr.Mage.LP.ComputevQv(Int32 incoming, Double direction)\n   v Rawr.Mage.LP.ComputeQuadraticLimit(Int32 incoming, Double direction)\n   v Rawr.Mage.LP.ReducedGradientStep(Int32 maxj, Double direction, Double eps, Int32& mini, Int32& bound, Boolean& changeBasis, Boolean& checkTermination)\n   v Rawr.Mage.LP.SolvePrimalQuadraticCGUnsafe()\n   v Rawr.Mage.LP.SolvePrimalQuadratic(Int32 mpsRow, Int32[] sort, Double k, Boolean skipLinear, Int32 maximizeColumn, Double targetValue, Int32 globalRestarts)\n   v Rawr.Mage.SolverLP.SolvePrimalQuadratic(Int32 mpsRow, Int32[] sort, Double k, Boolean skipLinear, Int32 maximizeColumn, Double targetValue)\n   v Rawr.Mage.Solver.SolveQuadratic()\n   v Rawr.Mage.Solver.GetCharacterCalculations(Item additionalItem)\n   v Rawr.Mage.Solver.GetCharacterCalculations(Character character, Item additionalItem, CalculationOptionsMage calculationOptions, CalculationsMage calculations, String armor, Boolean segmentCooldowns, Boolean segmentMana, Boolean integralMana, Int32 advancedConstraintsLevel, Boolean useIncrementalOptimizations, Boolean useGlobalOptimizations, Boolean needsDisplayCalculations, Boolean needsSolutionVariables, Boolean solveCycles)\n   v Rawr.Mage.CalculationsMage.GetCharacterCalculations(Character character, Item additionalItem, CalculationOptionsMage calculationOptions, String armor, Boolean useIncrementalOptimizations, Boolean useGlobalOptimizations, Boolean needsDisplayCalculations, Boolean needsSolutionVariables, Boolean solveCycles)\n   v Rawr.Mage.CalculationsMage.GetCharacterCalculations(Character character, Item additionalItem, Boolean referenceCalculation, Boolean significantChange, Boolean needsDisplayCalculations)\n   v Rawr.UI.OptimizerResults..ctor(Character oldCharacter, Character newCharacter)\n   v Rawr.UI.OptimizeWindow.optimizer_OptimizeCharacterCompleted(Object sender, OptimizeCharacterCompletedEventArgs e)\n   v Rawr.Optimizer.ItemInstanceOptimizer.OnOptimizeCharacterCompleted(OptimizeCharacterCompletedEventArgs e)\n   v Rawr.Optimizer.ItemInstanceOptimizer.PrivateOptimizeCharacterCompleted(Object state)\n \n \nVersions:\nRawr 4.1.05.1 (but trying form 4.1.04 and same result)\nWindows Home Premium 64-bit Service pack 1 fully updated\nAddobe Flash Player 10.2.159.1\nFireFox 4.0.1\nMS .NET Framework 4.0.30319\nMS SilverLight 4.0.60310.0",
+    "LastUpdatedDate": "2017-11-27T11:02:09.813-08:00",
+    "PlannedForRelease": "Rawr 4.1.05.1",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-05-10T09:10:02.393-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Mage] Arcane Talents crash",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 20722
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4933,
+      "FileName": "Seedah.xml",
+      "DownloadUrl": ".\\4933"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "If you need any cooperation, I am ready to cooperate. For example ask me of any other info important to you, testing some version with debug code and sending results etc. I am programmer.",
+      "PostedDate": "2011-05-11T02:33:52.35-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The fix is already in. You can try to build from source code if you don't want to wait for next release to come out.",
+      "PostedDate": "2011-05-11T02:39:16.49-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-21T00:00:17.077-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:25:05.107-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:00.137-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:02:09.813-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

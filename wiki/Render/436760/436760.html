@@ -1,0 +1,105 @@
+<div class="wikidoc">
+<h1>Rawr.Tree</h1>
+<p>Rawr.Tree is a tool to help restoration druids choose and optimize their gear, from brand new 85s, to endgame raiders, with emphasis on the latter.</p>
+<p><span style="font-weight:bold; font-size:large">Current Status</span></p>
+<p>This model is currently mostly/fully functional, newly maintained and rewritten by Ultis, with assistance from Wildebees, and you<span style="color:#ff0000"><strong></strong></span> should be able to rely on it for your gear choices in WoW 4.1 at this time.<br>
+WoW 4.2 is also supported, but it's currently unclear whether the 4.2 model is accurate or not, due to WoW 4.2 not being live and the lack of other models or information sources to compare it to.</p>
+<p>That said, the model is pretty new and has been only lightly tested, so bugs or inaccuracies might well be present.</p>
+<p>In addition, the current model pretty much assumes there is always something to heal, with the exception of some configurable effective healing percentages: as a result, like most or all healing models, it's less realistic than DPS models are.</p>
+<p><span style="font-weight:bold; font-size:large">Options Pane</span></p>
+<p>Hovering your mouse cursor over the options should make an explanatory tooltip pop up.</p>
+<p><span style="font-weight:bold; font-size:large">Frequently Asked Questions</span></p>
+<p><strong>Q. Why are trinkets valued in an unexpected fashion?</strong></p>
+<p>A. Trinket valuations tend to be very dependent on both fight length and, for those with Intellect procs or effects, whether the options to synchronize the with Innervate are enabled. If after toying with those settings you are still convinced there is a
+ bug, file it. For Haste trinkets, see the following question</p>
+<p><strong>Q. Why is something with Haste valued very highly? Why does the value of the Haste stat oscillate?<br>
+</strong></p>
+<p>A. Reaching Haste breakpoints can give much larger boosts to healing than other items of similar or higher item level that don't do that<strong>.<br>
+</strong>If the item is of a low item level, it's however likely that the Haste breakpoint can be better achieved using better items in other slots: use the Optimizer to find out about that.<br>
+Likewise, the stat values can show weird behavior near an Haste breakpoint: temporary replacing some gems with &#43;40 Haste should get you stable values.</p>
+<p><strong>Q. Where is Efflorescence? Why aren't the spells listed instead of these actions?</strong></p>
+<p>A. Efflorescence is listed together with Swiftmend; in general, we are currently showing values for &quot;actions&quot; rather than individual spells: this might change in the future.</p>
+<p><strong>Q. Wild Growth and/or Swiftmend do insane healing: what's up?</strong></p>
+<p>A. Ask Blizzard. More seriously, this is pretty much expected in optimal conditions: if you feel the numbers are not realistic, you can configure the swiftmend and wild growth cast delay, wild growth effective healing, mean efflorescence targets and T12
+ 4P extra heal effectiveness,</p>
+<p><strong>Q. If I enable the &#43;100% crit and Harmony changes from 4.2, Rawr tells me to reforge Spirit to Mastery and says that Mastery &gt; Crit &gt; Spirit: what's up?</strong></p>
+<p>A. Again, might want to ask Blizzard. Mastery and crit are surely more valuable in 4.2 than in 4.1. It is unexpected that they actually overtake Spirit, but the model says so and may or may not be correct: further investigation is required.</p>
+<p><strong>Q. Rawr gives me much higher HPS figures than I get in-game: what's up?<br>
+</strong></p>
+<p>A. The model assumes that there are unlimited health deficits to heal, with the exception of &quot;effective healing&quot; percentages. This is a somewhat unrealistic way to model real healing situations, especially outside of raid progression (even then, it's more
+ realistic in 25-man raids). Hopefully however, the gear recommendations should still hold.</p>
+<p><span style="font-weight:bold; font-size:large">Short term issues/TODO</span></p>
+<ul>
+<li>Look at how T12 2P behaves under ToL: it seems it has a reduced proc rate </li><li>Extend the current greedy model to choose whether to use spells on cooldown (e.g. Wild Growth) instead of hardcoding usage
+</li><li>Consider reworking the tank/raid action split to further reduce code duplication
+</li><li>Fix BossHandler and re-enable the Perseverance and Nature's Ward modelling code
+</li><li>The 4.2 model says that Mastery &gt; Crit &gt; Spirit, which is unintuitive, but might actually be right: investigate
+</li><li>Fix Revitalize modelling to use a non-constant proc delay </li></ul>
+<p><span style="font-weight:bold; font-size:large">Long term issues/TODO</span></p>
+<ul>
+<li><span style="font-size:large">Look into empirical modelling based on parsing combat logs
+</span><span style="font-size:large">and predicting how that spell selection would work with the selected gear</span><span style="font-size:large">: this might be more realistic, but it's not clear whether it will actually work well</span>
+</li><li><span style="font-size:large">Look into using deterministic simulations based on BossHandler (no idea if feasible, log analysis</span><span style="font-size:large"> is probably better anyway)</span>
+</li><li>Instead of having separate tank/raid and burst/sustained model combined with weights, see if it is possible to model a single fight addressing all those concerns
+</li><li>Look into using the generic LP solver from Rawr.Mage. As a byproduct, optimize &quot;dividing cooldown&quot; usage instead of naively using them as soon as possible (note: might be unrealistic).
+</li><li>Share more with other models, cut more boilerplate code </li><li>Try to write models for the other healer specs based on the same infrastructure code
+</li></ul>
+<p><span style="font-weight:bold; font-size:large">Troubleshooting</span></p>
+<p>This section has not yet been written.</p>
+<p><span style="font-weight:bold; font-size:large">Recent Changes</span></p>
+<p><strong>Rawr development versions:<br>
+</strong>- Replaced with rewritten version; should now model 4.1 as expected for both tank and raid healing, and has tentative 4.2 support<strong></strong></p>
+<p><strong>Rawr 4.1.04:</strong><br>
+- Efflorescence changed to 4.1 handling&#43;fixed to now actually consider heals to multiple targets<br>
+- Lifebloom bloom nerf of 4.1<br>
+<strong>Rawr 4.1.03:</strong><br>
+- No significant change<br>
+<strong>Rawr 4.1.02:</strong><br>
+- No significant change<br>
+<strong>Rawr 4.1.01:</strong><br>
+- Fix for Issue 20225: Nature's Majesty talent not being applied - Was being applied but on each spell rather than just a base bonus spell crit percentage. Moved the add to core<br>
+- Mana regen modelling improved, probably still an issue here (Combat regen doesn't match armory values)<br>
+- Changed SustainedPoints to be based on a fixed tank healing rotation for now:<br>
+- Maintain LifebloomStack and Rejuvenation on the tank<br>
+- Swiftmend on the tank on Cooldown<br>
+- 1 Healing Touch per 10 seconds on Tank (Refresh LB stack &#43; Use Omen Procs here)<br>
+- Use remaining cast time/mana to cast Nourish on the tank. (If sufficient mana remain, should cast extra Healing Touches, but not modelled yet)<br>
+- Changed fight duration to be based on boss handler settings<br>
+- Labeled Tree to be partially cata ready<br>
+<strong>Rawr 4.1.00:</strong><br>
+- Modified spell durations, coefficients and mana costs to 4.0 values from Restocalcs.xls<br>
+- Some talents updated<br>
+- Something still looked weird on spell crit values<br>
+- Mana regen not yet touched<br>
+- Started work on a hopefully more elegant way to reduce copy&#43;paste code in Solver.cs<br>
+- Most talents now implemented (Tree of Life doesn't model different spell behavior)<br>
+- Fixed issue with crit percentages<br>
+- Mastery now implemented at the spell level and used in New custom graphs<br>
+- New custom graphs include effects of Revitalize (not replenishment) and lifebloom refresh from Emp Touch<br>
+- Top level simulation and mana regen still need work<br>
+- Fix for Issue 20104: Spellpower from Spirit - The model was no longer using it but the line was still there. Commented out the line to prevent confusion<br>
+<strong></strong><strong>Rawr 4.0.20b:</strong><br>
+- Fix for Issue 19674: Intellect not increasing Spellpower - Applied it at 1:1<br>
+<strong>Rawr 4.0.19b:</strong><br>
+- Updates to include mastery and spell power. Cleaning up some bad logic<br>
+<strong>Rawr 4.0.18b:</strong><br>
+- No significant changes<br>
+<strong></strong><strong>Rawr 4.0.17b:</strong><br>
+- No significant changes<br>
+<strong></strong><strong>Rawr 4.0.16b:</strong><br>
+- No significant changes<br>
+<strong></strong><strong></strong><strong>Rawr 4.0.15b:</strong><br>
+<strong></strong>- Removed unnecessary fields to clean UI<br>
+- Traced variables and commented on usefulness in my tweaks of the solver<br>
+- Healing simulation updated<br>
+<strong>Rawr 4.0.14b:</strong><br>
+- No Significant Changes<br>
+<strong>Rawr 4.0.13b:</strong><br>
+- No Significant Changes<br>
+<strong>Rawr 4.0.12b:</strong><br>
+- No Significant Changes<br>
+<strong>Rawr 4.0.11b:</strong><br>
+- No Significant Changes<br>
+<strong>Rawr 4.0.10b:</strong><br>
+- No Significant Changes</p>
+</div><div class="ClearBoth"></div>

@@ -1,0 +1,82 @@
+[
+  {
+    "Id": "223933",
+    "ThreadId": "65827",
+    "Html": "<p>Are incorrect. My suspicion is that Frost Presence multipliers have not been correctly updated for 3.2, but I'm not entirely sure as doing the math myself on my in-game stats does not yield the same results as Rawr is displaying.</p>\r\n<p>Example:<br>Unbuffed (including no Frost Presence) I currently have 34806 HP in a Blood spec. Putting on Frost Presence, my HP goes up to 36406. Rawr, after a fresh import from the Armory and no buffs enabled, displays my HP as 40056. The old Frost Presence would have put me at 38286. I'm not sure where this extra health is coming from, but it certainly isn't correct.</p>\r\n<p>As well, Armor in game is 25462 where in Rawr it is 28114.</p>\r\n<p>For reference, my character is Lichloathe/Darkspear/US.</p>",
+    "PostedDate": "2009-08-15T16:30:21.573-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224575",
+    "ThreadId": "65827",
+    "Html": "<p>No one seems to have responded to this, so I'm going to go ahead and look into it myself and submit a patch if I can find and fix the problem. When I do so, should I include the entire module or only the files that I've changed?</p>",
+    "PostedDate": "2009-08-17T11:36:56.773-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224580",
+    "ThreadId": "65827",
+    "Html": "<p>For starters, bug reports should be in the Issue Tracker.</p>\r\n<p>Many of the 3.2 changes for TankDKs are in but haven't been published yet.&nbsp; I'll have to verify this specific defect.&nbsp;</p>",
+    "PostedDate": "2009-08-17T11:46:17.46-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224609",
+    "ThreadId": "65827",
+    "Html": "<p>That clarifies things. I don't think it's entirely the 3.2 differences that cause the discrepancy. I went ahead and made the updates locally (V3W 2%-&gt;1% Stamina per point, 10% Health-&gt;6% Stamina for Frost Presence, 3%-&gt;2% Armor per point for Toughness) and in testing the Health was still inaccurate. The Armor was correct, however.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-08-17T12:46:02.413-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224673",
+    "ThreadId": "65827",
+    "Html": "<p>Any chance you have a special effect that buffs your HP (such as Vampiric Blood) that accounts for the difference?</p>\r\n<p>Most models will average this in as a special effect. &nbsp;+15% of your HP for 20secs every 2mins = 2.5% increase in HP. &nbsp;Not sure what the TankDK model does, but lots of models include these averaged out over time and could be the extra HP you're noticing.</p>",
+    "PostedDate": "2009-08-17T15:17:35.447-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224680",
+    "ThreadId": "65827",
+    "Html": "<p>Yes, that's probably the case.&nbsp; I don't have the code in front of me at the moment to check, but I know that if there are any &quot;global&quot; style buffs like that, I use the special effects code to average the buffs out over time.&nbsp; There are only some specific cases where I have custom code to deal w/ things like that.&nbsp;</p>",
+    "PostedDate": "2009-08-17T15:35:00.397-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224687",
+    "ThreadId": "65827",
+    "Html": "<p>If that's the way VB is being calculated, ebs, then that seems to make sense, as the Health I'm seeing is roughly 2% more than it should be. That seems to be fairly misleading for a user who wouldn't necessarily know this. While the ratio would technically be correct for comparing gear, it would definitely be confusing for someone looking at their stats in Rawr and then their stats in game and having them not match up. Even as a developer my first instinct was to blame that error on Rawr's calculations being wrong, not to think that Vampiric Blood might for some reason be averaging its health bonus out over the entire duration of its cooldown.</p>\r\n<p>If I might make a suggestion, it may be a good idea to not have VB work in this way, or at the very least have the actual health without this averaging displayed.</p>",
+    "PostedDate": "2009-08-17T16:11:59.097-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224696",
+    "ThreadId": "65827",
+    "Html": "<p>Agreed.&nbsp; I've got a few things on my plate at the moment, and this is one of them.&nbsp; I made the assumption when I adopted the TankDK model that people would want their effective stats, and not their real in-game stats.&nbsp; This was a design defect on my part.&nbsp;</p>\r\n<p>Once I get 3.2 finished, and start working on the Rawr 3 work, I'll also be migrating to have stats display in-game values and then a secondary value that would be the effective value w/ cooldowns and such.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-08-17T16:35:06.043-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224704",
+    "ThreadId": "65827",
+    "Html": "<p>That's awesome to hear, Shazear. I didn't realize that Rawr only (apparently) displays &quot;effective&quot; stats and not actual, in-game values. I wish I had known this earlier.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-08-17T17:39:00.387-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224717",
+    "ThreadId": "65827",
+    "Html": "<p>Yet another reason why we may want to consider having a &quot;Paper Doll&quot; stat section, and then an &quot;Effective Stat&quot; section. &nbsp;Perhaps covered with tooltips, and with options to use or not use cooldowns (esp for tanks, where this makes a bigger impact than for DPS or Heals who typically spam their CDs every time they're available).</p>\r\n<p>DPSWarr made the design decision not to include Recklessness (next 3 attacks are critical strikes, 3min CD), in part because of the confusion of &quot;why is my crit rating 0.04% higher?&quot; and in part because it's a situational ability that doesn't get used often, and many people have different times to use them (some keep it on CD, some use it at start of fight and at execution range, some use it whenever flurry falls off, etc).</p>",
+    "PostedDate": "2009-08-17T18:52:09.093-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

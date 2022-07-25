@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "161146",
+    "ThreadId": "48291",
+    "Html": "On Rawr.Moonkin, it keeps putting a 63 SP weapon enchant on my &quot;held in offhand&quot; item, but wont' let me remove the enchant completely, so I've just been manually changing it to something useless like agility, or stamina, so it doesn't throw DPS numbers off.&nbsp; However, I can't seem to remove cloak, shoulder, head, or any other enchants either (Choosing &quot;No Enchant&quot; doesn't do anything).&nbsp; Also, shouldn't it know that &quot;Held in offhand&quot; type items can't be enchanted at all, and only allow those enchants on actual weapons?&nbsp; This functionality works on Rawr.Mage, it doesn't even let you choose any enchants for mage offhands, but on moonkin and tree it let's me choose offhand enchants which makes no sense.<br>\r\n<br>\r\nEdit:&nbsp; This is on 2.2.0b1 by the way<br>\r\n",
+    "PostedDate": "2009-02-23T14:29:00.263-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "161148",
+    "ThreadId": "48291",
+    "Html": "So I don't clutter this place with new posts, i'll make an addendum here:<br>\r\n<br>\r\nI was removing all items from my character by setting them all to 'Empty', and then selected 'available for optimizer' items in the pane to the right (Remember, I was unable to remove enchants so I just left them).&nbsp; Then when I went to run the optimizer, it crashed on me with that .NET error (Thankfully I'd saved my character after removing all the equipment and selecting available options).<br>\r\n<br>\r\nAfter opening Rawr again, I noticed the items were properly removed, but everything had &quot;No Enchant&quot; like I had wanted before.&nbsp; Being the diligent tester that I am, I wanted to try to reproduce the error I'd gotten.&nbsp; So I went to select an enchant on an &quot;Empty&quot; chestpiece of &quot;Powerful Stats&quot;, which crashed Rawr again...<br>\r\n<br>\r\nSee the end of this message for details on invoking <br>\r\njust-in-time (JIT) debugging instead of this dialog box.<br>\r\n<br>\r\n************** Exception Text **************<br>\r\nSystem.NullReferenceException: Object reference not set to an instance of an object.<br>\r\n&nbsp;&nbsp; at Rawr.FormItemSelection.Select(Item item)<br>\r\n&nbsp;&nbsp; at Rawr.ItemSelectorItem.ItemSelectorItem_MouseClick(Object sender, MouseEventArgs e)<br>\r\n&nbsp;&nbsp; at System.Windows.Forms.Control.OnMouseClick(MouseEventArgs e)<br>\r\n&nbsp;&nbsp; at System.Windows.Forms.Control.WmMouseUp(Message&amp; m, MouseButtons button, Int32 clicks)<br>\r\n&nbsp;&nbsp; at System.Windows.Forms.Control.WndProc(Message&amp; m)<br>\r\n&nbsp;&nbsp; at System.Windows.Forms.ScrollableControl.WndProc(Message&amp; m)<br>\r\n&nbsp;&nbsp; at System.Windows.Forms.ContainerControl.WndProc(Message&amp; m)<br>\r\n&nbsp;&nbsp; at System.Windows.Forms.UserControl.WndProc(Message&amp; m)<br>\r\n&nbsp;&nbsp; at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message&amp; m)<br>\r\n&nbsp;&nbsp; at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message&amp; m)<br>\r\n&nbsp;&nbsp; at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)<br>\r\n<br>\r\n<br>\r\nFrom what I can tell, it's trying to set the enchant to the &quot;Item&quot; which is Empty (and thus, doesn't exist), giving us our happy NullReferenceException.&nbsp; Not sure if it's worthwhile for you guys to put in a check here when selecting enchants to ensure an item is equipped, but I figured I would point it out&nbsp; (I didn't get a look at the error when I was trying to optimize, but I figure it's probably a similar issue).<br>\r\n<br>\r\n<br>\r\n<br>\r\n\r\n",
+    "PostedDate": "2009-02-23T14:40:40.577-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "161153",
+    "ThreadId": "48291",
+    "Html": "Ope, I reproduced the optimizer error without having any enchants.&nbsp; I\r\nhad all items unequipped, and all enchants off, but I did have items\r\n&quot;Available for optimizer&quot; in all slots and gems and enchants.&nbsp; When\r\nAttempting to run the optimizer I got this:<br>\r\n<br>\r\n<br>\r\nSee the end of this message for details on invoking <br>\r\njust-in-time (JIT) debugging instead of this dialog box.<br>\r\n<br>\r\n************** Exception Text **************<br>\r\nSystem.IndexOutOfRangeException: Index was outside the bounds of the array.<br>\r\n&nbsp;&nbsp; at Rawr.Optimizer.GetPossibleGemmedItemsForItem(Item item, String gemmedId, Item[] gemItems, Item[] metaGemItems)<br>\r\n&nbsp;&nbsp; at Rawr.Optimizer.PopulateAvailableIds(List`1 availableItems, Boolean overrideRegem, Boolean overrideReenchant)<br>\r\n&nbsp;&nbsp;\r\nat Rawr.Optimizer.InitializeItemCache(Character character, List`1\r\navailableItems, Boolean overrideRegem, Boolean overrideReenchant,\r\nBoolean templateGemsEnabled, CalculationsBase model)<br>\r\n&nbsp;&nbsp; at Rawr.FormOptimize.buttonOptimize_Click(Object sender, EventArgs e)<br>\r\n&nbsp;&nbsp; at System.Windows.Forms.Control.OnClick(EventArgs e)<br>\r\n&nbsp;&nbsp; at System.Windows.Forms.Button.OnClick(EventArgs e)<br>\r\n&nbsp;&nbsp; at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)<br>\r\n&nbsp;&nbsp; at System.Windows.Forms.Control.WmMouseUp(Message&amp; m, MouseButtons button, Int32 clicks)<br>\r\n&nbsp;&nbsp; at System.Windows.Forms.Control.WndProc(Message&amp; m)<br>\r\n&nbsp;&nbsp; at System.Windows.Forms.ButtonBase.WndProc(Message&amp; m)<br>\r\n&nbsp;&nbsp; at System.Windows.Forms.Button.WndProc(Message&amp; m)<br>\r\n&nbsp;&nbsp; at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message&amp; m)<br>\r\n&nbsp;&nbsp; at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message&amp; m)<br>\r\n&nbsp;&nbsp; at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)<br>\r\n<br>\r\n<br>\r\nMust have something to do with my character having no gear on, since it works fine when items are equipped.<br>\r\n<br>\r\n<br>\r\n",
+    "PostedDate": "2009-02-23T14:48:16.713-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "161157",
+    "ThreadId": "48291",
+    "Html": "We'll look into the bugs that arise when an enchantable/optimizable slot is empty.<div><br></div><div>However, can you explain why you were doing that anyway? What were you trying to achieve my removing all your gear?</div>",
+    "PostedDate": "2009-02-23T14:54:25.887-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "161166",
+    "ThreadId": "48291",
+    "Html": "I don't...actually know why I like to remove my gear when I do an initial optimization.&nbsp; I know the optimizer doesn't actually take into account what I'm *currently* using, I just feel like it feels more...&quot;fresh&quot;...if I remove my gear first?<br>\r\n<br>\r\nREGARDLESS!&nbsp; I put a piece of gear in each slot with an enchant, but now every time I go to optimize Rawr crashes.<br>\r\n<br>\r\nI uploaded my character XML to an issue here:<br>\r\n<br>\r\nhttp://www.codeplex.com/Rawr/WorkItem/View.aspx?WorkItemId=12664<br>\r\n",
+    "PostedDate": "2009-02-23T15:08:31.093-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

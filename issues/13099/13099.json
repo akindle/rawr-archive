@@ -1,0 +1,90 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-05-11T20:46:25.79-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Is there a way to model the very restricted mana regeneration (both inside & outside of FSR) on the General Vezax fight in Ulduar?\n \nhttp://www.wowhead.com/?spell=62692\n   \"Aura of Despair\n   Prevents mana regeneration from nearly all natural sources.  Aspect of the Viper, Judgements of the Wise, Shamanistic Rage, and Spiritual Attunement remain at least partially effective. Also reduces melee attack speed by 20%.\"\n \nIf you do this encounter on Hard mode, there you cannot even regen mana from the broken crystal puddles.\n \nI've turned off all the buffs give mana regeneration in any form, except for one source: outside FSR mana.\n \nI was looking at the \"Options | Fight | Fragmentation\" field and it says:\n \n    \"Indicates how fragmented the dps time is and translates into how much out of five second rule time you get when not dpsing (higher value indicates more time inside five second rule)\"\n \nYet, even if I set this value to 1, there is no change in my \"Intellect/Spirit\" on the \"Comparisons | Mana Sources\" chart _or_ on the \"Stats | Mana Regen:\" field.\n \nHow can I model this fight (disable inside/outside FSR mana regen)?  Is the Fragmentation option broken?",
+    "LastUpdatedDate": "2013-05-16T05:25:45.337-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-04-23T13:41:51.717-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "General Vezax - No Mana Regen",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13099
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Fragmentation applies to non-dps time only, so if you have dps time at 100% it won't affect anything.\r\n\r\nWhat you want to do is disable combat regen. Without changing the code you could do so by editing BuffCache and adding a buff for Aura of Despair like so:\r\n\r\n  <Buff>\r\n    <Name>Aura of Despair</Name>\r\n    <Group>Debuff</Group>\r\n    <Stats>\r\n      <SpellCombatManaRegeneration>-0.5</SpellCombatManaRegeneration>\r\n    </Stats>\r\n    <Improvements />\r\n    <IsCustom>true</IsCustom>\r\n    <ConflictingBuffs />\r\n  </Buff>\r\n\r\nSet the value of SpellCombatManaRegeneration to minus whatever your in combat regen is.",
+      "PostedDate": "2009-04-23T15:59:57.72-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Using version 2.2.2, I'm trying add the Aura of Despair debuff to BuffCache.xml as described above, but I see the file gets rewritten when I run Rawr which loses my changes. So, am I just doing it wrong or does this no longer work?",
+      "PostedDate": "2009-05-10T08:28:23.66-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "In 2.2.2 you don't need special buff anymore. You can achieve the desired effect from Options->Effects->Disable Mana Sources. If you still want to use a custom buff make sure to set IsCustom to true.",
+      "PostedDate": "2009-05-10T19:46:04.73-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It looks like that's only an option for Mages, and I'm trying to model this for a Shadow Priest. Once I add the buff to BuffCache, do I need to enable it elsewhere or will it just be active automatically?",
+      "PostedDate": "2009-05-11T02:15:20.153-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You will need to enable it in the Buff tab. You should probably check with Shadow Priest model developer if that will work as intended.",
+      "PostedDate": "2009-05-11T02:19:16.113-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Xehn: I think you may be able to get that desired effect by taking away talent points in Meditation and Improved Spirit Tap, and put Shadowfiend Efficiency to 0%. Although this does not take into account the reduced mana  costs and improved damage from standing in a shadowcrash. To make it simple: Try to optimize for Burst DPS only for this fight.",
+      "PostedDate": "2009-05-11T03:48:45.483-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks! That seems to do the trick.",
+      "PostedDate": "2009-05-11T19:33:10.9-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-05-11T20:46:25.79-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:44.197-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:45.337-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

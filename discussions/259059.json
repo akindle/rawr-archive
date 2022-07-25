@@ -1,0 +1,226 @@
+[
+  {
+    "Id": "618537",
+    "ThreadId": "259059",
+    "Html": "\r\n<p><strong>Summary</strong></p>\r\n<p>I just uploaded a new version of my Rawr.Tree code.<br>\r\nI feel the code should in a good place feature-wise and it seems to work, so I think it would make sense to figure out how to merge it.</p>\r\n<p>Current status:<br>\r\n- Feature set should be pretty much suitable for release, although changes might be necessary based on feedback<br>\r\n- Code organization should be mostly fine, some things should be moved to Rawr.Base, and we might want to use float instead of double<br>\r\n- Basic testing has been done, but it most likely has several bugs: thorough review by someone else would be appreciated</p>\r\n<p><strong>Overall design</strong></p>\r\n<p>The current design consist of making the score a weighted average of 4 Raid/Tank Burst/Sustained fight models.</p>\r\n<p>This leads to sensible gear recommendations and allows the user to know which things an option is good for.</p>\r\n<p>However, it is theoretically suboptimal, because simulating a single fight with a blend of situations would be a better model: however, doing so decently would require having BossHandler in a perfectly working state, modelling other healers, and probably\r\n switching to more complex modeling methods, such as using a general linear (or even nonlinear) programming solver, perhaps augmented by doing some kind of spell-by-spell nonrandom simulation.</p>\r\n<p>This would be a complex undertaking without no guarantee of success, so I'd postpone attempting to do this, and rather focus on getting the current code available, which pretty much works despite not being conceptually perfect.</p>\r\n<p><strong>User visible part<br>\r\n</strong></p>\r\n<p>Currently everything (except Nature's Cure, which seems untreatable) is modeled, as far as I know, including all 4.2 PTR changes and somewhat tricky things such as the Nature's Bounty Nourish effect, Perseverance and Nature's Ward (the latter two heavily\r\n depend on BossHandler, and Nature's Ward especially is probably pretty broken) as well as healing as a balance or feral druid.</p>\r\n<p>There are a bunch of options: in some cases, some further control could be provided, but I'm afraid most users might not even look at them at all, so it may be best to not go overboard.</p>\r\n<p>I attempted to document options with tooltips, but some more documentation might be necessary.</p>\r\n<p>Performance is decent, being 3 times faster than Rawr.Moonkin, and there doesn't seem to be any low-hanging fruit highlighted by profiling, although significant speedups would be possible with a lot of work, but most likely at the expense of maintainability.</p>\r\n<p><strong>Code organization</strong></p>\r\n<p>The code has been refactored a lot, and should now be reasonably clean.</p>\r\n<p>The Actions.cs and Utils.cs files contain code which is not specific to Rawr.Tree and should probably be shared among models by putting them in Rawr.Base.</p>\r\n<p>Currently I'm using double-precision floating point computation everywhere mostly for caution: I'm not sure whether this should be changed, given the model is anyway much faster than Rawr.Moonkin as already mentioned.</p>\r\n<p><strong>Testing</strong></p>\r\n<p>I tried to check most things, but this is probably the most troublesome area.</p>\r\n<p>I found and fixed a lot of bugs, several of which subtle, but I have no reason to believe that there more unfixed bugs.</p>\r\n<p><strong>Merging</strong></p>\r\n<p>How do you suggest to proceed to merge the code and maintain it later?</p>\r\n",
+    "PostedDate": "2011-05-26T01:55:12.737-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "618978",
+    "ThreadId": "259059",
+    "Html": "<p>I think it will be probably best if we first get some feedback from the current Tree developer. Then we can decide whether to replace the old model completely or to use both models until we can come to a final conclusion.</p>\r\n<p>Regarding your ideas about improved modeling for the future, Mage model currently has a relatively generic linear and quadratic solver&nbsp;that can probably be repurposed if you decide to play with it at some point.</p>",
+    "PostedDate": "2011-05-26T15:07:11.91-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "618992",
+    "ThreadId": "259059",
+    "Html": "<p>Wildebees has been working to incorporate your code into the Tree model, he loves a lot of the work you did but there is a couple aspects he wants to keep from before, like the passing around of the Spell class which stores data about each spell instead of just restating the coeff's of each spell over an over (which is hard to maintain).</p>",
+    "PostedDate": "2011-05-26T16:31:44.19-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "619687",
+    "ThreadId": "259059",
+    "Html": "<blockquote style=\"border: solid .1em #ccc; font-style: italic; margin: .25em 1em 0 1em; padding: 0 .25em 0 .25em;\"><strong>Jothay wrote:</strong><br />\r\n<p>Wildebees has been working to incorporate your code into the Tree model, he loves a lot of the work you did but there is a couple aspects he wants to keep from before, like the passing around of the Spell class which stores data about each spell instead  of just restating the coeff's of each spell over an over (which is hard to maintain).</p>\r\n</blockquote>\r\n<p>In my code coefficients are in the SpellData class, while per-spell computed results are in the ComputedSpell class.</p>\r\n<p>It could be organized differently, but there isn't really any duplication (well, other than the HoT timing in the haste breakpoint calculation, but that's pretty minor).</p>",
+    "PostedDate": "2011-05-27T22:06:56.38-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "619689",
+    "ThreadId": "259059",
+    "Html": "<p>In that case, I may have misread what he sent to me about it. I'll let him respond with more details.</p>",
+    "PostedDate": "2011-05-27T22:19:41.9-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "620453",
+    "ThreadId": "259059",
+    "Html": "<p>I played a with with the latest version of the patch over the weekend. Now that the options menu is included in the patch, the GUI is more comprehensive and that it compiles directly in Silverlight without having to hack a few things, there is little reason not to switch over to this version. (It would be unfair of me to block the users from being able to access this information, if I myself have been looking to use it for gear optimisation).</p>\r\n<p>&nbsp;</p>\r\n<p>Slight concerns that remain on this new model:</p>\r\n<p>- I couldn't see that selecting Power Torrent, Heartsong or Hurricane ends up creating extra divisions as I would have expected, so I'm not yet 100% sure if modelling of proc rates is fully sorted. But it is already modelling each proc&nbsp;separately and combinations of procs, which I believe is going further than many models, so the remaining inaccuracies if they exist&nbsp;should be relatively small. (I tried setting start trigger intervals to 15 sec and the difference between 0 and 1 iterations was small for most of the procs, going to 2 iterations, I couldn't get it to change the final score by 1 point).</p>\r\n<p>- It looks like the code has been restructured a bit over the different versions of the patch, so some of my initial concerns about the code structure is not that valid anymore (or I have just started to become slightly more familiar with the new layout). But overall, I'm still not really familiar with where to go look for something, in case a bug needs to be chased down, thus for me to maintain it will be difficult. With the old code, I had a good idea where most of the important things were. I also knew where the crap was that I wouldn't want to touch with a pole and which required to be rewritten, essentially causing this rewrite (I haven't yet found a long enough pole).</p>\r\n<p>&nbsp;</p>\r\n<p>So my recommendation:</p>\r\n<p>Swap over to the new model in its entirety. Due to the difference in underlying architecture, merging the two would take significant effort, with little real gain.</p>\r\n<p>The real question remaining in my mind is who maintains it going forward? If you tell me I need to maintain it with no further interaction with Ultis, I would be very tempted stick with the old structure, due to my familiarity with it and only incorporate ideas from the patch into that architecture, for now use the patch as a temporary version while this is happening in the background and use the patch version as a comparison against which to compare the results. But I also know I don't spend a lot of time working on Rawr and might ultimately go with fiddling in Ultis' code until I learn where things are located there again. If Ultis is keen on actively taking over this role, none of trying to keep the old code alive is&nbsp;necessary&nbsp;and I would suggest we apply this patch as is and get a new release out there for the users to play with.</p>",
+    "PostedDate": "2011-05-30T14:16:01.913-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "620615",
+    "ThreadId": "259059",
+    "Html": "<p>Regarding procs, random procs indeed by design do not create divisions, but are instead \"averaged out\" (in the case of haste procs, by averaging cast times and HoT tick numbers over all possible combinations of them).<br />Divisions are instead currently only created for combinations of on-use effects which actually happen if using the effects simply on cooldown (with the exception of being able to force haste effects with the same cooldown, which in practice means Nature's Grace and Shard of Woe, to be staggered).<br />Of course, it would be possible to create divisions for random procs, but due to their random nature, it would probably be necessary to just split each on-use division in 2^n subdivisions for each combination of random procs, with average uptimes.</p>\r\n<p>Over such a model, the current model has the advantage that it is faster to compute, and possibly more realistic: divisions exist to be able to use a different spell distribution in each, and I think the vast majority of healers won't change their healing patterns depending on whether Power Torrent happens to be up or not (beyond Innervate timing).<br />Overall, the handling of special effects could possibly be improved, but I'm not really sure how exactly to do better: Rawr.Mage might provide some insights, but I'm not sure what it does exactly, or whether it is more widely applicable.<br /><br />Anyway, I think the biggest issue here is that my current model of on-use effects is somewhat unrealistic because it uses everything on cooldown, while in practice those effects tend to be reserved for raidwide damage phases, and in theory we might want to optimize overlapping instead of just having on-use effects overlap just because they are all on 1 or 3 minute cooldowns currently.<br />It might be possible to add an option to look at BossHandler data and automatically choose when to use Tree of Life, Tranquility, etc., although I'm not totally sure how well it can be done, considering that some abilities (and phase switches) are random or have timing that depends on raid DPS or other factors, as well as the fact that healing assignments are usually used.</p>\r\n<p>By the way, going a bit further off-topic, a way to address \"unrealistic modeling\" concerns could be to add a wholly different option that would, instead of optimizing healing in abstract, just import several combat logs and evaluate the effect resulting from (small) changes in gear while maintaining the spell selection in the combat log as closely as possible (with changes only to account for different haste and different mana budgets)</p>\r\n<p>&nbsp;</p>\r\n<p>Regarding maintainership, I'm willing to maintain the code if desired: in this case, of course, input or assistance from other maintainers more experienced with Rawr would be greatly valued.</p>",
+    "PostedDate": "2011-05-31T01:34:52.69-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "620987",
+    "ThreadId": "259059",
+    "Html": "<p>The way you're describing it it seems quite similar to the Mage model. Mage also has random procs just averaged out and different combinations of on use effects creating different casting states that allow for different spell cycles to be used. Some nonsignificant on use effects&nbsp;can optionally be switched to averaged mode to improve performance. The difference is mainly that the effects are not used on cooldown but are instead optimized together with spell selection using a linear solver.</p>",
+    "PostedDate": "2011-05-31T12:50:44.183-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "621142",
+    "ThreadId": "259059",
+    "Html": "<blockquote style=\"border: solid .1em #ccc; font-style: italic; margin: .25em 1em 0 1em; padding: 0 .25em 0 .25em;\"><strong>Kavan wrote:</strong><br />\n<p>The way you're describing it it seems quite similar to the Mage model. Mage also has random procs just averaged out and different combinations of on use effects creating different casting states that allow for different spell cycles to be used. Some nonsignificant  on use effects&nbsp;can optionally be switched to averaged mode to improve performance. The difference is mainly that the effects are not used on cooldown but are instead optimized together with spell selection using a linear solver.</p>\n</blockquote>\n<p>Can you explain precisely how the mage model constructs its linear program?</p>\n<p>The thing is, I think it's impossible to model cooldowns with a single linear program if you have 3 or more.<br /> Basically, assume we use a variable for the uptime of each combination of 3 cooldowns, which we call A, B and C: now v[A+B] &gt; 0, v[B+C] &gt; 0, v[A+C] &gt; 0 must all be solutions since they are possible in the game, but this means that having v[A+B], v[B+C], v[A+C]  all non-zero at the same time must also be a solution.<br /> But if the cooldowns can be used only once in the fight, there is no way there can be in the game a time where only A+B is active, a time when only A+C is active, and a time when only B+C is active, since the cooldowns are active for contiguous intervals of  time.<br /> In other words, it seems to me the solution space is not convex.</p>\n<p>How do you work around that issue?<br /> One could approximate it by relaxing the restriction that cooldowns be continuous intervals of time, but I'm not sure whether the result would be accurate (for example, it would allow a 31-second duration 3-minute cooldown to always be up when a 10-second duration  1-minute cooldown is up in the model, which is quite unrealistic: this is an actual example with Tree of Life and Shard of Woe).</p>",
+    "PostedDate": "2011-05-31T19:45:58.923-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "621721",
+    "ThreadId": "259059",
+    "Html": "<p>You're right, it can't be exactly represented with a linear program.</p>\n<p>The way I model the problem is as follows. I have a variable for each casting state+spell cycle combination representing time that&nbsp;combination is used&nbsp;over the whole fight and some extras for things like instant time abilities like mana gem and some other minor things.&nbsp;You can obviously compute the maximum time a cooldown&nbsp;can be active in the given fight duration. This gives you one constraint for each cooldown. Like you expected that relaxation is not&nbsp;very good, but is a good bound. The critical part is the following and it relies on one assumption that is not necessarily always true.</p>\n<p>The assumption is that if you have just two cooldowns, the optimum stacking will be achieved when the total time when both cooldowns are active at the same time is maximized under the condition that the time each cooldown is active individually is no less that what could be achieved maximizing that individual cooldown. In other words, it follows the idea that you shouldn't delay a cooldown so much that it will cause you to use less of it. This is generally true if the stacking effect is of an order less than individual effects.</p>\n<p>Given duration/cooldown of any two effects it's possible to calculate this conditional&nbsp;maximum using dynamic programming approach and I also cache these solutions for better performance. I use this to create a constraint for each cooldown pair on how much they can be active together. Now when you have more than two cooldowns the actual optimum isn't necessarily defined with all pairwise optimums, but I've found in practice that it gives good enough results.</p>\n<p>I use another approach for asynchronous calculations and this in general isn't fast enough for comparisons. In this case I segment the fight duration into time segments, so each variable is then for combination of segment+casting state+spell cycle (what's important here is that time segments are small enough in relation to all cooldown&nbsp;durations so that one segment can only ever contain a single activation). Here I add constraints spanning the segments in the length of individual cooldowns with constraint that in each such interval the duration of that particular effect can't be more than it's duration. This alone generally isn't enough and I use a variant of mixed integer programming where I add custom cuts to enforce the effects to be contiguous and their cooldowns (also other specialized cuts that address your A+B,A+C,B+C example and other similar impossibilities). This approach can give you the&nbsp;true optimum stacking, but as I said it's not fast enough for real time comparisons in general.</p>",
+    "PostedDate": "2011-06-01T15:32:17.853-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "621847",
+    "ThreadId": "259059",
+    "Html": "<p>Interesting.</p>\r\n<p>Would it be possible to generalize the linear programming solver, the cooldown-pair computation code, and ideally anything else non-mage-specific included in Rawr.Mage for use in other models?<br />It would surely be best for the original author to do so, but I could attempt it myself if necessary.</p>\r\n<p>I think that in general, Rawr needs to provide a much wider framework for models, to reduce the code duplication that would otherwise happen, and make it realistically possible to have good models for all classes (which unfortunately is currently not the case).</p>\r\n<p>By the way, I can't find any other freely usable linear programming solver written in C# beyond Microsoft Solver Foundation, which appears to not work with Silverlight, so the code might even find wider use.</p>\r\n<p>Anyway, the impact on Rawr.Tree, especially before Tier 12, is not likely to be that significant.</p>",
+    "PostedDate": "2011-06-02T01:06:26.247-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "621900",
+    "ThreadId": "259059",
+    "Html": "<p>With more thought, I wonder whether it is possible to just use a dynamic programming algorithm to optimize overlap for all cooldowns together.</p>\r\n<p>At first sight, the exponential run time could make it infeasible, but in practice the number of nodes can probably be made extremely small, if smart constraints are applied (such as precomputing pairwise uptimes and using them to constrain the full problem).</p>\r\n<p>The solution could then even be used as-is, rather than using it to create linear programming constraints, which would be optimal in the assumption that all cooldowns are small multiplicative effects.</p>",
+    "PostedDate": "2011-06-02T03:45:50.687-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "622194",
+    "ThreadId": "259059",
+    "Html": "<p>The LP solver is already quite generalized, I could move it to base, but probably best in conjunction with someone trying to use it so that any usability issues can be ironed out.</p>\r\n<p>I haven't put much thought into dynamic programming approach for multiple cooldowns, but you might be right. One question I have is how you would give value to different stacking options. For two cooldowns it's kind of clear that the value only depends on total time when both cooldowns are stacked since we're assuming both individually stay activated at their maximum. When you have multiple it's not so clear if it's ok to treat different cooldown pairs as having the same value and further what value to give to multiple cooldowns activated at the same time.</p>",
+    "PostedDate": "2011-06-02T14:00:05.817-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "622957",
+    "ThreadId": "259059",
+    "Html": "<p>The reason why I was wondering about extra segments was that Hurricane has a haste based proc. If you only use averaged haste value it might push you over a haste breakpoint, whereas in reality you will be below the breakpoint most of the time and far over while the proc is up. How significant this inaccuracy is I'm not sure. (I would suspect the final value overestimates the real value, since in the short time the proc is up you cannot cast enough to compensate for the many casts without the proc which have fewer ticks) . I agree for the other proc types, it probably doesn't make a difference.You say for haste procs your averaging HoT tick numbers, I will need to have a look at how its done and think whether this results in accurate numbers or if there is still the chance of being on the wrong side of a step.</p>\r\n<p>I like the idea of more common algorithms being reused/maintained by more of the developers. Thinking back a while, the conversion to the current special effects/proc mechanism was painful since every1 needed to change and learn how to use it, but the result was that many of the trinkets end up being modelled automatically, without each model developer needing to actively support each trinket when it gets released. Adding a layer around that, that can determine different combinations of proc etc. would take it to the next level and be equally useful as a general modelling tool. So don't let my comment about the haste procs, derail the discussion on a generic LP solver.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-06-04T08:05:05.44-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "622963",
+    "ThreadId": "259059",
+    "Html": "<p>Random haste procs are handled by using the HasteStats class on spell computation, which computes the number of ticks and duration for each of the 2^n combinations of haste procs, and averages them based on average uptime. This is also done for cast times,  so that the GCD cap is properly applied before averaging.</p>\n<p>This has the advantage of being faster than multiplying the number of divisions by 2^n, since the code executed 2^n times is just a few instructions, but has the potential disadvantage that spell selection will be the same regardless of whether the haste  proc is up.</p>",
+    "PostedDate": "2011-06-04T08:42:38.62-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "624183",
+    "ThreadId": "259059",
+    "Html": "<p>Is there any news or ETA on this? I am really looking forward to testing the new tree model for my main. I have been using Rawr extensively before Cataclysm for my Tree and only use it for my Enhancement Alt at the moment...</p>",
+    "PostedDate": "2011-06-07T07:54:31.767-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "624228",
+    "ThreadId": "259059",
+    "Html": "<p>I merged it in the source code repository, which is available via SVN: you can either compile it yourself, or wait for a debug build or release.</p>\r\n<p>Please let me know if it works for you, and file any issues you may encounter.</p>",
+    "PostedDate": "2011-06-07T09:13:32.303-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "625200",
+    "ThreadId": "259059",
+    "Html": "<p>Hi Ultis,</p>\r\n<p>thanks for your reply. I hadn't thought about that. Although I have never worked with Silverlight, I am actually a software developer myself using VS2010 on a daily basis so I hope I will get it to compile somehow. A naive question about this though: I read the short intro on the documentation page for building a Rawr debug build - is there a build target which will also produce the WPF version and/or can I easily package this to redistribute my beta build to my guild mates by any chance?</p>",
+    "PostedDate": "2011-06-09T01:16:39.387-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "625212",
+    "ThreadId": "259059",
+    "Html": "<p>There are two Visual Studio solutions, one for the Silverlight and one for the WPF version.</p>\r\n<p>If you get missing assembly errors with the WPF version, try installing WPF Toolkit.</p>\r\n<p>As for distribution, you should be able to just zip the relevant build directory of the WPF version.</p>",
+    "PostedDate": "2011-06-09T01:47:53.697-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "625229",
+    "ThreadId": "259059",
+    "Html": "<p>Excellent! That was what I was hoping for.</p>\r\n<p>I will report any issues I find with the model, really looking forward to testing what you have done...</p>",
+    "PostedDate": "2011-06-09T02:21:28.603-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "625339",
+    "ThreadId": "259059",
+    "Html": "<p>I fear that I am hijacking this thread (please direct me to the correct place to ask compilation questions), but:</p>\r\n<p>I was able to (nearly) compile the WPF version (needed the WPF toolkit as you suggested), I get errors in the Retribution module though, the handler for the combobox seems to be missing...</p>\r\n<p>Fehler&nbsp;&nbsp;&nbsp; 8&nbsp;&nbsp;&nbsp; \"Rawr.Retribution.CalculationOptionsPanelRetribution\" enth&auml;lt keine Definition f&uuml;r \"CB_CalculationToGraph_SelectionChanged\", und es konnte keine Erweiterungsmethode \"CB_CalculationToGraph_SelectionChanged\" gefunden werden, die ein erstes Argument vom Typ \"Rawr.Retribution.CalculationOptionsPanelRetribution\" akzeptiert (Fehlt eine Using-Direktive oder ein Assemblyverweis?).&nbsp;&nbsp;&nbsp; C:\\Users\\Markus\\Documents\\Rawr_devel\\Rawr.Retribution\\CalculationOptionsPanelRetribution.WPF.xaml&nbsp;&nbsp;&nbsp; 92</p>\r\n<p>(sorry, my VS is a localized version in german)</p>\r\n<p>Furthermore I get errors that the tags LoadScreen and App are missing in the XML namespace. Having never worked with this system before I am not sure if this is somehow connected.</p>\r\n<p>Could you give me some more hints as to what am I doing wrong?</p>\r\n<p>thanks</p>",
+    "PostedDate": "2011-06-09T06:19:18.66-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "625344",
+    "ThreadId": "259059",
+    "Html": "<p>ok, I removed the combobox im question (CB_CalculationToGraph) from the xaml since the selectionchanged method was nowhere to be found...all is well now and compiling. Can you guys compile the retribution module from the current svn state?</p>",
+    "PostedDate": "2011-06-09T06:34:00.737-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "625346",
+    "ThreadId": "259059",
+    "Html": "<p>The handler seems to be present but declared private: I'm not sure if it is correct, but it does work for me.</p>\r\n<p>Only suggestion that comes to mind is to make sure that you have the latest code, and have installed Visual Studio 2010 Service Pack 1 (which I realize is a \"make sure the thing is plugged in\" kind of answer).</p>\r\n<p>Maybe someone else can be more helpful.</p>",
+    "PostedDate": "2011-06-09T06:37:35.843-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "625401",
+    "ThreadId": "259059",
+    "Html": "<p>You are right, it looks like the Retribution WPF build is broken: the code changed the XAML file for the Silverlight version, without matching changes in the WPF one.</p>\n<p>Should be fixed now (currently, both files are checked-in, with an automated tool converting).</p>",
+    "PostedDate": "2011-06-09T07:36:30.667-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "625402",
+    "ThreadId": "259059",
+    "Html": "<p>That means an XamlSync didn't happen. Whenever editing an XAML file in one project, the dev needs to run XamlSync (it's another project in the solution directories) so that the WPF and SL versions sync up to any changes.</p>\r\n<p>Yes, the WPF projects are a separate solution file from the SL ones (Rawr4.sln vs Rawr4.WPF.sln).</p>\r\n<p>Taalas, I can understand a little testing amongst your guildmates, but make sure your build doesn't go anywhere else. We want the only distribution methods of Rawr to be this website and the SL hosting on EJ.</p>",
+    "PostedDate": "2011-06-09T07:42:08.873-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "625482",
+    "ThreadId": "259059",
+    "Html": "<p>@Ultis: Ah, good to know I wasn't doing something wrong ;)</p>\r\n<p>@Jothay: Sorry, I wasn't aware of this. I can understand the motive behind keeping dev versions behind closed doors though - I actually am the person responsible for beta tests etc. at my work - I will gladly keep this version for myself if this is a common understanding in this project.</p>",
+    "PostedDate": "2011-06-09T09:09:16.607-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "625484",
+    "ThreadId": "259059",
+    "Html": "<p>The problem is, we've seen other people make releases on other websites that had viruses planted in them. We want to give the impression that EJ and this website are the only safe places to get it.</p>",
+    "PostedDate": "2011-06-09T09:12:07.33-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "625491",
+    "ThreadId": "259059",
+    "Html": "<p>I understand that...I will keep my version to myself...</p>",
+    "PostedDate": "2011-06-09T09:32:39.373-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "I don&#39;t know how that happened, I had specifically set them to not be read only before I zipped it.I&#39;ve replaced the download. If you are having this issue, redownload Rawr",
+    "ClosedDate": "2011-02-04T07:41:27.897-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I just downloaded the latest version and it won't open.\n \nI'm getting this error:\n \nAccess to the path 'C:\\Rawr\\Rawr b4.018\\ClientBin\\BuffCache.xml' is denied.\n \nAnd this Stack Trace:\n \n   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)\n   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath)\n   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy)\n   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access)\n   at Rawr.UI.FileUtils.GetFileStream(String filename, Boolean write)\n   at Rawr.UI.LoadScreen.filesLoaded(Object sender, EventArgs e)\n \n \nAny Ideas? I had the previous version and it worked fine.",
+    "LastUpdatedDate": "2013-05-16T05:18:47.26-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-02-04T00:47:45.22-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "New version not opening",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19901
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Appears that the .xml files in the ClientBin have been marked as read-only.  To remedy, right click on the ClientBin folder and uncheck read-only.  Rawr should then load properly.",
+      "PostedDate": "2011-02-04T02:43:37.093-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-02-04T07:41:27.897-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:04.73-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:47.26-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

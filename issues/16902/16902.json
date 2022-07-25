@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.TankDK",
+      "DisplayName": "Rawr.TankDK"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-03-26T11:37:17.737-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Note: there is a separate issue which has to do with whether an item has been refreshed from the Armory or from WoWhead. In order to reproduce the numbers here, please make sure to refresh items in question from WoWhead. See Issue 2 at the bottom of the post.\n \nIssue 1\n======\nI believe Rawr uses armor-increasing modifiers (talents, metagem etc.) incorrectly. I'm a tank DK, using the TankDK model, with no buffs active (except Toughness), and I observed the following:\n \nGauntlets of the Kraken stats:\n  1650 base armor\n  1008 bonus armor\n \nGauntlets of the Kraken in Rawr gives: 3846\nGauntlets of the Kraken in-game gives: 3970\nApplicable modifiers:\n  Toughness: +10%\n  Frost Presence: +60%\n  Austere Earthsiege: +2%\nThese are applicable to the base armor.\n \nRawr:\n  1650 * (1 + 0.1 + 0.6 + 0.02) + 1008 = 3846\nIn-game:\n  1650 * 1.1 * 1.6 * 1.02 + 1008 = 3970\n \nRawr is wrong, it should combine bonuses multiplicatively.\n \nIssue 2\n======\nThe armor contributed by an item depends on whether it's been refreshed from the Armory or WoWhead. This appears to be because Armory only provides a single, total-armor value whereas WoWhead splits it up into base armor and bonus armor. Presumably Rawr is unable to correctly apply modifiers to the armor on an item that was refreshed from Armory. Example with Gauntlets of the Kraken:\n \nWhen refreshed from Armory, tooltip lists: 2658 armor\nItem contributes to total: 4572 armor (consistent with 2658*1.72)\n \nWhen refreshed from WoWhead, tooltip lists: 1650 armor, 1008 bonus armor\nItem contributes to total:  3846 armor (consistent with 1650*1.72+1008)",
+    "LastUpdatedDate": "2017-11-27T11:04:37.16-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-03-22T08:51:06.203-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[TankDK] Armor calculation incorrect",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16902
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Issue 1 I've fixed but haven't checked in quite yet.\r\nNow working on issue 2.",
+      "PostedDate": "2010-03-26T10:28:00.073-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Resolved with changeset 48714.",
+      "PostedDate": "2010-03-26T11:37:17.737-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:40:45.093-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:29:14.733-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:22.417-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:04:37.16-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

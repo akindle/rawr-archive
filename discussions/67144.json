@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "228258",
+    "ThreadId": "67144",
+    "Html": "<p>I've been playing with the batch tools a bit and have a few questions.&nbsp; So far I have made a druid and added some gear (the best pre-heroic gear) for kitty DPS.&nbsp; Then I switched the model to bear and added the best pre-heroic bear gear.&nbsp;&nbsp; I optimised for bear and saved that as &quot;testbear&quot; then optimised for cat and saved that as &quot;testcat&quot;.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Then I opened the batch tools and clicked on the first&nbsp; &quot;...&quot; box and loaded &quot;testcat&quot; then on the next line I loaded &quot;testbear&quot;.</p>\r\n<p>I then did a progressive optimise and it seemed to work well - some of the tanking gear was gemmed/enchanted for DPS as it worked out better than the next best item which is good because I wanted the best kitty gear and then to make a tank set from the rest.</p>\r\n<p>&nbsp;</p>\r\n<p>Now, the questions :-</p>\r\n<p>1) Is there somewhere I can get more info on these tools and what they all do because I can only kind of work out what I am doing - it's not very user friendly.</p>\r\n<p>2) If I then got a couple of upgrades, would I need to mark them available in both the testkitty&nbsp; AND the testbear profiles?&nbsp; Or is there a way I can use the one profile to optimise for both bear and cat?</p>\r\n<p>3) If I was using it for a different tank, say DK, how do I tell it to optimise with the condition that chance to be crit &lt;0?&nbsp; Does it just use the most recent optimise setting for that profile?&nbsp; Is there an easy way to tell which conditions it is optimising for in the Batch tools screen?</p>\r\n<p>&nbsp;</p>\r\n<p>The more I play with it the more i'm keen to get it going.&nbsp; My druid, priest, DK &amp; shammy are all 80 and have duel specs and so far I have been switching between specs and have been marking items with the blue diamond.&nbsp; But each time I get a new item I optimise for the main spec then have to change all the blue diamonds to that gear and remark some of the others back to green diamonds etc....&nbsp;&nbsp; The batch tools will save heaps of time :)</p>\r\n<p>&nbsp;</p>\r\n<p>With just a little bit more info, i'm sure many more people would use it as well.&nbsp; Much like the filter system - a page showing the syntax of the commands in the filter system would be good (apologies if it already exists) - I worked it out by examining the in-built filters and copying them.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-08-26T23:39:54.493-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "228267",
+    "ThreadId": "67144",
+    "Html": "<p>Did you see the help doc on Batch Tools?</p>",
+    "PostedDate": "2009-08-27T00:07:12.52-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "228281",
+    "ThreadId": "67144",
+    "Html": "<p>It will use the optimization constraints that were last used for that character (they get saved together with the character).</p>",
+    "PostedDate": "2009-08-27T01:07:00.587-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "228301",
+    "ThreadId": "67144",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Astrylian wrote:</strong><br>\r\n<p>Did you see the help doc on Batch Tools?</p>\r\n</blockquote>\r\n<p>Sure did.&nbsp; It allowed me to get as far as I did.&nbsp;&nbsp;&nbsp; On reading it again now, after I have played with the batch tools a bit more I have realised the answers to some of my questions.&nbsp;&nbsp; Basically, I have a profile for each of my specs, but only need to mark items/enchants etc as available in the main spec then use the &quot;Set available items&quot; option to propogate them to each profile.&nbsp; I tried this but it didn't give me any feedback to say it had done anything (probably because I hadn't marked any new items to propogate anyway).</p>\r\n<p>1) Would I be right to assume that it would not be a good idea to have more than one character/class in a particular batch if I am going to be using the progressive optimiser?&nbsp; So basically have a separate batch for all my dual-spec characters, but I could have a single batch with all my pure DPS characters as I will only be using the optimiser, not the progressive optimiser.</p>\r\n<p>2) In another thread you mentioned being able to give a weighting to a spec and I can see where to do it in the batch tools.&nbsp; If both have a weighting of 1, does that basically apply the new item to which ever spec it is more of an upgrade for?&nbsp;&nbsp; If I almost never tank then should I set it much lower to say 0.1 or so (which I think would mean it would have to be 10x more of an upgrade for tanking than it is for kitty).</p>\r\n<p>3) What does the &quot;locked&quot; tick box do?&nbsp; With it ticked and running an optimise, it still made changes to the gear so i'm a bit confused.</p>\r\n<p>4)&nbsp; I can't work out what the text box &quot;Single Item Upgrades&quot; does.</p>\r\n<p>&nbsp;</p>\r\n<p>Sorry for being a nuisance :)</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-08-27T02:05:38.53-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "228411",
+    "ThreadId": "67144",
+    "Html": "<p>RareBeast, I think I can answer some of that.</p>\r\n<p>The available items (for everyone in a Batch or Progressive Optimize) are the items (and gemmings, I believe) that were marked available in the saved version of the first character in the batch (not necessarily the character in your main Rawr window).</p>\r\n<p>For Progressive Optimize, the weights don't matter. &nbsp;It will make your first batch entry the best in can be. &nbsp;The second entry will be the best it can be without messing up (regemming or reenchanting) the first entry, and so on down the line.</p>\r\n<p>For Batch Optimize the weights are used. &nbsp;Rawr will try to maximize (entry1_score * weight1 + entry2_score*weight2 + ...). &nbsp;For bear/cat the score scales are very different. &nbsp;My bear overall score is roughly seventy times my cat overall score. &nbsp;If you wanted to weight a 1% improvement to bear about the same as a 1% improvement to cat, you'd probably want a weight of 1 for bear, and 70 for cat. &nbsp;Using 1/1 weights, Rawr's Batch Optimize might value Dodge at about seventy times ArPen.</p>\r\n<p>I don't think you want multiple characters in a single Batch or Progressive Optimize, because they'll all end up using the first character's &quot;Available Gear.&quot;</p>",
+    "PostedDate": "2009-08-27T07:44:17.207-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "228548",
+    "ThreadId": "67144",
+    "Html": "<p>For progressive and batch optimize you should only have profiles that correspond to a single ingame character, for normal optimize it doesn't matter.</p>\r\n<p>The locked box is only used for progressive uptimize (don't recall if it's used for batch optimize&nbsp;or not). What it means is that it will prevent regemming/reenchanting of items used by that character. I use this to avoid change of gems when it's just moving them around. For example when I get new loot I will do a normal optimize on my first character with regemming/reenchanting to find the best gems/enchants for it. I'll then manually check if I can move some things around to minimize gem swaps from what is currently on my gear (hopefully we'll have this step be automated at some point). Then I lock this profile in batch tools and do a progressive optimize with regemming/reenchanting to get the best enchanting/gemming on the rest without messing up gems on the first one.</p>\r\n<p>The Single Item Upgrades can be used to do an equivalent of &quot;Evaluate Upgrade&quot; on a single item, but used on the batch. You can enter either item id or item name.</p>",
+    "PostedDate": "2009-08-27T15:45:13.097-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

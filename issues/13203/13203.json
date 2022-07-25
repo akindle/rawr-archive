@@ -1,0 +1,86 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Mage",
+      "DisplayName": "Rawr.Mage"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-05-29T18:59:15.067-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I've attached the base XML file for reproducing this. The steps are as follows: my DPS is listed at 6996.78. I switch out Living Flame trinket to Scale of Fates and the DPS is never calculated. It just sits there. Next I change Cord of the White Dawn to Sash of Ancient Power. I wait longer... still no Score or DPS listed. Minutes go by, and I try to switch out Shackles of the Odalisque for anything else, but the drop down list of items doesn't even appear -- the whole program is frozen now. In Task Manager, Rawr looks like this:\n \nCPU Usage: 0%\nMemory Usage: 1,119,116 K (this flucuates slightly, like now it says 1,119,100... and about 30 seconds later, it says 1,119,064)",
+    "LastUpdatedDate": "2017-11-27T11:01:49.3-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-05-10T21:39:34.287-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Mage] Rawr Freezing Upon Item Switch",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13203
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1884,
+      "FileName": "0.53.18 - Non-Hard Mode.xml",
+      "DownloadUrl": ".\\1884"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "There was a problem in one of the constraints in advanced solver that was causing this to happen in the first place. That will be fixed for next release. Regardless I have some suggestions.\r\n\r\nThe advanced solver when in BestBound mode will use memory in proportion with calculation limit. 3000 is too high, what it seems like a freeze is actually your computer running out of memory. What I would suggest for advanced solver on max settings is to use DepthFirst method. There the memory requirements are relatively low regardless of computation limit. Another thing I noticed is you have global and incremental optimizations disabled. I would suggest you enable both, that will improve performance significantly.",
+      "PostedDate": "2009-05-11T02:16:27.7-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-05-29T18:59:15.067-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:32:49.537-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:34:22.25-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-21T00:00:19.307-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:34.193-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:37.013-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:01:49.3-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

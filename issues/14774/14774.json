@@ -1,0 +1,131 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "I am closing this issue, but on the Documentation Page, there is a link here regarding the patch that needs to be applied.",
+    "ClosedDate": "2009-12-27T17:32:16.147-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I'm using Rawr on a OpenSuSE machine through Mono 2.2\n \nOn all the models I tried I have the same issue with the Filters 'drop-down'. It opens it so small that you can't see anything in it except the scroll bar. The attached image should give an indication with regards to the problem.",
+    "LastUpdatedDate": "2013-05-16T05:23:26.163-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-11-12T01:04:32.603-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Mono] Filter box unusable in Mono due to size",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14774
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2488,
+      "FileName": "window1.png",
+      "DownloadUrl": ".\\2488"
+    },
+    {
+      "FileId": 2491,
+      "FileName": "rawr-mono-filterbox.patch",
+      "DownloadUrl": ".\\2491"
+    },
+    {
+      "FileId": 2495,
+      "FileName": "mono-2.4-toolstripdropdown-height-fix-NOT-FOR-RAWR.patch",
+      "DownloadUrl": ".\\2495"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I'm also a Linux/Mono user and this is definitely a problem. I've tried to root it out with my extremely limited C# knowledge over the last couple months, but I can't figure it out.\r\n\r\nThere are 2 things you can do to sort-of work around the problem, but neither of them fix it:\r\n\r\n1. You can rename the filters with titles longer than the width of the filter window so the horizontal scroll bar does not appear.\r\n2. You can apply the attached patch and recompile to make the filter box really wide, again preventing the scroll bar from coming up.\r\n\r\nUnfortunately, both of these workarounds don't fix the problem and you still have to scroll through the list 1 entry at a time. Very annoying.\r\n\r\nI suggest that some filter toggle boxes be added to the filter editor tree to remedy this problem.",
+      "PostedDate": "2009-11-12T14:37:36.553-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-12T14:39:05.593-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "ZDBioHazard\r\n\r\nI'm not a C# developer and don't have that much time available to me :(. I am however a Java developer so should be able to pick some things up once I got a C# compiler set up (and had someone point out the exact sections that refer to the Filter box).\r\nWhat compiler and options do you use? ",
+      "PostedDate": "2009-11-13T05:19:01.003-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm using \"MonoDevelop.\" It's what I happened to find in my package manager after a quick search. Dunno if there's something better. I just kind-of installed it and it worked out of the box.\r\n\r\nIf you want to work on this problem, here's what I learned by fiddling with it:\r\nI believe the initialization for the filter list is in FormMain.cs at line 178. There's a line that says \"itemFilterTreeView.Size = new Size(200, 400);\" which looks okay. The window is not 200px high, so there must be another problem.\r\nIt looks like the control being created is a ToolStripDropDown object, so I ran a Google search the find out how it works and ran across this: \"http://old.nabble.com/ToolStripDropDown-%2B-UserControl-td22184714.html\" which sounds a lot like what is going on. Perhaps this is another Mono bug?\r\nSince I'm running Gentoo and recompiling stuff is a piece of cake, I took a stab at fixing the Mono source, but that doesn't do anything either. None of the patches work and it looks like that section of code has been overhauled since 2.2 and I don't see anything related to the earlier mentioned post.\r\n\r\nNow that I've learned how resource files work sort-of, I'll try messing with FormMain.Designer.cs and see what I come up with.\r\n\r\n(BTW, If you do compile Rawr from source, I have a patch in the patches section of this site that will make Rawr work in Mono-2.4+, might want to apply that too while you're at it.)\r\n",
+      "PostedDate": "2009-11-13T08:56:21.587-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Interesting. that Nabble thread I linked to in my last post is quite a bit longer than the one I read last time I tried to fix this. That led to a solution! :D\r\n\r\nAlrighty, this is not a Rawr bug. It's a problem with how Mono handles ToolStripDropDown menu items. In that thread, a Mono developer states that a fix is committed to SVN. I grabbed the diff from that commit (which was vastly different than the patches I was using) and applied it. Now it's fixed! So basically; when a version of Mono comes out that's based on r128694+, the filter list will work correctly.\r\n\r\nIf you're feeling daring, I've attached the patch to make it work /now/. Note that this is a patch to Mono, not for Rawr. I tested it against Mono-2.4.3.2. I can't test it with 2.2 because my distribution (Gentoo) dropped support for 2.2 a few months ago, but it might still work. If you do switch to 2.4, you will need to apply the Rawr Mono-2.4 support patch I posted in the patches section of this site and compile your own Rawr to be able to use it.\r\n",
+      "PostedDate": "2009-11-13T11:40:12.353-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-13T11:40:14.487-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "ZDBio, I have applied your patch to the source, can you download latest Rawr and verify for Mono 2.4?",
+      "PostedDate": "2009-11-13T11:47:58.9-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Jothay, built rev 40206 and it doesn't crash anymore. Yay for Mono 2.4 support!\r\nWe won't know completely for sure until an actual release comes out and I can test an official binary though. I still had to compile my own, just didn't have to use my patches this time.\r\n\r\n... Heh, I probably should have submitted that patch a couple months ago when I first fixed it. Didn't realize you guys were interested in Mono until I saw that Rawr.Mage fix yesterday. >.>\r\n",
+      "PostedDate": "2009-11-13T12:40:45.327-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well, it's not so much that we are interested in it but that we would like all of our user base to be able to use it without their OS getting in the way. Which is a huge reason we are making Rawr 3 in Silverlight, so it can be run from a browser or installed on the system from the browser with a simple package install.",
+      "PostedDate": "2009-11-13T12:58:01.48-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-27T17:23:58.02-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-27T17:32:16.147-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I know that this is closed, but I figured I'd mention that this bug has been fixed upstream and released in Mono v2.4.3. The notice in the documentation can be safely removed now.",
+      "PostedDate": "2010-02-08T12:15:45.27-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T16:19:37.49-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:51.4-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:26.163-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

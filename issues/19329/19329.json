@@ -1,0 +1,136 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Optimizer",
+      "DisplayName": "Rawr.Base.Optimizer"
+    },
+    "ClosedComment": "Inconsistent Results will be normal for the Optimizer even at max thoroughness because of the necessary changes for Cataclysm.",
+    "ClosedDate": "2011-01-07T12:54:21.533-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I'm getting inconsistent results when I run the optimizer, sometimes wildly inconsistent.  This occurs both with the Optimizer window and with the Batch Tools Optimizer running multiple passes.  Here's my results for a half dozen runs in each location:\n \nOptimizer, Override Reforge, Max Thoroughness, Starting value: 13048.14\n13274.26\n13170.87\n12119.43\n13148.52\n13170.87\n13211.85\n \nBatch Tools Optimizer, Override Reforge, Max Thoroughness, Max Rounds, Starting value: 13048.14\n13186.71\n13219.31\n13196.95\n13202.54\n13182.98\n13128.96\n13204.4\n \nWhile these runs are confined to about a 5% deviation, before I logged these dozen runs, I got a couple that shot up as high 13700-13900, and it was those that prompted me to post here.  I'm still leveling this toon, so I'm not make-or-break on these numbers yet; I'm just using rawr as a quick \"what is better\" thing.  Just wondering if there's something I'm doing wrong or could do differently to yield more consistent results.",
+    "LastUpdatedDate": "2013-05-16T05:19:35.317-07:00",
+    "PlannedForRelease": "Rawr 4.0.12 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-12-17T14:14:15.627-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Optimizer] Giving inconsistent returns",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19329
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4227,
+      "FileName": "eli.xml",
+      "DownloadUrl": ".\\4227"
+    },
+    {
+      "FileId": 4228,
+      "FileName": "Belinara-Resto.xml",
+      "DownloadUrl": ".\\4228"
+    },
+    {
+      "FileId": 4229,
+      "FileName": "Belinara-Test.xml",
+      "DownloadUrl": ".\\4229"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Currently you still have the 'is 80' box checked, no buffs selected.  If you keep the 'is 80' box checked, then most likely it's giving you very off numbers.  Also, it's meant for max-level characters, the 'is 80' feature is being removed shortly.  Without buffs set and using the 80 box, I can see why there might be the various changes.  \r\n\r\nThe big question though, was it the exact same setup each time, or did the gear change every single time?",
+      "PostedDate": "2010-12-17T16:26:51.487-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-17T16:27:21.047-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-17T18:18:49.287-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm having the same issue.  I'm wondering, however, if any heals are being cast.  Every value in the \"Healing Style Breakdown\" section is showing \"0\" except for Earth Shield.",
+      "PostedDate": "2010-12-17T18:18:50.537-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Actually this is quite possible. In general the introduction of reforges have added a ton more options so the search space is a lot bigger and as a result finding the true optimum will be less likely. The best you can do is minimize the number of options and for models to restrict the reforges to only meaningful ones.",
+      "PostedDate": "2010-12-17T18:21:52.99-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "eltito, it sounds like we need your file to test with. Save the XML and post it here please",
+      "PostedDate": "2010-12-17T18:45:07.57-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I already posted it.  Belinara-Resto.xml",
+      "PostedDate": "2010-12-17T18:48:21.65-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "For me, the runs were with the exact same gear every time.  Literally, run it, write down the number, discard the changes, run it again, discard.  Rinse and repeat for the numbers you see here.",
+      "PostedDate": "2010-12-17T19:27:47.043-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-17T19:41:57.407-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Belinara-Test is a fresh file without the Enhance data that is in the other file.",
+      "PostedDate": "2010-12-17T19:41:58.633-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "We're changing the model a bit, so don't trust the front-page stats entirely.  Yes, though, it is 'casting' healing spells.  As we're changing to a different method of using the spells, it's currently choosing specific healing styles based on talents until Alpinemen is done on the model changes.  And it's also as kavan said before, Since there is so many different ways to setup gear now, it's not a guaranteed even at 100% that you'll get the exact, and even the optimizer says that, you'll just get as close to optimal as it can get.  Optimal does not equal exact.",
+      "PostedDate": "2010-12-19T21:35:44.347-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-20T18:01:17.783-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-07T12:54:21.533-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:40:45.093-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:27:06.857-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:35.317-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

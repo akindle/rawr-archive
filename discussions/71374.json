@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "243421",
+    "ThreadId": "71374",
+    "Html": "<p>Hi, I'm new with using Rawr and I'd like some feedback on this. Maybe I haven't setup rawr right or its simply failing&nbsp; :D</p>\r\n<p>Here's an example:</p>\r\n<p>I've loaded my char from armory (Toranaga, Magtheridon, EU) and tuned the settings under the &quot;buffs&quot; and &quot;options&quot; tabs. I set imp as pet, &quot;CoD -&gt; corruption -&gt; immolate -&gt;conflagrate &gt; chaos bolt -&gt; incinerate&quot; as rotation. I set <strong>target mob level to 80</strong> (yes on purpose)</p>\r\n<p>My hit rating is <strong>364</strong> (pretty close to 14%) , and i clicked &quot;<strong>improved fairy fire</strong>&quot; giving me a hit rating <strong>WAY over the cap</strong>.</p>\r\n<p>STILL Rawr is telling me that my current bracers, Dark Essence Bindings (245) are A LOT superior to for example Bejeweled Wizards Bracers. Since the hit rating on Dark Essence Bindings should now be useless, Bejeweled Wizards bracers should give me:&nbsp; +8 Spell Power, +50 haste, +10 Spirit, -16 crit (and -38 useless hit rating), using a SP+Spirit gem on bejeweled bracers.</p>\r\n<p>At this point my Dark Essence Bindings are listed as #6 bracers of choice, and Bejewled Wizards Bracers are listed as #19(!) Seems like Rawr is preffering 16 crit at this point which CANT be right.</p>\r\n<p>&nbsp;</p>\r\n<p><strong>This is just an example</strong>!&nbsp; It seems like Rawr always tells me that crit is basicly the only stat i need!</p>\r\n<p>so, IS Rawr working for warlocks, or have I missed something important?</p>\r\n<p>(and sorry if this is already discussed in other threads, i just figure that IF ppl agree on that rawr is currently not reliable for warlocks, you shouldnt have to search through the forums to get that info, it should be clearly stated on the first page imo.) However thanks for a really nice application!</p>\r\n<p>Thankful for some help! /Toranaga</p>\r\n<p><em>EDIT: If I swap my Illumination for Gladiators rentless Staff (with 100+hit on it) something suddenly happens. Its like the hit from gear makes difference, but not from improved fairy fire and/or setting down target mob level!! so imo the problem still persists, </em></p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-10-08T06:58:34.723-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "243451",
+    "ThreadId": "71374",
+    "Html": "<p>We are working on creating just that sort of information for the front page to give an indication of how reliable each model is. The problem is that its constantly moving goal posts, not least because Blizzard keep changing things when they patch the game :)</p>\r\n<p>Whilst not ideal having a look at the source code tab on the site and reading through the commit comments give you an idea of how often the model you are interested in is updated.</p>\r\n<p>&nbsp;</p>\r\n<p>Meantime in case you have stumbled on a specific issue with warlocks that the warlock dev needs to fix can you start a new issue (NOT a discussion) and attach your XML file so we can load your file and settings and see the effect you are seeing to find out what the issue is.</p>",
+    "PostedDate": "2009-10-08T07:39:03.17-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "243456",
+    "ThreadId": "71374",
+    "Html": "<p>Hi, and thanks for the reply!</p>\r\n<p>I made an edit to my 1st post. Initially i wrote that I had tried over-capping myself with items instead of buffs / mob target level, which turned out not to be fully true. However it seems like setting down mob level to 80 has no effect on the weight of hit rating.</p>",
+    "PostedDate": "2009-10-08T07:48:04.973-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "243491",
+    "ThreadId": "71374",
+    "Html": "<p>I'm not an admin or a developer or a programmer on this app and I can understand how hard it would be to write something like this so please don't anybody look at this as a complaint about the team working on it.</p>\r\n<p>That being said,  if you are frustrated with the current version of Rawr's gear optimizations I would suggested finding and download 2.2.16.</p>\r\n<p>The downside to this is that when you get new gear nine out of ten times you'll have to add it to rawr and the upgrade list is pretty worthless.&nbsp; That being said, <em>something</em> got changed with the release of 2.2.17 regarding the way the warlock module&nbsp; values hit,spell power, haste, spirit, and crit.&nbsp; The new versions are still good about hit caps but it still makes mistakes , sometimes recommending greens and blues as opposed to better and more appropriate gear.&nbsp;</p>\r\n<p>This was really bad in 2.2.17 - 2.2.19.</p>\r\n<p>I do think many improvements have been made to the app and to the warlock module in 2.2.20, however whatever change that was made for 2.2.17 regarding the way gear's dps score is evaluated has been off and I would advocate to anyone working on the lock module to take a look at  2.2.16's method and work off of that one.</p>\r\n<p>With the newer versions, ive followed the recommended fixes...Ive altered the latency settings in order to cause haste to have a higher worth, Ive tried re-downloading my toon from the armory and re-adding all my non equipped gear and the results are still wonky.&nbsp; Besides if I have to lie to RAWR and tell it I have 300ms latency when I only have 100, what other adverse effect is this causing to the gear optimizations?</p>\r\n<p>It seems like even 2.2.20's  optimization does handle hit caps strangely though, as if its so determined to not go over the hit cap.&nbsp; Heres the scenario I'm envisioning...</p>\r\n<p>lets say you're 30 points away from hit cap and rawr is decideing between two items.</p>\r\n<p>item #1 has +32 hit and 50 spell power</p>\r\n<p>item #2 has +64 hit and 80 spell power.&nbsp;</p>\r\n<p>Rawr will choose item #1. As if every point over the hit cap causes the item to be devalued despite the benefits of the spell power.</p>\r\n<p>The only way Ive found to keep the newer versions of RAWR from making goofy choices is to eliminate those bad choices and that defeats the purpose of the gear optimizer alltogether.&nbsp; I use Rawr, combined with the new gear outfitter option from within WoW to make multiple gearsets depending on the kind of content Im grinding.&nbsp; so, I have a set for level 83, level 82, and level 80.&nbsp; So I do have a lot of gear in my inventory that I would never use for a raid but&nbsp; could be beneficial when running lower content.&nbsp; My point is that just deleting gear from rawr isnt an option for me.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-10-08T08:41:55.397-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

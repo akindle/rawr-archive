@@ -1,0 +1,114 @@
+[
+  {
+    "Id": "428522",
+    "ThreadId": "208622",
+    "Html": "<p>Attempting to build with Visual Studio Express Beta 2 result in the following warning/error messages:</p>\r\n<p style=\"padding-left:30px\">\r\n<pre style=\"padding-left:30px\">Warning\t1\tField 'Rawr.TankDK.CombatTable2._TPS' is never assigned to, and will always have its default value 0\tC:\\Users\\dgt\\Games\\Rawr\\Rawr.TankDK\\DKAbilities\\CombatTable2.cs\t22\t23\tRawr.TankDK.2010\r\nWarning\t2\tField 'Rawr.TankDK.CombatTable2._DPS' is never assigned to, and will always have its default value 0\tC:\\Users\\dgt\\Games\\Rawr\\Rawr.TankDK\\DKAbilities\\CombatTable2.cs\t30\t23\tRawr.TankDK.2010\r\nWarning\t3\tThe field 'Rawr.Hunter.Rotation._emActs' is assigned but its value is never used\tC:\\Users\\dgt\\Games\\Rawr\\Rawr.Hunter\\Rotation.cs\t519\t23\tRawr.Hunter.2010\r\nWarning\t4\tAssignment made to same variable; did you mean to assign something else?\tC:\\Users\\dgt\\Games\\Rawr\\Rawr.Mage\\Solver.MIP.cs\t910\t21\tRawr.Mage.2010\r\nWarning\t5\tUnreachable code detected\tC:\\Users\\dgt\\Games\\Rawr\\Rawr.Tree\\CalculationsTree.cs\t812\t21\tRawr.Tree.2010\r\nWarning\t6\tField 'Rawr.DPSWarr.Markov.FuryGenerator.HSMatrix' is never assigned to, and will always have its default value null\tC:\\Users\\dgt\\Games\\Rawr\\Rawr.DPSWarr\\Markov\\FuryGenerator.cs\t60\t36\tRawr.DPSWarr.2010\r\nWarning\t7\tThe variable 'j' is assigned but its value is never used\tC:\\Users\\dgt\\Games\\Rawr\\Rawr.DPSWarr\\Markov\\FuryGenerator.cs\t394\t25\tRawr.DPSWarr.2010\r\nWarning\t8\tThe variable 'j' is assigned but its value is never used\tC:\\Users\\dgt\\Games\\Rawr\\Rawr.DPSWarr\\Markov\\FuryGenerator.cs\t399\t21\tRawr.DPSWarr.2010\r\nWarning\t9\tThe variable 'baseSplashDamage' is assigned but its value is never used\tC:\\Users\\dgt\\Games\\Rawr\\Rawr.Moonkin\\MoonkinSolver.cs\t492\t19\tRawr.Moonkin.2010\r\nWarning\t10\tThe variable 'splashCoefficient' is assigned but its value is never used\tC:\\Users\\dgt\\Games\\Rawr\\Rawr.Moonkin\\MoonkinSolver.cs\t493\t19\tRawr.Moonkin.2010\r\nError\t11\tThe command &quot;..\\..\\..\\sgen4.exe Rawr.Base.dll&quot; exited with code -2146232576.\tRawr.Base.2010\r\nError\t12\tThe command &quot;..\\..\\..\\sgen4.exe Rawr.Mage.dll&quot; exited with code -2146232576.\tRawr.Mage.2010\r\nWarning\t13\tCould not resolve this reference. Could not locate the assembly &quot;Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a&quot;. Check to make sure the assembly exists on disk. If this reference is required by your code, you may get compilation errors.\tRawr.Hunter.2010\r\nWarning\t14\tThe referenced component 'Microsoft.VisualStudio.QualityTools.UnitTestFramework' could not be found. \t\r\n</pre>\r\n</p>\r\n<p>Is this an indication that my installation of VSE2010B2 is broken, that building with VS2010 requires the full version (rather than the express version), or something else?</p>",
+    "PostedDate": "2010-04-07T14:44:44.383-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "428527",
+    "ThreadId": "208622",
+    "Html": "<p>You should upgrade to the RC, Beta2 is outdated now.</p>\r\n<p>Warnings are ignorable.</p>\r\n<p>The error &quot;Error\t11\tThe command &quot;..\\..\\..\\sgen4.exe Rawr.Base.dll&quot; exited with code -2146232576.\tRawr.Base.2010&quot;, sounds like something wrong with Kavan's new sgen; any idea about that Kavan?</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-04-07T14:52:45.847-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "428530",
+    "ThreadId": "208622",
+    "Html": "<p>I'm only finding the Beta 2 available (at &quot;http://www.microsoft.com/express/Downloads/#Visual_Studio_2010_Express_Downloads&quot;)&nbsp; Where can I find the VS Express RC?</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-04-07T14:58:23.46-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "428554",
+    "ThreadId": "208622",
+    "Html": "<p>Hmm... Doesn't look like they released an RC of Express. You can still grab Premium from http://msdn.microsoft.com/en-us/vstudio/dd582936.aspx. Regardless, I don't think that's the issue here, probably just something wrong with sgen4, Kavan's new tool.</p>",
+    "PostedDate": "2010-04-07T16:10:30.77-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "428615",
+    "ThreadId": "208622",
+    "Html": "<p>Try to copy Sgen4.exe from root Rawr folder and copy it into bin\\Release\\Data&nbsp;and try to run it from there directly. Do this by going to start menu, Microsoft Visual Studio 2010-&gt;Visual Studio Tools-&gt;Visual Studio Command Prompt (2010) and type &quot;Sgen4.exe Rawr.Base.dll&quot;. (it should probably work with normal command prompt also if you don't have that in express)</p>\r\n<p>What exceptions/errors does it return?</p>\r\n<p>You can also disable that in project properties -&gt; post build events, Rawr will still work although a bit slower.</p>",
+    "PostedDate": "2010-04-07T21:32:54.423-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "428630",
+    "ThreadId": "208622",
+    "Html": "<p>Copying it and manually running it from bin\\Release\\Data gives a pop-up error box that says: &quot;Unable to find a version of the runtime to run this application.&quot;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-04-07T22:56:04.993-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "428654",
+    "ThreadId": "208622",
+    "Html": "<p>Yea, that looks like it requires the RC version. Either get that or remove the post-build step.</p>",
+    "PostedDate": "2010-04-08T00:09:11.907-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "428684",
+    "ThreadId": "208622",
+    "Html": "<p>Hmm, I'm using the Beta2 too and it converts / compiles like a charm after I removed the SCC-Information from the RestoSham and TankDK-Project-Files.<br>The info-screen shows 10.0.21006.1 B2Rel (it's the german version)&nbsp;</p>\r\n<p>I would think, that some SDK is missing, but the VS-Version should be ok...</p>",
+    "PostedDate": "2010-04-08T01:44:11.493-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "428736",
+    "ThreadId": "208622",
+    "Html": "<p>He's not using the Rawr.sln and converting it, but Rawr.2010.sln which targets the 4.0 framework.</p>",
+    "PostedDate": "2010-04-08T03:50:27.523-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "428816",
+    "ThreadId": "208622",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Kavan wrote:</strong><br>\r\n<p>Yea, that looks like it requires the RC version. Either get that or remove the post-build step.</p>\r\n</blockquote>\r\n<p>I'd prefer to stick with the Express version since the RC of the full version expires &quot;soon&quot; and I don't plan to buy/install the full version but stick with express.</p>\r\n<p>&nbsp;</p>\r\n<p>Removing the post-build step allowed the build to complete successfully.&nbsp; What functionality/feature am I missing by removing the post-build step?</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-04-08T07:47:14.17-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "428907",
+    "ThreadId": "208622",
+    "Html": "<p>You're not missing any functionality, only a small hit on performance.</p>",
+    "PostedDate": "2010-04-08T09:56:24.03-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "445041",
+    "ThreadId": "208622",
+    "Html": "<p>Ok, I get this same error.</p>\r\n<p>Error&nbsp;&nbsp; &nbsp;10&nbsp;&nbsp; &nbsp;The command &quot;..\\..\\..\\sgen2.exe Rawr.Base.dll&quot; exited with code -532459699.&nbsp;&nbsp; &nbsp;Rawr.Base<br><br></p>\r\n<p>What was the quick and dirty way of getting past this.</p>\r\n<p>This is the version I am currently using:</p>\r\n<p>Microsoft Visual Studio 2010<br>Version 10.0.30319.1 RTMRel<br>Microsoft .NET Framework<br>Version 4.0.30319 RTMRel<br><br>Installed Version: C# Express<br><br>Microsoft Visual C# 2010&nbsp;&nbsp; 01014-532-2002262-70533<br>Microsoft Visual C# 2010</p>",
+    "PostedDate": "2010-05-19T11:10:08.06-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "445096",
+    "ThreadId": "208622",
+    "Html": "<p>Are you using Rawr.sln or Rawr.2010.sln? For VS2010 you should be using Rawr.2010.sln which uses sgen4.exe, sgen2.exe is intended for .NET Framework 2.0.</p>",
+    "PostedDate": "2010-05-19T13:12:33.783-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "445223",
+    "ThreadId": "208622",
+    "Html": "<p>Was using Rawr.sln</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-05-19T20:44:13.22-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

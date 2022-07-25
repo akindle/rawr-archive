@@ -1,0 +1,111 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Warlock",
+      "DisplayName": "Rawr.Warlock"
+    },
+    "ClosedComment": "The warlock module now uses a proper PriorityQueue system, so once the initial rotation has completed, subsequent spells will be cast according to their priority &#91;determined by cooldown -&#62; duration -&#62; casttime&#93;.Additionally, the filler spell always had to be last - but now you can put the filler spell anywhere in the list &#91;Rawr will not get stuck in an endless loop anymore&#93;.Example&#58; affliction rotation is normally&#58;Shadowbolt -&#62; Haunt -&#62; CoA -&#62; Corruption -&#62; Unstable AfflicThe shadowbolt &#40;affliction filler&#41; is first &#40;followed by Haunt&#41; to get 2 stacks of Shadow Embrace up on the target for max damage. In previous versions of rawr, you had to put Shadowbolt last else it would fail.Fixed in changeset 44598.",
+    "ClosedDate": "2009-12-30T20:26:46.297-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I'm Affliction. Every time I do anything with my spell rotation, Rawr seems to add Soul Fire to the end. At least according to what it says on the Stats tab under rotation.\nIt shouldn't technically effect anything, since it's below the filler spell in priority, but you never know.\nIf I *ACTUALLY* add Soul Fire to the end of the priority list after Shadowbolt, all my item values become 0. Same happens if I add Drain Soul to the end of the priority list after SB.\nIf I add Drain Soul as the filler, with no Shadowbolt on the list, my DPS goes up ridiculously, to 70k. If I add Drain Life as the filler instead of SB, I get an unhandled exception error, listed in a comment to this post.\n \nXML attached; Lucifel.",
+    "LastUpdatedDate": "2013-05-16T05:24:05.693-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-09-29T00:18:25.83-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Warlock] Rotation bugs",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 4,
+    "Id": 14285
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2277,
+      "FileName": "Lucifel.xml",
+      "DownloadUrl": ".\\2277"
+    },
+    {
+      "FileId": 2359,
+      "FileName": "Valamina.xml",
+      "DownloadUrl": ".\\2359"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "************** Exception Text **************\r\nSystem.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.\r\nParameter name: index\r\n   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)\r\n   at System.ThrowHelper.ThrowArgumentOutOfRangeException()\r\n   at Rawr.Warlock.Solver.Calculate(CharacterCalculationsWarlock calculatedStats)\r\n   at Rawr.Warlock.CalculationsWarlock.GetCharacterCalculations(Character character, Item additionalItem, Boolean referenceCalculation, Boolean significantChange, Boolean needsDisplayCalculations)\r\n   at Rawr.Calculations.GetCharacterCalculations(Character character, Item additionalItem, Boolean referenceCalculation, Boolean significantChange, Boolean needsDisplayCalculations)\r\n   at Rawr.FormMain._character_ItemsChanged(Object sender, EventArgs e)\r\n   at System.EventHandler.Invoke(Object sender, EventArgs e)\r\n   at Rawr.Character.OnCalculationsInvalidated()\r\n   at Rawr.Warlock.SpellPriorityForm.bSave_Click(Object sender, EventArgs e)\r\n   at System.Windows.Forms.Control.OnClick(EventArgs e)\r\n   at System.Windows.Forms.Button.OnClick(EventArgs e)\r\n   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)\r\n   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)\r\n   at System.Windows.Forms.Control.WndProc(Message& m)\r\n   at System.Windows.Forms.ButtonBase.WndProc(Message& m)\r\n   at System.Windows.Forms.Button.WndProc(Message& m)\r\n   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)\r\n   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)\r\n   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)",
+      "PostedDate": "2009-09-29T00:18:46.867-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-29T04:10:12.117-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-29T16:24:38.5-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I am also having the same issue with version 2.2.22. If I add Drain Life at the end of the priority list my DPS goes to 0 and if I add it above Shadow Bolt it goes to 37k DPS.",
+      "PostedDate": "2009-10-14T15:37:35.133-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-14T15:37:37.537-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-14T02:46:36.777-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-30T20:26:46.297-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "@ArPharazon:\r\n\r\nHard evidence of major progress on the Warlock module, beyond just assurances of 'soon'?\r\nI... I love you.",
+      "PostedDate": "2009-12-31T20:22:46.983-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T14:50:19.85-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:42:11.687-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:32:43.277-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:05.693-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

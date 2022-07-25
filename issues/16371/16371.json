@@ -1,0 +1,76 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-02-16T16:36:39.847-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The in-game text for Libram of Valiance says it only procs if Seal of Vengeance or Seal of Corruption is the active seal.  In Rawr, it still shows a dps increase even if another seal is active.  This is incorrect.\n \nSteps to reproduce:\n1) Load a Retribution paladin (sample attached).  Only equipped items should be available to minimize variance.  (This may not be set correctly in the attached character.)\n2) Switch to the ranged items and ensure Libram of Valiance is visible and not available.\n3) Equip the lowest dps libram on the list (must be lower than Valiance) and mark only that libram available.\n4) Set the paladin's Seal to Righteousness\n \nBug 1: The item list (right part of the window) shows Libram of Valiance as offering a dps upgrade.  Libram of Valiance should be zero dps with this seal.\n \n5) Right click Libram of Valiance and choose Evaluate Upgrade.\n \nBug 2: Libram of Valiance again shows a dps upgrade.\n \nNote that bug 2 is harder to verify as Rawr may try to change gems.",
+    "LastUpdatedDate": "2013-05-16T05:21:50.97-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-02-16T06:40:58.24-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Libram of Valiance gives benefit with incorrect seals",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16371
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2964,
+      "FileName": "Christiane Ret 2.xml",
+      "DownloadUrl": ".\\2964"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I wasn't sure whether to treat the two bugs reported here as separate issues or not.  It would seem to me they have the same root cause, which is why I chose to put them in one issue instead of two.  I can split the second one out if necessary.",
+      "PostedDate": "2010-02-16T06:56:56.087-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-16T16:01:06.98-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Resolved with changeset 46545.",
+      "PostedDate": "2010-02-16T16:36:39.847-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-17T15:21:43.703-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:29:55.233-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:50.97-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

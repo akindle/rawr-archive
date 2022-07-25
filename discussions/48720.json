@@ -1,0 +1,138 @@
+[
+  {
+    "Id": "162701",
+    "ThreadId": "48720",
+    "Html": "Various testers of the Rawr.Enhance module have pointed out that the model is very bad at dealing with hit &amp; expertise values. The Relative Stats values are just completely wrong. Can someone give me some insight into how the coding is expected to work for the relative stats values and how the model designers can influence the results.<br>\r\n<br>\r\nIs there some special handling of hit and expertise that needs to be taken into consideration. At present the Enhance module does the usual working out if attacks are dodges/misses and adjusts dps accordingly. However the way Rawr presents the results suggests that hit and expertise are just not at all important. Even very basic theorycrafting proves this is wrong so I am at a loss to know what I've done wrong in the Enhance module. <br>\r\n<br>\r\nAny information or assistance from other module designers would be very gratefully received.<br>\r\n",
+    "PostedDate": "2009-02-27T04:09:18.813-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "162810",
+    "ThreadId": "48720",
+    "Html": "Just taking a snippet from your code so I can ask a clarification question.. <br>\r\n<br>\r\n<code><span style=\"color:#008000\">//1: Melee DPS</span><br>\r\n            <span style=\"color:#0000ff\">float</span> APDPS = attackPower / 14;<br>\r\n            <span style=\"color:#0000ff\">float</span> adjustedMHDPS = wdpsMH + APDPS;<br>\r\n            <span style=\"color:#0000ff\">float</span> adjustedOHDPS = (wdpsOH + APDPS) * .5f;<br>\r\n            <span style=\"color:#0000ff\">float</span> damageMHSwing = adjustedMHDPS * unhastedMHSpeed;<br>\r\n            <span style=\"color:#0000ff\">float</span> damageOHSwing = adjustedOHDPS * unhastedOHSpeed;<br>\r\n        <br>\r\n            <span style=\"color:#0000ff\">float</span> dpsMHMeleeHits = adjustedMHDPS;<br>\r\n            <span style=\"color:#0000ff\">float</span> dpsMHMeleeCrits = adjustedMHDPS * chanceWhiteCrit * critMultiplierMelee;<br>\r\n            <span style=\"color:#0000ff\">float</span> dpsMHMeleeGlances = adjustedMHDPS * glancingRate * .35f;<br>\r\n<br>\r\n            <span style=\"color:#0000ff\">float</span> dpsOHMeleeHits = adjustedOHDPS * weaponMastery;<br>\r\n            <span style=\"color:#0000ff\">float</span> dpsOHMeleeCrits = adjustedOHDPS * chanceWhiteCrit * critMultiplierMelee;<br>\r\n            <span style=\"color:#0000ff\">float</span> dpsOHMeleeGlances = adjustedMHDPS * glancingRate * .35f;<br>\r\n<br>\r\n            <span style=\"color:#0000ff\">float</span> dpsMelee = (dpsMHMeleeHits + dpsMHMeleeCrits + dpsMHMeleeGlances + dpsOHMeleeHits + dpsOHMeleeCrits + dpsOHMeleeGlances) * weaponMastery * (1-damageReduction); </code><br>\r\n<br>\r\ndpsMelee is one factor in your DPSpoints calculation, yet I don't see where hit is applied to any of the smaller dps values.<br>\r\n<br>\r\nI can see where chance to crit is factored in, but I do not see anything that actually includes the hit table itself. From my understanding of the code there, it's &quot;how much dps each mode of hit deals&quot; multiplied by &quot;how often this is going to happen&quot;..  I'm looking a bit deeper as I type this...<br>\r\n<br>\r\nAnd I just don't see it. Maybe I'm not looking deep enough into it and I need clarification; or maybe this is something that was overlooked?\r\n",
+    "PostedDate": "2009-02-27T09:30:39.473-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "162847",
+    "ThreadId": "48720",
+    "Html": "Many many thanks, yup that's it. The perils of taking over someone else's code you take too much on trust. There is nothing in the original code (the quoted bit is all original) that deals with hit/miss. It's blindingly obvious now, the white dps needs to be modified by white hit, the yellow dps by yellow dps rate etc.<br>\r\n<br>\r\nThanks this will make an amazing difference to the accuracy of the model. <br>\r\n<br>\r\nAdditional comments more than welcome I've no doubt there are other DOH!! moments to be discovered.<br>\r\n",
+    "PostedDate": "2009-02-27T11:07:32.24-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "162848",
+    "ThreadId": "48720",
+    "Html": "The Relative Stat Values chart really does show the value of each stat that your model returns. There is one thing you can adjust, and that's the minimum amount of a stat that it will compare (in case there are any weird breakpoints in value, such as caused by multipliers and rounding); in Stats.cs, on each property, there's a [CommonStat(MinRange=20)] attribute, or some similar value. You can set that, to increase the min<div>imum range of a stat that it'll try. However, I don't think hit/exp are rounded, or multiplied, so I doubt anything is wrong there. I'd just check that hit/exp really are having the effect that they should, in your model.</div>",
+    "PostedDate": "2009-02-27T11:08:14.81-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "162926",
+    "ThreadId": "48720",
+    "Html": "That was it there wasn't suffiient variation to trigger the caps so it was over valuing expertise &amp; hit. Expertise is the major one that is stepped. The formula is believed to be in steps of 1 expertise = 0.25% dodge = 8.1974973675 expertise rating.<br>\r\n<br>\r\nI've set the variance to 1% dodge ie: 32.79 expertise rating and it gives dramatically better results. Showing relatively low values for expertise near the cap and high values when well below the cap.<br>\r\n<br>\r\nThe issue with values that can be capped is you have to take into account the likely change in value between one piece of gear and another eg: expertise even a single gem can give 16 expertise so only using 8 doesn't give sufficient room when testing values near the cap. The values are all normalised in that calcs so all you are testing is what should be tested ie: the relative value of the stat. Too small a variance can disappear in white noise in the models.<br>\r\n<br>\r\nSo for base stats typically 10 is best, AP which is double budget is 20, armour is higher and was already 80, health is 10 times stamina ie: typically 100, etc. This then gives more realistic stepping values, and hence should give far more accurate relative stat values, most especially for stats that can be capped. <br>\r\n<br>\r\nHit rating was the worst offender. The calc tested the relative value of adding 1 hit rating, if someone is 1 pt below the cap it would value this quite high. However because it only tested 1 pt variance it would assume 2 pts was worth the same value and 10 pts worth 10 times the value. It was only valuing hit lower if already capped as +1 hit = over cap = zero value. Using a minRange of 10 pts, gives a statisically far more valuable calculation of the worth of hit rating.<br>\r\n<br>\r\nI didn't test it however I would assume that precisely the same is true of defence rating for tanking classes.<br>\r\n",
+    "PostedDate": "2009-02-27T14:28:51.58-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "162959",
+    "ThreadId": "48720",
+    "Html": "Actually, the character sheet lies; Exp <strong>does</strong> work smoothly, not just in full increments. There's the tests to show that on EJ.",
+    "PostedDate": "2009-02-27T16:14:43.167-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "163014",
+    "ThreadId": "48720",
+    "Html": "Are you meaning Expertise or Expertise RATING works smoothly?<br>\r\n<br>\r\nInteresting though as its always been implemented as discrete intervals\r\neverywhere I've seen it done, eg: various class spreadsheets. In fact\r\nstepping through the code in Rawr it works in this fashion too, in that\r\nit returns false from PropertyValueIsContinuous and thus works out a\r\nstepping value of 8.19 ish.<br>\r\n<br>\r\nCan you link the EJ article as most\r\nof the stuff I just read on the EJ site still is adamant that its\r\nstepped. There is SPECULATION that it might not be, but nothing proved\r\nso far that I could see.<br>\r\n",
+    "PostedDate": "2009-02-28T03:31:21.043-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "163126",
+    "ThreadId": "48720",
+    "Html": "Rating. We all thought that Rating translated into Expertise in chunks, because that's what the character sheet says, but it turns out that it lies. There's several threads about it, linked from the last few pages of the &quot;Combat Ratings at 80&quot; thread on EJ.",
+    "PostedDate": "2009-02-28T18:01:13.03-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "163297",
+    "ThreadId": "48720",
+    "Html": "Before I do a blame on the MinRange change that was made recently, I found that suddenly Expertise has such a tiny threat value in my module that it's not showing up on my Relative Stat Values.<div><br></div><div>Will that MinRange setting cause that, or is it my module's own threat calcluations that are causing it not to show? I *know* that when I raise *only* expertise on my character sheet that overall threat increases, so it's definitely a factor.</div><div><br></div><div>Messing with my options pane to overvalue threat doesn't cause expertise to appear either.</div><div><br></div><div>Am I missing something, either an error in my code, or something forcing it to appear?</div><div><br></div><div>edit - I did an svn update and recompiled my code, and expertise showed up again. I suppose that the MinRange actually *helped* and the problem was either nonexistent or on my end.</div>",
+    "PostedDate": "2009-03-01T16:40:01.597-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "163323",
+    "ThreadId": "48720",
+    "Html": "I'm undoing all those MinRange changes; those shouldn't be there. The MinRange argument is only to be used for stats which have multiple effects, which are not all smooth.",
+    "PostedDate": "2009-03-01T19:32:17.097-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "163443",
+    "ThreadId": "48720",
+    "Html": "I seriously believe that to be a mistake Astrylian. Incrementing stats by a solitary stat point and then assuming that the dps/threat/healing effect of that single stat point change will be correct when you add yet more of it is not statistically valid. You need a large enough step to accurately weigh the value of the stat, whilst not too large that it is unrealistically dominating the other stats. For many other models a base stat point increment of 10 stats has been shown to be statistically satisfactory.<br>\r\n<br>\r\nThis problem is accute when dealing with capped values such as hit, expertise, defence etc. Where the effect of adding a solitary point might be quite a large dps increase as its that last point before the cap, however the effect of adding ANY more is zero. Adding a statistically more realistic value eg: 4 instead of 1 expertise, you see the effect of going over the cap in that it would give a positive value for expertise but worth 1/4 of what the 1 pt calc suggests. This is far far more accurate statistically. A solitary stat point is just not a statistically valid addition. The alternative is change the upperChangePoint from 1 to 10 in the Calculations GetRelativeStatValue()<br>\r\n<br>\r\nWith the reverting of those changes that Solieu acknowledged actually <strong>helped</strong> his model you have made that small part of Rawr a whole lot less accurate.<br>\r\n<br>\r\n<br>\r\nPS. Even if you are not convinced that I am right about the statistics, can you at least allow CritRating and HitRating to have a minimum value as both of these affect Melee AND spells and thus have the multiple effect you mention. This is very important for hybrid classes.<br>\r\n",
+    "PostedDate": "2009-03-02T03:14:20.39-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "163516",
+    "ThreadId": "48720",
+    "Html": "Are you assuming that leaving off the MinRange means that it measures the difference over a single stat point? Because that's wrong.<div><br></div><div>I'd be happy to discuss the change with Solieu, and expect that it was a coincidence.<br><div><br></div><div>And Hit/CritRating don't need the MinRange, because while they have multiple effects, they're all smooth.</div></div>",
+    "PostedDate": "2009-03-02T09:06:51.143-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "163523",
+    "ThreadId": "48720",
+    "Html": "Ah ok good good. I was basing my assumptions on having stepped line by line through the code on executing Relative Stats Values. I had seen CalculationEnhance executed with a base value and storing that in charCalcsBase then executed again with each stat in turn checking for RelevantStats and then calling Calculations.Instance.GetCharacterCalculations(character, item); Where item was an Item with a single point stat value eg: 1 CritRating. <br>\r\n<br>\r\nSo my apologies for misunderstanding I must have missed where it does the calculation with more than adding a single stat point. I've not fully come to terms with how the base model is constructed so forgive me please when I get it wrong.<br>\r\n<br>\r\nCan you point me to the code where it measures the difference over more than a single stat point as this might help my understanding of where I am going wrong.<br>\r\n<br>\r\nMy current issue is that periodically Intellect is being massively overvalued. I've isolated a special condition where I can reproduce the issue, strangely if I add an Agility Scroll buff suddenly Int jumps from 0.35 to 0.8 relative stats value for no adequately explored reason so there must be some very bugged calculation in my code. I've run out of time today to find out why so that is my project for tomorrow. I had been assuming I was needed to work through the code in Calculations.cs in the &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>\r\n<br>\r\npublic static ComparisonCalculationBase GetRelativeStatValue(Character character, PropertyInfo property) <br>\r\n<br>\r\nfunction which is the one I was stepping through that only uses single stat point values added to base to determine relative stats values. This certainly seems to be the case for smooth values but I must have missed something as ...<br>\r\n<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CharacterCalculationsBase charCalcsBase = Calculations.GetCharacterCalculations(character);<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; float basePoints = charCalcsBase.OverallPoints;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong> float upperChangePoint = 1.0f;</strong><br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; float lowerChangePoint = 0.0f;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (!PropertyValueIsContinuous(character, basePoints, property, item, resolution))<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; upperChangePoint = GetStatValueUpperChangePoint(character, basePoints, property, item, minRange + resolution, minRange + 10.0f, resolution);<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lowerChangePoint = GetStatValueLowerChangePoint(character, basePoints, property, item, -minRange - 10.0f, -minRange, resolution);<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; float <strong>changePointDifference </strong>= upperChangePoint - lowerChangePoint;<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Get new overall points with the [upperChangePoint] improvement<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>property.SetValue(item.Stats, upperChangePoint, null);</strong><br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; item.InvalidateCachedData();<br>\r\n&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;CharacterCalculationsBase charCalcsUpper = Calculations.Instance.GetCharacterCalculations(character, <strong>item</strong>);<br>\r\n&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;// Get new overall points with the [lowerChangePoint] improvement<br>\r\n&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;property.SetValue(item.Stats, lowerChangePoint, null);<br>\r\n&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;item.InvalidateCachedData();<br>\r\n&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;CharacterCalculationsBase charCalcsLower = Calculations.Instance.GetCharacterCalculations(character, item);<br>\r\n&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; // Create new CCB, populate, and return it.<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ccb = Calculations.CreateNewComparisonCalculation();<br>\r\n&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;ccb.Name = Extensions.DisplayName(property);<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; transfer OverallPoints<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ccb.OverallPoints = (charCalcsUpper.OverallPoints - charCalcsLower.OverallPoints) / <strong>changePointDifference</strong>;<br>\r\n<br>\r\nseems to get base values, then get upper values with a change value of 1 for the property in question, then get min values with a change of zero. The changePointDifference is always 1 for the smooth values that don't have a minRange. So I am really confused when you say it doesn't measure the difference over a single stat point as I can't see what I am missing.<br>\r\n<br>\r\nPlease understand I am not wanting to argue, I am purely struggling to understand how the base code works. I very much respect the way the model works at present so please treat my questions as a genuine attempt to get to grips with the code, and not in any way shape or form a critisim.<br>\r\n",
+    "PostedDate": "2009-03-02T09:53:56.59-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "163534",
+    "ThreadId": "48720",
+    "Html": "For smoothly valued stats, MinRange does not apply; it's not used at all, the range of [0,1] is used (note that minRange is never used, except inside the if(!PropertyValueIsContinuous()) block). For stats with steps in value, GetStatValueUpperChangePoint() and GetStatValueLowerChangePoint() find the points within that range, at which the stats increase the value of the character, and uses those.<div><br></div><div>For your example with Int, it sounds like a problem with how you're rounding/using Int. Make sure that the final Int total is rounded, and that rounded value is used for calculating AP, crit, and mana contribution from Int. Let me know if that still doesn't work out; a MinRange very well may be appropriate for Int, due to the many different benefits that it gives.</div>",
+    "PostedDate": "2009-03-02T10:27:23.027-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "163942",
+    "ThreadId": "48720",
+    "Html": "Following MSN discussions with Astrylian where he very helpfully explained the methodolgy of the stepping calcs. I better understand how it all works. The problem turned out to be Int contributing to AP at a rate of 1 Int = 1.0x AP (x being Ancestral Knowledge talent) and also contributing to Spellpower (due to Mental Quickness talent) at a different stepping rate of 1 Int = 0.3 Spellpower. Two discreet steps are involved and hence the problem.<br>\r\n<br>\r\nThanks again Astrylian for your time taken to explain all this, it is very much appreciated and I'd like to publically record my thanks.<br>\r\n",
+    "PostedDate": "2009-03-03T09:24:06.063-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "164358",
+    "ThreadId": "48720",
+    "Html": "If you don't mind, I'd like to know what the end result of the discussions was.&nbsp; I have the exact same issue in Rawr.Moonkin and would love to get it fixed.<br>\r\n",
+    "PostedDate": "2009-03-04T08:15:44.683-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "164382",
+    "ThreadId": "48720",
+    "Html": "Astrylian explained that the calculation works by taking a stat value and adding a small amount to see if there is a step involved. eg: With Blessing of Kings active (10% bonus) if you have 8 Int and multiply you get 8.8 which is rounded down to 8, ie: 1 int gives zero int change. if you have 9 you get 9.9 again 9 = zero int change but if you have 10 you get 11 so 1 int gives 1 int. ie: from 8 +1 int gives result +1 int +2 int gives result +3 int so there is a step. The code quite happily works this out and you need do nothing.<br>\r\n<br>\r\nHowever if you have two different steps from the same stat you need to have a minRange to spread the average a bit more. <br>\r\n<br>\r\nNow with Int for Enh Shaman, you get +1.x AP from Int where x is the value of Ancestral Knowledge talent (1 talent = 2% Int) so +1 Int gives upto +1.1 AP. with 5/5 in the talent. This is fine, however there is another talent that gives 0.3 Spellpower per 1 AP. So 1 Int gives up to +1.1 AP and +0.33 Spellpower. Note that these will step up to the next integer at different times so as you have two different steps from the same base stat you need the minRange value set to compensate.<br>\r\n<br>\r\nIf you can work out what stat is stepping in a strange fashion and work out what is contributing to it, you can see if your model needs adjustment or you need a fix similar to my one.<br>\r\n",
+    "PostedDate": "2009-03-04T09:02:18.563-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

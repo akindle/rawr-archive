@@ -1,0 +1,116 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.LoadCharacter",
+      "DisplayName": "Rawr.Base.LoadCharacter"
+    },
+    "ClosedComment": "Rawr 4.1.02 Released",
+    "ClosedDate": "2011-04-03T22:24:24.107-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "EDIT2: The 'intellect' issue is that while for the ring with the random stats + reforge an intellect enchant for enchanters was imported, it was not marked as available. It was for the other ring.\nEDIT: A main problem I discovered is via addon importation the glyphs were not transferred at all into the software.\n \nThe new addon still produces incorrect behavior. I do not know the exact  problem but here is what happens:\n \n- On Optimize there is a vague warning \"Intellect is not available\"\n- The Dps number appears different between rawr addon and battle.net input\n \nI have included the rawr addon output.",
+    "LastUpdatedDate": "2013-05-16T05:18:21.867-07:00",
+    "PlannedForRelease": "Rawr 4.1.01",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-03-30T02:43:38.53-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[LoadCharacter] Still issues with rawr addon and reforged random stats items",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 20358
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4773,
+      "FileName": "Rawr addon output.txt",
+      "DownloadUrl": ".\\4773"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Optimizer warnings are totally separate from the addon output. The warning shouldn't in any way be vague, it literally tells you exactly what you haven't marked available. \"Intellect\" is most likely an enchant on one of your items that you didn't mark with a Green Diamond.\r\n\r\nThe DPS Numbers being different when loading in from the Addon vs Loading in from Battle.Net Armory will most likely be due to the Addon having so much more data to work with on marking things rather than the limited data we get from Battle.Net. Unless you can tell me more specific numbers that you see are different, like Haste Rating count off or something, we can't help you with what you've provided.",
+      "PostedDate": "2011-03-30T09:39:36.43-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-30T09:39:57.227-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I don't understand your issues with the suggested lack of information here [or even an error on the part of the user]. The rawr output is here verbatim; the character from battle.net imported produces different Dps. It is by definition incorrect behavior since the user does not alter any other settings but imports on a new raw clean state of the software with default settings.",
+      "PostedDate": "2011-03-30T11:14:51.633-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I found the problem. The glyphs were not transfered at all or they were transferred empty. By putting them manually after the addon importation, it reported exactly same Dps.",
+      "PostedDate": "2011-03-30T11:28:34.057-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-30T11:36:13.83-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I found the 2nd issue. The intellect enchant from enchanting on the ring that had the random stats + reforged was imported but it had no 'available' status (green).",
+      "PostedDate": "2011-03-30T11:41:15.62-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-30T11:42:27.62-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Since this is two issues:\r\n1. Intellect Ring enchant not properly marked. The first ring would mark it and the second would unmark it since it was a straight toggle. Changed it to check and see if its already marked before issuing a second toggle.\r\n2. Shaz is updating the Glyphs file now with the other classes glyph ID's so that they will import properly. Warrior was the only one that had them.",
+      "PostedDate": "2011-03-31T12:34:09.97-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 59230.",
+      "PostedDate": "2011-03-31T13:27:23.65-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 59233.",
+      "PostedDate": "2011-03-31T15:44:29.717-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-31T15:44:51.18-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-03T22:24:24.107-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:25:30.78-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:21.867-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

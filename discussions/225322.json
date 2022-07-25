@@ -1,0 +1,162 @@
+[
+  {
+    "Id": "486529",
+    "ThreadId": "225322",
+    "Html": "<p>Hey, So I keep writing, and then loosing/deleting this ask for feedback post, so I'm just going to do it.</p>\r\n<p><br>Is there anything in one DK model that you'd like to see brought into the other?&nbsp; I'm working on writing up a Rawr.DKCommon model that will do alot of the similar work between the 2 models to help with consistency and reduce the amount of C&amp;P code I'm generating.&nbsp; I've been finding that as I see something that I fixed in Tank crop up in DPS, and vice versa, but maybe there are key features that I don't even think of as being useful across the 2, or just a way one model works compared to the other?&nbsp; Let me know.</p>\r\n<p>Are there any ideas/pitfalls from fellow Devs that might want to keep aware of?</p>",
+    "PostedDate": "2010-08-30T10:59:41.82-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "486530",
+    "ThreadId": "225322",
+    "Html": "<p>If Rawr.DKCommon is just a back end thing, with TankDK and DPSDK remaining separate to the end user then great, it's just shared code.</p>",
+    "PostedDate": "2010-08-30T11:01:20.683-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "486531",
+    "ThreadId": "225322",
+    "Html": "<p>yup... that's the plan.&nbsp; No need to have any new front-end.&nbsp; It's just shared code.</p>",
+    "PostedDate": "2010-08-30T11:02:15.167-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "487056",
+    "ThreadId": "225322",
+    "Html": "<p>I'd like to see the Rotation editor brought back to DPS.&nbsp; The auto-rotation thing that BloodySorc developed didn't seem to be finished...(at least, I still can't find where it supposed to be showing the rotation it would have me use).</p>\r\n<p>Also, having the DPS value from DPS added to Tank would be cool too.&nbsp; I've been experimenting with using Tank to create a profile that mixes my DPS and Tank gear together, so that I max my DPS while maintaining the Def and Hit caps.&nbsp; With the profile I've created, using Threat as the overall value to shoot for, I've added 1.5k DPS to my values.&nbsp; It's like having 4 DPS and 1 healer when I run heroics now :D&nbsp;&nbsp; If the Tank module could 'learn' how to shoot for DPS and understand the DPS value of Crit/Haste/AttPwr/etc, could see those numbers go higher?</p>",
+    "PostedDate": "2010-08-31T08:49:35.913-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "487062",
+    "ThreadId": "225322",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>luckton wrote:</strong><br>\r\n<p>I'd like to see the Rotation editor brought back to DPS.&nbsp; The auto-rotation thing that BloodySorc developed didn't seem to be finished...(at least, I still can't find where it supposed to be showing the rotation it would have me use).</p>\r\n<p>Also, having the DPS value from DPS added to Tank would be cool too.&nbsp; I've been experimenting with using Tank to create a profile that mixes my DPS and Tank gear together, so that I max my DPS while maintaining the Def and Hit caps.&nbsp; With the profile I've created, using Threat as the overall value to shoot for, I've added 1.5k DPS to my values.&nbsp; It's like having 4 DPS and 1 healer when I run heroics now :D&nbsp;&nbsp; If the Tank module could 'learn' how to shoot for DPS and understand the DPS value of Crit/Haste/AttPwr/etc, could see those numbers go higher?</p>\r\n</blockquote>\r\n<p>The rotation is under the hood and yeah, there isn't a reasonable UI for it at this point.&nbsp; That's going to be part of the merge is a single rotation engine/model that will just have constraints.</p>\r\n<p>Re: DPS value:&nbsp; Would you like to see DPS be a subvalue of Threat or it's own value? Meaning if current overall = 100k (with threat as 10k subvalue), should the overall after this change be 100k as well, or should I make DPS value be additional, so your overall may be 103k with a 10k threat and 3k DPS.&nbsp; Note these numbers are purely for example purposes and not to signify any real situation.</p>",
+    "PostedDate": "2010-08-31T09:01:46.107-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "487093",
+    "ThreadId": "225322",
+    "Html": "<p>That's such an extreme corner case that it's just diluting/confusing the program for the vast vast majority of users. Please don't add DPS as a rating to TankDK; add it as an optimizable value instead.</p>",
+    "PostedDate": "2010-08-31T10:36:39.087-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "487169",
+    "ThreadId": "225322",
+    "Html": "<p>no problemo.&nbsp; I can just make it an option in the Optimizer and provide a UI entry w/o a valuation on the bars.</p>",
+    "PostedDate": "2010-08-31T12:54:09.803-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "487195",
+    "ThreadId": "225322",
+    "Html": "<p>An&nbsp;Optimizable&nbsp;stat works fine. &nbsp;Another request then, since it sounds&nbsp;feasible&nbsp;based on what your doing with merging the two modules, how about adding a Resilience value that's Optimizable as well for PvP measures as well? &nbsp;Wouldn't be program-breaking and throw PvE stats off...it would just be there for usage to maintain, say, 900 Resil, along with maxing DPS.</p>\r\n<p>And if that works, Spell Penetration would be nice too...but maybe I'm getting out of focus :P</p>",
+    "PostedDate": "2010-08-31T13:37:52.07-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "487199",
+    "ThreadId": "225322",
+    "Html": "<p>Just to be clear, I'm not merging the 2 modules, just making an area of common overlap be also common in code.&nbsp; The goal of the 2 models will still be separate: DPS vs. Tanking.&nbsp;</p>\r\n<p>Also remember that Rawr is for PvE optimization so while I can add resilience to the optimizer list, all the calculations are done expecting PvE situations.&nbsp; Boss kills and the like.&nbsp; Resilience is currently accepted by the Tank module to reduce crit chance and that's it.&nbsp;&nbsp; Everything else that resilience provides in a PvP fight does nothing for a PvE encounter so I'm not doing any of that work. Spell Pen is similar.&nbsp; It's just out of scope for Rawr.</p>",
+    "PostedDate": "2010-08-31T13:43:51.503-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "487226",
+    "ThreadId": "225322",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Shazear wrote:</strong><br>\r\n<p>Just to be clear, I'm not merging the 2 modules, just making an area of common overlap be also common in code.&nbsp; The goal of the 2 models will still be separate: DPS vs. Tanking.&nbsp;</p>\r\n<p>Also remember that Rawr is for PvE optimization so while I can add resilience to the optimizer list, all the calculations are done expecting PvE situations.&nbsp; Boss kills and the like.&nbsp; Resilience is currently accepted by the Tank module to reduce crit chance and that's it.&nbsp;&nbsp; Everything else that resilience provides in a PvP fight does nothing for a PvE encounter so I'm not doing any of that work. Spell Pen is similar.&nbsp; It's just out of scope for Rawr.</p>\r\n</blockquote>\r\n<p>Oh I understand completely...believe me, I've seen plenty of posts and ideas shot down here to know that Rawr is all about PvE.&nbsp; :).&nbsp; That said though, Resilience is, as you said, already in.&nbsp; I don't need Rawr to tell me how much less damage I'm going to take or less chance to be critted by other players, or even optimize to max it out...I care about meeting a certain Resilience rating and then working in the other stats, by telling the Optimizer to, say, have &gt;= 900 Resil.&nbsp; Totally do not care how Resil impacts PvE, just want it as an Optimizable stat, like DPS above.&nbsp; Such a feature would add some value to those players that know how to work it, and would be something that no other app I can think of currently offers.&nbsp; Certainly better to just use an app like Rawr to say &quot;This is all the gear I have avail, this is the Hit or Resil or Expertise rating I'm trying to reach, and max out my potential DPS while you're at it&quot; than having to break out my calculator, pen and stick figures to find the right combo of gear I need to succeed.</p>\r\n<p>As for Spell Pen, copy and replace the above paragraph.&nbsp;</p>",
+    "PostedDate": "2010-08-31T14:34:09.627-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "487227",
+    "ThreadId": "225322",
+    "Html": "<p>Fair enough.&nbsp; I'll see about getting those worked in.</p>",
+    "PostedDate": "2010-08-31T14:37:04.757-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "487426",
+    "ThreadId": "225322",
+    "Html": "<p>Have you thought this through with cata in mind ?<br><br>On live now, (for as far as I understand things, I don't have a DK myself), a DK can pretty much DPS and tank in any of his 3 trees. Not all 3 trees are going to work equally well for either tanking or dpsing, but I know I've seen all 3 trees tank and dps at some point in time.<br><br>In Cata there's only going to be a single tank tree (blood).&nbsp; With the other 2 being DPS exclusively.&nbsp; Tanking in unholy/frost, will be the equivalent of a ret pala or fury/arms warrior trying to tank.&nbsp; And a blood DK trying to dps will be like a prot pala/warrior/bear trying to dps.&nbsp;&nbsp;(=it's possible, but not really recommended).</p>\r\n<p>While some talents will overlap (the very early ones in each tree), I do believe the plan for cata is to have all 3 specs have a much more specific rotation to their tree, the changes to the rune system is part of the foundation work to make this happen.</p>\r\n<p>In the same way as there is a small amount of overlap in HolyPala/ProtPala/RetPala, there could be made&nbsp;a 'PalaCommon', but imo it's just not worth it for paladins.&nbsp; It may seem interesting for DK 'now'.&nbsp; But it it's still going to be interesting for cata?</p>",
+    "PostedDate": "2010-09-01T01:16:38.397-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "487678",
+    "ThreadId": "225322",
+    "Html": "<p>At this point I'm looking at Talents, most relevant stats, and combat/ability models as having significant overlap.&nbsp; Esp in Cata with the change in the way runes and RP are being tweaked I don't want to have to write it up twice. Yes, the talent trees will be more split, but unlike bear or Prot warrior that have very specific set of abilities for tanking vs. dps, I believe the overlap is much more viable in DK.</p>",
+    "PostedDate": "2010-09-01T08:52:08.577-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "490601",
+    "ThreadId": "225322",
+    "Html": "<p>Hi, i whould also like to see some improvments to the ability rotation or priority for the DK, im currently using 2.3.5 for my DK just to be able to get my abilities right.</p>\r\n<p>My suggestion is to make an option for the user to either use an rotation or an priority system. personally id like the priority.</p>\r\n<p>i have been looking how the other classes handle their abilities, and i think the warlock module has the best priority system, you have all abilities in a list, you select the ones you want to use and you place them in order in a simple way.</p>\r\n<p>&nbsp;</p>\r\n<p>Edit: Whould be nice if all classes had a similar ability managment options.</p>",
+    "PostedDate": "2010-09-08T04:20:16.647-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "491038",
+    "ThreadId": "225322",
+    "Html": "<p>Mizzajil, that's not either doable or recommended for all classes. &nbsp;For instance, not all classes have a simple &quot;Use ability A over B over C, rinse repeat&quot; priority system. &nbsp;Using a priority system where a rotation or a more unintuitive system is optimal would degrade your performance. &nbsp;And we only care about optimizing play.</p>",
+    "PostedDate": "2010-09-08T21:26:41.773-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "491163",
+    "ThreadId": "225322",
+    "Html": "<p>All classes have a priority of abilities as far as i know, but sure its not simple, many abilities have plenty of conditions they must meet before they have a priority over other abilities. and the DK is a tricky class because they have 4 diffrent resources (3 diffrent runes + runic power) not counting death runes, and must also keep track of diseases, i dont know how rawr handles the DK now since it is automatic.</p>\r\n<p>But for other classes, take warlock and hunter for example, both classes works similary, but the rawr modules for configuring abilities look completly diffrent, you could probably save alot of code if they had the same ui for configuring priorities just that they have their own diffrent abilities.</p>\r\n<p>im sorry this is not the right place to discuss the other classes, but i think the DK modules whould benefit from having similar priority configuration as warlock, and i think many other classes will benefit aswell, and you might end up saving alot of code.</p>",
+    "PostedDate": "2010-09-09T03:33:56.503-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "491267",
+    "ThreadId": "225322",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>mizzajl wrote:</strong><br>\r\n<p>All classes have a priority of abilities as far as i know, but sure its not simple, many abilities have plenty of conditions they must meet before they have a priority over other abilities. and the DK is a tricky class because they have 4 diffrent resources (3 diffrent runes + runic power) not counting death runes, and must also keep track of diseases, i dont know how rawr handles the DK now since it is automatic.</p>\r\n<p>But for other classes, take warlock and hunter for example, both classes works similary, but the rawr modules for configuring abilities look completly diffrent, you could probably save alot of code if they had the same ui for configuring priorities just that they have their own diffrent abilities.</p>\r\n<p>im sorry this is not the right place to discuss the other classes, but i think the DK modules whould benefit from having similar priority configuration as warlock, and i think many other classes will benefit aswell, and you might end up saving alot of code.</p>\r\n</blockquote>\r\n<p>In DK theorycrafting, I can understand the usage of a priority system when it comes to Frost DKs,as their dependent on Rime/Killing Machine procs for their damage, and depending on when they get the procs, what diseases are up on the target, and what runes you have available, plus whether you proc Rime or KM or both, determines what you respond with. &nbsp;Such is outlined in Darkside's Frost DPS thread and visualized here:&nbsp;<a href=\"http://elitistjerks.com/attachments/f72/a7729d1263631402-frost_dps_3_3_3_will_day_long_remembered/frost_priority.jpg\">http://elitistjerks.com/attachments/f72/a7729d1263631402-frost_dps_3_3_3_will_day_long_remembered/frost_priority.jpg</a></p>\r\n<p>However, under no other circumstances are DKs bound to a priority system. &nbsp;The abilities are fired off in a sequence that compliments the appropriate spec for either DPS or tanking, and they aren't that&nbsp;dissimilar, with Blood using Death Strike and Heart Strike and Unholy using Scourge Strike and Heart Strike. &nbsp;The sequence is also set so that by the time the diseases set off from the sequence are ready to be refreshed, the sequence is also ready for a repeat. &nbsp;The sequence is also set because of the limitations that the current Rune System gives us, and is set to exploit that system as best as possible. &nbsp;This isn't going to change that much in Cata, aside from GC's promise that we're going to have more time for 'fun stuff', which has yet to proliferate in the beta.</p>\r\n<p>As for other classes, Ret/Prot Paladins currently use a First Come, First Serve system (AKA the Facerolling&nbsp;Maneuver), but that's changing as well to fall in line with all other classes, which again, use a rotation based way of using their abilities. &nbsp;The 'priority' for other classes may change based on the encounter, in that they may fire off something else first, but their's still pretty much a set sequence. &nbsp;Other classes just get to change up their rotation more freely because they're not bound to the limited resources that DKs do. &nbsp;As long as they've got mana, they're free to do what they want, but to max out DPS by exploiting their talents and secondary effects brought on by the skills they use, a rotation/sequence of those abilities must be used.</p>",
+    "PostedDate": "2010-09-09T07:25:07.43-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "491326",
+    "ThreadId": "225322",
+    "Html": "<p>To be honest, I would say that no model should have the ability to select your rotation. Instead the tool should tell <strong>you</strong> the optimal rotation. Unfortunately, most models don't have that artificial intelligence factor for being able to figure that out, or if they do, it adds considerable time to the calculations when it's active. The DK's are a good example of this.</p>\r\n<p>As luckton pointed out, the models vary so much in how their rotations/priorities work there's no way we could just say 'everyone use this method only' without shooting ourselves in the foot.</p>",
+    "PostedDate": "2010-09-09T09:28:14.777-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "491327",
+    "ThreadId": "225322",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Jothay wrote:</strong><br>\r\n<p>To be honest, I would say that no model should have the ability to select your rotation. Instead the tool should tell <strong>you</strong> the optimal rotation. Unfortunately, most models don't have that artificial intelligence factor for being able to figure that out, or if they do, it adds considerable time to the calculations when it's active. The DK's are a good example of this.</p>\r\n<p>As luckton pointed out, the models vary so much in how their rotations/priorities work there's no way we could just say 'everyone use this method only' without shooting ourselves in the foot.</p>\r\n</blockquote>\r\n<p>I would disagree with your first premise.&nbsp; On live, it's easy to figure out what the optimal moonkin rotation SHOULD be, but I got a number of requests from people wanting to select a rotation for comparison purposes based on other parameters that can't or shouldn't be in the model.</p>",
+    "PostedDate": "2010-09-09T09:36:50.703-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "491332",
+    "ThreadId": "225322",
+    "Html": "<p>Sorry, perhaps I should have clarified. As a 'default', no model should have that ability, it should just go with what it determines is optimal. After that, with warnings of ease of fubar'ing, the user can turn on customized rotation creators. For instance, in DPSWarr, all the primary abilities are on by default and you can turn on maintenance stuff like Battle Shout, or turn off AoE abilities (for restrictive fights) like Bladestorm. But in DPSWarr, those changes are fairly static, because the Priority pretty much never changes (just goes on/off per ability) and we don't have the problem with Cast Timers being changed by Haste etc like the Caster classes do.</p>\r\n<p>Now, rereading what I said above and in the prior post, I confused myself :( Sorry</p>",
+    "PostedDate": "2010-09-09T09:49:57.59-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

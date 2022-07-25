@@ -1,0 +1,116 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.TankDK",
+      "DisplayName": "Rawr.TankDK"
+    },
+    "ClosedComment": "I think this is just one of those SOL type defects.  I don&#39;t think there&#39;s anything that can be done to fix this.  So, just going to close it.",
+    "ClosedDate": "2010-06-15T14:37:52.423-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "In the latest release of Rawr, items in drop down displays for enchants and items on the character paper doll are not always visible, or will disappear on mouse-over. Specifically in the TankDK module, tested and not seen in the Mage or Healadin modules.\n \nExperienced on Vista Ultimate x64, Radeon 3870 using Catalyst 9.11s.",
+    "LastUpdatedDate": "2017-11-27T11:04:32.817-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-12-29T13:49:20.543-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[TankDK] Drop Down Displays Not Showing Properly",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15641
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2693,
+      "FileName": "devwar-dk-tank.xml",
+      "DownloadUrl": ".\\2693"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Hmmm... not sure how this is a TankDK specific issue, but I'll look into it since I haven't seen it in my testing.\r\nPlease provide your Character XML to help repro.",
+      "PostedDate": "2009-12-29T13:52:02.52-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-29T13:52:25.853-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Character file attached. I believe I found the issue. When setting the Main Graph Type to Burst/Reaction, the problem appears. when setting to Default, the problem does not occur.",
+      "PostedDate": "2009-12-29T13:54:55.653-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-29T13:55:01.64-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Oh... good catch if it really is the graph type that's causing the problem.\r\n",
+      "PostedDate": "2009-12-29T14:21:15.067-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yeup... totally reproducible.  It's like the drop down list is showing up behind the background, or the highlighter is turning it white or something.  Since mousing over the drop-down list does show data, and when scrolling the list, most things are drawing at least part of each entry, but once I mouse over them, they are covered up again.",
+      "PostedDate": "2009-12-29T14:26:06.587-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Trying to do more research on this, and I'm at a loss for the code that's actually causing the lack of items being drawn.\r\nI break in on code that fires when the item button is clicked, and followed it down and back up.  Not sure why on the first click of any item, we see this issue, but subsequent clicks on that same item in a row will draw everything correctly.  \r\n\r\nSo a work-around I suggest is to click twice on a button when in this mode.",
+      "PostedDate": "2010-02-04T15:45:02.407-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-06-15T14:37:52.423-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:43:43.147-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:40:45.093-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:39:00.11-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:30:58.66-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:42.74-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:04:32.817-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

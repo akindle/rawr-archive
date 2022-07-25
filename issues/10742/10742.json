@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-08T06:51:33.587-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I get the following error when I try to load up Rawr on my workplace machine:\n \n\"Rawr.exe - Application Error\nThe application failed to initialize properly (0xc0000135). Click on OK to terminate the application.\"\n \nI am running Windows XP Pro SP2 on a machine with an Intel Celeron 1.8 Ghz CPU and 512MB of memory. I do not experience this at home on my XP machine running a Core2Duo w/close to 3 GB of RAM. When I check my Event Viewer and get details on the error, it provides me with the following:\n \n\"Product: Windows Operating System \nID: 26 \nSource: Application Popup \nVersion: 5.0 \nSymbolic Name: status_log_hard_error \nMessage: Unable to Load Device Driver : device driver could not be loaded. \n    \nExplanation \nThe program could not load a driver because the program user doesn't have sufficient privileges to access the driver or because the drive is missing or corrupt.\n \n    \nUser Action \nTo correct this problem:\n \nReinstall the program to restore the driver to the correct location.\"\n \nWhat drivers could Rawr possibly need? I have integrated video and audio solutions, but nothing fancy as this a self-made barebones workstation at my office. I have tried compatibility modes, but I am otherwise at a loss.",
+    "LastUpdatedDate": "2013-05-16T05:27:08.34-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-07-23T10:47:44.437-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] Launch Error 0xC0000135",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 10742
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Nevermind, I'm a bit of a goof. I forgot that this machine was loaded completely clean, and as such did not have .NET Framework updated. Sorry!\r\n\r\nThat said, could a graceful error be added to the beginning in a future release that notifies someone they need to update/install the proper version? Might save some redundancy.\r\n\r\nI'm going to go RTFM now.",
+      "PostedDate": "2008-07-23T10:57:05.83-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Nope, actually. None of Rawr's code gets run because it needs the .NET Framework to even start running Rawr. So there's no way I can pop a nice error message; Windows just basically says, \"wtf? I don't know how to run this kind of program. BLECH!\"",
+      "PostedDate": "2008-07-23T13:28:40.117-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-08T06:51:33.587-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:51:41.47-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:33:04.973-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:15.273-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:41.413-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:27:08.34-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

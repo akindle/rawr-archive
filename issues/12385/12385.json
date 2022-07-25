@@ -1,0 +1,105 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Mage",
+      "DisplayName": "Rawr.Mage"
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-09T17:28:55.607-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I'm concerned that some of the proposed AB / ABar / MBAM related spell rotations may not actually be feasible.  Consider the ones where you can get a Missile Barrage proc during the sequence and are supposed to switch to casting AM.  First of all, because the sequences often run AB => ABar, there is 0 time between the normal cast and instant cast spell to make decisions.  Second, you actually have \"negative time\" to decide since often the notification of the MB proc occurs noticeably after the the spell completes due to server processing + lag.\n \nThe net result being that rotations that read like:  AB-Abar => MBAM if MB proc   WILL only occur after the completely of the Abar which may be significantly less dps since you have used up the AB debuff bonus on the Abar spell.\n \nAsk:  Please go through the various AB rotations, remove any that cannot really be executed and clarify the point in time where you switch to the alternate cycle to process the missile barrage.",
+    "LastUpdatedDate": "2017-11-27T11:01:44.067-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-01-15T12:46:54.583-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Mage] Rotations",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 12385
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I'm 90% sure that all of those rotations are possible; it's standard that they say to MB after noticing the Proc. Kavan can confirm, but I believe it assumes you always cast at least 1 more spell after MB procs before AMing.",
+      "PostedDate": "2009-01-15T13:02:04.647-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "All the rotations are possible. Modeling specifially distinguishes between proc being up and not being aware of it and proc being up and seeing it. In general if AB procs it you can't react immediately until after next spell, but can react to ABar proccing it since it is instant. You can check http://elitistjerks.com/1040247-post22.html for modeling details.\r\n\r\nIf you mouse over the spell in the spell info you should get a description how to handle procs. If some of them are unclear let me know and I'll try to be more explicit.",
+      "PostedDate": "2009-01-15T14:54:33.53-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I think some but NOT all of the tooltips for the rotations specify the main and secondary rotation.   Perhaps we need a clear shorthand/language to decribe the rotations and when you switch from primary to secondary.  \r\n\r\nI would be fine with this if ALL of them were 'discrete' sequences that just alternated, but I get the feeling that's not what you mean.   For example, if the primary rotation is \"AB,AB,AB,ABar\", and the secondary rotation is \"AM,AB,ABar\" does each sequence fully complete through ABar and you only choose the secondary sequence if Missile Barrage is up when the sequence is complete.... OR do make the call on going to the secondary sequence after the 2nd AB spell AND the ABar spell in the primary rotation?  The difference is subtle and very important in terms of both DPS and building appropriate macros.",
+      "PostedDate": "2009-01-19T16:22:57.127-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yes the differences are subtle and very important. The ultimate answer can be given by a state graph and spell selection logic in each state and I'm having really hard time trying to transfer that into a representative name that would quickly identify the cycle. It is very rare that there would be two different rotations in the same cycle, usually you have one primary rotation and then a rule that says how you react when the proc happens.\r\n\r\nI'm not sure which spell cycle you're talking about, can you tell me the name that is used in Rawr?\r\n\r\nFor example if you look at AB3ABarC, the tooltip says AB-AB-AB-ABar, on MB proc do MBAM-ABar at 3 stack. This means that you normally do AB-AB-AB-ABar and when you get a proc you replace ABar in the cycle with MBAM-ABar, you don't do MBAM-ABar as soon as you see the combo, but finish up the ramping to 3 stacks of AB before doing it.",
+      "PostedDate": "2009-01-19T16:42:15.16-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "One other reason to solve this \"representative name\" or spell rotation languge problem is that it would allow/simplify creating new rotations in Rawr.  Right now, the custom spell cycle UI doesnt seem to have any notion of these sorts of complex cycles.",
+      "PostedDate": "2009-01-26T17:16:20.583-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Right now I have no intention of extending the custom cycle feature. You can already enter a dynamic cycle if you know the spell distributions, but computing them from procedural description is not that simple.\r\n\r\nThere really is no easy solution to find a representative name for the cycles. There are over million possible theoretical arcane cycles (a bit less if you're looking at just distinct spell distributions) and finding a naming system that names each of them in distinct way is not exactly feasible.\r\n\r\nMaybe I don't understand exactly what you're proposing so if you can expand on that I might be able to give a better answer.",
+      "PostedDate": "2009-01-26T18:05:50.513-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It appears I exaggerated a bit. While the spell selection procedures really count in millions, there are only several thousand unique spell distribution, but this is still quite a large number.",
+      "PostedDate": "2009-01-26T18:54:08.79-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-09T17:28:55.607-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:32:49.537-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-21T00:00:19.307-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:35:45.91-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:26.11-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:01:44.067-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

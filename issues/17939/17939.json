@@ -1,0 +1,231 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtPaladin",
+      "DisplayName": "Rawr.ProtPaladin"
+    },
+    "ClosedComment": "This actually was an excellent discussion that got me to brush up on the theorycrafting behind Prot Paladin threat generation. &#58;&#41;Here&#39;s the changes with r51408&#58;- &#37; Chance to be Avoided already existed, so no change needed there.- I changed &#37; Hit Chance to &#37; Chance to be missed to keep it consistent.- I added &#37; Chance to be Dodged and &#37; Chance to be Parried.Personally, this is a heck of a lot better than having to remember what the expertise cap for dodge is in percent, as now I can just say 0&#37; chance to be missed so my specials hit, and 0&#37; chance to be dodged to ensure my expertise is where it needs to be.",
+    "ClosedDate": "2010-06-15T23:00:17.26-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I'm finding that the \"Chance to be Avoided\" optimizer setting is trying to cap out my Expertise so that my attacks aren't Parried or Dodged.  While I believe it's an obtainable goal for both, it does rather limit my gear options to strive for both.\n \nI see in the DK models that you can set the optimizer to just reaching the Dodge cap, or just setting a certain Expertise skill level to achieve.  I don't want to turn this into a \"you don't need Expertise\" thread.  All I want to know is if this is this something that can be done with the ProtPally model?  Or is there way to set the \"chance to be avoided\" setting to where it'll do dodge but not parry?",
+    "LastUpdatedDate": "2013-05-16T05:20:29.783-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-06-09T12:21:02.633-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtPaladin] Optimizer Separate Dodge/Parried Attacks",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17939
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3674,
+      "FileName": "ProtParryNoGlyph.xml",
+      "DownloadUrl": ".\\3674"
+    },
+    {
+      "FileId": 3675,
+      "FileName": "ProtParryGlyph.xml",
+      "DownloadUrl": ".\\3675"
+    },
+    {
+      "FileId": 3676,
+      "FileName": "ProtDodge.xml",
+      "DownloadUrl": ".\\3676"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "This one depends. As far as I know, there's no functional result difference between a dodge and a parry. So no, there shouldn't be a way to optimize for one or the other; the result is the same. You don't have to use <= 0 as the requirement. You can totally set it to <= 5% or something.",
+      "PostedDate": "2010-06-09T12:23:33.27-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I guess after playing around with the DK models so much I got used to having those options 'right there'.  Just set Hit % to 100, Chance to be Dodged to 0, and Chance to be Critted to 0 and I was good to go.",
+      "PostedDate": "2010-06-09T12:27:20.287-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Right, some of those shouldn't be there, and will be removed. Hit% shouldn't be there; it's not something that actually matters. Chance to be Dodged shouldn't be there, unless there's some functional difference between dodges and parries (which there may be; I believe there is some subtle difference at least for Bears, though I don't recall offhand... It's like you lose all the rage of the attack on a dodge, but only 20% of it on a parry or something). Chance to be Crit obviously should be there.",
+      "PostedDate": "2010-06-09T14:01:36.593-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "How about a flat Expertise Rating option like DKDPS has?  That I can at least set to >=82 for my Draenei Pally and make it work?",
+      "PostedDate": "2010-06-09T14:43:14.163-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Expertise Rating is even worse. I guess I don't understand what I'm not being clear about here... The optimizer should provide optimizable values that 'actually matter', and should not provide optimizable values that don't 'actually matter'. Expertise Rating is an example of something that really doesn't matter.\r\n\r\nMaybe it's a problem of understanding what 'actually matter' means? Think of how stats benefit you. For many stats, they don't directly benefit you, they give you some other stat, which does directly benefit you (or even some other stat which also doesn't directly benefit you, but gives you yet another stat which does). For example, Strength doesn't directly benefit a Ret paladin. None of his damage is based on strength. It's based on Attack Power, which you get from Strength. But is Attack Power a stat that 'actually matters'? Nope. It translates to DPS, but doesn't have any direct value beyond that. How about Hit Rating? It doesn't directly matter, it contributes to how much of your attacks are missed, which contributes to the total amount of your attacks which are avoided. So does avoided attacks % actually matter? You may think not, since it translates to DPS, just like attack power. But you'd be wrong there, as avoided attacks % also changes your rotation. Missed attacks % also contributes to your chance to have things like taunts resist, whereas dodge/parries don't.\r\n\r\nGoing back to Expertise Rating... It reduces the chance to be dodged and parried. Both of those reduce the total avoided attacks %, but that's it. And (as far as I know), they do so in exactly the same way. So Avoided Attacks % covers everything they do.",
+      "PostedDate": "2010-06-09T16:14:54.38-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Alright, I said I didn't want this to divulge into a \"Pallys don't need Exp\" fight, and I meant it.  The point I'm trying to make is that I'd like to optimize my ProtPally to have enough Expertise to not have his attacks Dodged.  I don't care if his attacks get Parried, and the amount of Expertise needed to reach that point, or what you call a total \"Avoided Attacks %\", is too high.  I'm able to have Rawr do this work the way I'm explaining it with my DK, and it's fantastic.\r\n\r\nBut I can see that either I'm just not 'elite' enough to know, or maybe I'm going over your head.  In either event, I thank you for your replies into this matter.  Consider this work item closed.",
+      "PostedDate": "2010-06-09T16:34:25.6-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Err, hold on there, I think you misunderstood something. Could you re-read what I wrote?\r\n\r\nYou just said: \"I'd like to optimize my ProtPally to have enough Expertise to not have his attacks Dodged.\" Why? If you have 0% chance to be dodged, and 5% chance to be parried, is that any different from 1% chance to be dodged, 4% chance to be parried? What if the Optimizer could find a way to get you an extra 5stam, if you went the 1%dodge/4%parry route?\r\n\r\nI'm really asking here, as I have been from the start; is there some functional difference between dodges and parries?",
+      "PostedDate": "2010-06-09T17:11:16.787-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Just a note that dodged attacks *are* functionally different from parried attacks in ProtPaladin, as it has an option to model boss parry hasting.  This probably isn't the case for DPS models.",
+      "PostedDate": "2010-06-09T20:52:25.803-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "A very good point. It's a bit of a stretch, to warrant splitting Chance to be Parried off because of that, but it's at least something.",
+      "PostedDate": "2010-06-09T21:49:22.517-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The only difference between the two is the amount of Expertise needed to reach the Dodge cap and the Parry cap.\r\n\r\nAssuming the ProtPally is a Draenei with the Combat Expertise talent and the Glyph of Vengeance slotted, the amount of exp. rating needed to have all attacks not be dodged is 82.\r\n\r\nUnder the same assumptions, the amount of exp. rating needed to have all attack not be parried, which would also include dodged attacks as well, is 328.\r\n\r\nBudgeting that out, one would have to almost pick up gear with expertise exclusively and ignore possible other better mitigation and better survival gear in order to reach that parry goal.  This is a goal I don't see as a priority since my survival and mitigation of incoming damage surpasses the ability to have all of my melee attacks unignored, as I'm already generating a crap ton of threat through spells and other mechanics.\r\n\r\nAn Expertise goal of 82 is far more reasonable and can be achieved without sacrificing other gear or even having to gem or enchant for it.  'That' is what I'm trying to accomplish here :)",
+      "PostedDate": "2010-06-10T01:10:24.483-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I don't see what's stopping that. Nothing says you have to use <=0 for all the requirements. It sounds like you want to only get avoided 7% of the time (or whatever the difference between dodge and parry is). So why can you just use Avoided Attacks <= 7%?\r\n\r\nI fully understand how expertise is amazing until antidodge capped, and then just ok after that. I'm a tank too, remember. ",
+      "PostedDate": "2010-06-10T18:22:05.047-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "lol...like trying to pull flippin' teeth...\r\n\r\nWouldn't be much reason for me even taking the time to create this post and doing all the explaining I was doing if all I'm gonna get is a workaround.  I simply saw a feature in another model that I enjoyed having and wanted to see if it could be implemented into this one.  Obviously that appears to be too hard of a thing to do. :P\r\n\r\nThank you again for your suggestion.  I'll just do that instead, or maybe I'll just stick with my DK, since Shazear seems to have a better grasp of the concept.",
+      "PostedDate": "2010-06-11T01:11:52.723-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Actually, no, those optimizable values will probably be *removed* from DPSDK, because they're deceptive to users (the proof is right here in this issue; you yourself saw them, used them, and thought that was helping you). As we keep trying to tell you, optimizing for what you're asking isn't something that benefits you. On the contrary, you'll get better results if you don't try to force Rawr into coming to the conclusion you're looking for, and instead let it find the best way to get you the best performance. (Don't confuse any of this with anything like telling you you shouldn't get expertise as a prot pally; you should.)",
+      "PostedDate": "2010-06-11T01:27:00.883-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "So 'simplifying' it for users means the users have to now hunt down extravagant amounts of expertise on gear in order for Rawr to work, otherwise the Optimizer fails?  I understand what you're saying here, but for 'regular users' I think that if you're providing them with only one option to work with, and if they fail to have the gear made available to the Optimizer to meet the req., is just as bad and confusing.\r\n\r\nYour option does work, but I think it's a bit more far fetched than just providing people with options.",
+      "PostedDate": "2010-06-11T02:26:11.197-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Also, I would repeat what I said earlier in that I would argue that it's better as a tank (read: best performance) to have gear that has more mitigation and survival stats (Stamina, Defense, Dodge, Parry, Block, etc.) than to have so much Expertise gear.  Reaching the Dodge cap is even especially easier as a Paladin thanks to the glyph, talents and even racial abilities if applicable.",
+      "PostedDate": "2010-06-11T03:10:37.403-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-06-11T05:25:40.8-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "To attempt to prove my point, I've done an experiment.  I've built a Blood Elf Paladin tank in Rawr to simulate the differences.\r\n\r\nFor all tests:\r\n- No buffs checked\r\n- Using the Protection: Crusade talent template\r\n- Nothing changed on the ProtPaladin Options tab\r\n- % Chance to be Crit <= 0\r\n- % Hit Chance >= 100\r\n- Only tanking, non-DPS, non-spell gear from H-ICC-25 selected as available in all slots.\r\n- Default epic gem templates enabled\r\n- BiS enchant for all slot selected as available.\r\n\r\nFor the first test, I tried to reach the parry cap without the glyph of seal of vengeance enabled as it is in the default Crusade talent template.  I set % Cahnce to be Avoided <= 0.  My results:\r\n\r\nFirst run: Optimizer failed\r\nSecond run, this time enabling wrist and hand Expertise enchants: Optimizer Failed\r\nThird run, this time enabling wrist and hand Expertise enchants, along with all avaiable Expertise tanking gear from H-ICC-10: Optimizer failed\r\nForth run, this time enabling wrist and hand Expertise enchants, along with all avaiable Expertise tanking gear from H-ICC-10 and H-ToC-25: Success!\r\nSurvival:\t143586\r\nMititgation:\t204176\r\nThreat:\t\t51882\r\nOVERALL: \t399644\r\n\r\nProtNoob not only needed to sacrifice his wrist and hand enchants for Exp, but also needed to hold on to gear from previous content.  One would say that's not a big deal, but this is a game of numbers, and Rawr is nothing but.  So let's continue...\r\n\r\nNext test, decided to enable the glyph of seal of vengeance, and I kept all the same gear I had selected from H-ICC-10 and H-ToC-25 along with the hand and wrist enchants.  Results:\r\nFirst run: Success!\r\nSurvival:\t148694\r\nMititgation:\t221081\r\nThreat:\t\t54085\r\nOVERALL: \t423860\r\n\r\nNumbers are getting better!  A 24,216 overall point gain just by using one glyph.  Now let's take it one step further...\r\n\r\nThird test, set % Chance to be Avoided <= 7.5, as that's the difference between the dodge cap and parry cap.  All previous gear and enchants that were made available during test 1 and 2 are still available here.  Results:\r\n\r\nFirst run: Success!\r\nSurvival:\t153057\r\nMitigation: \t244322\r\nThreat:\t\t53294\r\nOVERALL:\t450672\r\n\r\nAnd another huge leap in performance!  That's a 26812 overall point gain from test 2, and a whopping 51028 overall point gain from test 1.  Proof is even in the pudding for the broken down Mit/Surv/Threat numbers.  And the real kicker: Rawr didn't need the wrist/hand expertise enchants, nor did it need gear from H-ICC-10 or H-ToC-25.\r\n\r\nSo, let's review.  Is it possible to get to the Parry cap?  Sure.  Will it cost you a lot on your other tanking stats to make it happen?  Sure is.  Is it worth it?  I guess that depends on your opinion.  But looking at it from a pure numbers view, which is what Rawr is all about, I think the 'best performance' is debatable.  So how about that option to just optimize to the dodge cap?\r\n\r\nAnd just in case, I've attached the three character files for each test.",
+      "PostedDate": "2010-06-11T05:25:41.3-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-06-11T05:26:03.377-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Uploading 2nd test",
+      "PostedDate": "2010-06-11T05:26:03.87-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-06-11T05:26:20.6-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Uploading 3rd test",
+      "PostedDate": "2010-06-11T05:26:21.09-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Please see \"The Fight for Uniformity\" thread in discussions.",
+      "PostedDate": "2010-06-11T09:24:19.47-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "(that was directed at the ret dev, not luckton :P)",
+      "PostedDate": "2010-06-11T09:25:07.65-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I seriously don't get why you keep ignoring the fact that I'm not saying you, or any users, should use a requirement of Chance to be Avoided <=  0? Yeah, you're obviously going to have to sacrifice a TON to get to that point. But if you really want to, Rawr can tell you the best way to get there.\r\n\r\nSo what are you trying to show? ",
+      "PostedDate": "2010-06-11T09:26:23.04-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Astrylian, I recall you have said before that you don't want to set conditions like \"HitRating >268\" because that requires the user to know what their hitcaps are.  I agree totally.   But your solution to put avoided attacks to x% to exclude dodges also requires some pretty specific knowledge from the user - namely the %parry & %dodge of boss mobs.   This seems to go a little against your design philosophy.\r\n\r\nLuckton, not sure what you were trying to show with your tests there.  To me it is common sense that the more conditions you put on the optimiser, the more sacrifices it is going to have to make to reach those condtions.    You would have gotten an even higher score if you have just left the \"avoided attacks\" condtion out all together and let Rawr find it's preferred gear.      If you are after the expertise to increase your threat, then just up the importance of threat in the options.   The fewer restrictions you put on the optimiser the better it's result will be usually.\r\n\r\n",
+      "PostedDate": "2010-06-11T17:26:43.97-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I see the point you're trying to make, but there are a couple differences: First, I'm not suggesting people generally optimize for Chance to be Avoided <= 7.5%. That's because there's nothing special about that number, gameplay wise. It may seem like \"Oh, I want to be anti-dodge-capped.\", but there really is no significance to that point, gameplay-wise. It's not a 'magic' number. I don't want users to have to know any magic numbers (apart from '0' obviously). It's like someone saying \"I want to have at least 200 hit rating!\" and me responding \"Well, I'm not sure why you want that exact amount, there's nothing special about that particular level of hit. But if you really want to, you can do that by optimizing for Chance to be Avoided <= 4.726%.\" (or whatever, made-up numbers)",
+      "PostedDate": "2010-06-12T23:14:57.14-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I agree with Astrylian to a large degree.  trying to optimise \"ratings\" is too \"techy\".\r\n\r\nDon't want to be avoided, you need X expertise rating rite ?   well... NO\r\nit depends on what weapon you use (as human and dwarf) and on what seal you use.  \r\n\r\nIf you were a human and trying to optimise expertise rating, then this would put swords and maces lower than they actually are.\r\n\r\nHowever, there might be good reaon to want to be at a particular soft cap without necessarily having other softcaps as well.\r\nRight now (in ret) the avoided chance is pure misses, parries and dodges.\r\n\r\nThere may be a good reason to want to be expertise soft capped (no more dodges) but not care about missing.  So from an optimising pov, having a \r\n% to be avoided (sum of the below three)\r\n% to be missed\r\n% to be dodged\r\n% to be parried\r\nas separate optimisable stats might be a good idea.\r\nI was already planning to make that change to the ret module.",
+      "PostedDate": "2010-06-14T01:52:56.3-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thank you, OReubens, for 'getting it' :) .  Having those values at leasts gives users some options for allowing the optimizer to work with the gear a user may have available at the time and setting things accordingly.\r\n\r\nNow we just need it to happen with ProtPaladin too :)",
+      "PostedDate": "2010-06-15T09:26:38.7-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-06-15T23:00:17.26-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "\"- I added % Chance to be Dodged and % Chance to be Missed.\"\r\n\r\nOf course I meant:\r\n\r\n\"- I added % Chance to be Dodged and % Chance to be Parried.\"",
+      "PostedDate": "2010-06-15T23:00:40.58-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-06-15T23:08:58.147-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T16:23:01.753-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:24.073-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:28:13.09-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:29.783-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

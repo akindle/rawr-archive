@@ -1,0 +1,96 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Mage",
+      "DisplayName": "Rawr.Mage"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-05-10T20:46:09.36-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "edit2: See edit1 below, it appears the behavior is very erratic and not only related to glyph assignment.\n \nI can not prove it, but Mage Armor looks very weak. It only gives 500DPS when starting from 24,000. Arcane Missiles give a tiny 200DPS. Arcane Blast looks generous which sounds correct but I don't know if it's accurately done if others aren't.. Arcane Barrage looks weak as it probably should.\n \nHere's the file I was testing it: [attached]\n \n*Wait, I noticed something hugely wrong, at least at first glance: If Mage armor and Arcane blast is chosen I see 21,000. If I then add as a 3rd Arcane Barrage it goes to  25.5k!\n \nedit1: It appears the behavior is very erratic: If I open this file on a new rawr it shows about 25k dps. If I then click Arcane Barrage glyph (only Mage Armor and Arcane Blast were chosen in file) it changes dps for a tiny amount. If I deselect Arcane Barrage it drops to 21k! Selecting it again  goes to 25k.\n \nI do not know if the problem is a basic bug related to calculations and not the assignment of glyphs themselves\n \nedit3: Similar impressive drops of dps occur if AB, AM, MA are chosen and AM is deselected. Play with selecting and deselecting them and see.",
+    "LastUpdatedDate": "2017-11-27T11:02:09.613-08:00",
+    "PlannedForRelease": "Rawr 4.1.05.1",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-05-10T04:13:37.037-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Mage] Not sure but glyphs look wrong again",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 20721
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4931,
+      "FileName": "arcane.xml",
+      "DownloadUrl": ".\\4931"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Problem seems to be related with a crash/instability in the solver when mage armor is chosen. The 21k results are the ones from molten armor, 25k are from mage armor. Basically when the solution with mage armor fails it thinks molten armor is better. I'll have to look further into what is causing the solver to fail, no workaround for now.",
+      "PostedDate": "2011-05-10T13:44:55.023-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Is the correct behavior followed if one has 3 glyphs selected and then from a clean client opens a file with them?",
+      "PostedDate": "2011-05-10T15:02:12.023-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I think it is, this seems to be a borderline case that doesn't happen in general. If you want to be sure disable automatic armor in options, that way if something goes wrong it'll start showing 0 dps.",
+      "PostedDate": "2011-05-10T17:01:51.95-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Root cause was a numerical instability in the solver. I have a fix for it, but it could result in some other problems, so we'll see. For now I'll close this. If you notice anything similar with a new version open a new issue.",
+      "PostedDate": "2011-05-10T20:45:48.36-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-10T20:46:09.36-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I do not know why but I after a reboot for latest windows updates I can not replicate the behavior with fiddling with the toggling of glyphs. I don't know if it's related to internal number being reset or something or a windows update.",
+      "PostedDate": "2011-05-11T01:40:39.41-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-21T00:00:19.307-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:25:05.28-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:00.273-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:02:09.613-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

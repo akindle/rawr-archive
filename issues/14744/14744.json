@@ -1,0 +1,65 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Hunter",
+      "DisplayName": "Rawr.Hunter"
+    },
+    "ClosedComment": "Fixed, your aura &#40;if you have the talent&#41; and the Buff one cannot overlap anymore. The Buff will be checkable but it won&#39;t do anything until you take the talent point out",
+    "ClosedDate": "2009-11-19T12:41:15.073-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Trueshot Aura seems to be applied twice (or differently?) if you have the talent and select the buff.\n \nHunter DPS without talent or buff = 6133\nWith talent, no buff = 6583\nWith buff, no talent = 6714\nWith both = 6780",
+    "LastUpdatedDate": "2013-05-16T05:23:28.33-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-11-10T12:38:03.243-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Hunter] Trueshot Aura",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14744
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Some thoughts when looking at the code.\r\nIn the code there is code to handle buffs from hunters mark other than our \"own\".\r\nEspecially one line is interesting... \r\n            calculatedStats.apFromGear -= apFromHuntersMarkDebuff;\r\n\r\nSince the apFromGear seem to include any ap from buffs already, a similar subtraction might be necessary for the true shot aura.\r\nHowever, if that was the only tweak needed, then the cases (with talent, no buff) and (no talent, with buff) should provide the same result... or?",
+      "PostedDate": "2009-11-10T13:40:14.52-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-19T12:41:15.073-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T18:29:08.72-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:54.777-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:28.33-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

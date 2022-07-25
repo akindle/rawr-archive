@@ -1,0 +1,131 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Elemental",
+      "DisplayName": "Rawr.Elemental"
+    },
+    "ClosedComment": "All of these except the Horde Alliance splitting is done.It is no elemental issue though.",
+    "ClosedDate": "2009-08-30T10:02:30.47-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "There are quite a few things that I think are incorrect with with the elemental shaman model. I'm interested in understanding why they are incorrect, helping with fixes, and other improvements. I think your program is incredibly robust and have been experimenting with the viability of taking an entire guild's .csv exports and combining them into a single spreadsheet for easing the complexities of optimal loot distribution.\n \n1) Glyph of Flame Shock gives a negative value.\n--- The rotation correctly updates when adding/removing the glyph, but the glyph is assigned a high negative points value that doesn't reflect it's actual worth. This may be the single best glyph available for an Elemental Shaman. The 2-piece tier 9 bonus is based off of the assumption that everyone uses this glyph.\n \n2) Thunderfall Totem is not modeled.\n--- With my limited knowledge, I tried to create a custom this, but was unable to add to the base damage on Lava Burst. It either doesn't show up in the list, or is assigned a 0 points value -- either way it's not working properly.\n \n3) Glyph of Lava and/or Glyph of Totem of Wrath aren't pr\n--- My own testing and that of those numbermonkeys at Elitist Jerks have computed Totem of Wrath to add more to DPS than Glyph of Lava at 4000 of lower spellpower (previously stated at 3200). My SP is 3168.\n \n4) Rotation oversimplified.\n--- Rawr doesn't try to fit chain lightning into the rotation which helps smooth a rotation out that is stuck between two optimal haste values for pure lightning bolt filler spam. Chain Lightning is a bit more mana intensive and does a bit more damage than lightning bolt.\n--- With the two-piece tier 9 set bonus, the rotation falls off the screen and the wait time between end and beginning isn't visible even with mouseover.\n \n \nX) Others not specifically elemental shaman.\n--- Reign of the Dead/Unliving looks 'completely' broken from it's value and that of other trinkets. Can it really be that good?\n--- Abyssal rune seems to be undervalued.\n--- Horde and Alliance items are not yet separated into categories.\n \nFeel free to contact me.",
+    "LastUpdatedDate": "2013-05-16T05:24:42.983-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-08-24T15:29:13.657-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Elemental] Modeling Issues",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13952
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2122,
+      "FileName": "09-08-24 Elemental Fyst.xml",
+      "DownloadUrl": ".\\2122"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I suppose you are using the current release version.\r\nAs far as I know I have already fixed the bugs regarding a bad rotation calculation and the flame shock glyph in the SVN.\r\n\r\nThanks for the note on the Thunderfall Totem. It did not get parsed correctly, yet. I just fixed that.\r\nIn the meantime you can just enter the bonus damage in the stat LavaBurstBonus, which is located in the Elemental category.\r\nI'll make the name of this stat more descriptive.\r\n\r\nAs you have probably noticed the model calculations are based on a non-movement rotation. As the difference between the two glyphs becomes smaller it really depends on how much you move. More movement means less effective gain from the ToW-Gyph.\r\n\r\nThe rotation is calculated using the priority system. However I don't want to do a simulation here, that's why a good estimate rotation is used.\r\nI removed the LB options, because I added a method to calculate the optimal rotation taking all of the possibilities into account. However this is slightly flawed in the current release. In the SVN version the dps of the different possibilities is compared and the best method is chosen.\r\n\r\nYou can add new items to Rawr as soon as they are present on Wowhead or the Armory. That's where we get them from, too.",
+      "PostedDate": "2009-08-27T08:46:36.16-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'll have to check Reign of the Dead/Unliving and Embrace of the Spider again.\r\nThere might be an error overvaluing these. Perhaps a wrong trigger.",
+      "PostedDate": "2009-08-27T09:03:20.79-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-27T09:04:35.147-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-27T10:20:38.437-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "First of all. Thank you for the replies and interest in my concerns. It's so refreshing to have you care about these things. I modified my post just before I saw that you replied. Added a bit on Abyssal Rune with was way down the list. I will test it ASAP, but my prelim research has it at no cooldown.\r\n\r\nThunderfall Totem adds to the base damage; is that the same as LavaBurstBonus?\r\n\r\nThank for the heads-up on the effect of movement. I was completely unaware (though happliy surprised) that you were factoring this in. How are you calculating this?\r\n\r\n",
+      "PostedDate": "2009-08-27T10:28:22.193-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "No, movement is not factored in at all nor is latency.\r\nI usually just use common sense to further optimize my equipment depending on the fight parameters. Effectively it simply reduces the amount of LB casts, if you have the time to cast LvB, or just delays all casts, if you don't have the time to use your LvB cooldown. More movement = more value for shocks and especially the flame shock dot.\r\n\r\nYes, it is the same stat. LavaBurstBonus adds to the base damage.\r\n\r\nI doublechecked the calculations for Reign of the Dead/Unliving and Embrace of the Spider again. They seem to be that good.\r\n\r\nThe number of 3200 spellpower as threshold is right, if you have the T9 4 piece bonus, otherwise it is about 4000.\r\n\r\nI was always able to see the details with the mouseover. I don't know a viable solution for the display of the rotation there. I'll have to ask for this.\r\n\r\nThe new detailed spell handling is my first step in order to allow custom rotations. This is on my to do list.\r\nHowever the priority is not that high, since it would mean I have to to a lot of checking in order to verify a custom rotation (LvB ready, FS consumed, Shock cooldown, etc.) and the gain would not be that big, since you usually don't stick to this rotation while playing, because you want to maximize the FS dot. Instead you choose you next spell solely based on a few well known rules of thumb.\r\nAs mentioned before: This is a qualitative estimate.\r\n\r\nI suppose the Abyssal Rune has an internal cooldown of 45s, that is the reason why it is not that good (I did no research on this).",
+      "PostedDate": "2009-08-27T15:33:57.68-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Everything sounds good. I agree with your prioritization as the rotation issue requires a lot of work for very little gain. I tried the Abyssal Rune last night and it didn't cut the mustard.",
+      "PostedDate": "2009-08-28T07:33:14.373-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Do you have any idea why Dying Curse is a 10s 15% 45s while the other similar trinkets are 10/10/45?\r\n\r\nAlso, I see the full rotation on my work computer, so it must have been something with my home machine.\r\n\r\nNot that this affects me (or anyone else), but the mana cost of Chain Lightning seems a bit high.",
+      "PostedDate": "2009-08-28T11:07:21.917-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The mana costs are indeed off. Check the costs without any gear, talents, or buffs.",
+      "PostedDate": "2009-08-28T11:55:07.197-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Since Rawr doesn't factor in movement and does recommend Glyph of Lava over Glyph of Totem of Wrath at spellpowers below 3200, wouldn't that mean there's a calculation off?",
+      "PostedDate": "2009-08-28T13:23:57.383-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I never had it recommend Glyph of Lava over Glyph of Totem of Wrath until I had the t9 4 piece bonus.\r\nIt's working perfectly fine.",
+      "PostedDate": "2009-08-29T06:12:51.62-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Mana costs have been off by one point. It was a rounding issue, that is fixed now.",
+      "PostedDate": "2009-08-29T06:35:49.43-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-30T10:02:30.47-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:10:40.29-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:15:57.597-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:27.8-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:42.983-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.RestoSham",
+      "DisplayName": "Rawr.RestoSham"
+    },
+    "ClosedComment": "4.1.01 Released",
+    "ClosedDate": "2011-03-27T17:48:22.653-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi, Great work so far on the restoshaman btw. I just have a small issue with it (well, not small, still 1 issue).\n \nEvery single blogger (lifeingroup5, totem forest, flow) and community (EJ and plussheal) out there agree that Int and spirit are the single most important stats for restoshamans. My own xp says they are very much correct in that. Top players and bloggers alike will never reforge spirit into something (checked the armory). There is lots of arguments about crit and mastery (even Haste -- though everybody agrees that it does not matter much as long as is > 920 rating), but the top two are never argued against. So why is it that I struggle so to get Rawr to understand this. I have to tweak quite a lot with target type/sustained time. etc to get desired results (and fail mostly). It keeps on forcing crit ahead of spirit (and to get 1% crit, we need looooooots of crit rating) on burst and overall and annoyingly, it keeps spell power and MP5 ahead of spirit too, even in sustained calculations (neither can be used in cata, so why are they still there? it might be confusing the optimizer). Even when I finally mange to put MP5 in second place in overall, behind Int, its useless as the model seems incapable of understanding that I need mainly spirit for that MP5 (spirit and int, but int is a sqrt, whilst spirit is directly proportional).\n \nAnd there it is, I think that's why the model is not working for restoshaman (and healers?). Meditation (healer passive that allow us to regen 50% of our out-of-combat-mana during combat). In Rawr, at the moment, MP5 and spirit have no weight what-so-ever on burst calculations, only in sustained. And that is ok for DPSers, as spirit for DPS is useless once combat starts, and their burst seq is dependent on int, crit, mastery, etc. But healers do not work like that... If I burn mana at 2000/s in my sustained seq and at 3500/sec in my burst seq, isn't it quite important that I can achieve an extra 500 mana/sec or more by optimizing my spirit/int? Int and crit will help the output of that burst seq, but spirit&int will keep the seq going for longer. I might want to sacrifice a bit of crit/mastery% (and it will be a small bit %wise) for a good chunk of spirit, specially for us shammies with easy access to mana tide totem and hearthsong, etc.\n \nPlease have a look into this, spirit needs to matter much more in general, but specially, it needs to matter on burst calculations!",
+    "LastUpdatedDate": "2013-05-16T05:18:27.113-07:00",
+    "PlannedForRelease": "Rawr 4.1.0",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-03-16T06:00:49.537-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[RestoSham] Lack of Spirit",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 20248
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4709,
+      "FileName": "Maesayaoiff.xml",
+      "DownloadUrl": ".\\4709"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "In Rawr, the Burst Healing means no consequence of mana, as in mana requirement have no affect on it at all and that is intentional. Sustained is based on Healing with mana constraints.",
+      "PostedDate": "2011-03-16T08:39:31.97-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-16T08:44:52.07-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Actually, for RestoSham, Mana constraints do somewhat apply to burst, but not as extreme as it's sounding you'd like.  Burst uses the HPS from sustained, as I use burst-healing to seperate how we heal.\r\n \r\nAlso, you have done the typical error when it comes to posting issues.  You say 'Spirit needs to matter more' and 'X needs to matter more'.  You assume stat-weights are used as well.  They are not.  The values in stat-values given to various stats are based entirely off what you have put in the model.  So, without knowing what you put in the model, I don't know how to help.  Please post a character file with examples.",
+      "PostedDate": "2011-03-16T09:41:57.623-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T00:45:29.943-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks for the quick replies!  found them both quite helpfull. Ok, I undesrstand a lot more now what is happening then. But hope Antivirys can help me a bit here: \r\nMy mistake was that instead of the deafult sustain and burst sequences (RT+CH & RT+HW) I had what I usually find myself doing most in 10s right now, RT+HW (CH in certain ocasions only) as sustained and RT+GHW as burst. In 10s CH is not as powerfull and it will be a waste (I think, at least) to spam it as sustained healing seq. I know this is not the case for 25. A quick check to the world of logs confirmed that I am not doing something terribly stupid (wouldn't be the first time :) )\r\nMy file is attached. We just started raiding with my guild  and have many options for my initial gear shopping baskett (can buy two 1650 valor -- not feet, im getting those from rep). The problem was that with my chosen seq. I was having strange stats weights as a result (ones that I felt were wrong). Strangely enough, if I invert them, to RT+HW as burst and RT+GHW as sustained, and move the sustained/burst bar all the way down to say that I spend most of my time in burst mode and little in sustained, then I see the stats weights I would spect. But the gear that is proposes as upgrades makes little sense to me. If I leave it as default (i.e. sustained RT+CH and burst RT+HW) then my stats look sensible and the gear it proposes makes sense.... But then, I am using sequences I just don't use at all.\r\n\r\nSo, the question is? If I go ahead with my gut feeling that the default sequences are giving me stats/upgrades that I feel would be more applicable to me, would it hurt me in the long run, due to the fact that I just do not use the simulated sequences at all? Thanks, (would change this to a discussion if I could...)",
+      "PostedDate": "2011-03-17T00:45:31.487-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You have the fight length set to 5 minutes.  If you're starting raiding, well, 5 minutes will only happen on something like Halfus.  I'd reccomend setting the fight length to 8-10 minutes to match the current enrage timers of the bosses you'll be hitting.  The reason I pick enrage timers for fresh starts is simple.  You can have faith in your gear, but in the end, it's the DPS that choose how fast the fight go, plan for the worst, hope for the best.  ",
+      "PostedDate": "2011-03-17T10:11:26.147-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "So is there an actual issue here or is it just that the settings in his file need to be changed? If not I'm going to go ahead and close the issue with the next release.",
+      "PostedDate": "2011-03-26T18:34:34.977-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-26T18:34:42.057-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-27T17:48:22.653-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:25:39.467-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:27.113-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

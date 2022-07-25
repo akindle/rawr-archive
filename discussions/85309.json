@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "290601",
+    "ThreadId": "85309",
+    "Html": "<p>I don't know if it is only for 2 specific items or across the board, but Rawr refuses to pick Circle of Ossus or Volde's Back when optimizing using their EoF cost.</p>\r\n<p>My mage collected 60 EoFs.&nbsp; Using 2.3.8, Rawr correctly identified Circle of Ossus as my best use for 60 emblems.&nbsp; Before making the purchase, I wanted to double check it was still the correct upgrade.&nbsp; I found that 2.3.9 was released.&nbsp; I downloaded and set up the new version, reset the item costs, loaded the frost emblem costs and ran the optimizer with the criteria of cost &le; 60.&nbsp; It showed no change when complete.&nbsp; It did not show the Circle (60 eof) or Volde's (50 eof) both of which do give upgrades in the optimizer if they are simply marked as available.&nbsp; I even tried running the optimizer with cost &le; 1000.&nbsp; It gave me a 4pc Bloodmage set (the new tier only pays to break the current 4pc bonus at the 4pc point for new) but still neither the waist or the back, both of which are upgrades with the new 4pc equipped as well.&nbsp; I removed 2.3.9 and went back to 2.3.8 and the cost optimization worked again.&nbsp; I then removed 2.3.8 and retried 2.3.9.&nbsp; Still no go.&nbsp; I tried refreshing the item data even though that made no sense since it picks correctly if the item is marked available.&nbsp; I checked to make sure the costs were correct..&nbsp; I have no idea of anything I could be doing wrong.&nbsp; The exact same procedure works in 2.3.8 and doesn't in 2.3.9.&nbsp; Ideas?</p>",
+    "PostedDate": "2010-02-14T02:33:45.453-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "290614",
+    "ThreadId": "85309",
+    "Html": "<p>After getting the new version, did you re-load the emblem of frost filter from the menu?</p>",
+    "PostedDate": "2010-02-14T04:11:50.87-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "290648",
+    "ThreadId": "85309",
+    "Html": "<p>I'm not sure what you are asking.&nbsp; Yes, after getting the new version, I did reset the item costs, to make sure they were clean, and loaded the frost emblem costs from the menu.&nbsp; And, yes, I did make sure the frost emblem filter was checked (only filters unchecked are the disable filters).&nbsp; As I said, when I set the criteria as essentially saying give me anything I can buy with eofs that is an upgrade (cost &le; 1000), it does give me the 4pc Bloodmage set but still not the waist or back.&nbsp; Even after marking the 4pc set as if I have it, using cost &le; 1000 will not give me either.&nbsp; Yet, marking the waist and back as available, the optimizer does pick both.&nbsp; Also, thoroughness is set to max.&nbsp; Although I don't know why it would do so, it feels like the cost feature of the optimizer was changed to only look at set pieces.</p>",
+    "PostedDate": "2010-02-14T11:54:18.287-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "290927",
+    "ThreadId": "85309",
+    "Html": "<p>Did you double check to make sure that the waist/back still have a cost associated with them? &nbsp;To do this, right click on the item, select Edit. &nbsp;You should see a &quot;Cost&quot; box near the bottom, which should be set to 60.</p>",
+    "PostedDate": "2010-02-15T09:59:44.057-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "291007",
+    "ThreadId": "85309",
+    "Html": "<p>Yes.&nbsp; I've even re-entered the cost in the box for each of them and rerun it.&nbsp; No go.&nbsp; Hmm, let me try one more thing...</p>\r\n<p>I tried clearing all costs and setting those two items to one each and then used cost &le; 2 to see if it just did not like those numbers for some reason.&nbsp; That made no difference, still not finding them.&nbsp; Then, staring at the item data, I found the problem!&nbsp; Neither of the items had any class requirements checked, rightfully so.&nbsp; When I check mage as a class requirement, it picks them up.&nbsp; As a reminder, 2.3.8 correctly found the pieces with no class requirements checked.&nbsp; Therefore, something was changed in 2.3.9 to make the cost optimizer only consider items with the given class as a requirement.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-02-15T14:02:22.927-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "291010",
+    "ThreadId": "85309",
+    "Html": "<p>I specifically coded it that if there was no class requirement listed it would ignore the class requirement check...</p>",
+    "PostedDate": "2010-02-15T14:07:21.627-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "291014",
+    "ThreadId": "85309",
+    "Html": "<p>And that appears to have broken in 2.3.9.&nbsp; With no class requirement checked, it does not pick up the item but as soon as one is checked (mage in this case) it does.&nbsp; It worked correctly in 2.3.8.</p>",
+    "PostedDate": "2010-02-15T14:18:15.65-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "291015",
+    "ThreadId": "85309",
+    "Html": "<p>Crap... I see where i went wrong. I didn't account for items with no class requirement properly</p>\r\n<p>if (cost &gt; 0 &amp;&amp; (item.reqclasses != null &amp;&amp; item.reqclasses.contains(char.class)))</p>\r\n<p>is what i had and we needed</p>\r\n<p>if (cost &gt; 0 &amp;&amp; (item.reqclasses == null || (item.reqclasses != null &amp;&amp; item.reqclasses.contains(char.class))))</p>",
+    "PostedDate": "2010-02-15T14:18:29.67-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "291052",
+    "ThreadId": "85309",
+    "Html": "<p>Cool beans, thanks for looking at it again.</p>",
+    "PostedDate": "2010-02-15T16:29:31.51-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

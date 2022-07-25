@@ -1,0 +1,466 @@
+[
+  {
+    "Id": "236685",
+    "ThreadId": "69548",
+    "Html": "<p>I've just checked in a significant change to Cat, which improved the data displayed on the Stats tab, and added adjustment to ability usage based on ability conflicts, lead-up time, and lag variance. The actual effect on the results is relatively minor, but takes alot of the 'impossability' out of Rawr.Cat's results.</p>\r\n<p>There's still one large chunk of impossibility that I'd like to work on, and wanted to chat about it a bit here: <strong>Ferocious Bite.</strong>&nbsp;To put things in context, our damage is limited by three things: Time (for bleeds to tick), Energy (to use our abilities), and GCDs (in the case of lead-up time and collisions).&nbsp;</p>\r\n<p>We basically have the following abilities which need to be woven together:</p>\r\n<p><strong>Savage Roar</strong>: Always want this up, no questions asked. Should be clipped early in the case of collisions.</p>\r\n<p><strong>Mangle</strong>: Always want this up, no questions asked. Should be clipped early in the case of collisions. Effectively replaces a Shred for the purposes of ability usage. (Lowest DPE ability)</p>\r\n<p><strong>Rip: </strong>Finishing move with absolutely&nbsp;phenomenal DPE (over three times anything else). It's incredibly cheap on energy, for the damage it does, so is primarily limited by time. Ideally, this should always be reapplied [lag variance] after it falls off.</p>\r\n<p><strong>Rake: </strong>Highest DPE combo point generator. Should be kept up as much as possible, however has lower DPE than a 4-5pt Bite (4 or 5 depends on 2T9, Feral Aggression, and gear). If something needs to be sacrificed for a Bite, this is the place to take it from.</p>\r\n<p><strong>Ferocious Bite:</strong>&nbsp;Here's the tough one. At 4 or 5 combo points, it's got the highest DPE, apart from Rip. Basically, it's what to do with extra combo points. A further complication is that since it uses up extra energy (and at a terrible DPE), you only want to use it when your energy is low. Energy pooling normally helps with doing a large number of attacks in a tight timeframe, but works backwards with FB. You want to have a large pool of energy immediately after reapplying Rip/SR, when there's still as much time as possible left on the other, dump that energy into CPGs, and Bite quickly, leaving you enough time to build the CP/energy required to do the next SR/Rip.</p>\r\n<p><strong>Shred: </strong>Bread and butter combo point generator. Higher DPE than Mangle, less than Rake.</p>\r\n<p>&nbsp;</p>\r\n<p>So, when DPSing, if you don't use Bite at all, you're going to end up with a significant number of unused combo points. If you try to Bite too much, you'll more frequently be left with not enough time/energy (and possibly get unlucky with OoC/crits), and lose Rip/SR uptime. A fair bit of anticipation needs to be done, and there's still risk involved. So, how do we model this complex situation? A simulator would have an easier time with this problem, but I don't think it's impossible to handle in a closed-form model.</p>\r\n<p>Rawr.Cat <em>used</em>&nbsp;to model it like this: It calculated the average number of extra combo points you had in each Rip cycle, and put them toward a Bite of that number of cp. (And so when you didn't have many cp extra per rip, it wouldn't choose to ever bite, because just continuing to Shred would beat a 2cp bite, for example).</p>\r\n<p>A while back, I changed it to work like this (and this is how it currently works): It finds the total number of extra combo points you'll have over the course of the whole fight, and uses them all up on 5cp bites. This has the obvious problem that you often get a few extra CP in a rotation, but not enough to safely bite (without losing Rip uptime), so you just keep Shredding, wasting CP.</p>\r\n<p>&nbsp;</p>\r\n<p>So, I'd like to change it again, and find a really solid solution. One benefit of the closed-form model is that I can just choose a target number of cp, and try the rotation, aiming for bites of that number of cp, and see how much it does, then try it again for different numbers of target cp, and choose the highest dps rotation. My (somewhat disjointed) thoughts on how to do this are:</p>\r\n<p>First, pick a target number of CP. Then calculate the chance that each cycle will have that many extra cp, and bite during those times. That in itself is a rather difficult calculation to determine, but feasible.</p>\r\n<p>However, it doesn't account for the fact that those extra may cp may be backloaded in the cycle, and you'd have to be precognitive to be willing to bite with only a few seconds left in the cycle, not knowing that you'd get 3 OoC procs in the next 5sec. So, I'm thinking perhaps the 'chance that you'll have enough extra cp in each cycle' should just be cut in half, to account for those cp needing to be front-loaded. But perhaps half is too much, since you can pool energy before a cycle, to build a ton of cp right at the start, in hopes of getting enough to safely bite. I'm not sure how to model that, so perhaps just cutting off a third instead of half would work for now (but I hate just picking a ratio to cut off, rather have it be based on a formula somehow).</p>\r\n<p>And lastly, what exactly is a 'cycle' in this context? A rip? A roar?</p>\r\n<p>&nbsp;</p>\r\n<p>Eager to hear feedback on my musings from any experienced cats out there. Rawr!</p>",
+    "PostedDate": "2009-09-20T16:30:46.827-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "236703",
+    "ThreadId": "69548",
+    "Html": "<p>I always envisioned a mangle+rake+shred cycle that had various &quot;outs&quot; in the three finishers.&nbsp; The cycle has a certain cycle time based on energy, OOC procs, etc and a chance to produce varying values of CP based on crit.</p>\r\n<p>The model could then calculate how many cycles pass between needing to refresh rips and SRs and try to fit bites in when CP are high and it's not time for the other two.&nbsp; It would have various chances to hit various CP values that would lead to being able to bite and chances to hit CP values where you don't bite then average across the varying states.</p>\r\n<p>I'm not being terribly clear with any of this wording and I haven't really thought it out mathematically at all.</p>\r\n<p>Time to go eat dinner; I'll revisit later.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-09-20T17:49:41.253-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "236714",
+    "ThreadId": "69548",
+    "Html": "<p>Based on my own experience, a cycle would have to include both a rip and a roar, because you need to track both in order to know whether you're going to FB or not.&nbsp; It may even be two rips and roars with an FB in the middle, to account for the lucky procs you need in the first set and the time that you need to plan ahead on the second set.</p>\r\n<p>MrDruid</p>\r\n<p>Edit:&nbsp; Didn't see Khanthal's post because I spent about half an hour trying to find a clear way to say roughly the same thing in my own post.&nbsp; Damn my slow brain :P</p>",
+    "PostedDate": "2009-09-20T18:17:31.82-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "236719",
+    "ThreadId": "69548",
+    "Html": "<p>The extremely variable duration of a rip, and the somewhat variable duration of a roar, really screw with the idea of what a 'cycle' is. I'm inclined to say that a 'cycle', in this context, should be the duration of 1 roar, and however many rips fit into that, on average (ie, somewhere between ~3 and ~1.5).</p>",
+    "PostedDate": "2009-09-20T18:43:09.74-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "236724",
+    "ThreadId": "69548",
+    "Html": "<p>That's part of the reason we had to abandon the idea of a 'cycle' or 'rotation' a couple of months ago with Arms. There was just no way to really make one with the Whack-A-Mole style Blizz molded out of us. So we switched to the viewpoint of Activates Over Fight Duration under priorities.</p>",
+    "PostedDate": "2009-09-20T19:13:36.52-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "236741",
+    "ThreadId": "69548",
+    "Html": "<p>Well even if it might be too complex for normal comparison calculations I'd advise to set up the &quot;cycle&quot; as a markovian process and solve for the stationary solution. If there aren't too many input variables affecting the state space itself it might even be possible to precompute a symbolic closed form solution. But at the least it would allow you to have a ground truth and test out different ability selection rules to see which produces optimal results. Talk with me if you want to know more about how to set it up. If there's interest I might even move some of the tools for that kind of analysis from mage model and put them in base.</p>",
+    "PostedDate": "2009-09-20T21:12:58.103-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "236742",
+    "ThreadId": "69548",
+    "Html": "<p>You lost me at &quot;Well even if it might be too complex&quot;</p>\r\n<p>lol</p>",
+    "PostedDate": "2009-09-20T21:25:19.633-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "236976",
+    "ThreadId": "69548",
+    "Html": "<p>That's math beyond mine :).</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-09-21T10:59:13.813-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "237004",
+    "ThreadId": "69548",
+    "Html": "<p>I'm kind of with Jothay and say make it based on fight duration.&nbsp; You know the average uptime of rip, savage roar and mangle of a typical cat (you could even make this a setting so it could be done on a per person basis based on how that person does their rotation or how good/bad that person is, rather than a simulation of a perfect person)</p>\r\n<p>Something along the lines of this:</p>\r\n<p>Rip uptime % variable</p>\r\n<p>Rake uptime % variable</p>\r\n<p>Savage roar clip time (in seconds; average) variable (assume 100% uptime, which except for windup time you should have; that's why you clip savage roar)</p>\r\n<p>Mangle clip time (in seconds; average)</p>\r\n<p>&nbsp;</p>\r\n<p>So, in a 300 second (5 minute fight): (ignoring berserk for now for simplicity)</p>\r\n<p>lets say we have 90% rip, 85% rake, 2 second average savage roar clip and 1s average mangle clip with 2pt9</p>\r\n<p>90% of 300 seconds = 270 seconds of rip uptime / 22 seconds (I actually don't always get 22 seconds, though I'm unsure how to model this in a non-simulator...) = 12.27... x5 cps used and 368.18.. energy used</p>\r\n<p>85% of 300 seconds = 255 seconds of rake uptime / 12 seconds = 21.25 cps generated and 743.75 energy used</p>\r\n<p>300 seconds / 11 mangles/sec = 27.27.. cps generated and 927.27.. energy used</p>\r\n<p>100% of 300 seconds 5 cp savage roar (though I also use varying cp levels of savage roar, unsure of how to model that in a calculator either) = 300 seconds / 34 seconds = 8.824 x5 cps used and 220.588 energy used</p>\r\n<p>We have 3000 energy and we've used 2259.78 which leaves 740.22 energy for shreds (and ferocious bites) which is 17.62 shreds + another 21.875 shreds from ooc if the druid has full windfury and no haste (if it were me, I would also attempt to model an x% error in using ooc instead of perfect, another variable that could be set, I &lt;3 customization)</p>\r\n<p>&nbsp;</p>\r\n<p>Now, just glancing at those numbers, you have over 12 rips, which all require 3 shreds to be fully effective which is 36 shreds, you only actually have 38 shreds and they're not guaranteed and won't necessarily line up.&nbsp; So, I would do something along the lines of this:&nbsp; To get a full duration of rip, require that there be available 4 shreds per rip duration (not counting berserk), which in this case would be 48 shreds.&nbsp; From there, scale back rip's duration.&nbsp; Could be a calculation or could be something as simple as 2 seconds for every 2 shreds (so at 36 shreds, the supposed absolute minimum for max duration, you'd be calculating rip at 21 seconds per rip instead of 22 which would make rip require more combo points than initially calculated.&nbsp; Now granted this is recursive logic so&nbsp; you might wanna run it through a recursive algorithm a couple times until some margin of error is met, shouldn't take long unless someone makes a stupidly long combat duration.</p>\r\n<p>&nbsp;</p>\r\n<p>Anyhow, onto Ferocious Bite, at this point we have 88 + bonus from crit cps generated and 105.45 cps used, lets go with a 50% crit rate so we have 132 cps or 26.55 cps for ferocious bites.&nbsp; Another way to look at this is an extra combo point every 11.3 seconds.&nbsp; Ferocious bites are going to be based *mostly* off of rip duration and somewhat off of savage roar duration (because you can refresh savage roar with smaller cps, you can't with rip).&nbsp; So, after thinking about it for a while, a good plan would be to say that you have wasted X number of CPs per rip cycle, then do a Ferocious bite every time you manage to get 5 &quot;real&quot; combo points.&nbsp; As per our example we're doing ~13 rips over 300 seconds or a rip every 23 seconds.&nbsp; Lets say we set the variable to waste 1 CP per rip cycle.&nbsp; So we get 26.55 cps (number of extra cps) and we waste 13 cps (number of rips) leaving us with 13.55 cps.&nbsp; This means we get 2 extra ferocious bites (which sounds about right at 50% crit rate, its pretty low)</p>\r\n<p>&nbsp;</p>\r\n<p>Now, as far as berserk goes, I would ignore all but 5 or so combo points generated from this ability and treat the rest simply as free damage as this is the more typical usage scenario for berserk (lots and lots of shreds/wasted cps).</p>\r\n<p>&nbsp;</p>\r\n<p>I haven't looked at your code, so some of this would probably have to be tweaked and molded to match your current stuff, but I think this would probably be a good way to do it without having to switch over to a full fledged simulator (which I would love, but that's just me ;) )</p>",
+    "PostedDate": "2009-09-21T12:19:00.007-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "237007",
+    "ThreadId": "69548",
+    "Html": "<p>The trouble with just inputting your uptime,  Shmoo, is that the model needs to calculate that uptime to have any validity.&nbsp; Crit, hit, exper, and to a lesser extent haste will impact said uptime and need to have that &quot;value&quot; factored into the stat.&nbsp; Getting 5% more crit should mean more combo points and thus better uptime and thus more dps on top of the simple &quot;critting more&quot; dps and &quot;more biting&quot; dps.</p>\r\n<p>Modeling some generic latency or slop factor may be valid (which would end up being far less than the actual about of downtime on your bleeds), but actually setting rip/rake up time I don't think will lead to a good model at all.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-09-21T12:25:58.17-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "237023",
+    "ThreadId": "69548",
+    "Html": "<p>Yeah, it already calculates uptimes of the bleeds based on all those things. It's really just the combo points which pose the problem, because they're so variable, from second to second.</p>",
+    "PostedDate": "2009-09-21T13:14:18.86-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "237060",
+    "ThreadId": "69548",
+    "Html": "<p>I've tried all day to contribute to this thread, but I haven't come up with much. &nbsp;It's very dependent on how you go about your DPS cycle-- a closed-form friendly xSR/5Rip/5FB or even xSR/5Rip/5FB/5Rip (with 4t8) translates better to code than rule-based SR refreshes. &nbsp;They're different playstyles brought on by different models and it's hard to say which is better DPS-- one minimizes collisions, one maximizes energy efficiency. One has a way to predict when an FB might occur, the other doesn't.&nbsp;</p>",
+    "PostedDate": "2009-09-21T15:04:36.23-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "237061",
+    "ThreadId": "69548",
+    "Html": "<p>So maybe gen a &quot;likelyhood&quot; calc for more CP's at a time vs not, like we do an AvoidanceStreak one (the likelyhood that you will miss/get dodged several times in a row as opposed to spread out, so you dont have enough rage for an attack).</p>",
+    "PostedDate": "2009-09-21T15:18:04.94-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "237105",
+    "ThreadId": "69548",
+    "Html": "<p>Yeah, I've got two leading ideas right now.</p>\r\n<ul>\r\n<li>State Machine, like Kavan suggests. It has some challenges (looks like it'll be a much much wider state space than what Mage deals with), but seems feasible.</li>\r\n<li>A rolling window of time ('cycle', loosely), where you look at the likelihood of getting enough extra combo points, early enough, in the cycle, to use a variable CP bite. The length of the rolling window would be user-controlled, via a slider on the options tab, labeled 'Precognition:* How far you can accurately predict the future', on a scale of 3 to 60sec. As funny as that sounds, it's not necessarily a bad idea.</li>\r\n</ul>",
+    "PostedDate": "2009-09-21T19:34:37.52-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "237114",
+    "ThreadId": "69548",
+    "Html": "<p>I'm gonna side with Kavan's idea.&nbsp; That's the way that I was hoping to take DPSWarr modeling (although maybe I'll let Jothay keep his method for Arms, since it sounds like he'd rather crawl naked over broken glass than try to understand Markovian processes :P)</p>\r\n<p>Really, &quot;cycles&quot; don't work so much with so many variables.&nbsp; It worked back in TBC, but Blizzard seems intent on making you have to think/react rather than 23442344 for 10mins.</p>\r\n<p>I'm curious about your second idea.&nbsp; Determining the likelihood of getting enough extra combo points -- isn't that basically creating a state machine?</p>",
+    "PostedDate": "2009-09-21T20:45:51.15-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "237131",
+    "ThreadId": "69548",
+    "Html": "<p>From a logical standpoint, Markovian process sounds like the right way to go. Unfortunately, the only Markovian experience I have is from &quot;Discrete Mathematics&quot; class in college. None of my programming classes ever got into programming with it. :\\ But yea, Kaven is probably on the right track since the kitty rotation is a bit on the random side.</p>\r\n<p>As taken from Wikipedia's Markov decision process &quot;At each time step, the process is in some state <span><em>s</em></span>, and the decision maker may choose any action <span><em>a</em></span> that is available in state <span><em>s</em></span>. The process responds at the next time step by randomly moving into a new state <span><em>s</em>'</span>, and giving the decision maker a corresponding reward <span><em>R</em>&lt;sub&gt;<em>a</em>&lt;/sub&gt;(<em>s</em>,<em>s</em>')</span>.&quot; This sounds exactly what we need to be looking at.</p>\r\n<p>*pulls out old college Matrix Algebra book*</p>\r\n<p>/facepalm</p>\r\n<p>I'm not thinking. I knew it was some place that I remember learning about Markov and it was dealing with matrixes. From a matrix point of view I can see how to implement it. But from a programming point of view for the cat dps rotation I'm kindof at a loss on how to implement this. I can see the constance being crit, hit, and miss %'s but I don't know how you would evaluate the rest.</p>",
+    "PostedDate": "2009-09-21T22:17:32.553-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "237167",
+    "ThreadId": "69548",
+    "Html": "<p>One downside to the Markovian method is that it's incomprehensible to a vast vast majority of the users, so double-checking my work will be much more difficult. I still think it may be the right way to go, but just wanted to mention it.</p>",
+    "PostedDate": "2009-09-22T00:09:23.99-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "237389",
+    "ThreadId": "69548",
+    "Html": "<p>You could leave the old model in and available on options to swap back to for folks that don't feel comfortable with advanced mathematics.</p>\r\n<p>It would mean keeping two models working though...which is really a pain.</p>",
+    "PostedDate": "2009-09-22T09:13:18.487-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "237952",
+    "ThreadId": "69548",
+    "Html": "<p>I just downloaded v2.2.19. &nbsp;In my current gear (Allev/Whisperwind) with default buffs I now do more DPS in the model without a mangle bot than with one.&nbsp;</p>\r\n<p>Edit: found the (semi) obvious reason-- I'm still using the Vezax idol which only activates on mangle. &nbsp;Still, it'd be nice if the &quot;optimal rotation DPS&quot; checks for this.&nbsp;</p>",
+    "PostedDate": "2009-09-23T11:13:25.89-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "237981",
+    "ThreadId": "69548",
+    "Html": "<p>Aye, it's an annoyance, just been low on my priority list to fix.</p>",
+    "PostedDate": "2009-09-23T12:23:20.937-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "238276",
+    "ThreadId": "69548",
+    "Html": "<p>I'm not entirely sure if this is the right place to post this, but it would be really nice to be able to tell Rawr that your uptime of a certain skill like rake or rip isnt going to be 100%, or that you want to use Swipe on X targets for a certain percentage of the fight. Right now im trying to figure out an optimal gearset for 25man anub hc, and i get the feeling rawr doesnt recommend the right combination since my damage done on anub involves about 30-50% swipe damage on non-bosslevel targets.</p>",
+    "PostedDate": "2009-09-24T05:21:05.413-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "238422",
+    "ThreadId": "69548",
+    "Html": "<p>Indeed, current Rawr.Cat would not be able to tell you optimal gear for Anub 25H.</p>",
+    "PostedDate": "2009-09-24T10:48:25.49-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "238437",
+    "ThreadId": "69548",
+    "Html": "<p>Speaking of a workaround to Anub25H, could you sort-of workaround the model limitation by using Batch tools?&nbsp; Create two identical profiles, One with adds being factored in, one without.&nbsp; The adds one with much less debuffs available (Sunder, Faerie Fire, etc.).&nbsp; Then use batch tools to optimize for these two, using maybe a 60/40, single target / multi-target.&nbsp; I understand that this is certainly suboptimal (combo points and whatnot), and I'm not too experienced with Batch tools, not having need for them myself, but just throwing this out as an idea.</p>",
+    "PostedDate": "2009-09-24T11:40:33.497-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "239330",
+    "ThreadId": "69548",
+    "Html": "<p>Astrylian, in an earlier post, you said roar has a constant duration and rip has a large variability in its duration (I'm assuming thats due to clipping?). I always considered it the other way around, rip is a (nearly) constant, while roar varies based on how many CPs I had when it became time to refresh. I'm not sure if thinking about it that way around makes things easier versus the dps impact of a variable CP approach.</p>\r\n<p>My understanding of the theory behind Markov processes is limited, but as far as I understand, in essence they aren't really such abstract constructs. In fact Rawr.cat already uses a Markov process! It uses it to calculate the chance of a wasted CP when you try for 5CP savage soar and a crit pushes you to 6. In that case, the states are just the number of CP and the transitions are the crit chance. The tree being evaluated is just the sequence of all possible combinations of crit/non-crit getting from 0 to x CP points.</p>\r\n<p>The state machine your talking about now just has a lot more states, since the state will also be based on the remaining uptime of 4 abilities, tiger's fury CD and potentially the energy available. Choosing the state as all possible combinations, can result in millions of possible states. But I'm sure either some decomposition should be possible to keep this manageable or you can handle it in a way that all states need not be evaluated. I'm sure Kavan will be able to help with this.</p>\r\n<p>If you can find cycles in the states, I believe will be able to get to a steady state and/or find a closed form solution.</p>\r\n<p>Put in another way, the Markov process is just a simulator running all results in parallel and keeping track by using a probability (chance) of each path being followed. Finally the weighted sum of all these paths is the expected result of doing many simulations.</p>\r\n<p>(While we are talking about Markov processes, I have been thinking about using that for tank modelling, but that is another topic...)</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-09-27T14:16:12.343-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "239332",
+    "ThreadId": "69548",
+    "Html": "<p>SR is still variable, but in almost all cases is either 4 or 5 cp while maintaining a rotation, and is only affected by one set bouns, 4T8. So, typically in the 30-40sec range. Rip is the hugely variable one. Glyph of Rip, Glyph of Shred, and 4T7 all increase the duration. So, it can vary from 12sec up to 26sec, over double.</p>",
+    "PostedDate": "2009-09-27T14:48:33.643-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "239339",
+    "ThreadId": "69548",
+    "Html": "<p>Ah, you where talking about variable in the passive (static) sense pre-fight. Yes, trying to define a &quot;standard&quot; rotation that caters for all those options will not be practical. But for a particular combination of glyphs and set-bonus it is constant for the duration of the fight, unless you decide to clip it.</p>\r\n<p>I was thinking about the decision between a 5CP Bite, followed by a 1 or 2 CP SR or skipping the bite and going for the 5 CP SR directly. That decision will result in large dynamic variation of SR durations, but potentially allowing more freedom in moving CP around and ultimately getting more bites in.</p>\r\n<p>(But I dps so infrequently that I mostly end up blindly following facemauler on the odd occation that I do dps. Putting more planning into the rotation, instead of a whack a mole approach, might result in more consistent SR durations.).</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-09-27T15:35:25.993-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "239362",
+    "ThreadId": "69548",
+    "Html": "It's a fundmental decision-- are you playing by ordered priorities, like &quot;keep SR up, keep Rip up&quot;, etc, or are you playing by goal-centric cycles.  The priority list aims for optimal efficiency on attacks, the cycles aim for a minimum of collisions.  <div>\r\n\r\n<br></div><div>If you want to &quot;cyclify&quot; that decision, you could say you have 4SR/5R/5FB cycles interspersed with 1SR/5R cycles as necessary, </div><div><br></div><div>I disagree with Astryl's claim that you almost always go 4-5 point SRs, though.  If you have 4t8, you get 18 seconds with a 1-point SR.  Many players find a 1/5/5 cycle to be very compatible and optimal for their play. <br>\r\n\r\n<br><div>On Sun, Sep 27, 2009 at 6:35 PM, Wildebees <span dir=ltr>&lt;<a href=\"mailto:notifications@codeplex.com\">notifications@codeplex.com</a>&gt;</span> wrote:<br><blockquote style=\"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex\">\r\n\r\n   <div> <p>From: Wildebees</p> <div><p>Ah, you where talking about variable in the passive (static) sense pre-fight. Yes, trying to define a &quot;standard&quot; rotation that caters for all those options will not be practical. But for a particular combination of glyphs and set-bonus it is constant for the duration of the fight, unless you decide to clip it.</p>\r\n\r\n\r\n<p>I was thinking about the decision between a 5CP Bite, followed by a 1 or 2 CP SR or skipping the bite and going for the 5 CP SR directly. That decision will result in large dynamic variation of SR durations, but potentially allowing more freedom in moving CP around and ultimately getting more bites in.</p>\r\n\r\n\r\n<p>(But I dps so infrequently that I mostly end up blindly following facemauler on the odd occation that I do dps. Putting more planning into the rotation, instead of a whack a mole approach, might result in more consistent SR durations.).</p>\r\n\r\n\r\n<p> </p></div><div> <div> <p>Read the <a href=\"http://rawr.codeplex.com/Thread/View.aspx?ThreadId=69548&ANCHOR#Post239339\">full discussion online</a>.</p> <p>To add a post to this discussion, reply to this email (<a href=\"mailto:Rawr@discussions.codeplex.com?subject=[Rawr:69548]\">Rawr@discussions.codeplex.com</a>)</p>\r\n\r\n <p>To start a new discussion for this project, email <a href=\"mailto:Rawr@discussions.codeplex.com\">Rawr@discussions.codeplex.com</a></p> <p>You are receiving this email because you subscribed to this discussion on CodePlex. You can <a href=\"http://www.codeplex.com/site/discussions/thread/unsubscribe/69548\">unsubscribe</a> on codePlex.com.</p>\r\n\r\n <p>Please note: Images and attachments will be removed from emails. Any posts to this discussion will also be available online at <a href=\"http://codeplex.com\">codeplex.com</a></p> </div> </div></div> </blockquote>\r\n\r\n</div><br></div>",
+    "PostedDate": "2009-09-27T19:16:51.08-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "239417",
+    "ThreadId": "69548",
+    "Html": "<p>It would be a mistake for people to think that just because they can maintain a set rotation smoothly, that it'd be the highest DPS (such as the 1/5/5 you mentioned, which doesn't even work, assuming you're glyphed correctly; would have to be 2/5/5). That's a relatively energy inefficient use of Roar, when energy is our biggest limited, for example.&nbsp;</p>\r\n<p>(It's not necessarily wrong, just pointing out that it's very easy to find a smooth rotation and assume that because it's smooth, it's the best DPS)</p>",
+    "PostedDate": "2009-09-28T00:53:02.423-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "239505",
+    "ThreadId": "69548",
+    "Html": "<div>But it is highly cp-efficient, which is important when maximizing FBs, and avoids collisions. </div><div><br></div><div>While energy efficiency is important, you may be better off trading some efficiency on the SR side so that you have a greater chance to FB, and so you don't run into situations where you need to rip and SR at the same time.</div><div><br></div><div><br></div><div><br>On Sep 28, 2009, at 3:53 AM, Astrylian &lt;<a href=\"mailto:notifications@codeplex.com\">notifications@codeplex.com</a>&gt; wrote:<br><br></div><div></div><blockquote><div> <p>From: Astrylian</p> <div id=ThreadNotificationPostBody><p>It would be a mistake for people to think that just because they can maintain a set rotation smoothly, that it'd be the highest DPS (such as the 1/5/5 you mentioned, which doesn't even work, assuming you're glyphed correctly; would have to be 2/5/5). That's a relatively energy inefficient use of Roar, when energy is our biggest limited, for example. </p></div>   </div></blockquote>",
+    "PostedDate": "2009-09-28T06:04:31.087-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "239617",
+    "ThreadId": "69548",
+    "Html": "<p>Indeed, totally valid. Using low CP SRs is trading energy for CPs. Alot of that is made up for by the fact that you'd use that extra energy for another Shred, giving you another ~1.5cp, and some more damage, but not all.&nbsp;</p>",
+    "PostedDate": "2009-09-28T10:29:53.763-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "241887",
+    "ThreadId": "69548",
+    "Html": "<p>$0.02 from someone mathematically challenged:</p>\r\n<p>&nbsp;</p>\r\n<p>1. A rotation or a cycle implies that somewhere sometime somehow you come back to what/where/how you started. The only time you do that as a Feral DPSer is when you start the entire fight over again, or move to a new boss.</p>\r\n<p>The only way we can deal with this is to pick a fight length based on our experience, call it the mean average of bossfight lengths or w/e, and then roll with it. Or try to model a specific fight when you're really concerned about getting a server-first hard mode or w/e.</p>\r\n<p>&nbsp;</p>\r\n<p>2. There are no more &quot;No Gimmick&quot; fights left. There's always something. Move out of this. Move into that. Get the adds. Hit the portal. General Vezax was never intended to be a static fight, it just kinda ended up that way. You might as well say goodbye to Patchwerk, 'cause we're probably not gonna see a scratching post like that again.</p>\r\n<p>What that means is that you *WILL* loose combo points. You'll have to Innervate, Battle Rez - whatever. Some people less, some people more. The people that post in this thread might end up at 98% combo point efficiency. I might end up at 90%.</p>\r\n<p>HAI - wait a second!</p>\r\n<p>Gimme a slider setting for how good I am, and how static the fight is, as reflected in the number of combo points wasted or not even achieved. Let me tell Rawr how efficient I want my model or simulator or w/e to think that I am. Am I one of the few, the proud Elitist Jerks that can maintain 100% uptime on SR and Rip? - Set the slider to 99.</p>\r\n<p>Am I Regular Joe in the guild that uses Rebirth and Innervate every bossfight and can't seem to get even the initial engagement sequence right? - Slider at 85, please!</p>\r\n<p>&nbsp;</p>\r\n<p>WWS, WMO, WOL - all three should have a way where you can analyze the average efficiency of the top 25 raiding cats in the world on new boss X. Thereby achieving a recommendation for how &quot;combo point efficient&quot; highly geared cats are on boss X. This would require someone with insider knowledge to go undercover there and check people's CP generation, finishers etc. I'm not that guy, I'm just telling you it could be done.</p>",
+    "PostedDate": "2009-10-04T08:55:03.657-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "241979",
+    "ThreadId": "69548",
+    "Html": "<p>A lot of what you're talking about is being fleshed out now as the Boss Handler system.&nbsp; This would say &quot;every 2m, I need to move for 15seconds.&quot;&nbsp; Or, &quot;I'm standing behind the boss for 95% of the fight.&quot;&nbsp; Or, &quot;There's three adds up within AoE range for 12% of the duration of the fight&quot;.&nbsp; This is still in the active development stage, but check out the Rawr.DPSWarr module for what I mean.</p>\r\n<p>As to a &quot;skill&quot; setting... this is much harder to model.&nbsp; Adding in a &quot;latency&quot; or &quot;reaction time&quot; (how long does it take to react to a proc, how long does it take to decide what ability I use next, how long does it take to press a new button, how much delay is there between myself and the server) is relatively simple, and implemented in a number of models at this point.&nbsp; Adding in a &quot;skill&quot; factor is quite a bit different.&nbsp; The program is going for optimal performance, and is assuming optimal inputs from the human part of the system.&nbsp;&nbsp; Assuming sub-optimal performance is planning around the user NOT performing their best, and so is POTENTIALLY accepting / inviting sub-optimal play.</p>\r\n<p>With that said - how would you propose a skill-based setting?&nbsp; If it's &quot;using an improper ability at any given point&quot; - that's extremely difficult to make happen.&nbsp; The program doesn't know your play or Joe Schmoe's play or any other play then the optimal play that it's programmed to work with.&nbsp; You personally could be using ability Y when you should be using ability X, but another player could be using ability Z in the same siuation.&nbsp; How can the model hope to accommodate all forms of sub-optimal play?</p>",
+    "PostedDate": "2009-10-04T17:03:57.73-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "242173",
+    "ThreadId": "69548",
+    "Html": "<p>The Boss Handler system you're describing sounds great - in theory. In practice I'm thinking it'll just be too complicated for the average user.</p>\r\n<p>&nbsp;</p>\r\n<p>I'm not asking someone to model &quot;skill&quot;, only to give me a way to approximate how efficient my bossfighting is with regards to combo points wasted or not even achieved. With the way Rawr currently handles combo points over the course of a fight, that should be a lot simpler than trying to model a cat's behaviour on a huge wide variety of boss encounters.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-10-05T06:52:51.043-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "242192",
+    "ThreadId": "69548",
+    "Html": "<p>And that puts us back to BrWarner's point of : We don't wanna model bad playstyles. If you are wasting Combo Points compared to Rawr (or spreadsheets, etc.) you need to figure out how to fix your playstyle to not waste them.</p>",
+    "PostedDate": "2009-10-05T07:40:38.95-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "242323",
+    "ThreadId": "69548",
+    "Html": "<p>I doubt the boss handler will be too difficult for anybody.&nbsp; Really, try it out in the DPSWarr module to see its current implementation for yourself.&nbsp; You can choose a pre-modeled boss, or you can create your own.&nbsp; For example, let's create our own Kologarn boss model:</p>\r\n<p>Turn off &quot;Standing in Back&quot;.</p>\r\n<p>Turn on &quot;Multiple Targets&quot;, to 3 adds with 90% uptime (Wish there would be two &quot;levels&quot; of AoE settings, but this would be extremely low on my personal priority list).</p>\r\n<p>Potentially adjust Damage Taken to a reasonable number.</p>\r\n<p>Set &quot;Execute Range&quot; to 5% (usually, you kill one around 20-30 percent, and either kill the boss soon after, or kill the other arm for a quick finish.</p>\r\n<p>&nbsp;</p>\r\n<p>Whazam, you've just set the DPSWarr module to model itself on the specific parameters of the Kologarn fight.&nbsp; Once we get more presets in there, you can start with a fight template, tweak it if you wish to get advanced and model closer to your own guild's particular strat, or just use an &quot;average&quot; boss template if you want to gear out an alt for some quick offnight raiding.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>(Alright, I'll stop derailing this thread with BossHandling - back to rotation logic we go!)</p>",
+    "PostedDate": "2009-10-05T15:25:08.537-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "242331",
+    "ThreadId": "69548",
+    "Html": "<p>One last comment:</p>\r\n<p>BrWarner, if you could spend some time drawing up all the other bosses in that file and submit it as a patch, that would help me a TON. Leave comments where you find you can't model something and I'll try to rework code to allow for it.</p>",
+    "PostedDate": "2009-10-05T15:55:09.643-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "242335",
+    "ThreadId": "69548",
+    "Html": "<p>I know I don't know much about playing with a dps warrior (only warrior I have I use as a bank alt &gt;_&lt;) but I could also play around with the settings with kitty dps in mind (main alt is a kitty/bear druid) and send in suggestions (my guild has full cleared everything but algalon and 25 Anub HM so I know the general ideas for all fights).</p>",
+    "PostedDate": "2009-10-05T16:08:30.95-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "243769",
+    "ThreadId": "69548",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Jothay wrote:</strong><br>\r\n<p>And that puts us back to BrWarner's point of : We don't wanna model bad playstyles. If you are wasting Combo Points compared to Rawr (or spreadsheets, etc.) you need to figure out how to fix your playstyle to not waste them.</p>\r\n</blockquote>\r\n<p>Is there any data out there as to how many people actually play perfectly?&nbsp; Has anyone considered that an optimal rotation calculator might be rather inaccurate considering the fact that one bad move is going to throw off the calculations drastically, and it might be that even the world's best cats make several mistakes over the course of a fight?</p>\r\n<p><strong>Astrylian Wrote:</strong></p>\r\n<p><em>It would be a mistake for people to think that just because they can maintain a set rotation smoothly, that it'd be the highest DPS (such as the 1/5/5 you mentioned, which doesn't even work, assuming you're glyphed correctly; would have to be 2/5/5). That's a relatively energy inefficient use of Roar, when energy is our biggest limited, for example.&nbsp;</em></p>\r\n<p>It might be that coming up with a highly predictable rotation might increase overall dps in a real fight because 1) it is easier to recover from mistakes, and 2) you have a definite starting off point when you need to brez or innervate or whatever.</p>\r\n<p>What I'm trying to say is, it might be beneficial to recognize the limitations of sub-optimal play and try to strategize ways around it, rather than pretending it doesn't exist.&nbsp; On the other hand, it might be that the calculations are exactly the same for sub-optimal play as for optimal play.&nbsp; I mean, if I suck and use energy only 75% efficiently, then I still want the gear selection of the optimal dps, because that will give me 75% of optimal dps, instead of 75% of some lesser number...&nbsp; I of course have no evidence either way, so it's really speculation on my part..&nbsp;.</p>",
+    "PostedDate": "2009-10-09T00:56:06.317-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "244182",
+    "ThreadId": "69548",
+    "Html": "<p>I think MrDruid is starting to get closer to the real questions many kitties have:</p>\r\n<p>Assuming their play and/or the mechanics of the fight/raid-combo doesn't allow for perfect play. How does this affect gearing?</p>\r\n<p>A related question would be whether certain gearing/playstyles are more resilient against imperfect play/interruptings due to fight mechanics?</p>\r\n<p>For example: If you will be unable to attack the boss during certain periods, is it worthwhile trying for larger/longer bleeds or is it better to maximise direct damage for the periods where you can hit the boss? One trade-off I could think of is armor pen for higher shred/FB versus keeping a set bonus intact for longer RIP or Rake durations.</p>\r\n<p>I agree we shouldn't try to model imperfect play, just for the sake of supporting it, but should possibly consider modelling imperfect play caused by external factors, in as much as it affects gearing choices.</p>\r\n<p>I think the boss-handler is a neccesity in order to do this in a meaningful manner, but to some extent some of it is there already: For custom rotation, I can already deselect shred to partially model the Kologarn fight. This should already remove the value of shred bonusses (e.g. glyph of shred). This would mean more frequent appllication of rip, which might result in crits being more heavily emphasised for extra combo points. Although with the reduced energy of mangle versus shred, I'm not sure about the net effect on CPs.</p>\r\n<p>But determining the playstyle/gearing that is most resilient against imperfect play, is a bit of a nightmare... Probably the easiest way would be to run many simulations using verious settings and determining the bottom 25-percentile value for each combination of settings. Timescales to perform such an optimisation... ouch!</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-10-10T07:55:23.553-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "244870",
+    "ThreadId": "69548",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Jothay wrote:</strong><br>\r\n<p>And that puts us back to BrWarner's point of : We don't wanna model bad playstyles. If you are wasting Combo Points compared to Rawr (or spreadsheets, etc.) you need to figure out how to fix your playstyle to not waste them.</p>\r\n</blockquote>\r\n<p>You want to model realistic playstyles. Assuming perfect play is like sticking your head in the sand and pretending that the problem will go away. What I was suggesting was merely a simple and effective way of modeling how much time (and therefore combo pts, i.e. special attacks - and white hits) you spend away from the boss.</p>\r\n<p>&nbsp;</p>\r\n<p>Sure, the Boss Handler system is a great way to nit-pick and in-depth-analyze possible performance and gearing issues on any given boss that you might be extremely interested in. However, that is a bit too much for the regular user who just wants to figure out what's gonna work best for him on a variety of encounters given how much he has to break away due to fight mechanics, due to Innervate, due to battle rezzing or whatever.</p>",
+    "PostedDate": "2009-10-12T17:21:24.663-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "245134",
+    "ThreadId": "69548",
+    "Html": "<p>There's another part of the Boss Handler just for this: the &quot;Average&quot; boss.&nbsp; This takes the &quot;average&quot; of all the variables that are defined for all of the bosses that are modeled.&nbsp; This is almost a &quot;set it and forget it&quot; for those who just want an absolutely basic modeling, and does exactly what you're saying - account for moving, account for</p>\r\n<p>Another thing that might be helpful is to draw GCDs / resource cost for BRezzing, Innervating, whatever.&nbsp; Again, go to the DPSWarr module (under Options&gt;Ability Maintenance) to see one approach to this issue.&nbsp; Not saying this is necessarily how it should be handled, but it is one method.</p>\r\n<p>This is NOT modeling poor playstyle, but rather, good playstyle, as well as assorted other mandatory stuff that may infringe on the rotational part of good play (movement, and non-rotational abilities).</p>\r\n<p>&nbsp;</p>\r\n<p>[edit] Thanks, Jothay, whoops.&nbsp; :)</p>",
+    "PostedDate": "2009-10-13T09:10:49.8-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "245152",
+    "ThreadId": "69548",
+    "Html": "<p>some chunks of your message got lost there BrWarner</p>",
+    "PostedDate": "2009-10-13T10:15:01.677-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "245317",
+    "ThreadId": "69548",
+    "Html": "<p>Fixed it.</p>",
+    "PostedDate": "2009-10-13T15:38:56.143-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "253855",
+    "ThreadId": "69548",
+    "Html": "<p>I'd like to know how many feral dps'ers, both elite and average players, always and only use 5CP SR's. I certainly don't, and I see putting a restriction like this on your skill choice as very limiting in actual fights given how much I love using Innervate, Battlerez and following directions regarding target-switches and burst dps availability/requirement mechanics.</p>\r\n<p>Assuming a bunch of you are using only or dam-near-only 5CP SR's I'll just bow my head and go try to become 'better', but if not, then I don't really see the value in having Rawr assume constant 5CP SR's.</p>",
+    "PostedDate": "2009-11-05T09:25:29.213-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "253914",
+    "ThreadId": "69548",
+    "Html": "<p><span style=\"font-size:small;font-family:Times New Roman\"><span style=\"text-decoration:underline\">2 year cat player here, 5 year of wow on druid, not a mathematical genious either.</span></span></p>\r\n<p><em><span style=\"font-size:small;font-family:Times New Roman\">Firstly, I would urge the OP to contact Nightcrowler on the EJ forums. He's modelled cat very well and discussed the maths intensively, to a point where its worthless for a layman like me to pass judgement.</span></em></p>\r\n<p>Secondly, mathematical modelling really only works for Patchwerk style encounters (yes i know this is what you model on in a way) and ive found that the cat cycle as near as damnit from feeling revolves around a three minute Beserk cooldown. My argument for this is that this cooldown throws so much difference into the play and energy to ensure you are all dots on and its repurcussions extend way after its finished. Ive found from (literally) hours on dummies that the DPS peaks high then reaches a very low point all revolving about this 3 minute cooldown. (reply to the cycle debate above)</p>\r\n<p>Small reply to the previous poster here; I used to do cycles manually and after a while found Nightcrowlers &quot;Feral by Night &quot; addon. My end result is i know when to ignore it. I have a mathematically amazing addon to make calculations i could never make in mid 'cycle'. The example i am talking about is the precise time in your energy state and combo points and uptime where doing a 5pt Ferocious Bite is better DPS than losing X amount of ticks of Rip or ravage uptime. I cant do that maths on the fly, especially if i am RL that night. Savage roar is affected by tier pieces of course. SR in Feral by Night pushes you closer to a 5 point SR. However your time on/off target will completely change that - you get it on asap and may only drop it in the last few seconds to finish on your selfish 5 point FBite. Midstream you will strive to aim for 5pt SR. You will shorten it when you need to. When you first get on target you are going to likely put a 2 pointer on and force your rythym out later as its a big DPS increase.</p>\r\n<p>Lastly comments on the cat model to Astrylian. Its not bad to average out and im sure its WAY more simple. Ive found it to be largely exagerated in the DPS score, from my experience right from iLevel 200 to 245 it was consistently 3-400 DPS above what i hit unbuffed (yes i did check debuffs and buffs). I appreciate you wish to mathematically work out cat DPS but I think you should just disclaimer it. Or work backwards. Take a model like Nightcrowlers and then work backwards logically. 4-5% DPS is on Ferocious Bite, so and so proportion of white, yellow shred, etc like a recount view. There are potentially models for agi cat and ArpPen cat, both equally viable, both very different. That says a lot for optimal DPS in Patchwerk style encounters. Cat modelling is sickeningly hard to work out on a cycle basis. Your DPS burst is OK, but it increases once the RIP is on is far more obvious. If you start with beserk the dynamics change, a little like starting rogue DPS with Adrenalin Rush - you get all the things on and you are golden for those moments but it gets increasingly harder to maintain 100% uptimes. Beserk is the 3 minute cycle IMO, its the dynamic that changes things in every 5 pt finisher you do and how fast you reach it. By taking Beserk as the longest cooldown ive statted a repeatable pattern on the longest cooldown. If Beserk was an insignificant DPS boost then you could make it irrelevant, but its not.</p>\r\n<p>Apologies for the fragmented explanations - I was a little drunk. But I hope i made someone think again.</p>",
+    "PostedDate": "2009-11-05T12:02:15.717-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "253966",
+    "ThreadId": "69548",
+    "Html": "<p>Pikey, this might be the wrong place to hold such venerable opinions of Nightcrowler's work :) The fact that you have to &quot;know when to ignore it&quot; means that it isn't doing something the way you think is optimal. &nbsp;And the calculations it makes aren't as thorough as they may necessarily have to be. &nbsp;That's all assuming that Nightcrowler didn't make any accidental mistakes, while many coders here assume he must have because of his programming style. &nbsp;The problems you have with your cycle seem to point to you getting poor play recommendations.</p>\r\n<p>While FbN is a useful tool much like Rawr is, it's not a sure thing. &nbsp;And good luck finding Nightcrowler anywhere, he's been MIA from EJ for the past two months. &nbsp;I highly recommend keeping up with SimulationCraft (and contributing to the optimal cycle designs) instead of following FbN at this point.&nbsp;</p>\r\n<p>That said, onto the CP issue: no, I don't &quot;always&quot; get 5 CP SRs, and quite on purpose. &nbsp;I find the 31-second timer collides fairly often with a 22-second Rip timer: given you generally can prepare a new finisher in ~10 seconds, you can often SR, one cycle, Rip the next, and find yourself with two 10-second timers at 5 CP. &nbsp;This inevitably leads to &quot;wasting&quot; CP by refreshing SR early (which wastes previously spent CP), SR downtime (if your Rip expires right before SR), &nbsp;Rip clipping (if Rip expires but you have more procs up), or Rip downtime (if you choose to wait on SR). &nbsp;Or, you could FB, which will probably lead to a low-CP SR followed by a late Rip. &nbsp;Even if you negotiate this sequence optimally, it's a stressful time in your attack pattern.&nbsp;</p>\r\n<p>If you refreshed SR early (as is often the advice) you only end up with the same problem in your next cycle: your SR and Rip expire within 5 seconds of each other, and you can't do anything about it.&nbsp;</p>\r\n<p>The results ends up being some quantity of SR downtime, Rip downtime, CP waste, and energy waste. &nbsp;</p>\r\n<p>On the other hand, you can maintain a very stable cycle of 3SR/5Rip(/5FB when lucky) without ever experiencing the above scenario. &nbsp;There's no hard decisions, and you only ever have to worry about the &quot;next&quot; finisher and not the both of them colliding, when worrying about FB. &nbsp;It's a slight energy drain and a CP reward, meaning if you get roughly 13 CP in 22 seconds, you can FB (as opposed to 15 or 10 and needing to store energy for your next SR). &nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-11-05T13:31:34.93-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254072",
+    "ThreadId": "69548",
+    "Html": "<p>Yeah, what Allev said is basically right.</p>\r\n<p>It sounds like you're seriously underestimating the complexity that goes into Rawr's Cat model, it's not even remotely close to 'just average it out'. Nor is it 'way more simple'; indeed quite the opposite.</p>",
+    "PostedDate": "2009-11-05T20:09:09.607-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254092",
+    "ThreadId": "69548",
+    "Html": "<p>&nbsp;</p>\r\n<p>I'm quite sure i pressed FbN too hard here and it wasnt meant to be a slur on anyones work, sorry. My faith on it stems from the ability for me to hands off the thinking or use it as a rail or banister to lean on in tough times - practical rather than functional, which might be the overal message in thispost.. if i can be quite outrageous for a moment id like to highlight what i think calculators and models fall short on:</p>\r\n<p>That is that the human element of decision falls upon the number of CP's the SR (and its overlap of existing time)&nbsp;is used on and the decisions outcome is always&nbsp;biased heavily on seperating the expiry times. There is the human element of stress as&nbsp;Alley perfectly highlighted above by saying its 'a stressful time in your attack pattern'.</p>\r\n<p>As an agi based cat player i dont think im far off the mark in saying i want to keep Rip up all the time. I'm going to ignore the massive variables of &quot;time off target&quot; for a moment and say that the decision on SR can usually be the decider in energy efficiency, to which the quoted times of 22 seconds rip should revolve around and to this end we adjust the number we SR on to make the uptime of Rip easier to manage and not neccessarily energy efficient.</p>\r\n<p>But the weightings shift a fair amount with an ArmPen cat as the value of Shred goes up aganst Rip. And yet again with set bonuses that play with times in the cycle.</p>\r\n<p>I know the point of the discussion was aimed somewhere close to; &quot;Here is the kit a player is wearing, what is his DPS?&quot; (input and output). to model something close you would need in my mind a lot more ability to take into account the kit setup. As i went through the set bonuses this year and changed gemming and trinketing for a armpen or agi as the discussions progressed there was, at every stage of the play, massive play style differences. In my own mind to answer the puzzle is most definitely over complex given the scope of what is to be achieved - of course i salute those that bend their minds to it, its quite amazing to watch.&nbsp;</p>\r\n<p>I think mathematicaly its easier to work out the prediction of following a set number of CP to SR on, rather than to include variations in SR points, to comfortably waste energy as above. I really dont see any fights anymore that allow this type of prediction to be of much use though. The best players maximise time on target and energy useage by predicting in their heads how long they have on the boss and how much damage they can leave ticking on it as they leave. It throws out the window any model but just uses guiding principals. But that motivation is valid, especially in cases such as say 'Gothik' where you can proudly watch through the gate as you released a full Rip into him and its ticking for nice crits ...in that such example your whole DPS function on the short time on target is for that one rip and to get the timing of the release of that one rip absolutely spot on. And its good when it works. But you didnt follow any pattern here to arrive at that point.</p>\r\n<p>It was discussed above that inefficiency could be modelled. I have to lean towards that. I dont think mathematical pefection is what a RAWR user would want to see. It is misleading. Averaging out all the energy, all the combo points made and so on then dividing over the top still just seems to me as a functional user to be too perfect. That is my opinion and probably the defining boundary of maths vs play.</p>\r\n<p>I&nbsp;feel ive been unhelpful in the post but it so desperately interests me that i couldnt stay away. if I can be of more help in game i would be very happy. It just keeps coming back to me that the understanding of the principals of the maths involved is more important and the deviation is where the real skill lies.</p>",
+    "PostedDate": "2009-11-05T21:18:36.523-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254096",
+    "ThreadId": "69548",
+    "Html": "<p>Again, the 'additional input' you describe is all counted by Rawr. Set bonuses, overlapping SR, ArPen, etc. It is entirely relevant to almost every fight. You can get an addon to tell the time to die on a target, or it's not hard to anticipate with the level of granularity required (will it live 9sec? If not, don't Rake. Will it live 16sec? If not, don't Rip).</p>\r\n<p>We definitely want to adjust Rawr anywhere it is relying on 'impossabilities', or having to predict the future. We don't want to adjust Rawr where it's simply idealistic.</p>",
+    "PostedDate": "2009-11-05T21:33:35.47-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254103",
+    "ThreadId": "69548",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Astrylian wrote:</strong><br>\r\n<p>Yeah, I've got two leading ideas right now.</p>\r\n<ul>\r\n<li>State Machine, like Kavan suggests. It has some challenges (looks like it'll be a much much wider state space than what Mage deals with), but seems feasible.</li>\r\n<li>A rolling window of time ('cycle', loosely), where you look at the likelihood of getting enough extra combo points, early enough, in the cycle, to use a variable CP bite. The length of the rolling window would be user-controlled, via a slider on the options tab, labeled 'Precognition:* How far you can accurately predict the future', on a scale of 3 to 60sec. As funny as that sounds, it's not necessarily a bad idea.</li>\r\n</ul>\r\n</blockquote>\r\n<p>If you program a state machine for Rawr, that could be turned into an add-on to tell us what move to do next.&nbsp; Cat DPS ftw, although then any idiot could do it.&nbsp; As far as fbn, I was having issues with my dps after dropping the 2T8 bonus and went to it in desperation.&nbsp; My dps instantly dropped another 1k...&nbsp; Anecdotal, sure, but an accurate state machine would definitely blow it out of the water.</p>\r\n<p>The question would be what role does time play in your state machine?&nbsp; I would think that each state would be defined as 1 GCD away from the other, accounting for whatever move you made (or none).&nbsp; For the rolling window of time, I'm not sure how you would accurately&nbsp;calculate a likelihood without resorting to a state machine anyway.</p>",
+    "PostedDate": "2009-11-05T22:22:32.59-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254145",
+    "ThreadId": "69548",
+    "Html": "<p>Clearcasting procing on melee hits means the ideal action can change after every melee hit. And many times, you may be off GCD, and have a bunch of energy, but the right thing to do is to wait for just a half sec for something else.</p>",
+    "PostedDate": "2009-11-06T01:09:09.083-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254472",
+    "ThreadId": "69548",
+    "Html": "<p>Ok I've been sitting here thinking about this for a while and I'm completely lost.&nbsp; If somebody doesn't mind explaining this to me from the beginning, I do find this interesting even though I unfortunately doubt I can contribute.&nbsp; Well, not complete beginning, I did take a class in FSM design as an Electrical Engineering undergrad, but I clearly didn't earn my grade...</p>\r\n<p>What's the&nbsp;theory of how the&nbsp;state machine is going to tell you how many FBs you will be using towards your DPS calculation?&nbsp; You said closed form, right?&nbsp; Did you mean no inputs, only an initialization and transfers?&nbsp; Even if you only transferred on user moves (which I would think that you would transfer on OOC procs as well), meaning a change in CPs for the state machine, you'd still have 2 paths per state:&nbsp; 1CP or 2CP (a third path including a miss and a fourth path including a wait).&nbsp; So, each of these paths is going to have a widely different number of FBs.&nbsp; Are you just adding up all of the FBs along all of the paths and taking an average of, say, typical FBs per unit time (which could then be converted directly to dps)?&nbsp;&nbsp;Isn't each state transition taking you to the next state based on what the best move was in the previous state?&nbsp; (A:Shred) -&gt; 1CP -&gt; (AA:Rake) -&gt; 2CP -&gt; (AAB:Shred) -&gt; Etc.</p>\r\n<p>And, if so,&nbsp;how are you tracking time along all of the pathways, unless you keep a fixed duration between the states - which is why I suggested 1 GCD:&nbsp; it ain't perfect, but assuming waits are infrequent, setting the wait duration to 1GCD for simplicity wouldn't have&nbsp;a large effect, and even less effect if the average wait time is &gt; 1.5 GCD, because then you just have another wait.&nbsp; This assumes waits transitioned you; I don't know how you are tracking time if they don't.&nbsp; Transitions from OOC procs wouldn't increase your time output.</p>",
+    "PostedDate": "2009-11-07T00:10:20.553-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254479",
+    "ThreadId": "69548",
+    "Html": "<p>It's more than just that. <em>Technically, </em>you can have a transition on every single bleed tick, every auto attack, heck even every hot tick on you from a revitalize druid. The transition frequency is just so ludicrously high for a Cat that it isn't feasible to compute. More importantly, people can't realistically think/respond that fast. So, I believe the current plan is to have it be a static length, like every 0.5sec by default. It'll be user variable, by a slider (labeled &quot;JFM Skill&quot; of course).</p>",
+    "PostedDate": "2009-11-07T00:40:34.493-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254522",
+    "ThreadId": "69548",
+    "Html": "<p>It's less of a &quot;respond that fast&quot; issue as much as it is, you can plan ahead for certain things. &nbsp;If a bleed expires in 1 second and I'm planning on refreshing it as it expires, I might do it right as it expires. &nbsp;</p>\r\n<p>So, I don't see how the idea of this FSM is different from a simulator-- isn't that what you're doing by evaluating state every .5 seconds and stepping through the FSM? Or can you do some evaluation once you have the states set that will spit out the final DPS values?&nbsp;</p>",
+    "PostedDate": "2009-11-07T07:30:57.71-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254575",
+    "ThreadId": "69548",
+    "Html": "<p>Correct, you can. It's sort of a closed-form simulator, since there's no randomness involved.</p>",
+    "PostedDate": "2009-11-07T12:40:40.817-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254804",
+    "ThreadId": "69548",
+    "Html": "<p>CB05 Guide: How To Feral DPS<br>Big fan of Rawr, just released a video that has a lot of plugs for it, even stole parts of the intro-to-Rawr movie.<br><br>Number of bad words in this movie: 6<br>This is not for the elite of the elite, so the people in this thread won't learn anything, but you might get a kick out of it anyway.<br>This is for the average feral dps player who wants to improve and learn how to continue improving long after she's forgotten about this video.<br>English is my third language, doing voiceovers was a pain. <br><br>VIDDLER FULL MOVIE: http://www.viddler.com/explore/parl2001/videos/2/<br>http://www.youtube.com/watch?v=_nuc5MhpekM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; part ONE<br>http://www.youtube.com/watch?v=Eb5jMXJnv9k&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; part TWO<br>FILEFRONT DOWNLOAD: http://www.filefront.com/14885557/Guide%20How%20To%20Feral%20DPS.mp4<br><br>Please EMBED this video by copying the following code and pasting into your forum or website:<br>&lt;object classid=&quot;clsid:D27CDB6E-AE6D-11cf-96B8-444553540000&quot; width=&quot;437&quot; height=&quot;288&quot; id=&quot;viddler_3478492b&quot;&gt;&lt;param name=&quot;movie&quot; value=&quot;http://www.viddler.com/player/3478492b/&quot; /&gt;&lt;param name=&quot;allowScriptAccess&quot; value=&quot;always&quot; /&gt;&lt;param name=&quot;allowFullScreen&quot; value=&quot;true&quot; /&gt;&lt;embed src=&quot;http://www.viddler.com/player/3478492b/&quot; width=&quot;437&quot; height=&quot;288&quot; type=&quot;application/x-shockwave-flash&quot; allowScriptAccess=&quot;always&quot; allowFullScreen=&quot;true&quot; name=&quot;viddler_3478492b&quot;&gt;&lt;/embed&gt;&lt;/object&gt;</p>\r\n<p>Wordpress embed code:<br>[viddler id=3478492b&amp;w=437&amp;h=288]<br><br>Seems I recommended a feral blog (Flyv) that just went non-WoW a while ago. Should've recommended Fluid Druid instead. Oh well. Berserk macro should be a two-step macro, one that alerts the DK, and one that you can pop for Berserk AFTER you get the buff.</p>\r\n<p>Some people have asked for the script, it's posted here:<br>http://rnaguild.21.forumer.com/viewtopic.php?p=6290#6290</p>\r\n<p>&nbsp;</p>\r\n<p>Grats Astrylian and everyone who's ever worked on Rawr - big plug for Rawr is now on the front page of WorldOfRaids.com!</p>\r\n<p>http://www.worldofraids.com/news/954-guide-how-to-feral-dps-guild-recruitment-updates-new-24-slot-bag.html</p>",
+    "PostedDate": "2009-11-08T12:29:51.993-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "255617",
+    "ThreadId": "69548",
+    "Html": "<p>Is it possible to distinguish between mechanics that are more or less sensitive to certain stats?&nbsp; If a model-reduction does not affect the behavior of relative dps given input gear/glyph/talent changes, who really cares if it is less accurate?&nbsp; Perhaps it is not possible to make such distinctions.&nbsp; But if it is possible, I would focus on those mechanics that affect gearing decisions.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-11-10T10:18:17.503-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "255661",
+    "ThreadId": "69548",
+    "Html": "<p>Well, it's more or less a crapshoot:&nbsp;</p>\r\n<p>- White hits scale with everything, but get crit-capped at 71.2 or 76%, BUT not being hit/expertise capped push this number lower.<br>- Yellow damage isn't affected by haste, so you need a correct yellow-to-white ratio<br>- Shred is affected by everything else<br>- FB is affected by everything else, but its exact usage percentage is undetermined (and currently over-estimated); fluctuates depending on set bonuses; and scales in frequency with crit, BUT has a low crit cap due to talents (so hit and expertise can impact this)&nbsp;<br>- Rip is affected by hit/expertise/crit/AP<br>- Rake is affected by hit/expertise/AP only, until you have 4t10, when it also scales with crit</p>\r\n<p>So, pretty much every attack is sensitive to a different range of stats. &nbsp;The too-many-FB mechanic favors ArP, the high bleed estimate favors AP (and crit after 4t10), and the importance of capping hit/expertise is VERY dependent on what your crit rating is. &nbsp;<br><br>It's easy enough for the intelligent user to eyeball and work around (i.e. &quot;Agi is rated slightly better than ArP, a mechanic that favors ArP is overvalued, &nbsp;so they're more or less equal in-game&quot;), but then every novice user proclaims &quot;Rawr says Agi is better but SC says ArP, who do I listen to?&quot; and, in the end, it matters. &nbsp;Some people will switch all their gems for that last 15 theoretical DPS, and one tool might give advice one way and the other would give the other. &nbsp;</p>",
+    "PostedDate": "2009-11-10T11:59:16.197-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

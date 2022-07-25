@@ -1,0 +1,166 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Mage",
+      "DisplayName": "Rawr.Mage"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-03-25T14:57:07.273-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "After upgrading to Rawr 2.3.13 from Rawr 2.3.12, I realized that Optimizations were only taking up 30% processor speed when it used to be 70%. I am using a Core i7 920, and in both versions I have \"Use Multithreading\" checked off and \"Maximum Parallel Threads\" (Mage Options>Advanced) at 8, though I'm not sure if the latter matters. I just ran the old version again with the same file and confirmed that Optimization is twice as fast than on the newer Rawr. Let me know if I can provide any other information.",
+    "LastUpdatedDate": "2017-11-27T11:01:59.94-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-03-23T02:58:12.457-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Mage] No longer maximizing multithread potential",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16915
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3237,
+      "FileName": "ss24.PNG",
+      "DownloadUrl": ".\\3237"
+    },
+    {
+      "FileId": 3238,
+      "FileName": "Chira-Fire.xml",
+      "DownloadUrl": ".\\3238"
+    },
+    {
+      "FileId": 3257,
+      "FileName": "perfmon12.PNG",
+      "DownloadUrl": ".\\3257"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "It definitely is using all cores for me. Have you maybe changed processor affinity or something similar?",
+      "PostedDate": "2010-03-23T03:29:11.097-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I didn't change the affinity, and I set it to all cores just to be sure. Here is a screenshot of my task manager during Optimization.",
+      "PostedDate": "2010-03-23T04:00:32.273-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-23T04:00:33.05-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Can you attach your character xml just in case if it's something character specific?",
+      "PostedDate": "2010-03-23T04:19:53.087-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sure, but when loading the same xml in both versions of Rawr, I get different results. I was going to create a new file from scratch, but the Armory is down at the moment and I don't want to fill everything in manually. Also, I did a clean reboot to see if anything changed, but it did not.",
+      "PostedDate": "2010-03-23T04:22:56.49-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-23T04:22:57.093-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I identified some performance issues introduced in base code that affect optimizer. I'm not sure if this was from 2.3.12 to 2.3.13, but I'll make the necessary fixes for next release. My suspicion is that the issue I'm talking about was causing excessive time spent in garbage collector. If you would can you start performance monitor (perfmon from run in start menu) and add a counter for .NET CLR Memory->% Time in GC for Rawr.exe instance. If there is a large difference between 2.3.12 and 2.3.13 then this might be the root cause.",
+      "PostedDate": "2010-03-23T17:05:10.8-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sorry about the time lapse there. I will attach the picture of the two perfmon graphs with the tracker you specified. I'm not sure what is going on here though. I spoke to a friend of mine in a guild with the same processor and had him install and try running my file and he wasn't having problems. \r\n\r\nSome more weird behavior. I downloaded the latest source, 48681, and built it and while it seems to run at 80% cpu (which is higher than it did even on .12), it is still taking just as long as a .13 optimize using the same file. I think I'm going to see if I can find the exact revision where the issues start occurring and report back.",
+      "PostedDate": "2010-03-25T10:09:02.76-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-25T10:09:03.36-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "So, I will have to retract that last bit. Apparently I am doing something horribly wrong when I build it and even the source for the .12 release produces the same results.",
+      "PostedDate": "2010-03-25T10:58:49.053-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "When you build it yourself, make sure to build it in release mode and either start outside of Visual Studio or start without debugging (ctrl-F5).",
+      "PostedDate": "2010-03-25T11:37:29.227-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I always hit Build then run Rawr.exe out of {project}/bin/Debug/. I'm not sure if there are problems because I'm using Express Edition that I just installed fresh. It seems weird that my builds can somehow consume more processor usage and build in twice as long. \r\n\r\nEven though my builds were giving me different results than the official builds, I noticed there was a pattern. The .12 build's optimizer showed different patterns in the task manage (core 8 was only being partially utilized and overall was running at 50% compared to the standard 80%). Here is my log of what each build I tried did:\r\n48681\t\t\tGOOD\r\n48485\t2.3.13\tBAD\r\n48420\t\t\tBAD\r\n48412\t\t\tBAD\r\n48380\t\t\tGOOD\r\n48303\t\t\tGOOD\r\n48301\t\t\tGOOD\r\n47954\t2.3.12\tGOOD\r\n\r\nJust to reaffirm: I have no proof that the change in processor usage is directly related to the original problem, but if it is, I would suspect the problem arose in revision 48412, assuming the revisions marked as Rawr3 did not change any code in Rawr 2. At this point it would probably make sense to wait until .14 is released and see what happens then.",
+      "PostedDate": "2010-03-25T13:21:04.59-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sorry, didn't read my post before I submitted. I meant to say it seems weird that my builds can somehow consume more processor usage and _optimize_ in twice as long. Also the task manager observation was for .13 and not .12. That is, the \"BAD\" ran at 50% usage with erratic core 8 behavior, and the \"GOOD\" ran at 80% steady usage on all cores.\r\nI suck.",
+      "PostedDate": "2010-03-25T13:24:51.99-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I think you may have missed the part where Kavan said to make sure you build it in Release mode, not Debug mode.",
+      "PostedDate": "2010-03-25T13:30:40.847-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Wow, not sure how I misread that. Now it's functioning exactly like the official build. I rebuilt 4 of them from before and can confirm:\r\n2.3.12 works\r\nRevision 48380 works\r\nRevision 48412 does not work\r\nRevision 48681 (latest) works, and actually runs 5s faster than 2.3.12\r\n\r\nLooks like it's good; just figured I'd provide the extra info in case you were curious.",
+      "PostedDate": "2010-03-25T14:21:12.773-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The issue that I fixed was actually introduced in 48411, which is marked as Rawr3, but affects the base behavior.",
+      "PostedDate": "2010-03-25T14:57:00.997-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-25T14:57:07.273-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:19:42.37-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-21T00:00:19.307-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:29:13.033-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:20.917-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:01:59.94-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

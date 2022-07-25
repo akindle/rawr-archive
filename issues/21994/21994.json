@@ -1,0 +1,65 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ShadowPriest",
+      "DisplayName": "Rawr.ShadowPriest"
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Lightweave Embroidery (Rank 2) seems to not be properly evaluated.   \n \nMaybe a clue to the problem can be found in Rawr.Base -> Enchant.cs in the difference between the old Lightweave Embroidery and the new one.   The old one initializes the stats with Spirit=1 probably a workaround for some other issue.   Suggested patch is to initialize the new one in the same manner.\n \nSee snippet below ...\n \n#region Level 85 (Cataclysm)\n#region Back\n{\nenchantTemp = new Stats();\nenchantTemp.AddSpecialEffect(new SpecialEffect(Trigger.SpellCast, new Stats() { Intellect = 580 }, 15, 64, 0.25f));\ndefaultEnchants.Add(new Enchant(4115, \"Lightweave Embroidery (Rank 2)\", ItemSlot.Back, enchantTemp, \"spell_arcane_prismaticcloak\"));\n}\n{\nenchantTemp = new Stats() { Spirit = 1 };\nenchantTemp.AddSpecialEffect(new SpecialEffect(Trigger.SpellCast, new Stats() { SpellPower = 295 }, 15, 60, 0.35f));\ndefaultEnchants.Add(new Enchant(3722, \"Lightweave Embroidery\", ItemSlot.Back, enchantTemp, \"spell_arcane_prismaticcloak\"));\n}",
+    "LastUpdatedDate": "2014-03-07T18:42:43.76-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-12-29T14:25:34.77-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ShadowPriest] Lightweave Embroidery (Rank 2) not properly evaluated",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 21994
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Can you say a bit more about how it is not properly evaluated? What makes you think there is a problem?",
+      "PostedDate": "2011-12-29T16:47:19.25-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I apologize for not providing context.   For a level 85 human Shadow Priest (Tailor/Enchanter), Intellect is the top stat. While Lightweave Embroidery (Rank 2) procs Intellect, it is currently being evaluated as a zero overall contribution even through it contributes 130-ish Intellect (averaging out the 580 Intellect procs).  In comparison Greater Intellect only contributes 50 Intellect.  Even if the average Intellect is evaluated lower than what I stated above, it should be evaluated as a non-zero overall contribution.\r\n\r\nMy assertion is that it should be a top of the chart enchant - for an Int loving tailor.   Of course it only applies to a high-level Tailor, so the issue could also be something tied to rawr not recognizing that the character is a tailor.  My original thought was that the enchant entry simply had its stat info set incorrectly but it seemed to be correct.   When I noted the difference between the old enchant setup and the new one, I didn't browse the code any further.",
+      "PostedDate": "2011-12-29T18:00:13.983-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-12-29T19:10:39.35-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:23:55.293-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2014-03-07T18:42:43.76-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

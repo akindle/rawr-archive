@@ -1,0 +1,131 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Mage",
+      "DisplayName": "Rawr.Mage"
+    },
+    "ClosedComment": "By design.",
+    "ClosedDate": "2009-11-19T15:15:35.77-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "In a previous version of Rawr, I had used the optimizer and it gave me an optimal set of gear with an overall score of 9082.31. Today, I loaded it again and ran the optimizer on v2.2.24 with thoroughness to the max and overall rating as the calculation to optimize and it returned sets with a lower overall score and different ones each time I ran it.\n \nMy character profile in the optimal set is included as an attachment",
+    "LastUpdatedDate": "2017-11-27T11:01:54.257-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-10-27T08:04:54.837-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Mage] Optimizer produces non-optimal sets",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14541
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2407,
+      "FileName": "bis_t9_h10.xml",
+      "DownloadUrl": ".\\2407"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Umm... that's what the optimizer does? It wouldn't function unless we did random seeding so you will of course get different results each time, sometimes less than what you started with.",
+      "PostedDate": "2009-10-27T08:17:48.373-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I was under the impression that the optimizer would find the highest score based on the calculation that you are optimizing and the set of gear that you have selected for it to choose from. The results aren't very trustworthy without running multiple trials and keeping track of the maximum score that you recieved\r\n\r\nAlso, with thoroughness up to the max it shouldn't really matter how long it takes as long as it finds the best score",
+      "PostedDate": "2009-10-27T08:53:10.99-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You are assuming that it will try every single possible combination, and as Astry has said repeatedly, that would take *EONS*. So the Optimizer creates a random seed of the more likely combinations and tries those out instead.",
+      "PostedDate": "2009-10-27T08:57:14.043-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "So how about doing something in between? Maybe multiple trials with the different randomly seeded sets and choosing the best one?",
+      "PostedDate": "2009-10-27T09:17:48.673-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Err, there's a bit of misunderstand going on here. Yes, the Optimizer doesn't try every possible configuration, as that would indeed take eons, literally. However, it does try many many different sets of gear, watches for patterns, and intelligently tries more that are similar, in order to try to find the best one. That's where the Thoroughness slider comes in. It'll keep searching for upgrades for longer, the higher the Thoroughness. It'll frequently not find the best solution when using a low Thoroughness, but on max thoroughness it'll find the solution somewhere around 99% of the time. If you're getting 'different ones each time I ran it', then something's wrong, or you're *extremely* unlucky. And if the solution it's finding is lower than the current score, then that implies that you have something currently equipped that you don't have marked available. Since you posted your character, we can investigate all that. Kavan, see anything interesting?",
+      "PostedDate": "2009-10-27T10:16:14.257-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Probably about 85% of the time it will produce the highest set and the other times it will be close but still lower (usually within 100 overall score). I have my thoroughness turned all the way up on the slider and all of the items I have equipped are selected for optimization.\r\n\r\nI can include some of the lower sets that it made if you are interested or if you want screenshots of my settings",
+      "PostedDate": "2009-10-27T11:44:54.44-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Wait, we're worried about a variance of ~100 DPS on a BiS character where the DPS is like 9k?",
+      "PostedDate": "2009-10-27T11:47:17.763-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Err, yes, Jothay. That's a pretty significant variance (and any variance at all is significant in this case).",
+      "PostedDate": "2009-10-27T11:54:49.847-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "With the number of items you have selected as available this behavior is expected. The larger the number of items you have selected the less likely it is to find the true optimum. To combat that you should have increased the thoroughness even more, but obviously you're limited by the slider max setting in ui. Running it several times and taking the best is the only way you can combat this currently (batch tools can help with that somewhat), unless you want to compile the application yourself and changing the maximum possible value for thoroughness.",
+      "PostedDate": "2009-10-29T16:48:47.277-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "(I think what Kavan is meaning to say is that the correct course of action for users is to mark fewer items as available. Only mark items that stand a chance of being used. The performance and accuracy of the optimizer is directly related to how many choices you give it.)",
+      "PostedDate": "2009-10-29T19:31:51.127-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok thanks for the responses! Just wanted to bring it to your attention in any case. Thanks for the work you guys do on this program!",
+      "PostedDate": "2009-10-29T21:34:54.14-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-19T15:15:35.77-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:16:44.847-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-21T00:00:19.307-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:32:10.857-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:40.157-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:01:54.257-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

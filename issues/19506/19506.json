@@ -1,0 +1,100 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Retribution",
+      "DisplayName": "Rawr.Retribution"
+    },
+    "ClosedComment": "Closing issue.Jothay fixed the immediate crashes.Ret numbers aren&#39;t usefull yet though, the model still needs a complete overhaul.  &#40;we have an extra ret dev now&#41;.",
+    "ClosedDate": "2011-01-17T03:38:26.09-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Every time, since this update, I get an error whenever I search a Retribution Paladin. My character is Hypërion from Ursin.\n \nHere is the error message\n[Arg_NullReferenceException]\nArguments: \nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.51204.0&File=mscorlib.dll&Key=Arg_NullReferenceException\n \nhere is the stack trace\n   at Rawr.Base.ErrorBox.set_TheException(Exception value)\n   at Rawr.Rawr4ArmoryService._webClient_DownloadStringCompleted(Object sender, DownloadStringCompletedEventArgs e)\n   at System.Net.WebClient.OnDownloadStringCompleted(DownloadStringCompletedEventArgs e)\n   at System.Net.WebClient.DownloadStringOperationCompleted(Object arg)\n \nI have tried Resetting the Cache. it still doesn't work, the gear on the right also shows Druid gear and when I try to manually change to Retribution all the gear shows up as 0 on Dps.",
+    "LastUpdatedDate": "2013-05-16T05:19:18.273-07:00",
+    "PlannedForRelease": "Rawr 4.0.13 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-01-01T01:47:46.67-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Retribution] Model Inoperable",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 3,
+    "Id": 19506
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "1) the naming of the image as stupid is conveying an attitude which is neither helpful nor necessary.\r\n2) WTB Retribution Dev\r\n3) That specific error message means the error window builder didn't work right, which was seen in another issue and already fixed for neext version. When it comes out we will see the real error message but it won't matter because we don't have a Ret dev to bring the model up to Cata ready (ORuebens has rl work responsibilities right now).",
+      "PostedDate": "2011-01-01T14:59:22.473-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-01T15:20:14.637-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "My apologies, I didn't know it would show the name of the image :(\r\nand was definitely not intended towards you. Just a bit frustrated.\r\nBut ok, just making sure that this error isn't just me.",
+      "PostedDate": "2011-01-01T20:38:54.303-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-03T09:48:24.633-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well not that it matters as you said, but the specific error message just for reference is\r\n\r\n== Error Message ==\r\n[Arg_IndexOutOfRangeException]\r\nArguments: \r\nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.51204.0&File=mscorlib.dll&Key=Arg_IndexOutOfRangeException\r\n\r\n== StackTrace ==\r\n   at Rawr.Retribution.CombatStats.UpdateCalcs()\r\n   at Rawr.Retribution.CombatStats..ctor(Character character, Stats stats)\r\n   at Rawr.Retribution.CalculationsRetribution.GetCharacterStats(Character character, Item additionalItem, Boolean computeAverageStats, Ability[] rotation, Decimal simulationTime)\r\n   at Rawr.Retribution.CalculationsRetribution.GetCharacterRotation(Character character, Item additionalItem, Ability[] rotation, Decimal simulationTime)\r\n   at Rawr.Retribution.CalculationsRetribution.GetCharacterRotation(Character character, Item additionalItem)\r\n   at Rawr.Retribution.CalculationsRetribution.GetCharacterStats(Character character, Item additionalItem)\r\n   at Rawr.CalculationsBase.GetCharacterStats(Character character)\r\n   at Rawr.BossHandler.GenInfoString(Character character)\r\n   at Rawr.UI.BossPicker.bossOpts_PropertyChanged(Object sender, PropertyChangedEventArgs e)\r\n   at Rawr.UI.BossPicker.set_BossOptions(BossOptions value)\r\n   at Rawr.UI.BossPicker.set_Character(Character value)\r\n   at Rawr.UI.MainPage.set_Character(Character value)\r\n   at Rawr.UI.MainPage.Calculations_ModelChanged(Object sender, EventArgs e)\r\n   at System.EventHandler.Invoke(Object sender, EventArgs e)\r\n   at Rawr.Calculations.OnModelChanged()\r\n   at Rawr.Calculations.LoadModel(CalculationsBase model)\r\n   at Rawr.UI.MainPage.ModelCombo_SelectionChanged(Object sender, SelectionChangedEventArgs e)\r\n   at System.Windows.Controls.Primitives.Selector.OnSelectionChanged(SelectionChangedEventArgs e)\r\n   at System.Windows.Controls.Primitives.Selector.InvokeSelectionChanged(List`1 unselectedItems, List`1 selectedItems)\r\n   at System.Windows.Controls.Primitives.Selector.SelectionChanger.End()\r\n   at System.Windows.Controls.Primitives.Selector.SelectionChanger.SelectJustThisItem(Object o)\r\n   at System.Windows.Controls.Primitives.Selector.OnSelectedItemChanged(Object oldValue, Object newValue)\r\n   at System.Windows.Controls.Primitives.Selector.OnSelectedItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)\r\n   at System.Windows.DependencyObject.RaisePropertyChangeNotifications(DependencyProperty dp, Object oldValue, Object newValue)\r\n   at System.Windows.DependencyObject.UpdateEffectiveValue(DependencyProperty property, EffectiveValueEntry oldEntry, EffectiveValueEntry& newEntry, ValueOperation operation)\r\n   at System.Windows.DependencyObject.SetValueInternal(DependencyProperty dp, Object value, Boolean allowReadOnlySet)\r\n   at Rawr.UI.ClassModelPicker.SetCurrentModel()\r\n   at Rawr.UI.ClassModelPicker.Grid_MouseLeftButtonUp(Object sender, MouseButtonEventArgs e)\r\n   at MS.Internal.CoreInvokeHandler.InvokeEventHandler(Int32 typeIndex, Delegate handlerDelegate, Object sender, Object args)\r\n   at MS.Internal.JoltHelper.FireEvent(IntPtr unmanagedObj, IntPtr unmanagedObjArgs, Int32 argsTypeIndex, Int32 actualArgsTypeIndex, String eventName)",
+      "PostedDate": "2011-01-03T09:59:26.82-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-03T09:59:41.007-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Also, it breaks every single other module if you select Rawr.Retribution until you reload Rawr. This makes it very tricky to load a Retribution Paladin character into Rawr.\r\n\r\nIf you can disable the module its entirety until a developer is available, that would probably be the best short-term fix.",
+      "PostedDate": "2011-01-03T10:05:05.493-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 56775.",
+      "PostedDate": "2011-01-03T11:15:09.367-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I fixed the immediate crashes you see so that you can load the toon in without breaking Rawr, but the model is still using Lich King calcs so it's not going to serve anyone's purpose to try and use the calculations for gear. Note at the bottom that the status label is in Red.",
+      "PostedDate": "2011-01-03T11:16:23.933-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-17T03:38:26.09-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:43.873-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:18.273-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

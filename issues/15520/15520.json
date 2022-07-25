@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.ItemFilters",
+      "DisplayName": "Rawr.Base.ItemFilters"
+    },
+    "ClosedComment": "Fixed",
+    "ClosedDate": "2009-12-26T12:19:18.65-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The default arena filter is not picking up the Relentless Gladiator weapons. By that I mean that all the Relentless Gladiator weapons end up in the \"Other\" filter. I've looked at the source data and updated it from Armory/Wowhead, to no avail. The default arena filter includes Trapjaw Rix, and my source data says that's where it's from, so I'm not seeing why they haven't matched the filter. Furthermore, if I create a new non-additive filter to remove them using the simple expression \"Trapjaw\" (without the quotes in the expression), they are removed.\n \nRunning 2.3.3",
+    "LastUpdatedDate": "2013-05-16T05:22:53.707-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-12-18T09:17:34.17-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ItemFilters] Arena Filter Not Picking Up Relentless Glad. Weapons",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15520
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "For some reason, Trapjaw Rix keeps getting removed from the filter heading. A new filter with this corrected will soon be available, again. Just not sure if it will be removed again.\r\n\r\nTo fix the problem now, select \"Tools\" \"Edit Item Filters\" - Warning: don't hit any buttons you are not sure about...\r\nScroll down til you see the [+] PVP tab.\r\nClick the PVP to select it.\r\nNow look at the Pattern String, this is where the missing \"Trapjaw Rix\" should be. You can add it anywhere in the string, just be sure to not mess up any other strings. A good idea would be to click in the box and arrow down to the end of the string.\r\nHere you will need to add \"shift \\\" should make a | then right after that enter \"Trapjaw Rix\" no quotes.\r\nPress OK, and enjoy...\r\nIf things get all screwed up, you can always redownload and get the bad filter back.\r\nOther then that, look for the fix in next release...",
+      "PostedDate": "2009-12-23T11:00:00.55-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-26T12:19:18.65-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-09T15:53:05.327-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T18:58:23.863-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:13.287-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:53.707-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

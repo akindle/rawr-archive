@@ -1,0 +1,136 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSDK",
+      "DisplayName": "Rawr.DPSDK"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-12-11T23:22:02.41-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "included my file with the way it should be done but as soon as you it optimize with the max thoroughness it reforge stat that should not be touched at all for frost\n \nit reforge to crit when crit is the worst stat frost have since KM proc make it irrelevant with high haste\nit reforge out of haste to get mastery or crit when haste is the best stat, as more auto attack = more km procs",
+    "LastUpdatedDate": "2013-05-16T05:17:18.093-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-11-14T11:25:05.76-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSDK] Reforges seems to be off on frost spec",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 21785
+  },
+  "FileAttachments": [
+    {
+      "FileId": 5437,
+      "FileName": "smashedwooki.xml",
+      "DownloadUrl": ".\\5437"
+    },
+    {
+      "FileId": 5438,
+      "FileName": "optimized.xml",
+      "DownloadUrl": ".\\5438"
+    },
+    {
+      "FileId": 5461,
+      "FileName": "Alathas.xml",
+      "DownloadUrl": ".\\5461"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "added file after optimization been done",
+      "PostedDate": "2011-11-14T11:26:50.93-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-11-14T13:31:43.98-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "We seem to be getting to a point where the frost rotation code isn't as robust at these higher haste values.  I agree and I've been looking at some alternatives to fix up both Frost and UH.  ",
+      "PostedDate": "2011-11-14T13:32:59.01-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-11-24T09:45:45.683-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I too have noticed crit being given more consideration in reforging than haste on my DW Frost DK. Isn't there a way I can manually give haste more weight in my optimizations?",
+      "PostedDate": "2011-11-24T09:49:41.507-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Looking at the stats graph there seems to be a haste soft plateau where it's value drops off significantly after a certain point, at least given the current rotation/priority.  The results may change once I finish looking into and possibly fixing the other disease & Ghoul defect.",
+      "PostedDate": "2011-11-28T21:21:25.72-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-12-01T09:18:34.493-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Stat values for my ~368 DW Frost DK are shown as Crit 1.13 > Mastery 0.79 > Haste -0.05, which is a full reverse of the \"conventional wisdom\" as per the EJ thread.  Haste being negative seems particularly difficult to believe?\r\n\r\nUploaded my character to Alathas.xml.\r\n\r\nShazear, I was unclear from your 11/28 comment if you were asserting that the class in general has a haste plateau thus making the conventional wisdom incorrect (and that we should give Rawr's recommendations a serious try), or if you thought the plateau might be a rawr computation error.",
+      "PostedDate": "2011-12-01T09:18:35.957-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Actually I'm suggesting that both are a possibility.  Other classes have haste plateaus, so why not DKs?  It could also be that my rotations code doesn't have enough fidelity to deal with the higher haste values as it may be showing a point where spending ALL runes and ALL RP in the rotation sets us up to be GCD capped when RE procs are at their distributed mean.  I'll see about tweaking the rotation to allow for the possibility of being RP positive if runes become available before spending all the available RP. That may change the point in which we hit that plateau.",
+      "PostedDate": "2011-12-01T10:26:19.167-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "So doing some adjustments and digging, but not yet adjusting the rotation for GCD cap, I'm seeing the following interesting points:\r\nThere is a point where by stacking enough haste, effective Crit rate for OB/FS due to KM is 100%.  Thus further reducing the value of crit or haste, or both.  \r\n\r\nNext up for me to do is get around the GCD cap.\r\n",
+      "PostedDate": "2011-12-02T13:32:44.59-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok... checked in the changes to help a bit.  Including fixing some of my crit chance calcs.  You will notice that the haste curve is jagged, with dips and such.  So it's not perfect, but I think the numbers will be better.  Still to do the GCD cap resolution.",
+      "PostedDate": "2011-12-02T13:58:44.19-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok... so I've been going over this past week's DS logs where I've been DPS almost exclusively for a change.  (Been Tank for a long time).  So have a decent sample set (at least for DW) to find some more information about KM procs and their relation to actual crits in-game, and such. I'm going to add an option to setup the KM consumption rate because I'm seeing that I consume only about 85-92% if you assume that every crit came from KM.  With that in mind, I'm going to pull natural crit out of the value for OB & FS completely.  That should really nerf the value of crit rate, and rely exclusively on Haste for KM procs and then average 90% of KM procs as crit value for OB & FS.",
+      "PostedDate": "2011-12-09T10:31:30.203-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changelist 64111 ",
+      "PostedDate": "2011-12-11T21:11:59.647-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-12-11T23:22:02.41-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:24:07.863-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:17:18.093-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

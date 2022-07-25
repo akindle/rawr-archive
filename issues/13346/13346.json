@@ -1,0 +1,106 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSDK",
+      "DisplayName": "Rawr.DPSDK"
+    },
+    "ClosedComment": "Fixed for 2.2.7.",
+    "ClosedDate": "2009-06-12T13:29:03.207-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "public static Character character;\n        public static Stats stats;\n        public static CombatTable combatTable;\n \nYou're using this without any threat safety mechanisms which causes a number of exceptions when used with multithreading enabled. Mainly throwing NullReferenceException in line 47, not sure if this is by design or not.",
+    "LastUpdatedDate": "2017-11-27T11:04:21.31-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-05-26T19:23:39.213-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSDK] StatsSpecialEffects",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13346
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1941,
+      "FileName": "13346.patch",
+      "DownloadUrl": ".\\1941"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Does this correct it?  It looks corrected here but that doesn't necessarily mean anything.\r\n\r\nMy patch removes the unused GreatnessProc method from StatsSpecialEffects and replaces the class-level fields with arguments supplied to the getSpecialEffects method.  If both my patch and my analysis of the class are valid, it looks like it may make sense to move getSpecialEffects into CalculationsDPSDK and remove the StatsSpecialEffects classes.",
+      "PostedDate": "2009-05-29T10:57:01.25-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-05-29T10:57:02.86-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sorry, I just realized I wasn't clear in the last comment.  \"This\" refers to the attached 13346.patch, er, patch.",
+      "PostedDate": "2009-05-29T10:57:44.087-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I would like to test this patch.  How do I apply it?",
+      "PostedDate": "2009-06-12T09:16:24.54-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well, to apply the patch, you need a copy of the Rawr source code first.  However, if you're going to get a new copy of the source code, you might as well just get a copy that's later than revision 34473 and test using the code that Bloodysorc has checked in.",
+      "PostedDate": "2009-06-12T10:02:49.643-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-06-12T13:29:03.207-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:48:06.93-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:49:21.28-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:21:17.93-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:19.653-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:25.247-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:04:21.31-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

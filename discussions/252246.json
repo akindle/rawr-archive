@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "590629",
+    "ThreadId": "252246",
+    "Html": "<p>Is it included? I noticed 'Cast Latency' but I suppose that's merely 'human lag'. Hrm, would it be clever to include it there? But I'm worried that's wrong since there is a casting queue (unless one disables it). Though I don't know if that queue reduces  lag impact or how it does it.</p>\n<p>edit: Also I don't know if network latency is an impact at all nowadays. I recall though distinctly that in 80 there was a simulator for Death Knights that had it simulated. Or at least attempted to, I guess.</p>",
+    "PostedDate": "2011-04-02T04:24:52.863-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "590768",
+    "ThreadId": "252246",
+    "Html": "<p>Spell queue should mitigate most of network latency. What 'Cast Latency' represents is effective latency, that is kind of network latency + human latency - spell queue reduction. Basically whatever number you would get if you tried chaincasting, looked at total time it took&nbsp;you to cast a number of spells, computing what it should took you based on your haste and whatever it took extra per spell is your 'Cast Latency'.</p>",
+    "PostedDate": "2011-04-02T15:44:30.247-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "590790",
+    "ThreadId": "252246",
+    "Html": "<p>How can one determine reliably that real total latency?</p>",
+    "PostedDate": "2011-04-02T17:06:17.467-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "590993",
+    "ThreadId": "252246",
+    "Html": "<p>Usually you'd do that on combat dummies. Enable combat log, do some chain casting and then do the math. It's easiest to do if you only cast one spell that has constant cast time. So if you cast it n times, just look at time between first and last damage done event in combat log and compute (combat log time difference) / (n - 1) - cast time based on haste.</p>",
+    "PostedDate": "2011-04-03T13:38:12.833-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

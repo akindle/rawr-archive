@@ -1,0 +1,156 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSWarr",
+      "DisplayName": "Rawr.DPSWarr"
+    },
+    "ClosedComment": "This was fixed in v2.2.10",
+    "ClosedDate": "2009-08-19T13:45:36.24-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Rawr 2.2.9 Crash while building an upgrade list\nBut only with one of my chars, a dps warrior.\nFor my mage and shadow it works fine.\n \n--------------------------\n \nMoved error log to text file, please don't Wall of Text your submissions",
+    "LastUpdatedDate": "2013-05-16T05:25:07.81-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-07-07T03:25:29.287-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSWarr] Crash while building an upgrade list",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 13612
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2021,
+      "FileName": "rawr error.JPG",
+      "DownloadUrl": ".\\2021"
+    },
+    {
+      "FileId": 2022,
+      "FileName": "2.07.09 wossi.xml",
+      "DownloadUrl": ".\\2022"
+    },
+    {
+      "FileId": 2115,
+      "FileName": "error.txt",
+      "DownloadUrl": ".\\2115"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Any chance you could attach the character xml where this happens?",
+      "PostedDate": "2009-07-07T04:29:03.527-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "here it is",
+      "PostedDate": "2009-07-07T05:46:32.207-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-07-07T05:46:36.347-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I experienced this last night for the first time as well, it happened to me in Fury stance only, not with Arms.  I will try to get some more information when I get home.",
+      "PostedDate": "2009-07-07T08:17:52.067-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hmm, I opened Rawr that's been reverted back to 2.2.9 release, loaded 2.07.09 wossi.xml, and optimized without any options or without changing the thoroughness.  Optimize worked just fine, no crashes, and suggested an increase from 4596dps to 4693dps (although this included switching to two Aesir Edges; you may need to make it unique)\r\n\r\nDid you change any filters?  Change any gemming templates?  Did you change any settings in the Optimizer aside from the default (such as optimizing talents or overriding regem/reenchant, increasing thoroughness, or setting additional requirements)?\r\n\r\nCan anybody else reproduce this issue using that XML file (or any other, for that matter?)",
+      "PostedDate": "2009-07-07T09:29:52.317-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The problem that I experienced was not with optimization, it was with building an upgrade list only.",
+      "PostedDate": "2009-07-07T12:49:50.903-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "rawr 2.2.9 crahs while building an upgrade list, not while optimizing",
+      "PostedDate": "2009-07-07T15:59:56.04-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ack, sorry I had mis-read it the first time.  I found the issue with UpgradeList : it happened when a 1h weapon was equipped, and the logic for 2h weapon spec and Titan's Grip was making it think your damage multiplier was 0.  Fix will be checked in as soon as I verify that's the only bug in UpgradeList, and will be in 2.2.10.  As a workaround for now, try filtering out all 1h weapons from your weapon filters (not sure if Optimizer uses these filters, but if it does this will fix the issue for now)",
+      "PostedDate": "2009-07-08T09:39:29.773-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-07-09T08:24:57-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "moved error info to text file",
+      "PostedDate": "2009-08-19T13:43:54.69-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-19T13:43:56.73-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-19T13:44:27.94-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-19T13:45:01.907-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-19T13:45:36.24-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:16:44.847-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:15.273-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-21T00:00:17.077-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-06-09T21:15:15.263-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:59.91-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:07.81-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

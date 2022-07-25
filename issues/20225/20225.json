@@ -1,0 +1,116 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Tree",
+      "DisplayName": "Rawr.Tree"
+    },
+    "ClosedComment": "4.1.01 Released",
+    "ClosedDate": "2011-03-27T17:48:16.477-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Nature's Majesty talent (+2%/+4% spell crit) not being applied properly in the Rawr.Tree model, Rawr.Moonkin handles this correctly",
+    "LastUpdatedDate": "2017-11-27T11:05:42.213-08:00",
+    "PlannedForRelease": "Rawr 4.1.0",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-03-13T22:15:50.74-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Tree] Nature's Majesty talent not being applied",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 20225
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4703,
+      "FileName": "BHRawrTreeNaked.xml",
+      "DownloadUrl": ".\\4703"
+    },
+    {
+      "FileId": 4704,
+      "FileName": "BHTreeNakedRawr.jpg",
+      "DownloadUrl": ".\\4704"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Added screenshot",
+      "PostedDate": "2011-03-13T22:18:05.383-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "When I started the port of Tree to 4.0 a few weeks ago, I got started modifying the spells. And then moved on to the talents associated with the spells. I ended up implementing most talents at the spell level, instead of the global level. Nature's Majesty seems to be one of those. It should ideally be moved back to the global level, but its effect should already be in there.\r\n2 places where you can go check: \r\n1. it has a value in the talents graphs therefor it does have an effect. \r\n2. if you mouse-over the heal value for different spells, they should report the 6.09% crit your image is showing. (There is so much missing from the Tree model at this stage, I'm not going to worry about a potential 0.01% rounding issue).\r\n\r\nI hope to be making a few more improvements to Tree in the next week and will look it see if I can easily migrate this talent back to the global level. \r\nThanks for the feedback though.",
+      "PostedDate": "2011-03-14T14:17:47.02-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-14T15:19:30.41-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I appreciate the work you've done on the Tree model.  When I saw someone started working on it, I tried auditing some of the code to look for problems, but my C# skills are not great.  \r\n\r\nI figured I'd try comparing the base stats WoW gives to those that Rawr gives for my fully geared resto-specced Druid.  I found that Rawr.Tree gave mana, Intellect, and spell crit values for my character that are lower than on the WoW character screen.  Health, armor, spell haste, mastery values all matched perfectly.  To try to narrow the differences down, I removed all my gear in WoW & in Rawr, and the Nature's Majesty issue stuck out, while the mana & Intellect values were consistent.  (I was looking at the Base Stats listing in Rawr, not spell tootips, I will make sure to check those out in the future)\r\n\r\nMy idea was to try & find bigger errors & differences between Rawr & WoW or the TreeCalcs spreadsheet, isolate them, and provide xmls/screenshots to help debug the Tree model.  If this isn't helpful, please let me know.  Thanks again for your work.",
+      "PostedDate": "2011-03-16T14:04:51.91-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "ihop0, analysis-es like that are definitely welcome as they help to show issues with our models. So long as we can clearly see what's missing, like the talent you describe.",
+      "PostedDate": "2011-03-16T15:02:56.883-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I really do appreciate the feedback and the fact that you are taking the time to try to isolate differences to specific talents etc. does make my job a lot easier.\r\nI tried a 5 minute comparison between my character stats in rawr and wow a week ago, but found some differences. After some head-scratching I released it was mostly due to the random enchant legs I'm still wearing. After removing it, I didn't chase this further to see were other stats mismatches come from. (I do suspect that the leather armor bonus and resto tree healing bonus are not included yet. I hope there a way to determine whether that is applicable in rawr.base, but haven't started looking yet. I also think mana regen is wrong.).\r\nSince the top level is still shaky, for the moment, checking spell tooltips, talent graphs and the new graphs I added, are probably the best views into what is working atm.\r\nAlso the fact that Nature's Majesty is not applied at a global level, whereas it it on the wow char sheet, will cause confusion and will definitely be pulled inline.\r\nPlease continue your checking and lot seperate issues where discrepancies seem to be caused by different sources. \r\nCreating a discussion on how to setup the role, weight between tank/raid etc. might also be useful.",
+      "PostedDate": "2011-03-16T15:19:47.353-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Moved the Spell Crit bonus from this talent to the global point rather than in per spell.\r\n\r\nPreviously, it was still being handled, it just didn't display correctly due to the position of the calculation add.",
+      "PostedDate": "2011-03-26T18:42:35.643-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That will teach me to take so long before doing the commit. Patch 59131 includes this as well (slightly different spots in the code due to some refactoring).",
+      "PostedDate": "2011-03-27T03:30:45.11-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-27T17:48:16.477-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:03:27.03-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:25:40.69-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:28.073-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:05:42.213-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

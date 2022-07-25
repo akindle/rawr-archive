@@ -1,0 +1,111 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ShadowPriest",
+      "DisplayName": "Rawr.ShadowPriest"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-04-14T12:10:52.037-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "At my current gear level, Rawr seems to be valuing +Crit over +Haste consistently.\n \nI thought with the latest patches, since DoTs can crit, haste was more linear in its benefit to stack.\n \nAs gear is getting expensive at this point (crafted and raiding time), I'm hoping to do a sanity check of the items it's steering me towards.\n \nI also wouldn't want to /roll someone away from an upgrade only to find it isn't really a dps increase for me after all.\n \nI picked up a new ring #1 last night, so now I'm substantially over hit cap, so that shouldn't be a factor.\n \n \n \nhttp://www.wowarmory.com/character-sheet.xml?r=Moonrunner&cn=Gallien\n \nFor example, some otherwise similar items Rawr is valuing higher:\n \nBelt of Omission http://www.wowhead.com/?item=50996 > Circle of Ossus http://www.wowhead.com/?item=50997\n \nLoop of the Endless Labyrinth http://www.wowhead.com/?item=49977 > Ring of Rapid Ascent http://www.wowhead.com/?item=50008\n \nSoulcleave Pendant  http://www.wowhead.com/?item=50809> Amulet of Silent Eulogy http://www.wowhead.com/?item=50005\n \n \n \nThanks.  I realize this is kind of a \"gear check me\", but it's also a question why Rawr is making the decision it's making for gear upgrades.  I'm just perplexed at it's choices, and want to assure it's valuing the stats properly.  I don't have hard numbers, but I've done several \"upgrades\" recently, and it seems my dps is not increasing, doing pretty much the same things as before.",
+    "LastUpdatedDate": "2013-05-16T05:21:30.97-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-03-15T08:15:03.94-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ShadowPriest] Crit > Haste",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16782
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3167,
+      "FileName": "Gallien_067_(_002_LoopEndlessLabyrinth).xml",
+      "DownloadUrl": ".\\3167"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Just tried version 2.3.12, same results, I'm perplexed.  Looking at the belts I cited - both are identical iLevel, Intellect, armor, spell power, and stamina, both have the same +7SP socket bonus.  Yet Rawr insists the Belt of Omission is better, with its +80 Crit and +64 Hit, than the Circle of Ossus, with +80 Haste and +64 Spirit.  Sure, spirit isn't the best stat for Shadow Priests, but we do benefit it from it anyway, more than +Hit in my case, when I'm currently +85 over hit cap.\r\nClearly I'm missing something!",
+      "PostedDate": "2010-03-15T08:52:12.543-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This sounds like a duplicate issue to http://rawr.codeplex.com/WorkItem/View.aspx?WorkItemId=13756",
+      "PostedDate": "2010-03-15T11:14:52.29-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You have no raid buffs selected. Rawr is correctly putting the gear with Spirit (its not the crit actually) over the gear without Spirit, because it expects you to go out of mana in a 5 minute fight when you do not have proper buffs.\r\n\r\nTry enabling all relevant raid buffs under the Buffs tab.",
+      "PostedDate": "2010-03-15T14:14:19.257-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Actually right here after loading your file, it prefers Circle of Ossus over Belt of Omission.",
+      "PostedDate": "2010-03-15T14:17:10.153-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "They are loosely related at the one you cited Jothay is talking about haste, but the last post was five months ago.  I've lost track of when the recent patch for WoW was released that changed the mechanics of how haste is treated for Spriests, but now haste can benefit DoTs unlike before.\r\n\r\nMy specific question / concern is, in my case, two otherwise identical items differ only in +Haste/+Spirit, -vs- +Crit/+Hit, and why Rawr is valuing +Crit higher (and pushing me towards being even more over-hitcap.  I've not learned anywhere else that +Crit is greater than +Haste - it could very well be I'm missing something with a soft cap in haste, and if so I'd sure like to know if that's the issue, and not a problem in the calculations.",
+      "PostedDate": "2010-03-15T14:20:43.693-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok TNSe, I see you post, missed it earlier as my page was not actually reloaded for this thread.\r\n\r\nI guess I'll have to find an ideal way to tell Rawr I'm _never_ out of mana - since I'm, well, never out of mana!  Perhaps the best way to do that is shorten the estimated fight length?  Or would there be a better way?\r\n\r\nRaid buffs would be fine, but that will change all of the time.  What buffs did you have selected in yours that I'm missing?  I'm seeing all kinds of effects now.  \r\n\r\nI guess we should close the issue however, if we know Rawr isn't mis-calculating, and it's just an issue with selected options.  We don't need an issue tracked to tweak an individuals settings!",
+      "PostedDate": "2010-03-15T14:35:12.977-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You are missing the following raid buffs:\r\nDamage % (Ferocious inspiration etc)\r\nHeroism/Bloodlust\r\nHaste % (Moonkin/Retri)\r\nIntellect (Mage/Felhunter)\r\nMana Reg (Wisdom/Totem)\r\nSpell Crit Chance (Boomkin/Ele Sham)\r\nSpell Haste (Wrath of Air)\r\nSpell Power (Totem of Wrath)\r\nSpirit (Priest/Felhunter)\r\nStat Add (Druid)\r\nStat Multiplier (Kings)\r\nCritical Strike Taken (Mage/Lock)\r\nSpell Damage Taken (Lock/Moonkin/UnhDK)\r\n\r\n\r\n\r\nAll of those affect your gear choices pretty dramatically.",
+      "PostedDate": "2010-03-15T14:58:41.463-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-22T09:31:01.23-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-14T12:10:52.037-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-09T12:30:18.8-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T14:20:54.683-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:29:25.893-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:30.97-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

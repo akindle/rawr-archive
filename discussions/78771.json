@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "269667",
+    "ThreadId": "78771",
+    "Html": "<p>There is still no option for T10 raids in the Survival soft cap. &nbsp;I know all of ICC hasn't been released yet but it would be nice to know based on the first wing at least. &nbsp;Or is the idea to use T9 25 Heroic and turn on the -20% dodge debuff option?</p>",
+    "PostedDate": "2009-12-21T11:50:08.5-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269699",
+    "ThreadId": "78771",
+    "Html": "<p>As of right now, that is probably going to be your best bet. Personally I've been running 230,000 Survival Cap and 104,000 Target Damage. My thinking is that From T7 -&gt; T8, we had a 40,000 Survival Cap jump and 24,000 Target Damage Jump. Since T9 was a joke (at least on normal) I just added those two numbers to the T9 numbers. (This is for 25-man numbers; for 10 man numbers I'm running 220,000 and 94,000)</p>",
+    "PostedDate": "2009-12-21T13:48:44.153-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269734",
+    "ThreadId": "78771",
+    "Html": "<p>I'm curious what I should be setting the values at for the ProtWarr module. I've just been leaving it at the default 80K/2.00s, which I assume is T9-25H? I'm only doing T9-10N. Is there a big difference?</p>\r\n<p>Is there a place to look up what these numbers are for various levels of content? I've tried reading through Wowhead comments, but they usually say things like &quot;It hits the tank for around 15K&quot;, which is a lot lower than 80K. I'd hate to ask my raid to hold on for a bit so I can run into the boss naked over and over and see how big of a crater I can make for my &quot;silly theorycrafting&quot;.</p>\r\n<p>Hmm. Maybe this should be part of BossHandler? Each model would have to conform to the same input data standard though.</p>",
+    "PostedDate": "2009-12-21T16:07:08.33-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269789",
+    "ThreadId": "78771",
+    "Html": "<p>See what the boss hits you for on average. &nbsp;Then see what your armor reduction is (probably somewhere from 60-75%, it should be in your Armor tooltip). &nbsp;</p>\r\n<p>The damage that the boss hits for is HIT_DAMAGE / (1 - ArmorReduction). &nbsp;15k with 70% armor reduction is 15000 / (1 - 0.7) = 15000 / 0.3 = 50,000; that's the raw damage that the boss hits for.</p>\r\n<p>Also note that you want unblocked hits, and no damage reduction buffs/debuffs. &nbsp;If you have those by default (ie Defensive Stance is a 10% damage reduction buff), you need to first reverse that. &nbsp;A 15,000 hit with 10% reduction from Defensive Stance uses the same formula: 15,000 / (1 - 0.1) = 15,000 / 0.9 = 16,667. &nbsp;Then, plug THAT number into your armor reduction formula.</p>",
+    "PostedDate": "2009-12-21T20:54:45.043-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269972",
+    "ThreadId": "78771",
+    "Html": "<p>Thanks for the explanation! ^^</p>\r\n<p>Okay, so damage reduction buffs are applied before armor. Good to know. I always have Inspiration and Renewed Hope, so that's another 13% on top of&nbsp; Def stance. I want to say that they are multiplicative, but I'm assuming additive at the moment since I can't find documentation on it at the moment.</p>\r\n<p>Hmm. So for my character, I'm looking at:</p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre><span style=\"color:Blue\">int</span> dmgtaken = 15000; <span style=\"color:Green\">// &quot;Hits the tank for 15K&quot;, even though that's pretty arbitrary.</span>\r\n<span style=\"color:Blue\">float</span> reduction = (0.1f + 0.1f + 0.03f); <span style=\"color:Green\">// Def Stance, Inspiration, Renewed Hope</span>\r\n<span style=\"color:Blue\">float</span> armor = 0.6246f; <span style=\"color:Green\">// T9-10N. I'm a nub. ;)</span>\r\n<span style=\"color:Blue\">int</span> rawdmg = (dmgtaken / (1f - reduction)) / (1f - armor);\r\n</pre>\r\n</div>\r\n<p>So in that case, rawdmg would be 51892.699735001. Is that floor(), ciel() or just round()ed? ;)</p>\r\n<p>Well, with that figured out, just looking at &quot;Damage Taken&quot; on Recount and guessing what buffs I had up just isn't good enough for me. Maybe I can write myself a quick add-on that takes each melee swing and records the damage, armor and any reduction buffs active at the time and reports back to me. Think that would work? Been meaning to write another addon lately. Hmm. Would overgearing an encounter somehow make the numbers different? And how to deal with bubbles...</p>",
+    "PostedDate": "2009-12-22T09:39:34.58-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Hunter",
+      "DisplayName": "Rawr.Hunter"
+    },
+    "ClosedComment": "Absolutely not, this has nothing to do with the other issue",
+    "ClosedDate": "2009-10-19T17:09:21.337-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "In CalculationsHunter.cs\n \n                       comparisonFromStat(character, calculations, new Stats() { Intellect = 10f }, \"10 Intellect\"),\n                        comparisonFromStat(character, calculations, new Stats() { Agility = 10f }, \"10 Agility\"),\n                        comparisonFromStat(character, calculations, new Stats() { Mp5 = 4f }, \"4 MP5\"),\n                        comparisonFromStat(character, calculations, new Stats() { CritRating = 10f }, \"10 Crit Rating\"),\n                        comparisonFromStat(character, calculations, new Stats() { HitRating = 10f }, \"10 Hit Rating\"),\n                        comparisonFromStat(character, calculations, new Stats() { ArmorPenetrationRating = 10f }, \"1.4 Armor Penetration Rating\"),\n                        comparisonFromStat(character, calculations, new Stats() { AttackPower = 20f }, \"20 Attack Power\"),\n                        comparisonFromStat(character, calculations, new Stats() { RangedAttackPower = 25f }, \"25 Ranged Attack Power\"),\n                        comparisonFromStat(character, calculations, new Stats() { HasteRating = 10f }, \"10 Haste Rating\"),\n================================================================================================================================\ncomparisonFromStat(character, calculations, new Stats() { ArmorPenetrationRating = 10f }, \"1.4 Armor Penetration Rating\"), \n \nChange this value can fix ArmorPenetrationRating 1232 to 1400 the problem \nAm I right ?",
+    "LastUpdatedDate": "2013-05-16T05:23:46.853-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-10-19T16:57:41.003-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Hunter] About ArmorPenetrationRating Fix",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14483
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I FOUND IT !!\r\n\r\nin HunterEnums.cs\r\n\r\n  public static class HunterRatings //TODO: Why is this here? Use Rawr.Base's Rawr.StatConversion class for this.\r\n    {\r\n        public static double HIT_RATING_PER_PERCENT = 32.78998947;\r\n\r\n        public static double AGILITY_PER_CRIT = 83.33; // was previously 83.33333333 - rounded down for spreadsheet\r\n        public static double CRIT_RATING_PER_PERCENT = 45.905985258; // from spreadsheet. we were using 45.90598679                                                       \r\n        public static double HASTE_RATING_PER_PERCENT = 32.78998947; // matches spreadsheet\r\n        public static double ARP_RATING_PER_PERCENT = 12.3162; // from spreadsheet (was 15.39529991)\r\n        public static double INTELLECT_PER_SPELL_CRIT = 166.667; // from spreadsheet \r\n\r\n        public static double BASE_CRIT_PERCENT = -.0153; // Check\r\n\r\n        public static double BASE_MISS_PERCENT = 0.05;\r\n        public static double CHAR_LEVEL = 80.0;\r\n        \r\n        public static double HUNTERS_MARK = 500.0;\r\n===========================================================================\r\n\r\npublic static double ARP_RATING_PER_PERCENT = 12.3162; // from spreadsheet (was 15.39529991) <===here\r\n\r\nchange this value can fix it",
+      "PostedDate": "2009-10-19T17:58:11.34-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T16:33:21.307-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:32:19.56-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:46.853-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

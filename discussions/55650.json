@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "187924",
+    "ThreadId": "55650",
+    "Html": "<p>Are there any plans to add a Hard Mode Only (normal and heoric) item filter? It's time consuming as it is to go through and manually determine which items are available in hard mode only.</p>",
+    "PostedDate": "2009-05-07T16:52:00.87-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "187927",
+    "ThreadId": "55650",
+    "Html": "<p>Not unless such data is provided by armory/wowhead. You can however make a filter based on item level to accomplish the same thing.</p>",
+    "PostedDate": "2009-05-07T16:59:05.457-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "187934",
+    "ThreadId": "55650",
+    "Html": "<p>That's a good idea but I can't get it to work. I tried creating a filter with a max item level of 238 but I'm still seeing 239lvl items when I apply the filter.</p>",
+    "PostedDate": "2009-05-07T17:18:54.31-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "187958",
+    "ThreadId": "55650",
+    "Html": "<p>What you'll want to do is create a negative filter that removes items at 239 and above. Check <a href=\"http://rawr.codeplex.com/Wiki/View.aspx?title=ItemFiltering\">http://rawr.codeplex.com/Wiki/View.aspx?title=ItemFiltering</a>&nbsp;for details.</p>",
+    "PostedDate": "2009-05-07T19:08:13.413-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "187962",
+    "ThreadId": "55650",
+    "Html": "<p>I follow that first example from the link, apply the filter, and it makes no difference to the item list. I want to see all the items in the game below 239. I have all the other built in filters turned on as well.</p>",
+    "PostedDate": "2009-05-07T19:37:06.383-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "187969",
+    "ThreadId": "55650",
+    "Html": "<p>It makes no difference because the other filters are enabling all the items. As I said before you want to create a filter that removes items, not adds them, unless you want to have the built in filters turned off.</p>",
+    "PostedDate": "2009-05-07T20:35:27.45-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "187970",
+    "ThreadId": "55650",
+    "Html": "<p>Lol, that's what the filter should be doing:</p>\r\n<p>&nbsp;</p>\r\n<p>Min Item Level: 0</p>\r\n<p>Max Item Level 238</p>\r\n<p>&nbsp;</p>\r\n<p>This should REMOVE all items above item level 238 but I'm seeing item level 239 items while this filter is on. I must be missing something.</p>",
+    "PostedDate": "2009-05-07T20:38:22.38-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "187974",
+    "ThreadId": "55650",
+    "Html": "<p>Filters by default add items, not remove them. If you want to remove items at 239 or higher then you need</p>\r\n<p>Min Item Level: 239<br>Max Item Level: 1000<br>Additive Filter: not checked</p>",
+    "PostedDate": "2009-05-07T21:07:45.98-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

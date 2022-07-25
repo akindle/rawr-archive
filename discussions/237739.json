@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "533423",
+    "ThreadId": "237739",
+    "Html": "\r\n<p><strong>Whenever I try to change my class to elemental I get this error.</strong></p>\r\n<p>[Arg_NullReferenceException]<br>\r\nArguments: <br>\r\nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&amp;Version=4.0.50917.0&amp;File=mscorlib.dll&amp;Key=Arg_NullReferenceException<br>\r\n<br>\r\n&nbsp;&nbsp; at Rawr.Elemental.CharacterCalculationsElemental.GetCharacterDisplayCalculationValues()<br>\r\n&nbsp;&nbsp; at Rawr.UI.MainPage.character_CalculationsInvalidated(Object sender, EventArgs e)<br>\r\n&nbsp;&nbsp; at Rawr.UI.MainPage.set_Character(Character value)<br>\r\n&nbsp;&nbsp; at Rawr.UI.MainPage.Calculations_ModelChanged(Object sender, EventArgs e)<br>\r\n&nbsp;&nbsp; at System.EventHandler.Invoke(Object sender, EventArgs e)<br>\r\n&nbsp;&nbsp; at Rawr.Calculations.OnModelChanged()<br>\r\n&nbsp;&nbsp; at Rawr.Calculations.LoadModel(CalculationsBase model)<br>\r\n&nbsp;&nbsp; at Rawr.UI.MainPage.ModelCombo_SelectionChanged(Object sender, SelectionChangedEventArgs e)<br>\r\n&nbsp;&nbsp; at System.Windows.Controls.Primitives.Selector.OnSelectionChanged(SelectionChangedEventArgs e)<br>\r\n&nbsp;&nbsp; at System.Windows.Controls.Primitives.Selector.InvokeSelectionChanged(List`1 unselectedItems, List`1 selectedItems)<br>\r\n&nbsp;&nbsp; at System.Windows.Controls.Primitives.Selector.SelectionChanger.End()<br>\r\n&nbsp;&nbsp; at System.Windows.Controls.Primitives.Selector.SelectionChanger.SelectJustThisItem(Object o)<br>\r\n&nbsp;&nbsp; at System.Windows.Controls.Primitives.Selector.OnSelectedItemChanged(Object oldValue, Object newValue)<br>\r\n&nbsp;&nbsp; at System.Windows.Controls.Primitives.Selector.OnSelectedItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)<br>\r\n&nbsp;&nbsp; at System.Windows.DependencyObject.RaisePropertyChangeNotifications(DependencyProperty dp, Object oldValue, Object newValue)<br>\r\n&nbsp;&nbsp; at System.Windows.DependencyObject.UpdateEffectiveValue(DependencyProperty property, EffectiveValueEntry oldEntry, EffectiveValueEntry&amp; newEntry, ValueOperation operation)<br>\r\n&nbsp;&nbsp; at System.Windows.DependencyObject.SetValueInternal(DependencyProperty dp, Object value, Boolean allowReadOnlySet)<br>\r\n&nbsp;&nbsp; at Rawr.UI.ClassModelPicker.SetCurrentModel()<br>\r\n&nbsp;&nbsp; at Rawr.UI.ClassModelPicker.Grid_MouseLeftButtonUp(Object sender, MouseButtonEventArgs e)<br>\r\n&nbsp;&nbsp; at MS.Internal.CoreInvokeHandler.InvokeEventHandler(Int32 typeIndex, Delegate handlerDelegate, Object sender, Object args)<br>\r\n&nbsp;&nbsp; at MS.Internal.JoltHelper.FireEvent(IntPtr unmanagedObj, IntPtr unmanagedObjArgs, Int32 argsTypeIndex, Int32 actualArgsTypeIndex, String eventName)</p>\r\n",
+    "PostedDate": "2010-12-09T07:10:53.647-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "533548",
+    "ThreadId": "237739",
+    "Html": "\r\n<p>Correct; Rawr.Elemental is non-functional right now.</p>\r\n",
+    "PostedDate": "2010-12-09T10:51:53.227-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "533557",
+    "ThreadId": "237739",
+    "Html": "\r\n<p>Ah, well at least I know for sure now and can stop pulling my hair out :D Do you know when it will be fixed? Keep up the great work!</p>\r\n",
+    "PostedDate": "2010-12-09T11:12:09.32-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "533640",
+    "ThreadId": "237739",
+    "Html": "\r\n<p>Probably a good idea to catch some of those known exceptions and instead give a friendly message like &quot;This model is currently non-functional, please check back later for updates!&quot; (or something of that nature).</p>\r\n<p>&nbsp;</p>\r\n<p>Otherwise you will surely get more people asking about it :)</p>\r\n",
+    "PostedDate": "2010-12-09T13:41:30.507-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "534196",
+    "ThreadId": "237739",
+    "Html": "\r\n<p>Right, a noble goal, but 99% of the time, just fixing the problem is faster than making a friendly error message for it.</p>\r\n",
+    "PostedDate": "2010-12-10T15:39:01.273-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "534529",
+    "ThreadId": "237739",
+    "Html": "\r\n<p>In other words: We absolutely agree with you that making a pretty frame would be nice (it would be!), but the time investment on making that box would cost more time than it's worth.</p>\r\n<p>That said, is it possible to create a generic error catcher, that we could then manually define errors that crop up?&nbsp; Or, would there be a way that we could hook in errors with relevant issue tracker tickets?&nbsp; I'm not very experienced with code\r\n development, so this is me throwing ideas out there willy-nilly.</p>\r\n",
+    "PostedDate": "2010-12-11T18:26:18.633-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "534530",
+    "ThreadId": "237739",
+    "Html": "\r\n<p>Commit 56087</p>\r\n<p><img src=\"http://dl.dropbox.com/u/15727672/RawrVisible/ErrorWindow.png\" alt=\"New Error Window Box\"></p>\r\n",
+    "PostedDate": "2010-12-11T18:36:49.003-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "534839",
+    "ThreadId": "237739",
+    "Html": "\r\n<p>Giggity.</p>\r\n",
+    "PostedDate": "2010-12-13T00:07:28.557-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

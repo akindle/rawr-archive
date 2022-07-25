@@ -1,0 +1,76 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Hunter",
+      "DisplayName": "Rawr.Hunter"
+    },
+    "ClosedComment": "Rawr 4.1.02 Released",
+    "ClosedDate": "2011-04-03T22:24:26.973-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "As of the 4.021 (4.1.0) update, hunter rotation is distorted causing gear recommendations to over value items/gems/enchants that have mastery on them.\nCurrently, my toon shows slightly over 67k Autoshot DPS which translates into a higher Wild Quiver DPS of about 32.5k DPS which is the MM Hunter's mastery bonus.\nAlthough the special rotation would still be off; it seems like the Autoshot/Wild Quiver numbers are off by a factor of 10, which would make my Overall ~16k which is still way too high for my pre-raid gearing.\n \nThe special shot rotation maybe the root cause of the overuse of Autoshot for the fight duration. Here are the numbers that I have on my toon.\nAimed Shot: ~10shots/fight; Chimera Shot: ~10 Shots/fight; Kill Shot: ~60 Shots/fight (not sure how a hunter can do this many in a single fight even with Glyph).\n \nOnly 2.72 Steady Shots (or Cobra Shots) are used during fight, in fact Cobra is not even listed in the shot select but is the default if using the MM template. The only way to actually see Steady Shot DPS is if Silencing Shot is replaced by Steady Shot in the MM rotation, easily verfied by swapping SilShot and SS on rotation tab then seeing CoShot DPS change to SS DPS using the attached toon.\n \nProblem has persisted through both 4.1.0 and 4.1.1 and issue was not submitted due to model being \"Not Cata Ready\" or \"Partially Cata Ready\" and I currently use an offline and downloaded versions of 4.0.20 for gearing/gemming/enchanting my hunter as a temporary work-around.",
+    "LastUpdatedDate": "2013-05-16T05:18:22.563-07:00",
+    "PlannedForRelease": "Rawr 4.1.01",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-03-29T10:43:47.933-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Hunter] Rotation numbers way off",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 20349
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4768,
+      "FileName": "Brituck Marks.xml",
+      "DownloadUrl": ".\\4768"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Ok well Hunter is still wayyyy out of date when it comes to Cata stuff. Hina did some work on what will be the new back end for it but that didn't really impact the numbers you see much.\r\n\r\nI found the specific multiplier that is causing these numbers to go nuts. In the calculations where it was determining the damage bonus from RAP, the Weapon Speed had been replaced by its Damage by accident. I changed it back and the numbers on your file went down to the 6k range.",
+      "PostedDate": "2011-03-29T17:08:33.127-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-29T17:09:28.61-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "All good. Mainly posted this in response to the guy theat posted Mastery question in Discussions. Hopefully Hinalover will find time to give the Hunter Module more love (yes pun intended). Till then the 4.0.20 model SEEMS to give decent gear suggestions for anyone who is trying to gear their hunter.",
+      "PostedDate": "2011-03-30T16:33:19.197-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-03T22:24:26.973-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:25:32.223-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:22.563-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

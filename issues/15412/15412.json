@@ -1,0 +1,121 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Hunter",
+      "DisplayName": "Rawr.Hunter"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-12-15T16:04:04.057-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Take the attached xml file. \nLook at the Slot Gear Neck.\nIt fills it with a yellow +20 Haste Rating gem... and all of a sudden it becomes 200 DPS better than the one with a +20 Agi gem in it.\nThe same goes for the Collar of Ceaseless Torment. Due to a previous optimization it have a +10 Agi + 5MP5 gem in it (acheieves the socket bonus) but ends up with a close to 200 DPS better score.\n \nSomething seems wrong.",
+    "LastUpdatedDate": "2013-05-16T05:22:59.753-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-12-14T06:54:33.287-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Hunter] Overpowered Haste Gem and MP5 gem",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15412
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2626,
+      "FileName": "Test File1.xml",
+      "DownloadUrl": ".\\2626"
+    },
+    {
+      "FileId": 2627,
+      "FileName": "Sindragosa picture.JPG",
+      "DownloadUrl": ".\\2627"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Adding a small picture to show how it looks when I run it.",
+      "PostedDate": "2009-12-14T06:55:29.3-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-14T06:55:32.063-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-14T07:04:39.74-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The big difference is, with the extra haste, you are breaking a point where an extra shot is going off, and you are then going OOM so it's having to adjust to that. With you going OOM, Intellect (for the bigger mana pool) and Mp5 (for the better regen) will look like the biggest upgrades because a gem's worth will throw you back to the other side of the line.\r\n\r\nThis is a systemic issue that cannot be corrected without the Rotation Revamp I have planned. It relates to the same thing that other models see where Haste can be spikey in damage.",
+      "PostedDate": "2009-12-14T14:55:07.173-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ah, mana issues.\r\n\r\nThe setting, \"Regen to Full\" seem to be adding quite a lot to the problem as well. If i set to no-viper or jsut enough the differences evens out...\r\n\r\nI wonder, does the \"Regen to Full\" always add the full effect of that... even when Boss actually would die during the viper part?\r\nIf I equip the Sindragosa's Cruel Claw... with one Agi gem... there is a big jump from 374dps up to the 574 dps with a haste gem in it...\r\nThe time to OOM is 359.25s. That's only 0.75 seconds left of the fight... meaning that the boss should not have many HP's left at all, i.e he should die in about 1.5s (assuming 50% damage done when viper is up). But still the difference becomes 30-40% dps wize on the Neck piece. That jump just seem too big.\r\n\r\nThe \"Always to Full\" should only punish what ever seconds that are left. Not the full 21.78s that it would take to get all mana back. I still think that there is something fishy here...Even with the full regen penalty having 20 or so seconds out of 360 can it really account for that big difference? Sure the last x seconds is where you get the Kill shots in... or? Hm... maybe I have it all backwards.\r\n\r\n",
+      "PostedDate": "2009-12-14T16:24:23.91-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Right now it's punishing the full, I'll see if I can tweak it to only use what time is left",
+      "PostedDate": "2009-12-14T16:40:57.75-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Fixed commit in 44059. Drizz, can you verify that that helped?",
+      "PostedDate": "2009-12-14T23:20:36.723-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Seems to work much better now, can't determine if it is behaving exactly as it should, but this issue can be closed.\r\n",
+      "PostedDate": "2009-12-15T15:32:11.2-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-15T16:04:04.057-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T18:28:19.553-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:27:55.74-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:18.067-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:21.54-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:59.753-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

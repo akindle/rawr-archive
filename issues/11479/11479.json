@@ -1,0 +1,141 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.HealPriest",
+      "DisplayName": "Rawr.HealPriest"
+    },
+    "ClosedComment": "Should work as Expected in next release!",
+    "ClosedDate": "2008-12-28T04:26:50.15-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The HolyPriest module currently isn't taking into account the T5 2-piece or 4-piece bonuses or the T6 4-piece bonus.\n \nT5: (2) Set: If your Greater Heal brings the target to full health, you gain 100 mana.\n(4) Set: Your Renew spell lasts an additional 3 seconds.\n \nT6: (4) Set: Increases the healing from your Greater Heal ability by 5%.",
+    "LastUpdatedDate": "2013-05-16T05:26:55.093-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-10-16T12:06:21.897-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[HealPriest] T5 2pc and T6 4pc",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 11479
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1576,
+      "FileName": "Rawr_T5_bonus.jpg",
+      "DownloadUrl": ".\\1576"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "T6 4 part bonus (+5% to Greater Heal) should be implemented and functions properly when I test here.\r\n\r\nT5 is not yet implemented.",
+      "PostedDate": "2008-10-16T13:26:01.973-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-10-16T14:01:03.907-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "T5 2 part bonus is tied to the Serendipity slider in the Options Panel.",
+      "PostedDate": "2008-10-16T14:37:54.867-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Since I still have 2 pieces of T5, I noticed that I do not have the \"Avatar Raiment\" buff as a listed option in the buffs tab in Rawr v2.1.4.  I downloaded the latest source code and did a bit of searching and found that the Avatar buff does seem to exist in code (Buff.cs, lines 1981 - 1993), but simply isn't appearing in the interface.\r\n\r\nPerhaps Rawr doesn't know that \"Cowl of the Avatar\" and \"Mantle of the Avatar\" are part of that set?  Or perhaps there is a limit in the interface to only show nine Set Bonuses?\r\n\r\nAny ideas?\r\n\r\nThanks much!",
+      "PostedDate": "2008-12-23T08:54:02.897-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "On the right side with the Comparison Graphs. Filters -> Make sure its checked.",
+      "PostedDate": "2008-12-23T09:37:19.303-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Clarification...  I am not referring to the gear comparison chart (Avatar does show up when the proper filter is selected).  I am referring to the 2 piece set bonus listing which *should* appear under the Buffs tab in the \"Set Bonuses\" section.\r\n\r\nThanks!",
+      "PostedDate": "2008-12-23T11:03:30.843-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "So you want to be able to check off these bonuses even though you do no have the gear equipped?",
+      "PostedDate": "2008-12-23T23:32:55.9-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I have 2 pieces of T5 gear equipped (Head and Shoulders), but do NOT see the bonus listed.  My suspicion is that it is simply being bumped below the frame display.  Since it is listed last in the code.  However, would it be possible the bonus isn't being calculated at all?  A quick test would be to delete the mooncloth or Gladiator gear bonuses and recompile to see if it will display.  Pic attached.\r\n\r\nThanks",
+      "PostedDate": "2008-12-27T10:11:53.63-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-12-27T10:11:57.053-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I see, I'll try to fix this just now.",
+      "PostedDate": "2008-12-27T15:33:32.737-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "T5 2 & 4 part bonuses added.\r\n\r\n** Closed by TNSe 10/16/2008 2:01 PM",
+      "PostedDate": "2008-12-28T04:26:02.84-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Final fix",
+      "PostedDate": "2008-12-28T04:26:03.573-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-12-28T04:26:18.43-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-12-28T04:26:50.15-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "There, that should fix it. Also found a calculation error (it was already counting it) that should make it more accurate.",
+      "PostedDate": "2008-12-28T04:27:43.65-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Downloaded the updated code, rebuilt, and it works like a charm now.  Thank you TNSe!  Of course, now I have upgrades for both items and don't even recognize myself on the screen.  Also, I look like a Paladin :(",
+      "PostedDate": "2009-01-03T14:27:18.387-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T17:40:42.643-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:23.377-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:55.093-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

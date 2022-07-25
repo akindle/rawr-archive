@@ -1,0 +1,145 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "This issue has reached 60 days without response. If this is still an issue, please resubmit with reference to the currently affected versions and any necessary files.",
+    "ClosedDate": "2009-08-26T08:47:40.153-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Sometimes Rawr is stuck at the splash screen, when I run it.\nMy Cores go to 100% usage and the program itself never shows up.\nAnyone else experiencing the same issue? Or, is there anything I can do about that?\n \nWindows Vista 32 bit Home Premium, Service Pack 1\nIntel Core 2 Quad CPU @ 2.40 GHz\n4 GB RAM\n \n.NET Framework installed and up-to-date.",
+    "LastUpdatedDate": "2013-05-16T05:25:29.4-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-05-21T10:12:48.617-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Rawr stuck at splash screen",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 7,
+    "Id": 13303
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I get the same thing on vista 64 bit professional.  I tried deleting it and downloading a fresh copy and that copy crashes when I try to run it.  I also downloaded 2.2.3 and that runs fine.",
+      "PostedDate": "2009-05-23T09:41:53.093-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "When you say that it crashes what are the symptoms you get? Same 100% cpu usage and no responsiveness?",
+      "PostedDate": "2009-05-23T12:45:07.047-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-05-23T16:05:08.203-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Same issue on Win XP. CPU goes up to 100% and the application stucks at the splash screen.\r\nSometimes if I reinstall rawr it works again just to fail the next time I restart the PC.",
+      "PostedDate": "2009-05-23T16:07:50.887-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It seems that this does not happen all the time, like it works and then it stops working the next time you try to launch? What model were you last using before the crash?",
+      "PostedDate": "2009-05-23T16:16:18.137-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "> It seems that this does not happen all the time, like it works and then it stops working the next time you try to launch?\r\n\r\nYep. Or, it doesn't work the first few times and then it starts to work again the day after, or after a few hours.\r\n\r\n> What model were you last using before the crash?\r\n\r\nGood question. I used for sure Mage, Paladin, Warrior and Druid (my main), right now I can't remember which one was the last one *before* the problem, I'll try again tomorrow and I'll keep an eye on that.\r\n",
+      "PostedDate": "2009-05-23T18:25:20.747-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-05-23T19:13:57.433-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I get the same thing as xirtari.  I got 100% usage on all 4 cores and it hangs on the splash screen.  Then I forced a quit, deleted it, and reinstalled and got an \"illegal instruction\" message and the application quit (sorry, I didn't write down the exact message details).  Then I deleted that and installed 2.2.3 and that version ran fine.  So I re-downloaded 2.2.4 again and got the 100% usage, but only for a few seconds.  Then the application continued on and loaded.  I haven't quit since then (I'm trying to run some optimizations and I'm worried I won't get it to work if I quit again).\r\n",
+      "PostedDate": "2009-05-23T19:18:37.04-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Same here, and it happens all the time. I have never even started version 2.2.4 yet.\r\nI've looked into the Rawr.exe.config file and it says the last loaded model was the Bear model. This is probably a default.\r\nI'm using 2.2.2 now and that works excellently.",
+      "PostedDate": "2009-05-24T03:31:45.263-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-05-24T03:33:36.833-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It happens to me as well occationally, its really hard to reproduce, and impossible to debug since it just locks up at 100% cpu.",
+      "PostedDate": "2009-05-24T04:23:39.53-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-05-24T07:15:28.973-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "If anyone with VS gets this symptom please do the following.\r\n\r\n1. If you're not starting from VS when this happens then open VS and from menu select Debug->Attach to Process. In the list select Rawr.exe and click on Attach.\r\n2. Once you're attached to the process (you can skip step 1 if you started Rawr from VS when this happened) select Debug->Break All\r\n3. Make sure you have Debug->Windows->Threads and Debug->Windows->Call Stack visible\r\n4. In Threads window double click on each thread and for each copy the contents of Call Stack window\r\n\r\nThat should help us determine what is causing the hang.",
+      "PostedDate": "2009-05-24T12:11:02.887-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "2.2.5 loaded fine.  If anything changes I'll be sure to post.",
+      "PostedDate": "2009-05-24T19:25:18.17-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Just some additional info:\r\n\r\n- Randomly crashes for v 2.2.3 and 2.2.4.\r\n- Once it crashes, killing it (via the task manager) and restarting it does no good.\r\n- v 2.2.2 works ok.\r\n- Models used: Druid Resto & Cat.\r\n\r\n",
+      "PostedDate": "2009-05-25T05:57:49.68-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This has happened to me several times after trying to use 2.2.5. It also appeared to affect subsequent use of 2.2.4.",
+      "PostedDate": "2009-05-30T10:02:07.19-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-05-30T10:02:15.023-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-06-02T09:32:29.097-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-26T08:47:40.153-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:25.243-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:29.4-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

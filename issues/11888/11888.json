@@ -1,0 +1,75 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Moonkin",
+      "DisplayName": "Rawr.Moonkin"
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-08T07:16:39.087-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "In one of the issues raised by Lokmar earlier today, the fix uncovered a particularly nasty bug with my implementation of the Starfire glyph that causes the relative values of all stats to be all out of sorts, thus throwing off the ratings on many enchants and gems.  The ratings on specific pieces of gear should, for the most part, be okay.  I am raising this as a separate issue for tracking purposes.",
+    "LastUpdatedDate": "2017-11-27T11:00:10.23-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-12-05T12:41:12.99-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Moonkin] Boundary condition bug with Starfire glyph",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 11888
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "This bug has been found and fixed.  For those who have been in the model and understand somewhat how it works, basically what this bug was doing was calculating the rotation sequence based on half of a Moonfire cast, instead of the complete duration.  Thus, minor variances in certain stats would destabilize the rotation with the glyph, causing it to be shown as a DPS _downgrade_.  However, a similarly minor variance would suddenly cause the glyph's DPS value to skyrocket, greatly exaggerating the value of individual stats on the comparison chart - and, along with it, enchants and gems, which by nature are minor variances in stats.  Fixing the rotational calculations to use the correct duration of Moonfire should make the rotation stable for all possible configurations.",
+      "PostedDate": "2008-12-05T13:16:27.96-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-08T07:16:39.087-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:04:19.403-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:03:27.03-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:08.173-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:42.9-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:00:10.23-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

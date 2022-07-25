@@ -1,0 +1,562 @@
+[
+  {
+    "Id": "218986",
+    "ThreadId": "64356",
+    "Html": "<p>Hopefully someone who works on these modules is around. I'm starting up a Tank related project, and I'd love to give my users the ability to load their stats/etc in from a Rawr profile. The DKTank module saves all kinds of goodies (Armor, Health, Parry/Dodge Rating and %, Miss %) but none of the other Tank modules do this. Presumably they just let Rawr do all the recalculating when the profile is loaded.</p>\r\n<p>I wonder if it'd be possible to have someone update the Prot Paladin/Warrior and Druid Bear modules to save the same information (including Block %/Value for Pally/War) in the character files. I'm a relatively experienced C# programmer and I'd even be willing to do the work myself. What I don't have any experience with, however, is source control or collaborative projects. If no one wants to actually do the updates themselves, I would be happy to take it on if someone can give me a bit of direction on how the rest of it all goes.</p>\r\n<p>Thanks a bunch! :D</p>",
+    "PostedDate": "2009-08-03T15:49:31.28-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "218996",
+    "ThreadId": "64356",
+    "Html": "<p>Exactly what kind of project are you starting that Rawr cannot do?</p>",
+    "PostedDate": "2009-08-03T16:45:43.923-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219024",
+    "ThreadId": "64356",
+    "Html": "<p>Basically, SimulationCraft for tanks. Recently some discussion has come up that makes me think there is a need for such a thing that I can fill. I've seen a number of &quot;simulators&quot; in my travels, but none of them have the depth or detail that I'm looking to create.</p>",
+    "PostedDate": "2009-08-03T18:44:49.183-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219034",
+    "ThreadId": "64356",
+    "Html": "<p>In what way do you see the DKTank model saving armor/health/parry/dodge/etc? It really shouldn't; and we don't want others to do as well, if it does. Can you clarify what more you're aiming to do, that Rawr doesn't already do? If you're a C# dev, why start another project at all?</p>",
+    "PostedDate": "2009-08-03T19:19:18.39-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219046",
+    "ThreadId": "64356",
+    "Html": "<p>If you go to File-Save As under the DKTank model and open the resulting XML file in Notepad, you will find a section that contains the following:</p>\r\n<p>&amp;lt;Armor&amp;gt;26576.457&amp;lt;/Armor&amp;gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &amp;lt;BonusArmor&amp;gt;673&amp;lt;/BonusArmor&amp;gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &amp;lt;Health&amp;gt;37065.16&amp;lt;/Health&amp;gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &amp;lt;Agility&amp;gt;136&amp;lt;/Agility&amp;gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &amp;lt;Stamina&amp;gt;2547.96&amp;lt;/Stamina&amp;gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &amp;lt;AttackPower&amp;gt;3239.48486&amp;lt;/AttackPower&amp;gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &amp;lt;Strength&amp;gt;1140.625&amp;lt;/Strength&amp;gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &amp;lt;HitRating&amp;gt;247&amp;lt;/HitRating&amp;gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &amp;lt;DodgeRating&amp;gt;561&amp;lt;/DodgeRating&amp;gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &amp;lt;ParryRating&amp;gt;517.15625&amp;lt;/ParryRating&amp;gt;</p>\r\n<p>I'm not sure I understand why you wouldn't want it to save that data, but I don't know enough of Rawr's architechture to have an informed opinion about that.</p>\r\n<p>As for what I'm looking to do, as far as I can tell Rawr doesn't offer much in the way of any kind of simulation for tank damage that could be used to compare across class lines.</p>",
+    "PostedDate": "2009-08-03T19:52:25.803-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219053",
+    "ThreadId": "64356",
+    "Html": "<p>Ah, yeah, that shouldn't be there. Nice timing though, Shaz just got back today; can you fix that, Shaz?</p>\r\n<p>That data shouldn't be there, since it doesn't belong in a character file.</p>\r\n<p>Rawr doesn't <em>simulate</em>&nbsp;anything; are you sure you're really needing a simulator? What are you trying to learn/show that can't be done with a closed form model? If you think something's missing from Rawr, why not add it to Rawr (as long as it makes sense to add; a simulator definitely wouldn't, for example).</p>",
+    "PostedDate": "2009-08-03T20:02:08.17-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219057",
+    "ThreadId": "64356",
+    "Html": "<p>Exactly! A simulator definitely wouldn't make sense to Rawr, and since that's what I want, there's no point in trying to write one within the constraints of Rawr.</p>\r\n<p>Is there a reason that data doesn't belong in a character file and that behavior needs to be fixed? Being able to load info from a file rather than forcing my users to input it manually would be super awesome. :(</p>",
+    "PostedDate": "2009-08-03T20:19:15.927-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219060",
+    "ThreadId": "64356",
+    "Html": "<p>The closest to what you want is copy to clipboard menu command.</p>",
+    "PostedDate": "2009-08-03T20:32:00.953-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219063",
+    "ThreadId": "64356",
+    "Html": "<p>Hmmm. Thanks Kavan, that's helpful. It has everything I'd need except avoidance ratings, though :(</p>\r\n<p>Would it be possible to have that added instead, since it seems you don't want that kind of data stored in the character files. Hope I'm not coming off rude. I just think it'd be really awesome to have some interaction between Rawr and my simulator, since Rawr is so popular among theorycrafters. :D</p>",
+    "PostedDate": "2009-08-03T20:42:18.34-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219064",
+    "ThreadId": "64356",
+    "Html": "<p>We don't want the .xml character files to be saving that adata because it's only supposed to eb saving data required by Rawr: Option Panel settings, gear in slots, gear that is available for optimizer etc. The stats are being generated within Rawr dynamically by the gear and settings and shouldn't be getting reloaded in/out of the files.</p>\r\n<p>Rodney, we are questioning your/the communities *need* for a tanking sim when Rawr can tell you how effective you are in a fight with a boss. Is there some major factor that we are not getting that you are wanting to show? If there is, let's add it to Rawr rather than make changes so some other tool that will be far less accurate for a long time (until it's well-polished from lots of man-hours) and make Rawr better.</p>",
+    "PostedDate": "2009-08-03T20:46:45.193-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219066",
+    "ThreadId": "64356",
+    "Html": "<p>I see a need for a Tank version of SimulationCraft, and Astrylian said him/herself that it wouldn't make sense to have such a thing in Rawr. Not to be argumentative, but if you don't want help with some interoperability (which is the impression I'm getting) then don't - I'm going to develop the tool whether or not you guys see a need for it. I just thought it'd be nice to have a little bit of cooperation among some devs with similar goals.</p>",
+    "PostedDate": "2009-08-03T20:58:27.09-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219070",
+    "ThreadId": "64356",
+    "Html": "<p>I recently wrote a simulator that supports loading its data from Rawr character files.&nbsp; I solved this problem by writing a quick script that parses the XML character file for gear, talents, buffs, and glyphs, then uses Rawr's *Cache.xml files to reassemble the overall stats.&nbsp; It's a little more work to code, but it lets users just use any old Rawr character file without having to enter anything manually.</p>\r\n<p>I can point you to the code if you'd like, but the script is pretty damn ugly.&nbsp; It works fine, but I just slapped it together with little bits I gleaned from Google.</p>",
+    "PostedDate": "2009-08-03T21:12:01.48-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219072",
+    "ThreadId": "64356",
+    "Html": "<p>Yeah, that was what I was hoping to avoid, kbranch, but if you're willing to point me to your code I would certainly be grateful for the head start it might give me. :)</p>",
+    "PostedDate": "2009-08-03T21:13:48.977-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219076",
+    "ThreadId": "64356",
+    "Html": "<p>The script that does the XML parsing can be found <a href=\"http://code.google.com/p/branchsim/source/browse/trunk/branchsimfrontend.py\">here</a>.  The relevant bits are in the ParseRawrFile function at the end of the file.&nbsp; The <a href=\"http://code.google.com/p/branchsim/source/browse/trunk/stats.cpp\">C++ portion</a> handles calculating the final stats.</p>",
+    "PostedDate": "2009-08-03T21:39:50.637-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219078",
+    "ThreadId": "64356",
+    "Html": "<p>Thanks! :D</p>",
+    "PostedDate": "2009-08-03T21:41:15.69-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219082",
+    "ThreadId": "64356",
+    "Html": "<p>That sort of thing isn't necessary; you can export a list of stats for a character from a model, but they <em>don't belong in the character file</em>, that's all. Rawr.Enhance does this.</p>\r\n<p>Again, &quot;I see a need for a Tank version of SimulationCraft&quot; means what? What is that need?</p>",
+    "PostedDate": "2009-08-03T22:09:56.75-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219086",
+    "ThreadId": "64356",
+    "Html": "<p>An extra export step is an unnecessary hoop for your users to jump through, though.&nbsp; That'll also leave you with the final stats after all buffs and talents have been applied, which means you'll still need to parse the character file for talents and buffs if you want to implement them yourself so the user doesn't have to fire up Rawr every time they want to tweak the slightest thing.</p>",
+    "PostedDate": "2009-08-03T22:21:06.803-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219096",
+    "ThreadId": "64356",
+    "Html": "<p>No, all of that can be a part of the export; you can have it include/exclude whatever you want. It's a necessary hoop, not an unnecessary hoop. They *should* be firing up Rawr (or leaving it running) every time they want to tweak the slightest thing about their character.</p>",
+    "PostedDate": "2009-08-03T23:17:03.11-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219275",
+    "ThreadId": "64356",
+    "Html": "<p>Rawr.Enhance does it, but none of the other modules do as far as I can see, and if the Copy Stats to Clipboard output is any indication of the uniformity in exports between different modules... I don't think I can relish the idea of having to have four different parsing functions. It seems my cross-program cooperation idea isn't meant to be, for now. Thanks for your time, gents.</p>",
+    "PostedDate": "2009-08-04T08:08:28.143-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219279",
+    "ThreadId": "64356",
+    "Html": "<p>Why should they have to fire up Rawr?&nbsp; My simulator implements buffs, talents and glyphs just fine, there's absolutely no need to use another program when you want to tweak those.&nbsp; Rawr support is there as a convenience, not as a required core piece of the program.</p>",
+    "PostedDate": "2009-08-04T08:19:59.15-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219290",
+    "ThreadId": "64356",
+    "Html": "<p>I know I'm usually viewed as a cynical person, but still.</p>\r\n<p>&nbsp;</p>\r\n<p>This almost seems like a very nice method for you to have future users migrate from Rawr to your program, and now you are asking the Rawr programmers to implement a method to make it more of a convenience to migrate? Jesus holy mother of ...</p>",
+    "PostedDate": "2009-08-04T08:58:44.25-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219297",
+    "ThreadId": "64356",
+    "Html": "<p>I'm not sure if you're responding to me or kbranch, but make no mistake - What I am writing is not intended to replace Rawr or replicate what it does. Its purpose is entirely separate from that of Rawr and if anything I'd love to see people use them in tandem. My thoughts were, essentially:</p>\r\n<p>&quot;Making people type things in manually kind of sucks. There has to be a better way to do it. Rawr is pretty popular... I wonder if the character data it saves could be parsed without any headache. Awesome! The DKTank save does... but none of the others do. I wonder if I could get the devs for the other modules to do something similar. How do I get in touch with them?&quot;</p>\r\n<p>And at that point, I made this thread. :)</p>",
+    "PostedDate": "2009-08-04T09:08:26.593-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219299",
+    "ThreadId": "64356",
+    "Html": "<p>It's hardly a plot to steal users from Rawr, the tools are different and meant to be used together.&nbsp; Rawr is great for a very fast, user friendly theory crafting tool, but there are some fundamental limitations with a mathematical model.&nbsp; This is no more insidious than the relationship between Rawr and EnhSim.</p>",
+    "PostedDate": "2009-08-04T09:16:10.817-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219321",
+    "ThreadId": "64356",
+    "Html": "<p>I'm not concerned about that at all; I'm concerned about our users, and giving them the best experience possible. If there is a need for Rodney's proposed tool (and I'd still like to see what that need is), then exports (consistent ones; you can write them however you want) are totally possible.</p>",
+    "PostedDate": "2009-08-04T09:57:03.51-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219329",
+    "ThreadId": "64356",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>TNSe wrote:</strong><br>\r\n<p>This almost seems like a very nice method for you to have future users migrate from Rawr to your program, and now you are asking the Rawr programmers to implement a method to make it more of a convenience to migrate? Jesus holy mother of ...</p>\r\n</blockquote>\r\n<p>That makes no sense at all.&nbsp; He isn't adding gear to his tool so it can never replace Rawr. If he was adding gear to his tool he wouldn't need anything from Rawr at all and wouldn't be posting.&nbsp; In fact if the only reliable way to get your buffed stats is from Rawr then if anything his requires Rawr in order to be easily usable.</p>\r\n<p>The concept of a TankSim like EnhSim is interesting.&nbsp; Static mathematical models are never perfect and simply serve as a directional guide.&nbsp; There are numerous ways to rate the gear, none of which are perfect (I think ProtPal has 6 models implemented? and they all come up with different answers).&nbsp; If you had a simulator into which you could put real game tank, boss and healer data from parses I suspect that would be quite useful to theorycraft with.&nbsp; It won't be perfect either but it will be yet another data point.</p>\r\n<p>Simulations are very valuable as another data point for decision making.&nbsp; I've often felt that models are lacking in important ways.&nbsp; Cat has issues with up time on it's DoTs for example...real world, we don't have 100% Rip uptime; Rawr assumes we do.&nbsp; &quot;What would my best gear possible be when --I-- play?&quot; is far a more useful piece of knowledge than &quot;What is the best gear if I were to somehow play perfectly?&quot;...which is what Rawr.Cat tells me today.&nbsp; Simulations can be better at that than models in this way.&nbsp; Simulations let you try things like &quot;What if I always refresh Rip, even if it's early, so it never falls off, only biting if it's not almost off and Rip won't let me overwrite?&quot; losing Rip ticks but gaining Rip up time.&nbsp; Given that Rip will not let you overwrite a stronger Rip you actually increase your tick damage as well on those overwrites.&nbsp; Simulations help you zero in in terms of real play, real cp generation, real miss/dodge at your hit/exp how that affects your overall damage.&nbsp;</p>\r\n<p>How adverse the developers are to any other tool than Rawr existing is...saddening.&nbsp; It's against the spirit of open source development in general.&nbsp; Some people use Rawr, some use spreadsheets, some people just use rules of thumb and no theorycrafting at all.&nbsp;&nbsp; For the most part success or failure is not dependent on how good you are at theorycrafting (take a look at Ensidia...they are renowned for terrible gear selection and bad theorycrafting...but they do fine).</p>\r\n<p>Worrying about &quot;diluting the theorycrafting space&quot; I think is very short sighted.&nbsp; New tools, if anything, help people see things in new ways.&nbsp; Sometimes those ways are useful, sometimes they are not, but they are always valuable exercises even if they only serve to validate current models and offer nothing new.&nbsp; More than one opinion on any question is always welcome...and theorycrafting via models or simulators are just that: opinions.</p>",
+    "PostedDate": "2009-08-04T10:03:42.84-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219336",
+    "ThreadId": "64356",
+    "Html": "<p>Think you need to look up what Cynic means.</p>\r\n<p>&nbsp;</p>\r\n<p>kbranch' wording was wrong, and he corrected it. I was reacting to the fact he wrote that Rawr would only be a convenience.</p>\r\n<p>&nbsp;</p>\r\n<p>But other than that, nice long useless post of nothing.</p>",
+    "PostedDate": "2009-08-04T10:22:36.183-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219341",
+    "ThreadId": "64356",
+    "Html": "<p>I am not adverse to other tools besides Rawr existing. But dilutting the theorycrafting space isn't short-sighted, it's a very real problem. Look at how much trouble we have convincing people that things like Pawn values, or Maxdps.com are bad. Improving existing tools, if possible, will usually be better than creating new ones.</p>\r\n<p>I fully support there being a new tool, <em>if there's a need for one</em>, and it's done in the right way. You've got to look at the big picture. What should this tool do? Why can't we make Rawr do that? Who should use this tool? What should they do with it? (Hint: those last two are very important, and it doesn't sound like you're thinking about them, but I may be wrong.</p>\r\n<p>For example, EnhSim. The way that attack speeds, haste, windfury procs, and instant attacks play off each other is <strong>extremely</strong>&nbsp;difficult to model in a closed form way. So, EnhSim exists, and has alot of strong development behind it. Rawr.Enhance exports to an EnhSim config file, to make running EnhSim on the character file quick and easy. Primarily, it's intended for use as a second oppinion, a double-check of Rawr's results. It's intended to be used by developers, when working on the model, and for a few hardcore users to do as well. It <em>not</em>&nbsp;intended to be used for character design, gear selection, or required for normal users.</p>\r\n<p>The bottom line is that we don't want to create alternatives to Rawr, we want to create compliments to Rawr. For everyone's benefit, users and developers alike, it makes much more sense to improve Rawr, where you find it lacking, than to create an alternative to Rawr (duplicating a ton of effort, confusing users, etc.)</p>",
+    "PostedDate": "2009-08-04T10:33:52.323-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219349",
+    "ThreadId": "64356",
+    "Html": "<p>There's definitely a need for what I'm looking to do. As awesome as Rawr is for gear selection and comparisons, there are things it simply cannot do because it's not meant to. You can't tell Rawr &quot;A Warrior and a Druid are tanking a dual-wielding boss that hits for X with his main hand, Y with his off hand, and has a magical ability dealing Z damage every 30 seconds. Both are being healed by two healers, one does 13k-15k every 2.5s and the other does 8k-10k every 1.8s. Compare their survivability.&quot;</p>\r\n<p>The purpose is to be able to provide a reasonable simulation of Patchwerk-like tests we can do on the PTR to show the effects of class changes and compare tanks. Such tests require significant coordination, server cooperation, and available players to run to the point that it is almost impossible to get a large enough sample size that reasonable conclusions can be drawn from. The point isn't to be able to use my tool to microtune your gear and see what an optimal setup is. It's to remove factors from the equation that make it difficult at best to compare tank performance reasonably.</p>",
+    "PostedDate": "2009-08-04T10:48:38.23-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219352",
+    "ThreadId": "64356",
+    "Html": "<p>Sounds great, makes sense.</p>",
+    "PostedDate": "2009-08-04T10:54:16.247-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219355",
+    "ThreadId": "64356",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>TNSe wrote:</strong><br>\r\n<p>Think you need to look up what Cynic means.</p>\r\n<p>&nbsp;</p>\r\n<p>kbranch' wording was wrong, and he corrected it. I was reacting to the fact he wrote that Rawr would only be a convenience.</p>\r\n<p>&nbsp;</p>\r\n<p>But other than that, nice long useless post of nothing.</p>\r\n</blockquote>\r\n<p>Just...wow.&nbsp; Was there really any call for such a rude reply?&nbsp; I thought I was very respectful in my post.</p>\r\n<p><a id=\"ctl00_ctl00_MasterContent_Content_PostRepeater_ctl52_UserNameLink\" href=\"http://www.codeplex.com/site/users/view/Astrylian\">Astrylian</a>:</p>\r\n<p>I think you have an unrealistically optimistic view of WoW players and their ability/willingness to theorycraft.&nbsp; Most by far do (and are always going to) use things like pawn and EJ &quot;BiS gear&quot; lists.&nbsp; Even Rawr is by far too much work and too confusing for many players.&nbsp; When I try to get new people to use it, it's often like pulling teeth...and they often don't really spend time tweaking things and really USING the tool they just look at it like another gear list to occasionally be referred to.</p>\r\n<p>People experienced and intelligent enough to use multiple tools understand that each tool is simply an opinion and it is highly likely NONE of them are perfectly modeling reality.&nbsp; Simulation tools are generally the most complex theorycrafting tools around you have to spend substantial amounts of time just to find out which pair of boots, between two, is better and then do the same for the next pair, alternate gemmings, then every other slot...it get's insane.&nbsp; Most users will not use them.&nbsp; Experienced users that want a third, fourth, fifth, etc opinion might though.</p>\r\n<p>The bottom line, from this perspective, is that you won't be creating an alternative to Rawr.&nbsp; The tiny fraction of WoW players that will use a simulation program is even smaller than the tiny fraction of players that will use Rawr and is in fact mostly a subset thereof.&nbsp; A good simulation allows you to help validate standard models and test out end cases that often do not model well.</p>",
+    "PostedDate": "2009-08-04T10:57:18.473-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219362",
+    "ThreadId": "64356",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>TNSe wrote:</strong><br>\r\n<p>kbranch' wording was wrong, and he corrected it. I was reacting to the fact he wrote that Rawr would only be a convenience.</p>\r\n</blockquote>\r\n<p>I stand by the original wording.&nbsp; Your interpretation of it may have been wrong.&nbsp; Rawr support in my simulator is, in fact, there as a convenience.&nbsp; I never said that Rawr itself was only a convenience.</p>",
+    "PostedDate": "2009-08-04T11:02:47.51-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219366",
+    "ThreadId": "64356",
+    "Html": "<p>Enough with the pointless bickering, guys.</p>\r\n<p>Khanthal, I don't think I'm unrealistically optimistic. Sure, alot of people will always use things like Pawn, and that's fine; those things have a purpose. But that doesn't mean that we shouldn't do our best to make Rawr as user-friendly as possible. Rawr's whole point is to make the ultra-complex theorycraft easy to understand, and use, for everyone. Alot of it is just improving how simple things appear at first glance, to prevent that sort of shock at all the options that you mentioned. For example, those people you tried to get to use Rawr, what was there problem? How can we address that? Did you show them the tutorial video?</p>\r\n<p>But yeah, a simulator as a validator to Rawr makes total sense, I support that.</p>",
+    "PostedDate": "2009-08-04T11:11:13.277-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219377",
+    "ThreadId": "64356",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Astrylian wrote:</strong><br>\r\n<p>Khanthal, I don't think I'm unrealistically optimistic. Sure, alot of people will always use things like Pawn, and that's fine; those things have a purpose. But that doesn't mean that we shouldn't do our best to make Rawr as user-friendly as possible. Rawr's whole point is to make the ultra-complex theorycraft easy to understand, and use, for everyone. Alot of it is just improving how simple things appear at first glance, to prevent that sort of shock at all the options that you mentioned. For example, those people you tried to get to use Rawr, what was there problem? How can we address that? Did you show them the tutorial video?</p>\r\n<p>But yeah, a simulator as a validator to Rawr makes total sense, I support that.</p>\r\n</blockquote>\r\n<p>I didn't know there was a video :).&nbsp; I've been using it for...a long time heh; there wasn't a video when I started.&nbsp; Both Rawr and Power Auras (Classic) are the two things I try to &quot;sell&quot; to everyone that seems like they could benefit and is open/looking for that sorta thing.&nbsp; For example I'll sneak it in when people are saying &quot;Not sure if I should get this polearm...I'm not sure it's an upgrade.&quot; ...&quot;Well Rawr says it's an upgrade based on your gear from the armory&quot;...&quot;What's Rawr?&quot;</p>\r\n<p>The biggest difficulty I have is actually getting them to install it, half the time.&nbsp; People get weird about anything they install with regard to WoW.&nbsp; If I can get them in the program they usually think it's cool.&nbsp;</p>\r\n<p>The first and most difficult hurdle always, ALWAYS, is explaining gemming.&nbsp; The new gemming system has really helped make explaining it easier.&nbsp; People are FAR more amenable to it.&nbsp; I always used to have to say things like &quot;This is the only part that's hard/sucks&quot; and try to talk fast enough to get them past it.&nbsp; The next hurdle is helping them understand that if they change one piece, they need to re-look at all the other gear and see if other things shifted.&nbsp; I never start them with the optimizer; I always get them to &quot;hand optimize&quot; a little first so they understand and see that changing one thing can change everything else.&nbsp; It's a huge change from static lists people are used to.&nbsp; By default they think if Rawr says A is better than B then it will ALWAYS be better...and of course it's often not.</p>\r\n<p>It's not too hard to get people to this point.&nbsp; They will open Rawr with their given gear set and look at a drop, say it's an upgrade, loot it and equip it in Rawr and go from there.&nbsp; It's very hard to get them to go much, if any, past that to plan out gear upgrades or deal with real optimizations that are not straightforward.&nbsp; An example there is that, unless you happen to have a bunch of ArP or a good ArP trinket, Rawr won't tell you that ArP is awesome...because at that point it isn't.&nbsp; In truth, with the right gear, it can be better than other stats but your basic user will never see it unless they stumble on it through random gear upgrades getting ArP up high enough.&nbsp; Similarly they won't necessarily think about &quot;what if I swap this piece out for my +hit so I can swap that other one in&quot;.&nbsp; True optimization is sort of...advanced Rawr use for people it seems.&nbsp; Explaining that they can go through and click little green diamonds for 15 minutes across all the gear they have and gems/enchants they want to use until they get them all in so the optimizer can work often doesn't go over well.</p>\r\n<p>None of them would even have gotten to the point they are without me hand-holding them there, though.&nbsp; That's the real problem.&nbsp; If I hadn't devoted the time to &quot;shepherding&quot; them they never would have adopted the program at all.&nbsp; A lot of WoW players have been using gear lists or their own personal rules of thumb for a long time and they do good damage/tank well/heal well so...they don't see any need to change to something unfamiliar and, to them, infinitely more complicated.&nbsp;</p>",
+    "PostedDate": "2009-08-04T11:40:48.37-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219387",
+    "ThreadId": "64356",
+    "Html": "<p>kbranch, okay, let me Rephrase it: Your wording let it be easy to misinterpret what you meant. But you have clarified.</p>\r\n<p>&nbsp;</p>\r\n<p>khantal, I find it weird, that you who complain so much about the average users ability to use program, suddenly turn around and find it saddening that Rawr authors don't want any other tools than Rawr.</p>\r\n<p>&nbsp;</p>\r\n<p>I did mention to start with I am a Cynic. I don't expect more of people than what I said. This is why I needed a clarification, and I have received one I am happy with.</p>",
+    "PostedDate": "2009-08-04T12:12:15.047-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219390",
+    "ThreadId": "64356",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>khanthal wrote:</strong>\r\n<p>The biggest difficulty I have is actually getting them to install it, half the time.&nbsp; People get weird about anything they install with regard to WoW.&nbsp; If I can get them in the program they usually think it's cool.&nbsp;</p>\r\n</blockquote>\r\n<p>Agreed, just installing it is the biggest hurdle, and we've taken that to heart when designing Rawr. You're going to love just telling people an 11-character URL with Rawr3. :D</p>\r\n<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\">\r\n<p>The first and most difficult hurdle always, ALWAYS, is explaining gemming.&nbsp; The new gemming system has really helped make explaining it easier.&nbsp; People are FAR more amenable to it.&nbsp; I always used to have to say things like &quot;This is the only part that's hard/sucks&quot; and try to talk fast enough to get them past it.&nbsp; The next hurdle is helping them understand that if they change one piece, they need to re-look at all the other gear and see if other things shifted.&nbsp; I never start them with the optimizer; I always get them to &quot;hand optimize&quot; a little first so they understand and see that changing one thing can change everything else.&nbsp; It's a huge change from static lists people are used to.&nbsp; By default they think if Rawr says A is better than B then it will ALWAYS be better...and of course it's often not.</p>\r\n</blockquote>\r\n<p>Yeah, the gemming change was huge. It's still complex, but at least it's abstracted away from the user by default, and for the vast vast majority of users.&nbsp;</p>\r\n<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\">\r\n<p>It's not too hard to get people to this point.&nbsp; They will open Rawr with their given gear set and look at a drop, say it's an upgrade, loot it and equip it in Rawr and go from there.&nbsp; It's very hard to get them to go much, if any, past that to plan out gear upgrades or deal with real optimizations that are not straightforward.&nbsp; An example there is that, unless you happen to have a bunch of ArP or a good ArP trinket, Rawr won't tell you that ArP is awesome...because at that point it isn't.&nbsp; In truth, with the right gear, it can be better than other stats but your basic user will never see it unless they stumble on it through random gear upgrades getting ArP up high enough.&nbsp; Similarly they won't necessarily think about &quot;what if I swap this piece out for my +hit so I can swap that other one in&quot;.&nbsp; True optimization is sort of...advanced Rawr use for people it seems.&nbsp; Explaining that they can go through and click little green diamonds for 15 minutes across all the gear they have and gems/enchants they want to use until they get them all in so the optimizer can work often doesn't go over well.</p>\r\n</blockquote>\r\n<p>Yeah, I don't really have a good answer on how to make this simpler and easier to see. It's just a very complex problem. One thing that will help at least somewhat is a standardized set of charts showing how stat values scale with stats.</p>\r\n<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\">\r\n<p>None of them would even have gotten to the point they are without me hand-holding them there, though.&nbsp; That's the real problem.&nbsp; If I hadn't devoted the time to &quot;shepherding&quot; them they never would have adopted the program at all.&nbsp; A lot of WoW players have been using gear lists or their own personal rules of thumb for a long time and they do good damage/tank well/heal well so...they don't see any need to change to something unfamiliar and, to them, infinitely more complicated.&nbsp;</p>\r\n</blockquote>\r\n<p>Yeah, the hand-holding really helps get someone comfortable with Rawr; that was the idea with the video (check it out!). I still think there's some UI design that we can do to improve things for people who don't view the video, though.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-08-04T12:20:38.44-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219391",
+    "ThreadId": "64356",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>TNSe wrote:</strong><br>\r\n<p>khantal, I find it weird, that you who complain so much about the average users ability to use program, suddenly turn around and find it saddening that Rawr authors don't want any other tools than Rawr.</p>\r\n</blockquote>\r\n<p>There are other users than average/basic ones.&nbsp; Those users like to have lots of tools, not just one, and attempt to understand the strengths and weaknesses of each tool.&nbsp; That even the concept of a new tool is by default bad is what I am saddened by.&nbsp; I would think more tools, especially niche ones that are very deep and narrow and not really intended for average users, would be applauded.</p>\r\n<p>Perhaps it comes back to your cynicism there, for you.&nbsp; I naturally assume that a new tool developer will likely make something useful in the end and that, even if it turns out to not be well designed/implemented, any exploration into the theorycrafting space has potential for new discoveries or thought processes.</p>\r\n<p><a id=\"ctl00_ctl00_MasterContent_Content_PostRepeater_ctl68_UserNameLink\" href=\"http://www.codeplex.com/site/users/view/Astrylian\">Astrylian</a></p>\r\n<p>Is it possible the video could be off on the side of the download or home page maybe?&nbsp; I envision someone coming to Rawr's site and seeing a youtube box on the side with the ability to just play embeded if they want...might rope people in.&nbsp; I know the screen shots way back when on the druid Wiki are a big part of why I started using Rawr.</p>",
+    "PostedDate": "2009-08-04T12:21:14.63-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219393",
+    "ThreadId": "64356",
+    "Html": "<p>First off, Rodney, thank you for finally explaining your purpose with the new tool you wish to create. Now that that is out in the open, I'm sure we (in addition to Astrylian) are far more amenable to your request. It does make sense if you need to create wide-scale data such as that, which Rawr simply isn't the utility to do but could easily be a 'setup' step for your simulation utility. Even if for nothing more than to select all the gear and add up the stats for you, it could lead you into optimizing the gear before running the sims so you can maximize the effectiveness each time.</p>\r\n<p>Astrylian: As we are currently running several models with a '3.2 Mode', perhaps we should implement a permanent 'PTR Mode' for each model so that users wanting to see what happens after any 'next patch' can check out the differences.</p>\r\n<p>To khanthal's note, I regularly recruit persons on my server, especially warriors and EVERY time the reaction is immediately... WOW! thass AHSUM! and then I need to walk them through setting up their character and then run an optimize to show immediate improvements. It does seem to need some 'shepherding' as he put it to get people really into the mechanics that make a Rawr enhanced character great. The Rawr video is a great way to do that but it's not on the Main Page in big red bold print saying WATCH ME. It's also based on version 2.2.0.3 so several of the interface functions have since changed (especially the dropdowns over the gear comparison pane). If we remade this video as soon as Rawr3 released I think we'd have a nice phat fanbase to work with and it would be easier to recruit new users (possibly new developers).</p>",
+    "PostedDate": "2009-08-04T12:27:04.28-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219399",
+    "ThreadId": "64356",
+    "Html": "<p>My pleasure, Jothay. That was my idea - to not muck about with what Rawr already does (calculate stats from class, gear, etc) so I don't have to join the Department of Redundancy Department and do it myself, and have that available to my tool to make it quick, clean, and user friendly. Saves me a lot of headache if I don't have to do all that calculation, and provide a UI for people to select their talents and blah blah blah. It would probably save users some annoyance, as well.</p>",
+    "PostedDate": "2009-08-04T12:35:25.477-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219404",
+    "ThreadId": "64356",
+    "Html": "<p>khantal, gotta agree there. I always assume any new tool is going to be inferior until proven otherwise. But obviously the infinite monkey theory will sometimes come through.</p>",
+    "PostedDate": "2009-08-04T12:40:08.687-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219405",
+    "ThreadId": "64356",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Jothay wrote:</strong><br>\r\n<p>To khanthal's note, I regularly recruit persons on my server, especially warriors and EVERY time the reaction is immediately... WOW! thass AHSUM! and then I need to walk them through setting up their character and then run an optimize to show immediate improvements. It does seem to need some 'shepherding' as he put it to get people really into the mechanics that make a Rawr enhanced character great.</p>\r\n</blockquote>\r\n<p>Concept:&nbsp; The nifty new box that pops up when you start wow...if it finds no saved chars it could have, in 50 foot high letters, &quot;Do you want to do some initial setup?&quot;</p>\r\n<p>Guided setup:</p>\r\n<p>- Asks for char name and server, imports</p>\r\n<p>- Opens the buff tab and points it out, asks if they want full raid buffs by default, or if they want to do it custom later</p>\r\n<p>- Asks them if they want only current content enchants available to the optimizer or to include all, presses the little green dots for them respectively</p>\r\n<p>- Asks them what qualities of gems to include for optimization (the autopicker can be at least sort of smart here, only green dotting gems that actually have two relevant stats...i.e. not selecting anything with any spell power for bears).</p>\r\n<p>- Shows them the gemming templates and asks them to change things if they want</p>\r\n<p>- Tells them about anything else that is relevant to the specific spec (if they need to poke around in some tab)</p>\r\n<p>Bam...they are totally close to being able to use the optimizer effectively.</p>",
+    "PostedDate": "2009-08-04T12:41:43.383-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219408",
+    "ThreadId": "64356",
+    "Html": "<p>I think we are getting a little off-topic, and it's partially my fault, khanthal can you start a new thread with anything pertaining to &quot;New Users and Rawr&quot; and copy the points out from this thread as quotes?</p>",
+    "PostedDate": "2009-08-04T12:46:01.677-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219417",
+    "ThreadId": "64356",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Jothay wrote:</strong><br>\r\n<p>I think we are getting a little off-topic, and it's partially my fault, khanthal can you start a new thread with anything pertaining to &quot;New Users and Rawr&quot; and copy the points out from this thread as quotes?</p>\r\n</blockquote>\r\n<p>Anyone interested in this off-topic I direct you here: <a href=\"http://rawr.codeplex.com/Thread/View.aspx?ThreadId=64463\">Link</a></p>\r\n<p>I apologize for my part in the thread-jacking...it just sort of happened haha.</p>",
+    "PostedDate": "2009-08-04T13:02:23.82-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224505",
+    "ThreadId": "64356",
+    "Html": "<p>Hello again!</p>\r\n<p>I've made some very good progress on my project and wanted to see about getting an update about this. Would it be possible for you guys to throw in a Stats Export feature that has universal formatting and information across the Tank modules? I'd very much like to keep people from having to enter all their stats manually if you're willing to do something like this. :)</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-08-17T09:06:45.827-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224521",
+    "ThreadId": "64356",
+    "Html": "<p>Again, this really should be model-specific. You could draft up the code, and submit it as a patch. Personally, this isn't high on my list of priorities at the moment, so I probably wouldn't be adding it to Rawr.Bear any time soon. Would be better for you to do it just so you can have the stats you're looking for, anyway.</p>",
+    "PostedDate": "2009-08-17T09:37:34.67-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224529",
+    "ThreadId": "64356",
+    "Html": "<p>I understand where you're coming from, Astrylian. My concern with it being model-specific is that with so many different developers working on Rawr, there is already no parity in many ways across modules. The Copy Stats to Clipboard menu option would be the perfect solution, but no two modules compile the same information, which leads me to believe each module has its own function for it.</p>\r\n<p>I haven't looked in-depth at any of Rawr's source. Are stat values not stored globally in some fashion? It seems it should be relatively easy to have a function that compiles values for every character stat.</p>",
+    "PostedDate": "2009-08-17T10:02:52.803-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224543",
+    "ThreadId": "64356",
+    "Html": "<p>Stats are not stored at all (to a sheet or anything), they are calculated from the gear worn and talents buffs etc. Once calculated, they are put into display functions for ease of viewing. We do have a Stats class that holds all the end-result numbers (Str, Stam, Dodge, etc) for interim calcs.</p>",
+    "PostedDate": "2009-08-17T10:27:55.053-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224552",
+    "ThreadId": "64356",
+    "Html": "<p>o.o<br>So are you saying that once the calculations for stats are done, those stats are just displayed and then the data for them is wiped? They're not stored at any point in time? I don't quite know how to react to that.</p>",
+    "PostedDate": "2009-08-17T10:45:44.287-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224558",
+    "ThreadId": "64356",
+    "Html": "<p>Well, yeah. The currently displayed CharacterCalculations object is in memory; that's what's displayed.</p>\r\n<p>Copy Stats to Clipboard is different because that just copys the displayed values that show up on the stats tab, which is entirely model-specific.</p>\r\n<p>You should write the code, precisely so that it is consistent across models, and it has to be model-specific, precisely because you need to tailor the results to your use of them. There's no single authoritative list of Stats and values. You need to save the data you want, in the way you want, from the point of view you want, and that's very model-specific.</p>",
+    "PostedDate": "2009-08-17T11:07:24.88-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224565",
+    "ThreadId": "64356",
+    "Html": "<p>I'm kind of boggled that there is no universal storage of character stats anywhere within Rawr. That seems like an incredibly inflexible and inconvenient design decision to me.</p>\r\n<p>What you seem to be telling me is that for the results I'm looking for, an update would essentially have to be made to every module to which the desired functionality applies? Is that correct? Since all the Copy to Clipboard function does is (more /boggle) copy only what is being displayed by the current module, the choices seem to be either:<br>A) Update the four tank modules to display all of the information I'd want to use so that Copy to Clipboard snags it automatically<br>B) Update the four tank modules individually with a button to &quot;Export Stats to EnhSim config file&quot; from the Enhancement Shaman module</p>",
+    "PostedDate": "2009-08-17T11:17:38.97-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224591",
+    "ThreadId": "64356",
+    "Html": "<p>Copy to Clipboard is not what you want, and is entirely unrelated. Forget that.</p>\r\n<p>All this boggling makes me think you don't understand how Rawr works. There are no stat values. There's no 'universal storage of character stats', because Rawr doesn't 'care'&nbsp;about stats. It cares about results. Results are what it keeps in memory for the current character object. This isn't an inflexible or inconvenient design, in Rawr, unless you're trying to do things inaccurately.</p>\r\n<p>I think you may have a simplistic view of the 'stats of a character'. Again, there really is no universal answer to 'what are the stats of this character'. All sorts of things (very class-specific things) influence stats in very complex, non-static ways. That's why you need to write the code to get exactly the stats <em>you</em>&nbsp;want, in the way <em>you</em> want.</p>",
+    "PostedDate": "2009-08-17T12:16:52.943-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224594",
+    "ThreadId": "64356",
+    "Html": "<p>We have a Stats object, which has the option to store just about every stat possible (hit rating, physical hit % increase from talents, warlock set bonus, bleed modifier, decrease in rage cost of Sunder Armor, etc etc).</p>\r\n<p>Each model developer has a CharacterCalculations object, which stores relevent information. &nbsp;This could be things like Slam DPS, Expertise, or TimeBetweenCooldowns, or whatever you want.</p>\r\n<p>The model developer then takes the stats from your talents, gear, race, and buffs, combines them into one big stats object, and then parses it to populate the CharacterCalculations object. &nbsp;This would include calculating how often each attack is missed (combining talents, buffs, hit rating, and target level) -- we don't do this in Rawr.Base because there always seems to be exceptions to the general calculation -- made up example: a talent that says &quot;Your moonfire is 1/2/3% less likely to miss&quot;. &nbsp;In this case, you'd need a Moonfire miss chance AND an EverythingElse Miss Chance. &nbsp;See where the problem is?</p>\r\n<p>If you're just looking for a way to get all the stats that are displayed in the paper doll within the WoW game (ie Base Stats, Melee, Ranged, Spell, Defense, Resists), I agree that this is a gap we don't currently support in Rawr. &nbsp;It would be nice, but honestly would provide little benefit for Rawr in the immediate future.</p>\r\n<p>If you wanted a way to get that raw, combined stats object, that's something we could potentially support, but it would be a nightmare to parse through again (and you'd just be re-doing a lot of work we've already done at the model-level). &nbsp;You're going to be better off getting the model-specific data and parsing them individually. &nbsp;Presuming you want to use Rawr for your tool ;)</p>",
+    "PostedDate": "2009-08-17T12:28:02.257-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224615",
+    "ThreadId": "64356",
+    "Html": "<p>Thank you ebs, that was very helpful and enlightening.</p>\r\n<p>I think you're making things more complicated than they have to be, Astrylian. Getting the stats displayed in the paper doll within WoW, as ebs put it, is exactly what I'd be looking for, and nothing more complex than that. Rawr absolutely cares about that information - how would a Tank module know to value, say, Defense if the character isn't Defense capped? How would it know what your Parry % is if it doesn't know your Parry rating? You say that Copy to Clipboard is not what I want and entirely unrelated, but that's not true at all - I can pull up the TankDK module, use Copy Character Stats to Clipboard and it outputs 90% of the character stats a Tank simulator would need to do accurate calculations.</p>\r\n<p>I feel like I'm getting a lot of resistance and hostility, here. Have I said something in the course of this exchange (besides suggesting that a single aspect of Rawr's design seems a bit goofy) that warrants it that I'm missing?</p>",
+    "PostedDate": "2009-08-17T13:03:23.14-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224662",
+    "ThreadId": "64356",
+    "Html": "<p>There's no hostility here at all; we're trying to direct you to the appropriate solution for your problem. I'm not making it more complicated than it has to be; it really is that complicated.&nbsp;When ebs says:</p>\r\n<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>ebs2002 wrote:</strong><br>\r\n<p>...takes the stats from your talents, gear, race, and buffs, combines them into one big stats object...</p>\r\n</blockquote>\r\n<p>He's really glossing over the fact that that's a very complex operation, and can be done in a variety of ways. Do you want the parry rating from strength included? AP from Agi/Str? Is it counting any spell-specific bonuses (and if not, what are they)? Are procs and other special effects included? What rotation is used to determine when special effects occur? Is it averaging out the stats from those procs, or doing something more complex with them? Is avoidance totaled up, and if so, are diminishing returns included? Is Savage Defense counted as block? Is the block chance/value included?&nbsp;</p>\r\n<p>There's a lot that goes into getting the data you want, and you'll inevitably want it done in the way you want, with output in the format you want.</p>",
+    "PostedDate": "2009-08-17T14:33:46.833-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224668",
+    "ThreadId": "64356",
+    "Html": "<p>See, I knew Astry would have better examples than my Moonfire talent.</p>\r\n<p>Honestly, the more I think about it, the less likely I think that Rawr will give you what you really need in a way you could use it. &nbsp;Simulators and Mathematic Models just use different data to achieve their means.</p>\r\n<p>It really shouldn't take too long for you to develop a routine that reads in a bunch of ItemIDs, gets the stats out of an Item cache, and total up the stats to get the paper-doll numbers you're looking for. &nbsp;You can get ItemIDs and Buffs from our character's saved xml files.</p>\r\n<p>Any other use of our data is likely going to just set you up for bugs in your sim down the road.</p>",
+    "PostedDate": "2009-08-17T14:51:03.017-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224683",
+    "ThreadId": "64356",
+    "Html": "<p>I'm glad to see this thread has started back on the &quot;productive&quot; track.</p>\r\n<p>Let me recap what's been decided.</p>\r\n<p>&nbsp;</p>\r\n<p>a) Simcraft is useful in a different type of way then modeling. &nbsp;Simulations are useful for validating the results of models, especially when modules have difficulty with certain calculations</p>\r\n<p>b) Rawr doesn't care about the stats you're interested in; those stats are simply part of the results (mitigation and survival rating for rawr.bear)</p>\r\n<p>c) If you're looking for specific output from rawr (xml, etc) of stats in a certain manner, you should join the rawr development team; write code which adds this option and submit it as a patch.</p>\r\n<p>&nbsp;</p>\r\n<p>/thread</p>",
+    "PostedDate": "2009-08-17T15:51:20.657-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224686",
+    "ThreadId": "64356",
+    "Html": "<p>Doing the stat calculations myself was exactly what I was hoping to avoid. Rawr already does it - it seems silly to me to reinvent the wheel and kind of defeats the entire purpose of me even talking to you guys about it.</p>\r\n<p>Going back to my earlier example, the Copy to Clipboard from the DKTank module is just about perfect, and the only thing it's missing is Dodge and Parry ratings. Maybe I'm not phrasing what I'm looking for in the right way? Rawr is duplicating WoW's paper doll stat calculations outside of WoW, all considerations (talents, buffs, what-have-you) included. It would be horribly inefficient and a complete waste of time for me to duplicate what's already being done. My Sim doesn't need to know, for example, how many points a Blood Death Knight has in Veteran of the Third War. That information is irrelevant to it if it already knows what the final Health and Stamina values are after the talent's been applied. It doesn't need to care what gear you're wearing if it knows the final stats when all your gear is tallied. These kinds of things are not within its scope, but they are within the scope of Rawr.</p>\r\n<p>Rawr already does all the necessary stat summing and calculations - why recode what already exists? I can pull up Rawr's source right now and I'm fairly confident I know how to change what the Copy to Clipboard outputs for each individual module. Are you saying I should do that, and then give you back the code changes so you can implement it?</p>",
+    "PostedDate": "2009-08-17T16:02:48.993-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224695",
+    "ThreadId": "64356",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>gwindor wrote:</strong>\r\n<p>c) If you're looking for specific output from rawr (xml, etc) of stats in a certain manner, you should join the rawr development team; write code which adds this option and submit it as a patch.</p>\r\n</blockquote>\r\n<p>&nbsp;I think you're missing what I'm saying here.</p>\r\n<p>&nbsp;</p>\r\n<p>I'm not saying you need to do the calculations yourself, I'm saying you should code an option in rawr which allows you to export the values that are displayed, in the exact format you need. &nbsp;Obviously the calculations are already done for you, and its logical that you shouldnt have to do them all over again. &nbsp;I'm just saying that if I want to use your Simcraft, I should go to Tools&gt;Export to Rodney'sSimcraft in Rawr. &nbsp;And thats a function that &quot;you&quot; should write. &nbsp;If thats a modified version of &quot;Copy to Clipboard&quot; the yes, thats what you should write. &nbsp;Obviously, it'll be up to Astryl on the final word, but I don't think he's in disagreement with you using the discussed data for you Simcraft application.</p>",
+    "PostedDate": "2009-08-17T16:31:18.023-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224697",
+    "ThreadId": "64356",
+    "Html": "<p>I think you're missing our general point, though. &nbsp;The calcs in Rawr do NOT give you the paper-doll stats that you want. &nbsp;They include things like trinkets, temporary effects like vampiric blood/last stand, and others.</p>\r\n<p>We'd have to do additional work to strip those out for you.</p>\r\n<p>I do suggest that you take a look at the code base for each of these models to get a feel for just how much work is needed. &nbsp;If it's minimal work, you could probably create a patch for it. &nbsp;You'll get further with that approach than you will with the back-and-forth on this discussion thread, at least :)</p>",
+    "PostedDate": "2009-08-17T16:41:14.05-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224703",
+    "ThreadId": "64356",
+    "Html": "<p>So what you're saying, ebs, is that the reason that Health discrepancy in the TankDK module exists (VB's 15% bonus being averaged) is a calculation that is done with all cooldowns and clicky trinkets, and that's inherent in all of Rawr, in every calculation model? I don't have the words to describe how goofy that is to me. But that's another discussion entirely that I don't want to have. I think we could've saved eachother a lot of grief if I'd been aware of that from the onset.</p>\r\n<p>This is turning out to be far more effort than I thought it would. Since each module is different, it sounds like I'd have to write the code for all four applicable modules. Is that accurate?</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-08-17T17:37:58.733-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224719",
+    "ThreadId": "64356",
+    "Html": "<p>No, it's not like that for every calculation model. &nbsp;It's done per-model. &nbsp;Some models average them out because it makes sense to (think +ap trinkets for a rogue). &nbsp;Others don't use them at all. &nbsp;Even others calculate DPS with cooldowns popped and without cooldowns popped, and take a weighted average. &nbsp;It's the model developers duty to determine the best way to deal with these types of effects. &nbsp;We have a snippet of code that will do it for every special effect (what we call procs and cooldowns), and it's up to the model developer to skip some effects. &nbsp;TankDK didn't pull them out because of his own design -- we can debate whether that was the right choice elsewhere.</p>\r\n<p>Yes, I think that you'll need to write code for all four applicable models. &nbsp;As I said before, the stats we calculate is for mathematic models, not simcraft.&nbsp;</p>\r\n<p>Consider warriors, for instance. &nbsp;Their incoming rage is modeled mathematically, which affects their threat. &nbsp;A sim is better for this, because you're setting the amount of damage coming in and storing the rage before the hit -- you can easily model rage loss due to spiking over 100 rage. &nbsp;A mathematical model like Rawr would instead be measuring incoming rage per second, and using that to calculate how many Heroic Strikes per second they can do, but it generally won't calculate the perceived rage lost due to incoming damage spiking the rage over 100 (which then gets truncated to 100 in the game).</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-08-17T19:02:47.26-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224734",
+    "ThreadId": "64356",
+    "Html": "<p>Again, Copy to Clipboard is not what you want, because:</p>\r\n<ul>\r\n<li>It copies the display calculations, which are human-readable, formatted, etc. You want easily-machine-readable, raw data.</li>\r\n<li>It copies the display calculations, which may change at any point, to adjust the display for users. You want data in a static format.</li>\r\n<li>It includes the wrong/incomplete data, for your concerns.</li>\r\n</ul>\r\n<p>You're very right to want to reuse the work Rawr does to total up stats, because <strong><em>it's a really complex thing to do</em><span style=\"font-weight:normal\">.&nbsp;As I said already:</span></strong></p>\r\n<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\">\r\n<p>...that's a very complex operation, and can be done in a variety of ways. Do you want the parry rating from strength included? AP from Agi/Str? Is it counting any spell-specific bonuses (and if not, what are they)? Are procs and other special effects included? What rotation is used to determine when special effects occur? Is it averaging out the stats from those procs, or doing something more complex with them? Is avoidance totaled up, and if so, are diminishing returns included? Is Savage Defense counted as block? Is the block chance/value included?&nbsp;</p>\r\n<p>There's a lot that goes into getting the data you want, and you'll inevitably want it done in the way you want, with output in the format you want.</p>\r\n</blockquote>\r\n<p>Yes, you'll have to write code for all four models, because <em>that's the appropriate thing to do</em>. You want data in a specific way, including a specific set of sources<em>.</em>&nbsp;You can copy the existing code to have a good place to start, meaning that you actually have to code very little. In the time you've gone back and forth about this, you could have just written it.</p>",
+    "PostedDate": "2009-08-17T20:58:22.267-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224984",
+    "ThreadId": "64356",
+    "Html": "<p>I think at last we can agree that Copy to Clipboard is not what I want, but not for the reasons you say. It's basic string parsing. It doesn't need to be in some easily-machine-readable, raw data format. Had I known from the beginning that Rawr doesn't actually show you paper doll stats (and then not even universally so among models), I would have agreed with you immediately. I don't agree that writing separate functions that do the same thing for four different models is the &quot;appropriate&quot; thing to do, but apparently to work within the existing structure it's the <em>necessary</em> thing to do. Am I correct in equating it to the EnhSim export found in the Enhance module?</p>\r\n<p>And to be fair, all the back and forth I've done has been in brief spare times at work, so I really couldn't have just written it. :)</p>",
+    "PostedDate": "2009-08-18T08:59:48.857-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224989",
+    "ThreadId": "64356",
+    "Html": "<p>Yes, what you want to do should be very similar to the EnhSim export in the Enhance model.</p>",
+    "PostedDate": "2009-08-18T09:04:34.64-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224998",
+    "ThreadId": "64356",
+    "Html": "<p>Guess that's where I'll start, then. Is there a readme somewhere for how you do patch submission, or is it just as simple as uploading the files that were changed via the submit patch page?</p>",
+    "PostedDate": "2009-08-18T09:23:54.267-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "225000",
+    "ThreadId": "64356",
+    "Html": "<p>Just upload the patched files (full files not a diff) on the submit patch page.</p>",
+    "PostedDate": "2009-08-18T09:27:21.093-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "225093",
+    "ThreadId": "64356",
+    "Html": "<p>Rodney,</p>\r\n<p>If you are really concerned about accuracy and modeling discrete procs correctly, I would encourage you to work on the item-import.&nbsp; It really isn't that difficult.&nbsp; You are welcome to snarf any of my code as necessary.&nbsp; (I'm the father of SimulationCraft.)&nbsp; The reason I recommend working directly with gear-stats is because you really need that level of granularity to properly merge in all the various talents, buffs and debuffs.&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>There are other benefits, too.&nbsp; Once you support item IDs and enchants it opens up a ton of other possibilities, such as simply importing a Rawr character-save xml file, or downloading a Wowhead profile, or... etc.</p>\r\n<p>&nbsp;</p>\r\n<p>If you have to write class-specific patches to Rawr you are looking at moving targets.&nbsp; The character paper-doll format of simple gear lists, talents, and glyphs is pretty solid and I doubt that Rawr will change it in any significant fashion.</p>",
+    "PostedDate": "2009-08-18T12:10:16.193-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "225116",
+    "ThreadId": "64356",
+    "Html": "<p>That makes a heck of a lot of sense, Nate, from a &quot;guiding concepts&quot; perspective.</p>",
+    "PostedDate": "2009-08-18T12:57:24.483-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "225124",
+    "ThreadId": "64356",
+    "Html": "<p>My hatred for the idea of writing stat calculations based on item IDs and maintaining an item database is roughly equivalent to that of a thousand Mongol warlords. I think ultimately I know that if I want the most accuracy possible, I really should, but the intensity with which I don't want to do it is way too strong for me to think about it right now.</p>",
+    "PostedDate": "2009-08-18T13:19:52.75-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "225131",
+    "ThreadId": "64356",
+    "Html": "<p>It's really not as difficult or ugly as you seem to think it is.&nbsp; Rawr's *Cache.xml files already have all the data you need, it's just a matter of parsing it.&nbsp; I'm sure you could sit down for an evening and come up with something that can extract what you need from a Rawr character file.&nbsp; It might take another evening to take that raw data and turn it into your final effective stats, but in the end you'll have a stand alone simulator that doesn't require another application for basic functions.&nbsp; You'll need to handle procs and class specific effects yourself anyway, so it's really just a matter of adding up the base stats and applying a few multipliers.</p>",
+    "PostedDate": "2009-08-18T13:43:02.203-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "225168",
+    "ThreadId": "64356",
+    "Html": "<p>Not that it will change your mind, but maintaining an item database really isn't necessary.&nbsp; At any given time, at least one of mmo, wowhead, or armory is online.&nbsp; I simply access their databases........</p>",
+    "PostedDate": "2009-08-18T15:29:47.023-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,226 @@
+[
+  {
+    "Id": "248819",
+    "ThreadId": "72851",
+    "Html": "<p>I've implemented a graph option in the options panel of Enhance model. The code is fairly generic and could be adapted for other models very easily. Basically it allows you to pass an array of stats objects eg: new Stats() { Strength = 1 } or new Stats() { AttackPower = 2 } and it draws the effect of adding or subtracting multiples of that stat. So if you pass 3 stats objects you get three graph lines. It handles up to 9 lines at present and auto scales the graph as appropriate. It also auto generates a Legend for reference.</p>\r\n<p>If this idea was to be adopted for more models it would be wise to extract the code and turn it into an interface so that the model only need supply the relevant Stats array. This would then allow for the base code to be shared across lots of models.</p>\r\n<p>&nbsp;</p>\r\n<p>On using this for Enhance its immediately apparent that haste &amp; hit rating are very spiky graphs as has been observed in game, that adding some haste can mean lower dps.</p>",
+    "PostedDate": "2009-10-22T17:15:58.437-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "248823",
+    "ThreadId": "72851",
+    "Html": "<p>I've actually got something half-way done in the same realm... Have you looked at how close/shared they are, perhaps we can merge them? How detailed of a graph does it generate?</p>",
+    "PostedDate": "2009-10-22T17:34:21.093-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "248831",
+    "ThreadId": "72851",
+    "Html": "<p>Yours seems a bit more manual than mine and less generic.</p>\r\n<p>My graph takes a Stats array and draws 1 line per stat from that +/- 100 multiples of the stat from the base. Load up the current source code, load Levva, Khadgar, EU from armoury and choose options tab and see the Stat Graph options and button.</p>\r\n<p>It's currently on the Enhance Options panel as it unique to my model. It is based on work of DPSDK though although I made it more generic. Obviously this would be better appearing on the main tools menu. I noted your one Astrylian has the menu activated with a CTRL-Oemtilde or something like that??? This then gave a graph window where you manually typed in a stat name and some variance numbers. All very manual. Mine is let users tick a few boxes and click a button to display result, easier to use and does the job well. I've not looked at performance issues though but it seems fairly responsive for the amount its doing. Of course being an entirely separate graph its not dynamic, ie: change anything on the model and it doesn't refresh. However that is possibly a good thing as it allows two side by side graphs for comparison purposes.</p>\r\n<p>The aim of course is for users to be able to see what stat performs best and perhaps finally put the last nail in the coffin of EP values.</p>",
+    "PostedDate": "2009-10-22T18:18:40.203-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "248832",
+    "ThreadId": "72851",
+    "Html": "<p>DPSDK (and I think ret) have had something like this, albeit a bit simpler. It's a definitely useful way to visualize relative stat values, and if you end up extracting this into an interface I'd like to migrate DPSDK to it.</p>",
+    "PostedDate": "2009-10-22T18:19:31.36-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "248833",
+    "ThreadId": "72851",
+    "Html": "<p>Mine was based on DPSDK. Ok ok ruthlessly plagiarised :)</p>\r\n<p>The difference is I ditched the hard coded base graph and replaced it with a dynamic key legend. I then modified it to have negative values as well as positive ones, so we saw the effect of REMOVING a stat as much as adding one. I also modified it to dynamically scale to fill the graph rather than the DPSDK one which had a hardcoded range.</p>",
+    "PostedDate": "2009-10-22T18:23:13.213-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "248836",
+    "ThreadId": "72851",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Levva wrote:<em>. I noted your one Astrylian has the menu activated with a CTRL-Oemtilde or something like that??? This then gave a graph window where you manually typed in a stat name and some variance numbers. All very manual.&nbsp;</em></strong></blockquote>\r\n<p>Yeah. It's not done. That was just a test UI to feed it values without actually building a UI. :)</p>",
+    "PostedDate": "2009-10-22T19:30:35.097-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "248982",
+    "ThreadId": "72851",
+    "Html": "<p>I've re-factored Graph implementation so that it now is completely generic I've taken the liberty of moving the class into Rawr.Base, so that any models can now use it.</p>\r\n<p>Usage:</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Stats[] statsList = { new Stats() { Strength = 1 }, new Stats() { Agility = 1 }, new Stats() { AttackPower = 2 }, .... etc } // NB. AP is set as 2 as this is the item budget for AP. Use similar non 1 item budget values for Stamina, Spellpower etc.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Graph graph = new Graph();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string explanatoryText = &quot;Blah Blah&quot;; // this text goes top left to explain to user what they are seeing<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; graph.SetupGraph(Character, statsList, explanatoryText, &quot;DPS&quot;); // final string value is the text on the Y axis<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; graph.Show();</p>\r\n<p>NB. currently max supported is 9 stats - the graph would need more colour options to support more but this is trivial to adjust.</p>\r\n<p>Currently the graph uses OverallPoints from CharacterCalculationsBase. I imagine this could be altered if other models needed to specify specifics eg: Threat, Mitigation etc. Say perhaps as an extra parameter to SetupGraph.</p>\r\n<p>Also it currently has no common means of displaying the graph. An extra menu on the Tools menu is a possible  solution. At present I simply have the above code activated on the Rawr.Enhance options panel. This works well as it allows me to offer the user options of which graph lines they want to see displayed. This might also be useful for tank models if they wanted to change OverallPoints to a specific result type eg: Threat. The model could then provide a dropdown choice for the user before clicking display graph.</p>",
+    "PostedDate": "2009-10-23T06:24:34.84-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "249010",
+    "ThreadId": "72851",
+    "Html": "<p>Given the big ugly mess of code that is the Relative Stat Chart (I've never touched it and am wary to!) I wouldn't mind looking into using this.</p>\r\n<p>As you mention, though, I'm likely to want to use the different 3 sub&nbsp;point values rather than just overall--since it's an important distinction.</p>\r\n<p>What would be kinda cool if the selection of different points was integrated in somehow, so having a drop-down with Overall/Threat/Mitigation/Survival above the chart that would automagically toggle between the different points. But that might be outside the scope of the general stuff.</p>\r\n<p>Could probably just iterate through SubPoints + Overall?</p>",
+    "PostedDate": "2009-10-23T07:31:17.28-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "249017",
+    "ThreadId": "72851",
+    "Html": "<p>Agreed, it would be more robust if we could graph ANY of the calculatedStats. &nbsp;How much does my Mitigation go up, or my Survivability, or my Threat. &nbsp;What about my WW DPS or my HS usage? &nbsp;How often will my Slam proc trigger as I increase haste?</p>\r\n<p>I haven't looked at the code so I'm not sure how easy it would be to implement elegantly.</p>",
+    "PostedDate": "2009-10-23T08:07:57.583-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "249095",
+    "ThreadId": "72851",
+    "Html": "<p>I've added this so now you CAN graph ANY of the calculatedStats. To use create a combo box on your options and populate it with...</p>\r\n<p>comboBoxCalculationToGraph.Items.AddRange(Graph.GetCalculationNames());</p>\r\n<p>The code above now becomes</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Stats[] statsList = { new Stats() { Strength = 1 }, new Stats() { Agility = 1 }, new Stats() { AttackPower = 2 }, .... etc } // NB. AP is set as 2 as this is the item budget for AP. Use similar non 1 item budget values for Stamina, Spellpower etc.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Graph graph = new Graph();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string explanatoryText = &quot;Blah Blah&quot;; // this text goes top left to explain to user what they are seeing<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; graph.SetupGraph(Character, statsList, explanatoryText, _calcOpts.CalculationToGraph); // final string value is now the drop down rating selected<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; graph.Show();</p>\r\n<p>I am storing the value from the combo box as _calcOpts.CalculationToGraph = (string)comboBoxCalculationToGraph.SelectedItem;</p>\r\n<p>So there you have it a generic graph of user selected items with user selected calculation to graph. This means tanks can choose Overall/Threat/Mitigation/Survival and see the effects.</p>\r\n<p>At present I've kept the drop down effects etc on the models' character option panel. If this was widely adopted it may be better to have a Tools menu option that opened a graph and allowed selection of those items. On change of the drop down or a tickbox it would then dynamically change the graph displayed. For now being on an individual model basis means that you can save the options selected as part of your model config and it doesn't interfere with models that aren't using the graph.</p>\r\n<p>For now individual model developers can add this feature to their model with minimal effort.</p>",
+    "PostedDate": "2009-10-23T12:03:57.83-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "249141",
+    "ThreadId": "72851",
+    "Html": "<p>Can you clarify why it needs to have any model interaction at all? How granular are the calculations?</p>",
+    "PostedDate": "2009-10-23T14:05:48.107-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "249149",
+    "ThreadId": "72851",
+    "Html": "<p>Why such large stat increments?&nbsp; I would think that formulation could populate hundreds of points in no time at all.&nbsp; I would think this would be invaluable to model developers in that such granularity would highlight any discontinuities in the model in a very apparent manner.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-10-23T14:34:59.467-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "249151",
+    "ThreadId": "72851",
+    "Html": "<p>Clarifying via MSN.</p>",
+    "PostedDate": "2009-10-23T14:43:55.677-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "249156",
+    "ThreadId": "72851",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>natehieter wrote:</strong><br>\r\n<p>Why such large stat increments?&nbsp; I would think that formulation could populate hundreds of points in no time at all.&nbsp; I would think this would be invaluable to model developers in that such granularity would highlight any discontinuities in the model in a very apparent manner.</p>\r\n</blockquote>\r\n<p>In what way is a stat increment of 1 large??</p>",
+    "PostedDate": "2009-10-23T15:03:34.813-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "249161",
+    "ThreadId": "72851",
+    "Html": "<p>That's actually what I meant when I said the &quot;We may have to change that.&quot; (about the granularity). 1 is actually quite large a good portion of the time.</p>",
+    "PostedDate": "2009-10-23T15:27:25.333-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "249162",
+    "ThreadId": "72851",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Levva wrote:</strong><br>\r\n<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>natehieter wrote:</strong><br>\r\n<p>Why such large stat increments?&nbsp; I would think that formulation could populate hundreds of points in no time at all.&nbsp; I would think this would be invaluable to model developers in that such granularity would highlight any discontinuities in the model in a very apparent manner.</p>\r\n</blockquote>\r\n<p>In what way is a stat increment of 1 large??</p>\r\n</blockquote>\r\n<p>I apparently misunderstood your comment &quot;multiples of 100&quot;.&nbsp; I did not understand you were talking about the range and not the steps.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-10-23T15:37:05.933-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "249191",
+    "ThreadId": "72851",
+    "Html": "<p>Yes steps of 1 stat from -100 to +100 with zero being your current gear setup. This is of course stat dependent Attack Power for instance is steps of 2 to reflect its item budget. Note so far only the Enhance model implements this graph.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-10-23T18:37:49.56-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "249192",
+    "ThreadId": "72851",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Astrylian wrote:</strong><br>\r\n<p>That's actually what I meant when I said the &quot;We may have to change that.&quot; (about the granularity). 1 is actually quite large a good portion of the time.</p>\r\n</blockquote>\r\n<p>Increasing the granularity can be done by the model developer. Perhaps the default needs a scale too. So you pass a stats object array and the scale eg: with existing model scale would be 100. With a granularity of say 0.1 scale would be 1000 which would still give +/- 100 of each stat.</p>\r\n<p>[Edit] Added a scale factor to the graph so developers can now set whatever granularity they choose. eg: 1 granularity = scale 100 so 0.1f granularity means scale of 1000, etc.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-10-23T18:41:26.62-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "249210",
+    "ThreadId": "72851",
+    "Html": "<p>As Levva and I discussed via MSN, I'll be migrating these feature to Rawr3. Please don't spend time implementing it in other models in the mean time. The design we're going with needs no model implementation at all, and will be a first class feature of Rawr3.</p>",
+    "PostedDate": "2009-10-23T22:39:17.97-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "250421",
+    "ThreadId": "72851",
+    "Html": "<p>WTB ability to Zoom and Pan the graph window and the legend could stand to be smaller</p>",
+    "PostedDate": "2009-10-27T16:49:58.427-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "250586",
+    "ThreadId": "72851",
+    "Html": "<p>Given the move to Rawr3 I see these as features best implemented in Rawr3. The sooner we have a Rawr3 model ready for release the quicker we can get graphical niceties like zoom and pan implemented. I noted that the Silverlight stuff has some interesting 3d options, although that's probably overkill :)</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-10-28T04:14:42.44-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "250730",
+    "ThreadId": "72851",
+    "Html": "<p>Just think, Rawr will eventually be displayed in Holograms and fully simming the WoW client and then doing the same thing we do every night pinky... TRY TO TAKE OVER THE WORLD!!</p>\r\n<p>:P</p>",
+    "PostedDate": "2009-10-28T08:55:44.073-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "250780",
+    "ThreadId": "72851",
+    "Html": "<p>Is that you volunteering to do the 3d &quot;dressing room&quot; model of your character in Rawr3 as per Rawr paper doll? That would be a neat feature. Or were you suggesting that the optimised character having worked out optimal combat rotations then fed them into the wow client to save all the hassle of having to have a player at the keyboard? Hmm not sure that's a good idea :) Would bring all sorts of new issues... &quot;We wiped on 1% cos there's a bug in DPSWarr.&quot;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-10-28T10:40:19.147-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "250782",
+    "ThreadId": "72851",
+    "Html": "<p>I beg to DIFFER SIR! The Bug would *not* be in DPSWarr&nbsp;&nbsp; :P</p>",
+    "PostedDate": "2009-10-28T10:41:50.687-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "250783",
+    "ThreadId": "72851",
+    "Html": "<p>Yeah you're right it would probs be in Bear or Mage. :P :P Either that or the Enhance one just died entering combat.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-10-28T10:45:01.69-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "250785",
+    "ThreadId": "72851",
+    "Html": "<p>See now we step back into the bigger realm of Rawr4... A version that makes it so you can load your entire raid into the program and see if your raid can muster up to Patchwerk (or whatever Cataclysm equivalent at the time).</p>",
+    "PostedDate": "2009-10-28T10:50:24.367-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "250794",
+    "ThreadId": "72851",
+    "Html": "<p>And then you have Rawr5 that will play the game for you, take your dog for a walk and also make coffee.</p>",
+    "PostedDate": "2009-10-28T11:16:29.567-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "250818",
+    "ThreadId": "72851",
+    "Html": "<p>http://www.pomegranatephone.com/</p>",
+    "PostedDate": "2009-10-28T11:53:07.91-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

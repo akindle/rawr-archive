@@ -1,0 +1,81 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "Rawr 4.0.13 Released",
+    "ClosedDate": "2010-12-29T02:47:30.1-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I dont know if this effects any other module or just bear, but I was attempting to eliminate Threat from my gear choices. There really isnt any threat concerns atm, so I wanted to focus on \"Survival + Mitigation\". When I sort it in that manner, then attempt to change to a new gear slot I get an error. The same error also pops up if I attempt to equip an item. It appears to equip it fine, but cannot refresh the sort with the new stats.  In order to avoid the error, I just reset the sorting method back to \"Overall\", then equip (or change slots) and then reapply the \"Survival + Mitigation\" sort.",
+    "LastUpdatedDate": "2013-05-16T05:19:27.127-07:00",
+    "PlannedForRelease": "Rawr 4.0.12 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-12-22T07:12:40.463-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] Error pop up on sorting",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19411
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4269,
+      "FileName": "schizo.xml",
+      "DownloadUrl": ".\\4269"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Here is the copy from the debug in the error box....\r\n\r\n[Arg_BogusIComparer]\r\nArguments: ComparisonCalculationBase,System.Array+FunctorComparer`1[Rawr.ComparisonCalculationBase]\r\nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.51204.0&File=mscorlib.dll&Key=Arg_BogusIComparer\r\n\r\n   at System.Collections.Generic.ArraySortHelper`1.Sort(T[] keys, Int32 index, Int32 length, IComparer`1 comparer)\r\n   at System.Array.Sort[T](T[] array, Int32 index, Int32 length, IComparer`1 comparer)\r\n   at System.Collections.Generic.List`1.Sort(Comparison`1 comparison)\r\n   at Rawr.UI.GraphDisplay.FilterTopXGemmings(List`1 listItemCalculations)\r\n   at Rawr.UI.GraphDisplay.UpdateGraphGear(String subgraph)\r\n   at Rawr.UI.GraphDisplay.UpdateGraph()\r\n   at Rawr.UI.ChartPicker.SetCurrentGraph()\r\n   at Rawr.UI.ChartPicker.Grid_MouseLeftButtonUp(Object sender, MouseButtonEventArgs e)\r\n   at MS.Internal.CoreInvokeHandler.InvokeEventHandler(Int32 typeIndex, Delegate handlerDelegate, Object sender, Object args)\r\n   at MS.Internal.JoltHelper.FireEvent(IntPtr unmanagedObj, IntPtr unmanagedObjArgs, Int32 argsTypeIndex, Int32 actualArgsTypeIndex, String eventName)\r\n\r\nAlso I will attach my file just in case it is any help to you.",
+      "PostedDate": "2010-12-22T07:30:21.403-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-22T16:54:30.733-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "We are aware of this issue. You can avoid it by not sorting under one of the \"X+Y\" sorts when changing charts, you can switch back once you are at the new chart.",
+      "PostedDate": "2010-12-22T16:55:16.877-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Fixed by commit 56557",
+      "PostedDate": "2010-12-27T23:24:20.88-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-29T02:47:30.1-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:56.257-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:27.127-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

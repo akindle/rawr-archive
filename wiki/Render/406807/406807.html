@@ -1,0 +1,69 @@
+<div class="wikidoc">
+<table>
+<tbody>
+<tr>
+<td>
+<h1>Item Filtering</h1>
+<p>You can filter which items are shown in comparison charts and upgrades by refining which item types you want shown and based on editable filters.<br>
+<br>
+You can define which item types to show in the second section of the Filters Side-bar on the right side of Rawr. The initial selection will have all types that are available to your class enabled. You can restrict the selection for example if you don't want
+ to see cloth items for your paladin.<br>
+<br>
+Filters are selected from the side-bar beside comparison chart. Rawr includes a default set of filters based on item source information from wowhead/armory, but filters are fully customizable and you can create your own filters.<br>
+<br>
+To see where this is, check the <a href="/wikipage?title=WhereToStart&referringTitle=ItemFiltering">
+Where To Start</a> page for number 15 in 'Section 3: I got my toon loaded in! Now what am I looking at?'.</p>
+<h2>Creating Filters</h2>
+<p>You can edit filters from Tools-&gt;Edit Item Filters. At the top you will see the list of all filters and controls for adding and removing filters. Each filter is identified by name that is used in the drop down menu. Filtering can be done based on pattern
+ matching, item level and item quality.<br>
+<br>
+Pattern is defined by a regular expression that is matched against source information and user note of an item. If it matches any of them then the match is successful. You can see source and note when you edit items. The source is not editable and is automatically
+ updated when you refresh data from armory or wowhead. User note however is editable and can be used to provide source information where wowhead/armory data is unreliable or unavailable or to use for your own custom filters.<br>
+<br>
+If you haven't worked with regular expressions before first take a look at the existing filters to get an idea of how they work. If you want to learn more about them you can check
+<a href="http://www.regular-expressions.info/tutorial.html">http://www.regular-expressions.info/tutorial.html</a> for tutorial and
+<a href="http://msdn.microsoft.com/en-us/library/bs2twtah.aspx">http://msdn.microsoft.com/en-us/library/bs2twtah.aspx</a> for technical details.<br>
+<br>
+For filter to be a match the item also has to meet the item level and quality range requirements. When you create a new filter they will be set so as to impose no additional requirements. Note that if you want to create a filter just based on item level or
+ quality you can leave the pattern empty.<br>
+<br>
+Each filter can be set to apply to only items or only gems. In addition each filter has polarity. By default filters are additive, this means that if the filter matches an item, the item will be displayed when filter is active. When the filter is not active
+ and it matches the item this won't cause the item not to be displayed, it can still be included based on some other filter. By unchecking the Additive Filter check box you can make filters function in the opposite way. Then if an active filter matches an item
+ it will cause that item not to be shown regardless of additive filters.<br>
+<br>
+In addition to the filters that are defined there is always a final filter called Other. This is an additive filter that matches all items that are not matched by any of the additive filters (regardless of them being active or not). In general you should leave
+ this filter enabled so you notice which items are not covered by other filters. You can either correct their source information or create new filters that cover them.<br>
+<br>
+The filters are saved and can be shared between users. The filters themselves are stored in the ItemFilter.xml. If your filters are based on user notes make sure to include ItemSource.xml which includes source information and notes for all items.</p>
+<h2>Examples</h2>
+<p><strong>Item has incorrect source information</strong><br>
+<br>
+If an item is not shown when you think it should be based on the filter then first check the item source. If it is incorrect try refreshing item from wowhead/armory. If that still does not help you can edit the item and enter user note that matches format used
+ in source information of other items from same source.<br>
+<br>
+<strong>Creating a filter based on item level and quality</strong><br>
+<br>
+If for example you want to create a filter that shows all epic items of item level 200 or higher then you proceed as follows:</p>
+<ul>
+<li>Create a new filter by clicking on &#43; in the toolbar </li><li>Enter a name for the filter </li><li>Change min item level to 200 </li><li>Change min item quality to Epic </li><li>If you don't want this to apply to gems uncheck Applies to Gems check box </li></ul>
+<p><br>
+<strong>Removing epic gems</strong><br>
+<br>
+If you want to hide all epic gems you can create a filter for this:</p>
+<ul>
+<li>Create a new filter by clicking on &#43; in the toolbar </li><li>Enter a name for the filter, for example Hide Epic Gems </li><li>Change min item quality to Epic </li><li>Uncheck Applies to Items check box </li><li>Uncheck Additive Filter check box </li></ul>
+<p><br>
+Now when the filter is enabled it will hide all epic gems<br>
+<br>
+<strong>Removing specific items</strong><br>
+<br>
+If there are specific items that you can't seem to be able to correct and would like them not to show up in charts you can proceed as follows:</p>
+<ul>
+<li>Create a new filter by clicking on &#43; in the toolbar </li><li>Enter a name for the filter </li><li>Change pattern to for example HIDE </li><li>Uncheck Additive Filter check box </li><li>Open item editor and enter HIDE in the user note for all items you want to hide
+</li></ul>
+</td>
+<td valign="top"><a href="http://dl.dropbox.com/u/15727672/RawrVisible/Filters.png" target="_blank"><img src="http://dl.dropbox.com/u/15727672/RawrVisible/Filters.png" alt=""></a></td>
+</tr>
+</tbody>
+</table>
+</div><div class="ClearBoth"></div>

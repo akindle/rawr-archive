@@ -1,0 +1,65 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Made it in time for 2.1.4",
+    "ClosedDate": "2008-12-11T22:35:30.403-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When Importing an Item from wowhead I Keep getting an exception with Int.parse(tokens[2]) in SpecialEffects.cs around line 838.\n \nThe item i'm trying to import is Eye Of the Night (ID:24116) I'm sure there are others that will also break\nI hacked in something that allowed me to load it but i figured I would post about it so you guys can properly fix it.\n \nas a side not the parsing of the lines really needs some work. *hardcoding locations of values is bad cause blizz will change the descriptions*",
+    "LastUpdatedDate": "2013-05-16T05:26:40.85-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-12-10T14:11:40.633-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Item Import Error",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 11971
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I went to fix this, but the parsing of the tooltip is fundamentally broken.  The main problem is that we need to have the cooldown available when we calculate the stats, but it isn't available until the next line.  There's just no good way to handle items like:\r\n\r\nWill of the Red Dragonflight - 120sp/15sec/2min\r\nVengeance of the Illidari - 120sp/15sec/1min\r\n\r\nEven worse is the fact that Vengeance of the Illidari is actually a 90second cooldown and not a 1minute one.\r\n\r\nI rewrote the parsing to take into account all document exceptions and the Eye of the Night.  In the long term there is no perfect solution because Blizzard will always do something silly.\r\n",
+      "PostedDate": "2008-12-11T22:22:40-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "(Sorry about my English going to crap.)\r\n\"I rewrote the parsing to take into account all *documented* exceptions and the Eye of the Night.\"\r\n",
+      "PostedDate": "2008-12-11T22:32:09.64-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-12-11T22:35:30.403-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:05.437-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:40.85-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

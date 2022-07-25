@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "150608",
+    "ThreadId": "45155",
+    "Html": "Sorry if this is already covered, I tried to find using search.&nbsp; I found under tools where you can &quot;refine item selection&quot;, but leather and cloth are grayed out.&nbsp; Is it possible to turn it on so it shows stuff such as the Kirin Tor chest cloth piece?&nbsp; (I realize it's not fully complete, but I was just wondering if it was possible)<br>\r\n",
+    "PostedDate": "2009-01-24T16:54:41.017-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "150622",
+    "ThreadId": "45155",
+    "Html": "What you can try doing is open ItemFilter.cs, find a section like this<br>\r\n<br>\r\n    &lt;item&gt;<br>\r\n      &lt;key&gt;<br>\r\n        &lt;string&gt;Mage&lt;/string&gt;<br>\r\n      &lt;/key&gt;<br>\r\n      &lt;value&gt;<br>\r\n        &lt;ArrayOfItemType&gt;<br>\r\n          &lt;ItemType&gt;None&lt;/ItemType&gt;<br>\r\n          &lt;ItemType&gt;Cloth&lt;/ItemType&gt;<br>\r\n          &lt;ItemType&gt;Dagger&lt;/ItemType&gt;<br>\r\n          &lt;ItemType&gt;OneHandSword&lt;/ItemType&gt;<br>\r\n          &lt;ItemType&gt;Staff&lt;/ItemType&gt;<br>\r\n          &lt;ItemType&gt;Wand&lt;/ItemType&gt;<br>\r\n        &lt;/ArrayOfItemType&gt;<br>\r\n      &lt;/value&gt;<br>\r\n    &lt;/item&gt;<br>\r\n<br>\r\nfor resto shaman model and add ItemType for Cloth and Leather. I'm not sure if it'll work, but give it a try.\r\n",
+    "PostedDate": "2009-01-24T18:04:45.493-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "150814",
+    "ThreadId": "45155",
+    "Html": "Odd, all are listed in the model as relevant types, able to post your character's xml?",
+    "PostedDate": "2009-01-25T20:34:04.323-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "150818",
+    "ThreadId": "45155",
+    "Html": "This has been fixed in the most recent build.",
+    "PostedDate": "2009-01-25T20:41:28.903-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "152413",
+    "ThreadId": "45155",
+    "Html": "Please add fist weapon also as a relevant type.  There's only one at the moment but it's pretty good and someday there may be more.\r\n",
+    "PostedDate": "2009-01-29T22:28:12.113-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "153438",
+    "ThreadId": "45155",
+    "Html": "Ah, Wraith Strike.  Fixed to include fist weapons in build 30952.\r\n",
+    "PostedDate": "2009-02-02T11:41:34.05-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,105 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Moonkin",
+      "DisplayName": "Rawr.Moonkin"
+    },
+    "ClosedComment": "I&#39;m closing this for now.  Feel free to reopen it if it can be demonstrated that the calculations don&#39;t correctly incorporate the soft caps.",
+    "ClosedDate": "2010-04-15T15:13:31.023-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The Idol Lunar Eclipse is not giving any crit value, it shows as my top idol, but when I unequip it, my crit value stays the same.  Also i notice that Rawr is showing my crit value a lot lower then when the idol is up at full strength which is 95% of the time. This is causing Rawr to not realize I am crit soft capped and so it is choosing gear that has crit heavily over haste.  This makes Rawr useless to me at this moment unless I go in an edit the item to show the crit.",
+    "LastUpdatedDate": "2017-11-27T11:00:16.597-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-04-07T21:59:29.423-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Moonkin] Idol of Lunar Eclipse not giving crit value",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17147
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "The crit from Lunar Eclipse (and all idols, for that matter) isn't shown on the display because it's not a constant guaranteed 100% uptime.  I assure you that Rawr IS counting you as being crit-capped for the time the idol is up.  As an aside, the information you gave me is entirely useless without a character XML file, as I have no way to verify that your character is crit \"soft-capped\" (I'm not even sure what that term means).",
+      "PostedDate": "2010-04-08T04:34:21.78-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "There is a limit to how much Crit% will be effective.  Above a certain percentage the value in game simply doesn't cause actual more crits happening.  I don't have the numbers with me, but iirc, this is around 72% (for melee, might be different for casters).  Even if you would have enough crit from gear to get 100% crit chance, you still would only get crits 72% of the time when playing.",
+      "PostedDate": "2010-04-08T07:55:17.2-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Oh, one more thing I thought of, while I'm pontificating.  When you are both crit-capped and haste-capped, obviously, one stat will have to be \"better\", because their value doesn't just magically go to 0.  As it turns out, in most cases, that \"better\" stat will be crit, because of the way damage multipliers work and the fact that crit will continue to boost the damage of your Solar Eclipse cycle, Moonfire, and non-eclipsed Starfires, whereas haste post-cap only affects your Starfire casts.  With the haste cap being so low for Moonkin, it's no surprise to me that crit is turning up so strongly in end-game gear.",
+      "PostedDate": "2010-04-08T07:57:46.583-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Nope.  Once you get to the Crit cap, the value of adding more crit is indeed 0 since it will not offer any more benefit to DPS.\r\n\r\nHaste has 2 caps.  a \"soft cap\" where the GCD has been reduced to 1.0sec, at this point, more haste will not reduce the GCD any further.  \r\nIf you're only casting instant spells, or spells with a cast time of 1.5 or lower this will also be your effective \"hard cap\" since adding more haste will not yield any further DPS.\r\n\r\nAfter the soft haste cap, only spells with a casttime longer than 1.5sec, channeled spells and DoTs will benefit from more haste, this is true until you reach the actual hard cap at which point you get 0 value from adding even more haste.  That IS what caps do.  You benefit until a certain point and then it's over, more of the stat does not have any effect.\r\n\r\nIf you are ad both the crit and haste cap (seems someone unlikely to me), then adding either haste or crit will have no more benefit.",
+      "PostedDate": "2010-04-09T01:44:46.963-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "All I'm going to say to that is, you and I are using two different sets of terms.  For a Moonkin, crit and haste caps are both \"soft\", and very low, due to the mechanics of playing a Moonkin.",
+      "PostedDate": "2010-04-09T03:59:06.223-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-14T07:02:51.447-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "So is there an actual problem here? If not please close",
+      "PostedDate": "2010-04-14T07:03:24.37-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Replying to OReubens, (and I suspect this issue can be closed)\r\n\r\nThe game's crit-cap for spells (at least for Starfire, where this is testable) is 100%.  When you have 100% crit (and 100% hit) all of your casts will crit.\r\n\r\nMoonkin have hard and soft caps for both Haste and Crit.  The first Haste soft cap occurs when you've dropped the GCD (and the Wrath cast time) to 1s.  If you are getting haste from totem CF, Moonkin Aura and Nature's Grace, this occurs at about 400 Haste on gear.\r\n\r\nThe Haste hard cap would occur when you get no throughput benefit from additional Haste.  That would occur Hurricane (a nominal 8s spell) could be cast in 1s.  That is not achievable in any normal encounter.\r\n\r\nThe Crit soft cap occurs when the crit% for any spell reaches 100%.  Different spells have different crit percentages.  Starfire's crit percentage can be as much as 65% higher than the character-sheet crit percentage for \"normal\" spells. (40% from Eclipse, 7% from 2t8, 4% from Nature's Majesty, 3% from Improved Insect Swarm, 3% from IFF, 3% from (Master Poisoner) and 5% (Scorch) debuffs on target).  When all of these are active, you are at the soft cap when your character sheet shows 35% crit (at the time of the cast).  You wouldn't be at the hard cap until Hurricane is guaranteed to crit, even without debuffs on the targets.  That would mean 100% crit on your character sheet at the time of the cast.  It may be possible to reach that temporarily, but it wouldn't be practical.\r\n\r\nTLDR:\r\n\r\nMoonkin have easily reachable soft caps for both Haste and Crit, and for all practical purposes the hard caps on not reachable.  The Moonkin \"status\" tab in Rawr does not include \"proc\" effects, but those are included in the gear evaluations (although it is always possible that some new proc is not yet included, the LK PvE idols are currently modeled).",
+      "PostedDate": "2010-04-15T09:21:11.887-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-15T15:13:31.023-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:03:29.053-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:28:56.63-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:07.857-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:00:16.597-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

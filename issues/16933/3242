@@ -1,0 +1,11 @@
+--- Rawr.ProtWarr/CalculationsProtWarr.cs 2010-03-22 12:36:58.000000000 -0700
++++ Rawr.ProtWarr/CalculationsProtWarr.cs 2010-03-23 09:10:02.255002325 -0700
+@@ -550,7 +550,7 @@
+             statsTotal.Agility = (float)Math.Floor((statsRace.Agility + statsTalents.Agility) * (1.0f + statsTotal.BonusAgilityMultiplier));
+             statsTotal.Agility += (float)Math.Floor(statsItemsBuffs.Agility * (1.0f + statsTotal.BonusAgilityMultiplier));
+             statsTotal.Health += StatConversion.GetHealthFromStamina(statsTotal.Stamina, CharacterClass.Warrior);
+-            statsTotal.Health *= (float)Math.Floor(1.0f + statsTotal.BonusHealthMultiplier);
++            statsTotal.Health *= (1.0f + statsTotal.BonusHealthMultiplier);
+ 
+             // Calculate Procs and Special Effects
+             statsTotal.Accumulate(GetSpecialEffectStats(character, statsTotal, options));

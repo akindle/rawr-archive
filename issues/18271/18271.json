@@ -1,0 +1,146 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtPaladin",
+      "DisplayName": "Rawr.ProtPaladin"
+    },
+    "ClosedComment": "Resolved, r52311",
+    "ClosedDate": "2010-07-24T17:19:34.987-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "After getting my prot paladin in rawr with the enchants, gems and buffs selected i used the optimizer with the health model. <br><br>\n \nWhen i did all the suggested gems and enchants my def cap was lowered to 535 instead of 540. So im thinking thats a bug? \n \nIm using the latest offline version of rawr",
+    "LastUpdatedDate": "2013-05-16T05:20:14.983-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-07-22T07:56:48.39-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtPaladin] Def cap isnt correct",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 18271
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3803,
+      "FileName": "before.xml",
+      "DownloadUrl": ".\\3803"
+    },
+    {
+      "FileId": 3804,
+      "FileName": "after.xml",
+      "DownloadUrl": ".\\3804"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Please attach your character file, before and after optimizes.",
+      "PostedDate": "2010-07-22T08:39:50.903-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-22T08:40:24.907-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-22T08:50:02.057-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Here it is :)",
+      "PostedDate": "2010-07-22T08:50:03.047-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-22T08:50:39.5-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-22T08:50:40.513-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-22T10:32:35.43-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "In the after.xml file, you are telling the optimizer to optimize for Health.  This means it's not going to care what your defense skill is.  If you want it to consider defense skill, you'll want to Add an additional requirement for a minimum defense skill of 540.\r\n\r\n\n\n** Closed by roncli 7/22/2010 10:32 AM",
+      "PostedDate": "2010-07-22T10:32:38.463-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "In the after.xml file, you are telling the optimizer to optimize for Health.  This means it's not going to care what your defense skill is.  If you want it to consider defense skill, you'll want to Add an additional requirement for a minimum defense skill of 540.",
+      "PostedDate": "2010-07-22T10:32:39.027-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-22T13:05:21.717-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Err... \"Add an additional requirement for a minimum defense skill of 540\" <-- No, that's wrong. Roncli, please make sure that defense skill is *not* something that is optimizable. The correct optimizable value for this would be % Chance to be Crit, which would be used to create a '% Chance to be Crit <= 0' requirement.",
+      "PostedDate": "2010-07-22T19:09:47.213-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "...buggy issue tracker reopening closed bugs FTL...\r\n\r\n\n\n** Closed by roncli 7/22/2010 1:05 PM",
+      "PostedDate": "2010-07-22T19:09:58.76-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Reopening to make sure roncli sees this.",
+      "PostedDate": "2010-07-22T19:09:59.23-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That can be done as well (it is available in the optimizer already), but is problematic, and I believe this discussion came up quite a while ago.\r\n\r\nThe difference is if you use \"% Chance to be Crit <= 0\" and have the option for Holy Shield on, if you have enough mitigation you can actually push crit chance off of the combat table.  However, Holy Shield is not always guaranteed to be on (think Anub'arak adds), so whenever Holy Shield drops you'll be critable even if Rawr says you're not.  There's no easy way to resolve that other than a hard requirement for >= 540 defense skill.\r\n\r\nIf you turn the option for Holy Shield off, this problem is unlikely to occur (I think it can't occur at all), but you lose the mitigation and threat provided by Holy Shield.\r\n\r\nPerhaps a way around this would be to make Holy Shield count towards mitigation, but to have the combat table report % crit without Holy Shield.  I would have to take a look at the model this weekend to see if that's possible, but I imagine it would be.",
+      "PostedDate": "2010-07-23T00:03:06.617-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Then add '% Chance to be Crit Without Holy Shield' as an optimizable value.",
+      "PostedDate": "2010-07-23T09:41:56.993-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-24T17:19:34.987-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T16:23:15.247-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:27:54.157-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:14.983-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

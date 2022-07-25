@@ -1,0 +1,1632 @@
+I have performed the Suggested Fix and continue to receive this error. If I am posting this message without having performed the Suggested Fix I am aware that I am consuming the Developer(s) time in managing my Issue unnecessarily.
+
+== Version: 4.1.5.1 ==
+
+== Error Message ==
+No information was found about this pixel format.
+
+== StackTrace ==
+   at System.Windows.Media.PixelFormat.CreatePixelFormatInfo()
+   at System.Windows.Media.PixelFormat.get_InternalBitsPerPixel()
+   at System.Windows.Media.Imaging.BitmapSource.GetClosestDUCEFormat(PixelFormat format, BitmapPalette palette)
+   at System.Windows.Media.Imaging.BitmapSource.get_DUCECompatiblePtr()
+   at System.Windows.Media.Imaging.BitmapSource.UpdateBitmapSourceResource(Channel channel, Boolean skipOnChannelCheck)
+   at System.Windows.Media.Imaging.BitmapSource.AddRefOnChannelCore(Channel channel)
+   at System.Windows.Media.Imaging.BitmapSource.System.Windows.Media.Composition.DUCE.IResource.AddRefOnChannel(Channel channel)
+   at System.Windows.Media.RenderData.System.Windows.Media.Composition.DUCE.IResource.AddRefOnChannel(Channel channel)
+   at System.Windows.UIElement.RenderContent(RenderContext ctx, Boolean isOnChannel)
+   at System.Windows.Media.Visual.UpdateContent(RenderContext ctx, VisualProxyFlags flags, Boolean isOnChannel)
+   at System.Windows.Media.Visual.RenderRecursive(RenderContext ctx)
+   at System.Windows.Media.Visual.UpdateChildren(RenderContext ctx, ResourceHandle handle)
+   at System.Windows.Media.Visual.RenderRecursive(RenderContext ctx)
+   at System.Windows.Media.Visual.UpdateChildren(RenderContext ctx, ResourceHandle handle)
+   at System.Windows.Media.Visual.RenderRecursive(RenderContext ctx)
+   at System.Windows.Media.Visual.UpdateChildren(RenderContext ctx, ResourceHandle handle)
+   at System.Windows.Media.Visual.RenderRecursive(RenderContext ctx)
+   at System.Windows.Media.Visual.UpdateChildren(RenderContext ctx, ResourceHandle handle)
+   at System.Windows.Media.Visual.RenderRecursive(RenderContext ctx)
+   at System.Windows.Media.Visual.UpdateChildren(RenderContext ctx, ResourceHandle handle)
+   at System.Windows.Media.Visual.RenderRecursive(RenderContext ctx)
+   at System.Windows.Media.Visual.UpdateChildren(RenderContext ctx, ResourceHandle handle)
+   at System.Windows.Media.Visual.RenderRecursive(RenderContext ctx)
+   at System.Windows.Media.Visual.UpdateChildren(RenderContext ctx, ResourceHandle handle)
+   at System.Windows.Media.Visual.RenderRecursive(RenderContext ctx)
+   at System.Windows.Media.Visual.UpdateChildren(RenderContext ctx, ResourceHandle handle)
+   at System.Windows.Media.Visual.RenderRecursive(RenderContext ctx)
+   at System.Windows.Media.Visual.UpdateChildren(RenderContext ctx, ResourceHandle handle)
+   at System.Windows.Media.Visual.RenderRecursive(RenderContext ctx)
+   at System.Windows.Media.Visual.UpdateChildren(RenderContext ctx, ResourceHandle handle)
+   at System.Windows.Media.Visual.RenderRecursive(RenderContext ctx)
+   at System.Windows.Media.Visual.UpdateChildren(RenderContext ctx, ResourceHandle handle)
+   at System.Windows.Media.Visual.RenderRecursive(RenderContext ctx)
+   at System.Windows.Media.Visual.UpdateChildren(RenderContext ctx, ResourceHandle handle)
+   at System.Windows.Media.Visual.RenderRecursive(RenderContext ctx)
+   at System.Windows.Media.Visual.UpdateChildren(RenderContext ctx, ResourceHandle handle)
+   at System.Windows.Media.Visual.RenderRecursive(RenderContext ctx)
+   at System.Windows.Media.Visual.UpdateChildren(RenderContext ctx, ResourceHandle handle)
+   at System.Windows.Media.Visual.RenderRecursive(RenderContext ctx)
+   at System.Windows.Media.Visual.UpdateChildren(RenderContext ctx, ResourceHandle handle)
+   at System.Windows.Media.Visual.RenderRecursive(RenderContext ctx)
+   at System.Windows.Media.Visual.UpdateChildren(RenderContext ctx, ResourceHandle handle)
+   at System.Windows.Media.Visual.RenderRecursive(RenderContext ctx)
+   at System.Windows.Media.Visual.UpdateChildren(RenderContext ctx, ResourceHandle handle)
+   at System.Windows.Media.Visual.RenderRecursive(RenderContext ctx)
+   at System.Windows.Media.Visual.Render(RenderContext ctx, UInt32 childIndex)
+   at System.Windows.Media.CompositionTarget.Compile(Channel channel)
+   at System.Windows.Media.CompositionTarget.System.Windows.Media.ICompositionTarget.Render(Boolean inResize, Channel channel)
+   at System.Windows.Media.MediaContext.Render(ICompositionTarget resizedCompositionTarget)
+   at System.Windows.Media.MediaContext.RenderMessageHandlerCore(Object resizedCompositionTarget)
+   at System.Windows.Media.MediaContext.RenderMessageHandler(Object resizedCompositionTarget)
+   at System.Windows.Interop.HwndTarget.OnResize()
+   at System.Windows.Interop.HwndTarget.HandleMessage(WindowMessage msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Interop.HwndSource.HwndTargetFilterMessage(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   at MS.Win32.HwndWrapper.WndProc(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)
+   at MS.Win32.HwndSubclass.DispatcherCallbackOperation(Object o)
+   at System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)
+   at MS.Internal.Threading.ExceptionFilterHelper.TryCatchWhen(Object source, Delegate method, Object args, Int32 numArgs, Delegate catchHandler)
+
+== These are the Steps that I have tried ==
+[Please fill in steps here]
+
+
+Verified I have latest version and updates to Windows 7 (64b), Silverlight, and dotnet.
+
+I get multiple occurrences errors like this when I run Rawr and load the character file copied below:
+
+Some of the images for gear and other item are blank. Rawr seems to work otherwise.
+
+--------------------------------------------------------------------------------------------
+<?xml version="1.0"?>
+<Character xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Race>Tauren</Race>
+  <CurrentModel>Bear</CurrentModel>
+  <ActiveBuffs>Devotion Aura</ActiveBuffs>
+  <ActiveBuffs>Leader of the Pack</ActiveBuffs>
+  <ActiveBuffs>Windfury Totem</ActiveBuffs>
+  <ActiveBuffs>Mark of the Wild</ActiveBuffs>
+  <ActiveBuffs>Faerie Fire</ActiveBuffs>
+  <ActiveBuffs>Curse of the Elements</ActiveBuffs>
+  <ActiveBuffs>Infected Wounds</ActiveBuffs>
+  <ActiveBuffs>Flask of Steelskin</ActiveBuffs>
+  <ActiveBuffs>Agility Food</ActiveBuffs>
+  <ActiveBuffs>Mangle</ActiveBuffs>
+  <ActiveBuffs>Shadow Protection</ActiveBuffs>
+  <ActiveBuffs>Inspiration</ActiveBuffs>
+  <ActiveBuffs>Hymn of Hope</ActiveBuffs>
+  <ActiveBuffs>Fel Intelligence (Mana)</ActiveBuffs>
+  <ActiveBuffs>Curse of Weakness</ActiveBuffs>
+  <ActiveBuffs>Improved Shadow Bolt</ActiveBuffs>
+  <ActiveBuffs>Demonic Pact</ActiveBuffs>
+  <ActiveBuffs>Blood Pact</ActiveBuffs>
+  <ActiveBuffs>Heroism/Bloodlust</ActiveBuffs>
+  <ActiveBuffs>Mana Spring Totem</ActiveBuffs>
+  <ActiveBuffs>Strength of Earth Totem</ActiveBuffs>
+  <ActiveBuffs>Trueshot Aura</ActiveBuffs>
+  <ItemSetList>"Last Loaded Set"|Projectile:|Head:60202.0.52294.52238.0.4209.86.0|Neck:67137.0.0.0.0.0.93.0|Shoulders:64731.0.52229.0.0.4204.100.0|Chest:67135.0.52212.52229.0.4102.86.0|Waist:56537.0.52212.52212.0.0.79.0|Legs:58132.0.52212.52238.0.4127.107.0|Feet:69634.0.52212.0.0.4076.0.0|Wrist:63454.0.0.0.0.4086.86.0|Hands:62417.0.52212.0.0.3260.93.0|Finger1:62362.0.0.0.0.0.93.0|Finger2:52348.0.52212.0.0.0.86.0|Trinket1:62463.0.0.0.0.0.107.0|Trinket2:56394.0.0.0.0.0.107.0|Back:67134.0.0.0.0.4090.79.0|MainHand:56382.0.0.0.0.4227.86.0|OffHand:|Ranged:64822.0.52212.0.0.0.86.0|ProjectileBag:|Tabard:5976.0.0.0.0.0.0.0|Shirt:5107.0.0.0.0.0.0.0</ItemSetList>
+  <CalculationOptions>
+    <item>
+      <key>
+        <string>Bear</string>
+      </key>
+      <value>
+        <string>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;CalculationOptionsBear xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ThreatScale&gt;5&lt;/ThreatScale&gt;
+  &lt;HitsToSurvive&gt;3.5&lt;/HitsToSurvive&gt;
+  &lt;TemporarySurvivalScale&gt;1&lt;/TemporarySurvivalScale&gt;
+&lt;/CalculationOptionsBear&gt;</string>
+      </value>
+    </item>
+  </CalculationOptions>
+  <AvailableItems>-14209</AvailableItems>
+  <AvailableItems>0</AvailableItems>
+  <AvailableItems>-34204</AvailableItems>
+  <AvailableItems>-54102</AvailableItems>
+  <AvailableItems>-114127</AvailableItems>
+  <AvailableItems>69634</AvailableItems>
+  <AvailableItems>-124076</AvailableItems>
+  <AvailableItems>-84086</AvailableItems>
+  <AvailableItems>-93260</AvailableItems>
+  <AvailableItems>-44090</AvailableItems>
+  <AvailableItems>-164227</AvailableItems>
+  <AvailableItems>5976</AvailableItems>
+  <AvailableItems>5107</AvailableItems>
+  <AvailableItems>56401</AvailableItems>
+  <AvailableItems>62352</AvailableItems>
+  <AvailableItems>62357</AvailableItems>
+  <AvailableItems>56554</AvailableItems>
+  <AvailableItems>57918</AvailableItems>
+  <AvailableItems>62383</AvailableItems>
+  <AvailableItems>56361</AvailableItems>
+  <AvailableItems>62416</AvailableItems>
+  <AvailableItems>63915</AvailableItems>
+  <AvailableItems>62381</AvailableItems>
+  <AvailableItems>58131</AvailableItems>
+  <AvailableItems>62358</AvailableItems>
+  <AvailableItems>56543</AvailableItems>
+  <AvailableItems>56279</AvailableItems>
+  <AvailableItems>62420</AvailableItems>
+  <AvailableItems>64729</AvailableItems>
+  <AvailableItems>67127</AvailableItems>
+  <AvailableItems>51560</AvailableItems>
+  <AvailableItems>62415</AvailableItems>
+  <AvailableItems>64703</AvailableItems>
+  <AvailableItems>56280</AvailableItems>
+  <AvailableItems>56523</AvailableItems>
+  <AvailableItems>56131</AvailableItems>
+  <AvailableItems>56522</AvailableItems>
+  <AvailableItems>58150</AvailableItems>
+  <AvailableItems>62244</AvailableItems>
+  <AvailableItems>56542</AvailableItems>
+  <AvailableItems>56422</AvailableItems>
+  <AvailableItems>56561</AvailableItems>
+  <AvailableItems>62455</AvailableItems>
+  <AvailableItems>69553</AvailableItems>
+  <AvailableItems>55886</AvailableItems>
+  <AvailableItems>62051</AvailableItems>
+  <AvailableItems>58483</AvailableItems>
+  <AvailableItems>58133</AvailableItems>
+  <AvailableItems>62465</AvailableItems>
+  <AvailableItems>68776</AvailableItems>
+  <AvailableItems>68777</AvailableItems>
+  <AvailableItems>55995</AvailableItems>
+  <AvailableItems>56431</AvailableItems>
+  <AvailableItems>56365</AvailableItems>
+  <AvailableItems>69600</AvailableItems>
+  <AvailableItems>62245</AvailableItems>
+  <AvailableItems>56102</AvailableItems>
+  <AvailableItems>66905</AvailableItems>
+  <AvailableItems>56518</AvailableItems>
+  <AvailableItems>50827</AvailableItems>
+  <AvailableItems>63761</AvailableItems>
+  <AvailableItems>50456</AvailableItems>
+  <AvailableItems>50404</AvailableItems>
+  <AvailableItems>50826</AvailableItems>
+  <AvailableItems>55266</AvailableItems>
+  <AvailableItems>50995</AvailableItems>
+  <AvailableItems>50001</AvailableItems>
+  <AvailableItems>51370</AvailableItems>
+  <AvailableItems>66993</AvailableItems>
+  <AvailableItems>62242</AvailableItems>
+  <AvailableItems>57931</AvailableItems>
+  <AvailableItems>63439</AvailableItems>
+  <AvailableItems>50470</AvailableItems>
+  <AvailableItems>50824</AvailableItems>
+  <AvailableItems>55795</AvailableItems>
+  <AvailableItems>49899</AvailableItems>
+  <AvailableItems>68175</AvailableItems>
+  <AvailableItems>63438</AvailableItems>
+  <AvailableItems>50069</AvailableItems>
+  <AvailableItems>55237</AvailableItems>
+  <AvailableItems>55844</AvailableItems>
+  <AvailableItems>56106</AvailableItems>
+  <AvailableItems>55246</AvailableItems>
+  <AvailableItems>55890</AvailableItems>
+  <AvailableItems>55789</AvailableItems>
+  <AvailableItems>55273</AvailableItems>
+  <AvailableItems>55814</AvailableItems>
+  <AvailableItems>55804</AvailableItems>
+  <AvailableItems>50819</AvailableItems>
+  <AvailableItems>56000</AvailableItems>
+  <AvailableItems>55860</AvailableItems>
+  <AvailableItems>55783</AvailableItems>
+  <AvailableItems>49895</AvailableItems>
+  <AvailableItems>55276</AvailableItems>
+  <AvailableItems>56368</AvailableItems>
+  <AvailableItems>66914</AvailableItems>
+  <AvailableItems>67139</AvailableItems>
+  <AvailableItems>62361</AvailableItems>
+  <AvailableItems>63485</AvailableItems>
+  <AvailableItems>56393</AvailableItems>
+  <AvailableItems>66934</AvailableItems>
+  <AvailableItems>62378</AvailableItems>
+  <AvailableItems>56111</AvailableItems>
+  <AvailableItems>55888</AvailableItems>
+  <AvailableItems>50466</AvailableItems>
+  <AvailableItems>62374</AvailableItems>
+  <AvailableItems>62446</AvailableItems>
+  <AvailableItems>62348</AvailableItems>
+  <AvailableItems>55850</AvailableItems>
+  <AvailableItems>50828</AvailableItems>
+  <AvailableItems>56107</AvailableItems>
+  <AvailableItems>56530</AvailableItems>
+  <AvailableItems>66921</AvailableItems>
+  <AvailableItems>55833</AvailableItems>
+  <AvailableItems>67071</AvailableItems>
+  <AvailableItems>50981</AvailableItems>
+  <AvailableItems>55810</AvailableItems>
+  <AvailableItems>50457</AvailableItems>
+  <AvailableItems>55816</AvailableItems>
+  <AvailableItems>66936</AvailableItems>
+  <AvailableItems>55235</AvailableItems>
+  <AvailableItems>66974</AvailableItems>
+  <AvailableItems>56531</AvailableItems>
+  <AvailableItems>56100</AvailableItems>
+  <AvailableItems>50821</AvailableItems>
+  <AvailableItems>63829</AvailableItems>
+  <AvailableItems>56360</AvailableItems>
+  <AvailableItems>63803</AvailableItems>
+  <AvailableItems>55821</AvailableItems>
+  <AvailableItems>60202.0.52294.52238.0.4209.86.0</AvailableItems>
+  <AvailableItems>67137.0.0.0.0.0.93.0</AvailableItems>
+  <AvailableItems>64731.0.52229.0.0.4204.100.0</AvailableItems>
+  <AvailableItems>67134.0.0.0.0.4090.79.0</AvailableItems>
+  <AvailableItems>67135.0.52212.52229.0.4102.86.0</AvailableItems>
+  <AvailableItems>63454.0.0.0.0.4086.86.0</AvailableItems>
+  <AvailableItems>62417.0.52212.0.0.3260.93.0</AvailableItems>
+  <AvailableItems>56537.0.52212.52212.0.0.79.0</AvailableItems>
+  <AvailableItems>58132.0.52212.52238.0.4127.107.0</AvailableItems>
+  <AvailableItems>63435.0.52212.0.0.4076.79.0</AvailableItems>
+  <AvailableItems>62362.0.0.0.0.0.93.0</AvailableItems>
+  <AvailableItems>52348.0.52212.0.0.0.86.0</AvailableItems>
+  <AvailableItems>62463.0.0.0.0.0.107.0</AvailableItems>
+  <AvailableItems>56394.0.0.0.0.0.107.0</AvailableItems>
+  <AvailableItems>56382.0.0.0.0.4227.86.0</AvailableItems>
+  <AvailableItems>64822.0.52212.0.0.0.86.0</AvailableItems>
+  <Name>Edwindrood</Name>
+  <Realm>Bronzebeard</Realm>
+  <PrimaryProfession>Alchemy</PrimaryProfession>
+  <SecondaryProfession>Herbalism</SecondaryProfession>
+  <DruidTalents>000000000000000000002302322110312001220311020331000000000000000.10101000000000000010001000100000001110000</DruidTalents>
+  <WaistBlacksmithingSocketEnabled>true</WaistBlacksmithingSocketEnabled>
+  <Head>60202.0.52294.52238.0.4209.86.0</Head>
+  <Neck>67137.0.0.0.0.0.93.0</Neck>
+  <Shoulders>64731.0.52229.0.0.4204.100.0</Shoulders>
+  <Back>67134.0.0.0.0.4090.79.0</Back>
+  <Chest>67135.0.52212.52229.0.4102.86.0</Chest>
+  <Shirt>5107.0.0.0.0.0.0.0</Shirt>
+  <Tabard>5976.0.0.0.0.0.0.0</Tabard>
+  <Wrist>63454.0.0.0.0.4086.86.0</Wrist>
+  <Hands>62417.0.52212.0.0.3260.93.0</Hands>
+  <Waist>56537.0.52212.52212.0.0.79.0</Waist>
+  <Legs>58132.0.52212.52238.0.4127.107.0</Legs>
+  <Feet>69634.0.52212.0.0.4076.107.0</Feet>
+  <Finger1>62362.0.0.0.0.0.93.0</Finger1>
+  <Finger2>52348.0.52212.0.0.0.86.0</Finger2>
+  <Trinket1>62463.0.0.0.0.0.107.0</Trinket1>
+  <Trinket2>56394.0.0.0.0.0.107.0</Trinket2>
+  <MainHand>56382.0.0.0.0.4227.86.0</MainHand>
+  <Ranged>64822.0.52212.0.0.0.86.0</Ranged>
+  <Boss>
+    <Targets />
+    <BuffStates />
+    <Moves>
+      <Impedance>
+        <Name>Fel Firestorm (Getting Away) {During Fel Firestorm}</Name>
+        <Frequency>18</Frequency>
+        <Duration>18000</Duration>
+        <Chance>1</Chance>
+        <Breakable>true</Breakable>
+        <PhaseTimes>
+          <item>
+            <key>
+              <int>2</int>
+            </key>
+            <value>
+              <ArrayOfFloat>
+                <float>92</float>
+                <float>110</float>
+              </ArrayOfFloat>
+            </value>
+          </item>
+          <item>
+            <key>
+              <int>4</int>
+            </key>
+            <value>
+              <ArrayOfFloat>
+                <float>202</float>
+                <float>220</float>
+              </ArrayOfFloat>
+            </value>
+          </item>
+        </PhaseTimes>
+        <FightDuration>300</FightDuration>
+        <AffectsRole>
+          <item>
+            <key>
+              <PLAYER_ROLES>MainTank</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>OffTank</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>TertiaryTank</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>MeleeDPS</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>RangedDPS</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>MainTankHealer</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>OffAndTertTankHealer</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>RaidHealer</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+        </AffectsRole>
+      </Impedance>
+    </Moves>
+    <Stuns />
+    <Fears />
+    <Roots />
+    <Silences />
+    <Disarms />
+    <Name>Pit Lord Argaloth</Name>
+    <Content>T11_10</Content>
+    <Instance>Baradin Hold</Instance>
+    <Health>2.1473E+07</Health>
+    <BerserkTimer>300</BerserkTimer>
+    <MobType>1</MobType>
+    <InBackPerc_Melee>0.60000002384185791</InBackPerc_Melee>
+    <Attacks>
+      <Attack>
+        <Name>MT Melee {While not casting Firestorm}</Name>
+        <IsTheDefaultMelee>true</IsTheDefaultMelee>
+        <DamagePerHit>140000</DamagePerHit>
+        <PhaseTimes>
+          <item>
+            <key>
+              <int>1</int>
+            </key>
+            <value>
+              <ArrayOfFloat>
+                <float>0</float>
+                <float>92</float>
+              </ArrayOfFloat>
+            </value>
+          </item>
+          <item>
+            <key>
+              <int>3</int>
+            </key>
+            <value>
+              <ArrayOfFloat>
+                <float>110</float>
+                <float>202</float>
+              </ArrayOfFloat>
+            </value>
+          </item>
+          <item>
+            <key>
+              <int>5</int>
+            </key>
+            <value>
+              <ArrayOfFloat>
+                <float>220</float>
+                <float>300</float>
+              </ArrayOfFloat>
+            </value>
+          </item>
+        </PhaseTimes>
+        <FightDuration>300</FightDuration>
+        <AffectsRole>
+          <item>
+            <key>
+              <PLAYER_ROLES>MainTank</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>OffTank</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>false</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>TertiaryTank</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>false</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>MeleeDPS</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>false</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>RangedDPS</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>false</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>MainTankHealer</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>false</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>OffAndTertTankHealer</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>false</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>RaidHealer</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>false</boolean>
+            </value>
+          </item>
+        </AffectsRole>
+      </Attack>
+      <Attack>
+        <Name>OT Melee {While not casting Firestorm}</Name>
+        <IsTheDefaultMelee>true</IsTheDefaultMelee>
+        <DamagePerHit>140000</DamagePerHit>
+        <PhaseTimes>
+          <item>
+            <key>
+              <int>1</int>
+            </key>
+            <value>
+              <ArrayOfFloat>
+                <float>0</float>
+                <float>92</float>
+              </ArrayOfFloat>
+            </value>
+          </item>
+          <item>
+            <key>
+              <int>3</int>
+            </key>
+            <value>
+              <ArrayOfFloat>
+                <float>110</float>
+                <float>202</float>
+              </ArrayOfFloat>
+            </value>
+          </item>
+          <item>
+            <key>
+              <int>5</int>
+            </key>
+            <value>
+              <ArrayOfFloat>
+                <float>220</float>
+                <float>300</float>
+              </ArrayOfFloat>
+            </value>
+          </item>
+        </PhaseTimes>
+        <FightDuration>300</FightDuration>
+        <AffectsRole>
+          <item>
+            <key>
+              <PLAYER_ROLES>MainTank</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>false</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>OffTank</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>TertiaryTank</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>false</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>MeleeDPS</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>false</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>RangedDPS</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>false</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>MainTankHealer</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>false</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>OffAndTertTankHealer</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>false</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>RaidHealer</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>false</boolean>
+            </value>
+          </item>
+        </AffectsRole>
+      </Attack>
+      <Attack>
+        <Name>Meteor Slash [Group 1] {While not casting Firestorm}</Name>
+        <DamageType>Fire</DamageType>
+        <DamagePerHit>40000</DamagePerHit>
+        <MaxNumTargets>5</MaxNumTargets>
+        <AttackSpeed>17.75</AttackSpeed>
+        <AttackType>AT_AOE</AttackType>
+        <Missable>false</Missable>
+        <Dodgable>false</Dodgable>
+        <Parryable>false</Parryable>
+        <Blockable>false</Blockable>
+        <PhaseTimes>
+          <item>
+            <key>
+              <int>1</int>
+            </key>
+            <value>
+              <ArrayOfFloat>
+                <float>0</float>
+                <float>92</float>
+              </ArrayOfFloat>
+            </value>
+          </item>
+          <item>
+            <key>
+              <int>3</int>
+            </key>
+            <value>
+              <ArrayOfFloat>
+                <float>110</float>
+                <float>202</float>
+              </ArrayOfFloat>
+            </value>
+          </item>
+          <item>
+            <key>
+              <int>5</int>
+            </key>
+            <value>
+              <ArrayOfFloat>
+                <float>220</float>
+                <float>300</float>
+              </ArrayOfFloat>
+            </value>
+          </item>
+        </PhaseTimes>
+        <FightDuration>300</FightDuration>
+        <AffectsRole>
+          <item>
+            <key>
+              <PLAYER_ROLES>MainTank</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>OffTank</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>false</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>TertiaryTank</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>MeleeDPS</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>RangedDPS</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>MainTankHealer</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>OffAndTertTankHealer</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>RaidHealer</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+        </AffectsRole>
+      </Attack>
+      <Attack>
+        <Name>Meteor Slash [Group 2] {While not casting Firestorm}</Name>
+        <DamageType>Fire</DamageType>
+        <DamagePerHit>40000</DamagePerHit>
+        <MaxNumTargets>5</MaxNumTargets>
+        <AttackSpeed>17.75</AttackSpeed>
+        <AttackType>AT_AOE</AttackType>
+        <Missable>false</Missable>
+        <Dodgable>false</Dodgable>
+        <Parryable>false</Parryable>
+        <Blockable>false</Blockable>
+        <PhaseTimes>
+          <item>
+            <key>
+              <int>1</int>
+            </key>
+            <value>
+              <ArrayOfFloat>
+                <float>0</float>
+                <float>92</float>
+              </ArrayOfFloat>
+            </value>
+          </item>
+          <item>
+            <key>
+              <int>3</int>
+            </key>
+            <value>
+              <ArrayOfFloat>
+                <float>110</float>
+                <float>202</float>
+              </ArrayOfFloat>
+            </value>
+          </item>
+          <item>
+            <key>
+              <int>5</int>
+            </key>
+            <value>
+              <ArrayOfFloat>
+                <float>220</float>
+                <float>300</float>
+              </ArrayOfFloat>
+            </value>
+          </item>
+        </PhaseTimes>
+        <FightDuration>300</FightDuration>
+        <AffectsRole>
+          <item>
+            <key>
+              <PLAYER_ROLES>MainTank</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>false</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>OffTank</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>TertiaryTank</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>MeleeDPS</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>RangedDPS</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>MainTankHealer</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>OffAndTertTankHealer</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>RaidHealer</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+        </AffectsRole>
+      </Attack>
+      <Attack>
+        <Name>Consuming Darkness {While not casting Firestorm}</Name>
+        <DamageType>Shadow</DamageType>
+        <MaxNumTargets>3</MaxNumTargets>
+        <AttackSpeed>24</AttackSpeed>
+        <AttackType>AT_RANGED</AttackType>
+        <IsDoT>true</IsDoT>
+        <Missable>false</Missable>
+        <Dodgable>false</Dodgable>
+        <Parryable>false</Parryable>
+        <Blockable>false</Blockable>
+        <PhaseTimes>
+          <item>
+            <key>
+              <int>1</int>
+            </key>
+            <value>
+              <ArrayOfFloat>
+                <float>0</float>
+                <float>92</float>
+              </ArrayOfFloat>
+            </value>
+          </item>
+          <item>
+            <key>
+              <int>3</int>
+            </key>
+            <value>
+              <ArrayOfFloat>
+                <float>110</float>
+                <float>202</float>
+              </ArrayOfFloat>
+            </value>
+          </item>
+          <item>
+            <key>
+              <int>5</int>
+            </key>
+            <value>
+              <ArrayOfFloat>
+                <float>220</float>
+                <float>300</float>
+              </ArrayOfFloat>
+            </value>
+          </item>
+        </PhaseTimes>
+        <FightDuration>300</FightDuration>
+        <DamagePerTick>4000</DamagePerTick>
+        <TickInterval>0.5</TickInterval>
+        <Duration>5</Duration>
+        <AffectsRole>
+          <item>
+            <key>
+              <PLAYER_ROLES>MainTank</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>false</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>OffTank</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>false</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>TertiaryTank</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>false</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>MeleeDPS</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>RangedDPS</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>MainTankHealer</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>OffAndTertTankHealer</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>RaidHealer</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+        </AffectsRole>
+      </Attack>
+      <Attack>
+        <Name>Fel Firestorm {During Fel Firestorm}</Name>
+        <DamageType>Fire</DamageType>
+        <MaxNumTargets>10</MaxNumTargets>
+        <AttackSpeed>18</AttackSpeed>
+        <AttackType>AT_AOE</AttackType>
+        <IsDoT>true</IsDoT>
+        <Missable>false</Missable>
+        <Dodgable>false</Dodgable>
+        <Parryable>false</Parryable>
+        <Blockable>false</Blockable>
+        <PhaseTimes>
+          <item>
+            <key>
+              <int>2</int>
+            </key>
+            <value>
+              <ArrayOfFloat>
+                <float>92</float>
+                <float>110</float>
+              </ArrayOfFloat>
+            </value>
+          </item>
+          <item>
+            <key>
+              <int>4</int>
+            </key>
+            <value>
+              <ArrayOfFloat>
+                <float>202</float>
+                <float>220</float>
+              </ArrayOfFloat>
+            </value>
+          </item>
+        </PhaseTimes>
+        <FightDuration>300</FightDuration>
+        <DamagePerTick>24000</DamagePerTick>
+        <TickInterval>1</TickInterval>
+        <Duration>15</Duration>
+        <AffectsRole>
+          <item>
+            <key>
+              <PLAYER_ROLES>MainTank</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>OffTank</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>TertiaryTank</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>MeleeDPS</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>RangedDPS</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>MainTankHealer</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>OffAndTertTankHealer</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+          <item>
+            <key>
+              <PLAYER_ROLES>RaidHealer</PLAYER_ROLES>
+            </key>
+            <value>
+              <boolean>true</boolean>
+            </value>
+          </item>
+        </AffectsRole>
+      </Attack>
+    </Attacks>
+    <InBack>true</InBack>
+    <DamagingTargs>true</DamagingTargs>
+    <MovingTargs>true</MovingTargs>
+  </Boss>
+  <ItemFilterEnabledOverride>
+    <ItemFilterEnabledOverride>
+      <Name>Dungeons</Name>
+      <Enabled>true</Enabled>
+      <SubFilterOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Blackrock Caverns</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Grim Batol</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Halls of Origination</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Lost City of the Tol'vir</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>The Stonecore</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Throne of the Tides</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Vortex Pinnacle</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Other</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+      </SubFilterOverride>
+    </ItemFilterEnabledOverride>
+    <ItemFilterEnabledOverride>
+      <Name>Dungeons (Heroic)</Name>
+      <Enabled>true</Enabled>
+      <SubFilterOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Blackrock Caverns</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Grim Batol</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Halls of Origination</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Lost City of the Tol'vir</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Shadowfang Keep</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>The Deadmines</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>The Stonecore</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Throne of the Tides</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Vortex Pinnacle</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Zul'Aman</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Zul'Gurub</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Other</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+      </SubFilterOverride>
+    </ItemFilterEnabledOverride>
+    <ItemFilterEnabledOverride>
+      <Name>Tier 11 Raids BD/BoT/Tot4W</Name>
+      <Enabled>true</Enabled>
+      <SubFilterOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Blackwing Descent</Name>
+          <Enabled>true</Enabled>
+          <SubFilterOverride>
+            <ItemFilterEnabledOverride>
+              <Name>Normal</Name>
+              <Enabled>true</Enabled>
+              <SubFilterOverride>
+                <ItemFilterEnabledOverride>
+                  <Name>Magmaw</Name>
+                  <Enabled>true</Enabled>
+                </ItemFilterEnabledOverride>
+                <ItemFilterEnabledOverride>
+                  <Name>Omnitron Defense System</Name>
+                  <Enabled>true</Enabled>
+                </ItemFilterEnabledOverride>
+                <ItemFilterEnabledOverride>
+                  <Name>Chimaeron</Name>
+                  <Enabled>true</Enabled>
+                </ItemFilterEnabledOverride>
+                <ItemFilterEnabledOverride>
+                  <Name>Atramedes</Name>
+                  <Enabled>true</Enabled>
+                </ItemFilterEnabledOverride>
+                <ItemFilterEnabledOverride>
+                  <Name>Maloriak</Name>
+                  <Enabled>true</Enabled>
+                </ItemFilterEnabledOverride>
+                <ItemFilterEnabledOverride>
+                  <Name>Nefarian</Name>
+                  <Enabled>true</Enabled>
+                </ItemFilterEnabledOverride>
+                <ItemFilterEnabledOverride>
+                  <Name>Trash drop</Name>
+                  <Enabled>true</Enabled>
+                </ItemFilterEnabledOverride>
+                <ItemFilterEnabledOverride>
+                  <Name>Other</Name>
+                  <Enabled>true</Enabled>
+                </ItemFilterEnabledOverride>
+              </SubFilterOverride>
+            </ItemFilterEnabledOverride>
+            <ItemFilterEnabledOverride>
+              <Name>Heroic</Name>
+              <Enabled>true</Enabled>
+              <SubFilterOverride>
+                <ItemFilterEnabledOverride>
+                  <Name>Magmaw</Name>
+                  <Enabled>true</Enabled>
+                </ItemFilterEnabledOverride>
+                <ItemFilterEnabledOverride>
+                  <Name>Omnitron Defense System</Name>
+                  <Enabled>true</Enabled>
+                </ItemFilterEnabledOverride>
+                <ItemFilterEnabledOverride>
+                  <Name>Chimaeron</Name>
+                  <Enabled>true</Enabled>
+                </ItemFilterEnabledOverride>
+                <ItemFilterEnabledOverride>
+                  <Name>Atramedes</Name>
+                  <Enabled>true</Enabled>
+                </ItemFilterEnabledOverride>
+                <ItemFilterEnabledOverride>
+                  <Name>Maloriak</Name>
+                  <Enabled>true</Enabled>
+                </ItemFilterEnabledOverride>
+                <ItemFilterEnabledOverride>
+                  <Name>Nefarian</Name>
+                  <Enabled>true</Enabled>
+                </ItemFilterEnabledOverride>
+                <ItemFilterEnabledOverride>
+                  <Name>Other</Name>
+                  <Enabled>true</Enabled>
+                </ItemFilterEnabledOverride>
+              </SubFilterOverride>
+            </ItemFilterEnabledOverride>
+            <ItemFilterEnabledOverride>
+              <Name>Other</Name>
+              <Enabled>true</Enabled>
+            </ItemFilterEnabledOverride>
+          </SubFilterOverride>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>The Bastion of Twilight</Name>
+          <Enabled>true</Enabled>
+          <SubFilterOverride>
+            <ItemFilterEnabledOverride>
+              <Name>Normal</Name>
+              <Enabled>true</Enabled>
+              <SubFilterOverride>
+                <ItemFilterEnabledOverride>
+                  <Name>Halfus Wyrmbreaker</Name>
+                  <Enabled>true</Enabled>
+                </ItemFilterEnabledOverride>
+                <ItemFilterEnabledOverride>
+                  <Name>Valiona &amp; Theralion</Name>
+                  <Enabled>true</Enabled>
+                </ItemFilterEnabledOverride>
+                <ItemFilterEnabledOverride>
+                  <Name>Twilight Ascendant Council</Name>
+                  <Enabled>true</Enabled>
+                </ItemFilterEnabledOverride>
+                <ItemFilterEnabledOverride>
+                  <Name>Cho'gall</Name>
+                  <Enabled>true</Enabled>
+                </ItemFilterEnabledOverride>
+                <ItemFilterEnabledOverride>
+                  <Name>Trash drop</Name>
+                  <Enabled>true</Enabled>
+                </ItemFilterEnabledOverride>
+                <ItemFilterEnabledOverride>
+                  <Name>Other</Name>
+                  <Enabled>true</Enabled>
+                </ItemFilterEnabledOverride>
+              </SubFilterOverride>
+            </ItemFilterEnabledOverride>
+            <ItemFilterEnabledOverride>
+              <Name>Heroic</Name>
+              <Enabled>true</Enabled>
+              <SubFilterOverride>
+                <ItemFilterEnabledOverride>
+                  <Name>Halfus Wyrmbreaker</Name>
+                  <Enabled>true</Enabled>
+                </ItemFilterEnabledOverride>
+                <ItemFilterEnabledOverride>
+                  <Name>Valiona &amp; Theralion</Name>
+                  <Enabled>true</Enabled>
+                </ItemFilterEnabledOverride>
+                <ItemFilterEnabledOverride>
+                  <Name>Twilight Ascendant Council</Name>
+                  <Enabled>true</Enabled>
+                </ItemFilterEnabledOverride>
+                <ItemFilterEnabledOverride>
+                  <Name>Cho'gall</Name>
+                  <Enabled>true</Enabled>
+                </ItemFilterEnabledOverride>
+                <ItemFilterEnabledOverride>
+                  <Name>Sinestra</Name>
+                  <Enabled>true</Enabled>
+                </ItemFilterEnabledOverride>
+                <ItemFilterEnabledOverride>
+                  <Name>Other</Name>
+                  <Enabled>true</Enabled>
+                </ItemFilterEnabledOverride>
+              </SubFilterOverride>
+            </ItemFilterEnabledOverride>
+            <ItemFilterEnabledOverride>
+              <Name>Other</Name>
+              <Enabled>true</Enabled>
+            </ItemFilterEnabledOverride>
+          </SubFilterOverride>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Throne of the Four Winds</Name>
+          <Enabled>true</Enabled>
+          <SubFilterOverride>
+            <ItemFilterEnabledOverride>
+              <Name>Normal</Name>
+              <Enabled>true</Enabled>
+              <SubFilterOverride>
+                <ItemFilterEnabledOverride>
+                  <Name>Conclave of Wind</Name>
+                  <Enabled>true</Enabled>
+                </ItemFilterEnabledOverride>
+                <ItemFilterEnabledOverride>
+                  <Name>Al'Akir</Name>
+                  <Enabled>true</Enabled>
+                </ItemFilterEnabledOverride>
+                <ItemFilterEnabledOverride>
+                  <Name>Other</Name>
+                  <Enabled>true</Enabled>
+                </ItemFilterEnabledOverride>
+              </SubFilterOverride>
+            </ItemFilterEnabledOverride>
+            <ItemFilterEnabledOverride>
+              <Name>Heroic</Name>
+              <Enabled>true</Enabled>
+              <SubFilterOverride>
+                <ItemFilterEnabledOverride>
+                  <Name>Conclave of Wind</Name>
+                  <Enabled>true</Enabled>
+                </ItemFilterEnabledOverride>
+                <ItemFilterEnabledOverride>
+                  <Name>Al'Akir</Name>
+                  <Enabled>true</Enabled>
+                </ItemFilterEnabledOverride>
+                <ItemFilterEnabledOverride>
+                  <Name>Other</Name>
+                  <Enabled>true</Enabled>
+                </ItemFilterEnabledOverride>
+              </SubFilterOverride>
+            </ItemFilterEnabledOverride>
+            <ItemFilterEnabledOverride>
+              <Name>Other</Name>
+              <Enabled>true</Enabled>
+            </ItemFilterEnabledOverride>
+          </SubFilterOverride>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Other</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+      </SubFilterOverride>
+    </ItemFilterEnabledOverride>
+    <ItemFilterEnabledOverride>
+      <Name>Baradin Hold</Name>
+      <Enabled>true</Enabled>
+      <SubFilterOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Pit Lord Argaloth</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Other</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+      </SubFilterOverride>
+    </ItemFilterEnabledOverride>
+    <ItemFilterEnabledOverride>
+      <Name>Special Currency (Points, Tokens, etc.)</Name>
+      <Enabled>true</Enabled>
+      <SubFilterOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Tol Borad Commendation</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Valor Points</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Justice Points</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Armor Tokens</Name>
+          <Enabled>true</Enabled>
+          <SubFilterOverride>
+            <ItemFilterEnabledOverride>
+              <Name>Tier 11</Name>
+              <Enabled>true</Enabled>
+            </ItemFilterEnabledOverride>
+            <ItemFilterEnabledOverride>
+              <Name>Tier 10-</Name>
+              <Enabled>true</Enabled>
+            </ItemFilterEnabledOverride>
+            <ItemFilterEnabledOverride>
+              <Name>Other</Name>
+              <Enabled>true</Enabled>
+            </ItemFilterEnabledOverride>
+          </SubFilterOverride>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Stone Keeper's Shard</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Champion's Seal</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Kirin Tor Rings</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Other</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+      </SubFilterOverride>
+    </ItemFilterEnabledOverride>
+    <ItemFilterEnabledOverride>
+      <Name>Crafted/Profession</Name>
+      <Enabled>true</Enabled>
+      <SubFilterOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Alchemy</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Archaeology</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Blacksmithing</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Engineer</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Inscription</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Jewelcrafting (non-gem)</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Leatherworking</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Tailoring</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Other</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+      </SubFilterOverride>
+    </ItemFilterEnabledOverride>
+    <ItemFilterEnabledOverride>
+      <Name>Faction/Guild Reputation</Name>
+      <Enabled>true</Enabled>
+      <SubFilterOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Guardians of Hyjal</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Ramkahen</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Therazane</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Earthen Ring</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Wildhammer Clan/Dragonmaw Clan</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Baradin's Wardens/Hellscream's Reach</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Guild Reputation</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Other</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+      </SubFilterOverride>
+    </ItemFilterEnabledOverride>
+    <ItemFilterEnabledOverride>
+      <Name>Rare Elite</Name>
+      <Enabled>true</Enabled>
+    </ItemFilterEnabledOverride>
+    <ItemFilterEnabledOverride>
+      <Name>PvP</Name>
+      <Enabled>true</Enabled>
+      <SubFilterOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Requires Arena Rating</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Conquest Points</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Honor Points</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>? (Refresh from wowhead)</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Other</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+      </SubFilterOverride>
+    </ItemFilterEnabledOverride>
+    <ItemFilterEnabledOverride>
+      <Name>Quest Rewards</Name>
+      <Enabled>true</Enabled>
+    </ItemFilterEnabledOverride>
+    <ItemFilterEnabledOverride>
+      <Name>World Drop</Name>
+      <Enabled>true</Enabled>
+    </ItemFilterEnabledOverride>
+    <ItemFilterEnabledOverride>
+      <Name>Wrath of the Lich King</Name>
+      <Enabled>true</Enabled>
+    </ItemFilterEnabledOverride>
+    <ItemFilterEnabledOverride>
+      <Name>Burning Crusade</Name>
+      <Enabled>true</Enabled>
+    </ItemFilterEnabledOverride>
+    <ItemFilterEnabledOverride>
+      <Name>Classic</Name>
+      <Enabled>true</Enabled>
+    </ItemFilterEnabledOverride>
+    <ItemFilterEnabledOverride>
+      <Name>Seasonal</Name>
+      <Enabled>true</Enabled>
+    </ItemFilterEnabledOverride>
+    <ItemFilterEnabledOverride>
+      <Name>Unknown/Not found on wowhead</Name>
+      <Enabled>true</Enabled>
+    </ItemFilterEnabledOverride>
+    <ItemFilterEnabledOverride>
+      <Name>Gems</Name>
+      <Enabled>true</Enabled>
+      <SubFilterOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Jewelcrafter BoP</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Crafted (Non-BoP)</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>PvP</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>World Drop</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Quest Rewards</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Unknown/Not found on wowhead</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+        <ItemFilterEnabledOverride>
+          <Name>Other</Name>
+          <Enabled>true</Enabled>
+        </ItemFilterEnabledOverride>
+      </SubFilterOverride>
+    </ItemFilterEnabledOverride>
+    <ItemFilterEnabledOverride>
+      <Name>BOE Items (possible AH)</Name>
+      <Enabled>true</Enabled>
+    </ItemFilterEnabledOverride>
+    <ItemFilterEnabledOverride>
+      <Name>Other</Name>
+      <Enabled>true</Enabled>
+    </ItemFilterEnabledOverride>
+  </ItemFilterEnabledOverride>
+  <CustomGemmingTemplates />
+  <GemmingTemplateOverrides />
+  <CustomItemInstances />
+  <CalculationToOptimize>[Overall]</CalculationToOptimize>
+  <OptimizationRequirements />
+</Character>
+
+
+

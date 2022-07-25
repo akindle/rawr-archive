@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-08T06:55:20.457-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have downloaded the latest preview release of Mono 2.0, and the latest official release of Rawr. There are still cosmetic issues that I attribute to problems in Mono's Macintosh port, but Rawr's crash on attempting to bring up the open or save dialog box *might* be related to Rawr. In case it is, I present the text of the error from the console:\n \nUnhandled Exception: System.ArgumentException: Forms cannot own themselves or their owners.\nParameter name: owner\n  at System.Windows.Forms.Form.ShowDialog (IWin32Window owner) [0x00000] \n  at (wrapper remoting-invoke-with-check) System.Windows.Forms.Form:ShowDialog (System.Windows.Forms.IWin32Window)\n  at System.Windows.Forms.CommonDialog.ShowDialog (IWin32Window owner) [0x00000] \n  at System.Windows.Forms.CommonDialog.ShowDialog () [0x00000] \n  at (wrapper remoting-invoke-with-check) System.Windows.Forms.CommonDialog:ShowDialog ()\n  at Rawr.FormMain.openToolStripMenuItem_Click (System.Object sender, System.EventArgs e) [0x00000] \n  at System.Windows.Forms.ToolStripItem.OnClick (System.EventArgs e) [0x00000] \n  at System.Windows.Forms.ToolStripMenuItem.OnClick (System.EventArgs e) [0x00000] \n  at System.Windows.Forms.ToolStripMenuItem.HandleClick (System.EventArgs e) [0x00000] \n  at System.Windows.Forms.ToolStripItem.FireEvent (System.EventArgs e, ToolStripItemEventType met) [0x00000] \n  at (wrapper remoting-invoke-with-check) System.Windows.Forms.ToolStripItem:FireEvent (System.EventArgs,System.Windows.Forms.ToolStripItemEventType)\n  at System.Windows.Forms.ToolStrip.OnMouseUp (System.Windows.Forms.MouseEventArgs mea) [0x00000] \n  at System.Windows.Forms.ToolStripDropDown.OnMouseUp (System.Windows.Forms.MouseEventArgs mea) [0x00000] \n  at System.Windows.Forms.Control.WmLButtonUp (System.Windows.Forms.Message& m) [0x00000] \n  at System.Windows.Forms.Control.WndProc (System.Windows.Forms.Message& m) [0x00000] \n  at System.Windows.Forms.ScrollableControl.WndProc (System.Windows.Forms.Message& m) [0x00000] \n  at System.Windows.Forms.ToolStrip.WndProc (System.Windows.Forms.Message& m) [0x00000] \n  at System.Windows.Forms.ToolStripDropDown.WndProc (System.Windows.Forms.Message& m) [0x00000] \n  at System.Windows.Forms.Control+ControlWindowTarget.OnMessage (System.Windows.Forms.Message& m) [0x00000] \n  at System.Windows.Forms.Control+ControlNativeWindow.WndProc (System.Windows.Forms.Message& m) [0x00000] \n  at System.Windows.Forms.NativeWindow.WndProc (IntPtr hWnd, Msg msg, IntPtr wParam, IntPtr lParam) [0x00000] \n  at System.Windows.Forms.XplatUICarbon.DispatchMessage (System.Windows.Forms.MSG& msg) [0x00000] \n  at System.Windows.Forms.XplatUI.DispatchMessage (System.Windows.Forms.MSG& msg) [0x00000] \n  at System.Windows.Forms.Application.RunLoop (Boolean Modal, System.Windows.Forms.ApplicationContext context) [0x00000] \n  at System.Windows.Forms.Application.Run (System.Windows.Forms.ApplicationContext context) [0x00000] \n  at System.Windows.Forms.Application.Run (System.Windows.Forms.Form mainForm) [0x00000] \n  at Rawr.Program.Main () [0x00000]",
+    "LastUpdatedDate": "2013-05-16T05:27:03.703-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-08-12T10:12:38.367-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Open/Save Dialog Crash on Mac OS X in Mono 2.0",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 10992
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Looks like a bug in Mono, but we may be able to work around it. I checked in a change to switch all ShowDialog() calls to ShowDialog(this), to explicitly set the owner. Let me know if that fixes it, or causes problems for anyone.",
+      "PostedDate": "2008-08-12T10:59:10.227-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-08T06:55:20.457-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:34.943-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:27:03.703-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

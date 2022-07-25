@@ -1,0 +1,111 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.TankDK",
+      "DisplayName": "Rawr.TankDK"
+    },
+    "ClosedComment": "Rawr 4.1.0 Released",
+    "ClosedDate": "2011-03-10T18:50:03.9-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I just checked the latest release (4.0.17b) and Rawr.TankDK is not giving any value to avoidance at all for me. Mastery is getting at least a little, but it still tells me to reforge it away in favor of expertise, which is pretty much the opposite of what the theorycrafting community is saying.\n \nEven weirder is the value resistance is getting. For shoulder enchants, for example, Rawr is telling me 7 resist all is better than the Tharazane enchant.\n \nI have attached my character file for reference.",
+    "LastUpdatedDate": "2017-11-27T11:04:47.387-08:00",
+    "PlannedForRelease": "Rawr 4.0.17 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-01-30T01:48:27.263-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[TankDK] Avoidance/Mastery too Low. Stam/Resistance too High",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19851
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4529,
+      "FileName": "kona.xml",
+      "DownloadUrl": ".\\4529"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "This is due to the boss options chosen.  Looking at the \"Easiest T11 Boss\":\r\nThis boss does the following Damage Per Second Amounts, factoring Armor, Resistance and Defend Tables where applicable:\r\nSingle Target Melee: 0.0\r\nSingle Target Ranged: Infinity\r\nRaid AoE: 1308.8\r\n\r\nSo there's nothing to mitigate.  And AOE is probably magical damage.  So this looks like an issue more with how the BossHandlers are figuring out these issues rather than w/ TankDK specifically.\r\n\r\nTry using Pit Lord Argaloth or some other specific boss.  You should see more reasonable numbers than none at all. :P",
+      "PostedDate": "2011-01-30T09:47:52.733-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-30T10:04:23.65-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You're right, selecting Argaloth gives much more realistic numbers :). Thanks.\r\n\r\nStill, I think Mastery should be valued higher than 0.02 mitigation points (used my character and selected Argaloth 10m). Probably still something off with the rotation solver, as Haste also has 0 value where it should at least have some, considering it increases potential Death Strikes per time interval. Overall Rawr gives more points to AP (granted, threat points, but still) than Haste and Mastery, which just can't be right :).",
+      "PostedDate": "2011-01-30T13:46:44.44-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You're right.  And I'm working on them which is why I included some new items on the paperdoll so you can compare the DS/BloodShield numbers w/ what you are actually experiencing in game.  If the problem is in my mastery/DS math, then I can fix it there... but if those numbers are accurate, then I need to look for a fix somewhere else.",
+      "PostedDate": "2011-01-30T22:57:51.147-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok... Did some more digging.  Not sure why on TankDK Haste has 0 value, but with DPSDK it has a significant value.  Even when the rotation and all that is the same. ",
+      "PostedDate": "2011-02-03T13:04:08.887-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-02-03T13:05:56.383-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 58604.",
+      "PostedDate": "2011-03-09T15:24:32.257-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-09T15:29:37.487-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-10T18:50:03.9-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:39:00.11-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:10.15-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:51.253-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:04:47.387-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

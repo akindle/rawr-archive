@@ -1,0 +1,101 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Healadin",
+      "DisplayName": "Rawr.Healadin"
+    },
+    "ClosedComment": "Fixed in r49262.  The trigger should be DamageSpellHit, not SpellHit.",
+    "ClosedDate": "2010-04-09T10:59:11.36-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "That's happening because Black Magic is modelled with Spell Hit trigger but it should only be triggered by offensive spells.",
+    "LastUpdatedDate": "2013-05-16T05:21:09.337-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-04-06T00:37:12.45-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Healadin] Black Magic enchant shows as appropriate for healing models",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17111
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3345,
+      "FileName": "Orlan Rawr Holy.xml",
+      "DownloadUrl": ".\\3345"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "It helps if you point out which healing model this is showing up in specifically.",
+      "PostedDate": "2010-04-09T01:16:33.497-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It does for Healadin.",
+      "PostedDate": "2010-04-09T01:25:01.78-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Healadin's do indeed attack their target, as Judgement can proc this.  Now the question is exactly how much more then the spellpower enchant is black magic working out to be?",
+      "PostedDate": "2010-04-09T04:53:22.057-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well, I've checked, it's showing for Healadin only indeed. (Is it explicitly filtered out for other healing models?) Healadins do judge indeed so Black Magic can proc from judgements. However, even if the judgement is refreshed every 20 seconds, that would result in the buff procing about once a minute and lasting for 10 seconds. Rawr gives the enchant almost twice as big value. Probably it accounts every spell proccing it so the proc is only limited by the ICD of 35 seconds.",
+      "PostedDate": "2010-04-09T08:46:39.627-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-09T08:46:41.243-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-09T08:47:32.003-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-09T10:59:11.36-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Judgments will not trigger any spell-related triggers.  Judgments are considered melee attacks that cannot be dodge, blocked, or parried as of patch 3.2.",
+      "PostedDate": "2010-04-09T12:51:23.627-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T18:00:05.453-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:28:58.72-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:09.337-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "134704",
+    "ThreadId": "40607",
+    "Html": "From a fresh 24026 compilation. Select Priest class and program crash. (With a French Windows) :<div><div>************** Texte de l'exception **************</div><div>System.NullReferenceException: La référence d'objet n'est pas définie à une instance d'un objet.</div><div>   à Rawr.StatConversion..ctor(Character _character) dans ...\\Visual Studio 2008\\Projects\\Rawr-24206\\Rawr.Base\\StatConversion.cs:ligne 121</div><div>   à Rawr.Character.get_StatConversion() dans ...\\Visual Studio 2008\\Projects\\Rawr-24206\\Rawr.Base\\Character.cs:ligne 377</div><div>   à Rawr.HolyPriest.CalculationsHolyPriest.GetCharacterStats(Character character, Item additionalItem) dans ...\\Visual Studio 2008\\Projects\\Rawr-24206\\Rawr.HolyPriest\\CalculationsHolyPriest.cs:ligne 244</div><div>   à Rawr.HolyPriest.CalculationsHolyPriest.GetCharacterCalculations(Character character, Item additionalItem) dans...Visual Studio 2008\\Projects\\Rawr-24206\\Rawr.HolyPriest\\CalculationsHolyPriest.cs:ligne 128</div><div>......</div><div><br></div><div>Having a look at the code, it seems that in StatConversion.cs that RatingConversionBase60 and RatingConversionTable are declare but never allocated.</div><div><br></div><div><br><div><br></div></div></div>",
+    "PostedDate": "2008-11-24T01:30:37.66-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "134760",
+    "ThreadId": "40607",
+    "Html": "Thanks, I will commit a fix that hopefully fixes this right now, let me know if it helps.\r\n",
+    "PostedDate": "2008-11-24T06:35:35.233-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "134788",
+    "ThreadId": "40607",
+    "Html": "Ok I just regenerate with latest source and it WORKS !<div>Thanks :)</div>",
+    "PostedDate": "2008-11-24T07:58:07.97-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "134827",
+    "ThreadId": "40607",
+    "Html": "Hope the model gives you the information you seek, thanks for the bug report.\r\n",
+    "PostedDate": "2008-11-24T09:52:40.747-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

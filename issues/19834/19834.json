@@ -1,0 +1,110 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.LoadCharacter",
+      "DisplayName": "Rawr.Base.LoadCharacter"
+    },
+    "ClosedComment": "Fixed.",
+    "ClosedDate": "2011-01-28T12:45:17.977-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "On loading my character from Battle.Net and then immediately running the optimiser I am always getting the cogwheels as not available despite them being in the gemming templates. \n \nI also get some of the crap green gems I have as not available but that is understandable and is because I was being stingy with the cash on gems at the time, and the meta is not available but again its not in a gemming template so its understandable - it doesn't need to be in a gemming template either I'd just used a meta that had an easier requirement as a temporary stopgap prior to patch 4.0.6 and the new meta.\n \nThe cogwheels however are a different matter the ones I have are in the gemming templates but for whatever reason the optimiser isn't seeing them.\n \nCharacter is EU Khadgar - Ainvar.",
+    "LastUpdatedDate": "2013-05-16T05:18:53.27-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-01-28T04:09:02.21-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[LoadCharacter] Loading char from Battle.net shows cogwheels as not available to optimizer",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19834
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I'm seeing this in the Enhance module as well.",
+      "PostedDate": "2011-01-28T04:19:45.087-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The optimiser is passing the check at line 992 in the routine IsCharacterValid ie: thinking the item is not available.\r\n\r\n    if (!itemAvailable.ContainsKey(item.GemmedId))\r\n\r\nwhere the GemmedId is 59453.52292.59479.59493.4207.0.0 \r\n\r\nThis suggests to me that the building of itemAvailable isn't correctly understanding the cogwheels perhaps?",
+      "PostedDate": "2011-01-28T06:32:31.623-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hmmm I think I've found it HOWEVER I will leave it entirely to Kavan to check and fix as I'm not about to medle with the optimiser!!!\r\n\r\nIn AvailableItemGenerator at line 1322 of Optimizer.cs we have something that checks the gemming templates\r\n\r\n                    foreach (GemmingTemplate template in characters[index].CurrentGemmingTemplates)\r\n                    {\r\n                        if (template.Enabled)\r\n                        {\r\n                            if (!templateGems.Contains(template.RedId.ToString())) templateGems.Add(template.RedId.ToString());\r\n                            if (!templateGems.Contains(template.YellowId.ToString())) templateGems.Add(template.YellowId.ToString());\r\n                            if (!templateGems.Contains(template.BlueId.ToString())) templateGems.Add(template.BlueId.ToString());\r\n                            if (!templateGems.Contains(template.PrismaticId.ToString())) templateGems.Add(template.PrismaticId.ToString());\r\n                            if (!templateGems.Contains(template.MetaId.ToString())) templateGems.Add(template.MetaId.ToString());\r\n                        }\r\n                    }\r\n                    foreach (GemmingTemplate template in characters[index].CustomGemmingTemplates)\r\n                    {\r\n                        if (template.Enabled && template.Model == models[index].Name)\r\n                        {\r\n                            if (!templateGems.Contains(template.RedId.ToString())) templateGems.Add(template.RedId.ToString());\r\n                            if (!templateGems.Contains(template.YellowId.ToString())) templateGems.Add(template.YellowId.ToString());\r\n                            if (!templateGems.Contains(template.BlueId.ToString())) templateGems.Add(template.BlueId.ToString());\r\n                            if (!templateGems.Contains(template.PrismaticId.ToString())) templateGems.Add(template.PrismaticId.ToString());\r\n                            if (!templateGems.Contains(template.MetaId.ToString())) templateGems.Add(template.MetaId.ToString());\r\n                        }\r\n                    }\r\n\r\nNow I note that it doesn't check cogwheels or hydraulics and therefore I think this is where it is failing to add the template cogwheels and template hydraulics to the optimiser's available list.\r\n\r\nIs this right Kavan?\r\n\r\nIf I am right then the solution should be :\r\n\r\n                    foreach (GemmingTemplate template in characters[index].CurrentGemmingTemplates)\r\n                    {\r\n                        if (template.Enabled)\r\n                        {\r\n                            if (!templateGems.Contains(template.RedId.ToString())) templateGems.Add(template.RedId.ToString());\r\n                            if (!templateGems.Contains(template.YellowId.ToString())) templateGems.Add(template.YellowId.ToString());\r\n                            if (!templateGems.Contains(template.BlueId.ToString())) templateGems.Add(template.BlueId.ToString());\r\n                            if (!templateGems.Contains(template.PrismaticId.ToString())) templateGems.Add(template.PrismaticId.ToString());\r\n                            if (!templateGems.Contains(template.MetaId.ToString())) templateGems.Add(template.MetaId.ToString());\r\n                            if (!templateGems.Contains(template.CogwheelId.ToString())) templateGems.Add(template.CogwheelId.ToString());\r\n                            if (!templateGems.Contains(template.HydraulicId.ToString())) templateGems.Add(template.HydraulicId.ToString());\r\n                        }\r\n                    }\r\n                    foreach (GemmingTemplate template in characters[index].CustomGemmingTemplates)\r\n                    {\r\n                        if (template.Enabled && template.Model == models[index].Name)\r\n                        {\r\n                            if (!templateGems.Contains(template.RedId.ToString())) templateGems.Add(template.RedId.ToString());\r\n                            if (!templateGems.Contains(template.YellowId.ToString())) templateGems.Add(template.YellowId.ToString());\r\n                            if (!templateGems.Contains(template.BlueId.ToString())) templateGems.Add(template.BlueId.ToString());\r\n                            if (!templateGems.Contains(template.PrismaticId.ToString())) templateGems.Add(template.PrismaticId.ToString());\r\n                            if (!templateGems.Contains(template.MetaId.ToString())) templateGems.Add(template.MetaId.ToString());\r\n                            if (!templateGems.Contains(template.CogwheelId.ToString())) templateGems.Add(template.CogwheelId.ToString());\r\n                            if (!templateGems.Contains(template.HydraulicId.ToString())) templateGems.Add(template.HydraulicId.ToString());\r\n                        }\r\n                    }\r\n",
+      "PostedDate": "2011-01-28T06:36:46.5-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Correction its line 1322 of AvailableItemGenerator.cs not Optimizer.cs",
+      "PostedDate": "2011-01-28T06:42:51.183-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Also the check of what text to display has a bug. Line 1026 of AvailableItemGenerator.cs \r\n\r\n                                                if ((g.Slot == ItemSlot.Meta && !ArrayContains(MetaGemItems, gg => gg.Stats >= g.Stats)) ||\r\n                                                    (g.Slot != ItemSlot.Meta && !ArrayContains(GemItems, gg => gg.Id == g.Id || (gg.Stats >= g.Stats && !gg.IsLimitedGem))))\r\n\r\nneeds to check if g.slot is ItemSlot.Cogwheel or ItemSlot.Hydraulic and check the CogwheelItems or HydraulicItems lists as appropriate.",
+      "PostedDate": "2011-01-28T07:09:00.33-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yup fixed it that check needs to be...\r\n\r\n                                               if ((g.Slot == ItemSlot.Meta && !ArrayContains(MetaGemItems, gg => gg.Stats >= g.Stats)) ||\r\n                                                    (g.Slot == ItemSlot.Cogwheel && !ArrayContains(Cogwheeltems, gg => gg.Stats >= g.Stats)) ||\r\n                                                    (g.Slot == ItemSlot.Hydraulic && !ArrayContains(HydraulicItems, gg => gg.Stats >= g.Stats)) ||\r\n                                                    (g.Slot != ItemSlot.Meta && g.Slot != ItemSlot.Cogwheel && g.Slot != ItemSlot.Hydraulic &&\r\n                                                        !ArrayContains(GemItems, gg => gg.Id == g.Id || (gg.Stats >= g.Stats && !gg.IsLimitedGem))))\r\n",
+      "PostedDate": "2011-01-28T07:19:49.24-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "So two fixes required both in AvailableItemGenerator.cs one at line 1027 and one at line 1322.",
+      "PostedDate": "2011-01-28T07:20:38.93-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-28T10:53:47.997-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Levva go ahead and put those two fixes in.",
+      "PostedDate": "2011-01-28T10:54:06.007-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-28T12:45:17.977-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:48:47.153-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:24.073-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:12.547-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:53.27-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

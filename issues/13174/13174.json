@@ -1,0 +1,90 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.MultipleModels",
+      "DisplayName": "Rawr.MultipleModels"
+    },
+    "ClosedComment": "This effort has been pushed in the last couple of commits",
+    "ClosedDate": "2009-08-19T13:23:33.43-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "For example: There are multiple defense value calculations that use the constant: 4.918498039f for the defense rating to defense skill conversion.  However, there is already a const declared as: RATING_PER_DEFENSE that is very close to the value used.  There is even a public function that does the whole math of             \nfloat defSkill = (float)Math.Floor(stats.DefenseRating / 4.918498039f);\nin \npublic static float GetDefenseFromRating(float Rating)\n \nBut few modules are actually using this function.  (Currently I only see this used in the Rawr.Bear module).  The above function and constant needs to be fleshed out for non-level 80 toons and may need some further tweaking, but that's a matter for a different issue/defect/bug/etc.",
+    "LastUpdatedDate": "2013-05-16T05:25:39.867-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-05-05T16:12:30.88-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[MultipleModels] Consts declared in public static class StatConversion not used in models",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13174
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Well, it likely won't get pre-80 support any time soon, or even at all. But yes, all models need to start using these shared classes. It's more than a few, but most have not switched over, yet. If someone wants to compile a list of which models are and are not using the shared classes for rating conversions, armor calculations, hit/miss chances, etc, that'd be *stellar*.",
+      "PostedDate": "2009-05-05T16:40:44.74-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I don't plan to use shared classes because they don't support player level as parameter.",
+      "PostedDate": "2009-05-05T16:53:03.97-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This is just stuff I'm finding during Code-reviews of getting familiar with how things work.  \r\n\r\nKavan:  If there's a matter of supporting level adjustments for each function call, I'm sure there's additional work required for finding the base combat rating adjustment per level.  If you've already done it for your module, perhaps you'd be willing to move that code to the shared area and update that LEVEL_80_COMBATRATING_MODIFIER to be level specific, w/ an 80 as default. ",
+      "PostedDate": "2009-05-05T16:56:20.92-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The thing is the previous conversion class already supported variable level, but then most of the other classes decided to go with level 80 version only. I don't have a problem with that, just stating the reason why I'm not using it.",
+      "PostedDate": "2009-05-05T17:02:09.413-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "ok... I think I found a Combat rating function from someone who had mined wowhead's Javascript.  Not sure how accurate it is for actual numbers, but the 80 code is the same as we already had.  So I'll setup some baseline tests for it before providing it for check in.  \r\n\r\nHeh... Already breaking this whole test first thing as I find things to tweak.  LOL  If you want me to post it for review, I can do that.",
+      "PostedDate": "2009-05-05T17:25:35.747-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The shared classes don't support pre-80 for performance reasons. Since Mage is pretty much alone in supporting pre-80 calculations at all, and that doesn't look to change any time soon, we only want to add pre-80 support to the shared classes where it won't impact performance at all (really, at all).",
+      "PostedDate": "2009-05-05T19:50:11.64-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-19T13:23:33.43-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:21:12.76-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:37.607-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:39.867-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

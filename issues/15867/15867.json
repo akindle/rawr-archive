@@ -1,0 +1,110 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "The part of this request we would implement is duplicate to another issue. The rest won&#39;t be.",
+    "ClosedDate": "2010-11-21T01:03:54.173-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "As a dual-spec bear/cat druid I often need to compare an item that is gemmed and enchanted for cat against a drop that I could gem/enchant for bear.  Since the equipped item is enchanted for cat DPS, comparing it to the drop enchanted for cat is bad.  I would rather compare it to a drop enchanted for a bear.\n \nIf you treat enchants more like gems, allowing the optimizer to play with enchants in the ranking pane instead of putting it as a menu under the \"equipped\" readout, that would make it a lot easier for dual-spec characters.",
+    "LastUpdatedDate": "2013-05-16T05:22:26.737-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-01-12T06:20:02.233-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Feature Request] Treat enchants like gems, allowing us to score items with different enchants",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 2,
+    "Id": 15867
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Couple of questions as it's slightly confusing.  Are you trying to compare two drops for Bear in the Cat Model?  And if you are trying to compare in the Bear model, you can right click on the same green gem you set something as equipable by the optimizer and select a specific enchant for it, is that not working for what you are trying to do?",
+      "PostedDate": "2010-01-12T07:10:40.127-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The Optimizer is separate from the comparisons lists.\r\n- The Optimizer's purpose is to take in all your available gear, follow the requirements you set and make the biggest possible number it can for what you are optimizing for (DPS, Survivability, Mitigation, Healing, etc).\r\n- The Comparisons pane only shows one piece of gear against another of the same slot (or enchant, or buff or talent, etc)\r\n\r\nThat said, what it sounds like you are asking for is when looking at a slot of gear (using Shoulder as an example) you want to be able to have it list the items with iterations for different enchants, instead of all the same enchant, like it lists multiple possible gemmings. So if you have the Shoulders of Hate (fake item here) which has a blue socket and a red socket, you would normally see the top 3 gemmings (Agi|Agi, Agi/Stam/AGI, Agi/Exp or something) but all 3 of those gemmings will use the same Greater Inscription of the Axe (40 AP, 15 Crit). You would also like to see iterations for Greater Inscription of the Pinnacle (20 Dodge, 15 Def). This would effectively double the number of times this item is seen in the list for 3 gemmings and 2 enchants (total 6). Or (as we would probably set up) the top X number of possible combinations of these.\r\n\r\nDoes this sound close to what you where looking for?",
+      "PostedDate": "2010-01-12T09:39:14.747-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I understand what you are talking about, and it's quite possible in Rawr. Basically you need to have 2 savefiles, one for cat and one for bear, as opposed to switching the model in the dropdown. You will need to maintain both savefiles with exactly the same items, so whenever you get a new drop, mark the item you got in both files. Obviously the cat savefile has talents, buffs and gemming template for dps, while the bear savefile will have talents, buffs and gemming templates for tanking.\r\n\r\nNow the important bit for the bear savefile. When marking \"cat\" items you have, don't just click to mark that item with green diamond (which means allow any gems/enchants). First equip the item, then choose 'equip custom gemming' and choose your cat gems. Now in the list of items on the right, mark the item using ctrl-click to get a blue diamond. Then right-click on the blue diamond and choose your cat-enchant - you will see a little red dot next to the blue diamond to indicate your custom enchant. This will fix that item as available only with that certain combination of gem+enchant. If you use the optimiser it won't tell you to put a stam gem in there, it will keep the cat gemming+enchant.\r\n\r\nFor example, say you have Frostbitten Fur Boots with 20 ArP gems and Icewalker in cat form. You load your bear save file, mark that item as I've explained above. Save the file. Now the next day you're doing Coli10hc and Acidmaw Boots drops. You load up your bear file, equip Acidmaw Boots (with stam gems) and choose greater fortitude enchant. In the list to the right, you can now see those in the list with proper bear gems/enchant, and if you scroll up a little, you'll see the blue diamond and red dot of the cat-gemmed-enchanted Frostbitten Fur Boots are still better than the Acidmaw. Now, if you want to use the optimiser to make totally sure, you just left-click the Acidmaw Boots so they are marked with green diamond (meaning allow any gem/enchant) and press optimise to see if there's a better combo of your items which could mean you should roll on the Acidmaw Boots after all.\r\n\r\nHope this helps.",
+      "PostedDate": "2010-01-13T18:56:17.27-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-18T20:21:12.86-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-20T06:35:13.927-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T13:57:08.76-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T14:51:16.377-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T15:30:33.647-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-11-21T01:03:54.173-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-11-22T19:56:47.293-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T18:49:40.763-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T19:23:08.487-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:30:36.473-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:26.737-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

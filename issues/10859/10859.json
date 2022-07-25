@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Hunter",
+      "DisplayName": "Rawr.Hunter"
+    },
+    "ClosedComment": "the priest module developers fixed this bug and it was released in 15.1",
+    "ClosedDate": "2008-08-04T07:13:42.75-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When I load in my BM hunter, name is Dakkon, on Icecrown. I receive this runtime crash and have to quit out, it looks like its carrying over the model selection from the previous character loaded. Maybe default a \"model reset\" whenever a new character is loaded to prevent a crash like this? :)\n \nSee the end of this message for details on invoking \njust-in-time (JIT) debugging instead of this dialog box.\n \n************** Exception Text **************\nSystem.NullReferenceException: Object reference not set to an instance of an object.\nat Rawr.Stats.op_Addition(Stats a, Stats b)\nat Rawr.HolyPriest.CalculationsHolyPriest.GetCharacterStats(Character character, Item additionalItem)\nat Rawr.HolyPriest.CalculationsHolyPriest.GetCharacterCalculations(Character character, Item additionalItem)\nat Rawr.CalculationsBase.GetCharacterCalculations(Character character)\nat Rawr.Calculations.GetCharacterCalculations(Character character)\nat Rawr.FormMain._character_ItemsChanged(Object sender, EventArgs e)\nat System.EventHandler.Invoke(Object sender, EventArgs e)\nat Rawr.Character.OnItemsChanged()\nat Rawr.FormMain.set_Character(Character value)\nat Rawr.FormMain.LoadCharacterIntoForm(Character character, Boolean unsavedChanges)\nat Rawr.FormMain.LoadCharacterIntoForm(Character character)\nat Rawr.FormMain.bw_ArmoryGetCharacterComplete(Object sender, RunWorkerCompletedEventArgs e)\nat System.ComponentModel.BackgroundWorker.OnRunWorkerCompleted(RunWorkerCompletedEventArgs e)\nat System.ComponentModel.BackgroundWorker.AsyncOperationCompleted(Object arg)",
+    "LastUpdatedDate": "2013-05-16T05:27:05.913-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-08-01T02:33:05.79-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Hunter] Crash on Load - Null Reference from HolyPriest module",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 10859
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "The problem lies with the priest module and will be fixed in the next maintenance release.  There has been discussions about changing the active model based on the loaded character last used model; however, those discussions are still ongoing at the present time.",
+      "PostedDate": "2008-08-01T07:42:34.69-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-08-01T07:42:35.097-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Excellent, thanks for the heads up. :)",
+      "PostedDate": "2008-08-01T12:30:56.72-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-08-04T07:13:42.75-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T15:14:04.163-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:57:46.357-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:38.15-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:27:05.913-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

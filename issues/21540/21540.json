@@ -1,0 +1,86 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtPaladin",
+      "DisplayName": "Rawr.ProtPaladin"
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Rawr says I have 3596.569 mastery, but in game says I have 3330 mastery.\n \nin game says: 64.79% block\nRawr says: 68.13% block\n \nI have the boss set to level 85 in the Rawr options and trinkets set to ignore",
+    "LastUpdatedDate": "2013-02-21T18:24:18.173-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-09-20T21:13:48.357-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtPaladin] Amount of Mastery is wrong",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 21540
+  },
+  "FileAttachments": [
+    {
+      "FileId": 5336,
+      "FileName": "mastery.xml",
+      "DownloadUrl": ".\\5336"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Just opened the same file in Rawr 4.2.1 and got 66.98% block.  It's closer but still wrong, even though it reports the same mastery amount as 4.2.4.  Someone must have fiddled with the block calculation somewhere between those two versions, but I see no mention of it anywhere in the commits.",
+      "PostedDate": "2011-09-20T21:44:44.273-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "http://i.imgur.com/BQDD9.jpg",
+      "PostedDate": "2011-09-20T22:02:10.283-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "tracked down the issue... the symbiotic worm proc is being included as mastery, any way to disable procs when optimizing?  Like disabling on-use?",
+      "PostedDate": "2011-09-20T22:42:33.207-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "ok so i fixed it by changing the trinket effect to an on use effect.  I was wondering in the future if there would be a way when forcing requirements on the optimize to force the constraint before procs.  This is what im trying to do:\r\n\r\n1. Set requirement for advoidance + block to be >= 100 in optimizer at level 88\r\n2. Set optimize to survivability\r\n3. optimize\r\n\r\nThis way it will optimize my character to be unhittable + have the maximum amount of health possible while being unhittable.  The problem occurs when procs interfere with my unhittable and make it \"unhittable on average\".  if i delete the procs on the trinkets though, I wont get the best trinkets available for that setup, it only looks at the static stat.  I always optimize with no windwalker so that the proc is not included in my optimize",
+      "PostedDate": "2011-09-20T22:58:58.847-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This would likely be done by the next prot paladin dev, as the position is open.",
+      "PostedDate": "2011-09-21T06:26:48.363-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-10-01T17:19:17.1-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Someone fiddled with something else as well. Mastery is still being valued above avoidance past unhittable in every version since 4.1. You cannot block a swing which never even hit you :)",
+      "PostedDate": "2011-11-13T17:35:02.88-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:24:18.173-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

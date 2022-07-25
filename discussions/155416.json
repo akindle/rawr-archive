@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "362943",
+    "ThreadId": "155416",
+    "Html": "<p>I was wondering why Rawr doesn't have Chain Lightning in the rotation for Elemental Shaman. It's not a big deal but the amount of dps I or any ele shaman can out produce what rawr says.</p>",
+    "PostedDate": "2010-02-22T17:22:04.63-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "363638",
+    "ThreadId": "155416",
+    "Html": "<p>I could be wrong, but I believe that chain lightning is mostly potentially useful as a filler spell in the case that lava burst is almost off of cooldown and a chain lightning fits the available time better than a lightning bolt. I recently read some analysis (sorry - I don't recall where) that came to the conclusion that the advantage to doing this wasn't as great as you might think (i.e. rather small). One could therefore argue that the risk (i.e. the possibility of hurting your DPS and wasting mana) outweigh the benefit.</p>\r\n<p>&nbsp;</p>\r\n<p>Another answer to your question is that the Elemental module doesn't seem to be undergoing as much development as some of the other Rawr modules. For example, it looks like both our 2 piece and 4 piece bonuses are not modeled properly. I've had to do a lot of &quot;fudging&quot; with my gear (i.e. telling Rawr that I don't have a number of other gear items that I do) in order to get it to suggest that I wear my 4xT10. &nbsp;I'm sure that this will eventually get resolved, but it is something to keep your eyes open for in the meantime.</p>\r\n<p>&nbsp;</p>\r\n<p>Are you finding your personal DPS numbers higher than the simulation numbers listed in the tab? If so, are you sure that you have included all relevant raid buffs and that your DPS numbers are not including heroism and fire totem (i.e. magma and elemental) damage? I've found the &quot;simulation&quot; numbers in the stats panel to be very ambitious numbers (i.e. for an idealized fight)&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-02-24T04:38:23.69-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "363648",
+    "ThreadId": "155416",
+    "Html": "<p>I've looked around and I keep getting rotations with Chain Lightning (i.e. Flame Shock &gt; Lava Burst &gt; Chain Lightning &gt; Lightning Bolt). Now if you look at the cooldown Lava Burst is 8 second, Chain Lightning is 6 second and Lightning Bolt would end up being the filler until Lave Burst and Chain Lightning come of cooldown. That's what I be seeing on forum and in game from other elemental shamans. I never have a mana problem my MPS is 499 (590 with Mana Spring) and I never run out of mana.</p>\r\n<p>&nbsp;</p>\r\n<p>I do notice my DPS drops if I don't use CL which is why I asked my question and yes I did find my DPS being higher then what Rawr tells me and ya I had all the buff that I normally would have in raid minus Bloodlust and the only fire totem I use is Totem of Wrath but I do use Fire Nova if there is 3 or more mobs. I am curious where you read that info, If you happen to remember where you read it, please link it would love to give it a read.</p>",
+    "PostedDate": "2010-02-24T05:23:51.21-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "363678",
+    "ThreadId": "155416",
+    "Html": "<p>Sorry, but all my time is currently being soaked up by company work. You have to make a living somehow, don't you?</p>\r\n<p>A rotation where Chain Lightning is not used on CD is easily added. Another reason why you pull of more DPS than Rawr tells you is probably that it is not up to date.</p>\r\n<p>I am really busy since the beginning of the year and neither the Elemental Mastery change nor the Shamanism change made it into the module, yet.</p>\r\n<p>*edit: I forgot that T10 bonuses are missing, too.</p>",
+    "PostedDate": "2010-02-24T06:28:55.293-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "363785",
+    "ThreadId": "155416",
+    "Html": "<p>For elemental rotations, I think I recall seeing on EJ that it is Flame Shock &gt; Lava Burst &gt; Chain Lightning &gt; Lightning Bolt. I personally use Chain Lightning as a filler if the cooldown on Lava Burst is about up but I don't have enough time to get another Lightning Bolt off without pushing the cast of Lava Burst back.</p>\r\n<p>The elemental shaman page on EJ for those that don't know or aren't aware its back is: http://elitistjerks.com/f47/t82625-shaman_elemental/</p>\r\n<p>For the T10 set bonuses and the Shamanism change, it looks like there have been a couple patches submitted by people to hopefully get them in soon. Not sure I've seen anything dealing with Elemental Mastery however. I suppose if someone were to code it, it might be a check box like the &quot;Use Thunderstorm whenever available&quot; box that averages the amount of haste that would be gained by using it on every cooldown over the length of the fight given by the &quot;Fight duration&quot; slider.</p>",
+    "PostedDate": "2010-02-24T10:14:12.997-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "374187",
+    "ThreadId": "155416",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Nekler wrote:</strong><br>\r\n<p>For the T10 set bonuses and the Shamanism change, it looks like there have been a couple patches submitted by people to hopefully get them in soon. Not sure I've seen anything dealing with Elemental Mastery however. I suppose if someone were to code it, it might be a check box like the &quot;Use Thunderstorm whenever available&quot; box that averages the amount of haste that would be gained by using it on every cooldown over the length of the fight given by the &quot;Fight duration&quot; slider.</p>\r\n</blockquote>\r\n<p>I could be mistaken, but I believe that this is exactly how EM is currently modeled. I.e. instead of as a lot of haste for a brief period of time and then a CD, it is modeled as an average amount of haste over the length of the fight. My assumption is that our 4 piece bonus will be somewhat difficult to model in rawr given that it is currently treated as an average +haste value and not as an &quot;event&quot; that procs whenever off CD.</p>\r\n<p>&nbsp;</p>\r\n<p>I have some concerns about this approach that may not be well founded. My main spec is a Boomkin and for us there is a haste (and soon crit) soft cap that needs to be taken into consideration. I believe that the equivalent for elemental would be when the cast time of LB gets around one second. I'm concerned that if you started to get enough +haste on your gear that extra bursts of +haste (i.e. from EM, black magic, etc) could push you into this zone which should make them less valuable. It is quite possible that this isn't an issue and can be mathematically proven, but I don't know how to do the math :)</p>\r\n<p>Rawr is actually recommending that I take Black Magic. I took a look at some of the theory analysis done:</p>\r\n<p><a href=\"http://wowhats.wordpress.com/2009/12/21/black-magic-stay-away-from-da-voodoo/\">http://wowhats.wordpress.com/2009/12/21/black-magic-stay-away-from-da-voodoo/</a></p>\r\n<p>and it looks like Black Magic is not a good choice for both some of the reasons that I suggested above (that presumably Rawr would model) and due to movement (which Rawr does not.)</p>\r\n<p>BTW, I have no idea if this even makes sense, but I wonder if the authors could leverage some of the code built for items and treat EM as a +15% haste proc w/ a 3 min cooldown, 15 sec duration, &nbsp;and a 100% chance to proc on any spell cast?</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-02-24T13:01:45.233-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "377148",
+    "ThreadId": "155416",
+    "Html": "<p>I don't know as EM is currently modeled. I mean, I see it mentioned in the Module Notes tab in the Options tab but when taking a peak at the code it looks like it has been commented out. I could be wrong however since I'm not familiar at all with the coding in the module.</p>\r\n<p>&nbsp;</p>\r\n<p>I'm not a huge math buff when it comes to calculations (hence, why I use Rawr), so not sure how close people can come to getting LB to the 1 second cap without specifically gearing and gemming for haste. So far, with the gear I currently have, I know my LBs are in the 1.4 second range, and hit 1.2 seconds while Bloodlust/Heroism is up.</p>",
+    "PostedDate": "2010-02-24T16:14:15.843-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "403496",
+    "ThreadId": "155416",
+    "Html": "<p>EM is currently commented out.</p>\r\n<p>The &quot;proper&quot; way to overcome the haste cap evaluation is by calculating different rotations for all the different haste procs/use effects and weigh these accordingly. However that calculation it is quite expensive and while I have not been actively developing the Elemental module the last two months I always hit this spot when I began thinking about it without getting to a perfect solution.</p>\r\n<p>Then there is the need to calculate whether stacking these haste CDs or using them one after another is more beneficial. Basically one would try to stack haste CDs if they don't make your LB cast time become less than 1s.</p>\r\n<p>As there are a quite lot of effects that grant a short but massive boost to casting speed (Black Magic, Berserking, Bloodlust, Hyperspeed gloves, Elemental mastery (varying CD), one or two Trinkets) one would have to calculate the proc overlapping and deduct the optimal onuse-effect times.</p>\r\n<p>All in all a shitload of work which is probably computationally too expensive.</p>\r\n<p>If someone has a good idea on how to do such computations in a quick way, I am eager to hear about it.</p>",
+    "PostedDate": "2010-02-25T09:47:23.383-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "409788",
+    "ThreadId": "155416",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Lord_Helmchen wrote:</strong><br>\r\n<p>Then there is the need to calculate whether stacking these haste CDs or using them one after another is more beneficial. Basically one would try to stack haste CDs if they don't make your LB cast time become less than 1s.</p>\r\n<p>As there are a quite lot of effects that grant a short but massive boost to casting speed (Black Magic, Berserking, Bloodlust, Hyperspeed gloves, Elemental mastery (varying CD), one or two Trinkets) one would have to calculate the proc overlapping and deduct the optimal onuse-effect times.</p>\r\n</blockquote>\r\n<p>I thought that if you have haste proc A and haste proc B and if the two of them applied concurrently are not enough to push you under the 1s mark that unless you are in full simulation mode (i.e. other +SP procs) there is no mathematic difference from applying A+B concurrently.&nbsp;</p>\r\n<p>If it is the case that if A+B proc concurrently that it is enough to push under the 1s mark, would it be possible to calculate what the likelihood of this is and then decrease the value of both procs by a bit to compensate. &nbsp;For example, if you assume that EM will be recast as soon as it is off CD and that Black Magic would therefore have a say 10% chance to randomly proc while during EM and that if this happened that because of the clip, you'd only be realizing 50% of the value of the Black Magic buff, perhaps you could then reduce the DPS value of Black Magic.</p>\r\n<p>I've done &quot;diddly squat&quot; in modeling so I apologize if the above is nonsense.</p>",
+    "PostedDate": "2010-02-26T10:40:17.043-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

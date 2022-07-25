@@ -1,0 +1,76 @@
+Index: Rawr.DPSDK/CalculationsDPSDK.cs
+===================================================================
+--- Rawr.DPSDK/CalculationsDPSDK.cs	(revision 446)
++++ Rawr.DPSDK/CalculationsDPSDK.cs	(working copy)
+@@ -1524,6 +1518,30 @@
+             return base.IsItemRelevant(item);
+         }
+ 
++        private string[] _optimizableCalculationLabels = null;
++        public override string[] OptimizableCalculationLabels
++        {
++            get
++            {
++                if (_optimizableCalculationLabels == null)
++                    _optimizableCalculationLabels = new string[] {
++					"Health",
++                    "Nature Resistance",
++                    "Fire Resistance",
++                    "Frost Resistance",
++                    "Shadow Resistance",
++                    "Arcane Resistance",
++                    "Crit Rating",
++                    "Expertise Rating",
++                    "Hit Rating",
++                    "Haste Rating",
++                    "Target Miss %",
++                    "Target Dodge %"
++					};
++                return _optimizableCalculationLabels;
++            }
++        }
++
+         public override Stats GetRelevantStats(Stats stats)
+         {
+             Stats s = new Stats()
+Index: Rawr.DPSDK/CharacterCalculationsDPSDK.cs
+===================================================================
+--- Rawr.DPSDK/CharacterCalculationsDPSDK.cs	(revision 446)
++++ Rawr.DPSDK/CharacterCalculationsDPSDK.cs	(working copy)
+@@ -380,5 +380,36 @@
+ 
+             return dictValues;
+         }
++        public override float GetOptimizableCalculationValue(string calculation)
++        {
++            switch (calculation)
++            {
++                case "Health":
++                    return BasicStats.Health;
++                case "Nature Resistance":
++                    return BasicStats.NatureResistance;
++                case "Fire Resistance":
++                    return BasicStats.FireResistance;
++                case "Frost Resistance":
++                    return BasicStats.FrostResistance;
++                case "Shadow Resistance":
++                    return BasicStats.ShadowResistance;
++                case "Arcane Resistance":
++                    return BasicStats.ArcaneResistance;
++                case "Crit Rating":
++                    return BasicStats.CritRating;
++                case "Expertise Rating":
++                    return BasicStats.ExpertiseRating;
++                case "Hit Rating":
++                    return BasicStats.HitRating;
++                case "Haste Rating":
++                    return BasicStats.HasteRating;
++                case "Target Miss %":
++                    return MissedAttacks;
++                case "Target Dodge %":
++                    return DodgedAttacks;
++            }
++            return 0;
++        }
+     }
+ }

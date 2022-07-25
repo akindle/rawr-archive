@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtPaladin",
+      "DisplayName": "Rawr.ProtPaladin"
+    },
+    "ClosedComment": "1 Stamina off rounding errors are allowed as part of the model.",
+    "ClosedDate": "2011-02-21T14:35:52.6-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Somewhere there's a bug in how Stamina rounds causing Rawr to be 1 stam higher than it should (for some values of Stamina only).  This can be verified by loading a blank prot pally, set the professions to mining and enchanting, equipping Ring of the Battle Anthem and assigning the +60 Stam enchant.  This should result in a Stamina of 714 as it does in game, but it reports 715.\n \n156\tbase\n120\tmining\n286\tring\n60\tenchant\n \nI think the game applies a separate 15% buff to each bonus and rounds down so the values become 179 + 138 + 328 + 69 = 714.  If they are summed then rounded you get 715.3 so I suspect the error happens somewhere in there.  Looking through the code it seems like every value gets rounded down (floored?) separately but I can't really follow it.\n \nEdit:\nFurther tested to remove the enchantment value from the equation.  I equipped a 4 Stam item and have a 321 in game Stam.   That's 156 base = 179.4, 120 mining = 138, 4 ring= 4.6, yielding 322 versus 179 + 138 + 4 = 321 \n \nEither the gear or the base Stamina are not being floored correctly.",
+    "LastUpdatedDate": "2013-05-16T05:18:37.41-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-02-21T12:40:51.837-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtPaladin] Stamina rounding",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 20048
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

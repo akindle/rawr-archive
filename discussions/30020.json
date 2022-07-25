@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "100009",
+    "ThreadId": "30020",
+    "Html": "Hello all, I am trying to get Rawr to run on ubuntu 8.04 using mono and have managed to get the splash screen to load but then it hangs and the terminal window has the following.<br>\r\n<br>\r\n** (Rawr.exe:15337): WARNING **: Missing method .ctor in assembly /home/user/Desktop/Rawr b14.1/Rawr.exe, type System.Windows.Forms.DrawToolTipEventHandler<br>\r\n<br>\r\nUnhandled Exception: System.MissingMethodException: Method not found: 'System.Windows.Forms.DrawToolTipEventHandler..ctor'.<br>\r\n&nbsp; at &lt;0x00000&gt; &lt;unknown method&gt;<br>\r\n&nbsp; at (wrapper remoting-invoke-with-check) Rawr.ItemToolTip:.ctor ()<br>\r\n&nbsp; at Rawr.ItemToolTip.get_Instance () [0x00000]<br>\r\n&nbsp; at Rawr.ItemButton..ctor () [0x00000]<br>\r\n&nbsp; at (wrapper remoting-invoke-with-check) Rawr.ItemButton:.ctor ()<br>\r\n&nbsp; at Rawr.FormMain.InitializeComponent () [0x00000]<br>\r\n&nbsp; at Rawr.FormMain..ctor () [0x00000]<br>\r\n&nbsp; at (wrapper remoting-invoke-with-check) Rawr.FormMain:.ctor ()<br>\r\n&nbsp; at Rawr.Program.Main () [0x00000]<br>\r\n<br>\r\n<br>\r\nI have been unable to find anything on google and I have no idea about coding in .net so I have no idea how to begin debuging it.<br>\r\n<br>\r\nHoping someone on here has had this and knows a fix.<br>\r\n",
+    "PostedDate": "2008-06-20T09:46:52.52-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "100389",
+    "ThreadId": "30020",
+    "Html": "It is just a guess, but since it is complaining about a standard windows library method, it may not be supported with your configuration just yet.<br>\r\n",
+    "PostedDate": "2008-06-23T08:36:45.89-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "100428",
+    "ThreadId": "30020",
+    "Html": "Ubuntu 8.04 comes with a very old version of mono. Are you using the default installation or did you manually upgrade to the&nbsp;latest version?&nbsp; If so, which version are you currently using?&nbsp; There are some other threads in this discussion and the issue tracker with other issues with running mono on macs.&nbsp; Most of these issues will affect you as well (given the latest version in those) and most of them are a result of mono not being a complete implementation yet.&nbsp;\r\n",
+    "PostedDate": "2008-06-23T12:26:27.537-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

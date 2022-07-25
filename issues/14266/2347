@@ -1,0 +1,44 @@
+Index: Rawr.Base/Stats.cs
+===================================================================
+--- Rawr.Base/Stats.cs	(revision 37503)
++++ Rawr.Base/Stats.cs	(working copy)
+@@ -29,6 +29,7 @@
+         BlockValue,
+         Bloodlust,
+         BloodlustProc,
++        BonusBlockValueMultiplier,
+         BonusCommandingShoutHP,
+         BonusLacerateDamageMultiplier,
+         BonusMangleBearDamage,
+@@ -397,7 +398,6 @@
+         BaseArmorMultiplier,
+         BonusArmorMultiplier,
+         BonusBleedDamageMultiplier,
+-        BonusBlockValueMultiplier,
+         BonusAttackPowerMultiplier,
+         BonusCritMultiplier,
+         BonusFireDamageMultiplier,
+@@ -3718,8 +3718,8 @@
+         [DisplayName("% Block Value")]
+         public float BonusBlockValueMultiplier
+         {
+-            get { return _rawMultiplicativeData[(int)MultiplicativeStat.BonusBlockValueMultiplier]; }
+-            set { _rawMultiplicativeData[(int)MultiplicativeStat.BonusBlockValueMultiplier] = value; }
++            get { return _rawAdditiveData[(int)AdditiveStat.BonusBlockValueMultiplier]; }
++            set { _rawAdditiveData[(int)AdditiveStat.BonusBlockValueMultiplier] = value; }
+         }
+ 
+         [System.ComponentModel.DefaultValueAttribute(0f)]
+Index: Rawr.ProtWarr/CalculationsProtWarr.cs
+===================================================================
+--- Rawr.ProtWarr/CalculationsProtWarr.cs	(revision 37503)
++++ Rawr.ProtWarr/CalculationsProtWarr.cs	(working copy)
+@@ -523,7 +527,7 @@
+             statsTotal.Armor += (float)Math.Ceiling(statsTotal.BonusArmor * (1.0f + statsTotal.BonusArmorMultiplier));
+ 
+             statsTotal.BlockValue += (float)Math.Floor(StatConversion.GetBlockValueFromStrength(statsTotal.Strength, CharacterClass.Warrior) - 10.0f);
+-            statsTotal.BlockValue = (float)Math.Floor(statsTotal.BlockValue * (1 + statsTotal.BonusBlockValueMultiplier));
++            statsTotal.BlockValue = (float)Math.Round(statsTotal.BlockValue * (1 + statsTotal.BonusBlockValueMultiplier));
+ 
+             statsTotal.NatureResistance += statsTotal.NatureResistanceBuff + statsTotal.AllResist;
+             statsTotal.FireResistance += statsTotal.FireResistanceBuff + statsTotal.AllResist;

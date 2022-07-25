@@ -1,0 +1,96 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Mage",
+      "DisplayName": "Rawr.Mage"
+    },
+    "ClosedComment": "Found the problem, fixed for next release.",
+    "ClosedDate": "2010-02-05T19:40:50.427-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The proc from Nibelung gives 0 dps in the mage model (I didn't tried others). The proc is being hotfixed to 2% too, so you could fix both issues.",
+    "LastUpdatedDate": "2017-11-27T11:01:58.263-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-02-04T23:42:37.027-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Mage] Nibelung",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16244
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2908,
+      "FileName": "Gatecaster.xml",
+      "DownloadUrl": ".\\2908"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I have it modeled as it came in 2.3.8 and it works fine. It is modeled as proccing on DamageSpellCast. Duration is set to 0, Cooldown set to 0, Chance set to 1%, Stacks set to 1. Its DPS is shown as being 1519.56 (for this particular character). When I change it to 2%, its DPS goes to 1701.01, so clearly the proc is being accounted for. When I set the proc chance to 0%, the DPS drops down to 1338.10.\r\n\r\nWhen I \"Refresh Item Data from Wowhead,\" the proc is corrected back to 1%, and the DPS of the item returns to 1519.56. Changing it to 2%, after refreshing it, doesn't break it -- Nibelung again shows at 1701.1 DPS.\r\n\r\nI've tried reloading my character from the armory as well, but it works fine. Starting a brand new character, Nibelung shows to be 153.06 DPS at 1% proc rate. Increasing it to 2% increases DPS of the staff to 166.03.\r\n\r\nAre you absolutely sure you're running 2.3.8? There could be some weird interaction with other buffs as well. For instance, in an earlier version, the 2-piece T10 set bonus was not being accounted for when 'Maintain Scorch' was enabled. It's possible that the same thing is happening for you with the Nibelung proc.",
+      "PostedDate": "2010-02-05T01:25:54.943-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Here is an XML of my mage with the issue.  Adding the proc or changing the percentage does not increase the dps contribution of the weapon.",
+      "PostedDate": "2010-02-05T18:17:26.67-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-05T18:17:30.393-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I can't reproduce this even with the supplied character (the 0 dps part).",
+      "PostedDate": "2010-02-05T19:10:23.857-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-05T19:40:50.427-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:16:44.847-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-21T00:00:19.307-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:30:03.83-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:58.513-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:01:58.263-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

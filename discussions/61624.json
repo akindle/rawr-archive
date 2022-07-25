@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "209064",
+    "ThreadId": "61624",
+    "Html": "<p>I have been playing with the module, trying to get RAWR's unbuffed AP and STR to agree with the ingame AP and STR and after seeing my AP off by about 300, I've found out some interesting things:</p>\r\n<p>1. Base stats for naked characters seem to be off:</p>\r\n<p>Naked Orc DK with no buffs and 20/51/0 (no str increasing talents - bladed armor only one increasing AP) in 3.1 live server has:<br>178 Str<br>109 Agi<br>218 Armor<br>585 Attack Power<br>9561 Health</p>\r\n<p>DPSDK reports for naked Orc DK with no buffs and no talents:<br>178 Str<br>109 Agi<br>358 Armor<br>692 Attack Power<br>12137 Health</p>\r\n<p>2. Based on above data - 692 Attack Power for naked orc becomes 702 after speccing into bladed armor. Live with bladed armor has it at 585 AP</p>\r\n<p>3. It seems Unbreakable Armor just adds some strength to the base strength and displaying it there. I am not sure it is good idea, since it complicates comparison of raw stats in the simulator vs live.</p>\r\n<p>4. Health is fubar'ed. Looks like maybe DK's got a stealth nerf to base stats somewhere somehow in one of the patches.....</p>",
+    "PostedDate": "2009-07-06T11:31:25.357-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "209122",
+    "ThreadId": "61624",
+    "Html": "<p>I've paid no attention to dealing with health in quite some time, as it's a rather unimportant stat for DPSDKs.</p>\r\n<p>Yes, UA is adding a flat % strength modifier, as is rune of the fallen crusader, trinket procs, and so forth, due to the nature of how rawr averages procs and on-use abilities.</p>\r\n<p>Armor does seem to be doing something fishy. I'll take a look at that. Luckily, +/- 10 AP isn't too drastic of a change.</p>",
+    "PostedDate": "2009-07-06T13:13:31.293-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "209230",
+    "ThreadId": "61624",
+    "Html": "<p>Just echoing that any Special Effects (trinket procs, racial abilities, short-cooldown abilities) are added to base stats in just about every DPS module (for tanks, cooldown usage is a situational effect, and not one that you use every time it's available).</p>\r\n<p>It is indeed annoying to have these rolled in to one. &nbsp;It may be worthwhile to having a &quot;nobuff/passive&quot; stat displayed, in addition to the stats that are actually used for the calculations. &nbsp;This would make checking values better.</p>\r\n<p>Bloodysorc, are you using the racial stats that's in Base, or are you using your own homebrewed? &nbsp;I know for a while DPSWarr was using a homebrewed version which was causing some discrepancies. &nbsp;Also, while health is an unimportant stat for DPSDKs, having that number off could mean that other numbers are off (ie: if you have a talent that increases Stamina 10%, and the naked stamina value is off, then it's possible that your talent that increases Str or AP by a set number is off as well).</p>",
+    "PostedDate": "2009-07-06T18:11:57.993-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "209243",
+    "ThreadId": "61624",
+    "Html": "<p>It's most probably baked in; I honestly have never checked it. I'll take a look and update it to the racial stats provided.</p>",
+    "PostedDate": "2009-07-06T18:44:26.223-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "210149",
+    "ThreadId": "61624",
+    "Html": "<p>Thank you for such detailed and informative responses.</p>\r\n<p>At first based from the replies, I thought that perhaps Blood Fury racial might be rolled in the AP stat, much like Unbreakable armor is when talented; however, that can be ruled out, since changing race in the simulator from Orc to Tauren, Increases AP from orc's 692 to Tauren's 696. Lacking a Tauren deathknight at lvl 80, I cannot verify the number, but I doubt Stomp ability can be thought as a dps increasing cooldown the way blood fury is.</p>\r\n<p>Ebs2002 suggestion about making the unbuffed/no cooldown used stats visibile would go to great lengths in trying to optimize the gear, since as is - when talented - RAWR's basic stat's screen is rather useless for comparison to what character screen displays. Perhaps displaying buffed AP/STR is correct, since user can turn buffs on and off in the Buffs tab, and it is intuitive for these to be reflected on the Stats screen; however, the AP/STR increases from talents and racial cooldowns could be shown in brackets.</p>\r\n<p>So for example:&nbsp; AP could be expressed as - Attack Power:&nbsp;&nbsp;&nbsp;&nbsp; 5400 (+1300)</p>\r\n<p>Where 5400 would be a legitimate AP that a character could see on his character screen provided he has all the buffs he specified in buff section, and +1300 is the effect of the timed abilities like unbreakable armor or blood fury. (It seems as is - AP increase from Orc racial blood fury is not displayed on AP screen at all... but it is taken into dps considerations)</p>\r\n<p>I guess one could chalk this up under feature requasts though :)</p>\r\n<p>Also, I would like to ask about Rotation Details window. The 3 proposed rotations for blood/frost/unholy all default to blood presence, yet unholy presence seems to have clear advantage in the dps. Closing the window also not always correctly updates the dps of the toon, so selecting unholy rotation, then selecting unholy presence, then closing the window shows little change, but any subsequent talent tree modification (and the dps recalculation there), changes the dps dramatically. Not sure if it is just my gear or not, but in case this is not easily reproducibile, I can provide the XML of my character with clear instuctions on how to reproduce that particular bug. Also reopening the rotation details defaults the presence back to blood.</p>\r\n<p>Another topic: Improved Unholy Presence. With the last patch, improved unholy presence also reduces the rune cooldowns by 10% while in unholy presence. The talent currently is valued as 0 dps added by the calculator, and unholy presence rotation does not use it when specced into it. One can simulate the effect of the talent by specifying custom rotation, copying everything unholy rotation had, specifying unholy presence, but instead of rotation length being 20 sec, new rotation length should be 18 seconds. The dps increase is quite substantial.</p>\r\n<p>Thank you for your time.</p>",
+    "PostedDate": "2009-07-08T13:33:12.51-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "210842",
+    "ThreadId": "61624",
+    "Html": "<p>Expertise still doesn't appear to take elixir and food buffs into account, at least not on my Human DK (I haven't tested others). Enabling either of those buffs has no effect on the Expertise value displayed in the Stats pane, nor does it change any of the gear evaluations.</p>\r\n<p>One other small thing, and this may be purely cosmetic, but the Relative Stat Values look completely wrong. Maybe the item comparison algorithms don't use these values, but it's a bit odd to pull those up and find Haste at the bottom of the list as an Unholy DPSDK. Maybe this feature of Rawr isn't what I think it is?</p>\r\n<p>Thanks for your work, all those involved.</p>",
+    "PostedDate": "2009-07-10T07:30:32.257-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "211017",
+    "ThreadId": "61624",
+    "Html": "<p>Ignore relative stat values for the most part, the stat graph is more useful in general. Also, these features may not be accounting for the 25% boost to haste we got back whenever that happened.</p>",
+    "PostedDate": "2009-07-10T18:59:00.957-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

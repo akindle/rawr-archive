@@ -1,0 +1,100 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Moonkin",
+      "DisplayName": "Rawr.Moonkin"
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-08T06:50:53.13-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When the optimizer finishes, it displays something like this...\n \n\"...found a set of gear with a (some number) rating, current gear has a (some different number) rating.  Do you wish to equip the selected gear?\"\n \nWhere are these numbers found, I dont believe they are located anywhere, must be all internal.  Can this be displayed?  Even though the optimizer did find a better set of gear for me, it was still non-optimal IMO as I could change gear and have my DPS values continue to increase for any given spell rotation, but I could not see if that rating number was truly increasing.  Theoretically, could I be increasing my DPS but decreasing my longevity and therefore actually decreasing my rating number, or is it just that the optimizer did not find \"the best\" but simply something improved?",
+    "LastUpdatedDate": "2017-11-27T11:00:08.61-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-05-09T08:26:17.997-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Moonkin] optimizer, alpha builds",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 10160
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "oh another thing I saw... Relentless  Earthstorm no longer effects spell crits as of patch 2.2, unless they reverted that change?  It is my understanding that patch 2.2 removed spell crits from its effect and 2.3 added the new Chaotic Skyfire metagem to replace the effect?  Either way no one in their right mind would select that gem, but it does show as being the second best gem for me in my list.  Mostly I could see it hurting ret pallies maybe?  since they melee and spell cast?",
+      "PostedDate": "2008-05-09T08:38:30.84-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The way the Moonkin model works is a bit different from other caster models.  The official \"rating number\" is calculated as follows: All common spell rotations are calculated for damage and mana used.  These numbers are used to calculate a raw DPS (red numbers) and time to OOM.  The red DPS is then fed into a formula that calculates your DPS for an entire fight, including if you run OOM partway through (blue numbers).  Both of these numbers are added together to come up with the total rating.  The Spell Info category shows a \"Selected Rotation\"; that is the one calculated to have the highest blue number.  The \"Max DPS Rotation\" is the one calculated to have the highest red number (that is, raw damage without concern for mana usage).  The two numbers used in the overall rating calculation are displayed in that Spell Info section, under the appropriately titled spell rotations.",
+      "PostedDate": "2008-05-09T08:44:44.36-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Oh, and unless the parsing for Relentless Earthstorm has changed, I don't think there's anything I can do about it.  I'll take a look at it and see if I can slip in a fix.",
+      "PostedDate": "2008-05-09T08:45:27.72-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "So you are saying that the optimizer returns a rating number which is equal to the sum of the \"Selected Rotation\" and the \"Max DPS Rotation\" DPS numbers, example....\r\n\r\nO5SR Per Second:\t\t100.30\r\nI5SR Per Second:\t\t51.23\r\nSelected Rotation:\t\tIS/MF/SFx3\r\nMax DPS Rotation:\t\tIS/MF/SFx3\r\nMF/SFx4 RDPS:\t\t1562.91\r\nMF/SFx4 DPS:\t\t1562.91\r\nMF/SFx4 DPM:\t\t11.06\r\nMF/SFx4 OOM:\t\tNot during fight\r\n\r\nSo 1562.91 + 1562.91 = 3125.82 (this is the number optimizer will return?)\r\n\r\nMF/Wx8 RDPS:\t\t1364.88\r\nMF/Wx8 DPS:\t\t1364.88\r\nMF/Wx8 DPM:\t\t8.70\r\nMF/Wx8 OOM:\t\tNot during fight\r\n\r\n1364.88 + 1364.88 = 2729.76 (this number is less so the rotation is ignored?)\r\n\r\n\r\nAnd also between you and miststorm, are you 2 comfortable with the haste calculations now?  If they are now accurate equations, the optimizer is basically getting max hit thru gear (makes sense) and the stacking +10 haste gems in every slot.  Total disregard for crit or damage and ignoring any socket bonuses.  It would seem that haste is retardedly overpowered for a moonkin now.  Not denying it, just making sure its right before I go out and spend tons of gold getting the bracers made (we are still saving for shadow gear so I must supply my own hearts) and getting everything regemmed.",
+      "PostedDate": "2008-05-09T10:58:37.27-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It returns the sum of the Selected Rotation's DPS and the Max DPS Rotation's RDPS.  So for the examples you gave, yes, you are correct.  As for haste, I personally feel comfortable with it.  Depending on the amount of +spell damage you get from your gear and enchants, it is entirely possible that stacking +haste is what you should be doing.  Adoriele over at EJ has done some fine math showing where the breakpoint is between haste and spell damage.  As far as I know, crit has always been \"secondary\" as a stat and shouldn't really be gemmed for, so the choice would fall between damage and haste.  At high levels of gear, haste will win until you start picking up some passive haste gear of your own.",
+      "PostedDate": "2008-05-09T11:52:06.36-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The gem display is quite nice to give you the relative value of the different stats.\r\n\r\nThe haste calculations as they are now are slightly sticky because getting a bit more haste might reduce your dps, as currently DD spells are repeated until the DoTs fall of, and a bit more haste might cause the rotation to use one more DD spell and so reduce dps because Moonfire is the best DPSC spell we have. But this is similar to reality where you are better of in such a situation to wait a fraction of a second and restart with Moonfire instead of fitting in another Starfire. Playing around with your latency will unstick it if you so desire.\r\n\r\nAlso as far as gems are concerned, the optimal gem choices will have two blue gems (for CED requirement), and then a combination of haste and spell damage from my experience. Typically the difference between haste and spell damage is small enough that yellow / red will be gemmed to gain socket bonuses as long as it does not require more than the minimum number of blue gems.\r\n",
+      "PostedDate": "2008-05-11T00:40:52.197-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-08T06:50:53.13-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:06:13.723-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:03:27.03-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:55.51-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:27:19.817-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:00:08.61-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

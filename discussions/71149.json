@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "242644",
+    "ThreadId": "71149",
+    "Html": "<p>Just had a couple ideas pop up about filters/item listings that I wanted to mention incase one of the programmers got bored and wanted to look into them.</p>\r\n<p>1) I don't know if anyone else thinks it'd be nice, but I would kinda like to see a filter for the Algalon/EOE quest reward items set up as their own filter. When looking around (especially when gearing up/planning a char reaching 80 soon) at quest reward items to equip up and coming characters having to sift through 3-4 variations of 2+ different items (the neck pieces specially ) can be a bit irritating at times.&nbsp; I understand those do qualify as quest pieces but while the eoe items might be easier to get now, getting the Algalon ones definitely isn't common.&nbsp; It'd be nice to be able to un-include them from quest listings without having to delete them from the item DB.</p>\r\n<p>2) It'd be nice if someone has the spare time to include an option to retrieve all listed items from wowhead/the armory of a certain level or higher if you want to take the time to let rawr update.&nbsp; I've run into situations where quest rewards or otherwise just arn't in the item db and I realize that some things just get missed due to the very large amount of items out there, so it'd be nice to have the option to let the program run for a while and just do a complete item update instead of having to add each item on a case by case basis once you've become aware of them.&nbsp; Probably only really applies to those gearing up a new character as once it comes down to current instances I don't recall finding anything not listed already, but when looking at things from the perspective of gearing up a character from questing to be ready for raiding etc it would be handy.</p>\r\n<p>3) Tend to use the relative stat values option in conjunction with Pawn when lvling my characters and find it would be somewhat nice to have some sort of sliding scale available to adjust the amount of hit rating needed/desired to kinda even out the RSV scales.&nbsp; I know using rawr at lvl 20 for instance for RSV is a bit exaggerated, but I find it handy even at that low of level to have an on the fly measure of what gear I should pick up instead of trying to do a bunch of mental calculations (or just running with relatively crappy gear) while going through the semi tedious process of level grinding.</p>\r\n<p>Great Program all and appreciate you guys putting it out there for us to use. Even with the sometimes inevitable bug that pops up here and there it's still by far in my top 2 best &quot;addons&quot; (the other being pawn so I can easily use the info rawr provides) for Wow.&nbsp; Helps prevent me from being another one of those clueless wonders sitting in trade/guild/general chat asking &quot;whats better XXX or YYY?&quot;.</p>",
+    "PostedDate": "2009-10-06T11:01:39.063-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "242652",
+    "ThreadId": "71149",
+    "Html": "<p>I was actually looking into a filter for (1) at one point. &nbsp;It's been annoying me that the only way I can hide the Algalon quest items is by unchecking &quot;Ulduar&quot;. &nbsp;I'm definitely not a filter guru, though -- I tried to combine the quest reward text with the Algalon filter, and failed.</p>\r\n<p>I think that (3) is unlikely, as Rawr isn't really meant to support players under level 80. &nbsp;It would be somewhat easy to do, but I don't think we want Rawr to become the twinker's resource because it would lead to other requests like lower level quest/drop filtering, incoming damage options for survivability vs non-boss mobs, etc. &nbsp;Not to mention all that extra information will make rawr run slower and take up more space.</p>",
+    "PostedDate": "2009-10-06T11:25:44.74-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "242662",
+    "ThreadId": "71149",
+    "Html": "<p>2) We aren't picking and choosing what items are in teh database, the Item Cache is being generated based on a datapull from Wowhead, completely unfiltered. If you need to add new items to the database because a set of items are not in there, it's because wowhead didn't have them posted at (or near) time of release. Once wowhead has the new data, run a Load possible Upgrades from x.... and you should get the items automatically that way. For players that just hit 8- and are still wearing some lower level items, these items should automatically import on Load Character from Armory.</p>",
+    "PostedDate": "2009-10-06T11:53:30.223-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "242707",
+    "ThreadId": "71149",
+    "Html": "<p>Not true, Jothay. &nbsp;That's true for new items, but we obviously have a lot of items filtered out because they are not &quot;end game items&quot;. &nbsp;One example, Helm of the Stalwart Defender (level 70 crafted item) doesn't show up at all. &nbsp;Just try to turn off all item filters except &quot;Classic&quot; and see how many things show up.</p>\r\n<p>I couldn't find where Astry populates the item cache from originally, but I'm certain that there are constraints that keep lower level items from showing up. &nbsp;For (2), he's asking if he can get a bigger item cache for lower level items (rather than ship it, just let the user run it optionally).</p>\r\n<p>Ithxsmir, your best bet is to just &quot;Load possible upgrades from Armory&quot; while wearing low level items that you've added yourself. &nbsp;But even that is &quot;unsupported&quot;, and I wouldn't encourage it.</p>",
+    "PostedDate": "2009-10-06T13:38:59.03-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "242722",
+    "ThreadId": "71149",
+    "Html": "<p>sorry, scratch the &quot;completely unfiltered&quot; statement,&nbsp;I brainfarted, he's probably running it at 71 or 75+</p>",
+    "PostedDate": "2009-10-06T13:59:53.337-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "242725",
+    "ThreadId": "71149",
+    "Html": "<p>The current default ItemCache was started with all ilvl 185 or greater, blue quality or greater, items. Anything below that was manually added.</p>",
+    "PostedDate": "2009-10-06T14:06:21.337-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "242761",
+    "ThreadId": "71149",
+    "Html": "<p>Am actually running it from lvl 10+ just for RSV's but where I'm talking about the option to manually download an updated list I was using it between 70 and 80. Basically once I hit 70-72 on a char I start looking at quest related upgrades so my character (eh I've got 4 80's now...)&nbsp; come heroics time at least has decent gear from questing.&nbsp; Specific examples of where this has become something I look at vary from: not having one of the DK tier sets in the DB (think it was t8 tanking, and roughly right before the t9 content patch); a Helm I found for my shamen from a quest, blue don't remember what ilevel it was but the icon was a red turban but it was rated better once loaded than the stormhide helm for elemental.&nbsp; Not really looking at the bleeding edge content items but the stuff that would be listed semi alongside that which is already there, which wouldn't be too far off from having things like some of the late quest rewards from BC listed.&nbsp;&nbsp; As far as the &quot;load possible upgrades&quot; option, don't have the program in front of me to double check exactly but at least from what I remember reading I thought all the wowhead/armory data retrevial options specifically state that they dont grab new items, just update the info on whats already there.&nbsp; Probably a different option that I'm thinking of though.</p>\r\n<p>I understand what you mean about #3 Ebs2002, though even as it stands rawr is an excellent tool pre 80 to use as a guide. Don't twink myself so don't really know how big of a leap the current setup vs changes would go to make it a twink tool.&nbsp; Never really thought about it but I'm guessing thats why there isn't a lot of reslilience info/pvp specific options to things.&nbsp;</p>\r\n<p>Thanks for actually responding/looking at this and again great tool.</p>",
+    "PostedDate": "2009-10-06T17:23:11.807-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "242768",
+    "ThreadId": "71149",
+    "Html": "<p>I doubt if the RSVs are valid at all at low levels.&nbsp; The stat scaling change radically at a few places during leveling and on top of that it assumes you are using moves you don't actually have.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-10-06T19:01:11.673-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "242785",
+    "ThreadId": "71149",
+    "Html": "<p>No, there's no PvP settings because Rawr is not designed or capable of handling PvP situations.</p>",
+    "PostedDate": "2009-10-06T20:58:26.863-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

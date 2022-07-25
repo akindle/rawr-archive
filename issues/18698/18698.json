@@ -1,0 +1,205 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.LoadCharacter",
+      "DisplayName": "Rawr.Base.LoadCharacter"
+    },
+    "ClosedComment": "Out of Date",
+    "ClosedDate": "2010-11-21T10:56:58.643-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The following error occured during load-up of my char in the stand-alone in the latest beta version.\n[Async_ExceptionOccurred]\nArguments: \nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.50826.0&File=System.dll&Key=Async_ExceptionOccurred\nE\n   at System.ComponentModel.AsyncCompletedEventArgs.RaiseExceptionIfNecessary()\n   at Rawr.ElitistArmoryService._webClient_DownloadStringCompleted(Object sender, DownloadStringCompletedEventArgs e)\n   at System.Net.WebClient.OnDownloadStringCompleted(DownloadStringCompletedEventArgs e)\n   at System.Net.WebClient.DownloadStringOperationCompleted(Object arg)[HttpWebRequest_WebException_RemoteServer]\nArguments: NotFound\nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.50826.0&File=System.Windows.dll&Key=HttpWebRequest_WebException_RemoteServer\n \n   at System.Net.Browser.AsyncHelper.BeginOnUI(SendOrPostCallback beginMethod, Object state)\n   at System.Net.Browser.BrowserHttpWebRequest.EndGetResponse(IAsyncResult asyncResult)\n   at System.Net.WebClient.GetWebResponse(WebRequest request, IAsyncResult result)\n   at System.Net.WebClient.DownloadBitsResponseCallback(IAsyncResult result)[HttpWebRequest_WebException_RemoteServer]\nArguments: NotFound\nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.50826.0&File=System.Windows.dll&Key=HttpWebRequest_WebException_RemoteServer\n \n   at System.Net.Browser.BrowserHttpWebRequest.InternalEndGetResponse(IAsyncResult asyncResult)\n   at System.Net.Browser.BrowserHttpWebRequest.<>c__DisplayClass5.<EndGetResponse>b__4(Object sendState)\n   at System.Net.Browser.AsyncHelper.<>c__DisplayClass2.<BeginOnUI>b__0(Object sendState)",
+    "LastUpdatedDate": "2013-05-16T05:19:54.51-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-09-06T15:46:05.777-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[LoadCharacter] Async_ExceptionOccurred when loading from Armory",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 6,
+    "Id": 18698
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I also have the same problem, which keeps me from running RAWR\r\n",
+      "PostedDate": "2010-09-06T17:57:23.697-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Since there are 3 of these reports in just a couple of hours, I'm thinking there is something wrong on ElitistArmory's end that's causing Rawr3 to time out (just not handling it very well).",
+      "PostedDate": "2010-09-06T19:04:13.21-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yes, I did some poking, and www.elitistarmory.com is just a CNAME record pointing to elitistarmory.com which is an A record, but there's no address on it currently.  So yes, the armory fell off the face of the earth, or someone forgot to renew the domain/dns hosting.",
+      "PostedDate": "2010-09-07T00:59:03.737-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "To go even further, I added the proper IP to my dns table, and the server itself is not responding, so it goes even deeper than DNS.",
+      "PostedDate": "2010-09-07T01:03:49.403-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-07T08:07:16.397-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Stuck on this as well.",
+      "PostedDate": "2010-09-07T08:08:09.133-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Short Version: The guy that owns ElitistArmory shut the website down because he had no intention of maintaining it anymore since he stopped playing WoW.\r\n\r\nLonger Version: He put up the parts that we need for Rawr3 so that it will function until we can integrate the queuing system directly into Rawr3.",
+      "PostedDate": "2010-09-07T10:04:00.92-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Does that mean it should be working now, or you're working on a fix? [The web-app is dead in the water for me, I can't open any character file]",
+      "PostedDate": "2010-09-07T11:28:02.337-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Loading a character file is not the same thing as loading from the Armory",
+      "PostedDate": "2010-09-07T11:52:25.377-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-07T12:35:32.837-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Same problem for me loading from armory just now, not from a file.",
+      "PostedDate": "2010-09-07T12:51:57.553-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-07T12:53:11.687-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "My web rawr is totally broken. I can't load characters from armory OR from my old files. Sometimes when I load an old file there are no items, enchants, etc. and often I get into never-ending exception traces. I guess I should make a different issue.",
+      "PostedDate": "2010-09-07T13:06:08.433-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "OK, its working again (loading from files, anyways). I uninstalled, removed a bunch of files, reinstalled, and it started working. I think its possible that at some point I might not have let the initial load of items finish before trying to load a character file.",
+      "PostedDate": "2010-09-07T13:25:01.033-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It should be back up now, I just successfully ran an armory pull from the one posted at EJ",
+      "PostedDate": "2010-09-07T15:12:07.437-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm currently getting this message as well. ElitistArmory seems to be down. I've tried both local and browser versions of RAWR. Please let me know when this is resolved. ",
+      "PostedDate": "2010-09-07T22:54:55.5-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T13:25:18.327-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-09T15:53:05.327-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-10T12:04:56.763-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "So has anyone found a fix/workaround for this issue yet? I have not been able to use Rawr in any form(web or standalone, refreshing character or not, including Rawr2) for the last week or so. It never loads any characters from the Armory. Now I gather that it's because of elitistarmory.com going down. My question, forgive me if its been asked before, I am new to Rawr, but why cant Rawr pull from wowarmory.com instead of elitistarmory.com? ",
+      "PostedDate": "2010-09-11T07:34:25.46-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Try again now.",
+      "PostedDate": "2010-09-11T09:55:59.293-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Wait, you can't load toons in Rawr2 either? Because that would be a completely different issue.\r\n\r\nRawr3 uses ElitistArmory.com because they have a queuing system in place for pulling characters off of the WoW Armory. We HAVE to use this queueing method because with the online version of Rawr3, all of the requests for characters for every user on the planet end up coming from the server's IP address. The WoW Armory is designed to ban IP Addresses that are sending too many requests at a time. The Queuing process, works around this by slowing down the number of requests to an allowable level. ElitistArmory.com also stored your character for you so you can just download off them instead of the wowarmory, which also cut down on requests, unless you used Force Refresh all the time.\r\n\r\nRawr2 just uses the WoW Armory because the Request comes from your system, your IP address and you can't physically perform enough requests through Rawr2 to ban yourself.\r\n\r\nSo if one isn't working, the other should be, unless BOTH websites are down OR EA doesn't have your character pre-loaded and WoWA is down.",
+      "PostedDate": "2010-09-11T10:35:37.62-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-11T15:38:25.867-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "One other thing I should point out is that just because Armory Loading is down, doesn't mean that the program is 'completely useless'. Just select the items your character is wearing manually. Sure it takes longer but once you save the file, you won't have to do it again. When you want to come back later and change it to the new gear you got, just do it by selecting the items, that's what the drop-downs are for.",
+      "PostedDate": "2010-09-11T19:48:47.673-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks for the explanation and suggestion Jothay. So far i've had hit or miss luck but i can work around the issue on the ones i've managed to save.",
+      "PostedDate": "2010-09-12T02:50:16.117-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Okay. Is it just me or is this a non - issue? I cannot use the online RAWR version due to the fact the ElitistArmory does not exist anymore. If you visit the site you can confirm this. Am I the only one using this product?\r\n\r\nWhen I go to load character from Armory i get the following error:\r\n\r\n[Async_ExceptionOccurred]\r\nArguments: \r\nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.50524.0&File=System.dll&Key=Async_ExceptionOccurred\r\n\r\n   at System.ComponentModel.AsyncCompletedEventArgs.RaiseExceptionIfNecessary()\r\n   at Rawr.ElitistArmoryService._webClient_DownloadStringCompleted(Object sender, DownloadStringCompletedEventArgs e)\r\n   at System.Net.WebClient.OnDownloadStringCompleted(DownloadStringCompletedEventArgs e)\r\n   at System.Net.WebClient.DownloadStringOperationCompleted(Object arg)[HttpWebRequest_WebException_RemoteServer]\r\nArguments: NotFound\r\nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.50524.0&File=System.Windows.dll&Key=HttpWebRequest_WebException_RemoteServer\r\n\r\n   at System.Net.Browser.AsyncHelper.BeginOnUI(SendOrPostCallback beginMethod, Object state)\r\n   at System.Net.Browser.BrowserHttpWebRequest.EndGetResponse(IAsyncResult asyncResult)\r\n   at System.Net.WebClient.GetWebResponse(WebRequest request, IAsyncResult result)\r\n   at System.Net.WebClient.DownloadBitsResponseCallback(IAsyncResult result)[HttpWebRequest_WebException_RemoteServer]\r\nArguments: NotFound\r\nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.50524.0&File=System.Windows.dll&Key=HttpWebRequest_WebException_RemoteServer\r\n\r\n   at System.Net.Browser.BrowserHttpWebRequest.InternalEndGetResponse(IAsyncResult asyncResult)\r\n   at System.Net.Browser.BrowserHttpWebRequest.<>c__DisplayClass5.<EndGetResponse>b__4(Object sendState)\r\n   at System.Net.Browser.AsyncHelper.<>c__DisplayClass2.<BeginOnUI>b__0(Object sendState)",
+      "PostedDate": "2010-09-21T16:01:13.55-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This should be working fine as of like a week ago (and is working fine for me). If anyone is still having problems with this error (make sure it's the same error), respond here.",
+      "PostedDate": "2010-09-24T23:59:00.11-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Happening for me as of Oct. 1.  Can't load my toon from armory.",
+      "PostedDate": "2010-10-01T10:03:43.41-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Just confirmed, armory loading is up and working fine. Are you having the exact same error as in this issue? Have you Reset All Caches?",
+      "PostedDate": "2010-10-01T10:27:53.53-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-11-21T10:56:58.643-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:24.073-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:27:28.457-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:54.51-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

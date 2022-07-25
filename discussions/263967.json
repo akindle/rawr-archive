@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "637594",
+    "ThreadId": "263967",
+    "Html": "\r\n<p>Most current justice/valor items have 0 for their cost. &nbsp;Each time I download a new database version, I spend a while editing each item to enter the justice/valor costs. &nbsp;Would it be possible to contribute my time updating the costs in the master\r\n database, so that everyone benefits? &nbsp;I actually use the Gear -&gt; Gear/Cost frequently when working on a new or undergeared 85 toon.</p>\r\n<p>Cheers</p>\r\n",
+    "PostedDate": "2011-07-05T09:40:03.533-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "637637",
+    "ThreadId": "263967",
+    "Html": "<p>All of the gear SHOULD have their cost associated with each item correctly. Can you explain what your doing when your downloading the database version in an issue. Because I spent about 15 -20 (could have been more I lost track of time) hours total editing  the database with the appropriate costs as well as giving each item their source info (Baradin Hold items were a pain since both required either Conquest or Valor purchase and dropping from Occu'thar). Didn't help that&nbsp; Wowhead didn't have those costs associated  on the PTR.</p>\n<p>As for the Gear/Cost issue, I'm aware of an issue (found out about the issue about 3-4 weeks ago) where it's not treating Valor points as part of it's association. It is only treating Justice points as part of it's gear/cost calculations. The problem here is not a database issue but a programming issue with that dropdown. I've tried working on it, just me personally I wasn't able to figure out why it's not calculating Valor points into the mix.</p>\n<p>If anyone wants to take a look something is happening in the Rawr.UI\\GraphDisplay.xaml.cs file.</p>\n<p>Edit: Now that I haven't looked at it in a while and have a fresh mind for it, it appears that tokens do not have any \"cost association\" and the Gear/Cost issue is that it is not looking for token info. I need some work but I hopefully should have this fixed today. (HOPEFULLY)</p>",
+    "PostedDate": "2011-07-05T10:31:55.457-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "637740",
+    "ThreadId": "263967",
+    "Html": "<p>Cost is a separate thing from tokens and is more generic so that it can be used with more abstract things such as set bonuses and other things. What's missing is menu options that will initialize cost to token and other costs available in the source data. We used to have that in Rawr 2, but we lost it in the transition.</p>",
+    "PostedDate": "2011-07-05T14:17:56.543-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "637760",
+    "ThreadId": "263967",
+    "Html": "<p>Standing in front of the justice vendor, I type the name of each item in the rawr item editor, click Edit, then change the cost from 0 to the token value.</p>\r\n<p>The database does seem to have many plate dps and tank gear set to the correct cost, the BoE boots, some relics, and almost everything else is 0.</p>\r\n<p>From an end-user perspective, this is all I know how to do.</p>",
+    "PostedDate": "2011-07-05T14:51:30.38-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "638179",
+    "ThreadId": "263967",
+    "Html": "<p>There was an automated process in place in Rawr4 where if you refreshed the item from wowhead (and it had appropriate data) then it would populate the cost number not only to the item source, but to the item Cost&nbsp;field as well. It's in the refresh code down in Rawr.Base.</p>",
+    "PostedDate": "2011-07-06T08:01:14.213-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

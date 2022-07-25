@@ -1,0 +1,65 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Hunter",
+      "DisplayName": "Rawr.Hunter"
+    },
+    "ClosedComment": "hadn't tested with a troll yet, this is fixed",
+    "ClosedDate": "2008-06-16T08:04:38.887-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "CalculationsHunter.cs, line 874:",
+    "LastUpdatedDate": "2013-05-16T05:27:12.673-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-06-14T03:34:35.827-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Hunter] Crash",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 10339
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "... ok so pressing Enter while in this text box actually submits it...  \r\n\r\nAnyway CalculationsHunter.cs, line 874 is not checking if character.Ranged is null and it is possible for it to be null at that point.\r\n\r\n\t\t\tif ((character.Race == Character.CharacterRace.Dwarf && character.Ranged.Type == Item.ItemType.Gun) ||\r\n\t\t\t\t(character.Race == Character.CharacterRace.Troll && character.Ranged.Type == Item.ItemType.Bow))\r\n\r\nChanged to\r\n\r\n\t\t\tif (character.Ranged != null &&\r\n \t\t\t\t((character.Race == Character.CharacterRace.Dwarf && character.Ranged.Type == Item.ItemType.Gun) ||\r\n\t\t\t\t(character.Race == Character.CharacterRace.Troll && character.Ranged.Type == Item.ItemType.Bow)))\r\n\r\nFixes it for me.",
+      "PostedDate": "2008-06-14T03:37:57.31-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-06-16T08:04:38.887-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T18:47:29.477-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:46.117-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:27:12.673-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

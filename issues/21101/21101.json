@@ -1,0 +1,85 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-07-07T02:09:32.66-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have performed the Suggested Fix and continue to receive this error. If I am posting this message without having performed the Suggested Fix I am aware that I am consuming the Developer(s) time in managing my Issue unnecessarily.\n \n== Version: 4.2.0.0 ==\n \n== Error Message ==\n[Arg_IndexOutOfRangeException]\nArguments: \nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.60531.0&File=mscorlib.dll&Key=Arg_IndexOutOfRangeException\n \n== StackTrace ==\n   at Rawr.RandomSuffix.GetStatValue(Item item, Int32 id, AdditiveStat stat)\n   at Rawr.Reforging.GetReforgingOptions(Item baseItem, Int32 randomSuffixId, AdditiveStat[] reforgeStatsFrom, AdditiveStat[] reforgeStatsTo)\n   at Rawr.CalculationsBase.GetReforgingOptions(Item baseItem, Int32 randomSuffixId)\n   at Rawr.Character.GetRelevantItemInstances(CharacterSlot slot, Boolean forceAll)\n   at Rawr.UI.ItemListControl.BuildListItems()\n   at Rawr.UI.ItemListControl.set_IsShown(Boolean value)\n   at Rawr.UI.ItemButtonWithEnchant.MainButton_Clicked(Object sender, RoutedEventArgs e)\n   at System.Windows.Controls.Primitives.ButtonBase.OnClick()\n   at System.Windows.Controls.Button.OnClick()\n   at System.Windows.Controls.Primitives.ButtonBase.OnMouseLeftButtonUp(MouseButtonEventArgs e)\n   at System.Windows.Controls.Control.OnMouseLeftButtonUp(Control ctrl, EventArgs e)\n   at MS.Internal.JoltHelper.FireEvent(IntPtr unmanagedObj, IntPtr unmanagedObjArgs, Int32 argsTypeIndex, Int32 actualArgsTypeIndex, String eventName)\n \n== These are the Steps that I have tried ==\nI tried creating a custom item instead of using the Flickering Cowl but I am still seeing the error.  Unsure if this is an error on my part.  The character is 'Dystant' on Durotan if you need that for more testing.\n \nClicking on the item or clicking on optimize leads to this error.",
+    "LastUpdatedDate": "2017-11-27T11:01:21.56-08:00",
+    "PlannedForRelease": "Rawr 4.2.0",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-07-06T04:36:13.173-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Item] Flickering Cowl Error",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 21101
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "This is related to another issue in that I could not find the correct Random Enchant id and because you are using a different random enchant id than the one posted, it's messing up. Personal note your using Enchant #266.",
+      "PostedDate": "2011-07-06T10:28:36.47-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-07-06T10:29:13.31-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Took a look on wowhead to see and it appears that '...of the Flameblaze' is a new addition in Firelands (not the same as the TotFW loot).  Is there anything I can do to assist in facilitating this items import to RAWR?\r\n\r\nStats for '...of the Flameblaze' are:\r\n1130 Armor\r\n611 Stamina\r\n347 Intellect\r\n242 Mastery Rating\r\n242 Hit Rating\r\n1 Meta Socket\r\n1 Yellow Socket\r\nSocket bonus of 30 int.",
+      "PostedDate": "2011-07-06T11:22:37.02-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "As of right now, no. What I would suggest as a temporary fix is to edit the item. Probably the easiest and less likely for you to crash otherwise is to first select a different helm, and deselect the helm as an available item. Right click the helm in question and select \"edit item\" In the bottom left corner select delete item. Then under the Options menu select edit items. In the bottom left corner select the add button and type in \"71011.\" Search for Flickering Cowl, and edit the 378 version. Then type in the stats you want. The reason I am having you go this route is due to the Random enchants, if you edit the random enchants while you have the item selected or selected as available, the system starts acting up.\r\n\r\nNow you could however select another helm, deselect the helm in question, edit it and remove all random enchants (just search for all of the check boxes and de-select any you see), and edit the item with the stats you currently have if you find that easier to do.",
+      "PostedDate": "2011-07-06T13:02:50.04-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Awesome...thank you for your help.\r\n\r\nThe second way you suggested didn't seem to work, but the first did.\r\n\r\nThanks again for your help.\r\n\r\n-Dystant",
+      "PostedDate": "2011-07-06T14:00:24.657-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Resolved with changeset 61864.",
+      "PostedDate": "2011-07-07T02:09:32.66-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:24:41.5-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:17:40.7-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:01:21.56-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

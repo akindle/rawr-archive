@@ -1,0 +1,125 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Optimizer",
+      "DisplayName": "Rawr.Base.Optimizer"
+    },
+    "ClosedComment": "There are instances where we would want a worse result, like if you added the requirement to be hit capped. You might lose score but you would be hit capped as requested. If you simply want higher thoroughness, Ctrl&#43;Click the optimize button to get 10x thoroughness.",
+    "ClosedDate": "2011-02-13T14:23:30.63-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I got asked on the EJ forums, why the optimizer might return a slightly worse result than the starting gear after several runs. My answer was that's because of the genetic algorithm.\n \nWe should add a check to compare the score between the initial gear and the optimized gear. When all items of the initial gear are available and its score is higher we should not suggest a new equipment set.",
+    "LastUpdatedDate": "2013-05-16T05:23:27.583-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-11-11T07:05:43.65-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Feature Request.Optimizer] Returning a Worse Result",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 14759
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I don't think this is a good option. There is value in knowing that it couldn't match the value, most likely pointing to the fact that there are too many items marked available or that thoroughness is too low.",
+      "PostedDate": "2009-12-14T15:40:02.917-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It still often takes 3+ runs at full thoroughness to approach what I can optimize by hand and of my own knowledge.  It's sometimes enough to \"guide\" it into using certain gems or enchants that I suspect will work well (read: better than what one full thoroughness Optimize might recommend) by equipping what I forsee working well (even if it's a terrible setup, just to give it a \"seed\" to work off of... which is what I think it's doing, at least), which often comes out with significant gains: a nice net of roughly 50DPS over a series of 3 Optimizes the other day when using this method.",
+      "PostedDate": "2009-12-18T21:01:13.17-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "There is no seed when using the normal optimize currently. There is one however when using optimize from batch tools. But it works in the following way (and only for normal optimize, not batch or progressive). It does a normal optimization (without any seed) and when it would normally complete as the normal optimizer does if it sees the best result is below your current character it'll drop that character into the population of all the current characters and does another round of optimizations. We could use the same method for normal optimize, it's just a matter of changing one parameter.",
+      "PostedDate": "2009-12-19T11:29:01.117-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Alright, probably just my own perception.  That sounds like a great improvement though.",
+      "PostedDate": "2009-12-19T13:06:24.483-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'd like to see the retry attempts found in the Batch Tools on the normal Optimizer, defaulted to 1.",
+      "PostedDate": "2009-12-20T03:57:36.53-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-18T11:00:47.157-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T13:52:05.15-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T13:56:55.63-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T14:32:26.333-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T15:29:10.267-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T15:55:39.503-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-09T12:32:00.773-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-09T12:33:44.253-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Relevant to Rawr4",
+      "PostedDate": "2010-11-21T11:07:18.737-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-02-13T14:23:30.63-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:53.64-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:27.583-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

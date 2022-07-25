@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "192439",
+    "ThreadId": "56943",
+    "Html": "<p>I'm using the Bear model.&nbsp; I'm noticing a few things odd with the Upgrade List feature.</p>\r\n<p>I've optimized my gear with a decently high thoroughness (about 2/3rds of max) and equipped the optimized gear (with a two minor exceptions in gem and enchant selections).&nbsp; I then ask Rawr to &quot;Build Upgrade List&quot;.&nbsp; For the most part, the list looks correct and makes sense.</p>\r\n<p>The first oddity is that all of my currently equipped gear appears at the bottom of the list with an upgrade value attached to it.&nbsp; It's small, so perhaps this is the difference between Rawr's fully optimized build and the minor exceptions mentioned above.</p>\r\n<p>The second oddity is harder to explain.&nbsp; It's in regards to trinkets.&nbsp; In Trinket Slot 1 I have Darkmoon Card: Greatness (Agi).&nbsp; In slot 2, I have the Indestructible Alchemist Stone.&nbsp; When I look at the comparison list for Slot 1, Rawr has DM:G in second place at around 12k points and Heart of Iron in first, also around 12k points (the difference is about 300 points).&nbsp; In slot 2, the alchemist stone is around 7k and the Heart of Iron is again around 12k.</p>\r\n<p>So I would expect Heart of Iron to be worth about a 5k point upgrade.&nbsp; However, in the Upgrade List it's displayed as an upgrade of ~800 points.&nbsp; I get similar results if I right-click on it and select Evaluate Upgrade.&nbsp; Equiping the Heart would not put me over the Survivability Soft Cap.&nbsp; For other gear I've selected, the Upgrade List displays what I would expect:&nbsp; the difference in Overall points between the currently equiped gear and the suggested upgrade.</p>\r\n<p>Is this a bug, or am I missing something?</p>",
+    "PostedDate": "2009-05-20T09:29:22.153-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "192441",
+    "ThreadId": "56943",
+    "Html": "<p>First oddity: Yes, it's what you expect. You have potential upgrade left in your current gear.</p>\r\n<p>Second oddity: That's what Build Upgrade List does; it's smarter than just comparing single items, it also swaps other items around to optimize how new items are used. Basically, the best set you could make if you had Heart of Iron is ~800 points higher than your current set (which is nearly the best set you can currently make).</p>",
+    "PostedDate": "2009-05-20T09:36:31.047-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "192583",
+    "ThreadId": "56943",
+    "Html": "<p>I did some experimenting to test this out (now that I have the program in front of me, I can use real numbers).</p>\r\n<p>First, I ran the optimizer and equipped exactly what it suggested, to avoid any discrepancy.&nbsp; This removed the first oddity I mentioned above, as you said it would.</p>\r\n<p>My optimized gear had an overall value of 347664.7 points.&nbsp; I still had the same strangeness with Heart of Iron.&nbsp; It was a minor upgrade to my first trinket slot, and a huge upgrade to my second trinket slot.&nbsp; &quot;Build Upgrade List&quot; showed it as an upgrade value of 508.</p>\r\n<p>I marked it as &quot;available&quot; and equipped it.&nbsp; My new overall point value became 353678.9, an increase of 6014.2.&nbsp; To test further, I re-equipped my Alchemist Stone and ran the Optimizer again.&nbsp; The only change the Optimizer suggested was to equip the Heart of Iron in place of the Alchemist Stone, and came up with the same overall point value.</p>\r\n<p>I think what is happening is the Upgrade List isn't properly comparing both trinket slots.&nbsp; The 508 number is approximately what I would get if I replaced my DMC:G with the Heart of Iron (slot 1) and left the second slot as the Alchemist Stone.&nbsp; In fact, when I mouse-over the Heart of Iron in the Upgrade List, this is what it is suggesting I do, despite the fact that I would get a much bigger boost by replacing the Alchemist Stone.</p>\r\n<p>To summarize:</p>\r\n<p>DMC:G + Alchemist Stone: 347664.7</p>\r\n<p>Heart of Iron + Alchemist Stone: 348167.5 (+502.8, approximately what is shown in Upgrade List)</p>\r\n<p>DMC:G + Heart of Iron: 353678.9 (+6014.2, significantly better than the Upgrade List suggests)</p>",
+    "PostedDate": "2009-05-20T15:50:33.287-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "192628",
+    "ThreadId": "56943",
+    "Html": "<p>Can you open a new issue and attach the character xml where this happens?</p>",
+    "PostedDate": "2009-05-20T19:37:13.223-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "192639",
+    "ThreadId": "56943",
+    "Html": "<p>Done.</p>\r\n<p>Link: http://rawr.codeplex.com/WorkItem/View.aspx?WorkItemId=13294</p>\r\n<p>As I mentioned in the issue, this issue also occurs with rings.</p>",
+    "PostedDate": "2009-05-20T20:14:47.96-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "192851",
+    "ThreadId": "56943",
+    "Html": "<p>Unless I'm misunderstanding what the OP is saying....</p>\r\n<p>It sounds like Rawr is doing what it's supposed to: evaluate your entire &quot;marked for optimization&quot; set of gear. If you equip one unique trinket in trinket slot1, it's still evaluating slot2 based on the rest&nbsp;of your set.</p>",
+    "PostedDate": "2009-05-21T09:18:58.983-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "192858",
+    "ThreadId": "56943",
+    "Html": "<p>Yes, you're misunderstanding.</p>\r\n<p>This has nothing to do with the Optimizer, or gear marked for optimization.&nbsp; The problem is in the value assigned to items (specifically trinkets and rings) in the Upgrade List (the list generated from the &quot;Build Upgrade List&quot; tool).</p>\r\n<p>Look at my second post for an example.</p>",
+    "PostedDate": "2009-05-21T09:36:27.733-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

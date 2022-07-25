@@ -1,0 +1,75 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtWarrior",
+      "DisplayName": "Rawr.ProtWarrior"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-02-04T06:31:40.28-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "All testing was done with 80 Draenei Warrior, with Target Level on Options tab set to 80 and no buffs.  Base value testing was done with no talents and no items equipped.\n \nBase strength is listed as 176.  Correct Value is 175.\nBase stamina is listed as 159.  Correct Value is 158.\nBase crit change is listed as 2.902424%.  Correct Value is 4.95%.\n \nBlock Value part from strength does not match blizzard in game tooltip.  For example base strength of 175 gives 77 BV, not 88.  989 strength gives 484 BV, not 494.5.  Subtract 21 from the strength value before dividing by 2 and you will get correct block value.\n \nAustere Eartsiege Diamond is not calculating armor bonus correctly.  It only affects armor from items, not armor from agility.  For example 21680 armor and 132 agility means 21416 armor from items and 264 armor from agility.  AED means 21416 x 1.02 + 264 is final armor value (22108), not 21680 x 1.02 (22113.6) as rawr is showing.\n \nToughness is not calculating armor bonus correctly.  Armor of 19859 and 132 agility means 19595 armor from items and 264 armor from agility (done with no helm, metagem).  Toughness means 19595 x 1.10 + 264 is final armor value (21818.5), not 21785 as rawr is showing (a number I could not derive a formula for).\n \nShield Mastery is not calculating right.  For example an 884 BV x 1.30 = 1149 BV, rawr is showing 1152.\n \nAttack power bonus from Armored to the Teeth is not being calculated.\n \nStrength bonus from Vitality is not being calculated properly.  Blizz does separate calculations for base strength and strength from items, truncating each result before adding them together.  For example 176 base strength + 814 strength from items = 990 strength.  Vitality means 176 x 1.06 (186.56->186) + 814 x 1.06 (862.84->862), or 1048 total.  Not 990 x 1.06 (1049.4) as rawr is showing.",
+    "LastUpdatedDate": "2013-05-16T05:26:25.967-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-01-16T11:34:27.16-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtWarr] Multiple Issues",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 12387
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "4th line should read \"crit chance\", not crit change.",
+      "PostedDate": "2009-01-16T11:36:08.817-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Base stats updated\r\nBlock Value revamped plus changed to incorporate the -10 from strength\r\nArmored to the teeth talent added\r\nArmor calcs revamped",
+      "PostedDate": "2009-01-19T12:28:07.257-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Just checked in the change for vitality",
+      "PostedDate": "2009-01-20T14:02:41.64-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-02-04T06:31:40.28-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T16:32:56.623-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:35:45.73-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:25.967-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

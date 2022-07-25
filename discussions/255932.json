@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "605669",
+    "ThreadId": "255932",
+    "Html": "\r\n<p>Thanks for the helpful replies to my thread on setting up everything to get me started.</p>\r\n<p>I've been tinkering with the Healadin code a little, and have made a couple improvements.&nbsp; It needs a lot more though!</p>\r\n<p>My updates:</p>\r\n<ul>\r\n<li>corrected stats (mana, spellpower coeficient, etc) for Flash of Light, Holy Light, Divine Light and Holy Shock\r\n</li><li>Fixed Walk in the Light calculation </li><li>Removed Divine Favor from crit % calculation. (was always adding 20% rather than just when proc'd)\r\n</li></ul>\r\n<p>&nbsp;</p>\r\n<p>Still being totally new to this environment, I do not know how to submit my code changes.&nbsp; All my changes are in 1 file, Spell.cs, in Healadin.&nbsp;</p>\r\n<p>I see on your &quot;Development Applications&quot; page it states that I will need:</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <em>A Codeplex Account, which will be upgraded to a Developer status to allow code submissions</em></p>\r\n<p>Was I supposed to apply before I touched the code?&nbsp; Is there an intermediate process where new people, not quite approved to checking code in and out, can submit an update?</p>\r\n<p>&nbsp;</p>\r\n<p>Thanks again!</p>\r\n",
+    "PostedDate": "2011-05-01T19:52:09.407-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "605670",
+    "ThreadId": "255932",
+    "Html": "<p>Go to the Source Code page and click Upload Patch. Provide a zip containing all the files you changed. We'll review and apply as necessary, get a couple of those going (to show you are actively working the model) and we'll upgrade your account to Dev status.</p>",
+    "PostedDate": "2011-05-01T19:57:39.76-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "606135",
+    "ThreadId": "255932",
+    "Html": "<p>Thanks, I uploaded that first patch last night, and had some time to tinker more today.&nbsp;&nbsp; I added Word of Glory and Light of Dawn spells to the spell information today, that's almost working.&nbsp; Once I get all the spells there, reporting correct information (or at least close to correct), I'll start working on the rotation part.</p>\r\n<p>&nbsp;</p>\r\n<p>I imagine it's not helpful to upload every small improvement I make, so I'll wait a week or so to upload my next one.&nbsp; I probably wont have a ton of time in the coming days anyway, with work and raiding the next few days...</p>\r\n<p>&nbsp;</p>\r\n<p>When I do upload my next patch, it will be cumulative with the one I did already, I assume that's OK.&nbsp; Oh, and I know I am not very experienced in C++, so I don't mind someone telling me to code something differently.&nbsp; They have code reviews at my job regularly, so I'm used to people making suggestions.</p>",
+    "PostedDate": "2011-05-02T14:53:45.967-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "606214",
+    "ThreadId": "255932",
+    "Html": "<blockquote style=\"border: solid .1em #ccc; font-style: italic; margin: .25em 1em 0 1em; padding: 0 .25em 0 .25em;\"><strong>molotok wrote:</strong><br />\r\n<p>Thanks, I uploaded that first patch last night, and had some time to tinker more today.&nbsp;&nbsp; I added Word of Glory and Light of Dawn spells to the spell information today, that's almost working.&nbsp; Once I get all the spells there, reporting correct information  (or at least close to correct), I'll start working on the rotation part.</p>\r\n<p>&nbsp;</p>\r\n<p>I imagine it's not helpful to upload every small improvement I make, so I'll wait a week or so to upload my next one.&nbsp; I probably wont have a ton of time in the coming days anyway, with work and raiding the next few days...</p>\r\n<p>&nbsp;</p>\r\n<p>When I do upload my next patch, it will be cumulative with the one I did already, I assume that's OK.&nbsp; Oh, and I know I am not very experienced in C++, so I don't mind someone telling me to code something differently.&nbsp; They have code reviews at my job regularly,  so I'm used to people making suggestions.</p>\r\n</blockquote>\r\n<p>Sounds fine. And it's C#, not C++; C++ is very very different. :)</p>",
+    "PostedDate": "2011-05-02T19:28:35.757-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "608576",
+    "ThreadId": "255932",
+    "Html": "<p>So I got almost all the spells getting calculated correctly.&nbsp; I just have to add Holy Radiance.&nbsp;&nbsp; I then started looking at the rotation, but realized the first thing I had to do is fix the mana calculations, combat regen being the biggest problem.&nbsp; I fixed that and a couple misc bugs, and now the model is putting out some numbers based on the old rotation.&nbsp; However, at least the spells and mana are correct, so the number is somewhat meaningful now.</p>\r\n<p>Next I have to:</p>\r\n<ul>\r\n<li>improve the rotation</li>\r\n<li>add a slider bar for Light of Dawn vs Word of Glory use (for spending Holy Power)</li>\r\n<li>add a slider bar for % effectiveness for Light of Dawn (because the frontal cone area doesnt always cover the max # of players who need heals))</li>\r\n<li>Add Holy Radiance to the tool, and 2 slider bars.&nbsp; One for how often to use it, and another for % effectness (as people have to be stacked tightly to get 100% out of it)</li>\r\n<li>Look at the talents / glyphs, I know many are ignored or calculated wrong now.</li>\r\n<li>Add something for T11 and T12 bonuses</li>\r\n</ul>\r\n<p>So as expected, it will take a while to get all done!</p>\r\n<p>Once I get a bit more progress, I'll upload another patch.</p>",
+    "PostedDate": "2011-05-06T08:50:35.78-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

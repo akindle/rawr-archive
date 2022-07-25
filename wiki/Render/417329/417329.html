@@ -1,0 +1,168 @@
+<div class="wikidoc">
+<p><img src="http://dl.dropbox.com/u/15727672/RawrVisible/ModelStatus/4.0.14_Rawr.Moonkin.png" alt="" style="float:right"></p>
+<h1>Rawr.Moonkin</h1>
+<p>Rawr.Moonkin is a tool to help Moonkins choose and optimize their gear, from brand new 85s, to endgame raiders. Rawr.Moonkin was one of the first models to be developed after Rawr was opened to non-feral druids. Unlike Rawr.Mage, Rawr.Moonkin does
+<strong>not</strong> do any optimization, cast sequence construction, or anything of the sort. What it
+<strong>does</strong> do is provide you with as accurate a picture as possible of the damage you can expect to do, given all of the variables provided. The variables it includes are:</p>
+<ul>
+<li>Gear and enchants, which are loaded with your character by default. This includes proc effects on many trinkets, as well as set bonuses.
+</li><li>Raid buffs. These can be enabled in the Buffs tab. </li><li>Talent point selections. These are loaded from the Armory by default, but they can be switched around in the Talents tab and saved/loaded separately from the character.
+</li><li>External variables such as fight length, replenishment uptime, and smart spell selection.
+</li></ul>
+<p>Once all these variables have been loaded into the module, it performs a series of mathematical calculations to estimate the average time spent casting each spell in the Moonkin's arsenal, as well as the damage done per cast of these spells. These two numbers
+ are then combined to provide a raw burst DPS estimate for the common &quot;rotations&quot; used by Moonkin. Rawr.Moonkin also examines the mana cost of the spells used in each rotation and models a time-to-OOM DPS scenario as well. These two results are displayed as
+ the Selected Rotation (maximum DPS within the constraint of mana usage) and the Burst Rotation (maximum raw firepower) in the Stats tab. The sustained (mana-limited) DPS, burst DPS, DPM, and estimated time to OOM of all rotations are also displayed at the
+ bottom of the Stats tab.<br>
+<br>
+One of the newer features in Rawr.Moonkin is comparative charts. Rawr.Mookin provides four charts. They are:</p>
+<ul>
+<li>Talent DPS comparison. Unlike the Rawr default version, this displays the total DPS weight of a given talent option, not the per-talent-point weight.
+</li><li>Talent MP5 comparison. Red values indicate mana cost reduction of spells; blue values indicate mana gained during the fight.
+</li><li>Mana gains. Displays the average amount of mana gained during the course of a fight from the most common mana sources.
+</li><li>Damage per Cast Time. Shows the average damage done by each spell in the current rotation per unit of casting time.
+</li></ul>
+<p><span style="font-weight:bold; font-size:large">Current Status</span></p>
+<p>This model is currently mostly functional, consistently maintained by <strong>
+Dopefish</strong>, and you can safely rely on it for your gear choices in Cataclysm. There may be a few talents or abilities that are not 100% modeled. If you find something that is incorrect please follow the Posting Guidelines and create an Issue in the Issue
+ Tracker.</p>
+<p><span style="font-weight:bold; font-size:large">Options Pane</span></p>
+<ul>
+<li><strong>Latency (ms):</strong> The in-game latency you normally play under. This can be viewed in game on the primary menu bar where you see character, questlog, talents, help etc buttons.
+</li><li><strong>Innervate Delay:</strong> &lt;info todo&gt; </li><li><strong>Replenishment Uptime:</strong> A modifier for the Replenishment Buffs to affect their uptime. There are many scenarios where the Replenishment buff is replaced by something else temprorarily during a fight due to other raid needs. For most users,
+ a value of 95-100% is sufficient. </li><li><strong>Treant Lifespan:</strong> Of their full lifespan, the percentage of time they actually stay up before killed or canceled.
+</li><li><strong>Reforge Priority:</strong> Choose whether the optimizer can reforge Spirit to Hit and vice versa. With the appropriate talents, Spirit would always be greater than or equal to Hit. Setting this option will both save Optimizer sequence time and prevent
+ unwanted reforgings in your optimizer results. </li><li><strong>Allow Spirit-&gt;Hit:</strong> This allows an override to the previous setting
+</li><li><strong>User Rotation:</strong> Select your Rotation or let it generate one for you
+</li></ul>
+<p><span style="font-weight:bold; font-size:large">Frequently Asked Questions</span></p>
+<p><strong>Q:</strong> What the heck is with the two different DPS numbers?! What do they mean?<br>
+<strong>A:</strong> Sustained DPS is the damage expected to be done in a mana-limited scenario; Burst DPS is how much damage you can dish out without regard to your mana pool. If you select a rotation from the dropdown on the Options tab, it will be shown as
+ the Sustained DPS rotation in the charts.</p>
+<p><strong>Q:</strong> My Rawr results are showing me that Intellect/Spirit/MP5 is an overpowering stat for DPS. How can this be?<br>
+<strong>A:</strong> Most likely, it means that you forgot to check all of the correct raid buffs in the Buffs tab, or the options in the Options tab are incorrect. Verify these settings first. Rawr models time-to-OOM scenarios, and if it calculates you as going
+ OOM, your stat weights will be completely off. You can force it to ignore mana considerations by sorting by Burst DPS; this is not recommended in all scenarios, as mana should still be a consideration, and if you have all the correct raid buffs and fight parameters
+ set, you may still run out of mana.</p>
+<p><strong>Q:</strong> I'm not so sure about the accuracy of your calculations. What's the method behind the madness?<br>
+<strong>A:</strong> Plain and simple, Rawr.Moonkin takes the widely accepted and used WrathCalcs spreadsheet, by Arawethion of the Elitist Jerks forums, and runs its calculations in C# code. Where Rawr diverges from WrathCalcs is that Rawr.Moonkin also has
+ a new trinket proc modeling system. Aside from that, all the math is straight out of WrathCalcs and is being reviewed by an independent Moonkin expert.</p>
+<p><strong>Q:</strong> What's with the rotations list? Don't you use the new, WoW-3.2 Eclipse?<br>
+<strong>A:</strong> Yes, yes I do. The rotations list is a holdover from the old days, when Moonkin still had to choose a primary nuke. In fact, in versions 2.2.23 and up, when you have Eclipse enabled, the summary stats at the top of the Stats tab will show
+ &quot;IS/MF/Filler&quot; or similar for Eclipse rotations. Nevertheless, a quick comparison should show you that Wrath and Starfire rotations both have exactly the same DPS for each category of DoTs, and in fact they are only being calculated once and displayed twice
+ for historical and (currently) technical reasons.</p>
+<p><span style="font-weight:bold; font-size:large">Known Issues</span></p>
+<p>There are presently no known major Issues with Moonkin. Please see the Issue Tracker for any new issues that have been opened since this writing.</p>
+<p><span style="font-weight:bold; font-size:large">Troubleshooting</span></p>
+<p>This section has not yet been written.</p>
+<p><span style="font-weight:bold; font-size:large">Recent Changes</span></p>
+<p><strong>Rawr 4.1.04:</strong><br>
+- Heart of Ignacious<br>
+- Change the trigger rate of Heart of Ignacious. It procs on all damaging spell casts<br>
+- Migrated T11 Set bonuses to the new method<br>
+- Changed handling for T11 2P<br>
+- Mainline 4.1 PTR changes now that the patch has been released<br>
+- Converted T11 4P to use a cached single static instance of the special effect rather than generate a new one each calc<br>
+<strong>Rawr 4.1.03:</strong><br>
+- No significant changes<br>
+<strong>Rawr 4.1.02:</strong><br>
+- 4.1 PTR: The Eclipse buff no longer rounds down to the nearest percent<br>
+<strong>Rawr 4.1.01:</strong><br>
+- Fix a mistake with Euphoria energy return<br>
+- Omen of Clarity proc chance lowered to 2% from 6%<br>
+- Fix a minor calculation error in the calculation of Glyph of Starfire/Nature's Grace interactions<br>
+- New charts: Rotation Selection: Shows the details of all rotations that Rawr.Moonkin generates and PTR Buff/Nerf: Shows graphically the effect of any DPS-related changes on the current test realm<br>
+- Display actual average cast times for MF and IS instead of the GCD<br>
+- Fix the haste issue with calculating DoT ticks, as per the EJ Balance Druid thread<br>
+- Adjustments to movement DPS. Not finished yet<br>
+- Laid some behind the scenes groundwork for multiple target DPS<br>
+<strong>Rawr 4.1.00:</strong><br>
+- Fix Treant hit calculations, now that I've resolved the issue with my in-game testing<br>
+- Remove the Treant Hit display, as it is mostly irrelevant now<br>
+- Delete Rawr2/Rawr3 code in preparation for migration of Rawr4 code to root folder<br>
+- Migrate code to base<br>
+- Fix cogwheel gemming templates<br>
+- Don't need to add the cogwheel templates to every tier of the gemming templates<br>
+- Fix for Issue 20175: Fixed the Treant hit mistake<br>
+<strong>Rawr 4.0.20b:</strong><br>
+- Further refinement to the model of Glyph of SS/Glyph of SFall with Starfall Lunar Only rotations<br>
+- Change Wild Mushroom cast time to 3 * 1 second global cooldown<br>
+- Add information to display about Starfall and Wild Mushroom usage in the rotations<br>
+- Update the coefficient on Wild Mushroom<br>
+- I had the wrong damage multiplier for Moonfury in the first place. Changed to the hot-fixed 4.0.6a value<br>
+- Fix another mistake where I was double-counting the baseline 8 points of Mastery<br>
+- Update the calculations for Moonfire and Nature's Grace to better match the spreadsheet<br>
+- I also believe I improved upon that last by providing an actual calculation for GoSF and NG, rather than just plumbing in a guess of 50%<br>
+- Performance minded change, should improve performance by ~25%. Unsure as to the full ramifications of the change<br>
+- Implemented Mastery flooring as per Elitist Jerks. Note that this totally messes up the Relative Stat Values chart<br>
+- Add a button to display the stats graph. This will show the haste breakpoints and the mastery stepping function<br>
+<strong>Rawr 4.0.19b:</strong><br>
+- Update math to latest WrathCalcs spreadsheet:<br>
+- Move Starfall, Treants, Wild Mushroom calculations into the Rotation calculations.<br>
+- Add rotations with Starfall cast mode and Wild Mushroom cast mode.<br>
+- Remove rotations with Starsurge cast mode, is always on cooldown now.<br>
+- Remove Once and Unused rotations from dot cast modes.<br>
+- Corrected relevant NG and Eclipse calculations <br>
+- Supposed to fix the issue with Sorrowsong where the value isn't right sub 35%. <br>
+- Fix to Wild Mushroom calculations<br>
+- Make the glyph of Starsurge do something when the selected or burst rotations are set to Starfall Lunar Only<br>
+- Better modeling of the effects of the Starfall/Starsurge glyphs on Starfall Lunar Only rotations.<br>
+- Fix Starsurge glyph on rotations that are not Starfall Lunar Only.<br>
+- Fix Glyph of Focus.<br>
+<strong>Rawr 4.0.18b:</strong><br>
+- Should fix the issue where it was crashing during optimization. I don't know what possessed me to write it the way I did<br>
+- Add a user option to enable or disable reforging Spirit to Hit rating, now that Hit rating has a slight tangible advantage over Spirit<br>
+- Fix for issue where pots were showing 0 DPS value<br>
+<strong>Rawr 4.0.17b:</strong><br>
+- PTR changes:<br>
+- - Remove armor modifier from Moonkin form<br>
+- - Add 30% damage buff to Wild Mushroom calculations<br>
+- - Also changed the Wild Mushroom calculations to 650-786 base damage per mushroom, rather than split across all 3 mushrooms. I have no idea if this is correct<br>
+- Switch the Wild Mushroom calculations to match the spreadsheet:<br>
+- - Reduce coefficient to the spreadsheet value. (Needs confirmation)<br>
+- - Re-reduce damage to 650-786 across all 3 mushroom<br>
+- DEFAULT<em>GEMMING</em>TIER changed to 1 - Array was zero based not 1 based so default of 2 was epic instead of rare. Epic gems of course don't exist yet in Cataclysm.<br>
+- Updates to treants:<br>
+- - Treants do not benefit from raid-wide auras such as 10% AP, 5% crit, 10% haste<br>
+- - Treants benefit from Heroism and 4% physical damage debuff<br>
+- - Add a display value to show the amount of hit treants have, as well as hit rating to cap<br>
+- Correct display typo: StatConversion.YELLOW<em>MISS</em>CHANCE<em>CAP<a href="wikipage?title=PlayerLevel%20-%20TargetLevel&referringTitle=VersionNotes">PlayerLevel - TargetLevel</a> which always gives a negative and out of bounds exception should have been
+ StatConversion.YELLOW</em>MISS<em>CHANCE</em>CAP<a href="wikipage?title=TargetLevel%20-%20PlayerLevel&referringTitle=VersionNotes">TargetLevel - PlayerLevel</a><br>
+<strong>Rawr 4.0.16b:</strong><br>
+- Add a PTR mode switch and plumbing<br>
+- Add Moonfire/Sunfire mana cost reduction<br>
+- Add Eclipse Mastery buff<br>
+- I'm pretty sure I've implemented all the mechanics. Updating to Fully Ready<br>
+<strong>Rawr 4.0.15:<br>
+</strong>- Add an option to prefer either Hit or Spirit for reforging on gear<br>
+- Reducing the Wild Mushroom damage until I'm sure I know how hard the things hit<br>
+- Correct the math for Treants<br>
+- Redo the combat table to reflect new testing<br>
+- Redo swing speed, base AP, base weapon DPS<br>
+- Re-add Target Armor Reduction as a relevant stat and implement it. Still to do: Figure out what crit/haste buffs apply to the Treants and apply them<br>
+- Fix treant base DPS<br>
+- Correct the formula used to scale treant hit to treant expertise<br>
+- Add crit/haste raid buffs and Heroism to treants<br>
+<strong>Rawr 4.0.14:<br>
+</strong>- No significant changes<strong><br>
+Rawr 4.0.13:</strong><br>
+- Add Silences to the boss options handling code in Moonkin<br>
+- Removed a lot of else's that should enable handling of single SpecialEffects with multiple stats that fall into separate handler categories<br>
+- Enable trinket procs that apply DoT effects.<br>
+- Fix mana proc handling. In particular, Hymn of Hope / Mana Tide Totem should now give sustained damage benefit.<br>
+- Add cogwheel support to gemming templates<br>
+- Add sparkling cogwheel for spirit = hit so both hit &amp; spirit cogwheels can be used together<br>
+- Implement spell crit depression<br>
+- Undo an old optimization change that turned out to break a lot of calculations for non-standard rotations. Woopsy<br>
+- Fix a mistake with calculating mastery procs. Theralion's Mirror should now show the proper bonus<br>
+- Fix a display issue where the hit cap is not displayed properly for non-raid boss targets<br>
+- Got the numbers backwards on the display function<br>
+<strong>Rawr 4.0.12:</strong><br>
+- Fix broken null reference exception in the reforging code.<br>
+<strong>Rawr 4.0.11:</strong><br>
+- Fix double-counting base Druid crit.<br>
+- Fix for defect #19282: Items, talents, etc., have no value when no character is loaded.<br>
+- Fix for Issue 19317: SpellPower and Hit slightly off - User reported that base Intellect and Spirit don't factor into SpellPower and Hit fully. Implemented suggested fix<br>
+- Fix for issue where reforging was showing nonsensical combinations<br>
+- Add Intellect and Mastery trinket procs<br>
+<strong>Rawr 4.0.10:<br>
+</strong>- No significant changes<strong></strong></p>
+</div><div class="ClearBoth"></div>

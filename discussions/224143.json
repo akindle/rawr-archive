@@ -1,0 +1,90 @@
+[
+  {
+    "Id": "482445",
+    "ThreadId": "224143",
+    "Html": "\r\n<p>Raise your hand if you want to see Rawr4 out of Alpha. Ya, that's what I thought. To git-er-done, we need the following tasks completed. Between the developers and the community, I'm sure we can get this stuff sorted out pretty quickly.</p>\r\n<p>Please note that if you have no idea how to do any kind of programming, this is not the post for you, but if you just want to be able to compile the latest source (perhaps to get around a bug you may be having) the Getting Ready to Help section will tell\r\n you what to do.</p>\r\n<p>If you are looking to become a more permanent addition to our development team, please see the\r\n<a href=\"http://rawr.codeplex.com/wikipage?title=Development Applications\">Developer Applications</a> page.</p>\r\n<h2>Getting Ready to Help</h2>\r\n<p>For those that have not set up Development Environments yet, here's how to setup a Rawr4 dev environment, from scratch:</p>\r\n<ol>\r\n<li>Installed <strong>VS 2010 Ultimate</strong> (or <strong>Visual Web Developer</strong>, for the free users;\r\n<strong>Visual C# Express</strong> should work too, I think) </li><li>Windows Update </li><li>Installed latest <strong>Silverlight</strong> from Silverlight.net root page </li><li>Installed the <strong>Silverlight 4 Tools</strong> for Visual Studio 2010 (<a href=\"http://go.microsoft.com/fwlink/?LinkID=177428\">http://go.microsoft.com/fwlink/?LinkID=177428</a>).\r\n</li><li>Installed the latest <strong>Silverlight Toolkit</strong> (<a href=\"http://silverlight.codeplex.com/\">http://silverlight.codeplex.com/</a>).\r\n</li><li><span style=\"color:#888888\">[OPTIONAL]</span> Installed <strong>VS2010 Pro Power Tools</strong> (Tools &gt; Extension Manager, Online Gallery, Search &quot;Pro Power&quot;)\r\n</li><li><span style=\"color:#888888\">[OPTIONAL]</span> Installed <strong>PowerCommands for VS2010</strong> (Tools &gt; Extension Manager, Online Gallery, Search &quot;PowerCommands&quot;)\r\n</li><li><span style=\"color:#888888\">[POSSIBLY NEED]</span> Install Windows SDK, user reported without it they couldn't compile\r\n</li><li>Setup <strong>TFS if you are a Developer, SVN if you are a user, </strong>following the instructions on the\r\n<strong>Source Code</strong> page of the site. (TFS has permissions restrictions to Developers only).\r\n</li><li>Open <strong>Rawr4.sln</strong> </li><li>Right click in solution explorer on <strong>Rawr.Silverlight.Web/Default.aspx</strong>, choose\r\n<strong>Browse With</strong>. Choose <strong>IE</strong>, hit Set Default, then Close. (Note that if you develop from multiple systems, this setting tends to reset and you may have to do it again whenever you change systems.)\r\n</li><li>Hit the <strong>Green Play Button</strong> (which should Compile and Run the program).\r\n</li><li><strong>Rawr4</strong> should load, and be fully debuggable, and have data. If it loads with no data, it means you stopped it at some point previous while it was in the middle of loading; just use Tools &gt; Reload All Data Files.\r\n</li></ol>\r\n<p>If the above process doesn't work when you try it for whatever reason, feel free to email\r\n<a href=\"mailto:WarcraftRawr@gmail.com\">warcraftrawr@gmail.com</a> with a detailed description of what happened and we can try to help you sort it out.</p>\r\n<h2>Rawr4 Task List</h2>\r\n<p>Most of these tasks are just things that are implemented in Rawr2 but no one has gotten around to in Rawr4. We're all very busy with our daily lives so it's slow going in implementing these changes.</p>\r\n<p><strong>Non-developers:</strong> When you have completed a task, look at the Pending Changes tab (should be at the bottom of your VS window, if not, go to\r\n<strong>View &gt; Other Windows &gt; Pending Changes</strong> to show it). Now open the directory where you locally stored the Rawr solution and copy each file that you made a change in to a zip file (we recommend 7-zip because it's very fast and free). Take\r\n that zip file and go to the <strong>Source Code</strong> tab, click <strong>Upload Patch</strong>, and follow the directions to upload the zip file. Please include a description of all of your changes, starting with the Tasks as stated in the following list.</p>\r\n<ul>\r\n<li><strong>Item Editor:</strong> There are several things on the Item Editor that have not been implemented:\r\n<br>\r\n<ul>\r\n<li>Nested Special Effects </li><li>Opening the Add Special Effect dialog and clicking cancel crashes (there's a ticket open about this)\r\n</li></ul>\r\n</li><li><strong>Edit Item Filters:</strong> We need to make the Filters list specific to Source only (no gem filters, no profession filters, no iLevel filters, no bind filters, no quality filters as these will all be separate options in the side-bar)\r\n</li><li><strong>Updating the Item Cache:</strong> (any of the options that would cause this): Not yet Implemented\r\n</li><li><strong>Class/Model Picker:</strong> Needs to remember it's current selection when you reopen the drop-down (right now it defaults back to the top one).\r\n</li><li><strong>Charts:</strong>\r\n<ul>\r\n<li>Export <del></del>to Image: Not yet Implemented </li><li>Available &gt; Gear, Enchants: Not yet Implemented </li><li>Direct Upgrades &gt; Enchants: Not yet Implemented </li><li>Stat Values: We should add a second chart here that's for the Stat Graph class, which would show better values than the RSV chart\r\n</li><li>Model Specific Charts: It doesn't update the coloring of the blocks like it does for the legend\r\n</li></ul>\r\n</li></ul>\r\n",
+    "PostedDate": "2010-08-19T11:56:19.32-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "530967",
+    "ThreadId": "224143",
+    "Html": "\r\n<p>A few corrections/issues I had using this guide.</p>\r\n<p>I had to install the Silverlight 4 Developer Runtime (http://go.microsoft.com/fwlink/?LinkID=167220) manually to get it to work. This may be an issue with multiple drive installs of Visual Studio 2010, though, but that is what I had to do.</p>\r\n<p>I also had to install the Windows SDK v7.1 to get the .NET Framework 4 SDK (http://www.microsoft.com/downloads/en/details.aspx?FamilyID=6b6c21d2-2006-4afa-9702-529fa782d63b&amp;displaylang=en). Without this installed, nothing would compile and I would just\r\n get spammed with errors.</p>\r\n<p>Lastly, &quot;For those that have not set up Development Environments yet, here's how to setup a Rawr3 dev environment, from scratch:&quot; should be Rawr4.</p>\r\n",
+    "PostedDate": "2010-12-03T16:14:12.88-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "545716",
+    "ThreadId": "224143",
+    "Html": "\r\n<p>Updated listing and removed comments related to initial postings that have since been corrected.</p>\r\n",
+    "PostedDate": "2011-01-07T15:43:26.177-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "546235",
+    "ThreadId": "224143",
+    "Html": "\r\n<p>This would be a good thing to have in the documentation tab so it doesn't get lost.</p>\r\n",
+    "PostedDate": "2011-01-09T08:17:24.327-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "547066",
+    "ThreadId": "224143",
+    "Html": "\r\n<p>Having a weird issue where I can't attach to the silverlight process.&nbsp; I know it has to do with something regarding the versions of silverlight or an addon or something but haven't figured out what the specific problem is just yet.&nbsp; Anyone else\r\n seen this problem?&nbsp; I don't want to have to uninstall and reinstall VS and all components.&nbsp;</p>\r\n",
+    "PostedDate": "2011-01-10T20:23:17.453-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "547073",
+    "ThreadId": "224143",
+    "Html": "\r\n<p>What browser? That's the most important question.</p>\r\n",
+    "PostedDate": "2011-01-10T21:04:08.83-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "547075",
+    "ThreadId": "224143",
+    "Html": "\r\n<p>I get the same in IE, FF, or Chrome</p>\r\n<p>When opening the &quot;Attach to process&quot; UI in VS 2010, I don't see the silverlight component available in any of the running processes, even if Silverlight is available in the Attachment type.</p>\r\n",
+    "PostedDate": "2011-01-10T21:08:26.41-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "547085",
+    "ThreadId": "224143",
+    "Html": "\r\n<p>Yet the silverlight app actually works? That seems very very odd. I'd try uninstalling and reinstalling Silverlight (dev runtime, not user runtime), that should be fairly quick and painless.</p>\r\n",
+    "PostedDate": "2011-01-10T22:06:31.127-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "547086",
+    "ThreadId": "224143",
+    "Html": "\r\n<p>ok... that's what I was afraid of.&nbsp; I'll give that a shot.</p>\r\n",
+    "PostedDate": "2011-01-10T22:07:18.297-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "547090",
+    "ThreadId": "224143",
+    "Html": "\r\n<p>ok... Just uninstalling devtools and SDK then trying to reinstall didn't solve it.&nbsp; Dev tools errors out with Version of Silverlight is more recent than in the Devtools package.</p>\r\n<p>Uninstalling Silverlight runtimes, Then installing the dev tools, I get the error that I need to update Silverlight when running Rawr.</p>\r\n<p>Running the default updater, and I still can't see the silverlight process...</p>\r\n<p>So current versions are:</p>\r\n<ul>\r\n<li>Silverlight Runtimes: 4.0.51204 </li><li>Silverlight 4 SDK: 4.0.50826 </li><li>Silverlight 4 Toolkit (April 2010): 4.0.40413.2020 </li><li>Silverlight Tools for VS 2010: 10.0.30319.400 </li></ul>\r\n<p>It's getting late.&nbsp; I'll futz w/ this more in the morning.</p>\r\n<p>Edit: FYI the install binaries are the same version when auto-update as I get when I pull the latest build from silverlight.net.</p>\r\n",
+    "PostedDate": "2011-01-10T22:30:20.713-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "547365",
+    "ThreadId": "224143",
+    "Html": "\r\n<p>Ok found the problem ... that being not the proper version of the Silverlight for Developer runtimes.&nbsp; The new path is here:</p>\r\n<p><a href=\"http://go.microsoft.com/fwlink/?LinkID=188039\">http://go.microsoft.com/fwlink/?LinkID=188039</a></p>\r\n<p>for silverlight v 4.0.51204</p>\r\n",
+    "PostedDate": "2011-01-11T08:51:51.133-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

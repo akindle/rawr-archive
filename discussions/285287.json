@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "721766",
+    "ThreadId": "285287",
+    "Html": "\r\n<p>Regardless of the complexity of the procedure Rawr performs to reason to reach a crit or haste value recommendation for a player, I was wondering how close are those to the reality the overwhelming majority of actual gameplay situations demand. Namely, in\r\n Fire Mage, crit rating for Ignite is of fundamental importance. Even if haste is more, a critical hit might be required at a particular moment. Now, where it gets complicated is that haste also is a situational advantage in that same situation. It will produce\r\n more hits and hence a higher probability to crit. However, I assume this will be a lower contribution in the&nbsp;pursuit&nbsp;of Ignite.&nbsp;</p>\r\n<p>tl;dr: I theorize that if differences are small between stacking crit and stacking haste, stacking crit is an advantage in fire mage for situational/utility reasons.</p>\r\n",
+    "PostedDate": "2012-01-06T16:10:58.053-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "721774",
+    "ThreadId": "285287",
+    "Html": "<p>Rawr models the tradeoff of lower crit rate creating lower chance of combustion conditions vs higher haste creating increased rate of potential points for the trigger. There's definitely some room for improvement in the modeling however. Things like better probability prediction of combust conditions, tradeoffs between waiting for better combustions or going with lower, better model for average ignite size.</p>\r\n<p>I mainly use simc as a comparison to tweak the parameters where I'm using some approximation method, so the best way to improve these is comparing spell distributions between simc and rawr. It's possible that combustion is still a bit off, but my observation was that the main difference is currently in ignite damage, which is why I was looking specifically into munching/rolling mechanics.</p>\r\n<p>As far as situational/utility advantages, if it is something that can be modeled I can definitely include it, if not there's the optimizer constraint options.</p>",
+    "PostedDate": "2012-01-06T16:41:22.377-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "721797",
+    "ThreadId": "285287",
+    "Html": "<p>To put this in more practical terms and tie this with your point on looking at real gameplay data, what we need is the following.</p>\n<p>We need to collect logs from players, probably easiest in form of world of logs reports, together with gear that was used (specifically haste/crit, procs, t13 and raid buffs, ideally in the form of rawr character xml). Then we need to compare ignite triggering crit damage with ignite damage and see  what the munching/rolling situation is in real gameplay. Single target fights are probably the cleanest to avoid cases where ignite falls off due to adds dying/invulnerabilities and dot spreading.</p>\n<p>After we have that we'll have a better understanding of what kind of impact haste has on rolling/munching in real gameplay.</p>",
+    "PostedDate": "2012-01-06T19:18:17.223-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

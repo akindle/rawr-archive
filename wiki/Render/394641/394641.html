@@ -1,0 +1,102 @@
+<div class="wikidoc">
+<h1>Rawr.Warlock</h1>
+<p>Rawr.Warlock is a tool to help Warlocks choose and optimize their gear, from brand new 85s, to endgame raiders.</p>
+<p><span style="font-weight:bold; font-size:large">Current Status</span></p>
+<p>This model is currently <span style="color:#ff0000"><strong>non-functional</strong></span>, periodically maintained by
+<strong>Erstyx</strong>, and you <span style="color:#ff0000"><strong>should not</strong></span> rely on it for your gear choices in Cataclysm.</p>
+<ul>
+<li>The <strong>Buffs Tab</strong> is where you define the buffs provided by other members of your raid, NOT the buffs you'll be giving yourself (except for potions and food). If you'll be providing Curse of Elements yourself, for example, add it to your spell
+ priorities instead of selecting it in the buffs tab. Your pet's raid buffs will automatically be added to your stats, so for example only check &quot;Fel Intelligence&quot; in the buffs tab if another warlock will be providing it. Doing so will more accurately reflect
+ the value of your pet, since its raid buff will only help you if another raid buff is not already present.
+</li><li><strong>Melee Buffs</strong> are therefore included in the buffs tab. It may look odd to see them there, but they are important especially for Demo locks using the Felguard.
+</li><li><strong>Life Tap</strong> will always be used when you need mana, regardless of whether it is included in your spell priority list. The model assumes you life tap when you would otherwise be casting a filler spell ... i.e. when everything is on cooldown.
+ If you add Life Tap to your priority list it will ensure you cast it at least enough to keep up the Glyph of Life Tap.
+</li><li>The <strong>Raid Buff</strong> tab allows you to assign values to raid buffs you can provide. For example, if you are in a 10-man raid with 2 other casters that each get 2 extra dps per point of spell power you can provide them (via Demonic Pact), you should
+ enter 4 into the spell power field. You can also raise the value of spell power to account for the benefit given to your healers. Do not include the benefit those buffs give yourself; that value is already factored into your own dps scores (not yet supported
+ in Rawr 4; unclear if needed). </li><li>Check the <strong>Convert Flametonuge to</strong> box if you have a shaman in your raid who will switch from flametounge totem to a dps totem if you provide Demonic Pact, then enter the amount of dps they will do with that totem (not yet supported in Rawr
+ 4; unclear if needed). </li></ul>
+<p><span style="font-weight:bold; font-size:large">Known Issues</span></p>
+<ul>
+<li>In general, things that were modeled in Rawr 2 and still exist in Cataclysm are still modeled, with updated numbers where applicable. Base damage values for all spells should be accurate.
+</li><li>The new effect of haste and crit on dots is modeled. </li><li>Mastery and specialization bonuses are modeled. </li><li>Pets have been slightly updated in terms of base ability damage, but the scaling model has not.
+</li><li>The following mechanics are not yet modeled (some are unlikely to be used in a raiding rotation, of course):
+<ul>
+<li>Bane of Doom's chance to summon an Ebon Imp (and its damage) </li><li>Demon Soul </li><li>Fel Flame's extension of Immolate/UA </li><li>Tier 11 4-piece bonus </li><li>Hand of Gul'Dan's chance to refresh Immolate (with points in Cremation) </li><li>Hand of Gul'Dan's chance to reduce the Metamorphosis cooldown (with points in Impending Doom)
+</li><li>Searing Pain's bonus crit chance to targets at less than half health (with points in Improved Searing Pain)
+</li><li>Shadowburn limited to targets under 20% health </li><li>Shadowburn's chance to reset its cooldown when it fails to kill its target and is glyphed
+</li><li>Soul Fire's cast time reduction triggered by Decimation procs </li><li>Burning Embers </li><li>Empowered Imp </li><li>Summon Doomguard </li><li>Summon Infernal </li></ul>
+</li></ul>
+<p><span style="font-weight:bold; font-size:large">Previous Version's ToDos (most of which still apply)<br>
+</span></p>
+<ul>
+<li>Performance improvements </li><li>Finish modeling pets </li><li>Improve modeling at the crit cap (for Conflagrate) </li><li>Revisit Destruction spell modeling. </li><li>Add an option to cast just enough Shadow Bolts to keep up Improved Shadow Bolt
+</li><li>Model the execute stage </li><li>Improved estimate of Avg Unhasted Cast Time, for use in cases where the model needs an estimate before the actual value can be calculated
+</li><li>Model Judgement of Wisdom </li><li>Add notes and options to each spell in the options tab </li><li>Create custom charts for anything interesting </li><li>Model raid damage boosts &amp; include in the overall score </li><li>Model incoming damage (for Fel Concentration) </li><li>Model movement time? </li></ul>
+<p><span style="font-weight:bold; font-size:large">Options Pane</span></p>
+<table border="0" width="100%">
+<tbody>
+<tr>
+<td valign="top"><img src="http://dl.dropbox.com/u/15727672/RawrVisible/ModelStatus/4.0.14_Rawr.Warlock.png" alt=""></td>
+<td width="100%" valign="top">
+<p>(the statements below are from bear, they will be updated to Warlock info soon<sup>TM</sup>)</p>
+<p><span style="font-weight:bold; font-size:large">Rating Customization</span></p>
+<ul>
+<li><strong>Threat Value:</strong> A scaling modifier for your threat calculations in Rawr
+<ul>
+<li><strong>Scenario 1:</strong> Many tanks are geared well enough that they don't need to worry about having DPS out-threating them. Set it to a low number like 1.0 or 0.0 to have the overall score focus on Mitigation and Survival
+</li><li><strong>Scenario 2:</strong> You have this one particular DPS in the raid who has been consistently out-threating you. You want to one up him so he stops pulling mobs off you. Set it to Crazy about Threat to have the overall score focus a lot more on threat
+ abilities, talents and glyphs. </li></ul>
+</li><li><strong>Survival Soft Cap:</strong> Once you have a certain amount of Health in a level of content (Dungeons, Heroics, Raids, Heroic Raids) there isn't much point to stacking things like Stamina and it becomes more effective to continue stacking Mitigation
+ stats like Armor and Dodge. Use the selector to choose presets, otherwise you can set the value manually.
+</li></ul>
+<p><span style="font-weight:bold; font-size:large">Target Parameters</span></p>
+<ul>
+<li><strong>Target Level:</strong> The level of the target. This affects Miss, Dodge, Parry and Crit calculations.
+</li><li><strong>Target Armor:</strong> The amount of Armor the target has. This affects your damage output.
+</li><li><strong>Target Damage (Raw):</strong> The amount of unmitigated damage put out by the target per hit.
+</li><li><strong>Target Attack Speed (sec):</strong> The frequency the target attacks you with the above damage amount.
+</li><li><strong>Target Parry Hastes:</strong> A target which Parry Hastes can have his swing timer reset if you Parry its attack. This reduces the value of Expertise as you become more likely to get Burst down.
+</li><li><strong>Maintain Demoralizing Roar:</strong> You keep the Demoralizing Roar debuff active yourself.
+</li></ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span style="font-weight:bold; font-size:large">Frequently Asked Questions</span></p>
+<p>This section has not yet been written.</p>
+<p><span style="font-weight:bold; font-size:large">Troubleshooting</span></p>
+<p>This section has not yet been written.</p>
+<p><span style="font-weight:bold; font-size:large">Recent Changes<br>
+</span></p>
+<p><strong>Rawr 4.1.0:</strong><br>
+- Fix for issue 20112: Mark the Rare gem templates as enabled by default<br>
+- Fix Cogwheel templates<br>
+<strong>Rawr 4.0.20b:</strong><br>
+- Updated gemming templates to use Burning Shadowspirit Diamond; removed Wrath templates<br>
+- Updated stat relevancy to include Power Torrent, Hurricane, and offhand intellect<br>
+- Updated mastery bonuses for Demo and Destr for patch 4.0.6<br>
+- Updated effect of Inferno talent<br>
+<strong>Rawr 4.0.19b:</strong><br>
+- No significant changes<br>
+<strong></strong><strong>Rawr 4.0.18b:</strong><br>
+- No significant changes<br>
+<strong></strong><strong>Rawr 4.0.17b:</strong><br>
+- No significant changes<br>
+<strong></strong><strong>Rawr 4.0.16b:</strong><br>
+- Added Stat Graph to Info tab on Options pane<br>
+<strong>Rawr 4.0.15b:</strong><br>
+- Fixed several array bugs and nullcheck errors<br>
+- Improve fix for issues 19488, 19391<br>
+- clean up item relevancy rules; fix bug causing GCDs &lt; 1 sec<br>
+<strong>Rawr 4.0.14b:</strong><br>
+- No significant changes<br>
+<strong>Rawr 4.0.13b:</strong><br>
+- Fix for Issue 19391<br>
+<strong>Rawr 4.0.12b:</strong><br>
+- No significant changes<br>
+<strong></strong><strong>Rawr 4.0.11b:</strong><br>
+- No significant changes<br>
+<strong>Rawr 4.0.10b:</strong><br>
+- No significant changes<br>
+<strong></strong></p>
+</div><div class="ClearBoth"></div>

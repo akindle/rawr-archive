@@ -1,0 +1,90 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSWarr",
+      "DisplayName": "Rawr.DPSWarr"
+    },
+    "ClosedComment": "Fixed in r36596",
+    "ClosedDate": "2009-09-11T17:38:16.767-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Offhands are being showed as minus alot of dps.\nOptimizer throws the offhand away and chooses to dps in fury with only 1 weapon.\nAlso deep wounds is alot higher with 1 weapon, instead of 2.\n \nI did this with standing in back at 100% and 3 targets 100% of the time. Stance on fury ofcourse.\n \n2.2.15 release version",
+    "LastUpdatedDate": "2013-05-16T05:24:27.42-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-09-10T07:18:21.81-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSWarr.Fury] OH Negative DPS",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 14106
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Fixed with Ebs' r36595.",
+      "PostedDate": "2009-09-10T22:50:28.113-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Update - using r36595, OH is still bugged somewhat.  It works if it's selected through the dropdown dialogue... sorta.  All OH are counted as 0 DPS.  With just a MH equipped, the comparisons tab for the MH shows a nuch of green bars filling the width of the comparisons pane.  When selecting the OH options for the comparisons pane, I get the following error, and a nice big red X and a red box where the list normally is.\r\n\r\n----\r\nSystem.OverflowException: Overflow error.\r\n   at System.Drawing.Graphics.CheckErrorStatus(Int32 status)\r\n   at System.Drawing.Graphics.DrawString(String s, Font font, Brush brush, RectangleF layoutRectangle, StringFormat format)\r\n   at Rawr.ComparisonGraph.get_PrerenderedGraph() in E:\\Program Files (x86)\\Rawr Version-Separate Data\\36595\\ComparisonGraph.cs:line 564\r\n   at Rawr.ComparisonGraph.OnPaint(PaintEventArgs e) in E:\\Program Files (x86)\\Rawr Version-Separate Data\\36595\\ComparisonGraph.cs:line 681\r\n   at System.Windows.Forms.Control.PaintWithErrorHandling(PaintEventArgs e, Int16 layer, Boolean disposeEventArgs)\r\n   at System.Windows.Forms.Control.WmPaint(Message& m)\r\n   at System.Windows.Forms.Control.WndProc(Message& m)\r\n   at System.Windows.Forms.ScrollableControl.WndProc(Message& m)\r\n   at System.Windows.Forms.ContainerControl.WndProc(Message& m)\r\n   at System.Windows.Forms.UserControl.WndProc(Message& m)\r\n   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)\r\n   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)\r\n   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)",
+      "PostedDate": "2009-09-10T23:43:54.023-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Haven't tried the new revision yet, but in the release there is the same thing with MH, fulling the whole comparisons screen, no numbers shown.\r\nAlso white dps shows as 0000, but if you mouseover you do see some dps numbers.",
+      "PostedDate": "2009-09-11T00:04:31-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Gah, I was testing and all was going well, so I checked in.  It seems there was another spot where offhand logic was added *cough*Jothay*cough* and not tested for the case when OffHand speed was 0, but it wasn't getting hit when below a certain DPS.\r\n\r\nAnd yes, Ubah, that WhiteDPS issue was also fixed in the more recent checkin.\r\n\r\nBrWarner, if you get a chance, try your scenario again with r36596",
+      "PostedDate": "2009-09-11T05:23:53.03-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-11T05:52:00.63-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Looks good now.  =D",
+      "PostedDate": "2009-09-11T11:34:01.813-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-11T17:38:16.767-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T16:41:47.643-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:08.807-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:27.42-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "197554",
+    "ThreadId": "58405",
+    "Html": "<p>I was working on a patch for the DPSWarr module (uploaded as Patch ID 2997) and noticed that the model doesn't currently seem to take into account the fact that a Heroic Strike converts a rage generating white hit into a non-rage generating yellow hit. If my understanding of the mechanic is correct, then the model would need to need to take this into account for an accurate representation of HS damage. After doing some quick calculations it is not significant at my current gear level and spec, but for a BiS geared warrior with specific talent choices it could end up becoming significant.</p>\r\n<p>One possibility would be to iteratively calculate HS frequency and free rage. It should be a convergent process that stabilizes to several decimal places after only a few iterations.</p>\r\n<p>Any comments on this observation?</p>\r\n<p>~Droid</p>",
+    "PostedDate": "2009-06-03T22:01:10.667-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "197853",
+    "ThreadId": "58405",
+    "Html": "<p>We take it into account in two ways:</p>\r\n<p>1) The rage cost for a heroic strike includes the rage lost from a white swing. &nbsp;Look at Skills.HeroicStrike.heroicStrikeRageCost(): rageCost+= Whiteattacks.GetSwingRage(combatFactors.MainHand, true);</p>\r\n<p>2) Main hand damage is reduced by the frequency of your heroic strikes. &nbsp;Lok at Skills.WhiteAttacks.CalcMhWhiteDPS(): mhWhiteDPS *= (1f - HS_Freq);</p>\r\n<p>We also do an iterative process to calculate HS frequency and Slam procs, because the chance for slam to proc is based on how frequently you HS, which is based on how much rage you have to spend, which is based on how frequently you slam proc, etc. &nbsp;See the while loop in CalculationsDPSWarr.GetCharacterCalculations: while (calcOpts.FuryStance &amp;&amp; Math.Abs(newHSActivates - oldHSActivates) &gt; 0.01f) { ... }</p>",
+    "PostedDate": "2009-06-04T10:42:05.037-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "197869",
+    "ThreadId": "58405",
+    "Html": "<p>AH! I had found #2 but did not see #1 when I was going through the code. Thanks for the response, I am just starting to get acquainted with the code. It is relatively thick with calculations, but I am starting to understand the flow. If you could take a look at Patch ID 2997 and let me know if I did anything incorrectly that would also be appreciated.</p>\r\n<p>~Droid</p>",
+    "PostedDate": "2009-06-04T11:18:34.85-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "197955",
+    "ThreadId": "58405",
+    "Html": "<p>I checked it out, and it doesn't look like you did anything incorrectly, although I would make some changes. &nbsp;You didn't include what happens when incite pushes your HS crit chance over the crit cap. &nbsp;Also, the commenting out of the whiteAttacks.HS_Freq is questionable; I know I added it for some reason related to white attack calculations but I'd have to look into it further.</p>\r\n<p>The problem is, and this was a shortcoming on our part, Heroic Strike/Incite builds are something we didn't take into consideration, and I'm not sure you can easily get it done with a small patch. &nbsp;Jothay had it in at one point but it was causing issues (this was before he did his Rotation, when Abilities were in their infancy), and I convinced him that we shouldn't because I was under the wrong assumption that heroic striking doesn't happen in arms.</p>\r\n<p>I've sinced changed my tune and recognize that it's valuable, and want to get it in, but I want to make sure it's put in the right way from the design of the rotation all the way through to the finished product. &nbsp;I've been wanting to clean up the rotation logic (our current iterations are hacky things we added to get it to work ASAP). &nbsp;Now that the cd on bloodthirst has been lowered, Fury needs new rotation logic, so I'm planning on redesigning the rotation (creating a Rotation object that uses Skills and CombatFactors, and having GetCharacterCalculations use it). &nbsp;Heroic Striking will be added at that time, if not sooner.</p>",
+    "PostedDate": "2009-06-04T14:45:37.75-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "198058",
+    "ThreadId": "58405",
+    "Html": "<p>I had commented out that line while debugging somthing and simply forgot to go back and look into it later. I went back tonight and believe that I found a more general bug related to HS damage that occurs in Fury stance as well. With the current mainline revision pulled down from SVN Here is the output I get with my toon with a Fury setup:</p>\r\n<p>Bloodsurge - 336</p>\r\n<p>Bloodthirst - 1062</p>\r\n<p>Whirlwind - 749</p>\r\n<p>Heroic Strike - 433</p>\r\n<p>Deep Wounds - 687</p>\r\n<p>White DPS - 1081</p>\r\n<p>Total DPS - 4629</p>\r\n<p>&nbsp;</p>\r\n<p>When you add up all the DPS number above manually you get 4348, not the 4629 that is displayed. Stepping through the code it appears that the total DPS is being calculated with calls to whiteAttacks.CalcMhWhiteDPS() and whiteAttacks.CalcOhWhiteDPS(), but this is after whiteAttacks.HS_Freq = 0; has been set. Therefore, the numbers that are obtained are white DPS without taking HS reductions into consideration. I would propose that instead of the function calls the total DPS calculation should be done with the stored value calculatedStats.WhiteDPS instead. I have added this to my previous patch for both Arms and Fury. With this modification the total DPS matches the DPS breakdown for both Arms and Fury. I have re-posted this new patch as Patch ID 3007.</p>\r\n<p>I can defiantly understand the desire to re-code the rotation logic, that is the correct way to do it. However, I looked through my modifications I still believe this is a good first order approximation for both Heroic Strike and Incite, and I can see value in adding this to the model now until the full rotation re-coding can happen.</p>\r\n<p>~Droid</p>",
+    "PostedDate": "2009-06-04T22:22:41.83-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "198272",
+    "ThreadId": "58405",
+    "Html": "<p>Thanks for pointing out the DPS bug. &nbsp;I actually think I saw it close to when you did (or at least, I thought of it as I was driving home from work, but dinner/raid prevented me from making the change), and was reminding myself to doublecheck that all the numbers added up correctly :)</p>\r\n<p>Your argument for putting in your patch is fair, and I'm going to apply it locally and do some sanity checks, and then check it in. &nbsp;Thanks for all your work :)</p>",
+    "PostedDate": "2009-06-05T08:28:59.48-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

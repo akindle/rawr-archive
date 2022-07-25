@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "161101",
+    "ThreadId": "48278",
+    "Html": "Just a thought; When i use Rawr to look at possible upgrades i like to know where a perticular item drops without having to mouse-over it (that way i can see what i need to pvp for, or whether I should do Heroic X). <br>\r\n<br>\r\nI appologise if this is not the right location for this (it didnt seem appropriate for a bug report)<br>\r\n<br>\r\nI went in and played with the code a little bit and ended up with this:<br>\r\nComparisonGraph.cs: Line 443:<br>\r\n<br>\r\n//g.DrawString(item.Name, this.Font, brushItemNames, rectItemName, formatItemNames);<br>\r\nif (item.Item != null &amp;&amp; item.Item.Id != 0)<br>\r\n  g.DrawString(item.Name + &quot; (&quot; + <br>\r\n    (item.Item.LocationInfo.Source == ItemSource.StaticDrop ?  // Make sure its a drop<br>\r\n      ((StaticDrop)item.Item.LocationInfo).Area :                         // List the name of the location if it is<br>\r\n      Enum.GetName(typeof(ItemSource), item.Item.LocationInfo.Source) // List the item source if its not<br>\r\n    ) + &quot;)&quot;, this.Font, brushItemNames, rectItemName, formatItemNames);<br>\r\nelse<br>\r\n  g.DrawString(item.Name, this.Font, brushItemNames, rectItemName, formatItemNames);  // in case its not an item\r\n",
+    "PostedDate": "2009-02-23T12:47:37.72-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "161106",
+    "ThreadId": "48278",
+    "Html": "Well, we'd have to do more to make short versions of source locations, and some item names are already quite long, but I do see the value in this. I'll see what we can do about it.",
+    "PostedDate": "2009-02-23T12:57:03.03-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

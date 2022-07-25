@@ -1,0 +1,111 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Bear",
+      "DisplayName": "Rawr.Bear"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-07-02T11:32:27.05-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Ok, I'm not sure if this is \"Bad data\" or what. But if a cloak has \"armor\" with a variable set, it factors in the Bear armor multiplier. Only way around this is by setting the armor to \"Bonus Armor.\"\n \nA good way to test this is by unselecting a cloak and then select a frost cost cloak. The value of the cloak would shoot 2k armor. But if you change the value to Bonus Armor, it changes it correctly to 700 something. I tried updating my values from both the Armor and WoWhead and it didn't change for either.",
+    "LastUpdatedDate": "2013-05-16T05:22:22.173-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-01-17T23:32:16.723-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Bear] Armor still factoring in Cloak armor multiplier",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15942
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2802,
+      "FileName": "bear.xml",
+      "DownloadUrl": ".\\2802"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Armory has bad data. Refresh from Wowhead.",
+      "PostedDate": "2010-01-17T23:45:35.27-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I did refresh from Wowhead and it didn't change one bit.  Both Armory and Wowhead give cloaks normal armor. None of them give \"Bonus Armor\" settings on the cloaks I'm looking at.",
+      "PostedDate": "2010-01-17T23:52:41.137-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Edit, ok, now it's working correctly, so I don't know what happened\r\n",
+      "PostedDate": "2010-01-17T23:57:42.887-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Now that I think about it...Shouldn't the system be not factoring in the armor multiplier for the cloak. Without the cloak selected, it says my armor should be 34,629. If I select the Sentinel's Winter Cloak which has 177 armor and 560 Bonus Armor, it brings my total armor up to 36,427.\r\n\r\nIf you subtract the 560 Bonus Armor, that would come up to 35,867. Subtract that from the non-cloak Armor, that would make a difference of 1238. Divide that by 177, and that would be a divisible of 7 (6.994)",
+      "PostedDate": "2010-01-18T01:01:23.073-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Shoot! I messed up. I posted a patch that removed armor multiplier and I relized after I posted that I was wrong on my calculations and that the patch is void. Can you remove the patch that I posted please.",
+      "PostedDate": "2010-01-21T16:29:00.817-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Err, I don't see a patch from you today... Did someone else already remove it or something?",
+      "PostedDate": "2010-01-21T18:29:56.923-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I killed it",
+      "PostedDate": "2010-01-21T18:57:35.917-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-18T07:57:12.747-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It is very easy to see this issue using the Icebound Cloak - without editing the item to give it 490 bonus armor (like it really has) this is listed as the best in slot tanking cloak for a feral druid.",
+      "PostedDate": "2010-06-27T23:34:53.813-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Plain (base) Armor on cloaks *does* benefit from bear form. Bonus armor does not.\r\n\r\nExample: A cloak with 159 base armor.\r\nEquipping it in caster form takes me from 11640 to 11819 armor. That's a difference of 179, which is 159 * 1.1 (thick hide).\r\nEquipping it in bear form takes me from 35165 to 36281 armor. That's a difference of 1116, which is 159 * 1.1 (thick hide) * 4.7 (dire bear form) * 1.33 (survival of the fittest).",
+      "PostedDate": "2010-06-28T00:20:17.143-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T11:32:27.05-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:30:30.533-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:22.173-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

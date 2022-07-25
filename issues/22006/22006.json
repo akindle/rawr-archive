@@ -1,0 +1,131 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Enhance",
+      "DisplayName": "Rawr.Enhance"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2012-01-28T17:57:43.283-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The export function is not accurate for attack power and spell power. When you load a character from armory and export the stats via \"Export Stats to Enhsim config file\", all stats and ratings are accurate but AP and SP (e.g. the paperdoll stats ingame show 15787 AP and 8683 SP for me, but the exported config file shows 14474 AP and 7383 SP).\nEdit: Just to clarify the issue: Enhsim needs the ingame paperdoll stats to work properly. That means RAWR has to copy AP and SP after applying Unleashed Rage. Seems like RAWR is only applying 10% bonus AP by unleashed rage, not 20%.\nEdit2: I think there's something wrong in EnhSim.cs in lines 75, 76 and 81. I'm not a programmer but I think it should be\n75:                case 1: unleashedRage = .10f; break;\n76:                case 2: unleashedRage = .20f; break;\n81:            float MQUnleashedRageSpellpower = stats.AttackPower * (1f + unleashedRage) * 0.55f;\n82:            sb.AppendLine(\"spellpower                      \" + MQUnleashedRageSpellpower.ToString(\"F0\", CultureInfo.InvariantCulture));\nto reflect 4.3 changes.\nEdit3: After changing these lines, AP seems better (difference between export and ingame sheet is now 3 AP). SP is still missing about 500 points,\nEdit4: Changed another line, works now (except for rounding errors). See source code posted above. I submit the EnhSim.cs file.",
+    "LastUpdatedDate": "2013-05-16T05:17:09.167-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2012-01-01T08:16:46.407-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Enhance] AP/SP export to Enhsim not accurate",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 22006
+  },
+  "FileAttachments": [
+    {
+      "FileId": 5524,
+      "FileName": "EnhSim.cs",
+      "DownloadUrl": ".\\5524"
+    },
+    {
+      "FileId": 5531,
+      "FileName": "EnhSim.cs",
+      "DownloadUrl": ".\\5531"
+    },
+    {
+      "FileId": 5535,
+      "FileName": "RAWR Export.txt",
+      "DownloadUrl": ".\\5535"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Will take a look at this.  Thanks.",
+      "PostedDate": "2012-01-02T15:48:27.813-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Have checked-in a fix for this issue. Will be in the next release.  Thank you :)",
+      "PostedDate": "2012-01-03T20:26:32.527-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-01-04T03:05:18.223-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "AP works fine now, but SP is still missing some points for me. It works again when I change line 82 from\r\n            sb.AppendLine(\"spellpower                      \" + (stats.SpellPower * (1f + unleashedRage)).ToString(\"F0\", CultureInfo.InvariantCulture));\r\nto\r\n            sb.AppendLine(\"spellpower                      \" + (stats.AttackPower * (1f + unleashedRage) * 0.55f).ToString(\"F0\", CultureInfo.InvariantCulture));\r\n",
+      "PostedDate": "2012-01-04T03:05:19.983-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hmm, was fine in the file I tested. Are you able to provide your character file (or even battle.net info) so I can test?",
+      "PostedDate": "2012-01-04T17:54:27.133-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-01-05T02:24:49.427-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This is my armory link: http://eu.battle.net/wow/en/character/nerathor/Desertus/advanced\r\nI attach a text file with correctly imported data and with the stats Rawr exports for me. As you see, Rawr shows 8070 SP but ingame it says 8693.",
+      "PostedDate": "2012-01-05T02:24:51.047-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm sorry, ingame it says 8683, not 8693.",
+      "PostedDate": "2012-01-05T05:13:11.027-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I see the problem, I have some changes in CalculationEnhance.cs that I haven't checked in.  With those changes, the export is showing 8684 SP.",
+      "PostedDate": "2012-01-05T23:31:47.67-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Have (finally) checked in the changes that I mentioned in my previous comment.  Are you able to test this again?\r\nI have also noticed some small discrepancies with the haste/crit percentages (+/- 2%) that I will look into.",
+      "PostedDate": "2012-01-17T21:10:24.083-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Please excuse my late answer, I had quite a lot to do the last two weeks. It works just fine now. It is only about 1 Agility, 2 AP and 1 SP inaccurate. Also, combat ratings are 100% accurate for me. ",
+      "PostedDate": "2012-01-28T02:18:40.987-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks for the reply.  Will close this ticket, but will keep an eye on it in case I break it with any of my other changes.",
+      "PostedDate": "2012-01-28T17:57:26.47-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-01-28T17:57:43.283-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:23:54.63-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:17:09.167-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

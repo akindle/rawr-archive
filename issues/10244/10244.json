@@ -1,0 +1,91 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Mage",
+      "DisplayName": "Rawr.Mage"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2008-08-21T19:53:01.403-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Per request on EJ forum. Used build 18406.\n \n \nMage Armor\nEvocation: 1.00x\nMana Potion: 3.00x\nMana Gem: 3.00x\nIcy Veins+Arcane Power+Serpent-Coil Braid+Icon of the Silver Crescent+Arcane Blast: 25.00 sec (3627.02 dps, 306.96 mps, 1492.88 tps) \nSerpent-Coil Braid+Arcane Blast: 5.00 sec (2138.15 dps, 183.82 mps, 880.06 tps) \nIcon of the Silver Crescent+Arcane Blast: 15.00 sec (2085.25 dps, 183.82 mps, 858.29 tps) \nHeroism+Arcane Power+Serpent-Coil Braid+Icon of the Silver Crescent+Arcane Blast: 5.00 sec (3713.93 dps, 318.47 mps, 1528.65 tps) \nHeroism+Icy Veins+Serpent-Coil Braid+Icon of the Silver Crescent+ABFrB3FrB: 10.00 sec (2552.46 dps, -0.83 mps, 1412.03 tps) Arcane Blast-Frostbolt-Arcane Blast-Frostbolt-Arcane Blast-Frostbolt-Frostbolt-Frostbolt-Frostbolt-Pause\nHeroism+Icy Veins+ABFrB3FrB: 20.00 sec (2207.76 dps, -0.83 mps, 1220.07 tps) Arcane Blast-Frostbolt-Arcane Blast-Frostbolt-Arcane Blast-Frostbolt-Frostbolt-Frostbolt-Frostbolt-Pause\nHeroism+Icy Veins+Icon of the Silver Crescent+ABFrB3FrB: 5.00 sec (2348.36 dps, -0.83 mps, 1298.37 tps) Arcane Blast-Frostbolt-Arcane Blast-Frostbolt-Arcane Blast-Frostbolt-Frostbolt-Frostbolt-Frostbolt-Pause\nArcane Blast: 191.43 sec (1968.13 dps, 183.82 mps, 810.08 tps) \nABFrB3FrBSc: 73.61 sec (1397.17 dps, -58.84 mps, 758.49 tps) Arcane Blast-Frostbolt-Arcane Blast-Frostbolt-Arcane Blast-Frostbolt-Frostbolt-Scorch",
+    "LastUpdatedDate": "2017-11-27T11:01:39.86-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-05-27T05:05:30.1-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Mage] challenging spellcycles with SMP enabled",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 10244
+  },
+  "FileAttachments": [
+    {
+      "FileId": 995,
+      "FileName": "wizeowel.xml",
+      "DownloadUrl": ".\\995"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I checked in a version that better handles this situation, but it currently takes quite a long time to compute (about 40 sec on my machine). I'll try to look into improving this, but I can't promise anything.",
+      "PostedDate": "2008-05-27T13:45:19.747-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "With build 22252 this character is solved optimally with DepthFirst search method with computation limit set to 300 (although to actually prove this is optimal it needs computation limit of 3000).\r\n\r\n00:00.000: Arcane Blast (14411 mana)\r\n00:16.340: Heroism+Icy Veins+ABFrB3FrB (11405 mana)\r\n00:31.340: Heroism+Icy Veins+Icon of the Silver Crescent+ABFrB3FrB (11410 mana)\r\n00:36.340: Mana Gem (11411 mana)\r\n00:36.340: Heroism+Arcane Power+Serpent-Coil Braid+Icon of the Silver Crescent+Arcane Blast (14411 mana)\r\n00:45.770: Mana Potion (11411 mana)\r\n00:45.770: Heroism+Arcane Power+Serpent-Coil Braid+Icon of the Silver Crescent+Arcane Blast (13811 mana)\r\n00:51.340: Heroism+ABFrB3FrBSc (12037 mana)\r\n00:56.340: Arcane Blast (12188 mana)\r\n01:55.230: Evocation (1355 mana)\r\n02:04.590: Arcane Blast (14411 mana)\r\n02:26.270: ABFrB3FrBSc (10423 mana)\r\n02:41.060: Arcane Blast (11289 mana)\r\n02:45.770: Mana Potion (10423 mana)\r\n02:45.770: Arcane Blast (12823 mana)\r\n03:11.340: Icon of the Silver Crescent+Arcane Blast (8119 mana)\r\n03:16.340: Mana Gem (7199 mana)\r\n03:16.340: Icy Veins+Serpent-Coil Braid+Icon of the Silver Crescent+Arcane Blast (10199 mana)\r\n03:31.340: Icy Veins+ABFrB3FrB (6169 mana)\r\n03:36.340: Arcane Blast (6335 mana)\r\n03:52.980: ABFrB3FrBSc (3274 mana)\r\n04:33.020: Arcane Blast (5618 mana)\r\n04:45.770: Mana Potion (3274 mana)\r\n04:45.770: ABFrB3FrBSc (5674 mana)\r\n05:09.430: Arcane Blast (7059 mana)\r\n05:11.340: Icon of the Silver Crescent+Arcane Blast (6707 mana)\r\n05:16.340: Mana Gem (5787 mana)\r\n05:16.340: Icy Veins+Arcane Power+Serpent-Coil Braid+Icon of the Silver Crescent+Arcane Blast (8787 mana)\r\n05:31.340: Icy Veins+ABFrB3FrB (4185 mana)\r\n05:36.340: Arcane Blast (4352 mana)",
+      "PostedDate": "2008-08-21T19:51:57.717-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-08-21T19:53:01.403-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:32:49.537-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:34:22.25-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-21T00:00:17.077-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:49.117-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:27:14.86-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:01:39.86-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

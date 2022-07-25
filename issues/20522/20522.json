@@ -1,0 +1,100 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "Unable to repro, has to be sometihng on his system, a new version has also been released since then",
+    "ClosedDate": "2011-05-06T18:42:21.187-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have performed the Suggested Fix and continue to receive this error. If I am posting this message without having performed the Suggested Fix I am aware that I am consuming the Developer(s) time in managing my Issue unnecessarily.\n \n== Version: 4.1.3.0 ==\n \n== Error Message ==\nLa chiamata del costruttore sul tipo 'Rawr.WPF.WindowMain' corrispondente ai vincoli di associazione specificati ha generato un'eccezione.\nImpossibile inizializzare il sistema di configurazione\n \n== StackTrace ==\n   in System.Windows.Markup.WpfXamlLoader.Load(XamlReader xamlReader, IXamlObjectWriterFactory writerFactory, Boolean skipJournaledProperties, Object rootObject, XamlObjectWriterSettings settings, Uri baseUri)\n   in System.Windows.Markup.WpfXamlLoader.LoadBaml(XamlReader xamlReader, Boolean skipJournaledProperties, Object rootObject, XamlAccessLevel accessLevel, Uri baseUri)\n   in System.Windows.Markup.XamlReader.LoadBaml(Stream stream, ParserContext parserContext, Object parent, Boolean closeStream)\n   in System.Windows.Application.LoadBamlStreamWithSyncInfo(Stream stream, ParserContext pc)\n   in System.Windows.Application.LoadComponent(Uri resourceLocator, Boolean bSkipJournaledProperties)\n   in System.Windows.Application.DoStartup()\n   in System.Windows.Application.<.ctor>b__1(Object unused)\n   in System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)\n   in MS.Internal.Threading.ExceptionFilterHelper.TryCatchWhen(Object source, Delegate method, Object args, Int32 numArgs, Delegate catchHandler)\n \n== These are the Steps that I have tried ==\nDownloading a new copy of Rawr doesn't solve the problem\n[Please fill in steps here]",
+    "LastUpdatedDate": "2013-05-16T05:18:10.98-07:00",
+    "PlannedForRelease": "Rawr 4.1.03",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-04-15T10:14:58.047-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] Rawr doesn't start",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 20522
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "In English please?",
+      "PostedDate": "2011-04-15T14:53:27.31-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "== Error Message ==\r\nCalling the constructor of the type 'Rawr.WPF.WindowMain' corresponding to the specified binding constraints threw an exception.\r\nUnable to initialize the configuration system\r\n(Language: Italian)",
+      "PostedDate": "2011-04-15T18:37:14.5-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "From what I can tell, you either did not fully extract Rawr from the zip (all the files, not just the exe) or you are compiling the code yourself and it's fubarring on you or you have a bad .NET install?",
+      "PostedDate": "2011-04-15T20:28:42.253-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It used to work since a couple of day ago so it can be a bad extraction from the zip. It can be that some windows update corrupted my .NET install, so i'm gonna try to reinstall it.",
+      "PostedDate": "2011-04-15T22:26:11.857-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Nothing to do even after reinstalling .NNT Framework...",
+      "PostedDate": "2011-04-16T03:15:13.317-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Not sure what else to do here, there's something with your system causing it or everyone would see the issue.",
+      "PostedDate": "2011-04-18T14:54:34.347-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-18T14:55:03.777-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Is this still an issue with the new version 4.1.04?",
+      "PostedDate": "2011-05-06T08:48:13.953-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-06T18:42:21.187-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm having the same issue with the version 4.1.5.1:\r\n\r\n== Version: 4.1.5.1 ==\r\n\r\n== Error Message ==\r\nThe invocation of the constructor on type 'Rawr.WPF.WindowMain' that matches the specified binding constraints threw an exception.\r\nConfiguration system failed to initialize\r\n\r\n== StackTrace ==\r\n   at System.Windows.Markup.WpfXamlLoader.Load(XamlReader xamlReader, IXamlObjectWriterFactory writerFactory, Boolean skipJournaledProperties, Object rootObject, XamlObjectWriterSettings settings, Uri baseUri)\r\n   at System.Windows.Markup.WpfXamlLoader.LoadBaml(XamlReader xamlReader, Boolean skipJournaledProperties, Object rootObject, XamlAccessLevel accessLevel, Uri baseUri)\r\n   at System.Windows.Markup.XamlReader.LoadBaml(Stream stream, ParserContext parserContext, Object parent, Boolean closeStream)\r\n   at System.Windows.Application.LoadBamlStreamWithSyncInfo(Stream stream, ParserContext pc)\r\n   at System.Windows.Application.LoadComponent(Uri resourceLocator, Boolean bSkipJournaledProperties)\r\n   at System.Windows.Application.DoStartup()\r\n   at System.Windows.Application.<.ctor>b__1(Object unused)\r\n   at System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)\r\n   at MS.Internal.Threading.ExceptionFilterHelper.TryCatchWhen(Object source, Delegate method, Object args, Int32 numArgs, Delegate catchHandler)\r\n\r\n== These are the Steps that I have tried ==\r\nReinstalling Rawr\r\nReinstalling .net framework 4.0",
+      "PostedDate": "2011-05-29T03:58:49.923-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:25:19.083-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:10.98-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

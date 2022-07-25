@@ -1,0 +1,111 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtPaladin",
+      "DisplayName": "Rawr.ProtPaladin"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-09-18T18:08:22.36-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I used the optimiser with the condition that I not be crittable, and ended up with 534 defense.  My understanding is that I require 540 defense to be uncrittable.  It shows me as having no resilience, no defense food/elixirs.  I do have the boss set to level 83, and don't see any set bonuses/proc effects that increase defense.  Is this an error in my understanding, or in the model?",
+    "LastUpdatedDate": "2013-05-16T05:24:21.203-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-09-15T14:13:54.477-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtPaladin] Defense Issue",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14162
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2222,
+      "FileName": "Nitocris Prot 2.2.16 optimised.xml",
+      "DownloadUrl": ".\\2222"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Do you have a save file for this?",
+      "PostedDate": "2009-09-15T15:37:59.057-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Save file attached, I think.",
+      "PostedDate": "2009-09-16T13:32:20.58-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-16T13:32:22.893-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "By the way, just in case, I ran the same optimisation with the non-crittable condition in 2.2.17, same issue, showing 534 defense.",
+      "PostedDate": "2009-09-16T13:45:51.697-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "We do *want* it to migrate to 540 defense on it's own but it won't necessarily do it (same on each of the models). That's why the requirement is there so you can force it to reach 540.",
+      "PostedDate": "2009-09-16T13:50:52.017-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Technically it doesn't appear as if this is incorrect, actually. \r\n\r\nYou have enough Avoidance with Holy Shield up that it is pushing critical hits off the combat table, therefore in a simplistic sense it doesn't matter that you are below the defense 'cap'. However, you could still be crit without Holy Shield up. I believe that is why there is an additional 'Defense Skill' optimizer criteria for if you do not wish to balance around that fact.",
+      "PostedDate": "2009-09-16T14:30:38.147-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "EvanM is exactly right. It is how Negarine and I had written that aspect: there are situations where you can use holy shield to push off crits.\r\n\r\nThe solutions are as follows: disable \"Use Holy Shield\" for the purpose of the optimizer, or use \"Defense Skill\" as the optimization criteria if you really want to see the whole 540 deal. Or do both.",
+      "PostedDate": "2009-09-16T20:28:14.913-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-17T11:49:50.863-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thank you.  I used \"defense skill\" and it solved the problem.  I apologise for wasting your time.",
+      "PostedDate": "2009-09-17T12:19:36.587-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-18T18:08:22.36-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:24.073-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:01.83-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:21.203-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

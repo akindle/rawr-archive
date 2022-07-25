@@ -1,0 +1,114 @@
+[
+  {
+    "Id": "543999",
+    "ThreadId": "240488",
+    "Html": "\r\n<p>I've released a new version of Rawr.Addon. v0.30.</p>\r\n<p><br>\r\nThis version now allows import from Rawr (it will require Rawr 4.0.15 released). To import data from Rawr right click on the Rawr icon on your character screen. Then click on &quot;Load from Rawr&quot; and get the import dialog, now just paste from Rawr4.0.15 or above.\r\n On importing from Rawr it will populate the Rawr paper doll with whatever you imported. The paper doll will now show tooltips that have the data imported from Rawr4.</p>\r\n<p>Why might you use this feature? Well you may have loaded up your character and optimised it. Now you want to see how the optimised character looks in game. So you can now export the data from Rawr and view it in game. At present it only shows the game tooltip.\r\n In future it will have an option to show side by side tooltips. Meantime get an addon like EquipCompare to see side by side tooltips.</p>\r\n<p>I also intend to add comparators so it checks what you have equipped vs what you have imported to highlight what has changed.</p>\r\n<p>I'd appreciate further ideas on what it could do.</p>\r\n",
+    "PostedDate": "2011-01-04T15:40:03.393-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "544001",
+    "ThreadId": "240488",
+    "Html": "\r\n<p>Confirmed that the Gems are fixed for Addon 0.30 and Rawr 4.0.15, just in case anyone was wondering.</p>\r\n<p>I just went in and did an export to WoW so here's what the new tooltip info looks like:</p>\r\n<p><a href=\"http://dl.dropbox.com/u/15727672/RawrVisible/AddOn/0.30_Jothay.png\" target=\"_blank\"><img src=\"http://dl.dropbox.com/u/15727672/RawrVisible/AddOn/0.30_Jothay.png\" alt=\"\"></a></p>\r\n<p>Levva, I'd recommend formatting the number down to 2 places past the decimal if you can, not much reason to show the full .10498. And (this is just a personal opinion) I'd kinda like to see it separated into a separate block like you see my auctioneer mod\r\n stuff does.</p>\r\n",
+    "PostedDate": "2011-01-04T15:45:56.463-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "544013",
+    "ThreadId": "240488",
+    "Html": "\r\n<p>The colours for the last few lines should match the colours you see in Rawr.</p>\r\n<p>Oh and I hope everyone realises how much work Jothay has put into Rawr4 - so much so he STILL has that awful green helm ;)</p>\r\n",
+    "PostedDate": "2011-01-04T16:00:01.973-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "544022",
+    "ThreadId": "240488",
+    "Html": "\r\n<p>I don't think your color routine is working quite right. :(</p>\r\n<p>And ya, I've been working on Rawr so much I'm barely Heroics ready.</p>\r\n",
+    "PostedDate": "2011-01-04T16:09:41.283-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "544040",
+    "ThreadId": "240488",
+    "Html": "\r\n<p>No I thought it was a bit off too the initial Rawr line is meant to be gold, not the overall line. What colours should a warrior be?</p>\r\n<p>DOH!!! Just realised the</p>\r\n<pre>GameTooltip:AddLine(tooltipText [, textColor.r, textColor.g, textColor.b [, wrapText]]);<br></pre>\r\n<p>each colour value is between 0 and 1 not 0 and 255. It worked on my Moonkin because moonkin uses Red and Blue ie: pure RGB colours.</p>\r\n<p>Fix committed can you verify it works pls.</p>\r\n",
+    "PostedDate": "2011-01-04T16:50:53.957-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "544055",
+    "ThreadId": "240488",
+    "Html": "\r\n<p>We've got our Red and Green like we should now :)</p>\r\n<p><a href=\"http://dl.dropbox.com/u/15727672/RawrVisible/AddOn/0.31_Jothay.png\" target=\"_blank\"><img src=\"http://dl.dropbox.com/u/15727672/RawrVisible/AddOn/0.31_Jothay.png\" alt=\"\"></a></p>\r\n",
+    "PostedDate": "2011-01-04T17:33:32.71-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "544058",
+    "ThreadId": "240488",
+    "Html": "\r\n<p>Next up I suppose is Direct Upgrades List importing to addon. Can you setup an appropriate menu/button to export that calls another version of the cut n paste dialog window please. Can call it something like RawrAddonUpgradesDialog.xaml</p>\r\n<p>I can then hack about with constructing a lua code block that it should export, and then add code to import that to Rawr.addon.</p>\r\n",
+    "PostedDate": "2011-01-04T17:36:26.733-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "544320",
+    "ThreadId": "240488",
+    "Html": "\r\n<p>Slight issue with the export including Direct Upgrades. It now takes around 20 seconds to export. Could we have an hourglass or something to indicate its busy it just looks like its hung.</p>\r\n<p>It might also be an idea to have separate menu options of a quick export of just character to Rawr Addon and a full export including direct upgrades. So users wanting to see changes quickly don't need to wait.</p>\r\n",
+    "PostedDate": "2011-01-05T06:49:45.22-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "545158",
+    "ThreadId": "240488",
+    "Html": "\r\n<p>V0.42 now has side by side comparisons tooltips so you can tell the difference between items and how the changes have been made.</p>\r\n",
+    "PostedDate": "2011-01-06T17:14:17.917-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "545248",
+    "ThreadId": "240488",
+    "Html": "\r\n<p>Is there something I need to do in my models to have the Overall and subpoint values actually show up in the UI?&nbsp; When I did the import for my TankDK, I don't see that info, I just see the normal tooltip.</p>\r\n<p>edit:&nbsp; This is w/ b42 of the addon and the latest dev build of Rawr</p>\r\n",
+    "PostedDate": "2011-01-07T00:20:15.31-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "545641",
+    "ThreadId": "240488",
+    "Html": "\r\n<p>Should just work. Can you post an issue and attach your character XML file and your exported data from Rawr to addon pls.</p>\r\n",
+    "PostedDate": "2011-01-07T12:59:35.51-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "546173",
+    "ThreadId": "240488",
+    "Html": "\r\n<p>I went looking for this addon once I seen it referred to within rawr, I didnt know it existed prior to that.&nbsp; Is there something I need to be doing in order to be able to import rawr data into the game?&nbsp; Rawr says type /rawr import, but the addon\r\n is telling me that isnt a viable option. I only have export, config, version, region, and debug.&nbsp; This is with addon version .42.</p>\r\n",
+    "PostedDate": "2011-01-09T03:01:54.16-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "546175",
+    "ThreadId": "240488",
+    "Html": "\r\n<p>Rawr v4.0.15 (not yet live on website) will allow you to export data in a format that the addon will understand. In game if you open your character window the Rawr button is bottom left - right clicking on this opens the window to allow you to import data.\r\n I'll write up some documentation once the main functions are working.</p>\r\n",
+    "PostedDate": "2011-01-09T03:08:17.29-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "546209",
+    "ThreadId": "240488",
+    "Html": "\r\n<p>I've uploaded v0.50 which is pretty much ready to roll just needs v4.0.15 on website.</p>\r\n<p><img src=\"http://dl.dropbox.com/u/18328876/WoWScrnShot_010911_140443.jpg\" alt=\"\"></p>\r\n<p><img src=\"http://dl.dropbox.com/u/18328876/WoWScrnShot_010911_140448.jpg\" alt=\"\"></p>\r\n",
+    "PostedDate": "2011-01-09T06:13:58.33-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,106 @@
+[
+  {
+    "Id": "81655",
+    "ThreadId": "24336",
+    "Html": "\r\nMessing with the Moonkin module, I noticed that the gem preference goes Intellect &gt; MP5 &gt; Spirit &gt;  followed by Spell dmg/hit/crit.  I am kind of a moonkin newb, but I got a handful of decent kara/badge items over time and I was curious if this is really the correct assumption?  I do realize when I specced Moonkin, I had a concern with mana on long fights, but chugging mana pots worked and also being allowed to use the innervate on myself helped as well, but to stack mana regen and intellect over spell damage and crit/haste seems absurd.  If I am hitting things for nominal damage, but lasting all fight is it really that much better than hitting hard and chugging pots?  The fact that Dazzling gems (int/mp5) are almost twice as effective as adding +12 dmg gems makes me believe you are either not calculating mana regen talents appropriately or are not considering manapots on every CD, not to mention equiping my feral weapon and meleeing the target to return mana.<br /><br />Just curious if I am right or if any experienced moonkins out there could school me on what I must be missing.<br />",
+    "PostedDate": "2008-03-19T09:00:55.217-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "81717",
+    "ThreadId": "24336",
+    "Html": "\r\nb12 overvalues mana regen in a way, in that it applies to both your dps and your efficiency, so contributes to both ratings. Sort by just DPS in order to get accurate values.<br />",
+    "PostedDate": "2008-03-19T13:36:23.503-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "82671",
+    "ThreadId": "24336",
+    "Html": "\r\nThe latest development code has resolved this issue by removing the efficiency stat altogether.  However, due to the fact that mana regen does affect total damage done over a fight's duration, there will always be times when mana regen outweighs damage.  This is by design, as these numbers are also reflected in the moonkin DPS spreadsheet.<br />",
+    "PostedDate": "2008-03-25T06:48:23.557-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "85644",
+    "ThreadId": "24336",
+    "Html": "\r\nIve looked into Beta 13.  I like the corrections done to Warlocks, I feel they are fairly accurate in the determining which gear is better than others.  It was horribly wrong in Beta 12, but it is much better.<br /><br />On the other hand, I still completely disagree with the moonkin module entirely.  It still insists that 10int and 10 spirit are WAY better DPS than +12dmg.  It doesnt seem to add any weight to spell hit when not maximized, and there is no way that adding more int will make my DPS go up while spell hit or spell dmg would not have as great an effect.  I am over 10k mana, I mean I can understand if my mana was pitifully low, but.... <br /><br />Any and all research I can find on moonkins states that all Yellow gems should be Veiled, Blue should be Glowing, and Red should be Runed or Veiled if more hit is required.  I fully understand the need for spirit/MP5 based regen and for having a reasonable mana pool, but you can get enough from the gear already without having to boost it further while forcing your damage to suffer.  This module is completely wrong.<br /><br />I havent messed around with the Mage yet, but EXCELLENT work on cat/bear and warlock.  Im loving it, please fix moonkin.<br />",
+    "PostedDate": "2008-04-08T11:47:06.153-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "85649",
+    "ThreadId": "24336",
+    "Html": "\r\nTimmah, are you sure you're fully filling out all buffs, and calculation options for a short fight? If you're doing something like a 10min fight with no SPriest, no JoW, no BoW, no Shaman, then yeah, int and spr &gt; hit and dmg.<br /><br />(I don't know, I'm not that familiar with the Moonkin model, just trying to come up with ideas to solve your issue if it's as easy as that)<br />",
+    "PostedDate": "2008-04-08T12:03:03.873-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "85815",
+    "ThreadId": "24336",
+    "Html": "\r\nThe Rawr.Moonkin spell calculation engine is getting a more or less complete rewrite for beta 14.  Some fundamental issues in the math behind the scenes were (belatedly) pointed out to me by some of the leading theorycrafters.  That being said, you can disagree with my results all you like, but if the number under \"Time to OOM\" on the display doesn't read \"Not during fight\", you will get significant benefits from improved mana regen.  That is an indisputable fact.  I have tested and compared the old spell calculation engine against Efejel's spreadsheet numerous times, and the results have been within tolerance for all but certain specific pieces of gear.  To the model, hit-capping means nothing if you can only cast for half of the fight's duration.<br />",
+    "PostedDate": "2008-04-09T06:50:58.7-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "85832",
+    "ThreadId": "24336",
+    "Html": "\r\nThanks for the work, Dopefish. Beta 13 is already looking very usable.<br /><br />I seem to have some trouble with the idols, like Raven not being usable eventhough I added it. Any idea if I'm doing something wrong?<br />",
+    "PostedDate": "2008-04-09T08:07:28.28-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "85987",
+    "ThreadId": "24336",
+    "Html": "\r\nMost idols wont work adding them manually because they need to be modelled.<br /><br />You can manually edit Idol of the Raven and add 20 spell critical rating to it, and it will work.<br />",
+    "PostedDate": "2008-04-09T23:41:29.74-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "86018",
+    "ThreadId": "24336",
+    "Html": "\r\nActually, I think it's just that one.  The modeling is there; something's going screwy in the parsing.<br /><br />Edit: As an update to this, the parsing error in the Raven idol was identified.  It has been fixed in my local repository, and will be pushed out with my massive commit that checks in the new spell calculation engine for Moonkin.<br />",
+    "PostedDate": "2008-04-10T04:22:32.587-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "86108",
+    "ThreadId": "24336",
+    "Html": "\r\nOk, I played with it some more.  I already had the fight set to 5 minutes with all the common buffs such as BoW and mana spring,  I had it set to assume I innervate myself WITH a special innervate weapon, and chugging mana pots.  Basically I dont have S.Priest and I dont have JoW.  With all of those settings, it still says that the 10 int gem is a significant increase over any other gem and it is followed by the 10 spirit, 8 int and THEN 10 hit, followed by 5int/2mp5.<br /><br /><br />Only when I add a shadow priest with approx 1000dps (roughly 240mp5) will it look something like I would expect it to with damage and hit and haste and crit over anything else.<br /><br />Now I can understand a 10 minute fight is gonna require a Spriest so you dont go Oom, but in 5 minutes, I know for a fact that I can go nuts and not go oom as long as I drink pots and innervate myself in a 5 minute fight, and thats without a weapon swap.<br /><br />Hopefully whatever you found fo Beta 14 changes that.  Despite this though, it is a great effort and I appreciate it.  I just want to be sure it is working right before I go spend tons to regem all my gear to Dazzling talasites :)<br />",
+    "PostedDate": "2008-04-10T10:42:14.387-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "86232",
+    "ThreadId": "24336",
+    "Html": "\r\nI can understand that, believe me.  Fortunately for you, I can tell you that the new spell calculation engine is mathematically verified to provide the correct DPS for any given set of spell damage, hit, haste, and crit.  As long as my mana regen figures are correct, and I don't see any reason why they shouldn't be, then I can guarantee you that the answer Rawr gives you is the real thing.  With one exception: Trinkets are still a touchy subject and I'm always uncertain if I modeled the procs correctly.  They will probably be in flux for a while, but if you look at the rest of your gear, it should be correct from now on.<br />",
+    "PostedDate": "2008-04-10T22:56:41.623-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "86327",
+    "ThreadId": "24336",
+    "Html": "\r\nUPDATE.....<br /><br />It seems to be caused by \"Use Innervate weapon\"  I reinput everything from scratch by hand, I was able to select all my gear, all my enchants and buffs and everything worked fine.  When I selected Innervate weapon it blew up.  I turn it back off and all is fine again.<br /><br />Sorry, this should probably be moved to the issues tracker now.<br />",
+    "PostedDate": "2008-04-11T07:26:22.673-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "86426",
+    "ThreadId": "24336",
+    "Html": "\r\nFixed in the latest development code.  It will be integrated in beta 14.  I accidentally forgot to check for the presence/absence of a main hand when doing innervate weapon calculations.<br />",
+    "PostedDate": "2008-04-11T19:32:02.833-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

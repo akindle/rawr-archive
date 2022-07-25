@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Items",
+      "DisplayName": "Rawr.Base.Items"
+    },
+    "ClosedComment": "Fix committed a while ago, if this persists, please resubmit with a list of affected items and the source where the info is bad",
+    "ClosedDate": "2009-12-14T22:23:08.633-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Using Rawr v2.2.24, DPSDK Module\n \nItem Example: Thassarian's Legplates of Triumph (48484).  This can be bought w/ 75 triumph / 1 trophy or drops off Koralon in VOA.\nIf I refresh the item via wowhead it gets tagged with \"Purchasable with 1 [Emblem of Triumph] and places it in the filter \"Special Currency (badges etc) > Armor Tokens\"\nIf I refresh the item via armory it gets tagged \"Drops from  in  \" and placed in the \"unknown (refresh) > refresh from Wowhead\" filter\n(This same issue holds true for the 232 lvl version (48476) as well as the gloves of the set (48480 and 48482)\n \nIssue: \nIf I refesh with wowhead, I only get the emblem purchase info, but no drop info.  If I refresh the item via Armory I get that it drops (but without any info), and no purchase via emblems info.  Ultimately I'd love for it to report both sources,  however I know right now the patch notes a few versions ago said the filters are gonna be a bit all over the place so I'm patiently waiting for that...  However my concern is mainly about the item reporting its source as \"Drops from  in \" with no mob or instance listed.  Typically while I raid, I'll just turn on \"direct upgrades\" and set the filter to the instance we are in to see what I need.  I only discovered this when we were about to run VOA and when I turned on the 25 man VOA filter it was blank; I knew I needed the pants and the gloves.  They currently had the wowhead source tag of only emblems.  So I refreshed the item via Armory and got the \"Drops from  in\" source. \n \nIs this issue due to Armory & Wowhead giving poor / buggy data when updating the item (as well as its multiple sources), or an issue of Rawr handling it?  And if this is poor data, is there any work around I could implement within Rawr to show these items in their correct filters?  I've tried editing the item, but the \"Source:\" field I can't edit, only the notes, and I tried putting both \"Koralon the Flame Watcher\" and \"1 \\[Emblem of Triumph\" in the notes, but they don't seem to get picked up by the filters...\n \nResult: I'm cheap w/ my emblems/trophy,  and I'd rather spend them on pieces that don't drop first (regardless of how big a dps upgrade), and roll the dice on getting one of the pieces that also drop; only spending on these pieces once everything else is obtained.  However building an upgrade list is difficult when some items as above don't filter properly (with two sources) or don't get their drop information, and end up filtering under \"unknown items\".",
+    "LastUpdatedDate": "2017-11-27T11:01:13.9-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-11-03T07:16:48.7-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Items] Items with source \"Drops from in \", how to fix?",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14600
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

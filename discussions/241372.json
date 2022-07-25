@@ -1,0 +1,202 @@
+[
+  {
+    "Id": "547665",
+    "ThreadId": "241372",
+    "Html": "\r\n<p>Hey Pallys,</p>\r\n<p>I've signed on to help bring the Ret module up to date, and will starting work shortly. I know theres a lot of stuff that needs to be done, and I'm sure you guys have lots of suggestions...I'd love to hear em! Think of me as your hired programmer, converting\r\n ideas into code.</p>\r\n<p>While I have been playing a ret pally for several years, I am by no means an expert; I&nbsp;know there are a LOT of theory crafters and uber-pallys&nbsp;out there...It'd be great to tap into your knowledge and I really hope you'll feel free to give me your\r\n ideas and opinions.</p>\r\n<p>Anyway, lets get this sucker rollin'</p>\r\n",
+    "PostedDate": "2011-01-11T16:11:31.74-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "547752",
+    "ThreadId": "241372",
+    "Html": "\r\n<p>hey there rigamonk</p>\r\n<p>I consider myself quite the experienced ret as well and I for am glad someone is finally taking the liberty of getting rawr to work again for us eager rets.</p>\r\n<p>Now i've got lots of ideas and theorycrafting going on in my head, but, my question to you is. What kind of ideas are you looking for exactly?</p>\r\n<p>Are you concerned with stat weightings? ideas on what stats are valued more by playstyle or view of importance?</p>\r\n<p>Are you concerned with playstyle itself or class mechanics? what exactly are you looking for. I'd love to help but i'd like more info.</p>\r\n<p>&nbsp;</p>\r\n<p>thanks anyway.</p>\r\n<p>&nbsp;</p>\r\n<p>Link</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2011-01-11T21:13:27.213-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "547758",
+    "ThreadId": "241372",
+    "Html": "\r\n<p>Regardless of who we bring on board, we're still not going to be using stat weightings within the program. &nbsp;Just a friendly reminder. &nbsp;=D</p>\r\n",
+    "PostedDate": "2011-01-11T21:50:34.317-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "547954",
+    "ThreadId": "241372",
+    "Html": "\r\n<p>Other ret dev here. Still alive, just terribly bogged down with work preventing me from doing much of anything.&nbsp; I do actively follow the forums here and general in-game ret changes which I can do thanks to the wonderful concept of smartphones. (At\r\n least I make my commutes to/from work and between divisions be actually useful :-)).</p>\r\n<p>While doing actual programming on a smartphone isn't really possible (well other than some basic scripting), I can help with the theoretical/analysis side.<br>\r\n<br>\r\nFor now, I think the way to proceed would be to get yourself operational with rawr in general and have a look around in the code to see how things tie together.</p>\r\n<p>As to actual work:</p>\r\n<ul>\r\n<li>Pretty much rip out all of the old combat stuff, and simply make Rawr display proper stats matching the in-game paperdoll.\r\n</li><li>Gear relevance code will need some tweaks due to changes in stats and item stat allocation.&nbsp;&nbsp; Leather &amp; mail are entirely irrelevant now so can be disabled. Tanking gear o.t.o.h. May be relevant since some of the tanking gear has increased\r\n values of str and you can reforge part of the parry/dodge. Some of the tanking gear may in fact be BiS for ret (once the 4.0.6 changes go live).\r\n</li><li>Next part is figuring out the damage numbers for each of our abilities using those stat totals.<br>\r\nThe idea here is that the numbers displayed, should more or less match what you find if you look at a recount screen (assuming no proc trinkets) getting actual matching needs large datasets because of the whims of crits and RNG on abilities with a damage range.\r\n</li><li>Next part is figuring out a combat model.&nbsp;<br>\r\nSomehow determine how many times each ability gets used during a specific combat session.&nbsp; Ideally nicely tied in to the boss handler, although even geting it to work for a static 'patchwork' type fight would be usable already. That's what rawr 2/3 were\r\n doing for ret afterall.<br>\r\nAbilities/fight time can be converted to ECD (and vice versa), which can be used to calculate DPS.&nbsp;<br>\r\nIf you're familiar with how rawr2/3 worked for ret, I'd keep the ECD input, so people can input specific combat usage obtained from some other resource and plug it into rawr. It'll need to be updated for new abilities though.<br>\r\nRawr2/3 used a dynamic sim, but sims have some problems in a gearing tool like rawr that make them less ideal. That and of course, you'll get a big angry raging bear called astrylian breathing down your neck if you do use a sim :p<br>\r\nThe combat modelling is actually the hardest thing of the model to figure out, the other things are essentially just tying in everything into rawr, and applying basic theorycrafting data.<br>\r\nI've done some work on this, but don't have anything that gets any kind of reliable/usable numbers so far.\r\n</li></ul>\r\n<p>It might be a good idea to grab you on MS live,&nbsp;don't put your details in a public forum post though :p</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2011-01-12T04:43:43.97-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "548071",
+    "ThreadId": "241372",
+    "Html": "\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n<strong>Linkster wrote:</strong>\r\n<p>Now i've got lots of ideas and theorycrafting going on in my head, but, my question to you is. What kind of ideas are you looking for exactly?</p>\r\n<p>Are you concerned with stat weightings? ideas on what stats are valued more by playstyle or view of importance?</p>\r\n<p>Are you concerned with playstyle itself or class mechanics? what exactly are you looking for. I'd love to help but i'd like more info.</p>\r\n</blockquote>\r\n<p>What is needed by any dev on any model is confirmation of how each ability works and the formulae involved in calculating them. At no stage anywhere whatsoever in Rawr is any mention of stat weightings, EVERY calculation is taking the (in ret case DPS) abilties\r\n and working out how much damage they do against the chosen boss. Whether that means working out that 1 str gives 2 AP and that is modified by all plate bonus and that is modified by talent a &amp; glyph b. etc.</p>\r\n<p>The basics of a model are taking the set of gear and working out a block of stats. eg: total str, stamina, int, agi, spr, exp, hit, ap etc etc etc for that model (often but not always averaging out procs from trinkets etc). Then from the block of stats there\r\n is an attempt to work out how that translates into each dps ability, what order the abilities are used in etc are tweaks on this, how much mana, energy, rage, holy power etc are needed to use the abilties can come into it too as well as uptime of buffs etc.\r\n However the basics are you have a block of stats that comes from the selected gear and the dps of each ability is worked out using that block of stats. The sum of the dps of each ability is the totals displayed.</p>\r\n<p>Where models fail is if the calc is out of date or has a bug so that the multipliers are wrong (eg: 145% vs 125% of weapon damage on a swing might have changed in a patch). Its all the hundreds of little calculations that need to be checked. If they are\r\n right then the end results will be right as all Rawr is doing is changing what is equipped and asking the model to calculate new totals for the new set of gear. If the number goes up it shows higher on the graph if the number goes down it shows lower. However\r\n each and every item shown of the graph is a totally fresh calculation of ALL of the formulae from scratch. Nothing stupid like stats weightings anywhere in sight.</p>\r\n<p>So to help he needs to know what all the formula are, and where errors might be.</p>\r\n",
+    "PostedDate": "2011-01-12T08:12:20.453-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "548101",
+    "ThreadId": "241372",
+    "Html": "\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n<strong>OReubens wrote:</strong><br>\r\n<p>As to actual work:</p>\r\n<ul>\r\n<li>Pretty much rip out all of the old combat stuff, and simply make Rawr display proper stats matching the in-game paperdoll.\r\n</li><li>Gear relevance code will need some tweaks due to changes in stats and item stat allocation.&nbsp;&nbsp; Leather &amp; mail are entirely irrelevant now so can be disabled. Tanking gear o.t.o.h. May be relevant since some of the tanking gear has increased\r\n values of str and you can reforge part of the parry/dodge. Some of the tanking gear may in fact be BiS for ret (once the 4.0.6 changes go live).\r\n</li><li>Next part is figuring out the damage numbers for each of our abilities using those stat totals.<br>\r\nThe idea here is that the numbers displayed, should more or less match what you find if you look at a recount screen (assuming no proc trinkets) getting actual matching needs large datasets because of the whims of crits and RNG on abilities with a damage range.\r\n</li></ul>\r\n<p>&lt;---snip--&gt;</p>\r\n<p>&nbsp;</p>\r\n</blockquote>\r\n<p>Great, thanks for taking the time to give me a heads up... I was hoping to hear from you but knew you were busy. Its nice to have an idea of where to start and I defer to your expertise.</p>\r\n<p>Linkster - As Leva said, verifying calculations would be great, as well as providing feedback on how well the model matches &quot;real world&quot; experience. I am also open to any ideas on what you think would improve the ret portion of Rawr.</p>\r\n<p>I realize my first task will be getting an updated,&nbsp;working model, and I'm not out to change the world, but having an open discourse with the ret community will, i believe, produce a better product. Besides, once OReubens gets back, I can dump it all\r\n on him...That worklist might get long.......&nbsp;;-)</p>\r\n",
+    "PostedDate": "2011-01-12T09:07:45.98-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "548605",
+    "ThreadId": "241372",
+    "Html": "\r\n<p>Gemming:<br>\r\nRet model will also need updated gemming templates.&nbsp; Not sure it's worthwhile spending time on them now (other than making note of another task to do) since 4.0.6 will bring a new meta gem with &#43;Str/crit which is likely going to be&nbsp;far ahead of any\r\n other meta.</p>\r\n<p>Str, Str, Str, new-Str-Meta remains to be a very good gemming for any item with a &quot;meh&quot; bonus (= non strength).</p>\r\n<p>With hit rating having moved to blue compared to wotlk, no more '&#43;all stats' gem, and with mastery ahead of crit/haste (in 4.0.0.6) there's really only a single alternate if you want to get the socket bonus<br>\r\nStr, Str/mastery, Str/Hit, new-str-meta</p>\r\n<p>JC gems will be ONLY bold chimera's, any chimera that's not a bold is a waste.&nbsp; so the JC templates are a copy of the above two with the str gems changed to bold chimera.<br>\r\n<br>\r\nFor Rawr2/3 there were some alternates to give you extra hit (yellow back then) or expertise (red). But this is currently no longer needed.&nbsp; Str is ahead of hit and exp even below cap.</p>\r\n<p>Calculations:<br>\r\nUse the conversion calculations from Rawr.base where possible, avoid coding in the special numbers yourself.&nbsp; There will be some of course, such as the base damages from abilities and ap/spell conversions, i.e. the paladin specific ones.<br>\r\n<br>\r\nLike levva pointed out.&nbsp; What rawr does is...<br>\r\n<br>\r\nGear -&gt; Accumulate into Stats (Rawr.Bar/Stats.cs) somehow working in trinket effects, stats without averaged trinket/enchant effects should match the in-game paperdoll.<br>\r\nStats -&gt; Damage per ability&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \\&nbsp;_ DPS<br>\r\nCombat model -&gt; Ability usage amounts&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /</p>\r\n<p>Part of the problem for ret is the feedback effect...&nbsp; Stats are effected by the combat model. Since the combat model will determine how often you will get certain proc effects.<br>\r\nThe stats also feed back into the combat model...&nbsp; haste will determine how many AoW procs you get and what the CD on CS will be, and what the GCD on spells will be.&nbsp; That will change the rotation and thus result in different proc rates and result\r\n in different DPS.</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2011-01-13T03:42:27.057-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "550014",
+    "ThreadId": "241372",
+    "Html": "\r\n<p>I'm so glad to hear that the ret module is getting some love again.</p>\r\n<p>&nbsp;</p>\r\n<p>All the best for your work, and thanks a lot in advance.</p>\r\n<p>&nbsp;</p>\r\n<p>I hope you can get a useable version out soon. :o)</p>\r\n",
+    "PostedDate": "2011-01-15T20:42:22.277-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "552895",
+    "ThreadId": "241372",
+    "Html": "\r\n<p>Since a model has to be deterministic, the more combat log samples showing procs, the better. That way we can get a fairly accurate rate based on a set duration. Since its static (hence a model, not a sim), we can't use random numbers to determine &quot;if&quot; an\r\n ability procs. an 8% proc rate means nothing if the values for a given fight have to be fixed.\r\n<br>\r\nBy using logs based on similar criteria (weapon on a dummy) we can work out an average of &quot;If a fight lasts 2 minutes, Item abc will proc xxx number of times on average&quot; The more logs, the more accurate the numbers. While its part of my responsibility to get\r\n these numbers, this can go back to Linsksters response asking what kind of help I could use. If anyone feels like working out against a dummy, or just sending some boss logs for me to parse, you can contact me through the profile page.</p>\r\n<p>If there are hard numbers somewhere with supporting information, please point me in that direction.</p>\r\n<p>As far as updates, I've been doing some prelim coding getting my crap together. From what everyone indicates, the ret model will have to be essentially rebuilt/restructured.</p>\r\n",
+    "PostedDate": "2011-01-20T15:20:51.04-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "553097",
+    "ThreadId": "241372",
+    "Html": "\r\n<p>Err not quite rigamonk. With a deterministic model if you have an 8% proc rate and the fight lasts 2 mins then you simply assume that it procs exactly 8% of that time, sure that gives a fraction of procs but that's just fine. Using whole integer procs can\r\n lead to enormous problems of the model being REALLY wildly spiky. So that incredibly tiny changes in one stat can have MASSIVE dps changes. Therefore for a purely deterministic model use fractions not whole numbers of procs.</p>\r\n<p>Lets assume you work out it procs every 60.01 seconds so it procs at 60.01 and 120.02 seconds ie: procs only once within your 2 min combat window. If you were using fractions it would be 120/60.01 = 1.999666722212965 procs. If you are using whole numbers\r\n its 1 proc. Lets also say that this proc does 20k damage per proc. So the damage with fraction use is 39993.33444425929 and the damage with integer use is 20,000.</p>\r\n<p>Now lets see if we added a small amount of haste say 1 haste rating and that brings us to a proc every 60.00 seconds. If you were using fractions thats now 2 procs in 2 mins still 20k damage per proc = 40,000 damage, if you are using whole numbers its 2\r\n procs also 40,000 damage.</p>\r\n<p>OOH we have a problem, if you are using fractions you have a 40,000/39993.33444425929 = 0.0166666666667% dps increase for 1 haste. If you are using integers you get 40,000 damage/20,000 damage = 100% dps increase for 1 haste rating OUCH a massive spike suddenly\r\n your model thinks OMG haste is wonderful.</p>\r\n<p>What users see is they can change something incredibly tiny and all of a sudden all the gear choices change dramatically. eg: tick a buff and wow something that was close to bottom of list is now at top and vice versa. These wild swings are very very common\r\n if you use functions like math.floor anywhere in your calculations or if you use integer procs. The only time it would make sense for such procs I think is if you were doing a far far more complicated state model type thing, the sort of modelling that Kavan\r\n is our resident expert in.</p>\r\n<p>&nbsp;</p>\r\n<p>Moral of the story. Avoid &quot;Item abc will proc xxx number of times on average&quot; meaning you are looking for a fixed integer. If you know it procs 8% of the time then use PRECISELY 8% and whatever fraction that gives you.</p>\r\n",
+    "PostedDate": "2011-01-21T02:26:04.043-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "553180",
+    "ThreadId": "241372",
+    "Html": "\r\n<p>Levva is right.<br>\r\nPart of the problems in the Rawr2/3 version of the ret model was exactly that. (I took over from Ermad, it's not my doing :p)</p>\r\n<p>The model used a sim.&nbsp; And used exact numbers on some of the data.&nbsp; This could lead to haste being spikey.&nbsp; Small bit of extra haste meant you could get an extra ability in = sudden DPS boost, making actual valuation of haste difficult.&nbsp;\r\n There's been more than enough cases where item valuation was off because of edge cases where differences in haste would make DPS jump, thus either grossly overvaluing haste, and propping up every item and gemming that gave you that haste, or other way around,\r\n leading you to beleve that haste was utter shite even to the point where ONLY removing a haste gem and changing nothing else would be an increase of several hundred DPS.</p>\r\n<p>You could reduce that effect by taking ever increasing fight lengths (eventually we had the sim do a fight length of several hours and interpolate the results to the fight length you wanted). Results became more accurate/reliable, but rerunning the sim for\r\n each differentvalue of haste, weapon speed, with or without set bonusses and trying to compensate for the RNG in 4T10 made it terribly slow.&nbsp; The spikyness of haste never went entirely away though.</p>\r\n<p>Iirc, one of the shammy models had a similar issue with haste.</p>\r\n<p>&nbsp;</p>\r\n<p>Had a quick look over some of the checkins you did...&nbsp; Not entirely sure what you're aiming at, but it looks suspiciously as if you are lining up to sim actual combats with that 'fire' method in the abilities.</p>\r\n<p>I'll try grabbing you on MSLM tonight.</p>\r\n",
+    "PostedDate": "2011-01-21T05:16:03.07-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "553233",
+    "ThreadId": "241372",
+    "Html": "\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n<strong>OReubens wrote:</strong><br>\r\n<p>Iirc, one of the shammy models had a similar issue with haste.</p>\r\n</blockquote>\r\n<p>The Lock model had it before I took over, caused me a lot of headaches to work out how to change the simming to modeling :)</p>\r\n<p>I tried a lot of &quot;fixes&quot; with the exact Haste issue you mention, but in the end it was all just not worth it. Best not go down that path as it will only lead to misery and mental degradation...</p>\r\n",
+    "PostedDate": "2011-01-21T06:45:26.477-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "553235",
+    "ThreadId": "241372",
+    "Html": "\r\n<p>maybe&nbsp;I didn't phrase the proce rate statement correctly.</p>\r\n<p>Unless there are hard numbers indicating what the proc rate of certain item or ability, that data (for new items/spells) will need to be collected. Since this is a new expansion, these numbers may need to be fleshed out. One way this can be done is by figuring\r\n out the proce rate through testing. the wider the representative sample, the more accurate the model. That is why I am asking others to send in logs if they wish.</p>\r\n<p>Levva - &nbsp;I was in no way implying the use of inpresice math, &quot;x number of times&quot; can be a real number...what do you think the 8% over a certain amount of time gives you? i&nbsp;don't think&nbsp;I had mentioned integers or rounding anywhere....<br>\r\n<span style=\"color:#0000ff\">&quot;Lets assume you work out it procs every 60.01 seconds so it procs at 60.01 and 120.02 seconds ie: procs only once within your 2 min combat window. If you were using fractions it would be 120/60.01 = 1.999666722212965 procs. If you\r\n are using whole numbers its 1 proc.&quot;</span> as you say..it procs 1.999666722212965 times.... (maybe I should have used xxx.xxxxx number of times in my example instead of xxx?)<br>\r\n<span style=\"color:#0000ff\">&quot;&quot;if&quot; an ability procs. an 8% proc rate means nothing if the values for a given fight have to be fixed.&quot;\r\n</span>i think is my misstatement. I had meant to imply that the 8% in the example was an inaccurate representation. I'lll need to be more careful</p>\r\n<p>Again, the point is that in a determanistic model, the base values need to be resentative to gain accuracy, and testing must be done to determine a working number, or your model is skewed</p>\r\n<p>theres a post on EJ about testing proc rates <a href=\"http://elitistjerks.com/f78/t83763-proc_items_tiny_abom_black_bruise_updated_1_25_a/\">\r\nhttp://elitistjerks.com/f78/t83763-proc_items_tiny_abom_black_bruise_updated_1_25_a/</a></p>\r\n<p>OReubens - i'd love to go over the code with you. I will hop on at about 5pm cst<br>\r\nI am not aiming at a sim...the &quot;fire&quot; method is part of the abstract class, which is setting up to make it so that if any new abilities, etc are added, you can reflect to determine the derived class type and get the damage/effect from that particular ability\r\n by calling &quot;fire&quot;</p>\r\n",
+    "PostedDate": "2011-01-21T06:46:34.28-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "553263",
+    "ThreadId": "241372",
+    "Html": "\r\n<p>Good to hear. I just got so very dispirited myself with the irritations of haste spikes, borderline mana usage cases (just out of mana within the cooldown window), and other such spike effects that I ended up stripping out lots of stuff from the Rawr.Enhance\r\n model. I'm glad you appear to appreciate the issue and I wasn't meaning to directly suggest you were going to use integers only to give a dire warning against such use. I've even seen seemingly inoccuous use of math.floor completely screwing a model and leading\r\n to massive spikes.</p>\r\n<p>OReubens it was Rawr.Enhance that was the shammy model with the issue. Others may have had it too however. Having this issue was in a very large part why I spent a considerable amount of time developing the graph features so it could show the effect of changes\r\n in a stat over a wide range and thus make it easy to visually determine if the model had an issue.</p>\r\n",
+    "PostedDate": "2011-01-21T07:31:55.89-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "553270",
+    "ThreadId": "241372",
+    "Html": "\r\n<p>All is well. Thanks for the warning(s) and keep them coming. I'm sure to head into&nbsp;problems that the people who've been on the project for a while have already figured out, and I'd rather be redirected than have to recode.</p>\r\n",
+    "PostedDate": "2011-01-21T07:43:06.637-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "553339",
+    "ThreadId": "241372",
+    "Html": "\r\n<p>i dont mind whacking at a dummy for you for a while if it helps speeding up the process of gettin the ret module to work. its been pissin me off for a while that it doesnt yet. &nbsp;but the foremost problematic things i can see so far ( not knowing much\r\n of code but purely from what i can see that is a problem ) is the fact that most of our glyphs arent working yet. especially the SoT glyph. &nbsp;get that one in and probably at least optimization of gear gets a lot better.</p>\r\n<p>my question to you is where would you like me to post my combat logs. or upload them? would you like me to try different sets of gear as well. certain reforges or just use my own gear based on what i think is best atm n just whack at the dummy several times?</p>\r\n<p>also what fight durations are you looking for? i tend to go for 2 minutes. since thats pretty much the timing of a good AW &#43; zealotry blast. &nbsp;i also tend to use GoAK. if you'd prefer me not to . or would like to see tests where i use it and not use\r\n it as well to see differences ofc thats possible too. either way i hope hearing soon. and keep giving the ret module the love it needs! :)</p>\r\n",
+    "PostedDate": "2011-01-21T09:29:10.787-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "554352",
+    "ThreadId": "241372",
+    "Html": "\r\n<p>For the most part, you don't need to worry about proc rates on items.&nbsp; That's mainly the job of the &quot;item&quot; team.</p>\r\n<p>All that needs to be done it calculate how many 'triggers' you generate over a period of time (that's up to ret model) to then calculate an average uptime (there's functions for that in rawr.base) and average out the value in the stats object.</p>\r\n<p>Some trinkets don't follow the normal rules however (Shadowmourne and Tiny abom in a jar come to mind) in that they don't work off the usual triggers.&nbsp; I had to define a new trigger (meleeattack as opposed to meleehit) to differentiate the two and get\r\n procrates to actually value the item realistically.&nbsp; Blizzard hasn't learned, there's again a couple of those items with 'unusual' triggers.</p>\r\n<p>You can't realistically be asked to test all of this yourself since you don't have the items, and if items are off, people will generally report such issues anyway.&nbsp; Some testing is good, but if you go testing individual items yourself, you'll not be\r\n doing much in the ret model :p</p>\r\n",
+    "PostedDate": "2011-01-24T05:39:10.437-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "554443",
+    "ThreadId": "241372",
+    "Html": "\r\n<p>Just my two-cents worth here but if abilities, talents, and glyphs are done first (probably in that order),&nbsp;the model should hit the &quot;partially&quot; or even &quot;mostly&quot; stage with decent recommendations. Personally I feel that getting the procs and other &quot;singular&quot;\r\n issues should be saved for the fine tuning part to get the model &quot;Fully&quot; Cata-ready.</p>\r\n",
+    "PostedDate": "2011-01-24T08:23:17.26-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "554467",
+    "ThreadId": "241372",
+    "Html": "\r\n<p>That's the first part of what Ret needs, the second part is that it needs a new Rotation calculator, because the system it has in place now is wrong for Cata (per my conversations with OReubens). So sure, yes, rigamonk is going to prioritize the simple things\r\n at first while he figures things out, such as talent x used to give 30%, now it gives 45%, fix that in 2 seconds done (80&#43; times for 80&#43; talents/glyphs/ability data) but after that he's got a hefty job to create the proper rotation setup. The first part will\r\n bring him into Partially status, the second part is what's going to get him into Mostly. Fully would come after the polishing of the rotation, adding in special things like &quot;I need to keep x buff up for the raid in addition to my rotation&quot;. This is why only\r\n a couple of models are actually in Fully status.</p>\r\n",
+    "PostedDate": "2011-01-24T09:03:33.507-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "554811",
+    "ThreadId": "241372",
+    "Html": "\r\n<p>As per requested in the check in:</p>\r\n<p>Dwarf Base Spirit - 113<br>\r\nBase Stam - 157</p>\r\n<p>Draenei Base Spirit - 116<br>\r\nBase Stam - 156</p>\r\n",
+    "PostedDate": "2011-01-24T22:16:23.113-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "555105",
+    "ThreadId": "241372",
+    "Html": "\r\n<p>You rock. thanks</p>\r\n",
+    "PostedDate": "2011-01-25T09:10:08.307-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "555123",
+    "ThreadId": "241372",
+    "Html": "\r\n<p>Once the servers are back online, I was going to double check my own 85 pally alt on the base mana and health (just hit 85 last night so I can deal with having a toon with no gear/talents on).</p>\r\n<p>Edit: correction they are back up, so I'll double check those two and update the base stats with a few other corrections I found from SimulationCraft's finding's.</p>\r\n<p>Edit2: Check what I've upload is correct. I tried to backtrack as much as I can using my Human paladin as a basis. Probably not your field of expertise, but I think I got the correct base Dodge amount as well. Using the 3.97% base dodge % on the character\r\n sheet I subtracted with the Dodge/Agil coeffic from EJ's Combat Rating:</p>\r\n<p>http://elitistjerks.com/f15/t29453-combat_ratings_level_85_cataclysm/</p>\r\n<p>to get the 3.65145297% base dodge rating.</p>\r\n<table cellspacing=\"0\" cellpadding=\"0\">\r\n<tbody>\r\n<tr>\r\n<td></td>\r\n<td></td>\r\n<td><br>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n",
+    "PostedDate": "2011-01-25T09:42:30.02-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "567946",
+    "ThreadId": "241372",
+    "Html": "<p>Hi all,</p>\r\n<p>What's the current state, rigamonk?</p>\r\n<p>I've sigend up and I'd like to help developing the retri part.</p>",
+    "PostedDate": "2011-02-17T08:33:36.493-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "568316",
+    "ThreadId": "241372",
+    "Html": "<p>Hello and thanks&nbsp;rigamonk for updating the ret spec in rawr. My question is that it's updated for 4.0.6 cause I see some items that I think they could be mistaken, like items with haste and stuff.</p>\r\n<p>Thanks for your work!</p>",
+    "PostedDate": "2011-02-17T19:47:21.57-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "569129",
+    "ThreadId": "241372",
+    "Html": "<p>havent seen any updates yet for a while now. hows things going on the ret module?</p>",
+    "PostedDate": "2011-02-19T20:47:19.24-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

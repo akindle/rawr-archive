@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-09-17T12:05:51.987-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Rawr pretty much just spams this error.\n \nSee the end of this message for details on invoking \njust-in-time (JIT) debugging instead of this dialog box.\n \n************** Exception Text **************\nSystem.ObjectDisposedException: Cannot access a disposed object.\nObject name: 'ItemButtonWithEnchant'.\n   at System.Windows.Forms.Control.CreateHandle()\n   at System.Windows.Forms.Control.get_Handle()\n   at System.Windows.Forms.Control.GetSafeHandle(IWin32Window window)\n   at System.Windows.Forms.ToolTip.Hide(IWin32Window win)\n   at System.Windows.Forms.ToolTip.HideAllToolTips()\n   at System.EventHandler.Invoke(Object sender, EventArgs e)\n   at System.Windows.Forms.Form.OnDeactivate(EventArgs e)\n   at System.Windows.Forms.Form.WmActivate(Message& m)\n   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)\n   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)",
+    "LastUpdatedDate": "2013-05-16T05:24:42.13-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-08-25T08:20:06.7-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Unhandled Exception - ItemButtonWithEnchant (Ret)",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13959
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "From the readme included with the program\r\n\" Q: I get a \"Cannot access disposed object.\" error. How can I fix that?\r\n A: There's a bug in the .NET Framework 2.0 which causes this on some machines. The only known fix right now is to uninstall it, and then reinstall the latest .NET Framework from Microsoft.\"\r\n\r\nIf that doesn't fix your issue respond here with more detail on how to reproduce the issue.",
+      "PostedDate": "2009-08-25T09:22:31.347-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Tried that.  Not sure what I can say on how to preproduce it.  It happens randomly and once it happens once it happens every few seconds.  If I restart the application I can get 60-90 seconds of use with no error.\r\n\r\nI'm using windowsXP 64-bit if that makes any difference.",
+      "PostedDate": "2009-08-25T09:40:46.413-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "What version of .NET framework do you have installed?  ",
+      "PostedDate": "2009-08-25T15:49:13.17-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The one from this page:\r\n\r\nhttp://www.microsoft.com/downloads/details.aspx?familyid=B44A0000-ACF8-4FA1-AFFB-40E78D788B00&displaylang=en",
+      "PostedDate": "2009-08-26T08:43:21.457-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "There-in lies the problem. The Answer was to \"reinstall the *latest* .NET Framework from Microsoft\" which is not 2.0 but 3.5 SP1\r\n\r\nhttp://www.microsoft.com/downloads/details.aspx?familyid=A4F52459-DFE5-4BC3-8F7F-AA688879B1DC&displaylang=en",
+      "PostedDate": "2009-08-26T09:15:48.187-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-17T12:05:51.987-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:26.64-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:42.13-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

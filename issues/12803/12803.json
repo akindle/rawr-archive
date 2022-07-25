@@ -1,0 +1,75 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.LoadCharacter",
+      "DisplayName": "Rawr.Base.LoadCharacter"
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-09T17:30:50.35-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I couldn't get Rawr (release or beta) to parse my CharacterProfiler lua file, so I took a peek in the source code. Bear(!) with me, I've never even seen c# code before...\n \nThe line\nreturn new LuaDoubleToken(Double.Parse(sValue));\nin SavedVariablesParser throws a FormatException, since my XP is running a Swedish localization (decimal comma) and the CharacterProfiler.lua contains lines like\n[\"Days\"] = 29.62193298339844,\n \nI have no idea which is the BEST way to solve this, but for my immediate need I added the line\nThread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(\"en-US\");\n, stolen from the MSDN documentation, in FormMain to force to recognize a en-US decimal point. Since the CharacterProfiler.lua actually contains a [\"Locale\"] = \"enUS\" line (note missing dash, do not know if .NET recoginzes both formats) for each character, this could perhaps be used to set the Culture accordingly.\n \nWell, with CultureInfo explicitly set, the CharacterProfiler.lua loads perfectly. I haven't got the c# experience to tell if this would cause more problems elsewhere.",
+    "LastUpdatedDate": "2013-05-16T05:26:03.39-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-03-12T16:58:47.357-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[LoadCharacter] Localization problem with CharacterProfiler",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 12803
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "That's one potential way to fix it. I believe Double.Parse() has an overload to provide a CultureInfo, and you can pass in CultureInfo.CreateSpecificCulture(\"en-US\") to that; that'd probably be better. Charrina, can you fix that?",
+      "PostedDate": "2009-03-12T18:40:30.217-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Actually the preferred way is to use CultureInfo.InvariantCulture.",
+      "PostedDate": "2009-03-12T18:58:52.28-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Oh, good point, yep.",
+      "PostedDate": "2009-03-12T21:48:53.947-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-09T17:30:50.35-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:21:12.76-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:35:13.347-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:03.39-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Cat",
+      "DisplayName": "Rawr.Cat"
+    },
+    "ClosedComment": "Astry reports fixed back in Nov",
+    "ClosedDate": "2009-12-24T20:58:18.03-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Edit: Ignore the trinket issue. It looks like it takes a Rawr restart for the trinket's proc to be properly evaluated for some odd reason if you edit the proc to a different type. If you didn't see the issue earlier, it is in regards to trinkets that use Highest Stat or Agility/Strength procs.\n \n \nThere's a few weird issues with damage per hit/swing at high crit values assuming hit/expertise capped to lower the variables that can affect the discrepency. First, at 75% crit, FB has a different hit/swing value, but I assume it's just dmg/hit actually removes crit from the equation completely. With white hits, any crit rating/agility over the assumed crit cap of 76%, which I'll address later, lowers the dmg/swing value even though nothing should happen theoretically with this value. \n \nIn regards to the crit cap, it looks like with initial testing by rogues over on EJ, there is a crit depression of roughly 4.8% as you have in Rawr, but white swings are affected differently. It seems 4.8% of crits are instead converted to hits permanently, and cannot be overcome with crit rating/agility. So while the white crit cap is technically still 76%, 4.8% of those attacks are forced to be hits. I have also tested this and see the same result of having white hits when parry/dodge/crit/miss should have pushed it off the combat table.\n \nBasically, when this change makes it into the related modules in Rawr, crit/agility should see its value drop when you hit 71.2% crit chance according to rawr against a level 83 target assuming hit/expertise cap, which corresponds to a 76% tooltip crit chance. Currently, Rawr only shows the devaluation of crit/agi when you hit 76% crit in Rawr or a 80.8% tooltip crit chance.",
+    "LastUpdatedDate": "2017-11-27T10:59:32.74-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-11-14T11:19:28.83-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Cat] Unexpected numbers at High Crit Values",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 14817
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Err... What you describe makes sense, and is exactly what is modeled, to my knowledge. Can you clarify what you actually see as wrong?\r\n\r\nOnly related issue that I know of is that crit-affecting procs (such as Paragon) are not being modeled with crit capping in mind, so average out to full value, even if you're pushed over any of the caps when it procs.",
+      "PostedDate": "2009-11-15T10:49:54.747-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The first issue is that damage per swing on white attacks goes down once you go past the white crit cap of 76% even though damage per swing should be exactly the same since any crit beyond that cap should do nothing as you cannot push glancing blows off the combat table. Yet in Rawr, the more crit you have past the white crit cap, the lower your white attack damage per swing goes. For example, at 76% crit, you have 3000 damage/swing, yet at 85% crit, you have 2700 damage/swing even though it shoud still be at 3000 damage/swing. These are made up numbers of course.\r\n\r\nSecondly, the relative value of agility/crit doesn't go down until you hit 76% crit rating according to Rawr(after the blanket 4.8% crit depression), when it should drop at 71.2% crit chance. From what I gather, Rawr simply applies a 4.8% blanket crit depression. This works fine for yellow attacks since they are on the 2 roll combat table. White attacks behave differently, though. Instead, 4.8% of your white crits are converted permanently to white hits and cannot be overcome with any higher crit chance. \r\n\r\nBasically, at any value of crit at or higher than 76% according to the character sheet (ie before the crit depression is applied), being both hit and expertise capped, your combat table should look like this:\r\n71.2% Crit\r\n4.8% hit\r\n24% glancing\r\n\r\nThis combat table for white hits holds true no matter how high you get your crit chance to as long as you're at the 76% threshold or higher. That 4.8% hit is not able to be circumvented by any means.\r\n\r\nRawr does not model this correctly from what I can gather because you only see agility/crit drop in relative value when you hit 76% crit chance according to the complex stats section when you should see it, according to current theorycraft, at 71.2% crit chance. This is assuming that complex stats is just taking your character sheet crit chance and reducing it by 4.8% due to you fighting a level 83 mob.",
+      "PostedDate": "2009-11-15T12:28:31.51-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You are making NO mention of what model you are talking about so it really is rather impossible to help you. Each model is a discreet methodology of calculating damage, so it may be that the issue is in one model only. Unless you tell us which model we really are at a loss to know where to start looking.",
+      "PostedDate": "2009-11-16T09:15:52.697-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "He's talking about cat.  FB = Ferocious Bite.",
+      "PostedDate": "2009-11-16T19:15:08.777-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-16T19:16:10.407-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Aye, found several issues at very high crit values; fixed for next version.",
+      "PostedDate": "2009-11-16T21:30:54.637-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-24T06:57:15.17-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-24T20:58:18.03-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:49:24.913-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T22:45:40.733-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:49.5-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:24.997-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T10:59:32.74-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

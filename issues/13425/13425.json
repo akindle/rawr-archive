@@ -1,0 +1,126 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Elemental",
+      "DisplayName": "Rawr.Elemental"
+    },
+    "ClosedComment": "see 13456",
+    "ClosedDate": "2009-07-10T21:47:59.727-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Spellhaste doesn't give dps increase at all. Increasing spellhaste doesn't change the rotation (more LBs fillers between lavaBursts). Also in buffs section using Haste food decreases dps.",
+    "LastUpdatedDate": "2013-05-16T05:25:18.687-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-06-05T02:08:34.143-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Elemental] Spell Haste not factored",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 6,
+    "Id": 13425
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1965,
+      "FileName": "rawr226elebug.jpg",
+      "DownloadUrl": ".\\1965"
+    },
+    {
+      "FileId": 1966,
+      "FileName": "aaqua ele.xml",
+      "DownloadUrl": ".\\1966"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I have a similar problem, only it shows a negative value for haste.  New 80 and all, but the Totem of Elemental Plain shows a value of -12.44.  The resto haste value is again -.53/pt.  I would say someone coded haste to increase rather than decrease spell cast time, but am unsure.",
+      "PostedDate": "2009-06-05T22:24:32.657-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-06-05T22:24:35.703-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-06-07T10:05:31.767-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-06-19T07:16:10.887-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-06-24T10:42:23.69-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Same issue as 13456.",
+      "PostedDate": "2009-06-24T11:00:01.713-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-06-29T00:02:21.787-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "elemental spell haste calculation is incorrect.\r\n\r\ncurrently if you add spell haste, the way the calculation works, your cast time is going UP instead of down.\r\n\r\n \r\n\r\nline 177 of spells.cs should probably be more like\r\n\r\n float Speed = stats.SpellHaste + (1f + stats.HasteRating * 0.000304971132f);\r\n\r\n \r\n\r\n( note. this still isn't ending up with quite the right value, but it's a step in the right direction.  in game my 639 haste reduces cast time of LB to 1.59 seconds, in rawr it seems to be 1.61 )\r\n\r\nedit:\r\n\r\n \r\n\r\nlooking at the change history it looks like the previous change to spells.cs got it exactly wrong. the previous formula was correct.  if it is\r\n\r\n float Speed = (1f + stats.SpellHaste) * (1f + stats.HasteRating * 0.000304971132f);\r\n\r\nthat gives the correct value of 1.59",
+      "PostedDate": "2009-07-05T09:27:00.68-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-07-05T09:27:37.527-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "13456 is a duplicate of this.",
+      "PostedDate": "2009-07-06T18:10:45.75-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-07-10T21:47:59.727-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:01:53.093-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:18.067-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:12.233-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:18.687-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

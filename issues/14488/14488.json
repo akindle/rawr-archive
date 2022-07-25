@@ -1,0 +1,125 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Hunter",
+      "DisplayName": "Rawr.Hunter"
+    },
+    "ClosedComment": "Hunter in 2.2.25 uses StatConversion for these values so they will stay up to date",
+    "ClosedDate": "2009-11-07T18:58:38.983-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The Rawr is helpful software and very useful  , but there is smoe mistakes\n \nI tell you guys these mistakes only am want to let this software be more correct\n \nI use your Language very hard and read you guys's reply very hard\n \nIf you guys thought that I am very impolite cause I use your Language very hard and has the difference in the culture to cause , I am sorry about that\n \nplease tell me how to fix or update my Rawr in computer and thank you very much",
+    "LastUpdatedDate": "2013-05-16T05:23:46.12-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-10-20T01:18:03.44-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Hunter] Various bugs with hunter model - NEEDS hunter developer",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14488
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Not sure if I interpreted your request correctly. But I read the last sentence as if you want to know how to run the newer versions of Rawr.\r\n\r\nTo run a newer version of Rawr you first need to download the new version (There's a download link at the following page http://rawr.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=34466). This file is packed (compressed) so your second step is to un-pack that file. That would leave you with a new folder in which the latest version of rawr can be found. You then go to that new folder and double click on the rawr exe file.",
+      "PostedDate": "2009-10-20T01:41:34.71-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "first , thak you for your reply \r\n\r\nsecond , The download link page is Rawr V2.2.23\r\n\r\nI have already downlod Rawr V2.2.23 , I used this version and I found the mistakes , so I told you guys the problem\r\n\r\nThe problem is the top ArmorPenetrationRating 1232 was not correct , correct value is about 1400\r\n\r\nAnd I found it in here......\r\n\r\nin HunterEnums.cs\r\n\r\npublic static class HunterRatings //TODO: Why is this here? Use Rawr.Base's Rawr.StatConversion class for this.\r\n{\r\npublic static double HIT_RATING_PER_PERCENT = 32.78998947;\r\n\r\npublic static double AGILITY_PER_CRIT = 83.33; // was previously 83.33333333 - rounded down for spreadsheet\r\npublic static double CRIT_RATING_PER_PERCENT = 45.905985258; // from spreadsheet. we were using 45.90598679\r\npublic static double HASTE_RATING_PER_PERCENT = 32.78998947; // matches spreadsheet\r\npublic static double ARP_RATING_PER_PERCENT = 12.3162; // from spreadsheet (was 15.39529991)\r\npublic static double INTELLECT_PER_SPELL_CRIT = 166.667; // from spreadsheet\r\n\r\npublic static double BASE_CRIT_PERCENT = -.0153; // Check\r\n\r\npublic static double BASE_MISS_PERCENT = 0.05;\r\npublic static double CHAR_LEVEL = 80.0;\r\n\r\npublic static double HUNTERS_MARK = 500.0;\r\n===========================================================================\r\n\r\npublic static double ARP_RATING_PER_PERCENT = 12.3162 <===This value\r\n\r\nChange this value can fix it\r\n\r\nThen My problem is how do I change this file to make my Rawr V2.2.23 run correct , How should I do ? \r\n\r\nPlease tell me thak you so much ",
+      "PostedDate": "2009-10-20T02:12:04.187-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Dose the correct way be waiting you guys update new version ?",
+      "PostedDate": "2009-10-20T02:25:48.503-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I correct my word usage\r\n\r\nWhether the correct way is waited for you renew the new edition?",
+      "PostedDate": "2009-10-20T02:27:36.423-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Whether the correct way is waited for you renew the new version ?\r\n\r\nsorry , It's wrong word usage again\r\n",
+      "PostedDate": "2009-10-20T02:29:29.79-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "... ah ok, yes the only way is to wait for this to be corrected in the source code by the developers, which they then compile and release in a future version.\r\n\r\nChallenge at the moment is that there seem to be no active developer on the Hunter module.\r\n\r\n(...so a second possible way would be to join the force of developers :) )",
+      "PostedDate": "2009-10-20T03:28:24.403-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I very be willing to join , but limited to the language , I can not  ^-^",
+      "PostedDate": "2009-10-20T04:02:19.18-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I even don't know , Whether my word usage is correct ......",
+      "PostedDate": "2009-10-20T04:06:49.203-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "AH! First of all, your English is good enough to get your idea across to us. So Kudos to you ;) Secondly, unfortunetly, the Hunter developer is Missing in Action (MIA) and hasn't updated the Hunter module since 3.2 came out. What he was doing was he was hard-coding the Armor Penetration coding into the Hunter Module instead of using the Stat.cs file in the RAWR.Base module. Because of this, the Armor Penetration calculations in the Hunter Module is out of date. The Reason he was doing this was because he was trying to copy the information that was in Shandara's Excel File.",
+      "PostedDate": "2009-10-20T08:23:01.727-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-20T08:42:37.583-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-20T08:43:20.133-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thank you for your invitation\r\n\r\nAll word usage is using Yahoo Translation software to translate , so I can only read and write to do with difficulty\r\n\r\nA lot of you guys's meaning I can't realy understand\r\n\r\nI go internet to find Shandara's Excel , there is a lot of English that I only can read a small of part\r\n\r\nWhat software you guys use for develop ? I have to learn the software first !!\r\n\r\nSo everything to me become very hard......\r\n\r\n",
+      "PostedDate": "2009-10-20T09:26:31.747-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That is ok TW, I don't know Chinese so I guess we are even.\r\n\r\nShandara's Excel File can be found here:\r\n\r\nhttp://elitistjerks.com/f74/t30710-wotlk_dps_spreadsheet/\r\n\r\nAs for the program that they use for development; the developers use Microsft Visual C# 2008\r\n\r\nhttp://www.microsoft.com/express/vcsharp/",
+      "PostedDate": "2009-10-20T09:37:28.44-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "thank you for your supply\r\n\r\nI try to learn it , I use Visual basic ever but I guess I already forgot \r\n\r\nToo do not count on that I can have how many help to you guys\r\n\r\nBecause I am WOW player , a lot of time I am playing WOW......\r\n\r\nAnd another time I do my job then sleep....\r\n\r\nAt last thank you for your supply again !",
+      "PostedDate": "2009-10-20T09:52:56.78-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-07T18:58:38.983-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:32:18.533-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:46.12-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

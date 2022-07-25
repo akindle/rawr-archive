@@ -1,0 +1,101 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Tree",
+      "DisplayName": "Rawr.Tree"
+    },
+    "ClosedComment": "Closing item because it is fixed.",
+    "ClosedDate": "2009-01-12T11:59:48.017-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "This problem might be due to me not setting any spell rotation (I'm using the default one) but Rawr.Tree is valuing Haste ridiculously high.\nGreen items with alot of Haste but no other usefull stat seem better than epics with SP / MP5 / Spi just because they have Haste.\nFight duration has no influence on this, it doesn't seem to be implemented yet.\n \nIs this a bug or an oversight on my side?",
+    "LastUpdatedDate": "2017-11-27T11:05:37.58-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-12-13T02:17:08.617-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Tree] Haste Issues",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 12005
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1583,
+      "FileName": "rawr",
+      "DownloadUrl": ".\\1583"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I'm getting this too. I looked through the source code in Tree and found nothing that could cause it, but that's probably because my C# knowledge is pretty limited :p",
+      "PostedDate": "2008-12-18T19:38:26.26-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This was bugging me as well, making it unusable in gearing my newly dinged 80 druid for potential raid healing. Downloaded the code yesterday, basically from what I can see:\r\nDefault rotation is Healing Touch Spam. HpS is calculated just for that HT. The fact that you go oom in 30 sec, instead of lasting the whole fight doesn't get worked into the equation. Thus it was optimising for the biggest, fastest, critting healing touch and all Moonkin gear jumped up as being very interesting.\r\n\r\nI'm a C programmer and don't know much about C#, but hacked a few changes into the tree model:\r\n- Added pause options to the spell rotation menu allowing creation of more realistic rotations (most of the code was there, just not linked to the menu).\r\n- Changed default spell rotation to be a single rolling lifebloom stack.\r\n- Removed the code that clears the spell rotation after being loaded. (Not sure why this was done and if some people might have loading problems due to this).\r\n- Renamed HpS points to Burst HpS points\r\n- Added new Sustained HpS points stat as main stat. This is basically the HpS multiplied by the ratio of fight time, before you go oom. (If you go oom half way through the fight, this should be half of your burst HpS value). (Similar to the damage and raw damage values in the moonkin model, if I understand correctly).\r\n\r\nI saw that the model assumes no out of 5-second rule mana regen and haven't changed that, even if the rotation can now allow pauses long enough. \r\n\r\nI attach what I hope is the correct patch for these changes (haven't used codeplex before). Is this the way these type of changes are managed here?\r\n\r\nHope this will make the model usable again. ",
+      "PostedDate": "2008-12-30T06:03:05.083-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-12-30T06:03:09.897-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hey, thanks, I'll try to get these changes in for the next version. This is fine for this, but if you have any more changes, there's a way to upload a patch suggestion on the Source Code tab, or just contact me via IM (cnervig@hotmail.com on MSN, Astro tSD on AIM) and we can chat about things and give you dev access.",
+      "PostedDate": "2008-12-30T15:00:27.23-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I have heavily modified Rawr.Tree for different spell rotations, haste should not be overvalued anymore.",
+      "PostedDate": "2009-01-12T11:59:28.89-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-01-12T11:59:48.017-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T18:18:20.18-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:09:45.937-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:03.663-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:39.483-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:05:37.58-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

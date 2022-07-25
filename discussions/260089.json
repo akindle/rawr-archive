@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "622539",
+    "ThreadId": "260089",
+    "Html": "\r\n<p>I posted a patch to the BossHandler code for review.</p>\r\n<p>The specific scenario prompting this change is to be able to determine the average damage taken per second by a resto druid to be able to compute the value of the Perseverance talent.</p>\r\n<p>As an addendum, I noticed that several bosses include abilities that do not cause any or cause reduced damage with correct play, such as Fel Firestorm and Consuming Darkness on Argaloth, breaking barriers on Omnitron and Pillar of Flame, Parasitic Infection\r\n and Ignition damage on Magmaw, Lightning Discharge on Nefarian, and so on: these should be commented out or otherwise disabled in my opinion, since they currently cause significant errors in the average damage computations.</p>\r\n<p>Also generally none of the bosses seems to have raidwide damage correctly modeled.</p>\r\n",
+    "PostedDate": "2011-06-03T07:06:58.107-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "622567",
+    "ThreadId": "260089",
+    "Html": "<p>Those abilities shouldn't be commented out, but rather should have impedences/movements associated with them.&nbsp; I know that there are a few that do, as I was seeing values for movement related events in TankDK.&nbsp; I'll look into it further to make sure.</p>",
+    "PostedDate": "2011-06-03T07:38:56.887-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "622607",
+    "ThreadId": "260089",
+    "Html": "<p>Yes, some should have movement/impedances modeled, but the damage part is pretty much useless, since it never actually happens (provided the players did indeed move appropriately).</p>\r\n<p>I suppose it could be retained for completeness, but if so they should be marked in some way, so that they can be ignored while computing overall damage taken (especially because the damage is often designed to wipe the raid, and thus totally screws up the numbers).</p>",
+    "PostedDate": "2011-06-03T08:45:14.097-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "622803",
+    "ThreadId": "260089",
+    "Html": "<p>I'll take a look at what you posted. I admit I'm still working on trying to get T11 modeled as best as I can. I am currently working on converting Nefarian over to the newish Phase modeling from the old \"generalize the attack speed over the course of the fight\" mentality.</p>",
+    "PostedDate": "2011-06-03T14:57:39.633-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

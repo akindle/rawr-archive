@@ -1,0 +1,121 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Elemental",
+      "DisplayName": "Rawr.Elemental"
+    },
+    "ClosedComment": "Rawr 4.0.13 Released",
+    "ClosedDate": "2010-12-29T02:47:44.017-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I first discovered this error when attempting to swap my existing RestoSham profile to Elemental, so I could created a second profile in preparation for Progressive Optimize.  However, I get an identical error when I attempt to select Shaman>Elemental from the dropdown box in a fresh blank profile.  Once I receive this error, however I receive it, any file action after that throws another ArgNullReferenceException.  I tried New File, Open a different file, and Open the same file again.  Until rawr is restarted, no file operations are successful.  Error code follows:\n \n[Arg_NullReferenceException]\nArguments: \nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.51204.0&File=mscorlib.dll&Key=Arg_NullReferenceException\n \n   at Rawr.Elemental.CharacterCalculationsElemental.GetCharacterDisplayCalculationValues()\n   at Rawr.UI.MainPage.character_CalculationsInvalidated(Object sender, EventArgs e)\n   at Rawr.UI.MainPage.set_Character(Character value)\n   at Rawr.UI.MainPage.Calculations_ModelChanged(Object sender, EventArgs e)\n   at System.EventHandler.Invoke(Object sender, EventArgs e)\n   at Rawr.Calculations.OnModelChanged()\n   at Rawr.Calculations.LoadModel(CalculationsBase model)\n   at Rawr.UI.MainPage.ModelCombo_SelectionChanged(Object sender, SelectionChangedEventArgs e)\n   at System.Windows.Controls.Primitives.Selector.OnSelectionChanged(SelectionChangedEventArgs e)\n   at System.Windows.Controls.Primitives.Selector.InvokeSelectionChanged(List`1 unselectedItems, List`1 selectedItems)\n   at System.Windows.Controls.Primitives.Selector.SelectionChanger.End()\n   at System.Windows.Controls.Primitives.Selector.SelectionChanger.SelectJustThisItem(Object o)\n   at System.Windows.Controls.Primitives.Selector.OnSelectedItemChanged(Object oldValue, Object newValue)\n   at System.Windows.Controls.Primitives.Selector.OnSelectedItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)\n   at System.Windows.DependencyObject.RaisePropertyChangeNotifications(DependencyProperty dp, Object oldValue, Object newValue)\n   at System.Windows.DependencyObject.UpdateEffectiveValue(DependencyProperty property, EffectiveValueEntry oldEntry, EffectiveValueEntry& newEntry, ValueOperation operation)\n   at System.Windows.DependencyObject.SetValueInternal(DependencyProperty dp, Object value, Boolean allowReadOnlySet)\n   at Rawr.UI.ClassModelPicker.SetCurrentModel()\n   at Rawr.UI.ClassModelPicker.Grid_MouseLeftButtonUp(Object sender, MouseButtonEventArgs e)\n   at MS.Internal.CoreInvokeHandler.InvokeEventHandler(Int32 typeIndex, Delegate handlerDelegate, Object sender, Object args)\n   at MS.Internal.JoltHelper.FireEvent(IntPtr unmanagedObj, IntPtr unmanagedObjArgs, Int32 argsTypeIndex, Int32 actualArgsTypeIndex, String eventName)",
+    "LastUpdatedDate": "2013-05-16T05:19:34.09-07:00",
+    "PlannedForRelease": "Rawr 4.0.10 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-12-18T23:24:22.057-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Elemental] Error when selecting Shaman>Elemental",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19342
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4236,
+      "FileName": "eli.xml",
+      "DownloadUrl": ".\\4236"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "In going to the website and selecting Shaman > Elemental without doing anything else, I do not get this issue. I also know that I fixed several null references in Elemental a couple of versions ago.\r\n\r\nAre you running the offline install without having updated to 4.0.12? Because the error as reported to use shouldn't look the same as that anymore.",
+      "PostedDate": "2010-12-19T00:04:28.597-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Just make sure everything was fresh, I rebooted my computer, restarted my browser (which is Chrome, if that matters), fresh tab, Shaman > Elemental kicked out the same error as I copied above.  Rather than repasting, I just verified it was line-for-line the same.\r\n\r\nI'm running it online in my browser, so whatever version that is.  My Silverlight updated earlier this afternoon, but I'd never tried to swap to Elemental profile prior to that update, so I can't tell you if the behavior changed.",
+      "PostedDate": "2010-12-19T01:55:03.337-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Can you submit a screen shot with the error up?",
+      "PostedDate": "2010-12-19T02:03:11.87-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-19T03:18:45.61-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "OK, three shots.  Also including the xml for the RestoSham I was trying to swap models on.\r\nThe first, modelnew.jpg, is the result from selecting Shaman > Elemental on a blank profile.\r\nThe second, modelswap.jpg, is the result from selecting Shaman > Elemental from within my existing RestoSham character file.\r\nThe third, profileswap.jpg, is the error I get if I attempt open a completely different character file in the same tab -after- I get the error shown on modelswap.jpg.\r\n\r\nIn all three cases, I closed the tab in question and opened a new one prior to prompting the error.\r\n\r\nSorry for the copypasta links; I couldn't figure out how to upload multiple files without leaving extra blank comments.\r\n\r\nhttp://img809.imageshack.us/img809/342/modelnew.jpg\r\nhttp://img222.imageshack.us/img222/8496/modelswap.jpg\r\nhttp://img832.imageshack.us/img832/5214/profileswap.jpg\r\n\r\n",
+      "PostedDate": "2010-12-19T03:18:46.92-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "OK, so after writing all that, I decided to try a different browser (Firefox) and was surprised to see that it appeared completely different to what I'd been using.  Only then did I notice the light gray \"Rawr b4.0.12.0\" in the bottom corner.  That sent me back to Chrome, where as you can see in my screenshots, it's running on an older version (b4.0.10.0).  So that probably explains my errors, because everything works properly in Firefox.\r\n\r\nI'm very sorry for the confusion and wasting your time on the errors, but I just assumed that if I was running online from the web that I'd be automatically running the latest version available.  But that leads me to the question of why is Chrome still running the older version, if it's running online from the web?  I tried a force refresh on the page, deleted cookies, etc., and I'm still getting the older version.  Any ideas?",
+      "PostedDate": "2010-12-19T03:32:23.01-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You are using Chrome correct?  If so, you need to make sure you reset your chrome cache as you are still using b4.0.10.0.  The newest version (b4.0.12.0) has this fixed I believe.\r\nOnce you have reset you cache, open Rawr again.",
+      "PostedDate": "2010-12-19T03:33:17.29-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Timetodance, you sir are my favorite person for at least the next five minutes.  For some reason when I cleared cookies, I didn't also clear the cache.  I'm blaming it on being awake for ~22 hours.  I'm now going to go hide my face in shame for wasting all this time.\r\n\r\nThanks for your patience, Jothay.",
+      "PostedDate": "2010-12-19T03:45:57.333-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "lol, I KNEW it had to be something that was keeping you on .10!",
+      "PostedDate": "2010-12-19T04:16:20.02-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-19T04:16:32.513-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-20T18:00:14.217-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-24T19:30:35.13-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-29T02:47:44.017-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:27:05.247-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:34.09-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

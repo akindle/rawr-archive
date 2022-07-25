@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "667772",
+    "ThreadId": "271534",
+    "Html": "<p>The dps rotation when hovering over the \"Threat Stats\" element at \"Highest DPS Rotation\" shows the following list for me:</p>\n<p>1. Mangle if off cooldown<br /> 2. Lacerate if no Lacerate stacks<br /> 3. Demoralizing Roar if not up<br /> 4. Thrash if off cooldown<br /> 5. Lacerate if less than 3 Lacerate stacks<br /> 6. Pulverize if 3 lacerate stacks and no pulverize buff<br /> 7. Lacerate</p>\n<p>I don't understand how a demoralizing roar application makes the DPS go up, could someone please explain how this works - or if it is a bug somehow?</p>\n<p>Thanks for your time!</p>",
+    "PostedDate": "2011-09-05T08:54:07.153-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "669207",
+    "ThreadId": "271534",
+    "Html": "<p>To make it easier to see, here's a picture of the current list (it slightly changed since last time, but still with demo roar):</p>\r\n<p><img src=\"http://img703.imageshack.us/img703/4172/screenoid.png\" alt=\"\" /></p>\r\n<p>atm the list for highest TPS and highest DPS seems to be identical (for the first time in a while).</p>",
+    "PostedDate": "2011-09-08T09:56:17.497-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "670292",
+    "ThreadId": "271534",
+    "Html": "<p>Well I was looking at the code this morning, and a few things came to mind. First thing first, one of the recent patches I implemented increased the threat multiplier to 5 times compared to 3 times it was a few weeks ago.</p>\r\n<p>With that out of the way, The rotation calculator is just a list of possible rotations for druids with veering amounts of when to use what and how many times each are used in a 5 minute fight. Besides spreading out the list so that it's easier to read somewhat I wasn't able to backtrack how Ast came about with the number of times each ability is used.</p>\r\n<p>With that said, because the rotation calculator is just looking at a pre-determined list to figure out which dps and which tps provide the highest in each category, they both respond with Demo in each. Also due to 4.2's damage changes that universalized a lot of the damage numbers (Pulverize used to have two different damage base damage numbers, now both the Base and the subsequent ticks are the same.</p>",
+    "PostedDate": "2011-09-11T09:20:17.093-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "670424",
+    "ThreadId": "271534",
+    "Html": "<p>Thx for analyzing the issue!</p>\r\n<p>I guess this means that the internal numbers cannot be (or simply are not?) clearly separated into 'pure' dps values, and the list can thereby not be taken at face value in regards to maximum bear dps?</p>",
+    "PostedDate": "2011-09-11T20:55:00.463-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "670433",
+    "ThreadId": "271534",
+    "Html": "<blockquote style=\"border: solid .1em #ccc; font-style: italic; margin: .25em 1em 0 1em; padding: 0 .25em 0 .25em;\"><strong>wurzelpete wrote:</strong><br />\n<p>Thx for analyzing the issue!</p>\n<p>I guess this means that the internal numbers cannot be (or simply are not?) clearly separated into 'pure' dps values, and the list can thereby not be taken at face value in regards to maximum bear dps?</p>\n</blockquote>\n<p>I would STRONGLY suggest checking out Fluid druid's dps rotation if your looking for an actual rotation mod. Well...it's really the mod Ovale</p>\n<p><a href=\"http://wow.curse.com/downloads/wow-addons/details/ovale.aspx\">http://wow.curse.com/downloads/wow-addons/details/ovale.aspx</a></p>\n<p>Using a script that the crew over at Fluid Druid have generated</p>\n<p><a href=\"http://fluiddruid.net/forum/viewtopic.php?f=3&amp;t=381\">http://fluiddruid.net/forum/viewtopic.php?f=3&amp;t=381</a></p>\n<p>The code was originally made for kitty but they have expanded to bear. It's also a \"Suggester\" mod that suggests what attack to use next. It works out fairly well.</p>\n<p>If you want just a generic rotation list you can use Reesi's rotation over on the official forums:</p>\n<p><a href=\"http://us.battle.net/wow/en/forum/topic/1126995943\">http://us.battle.net/wow/en/forum/topic/1126995943</a></p>\n<blockquote style=\"border: 0.1em solid #cccccc; font-style: italic; margin: 0.25em 1em 0pt; padding: 0pt 0.25em;\"><strong>Single Target</strong><br /> <br /> Single Target threat has moved away from a static  rotation. It has a  random element added to it through Berserk procs, and  also has timers  to upkeep by way of Pulverize. Because of those  additions, our threat  has become a priority list. We will always hit the  best threat  abilities first, then move down the line depending on  availability and  conditions.<br /> <br /> The priority is as follows:<br /> <br /> Mangle<br /> Demoralizing Roar<br /> Lacerate if no Lac on target<br /> Thrash<br /> Lacerate if not to 3<br /> Pulverize if 3 stacks of Lacerate and no Buff, or buff is about to expire<br /> Faerie Fire (Feral)<br /> Lacerate filler<br /> <br /> Maul as often as possible without rage starving yourself.<br /> <br /> Aside  from the early Demo, that will net you the highest amount of TPS.  The  key is using Mangle and Thrash on cooldown. However, it will also  net  you a decrease in Pulverize uptime by its nature. Once threat  becomes a  non-issue at any time, you can deviate slightly and  prioritize keeping  Pulverize up as much as possible for the extra  mitigation it provides.<br /> <br /> If  threat on the pull is off to a rocky start, or you have overzealous   DPS, use Berserk early and power into it with Mangle spam. If you can   afford it, throw up a Lacerate. That will help a small amount with rage   consumption when it procs Berserk, as the beginning of a fight tends to   be our weakest for rage generation.</blockquote>",
+    "PostedDate": "2011-09-11T21:36:47.813-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "670602",
+    "ThreadId": "271534",
+    "Html": "<p>Wow, thanks m8!</p>\r\n<p>That's a lot of really useful stuff I didn't know of before, gonna check them all out :)</p>",
+    "PostedDate": "2011-09-12T07:37:12.297-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "673194",
+    "ThreadId": "271534",
+    "Html": "<p>This is not a mistake. The top DPS rotation includes Demo Roar, because you should be using demo roar, if nobody else is.</p>",
+    "PostedDate": "2011-09-17T14:11:55.953-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "673708",
+    "ThreadId": "271534",
+    "Html": "<p>Which means the top dps rotation isn't focused on solely top dps, but on survival aswell. I figured it would focus only on max dps as bear tank, but it keeps the survival in mind. Thanks for clearing that up! :)</p>",
+    "PostedDate": "2011-09-19T08:26:59.347-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "679677",
+    "ThreadId": "271534",
+    "Html": "<blockquote style=\"border: solid .1em #ccc; font-style: italic; margin: .25em 1em 0 1em; padding: 0 .25em 0 .25em;\"><strong>wurzelpete wrote:</strong><br />\r\n<p>Which means the top dps rotation isn't focused on solely top dps, but on survival aswell. I figured it would focus only on max dps as bear tank, but it keeps the survival in mind. Thanks for clearing that up! :)</p>\r\n</blockquote>\r\n<p>It keeps 'keeping demo up' if you don't have it from another source, because you should, even when primarily caring about DPS.</p>",
+    "PostedDate": "2011-10-04T01:24:21.713-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

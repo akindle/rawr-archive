@@ -1,0 +1,106 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-12-18T17:10:37.19-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I tried launching rawr4 in IE8.  It failed to start.  The error message said:\n \n[IsolatedStorage_Operation_ISFS]\nArguments:\nDebugging resource strings are unavailable...\nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.50917.0&File=mscorlib.dll&Key=IsolatedStorage_Operation_ISFS\n \n   at System.IO.IsolatedStorage.IsolatedStorageFileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, IsolatedStorageFile isf)\n   at Rawr.UI.LoadScreen.filesLoaded(Object sender, EventArgs e)\n   at Rawr.UI.FileUtils.DownloadIfNotExists(EventHandler callback)\n   at Rawr.UI.LoadScreen.iq_Closed(Object sender, EventArgs e)\n   at Rawr.UI.LoadScreen.LoadFiles()\n   at Rawr.Silverlight.App.Application_Startup(Object sender, StartupEventArgs e)\n   at MS.Internal.CoreInvokeHandler.InvokeEventHandler(Int32 typeIndex, Delegate handlerDelegate, Object sender, Object args)\n   at MS.Internal.JoltHelper.FireEvent(IntPtr unmanagedObj, IntPtr unmanagedObjArgs, Int32 argsTypeIndex, Int32 actualArgsTypeIndex, String eventName)",
+    "LastUpdatedDate": "2013-05-16T05:19:41.79-07:00",
+    "PlannedForRelease": "Rawr 4.0.09 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-12-06T18:54:31.083-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Launch] Startup error in IE8: IsolatedStorage_Operation_ISFS",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19245
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4220,
+      "FileName": "FullTextRawrError.txt",
+      "DownloadUrl": ".\\4220"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Did you give Rawr permissions to make a cache?",
+      "PostedDate": "2010-12-06T19:04:37.743-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-06T19:05:35.15-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Looks like you've explicitly denied Rawr (or perhaps all Silverlight apps) the ability to store data locally. Check your Silverlight settings.",
+      "PostedDate": "2010-12-06T19:17:10.757-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Rawr did have permissions to save data for Rawr (according to the silverlight options app).\r\n\r\nUpgrading silverlight to the latest version fixed it for me.\r\n\r\nSo, the problem seemed to be a silverlight version issue; since this is a \"first use\" problem you might want\r\nto add a version check to the application initialization to avoid reports like this.",
+      "PostedDate": "2010-12-06T19:52:36.503-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ah, we actually did that earlier this evening; the check was for an old version of SL; updated it to be the right (latest) version.",
+      "PostedDate": "2010-12-06T21:46:40-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Fix: DOWNLOAD UPDATED SILVERLIGHT 4",
+      "PostedDate": "2010-12-06T23:13:33.447-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "FYI...\r\n\r\nI also received this error when attempting to run Rawr in Chrome - \"Incognito\" mode (even with updated silverlight).  It works fine in Chrome - Normal and IE 8.",
+      "PostedDate": "2010-12-08T12:02:26.36-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-15T11:48:49.887-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I am getting this error with IE 9 beta(9.0.7930.16406)\r\nI have the current version of SL. Version: 4.0.51204.0 \r\nApp store for http://elitistjerks.com/  Current 4.6  Quota 32.0\r\n",
+      "PostedDate": "2010-12-15T11:48:51.483-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-18T17:10:37.19-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:27:14.6-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:41.79-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

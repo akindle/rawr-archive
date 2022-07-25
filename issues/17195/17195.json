@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Fixed for next release.",
+    "ClosedDate": "2010-04-10T21:50:31.123-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Rawr can't currently get the location for items from the final boss in Halls of Reflection because:\n1) Update from Armory fails due to lack of information on the Armory site -- BAD BLIZZARD\n2) A bug in getting the location for items found in containers when updating from wowhead.\n \nHere's the code that's causing the issue in Wowhead.cs:\n \n                string n = string.Empty;\n                if (sourcemore.Contains(\"\\\"n\\\":\\\"\"))\n                {\n                    n = sourcemore.Substring(sourcemore.IndexOf(\"\\\"n\\\":\\\"\") + \"\\\"n\\\":\\\"\".Length);\n                    if (n.Contains(\"\\\",\"))\n                    {\n                        n = n.Substring(0, n.IndexOf(\"\\\",\"));\n                    }\n                    else\n                    {\n                        n = n.Substring(0, n.LastIndexOf(\"\\\"\"));\n                    }\n                    if (!string.IsNullOrEmpty(n))\n                    {\n                        sourcemore = sourcemore.Replace(n, \"N\");\n                        int index = sourcemore.IndexOf(\"\\\"n\\\":\\\"N\\\"\");\n                        int count = (\",\\\"n\\\":\\\"N\\\"\").Length;\n                        if (index > 0)\n                        {\n                            index--;\n                            count++;\n                        }\n                        else if (index + count < sourcemore.Length)\n                        {\n                            count++;\n                        }\n                        sourcemore = sourcemore.Remove(index, count);\n                    }\n \n                    n = n.Replace(\"\\\\'\", \"'\");\n                }\n \nIn particular, either:\n \n                        int count = (\",\\\"n\\\":\\\"N\\\"\").Length;\n \nor the if statement after it needs to be changed.  The issue is that \"count\" includes a leading \",\" but the following if statement increases the count for both a leading or trailing \",\".  Because of this, the n.Replace ends up removing both the leading and trailing \",\" and sourcemore ends up poorly formatted.",
+    "LastUpdatedDate": "2013-05-16T05:21:06.723-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-04-10T08:21:38.43-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Update cache from wowhead fails for items in containers",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17195
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

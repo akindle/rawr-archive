@@ -1,0 +1,105 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-09T17:31:15.36-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Whilst looking at the 20 trinkets so far on http://ptr.wowhead.com/?items=4.-4&filter=qu=4;minrl=80;cr=82;crs=1;crv=0\n \nI was checking to see that the default Item cache has picked up them all and making the necessary changes to support any new style text. I thought it would be useful to have an issue thread to track any issues with new trinkets.\n \nFirst up I noted there was no \"Use: \"... for dodge rating as per Heart of Iron http://ptr.wowhead.com/?item=45158  is this deliberate or is this the first time a trinket has had an on use dodge rating? I've coded up a fix for this in SpecialEffects and can commit if there is no reason not to.\n \nI noted the defaultItemCache.xml has \"Scale of Fates\" http://ptr.wowhead.com/?item=45466 with a rather odd Stat noted <DreadnaughtBonusRageProc>72</DreadnaughtBonusRageProc> now I can't for the life of me understand why this would be unless its related to the Rage Proc error earlier this week? Doing a quick check through defaultItemCache.xml there are LOTS and LOTS of items with this stat. All of them seem to be exactly the same as the <HasteRating>. Does this mean the DefaultItemCache.xml was \"infected\" by the Rage proc error from earlier?",
+    "LastUpdatedDate": "2013-05-16T05:25:58.13-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-03-27T12:24:40.147-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Patch 3.1 trinkets - fixes and questions",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 12894
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Not to mention that Scale of Fates is not a flat 72 haste to begin with.  It is 432 haste (20 sec/2 min), which means vastly different things to different models.",
+      "PostedDate": "2009-03-27T12:52:31.797-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yes but that goes into the massive problem with how Procs & Use stats are processed in Rawr at present. Since there is no standard across models you have lots of different approaches. Sometimes that means someone coding individual Stat values that then are only implemented in their model as a result the Stats class is a right mess with dozens and dozens of individual categories of stat. At other times you have it being coded as a flat value which then gets auto used by all models sometimes directly against what works for a particular model approach.\r\n\r\nThe net effect of the dozens and dozens of categories in the Stats class is that if someone codes a special name and adds it to Stats then any model that might want to use that trinket/relic/enchant/whatever needs to make sure they cope with this extra category. So the models get more and more complex, and we find new and unusual items need individual coding in each model or they appear with zero stats.\r\n\r\nI'd love to see a major overhaul of the whole approach to proc & use stats. I've not come up with a workable solution yet though. I have a few ideas as to what it should include though. \r\n\r\nAnything that is a \"chance on XXX\" should never be coded as a direct stat, eg: Chance on melee crit to increase your attackpower by 120 for 20 seconds. Shouldn't be resolved to just a fixed attackpower. Instead it should be stored as a special somehow with two ways of getting the data. It should be definitely possible to simply pull average values so the simpler models could just add that into base equipment stats. However it should also be possible to get the actual conditionals too. This would mean that no one method dictated to all models how the item worked. Each model could choose to use either flat average or special coding depending on the needs of the model. So for instance a flat average using model could just iterate over the array of specials and get all relevant stats. More complex models could use a standardised list of conditionals, the problem is there are a lot of conditionals. However there is a lot of similarity.\r\n\r\nChance on Melee hit\r\nChance on Spell hit\r\nChance on Range hit\r\nChance on melee crit \r\netc. Also just Chance.\r\n\r\nNow perhaps we could have all of these as properties and store a number between 0 & 1 for each ie: if you set the value of Chance on Melee Crit to 0.2 that would translate to 20% chance of proc on melee crit. So a complex model would have specifics to work with. Other things are similarly reducable eg: Duration, Cooldown.\r\n\r\nHow exactly this could be best coded in practice I'm not really sure. I feel that there is a design pattern there somewhere screaming to get out - however my Maths/Computing degree pre-dates the idea of OO Design patterns (graduated in 1986) so it might be screaming but I'm a bit hard of hearing when it comes to design patterns. Some of you younger minds who have DPs drilled into you might get it quicker.",
+      "PostedDate": "2009-03-27T14:06:55.593-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "We've got a design for Proc/Use effects planned, was expecting to do it for v2.3, but if WoW 3.1 takes much longer, we may consider pushing it up to v2.2....",
+      "PostedDate": "2009-03-27T15:23:08.24-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Another thing you have to take into consideration is performance. Stat aggregation is one of the most expensive parts of character calculations. While there are a lot of possible stats, the aggregation is done using sparse vector representation so it is very efficient. I don't want to lose performance as a result of this change.\r\n\r\nI think it's good that models have to specifically model such stats. If there is a trinket that gives you 100 int for 10 seconds on use that is totally different than average value and I don't want to have my model use the average value unless I specifically say so. It's better if it has no value than wrong value.\r\n\r\nIf we go for some kind of generalized model of proc/use stats there should be no aggregation on them. Each stats object would just have in addition to normal stats a list of proc/use effects which are concatenated on aggregation. How to represent proc/use stats is a more difficult problem. It's natural to use a normal Stats object to represent the bonus value, but it has to be taken into account that the list of stats that are relevant to the model is not necessarily the same as the list of stats that are relevant as use/proc effect bonuses. My preferred representation for trigger mechanism would be to have an enumeration for different trigger types (on use, proc on spell hit, proc on spell cast and all possible variants to cover the complexities of aoe interactions like at most one crit per cast), proc chance, duration, cooldown.",
+      "PostedDate": "2009-03-27T15:32:34.297-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Kavan that's my point. For your model, which is probably the most complex, you want hundreds of different individual proc/use abilities. For a lot of other models the average value is just fine. So if it went entirely your route with the current Stats class then all the other models have 101 different extra stats to deal with, gets messy very very quickly, if it goes the other way and it gets modeled as averages the more sophisticated models lose accuracy.\r\n\r\nSo I propose a solution where the new class presents two interfaces a simple one where the simpler models can get average values from each item, and a more complex one where the more sophisticated models can get all the effects they need. \r\n\r\nNow designing the new class to present the simple average value model is easy, its the complex model that needs the work. Its the design of the complex model that needs to be right. I think we agree that having the enumeration of different triggers is a good idea, then each model can just get the effect based on the specific trigger. Durations and cooldowns are the other obvious needs. So perhaps we only need trigger type, %chance, duration, cooldown. Although a \"Special type\" might also be useful which again would be an enumeration and flag up things that models have to take specific individual actions for.\r\n\r\nBy reducing the complexity to trigger, chance, duration, cooldown you cater for most needs and should make coding simpler. You are then left with a far smaller number of items that need a \"Special type\" flag. It would also be far far easier to look at a list of trigger types and special types and determine which ones an individual model required. This would also give model developers a greater confidence they had dealt with every possible type as there would be a dramatically smaller number of them.",
+      "PostedDate": "2009-03-28T04:27:35.41-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "What do you have in mind for the special type? Also I wouldn't make the class have any function to give out averages. There's no way to know what the average should be if the proc is on melee hit without knowing the model. It should be to individual models to decide how they want to average it if they want to average it based on the trigger. This should be part of the GetCharacterStats that models have. You sum up all the gear, enchants, buffs and then you get a Stats object with total results. The model just has to iterate over procs list in the Stats object and do with them whatever they want to either add the averages to the Stats or leave it in raw form.",
+      "PostedDate": "2009-03-28T14:19:03.483-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The Special type could cover things like Set bonus effects as they tend to be somewhat out of the ordinary, also things like Darkmoon Card: Greatness where the stat effected is dependant on outside factors ie: current max stat. Also things like the special weapon enchants would fit into this special type, possibly also relic item special effects. ie: it would be a relatively small list of specials.\r\n\r\nOn the ABILITY of the class to give out averages. I appreciate that YOUR model wouldn't want to use this but most of the other models would, why would you deny the other models this simplicity??? You wouldn't be in any way shape or form forced to use the available average value API call so why are you opposed to it being present? The bulk of the other models rely on this simplicity of assuming that a use trinket is used every CD, a proc trinket has always procced and gives an average overall benefit. There are only a handful of the models that actually model effects of each hit & crit etc. \r\n\r\nNow of course by making a simplistic calculation available you allow all the models that currently rely on a simplistic average to be upgraded easily and quickly. As all that would need to be done is to return a stats class that had all the average procs as base stats. That would make for very quick n smooth transition to a new system. Note that this applies to the bulk of models that use melee dps. You also allow those models to grow over time to use the more sophisticated class where appropriate. If you deny the ability to get simplistic averages from the new class you create a two tier Rawr and destroy all the models that rely on BOTH melee AND spell dmg proc/use items. Since this is primarily Enhancement Shaman that make great use of melee & spell dmg you can perhaps understand why I am so passionate about getting it right.\r\n\r\nThe current system is a mess and its mostly the spell dmg items that are really really messy, as they have 101 special entries in the stats class. For a model like mine to use all the fiddly extra specials that are added in the current stats class is a real nightmare. Its also all but impossible to keep track of all the subtle differences in naming conventions that different people have used as there is no consistency. The melee item proc/uses on the other hand are almost all simplistic averages. Check out the SpecialEffects.cs file to see what I mean.",
+      "PostedDate": "2009-03-28T19:14:47.39-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm only saying that there shouldn't be a simple average value. It's ok if there is a function available that gives the average, but it should take at least some parameter that's used to determine the average time it takes to trigger the proc.",
+      "PostedDate": "2009-03-28T22:24:43.84-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I have not really messed with modeling those on-use trinkets, but speaking as a tank I look at it as *both* average and burst. Given situations with dodge trinkets, it's technically better for overall damage reduction over the course of a fight to use them on cooldown, yet mentally many tanks choose to use it to reduce burst damage on the off chance that 6% dodge or so will mean life or dealth. What this winds up meaning is I would rather not always model average contribution of a proc'd or use'd effect.\r\n\r\nA similar situation arises with a Paladin Libram, Libram of Obstruction, which increases SBV for 5 seconds after a judgement. We have to model it so that there's an average contribution of SBV for the purposes of reducing Boss Incoming DPS, but we also have to seperate that value out, and reinsert it only on Shield of Righteousness hits (damage based on SBV) that would fall within the 5 second duration of the ability.\r\n\r\nBeing a Libram, it's the module's personal responsibility to model that, but it is still a relevant situation.\r\n\r\nOn this point.. In our buffs selection, we have a *lot* of temporary buffs from trinkets. As a sort of compromise can we look into only showing trinket buffs if the corresponding trinket is equipped?",
+      "PostedDate": "2009-04-03T11:38:59.447-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That's exactly how it's going to work, I believe.",
+      "PostedDate": "2009-04-03T11:44:20.757-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-09T17:31:15.36-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:35:04.12-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:58.13-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

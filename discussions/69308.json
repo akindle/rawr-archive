@@ -1,0 +1,98 @@
+[
+  {
+    "Id": "235793",
+    "ThreadId": "69308",
+    "Html": "<p>Is it possible to easily implement by ilvl?</p>\r\n<p>Sometimes the filters aren't accurate due to armory's lack of info when importing. For example, I'd like to remove from view all +245's because we're not ready for 25man heroic just yet.</p>\r\n<p>Just a thought. Thanks,</p>\r\n<p>Dave</p>",
+    "PostedDate": "2009-09-17T15:12:50.673-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "235817",
+    "ThreadId": "69308",
+    "Html": "<p>245 is normal 25, not heroic, but yeah, you certainly can make filters that filter by ilvl. There's a min and max ilvl setting on each filter.</p>",
+    "PostedDate": "2009-09-17T16:12:32.21-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "235926",
+    "ThreadId": "69308",
+    "Html": "<p>Unfortunately most of the &quot;max ilvl&quot; filters in the current filter system is set to 1000. Only a small handful are actually set to a specific number.</p>",
+    "PostedDate": "2009-09-18T00:53:53.857-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "240018",
+    "ThreadId": "69308",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Astrylian wrote:</strong><br>\r\n<p>245 is normal 25, not heroic, but yeah, you certainly can make filters that filter by ilvl. There's a min and max ilvl setting on each filter.</p>\r\n</blockquote>\r\n<p>That would be terribly time-consuming :/ There are more than 20 filter categories :/</p>\r\n<p>Global filter by ilvl is very desired.</p>",
+    "PostedDate": "2009-09-29T08:02:01.7-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "240049",
+    "ThreadId": "69308",
+    "Html": "<div>To view only ilvl245s that meet all your other filter reqs:</div>\r\n<ul>\r\n<li><span style=\"color:#ff0000\">edit: this is not possible; you can filter out anything under 245 or anything over 245, but you can't see 245s and not see 232s and 258s AND all other filters you've enabled</span></li>\r\n</ul>\r\n<p>If you instead wanted to make one that filters out anything 245+, do the following:</p>\r\n<ul>\r\n<li>Tools -- Edit Item Filters</li>\r\n<li>Click &quot;New Filter&quot;</li>\r\n<li>Name &quot;ignore ilvl245&quot;</li>\r\n<li>Item Level: 245 to 1000</li>\r\n<li>Uncheck &quot;Additive Filter&quot;</li>\r\n</ul>\r\n<p>The tricky part is Additive Filter. &nbsp;If you uncheck it, it means you are filtering OUT anything that meets that requirement. &nbsp;If you want a filter that only shows ilvls 245+, you create a Subtractive filter with an ilvl range from 0-244.</p>\r\n<p>If you wanted to create your own item filters, you can create Subtractive filters under a new category, Item Levels, then two sub-category &quot;Low Range&quot; (filter out ilvls below each level; ie uncheck &quot;Additive&quot; and make the ilvl range 0-213) and a &quot;High Range&quot; (filter out ilvls above each level; ie uncheck &quot;Additive&quot; and make the ilvl range 213-1000). &nbsp;Add the filters yourself. &nbsp;It shouldn't take you any longer than it would take me so long as you understand what I just typed above. &nbsp;If you like how it turned out and want to share, submit it as a patch and we'd be happy to add it.</p>",
+    "PostedDate": "2009-09-29T08:49:32.53-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "240050",
+    "ThreadId": "69308",
+    "Html": "<p><em><span style=\"color:#ff0000\">edit: Err, finally found a filter that was non-additive (ie &quot;subtractive&quot;), and realized I was explaining it incorrectly. &nbsp;Serves me right for not updating my filters on my dev box in a looong time :) &nbsp;Editing the above post with the correct rules</span></em></p>",
+    "PostedDate": "2009-09-29T08:50:43.197-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "240405",
+    "ThreadId": "69308",
+    "Html": "<p>The New Filter under evaluation include a easy user interface I-Filter system for those who desire it. Filtering by eye level for a known instance can indeed give you a better list of available items in that instant, it will also give you ALL items in that I-Level range to include things that drop from other dungeons. So yes, filter will include this request in future versions of Rawr when the filters get approved.</p>",
+    "PostedDate": "2009-09-30T06:37:52.447-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "240433",
+    "ThreadId": "69308",
+    "Html": "<p>If you make the levels 245 - 1000 it will not include 245 level items...it has to be 246-1000</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-09-30T07:30:52.933-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "240453",
+    "ThreadId": "69308",
+    "Html": "<p>You can make the I-Level filter 245-245 and it will give you items of 245. Not sure what you are trying to do, Your statement above if you set I-Level from 245-1000, it WILL include 245 level items, but if you want item levels higher then 245 then use the 246-1000. The filters set forth and still under review will allow you to disable all items above 245 by selecting the &quot;Disable 246-258&quot; and the &quot;Disable 259+&quot; this will leave you with all items 245 and under.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-09-30T08:02:43.84-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "240456",
+    "ThreadId": "69308",
+    "Html": "<p>Sorry, I see your point now was in reference to ebs2002's statement, and you are correct...</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-09-30T08:07:55.61-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "240548",
+    "ThreadId": "69308",
+    "Html": "<p>I can't tell what part you're referring to, but I'm going to assume you're talking about the &quot;Low Range&quot;/&quot;High Range&quot; -- yes, you're correct there. &nbsp;If you were talking about &quot;filter out all 245+ items&quot;, then that's the point. &nbsp;245+ is the same as &gt;=245; in other words, 245 and higher.</p>",
+    "PostedDate": "2009-09-30T10:38:53.74-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "240591",
+    "ThreadId": "69308",
+    "Html": "<p>My answer was for OmikronTheta, and he is correct if he wants to include 245 items in the above mentioned settings that ebs2002 displayed. An yes ebs2002 is correct in the post that to filter out all 245+ Items is correct in his way of doing it, but the original question was &quot;remove from view all +245's&quot; which is in fact very different from 245+, one means all up to and including 245, and the other means from 245 and higher. So yes the correction to the question originally given is in fact the correct answer to the original question.</p>\r\n<p>Hope that cleared it up for you ebs2002... Just a little attention to the small details and you will be ok...</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-09-30T12:31:15.803-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

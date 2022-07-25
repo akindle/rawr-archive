@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "91760",
+    "ThreadId": "27513",
+    "Html": "Currently the list in the popup form showing your gear alternatives for a slot is getting quite long thanks to the optimiser generating loads of different gemings. This unfortunately makes the list less readeable than desired.<br>\r\n<br>\r\nI believe it would be nice to add a &quot;smart&quot; list mode to it to cut down that list:<br>\r\n- For all items (based on Item._name), it would calculate the best rating available<br>\r\n- The list would be reduced to all item variants matching the best rating for that item plus<br>\r\n- all variants in geming for the currently equipped item.<br>\r\n<br>\r\nThat should reduce the length of the lists considereably. It might also be worthwhile if <br>\r\n- items with a rating of zero and/or <br>\r\n- less than 50% rating of the currently equipped item <br>\r\nwould be filtered out as well (unless the item is the currently equipped one, then it should stay), especially with druid gear lists containing gear for loads of different purposes, where 60%+ of it is not relevant at all.<br>\r\n<br>\r\n(And I believe it can be localised in FormItemSelection.RebuildItemList)\r\n",
+    "PostedDate": "2008-05-11T04:15:14.907-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "91764",
+    "ThreadId": "27513",
+    "Html": "I put an inital attempt at a smart list in the patches section. It currently has the smart handling as a flag, so it could be easily extended to incoorperate smart list as a display option.\r\n",
+    "PostedDate": "2008-05-11T06:45:38.147-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "91773",
+    "ThreadId": "27513",
+    "Html": "Declined, as we specifically *don't* want that sort of filtering. The desire for it will be drastically reduced in b14 already.\r\n",
+    "PostedDate": "2008-05-11T10:05:06.52-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "91864",
+    "ThreadId": "27513",
+    "Html": "Would you care to explain how you will achieve the same result in b14 then? This kind of filtering makes Rawr a lot more useable, and I regard a way to deal with gemming variants essential from making the items list unsueable because of 10+ variants for each item.<br>\r\n<br>\r\nAlso would you like to explain what are your plans for ensuring that Rawr will not use more than 10000 USER objects (the hard limit in Vista), when it currently can use 8K+ already? \r\n",
+    "PostedDate": "2008-05-12T02:14:00.08-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "91928",
+    "ThreadId": "27513",
+    "Html": "If those variants are not useful to you, delete them (Delete Duplicates is a quick way to do that). If you know of a way to create a handle leak in b14, let me know.",
+    "PostedDate": "2008-05-12T08:17:47.997-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "91965",
+    "ThreadId": "27513",
+    "Html": "The issue is ofc that variants are useful, even if you dont want to see all of them, because it means you get the value from the best gemming automatically. This is especially relevant for feral druids, as they tend to keep dps and tanking variants of items around. And from my experience with this smart filtering it is pretty good at hiding only items you are not interested in. You might want to try it before rejecting it :)<br>\r\n<br>\r\nAlso delete duplicates is a lot of hand work to clean up your items, while a global delete duplicates might be much too aggressive. Since the root cause for the number of duplicates floating around is the optimiser, it might be best to have variants store whether they were created by the optimiser, and allow you to remove optimiser created options only. The optimiser creation flag should be cleared on items that are equipped on a saved character, and then a global delete duplicates could remove all optimiser generated gemmings (unless it is the only gemming currently available for that item).<br>\r\n<br>\r\nAs for the handle issue, I believe it is directly related to the way <span style=\"font-size:13px;color:#2b91af\">ItemSelectorItem</span> is implemented. It has 12 sub controls, meaning that for a display list of 400 items for a slot, 5200 controls are created. That is the root of the problem, and to fix it, either the control needs to draw stuff without making use of subcontrols, or it even better the list changed to use an owner drawn listbox.\r\n",
+    "PostedDate": "2008-05-12T09:38:55.187-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "91981",
+    "ThreadId": "27513",
+    "Html": "Users don't want to see just the 'best' gemming. That's why this was rejected. The number of crazy gemmings created by the Optimizer should be far fewer in b14, so that removes alot of the desire for this.<div><br></div><div>I may implement ItemSelectorItem as custom drawn for b14.1.</div>",
+    "PostedDate": "2008-05-12T10:16:41.243-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "91986",
+    "ThreadId": "27513",
+    "Html": "I know, that is why for the currently equipped item I made it so that it shows all known gemmings as well.\r\n",
+    "PostedDate": "2008-05-12T10:33:34.297-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "92002",
+    "ThreadId": "27513",
+    "Html": "I know, that is why for the currently equipped item I made it so that it shows all known gemmings as well.\r\n",
+    "PostedDate": "2008-05-12T11:46:22.487-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

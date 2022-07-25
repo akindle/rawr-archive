@@ -1,0 +1,105 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Optimizer",
+      "DisplayName": "Rawr.Base.Optimizer"
+    },
+    "ClosedComment": "4.0.18 Released",
+    "ClosedDate": "2011-02-03T21:10:38.53-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Whenever an item has a reforge before the optimizer is run and then the result of the optimizer doesn't change the item it is still getting listed in the change list result display. ie: the before and after are identical. This ONLY seems to happen to items where there was a reforge on the item before the optimizer started.\n \nThis should be easy to test. Take a fully optimized item set and rerun the optimizer. Assuming it settles on same solution it will list the reforged items as having changed. I'll try to provide a test case tomorrow morning, its too late at night/morning (2am) just now.",
+    "LastUpdatedDate": "2013-05-16T05:18:53.68-07:00",
+    "PlannedForRelease": "Rawr 4.0.16 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-01-27T17:42:32.333-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Optimizer] Listing Items as Changed When They are Not",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19831
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "This doesn't happen for me. I have almost everything reforged and optimizer result shows no changes. We'll need a specific example to test this.",
+      "PostedDate": "2011-01-27T17:54:16.627-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-27T20:11:08.383-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I can confirm this issue. At the moment i'm in the office and I have not the possibility to do some screenshots or something like that. But i can give you some background information which I noticed:\r\n1) I pushed my char into Rawr with the Rawr Addon (not sure if the issue exists when I import it from the armory cause I really love the new addon) ;-)\r\n2) I noticed that before I start the optimizer the talent and glyph values seems to be buggy. I'm not sure why this could occur but I tested the import via the armory and the values seems to be correct (bug with the Rawr addon import?)\r\n3) After the optimization I've got a better all over all value but the reforging/gemming etc. seems to be the same. The better value seems to exist just because of the fact that the values for glyphs und talents are correct after the optimization.\r\n4) If I run another optimization with the correct glyph and talent values the optimizer shows me no more items to reforge/regem cause I've got the best combination (like the once before too...)",
+      "PostedDate": "2011-01-28T00:28:55.933-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-28T03:52:23.473-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Struggling to get it to replicate now which is always a pain. It looks like it happens more when lots of things change rather than with small tweaks. It MIGHT be simply that I noted where a single thing has changed about an item eg: change 1 gem. It lists ALL the gems AND the enchants AND the reforges even though the enchants and reforges haven't changed.\r\n\r\nSo it might just be I was getting confused with it displaying enchants and reforges where nothing had changed apart from a gem. However given another user has seen this perhaps its a transient bug. I will endevour to find a repeatable occurrance.",
+      "PostedDate": "2011-01-28T05:49:24.547-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It's intended that reforge/enchant is listed even if only one gem changes. I think it might be a bit confusing otherwise determining whether an item has no reforge or whether there was just no change.",
+      "PostedDate": "2011-01-28T15:11:09.193-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Good point Kavan although perhaps use of colour coding or some other emphasis may help to indicate a change. So perhaps a grey for no change vs colour for a change or normal vs bold text or something to highlight yup its changed. Its easy enough on a quick visual scan to miss changes and not notice Mastery -> Haste vs Mastery -> Hit. for example.",
+      "PostedDate": "2011-01-30T11:08:07.793-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Another possibility is to list \"No Reforging\" instead of the blank space on either side of the results.\r\n\r\nAlso, we could list the \"new reforge\" as \"X -> Y (unchanged)\" in those situations where something else on the item changed.",
+      "PostedDate": "2011-02-01T14:53:25.997-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I've reworked the visibility and statements on the results window, it's now very obvious what has changed and what hasn't",
+      "PostedDate": "2011-02-03T19:16:24.447-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-02-03T19:16:34.043-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-02-03T21:10:38.53-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:13.12-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:53.68-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

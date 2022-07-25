@@ -1,0 +1,90 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Moonkin",
+      "DisplayName": "Rawr.Moonkin"
+    },
+    "ClosedComment": "Release 4.0.19",
+    "ClosedDate": "2011-02-07T05:39:56.98-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Items that procat \"<35% Target HP\" such as Sorrowsong are significantly overvalued in the Moonkin model.  It is currently providing a benefit of 1710 SP with a 50% uptime over the entire fight duration rather than only during the portion of the fight when the target is below 35%.",
+    "LastUpdatedDate": "2017-11-27T11:00:20.207-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-02-06T07:48:36.743-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Moonkin] Items that proc \"<35% Target HP\" Overvalued",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19928
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Yes, because the trigger for \"Under 35%\" was only just added.  I'm going to try to have all that, along with some other minor improvements, in with the 4.0.6-ready code today.",
+      "PostedDate": "2011-02-06T09:04:05.64-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I may be jumping the gun since you have not changed this to fixed yet and if I am, I'm sorry.\r\nAfter picking up the checkin:\r\n---\r\nRawr4.Moonkin:\r\n* Supposed to fix the issue with Sorrowsong where the value isn't right sub 35%.\r\n---\r\nI'm still seeing Sorrowsong with too high of a spell power benefit.  I suspect that it's due to this code in MoonkinSolver.cs (which occurs prior to the code that calls Uptime for activated effects.:\r\n\r\n\r\n                        if (triggerChance > 0)\r\n                        {\r\n                            currentSpellPower += (proc.Effect.MaxStack > 1 ? proc.Effect.GetAverageStackSize(triggerInterval, triggerChance, 3.0f, calcs.FightLength * 60.0f) : 1) *\r\n                            proc.Effect.GetAverageUptime(triggerInterval, triggerChance, 3.0f, calcs.FightLength * 60.0f) * procSpellPower;\r\n                            currentCrit += (proc.Effect.MaxStack > 1 ? proc.Effect.GetAverageStackSize(triggerInterval, triggerChance, 3.0f, calcs.FightLength * 60.0f) : 1) *\r\n                                proc.Effect.GetAverageUptime(triggerInterval, triggerChance, 3.0f, calcs.FightLength * 60.0f) * procSpellCrit;\r\n                            currentMastery += (proc.Effect.MaxStack > 1 ? proc.Effect.GetAverageStackSize(triggerInterval, triggerChance, 3.0f, calcs.FightLength * 60.0f) : 1) *\r\n                                proc.Effect.GetAverageUptime(triggerInterval, triggerChance, 3.0f, calcs.FightLength * 60.0f) * procMastery;\r\n                        }\r\n\r\n\r\nAlso, it appears that Sorrowsong does not count as an activated effect since it's proc does not appear in the activatedEffects array.",
+      "PostedDate": "2011-02-06T19:48:38.017-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Oh, crap.  It's a spell power proc.  I forgot about that.  That would be why my fix was showing wrong results - because the fix didn't fix it.  Ahurr durr.  Thanks.",
+      "PostedDate": "2011-02-06T20:31:14.737-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Fixed in latest source, to go out with 4.0.19.",
+      "PostedDate": "2011-02-06T21:04:13.163-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-02-07T05:39:56.98-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T18:53:02.237-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:03:29.053-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:03.03-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:45.983-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:00:20.207-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

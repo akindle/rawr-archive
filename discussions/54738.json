@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "184578",
+    "ThreadId": "54738",
+    "Html": "After downloading the lastest version of Rawr, importing my character (resto druid) and adding all of my raid buffs, the simulation says I'm &quot;mana limited&quot; and has me going oom in 240 seconds (or possibly 2 minutes, 40 seconds, not sure which).  I currently have zero mana problems even in fights that go on for 6 or 7 minutes, and often don't even have to innervate, so I'm confused about why the simulation keeps coming up with this.  Moreover, when I play around with the spell usage options to choose different healing styles, the time until oom remains totally unchanged.  What am I missing here?  (And yes, like I said, I've added all of my buffs, and Rawr is set at a 4 min boss fight with 70% replenishment uptime.)<div><br></div><div>Any help you can provide would be greatly appreciated!</div>",
+    "PostedDate": "2009-04-28T09:02:49.683-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "184628",
+    "ThreadId": "54738",
+    "Html": "<p>It looks to me as if &quot;Time Until OOM&quot; is usually showing the fight duration (default duration is 240s).  I think you didn't really go OOM unless &quot;Unused Mana Remaining&quot; went to zero, and &quot;Unused Cast Time&quot; climbed above zero.<br>\r\n<br>\r\nAlso look at your rotation in options/stats.  All of those, except the bottom six (3 spam rotations) maintain an Lb stack on every tank, without letting it bloom.  That might cost more than your current in-raid strategy.</p>\r\n<p>For the blooming strategies, I believe the mana costs are high.  Rawr is applying the ToL discount to both the initial cost, and the refund when it blooms.  The refund should be &quot;full strength&quot; so the average cost is too high.</p>\r\n<p>If you look at your &quot;Result:&quot; text you can get at least three results.  I think they mean</p>\r\n<p>&quot;Cast Time Limited&quot; meaning you maintained your tank HoTs and spammed raid heals (or tank direct heal) non-stop.</p>\r\n<p>&quot;Mana Limited&quot; meaning you maintained your tank HoTs for the full duration, but could not spam raid heals non-stop.</p>\r\n<p>&quot;OOM from Tank Hots&quot; meaning that even with no raid heals, you weren't able to maintain tank HoTs.</p>\r\n",
+    "PostedDate": "2009-04-28T10:55:37.143-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "184751",
+    "ThreadId": "54738",
+    "Html": "Thanks for the comments and feedback.<br>\r\n<br>\r\nErdluf, you seem to have summarised it relatively well: <br>\r\nWorst result is OOM from Tank HoTs -&gt; Forget about raid healing, if your assigned to HoT the tank, don't try anything else, since you won't have mana for it.<br>\r\n<br>\r\nMost common result: Mana limited -&gt; You can do some other healing (with good gear quite a lot), but you still cannot keep casting every single second of the fight or else you can still go OOM early. The time to OOM will currently show the fight duration and your unused cast time, will show a fraction value, indicating what fraction of the fight time you have to wait around between casts. Your mana remaining will show 0, since by casting this fraction of the time, you spread your mana throughout the whole fight. Maybe the time to OOM should read: End of fight, instead of showing a seconds value?<br>\r\n<br>\r\nBest case: Cast Time Limited -&gt; Means you can keep spamming you won't get OOM. At this point, only worry about more throughput (spellpower, crits, haste), forget about mana. Potentially consider sharing your innervate, haste potion, instead of mana potion?<br>\r\n<br>\r\nIf you find any numbers are wrong, please let me know. In game, I also normally don't experience mana issues, even though my gear is crappy. But these results are what the numbers report. There are either faults somewhere or in practice you spend more time between casts than you realise or the rotations being modelled aren't applying.<br>\r\n<br>\r\nI'll look to see if I can make some of these descriptions more clear on the GUI. (I resently moved some fields are, but that change probably haven't been released yet).<br>\r\n<br>\r\nThe original rotations kept a full stack up the whole time and with the change in 3.1, this does become expensive. The latest development version, starts considering bloom based strategies, but that was just coded based on tooltip descriptions and haven't been compared to ingame numbers. Suggestions on which rotations need bloom versions and how many need to be kept with the current continuous stack version are welcome. <br>\r\nYou mention the ToL discount doesn't apply to the refunded mana. If that is the case, I'll look at correcting that. Any idea if the T7, 2 piece set bonus also gets ignored on the refund? Currently a 6% Omen Proc discount is also applied on average, which probably also shouldn't be considered for the refund case. It sounds like these numbers need to be checked and we missed a few of the subtleties of the 3.1 lifebloom change.<br>\r\n<br>\r\nI hope this makes things slightly clearer. And please, if you can pinpoint any concrete issues with the model (a specific spells cost/healed amount is wrong) let me know (if possible try to test without a proc type trinket, both ingame and in Rawr, since those proc effects gets averaged by Rawr and can affect healed amounts slightly). If there are further suggestions on the model itself, suggest away and I will see if it is practical and can be scheduled.<br>\r\n<br>\r\n<br>\r\n<br>\r\n<br>\r\n",
+    "PostedDate": "2009-04-28T15:43:06.597-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "184775",
+    "ThreadId": "54738",
+    "Html": "<p>Wildebees,</p>\r\n<p>I did put some comments in the issue tracker, 13121.  I just looked at a WWS from an OS run last night, and ToL were getting mana refunds of 1468, 1469, and 978 from Lifebloom (I guess there were no single stacks).  At least one of them had 4t7.  You should probably be able to find the same thing from any log.</p>\r\n<p>EJ reports that you also get a full refund even if the initial cast was free from Omen of Clarity.</p>\r\n<p>Something not clear to me:  Are your &quot;blooming&quot; rotations using &quot;slow&quot; stacks or &quot;fast&quot; lifebloom stacking.  In other words, is the second lifebloom cast 1s after the first, or is it 8s after the first?  I think both have arguments in their favor.</p>\r\n",
+    "PostedDate": "2009-04-28T17:46:30.673-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "184793",
+    "ThreadId": "54738",
+    "Html": "Thanks for the responses here.&nbsp; Erdluf, your comments definitely helped clear things up for me.&nbsp; I though &quot;mana limited&quot; was a bad thing and was telling me that I needed to gear for more regen, which I know I don't need to do.&nbsp; I'm still not sure why Rawr is valuing the Talisman of Troll Divinity so highly for me (ahead of things like Illustration of Dragon Soul and Spirit World Glass), but the rest of the gear rankings seem okay.&nbsp; Rawr still suggests that I gem for int and spirit ahead of spellpower, which I don't agree with since my regen is fine, but I can live with that.<br>\r\n<br>\r\nRe: the new lifebloom rotations, on tanks I tend to stack two lifeblooms one after the other, let them bloom, and repeat.&nbsp; Sometimes I stack three if the tank is taking bursty damage and a big bloom would be helpful.&nbsp; For raid healing if I'm using lifebloom I'll just throw one on a raid member and wait for it to bloom, tho usually I go with Rejuv + WG + Nourish.&nbsp; Hope that helps your modeling.&nbsp; Thanks again for the responses!<br>\r\n",
+    "PostedDate": "2009-04-28T19:47:13.29-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "225493",
+    "ThreadId": "54738",
+    "Html": "<p>I noticed that on the &quot;Talisman of Troll Divinity&quot; it says &quot;270.86 Bonus Healing Received (30 Sec/2 Min)&quot;. The item only has a 20 Sec/2 Min uptime. Could this maybe be an error or do I misinterpret the numbers?</p>",
+    "PostedDate": "2009-08-19T09:27:20.233-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "225506",
+    "ThreadId": "54738",
+    "Html": "<p>The reasoning was based on comments that the buff got refreshed. Thus at about 20 seconds, you could refresh it and it would last another 10 seconds. I never got the trinket myself, so if this isn't the case, it should be changed.</p>\r\n<p>// Talisman of Troll Divinity<br>// For 20 seconds, direct healing adds a stack of 58 +healing for 10 seconds<br>// Stacks 5 times, 2 minute cd<br>// Direct heals: Nourish (1.5) HT (3) Regrowth (2)<br>// Assumption: every 2 seconds, a direct healing spell is cast<br>// (1+2+3+4)+11*5 = 70 stacks over the total duration of 30 seconds<br>//&nbsp; 70 stacks/ 15 casts = 4.67 stacks<br>// But remember that the spellpower will increase for others in the raid too!</p>",
+    "PostedDate": "2009-08-19T09:46:31.217-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

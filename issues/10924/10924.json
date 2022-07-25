@@ -1,0 +1,75 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Retribution",
+      "DisplayName": "Rawr.Retribution"
+    },
+    "ClosedComment": "The issue is as Drashian described.  WoW is also using a floor function on raw stats before generating derived stats such as Crit% from Agility and AP from Strength.  There is not actually a difference between 2 AP and 1 Strength at certain values of Strength.  However, the difference will become apparent over the course of several gems/pieces of gear.\n\nThis is \"Working as Intended\".",
+    "ClosedDate": "2008-08-08T00:17:39.44-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Somehow it seems to me that the retribution item value is a tad off.\n \nIt seems like Strength scales a little to low compared to Attack power.\n \nWhen i multiply 1 strength with Devine Strength and add the kings buff to it it still seems like it doesnt scale enough.\n \n1 Strength is as far as i know 1*(1,1*1,1) due to devine strength being a pasive skill meaning it should scale to 1,21 or 2,42 AP meaning it should scale some 21% better than AP.\n \nThe current setup i have the AP value is 5,26 and the Strenght is 6,21. However adding the full 21% scaling from Kings and Devine strenght should mean that the budget would show that Strenght would be worth ~6,36 or that AP would be worth ~5,13.\n \nI was wondering why it allways choose hunter/rouge gear isntead of palte DPS gear. The main difference in the two are Strengh vs AP",
+    "LastUpdatedDate": "2017-11-27T10:59:46.313-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-08-06T02:23:03.837-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Retribution] Item Value",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 10924
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I've seen this too, it's because of rounding. Rawr only considers full points of strength when determining the AP bonus from strength (the same, I assume, as WoW). So 10 strength * 1.21 = 12 str, which only turns into 24 AP. The difference would vary by your current strength (floor(490 * 1.21) = 592, but floor(500 * 1.21) = 605, so 10 str would be 26 AP in that situation).\r\n\r\nThe issue shouldn't have a strong effect on Rawr's gear choices, though. As far as choosing rogue gear over plate, I'm not a ret pally expert personally, but I've noticed that most if not all physical dps classes tend to start eyeing rogue gear at times. It just seems to be very well itemized.",
+      "PostedDate": "2008-08-07T11:41:50.84-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-08-08T00:17:39.44-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T17:16:50.43-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:46:45.763-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:36.297-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:27:04.82-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T10:59:46.313-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

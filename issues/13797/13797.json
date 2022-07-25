@@ -1,0 +1,131 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Moonkin",
+      "DisplayName": "Rawr.Moonkin"
+    },
+    "ClosedComment": "To quote the developer of the Moonkin spreadsheet&#58;&#34;With queue delay set to 0.3, 400 haste will be exactly where the cast time of an un-NG&#39;d Wrath crosses 1.5s. This causes the uptime of NG to jump up, because the sheet starts assuming you can fit in 3 Wraths per NG instead of 2. So I think the concept is accurate, but like all haste breakpoints &#40;GCD softcap, Reign of the Dead&#41;, it looks sharper on the sheet than it will play out in practice.&#34;In other words, while definitely confusing, this behavior is intended.  One will just have to use some common sense when picking items around the haste discontinuity, which varies by latency.",
+    "ClosedDate": "2009-11-20T10:48:15.867-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Ok, I might be wrong on this one, but my boomkin is hit capped and over the 401 haste. However, Rawr is still recommending (bracers) Savage Wound Wrap (blue, ilvl 200) over Esteemed Bindings (epic, ilvl 213 with +19 SP gem), and I can't figure out why.\n \nComparison (Savage vs. Esteemed):\nArmor: 127 / 253\nSP: 51 / 79 (including GEM)\nHaste: 43 / 37\nSta: 31 / 42\nSpirit: 0 / 39\nIntel: 32 / 38\n \nRawr gives 182.97/182.97 rating for Savage, and 179.87/179.78 rating for Esteemed.\n \nTried updating both from Armory. No change.\n \n \n \nI'm attaching my toon XML file.",
+    "LastUpdatedDate": "2017-11-27T11:00:13.633-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-08-06T13:56:58.767-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Moonkin] Calcs making bad recommendations",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13797
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2076,
+      "FileName": "morcego_boomkin_4T8.xml",
+      "DownloadUrl": ".\\2076"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Not sure if this is related to this or not, but the Balance talent tree is still showing Balance of Power 2/2 as 4% to hit/4% chance to not be hit with spells, when it should be 2/2 6% hit/ 6% dmg reduction.",
+      "PostedDate": "2009-08-11T16:19:53.037-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The ingame tooltip is wrong. It still provides 4% hit. The hit cap is unchanged from 3.1.\r\n",
+      "PostedDate": "2009-08-11T20:43:07.21-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "If you're using the latest version of Rawr and an old character file, don't.  You will need to create a new character file for now.",
+      "PostedDate": "2009-08-12T06:10:15.42-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Just tested with 2.2.13, reconfiguring everything (not using old .xml file).\r\nStill happening.",
+      "PostedDate": "2009-08-12T08:28:22.623-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The only thing I can think of is, you must be hitting some kind of weird haste boundary in the formulas somewhere.  I am going to be updating the calculations sometime this week/weekend, so it should be fixed for the next release.  Until then, I honestly don't know what to tell you.",
+      "PostedDate": "2009-08-12T09:13:19.757-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I have no idea what is going on either. I checked all slots and it really seems to be related to haste.",
+      "PostedDate": "2009-08-13T16:48:51.043-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I finally figured out what's going on.  The haste \"soft cap\" is 25%.  Using the Savage Wound Wrap takes you over 25% character haste, which puts your NG'd Wrath at the global cooldown.  It appears there's an edge case right on this 25% haste boundary that I need to find and fix.  It'll be in the next release.  Congrats on finding a very obscure bug.",
+      "PostedDate": "2009-08-19T05:22:39.77-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thank you. I will wait for the new version and see how it works.",
+      "PostedDate": "2009-08-19T07:56:35.107-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-19T12:52:53.433-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm still working on this problem, along with the Lunar Fury one brought up by Erdluf.",
+      "PostedDate": "2009-08-25T11:25:18.643-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-16T19:00:56.483-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Interestingly enough, the Moonkin spreadsheet exhibits this exact same behavior, after I put in some time exploring the problem.  As a workaround, adjust your latency; the \"bump\" in the haste chart is at least partially related to your latency value.  I'm going to get in touch with the spreadsheet guy and see if he and I can work through a better latency model together.",
+      "PostedDate": "2009-11-20T06:44:01.56-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-20T10:48:15.867-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:03:27.03-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:47.687-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:57.887-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:00:13.633-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

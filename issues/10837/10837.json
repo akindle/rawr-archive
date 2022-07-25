@@ -1,0 +1,115 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.MultipleModels",
+      "DisplayName": "Rawr.MultipleModels"
+    },
+    "ClosedComment": "Tree model does have it.",
+    "ClosedDate": "2008-10-14T13:12:35.98-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "http://www.wowhead.com/?item=28370 - Bangle of Endless Blessings\nhttp://www.wowhead.com/?item=19288 - Darkmoon Card: Blue Dragon\n \nIs there any plans to model these? Both of these provide a very large amount of mana return and are very good trinkets for both entry and late raiding.",
+    "LastUpdatedDate": "2013-05-16T05:27:06.443-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-07-30T15:26:50.653-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[HealPriest|Tree] Bangle and Blue Dragon card",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 4,
+    "Id": 10837
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I will need to know a few things, then (since I don't have either item):\r\n\r\nWhat is the proc-rate outside the internal cooldown of Darkmoon Card: Blue Dragon\r\nIs there even an internal cooldown on Darkmoon Card: Blue Dragon? (Can it proc while you still have the buff?)\r\n\r\nWowhead suggests Bangle of Endless Blessings has a 10% proc-rate and a 45 second internal cooldown - is this accurate?\r\n\r\n--\r\n\r\nThe items should be easy enough to model on their own. The hard thing is removing the mp5 that the bangle gives while the darkmoon card has already proced.",
+      "PostedDate": "2008-07-30T20:49:40.913-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-07-30T20:49:50.787-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Tree development version:\r\nDarkmoon Card: Blue Dragon - Implemented as 2% proc-rate with no proc while a proc is still active\r\nBangle of Endless Blessings - Proc implemented as 10% proc-rate with 45 seconds cooldown\r\nBangle of Endless Blessings - On-Use effect as an \"average\" mana-regen gain (the effect will thus be active \"1/6\" of the time during Innervate regardless if your innervate is capped by max mana or not (it probably is capped by mana anyway))\r\n\r\nIf both Blue Dragon and the Bangle are used, the bangle assumes it never procs at the same time as the blue dragon (which means the mp5 it gives is ~25% higher than it should be).\r\n\r\nI also added the Lower City Prayerbook, which is a bit more reliable than bangle for druids (and better, at least with high-end gear).\r\nOn-Use effects that add +healing were added as average healing (same as the hyjal exalted ring), and a scaling factor (default 0.8) was added for those who don't like temporary healing.",
+      "PostedDate": "2008-07-31T05:50:45.157-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-07-31T23:23:50.963-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-08-17T23:31:08.63-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-10-14T09:26:50.487-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Implemented in 2.0.0\r\n\r\n** Closed by TNSe 10/14/2008 9:26 AM",
+      "PostedDate": "2008-10-14T11:26:01.983-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Not implemented yet for Tree.",
+      "PostedDate": "2008-10-14T11:26:02.33-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I implemented Darkmoon card: Blue Dragon for HolyPriest as a 2% chance to proc 100% mana regeneration for 15 seconds without any cooldown.\r\nBangle was implemented as 15% chance to proc 15% mana regeneration for 15 seconds with a 45second cooldown.\r\n\r\nSimple implementation is:\r\nBangle: Mana Regen increase = 15% * 15 / 60 = 3.75% (Meditation 3/3 is 30%)\r\nBlue Dragon: Mana Regen increase = (100% - Meditation) * 15 s/ (100%/2%*2.5s) = 8.4% with 30% meditation\r\n\r\nThis is a very simplified model of these trinkets, but in average it should be \"good enough.\"",
+      "PostedDate": "2008-10-14T11:35:20.94-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-10-14T11:35:21.973-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-10-14T13:12:35.98-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:28:47.397-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T16:26:39.733-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:38.887-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:27:06.443-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

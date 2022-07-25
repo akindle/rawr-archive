@@ -1,0 +1,141 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtPaladin",
+      "DisplayName": "Rawr.ProtPaladin"
+    },
+    "ClosedComment": "&#64;Protpally1121&#41; The 8 mastery you get for free wasn&#39;t counted.2&#41; Strength to parry conversion wasn&#39;t counted.3&#41; Stamina calculations were incorrect resulting in incorrect health.4&#41;5&#41;6&#41;7&#41; Touched by the Light and Plate Specialization weren&#39;t counted.8&#41;9&#41; Toughness was giving 9&#37; instead of 10&#37; at 3, and armor multipliers were incorrectly applying to bonus armor.10&#41;11&#41; This is another issue, probably http&#58;&#47;&#47;rawr.codeplex.com&#47;workitem&#47;19673.  There seems to be a problem with either SoT causing too much threat or SoR causing not enough threat.For the numbers listed, these are checked in and ready to go for the next release.For the numbers NOT listed, please double check the socket bonuses on your items to make sure they match in game.  I have gotten the stats to be a match to my paladin in game, rounding issues notwithstanding. &#58;&#41;  If you continue to have issues, please create a new ticket&#33;&#64;deafknightPlease make a new ticket for modeling of Throngus&#39; Finger.",
+    "ClosedDate": "2011-02-06T17:44:47.243-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I'm not sure if your taking issues about this model yet but here are a few mentions.\n \n1) Mastery not being used for block\n2) Parry numbers are Low\n3) Health numbers are Low\n4) Mana numbers are Low\n5) Strength is slightly Low\n6) Agility is slightly high\n7) Stamina is low\n8) Intellect is low\n9) Armor value is a little low\n10) Dodge rating is a little low\n11) Threat is over valued (opinion) graphically\n \nIf this is premature, my apologies, just figured I would put something up.",
+    "LastUpdatedDate": "2013-05-16T05:19:05.253-07:00",
+    "PlannedForRelease": "Rawr 4.0.15 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-01-10T16:07:00.213-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtPaladin] Stats Incorrect",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 4,
+    "Id": 19659
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4399,
+      "FileName": "sample.xml",
+      "DownloadUrl": ".\\4399"
+    },
+    {
+      "FileId": 4470,
+      "FileName": "deaf_prot.xml",
+      "DownloadUrl": ".\\4470"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "For future reference (all users), please spellcheck your post before you make it. That's part of the Posting Guidelines.",
+      "PostedDate": "2011-01-10T16:14:31.513-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "We need example info, just saying its low doesn't tell us anything.",
+      "PostedDate": "2011-01-10T16:17:43.423-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-10T19:07:10.287-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm taking numbers from both the wow site and in game. I'm hoping these are the numbers your interested in. If not just post how to get the infomation your looking for. I'm also attaching a save from Rawr.\r\n\r\nLevel 85 Blood Elf\r\nBlock in Rawr 34.7198%. In game 52.72% (Block rating 40 adds 0.45%)\r\nPerry in Rawr rating of 231 (6.3394%). In game rating of 930 (Rating adds 5.26%)\r\nHealth in Rawr 97002. In game 152309.\r\nMana in Rawr 5629. In game 24777\r\nStrength in Rawr 2945. In game 2958 (161+2797)\r\nAgility in Rawr 147. In game 154 (99+55)\r\nStamina in Rawr 6452. In game 7806 (188+7618)\r\nIntellect in Rawr 101. In game 109\r\nArmor in Rawr 35931. In game 35962 (Reduce Damage 57.97%)\r\nDodge rating in Rawr 1020 (9.4834%). In game 1030 (adds 5.83%)\r\n",
+      "PostedDate": "2011-01-10T19:07:11.637-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sounds mostly like it's not using lvl85 stats, and it's not granting the parry rating from str.",
+      "PostedDate": "2011-01-10T22:09:46.88-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-13T20:47:28.953-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "On issue #1, Mastery being low - I came in to post about this. At first, I thought that it was just the base 30% chance to block is missing from the character sheets in Rawr. If I start a new character, spec it out with my current talents, and equip nothing it shows 0% chance to block. Thinking that the model may be smart enough to know you can't block without a shield, I selected Lost Pavise of the Blue Flight, and ended up with a 4.4% chance to block?. Shouldn't this be exactly 30% as there was no mastery on LK level gear (which is why I chose that piece for the test)?\r\nThe only problem is, that leaves a difference of 25.6% missing from the *base* chance to block. However, the above example shows a difference of 18% between game data and rawr display. My own character shows a difference of 47.17% from armory, vs. 27.20 in rawr, which is a difference of 19.97%. \r\nAs my blocking is lower than the provided example above, I have a suspicion that the model is built w/o base chance to block, or with a 4.4% rather than the 30%. Then is the additional mastery/block scaling more than it should? Perhaps it scales to meet up at current BiS gear? Is that possible?\r\n\r\nThe other thing I noticed where mastery isn't showing up is under the \"Relative Stat Values\". It doesn't show up on item tooltips, but as mastery changes when the items are equipped/unequipped, I am assuming that this is only a tooltip display error - which I can live with.",
+      "PostedDate": "2011-01-14T20:37:59.903-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "OK, not sure what I was thinking there - base block from mastery is 18% which comes really close to the missing amount of block between rawr and armory. Added to the 5% base chance without protection tree specialization and my character has 23% naked.",
+      "PostedDate": "2011-01-14T21:40:28.977-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-16T03:37:09.88-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "still not fixed in the current RAWR Release. :(\r\nthe current release also suggests refoging to parry or dodge over mastery which clearly is a mistake.",
+      "PostedDate": "2011-01-17T09:33:24.09-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-21T02:50:49.577-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hi, \r\n\r\nfirst a tip for threat : there is a threat scale that you can use to set back the value of threat (in our current OPness in that area), as well as a dropdown to select \"surv/mitigation\" for proper gear ranking. Once setup, it does work properly.\r\n\r\nSome issues i couldn't solve (loading deafknight from turalyon-EU with battle.net option):\r\n\r\n- Glyphs are not displayed / imported \r\n- Agility is heavily favored, over parry and dodge. [This is perhaps correct, but EJ gives a lesser ratio to agi, so it doesn't look like it]\r\n If i set the boss' level to 85 (trash), it does look better.\r\n- All the base stats are wrong (IQ for example is 101 on rawr and 109 on char, and has totally no modificators that should be applied)\r\n- Mastery is not displayed in the stats values, and not offered as a reforge option (but the value is ok)\r\nMastery's tooltip is incorrect (says add 28% block instead of 18%)\r\n- STR doesnt look applied when calculating parry (should now gives 0,25 parry)\r\n\r\nThe other things look functional, althought with the parry wrong the module is kinda unuseable.... but keep up the good work, nearly there! :)\r\n",
+      "PostedDate": "2011-01-21T02:50:51.267-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-28T05:25:01.403-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "As of 4.0.17, noticed an additional issue, onparry event doesnt trigger (check with throngus' finger)\r\n\r\n ",
+      "PostedDate": "2011-01-31T04:58:20.82-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Touched by the Light and Plate Specialization now modeled, health & stamina should be correct as of commit 57836.",
+      "PostedDate": "2011-02-06T13:51:54.587-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-02-06T17:44:47.243-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:28.003-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:05.253-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

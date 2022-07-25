@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Bear",
+      "DisplayName": "Rawr.Bear"
+    },
+    "ClosedComment": "Rawr 4.0.13 Released",
+    "ClosedDate": "2010-12-29T02:48:02.183-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Bear model, b4.0.12.0\n \nThanks for fixing case 19274 (\"[Bear] Ignoring Threat Rating Customization\").  I can confirm that threat values do now appear to scale when the setting in the options panel is changed.  Unfortunately, I think there is a further problem which means that, certainly relative to 2.x/3.x, the model undervalues threat by quite a large factor.  I'd speculate that there has been a scaling change elsewhere in the application in 4.x that might account for this.\n \nTo reproduce: create a new \"bare\" bear.  Give him a straightforward bear tanking spec and full buffs.  Reset the filters and give him a set of random BiS gear by just selecting the top item in each slot.  In the options panel, select \"Main tank\" threat scaling (10.0) and a level 88 target.  Observe that the resulting overall gear value is in the region of 1.3M, breaking down into 680K mitigation, 590K surivival and *5335* threat (no 'K' there, I mean literally 5335).\n \nIn other words, in BiS gear and with MT (10.0) scaling, the threat contribution of the gear is being valued at around 1% of the mitigation or survival values.  If you eyeball the main hand weapon (heroic Malevolence, probably) you can't even see the little green bar at the right hand end of the bar for the item.  This is in stark contrast to 2.x/3.x, where the weapon ended up being significantly valued for its threat.\n \nWith MT (10.0) threat scaling, the threat value shown in the status bar appears to be 1/100 of the TPS value of the highest TPS rotation as shown in the \"Threat Stats\" panel.  Put another way, the threat values *before* being multiplied by the MT scaling of 10.0 are 1/1000 of the TPS values.\n \nI don't have a copy of 2.x around any more to compare, but this seems to be a big change and I doubt that it is intentional.",
+    "LastUpdatedDate": "2013-05-16T05:19:33.393-07:00",
+    "PlannedForRelease": "Rawr 4.0.12 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-12-19T04:25:58.373-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Bear] Undervalues Threat",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19347
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "From what i've seen in instances threat is hardly an issue now, you don't need to gem for it much and you still do more then enough threat, maybe thats why rawr is \"undervalueing\" it.",
+      "PostedDate": "2010-12-19T09:29:25.987-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yeah, I messed up the multiplier in b4.0.12; I'll fix it in .13, but for today you can just use 10x whatever you normal would. Ie, 100 instead of 10 for MT. ",
+      "PostedDate": "2010-12-19T09:51:31.787-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-19T19:48:43.403-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-29T02:48:02.183-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:27:04.213-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:33.393-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "Id": "270725",
+    "ThreadId": "79066",
+    "Html": "<p>Hey all, I'm developing TeamBuilder, a simple application that allow raid leader to create their raid party and have some statistics such as raid DPS, raid HPS, and so.</p>\r\n<p>I wonder if I could use Rawr libs to calculate character's dps, hps...</p>\r\n<p>&nbsp;</p>\r\n<p>So.. is it possible?</p>",
+    "PostedDate": "2009-12-25T10:56:41.627-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "270787",
+    "ThreadId": "79066",
+    "Html": "<p>Hi. I don't think so.</p>\r\n<p>Pure practical, Rawr development is very fast and it's hard to stick to an API that is externally stable. Secondly, not every model necessarily works with such variables as DPS and HPS and not every model is up-to-date and/or generating values in the right range. If the Rogue module would always give 20% higher values than the Mage module, it would defeat one of the purposes.</p>\r\n<p>However, theoretically there are more problems. What you want to think of is: what question do I ask the models? In theory, you're sitting with over a dozen models that you could ask questions. Making an API that exposes these questions to external developers is just a matter of coding. However, you also want to consider &quot;module configuration&quot;. You don't want to use default values in your application, because that would defeat the whole point of customizing raids for certain fights.</p>\r\n<p>Rawr is about asking one question:</p>\r\n<p>Q1: Considering my current gear, talents, options, etc, how much improvement would changing to a certain other piece of gear or talent spec [etc] be?</p>\r\n<p>In order to answer this question in a meaningful way, Rawr asks the models a different question:</p>\r\n<p>Q2: What is the value of the current gear, talents, options, etc?</p>\r\n<p>The assumption is that the value in the response to Q2 is comparable: &quot;Higher is better, twice as high is twice as good&quot;.</p>\r\n<p>Now we could all assume that this &quot;value&quot; could be interpreted as &quot;DPS&quot; or &quot;HPS&quot;. Although that makes sense, this is not necessarily the case. In practice, what you would see is a value that corresponds in a major way with DPS or HPS, but is completely off the scale and nearly completely independent of the actual performance of a player.</p>\r\n<p>The best a model could give is theoretical DPS. You are really not interested in this. You are interested in this question:</p>\r\n<p>Q3: How good is my raid?</p>\r\n<p>Q4: How good is a player? (DPS/HPS history)</p>\r\n<p>What you are interested in is User History, or, a way to see what a person's performance has been the last few weeks. My advice: use combat logs. These are probably easy to use and answer your basic question immediately.</p>",
+    "PostedDate": "2009-12-26T01:41:36.36-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "270794",
+    "ThreadId": "79066",
+    "Html": "<p>Tank you Trolando for such a good answer. The point is that what I need is the real average dps, not the theorical max dps, so I can't get it from Rawr.</p>\r\n<p>However... wouldn't it be great an application where you can input all your raid characters and get some statistics? Instead of selecting which buff are active, you'll get them from the characters on the current raid, so you'll have a the theoretical dps, hps, hot of the whole raid using rawr models (which let me tell you, work great).</p>\r\n<p>I assume this is far beyond the scope of Rawr but maybe and API could be written (maybe by me) to access the diferent models. So what you guys think, is it possible? IS it interesting enough?</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-12-26T03:38:02.303-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "270859",
+    "ThreadId": "79066",
+    "Html": "<p>It's certainly an interesting approach to the analysis of raids.&nbsp; What I'm hearing is &quot;can we get analyze individual performance, and model this over the course of time, to personalize the variables involved that determine end results&quot;.&nbsp; For example, analyzing the real usage latency, the real ability breakdown, the use of activated cooldowns, the real uptime of various buffs and debuffs, etc.&nbsp; This sort of automated&nbsp; interpretation and implementation on a mass scale, especially in terms of implementing and using such information to determine where gear should go, is FAR beyond the scope of this project, and a good deal away from some of the driving principles behind its development.</p>\r\n<p>However, the analysis of actual data is far from useless.&nbsp; It's not only refreshing to see real numbers next to the theoretical ones; it can help both with the accuracy and the precision of our modeling.&nbsp; Also, given the options in a number of our modules, it's increasingly possible to tweak the program to more accurately simulate and make determinations, based on the past executions of the individual (to say nothing of the other benefits of studying past raids).&nbsp; To expand this to a full raid is not only not feasible given the current architecture, but not really beneficial to the point of making the drastic effort undoubtedly involved to make the result worth it.</p>\r\n<p>On an only tangentially related subject, and not directed at you, MigGat, specifically: NEVER use the numbers in Rawr to make gear decisions for your raid's loot distribution.&nbsp; A) That's not our purpose, B) Our scales are not set to allow for such comparison, and C) The values you see are not always not of the same scale, but of apples and oranges.&nbsp; Pragmatically, we'd rather not be accused of making an inaccurate or unfair tool, when the error is not of our doing, but rather, the misuse due a misunderstanding of the limitations and intent of Rawr, and a subsequent misuse thereof.&nbsp; More shortly, we don't intend it to be used as determining loot distribution across classes / specs / roles, it's not set up to be used in such a manner, and we cannot be held responsible for any such distortion this type of misuse inevitably breeds.&nbsp; Again, this is not directed at you, MigGat, but I wanted to nip this one in the bud.</p>\r\n<p>Speaking to the &quot;can I analyze an gather data on certain uptimes and raw numbers from combatlogs&quot; - sure, I can see that easily being done in just a few short hours, if that, from existing data sets.&nbsp; However, I don't see this (ever) being implemented in Rawr as a means to analyze and make deterministic statements about various individuals' performances in a macro raid setting, within the program itself.</p>",
+    "PostedDate": "2009-12-26T10:35:41.31-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "270914",
+    "ThreadId": "79066",
+    "Html": "<p>Basically, we're talking about a raid-wide (instead of character-wide) version of Rawr. It's definitely a great idea, and we'd love to do it, or integrate with a different app which does do it (however, that certainly wouldn't be <em>&quot;a simple application&quot;</em>.) You certainly could support loading characters from Rawr character files, however what you'd do with that character data would require basically rebuilding Rawr, so at that point, it'd be best to just build a raid-level feature into Rawr.</p>",
+    "PostedDate": "2009-12-26T21:20:37.887-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "270946",
+    "ThreadId": "79066",
+    "Html": "<p>There are certainly interesting possibilites: if you would record every boss fight your guild has done, you could get a performance history of the raid members, including variables like:<br>- activity % (laziness)<br>- DPS / HPS<br>- performance when on dispel duty</p>\r\n<p>You could even use models that for certain classes compare actual performance with theoretical margins. For example, cat druids must maintain a 10-30 seconds selfbuff and two/three debuffs (1 debuff and 2 dots). Their theoretical uptime should obviously be 100%, but you could say that 90% is acceptable. You could also see if raid debuffs (shared among classes) are up during the fight, or see which members are lazy/less well at keeping debuffs on the target. You could perhaps see who gives replenishment and how often (not sure about that, but I'm sure you can guess from crit percentages what the uptime could have been).</p>\r\n<p>You could introduce a model which would predict a member's performance in a raid, based on certain buffs or debuffs. The tool could also tell you, based on a statistical analysis, which fights were very good or very bad for the performance history of a member (you could use statistics to only use those fights where the values are less than the standard deviation away from the average). It could even tell you what could be done to improve the performance of a certain person. Obviously, this is easier to do for DPS (&quot;bad cooldown/uptime management&quot; or &quot;out of mana during fight&quot;) than for healers (well, there's the &quot;acceptable overheal&quot; parameter) and it's even harder for tanks (e.g. if a tank is hit when he has a certain debuff, you could attribute this to a failure of <em>other</em> tanks to taunt, but which one?).</p>",
+    "PostedDate": "2009-12-27T04:24:15.75-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "271089",
+    "ThreadId": "79066",
+    "Html": "<p>So... guys, I honestly don't know where to get started. I've a good knowledge and experience in .net and c# though. I'm willing to help in this project but i need someone tells me what to do :P</p>\r\n<p>In meanwhile, I'll keep developing my really simple app base en combatlogs.</p>",
+    "PostedDate": "2009-12-28T01:05:04.02-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "271091",
+    "ThreadId": "79066",
+    "Html": "<p>Well, first step is to grab the source code, get it building and debugging. Then feel free to play around with it, and upload a patch with any changes you'd like to make.</p>",
+    "PostedDate": "2009-12-28T01:07:49.357-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "271636",
+    "ThreadId": "79066",
+    "Html": "<p>While an application doing such a thing is probably a large undertaking, what if the batch-tools could show all scores loaded by the module and give you a maximum output at the end? &nbsp;Like show the tallied sustaind/burst dps/hps of all the batched files? &nbsp;</p>\r\n<p>While I agree that combat logs are best for showing 'current' performance, it doesn't show 'possible' performance. &nbsp;It would be a lot of configuring on the user's side, but if they are the kind of person after these numbers, then I bet they are the kind of person that would have no issue putting in the effort.</p>\r\n<p>I've done this before, pull up a Rawr of each character in a 10-man raid and drop it into a spreadsheet to give me a good baseline of what they 'should' be able to do.</p>",
+    "PostedDate": "2009-12-30T00:47:21.993-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "271961",
+    "ThreadId": "79066",
+    "Html": "<p>I don't think using Rawr to achieve this is a great idea. Rawr is designed for a completely different purpose. There is no API to tap into and as others have said there is no directly comparable way of comparing dps from one class to the next. I suspect you'd have far greater success using SimulationCraft's API to achieve what you are after. This is designed to do Raid dps comparisons, and in fact may already do close to what you are looking to achieve. I've not used it myself so cannot be 100% sure. However I think its a bad idea to even try.</p>\r\n<p>An application that showed pre-raid what dps should someone be doing would lead to a during raid &quot;SCREAM OMG YOU NOOB!!! YOU AREN'T DOING WHAT MY APPLICATIONS SAYS YOU SHOULD&quot; in the hands of that sort of clueless Raid Leader. Such an application would in my view be completely pointless and very very counter productive. ALL simulators I've seen to date are based on optimal conditions ie: all buffs up 100%, no movement during fights, solid dps with no gimmics to avoid/include. Creating a program to suggest dps in an ideal situation which is never ever going to be achieved in game - with possible exception of Patchwerk - achieves nothing, it gives no useful information to the raid leader, and gives no information that any sane raid leader would base any judgements on. In fact if a Raid Leader called me out on what my dps should be because he saw a value given by an ideal situation from a sim, then I'd be looking to replace the raid leader or to join another guild fast.</p>\r\n<p>What would be very very interesting and exceptionally useful would be a tool to measure from log files from sites like World of Logs. It would be fantastic to be able to select several raids and to have a tool that looked for specifics eg: buff uptimes, debuffs on boss, activity times etc. Then knowing the boss encounter it could produce a report that said. Expected uptime of Ability A was x% actual was Y%. Something that could look deep into the logs uploaded to the website, even comparing your performance vs other guilds and showing where the differences lie would be amazingly useful.</p>\r\n<p>I would love to know hmm we are struggling on boss X but that other guild did it with less gear than us I wonder why. Ok lets tell the program to compare their log with ours...... OMG look their warlock kept imp.shadow bolt buff up 97% of the time giving them 5% spell crit buff to the whole raid our slacking warlock didn't cast Shadow Bolt even once, so the whole raid missed 5% crit.</p>\r\n<p>THAT sort of analysis would be amazing and an exceptionally useful and productive tool. A pre-raid expect this dps tool would be a really bad idea, as it would be mis-used by the clueless.</p>",
+    "PostedDate": "2009-12-31T05:05:39.613-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

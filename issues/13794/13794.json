@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Enhance",
+      "DisplayName": "Rawr.Enhance"
+    },
+    "ClosedComment": "Fixed for v2.2.13.",
+    "ClosedDate": "2009-08-07T07:16:51.53-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When Rawr exports to Enhsim config file it will set the weapon type to be 'Axe' if you are using an axe.   Enhsim will check this to see if the orc racial should be applied for extra expertise with axe weapons.\n \nNow that the orc shaman racial now also applies to fist weapons, the extra expertise is not being used in enhsim.  Rawr correctly adds it internally for the stats tab.  But when it exports to config file there is no option in weapon type for 'fist' with enhsim.  So it enters '-' as it does for all non axes.   Therefore when Enhsim imports this file it does not know to add the extra expertise.\n \nI guess this issue has to be handled by both Rawr export and Enhsim import so i'm not sure who will make sure that happens.\n \nWorkaround for now is to manually change weapon type to 'axe' in Enhsim after importing.",
+    "LastUpdatedDate": "2017-11-27T11:04:58.02-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-08-06T11:23:28.257-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Enhance] Rawr export to Enhsim config not indicating Fist weapon for orc racial",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13794
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

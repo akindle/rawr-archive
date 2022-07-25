@@ -1,0 +1,95 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Mage",
+      "DisplayName": "Rawr.Mage"
+    },
+    "ClosedComment": "By design.",
+    "ClosedDate": "2009-01-19T15:25:15.313-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "In 14.1\n \nWith the default lag of 0.05 and SP regen of 175, the act of equipping an item with haste changes its dps value.\nMy understanding is that an individual item's value is compared against an empty slot, so the item you currently have equipped there shouldn't matter.\n \nREPRO:\n1. Load my character, US Suramar/Tyfon from the armory. Don't change any options.\n2. Select gear->Neck. Swap between Hellfire-encased Pendant and Loop of Cursed Bones.\n2a. Note that the dps value of the Loop changes by a few dps, depending which is equipped.\n2b. Note that switching between the Hellfire-encased pendant and another non-haste neck, such as the Sun-King's Talisman, results in no value changes.\n \n3. Change lag from 0.05 to 0.15, and SP regen from 175 to 225. If you change only one of these values, the above behavior remains.\n4. After changing both, repeat step 2 above.\n4a. Note that dps values of the Loop no longer change when you switch between it and the hellfire neck.\n \nEXPECTED:\nswapping items in a single slot should not result in their dps values changing, regardless of what options are set.\n \nI was able (with certain buffs) to get in a situation where Rawr said the Loop was better when it was equipped, and that the hellfire pendant was better when *it* was equipped.",
+    "LastUpdatedDate": "2017-11-27T11:01:39.607-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-05-24T17:12:04.863-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Mage] low lag + low SP regen = suspicious haste calculations",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 10229
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "A few more comments:\r\nIncreasing the lag to .3 without touching SP regen also results on \"correct\" behavior (no values change when swapping items)\r\nIncrase the SP regen significantly (say, 500) without touching lag results in wild swinging of values. (Loop went from ~47 dps to ~67 dps by equipping it)",
+      "PostedDate": "2008-05-24T17:16:24.927-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Which version was this on, 14.0 or 14.1? ",
+      "PostedDate": "2008-05-24T18:09:08.57-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Oh, whoops, missed the 'In 14.1' at the top, thanks.",
+      "PostedDate": "2008-05-24T18:52:24.76-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The change in item value when equipping can come from Incremental Optimizations being enabled. It makes large performance improvements by assuming the changes are small and won't affect the overall decisions such as which spell cycles to use or how to stack cooldowns. For haste this is not always the case as you noticed when you reach breakpoints in haste that cause a shift in strategic decisions. If you are not comfortable with this behavior I would suggest disabling Incremental Optimizations, but I'm afraid the performance hit could be quite high.",
+      "PostedDate": "2008-05-24T23:52:17.48-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-01-19T15:25:15.313-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:25:35.78-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:27:20.607-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-21T00:00:17.077-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:50.023-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:27:15.533-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:01:39.607-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

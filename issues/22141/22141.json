@@ -1,0 +1,75 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2012-01-31T19:35:41.437-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Whenever I attempt to run rawr while will of unbinding is equiped and arcane spec, it tends to run for a long time and the solver log indicated very high dps number, and (if) it finishes the sequence reconstruction will make no sense, with mana starting at zero and evocating on cooldown. Total mana also does not decrease once evocation brings it up.\n \nUnequiping the will of unbinding produces normal results. All three ilvls of the trinket are affected. \n \nI was able to reproduce the error by simply loading my character (laekoth - magtheridon) from battle.net and equiping will of unbinding, enabling sequence reconstruction and genetic solver.",
+    "LastUpdatedDate": "2013-05-16T05:17:04.847-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2012-01-30T14:13:47.783-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Mage: Will of Unbinding problem",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 22141
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I'll take a look at this, but in the mean time try disabling cycle level haste procs option and see if it makes a difference.",
+      "PostedDate": "2012-01-30T18:45:26.483-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Disabling cycle level haste procs did not change the results",
+      "PostedDate": "2012-01-31T14:25:47.47-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I also noticed that fight lengths below ~120 seconds appear to look normal on sequence reconstruction, and only above that does the sequence reconstruction begin to start at zero mana/etc",
+      "PostedDate": "2012-01-31T14:31:48.427-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I found the problem, it's isolated to genetic solver.",
+      "PostedDate": "2012-01-31T19:25:51.44-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-01-31T19:35:41.437-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:23:48.523-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:17:04.847-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

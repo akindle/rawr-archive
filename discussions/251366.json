@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "587143",
+    "ThreadId": "251366",
+    "Html": "\r\n<p>Hi</p>\r\n<p>Can someone help clarify mana regen at the moment?</p>\r\n<p>From what I could determine at the moment there should be:</p>\r\n<p><span style=\"text-decoration:underline\">Out of Combat Mana Regen : </span></p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Formula based on spirit and square root of Int, calculated using StatConversion.GetSpiritRegenSec</p>\r\n<p><span style=\"text-decoration:underline\">Combat Regen: </span></p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mediation:&nbsp; 50% * Out of Combat Mana Regen</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#43; 5 % of Base Mana per 5 sec</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#43; Mp5 from gear /enchants (which should have been mainly removed ?)</p>\r\n<p>&nbsp;</p>\r\n<p>With an example toon I got:</p>\r\n<p>422 Spirit regen / s</p>\r\n<p>186.2 /s (Base Mana/s)</p>\r\n<p>186.3 /s (Mp5 from gear, this sounds suspiciously similar to the Base Mana value) &nbsp;&nbsp;&nbsp;&nbsp;</p>\r\n<p>Thus combat regen is 583 /s = 2915 MP5, but armor had something like Mana Regen 2980 MP5 and Combat Regen 1980 (I cannot double check, since armory seems down atm).</p>\r\n<p>&nbsp;</p>\r\n<p>Is the 5 % of Base Mana per 5 sec being automatically added to the gear Mp5 somewhere (I haven't been able to trace it back yet)?</p>\r\n<p>Does armory combat regen match to what happens ingame?</p>\r\n<p>At some point with another toon, the Out of Combat Regen value of the Armory looked to me to be closer to the In combat Spirit Regen I calculate from 0.5 * StatConversion.GetSpiritRegenSec, but at this stage I'm not sure anymore.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2011-03-27T04:22:22.883-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "587207",
+    "ThreadId": "251366",
+    "Html": "<p>5 % of Base Mana per 5 sec applies to both in combat and out of combat. The Meditation applies to the spirit regen only, not this base regen. The Mp5 from gear is things like blessing of might, those won't show up in armory.</p>",
+    "PostedDate": "2011-03-27T10:52:16.723-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

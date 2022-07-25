@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "242109",
+    "ThreadId": "71005",
+    "Html": "<p>I noticed that back in May Astrylian added a StatGraphRenderer class. I was looking to do a similar thing. At present Rawr does an excellent job of optimising stats and telling people what gear is better in each slot. Where we have a gap is in knowing what stat direction to go in for classes where there are multiple options. Enhancement Shaman in particular never quite know if raw AP, Haste, Crit or Agi is best. Haste seems to be top favourite but a lot of the reliance on this stat is down to the precision of computer simulators and the absence of a simulation of human reaction times, which dramatically affects the value of haste and timings of abilities.</p>\r\n<p>Some work has been done to pass lots of config files to EnhSim and get out a csv file that could be turned into a graph. However Rawr could do this SO much better.</p>\r\n<p>What I would like to be able to do is to have an option that displayed an XY graph centred on current dps. Then display the effects of varying individual stats +/- a certain amount. X axis would be change in stat (eg: + 40 AP) Y axis would be change in dps.&nbsp;</p>\r\n<p>Now it appears that Astrylian was working on something similar but its hidden as it was commited as not currently working. Was this effort abandoned? I'd like to revive this if its ok?</p>\r\n<p>&nbsp;</p>\r\n<p>Basically I'd like models to be able to pass a Stats object that has things like { AttackPower = 40, Strength = 20, HitRating = 20, Spellpower = 23 } ie: Stat interested in and step on X axis. This example would have 4 graph lines one for each stat. The graph could then be drawn say +/- 5 times the step adding the change in a single stat to the base. Optionally the granularity of the graph could be adjusted to give more intermediate values. eg: stepping a fifth of the Stat step provided.</p>\r\n<p>This approach would allow individual models to display only the important stats in their model and allow users to see trends in how changing that stat affects their dps. It is also a fairly simple, pass one existing object, approach to allow the graphing of lots of different lines.</p>\r\n<p>Ideally this approach would allow us to kill off Relative Stat Values and the evils they perpetuate. As the main argument against eliminating EP values is that they provide the only guide to how stats are trending. Rawr with its relatively quick calculation and graphical approach lends itself to having a nice visual graph of stats, not sure how Astrylian thought of displaying this a separate popup form to display the graph seems appropriate however.</p>\r\n<p>&nbsp;</p>\r\n<p>[edit] It seems its implemented as a separate form in the DPSDK model, and nowhere else.</p>",
+    "PostedDate": "2009-10-05T03:51:19.613-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "242312",
+    "ThreadId": "71005",
+    "Html": "<p>I would argue that relative stat values have value regardless of this. In particular they help you understand how changing value of one stat affects the value of other stats. In mage model I'm showing this on the scaling against stat graphs which are basically a graph of relative stat values as a function of a particular stat.</p>",
+    "PostedDate": "2009-10-05T14:47:56.42-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "242359",
+    "ThreadId": "71005",
+    "Html": "<p>Yeah, that was an attempt (that I never finished, but still want to) to generalize what the Mage model has for its various charts. I'd like to get back to it when I can.</p>",
+    "PostedDate": "2009-10-05T17:44:25.773-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

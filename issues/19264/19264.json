@@ -1,0 +1,120 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "This has been fixed with 4.0.12",
+    "ClosedDate": "2010-12-19T21:16:55.31-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Running Rawr 4 (b4.0.10.0) in \"offline\" mode, that is using the sllauncher.exe process to run it, uses around 330 MB of memory with a very simple model loaded. The app is responsive and seems almost like Rawr 2 in interface speeds.\n \nIf I maximize the window, the memory usage jumps to ~720 MB and everything starts lagging horribly, making the program mostly useless. Un-maximizing the window makes it go back to 330 MB memory and normal responsiveness.\n \nThis is on Windows 7 64-bit. Silver light version 4.0.50917.0.",
+    "LastUpdatedDate": "2013-05-16T05:19:41.247-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-12-09T11:46:50.547-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] Maximizing Offline Rawr 4 causes huge memory usage jump",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 5,
+    "Id": 19264
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I've seen the 'huge memory jump + super slow performance' bug several times myself, not sure what causes it, and I'm using it in-browser.",
+      "PostedDate": "2010-12-09T12:07:07.18-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "My guess is it's some form of drawing code that only applies when the window is maximized.  What kind of video hardware do you guys have?",
+      "PostedDate": "2010-12-09T20:57:46.48-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "No, it happens when not maximized, I just have a very large monitor.",
+      "PostedDate": "2010-12-09T22:26:16.927-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Okay, well, still.  My money's still on a drawing operation that's being forced to the CPU.  I've seen issues like these in the project I work on at my day job, which is a WPF application; it supports all sorts of crazy awesome graphical effects in the base API, but it uses DirectX, and if your video card doesn't support the right feature set, it falls back to the CPU and absolutely tanks the application's performance.",
+      "PostedDate": "2010-12-10T04:14:02.037-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-10T09:25:29.417-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hmm... this bug is making rawr4 unusable for me.  It's slow to start with but as I set up a single character more, it gets worse and worse to eventually freezing for 5 minutes at a time to open up a simple item dropdown for a slot on the paper doll :(",
+      "PostedDate": "2010-12-10T09:26:51.387-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-12T01:27:04.527-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This problem makes rawr unusable for me (offline and in browser versions). Being the best theorycrafting resource, I really want to see this fixed. Using vista 64, silver light 4.0.50917.0 and geforce 7900 gtx.",
+      "PostedDate": "2010-12-12T01:31:12.88-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-12T02:26:55.637-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-16T13:04:37.927-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-17T04:04:42.01-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Part of it could be that's how silverlight works?  If it creates an offscreen bitmap to hold the contents of the screen, and paint operations to screne then just blit portions of the bitmap, basically \"double buffering\".\r\n\r\nMaximising means more pixels = more memory, especially when your screen is set to 32bit graphics.\r\nI'm not sure how that relates to slower response, typically the double buffering is there to make response better by not requiring all the individual repaints.  The only thing I can imagine is that enlarging the view would make the image being stretched (possibly because the X/Y ratio changes).  the Windows StretchBlt() API can be notoriously slow, especially when it's trying to interpolate pixels.",
+      "PostedDate": "2010-12-17T05:18:11.583-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "There might be a setting in silverlight (or in the silverlight app) to indicate how it should handle double buffering (if any at all) ?\r\n\r\nThe same sluggish response might be happening if Silverlight uses GDI+ and uses individual scaling on each drawing operation.",
+      "PostedDate": "2010-12-17T05:19:58.263-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-19T21:16:55.31-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:27:13.843-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:41.247-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

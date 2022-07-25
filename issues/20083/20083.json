@@ -1,0 +1,116 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Moonkin",
+      "DisplayName": "Rawr.Moonkin"
+    },
+    "ClosedComment": "Closing because this is technically &#34;working as intended&#34;&#59; both sets of results are valid and accurate, given the initial assumptions behind each.",
+    "ClosedDate": "2011-03-10T09:26:47.603-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Elitist Jerks  (http://elitistjerks.com/f47/t66856-druid_balance_pve_updated_cataclysm_release/#Prime_Glyphs) reports that IS and MF are the best prime glyphs. My Rawr (4.0.20.0b) is telling me that IS is the worst and SF > MF > SS > W > IS. \n \nI'm not sure which is correct, but I thought I'd bring up the discrepancy for your review.",
+    "LastUpdatedDate": "2017-11-27T11:00:20.65-08:00",
+    "PlannedForRelease": "Rawr 4.0.20 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-02-24T12:12:38.723-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Moonkin] Prime glyph rankings",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 20083
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4653,
+      "FileName": "zogbert-boomkin.xml",
+      "DownloadUrl": ".\\4653"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "We need your character file",
+      "PostedDate": "2011-02-24T12:16:46.197-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-02-24T13:55:09.87-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Attached...",
+      "PostedDate": "2011-02-24T13:55:11.37-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm looking into it.  One thing I do know is that certain glyph-related calculations are different between Rawr and WrathCalcs, especially concerning the glyph of Starfire and the glyph of Starsurge.",
+      "PostedDate": "2011-02-24T14:14:31.137-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "One other potential piece of the puzzle that might be a factor is the T11 set bonus which I believe favors Glyph of Starfire (i.e. after your eclipse procs you don't want to \"spend\" the crit bonus on your nukes so you don't immediately refresh MF).  \r\n\r\nChanging whether or not I have a 4 piece T11 doesn't seem to effect the Rawr evaluation\r\n so I don't know if the above has any relevancy...",
+      "PostedDate": "2011-02-24T15:18:29.353-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-02-25T14:40:25.253-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm bumping this (gasp!) so that I don't forget about it.",
+      "PostedDate": "2011-03-03T11:11:39.85-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I finally looked into this and was able to determine the cause.  There are a couple:\r\n1) For the majority of cases, Rawr seems to suggest that Insect Swarm should only be cast after proccing an Eclipse (that is, twice per rotation).  This cuts the effective DPS value of the glyph roughly in half, as IS would otherwise be cast ~4 times per rotation.\r\n2) Rawr's BossHandler does not currently have all the capabilities needed to properly capture movement requirements for ranged DPS classes.  However, it is the movement requirements that cause IS and MF glyphs to be so strong in \"plain\" theorycrafting, since those are the two primary spells that are cast while moving.\r\n\r\nAlso remember that the SF and MF glyphs have a strong interaction, so taking one will naturally make the other appear much more valuable.  For any fight where you can make use of the full 3 Starfires of the SF glyph, SF+MF will definitely be superior to any other combination of glyphs.",
+      "PostedDate": "2011-03-10T09:21:25.397-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "One more thing I thought of: MF and IS will pull far ahead of any other glyph combo when multi-dotting is taken into consideration.  This more than anything else is probably the reason why those two glyphs are so strongly recommended.  Multiple targets are not yet supported in Rawr.Moonkin, although it's something I'm giving serious consideration to given the plethora of multi-add fights in Cataclysm end-game raiding.",
+      "PostedDate": "2011-03-10T09:26:17.83-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-10T09:26:47.603-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:03:27.03-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:25:48.68-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:35.24-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:00:20.65-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

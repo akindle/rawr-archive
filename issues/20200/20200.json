@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Optimizer",
+      "DisplayName": "Rawr.Base.Optimizer"
+    },
+    "ClosedComment": "Fixed for 4.1.1.",
+    "ClosedDate": "2011-03-11T18:45:05.8-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "If one runs a progressive optimize with characters that have different models, attempting to use the \"Diff\" button on any character other than the first will throw an exception.  This is due to the Calculations instance not being changed before the diff is performed, so the calculations are using the correct character but wrong model.\n \nE.g., add a Rawr.Cat (row 1) and Rawr.Bear (row 2) character.  After the progressive optimize, clicking diff on the Bear and dismissing the (empty) diff window, there will be two exceptions about invalid Cat calculations instances.  I thought my proposed patch (8702) fixed it, but it was only working because I had locked the character in the first row.",
+    "LastUpdatedDate": "2017-11-27T11:02:08.053-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-03-11T10:53:10.37-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Optimizer.Batch] Incorrect Calculations instance in batch tools",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 20200
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

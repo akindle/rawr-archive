@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-11-19T15:18:40.437-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have been trying to launch Rawr using Mono for a while, and I keep getting the same error, within seconds of launching.  \n \nThis is the error, along with my note of a spelling error in the error message.  \n \nUnknown target convertion type from System.Boolean to System.Windows.Forms.CheckState \nYes, the error message really spelled \"convertion\" that way\n---------------------------\nRawr Error\n---------------------------\nRawr encountered a serious error. Please copy (CTRL-C) and paste this into an e-mail to cnervig@hotmail.com. Thanks!\n \nUnknown target convertion type from System.Boolean to System.Windows.Forms.CheckState\n \n  at System.Convert.ToType (System.Object value, System.Type conversionType, IFormatProvider provider) [0x00000] \n  at System.Convert.ChangeType (System.Object value, System.Type conversionType) [0x00000] \n  at System.Windows.Forms.Binding.ConvertData (System.Object data, System.Type data_type) [0x00000] \n  at System.Windows.Forms.Binding.FormatData (System.Object data) [0x00000] \n  at System.Windows.Forms.Binding.PushData (Boolean force) [0x00000] \n---------------------------\nOK   \n---------------------------\nRunning Gentoo Linux.  \n \nP.S.\nYour installation instructions are less than helpful.  Knowing how to zip and unzip files does no good if there is no list of files that need to be downloaded.  Also, the known issues being on the discussion tab encourages new issues to be posted there.",
+    "LastUpdatedDate": "2013-05-16T05:24:42.273-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-08-25T08:13:50.397-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Mono] Cannot Launch Rawr",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13958
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "That's a issue that we've seen with Mono a couple times and don't have a solution for yet. It may help if you delete all config/settings files (I don't know where these get stored on linux/mono, sorry), and start over.\r\nAlso, there is indeed a list of files that need to be downloaded: Rawr v[whatever].zip. That's it. One file. You'd be surprised how difficult that is for some people.",
+      "PostedDate": "2009-09-06T10:27:30.79-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "They get stored in a folder called .local in your user's directory.  Delete the Rawr.exe_StrongName_* folder from ~/.local/share and rerun Rawr and it will work properly.  As a note, I get this error whenever I try to do anything in Rawr.Mage's option pages; Kavan, perhaps you could take a look at what your code is doing that's causing it to break on Mono?",
+      "PostedDate": "2009-09-06T14:08:38.44-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This actually seems like a coding bug on Rawr's end. System.Boolean only has two values while System.Windows.Forms.CheckState is a triplestate.\r\n\r\nWe could probably code around this issue (wherever it's coming up) by making it assign the boolean to a checkstate (using an if statement) first then assigning whatever checkbox to that checkstate.",
+      "PostedDate": "2009-09-17T11:10:42.57-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-17T11:11:28.327-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-19T15:18:40.437-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T16:19:37.49-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:26.82-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:42.273-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

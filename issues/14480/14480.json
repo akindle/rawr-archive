@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Fixed for next version.",
+    "ClosedDate": "2009-10-19T19:30:04.333-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "To replicate. Load Rawr &  run Update Item Cache from Wowhead.\n \nIt will throw an index out of bounds exception at line 286 in Wowhead.cs\n \n                int vendorIndex = Array.IndexOf(sourceKeys, \"5\");\n                if (vendorIndex >= 0)\n                {\n                    source = sourceKeys[vendorIndex];\n                    if (sourcemoreKeys.Length > 0)\n                    {\n                        sourcemore = sourcemoreKeys[vendorIndex];   <--- offending line\n                    }\n                }\n \nthe issue seems to be sourcemoreKeys has a size of 1 but sourceKeys has a size of 2. I'm not familiar with the functionality of handling sources so reporting error rather than attempting fix.\n \nThis throws a caught exception so its handled but inelegant. It may be due to a wowhead database change?",
+    "LastUpdatedDate": "2013-05-16T05:23:46.98-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-10-19T16:30:40.3-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Update Item cache from wowhead crashing repeatedly on Vendor items",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14480
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

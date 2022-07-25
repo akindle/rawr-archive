@@ -1,0 +1,141 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Cat",
+      "DisplayName": "Rawr.Cat"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-03-17T19:48:09.943-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "After using Mew for a while with Rawr being offline.  I've gotten used to it.  I especially like the simulation mode as I think (least I hope) that it comes up with most accurate results.\n \nMost notable of the differences is that Rawr says Haste is (in any reasonable gear setup I put it in) always better than Crit.  Mew however is the opposite (both formulation and Simulator).\n \nHit also seems to be valued a little lower than in Mew (especially if I use the simulator which puts hit right around haste (below or even slightly above at times depending on stats/trinkets, I have the white damage increase trinket so that probably counts for some).\n \nExample Relative Stat Values w/ my current gear(yes I know Rawr you use to compare pieces, not stats, but its all gotta start somewhere, and the reforging indicates that it does consider haste > crit):\n \nMew Simulator:\nStrength=2.03174, \nAgility=2.60387, \nAp=0.97197, \nCritRating=0.77057, \nHasteRating=0.75826, \nMasteryRating=1.06049, \nHitRating=0.75786, \nExpertiseRating=0.75786,\nMeleeDps=3.72831, \n \nMew Formula:\nStrength=1.99793, \nAgility=2.54417, \nAp=0.9514, \nCritRating=0.731, \nHasteRating=0.68742, \nMasteryRating=1.06514, \nHitRating=0.62132, \nExpertiseRating=0.62132, \nMeleeDps=3.76242,\n \nRawr:\nStrength=1.94, \nAgility=2.33, \nAp=0.92, \nCritRating=0.7, \nHasteRating=0.77, \nMasteryRating=0.97, \nHitRating=0.4, \nExpertiseRating=0.4, \nMeleeDps=??,\n \nMost of the numbers seem pretty consistent between the two except for haste and hit (and by extension expertise of course).  Based on the ratios (and assuming mew is correct and Rawr is not; I'm mostly running under this assumption since I'm guessing you guys are spending more time on the program itself and not getting the formulas exactly right) it seems haste is probably the one out of whack, not crit:\nRawr\n1 Agi = 3.33 Crit = 3.03 Haste\nMew Form\n1 Agi = 3.48 Crit = 3.68 Haste\nMew Sim\n1 Agi = 3.38 Crit = 3.42 Haste\n \nHit and expertise are trickier without going to a sim based model but Crit vs Haste are the two I'm worried about right now because it affects the optimizer's reforging choices.\n \nIf you need more information or any files, let me know.",
+    "LastUpdatedDate": "2017-11-27T10:59:37.883-08:00",
+    "PlannedForRelease": "Rawr 4.0.12 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-12-21T23:20:45.483-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Cat] Stat choices seem off",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 19403
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4266,
+      "FileName": "Lolaan DPS.xml",
+      "DownloadUrl": ".\\4266"
+    },
+    {
+      "FileId": 4267,
+      "FileName": "Lolaan.mew",
+      "DownloadUrl": ".\\4267"
+    },
+    {
+      "FileId": 4472,
+      "FileName": "Sorro-dps.xml",
+      "DownloadUrl": ".\\4472"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Unfortunately, this isn't really actionable. If you can point out something that one or the other is doing or not doing that might explain the difference, that might help. Something like ability breakdowns would definitely help as well.",
+      "PostedDate": "2010-12-22T00:47:33.563-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You are aware that Rawr doesn't use any Stat values at all in its calculations aren't you? It adds up the effects of the abilities and works out the total dps. Only once its worked out the total dps does it bother doing any calculations for stat values for that chart. So what you are seeing is a SYMPTOM of the calculations not the source of the problem. ie: we have NO stats values to adjust, only dps calculations.\r\n\r\nTherefore what is helpful is if you can narrow down sources of dps. eg: is a particular ability in the spreadsheet showing higher/lower dps than Rawr is. Is the contribution from one source off somehow? If you can narrow down the issue to a particular ability or similar thing it would help enormously.",
+      "PostedDate": "2010-12-22T01:58:55.847-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yes, he stated as such, I think he's just more concerned about how the output looks in comparison to this other tool. And his numbers do look convincing that either Mew and Rawr are doing something different in one or a couple aspects that is affecting the value of Haste.\r\n\r\nIf Schmoo will post some more information such as his Rawr Character file alongside as much data from Mew as possible, we can look at tracking it further down.\r\n\r\nI google Mew and apparently it's a Java applet. If you can supply the character file that it generates we can load it up and compare them to Rawr",
+      "PostedDate": "2010-12-22T02:15:44.013-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "For reference: Mew is the direct descendant of Toskks DPS Method which used to live on the same site rawr was hosted from years ago.",
+      "PostedDate": "2010-12-22T02:23:32.547-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-22T04:31:50.053-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Output Log from Mew (Formulation):\r\nDPS: 17890.27456\r\nDPS (> 25%): 17671.81419\r\nDPS (< 25%): 18764.11604\r\nChance Miss/Dodge (%): 8.33892\r\nCrit % for White: 39.23977\r\nCrit % for Yellow: 39.23977\r\nCrit Cap % for White: 67.66108\r\nAttack Speed: 0.87445\r\nOoC Proc Rate (PPM): 3.66875\r\nOoC Proc Return: 35.46497\r\nEnergy Regen (e/s): 15.8043\r\nNumber Mangles: 0.40261\r\nMangle Uptime (%): 100\r\nNumber Shreds: 6.28588\r\nNumber Rakes: 1.58656\r\nRake Uptime (%): 97.56299\r\nNumber Rips: 1.09098\r\nRip Uptime (%): 97.99495\r\nNumber Savage Roars: 0.77727\r\nSavage Roar Uptime (%): 99.05624\r\nSavage Roar CP(s): 2.23842\r\nNumber Bites: 0.2182\r\nAvg. Extra Bite Energy: 6.80759\r\nBites per Rip : 0\r\nCrit % for Bite: 64.23786\r\nNumber Tiger's Furys: 0.81932\r\nTiger's Fury Uptime (%): 23\r\nNumber Berserks: 0.1229\r\nBerserk Uptime (%): 10\r\nSegment Time (s): 22.12155\r\nAveraged Armor Value: 10539.76\r\nArmor Mitigation (%): 28.78948\r\nWhite Damage (%) : 19.95876\r\nFury Swipes Damage (%): 3.77937\r\nRavage Damage (%): 0.46842\r\nMangle Damage (%): 0.86417\r\nShred Damage (%): 20.59374\r\nRake Damage (%): 20.78799\r\nRip Damage (%): 32.32645\r\nBite Damage (%): 1.22111\r\nAvg. White Attack: 3122.37681\r\nAvg. Ravage Attack: 25140.44412\r\nMangle DPE: 260.05009\r\nShred DPE: 347.31675\r\nRake DPE: 1587.47012\r\nRip DPE: 4188.30462\r\nBite DPE: 678.04597\r\nUnheeded Warning Uptime (%): 17.72998\r\nEssence of the Cyclone (359) Uptime (%): 17.72998\r\nBerserking (Troll Racial) Uptime (%): 5.55556\r\n\r\nOutput log from Mew (Simulation):\r\n\r\nDPS: 18138.21195 +/- 2.64695\r\nStdDev: 427.06009\r\nDPS (> 25%): 17914.58299\r\nDPS (< 25%): 19032.7278\r\nChance Miss/Dodge (%): 8.33892\r\nCrit % for White: 39.3491\r\nCrit % for Yellow: 39.69996\r\nCrit Cap % for White: 67.66108\r\nAttack Speed: 0.8712\r\nOoC Proc Rate (PPM): 3.6859\r\nOoC Proc Return: 34.50232\r\nEnergy Regen (e/s): 16.32484\r\nNumber Mangles: 6.12813\r\nMangle Uptime (%): 99.85946\r\nNumber Shreds: 81.93932\r\nNumber Rakes: 24.1996\r\nRake Uptime (%): 98.97755\r\nNumber Rips: 12.04348\r\nRip Uptime (%): 93.79037\r\nNumber Savage Roars: 9.42564\r\nSavage Roar Uptime (%): 97.99028\r\nSavage Roar CP(s): 3.04871\r\nNumber Bites: 6.03292\r\nAvg. Extra Bite Energy: 20.04793\r\nNumber Bites (> 25%) : 1.61051\r\nBites per Rip (> 25%) : 0.15126\r\nNumber Bites (< 25%) : 4.42241\r\nCrit % for Bite: 59.85299\r\nNumber Tiger's Furys: 11.1627\r\nTiger's Fury Uptime (%): 22.01266\r\nNumber Berserks: 2.00571\r\nBerserk Uptime (%): 10.054\r\nSegment Time (s): 301.32584\r\nAveraged Armor Value: 10539.76\r\nArmor Mitigation (%): 28.78948\r\nWhite Damage (%) : 19.79991\r\nFury Swipes Damage (%): 3.87969\r\nRavage Damage (%): 0.52967\r\nMangle Damage (%): 0.98415\r\nShred Damage (%): 19.38631\r\nRake Damage (%): 21.87084\r\nRip Damage (%): 30.50966\r\nBite Damage (%): 3.03977\r\nAvg. White Attack: 3127.64825\r\nAvg. Ravage Attack: 28710.03084\r\nMangle DPE: 268.6926\r\nShred DPE: 346.23655\r\nRake DPE: 1512.4616\r\nRip DPE: 4033.81729\r\nBite DPE: 846.58281\r\nUnheeded Warning Uptime (%): 18.91046\r\nEssence of the Cyclone (359) Uptime (%): 18.91297\r\nBerserking (Troll Racial) Uptime (%): 6.73527\r\n\r\nI know Yawning (creator of Mew) is more than open to dialog about formulations and such and would probably be a much better person to talk to about this than I.  If you drop him a line (messages at his site are: http://druid.wikispaces.com/message/list/ToskksDPSGearMethod), chances are he could help you hash out what's wrong much faster than I could.",
+      "PostedDate": "2010-12-22T04:31:51.577-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-22T04:33:43.297-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Lolaan.mew is the Mew version of my character. Lolaan DPS.xml is the Rawr version.\r\n\r\nHope that plus the mew output helps get you started.",
+      "PostedDate": "2010-12-22T04:33:44.66-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-24T19:27:08.583-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-21T10:49:34.497-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm experiencing a very similar discrepancy as Shmoo, onyl more severe. I should comment here instead of opening a new issue, right?\r\n\r\nRawr is telling me to reforge crit into haste, indicating that it thinks haste is better for me with my gear/talents/buffs/etc. When I ran my character through Mew, it's telling me that Crit should be about 20% better than Haste on a per-point basis (stat values of 1.00 for haste and 1.21 for crit). That's a pretty dramatic difference to me, so it feels like more than just a minor model difference. I've set the parameters for both as close as I can - same talents/glyphs, same group buffs, etc. I don't know enough about the math/coding to know where to look for the discrepancy. I'm attaching my rawr char sheet.",
+      "PostedDate": "2011-01-21T10:49:36.113-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-21T10:52:20.557-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T19:48:09.943-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T22:45:40.733-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:57.35-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:27.95-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T10:59:37.883-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

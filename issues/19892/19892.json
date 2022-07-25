@@ -1,0 +1,81 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Mage",
+      "DisplayName": "Rawr.Mage"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-02-03T16:05:02.157-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I noticed in version 4.0.17 that Rawr was optimizing by forcing haste up to a certain level. The number seemed odd to me, and after investigating, I was certain that it wasn't a major \"haste plateau\" that would increase Pyro/LB/Combustion ticks -- with or without heroism. So, I used the Stats Graph to figure out the exact point, and altered my stats (exchanging 1 haste for 1 crit) and noting the difference in the spell breakdown:\n \nNote: Using Netherwind Presence and 5% raid haste buff\nBefore: 1312 Haste rating; 51.00 Combustion Ticks\nAfter: 1313 Haste rating; 52.00 Combustion Ticks\nhttp://screens.nca-guild.com/uploads/645.png\n \nI don't expect this to be correct, since gaining 1 Tick when Combustion is used multiple times does not make sense. It also does not appear to be effected by the \"Average Cooldowns\" option.\n \nProfile attached. Note that unless you alter the items, the haste rating will be at 1314, which is 1 haste over the higher end of the breakpoint.",
+    "LastUpdatedDate": "2017-11-27T11:02:06.83-08:00",
+    "PlannedForRelease": "Rawr 4.0.17 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-02-03T08:44:33.583-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Mage] Combustion ticks not being calculated correctly with haste",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19892
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4555,
+      "FileName": "Chira-v4.xml",
+      "DownloadUrl": ".\\4555"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Your raid buffed haste is 19.25%. During Heroism this gives 1.1925 * 1.3 = 1.55025. 55% gives the 6th combustion tick during Heroism.",
+      "PostedDate": "2011-02-03T14:17:51.28-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Oh wow. I guess using Lifebloom off my Resto Druid spreadsheet was a pretty stupid idea considering Resto Druids don't have Netherwind Presence. I guess I jumped to the conclusion that it was a bug considering I hadn't seen it optimize like this before, and I saw a recent change that involved Combustion. \r\n\r\nThanks for looking into it, and I apologize for the false report.",
+      "PostedDate": "2011-02-03T15:56:47.517-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-02-03T16:05:02.157-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-21T00:00:17.077-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:05.62-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:47.91-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:02:06.83-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSDK",
+      "DisplayName": "Rawr.DPSDK"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2012-01-31T20:56:44.023-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "There seems to be an issue with diseases doing too much dmg, at least for frost. They do about twice as much than they are supposed to compared to WoL reports. Also, melee (white) dps seems low and the damage of the Ghoul is way too much (23.4% although it should be something like 4.5% for frost).\n \nI think one of the consequences is that critical strike rating is being overvalued. Maybe something wrong in calculating pet damage in relation to crit?\n \nOne more minor thing is that I think outbreak is not incorporated in the frost rotation since I get double the amount of plague strike damage.",
+    "LastUpdatedDate": "2013-05-16T05:17:17.807-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-11-27T21:46:43.287-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSDK] Disease Damage, Ghoul and Melee",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 21833
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Outbreak not being used is by design.  It would free up 1 UH rune every 60 seconds, since FF is refreshed with Rime assuming you have the HB glyph.  I can look at updating the rotation from using IT to Outbreak when it's up.  \r\n\r\nI'm looking at the crit valuation and currently looks like there's a Haste plateau with the current rotation.  I'll see about re-enabling/re-writing the solver to see what kinds of rotation I can calculate.  \r\n\r\nI noticed the issue w/ ghoul DPS in the UI.  I'm looking into that. ",
+      "PostedDate": "2011-11-29T09:02:43.923-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok... found the disease problem.  \r\nMoving on to the Ghoul issue.",
+      "PostedDate": "2011-11-29T11:08:05.763-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok found and adjusted the ghoul issue.  Was the same basic issue as the disease issue.  ",
+      "PostedDate": "2011-11-29T11:36:29.357-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-11-29T11:48:26.41-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Nice to hear you fixed them so quickly. About the white damage, I may have found something, but not sure.\r\nIn AbilityDK.WhiteSwing.cs there is a line:\r\n\r\npublic static float glancechance = .23f;\r\n\r\nAs far as I know, this should be 0.24 against raid bosses.\r\n\r\nThe other one which may be the culprit is the following:\r\n\r\nfloat glancedamage = iDamage * .5f * glancechance;\r\n\r\nIf I understand the code correctly, this assigns half the damage to glancing blows but it should be 0.75 against Raid Bosses. I think there may be a mistake in the warrior module too.\r\n",
+      "PostedDate": "2011-11-29T21:34:12.343-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Re: Glancing blows, I've seen logs range from 22% to 24%  so I just split the difference from what I was seeing on my DK in game. \r\nBut you are right about the glancing blow damage rate.  I did screw up the math there.  It should be 75%.\r\n",
+      "PostedDate": "2011-11-30T23:00:11.83-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 64007.",
+      "PostedDate": "2011-12-02T13:56:18.903-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-01-18T08:37:28.08-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-01-31T20:56:44.023-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:24:07.037-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:17:17.807-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

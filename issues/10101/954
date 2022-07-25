@@ -1,0 +1,78 @@
+Index: Spell.cs
+===================================================================
+--- Spell.cs	(revision 18016)
++++ Spell.cs	(working copy)
+@@ -246,8 +246,7 @@
+                 unhastedCastTime = baseCastTime;
+ 
+             float damageCoefficient = (baseDamage + spellDamageMultiplier * spellDamage) * specialDamageModifier;
+-            // Adoriele's DPS calculations assume a 200% damage crit, we need to modify that
+-            float critDamageCoefficient = (1 + baseCriticalMultiplier) / 2.0f;
++            float critDamageCoefficient = baseCriticalMultiplier;
+             float critCoefficient = baseCriticalChance + critRate;
+             float naturesGraceTime = naturesGrace ? 0.5f : 0.0f;
+             float hitCoefficient = hitRate;
+@@ -256,7 +255,7 @@
+             // Use the property so that haste over the haste cap will clip at the current GCD, if possible to achieve for Starfire
+             CastTime = (unhastedCastTime - naturesGraceTime * critCoefficient * hitCoefficient) / hasteCoefficient;
+ 
+-            return (damageCoefficient * (critDamageCoefficient + critCoefficient) * hitCoefficient) / baseCastTime;
++            return (damageCoefficient * ( 1 + critDamageCoefficient * critCoefficient) * hitCoefficient) / baseCastTime;
+         }
+     }
+ 
+@@ -282,8 +281,7 @@
+         public override float DPS(float spellDamage, float hitRate, float critRate, float hasteRating, bool naturesGrace)
+         {
+             float damageCoefficient = (baseDamage + spellDamageMultiplier * spellDamage) * specialDamageModifier;
+-            // Adoriele's DPS calculations assume a 200% damage crit, we need to modify that
+-            float critDamageCoefficient = (1 + baseCriticalMultiplier) / 2.0f;
++            float critDamageCoefficient = baseCriticalMultiplier;
+             float critCoefficient = baseCriticalChance + critRate;
+             // Nature's Grace is ignored for Moonfire, because it is an instant cast
+             float hitCoefficient = hitRate;
+@@ -291,7 +289,7 @@
+             // Calculate DoT component
+             float dotEffectDPS = (dotEffect.NumberOfTicks * (dotEffect.DamagePerTick + dotEffect.SpellDamageMultiplierPerTick * spellDamage) * specialDamageModifier) / dotEffect.Duration;
+             // Moonfire DPS is calculated over the duration of the DoT
+-            return (damageCoefficient * (critDamageCoefficient + critCoefficient) * hitCoefficient) / dotEffect.Duration + dotEffectDPS;
++            return (damageCoefficient * ( 1 + critDamageCoefficient * critCoefficient) * hitCoefficient) / dotEffect.Duration + dotEffectDPS;
+         }
+     }
+ 
+@@ -318,16 +316,16 @@
+ 
+             float damageCoefficient = (baseDamage + spellDamageMultiplier * spellDamage) * specialDamageModifier;
+             // Adoriele's DPS calculations assume a 200% damage crit, we need to modify that
+-            float critDamageCoefficient = (1 + baseCriticalMultiplier) / 2.0f;
++            float critDamageCoefficient = baseCriticalMultiplier;
+             float critCoefficient = baseCriticalChance + critRate;
+             // Nature's Grace is ignored for Wrath, because it does not reduce the GCD
+             float hitCoefficient = hitRate;
+             float hasteCoefficient = 1 + hasteRating;
+ 
+             // Use the property so that haste over the haste cap will clip at the current GCD
+-            CastTime /= hasteCoefficient;
++            CastTime = unhastedCastTime / hasteCoefficient;
+ 
+-            return (damageCoefficient * (critDamageCoefficient + critCoefficient) * hitCoefficient) / baseCastTime;
++            return (damageCoefficient * ( 1 + critDamageCoefficient * critCoefficient) * hitCoefficient) / baseCastTime;
+         }
+     }
+ 
+@@ -717,12 +715,9 @@
+             wrath.CriticalHitMultiplier *= 1 + 0.2f * int.Parse(character.CalculationOptions["Vengeance"]);
+             // Chaotic Skyfire Diamond
+             // This is a crude hack based on mathematical results, and if they ever change CSD I will regret this
+-            if (calcs.BasicStats.BonusSpellCritMultiplier > 0)
+-            {
+-                starfire.CriticalHitMultiplier *= 1.09f;
+-                moonfire.CriticalHitMultiplier *= 1.09f;
+-                wrath.CriticalHitMultiplier *= 1.09f;
+-            }
++            starfire.CriticalHitMultiplier *= 1.0f + 1.5f / 0.5f * calcs.BasicStats.BonusSpellCritMultiplier;
++            moonfire.CriticalHitMultiplier *= 1.0f + 1.5f / 0.5f * calcs.BasicStats.BonusSpellCritMultiplier;
++            wrath.CriticalHitMultiplier *= 1.0f + 1.5f / 0.5f * calcs.BasicStats.BonusSpellCritMultiplier;
+ 
+             // Reduce spell-specific mana costs
+             // Starfire, Moonfire, Wrath: Mana cost -(0.03 * Moonglow)

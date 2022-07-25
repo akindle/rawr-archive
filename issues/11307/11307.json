@@ -1,0 +1,85 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtWarrior",
+      "DisplayName": "Rawr.ProtWarrior"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2008-09-17T08:15:49.24-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I'm not sure if it's not being counted at all or just not showing, but on the stat page my char shows 0 agility. I also noticed that the mongoose enchant lost its mitigation factor when set to average or constant proc, not sure if that's on prupose or accidental.",
+    "LastUpdatedDate": "2013-05-16T05:27:00.707-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-09-15T10:57:17.613-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtWarr] Agility not being counted",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 11307
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Looks like this is related to change set 22693. If I turn on Blessing of Kings I get an agility number, but the number seems to be much lower than it should be. Maybe instead of adding 10% making it 110% it's just multiplying by 10%?\r\n",
+      "PostedDate": "2008-09-15T11:10:13.133-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It's not being counted. Line 748 of CalculationsProtWarr.cs has StatsTotal.Agility being multiplied by statsBuffs.BonusAgilityMultiplier which in the case of no kings is 0. so your total agility becomes 0. If you turn kings on it is multiplied by 0.10.",
+      "PostedDate": "2008-09-15T11:40:17.487-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Oops. Sorry about that. Fixed.",
+      "PostedDate": "2008-09-15T12:37:20.397-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This is fixed, can be closed",
+      "PostedDate": "2008-09-17T06:45:57.063-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-09-17T08:15:49.24-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T16:28:16.707-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:24.073-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:30.813-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:27:00.707-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

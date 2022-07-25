@@ -1,0 +1,114 @@
+[
+  {
+    "Id": "216411",
+    "ThreadId": "63646",
+    "Html": "<p>I find the old text-based optimization results dialog much easier to interpret than the new side-by-side graphical version. &nbsp;Of particular note are the times that Rawr suggests I swap the positions of rings or trinkets, or equivalently swap the gems in two pieces (or even three) pieces of gear.</p>\r\n<p>An ideal solution would be to add an user interface option to choose the preferred results display: graphical or text.</p>",
+    "PostedDate": "2009-07-27T08:44:36.037-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "216453",
+    "ThreadId": "63646",
+    "Html": "<p>Or, we can have it populate all that empty space around where it says the new optimized gear score. Please a textbox that can scroll and we're in business.</p>\r\n<p>Also, on a similar note dmleach touched on, can we find some way to make it not swap gems around? If the total bonus from these is the same having a Solid in the helm and Guardian in the Wrist and vice-versa, I'd like to make it just stay the way it was so I dont have to manually go back and change them to what they were while keeping the other optimization changes.</p>",
+    "PostedDate": "2009-07-27T10:09:58.4-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "216596",
+    "ThreadId": "63646",
+    "Html": "<p>Can you provide an XML example of a time it suggests you swap the position of rings or trinkets this should NEVER EVER happen now. Indeed that was specifically removed way before the graphical report was implemented. The reason is that the output from the optimiser specifically checks to see if the only change is to swap slots and if so it simply doesn't report the change.</p>\r\n<p>Swapping gems in items can be for a huge variety of reasons, socket bonuses being a biggie. However sometimes it just says to swap gems when its identical unfortunately this is just how a GA works there's not a lot more you can put in there to fix that.</p>\r\n<p>Did you really find that long lists of items saying it was swapping gems around was better?</p>",
+    "PostedDate": "2009-07-27T17:21:23.647-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "216603",
+    "ThreadId": "63646",
+    "Html": "<p>It'll never swap items between slots anymore, but it will indeed still swap gems where it doesn't matter, if there is any other upgrades as well. We don't have an obvious way around that at the moment, but it's definitely on our radar in the 'we'd like to fix that' category.</p>",
+    "PostedDate": "2009-07-27T18:12:39.007-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "216609",
+    "ThreadId": "63646",
+    "Html": "<p>A workaround would be once the optimize has completed, run an additional check for swapping gems back to original spots without changing end result.</p>\r\n<p>How you would do that.... i leave to the experts</p>",
+    "PostedDate": "2009-07-27T18:38:45.683-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "216842",
+    "ThreadId": "63646",
+    "Html": "<p>We would basically have to add an O(n^2) algorithm, with n mapping the slots being changed by the optimizer. &nbsp;Pseudocode:</p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre>Character tempCharacter; Character originalCharacter; Character optimizedCharacter;\r\n<span style=\"color:Blue\">int</span> optimizedScore;\r\n<span style=\"color:Blue\">for</span> (j=0; j&lt;numOptimizedSlots; j++) {\r\n\t<span style=\"color:Blue\">if</span> (originalCharacter.EquippedItem(slot[j]).ItemID != optimizedCharacter.EquippedItem(slot[j]).ItemId) <span style=\"color:Blue\">continue</span>;\r\n\t<span style=\"color:Blue\">for</span> (k=j+1; k&lt;numOptimizedSlots; k++) {\r\n\t\t<span style=\"color:Blue\">if</span> (originalCharacter.EquippedItem(slot[k]).ItemID != optimizedCharacter.EquippedItem(slot[k]).ItemId) <span style=\"color:Blue\">continue</span>;\r\n\t\ttempCharacter.equip(slot[j], originalCharacter.EquippedItem(slot[j])); tempCharacter.equip(slot[k], originalCharacter.EquippedItem(slot[k]));\r\n\t\t<span style=\"color:Blue\">if</span> (tempCharacter.OverallScore == optimizedScore) {\r\n\t\t\toptimizedCharacter.EquipGemmingTemplate(slot[j], originalCharacter.GemmingTemplate(slot[j]));\r\n\t\t\toptimizedCharacter.EquipGemmingTemplate(slot[k], originalCharacter.GemmingTemplate(slot[k]));\r\n\t\t}\r\n\t}\r\n}</pre>\r\n</div>\r\n<p>This assumes that we can do all of these features, obviously. &nbsp;Enumerate through slots that are optimized, compare itemIDs based on slot, access gemming template used on each slot. &nbsp;I haven't worked enough with Rawr.Base to know if we can do this though.</p>",
+    "PostedDate": "2009-07-28T08:46:01.743-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "216877",
+    "ThreadId": "63646",
+    "Html": "<p>It's a bit more complex than that. It's quite possible and I've seen it a few times that there are cyclic changes of gems and not just pairwise.</p>",
+    "PostedDate": "2009-07-28T10:17:32.667-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "216886",
+    "ThreadId": "63646",
+    "Html": "<p>If we may, I'd really like to leave this thread as a discussion of the old text-based results dialog and move any discussions of the quirks of actual results to other threads.&nbsp; As I mentioned in the OP the textual results are particularly nice for finding swap cycles, but that's not the only advantage.&nbsp; In general I find the text-based results easier to follow and make changes.&nbsp; All the suggestions were displayed on a single dialog with both the old and new gear, gems or enchants readable.&nbsp; The new interface can only be read by hovering the cursor over each slot to see the suggested changes.</p>",
+    "PostedDate": "2009-07-28T10:29:20.163-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "216892",
+    "ThreadId": "63646",
+    "Html": "<p>Both the text, and 'new' dialog are obsolete at this point; we only really care about feedback about the 'new new' dialog that is a part of Rawr3:</p>\r\n<p>&nbsp;</p>\r\n<p><img src=\"http://files.getdropbox.com/u/38028/Rawr3OptimizerResults1.png\" alt=\"\"><br> <img src=\"http://files.getdropbox.com/u/38028/Rawr3OptimizerResults2.png\" alt=\"\"></p>",
+    "PostedDate": "2009-07-28T10:41:07.443-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "216901",
+    "ThreadId": "63646",
+    "Html": "<p>That's much better!&nbsp; What I missed was the textual side-by-side that explains what is currently in the slot and what is suggested to be in the slot.&nbsp; I'll&nbsp;look forward to Rawr3 eagerly!</p>",
+    "PostedDate": "2009-07-28T11:03:21.693-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "216912",
+    "ThreadId": "63646",
+    "Html": "<p>&quot;It's a bit more complex than that. It's quite possible and I've seen it a few times that there are cyclic changes of gems and not just pairwise.&quot;</p>\r\n<table style=\"width:1278px\" border=0>\r\n<tbody>\r\n<tr>\r\n<td style=\"border-style:none\">\r\n<div id=\"ctl00_ctl00_MasterContent_Content_PostRepeater_ctl12_BodyDiv\">\r\n<p style=\"margin-top:1em;margin-bottom:1em\">Hmm... well, the algorithm still works, it would just need to be modified to be O(n^n), which still isn't terrible considering that N is just the number of slots where the recommended optimization is just a gem change and not a gear change.</p>\r\n<p style=\"margin-top:1em;margin-bottom:1em\">The problem I just realized in the algorithm is that it only assumes that this issue arises when the items stay the same but the gemming has changed. &nbsp;However, it doesn't include what happens in the case where it's telling you to put a DragonsEye in the a NEW piece of gear that gives the same socket bonus as the old one (such as a player who needs a single 27hit DE gem and two 27agi gems, and it goes from AGI in chest/shoulders and hit in bracers, to AGI in bracers and new gloves, and hit in chest).</p>\r\n<p style=\"margin-top:1em;margin-bottom:1em\">I guess really it's a minor annoyance at best, though. &nbsp;The human behind the machine can still recognize the changes.</p>\r\n<p style=\"margin-top:1em;margin-bottom:1em\">&nbsp;</p>\r\n</div>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>",
+    "PostedDate": "2009-07-28T11:19:19.003-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "217208",
+    "ThreadId": "63646",
+    "Html": "<p>Is there a feature list somewhere for Rawr 3.0? Is there a tentative release date target? That optimizer screen is sex.</p>",
+    "PostedDate": "2009-07-29T08:28:44.797-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "217241",
+    "ThreadId": "63646",
+    "Html": "<p>No, not yet.</p>",
+    "PostedDate": "2009-07-29T09:30:46.617-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "218280",
+    "ThreadId": "63646",
+    "Html": "<p>Gemming logic:</p>\r\n<p>Ideally we want the optimiser to handle gemmings with non-important swappings as identical, to remove degrees of freedom and make the whole optimisation faster. (The GA should work with the number and type of gems, not where they end up being placed as the unique DNA strand). But then determing which socket bonusses gets met, become computationally intensive and probably negates the speedup this would have given us.</p>\r\n<p>The simplest way to optimise the number of gemming switches is to add a penalty function to the gear optimisation process. Each gem swap subtracts X from the final score. (Even better is if you base X on the cost of the particular gem, but that becomes realm specific and fluctuating). Keeping X a small constant like 0.1 should probably be good enough. The smallest socket bonus or using incorrect gems should still be more important than a gem swap.</p>\r\n<p>Alternatively, if we are afraid we miss the optimal, we can 1st run the optimiser as normal and remember the score. Then run a few generations with the GA only being allowed to swap gems and applying the penalty function. (You can then still check that the score ignoring the penalty function didn't drop).</p>\r\n<p>To do this algorithmically, without just using a blind optimisation, would be a bit more effort to code, but would probably be something along the lines of:</p>\r\n<p>Group&nbsp; and count the gems used in the optimiser result. This is the group of available gems.</p>\r\n<p>Most important is meeting socket bonusses. Check for each obtained socket bonus what was the old gemming and whether those gems are in the list of available gems, if so assign then and remove from the available gems.</p>\r\n<p>Those gems used for socket bonusses and not matching previous, will need to be new gems. If one 1 type of gem matching socket color in available list, assign that slot and remove from the list. If more than 1 matching color, you probably have have to try each option.</p>\r\n<p>Then iterate over the non-socket bonus items, assign those where the old gemming matches something in the available list.</p>\r\n<p>The remaining open gem slots are new gems and where you slot them in doesn't matter.&nbsp; (If you where trying multiple options for meeting socket bonusses, the count/cost of this would be the cost of this try).</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-08-01T04:56:44.8-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

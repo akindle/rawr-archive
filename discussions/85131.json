@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "290097",
+    "ThreadId": "85131",
+    "Html": "<p>Looking at my moonkin, if I apply haste to the point where wrath should reach 1s (GCD minimum), the latency is also added (i.e., when&nbsp;I keep my cursor over wrath in the Spell Info box in Rawr)&nbsp;. I just wondered if this is correct, if so, could anyone explain why? Been trying for a few days to understand the affect of latency but have yet to come up with an answer to this.</p>",
+    "PostedDate": "2010-02-12T05:46:32.35-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "290685",
+    "ThreadId": "85131",
+    "Html": "<p>Not sure if I formed the question a bit vague, if so please tell me. However I looked into the code a bit, and I'm wondering if you apply nature's grace in the correct way?</p>\r\n<p>In the source code, at Rawr.Moonkin, in SpellRotation.cs line 50&nbsp;says:</p>\r\n<p style=\"padding-left:30px\">mainNuke.NGCastTime = (<span style=\"color:blue\">float</span>)Math.Max(mainNuke.CastTime / (1 + spellHaste) / (1 + 0.2f * naturesGrace / 3.0f), instantCastNG);</p>\r\n<p>Question - does Nature's Grace really increase the cast speed after spellHaste has kicked in? Isn't it simply added to the spell haste? As in:</p>\r\n<p style=\"padding-left:30px\">mainNuke.NGCastTime = (<span style=\"color:blue\">float</span>)Math.Max(mainNuke.CastTime / (1 + spellHaste + 0.2f * naturesGrace / 3.0f), instantCastNG);&nbsp;<br>&nbsp;</p>\r\n<p>Edit: Never mind, checked it in game, your formula is correct. Interesting implementaion by Blizzard I must say.</p>",
+    "PostedDate": "2010-02-14T16:16:22.027-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

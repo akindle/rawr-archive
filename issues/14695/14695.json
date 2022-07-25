@@ -1,0 +1,76 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Hunter",
+      "DisplayName": "Rawr.Hunter"
+    },
+    "ClosedComment": "Out of Date",
+    "ClosedDate": "2010-11-20T16:59:02.883-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "With the attached char file.\nRemoving one talent point in Rapid fire (MM tree) increases the DPS by 55, seems a bit strange.",
+    "LastUpdatedDate": "2013-05-16T05:23:30.91-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-11-08T10:25:08.367-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Hunter] Rapid Fire",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14695
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2461,
+      "FileName": "Reth 091108 Current (MM Optim).xml",
+      "DownloadUrl": ".\\2461"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "The problem is related to the relationship between Rapid Fire, Rapid Killing and Readiness. Take Readiness out of your Priority list and it behaves differently.\r\n\r\nThe Calculations for this are still based on the spreadsheet:\r\n\r\nif (calculatedStats.priorityRotation.containsShot(Shots.Readiness)) {\r\n    calculatedStats.rapidFire.cooldown = 157.5f - (30f * talents.RapidKilling);\r\n} else {\r\n    calculatedStats.rapidFire.cooldown = (5 - talents.RapidKilling) * 60f;\r\n}\r\ncalculatedStats.rapidFire.duration = 15;\r\n\r\nRapid Fire's cooldown is reset elsewhere in the Rotation Test to just the (5-talent) * 60.\r\n\r\nThis has much the same behavior as mentioned in the previous issue posted (and closed) for Rapid Killing not showing value. The value changes wherever a Rapid Fire can get off one more time or one less time by changing fight duration. The only way to smooth it out would be a major rewrite of the Rotation methods in Hunter. I will be working on this at some point but I have a lot of other things to catch up first.",
+      "PostedDate": "2009-11-08T11:15:12.803-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-18T08:01:32.19-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T15:49:23.44-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-11-20T16:59:02.883-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:59.06-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:30.91-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

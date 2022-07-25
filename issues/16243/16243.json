@@ -1,0 +1,136 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSDK",
+      "DisplayName": "Rawr.DPSDK"
+    },
+    "ClosedComment": "I&#39;m not seeing this anymore with the changes that were made a while back to fix the rotation system.  Please-reopen w&#47; updated &#40;2.3.19&#41; character and behaviour if you&#39;re still seeing this.",
+    "ClosedDate": "2010-06-22T13:43:29.563-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Initially I was trying to understand why 2.3.8 was rating by Tyrannical Beheader above the 251 weapons (It was preferring it over Quel'Delar).\n \nBut now I have managed to get a gear setup where things are really screwed. This set it what was suggested by another optimizer.\n \nStrange things like the 35AP hand enchant is rated above the 44AP. The greater speed back enchant has a negative rating. If i select the back enchants and then go to the head enchants, some of them have a small negative rating. If I goto shoulder enchants and then back again, they are now zero.\nPlus it seems to rate my helm below a 219 healy mail helm.\n \nIts basically unusable for me.",
+    "LastUpdatedDate": "2017-11-27T11:04:35.42-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-02-04T17:18:39.267-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSDK] Strange ratings not making any sense",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 5,
+    "Id": 16243
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2904,
+      "FileName": "BadStats.xml",
+      "DownloadUrl": ".\\2904"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I had the same problem. Setting my latency to zero fixed it for me.",
+      "PostedDate": "2010-02-04T20:50:48.04-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I checked the stat graph & haste is all over the board.  At times it dips negative.  Its also showing me that ilvl 200 t7 is best in slot, all of this without changing any options, simply loading my toon out of the armory.  Also, I seem to be missing my rotation details button.",
+      "PostedDate": "2010-02-06T15:35:28.75-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-06T15:35:33.96-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm seeing very odd behavior in how RAWR is rating items for my dps dk.  My t10 helm is way, way down on the list, even though the stats are pretty similar to my current helm.  If I equip the T10 helm, things become very odd (i.e. it rates The Prospector's Prize, a caster ring, above ilvl 264 strength rings).  The haste graph is very odd.  I see that the above power set \"latency to zero\" to fix this, but I can't figure out how to set the latency rawr uses.  Any advice?  As is, it's pretty much unusable, as the haste settings are way off.",
+      "PostedDate": "2010-02-09T13:12:21.313-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-09T13:13:42.857-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-09T17:44:55.027-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Haste suffers from the same thing as stated in several of the models all over the site. You end up at threshold points where an additional rank means the number of abilities activated over fight duration changes. You can see this a lot more clearly from the Stat Graph (not Relative Stat Values).\r\n\r\nThis behavior is pretty much expected.\r\n\r\nThe Rotation Details has been taken out, it creates rotations for you now instead.",
+      "PostedDate": "2010-02-09T17:48:34.333-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm seeing completely different numbers than, say, 2.3.6, in very odd ways with DPS ratings completely out of kilter.  I also can't find the rotation details button, but can't envision what circumstances Vengeance Bindings would be pulling over 100 DPS more than Vambraces of Unholy Command.",
+      "PostedDate": "2010-02-09T18:09:14.737-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok, I think I see what is happening, at least in my case.  Despite my Draenei\"s Heroic Presence being checked in the buff list, my rating of 260 (7.92%) WITHOUT the buff must be being used (below soft cap), so anything with +Hit gains hugely over anything without +Hit.  Adding in, say, +Hit food returns the DPS lists to \"proper\" values.",
+      "PostedDate": "2010-02-09T19:41:06.567-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "What I don't understand is - if haste is at a threshold where it allows an additional attack for the duration of the fight, why does this change when swapping onyxia dps helm to t10 dps dk helm, where neither item has haste on them.  If I wear onyxia helm, which rawr rates much MUCH higher than my t10 for some reason, then it doesn't consider the caster ring good at all.  However, when I swap over, it suddenly rates that caster ring very highly.  At first I thought it was the hit rating, but it rates solid dps rings like bloodshed band (which have hit) much lower.  ",
+      "PostedDate": "2010-02-09T20:26:23.273-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-13T02:05:41.227-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "A partial workaround for this is to set the fight duration to 1 minute. At least for my (level 77) blood DK, it kept the haste graph from twigging out like that. Anything longer than that though, and look out.",
+      "PostedDate": "2010-02-13T20:54:13.057-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-18T07:57:57.45-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-06-22T13:43:29.563-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:21:17.93-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:30:04.007-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:58.673-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:04:35.42-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

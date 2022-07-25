@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtPaladin",
+      "DisplayName": "Rawr.ProtPaladin"
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-08T06:51:24.857-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "So I've just started testing out the new modules, and I loaded up my tankadin (http://www.wowarmory.com/character-sheet.xml?r=Icecrown&n=Yukinojo). Rawr.Tankadin incorrectly reports her as crittable, despite having a 493 Defense. I understand there has been some argument about Resillience + Defense at edge cases, but there is no argument whatsoever here: 490 Defense Skill is uncrittable vs. bosses, period. The module reported chance to be crit at 0.48000001%.\n \nI have some programming skills, though I've never used C#, so I will be looking at the source code myself to figure out what might be causing this... but like I said I've never used C# so if someone else gets it done first that'd be great, heh.",
+    "LastUpdatedDate": "2013-05-16T05:27:10.93-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-06-20T08:10:48.447-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtPaladin] Incorrectly shows crittable",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 10375
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Unfortunately, Ermad isn't developing Rawr.Tankadin anymore, and it's not complete, as you noticed, so we're looking for someone else to take it over.",
+      "PostedDate": "2008-06-20T09:41:59.62-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The tankadin module is not done and is not accurate. I started making it, but shortly afterwards I quit WoW, so it is unlikely to be finished.\r\n\r\nBut, the bug is purely a display issue. I changed the calculation code around that it calculates avoidance and defense while taking into account the enemy's level. Then what outputs the results originally was displaying results from when it didn't take into account the enemies level, so it does there too. I updated this in my local version, but I didn't do one last checkin when I quit.\r\n\r\nTo fix it yourself change this in CharacterCalculationsTankadin.cs\r\n            if (CritAvoidance == (5f + levelDifference))\r\n                dictValues.Add(\"Chance to be Crit\", ((5f + levelDifference) - CritAvoidance).ToString()\r\n                    + \"%*Exactly enough defense rating/resilience to be uncrittable by bosses.\");\r\n            else if (CritAvoidance < (5f + levelDifference))\r\n                dictValues.Add(\"Chance to be Crit\", ((5f + levelDifference) - CritAvoidance).ToString()\r\n                    + string.Format(\"%*CRITTABLE! Short by {0} defense rating or {1} resilience to be uncrittable by bosses.\",\r\n                    Math.Ceiling(((5f + levelDifference) - CritAvoidance) * 60f), Math.Ceiling(((5f + levelDifference) - CritAvoidance) * 39.423f)));\r\n            else\r\n                dictValues.Add(\"Chance to be Crit\", ((5f + levelDifference) - CritAvoidance).ToString()\r\n                    + string.Format(\"%*Uncrittable by bosses. {0} defense rating or {1} resilience over the crit cap.\",\r\n                    Math.Floor(((5f + levelDifference) - CritAvoidance) * -60f), Math.Floor(((5f + levelDifference) - CritAvoidance) * -39.423f)));\r\n\r\nto\r\n\r\n            if (CritAvoidance == 5f)\r\n                dictValues.Add(\"Chance to be Crit\", (5f - CritAvoidance).ToString()\r\n                    + \"%*Exactly enough defense rating/resilience to be uncrittable by bosses.\");\r\n            else if (CritAvoidance < 5f)\r\n                dictValues.Add(\"Chance to be Crit\", (5f - CritAvoidance).ToString()\r\n                    + string.Format(\"%*CRITTABLE! Short by {0} defense rating or {1} resilience to be uncrittable by bosses.\",\r\n                    Math.Ceiling((5f - CritAvoidance) * 60f), Math.Ceiling((5f - CritAvoidance) * 39.423f)));\r\n            else\r\n                dictValues.Add(\"Chance to be Crit\", (5f - CritAvoidance).ToString()\r\n                    + string.Format(\"%*Uncrittable by bosses. {0} defense rating or {1} resilience over the crit cap.\",\r\n                    Math.Floor((5f - CritAvoidance) * -60f), Math.Floor((5f - CritAvoidance) * -39.423f)));\r\n",
+      "PostedDate": "2008-06-20T09:43:42.057-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hmm, I actually just decided I am going to finish Rawr.Tankadin. I am bored and want to code something, and this isn't too far from being done. I am installing Visual Studio now to start work on it again.\r\n\r\nIf you notice any other bugs let me know. The main thing I have to finish is melee hit mechanics to accurately represent SoR/White hit tps, and to ensure correctness of all formulas.",
+      "PostedDate": "2008-06-20T09:53:02.59-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "OK, I'll keep testing it, I'm happy to do so. I can try helping with some code, but all of my coding experience is in C++ or Objective-C, not even Java, so some C# things are kinda alien to me.",
+      "PostedDate": "2008-06-20T11:56:43.683-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-08T06:51:24.857-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:41:26.953-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:44.597-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:27:10.93-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

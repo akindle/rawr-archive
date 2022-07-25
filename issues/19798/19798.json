@@ -1,0 +1,90 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Optimizer",
+      "DisplayName": "Rawr.Base.Optimizer"
+    },
+    "ClosedComment": "&#42; Irrelevant Stats shown on the tooltips is another ticket, go vote that if you want it&#42; Reforging from irrelevant stats has been added by Kavan back on 1&#47;23, we&#39;ve done multiple releases since then.&#42; OReubens suggestions wouldn&#39;t work. There are plenty of instances where a relevant stat might be reforged to something else, like expertise to crit in DPSWarr.&#42; Moonkin is a documented case where overriding is necessary to prevent the optimizer from doing something stupid in Moonkin&#39;s case &#40;possibly others&#41;.",
+    "ClosedDate": "2011-03-04T18:41:46.527-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Got a new weapon with hit on it the other day for my restosham. The optimizer wants to reforge the mastery to spirit instead of the Hit to Spirit as the models ignores all hit on items.\n \nI have often thought it would be nice to be able to see the \"irrelevant stats grayed out in the tool-tips.",
+    "LastUpdatedDate": "2013-05-16T05:18:55.14-07:00",
+    "PlannedForRelease": "Rawr 4.0.16 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-01-22T22:07:38.197-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Optimizer] Ignores stats not relevant to model for reforging choices",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19798
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Saw this with a recommenced DKTank Rep Gear:\r\n\r\nPendant of Elemental Balance\r\nBinds when picked up\r\nNeck\t\r\n+224 Stamina\r\n+149 Intellect\r\n+100 Spirit\r\nRequires Level 83\r\nItem Level 333\r\nRequires The Earthen Ring - Honored\r\nEquip: Increases your mastery rating by 100 (0.96 @ L83).\r\n\r\nWanted to reforge the Mastery instead of the Spirit to dodge. Not the best item I know, just pointing out an example.",
+      "PostedDate": "2011-01-23T07:45:03.037-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "At first, I had thought the issue you were talking about was model specific in that I didn't include hit, however, I see what you are saying now.  This isn't model specific.",
+      "PostedDate": "2011-01-23T08:55:45.217-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-23T08:57:08.463-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I changed the default implementation to include reforging from nonrelevant stats, but each model has the option of overriding this behavior.",
+      "PostedDate": "2011-01-23T13:02:18.333-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Wouldn't it be safe to assume that if an item has irrelevant stats that ONLY those would even be considered for reforging.\r\nI can't possibly see how reforging a relevant stat could ever beat an irrelevant one.  Might make the optimiser run a bit faster since it can prune of a section of the potential paths.\r\n\r\nAdditionally, if an item has 2 irrelevant reforgable stats, then whichever is highest is the ONLY one to consider in the reforge.\r\n\r\nI don't really see why you would allow overriding.  If the stat does have some effect (nomatter how small) on the model, it shouldn't even be marked as irrelevant.\r\nThe only use for overriding I can see is if you would want to simply downright refuse to upgrade to any items with irrelevant stats.  But if an item is already equipped that doesn't make much sense :)",
+      "PostedDate": "2011-01-24T06:19:28.9-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Overriding is allowed because of a previous issue in Moonkin, where Hit and Spirit both had equal DPS value and the Optimizer would pick arbitrary combinations of which one to reforge to.",
+      "PostedDate": "2011-01-24T06:33:24.843-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-26T12:02:09.057-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-04T18:41:46.527-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:14.887-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:55.14-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

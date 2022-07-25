@@ -1,0 +1,65 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Fixed for v2.2.21",
+    "ClosedDate": "2009-10-07T08:14:31.94-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The Victor's Call melee dps trinket doesn't appear to be calculating properly.  The 232 trinket has:\n \n84 Expertise\n5 x 215 AP (20 sec on melee hit)\n \n \nMy enhancement shammy is almost Expertise capped (25 instead of 26).  So putting this trinket on would not make use of the Expertise, however it gives him a 350+ dps increase which is massive.\n \nI found that rawr thinks that the 1075 AP is on constantly.  If you remove the proc and add 1075 AP as a base stat, you end up with exactly the same dps increase.",
+    "LastUpdatedDate": "2013-05-16T05:24:00.627-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-10-07T04:54:31.003-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Victor's Call trinkets calculating incorrectly",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14351
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Hmm ok will investigate further. It will be to do with the way secondary effects are implemented.",
+      "PostedDate": "2009-10-07T07:09:47.987-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Levva, my guess is you're not multiplying the average stats of the innerproc by the UpTime of the outer proc.",
+      "PostedDate": "2009-10-07T07:34:41.077-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-07T08:14:31.94-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:32:36.69-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:00.627-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtPaladin",
+      "DisplayName": "Rawr.ProtPaladin"
+    },
+    "ClosedComment": "Updates to ProtPaladin should fix this issue in next version",
+    "ClosedDate": "2009-08-26T09:28:58.433-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "when I'm running an optimization (using the \"overall rating\" calculation) the output has a heavy weighting on \"Agility\", while \"Defense Rating\" remain below targeted 540. Previously any proposed outputs I've got provided me the 540 def rating and then other stats like stamina, strength, etc. However, nowadays it almost uses \"Agility\" on most enchants and sockets, while def remain at i.e. 507. Seems wrong to me! Should the optimizer first achieve the 540 def; and the other key stats.  Why is agility so much more important to the optimizer ?\n \nEither I just don't understand it or the output the optimizer produces is simple wrong. Any thoughts ?",
+    "LastUpdatedDate": "2013-05-16T05:24:47.167-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-08-17T10:31:01.857-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtPaladin] Optimizer Wrong",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13903
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "None of the optimizers will automagically reach 540+ on their own unless that amount is considered the best way. The optimizer is just trying to make the biggest number that it can, regardless of the side-effects. To enforce this in the ProtPally model, add the Optimizer Requirement '% Chance to be Crit <= 0'",
+      "PostedDate": "2009-08-17T10:43:50.717-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "While I'm not sure of the exact state of the Prot Paladin module with respects to the 3.2 dodge rating change, the behavior your seeing is expected depending on how you setup the enemy your fighting; particularly without putting in the required condition of 540 defense rating or chance to be crit <=0%.\r\n\r\nAgility gives armor, threat, and a decent amount of dodge (Paladins have the best agility->dodge conversion of the plate tanks) and can easily be favored depending on the setup used.  It is not uncommon to see agi/stam gems and agi enchants over stam enchants for some slots used by top guild Paladin tanks.  (Or armor enchants for that matter)  This is even MORE true in 3.2 because the dodge rating->dodge conversion was lowered making agility relatively even better than before for tanking Paladins.",
+      "PostedDate": "2009-08-17T17:07:26.813-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I just did massive updates to the ProtPally model and it should now be using 3.2 ratings conversions and diminishing returns. v2.2.14 will be far more accurate in this day and age.",
+      "PostedDate": "2009-08-17T21:27:46.807-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-26T09:28:58.433-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:39:31.72-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:24.073-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:33.137-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:47.167-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Moonkin",
+      "DisplayName": "Rawr.Moonkin"
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-08T06:56:17.097-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The base health for an unbuffed, untalanted taruen moonkin is 8607 and the base mana is 5286",
+    "LastUpdatedDate": "2017-11-27T11:00:09.597-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-11-19T22:08:19.18-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Moonkin] Tauren Base Health and Mana Wrong",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 11663
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Actually, something else is going on.  The number shown is 8607 for health and 5285 for mana.  But mousing over stamina shows that the 100 stamina adds 820 to health and mousing over intellect shows that 138 intellect adds 1790 to mana.  ",
+      "PostedDate": "2008-11-19T22:25:23.24-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "And just to keep responsing to myself :-)  The issue with mana being off is this line:\r\nstatsTotal.Mana = (float)Math.Round(statsRace.Mana + 15f * statsTotal.Intellect) - 380\r\nshould be\r\nstatsTotal.Mana = (float)Math.Round(statsRace.Mana + 15f * statsTotal.Intellect) - 280\r\n\r\nFrom http://www.wowwiki.com/Attribute \"Each point of intellect gives 15 mana points (except from the first 20 points of Intellect that provide 1 mana for each point instead)\"",
+      "PostedDate": "2008-11-19T22:43:05.6-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "For health, It looks like the base number for Tauren should be: 7787.  This number builds in the 5% bonus to base health that tauren get.  The formula for computing health can then be corrected and simplified to:\r\n\r\nstatsTotal.Health = (float)Math.Round(statsRace.Health + statsGearEnchantsBuffs.Health + 10f * statsTotal.Stamina) - 180;\r\n\r\nFrom http://www.wowwiki.com/Attribute \"Stamina provides 10 health for each point for all Classes/Mobs/NPCs (except from the first 20 points of Stamina that provide 1 health for each point instead).\"",
+      "PostedDate": "2008-11-20T10:46:35.453-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hmm, looks like some stuff changed on me when I wasn't looking.  Will fix.",
+      "PostedDate": "2008-11-20T11:26:39.5-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Also, I can't just correct the base health of the Tauren to 7787.  There's some math incorrect there somewhere, given that Druid base health at 80 is only 4703.  While I'm not arguing that it's incorrect, changing 4703 to 7787 is quite a bit more than 5%.",
+      "PostedDate": "2008-11-20T11:32:24-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Turns out it was a mistake in the base health of the class.  The base health for Druids is 7416, which is a number that no one anywhere seems to be using, which is why I couldn't find it.  With that corrected, the final health total comes out to be 8607 for Tauren, as expected.",
+      "PostedDate": "2008-11-20T12:04:50.72-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-08T06:56:17.097-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T17:56:09.22-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:03:27.03-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:17.147-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:50.263-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:00:09.597-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

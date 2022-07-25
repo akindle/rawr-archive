@@ -1,0 +1,131 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.TankDK",
+      "DisplayName": "Rawr.TankDK"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-01-22T09:03:52.12-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have brought up this issue awhile back in another thread, but there doesn't appear to be an open one right now. Apologies in advance if I've missed a more appropriate place to voice this issue.\n \nWhenever I optimize with any Threat Weight above 0.00 the results are incredibly unreliable. I will hit optimize, and it will run and spit out a new set of gear for me to use (sometimes the Overall Rating is higher, most of the times it's recommending a lower score). If I run the optimizer again, it will again spit out a new set of gear for me to use (again usually recommending an inferior set of gear). This behavior applies no matter if I accept Rawr's gear recommendations and equip the gear or not. \n \nWhen I reduce the threat value to 0.00 everything works as you'd expect. Rawr will optimize to a the best set of gear (always an upgrade) and if ran again, will spit out the exact same set. It's great for stacking pure surival/mitigation, but when threat is thrown into the mix, its usefullness evaporates. Any help/info on this issue is great appreciated, and no matter what, tyvm for a wonderful program.",
+    "LastUpdatedDate": "2017-11-27T11:04:30.76-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-11-30T00:13:09.743-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[TankDK] Problem with Optimizer and a Threat Weight > 0.00",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15117
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2560,
+      "FileName": "Seantaylor Tank.xml",
+      "DownloadUrl": ".\\2560"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Make sure your rotation is properly set up, there is a known issue where if rune strikes are set to a negative value it will screw with many things.",
+      "PostedDate": "2009-11-30T08:37:03.423-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I can't believe all this time, that has been my problem. \r\n\r\nAs a fyi, I had always just hit the rotation over to Blood, and check the \"Manage runic power for me\" box. That was giving me 2.75 Death Coils and 0 Rune Strikes. I manually put in values for both, changing the rotation to custom, and everything seems to be working much better. Thank you for the easy fix.",
+      "PostedDate": "2009-11-30T12:44:47.857-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Actually, I take that back. While it was working better for awhile, after optimizing a few times, the behavior has returned. \r\n\r\nI've attached my character file. All that should need to be done to recreate my issue is to just run the optimizer on max thoroughness.",
+      "PostedDate": "2009-11-30T13:33:59.203-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-30T13:34:03.517-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'll take a look.  \r\nI agree that there's some weirdness in the rotation code.  Both in the UI as well as just the way I'm handling it.  I've started the code work to make it much more stable, but it's a pretty significant re-write of the whole section of the model.",
+      "PostedDate": "2009-11-30T16:50:22.087-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Repro'd even w/ the latest code that I've got, even when I reduced the RS problem.  It's probably related the multi-threaded problems and they may be focused in the rotation code.",
+      "PostedDate": "2009-11-30T18:47:52.733-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Should it be helpful, the last known version of the program I know to work correctly in regards to threat was 2.2.5, and I have basically tried every version since then.",
+      "PostedDate": "2009-11-30T21:20:01.02-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yeah, that's when threat was just calculated by white damage * some multiplier.  Now it takes into account a rotation, and while it's not perfect I believe it's a better scale than just white threat. ",
+      "PostedDate": "2009-12-01T00:19:29.207-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "While just calculating threat based on white damage * some multiplier is undoubtedly not as accurate as taking rotation into account, I will say that I personally prefer it to be based on that vs. the current setup, if it meant the optimizer would work correctly. At least then I'd be able to get some sort of gauge of threat, rather than the sometimes random seeming stuff the optimizer gives me now. Of course, I am probably biased here, as white damage * multiplier isn't nearly as bad for a blood DK such as myself, as it is for an unholy one. Then again, there aren't many unholy tanks being played right now either.",
+      "PostedDate": "2009-12-01T00:39:57.563-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-01T08:51:20.317-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "While I understand your desire for reliability, I also want accuracy in what each of the subvalues mean.  I know that the current rotation system is sub-optimal since it's in transition, but I believe the numbers returned will be closer to what you should be seeing in TPS than just straight white damage.  I also acknowledge this isn't always the case, and I'm working to resolve those areas where the values are unreliable.",
+      "PostedDate": "2009-12-01T09:14:27.627-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I believe this was fixed when I removed the RS optimization in 2.3.6",
+      "PostedDate": "2010-01-22T09:03:52.12-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:39:31.72-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:42:14.79-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:41.19-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:15.01-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:04:30.76-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

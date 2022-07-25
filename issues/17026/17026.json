@@ -1,0 +1,125 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.LoadCharacter",
+      "DisplayName": "Rawr.Base.LoadCharacter"
+    },
+    "ClosedComment": "We are unable to reproduce, a new version has been posted, user reports it started working later",
+    "ClosedDate": "2010-07-02T13:23:00.96-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I can reproduce this repeatedly. \n \nBrowser: Google Chrome version 4.1.249.1042 (42199)\nSilverlight version 3.0.50106.0\nWindows 7 Ultimate x64. \n \nTo repro: \nAttempting to 'Load from Armory' the character Mahkah, US-Black Dragonflight\n \n \n[Async_ExceptionOccurred]\nArguments:\nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=3.0.50106.0&File=System.dll&Key=Async_ExceptionOccurred\n \n   at System.ComponentModel.AsyncCompletedEventArgs.RaiseExceptionIfNecessary()\n   at System.Net.DownloadStringCompletedEventArgs.get_Result()\n   at Rawr.ElitistArmoryService._webClient_DownloadStringCompleted(Object sender, DownloadStringCompletedEventArgs e)\n   at System.Net.WebClient.OnDownloadStringCompleted(DownloadStringCompletedEventArgs e)\n   at System.Net.WebClient.DownloadStringOperationCompleted(Object arg)\n \n   at System.Net.Browser.AsyncHelper.BeginOnUI(SendOrPostCallback beginMethod, Object state)\n   at System.Net.Browser.BrowserHttpWebRequest.EndGetResponse(IAsyncResult asyncResult)\n   at System.Net.WebClient.GetWebResponse(WebRequest request, IAsyncResult result)\n   at System.Net.WebClient.DownloadBitsResponseCallback(IAsyncResult result)[Arg_SecurityException]\nArguments:\nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=3.0.50106.0&File=mscorlib.dll&Key=Arg_SecurityException\n \n   at System.Net.Browser.BrowserHttpWebRequest.InternalEndGetResponse(IAsyncResult asyncResult)\n   at System.Net.Browser.BrowserHttpWebRequest.<>c__DisplayClass5.<EndGetResponse>b__4(Object sendState)\n   at System.Net.Browser.AsyncHelper.<>c__DisplayClass2.<BeginOnUI>b__0(Object sendState)",
+    "LastUpdatedDate": "2013-05-16T05:21:13.627-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-03-29T23:15:21.173-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[LoadCharacter] Async_ExceptionOccurred",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 3,
+    "Id": 17026
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I get the same error with Safari on MacOSX 10.6.2\r\nCharacter Karenja on EU-Lothar",
+      "PostedDate": "2010-03-30T09:22:31.123-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I get the same error with Safari on MacOSX 10.6.2\r\nCharacter Karenja on EU-Lothar",
+      "PostedDate": "2010-03-30T09:22:48.563-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-30T09:23:06.027-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I get the same error. I'm using Google Chrome (4.1.249.1045 (42898) and Windows 7 Ultimate.",
+      "PostedDate": "2010-03-30T23:16:54.54-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-31T21:57:46.783-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I get the same error on multiple characters.\r\nServer: The Venture Co.\r\nCharacters: Magden & Poltharus\r\nOS: Mac OS X 10.6.2\r\nBrowsers: Firefox 3.6.3 & Safari 4.0.5\r\n",
+      "PostedDate": "2010-04-02T12:48:32.957-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-02T12:48:52.78-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm unable to reproduce this. If someone with the error could use a http sniffing tool like Fiddler or Web Development Helper and post a trace of what exactly Rawr is requesting and what responses it's getting it would help in tracking down this issue.",
+      "PostedDate": "2010-04-09T20:30:35.913-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I can no longer reproduce the issue, when I try now i enter my character realm / name, hit okay (tried with force update checked and unchecked) and my browser simply hangs.",
+      "PostedDate": "2010-04-12T10:11:09.453-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-18T08:29:36.32-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T13:08:11.82-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T13:23:00.96-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Getting this same error with Safari and Firefox on Mac OS X 10.6.4.\r\nNever seen this error before today when I updated Silverlight.",
+      "PostedDate": "2010-07-10T03:38:03.423-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-09T15:53:05.327-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:21.047-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:29:03.85-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:13.627-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

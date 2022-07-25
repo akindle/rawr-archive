@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "440739",
+    "ThreadId": "212042",
+    "Html": "<p>I've been wanting to be able to check out new Rawr updates without waiting for source code to be wrapped up in a new release version.&nbsp; I know where and how to download the source code, I grabbed myself Microsoft Visual C# 2010 Express, opened 'Rawr.2010.sln'...</p>\r\n<p>It tells me solution folders are not supported in this version, and solution folder 'Solution Items' will be displayed as unavailable.<br>Then says something about source control and asks if I want to remove the bindings.<br>Then says one or more projects in the solution weren't loaded correctly (Rawr-50252\\Rawr.UnitTests\\Rawr.UnitTests.2010.csproj).</p>\r\n<p>If I shrug this off and 'Build Solution' I get hit with 24 error messages and told the build failed.</p>\r\n<p>Rawr-50252\\Rawr.Warlock\\SpellModifiers.cs &quot;could not be opened ('Unspecified error ')&quot;<br>Rawr-50252\\Rawr.Retribution\\RotationParameters.cs (ditto)<br>Rawr-50252\\Rawr.Retribution\\SimulatorAbility.cs (ditto)<br>Rawr-50252\\Rawr.Retribution\\SimulatorAbility.cs (ditto)</p>\r\n<p>&quot;The type or namespace name 'CombatState' could not be found&quot; in 20 different files within &quot;Rawr-50252\\Rawr.TankDK\\DKAbilities\\&quot;.</p>\r\n<p>Clearly I'm doing something wrong here, but I'm not sure what.</p>",
+    "PostedDate": "2010-05-08T20:15:36.997-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "440767",
+    "ThreadId": "212042",
+    "Html": "<p>The UnitTests will not work properly with MSVC# 2010 Express, UnitTests just are not supported in Express version, so just answer no to that.</p>\r\n<p>&nbsp;</p>\r\n<p>If any other project gives you problems, right click that project and select &quot;unload project&quot;. Then try to compile again. What you encountered may be a temporary fault, so you might want to update your local source as well.</p>",
+    "PostedDate": "2010-05-09T01:14:38.393-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "440839",
+    "ThreadId": "212042",
+    "Html": "<p>Unfortunately&nbsp;there are a number of project files in different states with in the project. if you use the 2008 solution (rawr.sln) then all will be well except for the unit tests because they are using the built in visual studio test framework that express does not support.</p>\r\n<p>Your best bet is to use the rawr.sln, do the upgrade when visual studio prompts you and set the configuration to release mode.</p>",
+    "PostedDate": "2010-05-09T09:56:07.363-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "440896",
+    "ThreadId": "212042",
+    "Html": "<p>@Discomurray:</p>\r\n<p>Thank you. That helped a lot.</p>\r\n<p>Now I get &quot;Sgen has encountered a problem and needs to close.&quot; (Send/Don't Send error report)</p>\r\n<p>&quot;sgen2.exe Rawr.Base.dll&quot; exited with code -532459699.&quot;</p>\r\n<p>Though it at least finishes the build and I haven't (yet) found a problem with the build.</p>",
+    "PostedDate": "2010-05-09T15:06:25.197-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "440913",
+    "ThreadId": "212042",
+    "Html": "<p>Sorry, forgot about that step.&nbsp;</p>\r\n<p>Thats the step for generating xml serializers. Just helps with performance when reading and saving xml.</p>\r\n<p>In the build events of the project each project/module you can change the 'post-build event' by removing the line&nbsp;entirely&nbsp;or changing it to sgen4 (the visual studio 2010 version)</p>",
+    "PostedDate": "2010-05-09T18:44:48.923-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "441024",
+    "ThreadId": "212042",
+    "Html": "<p>The 2010 solution was a bit out of sync the last few days. If you download the latest one it should compile fine.</p>",
+    "PostedDate": "2010-05-10T04:25:43.013-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "441105",
+    "ThreadId": "212042",
+    "Html": "<p>Sorry... Just got 2010 installed on the machine that I use to work on Rawr. So, moving forward, I should be all cool on that front.&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-05-10T08:06:26.65-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

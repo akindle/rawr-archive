@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Cat",
+      "DisplayName": "Rawr.Cat"
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-08T07:16:57.14-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I've been playing with Rawr (long time user) and the current calculations for cats seem a bit off. I've been mostly cross checking with my actual numbers in WWS (naxx25, sart, etc) runs. Obviously although i try to maintain an optimal rotation i know that that sometimes i'm off, still the numbers seemed a bit wrong.\n \nRawr predicted for my gear: 28% melee dmg, 5% mangle, 17% shred, 23% rake, 26% rip. What i see in most my runs is more in the lines of: 30% melee, 5% mangle, 25-30% shred, 15-20% rake, 17-20% rip.\n \nI went to check Rawr's source and the first thing i noticed is that Shred's bonus on bleed bonus debuffs is not counted. I.e (1f + stats.BonusBleedDamageMultiplier). Which is wrong since Shred does take it into account. Still and although i didn't find anything else that seems wrong, the numbers are still not completely \"right\".\n \nI now get: 27% melee, 5% mangle, 21% shred, 22% rake, 25% rip. It seems to me that rake is over valuated, and i have a 80-90% uptime of rake in the runs i'm checking against. Maybe its a bug in the game not taking some bonus into account? Also shred seems under-evaluated, i get much larger numbers in actual runs with Shred than Rawr is giving me right now. While melee swings and mangle hits match (which would make the AP calculation correct).",
+    "LastUpdatedDate": "2017-11-27T10:59:26.3-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-12-09T07:02:04.683-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Cat] Wrong DMG Calculations",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 11960
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Fixed the Shred damage calculation (really surprised I or anyone else hasn't noticed that until now.) Rake isn't so much overvalued as it isn't realistically valued; it's counted as if you Rake the instant the old Rake wears off, never clipping the last tick, and having 0 wasted time between Rakes. That's an ideal, though obviously not really realistic. (Same deal with Rip, for that matter)",
+      "PostedDate": "2008-12-10T10:03:09.483-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks for the explanation regarding Rake/Rip. I've checked the rotation calculator and i've seen now that it is based solely on energy.\r\n\r\nAnother issue by the way, is the hit%. I first saw it referred somewhere and then did some empirical check with Recount against an Heroic dummy and it seems the base miss for cats (or all melee for that matter) against bosses is 8% and not 9% as previous thought of. Today i changed a couple gear and regemmed to have 7.11% hit (+1% draenei aura), and with 6.75% expertise, in fights where i can fully attack from behind i had 0 misses. Which supports the fact that it is not only the dummy target. Not idea if it is an overlook of Blizzard's and will be \"fixed\" or if the initial numbers from EJ were wrong.",
+      "PostedDate": "2008-12-10T16:59:30.54-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-08T07:16:57.14-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:56:16.07-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T22:45:40.733-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:05.817-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:41.117-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T10:59:26.3-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

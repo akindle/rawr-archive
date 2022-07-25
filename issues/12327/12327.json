@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Mage",
+      "DisplayName": "Rawr.Mage"
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-09T17:28:15.53-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "There's something wrong with Hit rating in Rawr.Mage, but I'll be darned if I can figure out where the problem is.\n \nI created a Draenai Mage, loaded the default Frost talent tree (which includes 3/3 Elemental Precision), selected three glyphs (Frostbolt, Water Elemental, and Molten Armor), a full complement of raid buffs (including Misery), the best non-profession buffs available, and an appropriate selection of currently-in-game gems (no Epic gems), and let Rawr go to town on Optimize at maximum, and NOT using 3.0.8 mode.\n \nHere's where the weirdness comes in. Rawr set me up with 14.5% hit rating! Not only that, but it appears to think 15% is my hitcap!\n \nElemental precision IS being counted, because it has a value on the \"Talents (per talent point)\" chart. I know that the value is due to hit rating, not the mana efficiency, because Frost Channeling is valued at 0.\n \nAnd Misery is being counted as well, because if I take off Heroic Presence (next paragraph), then the value of Hit rating\n \nRelated bug: I left Heroic Presence unchecked because I'm a Draenai. But Rawr does not appear to count the racial trait automatically, because selecting Heroic Presence on the buffs does put me up to 15.5% hit rating, and hit rating becomes valued at 0 (indicating I've reached the cap).\n \nSo Rawr is counting Misery, Heroic Presence, and Elemental Precision... but still seems to think my hitcap is 14% with all 3, indicating that one or more of them is being undervalued, or indicating that Rawr seems to think the spell hitcap has risen to 20%.",
+    "LastUpdatedDate": "2017-11-27T11:01:43.563-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-01-08T17:00:47.333-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Mage] Hit Rating bugged",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 12327
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "And I'm just stupid today. -.- Shouldn't play with Rawr when I'm tired. It's listing hit RATE, not the % from hit RATING of items. Something is still displaying improperly, because it does show me as hitcapped at 15.5% hit rate, and the issue with Heroic Presence not being automatica for Draenai should still be fixed. But it is less confusing than I first thought.",
+      "PostedDate": "2009-01-08T17:08:13.43-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "14% includes Heroic Presence and Misery, but not Elemental Precision since that is school specific. If you check hit rate on individual spells you'll see that they are properly hit capped.\r\n\r\nHeroic Presence not being automatically selected for Draenei is by design. How that is handled should be standardized between all modules, until then I'll probably leave it as is.",
+      "PostedDate": "2009-01-08T18:08:12.987-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-09T17:28:15.53-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:32:15.09-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:09:45.937-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:35:49.943-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:28.987-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:01:43.563-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

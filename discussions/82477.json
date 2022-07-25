@@ -1,0 +1,114 @@
+[
+  {
+    "Id": "283431",
+    "ThreadId": "82477",
+    "Html": "<p>Alright, I am going to probably sound stupid on this and I'm missing it somewhere.&nbsp; How does one go about using the optimizer and setting a preference for expertise?&nbsp; For instance, I go through and highlight all the available gear I have.&nbsp; I set that I want my % hit chance to be 8% and I tried Chance to be avoided by 6.5% and -6.5% but both return weird values?&nbsp; Those are the two options I see as a Protection Paladin (expertise is suppose to help reduce a lot of damage in ICC for paladins).&nbsp; Below are the options I see on other classes:</p>\r\n<p><span style=\"text-decoration:underline\">Retribution Paladin: </span>Melee Chance Avoided%<br> <span style=\"text-decoration:underline\">Enhancement Shaman:</span> Dodged Attacks, Parry Attacks,&nbsp; Avoided Attacks so since it doesn't ask for a % I guess I either enter 0 or enter the expertise rating<br> <span style=\"text-decoration:underline\">Rogue: </span>% chance to be dodged, % chance to be parried.<br> <span style=\"text-decoration:underline\">Death Knight:</span> Target Dodge %.</p>\r\n<p>I guess I'm more confused over do I enter the expertise rating, expertise value (26), the dodge % I want to achiev or 0 to not have any dodged attacks.&nbsp; Since each model is different I don't know whether they all require the same answer or not.</p>\r\n<p>Thanks to anyone who can help and sorry if I confused anyone.</p>",
+    "PostedDate": "2010-01-29T11:52:22.93-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "283463",
+    "ThreadId": "82477",
+    "Html": "<p>You should be using 'Chance to be avoided &lt;= 0' if you want to be hit/exp capped.</p>",
+    "PostedDate": "2010-01-29T13:09:29.747-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "283466",
+    "ThreadId": "82477",
+    "Html": "<p>The problem with &quot;Chance to be Avoided&quot; is that it does not differentiate between Hit and Expertise caps - it requires that both be capped to meet the requirement.&nbsp; Each cap does different things for tanks (for example, Hit doesn't provide any incoming damage reduction, and Expertise doesn't help to make Taunt never Miss).&nbsp; If you're a class that is designed to be meeting both the Hit and Expertise caps (a Fury Warrior, for example), then Chance&nbsp; to be Avoided does everything you want.&nbsp; The same is not true for tanks.</p>",
+    "PostedDate": "2010-01-29T13:17:14.62-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "283472",
+    "ThreadId": "82477",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Astrylian wrote:</strong><br>\r\n<p>You should be using 'Chance to be avoided &lt;= 0' if you want to be hit/exp capped.</p>\r\n</blockquote>\r\n<p>So with the listed option above that I gave all of them should be set to 0?&nbsp; As its not working right for the dps classes I'm trying to set it up for as well.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-01-29T13:35:24.907-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "283477",
+    "ThreadId": "82477",
+    "Html": "<p>Standardizing them is definitely on our TODO list.</p>\r\n<p>'% Chance to be Avoided &lt;= 0' is what you want in order for none of your attacks to be avoided.</p>",
+    "PostedDate": "2010-01-29T13:52:11.673-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "283481",
+    "ThreadId": "82477",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Astrylian wrote:</strong><br>\r\n<p>Standardizing them is definitely on our TODO list.</p>\r\n<p>'% Chance to be Avoided &lt;= 0' is what you want in order for none of your attacks to be avoided.</p>\r\n</blockquote>\r\n<p>Alright, thank you very much for the help.&nbsp; I'm going to load it up here in a few and test and see how well that works.&nbsp; I just wasn't too sure if I needed to put 0 for all classes as the wording is different for each.&nbsp; Though maybe its a nitpick thing, but on the Protection Paladin model there is % Chance to be Avoided and % Hit Chance.&nbsp; So putting in 0 and 8 respectively would be the same wouldn't it?&nbsp; Or is that where I might be messing up?</p>",
+    "PostedDate": "2010-01-29T13:57:47.433-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "283486",
+    "ThreadId": "82477",
+    "Html": "<p>'% Hit Chance', I'm not positive, but I expect is really what it says, not +%. ie, you'd want to do &gt;= 100. That's definitely one of the ones we'd standardize out.</p>",
+    "PostedDate": "2010-01-29T14:05:39.007-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "283487",
+    "ThreadId": "82477",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Astrylian wrote:</strong><br>\r\n<p>'% Hit Chance', I'm not positive, but I expect is really what it says, not +%. ie, you'd want to do &gt;= 100. That's definitely one of the ones we'd standardize out.</p>\r\n</blockquote>\r\n<p>Oh -- So I'm misreading it.&nbsp; I actually want to put 100% for never missing?&nbsp; I was thinking you put 8% due to that's how much hit you gear.&nbsp; I think I see now.</p>",
+    "PostedDate": "2010-01-29T14:07:10.097-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "283496",
+    "ThreadId": "82477",
+    "Html": "<p>One other question on the expertise.&nbsp; Is there a way I can set it to gear for 56 expertise after glyphs and such instead of the 26 that melee want from behind?&nbsp; From what I've been reading I want to get close to the cap as possible for ICC and trying to optimize gear around it.&nbsp; I did the &quot;0&quot; option and that put me at 24.42 expertise (69 rating, 6.10%) as it figured it up with the glyph.</p>",
+    "PostedDate": "2010-01-29T14:41:53.407-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "283501",
+    "ThreadId": "82477",
+    "Html": "<p>It should be doing that, it should assuming you're attacking from the front, if you're a ProtPally. If it's not, that's a bug we need to fix on our side.</p>",
+    "PostedDate": "2010-01-29T14:52:58.247-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "283504",
+    "ThreadId": "82477",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Astrylian wrote:</strong><br>\r\n<p>It should be doing that, it should assuming you're attacking from the front, if you're a ProtPally. If it's not, that's a bug we need to fix on our side.</p>\r\n</blockquote>\r\n<p>Hm....its not working that way for me.&nbsp; Here's what I put in:</p>\r\n<p>Hit Chance: 100%<br> Chance to be avoided: 0<br> Health: 45000 (which is very lenient as I can hit that self buffed.  Had 50k but lowered it to see if it fixed the expertise issue)<br> Defense Skill: 540</p>\r\n<p>I even included Hit/Expertise Gems so if it needed to it can put them in.&nbsp; I have Seal of Vengeance (10 expertise) checked and the seal turned on and I have at least 3 pieces marked that have expertise.&nbsp; Once I run it, it'll take out my helm (has expertise) and replaces it with a hit which is fine, but it removes my chest piece which has expertise and puts in a non hit/expertise one.&nbsp; For some reason it'll also put &quot;Glyph of Indomitably&quot; as one of my trinkets, but I can fix it and take it out.&nbsp; Once the optimizer is ran I get the below values:</p>\r\n<p>Hit: 100%<br> Spell Hit: 96.18% (which is fine since I only wanted melee hit to be 8%)<br> Expertise: 24.42 (Glyph Seal of Vengeance unchecked returns this as 14.42) giving me a value of 7.90% to be parried and 0.40% to be dodged).</p>\r\n<p>It might be something I'm not putting in right, but not fully sure.</p>",
+    "PostedDate": "2010-01-29T15:07:47.52-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "283511",
+    "ThreadId": "82477",
+    "Html": "<p>What's the score it's giving you as the result of the optimization?</p>\r\n<p>Your other requirements are also... probably not what you really want. For example, it's very unlikely that you <em>actually</em>&nbsp;want Health. You most likely want survivability. You also don't want <em>both </em>Hit Chance and % Chance to be avoided; you just want % Chance to be Avoided. And you really want % Chance to be Crit &lt;= 0, rather than Defense Skill &gt; 540. These are all perfect examples of why we're going to be standardizing all these things, so they aren't so confusing. But yeah, if you've only got 24.42 Expertise, and it says that's 100% hit, it's got a bug, which we need to fix.</p>",
+    "PostedDate": "2010-01-29T16:00:13.557-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "283524",
+    "ThreadId": "82477",
+    "Html": "<p>I placed in your suggestions.&nbsp; % Chance to be Crit &lt;= 0 and % Chance to be Avoided &lt;= 0.&nbsp; I was using Defense Skill as I didn't care if I had more than 540 or not as long as I was at that range.&nbsp; As for Health I was putting in the rough value of what I had buffed because the Survival Rating I never could figure out exactly where this rating came from.&nbsp; I also have been setting it for the highest Thoroughness.</p>\r\n<p>After putting in only those two will it actually give me the 56 expertise and gemmed for what it needed that wasn't on my gear, but if I go back and add any other value to optimize it goes weird again.&nbsp; Below are my scores:</p>\r\n<p>Before: -4.977735<br> After: 373376.7<br> <br> With the way I had it setup before:<br> Before: -6.816558<br> After: 355337.7</p>\r\n<p>Not sure why but when I went to give you the numbers from before I reordered the way they were listed and now its giving me 56 expertise with the setup I had.&nbsp; So confused lol.</p>",
+    "PostedDate": "2010-01-29T16:50:50.783-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "283534",
+    "ThreadId": "82477",
+    "Html": "<p>Order should only matter if it wasn't able to find a way to meet the requirements (That's what a negative number means; it's under the requirement by that much)&nbsp;</p>",
+    "PostedDate": "2010-01-29T17:05:56.93-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.ItemFilters",
+      "DisplayName": "Rawr.Base.ItemFilters"
+    },
+    "ClosedComment": "Rawr 4.1.0 Released",
+    "ClosedDate": "2011-03-10T18:49:44.043-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Items that are \"self created\" are being hidden by ItemMatchesProfCheck(Item item).  This includes the following items that are in the distributed ItemCache:\n \nTabard of the Protector\nTabard of the Arcane\nTabard of Fury\nLoremasters's Colors\nTabard of the Explorer\nTabard of Brute Force\nEpic Purple Shirt\nAlliance Lance\nArgent Lance",
+    "LastUpdatedDate": "2013-05-16T05:18:39.193-07:00",
+    "PlannedForRelease": "Rawr 4.0.19 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-02-18T07:33:57.53-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ItemFilters] Filter by Profession hides non-profession items",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 20034
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Can you screen shot what the source of that/those items are in your local Rawr?\r\n\r\nHonestly, fixing Tabards and Shirts is a very low priority.",
+      "PostedDate": "2011-02-18T09:07:38.873-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-02-18T09:08:01.91-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hmm.  That's the problem -- the items can't be seen in Rawr (even though they appear in ItemCache.xml) since they're being filtered out by the routine ItemMatchesProfCheck(Item item). Below are the entries from ItemCache.xml.  Note that two of the items are weapons so this bug does not just effect Shirts and Tabards.   While this just does impact shirts, tabards, and some non-raid worthy weapons at this time, it could easily hide \"real gear\" later on.\r\n\r\n---------------\r\n    <LocationInfo>\r\n      <ItemLocation xsi:type=\"CraftedItem\">\r\n        <Skill>Unknown</Skill>\r\n        <Level>0</Level>\r\n        <Bind>BoP</Bind>\r\n        <SpellName>Create Tabard of the Protector</SpellName>\r\n      </ItemLocation>\r\n    </LocationInfo>\r\n    <Name>Tabard of the Protector</Name>\r\n----------------------------\r\n    <LocationInfo>\r\n      <ItemLocation xsi:type=\"CraftedItem\">\r\n        <Skill>Unknown</Skill>\r\n        <Level>0</Level>\r\n        <Bind>BoP</Bind>\r\n        <SpellName>Create Purple Tabard of the Arcane</SpellName>\r\n      </ItemLocation>\r\n    </LocationInfo>\r\n    <Name>Tabard of the Arcane</Name>\r\n--------------------------\r\n    <LocationInfo>\r\n      <ItemLocation xsi:type=\"CraftedItem\">\r\n        <Skill>Unknown</Skill>\r\n        <Level>0</Level>\r\n        <Bind>BoP</Bind>\r\n        <SpellName>Create Yellow Tabard of Fury</SpellName>\r\n      </ItemLocation>\r\n    </LocationInfo>\r\n    <Name>Tabard of Fury</Name>\r\n-------------------\r\n    <LocationInfo>\r\n      <ItemLocation xsi:type=\"CraftedItem\">\r\n        <Skill>Unknown</Skill>\r\n        <Level>0</Level>\r\n        <Bind>BoP</Bind>\r\n        <SpellName>Create Loremaster's Colors</SpellName>\r\n      </ItemLocation>\r\n    </LocationInfo>\r\n    <Name>Loremaster's Colors</Name>\r\n------------------------------------\r\n    <LocationInfo>\r\n      <ItemLocation xsi:type=\"CraftedItem\">\r\n        <Skill>Unknown</Skill>\r\n        <Level>0</Level>\r\n        <Bind>BoP</Bind>\r\n        <SpellName>Create Tabard of the Explorer</SpellName>\r\n      </ItemLocation>\r\n    </LocationInfo>\r\n    <Name>Tabard of the Explorer</Name>\r\n----------------------------------\r\n    <LocationInfo>\r\n      <ItemLocation xsi:type=\"CraftedItem\">\r\n        <Skill>Unknown</Skill>\r\n        <Level>0</Level>\r\n        <Bind>BoP</Bind>\r\n        <SpellName>Create Tabard of Brute Force</SpellName>\r\n      </ItemLocation>\r\n    </LocationInfo>\r\n    <Name>Tabard of Brute Force</Name>\r\n-----------------------\r\n    <LocationInfo>\r\n      <ItemLocation xsi:type=\"CraftedItem\">\r\n        <Skill>Unknown</Skill>\r\n        <Level>0</Level>\r\n        <Bind>BoP</Bind>\r\n        <SpellName>Create Epic Purple Shirt</SpellName>\r\n      </ItemLocation>\r\n    </LocationInfo>\r\n    <Name>Epic Purple Shirt</Name>\r\n--------------------------\r\n    <LocationInfo>\r\n      <ItemLocation xsi:type=\"CraftedItem\">\r\n        <Skill>Unknown</Skill>\r\n        <Level>0</Level>\r\n        <Bind>BoP</Bind>\r\n        <SpellName>Create Lance</SpellName>\r\n      </ItemLocation>\r\n    </LocationInfo>\r\n    <Name>Alliance Lance</Name>\r\n-----------------------------\r\n\r\n    <LocationInfo>\r\n      <ItemLocation xsi:type=\"CraftedItem\">\r\n        <Skill>Unknown</Skill>\r\n        <Level>0</Level>\r\n        <Bind>BoP</Bind>\r\n        <SpellName>Create Lance</SpellName>\r\n      </ItemLocation>\r\n    </LocationInfo>\r\n    <Name>Argent Lance</Name>\r\n",
+      "PostedDate": "2011-02-19T14:43:38.007-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok, I just put in a fix that will not filter out shirts/tabards. The other items you listed were quest/dailies lances, which you shouldn't be wearing in Rawr anyways. No \"real\" item would be made in the processes these items fall under, so I'm not gonna \"fix\" anything else.",
+      "PostedDate": "2011-02-24T20:11:28.483-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-02-24T20:11:39.37-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-10T18:49:44.043-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:25:53.837-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:39.193-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

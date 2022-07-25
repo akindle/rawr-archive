@@ -1,0 +1,91 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Items",
+      "DisplayName": "Rawr.Base.Items"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-09-25T11:52:11.273-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "See title, then see attached file.  Loading my character from Armory doesn't load my cloak.  I don't get an error, but if I save the character and try to load it into Rawr2, it does show the cloak.  Attempting to reload the same file into Rawr3 kicks an error:\n[Async_ExceptionOccurred]\nArguments: \nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.50826.0&File=System.dll&Key=Async_ExceptionOccurred\n \n   at System.ComponentModel.AsyncCompletedEventArgs.RaiseExceptionIfNecessary()\n   at Rawr.ElitistArmoryService._webClient_DownloadStringCompleted(Object sender, DownloadStringCompletedEventArgs e)\n   at System.Net.WebClient.OnDownloadStringCompleted(DownloadStringCompletedEventArgs e)\n   at System.Net.WebClient.DownloadStringOperationCompleted(Object arg)[HttpWebRequest_WebException_RemoteServer]\nArguments: NotFound\nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.50826.0&File=System.Windows.dll&Key=HttpWebRequest_WebException_RemoteServer\n \n   at System.Net.Browser.AsyncHelper.BeginOnUI(SendOrPostCallback beginMethod, Object state)\n   at System.Net.Browser.BrowserHttpWebRequest.EndGetResponse(IAsyncResult asyncResult)\n   at System.Net.WebClient.GetWebResponse(WebRequest request, IAsyncResult result)\n   at System.Net.WebClient.DownloadBitsResponseCallback(IAsyncResult result)[HttpWebRequest_WebException_RemoteServer]\nArguments: NotFound\nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.50826.0&File=System.Windows.dll&Key=HttpWebRequest_WebException_RemoteServer\n \n   at System.Net.Browser.BrowserHttpWebRequest.InternalEndGetResponse(IAsyncResult asyncResult)\n   at System.Net.Browser.BrowserHttpWebRequest.<>c__DisplayClass5.<EndGetResponse>b__4(Object sendState)\n   at System.Net.Browser.AsyncHelper.<>c__DisplayClass2.<BeginOnUI>b__0(Object sendState)",
+    "LastUpdatedDate": "2013-05-16T05:19:48.01-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-09-25T11:24:56.813-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Items] Not downloading Frost Lord's Battle Shroud",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 18823
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4067,
+      "FileName": "CryptDPSRawr3.xml",
+      "DownloadUrl": ".\\4067"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Attaching file.",
+      "PostedDate": "2010-09-25T11:25:25.95-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Fixed. Item lookups on EA were broken. Should be working now.",
+      "PostedDate": "2010-09-25T11:52:06.433-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-25T11:52:11.273-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Not fixed.  Still getting the same issue..will not load my cloak.  Tried different browsers, tried reloading the page a couple times, same issue.  I manually cleared Rawr3 from Silverlight's cache and reallocated/reinstalled Rawr3.  On first load of my character, I get the following two (2) errors, and now my Shoulders and Chest won't load:\r\n==============================================================\r\n[Async_ExceptionOccurred]\r\nArguments: \r\nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.50826.0&File=System.dll&Key=Async_ExceptionOccurred\r\n\r\n   at System.ComponentModel.AsyncCompletedEventArgs.RaiseExceptionIfNecessary()\r\n   at Rawr.ElitistArmoryService._webClient_DownloadStringCompleted(Object sender, DownloadStringCompletedEventArgs e)\r\n   at System.Net.WebClient.OnDownloadStringCompleted(DownloadStringCompletedEventArgs e)\r\n   at System.Net.WebClient.DownloadStringOperationCompleted(Object arg)[HttpWebRequest_WebException_RemoteServer]\r\nArguments: NotFound\r\nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.50826.0&File=System.Windows.dll&Key=HttpWebRequest_WebException_RemoteServer\r\n\r\n   at System.Net.Browser.AsyncHelper.BeginOnUI(SendOrPostCallback beginMethod, Object state)\r\n   at System.Net.Browser.BrowserHttpWebRequest.EndGetResponse(IAsyncResult asyncResult)\r\n   at System.Net.WebClient.GetWebResponse(WebRequest request, IAsyncResult result)\r\n   at System.Net.WebClient.DownloadBitsResponseCallback(IAsyncResult result)[HttpWebRequest_WebException_RemoteServer]\r\nArguments: NotFound\r\nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.50826.0&File=System.Windows.dll&Key=HttpWebRequest_WebException_RemoteServer\r\n\r\n   at System.Net.Browser.BrowserHttpWebRequest.InternalEndGetResponse(IAsyncResult asyncResult)\r\n   at System.Net.Browser.BrowserHttpWebRequest.<>c__DisplayClass5.<EndGetResponse>b__4(Object sendState)\r\n   at System.Net.Browser.AsyncHelper.<>c__DisplayClass2.<BeginOnUI>b__0(Object sendState)\r\n=======================================================================\r\n=======================================================================\r\n[Async_ExceptionOccurred]\r\nArguments: \r\nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.50826.0&File=System.dll&Key=Async_ExceptionOccurred\r\n\r\n   at System.ComponentModel.AsyncCompletedEventArgs.RaiseExceptionIfNecessary()\r\n   at Rawr.ElitistArmoryService._webClient_DownloadStringCompleted(Object sender, DownloadStringCompletedEventArgs e)\r\n   at System.Net.WebClient.OnDownloadStringCompleted(DownloadStringCompletedEventArgs e)\r\n   at System.Net.WebClient.DownloadStringOperationCompleted(Object arg)[HttpWebRequest_WebException_RemoteServer]\r\nArguments: NotFound\r\nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.50826.0&File=System.Windows.dll&Key=HttpWebRequest_WebException_RemoteServer\r\n\r\n   at System.Net.Browser.AsyncHelper.BeginOnUI(SendOrPostCallback beginMethod, Object state)\r\n   at System.Net.Browser.BrowserHttpWebRequest.EndGetResponse(IAsyncResult asyncResult)\r\n   at System.Net.WebClient.GetWebResponse(WebRequest request, IAsyncResult result)\r\n   at System.Net.WebClient.DownloadBitsResponseCallback(IAsyncResult result)[HttpWebRequest_WebException_RemoteServer]\r\nArguments: NotFound\r\nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.50826.0&File=System.Windows.dll&Key=HttpWebRequest_WebException_RemoteServer\r\n\r\n   at System.Net.Browser.BrowserHttpWebRequest.InternalEndGetResponse(IAsyncResult asyncResult)\r\n   at System.Net.Browser.BrowserHttpWebRequest.<>c__DisplayClass5.<EndGetResponse>b__4(Object sendState)\r\n   at System.Net.Browser.AsyncHelper.<>c__DisplayClass2.<BeginOnUI>b__0(Object sendState)\r\n=======================================================",
+      "PostedDate": "2010-09-25T17:21:32.803-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "No Repro.\r\nhttp://www.elitistarmory.com/rawr/item/54803\r\nThat loads for me. If it doesn't load for you, I'd guess some sort of network interference.",
+      "PostedDate": "2010-09-25T17:29:04.197-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It all loads for us.\r\nBack = http://www.elitistarmory.com/rawr/item/54803\r\nShoulders = http://www.elitistarmory.com/rawr/item/48478\r\nChest = http://www.elitistarmory.com/rawr/item/50801",
+      "PostedDate": "2010-09-25T17:46:54.23-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T19:11:26.157-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:27:20.947-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:48.01-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

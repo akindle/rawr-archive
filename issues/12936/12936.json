@@ -1,0 +1,106 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtPaladin",
+      "DisplayName": "Rawr.ProtPaladin"
+    },
+    "ClosedComment": "Should be fixed now.",
+    "ClosedDate": "2009-04-03T14:08:30.99-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Running v32767\n \nSteps to repeat.\n1. Import from armory: Realm - Korialstrasz / Character - Derlic (a BElf Tankadin running buddy of mine)\n2. Save as - Derlic Raw\n3. Tools | Optimize click Food & Elixirs / Flasks\n4. Click Optimize - crashes instantly",
+    "LastUpdatedDate": "2013-05-16T05:25:55.737-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-04-03T09:59:56.28-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtPaladin] Crash when Optimizing",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 12936
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1773,
+      "FileName": "Rawr crash log.txt",
+      "DownloadUrl": ".\\1773"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Since someone changed Armory.cs to load paladins who spec holy shield as 'Tankadin', I suggest you manually select the model 'ProtPaladin' before you save your character.",
+      "PostedDate": "2009-04-03T11:01:40.187-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Is ProtPaladin the only model to use the new IsBuffRelevant functions? I also had a reported problem with IsEnchantRelevant earlier today. I haven't done any work recently on the model in a few days; I'll look into reverting to just plain HasRelevantStats in the meantime to get it functional.",
+      "PostedDate": "2009-04-03T11:03:46.937-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I would like to add that when I unchecked the Food & Elixir / Flasks boxes, the Optimize ran normally.",
+      "PostedDate": "2009-04-03T11:23:34.65-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I changed the model to ProtPaladin and reran the optimize with the food/elixir checked.  It crashed again.",
+      "PostedDate": "2009-04-03T11:26:02.44-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'll make sure we get IsBuff/EnchantRelevant() functionality working right in the Optimizer.\r\n\r\nI changed Armory.cs back to load protection paladins as 'Tankadin', since that's the model released with the latest beta, and the name that we're going to rename ProtPaladin to once it's ready for release. ",
+      "PostedDate": "2009-04-03T11:40:49.78-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I saw the note on change set 32778 and thought it might apply to this issue, so I downloaded and tried again - still crashing.  But with a different error, not trapped.  The crash details are attached.",
+      "PostedDate": "2009-04-03T13:58:09.603-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-04-03T13:58:11.397-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-04-03T14:08:30.99-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T16:39:12.157-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:24.073-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:35:00.863-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:55.737-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

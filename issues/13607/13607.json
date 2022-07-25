@@ -1,0 +1,85 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSWarr",
+      "DisplayName": "Rawr.DPSWarr"
+    },
+    "ClosedComment": "Found and fixed for 2.2.10 release",
+    "ClosedDate": "2009-07-08T16:10:31.197-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "war dps  tier 8 and 8.5 keep showing up as NAN in the the item lists (all pieces except the helm).  Tried reloading them from armory and the wowhead didnt fix the issue.",
+    "LastUpdatedDate": "2013-05-16T05:25:07.957-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-07-06T09:49:46.393-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSWarr] T8 and 8.5",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13607
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Can you provide an XML or armory character that we can refer to that is causing this issue?  We can't seem to reproduce it",
+      "PostedDate": "2009-07-08T10:55:04.773-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "punt / arygos   \r\n\r\njust out of curiosity I loaded up a friends warrior and it calculates the 8 and 8.5 correctly for him, however if i reload mine it has them at the bottom of the lists again with NAN next to them",
+      "PostedDate": "2009-07-08T13:25:43.293-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The bug was found and fixed.  It should be in the 2.2.10 release.\r\n\r\nTo answer your question about your friends warrior, I'd bet that he doesn't have 2/2 Unrelenting Assault and you did.  The bug had to do with calculating the number of slams you did to proc the 2pc.  We needed to know the number of slams, which means we needed to calculate how often you use every ability.  In that, we were looking at Overpower's cooldown instead of how often it procs, and Unrelenting Assault lowered the cooldown to 1sec, which means it thought you were overpowering once per second and doing negative slams :P",
+      "PostedDate": "2009-07-08T14:54:22.73-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I am having the same issue with the NaN for my arms Warrior spec, try it out with Rimilian on Korgath, this issue comes up when the Arms Stance is clicked.",
+      "PostedDate": "2009-07-08T15:18:33.39-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-07-08T16:10:31.197-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-09T12:30:42.78-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T16:41:47.643-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:00.06-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:07.957-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

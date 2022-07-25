@@ -1,0 +1,35 @@
+--- C:\DOCUME~1\dwithers\LOCALS~1\Temp\CalculationsBear.cs-revBASE.svn001.tmp.cs	Wed Aug  6 12:14:26 2008
++++ C:\Documents and Settings\dwithers\My Documents\Source\Rawr\Rawr.Bear\CalculationsBear.cs	Tue Aug  5 15:11:37 2008
+@@ -109,7 +109,7 @@
+                     "Hit Rating",
+                     "Expertise Rating",
+ 					"Haste Rating",
+-                    "Missed Attacks",
++                    "Landed Attacks",
+                     "Unlimited Threat",
+                     "Limited Threat",
+ 					"Mitigation % from Armor",
+@@ -305,8 +305,8 @@
+             calculatedStats.MLS1_3_0DPS = (MangleDamage * 1  + LacerateDamage * 3  + SwipeDamage*0)/6+LacerateDotDPS + whiteDamage / attackSpeed;
+             calculatedStats.MLS1_3_0TPS = (MangleThreat * 1  + LacerateThreat * 3  + SwipeThreat*0)/6+LacerateDotTPS + whiteThreat / attackSpeed ;
+ 
+-            calculatedStats.MLS1_0_3DPS = (MangleDamage * 1  + LacerateDamage * 0  + SwipeDamage*3)/6+LacerateDotDPS + whiteDamage / attackSpeed;
+-            calculatedStats.MLS1_0_3TPS = (MangleThreat * 1  + LacerateThreat * 0  + SwipeThreat*3)/6+LacerateDotTPS + whiteThreat / attackSpeed ;
++            calculatedStats.MLS1_0_3DPS = (MangleDamage * 1  + LacerateDamage * 0  + SwipeDamage*3)/6 + whiteDamage / attackSpeed;
++            calculatedStats.MLS1_0_3TPS = (MangleThreat * 1  + LacerateThreat * 0  + SwipeThreat*3)/6 + whiteThreat / attackSpeed ;
+ 
+             //Missed lacerates are repeated until hit, removing some swipes
+             calculatedStats.MLS1_1_2DPS = (MangleDamage * 1  + LacerateDamage * 1/(1-chanceAvoided)  + SwipeDamage*2*(1-chanceAvoided))/6+LacerateDotDPS + whiteDamage / attackSpeed;
+@@ -1263,6 +1263,12 @@
+ 			switch (calculation)
+ 			{
+ 				case "Health": return BasicStats.Health;
++				case "Hit Rating": return BasicStats.HitRating;
++				case "Expertise Rating": return BasicStats.ExpertiseRating;
++				case "Haste Rating": return BasicStats.HasteRating;
++                case "Landed Attacks": return (100 - EnemyAvoidedAttacks);
++                case "Unlimited Threat": return UnlimitedThreat;
++                case "Limited Threat": return LimitedThreat;
+ 				case "Mitigation % from Armor": return Mitigation;
+ 				case "Avoidance %": return DodgePlusMiss;
+ 				case "% Chance to be Crit": return ((2f + (0.2f * (TargetLevel - 70))) - CritReduction);

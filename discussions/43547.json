@@ -1,0 +1,138 @@
+[
+  {
+    "Id": "144743",
+    "ThreadId": "43547",
+    "Html": "Right now the gemming system in rawr is very...clunky, awkward, and confusing.&nbsp; I keep seeing people talk about this &quot;gemming revamp&quot; that the system is getting and I'm wondering what that will entail?&nbsp; (The wiki is no help at all...I can't seem to find any pages on &quot;Gems&quot; &quot;Gemming&quot; &quot;Gemmings&quot; &quot;Socket&quot; or &quot;Sockets&quot; to explain exactly how the current gemming system is supposed to work)&nbsp; I'm really hoping the optimizer &amp; even the list of best-to-worst per slot type will have an option to just *calculate* the best gem combination for any given item.&nbsp; (Is the item the 'best' when it contains 3 of the highest-valued gems, or is it the 'best' when it matches the proper socket colors to get the bonus while maintaining the best possible gems for those socket colors?).<br>\r\n<br>\r\nIs there somewhere that talks about what the revamp will contain, and maybe when we can expect it to be implemented?&nbsp; Also, is there somewhere that explains how the current gemming is supposed to work?<br>\r\n<br>\r\nIf I set a series of gemmings for the items, and then exit and come back later to load my character, my gemmings are lost :(&nbsp; This is especially annoying when I get an updated version of Rawr, since, sure, I can just copy over the item cache file from the previous version and put it in the new version's folder, but then I lose any new items that may have been added to it...leaving me to having to create all of my gemmings over again.&nbsp; Also...am I doing this right when I do my gemmings?&nbsp; Here's what I do&nbsp; (Note that I'm a jewelcrafter, so the 32 SP gems increase the number of combinations I have to 'try out' exponentially:<br>\r\n<br>\r\n(This is a screenshot of my gemming screen when I have them setup...)&nbsp; http://i9.photobucket.com/albums/a74/nZifnab/SS.jpg<br>\r\n<br>\r\nI have three different orange ones, all with SP and then either hit, crit, or haste.&nbsp; Depending on my other stats and spec rawr will oftentimes choose a different one as the 'best', so I make all 3, and I must repeat the process for a regular purple in the purple slot, and then for the prismatic JC'er gem in the prismatic slot.&nbsp; All-in-all, having to make 10 gemmings every time...very annoying.&nbsp; Am I even doing it right?&nbsp; &gt;.&lt;<br>\r\n<br>\r\n<br>\r\nWhat happens when there's an item with, say, 2 blue slots, and 2 prismatics are already best in 2 *other* items' blue slots, meaning only one more can be put in this item?&nbsp; Rawr won't do it at all right?&nbsp; Instead, it'll put two purple gems or 2 red gems in, and let the last prismatic gem fill a yellow slot elsewhere.<br>\r\n<br>\r\nSo ya...current system = very clunky.&nbsp; And how do I save my gemmings between sessions?&nbsp; (And between versions).<br>\r\n",
+    "PostedDate": "2009-01-06T09:12:00.273-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "144746",
+    "ThreadId": "43547",
+    "Html": "Also I'd like to add that when I select the &quot;Delete non-listed Gemmings&quot; option and hit &quot;OK&quot; in the FormMassGemReplacement dialog I still see a whole lot of items with the as-yet-unattainable epic gems like &quot;Runed Cardinal Ruby&quot; even though I was only going up to &quot;Runed Scarlet Ruby&quot;&nbsp; (+23 SP, and +19 SP, respectively).&nbsp; Is there a reason it's not deleting the items with gemmings I didn't add?<br>\r\n",
+    "PostedDate": "2009-01-06T09:17:34.9-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "144769",
+    "ThreadId": "43547",
+    "Html": "Don't worry, we're well aware of how clunky the current gemming system is. (Though unless you're end-tasking Rawr or something, you should never lose gemmings; you should only need to use Set Default Gems once per version)<br>\r\n<br>\r\nThe new gemming revamp will be pretty much everything you hope it will be, within some reason. We obviously can't just try every possible gem combination to find the best, but we can try a variety of per-model suggestions, which you can turn on/off, add to, etc, and show the best one, expandable to the best 5 or so. Here's our current in-development design (hope the programming talk isn't too thick):<br>\r\n",
+    "PostedDate": "2009-01-06T10:09:58.69-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "144770",
+    "ThreadId": "43547",
+    "Html": "(I'm a professional programmer, lay it on me)<br>\r\n<br>\r\nedit to add:&nbsp; I setup that gemming I had in the screenshot in my original post, saved my character, exit, opened the program again, and then went back into the gemming dialog and it was empty again &gt;.&lt;&nbsp; Didn't seem to have saved it at all?&nbsp; (The items got saved, but not the gemming 'template'.&nbsp; Also, it still has some gemmings that I didn't set, like uncommon-quality and epic-quality ones, while all I set were rare-quality and JC'er only ones<br>\r\n",
+    "PostedDate": "2009-01-06T10:10:58.387-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "144773",
+    "ThreadId": "43547",
+    "Html": "'Item' will contain just the data about a general version of the item; not what gems or enchant it as. Stats, Name, Source, Weapon Properties, etc.<br>\r\n<br>\r\n'ItemInstance' (open to better names for this) will contain a reference to an Item, as well as what gems it has socketed, <em>and what enchant is on it</em>.<br>\r\n<br>\r\n'GemTemplate' will contain:<br>\r\n<ul>\r\n    <li><strong>ID</strong>: an ID for the gem template for serializing the enabled state of built-in GemTemplates</li>\r\n    <li><strong>Enabled</strong>: whether the gem template should be used</li>\r\n    <li><strong>Group</strong>: a heading that the gem template appears under, and can be mass enabled/disabled by, for ease of usability</li>\r\n    <li><strong>Red, Yellow, Blue, Meta, Prismatic</strong>: What gem to put in each color slot. (Prismatic being colorless slots, ie BS added slots</li>\r\n</ul>\r\nModels will provide a list of built-in gem templates that are relevant to their model, for a variety of gear requirements and gem quality levels, though only blue quality, commonly used templates should be enabled by default. For example, I expect there will typically be 4 groups of built-in gem templates: Rare Common, Rare Obscure, Epic Common, Epic Obscure, with just Rare Common enabled by default. Users will be able to enable/disable single gem templates, or whole groups of templates with one click. Try not to provide/enable too many gem templates, as performance will suffer; hoping to have ~5 enabled by default for most models, perhaps up to 10. Users will also be able to add custom gem templates, which will go in a &quot;Custom&quot; group, and be saved with the character. <br>\r\n<br>\r\nMethods in CalculationsBase will collect all the enabled gem templates. When items need to be compared, ItemInstances will be generated to fulfill each enabled gem template, plus one for the currently equipped gemming, and any custom gemmings (users can define custom gemmings for an item that will be saved in the item cache). The best (or current, if it's equipped) ItemInstance of each Item will be displayed in the chart, and will be expandable to show the top 5.<br>\r\n",
+    "PostedDate": "2009-01-06T10:14:05.537-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "144776",
+    "ThreadId": "43547",
+    "Html": "Oh, the contents of that dialog doesn't save because there's nothing to save. That dialog is for defining what gemmings you want; as soon as you hit OK, it creates all of those. There's no need to go back to that dialog because you don't need to recreate them, the items are saved. (And again, that's our old system, that's being replaced because it's all clunky and unintuitive, we know. :) )<br>\r\n",
+    "PostedDate": "2009-01-06T10:17:17.683-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "144777",
+    "ThreadId": "43547",
+    "Html": "Again, though, when I check that &quot;Delete non-listed Gemmings&quot; checkbox it still keeps several non-listed gemmed items in the lists, and I'm not sure why.<br>\r\n<br>\r\nThe changes sound interesting &amp; intriguing...Here's to hoping it comes out soon ;)<br>\r\n<br>\r\n<br>\r\n....Did you really have to code it in C#?&nbsp; Do I *really* have to buy Visual Studio if I want to have a gander at the source code and see how it all plays together?&nbsp; doh &gt;.&lt;<br>\r\n",
+    "PostedDate": "2009-01-06T10:23:18.153-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "144782",
+    "ThreadId": "43547",
+    "Html": "Equipped gemmings will also be kept through &quot;Delete non-listed Gemmings&quot;. That's probably what you're seeing.<br>\r\n<br>\r\n<em>&quot;Did you really have to code it in C#?&quot;<br>\r\n</em>C#/.NET was/is the only really viable platform for Rawr.<br>\r\n<br>\r\n<em>&quot;Do I *really* have to buy\r\nVisual Studio if I want to have a gander at the source code and see how\r\nit all plays together?&quot;</em><br>\r\nOf course not. Visual C# Express 2008 is free. <a href=\"http://www.microsoft.com/express/vcsharp/\">http://www.microsoft.com/express/vcsharp/</a>. And I'm pretty sure that there are a few other C# IDEs available too, if you prefer.<br>\r\n",
+    "PostedDate": "2009-01-06T10:35:38.28-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "144790",
+    "ThreadId": "43547",
+    "Html": "&quot;<em>Equipped gemmings will also be kept through &quot;Delete non-listed Gemmings&quot;. That's probably what you're seeing.</em>&quot;<br>\r\n<br>\r\nHmm...no....I don't have any items with the epic or uncommon cuts, or oddly-useless gems like the Int/Spellpower Monarch Topaz equipped, but when I set the interface to only equip Potent, Veiled, Reckless Monarch Topazzes, Runed Scarlet Rubies, Glowing Twilight Opals, and Runed Dragon's Eyes (Which are also the only ones found in any of the equipped gear in my Rawr profile), and check that box to delete ones that don't include these gemmings, I still see a whole lot of the epic gems in the items, as well as some uncommon gems, and a few of the afore-mentioned useless rare-quality ones like int/SP&nbsp; (I'm a mage, I guess these gem types may be nice...for a priest).<br>\r\n<br>\r\nThe only fix I've found is by going through each slot, right clicking one of the items that is appropriately-gemmed, clicking &quot;delete duplicates&quot;, and doing this for all relevant items in the slot before performming the mass gemming.&nbsp; This is pretty tedious though, and terribly annoying when a new version of rawr comes out and I can't use my item cache anymore :( \r\n",
+    "PostedDate": "2009-01-06T10:44:56.827-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "144791",
+    "ThreadId": "43547",
+    "Html": "Well, that sounds like a bug. I'm not able to reproduce it locally, but I'm really not that worried about it; just trudge through the mess of gemmings until we get what we're working on done.<br>\r\n",
+    "PostedDate": "2009-01-06T10:49:51.87-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "144794",
+    "ThreadId": "43547",
+    "Html": "It is &quot;<em>Equipped gemmings and gemmings marked as available for optimizer will also be kept through &quot;Delete non-listed Gemmings&quot;.</em>\r\n",
+    "PostedDate": "2009-01-06T10:53:37.427-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "144798",
+    "ThreadId": "43547",
+    "Html": "Oh that's rather annoying &gt;.&lt;&nbsp; So i have to un-diamond all the items before I gem, then re-diamond them....ugh.&nbsp; I think it should only do that for items that have the purple diamond, not the green diamond :(<br>\r\n",
+    "PostedDate": "2009-01-06T11:02:19.437-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "144805",
+    "ThreadId": "43547",
+    "Html": "Is the new gemming system going to give us the option to view item rankings without gems at all? or is this option already available, and I'm just blind? I would really like this option, would allow me to build a base set, and then optimize for my needs and play style with gems much more easily.<br>\r\n",
+    "PostedDate": "2009-01-06T11:34:08.413-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "144807",
+    "ThreadId": "43547",
+    "Html": "Yes I agree that it shouldn't be affecting green diamonds (I very rarely use green diamonds so I never noticed that it doesn't work correctly).<br>\r\n<br>\r\nThe new system will by default only show the best instance (or currently equipped) of an item (with an option to show best n). Currently the closest thing is &quot;build upgrade list&quot; which will give you only the instance of an item with the highest upgrade value. \r\n",
+    "PostedDate": "2009-01-06T11:43:28.163-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "144815",
+    "ThreadId": "43547",
+    "Html": "w01ph:<br>\r\nTools -&gt; Set Default Gems for Equipment, then don't put in any gems,\r\nchoose to delete non-listed gemmings, and hit OK.&nbsp; That'll show only\r\ngear with no gems (excepting whatever gemmed gear you have equipped).&nbsp;\r\nHowever, this ranking isn't going to be particularly useful, as the\r\nnumber and type of gem slots on a piece of gear won't be taken into\r\naccount.&nbsp; You're better off just setting a reasonable gemming set.<br>\r\n",
+    "PostedDate": "2009-01-06T11:52:27.493-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "144829",
+    "ThreadId": "43547",
+    "Html": "That new gemming system sounds a lot better.&nbsp;&nbsp; What kind of ETA are you guys shooting for the new system to be testable?<br>\r\n",
+    "PostedDate": "2009-01-06T12:18:05.563-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "144858",
+    "ThreadId": "43547",
+    "Html": "Same timeframe as WoW 3.1.<br>\r\n",
+    "PostedDate": "2009-01-06T14:01:33.61-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,121 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "Fixed for next release.",
+    "ClosedDate": "2010-04-23T13:33:43.623-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Rawr 2.3.15 seems to always optimize with epic gems, even though epic gems are disabled both in the main window and in gemming templates. This is a step \"up\" from 2.3.14 which defaulted back to epic templates when a new character or XML was loaded, but would honor template selections for optimizing once they were changed.\n \nReproduceable by importing characters from the armory, unchecking all gems, disabling epic templates, enabling rare templates, confirm gem templates are enabled for the optimizer, optimizing with override regem unchecked. Seems to affect all modules (tried mage, warlock, prot- and holy paladin).",
+    "LastUpdatedDate": "2013-05-16T05:21:00.063-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-04-20T06:51:48.68-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] Optimizer ignores gem selection/templates",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 3,
+    "Id": 17315
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3411,
+      "FileName": "tychara tank.15.xml",
+      "DownloadUrl": ".\\3411"
+    },
+    {
+      "FileId": 3412,
+      "FileName": "chambica.15.xml",
+      "DownloadUrl": ".\\3412"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Yup, this pretty much breaks .15 for me.  *starts waiting on .16 hotfix*",
+      "PostedDate": "2010-04-20T11:32:32.243-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-20T22:23:32.48-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Appears to affect .14 as well.  I *believe* that what's happening is that the optimizer honors the custom gemming templates, but not the gemmingtemplateoverrides.",
+      "PostedDate": "2010-04-20T22:24:49.167-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": ".14 works with a fresh character.  ignore my previous.",
+      "PostedDate": "2010-04-20T22:43:00.847-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-21T10:42:11.36-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It seems that the gemming templates are only limiting what appears on the gear list, but are being ignored by the Optimizer engine.  I'm including two different character files I've seen this on, and that it can be reproduced on.\r\n\r\nIn both cases, you'll see I have selected a Rare gemming template.  I have selected, but not equipped, a better glove item than I currently have.  In the Tychara file, it's Sanctified Scourgelord Handguards.  In the Chambica file, it's Nobundo's Handguards of Conquest.  On the equipment list, both are showing their top gemming as rare gems.  If you right-click and select Evaluate Upgrade, the resulting list for both shows them as gemmed with Epic gems.  The same result applies if you check them as available and use the Optimizer.  Furthermore, if you allow the Optimizer to Override Regem, it will regem everything on the character with epics, in defiance of the Gemming Template.\r\n\r\nHope this helps.",
+      "PostedDate": "2010-04-22T07:53:25.083-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-22T07:53:26.16-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "attaching .xml #2",
+      "PostedDate": "2010-04-22T07:53:57.96-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-22T07:53:58.49-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-22T08:20:34.053-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-23T13:33:43.623-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:15.273-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:28:46.74-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:00.063-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "262051",
+    "ThreadId": "76635",
+    "Html": "<p>So I've found myself in a situation where I'd like to use the Batch Tools: I'm a DPS Warrior in my guild who is arms for most fights (as a traumabot for our cat and other DPS warrior). &nbsp;For AOE-intensive fights (H. Anub), fights without a cat (10mans), or fights with a bear tank, I go Fury.</p>\r\n<p>I had never used Batch Tools, so checked out the wiki page on them, and it seems out of date, and there are some options that are a little unclear. &nbsp;I'm willing to update the wiki page as I get these questions answered, but was wondering if somebody could answer a few questions for me.</p>\r\n<ol>\r\n<li>What does &quot;Replace Unavailable&quot; do/mean?</li>\r\n<li>What does the &quot;Single Item Upgrades&quot; box mean?</li>\r\n<li>What does the &quot;Locked&quot; box mean for each character file? &nbsp;I'm assuming it's that I don't want this file to change at all. &nbsp;Is there a situation where we'd actually want this as opposed to using progressive optimize/batch?</li>\r\n<li>It sounds as though Progressive Optimize is best used when you have one &quot;Main Spec&quot; and then one &quot;Off-Spec&quot;...ie, if I most wish to optimize my Fury DPS, I should have my Fury character be the first in the list and then use progressive optimize. &nbsp;This would first optimize my fury character, then set all my fury gear to only look at their gems/enchants and then optimize on Arms. &nbsp;Is that correct?</li>\r\n<li>For a while, I had two copies of the same ring (Gormok's Band). &nbsp;It has a gem slot. &nbsp;I would like to gem one as arms and one as fury. &nbsp;Is this possible? &nbsp;My guess is no.</li>\r\n<li>Because I'm in the same model (DPSWarr), I built my two characters by saving, then changing options/equipped gear and saving again. &nbsp;I have only one of each of my currently equipped items, but they really could be gemmed in a variety of ways (ie, I could gem Hit in an item used in both slots, or I could gem Hit in one belt for Arms and then Expertise in another belt for Fury. &nbsp;Likewise, I could enchant my gloves for Hit, Expertise, or AP. &nbsp;So, I don't really want to pick one glove and say &quot;This can only be enchanted with Hit&quot;. &nbsp;Would the Batch/Progressive optimizes do exactly what I'm looking for?</li>\r\n</ol>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-11-30T14:57:01.907-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "262054",
+    "ThreadId": "76635",
+    "Html": "<p>Oh, and another question:</p>\r\n<p>7. Is it possible to have Optimization requirements (ie, Expertise &gt; 26) while using the batch tools? &nbsp;I want my %chance to miss on Fury to be 0 for fights where I'm fury and interrupting (10man H faction champs or General, for instance).&nbsp;</p>",
+    "PostedDate": "2009-11-30T15:01:43.1-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "262129",
+    "ThreadId": "76635",
+    "Html": "<p>1. This is usually used in the following scenario. Assumption is that you have availability of items specified with blue diamonds. Now imagine you would regem one of your items. You would uncheck blue diamond on old gemming and set the new one and then use Set Available Items command to copy availability settings to all your characters in the batch. Now if you had that item equipped in some of your profiles it'll no longer be a valid profile (i.e. it's using some nonavailable items). What this does is it goes through your characters and for any equipped item that is not available it'll replace it with the closest match (first same item id or if it's not available at all any other available item for that slot).</p>\r\n<p>2. That is the equivalent of evaluate upgrade context menu&nbsp;for items. You can enter either item name or item id and any upgrade list command in the batch tools will only evaluate for that item instead of for everything.</p>\r\n<p>3. Locked applies to the batch and progressive optimizations and means don't change that character. It also means whatever items are used in that character should not be changed for other characters (basically locking the gemmings/enchants for items used in those characters). This is useful if for example you first run normal optimize on one character and then manually move some gems around to minimize changes and then you don't want the progressive optimizer to change that. This was a lot more important before we had the postprocessing step for gem shuffling.</p>\r\n<p>4. Correct, it is also more efficient performance-wise compared to the batch optimization.</p>\r\n<p>5. The workaround for that is to create a copy of the item in item cache and give it an id outside of range of normal items and then just mark both as available.</p>\r\n<p>6. Progressive optimize is what you're looking for (or batch if you want to give both equal priority).</p>\r\n<p>7. Optimization requirements are saved with the character and batch tools uses those. The score it shows is actually the optimization score (whatever you have selected to optimize).</p>",
+    "PostedDate": "2009-11-30T19:52:39.46-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269148",
+    "ThreadId": "76635",
+    "Html": "<p>More Questions (continued numbering for identities sake):</p>\r\n<p>8. What, specifically, does 'Set Available Items' do to each of the characters in the Batch list?</p>\r\n<p>9. What is the correct method of use for the following scenario?<br>- File 1: DPSWarr: Arms build, supposed to be primary spec and all out DPS<br>- File 2: ProtWarr: Standard Tank Build, supposed to be secondary spec when raiding and full on tanking<br>- File 3: The red-headed stepchild!&nbsp; ProtWarr: Dual Wielding Tank Build, supposed to be for screwing around while farming heroics for badges (since I'm wearing T8-9 gear and that's well over what's necessary for heroics, I like to mix in some DPS gear to speed up Heroics when I can).<br>Files 1 and 2 I normally handle individually, optimizing them for maximum performance in their setups, etc. File 3 I want to be part of a Progressive optimize that uses the left-over gear from Files 1 and 2 and extra gear that I have sitting in the bank (but wouldn't normally mark available on 1 &amp; 2 as they would slow the optimizer unneccessarily). I've got the optimizer req's set in File 3 to keep me crit immune against a level 81 mob (for a good averaging sake, since I won't be facing any 83's while wearing that set) and hit capped for a level 81 mob so hose should be getting handled by the progressive (if I read the documentation correctly).</p>\r\n<p>10. A problem that I am running in to is that when I lock Files 1 &amp; 2, I can't run a progressive optimize for file 3. Should I be using a different option?</p>",
+    "PostedDate": "2009-12-18T17:47:58.77-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269153",
+    "ThreadId": "76635",
+    "Html": "<p>8) Available items means all the diamond settings. What this option does is copy the diamond settings that are in effect in the currently&nbsp;shown character (in the main Rawr window)&nbsp;and applies them to all characters in the batch.</p>\r\n<p>9) This exact situation isn't directly supported, but you can achieve the desired effect. Available items for progressive optimize are currently always based on the first character in the list. To have it use the available items from the 3rd one you can take into account the effect of locking the gear. Set your File 3 as the first one in the batch list. Add File 1 and File 2, but check the Locked column for them. Then doing the progressive optimize will do exactly what you want.</p>",
+    "PostedDate": "2009-12-18T17:58:25.373-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269155",
+    "ThreadId": "76635",
+    "Html": "<p>So putting File 3 first but still having the other two locked will do it? Awesome.</p>",
+    "PostedDate": "2009-12-18T18:00:57.737-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269157",
+    "ThreadId": "76635",
+    "Html": "<p>8)&nbsp;&nbsp; Highlight one of the spec (might actually have to have it showing in the main Rawr screen), then hit this and it marks all the items in that spec as available in all the other specs.&nbsp;&nbsp; Basically, you just keep all your items updated in the one file and copy them across.</p>\r\n<p>&nbsp;</p>\r\n<p>9)&nbsp; In this particular case where there is very little crossover between your first two &quot;important&quot; specs you can easily use the progressive optimise.&nbsp; This will fully optimise your DPS spec first, then use those items (with those enchants and gems) or other unused items to work out your best Tanking set.&nbsp;&nbsp; Lastly, it will use those gemmed &amp; enchanted pieces plus any remaining unused items to come up with your best possible DW tank spec.</p>\r\n<p>If there was more crossover between the top two specs (like there is with druid tank &amp; kitty gear) then this wouldn't work as well as something that is a small upgrade for your DPS but a really big tank upgrade might be used in the DPS spec with DPS gems &amp; enchants.&nbsp;&nbsp; In that case you want the batch optimise (I believe) and you would set the weighting to be something like&nbsp; DPS&nbsp; 100&nbsp;&nbsp;&nbsp; Tank&nbsp; 60&nbsp;&nbsp;&nbsp; DW&nbsp; Tank 1</p>\r\n<p>This would focus mainly on the DPS gear but if something was a better used the Tank spec then it would be used there instead (and the DW being wieghted so low would get leftovers).</p>\r\n<p>&nbsp;</p>\r\n<p>The exact numbers for the weightings I haven't played with and don't really know how they work so more info on this would be greatly appreciated.&nbsp; I can't play with it now as the 2.3.3 item DB is terrible due to Wowheads bad data - so I am updating from Armory, but that takes about 2hrs :(</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-12-18T18:11:58.42-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269158",
+    "ThreadId": "76635",
+    "Html": "<p>Once I've played with it some more I'm gonna try writing some Average User scenarios on the Batch Tools page to walk users through how to use it.</p>",
+    "PostedDate": "2009-12-18T18:15:14.083-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

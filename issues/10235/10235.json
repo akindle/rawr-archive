@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-08T06:51:06.777-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "During Raw initialization, after the splash screen display and the main window openning, Raw crashes (see the stack trace dump) without letting me do anything. No .log file  created.\n \nLaunch done on an iMac core duo Mac 10.5 in french, Mono 1.9.1_3\n \nI guess that some text to real conversion did not use the system locale to retreive the decimal separator (period instead comma)\n \nUnhandled Exception: System.FormatException: Unknown char: .\n  at System.Double.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] \n  at System.Double.Parse (System.String s) [0x00000] \n  at System.Convert.ToDouble (System.String value) [0x00000] \n  at System.Windows.Forms.XplatUICarbon.GetMessage (System.Object queue_id, System.Windows.Forms.MSG& msg, IntPtr hWnd, Int32 wFilterMin, Int32 wFilterMax) [0x00000] \n  at System.Windows.Forms.XplatUI.GetMessage (System.Object queue_id, System.Windows.Forms.MSG& msg, IntPtr hWnd, Int32 wFilterMin, Int32 wFilterMax) [0x00000] \n  at System.Windows.Forms.Application.RunLoop (Boolean Modal, System.Windows.Forms.ApplicationContext context) [0x00000] \n  at System.Windows.Forms.Application.Run (System.Windows.Forms.ApplicationContext context) [0x00000] \n  at System.Windows.Forms.Application.Run (System.Windows.Forms.Form mainForm) [0x00000] \n  at Rawr.Program.Main () [0x00000]",
+    "LastUpdatedDate": "2013-05-16T05:27:15.13-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-05-26T00:37:07.92-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Unhandled System.FormatException",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 10235
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Known problem, this is a bug in Mono, nothing I can do about it. Until they have it fixed, you'll have to switch your decimal separator in order to use Rawr.",
+      "PostedDate": "2008-05-26T08:09:36.687-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-08T06:51:06.777-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:49.483-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:27:15.13-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "285264",
+    "ThreadId": "83007",
+    "Html": "<p>Greetings.</p>\r\n<p>I'm trying to find the right way to select between mutually exclusive items.&nbsp; In most cases, it doesn't matter, as you can only equip one of them at a time anyway.&nbsp; However, in the case of rings and trinkets, it can cause problems.</p>\r\n<p>One example is the Ashen Verdict reputation rings.&nbsp; You can only have one of them at a time, but there is a quest to swap back and forth at any time. I'm trying to decide between two rings:</p>\r\n<p>Swap Quest: <a href=\"http://www.wowhead.com/?quest=24846\">A Change of Heart</a><br>Ring 1: <a href=\"http://www.wowhead.com/?item=50402\">Ashen Band of Endless Vengeance</a><br>Ring 2: <a href=\"http://www.wowhead.com/?item=52572\">Ashen Band of Endless Might</a></p>\r\n<p>I also have a few other rings obtained from other sources, and I'm trying to find the best combination.&nbsp; However, I don't know how to tell Rawr that I can only ever obtain one of the Ashen Band rings.&nbsp; If I mark both as available, Rawr will recommend I wear both.&nbsp; If I evaluate upgrade on one while wearing the other, again, it recommends I wear both.</p>\r\n<p>How can I tell Rawr to only consider one of them at a time?</p>",
+    "PostedDate": "2010-02-03T05:36:34.3-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "285284",
+    "ThreadId": "83007",
+    "Html": "<p>It is not possible to do this at the moment. The best way would be to first mark only one as available and optimize with it and then repeat this with only the other ring marked.</p>",
+    "PostedDate": "2010-02-03T06:21:10.657-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "285289",
+    "ThreadId": "83007",
+    "Html": "<p>Many thanks for the reply. =) I was mostly afraid that I was missing something blatantly obvious, as is my wont. =)</p>",
+    "PostedDate": "2010-02-03T06:29:31.543-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "285457",
+    "ThreadId": "83007",
+    "Html": "<p>I was actually just going to pose this question to the devs myself :) &nbsp;We may be able to tie it in to how we are dealing with Unique(type) gear (ie, that you can't have both normal and heroic versions of an ICC trinket/ring).</p>",
+    "PostedDate": "2010-02-03T12:37:07.767-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "285483",
+    "ThreadId": "83007",
+    "Html": "<p>I was considering such a solution myself also. Basically have a int[] UniqueIds listing the ids that are considered &quot;the same&quot; for the purposes of uniqueness stored on the items. Having it null and Unique true can be interpreted as was now for backwards compatibility. The main question though is where would we populate the data for this from. One easy option is not to and just provide it as a feature for users that want to modify their item cache themselves for whatever specific purpose they are trying to solve.</p>",
+    "PostedDate": "2010-02-03T13:30:49.173-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "285818",
+    "ThreadId": "83007",
+    "Html": "<p>I think it would be beneficial for us to do this with the Heroic-Unique ICC loot when loading an item from the DB. &nbsp;if ((Item.Slot == Trinket || Item.Slot == Finger || Item.Slot == OneHand || Item.Slot == TwoHand) &amp;&amp; (Item.ItemLevel &gt;= 251 &amp;&amp; Item.ItemLevel != 258)) CheckItemDBForHeroicUnique(Item); // possibly replace the ILvL check with a source check to filter out quest rewards</p>\r\n<p>CheckItemDBForHeroicUnique(Item i) {</p>\r\n<p>&nbsp;// Get list of items that share a name with i. &nbsp;If one is 264, and another is either 251 or 277, then populate their UniqueIds</p>\r\n<p>}</p>\r\n<p>&nbsp;</p>\r\n<p>This could be either as a post-process to updating the item DB, or called after each item that meets the if-else case</p>",
+    "PostedDate": "2010-02-04T07:43:14.45-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "285947",
+    "ThreadId": "83007",
+    "Html": "<p>Wouldn't this code work pretty much the same way as the Dragonseyes code does right now? If you try to equip more than one it just disables both. The rest is a matter of lists to check, filled with item Id's (string names would be performance intensive, harder to check and prone to typo's).</p>",
+    "PostedDate": "2010-02-04T13:28:51.407-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "285958",
+    "ThreadId": "83007",
+    "Html": "<p>I'd prefer it to work the same way as current Unique does. I don't think we need to do anything more than that.</p>",
+    "PostedDate": "2010-02-04T13:49:42.02-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "285972",
+    "ThreadId": "83007",
+    "Html": "<p>Agreed. &nbsp;The problem with Dragonseyes is that they are a unique solution. &nbsp;We don't want to have dozens of Unique(Deathbringer'sWill) Unique(Saurfang'sCold-ForgedBand) Unique(DeathwhisperFangedSkull) type settings. &nbsp;That's not very performant.</p>\r\n<p>The reason I was using names is because it makes it automatable. &nbsp;We don't want to build a list of all of these items by hand when the rule is pretty easy to follow. &nbsp;If they have the same name, fit into one of the multi-equip slots (MH,OH,Trinket,Ring), and their ilvls are one of (251, 264, 277), they fit this bill. &nbsp;If in the future (possible 3.4 or come Cataclysm) they continue down this path of unique, we can expand the logic.</p>\r\n<p>One thing that may make this easier is if Wowhead/Armory include the unique info; we can add an attribute called UniqueName or UniqueID based on how this data is presented. &nbsp;Regardless, I agree that tying this in to our current Unique implementation should be sufficient.</p>",
+    "PostedDate": "2010-02-04T14:14:19.157-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,1394 @@
+[
+  {
+    "Id": "193478",
+    "ThreadId": "57253",
+    "Html": "<p>I thought that since soooo many changes had been made over the last several weeks, we should restart our discussion on DPSWarr in it's current state (<span style=\"color:#ff0000\"><strong>v2.2.24</strong></span> and moving).</p>\r\n<p>Please make your posts regarding this module here so that we can keep things centered and discuss as a community regarding the model at once.</p>\r\n<p>I'll also try to keep this post up to date with Known Issues on DPSWarr (as of the current working unreleased code, meaning when you see a release, we've probably done work on it after that point).</p>\r\n<p><span style=\"color:#ff0000\">If you are finding errors with your character in Rawr, please either post an XML of your character or the character name+server so we can armory them and find the problem.</span></p>\r\n<p><strong><span style=\"color:#008080\"><em>I've moved this to the Model Status Page</em></span></strong></p>",
+    "PostedDate": "2009-05-22T22:37:36.17-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "194004",
+    "ThreadId": "57253",
+    "Html": "<p>Still missing Heroic Presence (Draenei Aura) as an option.</p>\r\n<p>ArP is still borked. Default armor should nowbe 10643, as opposed to 13083. &nbsp;No changes to ArP as per 3.1 and onward seem to have been implemented. &nbsp;The rating to ercentage conversion has gotten a 25% buffage. &nbsp;&quot;Up to&quot; language. &nbsp;1232 (100% ArP effectiveness) cap. &nbsp;Sunders/FF/Mace Spec/Battle Stance are all additive, as of last I've heard. &nbsp;I don't remember about Shattering Throw, but I don't even think that's been modeled yet, ifI remember correctly.&nbsp; ArP could, as of a week or two ago, go negative, but that aforementioned 100% ArP effectiveness cap has since been put in place.</p>\r\n<p>Sorry if it seems fragmented. &nbsp;=D &nbsp;There are also two formulae for determining ArP, based on a conditional. &nbsp;Please refer to http://elitistjerks.com/f31/t29453-combat_ratings_level_80_a/p17/#post1199759 , from about the post linked on down to the most current. &nbsp;Astryl probably has been toing with this, as well.</p>",
+    "PostedDate": "2009-05-25T13:32:05.123-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "194010",
+    "ThreadId": "57253",
+    "Html": "<p>ArP is controlled by Rawr.Base, not DPSWarr as is Heroic Presence from Draenei</p>\r\n<p>Selecting the armor to 10643 is something you can do manually but if I need to I'll change the default on the combobox.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-05-25T13:52:44.373-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195989",
+    "ThreadId": "57253",
+    "Html": "<p>I might as well throw this formula change into the mix</p>\r\n<p>http://blue.mmo-champion.com/28/17367760070-newly-discovered-rage-ghost-nerf-unveiled.html</p>\r\n<p>&quot;<span>In the formulas people are using, there is a constant value which is labeled as &lsquo;c&rsquo;. At some point in the past, someone calculated a formula for determining c based on their level and that formula is not correct past level 70 as this value needs retuning from time to time like when a new expansion comes out. The value listed for c is 320.6 when it is actually 453.3.&quot;</span></p>\r\n<p>For: <span><strong>Rage = (7.5d/c+f*s)/2</strong></span></p>",
+    "PostedDate": "2009-05-30T09:35:18.563-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "196487",
+    "ThreadId": "57253",
+    "Html": "<p>Not sure if this needs a new thread or not but here goes... when I load my warrior into Rawr he comes up fine as prot, but when I log off as arms and then load from armory into Rawr, all gear comes up as &quot;NaN&quot;.&nbsp; So, I can't make any dps gear comparisons.&nbsp; Is this a new issue, or to be expected?&nbsp; I'm happy to start a new thread if warranted.</p>\r\n<p>- Scott</p>",
+    "PostedDate": "2009-06-01T10:17:34.673-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "196589",
+    "ThreadId": "57253",
+    "Html": "<p>One thing I'd mention is that Arms already has enough spare rage to use Heroic Strike resonably often--even in T7-level gear, it's definitely a consideration. So, I'd try to make sure there was support for it. :)</p>\r\n<p>(It's especially a resonable DPS gain with Incite builds, which are increasingly popular as an optimal DPS build with decent gear.)</p>",
+    "PostedDate": "2009-06-01T15:15:27.563-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "196610",
+    "ThreadId": "57253",
+    "Html": "<p>@Hinalover: I checked the post about Rage and some other areas and found that it was correct to go ahead and update the number. As I have done so now, there is a greater rage generation in the Arms build (I assume same for Fury but I didn't have time to test it.</p>\r\n<p>@ScottAllen11: NaN is what occurs when an invalid number show up somewhere in the calcs. If you can send me your character name and server I'll try to download it and see where the breakpoint is.</p>\r\n<p>@EvanM: I'm not sure how Incite builds would increase DPS for Arms. There is some increase in the damage for Heroic Strike but you are hardly ever doing it due to lack of rage and it's major cost on use (30-40 total rage lost per use). Due to the slow swings on your main-hand weapon, coupled with delayed swing timers from each Slam, there's not much to spare and you'd be losing a lot to heroic strike not generating any (even coupled with Glyph of HS). Also, you are forced to spend points on Improved Bloodrage (which don't add up to the loss from the adding HS) and Improved TC, which isn't even in the rotation yet (will be adding TC when we get Multi-mob targeting in place). Do you have an example of a character that is successfully set up with this I can try out in Rawr?</p>",
+    "PostedDate": "2009-06-01T16:40:17.8-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "196627",
+    "ThreadId": "57253",
+    "Html": "<p>I'm just speaking from personal experience.</p>\r\n<p>I use Heroic Strike quite a lot in real-raiding scenarios, especially during Heroism and after Bladestorm.&nbsp;The rage spikes for Arms are quite high, really, and it's effective to dump off excess Rage when you spike above 80-90, since any unused Rage will be wasted by the next white swing if you don't burn some of it down anyway.</p>\r\n<p>It's also exceptionally good on fights like XT-002 with bonus damage phases, fights with inflated crit rates due to adds (Yogg, Freya, etc.), or any fights where you gain rage from environmental damage (Iron Council, Ignis, Yogg, etc.)</p>\r\n<p>Incite builds have regularly been shown to come ahead in both Landsoul's sheet and in SimulationCraft, which mirrors my in-game experiences.</p>\r\n<p>(Given that Slam only delays your swing by 0.5s when used but still has a 1.5s GCD, meaning at least 1s swing time gained per GCD, I never found that to be a huge issue as well.)</p>\r\n<p>Testing this week on General Vezax-25, I did around 5.2k DPS (which, at the time was close to the bottom of the top-20 list on WMO) and used 25 Heroic Strikes over the course of the fight. My breakdown was:</p>\r\n<p>Deep Wound 304 17.7%<br>Melee 111 16.1%<br>Slam 75 15.6%&nbsp;&nbsp; <br>Overpower(R1) 59 15.1%<br>Mortal Strike(R8) 58 11.5%<br>Execute 158,117 30 7.3%<br>Heroic Strike(R13) 25 6.1%<br>Rend(R10) 126 5.8%<br>Whirlwind 28 4.4%</p>\r\n<p>I only use Heroic Strike &gt; 80 rage, so that gives a bit of an idea on how many Rage spikes there are throughout the fight. If you look at the top reports on WMO, it's quite variable in regard to if they have an HS build or not and how much they HS. Some of the top reports HS as much as 1/3rd of all their attack, while others do none at all. Either way, both are pretty viable depending on build and circumstances.</p>\r\n<p>The other gain to Heroic Strikes is that, of course, they cannot glance therefore you gain damage in addition to the Incite crit bonus and the Impale bonuse.</p>\r\n<p>I logged out in tank gear this evening, so don't have a good gear example. I can get one tomorrow though.</p>\r\n<p>Either way, should be easy enough to calculate how much opportunity you have to Heroic Strike in a given percentage of attacks when adjusting for the normal rotation cost. Given that rage scales pretty quickly with gear and raid buffs, it seems like a good idea to calculate either way. :)</p>",
+    "PostedDate": "2009-06-01T18:12:00.553-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "197017",
+    "ThreadId": "57253",
+    "Html": "<p>My character is CalltoArms on server Lightbringer.&nbsp; I'll save him out as arms instead of prot so you can investigate the NaN's.&nbsp; Thanks!</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-06-02T15:00:40.233-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "197042",
+    "ThreadId": "57253",
+    "Html": "<p>@ScottAllen11: I just did an armory load of your character into Rawr and set the settings for Arms. I'm showing 1876 DPS with no NaN's. Perhaps try running an update on Rawr to latest unreleased source and build it. It may be something we have already fixed.</p>\r\n<p>Also, a few notes I see about your character:</p>\r\n<p>You are using Glyph of Overpower and Glyph of Sunder Armor.<br>- Sunder Armor is a tanking glyph, I would suggest replacing it with Glyph of Mortal Strike.<br>- Glyph of Overpower, while not a horribad glyph and certainly seems like it makes sense to use, doesn't really do much of anything for you. I would suggest replacing with Glyph of Execution.</p>\r\n<p>Changing the two glyphs takes your DPS from 1876 to 1944</p>\r\n<p>You are not using Anger Management or Weapon Mastery<br>- Anger Management is nice for the constant rage gain, and Unbridled Wrath has helped a lot of rage starved warriors if you really need it.<br>- Weapon Mastery would fill almost all of the Expertise gap you are missing. If you are intentionally leaving this gap so you can Overpower more often, DON'T. this is a common DPS killer for arms builds</p>\r\n<p>You are gemming incorrectly<br>- The purple &quot;Balanced&quot; gems (+16 AP + 12 STAM) are incorrect, you should be using &quot;Sovereign&quot; (+8 STR, +12 STAM), AP doesn't get the percentage buffs that STR does<br>- If the socket bonus isn't an offensive stat, don't gem for it. Your Neck for instance has a socket bonus of +6 STAM, which doesn't give you any DPS. Gem for pure STR &quot;Bold&quot; or ArP &quot;Fractured&quot; instead.<br>- Until you reach the Hit Cap (265 Rating or 8% to hit) Gem for straight Hit &quot;Rigid&quot; (+16 Hit) then straight Expertise &quot;Precise&quot; (+16 Exp). There is also the &quot;Accurate&quot; gem which is +8 Hit, +8 Exp for that last bit of hit you may need if +16 puts you too far over.</p>\r\n<p>After regemming (and taking into account the below enchant change) I was able to reach the hit and exp caps readily with your gear and even boost your str by a bunch.</p>\r\n<p>Boots enchant<br>- This was probably something you picked cuz it was available, I would recommend swapping the +22 stam enchant for Icewalker (+12 hit +12 crit)</p>",
+    "PostedDate": "2009-06-02T16:44:16.17-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "197046",
+    "ThreadId": "57253",
+    "Html": "<p>No surprise that my gear's a mess, without the guidance of Rawr... and the fact that half of that gear is my tanking gear.&nbsp; Now I can put my blacksmith to work on some dps gear and fix the gems.&nbsp; Picked a common dps talent spec but I do have rage issues so i think anger management would be a good pick up.&nbsp; Thanks for the advice and I'll let you know if the NaN's return.</p>",
+    "PostedDate": "2009-06-02T17:04:50.717-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "197878",
+    "ThreadId": "57253",
+    "Html": "<p>I just found this thread (I was on vacation all of last week), so I figured I'd chime in here. &nbsp;I'm largely working on the fury side while Jothay is largely working on the arms side (although we do overlap sometimes).</p>\r\n<p>@BrWarner:&nbsp;<span style=\"color:#30332d\">A<span style=\"font-style:italic\">rP is still borked. Default armor should nowbe 10643, as opposed to 13083. &nbsp;No changes to ArP as per 3.1 and onward seem to have been implemented. &nbsp;The rating to ercentage conversion has gotten a 25% buffage. &nbsp;&quot;Up to&quot; language. &nbsp;1232 (100% ArP effectiveness) cap. &nbsp;Sunders/FF/Mace Spec/Battle Stance are all additive, as of last I've heard. &nbsp;I don't remember about Shattering Throw, but I don't even think that's been modeled yet, ifI remember correctly.&nbsp; ArP could, as of a week or two ago, go negative, but that aforementioned 100% ArP effectiveness cap has since been put in place.</span></span></p>\r\n<p>Jothay is right that a lot of the ArP stuff is being done at the Rawr.Base level (we pass in the targets level, armor, debuffs, buffs, and ArP; Rawr.Base gives us the damage reduction). &nbsp;My understanding on this part of Rawr is limited, but from browsing the source it is indeed using the new ArP formula the GC posted (including the ArP cap and the fact that it cannot go beyond 100% penetration). &nbsp;The only thing that was missing was the 25% buff; I've gone ahead and made the changes needed to ArP so it should be correct for all users now.</p>\r\n<p>Also, the &quot;up to&quot; that you mentioned; did you just mean that we should have our hover-tooltip say &quot;up to X% armor reduced&quot;?</p>\r\n<p>Lastly, Astry and Landsoul did testing of Faerie Fire and Sunder stacking, and reported they are multiplicative:&nbsp;http://elitistjerks.com/f31/t29453-combat_ratings_level_80_a/p15/#post1125378</p>\r\n<p>@Hinalover: The rage change was added when I got back. &nbsp;It actually results in you receiving LESS rage.</p>\r\n<p>@Jothay/Evan: Adding HS should be easy; all the calcs are there. &nbsp;Just would take a little massaging. &nbsp;We'll see if we can't get it hammered out. &nbsp;I do agree with Jothay that Heroic Striking in a rotation can be very bad, but if you have excess rage you can still get a few in during a fight. &nbsp;One thing that we are looking at adding is removing the bloodlust as an average, and instead giving you a DPSWithoutBloodlust * 0.92 + DPSWithBloodlust * 0.08 (for a 10min fight), but we really wanted to be confident in all of our other models before complicating things more.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-06-04T11:33:37.51-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "197979",
+    "ThreadId": "57253",
+    "Html": "<p>Yeah, I would say that with and without Heroism is probably a more accurate way of approaching it, since rage generation changes so dramatically for that period of time. Without HSing during Heroism, I'm pretty sure I would waste rage extremely often.</p>",
+    "PostedDate": "2009-06-04T16:27:48.16-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "198046",
+    "ThreadId": "57253",
+    "Html": "<p>Yup, my mistake, Sunders / FF / Shattering Throw are all Multiplicative.&nbsp; However, everything else is Additive: Battle Stance, Mace Spec, Hearty Rhino, Elixir of Armor Piercing, all trinket/weapon/enchant/ procs, and all passive ArP.</p>\r\n<p>I suppose, if modeled correctly, simply adding the &quot;up to&quot; language to the tooltip might help those who are less mechanics-savvy, and might be confused by the in-game tooltip.&nbsp; Adding in a line to show actual ArP might be nice for pragmatic reasons.</p>",
+    "PostedDate": "2009-06-04T21:13:31.44-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "198050",
+    "ThreadId": "57253",
+    "Html": "<p>Oh, and, for Arms, it seems that adding Poleaxe specialization when one is not wearing a Poleaxe still gets the specialization benefit as if they were.</p>\r\n<p>Typo in Glyph of Enduring Victory - the tooltip calls the ability &quot;Victory Ruch&quot;.</p>",
+    "PostedDate": "2009-06-04T21:29:38.86-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "198276",
+    "ThreadId": "57253",
+    "Html": "<p>Do you have any source that tested Battle+Mace+ArPenRating stacking additively? &nbsp;The ArPen tooltip is going to change, as there's incorrect information there (that sunder/FF changes your arpen cap, which most developers believe is not the case)</p>",
+    "PostedDate": "2009-06-05T08:35:50.91-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "198339",
+    "ThreadId": "57253",
+    "Html": "<p>Correct - because Sunder/FF/Shattering Throw stack multiplicatively, they do not affect the 100% effectiveness (1232 rating) ArP cap.</p>\r\n<p>I believe the Combat Ratings thread over at EJ corroborates it, but this is from all sources - Landsoul, Hellord, etc.&nbsp; http://eu-warrior.com/arpen.html (by hellord, I believe) shows this in a nice, simple format.&nbsp; Basically, if it's a target debuff, it's multiplicative.&nbsp; If it's a player buff, it's additive.</p>\r\n<p>http://elitistjerks.com/f31/t29453-combat_ratings_level_80_a/p19/#post1246193 as one source.</p>",
+    "PostedDate": "2009-06-05T10:48:15.903-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "198342",
+    "ThreadId": "57253",
+    "Html": "<p>Though the Draenei Aura (+1% hit for party members) may indeed be handled by Rawr.Base, unless I'm incredibly dense, I am not finding a selector for it in the model.</p>\r\n<p>(Also, the Poleaxe spec issue was fixed as of 2.2.6.)</p>",
+    "PostedDate": "2009-06-05T10:55:25.59-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "198591",
+    "ThreadId": "57253",
+    "Html": "<p>The draenei Aura is applying the PhysicalHit stat in Rawr and we had not had that set as a relevant stat. I have added that and now you can select the buff (v2.2.7 pre-release)</p>",
+    "PostedDate": "2009-06-06T13:06:11.913-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "198629",
+    "ThreadId": "57253",
+    "Html": "<p>When doing fury optimization there is no way to have it optimize with different weapons. It assumes that you have any weapon checked available to fill both slots. This is very frustrating and should be coded so that the gear selection for main and offhand weapons pulls from 2 sources and not the same.</p>\r\n<p>edit: Unless I am doing something wrong either way I like the program</p>",
+    "PostedDate": "2009-06-06T18:14:25.733-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "198633",
+    "ThreadId": "57253",
+    "Html": "<p>If you are talking about the optimizer trying to put the same weapon in both hands, edit the item to make it unique and it wont do that</p>",
+    "PostedDate": "2009-06-06T18:54:15.993-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "198675",
+    "ThreadId": "57253",
+    "Html": "<p>@gerdts: Yeah, unfortunately there's no real way to fix it the way you described. &nbsp;If the item isn't unique, it assumes you have access to both of them unless you set them as unique manually</p>\r\n<p>@BrWarner: I browsed what you linked, but it seemed that the post listed only referenced buffs that give armor penetration rating (which is obviously additive, we can watch how much our rating goes up when we get a mjolnir/grimtoll proc). &nbsp;Battle Stance and Mace Spec, however, don't give you a passive arpen rating, but an arpen percent which may or may not behave differently. &nbsp;I posted a clarification request on the forums to get this answered by somebody difinitively. &nbsp;If this is the case, we'll need to fix rawr.base</p>",
+    "PostedDate": "2009-06-07T01:06:36.253-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "198677",
+    "ThreadId": "57253",
+    "Html": "<p>Actually, check the (rather short) post that I actually linked - it mentions this specifically.&nbsp; ;)</p>\r\n<p>If it isn't fully up-to-date at the Rawr.Base level, that could account for some of the ArP inconsistencies I've been seeing in Rawr.&nbsp; It's not a whole lot, but I can definitely tell in certain areas after some close examination / comparison.</p>\r\n<p>Regardless, we'll have a definitive clarification soon enough.&nbsp; Cheers!</p>\r\n<p>(I almost want to move this discussion to the current dedicated ArP thread, but seeing as how this issue affects Warriors in particular, I'm keeping the conversation here.)</p>",
+    "PostedDate": "2009-06-07T01:23:33.627-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "198987",
+    "ThreadId": "57253",
+    "Html": "<p>Thanks guys yeah that works</p>",
+    "PostedDate": "2009-06-08T04:55:12.94-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "204108",
+    "ThreadId": "57253",
+    "Html": "<p>I have partially updated the start of this thread to v2.2.7 release</p>",
+    "PostedDate": "2009-06-22T09:28:19.327-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "204152",
+    "ThreadId": "57253",
+    "Html": "<p>great! @jothay, have a look at this <a href=\"http://rawr.codeplex.com/Thread/View.aspx?ThreadId=60240\">http://rawr.codeplex.com/Thread/View.aspx?ThreadId=60240</a></p>",
+    "PostedDate": "2009-06-22T11:09:23.427-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "204336",
+    "ThreadId": "57253",
+    "Html": "<p>Okay, I have typed out, and subsequently had deleted by some means or another, a nice long post.&nbsp; Three times already.&nbsp; Bah.&nbsp; Here goes, with some new 2.2.7 comments...</p>\r\n<p><strong>As of 2.2.6:</strong></p>\r\n<p>The 4-column &quot;table&quot; in the stat tab overflows outside of its right boundary, and this problem worsens as the box gets smaller (the scroll bar appears and obscures more text).</p>\r\n<p>The old bos armor values (all but 10643) should be deleted, as they have absolutely zero functionality.&nbsp; A manual input (along with a caveat/warning, of course) would be fantastic, though, for testing purposes!</p>\r\n<p>A nice implementation, following the... (ignore this line, as I had a very important comment, got distracted by other things, and forgot what it was when I came back to it.&nbsp; Maybe I'll remember, so leaving it here for now.&nbsp; =D)</p>\r\n<p>On the Fury side, I am still getting the recommendation when optimizing to switch the Jawbone into my mainhand, and put the Rune Edge in the offhand.&nbsp; I still cannot agree with this.&nbsp; The program even agrees with me, and has the Rune Edge MH showing 6687, and the Rune Edge OH showing 6650.&nbsp; Huh?&nbsp; The Optimizer is also recommending that I put my second blue gem in the Favor of the Dragon Queen (8 AP socket bonus) as opposed to the T8.5 chest (8 Crit).</p>\r\n<p>The handling for below/above cap should be changed from the current &quot;You can free up ([-8]/[12]) Hit Rating&quot; to something along the lines of &quot;You are (8/12) Hit Rating (above/below) the cap&quot;.</p>\r\n<p>There are a LOT of extraneous (and sometimes even potentially misleading) text tooltips describing certain data.&nbsp; For example, &quot;2 AP is just 2 AP, go for Str&quot; can be misleading, as it may turn off a newer user from any sort of AP gear, who may not understand the specifics of itemization.&nbsp; Additionally, the Str tooltip does not even include Str bonuses from talents, and neither include data about AP multipliers.</p>\r\n<p><strong>As of 2.2.7</strong></p>\r\n<p>And, as I say that, I will turn around and note that it would be nice to have a bit of guidance as to the new fields in the options tab.&nbsp; Some of it seems intuitive, but it would be nice to have direction on this as to what changes are made to the rotation/etc.</p>\r\n<p>Siegebreaker 2-piece and 4-piece seem to have been implemented - however, the 2-piece is showing a significant damage DECREASE.</p>\r\n<p>Haste also seems to have jumped by quite a bit in value from all previous versions, at least on the Arms side, and not by a small amount. At the same time, it (Haste) has decreased on the Fury side.&nbsp; (As an interesting note, the relative stat value of Haste stays the same as I toggle on/off all &quot;maintain buffs&quot; - right at .63.&nbsp; While I understand the inherent inaccuracies with using it, but I'm using it as a means of diagnosis here.)</p>\r\n<p>Selecting Sunder as being maintained hurts the Arm's Warrior's damage MUCH more than in practice.&nbsp; My DPS is significanty higher than the value that is output, even on a fight like Vezax, and even if I let the stack drop (and therefore must re-apply to full stackage), and even on Vezax without +5% crit bonus while letting the stacks drop repeatedly.&nbsp; I also cannot believe that the penalty for debuff maintenance is so low for Fury, though it may just not be fully implemented as per the note in the updated &quot;roadmap&quot;.</p>\r\n<p>I'm also being told that Executioner is better than Berserking, which I absolutely do not agree with.&nbsp; This goes for Fury only.</p>\r\n<p>&nbsp;</p>\r\n<p>If you would like to me to post XMLs, I can do so easily.&nbsp; Just say the word.</p>\r\n<p>&nbsp;</p>\r\n<p>(Note, going back and testing out some optimizer stuff with 2.2.7, the issues noted above have been resolved.)</p>\r\n<p>&nbsp;</p>\r\n<p>Biggest current request: What &quot;rotations&quot; or &quot;priorities&quot; are in use?&nbsp; As I have a feeling that these are dynamically generated, it would be nice to have an output as to what current ability usage the model is implementing in any given character sheet.</p>",
+    "PostedDate": "2009-06-22T22:20:14.767-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "204357",
+    "ThreadId": "57253",
+    "Html": "<p>I'll try to address each concern in turn</p>\r\n<ol>\r\n<li>The last two columns are GCD related and I'll be removing them soon (probably by pushing them to the tooltip). I've had them up for the time being so that I can see the immediate results of changes as I make them.</li>\r\n<li>I'll change the boss armor box at some point, but it's honestly a low priority</li>\r\n<li>When you think of it, I'll take a gander =^D</li>\r\n<li>Unfortunately, the optimizer is not perfect, even running it twice in a row you can get different results.</li>\r\n<li>I don't think I understand what you mean with the hit caps, what is ([-8]/[12])? I would like to make the wording change based upon if you are above or below the cap, I just didn't get around to it. I'll make sure that it gets taken care of at some point.</li>\r\n<li>Honestly, if the person doesn't understand the meaning behind the tooltips, they probably need to read more on the class and how the stats are handled. In the case of the AP tooltip, the AP reads &quot;2 AP is just 2 AP, go for STR&quot; then when you read the STR tooltip, it reads &quot;1 STR = 2 AP x Kings Buff&quot; meaning AP doesn't get bonuses from Kings, but STR does, therefore 1 STR is more valuable than 2 AP as a stat on an item. The STR tooltip doesn't state talent info but the number is still accurate. Much as I would love to add every peice of info to every tooltip, it's time consuming XD</li>\r\n<li>For guidance on the options tab, I will be writing an updated info module to the Rawr Wiki within the next week or two which will outline how the model gets it's DPS. This includes what each check and percentage does as well as the priority queue for Arms. Yes, the priority queue can be debated until we are all blue in the face but what's there is what's there and unless I have a REALLY good reason, I don't plan on changing it any time soon. (I know that stement sounds all angry and stuff but I dont mean it to be.)</li>\r\n<li>The two-piece bonus for T8 is kinda borked, we are working on it.</li>\r\n<li>I personally have not seen haste rating jump up myself, it's been ranging from .16 to .33 for quite some time in Arms. I'll look into it.</li>\r\n<li>Fury hasn't implemented most of the options panel extra options like Arms has. Ebs has been working on stabilizing the Fury model first before adding in extra GCD absorbers. Sunders does take a lot of my DPS out in practice and it lines up (at least as a percentage of total) for me. I think the whole GCD process needs fine tuning of course and it may have more to do with the Latency work than anything else.</li>\r\n<li>I think the Executioner recommendation stems from Double-zerking not being set up quite right. Ebs is working on that issue.</li>\r\n<li>I'll follow this post with the current Arms rotation function so you can all see it.</li>\r\n</ol>",
+    "PostedDate": "2009-06-22T23:40:40.113-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "204358",
+    "ThreadId": "57253",
+    "Html": "<p>Edit: removed code block, this was no longer accurate and don't want to confuse anyone</p>",
+    "PostedDate": "2009-06-22T23:42:10.397-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "204452",
+    "ThreadId": "57253",
+    "Html": "<p>Double zerker is set up, it's just that Executioner isn't correctly set up (I believe this may be an issue with base not factoring in the fact that the procrate is lower at 80 than it was at 70).</p>\r\n<p>Haste being unchanged in value between toggling debuffs on/off is probably correct for arms, as haste provides two benefits 1) More white damage, 2) More rage to dump. &nbsp;If arms has infinite rage, you won't see any change in its effectiveness whether you're slamming or stacking sunders.</p>\r\n<p>For fury, I'd expect the &quot;maintain debuffs&quot; to play more of a role, as fury gets more usefulness out of haste (we're not in an infinite rage scenario). &nbsp;Jothay is correct that I haven't modeled these yet in fury, because there are still some more pressing issues to look into.</p>\r\n<p>Siegebreaker 2pc is definitely on my list. &nbsp;Honestly, it wasn't fixed yet because I've had terrible luck getting my 2pc myself, and so it's not staring me in the face every day.</p>\r\n<p>&nbsp;</p>\r\n<p>Lastly, the fury &quot;rotation&quot; I've used is pretty simple, and I will definitely improve it to use more dynamic numbers in the future. &nbsp;It's assuming that you are getting 2 BTs, 1 WW, and up to 1 slam every 8 seconds (WW&gt;BT&gt;Slam?&gt;wait for BT&gt;wait for WW&gt;repeat). &nbsp;It's the &quot;maximize BT and WW usage, and delay on slam procs&quot; model that I know isn't 100% best, but it was easiest to model while I spent time investigating other issues.</p>\r\n<p>&nbsp;</p>\r\n<p>There is one looming issue still, and that's the fact that expertise is undervalued below the cap for some reason, and I can't quite nail down why. &nbsp;I hope to have that fixed shortly, at which point I'm going to get some of the new options implemented, and then work on a cleaner priority-list model that fury and arms can share, that will hopefully provide more realistic numbers.</p>\r\n<p>BrWarner, if you could provide us with any WWS/WMO so we can compare Rawr's arms modeling at end-game, I'm sure that would be greatly beneficial. &nbsp;I'm especially curious to see ability usage (% of GCDs are Slam, Execute, etc)</p>",
+    "PostedDate": "2009-06-23T05:21:44.047-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "208335",
+    "ThreadId": "57253",
+    "Html": "<p>I'm using v2.2.9 and the calculated&nbsp;arms dps seems very off for my character.&nbsp; Hopefully I can be of some help.</p>\r\n<p><span style=\"text-decoration:underline\">Character</span><br>name: Chumimi<br>server: Uldum<br>region: US</p>\r\n<p><span style=\"text-decoration:underline\">Setup</span><br>First I imported my character from armory, then used the following setup.<br>Buffs:<br>-battleshout&nbsp; -commanding presence&nbsp; -heroic presence&nbsp; -trauma&nbsp; -blood frenzy<br>Options:<br>-target level 83&nbsp; -10643 armor&nbsp; -arms&nbsp; -300s duration&nbsp; -179 lag&nbsp; -220 react&nbsp; -100% standing in back&nbsp; -all abilities under Damage Dealers checked</p>\r\n<p><span style=\"text-decoration:underline\">Calculated dps<br></span>Overall dps: 2873</p>\r\n<p>Breakdown:<br>mortal strike&nbsp;- 20.2%<br>rend - 9%<br>overpower - 17.5%<br>sudden death - 5.5%<br>slam - 12.6%<br>bladestorm - 4.8%<br>deep wounds - 4.2%<br>white dmg - 26.3%</p>\r\n<p><span style=\"text-decoration:underline\">Real dps</span><br>I tested on the heroic dummy for 300 seconds (5min) for the duration of battleshout and with no other buffs other than my draenei racial.<br><br>dps: 3646.8&nbsp;&nbsp;&nbsp; <a title=screenshot href=\"http://www.fileden.com/files/2008/9/17/2101434/armsdps2.jpg\">screenshot</a><br>I use the dummy often for&nbsp;5 min testing sessions&nbsp;and it's consistently 3600-3700.</p>\r\n<p>Breakdown:&nbsp;&nbsp; <a title=screen href=\"http://www.fileden.com/files/2008/9/17/2101434/armsdps1.jpg\">screenshot</a><br><br><span style=\"text-decoration:underline\">Analysis</span><br>I notice that rawr's breakdown is very different from mine.&nbsp; Mortal strike and white damage seems too high in rawr's breakdown, and deep wounds is too low.&nbsp; I know bandit's insignia proc damage isn't modeled, but it accounted for 0.8% of my damage, which&nbsp;is about 25 dps.</p>\r\n<p>I'm not sure how arms&nbsp;rotation is modeled in rawr, but I'll describe the way I play just in case.&nbsp; The way I prioritize my abilities is:&nbsp; SD execute &gt; overpower &gt; MS &gt; slam.&nbsp; I make sure to use something every GCD to proc SD as much as possible, regardless of my rage or cooldown situation.&nbsp; In other words, I'll always choose to slam instead of waiting for rage or cooldown to MS.&nbsp; I find that this yields the most dps for me.</p>\r\n<p>A seperate issue for me is switching to conqueror's seigebreaker legplates on my character&nbsp;gives me NaN's.</p>",
+    "PostedDate": "2009-07-03T07:12:31.763-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "208437",
+    "ThreadId": "57253",
+    "Html": "<p>Great, I had this massive nice message to reply to Chumimi and stupid interweb connection killed it :(</p>\r\n<p>Overall the percentage distribution of the abilities was pretty close, the biggest difference was Mortal Strike and Slam, they were directly opposite each other. MS was 10% more in Rawr with Slam 9% less. However, this difference you pretty much explained yourself, you usually choose to push a Slam even if it delays MS. We do not have handling for this in place right now but we are looking at some math on how to implement it as an option in the priority queue.</p>\r\n<p>The other big difference in DPS is Deep Wounds. I found in looking at things that we were calculating Deep Wounds DPS early on and it was trying to use information that wouldn't be generated until later. Adding a recalc once the additional info was generated changed the 110 DPS I was seeing to a 354, much closer to what was reported by you. I investigated our formula against some posts on wowhead and other areas. What I found were references to Deep Wounds having a hidden stacking effect. For example, if you crit, then each second for the next 6 seconds you will do x damage. Apparently, if you crit again beforethe 6 seconds are up, it starts a new separate x damage per second over 6 seconds. It hids this by adding the per second for each one together into a single tick, so if you were to crit once a second every second then on the 6th second when the last tick from the first one hits it will be roughly 6 times the damage as the first tick. I need to get some verifications on this, if it's true then we may need to adjust our formula.</p>\r\n<p>I was not able to recreate the issue with the Conquerer's Seigebreaker Legplates giving NaN's.</p>\r\n<p>As a side note, your character is below the Expertise dodge cap by 29 Expertise Rating so some of your attacks are being dodged. Also, ArP &gt; STR in most cases for Arms Warriors, and Rawr is backing that up at this time.</p>",
+    "PostedDate": "2009-07-03T15:37:18.13-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "208463",
+    "ThreadId": "57253",
+    "Html": "<p>I haven't payed attention to the stacking of deep wounds before, but now that you mentioned it,&nbsp;I looked into it and it apparently stacks very often according to mik's scrolling battle text.&nbsp; After looking back, the screenshot I posted before of my DPS confirms this.&nbsp; I see a 3-hit tick for 1071 damage, and a 2-hit tick for 844 damage.</p>\r\n<p>I had a friend download v2.2.9 and import my character from armory.&nbsp; He was able to recreate the NaN's when selecting the legplates.&nbsp; At first&nbsp;we both&nbsp;selected Conqueror's Seigebreaker Leggaurds on accident, because the legplates wasn't ranked on the list.&nbsp; It ended up at the very bottom, along with Valorous Seigebreaker Legplates which also gives NaN's.</p>",
+    "PostedDate": "2009-07-03T21:31:37.653-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "208484",
+    "ThreadId": "57253",
+    "Html": "<p>I have been racking my brain about this for a couple of hours and I just had an epiphany.</p>\r\n<p>One of the reasons for the differences is that the Boss Training dummy has below 20% hp, so Execute is technically always available.</p>\r\n<p>Also, in your image, it appears that you are attacking the LVL 80 Training Dummy, which makes a large difference as selecting target lvl 83 makes major changes in your Crit % (~4.8% reduction). When i realigned my comparison spreadsheet with the LVL 80 selection, the total variance went down by about 5%.</p>\r\n<p>I also noticed, in the image, you are standing in front of it, not in back. This is not surprising as you can't really get behind it with that wall there. Turning off Standing in back yields new results. Total Variance went back up by 1%.</p>",
+    "PostedDate": "2009-07-03T23:53:27.96-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "208608",
+    "ThreadId": "57253",
+    "Html": "<p>Sorry for the confusion :(&nbsp; I could have sworn the dummy I was whacking on use to be an elite 80, and the one behind me being a regular 80, but now it turns out both are regular and there's a&nbsp;seperate boss training dummy.</p>\r\n<p>I managed to find one with full health in Exodar, and I consistently get about 3k dps on it with a breakdown that looks like: <a title=breakdown href=\"http://www.fileden.com/files/2008/9/17/2101434/armsdps3.jpg\">screenshot</a></p>\r\n<p>I was unable to use bladestorm because of nearby dummies, so I expect my real dps to be a bit higher (possibly around 3100)&nbsp;because&nbsp;that's what I use&nbsp;to avoid periods of rage starvation.&nbsp; It looks like the breakdown is about the same.&nbsp; Slam and MS swapped, a lot more execute procs, and higher deep wounds damage.&nbsp; (I caught some 2k 3-hit&nbsp;ticks in that screenshot)</p>\r\n<p>So in the end it's a lot closer to the calculated 2873 dps, with the rest the variation probably the result of deep wounds stacks and&nbsp;prioritizing for SD procs.</p>",
+    "PostedDate": "2009-07-04T20:14:58.117-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "208754",
+    "ThreadId": "57253",
+    "Html": "<p>&quot;Rolling&quot; ticks for Deep Wounds is correct so long as you're doing it the same way fury is.</p>\r\n<p>Just to clarify here, each time you crit, Deep Wounds does full damage. &nbsp;No less, no more. &nbsp;So, if you crit 6x in 6secs and then stop attacking, Deep Wounds will do 6*(WpnDmg*0.48+APBonus) total. &nbsp;It doesn't matter how the ticks work if you just keep that in mind.</p>",
+    "PostedDate": "2009-07-05T17:00:17.017-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "208788",
+    "ThreadId": "57253",
+    "Html": "<p>According to this: http://www.wowwiki.com/Deep_Wounds</p>\r\n<p>That's actually incorrect. The longer you luck out and continue critting, the more DW builds in damage. Theoretically, if you actually Crit at least once every 5 seconds, deep wounds would scale up exponentially throughout the fight and do massive damage per tick by the end.</p>",
+    "PostedDate": "2009-07-05T20:42:26.043-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "208790",
+    "ThreadId": "57253",
+    "Html": "<p>It would be utterly retarded if any of our calculations are based on wowwiki articles. Please tell me that's not the case, Jothay.</p>",
+    "PostedDate": "2009-07-05T20:59:23.25-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "208791",
+    "ThreadId": "57253",
+    "Html": "<p>&nbsp;The wiki you linked is correct, but It never says that the longer you luck out and continue critting, the damage increases. &nbsp;The damage that was remaining when it's refreshed is &quot;rolled&quot; into the new calculations. &nbsp;So, if you're ticking for 600 because you've had a lucky string of crits (assume base tick is 100), but you've had a few seconds without a crit and you have 1 tick left. &nbsp;Now you crit again, the overall damage that this refresh of DW is 600+600: the 1 tick left, and the additional 100/tick over 6 ticks that you get on each crit. &nbsp;1200dmg over 6secs = 200dmg every tick. &nbsp;Down from 600. &nbsp;And Deep Wounds has never fallen off.</p>\r\n<p>&nbsp;</p>\r\n<p>Assume that a single proc of Deep Wounds does 600dmg, or 100dmg every second. &nbsp;Lets have you crit for 6 seconds straight, then have a few ticks without critting:</p>\r\n<p>0s: crit (0dmg, 600left, 0total)</p>\r\n<p>1s: crit (100dmg, 1100left, 100total)</p>\r\n<p>2s: crit (183.3dmg, 1516.6left, 283.3total)</p>\r\n<p>3s: crit (252.7dmg, 1863.8left, 536.1total)</p>\r\n<p>4s: crit (310.6dmg, 2153.2left, 846.7total)</p>\r\n<p>5s: crit (358.8dmg, 2394.3left, 1205.5total)</p>\r\n<p>6s: tick (399dmg, 1995left, 1604total)</p>\r\n<p>7s: tick (399dmg, 1596left, 2003total)</p>\r\n<p>8s: tick (399dmg, 1197left, 2402total)</p>\r\n<p>9s: tick (399dmg, 798left, 2801total) -- At this point, we've averaged 311.22dps. &nbsp;We've crit 6x out of 9secs so far, which means mathematically we'd expect 6*600/9=400dps total. &nbsp;But we still have 2 ticks left, and I did a little bit of rounding. &nbsp;</p>\r\n<p>What happens if we crit now, after having crit 6x in a row and then gone 5secs before the next one?</p>\r\n<p>10s: crit (399dmg, 999left, 3200total, 320dps)</p>\r\n<p>11s: tick (166.5dmg, 832.5left, 3366.5total, 306dps) -- the tick size has decreased, even though Deep Wounds has never fallen off.</p>\r\n<p>&nbsp;</p>\r\n<p>If we let this fall off, it will get to:</p>\r\n<p>16s: tick (166.5dmg, 0left, 4199total, 262.43dps, and that's with 7 crits over 16secs (7*600/16 = 262.5dps). &nbsp;That small difference is cuz I did this by hand and there's a rounding issue of 1dmg somewhere :P</p>\r\n<p>&nbsp;</p>\r\n<p>This should be enough to show you that it doesn't matter how frequently you crit or if the debuff falls off. &nbsp;It all converges to:</p>\r\n<p>DeepWoundDPS = #CritsPerSecond * 0.16 * Rank * NormalizedWpnDmg / 6</p>\r\n<p>&nbsp;</p>\r\n<p>And Astry, to my knowledge none of the warrior abilities are based on wowwiki articles; or at least, we've never put in any code because wowwiki told us to :P</p>",
+    "PostedDate": "2009-07-05T21:03:33.227-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "208808",
+    "ThreadId": "57253",
+    "Html": "<p>Glad to hear it. Thanks.</p>",
+    "PostedDate": "2009-07-05T23:05:32.133-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "208850",
+    "ThreadId": "57253",
+    "Html": "<p>The article is just what got me started thinking on the subject, spawning a series of research on various sites (wowhead forums, tankspot, elitestjerks, etc). I just hadn't gotten so far as to actually do the math. Thankfully ebs posted it here and I can see the results.</p>",
+    "PostedDate": "2009-07-06T02:02:24.773-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "210705",
+    "ThreadId": "57253",
+    "Html": "<p>^*&amp;%!!!!!&nbsp; I spent over 30 minutes typing out a response, and lost it all again.&nbsp; I will ONLY use an external program (Notepad++) to write posts out here again.&nbsp; AWFUL!&nbsp; AWFUL!&nbsp; TERRIBLE text-entry implementation!&nbsp; UGH!&nbsp; (I've now officially lost 3-4+ hours to this stupid system, and have never had this issue with any other text-based community system.&nbsp; &gt;.&lt;)<br><br>(This was also typed a few weeks ago, as I left on a &quot;backpacking&quot; trip up the east coast.&nbsp; Fun times!&nbsp; Everything that follows, except the last line obviously, is from about 3 weeks ago, and may or may not still be accurate.&nbsp; Updated with links, but not much else.)<br><br>Aaaanyways.&nbsp; ;)<br><br><br>&nbsp;&nbsp; http://www.worldoflogs.com/guilds/191/<br><br>&nbsp;&nbsp; I wouldn't recommend taking them all together as a reliable data set, as a lot of those have honestly been learning the Arms deal.&nbsp; The 21st's might be useful, though.&nbsp; GV is a stand-and-deliver fight, with a 20% nega-haste (melee attack slow, affecting rage/HS/white damage output), also maintaining Sunders and Demo Shout.&nbsp; Yogg would be a nice rapid target switching and high movement fight example.&nbsp; Ignore IC, as it (that particular set of attempts) is not relevant to anything (trust me!&nbsp; ;D)<br><br>&nbsp;&nbsp; I will also have the Yogg kill video up soon, from my viewpoint (update: http://www.aerowow.com/?p=111).&nbsp; That would correspond to the 15th's Yogg kill attempt, if you want to run a comparison from the screen to to the log, or whatever.<br><br><br>&nbsp;&nbsp; Haste for my Arms character file is staying solid at .63.&nbsp; No matter what I set up up to maintain, or what my total DPS is, what, it's rock-solid at .63.&nbsp; ALL other values change, except Haste.<br><br><br>&nbsp;&nbsp; That was EXACTLY what I was looking for, Jothay!&nbsp; Thank you!&nbsp; It's even neatly commented, and everything.&nbsp; ;)&nbsp; My only question NOW would be on the HS handling.&nbsp; =D<br><br><br><br>Okay, now to go back and read up on everything that I missed while I was out!&nbsp; Another log to look at can be found at http://www.worldoflogs.com/reports/YV3wbMj6mVelZD2g/sum/damageDone/?enc=bosses&amp;boss=33293 , which shows data from XT hard(another stand-and-deliver).&nbsp; We were fighting some serious lag/random ddisconnects, but it's otherwise another data set to look at.</p>",
+    "PostedDate": "2009-07-09T22:25:04.307-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "211179",
+    "ThreadId": "57253",
+    "Html": "<div id=\"ctl00_ctl00_MasterContent_Content_PostRepeater_ctl54_BodyDiv\">\r\n<p><em>From Jothay:<br></em></p>\r\n<ol>\r\n<li><em>The last two columns are GCD related and I'll be removing them soon (probably by pushing them to the tooltip). I've had them up for the time being so that I can see the immediate results of changes as I make them.</em></li>\r\n<li><em>I'll change the boss armor box at some point, but it's honestly a low priority</em></li>\r\n<li><em>When you think of it, I'll take a gander =^D</em></li>\r\n<li><em>Unfortunately, the optimizer is not perfect, even running it twice in a row you can get different results.</em></li>\r\n<li><em>I don't think I understand what you mean with the hit caps, what is ([-8]/[12])? I would like to make the wording change based upon if you are above or below the cap, I just didn't get around to it. I'll make sure that it gets taken care of at some point.</em></li>\r\n<li><em>Honestly, if the person doesn't understand the meaning behind the tooltips, they probably need to read more on the class and how the stats are handled. In the case of the AP tooltip, the AP reads &quot;2 AP is just 2 AP, go for STR&quot; then when you read the STR tooltip, it reads &quot;1 STR = 2 AP x Kings Buff&quot; meaning AP doesn't get bonuses from Kings, but STR does, therefore 1 STR is more valuable than 2 AP as a stat on an item. The STR tooltip doesn't state talent info but the number is still accurate. Much as I would love to add every peice of info to every tooltip, it's time consuming XD</em></li>\r\n<li><em>For guidance on the options tab, I will be writing an updated info module to the Rawr Wiki within the next week or two which will outline how the model gets it's DPS. This includes what each check and percentage does as well as the priority queue for Arms. Yes, the priority queue can be debated until we are all blue in the face but what's there is what's there and unless I have a REALLY good reason, I don't plan on changing it any time soon. (I know that stement sounds all angry and stuff but I dont mean it to be.)</em></li>\r\n<li><em>The two-piece bonus for T8 is kinda borked, we are working on it.</em></li>\r\n<li><em>I personally have not seen haste rating jump up myself, it's been ranging from .16 to .33 for quite some time in Arms. I'll look into it.</em></li>\r\n<li><em>Fury hasn't implemented most of the options panel extra options like Arms has. Ebs has been working on stabilizing the Fury model first before adding in extra GCD absorbers. Sunders does take a lot of my DPS out in practice and it lines up (at least as a percentage of total) for me. I think the whole GCD process needs fine tuning of course and it may have more to do with the Latency work than anything else.</em></li>\r\n<li><em>I think the Executioner recommendation stems from Double-zerking not being set up quite right. Ebs is working on that issue.</em></li>\r\n<li><em>I'll follow this post with the current Arms rotation function so you can all see it.</em></li>\r\n</ol></div>\r\n<div>3. I actually did remember, but forgot again over the last few weeks.&nbsp; Ah, well.</div>\r\n<div></div>\r\n<div>5. It seems that the program tells you if you are above or below the cap in a weird way.&nbsp; If you are above the cap, it says &quot;you can free up 8 hit rating&quot; (or whatever value).&nbsp; If you are below the hit cap, it says &quot;you can free up -12 rating&quot; (again, whatever value is accurate for your current gearing.&nbsp; This (the only differentiation being the negative modifier) is extremely awkward, unclear, and probably misleading.&nbsp; A better implementation might be a check as to where you stand on the combat table.&nbsp; If you have a 0% chance to miss, it could show as &quot;You are 12 hit rating over the specials hit cap&quot;.&nbsp; If you have a nonzero chance to miss, it could show as &quot;You are 8 hit rating below the specials hit cap&quot;.&nbsp; If the module classifies you as being in the 0% chance to miss category, but being at 0 hit rating above the hit cap, then the tooltip could output &quot;You are exactly at the specials hit cap.&quot;</div>\r\n<div></div>\r\n<div>6. My point is actually more general - while the tooltips are helpful in many cases in giving relevant information in an accessible manner, there's sometimes too many tooltips and some irrelevant (or potentially even misleading) comments, as in that particular case.&nbsp; There's no need for the commenting on Str and AP.&nbsp; In a best case, it changes nothing, as the Optimizer/gear comparisons should take care of AP/Str issues.&nbsp; In the worst case, a person may not understand the difference between Agi/AP and Str itemization, and may immediately ignore anything with AP on it.&nbsp; Plus, these tooltips in particular don't even mention other multipliers, such as relevant talents.</div>\r\n<div></div>\r\n<div></div>\r\n<div></div>\r\n<div>Another thing I'd like to note is the formatting of the 4-columned table in the main stats screen.&nbsp; It is currently &quot;crushed&quot; ever so slightly - at the default size (on a 1920x1200 resolution monitor, running Windows Vista SP2), the furthest-right column overflows outside of its allocated spece.&nbsp; When the entire Rawr window is scaled larger <em>vertically</em>, when the scroll bar disappears, there is less &quot;loss&quot; of the far-right data.&nbsp; When the entire Rawr window is scaled larger <em>horizontally</em>, or even maximized in all dimensions, there is no improvement (with our without the scroll bar), due to the certal data pane area having static dimensions.&nbsp; If you would like a screenshot, I can offer one, but I'm pretty sure that this is only tied to the text size/font of the system, so is not specific to my machine/setup.</div>",
+    "PostedDate": "2009-07-12T05:16:14.433-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "211226",
+    "ThreadId": "57253",
+    "Html": "<p>3. Ever heard of Ginko Biloba? lol</p>\r\n<p>5. I'll get around to it</p>\r\n<p>6. I'll get around to it</p>\r\n<p>Extra. The four-column table should be fine on most systems that have not had a major theme change (eg- the standard fonts used by windows boxes being changed to something custom). A single 1280x1024 Monitor (stanard DPI settings) with Rawr maximized in it would always display correctly. However, I have since changed it from a 4 to a 3 column setup due to other reasons so this is no longer an issue for that reason.</p>",
+    "PostedDate": "2009-07-12T13:21:11.713-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "211279",
+    "ThreadId": "57253",
+    "Html": "<p>3. I don't know, I don't remember. xD</p>\r\n<p>5. Awesome, thanks!</p>\r\n<p>6. Lower priority, but still cool.</p>\r\n<p>Sounds good.</p>\r\n<p>&nbsp;</p>\r\n<p>Oh!&nbsp; And, it would be nice to know the DPS breakdown by ability.&nbsp; Sort of an inverse of the data being provided via tooltips in the stats section currently.&nbsp; &quot;24.2% from AbilityX, 21.7% from AbilityY, 19.4% from AbilityZ&quot;</p>",
+    "PostedDate": "2009-07-12T20:00:43.55-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "211312",
+    "ThreadId": "57253",
+    "Html": "<p>The tooltips already say that, mouse over MS and it will tell you x% of total dps</p>",
+    "PostedDate": "2009-07-12T23:32:20.06-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "211520",
+    "ThreadId": "57253",
+    "Html": "<p>Exactly, simply a different display of that information, so one can see the breakdown all at once, instead of line-by-line.&nbsp; As a tooltip, it's really bad at showing the &quot;big picture&quot;.&nbsp; It already has the data there, though, obviously.</p>",
+    "PostedDate": "2009-07-13T15:44:18.64-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "211521",
+    "ThreadId": "57253",
+    "Html": "<p>As far as what is displayed on the Stats pane, what do you guys care about seeing? I want to compile a list and create a simple conforming display method per stat/ability.</p>\r\n<table border=1>\r\n<tbody>\r\n<tr>\r\n<th>Field</th><th>Value</th><th>Value Note</th><th>ToolTip</th><th>ToolTip Note</th>\r\n</tr>\r\n<tr>\r\n<td>Health</td>\r\n<td>20601</td>\r\n<td>Do you want the<br>thousands separator &quot;,&quot; ?</td>\r\n<td>Base 8121 + Stam Bonus 12300</td>\r\n<td>Do you want the<br>thousands separator &quot;,&quot; ?</td>\r\n</tr>\r\n<tr>\r\n<td>Stamina</td>\r\n<td>1248</td>\r\n<td>Do you want the<br>thousands separator &quot;,&quot; ?</td>\r\n<td>Increases Health by 12300</td>\r\n<td>Do you want the<br>thousands separator &quot;,&quot; ?</td>\r\n</tr>\r\n<tr>\r\n<td>Armor</td>\r\n<td>13673</td>\r\n<td>Do you want the<br>thousands separator &quot;,&quot; ?</td>\r\n<td>Increases Attack Power by 227</td>\r\n<td>&nbsp;</td>\r\n</tr>\r\n<tr>\r\n<td>Strength</td>\r\n<td>951</td>\r\n<td>&nbsp;</td>\r\n<td>Increases Attack Power by 1902</td>\r\n<td>Do you want the<br>thousands separator &quot;,&quot; ?</td>\r\n</tr>\r\n<tr>\r\n<td>Attack <br>Power<br></td>\r\n<td>4127</td>\r\n<td>Do you want the<br>thousands separator &quot;,&quot; ?</td>\r\n<td>Increases DPS by 294</td>\r\n<td>&nbsp;<br></td>\r\n</tr>\r\n<tr>\r\n<td>Agility</td>\r\n<td>275</td>\r\n<td>&nbsp;</td>\r\n<td>\r\n<p>Base Crit at LVL 80 3.192%<br>Increases Crit by 4.40%<br>Total Crit increase of 7.59%<br>Increases Armor by 550</p>\r\n</td>\r\n<td>&nbsp;</td>\r\n</tr>\r\n<tr>\r\n<td>Crit</td>\r\n<td>24.70% : 776<br></td>\r\n<td>I've updated this and the<br>below fields to show both<br>the Percent and Rating<br>at the same time.<br></td>\r\n<td>From Rating 16.90%<br>MH Crit 24.70%<br>OH Crit 0.00%<br>Target level affects this<br>LVL 80 will match tooltip in game<br>LVL 83 has a total of ~4.8% drop<br></td>\r\n<td>I added the bottom 3 lines to <br>prevent confusion over the Crit %<br>difference for target levels<br></td>\r\n</tr>\r\n<tr>\r\n<td>Haste</td>\r\n<td>07.99% : 262<br></td>\r\n<td>&nbsp;</td>\r\n<td><br></td>\r\n<td>&nbsp;</td>\r\n</tr>\r\n<tr>\r\n<td>Armor Penetration<br></td>\r\n<td>45.70% : 255<br></td>\r\n<td>&nbsp;</td>\r\n<td>From Rating- 20.70%<br>Arms Stance- +10.00%<br>Mace Spec- +15.00%<br></td>\r\n<td>Should I swap the positioning of<br>the Percs to the beginning of<br>each line<br></td>\r\n</tr>\r\n<tr>\r\n<td>Hit</td>\r\n<td>08.11% : 266<br></td>\r\n<td>&nbsp;</td>\r\n<td>0.00%: From Other Bonuses<br>8.11%: Total Hit % Bonus<br><br>You can free up 4 Rating<br>(from yellow cap)<br></td>\r\n<td>I fixed the issue with the tooltip<br>being a little confusing with the<br>negatives.<br></td>\r\n</tr>\r\n<tr>\r\n<td>Expertise</td>\r\n<td>04.79% : 23.15 : 157<br></td>\r\n<td>&nbsp;</td>\r\n<td>Num Displayed is Rating<br>Converted + Strength of Arms<br>Main Hand Exp - 26.15 / 6.54%<br>[Includes Racial]<br>Off Hand Exp - 00.00 / 0.00%<br>[Includes Racial]<br><br>You can free up 0 Expertise (1 Rating)<br></td>\r\n<td>I would mention more about the<br>Parry cap but most people don't<br>get that much expertise and no<br>one really needs to.<br></td>\r\n</tr>\r\n</tbody>\r\n</table>",
+    "PostedDate": "2009-07-13T15:47:02.097-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "214991",
+    "ThreadId": "57253",
+    "Html": "<p>I would say no to the comma in the data.&nbsp; While the separation may assist the eye in moving across a number when reading, for example, an article or a book, it's not all too useful for a small amount of data in this instance.&nbsp; Just my humble opinion.&nbsp; (And as an aside to the ProtWarr module, inserting a comma into the large values would be helpful, on any value over, say, 10,000.)</p>\r\n<p>I'd say, switch the values and description on the tooltips for Crit and Armor Penetration, so the value is leading.&nbsp; I think the rest of the values would be better left as-is.</p>\r\n<p>I agree that the parry cap is irrelevant - when standing behind the mob.&nbsp; With the added handling for &quot;Standing in Back&quot; under the newer fight modeling, it would make a difference if &quot;standing in back&quot; is any less than 100%.&nbsp; For the time being, be careful, though, seeing as how the .&nbsp; I would also wait until the Fight modeling is more fleshed-out and utilized more before playing with Parry on the stats pane.</p>\r\n<p>I recommend homogenizing the &quot;voice&quot; used to convey information - for example, the Crit tooltip would be better off as &quot;Affected by target level&quot;, &quot;Matches in-game tooltip&quot;, and &quot;1.2% crit suppression (reduction) per level.&quot;&nbsp; It can get a bit awkward to make it clear, stay in a common (or similar) voice, and still stay brief for a tooltip's space.</p>\r\n<p>Opening an issue in a moment about another issue that I believe cropped up in 34539, where certain buffs are not &quot;sticking&quot; when toggling any value in the Ability Maintenance tab.</p>\r\n<p>Adding Shattering Throw handling for Fury would be nice, as well.&nbsp; Eating a GCD to switch to Arms, the cast time of the ability, and another GCD for switching back.&nbsp; I <em>don't</em> believe (off the top of my head) that one can switch stances while on the GCD (in essence, combining the GCD from using a previous ability to switch, then combining the GCD from using the ability to switch back).&nbsp; Don't forget rage considerations when switching stances (including the Arms talent)!</p>",
+    "PostedDate": "2009-07-22T15:05:33.477-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "215012",
+    "ThreadId": "57253",
+    "Html": "<p>Be sure to read the patch notes, I designed a buff overwrite feature for buffs that Warriors put up themselves.</p>\r\n<p>For example:</p>\r\n<p>I check Battle Shout in the Ability Maintenance tab and it will automatically remove the Battle Shout buff. Why? So that it *instead* uses a calculational version of the Buff based upon your Talents and Glyphs. This way, 3/5 Commanding Presence has a different value than 5/5, same with the other stuff.</p>\r\n<p>When you add the Trauma, Blood Frenzy, Rampage talents these activate their respective overrides as well.</p>\r\n<p>I have not done this for Sunder Armor yet due to my lack of proper method of implementation (need it to stack). I'll hopefully have a solution in the coming weeks.</p>\r\n<p>Please note that this process does provide more accurate DPS and prevents 'double-dipping'. We were having an issue with Trauma being counted twice (as well as some other minor stuff) and this fixed that problem.</p>\r\n<p>NOTE: Some people may be seeing a load of talents doing x large number negative DPS (pretty much all the prot tree ones). I have already fixed this but I have not checked it in yet.</p>",
+    "PostedDate": "2009-07-22T15:47:12.523-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "215085",
+    "ThreadId": "57253",
+    "Html": "<p>&quot;Adding Shattering Throw handling for Fury would be nice, as well.&nbsp; Eating a GCD to switch to Arms, the cast time of the ability, and another GCD for switching back.&nbsp; I <em>don't</em> believe (off the top of my head) that one can switch stances while on the GCD (in essence, combining the GCD from using a previous ability to switch, then combining the GCD from using the ability to switch back).&nbsp; Don't forget rage considerations when switching stances (including the Arms talent)!&quot;</p>\r\n<p>Actually, I could be mistaken but I don't think that changing stances will trigger a GCD.&nbsp; I'll have to double check this, but I was pretty sure that when I PVP'd, I didn't lose that much time switching stances to pummel (or rend while fury).&nbsp; The big problem is the rage loss - because rage can swing so wildly, you could be at only 10 rage when you switch to battle, land a white swing to get you to 25rage for shattering throw (leaving you below 25 rage), and then switch back before your next white swing.&nbsp; Or, you could be at max rage and lose a TON.</p>\r\n<p>This makes stance-dancing hard to model, because the amount of rage loss varies with player skill and the nature of the encounter/situation when you shattering throw.&nbsp; That's why there's no support for fury to maintain Thunderclap.&nbsp; Because shattering throw only occurs every 5minutes, we do have a few options:</p>\r\n<ol>\r\n<li>Shattering Throw modeled poorly but efficiently&nbsp;(ignoring rage loss, only factoring in time to use the ability)</li>\r\n<li>Shattering Throw is modeled correctly, but this will have to wait until we get the performance issues tackled (hopefully I'll have time to this weekend!)</li>\r\n<li>Shattering Throw is simply ignored due to the insignificance of how frequently it is applied</li>\r\n</ol>",
+    "PostedDate": "2009-07-22T20:57:15.673-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "215088",
+    "ThreadId": "57253",
+    "Html": "<p>Hello, I don't know if it is the right place for my post, but here are some issues I have with DPSwarr (not sure it comes from 2.2.10).</p>\r\n<p>I made a profile with 99.21% passive ArP (including BS and mace spec) but only 60 expertise rating.</p>\r\n<p><br>1. The Base Stats sections shows 1.83% / 11.32 expertise while the tooltip gives 2.83% / 11.32. I understant the difference comes from the SoA talent but I find the layout really confusing.</p>\r\n<p>2. Relative Stats Values shows expertise as the best stat (@ 3.23) and ArP is 2nd best far behind (@2.45). But when I replace a single 16 ArP gem by a 16 expertise one, expertise values drops dramatically at 1.85 while ArP remains at 2.44. By changing this single gem I didn't cross any cap (form 2.83 to 3.32% expertise) and I can't explain such a change in Relative Stats Values.</p>\r\n<p>3. Any item that trades a stat for expertise is rated as worse by DPSwarr, making the profile a local optimum while it shouldn't be from the BiS list I found on EJ.</p>\r\n<p>4. The same kind of issues appears with hit (ArP &gt; hit under hit cap) even at a lower ArP (87%).</p>\r\n<p>5. GT trinket is still rated as the 2nd best trinket while hit capped and almost ArP capped, making me think that the 100% ArP cap is not implemented.</p>\r\n<p>6. GT's proc is included as an average ArP rating, this can be missleading when aiming for 50% ArP like many warriors do in order to fully benefit from GT or Munjir Runestone procs.</p>\r\n<p>&nbsp;</p>\r\n<p>Points 2 to 4 are the most confusing since I only see 2 explanations :</p>\r\n<p>- ArP model is faulty (but it is the only stat that remains consistent in the Relative Stats Values panel) or miss/dodge/parry simulation is wrong (why 16 expertise rating would be so much better at 2.83 than 3.32% ?).</p>\r\n<p>- ArP is so overpowered (at least for arms warrior) that it's better to stack ArP even under hit and expertise caps.</p>\r\n<p>&nbsp;</p>\r\n<p>I couldn't find any forum post questioning the priority of reaching hit and expertise caps over stacking ArP, so my opinion is that something is wrong with 2.2.10 computations.</p>\r\n<p>If so, is it so wrong that you can't trust DPSrawrr on any item rating it gives ? Even around 20 expertise (lacking 6), expertise is rated between haste and attack power !</p>\r\n<p>My warrior is currently at 70% passive ArP and DPSwarr gives me a hard time when it comes to find items that actually improve my dps.</p>\r\n<p>&nbsp;</p>\r\n<p>PS : I'm french, sorry for my english :s</p>\r\n<p>PS2 : I use &quot;Relatives Stats Values&quot; a lot to makes things more obvious, I read the warning statement and of course I come to the same conclusions when looking at item or gem comparisons.</p>",
+    "PostedDate": "2009-07-22T21:23:30.937-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "215091",
+    "ThreadId": "57253",
+    "Html": "<p>MASSIVE /facepalm</p>\r\n<p>Please see this issue:<br>http://rawr.codeplex.com/WorkItem/View.aspx?WorkItemId=13682</p>\r\n<p>This explains why the Expertise value changes, it has to do with Overpower activates.</p>\r\n<p>The Expertise tooltip isn't different because of Strength of Arms, the number shown on the panel includes that value already. The tooltip is different for racial bonuses (as it states right next to that number). I've also added (though not checked in) an additional number in the tooltip stating the additional percentage gain from Weapon Mastery for dodges only.</p>\r\n<p>\r\n<hr>\r\n</p>\r\n<p>The major point here is that with various levels of gears and numbers you can make it do some really weird things.</p>\r\n<p>The easiest points to follow are: get to hit soft cap (8%) and stop, get to expertise dodge cap (6.5%) and stop. After that, ball is in your court for maximizing DPS. Would more Hit help? Fury yes (though not near as much as other stats), Arms no as there's nothing else to give value to. Would more expertise help? Only if you are standing in front of the mob where you can be parried (we have a 'situational setting' for this on the options panel).</p>\r\n<p>And no, the argument of letting the dodges happen for the extra Overpower activates is NOT valid. The total DPS gain from all of your abilities actually striking the target instead of being dodged is worth more than the gain from extra Overpowers. At this very moment, it's possible that the number of activates from dodges is being a little overblown. It was the first time I had set it like that and hasn't been fine-tuned.</p>\r\n<p>PS: Your Grim Toll being shown as an 'average rating' probably means you need to refresh the item from wowhead so the actual special effect is working. It's supposed to be showing 83 Hit Rating and '612 Armor penetration rating (10 sec 15% on Physical Hit/4..' and it cuts off there on the tooltip. If you are seeing a specific number not that text then you need to refresh it.</p>",
+    "PostedDate": "2009-07-22T21:51:52.873-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "215100",
+    "ThreadId": "57253",
+    "Html": "<p>I just checked in some changes regarding this, the new formula for activates from dodges should be more accurate and less vulnerable to extremes.</p>\r\n<p>In a 10 minute fight, with no expertise, no talents (Weapon Mastery or Strength of Arms) and no racial bonus you can activate OP ~28 times. With Taste for Blood adding ~97 that's ~125 times total. This adds roughly 200 dps to the Overpower DPS item alone, but it drops the others abilities that deal damage because they are not striking the target as much, however it's not killing the rage for Heroic Strike from the white attack dodges so that's still increasing. I have asked Ebs to take a look at this and see if he can tweak the avoidanceStreak formula to take this into account for rage loss. Once this is done we should have a more significant impact and Expertise more stabilized from 0 to cap.</p>",
+    "PostedDate": "2009-07-22T22:55:00.93-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "215198",
+    "ThreadId": "57253",
+    "Html": "<p>&quot;The tooltip is different for racial bonuses (as it states right next to that number).&quot;</p>\r\n<p>I'm an orc and I use a mace, so I don't think the difference between the stat and the tooltip comes from any racial bonus. Anyway racial orc bonus is 5 expertise wich is 1.25% expertise (same as dwarf and human is 3) while I get a 1% difference wich is exaclty what SoA gives. And I just checked, if I add 3/3 Vitality from the protection talent tree this difference increases to 2.5% exactly matching 4+6 = 10 expertise bonus froms both talents. The exertise value shown in the panel matches the one from the tooltip but the percentage isn't, and this is the most confusing since the two values stand next to eachother in the panel don't match (in my last exemple 5.79% : 33.18 : 190).</p>\r\n<p>I perfeclty now hit and expertise cap, I was pointing out that DPSwarr resuts were inconsistent with the fact that maintaining these caps is a priority.</p>\r\n<p>From the start I well specified my problems occurs with an arms template (though it might be the same with a fury one, but I didn't test).</p>\r\n<p>Your explanation using overpower mechanism might be the source of some expertise issues, but as I wrote, the same occurs with hit (ArP being more attractive than hit while way under the cap).</p>\r\n<p>Concerning the Grim Toll trinket, it is of course up to date, but the way rawr considers procs seems to be by taking an average continuous value instead of simulating them. This is ok but is misleading because it's not explained anywhere, obviously so misleading that you're even not aware of it.</p>\r\n<p>&nbsp;</p>\r\n<p>I'm a bit disapointed since your answered without reading my post correctly and without investigating the issues I pointed out, so /facepalm yourself buddy.</p>",
+    "PostedDate": "2009-07-23T03:13:21.993-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "215394",
+    "ThreadId": "57253",
+    "Html": "<p><strong>Expertise Display:</strong></p>\r\n<p>I have now corrected the Expertise Panel and Tooltip to the following (showing an example value):</p>\r\n<p style=\"padding-left:30px\"><code>02.74% : 10.98 : 90</code></p>\r\n<p>This is 'DodgeParryReducPerc : Expertise : Rating' without any bonuses (SoA/Racial/WM)</p>\r\n<p>The Tooltip now reads (with 2/2 SoA, 1/2 Weapon Mastery, and being Human wielding a 2h Mace to example):</p>\r\n<p style=\"padding-left:30px\"><code>Following includes Racial bonus and Strength of Arms<br>04.49% : 17.98 : MH<br>00.00% : 00.00 : OH<br>01.00% Weapon Mastery (Dodge Only)<br><br>You need 8 more Expertise (66 Rating)</code></p>\r\n<p>The last line swaps for above/below the 6.5% soft cap and does not get modified by WM.</p>\r\n<p>So you were correct in that I had a number not being added to one spot when it was being added to another. Please note that this was a display issue only, calculationally it was doing it correctly.</p>\r\n<p>\r\n<hr>\r\n</p>\r\n<p><strong>Overpower activates vs Taste For Blood:</strong></p>\r\n<p>I've now separated these two things to 2 separate lines:<br>- Overpower for it's original ability<br>- Taste for Blood for Rend Damage activates</p>\r\n<p>I've done this to help show the separation between the two and because I realized that this makes more sense since Bloodsurge &quot;does a Slam&quot; and Sudden Death &quot;does a limited Execute&quot; so now we have Taste for Blood &quot;does an Overpower&quot;.</p>\r\n<p>\r\n<hr>\r\n</p>\r\n<p><strong>Expertise vs Overpower:</strong></p>\r\n<p>As an interim step to showing how adding Overpowers from other abilities and whites being Dodged, I've double the number of GCDs consumed by Overpower. This is to sim that the GCD that was used to activate it didn't do any damage and another GCD has to be used to actually OP. This jumped Expertise's value up but doesn't completely make this 'situation' disappear which seems more accurate to me than it was.</p>\r\n<hr>\r\n<p><strong>Grim Toll:</strong></p>\r\n<p>If you see the information I mentioned then it is not simply an average value, the trinket is being modelled out for uses, stacking effects, etc that various trinkets use. These are called SpecialEffects in Rawr and use a hits per second and various other variables to determine the actual stat value gain per trinket. Before this process was implemented you would have seen a single x value of ArP for Grim Toll which wasn't changeable with your stats or modified by timeframe of the fight. Please note that we do not however have a system in place for handling being near ArP capped and having both ArP trinkets (where if they both are active at the same time they don't get value since it's wasted ArP).</p>\r\n<p>\r\n<hr>\r\n</p>\r\n<p><strong>Hit Rating vs ArP at various values:</strong></p>\r\n<p>I do not currently have an explanation for this and will investigate. I will state that the more ArP you stack, the more value it gets until it reaches the cap. I sit at ~50% right now without the ArP trinkets but at ~75% ArP has a greater value per point. It's just a scaling thing with ArP and could the explanation we are looking for here.</p>\r\n<p>I went through and created a blank Arms character then just started clicking the top dps item for each slot until the numbers stopped changing significantly and ended up with this (I specifically did not include an ArP Trinket):</p>\r\n<p>ArP Rating 1.28<br>Exp Rating 1.09<br>Hit Rating 1.06<br>Crit Rating 0.90<br>STR 0.89</p>\r\n<p>ArP was at 80.21%<br>Hit was at 7.93%<br>Expertise was at 60 Rating 1.83% (3.58% incl Human w/ Mace, 2/2 SoA, 0/2 WM)</p>\r\n<p>So with ArP that high it was still higher than both Exp and Hit but Exp and Hit were higher than any other stat.</p>\r\n<p>Now when I swapped a trinket to Mjolnir I had 90.31% ArP same Hit same Exp and the values changed to:<br>ArP Rating 1.37<br>Exp Rating 1.12<br>Hit Rating 1.08<br>STR 0.93<br>Crit Rating 0.92</p>\r\n<p>The more I tried to swap items to increase ArP, the more value ArP got. Then I hit that magic moment where the ~102% cap hit and ArP value dropped to zero per additional point and Expertise/Hit were still on top.</p>",
+    "PostedDate": "2009-07-23T10:35:19.833-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "215431",
+    "ThreadId": "57253",
+    "Html": "<p>A few points from the other DPSWarr developer.</p>\r\n<p>Firstly, regarding Grim Toll procs, it is a known issue. &nbsp;Just about every proc we have in the game increases linear stats, so averaging them is alright. &nbsp;At least for non-warriors, that is. &nbsp;AP, Spell Power, Crit and Haste can be safely averaged in 90% of cases, so that's how Rawr does it. &nbsp;Having a +1000ap proc that has a 25% uptime is the same as having 250 passive AP for the majority of classes.</p>\r\n<p>Armor Penetration, on the other hand, does not scale linearly. &nbsp;Having a 600arp proc with a 33% uptime is not the same as having 200 passive arp. &nbsp;On top of that, warriors do not have AP/Crit scaling linearly like other classes because our rage income (and thus our Heroic Strikes/Slams/Executes) is directly affected. &nbsp;With bloodlust active, we can't HS all of our rage away, and if bloodlust goes &lt;20% mob health, we can spam execute if our swing speed is &lt;1.5 (or WW/Execute/Execute/Execute).</p>\r\n<p>Lastly, Armor Pen is the only proccing skill that has a cap. &nbsp;Which means that we should be averaging it based on how much you can actually use of the proc, rather than the full effect.</p>\r\n<p>The correct way for us to fix this is relatively easy to do, but has the downside of being a huge performance hit. &nbsp;We'd essentially need to take twice as long to do any calculations with Grim Toll or Mjolnir Runestone, and three times as long for both. &nbsp;DPSWarr is already in high need for a performance fix; adding any more performance-intensive changes is a bad idea. &nbsp;I have this weekend available to revamp the dpswarr model to be more optimized and have less performance issues. &nbsp;Once that's done, we'll work on others.</p>\r\n<p>I can't speak to the other inaccuracies that you talked about, because I'm not the Arms guy and Jothay and I are pretty much working independently, and only sharing some parts of the code, but it sounds like Jothay is investigating further.</p>",
+    "PostedDate": "2009-07-23T11:36:19.36-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "218235",
+    "ThreadId": "57253",
+    "Html": "<p>Just spitballing so that I know I wrote it out at some point:</p>\r\n<p>Would it be possible to override the SpecialEffect for Grim Toll and other ArP trinkets into the models and pass an argument of our passive ArP before procs? This would allow us to drop the total value of the trinket during it's uptime to gap between passive and proc value, thereby eliminating the true value issue of each individual trinket.</p>\r\n<p>Multiple ArP trinkets would of course still be an issue overall.</p>",
+    "PostedDate": "2009-07-31T21:34:34.95-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "218236",
+    "ThreadId": "57253",
+    "Html": "<p>The preferred way would be to use GetAverageUptime instead of GetAverageStats and do the special averaging logic in your module.</p>",
+    "PostedDate": "2009-07-31T21:56:16.627-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "218240",
+    "ThreadId": "57253",
+    "Html": "<p>I was actually meaning to override the</p>\r\n<p>SpecialEffect(... ArmorPenetrationRating = x;&nbsp; ...)</p>\r\n<p>and have that x be capped by the amount of ArP we can still benefit from, then let the rest stay the same.</p>\r\n<p>This would solve the issue of being near ArP cap and still getting &quot;full value&quot; of the ArP trinket and drop it's average stats value (Eg- 10% ArP to 6% ArP on Mjolnir).</p>",
+    "PostedDate": "2009-07-31T22:40:32.1-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "218245",
+    "ThreadId": "57253",
+    "Html": "<p>I guess that would work.</p>",
+    "PostedDate": "2009-07-31T23:17:46.507-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "220004",
+    "ThreadId": "57253",
+    "Html": "<p>Sword Spec seems to be valued a little high - not a lot, but a bit.&nbsp; I'll check into it at some point to see if it's just a perception issue on my part, or if it's actually a problem Rawr-side.</p>\r\n<p>I don't believe that the DPSWarr module has been update to reflect the fact that all, not just Sudden-Death procced, Executes are capped at 30 rage.&nbsp; This will drastically affect the sub-20% rotation (probably completely dropping MS and Slam in favor of Executes, and that may also affect the choice of&nbsp; (speaking from the Arms-side).&nbsp; It also conceivably adjusts the Fury side - I'd have to look some more at those abilities.</p>",
+    "PostedDate": "2009-08-05T14:18:58.997-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "220015",
+    "ThreadId": "57253",
+    "Html": "<p>We have not, in any way, modeled &lt;20% HP Execute Spamming as we have no real way to do this right now. We probably will be able to do it after the Boss Handler is finished.</p>\r\n<p>However, the code for the Execute ability *is* there which is how Sudden Death was getting it's damage calc (Sudden Death activates and calls an Execute), previously limited to 30 rage when being a Sudden Death but now always limited to 30 rage even if it were a raw Execute.</p>\r\n<p>I will state from personal experience that pre-patch &lt;20% I would keep rend up so that I could just spam back and forth between OP and Exec so that I always had rage and high hits, no MS, no Slams but after 48 hours of ToC, I solely Execute spam now as there's no reason to do anything else (tons of rage left over instead of consuming all every hit).</p>\r\n<p>I do have some Ideas to implement this soon but we need to settle some other things first.</p>",
+    "PostedDate": "2009-08-05T14:36:19.25-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "220025",
+    "ThreadId": "57253",
+    "Html": "<p>Actually, to correct Jothay in one respect, we *do* have plans to incorporate this (or at least, I do). &nbsp;It will come with the Rotation overhaul that I've hinted at a few times in the past. &nbsp;Logic will be included to determine what the best rotation is during &lt;20%, bloodlust, and other situational fights. &nbsp;Don't ask me when it will come, though, because I'm in the process of buying a house, which is eating in to my free time to do a major overhaul :(</p>\r\n<p>Also, just to note, for a Fury warrior at least, execute has gotten very weak during &lt;20%. &nbsp;For me, I'm maintaining both WW and BT (dropping slam), and executing whenever I have free GCDs, and still queueing up Heroic Strike (although less frequently, as Execute's 30 rage is more than Slam's 15rage, and comes more frequently).</p>",
+    "PostedDate": "2009-08-05T14:54:23.377-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "223033",
+    "ThreadId": "57253",
+    "Html": "<p>Hi there, 2 quick questions:</p>\r\n<p>- Do you have any news on the workaround for Arp trinkets procs? A glance at the gear available in the Trial of the Crusader tells me passive Arp will skyrocket and people will stop bothering with these trinkets.</p>\r\n<p>- Is it possible to make the target armor dropdown list editable?</p>",
+    "PostedDate": "2009-08-13T10:17:31.927-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "223088",
+    "ThreadId": "57253",
+    "Html": "<p>Hello, I have been reading around in this thread for some time now, but can't find this issue - well, I might very well just be overreading it, but still I wanted to state, that I am not asking without reading around first.</p>\r\n<p>&nbsp;</p>\r\n<p>The DPS calculated for fury warriors seems to be awfully distant from the real results. The arms modell seems to be doing just fine and my actual DPS is close to the calculated result. As soon as I switch to a fury spec (18-53-0), switch to fury in options, etc. I drop by 1.5k dps. Even more strangly: I loose ~300 dps if I equip an weapon in the offhand. I loaded a friend of mine who plays a way better equipted fury warrior from the armory and added all the buffs I have too. He's 600 DPS behind ... what am I doing wrong?</p>",
+    "PostedDate": "2009-08-13T12:47:49.42-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "223184",
+    "ThreadId": "57253",
+    "Html": "<p>poor maintenance field, never gets checked</p>",
+    "PostedDate": "2009-08-13T17:01:53.187-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "223595",
+    "ThreadId": "57253",
+    "Html": "<p>Multiple targets is not functioning correctly.&nbsp; Set to 0% time with multiple targets, it still shows a significant DPS increase when selected.&nbsp; Only going into this one, because it seems to be at least partially implemented at this point.</p>",
+    "PostedDate": "2009-08-14T10:13:36.063-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224533",
+    "ThreadId": "57253",
+    "Html": "<p>Just a small issue I noticed:<br><br>In Rawr Bloodrage uses GCDs and thus lowers your DPS. Ingame it doesn't.&nbsp;</p>",
+    "PostedDate": "2009-08-17T10:16:24.647-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224539",
+    "ThreadId": "57253",
+    "Html": "<p>Short of you utilizing a macro that pops Bloodrage then something else at the same time, you will be manually activating that ability then manually activating something else, the time difference between the two activates may as well be a GCD.</p>",
+    "PostedDate": "2009-08-17T10:23:24.007-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224542",
+    "ThreadId": "57253",
+    "Html": "<p>Corroborated: Bloodrage is not attached to the GCD, and does not activate it.</p>",
+    "PostedDate": "2009-08-17T10:26:09.247-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224553",
+    "ThreadId": "57253",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>BrWarner wrote:</strong><br>\r\n<p>Corroborated: Bloodrage is not attached to the GCD, and does not activate it.</p>\r\n</blockquote>\r\n<p>This. Bloodrage does not cost you any rotation time unless you're a clicker and very slow at it because you can simply use it while being on GCD.</p>\r\n<p>&nbsp;</p>\r\n<p>Another issue that's probably low priority (and most likely known as well) is when optimizing with activated talent optimization, it switches to a 27/44 build while still wearing two two-handers.</p>",
+    "PostedDate": "2009-08-17T10:52:36.907-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224559",
+    "ThreadId": "57253",
+    "Html": "<p>Yeah, no way should using Bloodrage be counted as a GCD (or any time at all, beyond perhaps latency, if even that).</p>",
+    "PostedDate": "2009-08-17T11:08:54.103-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224585",
+    "ThreadId": "57253",
+    "Html": "<p>Don't use optimize talents, period, it doesn't work like one might want it to.</p>",
+    "PostedDate": "2009-08-17T12:03:14.087-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224598",
+    "ThreadId": "57253",
+    "Html": "<p>Yeah, as previously stated elsewhere on the forums, Optimizing talents is just unsupported, at least for DPSWarr. &nbsp;I'm not sure how it works with other models, but warriors are unique in that we have a talent that changes what gear you can and cannot wear (I guess enh shamans have something similar to dual wield? I can't recall). &nbsp;</p>\r\n<p>I'm sure that some models can use this safely, and is tested. &nbsp;DPSWarr is definitely not one of them.</p>",
+    "PostedDate": "2009-08-17T12:31:44.03-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224764",
+    "ThreadId": "57253",
+    "Html": "<p>hi,</p>\r\n<p>is it correct, that the bis-trinket&nbsp;for dps-warrior is mjolnir runestone? without the runestone, the passive arp is 88,34%? is that so?</p>\r\n<p>actually my dps-warrior have&nbsp;70% passive arp and mjolnir (mjolnir has uptime&nbsp;- 3 minutes - 11% arp)&nbsp;but rawr says, u musst gemming more arp and more and more. (only when whirlwind, bloodthirst and bloodsurge and rage dumps under the ability maintenance are activated) .. is that correct? i think it is better, if u have the passive arp soft cap ( 567 arp rating) and mjolnir runestone u must gemming only str? ... rawr says: arp?</p>",
+    "PostedDate": "2009-08-17T23:40:00.813-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224866",
+    "ThreadId": "57253",
+    "Html": "<p>Runestone and Grim Toll are currently inaccurate if your passive arp is over 50% :(</p>\r\n<p>It is a known issue, and one that should be fixed soon</p>",
+    "PostedDate": "2009-08-18T04:27:58.17-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "225085",
+    "ThreadId": "57253",
+    "Html": "<p>regarding Bloodrage and it's GCDUsage, please see work item 13901</p>",
+    "PostedDate": "2009-08-18T11:57:12.177-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "226433",
+    "ThreadId": "57253",
+    "Html": "<p>Updated Opening Post to 2.2.14</p>",
+    "PostedDate": "2009-08-21T10:33:00.567-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "226621",
+    "ThreadId": "57253",
+    "Html": "<p>Thanks for the load of changes yesterday, Jothay!&nbsp; =D&nbsp; Love it!&nbsp; (There were a number of things I just haven't gotten around to reportingin the past week or two, but you just covered most of them in that last batch.)</p>",
+    "PostedDate": "2009-08-22T04:50:28.143-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "226767",
+    "ThreadId": "57253",
+    "Html": "<p>Despite 36206, Multi-target handling does not seem to be functioning for Arms.&nbsp; Set to 0% time with multiple targets, it is still showing a DPs increase.</p>",
+    "PostedDate": "2009-08-22T23:42:58.607-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "226830",
+    "ThreadId": "57253",
+    "Html": "<p>In my testing I showed no DPS change when it was set to 0%. Can you create an issue on it and post your character file? Or do you know which ability on the Stats Pane is showing the additional DPS (if it's just one).</p>",
+    "PostedDate": "2009-08-23T09:19:03.983-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "226904",
+    "ThreadId": "57253",
+    "Html": "<p>Although now I am seeing it too. The problem is due to Cleave override Heroic Strike, I've asked Ebs to look at making a settling system to handle the % from 0-100 to swap HS and Cleave</p>",
+    "PostedDate": "2009-08-23T20:42:43.023-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "227712",
+    "ThreadId": "57253",
+    "Html": "<p>Adding in an option to use the upcoming 3.2.2 patch would be great.&nbsp; Seems we have a new Sword Spec... FINALLY: Sword Spec is now 2/4/6/8/10%, double the current iteration.</p>",
+    "PostedDate": "2009-08-25T17:37:52.59-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "227731",
+    "ThreadId": "57253",
+    "Html": "<p>Sword Spec? Viable?</p>\r\n<p>/apacolypse</p>",
+    "PostedDate": "2009-08-25T19:03:17.163-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "227768",
+    "ThreadId": "57253",
+    "Html": "<p>No kidding...</p>\r\n<p>&nbsp;</p>\r\n<p>Well, we'll see how viable.&nbsp; This could well do it.&nbsp; I really would love that.</p>",
+    "PostedDate": "2009-08-25T22:12:09.467-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "228253",
+    "ThreadId": "57253",
+    "Html": "<p>I just committed an overhaul to the code for better handling of the Attack Table and fixed a bunch of little bugs I found along the way.</p>\r\n<p>The most exciting thing that I saw in my testing of the new code is that the optimizer will now maximize dps to having Hit and Expertise caps without the need for the requirement. I only tested Arms with this (leaving Fury checking to Ebs, but I expect similar results). After an Optimize with no reqs, I would be &lt;8 away from hit and/or expertise caps simply to favor a STR/HIT gem over a Hit/EXP gem, etc.</p>",
+    "PostedDate": "2009-08-26T23:23:09.603-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "228278",
+    "ThreadId": "57253",
+    "Html": "<p>jothay and ebs, absolutely great work! hope so, the new version is available soon, at best on the very same day. :&gt;</p>",
+    "PostedDate": "2009-08-27T01:03:17.433-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "228409",
+    "ThreadId": "57253",
+    "Html": "<p>I (along with everyone else) appreciate all the unbelievably hard work that you guys have been putting into this project.<br>I know that is has been mentioned a few times in this thread, but since we are right around the corner of hard modes, would a fix for GT type effects be possible prior to the next live rawr release? Trying to figure out between hard capping ArP w/o the trinket vs. soft capping ArP with means a huge gear difference.<br>Thank you.</p>",
+    "PostedDate": "2009-08-27T07:43:30.283-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "228450",
+    "ThreadId": "57253",
+    "Html": "<p>Sadly, I'm not one of the guys working on that scenario handling with SpecialEffects so I can't give you any kind of ETA on that. I do know that new code is being generated for this and there is extensive testing going on before it's being implemented. I don't wanna promise 2.2.14 but mayhaps for a 2.2.15 release. For now, if you only have 1 of the two trinkets, set a requirement in the optimizer to not go above the soft cap+trinket value. That is to say, set the Optimizer requirement for ArP to &lt;= 60 (50% normal + 10% trinket value) whatever the actual numbers for you may be. This way the optimizer will use as much ArP Rating as it needs to get you soft capped, then it will just add the trinket.</p>",
+    "PostedDate": "2009-08-27T09:24:35.873-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "228456",
+    "ThreadId": "57253",
+    "Html": "<p>I'll put in the changes for just one trinket. &nbsp;It won't be the complete fix (because ArP scales the more you get; giving it a passive value isn't going to be the same as doing 2 calculations: with the trinket and without).</p>\r\n<p>It also will NOT have support for people using both Grim Toll AND Mjolinr. &nbsp;The math is a little more complex for that scenario, and unfortunately work is breathing down my neck so I haven't had much time to devote to this lately :(</p>",
+    "PostedDate": "2009-08-27T09:42:10.24-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "228464",
+    "ThreadId": "57253",
+    "Html": "<p>Regardless a Grim Toll + Mjolnir situation IS NOT OPTIMAL, and probably isn't even worth the extensive effort in modeling that rare occasion.</p>\r\n<p>This &quot;stops up the runnings&quot; of the program thing (Work Item 13977) is really killing me, though, and those changes in 36312 look mighty tasty.</p>",
+    "PostedDate": "2009-08-27T10:00:37.903-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "228469",
+    "ThreadId": "57253",
+    "Html": "<p>I doubt anyone would want to run with both the trinkets so that is not necessary. However im curious to see if passive ArP cap will net more dps then passive ArP softcap with a trinket. Since 20-25% of Arms total dps does not benefit from ArP.</p>",
+    "PostedDate": "2009-08-27T10:13:14.023-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "228471",
+    "ThreadId": "57253",
+    "Html": "<p>If you can reach (or approach) the ArP softcap, you will almost certainly outperform a setup with an ArP trinket.</p>\r\n<p>I was talking to Ebs there - modeling the single ArP trinket proc is very important, we're all in agreement there.</p>\r\n<p>Hrm.&nbsp; I guess it's better than nothing, but... you're assigning it (ArP) a static value on the proc?</p>",
+    "PostedDate": "2009-08-27T10:20:26.83-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "228473",
+    "ThreadId": "57253",
+    "Html": "<p>ArP changes for GrimToll/MjolnirRunestone are in. &nbsp;I have, however, just discovered a bug where I apparently am at 10% hit and the model wants me to get more (I equipped Grim Toll over my banner, and my value of hit jumped way up).</p>\r\n<p>Suspicous, I just don't have time to look into it right now :(</p>",
+    "PostedDate": "2009-08-27T10:23:58.567-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "228513",
+    "ThreadId": "57253",
+    "Html": "<p>Actually, if you use them optimally, Grim+Mjolnir is an <strong>excellent</strong>&nbsp;combo for ferals, and I expect also would be for warriors as well.</p>\r\n<p>The normal issue with using both is that their procs are wasted when the other is already up, which is a majority of the time. However, if you <strong>unequip and reequip one of them ~22sec before the fight starts</strong>, then they start out of sync, and it's extremely unlikely that they'll overlap at all, giving you the full value of both. Note, however, that this only works on fights where you can continuously attack to keep both trinkets procing on cooldown.</p>\r\n<p>Example: (Goto Buffs Cast tab, and click the # next to Mjolnir Runestone and Grim Toll)</p>\r\n<p><a href=\"http://worldoflogs.com/reports/rt-mURvcBbiie7FfnEN/details/29/?s=9793&e=10380\">http://worldoflogs.com/reports/rt-mURvcBbiie7FfnEN/details/29/?s=9793&amp;e=10380</a></p>",
+    "PostedDate": "2009-08-27T12:49:53.077-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "228536",
+    "ThreadId": "57253",
+    "Html": "<p>That does make sense, Astry, and is a common practice in certain situations (one good one is to swap trinks in their slots early enough to put their ICDs to come up about 10-15s into the pull, giving all the buffs/debuffs a chance to be on the mob before your trinks go off)). &nbsp;However, we would need specific modeling for that particular situation (an option to start trinkets &quot;de-synced&quot;). &nbsp;In normal operation, a person would have both trinkets proccing at approximately the same time. &nbsp;This would wreak havoc on the recommendations from Rawr - everything would be all over the place.</p>\r\n<p>As an &quot;advanced workaround&quot; for this specific example, one could force the model into those two trinkets, and double the proc length on one of them, while zeroing out the proc of the other (with an average of the two trink's proc values, I suppose). &nbsp;If the person is getting this advanced with their play, I doubt they'd be averse to such a simple &quot;outside the box&quot; adjustment of the tools available to them.&nbsp; I still don't believe that modeling double trinkets would be worth the time investment, if it is as hefty as it's being made out to be.</p>",
+    "PostedDate": "2009-08-27T14:46:20.87-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "228573",
+    "ThreadId": "57253",
+    "Html": "<p>I haven't implemented it in Rawr.Cat yet, but Kavan just added a method to get the uptime of combinations of special effects. Check it out.</p>",
+    "PostedDate": "2009-08-27T19:56:47.523-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "228597",
+    "ThreadId": "57253",
+    "Html": "<p>I don't think it's ready for use in release builds yet, but it's good enough to test and report what kind of extra functionality would be useful (I'm still planning to add option for desynced effects at start).</p>",
+    "PostedDate": "2009-08-27T22:35:41.537-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "228606",
+    "ThreadId": "57253",
+    "Html": "<p>I was just wondering if there was a way to implement the tier 9 set bonus, considering as of right now i could theoretically have my 2 piece bonus and rawr isn't taking into account the possibility of the tier 9 set bonus.&nbsp; So it is still valueing the tier 8.5 gloves over the tier 9.25 which for my set up would seem to be considerably wrong.&nbsp; I've read the recent post and was wondering if &quot;The two-piece bonus for T8 is kinda borked, we are working on it.&quot; was meant to say the tier 9 two piece bonus. I have 2.2.13 version atm and i do not even see the tier 9 bonus so i may be doing something wrong again, as i was earlier :p.&nbsp; Just wondering if there as any new news on this subject.&nbsp;</p>",
+    "PostedDate": "2009-08-27T23:34:37.14-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "228609",
+    "ThreadId": "57253",
+    "Html": "<p>T9 set bonuses are currently implemented and verified in the development builds, unfortunately you will have to wait until 2.2.14 to have access to this unless you can build the program from the source on your own computer.</p>\r\n<p>Devs: Is there any ETA on 2.2.14? There are a LOT of features that will answer many of the critisisms I have seen on various forums about using RAWR for DPS warriors.</p>\r\n<p>~Droid</p>",
+    "PostedDate": "2009-08-28T00:15:20.9-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "228776",
+    "ThreadId": "57253",
+    "Html": "<p>I just did a little bit of research (aka google &quot;rawr dps warrior&quot;) to see some of the comments that are being made. For the most part, anyone that has made violent accusations against the DPSWarr module hasn't used the program in at least 3 months as what they have cited specifically (for the most part) has been resolved. And some people refused to use DPSWarr after seeing something wrong with ProtWarr or some other such module. I'm guessing they don't have a clue that each module is developed separately.</p>\r\n<p>My advice to these such persons? Try it again, if it's still &quot;wrong&quot; to you, TELL US why/how and show us evidence to back up your claims.</p>\r\n<p>I'm sure Astry has a v2.2.14 release in mind here shortly as a lot of models have been updated.</p>",
+    "PostedDate": "2009-08-28T10:08:32.033-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "228782",
+    "ThreadId": "57253",
+    "Html": "<p>I mentally filtered out the illegitimate criticisms, the ones that actually are relevant that I have seen recently have to do with T9 set bonuses, ArP soft-capping with ArP proc trinkets (this is the big one), Bloodrage pulling GCDs, etc.</p>\r\n<p>&nbsp;</p>\r\n<p>~Droid</p>",
+    "PostedDate": "2009-08-28T10:23:02.557-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "230517",
+    "ThreadId": "57253",
+    "Html": "<p>As you can see from the recent check-ins, we've done some work on various things.</p>\r\n<p>I just added Survivability. Checking around the basic idea behind it was just Health (usually divided by 100). I've taken this a step further and added abilities that regenerate yourself, Enraged Regen, the Bloodthirst Healing Effect, Second Wind, etc. Also things like Commanding Shout are given a little value this way as well. If you wish to completely ignore Survivability then you can set the Scalar on the options pane to 0.0. Alternately, if you want to give it more importance, you can scale it up to x10.</p>\r\n<p>Having Multiple Targets set to x% will now (reasonably) settle the rage usage for Heroic Strike, Cleave and White Attacks for both Arms and Fury.</p>\r\n<p>The Stun handling now works a bit differently to more evenly effect abilities. Fury still doesn't have stun handling, but it's coming soon!</p>\r\n<p>I made more stuff regarding the offhand dependant on Titan's Grip so now it's no longer this massive negative number like it was.</p>",
+    "PostedDate": "2009-09-02T22:53:57.147-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "230930",
+    "ThreadId": "57253",
+    "Html": "<p>Just wanted to throw this out there for reference' sake.</p>\r\n<p>I had an issue with loading my current Fury setup on one of the more recent commits (36437).&nbsp; After downloading 36456 today, the same issue occurred.</p>\r\n<p>Fix:&nbsp; Load Fury character from the Armory.&nbsp; No need to save it.&nbsp; Then open the Fury character file, it should have no issue.&nbsp; Save it, and you're good.&nbsp; Repeat this for all Fury files that you have.</p>\r\n<p>It was throwing a really weird issue, and apparently was calling some weird buff thing from where I store my raw data files that I build from.&nbsp; It also could be my own stupidity somehow, but whatever.&nbsp; It works.&nbsp; =P&nbsp; I can post the error, if you like.</p>",
+    "PostedDate": "2009-09-03T16:35:45.423-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "230931",
+    "ThreadId": "57253",
+    "Html": "<p>Oh.&nbsp; And, even on 36456, I'm still getting a DPS increase when selecting multiple targets as available, but setting the uptime to 0%.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-09-03T16:38:14.66-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "230933",
+    "ThreadId": "57253",
+    "Html": "<p>If it's as Arms, I'm going to venture a guess that the DPS increase is due to Sweeping Strikes. &nbsp;We just made some changes there where Sweeping Strikes doesn't look quite as hard at the %, because it assumes that you activate it when the extra mobs are up (prior to this, the activates of Sweeping Strikes was limited by the percentage AND then also the number of targets it hit was limited by the percentage, so 10% Multi-Mobs became 1% damage on Sweeping Strikes). &nbsp;Jothay, can you take a peek at this if you can tonight? &nbsp;If not, I'm going to look at it tomorrow (as I've left work already, and if my wife sees me fire up anything that looks like code when I should be packing, she'll freak out :P)</p>",
+    "PostedDate": "2009-09-03T16:43:22.547-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "231094",
+    "ThreadId": "57253",
+    "Html": "<p>Hi, I just had a question about Armor Pen and using Rawr. I have messed around with it a bit, but am having some issues. the program doesnt seem accurate for scaling which pieces of gear are best, and itemizing arm pen correctly. Can anyone help me out with setting up the optimizer and/or Rawr itself for having grim toll and also the soft cap for arm pen that would put me at 100 percent when proc'd? I'm kind of stuck on itemizing right now, since I have no idea what gear to go for once at 100 percent with the proc. Any help anyone can offer would be great.</p>",
+    "PostedDate": "2009-09-04T04:35:44.427-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "231202",
+    "ThreadId": "57253",
+    "Html": "<p>I was seeing BrWarner's issue with MultiTargs @ 0% cuasing a DPS change when checked/unchecked. By the time i committed last night, the problem had gone away, but I'm still not sure exactly what was causing it.</p>\r\n<p>@codin99: Please read further up in this thread as we discussed how to do that.</p>",
+    "PostedDate": "2009-09-04T09:37:48.363-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "231235",
+    "ThreadId": "57253",
+    "Html": "<p>The issue happens as Fury as well, and without Sweeping Strikes marked as being used.&nbsp; Clicking off Cleave got rid of most, but not all, of the DPS increase.&nbsp; Toggling off Whirlwind did nothing, and there are no further AoE abilities that are enabled.</p>\r\n<p>&nbsp;</p>\r\n<p>[edit] Will play with the latest round of checkins after work tonight.&nbsp; Also, mind adding in the ArP nerf when toggling the PTR mode?&nbsp; <a href=\"http://elitistjerks.com/f31/t29453-combat_ratings_level_80_a/p21/#post1371053\">http://elitistjerks.com/f31/t29453-comb ... ost1371053</a>&lt;!-- m --&gt; <a href=\"http://forums.worldofwarcraft.com/thread.html?topicId=19595430014&sid=1\">http://forums.worldofwarcraft.com/threa ... 0014&amp;sid=1</a></p>",
+    "PostedDate": "2009-09-04T11:34:08.833-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "231336",
+    "ThreadId": "57253",
+    "Html": "<p>Haven't yet downloaded the latest, but played with Flooring after thinking about it a bit: When I then turn off flooring, and turn off all AoE abilities (including WW), there is finally no change when turning on/off Multiple Targets @ 0%.&nbsp; This is the only situation that I can get a 0 change when toggling Multiple Targets.</p>\r\n<p>Also, as troubling as it sounds, turning on WW lowers my DPS when it's set to Multiple Targs @ 0% with Flooring enabled. (Coming back to it, I cannot reproduce this, even playing around some, so I'm not too worried.)</p>",
+    "PostedDate": "2009-09-04T17:48:30.913-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "231341",
+    "ThreadId": "57253",
+    "Html": "<p>Don't use Flooring, it's bugged and can make several things seem like issues when they really aren't. I had it set to default active for a while, but I hadn't intended on that. I've since changed the Default to false/off.</p>\r\n<p>Astry is in control of the ArP nerf right now. He's already made it active but it's against all characters that are using the unreleased code and use ArP. Since the chance occurred in StatConversion, I would need to make multiple edits to make it function only on the PTR Mode switch.</p>",
+    "PostedDate": "2009-09-04T18:03:07.78-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "231355",
+    "ThreadId": "57253",
+    "Html": "<p>I have no doubt you're reading this Astry, so I'd like to say again: switching the ArP conversion, even if it's just in the unreleased code, can be confusing and misleading.&nbsp; Modeling and planning around what's current is the most important thing, unless you're doing testing or future planning for comparison purposes.&nbsp; Certainly the unreleased code is not the beginners' access point, but even for the more advanced users, modeling what's live is what really drives Rawr and spreadsheets and whatnot, and making the assumption that something may go live at some point in the future can be extremely confusing.</p>\r\n<p>I did some cursory searching of the intra-webs about the definiton of Flooring, but am still a little sketchy on what it means within Rawr's framework.&nbsp; Mind giving a basic rundown of how it SHOULD work?</p>\r\n<p>Found the issue with Multiple targets lowering DPS (it's on Cleave - if Cleave is toggled on, the DPS goes up, if Cleave is toggled off, DPS goes down, both relative to the DPS without MultiTargs, and both without Flooring).&nbsp; Will go download the latest code and see if it still persists.</p>",
+    "PostedDate": "2009-09-04T19:22:28.787-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "231358",
+    "ThreadId": "57253",
+    "Html": "<p>Forget the definition of Flooring. What I'm actually using it for is to limit ability usage to whole numbers instead of partials.</p>\r\n<p>Eg- Over the course of Duration you could calculationally Mortal Strike 115.536975165135 times, but since you can't .536..... whatever in reality enabling Flooring drops that to 115. Unfortunately, it doesn't do it everywhere that it needs to which is why I said it was buggy. Issues that arise from Flooring include seeing big chunks of negative for Expertise at very specific points, as it would affect Overpower activation (it might be 0.99 at one point, change one factor and it becomes 1.01, which results in 1 under flooring as opposed to 0).</p>\r\n<p>Flooring was meant to allow a different matching method to real data a person may have from WWS or Recount or something, it just needs fine tuning on the back end so that it's doing it everywhere that it should be.</p>\r\n<p>Flooring is something that is only usable in the Arms build of DPSWarr, so it's not affecting anything else. Turn Flooring off for best results for now.</p>",
+    "PostedDate": "2009-09-04T19:47:23.137-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "231370",
+    "ThreadId": "57253",
+    "Html": "<p>I'm putting it here, but it may be more appropriate as a general Base topic:</p>\r\n<p>Feature request: Allow decimal values in the Optimizer text field in relation to percentages.&nbsp; For example, allow an input of .2% on a &quot;% Chance to Miss&quot; field, as opposed to 1 or 0.</p>",
+    "PostedDate": "2009-09-04T21:50:16.987-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "231373",
+    "ThreadId": "57253",
+    "Html": "<p>Ya, I have no control over that from DPSWarr, gotta be done by the one who makes the Optimizer.</p>\r\n<p>I could however multiply the number in that box by another hundred so the value in it is 1000 = 10% so you can reach that .2% by inputting 20. But I think that woud hurt more than help</p>",
+    "PostedDate": "2009-09-04T22:14:25.457-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "231375",
+    "ThreadId": "57253",
+    "Html": "<p>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Yeah, don't do that, I'll try to get it to support decimals.</p>",
+    "PostedDate": "2009-09-04T22:17:03.053-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "231543",
+    "ThreadId": "57253",
+    "Html": "<p>For those of you compiling unreleased source, please try out the new BossHandler. This provides presets for the Situational Changes that you have access to.</p>\r\n<p>For instance, Selecting &quot;Patchwerk 10 man&quot; will turn off Multi Targets, Moving Targets and Stunning Targets and turn on Standing in Back set at 100%.</p>\r\n<p>There are also 3 Special Bosses that auto-adjust based upon the bosses in the list:</p>\r\n<p>1) <strong>TheEZModeBoss:</strong> Conglomerate of all the 'easiest' stats for the bosses in the list (highest enrage timer, most time standing in back, least time moving, etc) basically, this becomes a simple Patchwerk with a 15 minute enrage timer instead of 6 minute<br>2) <strong>TheAvgBoss:</strong> All the values of each stat per boss averaged out, decent measuring stick for your character's performance in game<br>3) <strong>TheHardestBoss:</strong> Conglomerate of all the 'hardest' stats for the bosses in the list (lowest enrage timer, least time standing in back, most time moving, etc) basically, this becomes the addage of all your worst nightmares together to see how you would measure up.</p>\r\n<p>Try this stuff out and see if there are any problems with the implementation. My hope is that this strategy can be ironed out in DPSWarr then adopted in other models.</p>",
+    "PostedDate": "2009-09-06T03:09:09.44-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "233066",
+    "ThreadId": "57253",
+    "Html": "<p>Ok have been using rawr for a while for dps and while I know that Arms is better dps for my gear level I also know I like the play style of Fury better. While importing and evaluating my toon from the armory (nakedman Blackrock) I noticed that it said my OH weapon was -dps. Is 2.2.15 smart enough now to know that Arms is better dps than fury? Started from the character profiler to pull all my gear in available then uploaded (not sure that makes a difference).</p>\r\n<p>Also seems like it values hit a lot more than older models. I am way over special cap and it still has Hit valued pretty high on the relative stat values. Is this correct as well.</p>\r\n<p>Thanks for all your hard work</p>",
+    "PostedDate": "2009-09-10T05:38:28.85-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "233088",
+    "ThreadId": "57253",
+    "Html": "<p>The -dps for the offhand is a bug, I'll look into it -- this looks to be a recent regression.</p>\r\n<p>I'm not certain about hit. &nbsp;It looks like hit is sitting about where I'd expect it to for you, but I know that Jothay changed the combat table and a bug may have snuck in. &nbsp;I'll see what I can find.</p>",
+    "PostedDate": "2009-09-10T06:30:37.613-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "233115",
+    "ThreadId": "57253",
+    "Html": "<p>Thanks for the update and the time you put in.</p>",
+    "PostedDate": "2009-09-10T07:24:27.95-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "233157",
+    "ThreadId": "57253",
+    "Html": "<p>Hit is still going to be valued fairly high for Fury as it increases your rage over duration (because&nbsp;your&nbsp;strikes are hitting in more&nbsp;of that 27% miss cap)&nbsp;which increases your potential for Heroic Strike usage. What I've seen is&nbsp;it&nbsp;usually teters (sp?) off around 10% hit. However, there's still always the possibility of bugs creeping in, I'm sure if there is one ebs will find it.</p>",
+    "PostedDate": "2009-09-10T08:46:16.04-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "233162",
+    "ThreadId": "57253",
+    "Html": "<p>OK that makes sense.&nbsp; One last dumb question. Is execute no longer a viable ability? For both spec's it seem like its a non-factor in in for dps.</p>",
+    "PostedDate": "2009-09-10T08:56:28.607-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "233199",
+    "ThreadId": "57253",
+    "Html": "<p>The issue isn't that it's not viable.&nbsp; If anything, with the semi-recent change to Execute (only consuming up to 30 rage) has made it more useful, as you aren't crippled by rage gen, or staring quite so hard at a swing-timer to gauge if you can use the ability at any given time. It's an integral part of the normal rotation for Arms, and a great rage-dump sub-20% for Fury (As well as the core part of an Arms' Sub-20 rotation).</p>\r\n<p>The issue is that the Execute (sub-20%) phase is not modeled within the DPSWarr module of Rawr.&nbsp; Fury therefore gets 0 usage out of Execute, and Arms gets less usage factored in than it would in a typical application.</p>",
+    "PostedDate": "2009-09-10T10:06:38.123-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "233363",
+    "ThreadId": "57253",
+    "Html": "<p>Execute Range will be coming shortly (at least for Fury). &nbsp;In the past few days I've changed our code to have less intrusion on fury-vs-arms. &nbsp;The two are really modelled so differently that all the shared code we had lying around made it difficult to make changes without introducing new bugs.</p>\r\n<p>Now that I'm just about finished there, a lot of the more advanced fury things I've talked about (execute range, more intelligent rotation, more intelligent cooldown/arp modeling) is coming soon. &nbsp;Maybe not in .16, but in .17 I'd reckon.</p>",
+    "PostedDate": "2009-09-10T16:56:03.877-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "233880",
+    "ThreadId": "57253",
+    "Html": "<p>I am having trouble trying to compare my character.</p>\r\n<p><a href=\"http://www.wowarmory.com/character-sheet.xml?r=Dentarg&n=Lurgr%C3%A9n\">Lurgr&eacute;n</a> Dentarg US</p>\r\n<p>It is very weird because when he is in Prot spec I have no problem with the items and no NaN's, and I do not save the character or anything.&nbsp; But when I go back and switch his specs and even give it a couple days and try to hop on Rawr it only loads the helms and does not even have the helm that I am wearing listed, and has NaN's for all the other items.</p>",
+    "PostedDate": "2009-09-12T08:40:29.097-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "233919",
+    "ThreadId": "57253",
+    "Html": "<p>Are you trying to use one character file (.xml) to hold both Prot and DPSWarr stuff in it? If you are, split the character files and keep one set in each.</p>\r\n<p>To create your DPSWarr file, log out from WoW client with your DPS Spec active and DPS gear on. Wait about 3 minutes (barring any downtime for the armory) and then load your character from the armory into Rawr. Then save that character to a file (Eg- &quot;Lurgren-DPS.xml&quot;).</p>\r\n<p>To create your ProtWarr file, log out from WoW client with your Prot Spec active and Prot gear on. Wait about 3 minutes (barring any downtime for the armory) and then load your character from the armory into Rawr. Then save that to a separate file (Eg- &quot;Lurgren-Prot.xml&quot;).</p>\r\n<p>If you are using the Character Profiler to generate the file, use that method instead but still keep separate files.</p>",
+    "PostedDate": "2009-09-12T12:19:09.207-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "233922",
+    "ThreadId": "57253",
+    "Html": "<p>Character saving aside:</p>\r\n<p>A couple of issues crept up on us for the 2.2.15 release where Arms DPS would go to NaN. The most serious of which was that if you aren't hitting hard enough to generate enough rage for your rotation, Heroic Strike (instead of dropping to 0) would drop to a negative number (oopsie!) and would kill the DPS. The way around it was to add Buffs to your toon until Available Rage (shown at the bottom of the Stats Pane) became a positive number. After that, calcs would stop NaN'g.</p>\r\n<p>There were also some side issues on both Fury and Arms that have since been taken care of and it's somewhat because of what Ebs mentioned last Thursday on this thread. The shared code going back and forth was starting to cause issues between all the side systems we were using and how they were making their way into the separate rotations (which are very different from each other).</p>\r\n<p>2.2.16 will fix several of the bugs that crept up and adds some support for a few things we didn't have. One thing was Recklessness, which we found a way that we believe works to bring it up and have it consume after 3 attacks, used this same new logic for Sweeping Strikes to better model it's uptime (and took Sweeping off the GCD). Several side abilities also have a stronger check on their Validation before being added to the Stats.</p>",
+    "PostedDate": "2009-09-12T12:31:08.41-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "233943",
+    "ThreadId": "57253",
+    "Html": "<p>for some reason whenever i try to optimize my warrior as fury it will always un-equip my OH and not count it towards my stats. any ideas on why it might be doing this?</p>",
+    "PostedDate": "2009-09-12T15:06:24.207-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "233944",
+    "ThreadId": "57253",
+    "Html": "<p>bacon: please read further up the thread and you will have your answer</p>",
+    "PostedDate": "2009-09-12T15:09:57.797-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "234115",
+    "ThreadId": "57253",
+    "Html": "<p>went thru everything and just want to make sure that its just a bug thats being looked into? regarding the offhand not showing up for fury.</p>",
+    "PostedDate": "2009-09-13T17:07:05.003-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "234118",
+    "ThreadId": "57253",
+    "Html": "<p>bacon: Apparently you missed the point:</p>\r\n<p>Quote from EBS: &quot;The -dps for the offhand is a bug, I'll look into it -- this looks to be a recent regression.&quot;</p>\r\n<p>and it's already been fixed</p>",
+    "PostedDate": "2009-09-13T17:17:40.743-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "234193",
+    "ThreadId": "57253",
+    "Html": "<p>I just added &lt;20% HP Execute spamming to Arms in the unreleased code, please try it out</p>",
+    "PostedDate": "2009-09-14T00:16:58.827-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "234559",
+    "ThreadId": "57253",
+    "Html": "<p>Mind spelling out exactly what Execute Spamming is doing for Arms?&nbsp; It seems like it is simply using all available GCDs for Execute.&nbsp; What <em>should </em>happen is that MS and Slam are dropped.&nbsp; The rotation would turn into an easy 1) Keep up Rend (after it falls off, as always), 2) Use OP immediately on proc, and 3) Use all other GCDs on Exe.&nbsp; Rage Dump continues as rage allows (be it HS or Cleave).</p>\r\n<p>As is, I am losing DPS when enabling Execute Spam.</p>",
+    "PostedDate": "2009-09-14T20:31:39.893-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "234562",
+    "ThreadId": "57253",
+    "Html": "<p>The process needs to be fine-tuned a bit but all abilities EXCEPT the primary ones continue normally and the rest is sucked up into Execute for (at present, will make an adjuster for this later) 15% of the fight duration.</p>\r\n<p>That is to say: Sunder, Commanding Shout, bloodrage, etc. are all continuing thru the whole fight but MS, BLS, Rend, OP, etc. all fall off and are not used in favor of Execute.</p>\r\n<p>This was just the first pass on adding this modelling.</p>\r\n<p>Edit: And I too see the dps loss, 4 in my character's case :P</p>",
+    "PostedDate": "2009-09-14T20:41:46.423-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "234585",
+    "ThreadId": "57253",
+    "Html": "<p>85 in mine.&nbsp; ;)</p>",
+    "PostedDate": "2009-09-14T22:22:05.377-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "235367",
+    "ThreadId": "57253",
+    "Html": "<p>Using the relevant update (haven't yet downloaded 2.2.17), it seems to be accurately modeling in-game usage.&nbsp; I'd actually recommend bumping that sub-20% time from 15% up to maybe 17%+.&nbsp; You typically lose one or two people, and even though various Executes become available throughout the raid at 35% and 20%, the DPS jump isn't THAT large raidwide.&nbsp; Another recommendation (though it seems rather complex, and probably applies at the base rather than the model level) would be to dictate where Heroism goes in your raid (95%, 70%, 35%, 20%, whatever).&nbsp; For any boss that dictates this type of usage, it would be beneficial modeling-wise.&nbsp; Anub comes to mind.</p>",
+    "PostedDate": "2009-09-16T16:27:29.163-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "235770",
+    "ThreadId": "57253",
+    "Html": "<p>Buffs:</p>\r\n<p>Potion of Wild Magic should be enabled for DPSWarr.</p>\r\n<p>Potential cleaning up of the &quot;Temporary Buffs&quot; to remove most, if not all of the useless stuff?&nbsp; This one is purely aesthetic.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-09-17T14:14:07.483-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "235789",
+    "ThreadId": "57253",
+    "Html": "<p><strong>Potion of Wild Magic:</strong> The Spell Power was killing the buff if you had Hide Bad Items active. I've added a check that forces the Buff to be relevant either way though there is one caveat. If Hide Bad Items is active, you won't see the tooltip statement for what it's giving you in the Comparison Charts, it DOES still apply the 200 crit rating. The buff statement is always active on the Buffs tab, even if it doesnt show on the Comparison pane.</p>\r\n<p><strong>Set Bonus Buffs:</strong> I've killed the extraneous ones</p>\r\n<p><strong>Temporary Bonus Buffs:</strong> I'm gonna leave these alone for now</p>",
+    "PostedDate": "2009-09-17T15:02:33.177-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "235841",
+    "ThreadId": "57253",
+    "Html": "<p>Actually, the Potion of Wild Magic is not being shown regardless of Hide Bad Items state - it was my first thought.&nbsp; ;)</p>",
+    "PostedDate": "2009-09-17T17:25:48.25-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "236245",
+    "ThreadId": "57253",
+    "Html": "<p>Some major changes have been checked in for Fury warriors. &nbsp;Please have a look and let me know how you feel about the accuracy. &nbsp;</p>\r\n<p>Ideally, I'd like to see how other fury warriors look in Rawr when compared with Landsoul's sheet, as I know his is still considered &quot;better&quot; than Rawr.DPSWarr.</p>",
+    "PostedDate": "2009-09-18T14:23:17.29-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "236280",
+    "ThreadId": "57253",
+    "Html": "<p>I've coincidentally been doing some personal comparisons between the two tools in the last day or two, can give you my thoughts when I look over it some more.</p>\r\n<p>Note: when doing some tweaking, I've noticed some REALLY odd things happening for fight modeling, and sustaining different buffs/debuffs (As one example, I'm gaining DPS when I toggle on sustaining the Commanding Shout buff, as opposed to having it maintained externally).&nbsp; I'll do some more playing with it later to see if I can find what's going on.</p>\r\n<p>Sword Spec still seems unnaturally high, which is a little concerning.&nbsp; I think I'm currently using 1/5 or 2/5 Sword Spec to get it closer to a value that I'm comfortable with, until it can be shown to actually provide as much benefit as DPSWarr insists it's worth.&nbsp; This is regardless of PTR mode toggle, if I remember correctly.</p>",
+    "PostedDate": "2009-09-18T16:33:37.147-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "236290",
+    "ThreadId": "57253",
+    "Html": "<p>Tooltips are really really wide, to the point of constantly redrawing the text box repeatedly if it overflows past the edge of the screen.&nbsp; Mind want to add mandatory text-wrapping after a certain width. ;)</p>",
+    "PostedDate": "2009-09-18T17:16:05.66-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "236295",
+    "ThreadId": "57253",
+    "Html": "<p>If you are talking about the new tooltips on the Options Pane, I'm aware of the issue. Rawr has a custom implementation to make those tooltips show period and I haven't worked out how to fudge them. It doesn't even accept \\r\\n so I can make newlines in it &gt;&lt;</p>",
+    "PostedDate": "2009-09-18T17:24:20.01-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "236523",
+    "ThreadId": "57253",
+    "Html": "<p>&quot;Note: when doing some tweaking, I've noticed some REALLY odd things happening for fight modeling, and sustaining different buffs/debuffs (As one example, I'm gaining DPS when I toggle on sustaining the Commanding Shout buff, as opposed to having it maintained externally).&nbsp; I'll do some more playing with it later to see if I can find what's going on.&quot;</p>\r\n<p>I'm assuming you're referring to Arms? &nbsp;Or is this with Fury as well?</p>",
+    "PostedDate": "2009-09-19T22:25:06.72-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "237555",
+    "ThreadId": "57253",
+    "Html": "<p>Stop breaking my Character Profiles!&nbsp; &gt;.&lt;</p>\r\n<p>The issue with the odd effects was with Arms if I remember correctly, but I don't recall if it was limited to Arms or not.&nbsp; I still haven't had the time to play with it, and the issue may have been fixed with the HS fix.</p>\r\n<p>&nbsp;</p>\r\n<p>[edit] Character Profiles are no longer broken for me, and I didn't change anything.&nbsp; I had reproduced the issue.&nbsp; Weirdness.&nbsp; Sorry 'bout that.&nbsp; ;)</p>",
+    "PostedDate": "2009-09-22T15:52:45.23-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "237563",
+    "ThreadId": "57253",
+    "Html": "<p>Br, I had the exact same problem, my profile only opened on the second attempt as well.</p>\r\n<p>&nbsp;</p>\r\n<p>~Droid</p>",
+    "PostedDate": "2009-09-22T16:34:11.77-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "237664",
+    "ThreadId": "57253",
+    "Html": "<p>I know we have logic included that shouldn't make your profile break, but it doesn't seem to get hit all the time. &nbsp;Try loading from the File menu instead of the quicklaunch/&quot;tips&quot;/whateverThatIs window if you continue to hit this issue.</p>\r\n<p>I'm going to look into fixing this problem once and for all.</p>",
+    "PostedDate": "2009-09-22T23:19:05.973-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "238096",
+    "ThreadId": "57253",
+    "Html": "<p>Excession's issue from the EJ Warrior thread regarding Hit's variable value when toggling certain abilities being used rotationally is the oddness I was seeing.</p>",
+    "PostedDate": "2009-09-23T18:41:56.013-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "238118",
+    "ThreadId": "57253",
+    "Html": "<p>The Maintenance Abilities place a large value on hit as they Re-Activate automatically if you miss/dodge/get parried.</p>\r\n<p>GCD 1: Sunder Armor, misses</p>\r\n<p>GCD 2: Auto-spent to Sunder Again</p>\r\n<p>if you were hit capped, this wouldn't have happened and right now it only re-acts once, though later we may have it more (in case you get really unlucky)</p>",
+    "PostedDate": "2009-09-23T21:04:20.58-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "238158",
+    "ThreadId": "57253",
+    "Html": "<p>Request that Intellect not be counted as a &quot;Bad Stat&quot;. &nbsp;It is free itemization on mail physical DPS gear, so does not detract from the overall value of the piece. &nbsp;Truly poor items with Int on them will more often than not contain some other sort of bad stat, such as SP.</p>\r\n<p>[edit] I should know by now that I can't type correctly at 2AM...</p>",
+    "PostedDate": "2009-09-24T00:04:13.933-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "238293",
+    "ThreadId": "57253",
+    "Html": "<p>Jothay, that doesn't explain the bug though. &nbsp;If you're not maintaining any buffs/debuffs, but toggle Enraged Regeneration on/off (which doesn't have a hit table), the value of hit shoots up. &nbsp;I've been able to reproduce this on my own character.</p>\r\n<p>Agreed that Intellect shouldn't be hidden as a &quot;bad stat&quot;.</p>",
+    "PostedDate": "2009-09-24T06:23:07.477-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "238393",
+    "ThreadId": "57253",
+    "Html": "<p><em>ebs wrote: Jothay, that doesn't explain the bug though.</em></p>\r\n<p>Ya, sorry, I didn't read that guy's isse on the EJ thread until after I posted, I thought it might have something to do with the Re-Acts. I don't know why Enraged Regen would jump Hit up in value.</p>\r\n<p>One hypothesis is that some of those Free GCDs in Fury get filled up and something else that would be used in filler or something would be pushed down so it would be more important to be able to hit with those? idk, im just rambling</p>",
+    "PostedDate": "2009-09-24T10:04:43.367-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "238586",
+    "ThreadId": "57253",
+    "Html": "<p>ArP Chart people can use:</p>\r\n<table border=0>\r\n<tbody>\r\n<tr>\r\n<td><strong>Conversion</strong></td>\r\n<td>1399.572614</td>\r\n<td>&nbsp;</td>\r\n<td>&nbsp;</td>\r\n<td>&nbsp;</td>\r\n</tr>\r\n<tr>\r\n<td><strong>ArP Cap</strong></td>\r\n<td>1400</td>\r\n<td>&nbsp;</td>\r\n<td>&nbsp;</td>\r\n<td>&nbsp;</td>\r\n</tr>\r\n<tr>\r\n<td><strong>Battle Stance</strong></td>\r\n<td>140</td>\r\n<td>10%</td>\r\n<td>&nbsp;</td>\r\n<td>&nbsp;</td>\r\n</tr>\r\n<tr>\r\n<td><strong>T92P</strong></td>\r\n<td>84</td>\r\n<td>6%</td>\r\n<td>&nbsp;</td>\r\n<td>&nbsp;</td>\r\n</tr>\r\n<tr>\r\n<td><strong>Mace Spec</strong></td>\r\n<td>210</td>\r\n<td>15%</td>\r\n<td>&nbsp;</td>\r\n<td>&nbsp;</td>\r\n</tr>\r\n<tr>\r\n<td><br></td>\r\n<td colspan=2><strong>Full</strong></td>\r\n<td colspan=2><strong>Avg'd </strong><br></td>\r\n</tr>\r\n<tr>\r\n<td><strong>Grim Toll</strong></td>\r\n<td>612</td>\r\n<td>43.73%</td>\r\n<td>118.1498</td>\r\n<td>8.44%</td>\r\n</tr>\r\n<tr>\r\n<td><strong>Mjolnir's Runestone</strong></td>\r\n<td>665</td>\r\n<td>47.51%</td>\r\n<td>128.3817</td>\r\n<td>9.17%</td>\r\n</tr>\r\n<tr>\r\n<td><strong>Incisor Fragment</strong><br></td>\r\n<td>291</td>\r\n<td>20.79%</td>\r\n<td>48.90349</td>\r\n<td>3.49%</td>\r\n</tr>\r\n<tr>\r\n<td>&nbsp;</td>\r\n<td>&nbsp;</td>\r\n<td><strong>Incisor<br>Fragment</strong><br></td>\r\n<td><strong>Grim<br>Toll</strong></td>\r\n<td>\r\n<p><strong>Mjolnir's<br>Runestone</strong></p>\r\n</td>\r\n</tr>\r\n<tr>\r\n<td><strong>ArP Cap, no bonuses</strong></td>\r\n<td>1400</td>\r\n<td>1109|79.24%</td>\r\n<td>0788|56.30%</td>\r\n<td>&nbsp;0735|52.52%</td>\r\n</tr>\r\n<tr>\r\n<td><strong>ArP Cap, Battle Stance</strong></td>\r\n<td>1261</td>\r\n<td>0999|71.38%</td>\r\n<td>0710|50.73%</td>\r\n<td>&nbsp;0662|47.30%</td>\r\n</tr>\r\n<tr>\r\n<td><strong>ArP Cap, Battle Stance + T92P</strong></td>\r\n<td>1177</td>\r\n<td>0933|66.66%</td>\r\n<td>0663|47.37%</td>\r\n<td>&nbsp;0618|44.16%</td>\r\n</tr>\r\n<tr>\r\n<td><strong>ArP Cap, Battle Stance + Mace Spec</strong></td>\r\n<td>1051</td>\r\n<td>0833|59.52%</td>\r\n<td>0592|42.30%</td>\r\n<td>&nbsp;0552|39.44%</td>\r\n</tr>\r\n<tr>\r\n<td><strong>ArP Cap, Battle Stance + T92P + Mace Spec</strong></td>\r\n<td>0967</td>\r\n<td>0766|54.73%</td>\r\n<td>0545|38.94%</td>\r\n<td>&nbsp;0508|36.30%</td>\r\n</tr>\r\n</tbody>\r\n</table>",
+    "PostedDate": "2009-09-24T18:23:32.47-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "241750",
+    "ThreadId": "57253",
+    "Html": "<p>A little bump. &nbsp;A lot of changes have gone in lately -- ArP calculations, haste values, rage calculations, etc. &nbsp;Would love to hear any feedback from our DPSWarr users, particularly if there are still any bugs that you see (especially discrepancies between Rawr and landsoul's sheet). &nbsp;</p>",
+    "PostedDate": "2009-10-03T17:01:34.75-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "241772",
+    "ThreadId": "57253",
+    "Html": "<p>Working under 37226:</p>\r\n<p>&nbsp;</p>\r\n<p>Sword spec still seems MASSIVELY out of line, and is appearing ridiculously high in value compared to the expected values.&nbsp; To put it at a level I &quot;feel&quot; it should be at, I am currently using only 2/5 Sword Spec to compare to the 5/5 of Axe and Mace.&nbsp; It may be at the level of 3/5, on the absolute outside.&nbsp; But there's no way I can put 5/5 Sword Spec in as-is for comparison purposes across weapon specs.&nbsp; Mind taking a look at the entire Sword Spec operation for me?&nbsp; Ensure that 6s ICD is implemented.&nbsp; OP, MS, Exe, Heroic Strike/Cleave, BladeStorm (each 1s Whirlwind counts as a single attack for the calc, iirc), and Deep Wounds can all proc it, as well as normal white swings.&nbsp; The damage is a white hit that generates rage, and uses the white attack table (remember glances!)</p>\r\n<p>Noticed the recent ArP trinket change, but I'm disinclined to believe the new output.&nbsp; I'm getting 50% more value from MR/GT than from DV/DV, respectively.&nbsp; This massive disparity seems to only happen in the Arms side of things.</p>\r\n<p>Also noted the potential impact on Hit from recent adjustments, but now seems a bit wonky.&nbsp; Sitting 68 Hit below capped as Arms, Precision to Gloves does NOT overtake Crusher (20 Hit / 44 AP).&nbsp; Using the same yardstick test on Fury, sitting 50 below specials cap, Precision just BARELY overtakes Crusher.&nbsp; Both of these tests seem slightly counterintuitive to my gut feeling.&nbsp; Sure, I may not need the rage fully buffed and having a bit of extra rage tossed into the system now, but wasting GCDs on missed specials and wasting the rage on them (even though it's partially refunded), combined with the added rage gen... yeah.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-10-03T18:24:11.803-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "241777",
+    "ThreadId": "57253",
+    "Html": "<p>If you are seeing more activates than Taste for blood, then the 6 second cooldown that is implemented is failing. However I have not in any way seen SS EVER do that in Rawr since I added it. Everything that is supposed to proc it is proc'g it (except Deep Wounds, which if I added that, would only *increase* the number of procs). I need to double-check that it is using the White Table but I believe it is and if it isn't, that wouldn't drop it that much as Glanced attacks still do most of their damage. It does generate Rage for the rotation.</p>\r\n<p>Edit: We've redone the activates and enforced glancing in the last commit, check it out as they did reduce the upward curve (1/5 is roughly the same but 5/5 lost about 30%)</p>",
+    "PostedDate": "2009-10-03T18:34:48.953-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "241782",
+    "ThreadId": "57253",
+    "Html": "<p>partially updated opening post to 2.2.20</p>",
+    "PostedDate": "2009-10-03T19:00:01.533-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "241801",
+    "ThreadId": "57253",
+    "Html": "<p>Thanks for the feedback BrWarner. &nbsp;It's hard to test your own code sometimes.</p>\r\n<p>Spoke with Jothay about the SwordSpec changes, and we came to a solution that implements the 6sec ICD (you were right, it wasn't). &nbsp;I'm not sure that Deep Wounds or Rend ticks would proc it, at least by the wording (bleeds aren't typically &quot;hitting your target with your sword&quot;). &nbsp;Or do you mean that the initial application/refresh of Deep Wounds can do it?</p>\r\n<p>The hit has been fixed; that was actually unrelated to my changes, just that my changes made the real bug more obvious (while doing the optimizations back when performance was crap and 20min for the Optimizer, I made a mistake in that I was using the cached value for miss while determinig crit, but hadn't set the miss cache value yet).</p>\r\n<p>As for the ArP change, I will say that my logic didn't include multiple ArP procs (ie, having both GT and MR equipped) -- it's still assumed that you don't have both equipped. &nbsp;I'm looking into the Arms issue (Jothay created an issue to track it).</p>",
+    "PostedDate": "2009-10-03T21:07:33.913-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "241806",
+    "ThreadId": "57253",
+    "Html": "<p>Almost positive that SwordSpec works off DW ticks, as odd as it sounds.</p>",
+    "PostedDate": "2009-10-03T21:40:45.633-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "241808",
+    "ThreadId": "57253",
+    "Html": "<p>Fixed the Grim Toll bug -- it was one of those weird &quot;the math is right, but computers can't handle such big numbers&quot; in my formula that only occured when you had additive ArP values (we need to start unit testing, that's for sure); I refactored the formula to not get such big numbers in the interim calcs and it's working.</p>\r\n<p>Not that I am doubting that SwordSpec can work off of DW ticks, but do you have any test or log that shows this to happen (or is there a post on EJ that supports this)? &nbsp;Ideally, the parse would be with you Critting, turning off attack and stopping all specials, and then a SwordSpec triggers from the DW tick. &nbsp;With a 10% chance and a 6sec duration on DW, it shouldn't take more than a few attempts to reproduce it.</p>\r\n<p>Anyway, with Jothay's and My checkins over the past hour or so, most of what you reported should be fixed. &nbsp;Care to give it another spin?</p>",
+    "PostedDate": "2009-10-03T21:47:28.313-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "241815",
+    "ThreadId": "57253",
+    "Html": "<p>I am testing now for my own sanity as to what can/cannot proc it.&nbsp; So far, I have all of the usual suspects, and a Rend (DoT) tick activating it.&nbsp; Fishing for a DW (DoT) tick now.</p>\r\n<p>[edit] Got a DW tick to activate it.&nbsp; This is using Recount to see what procced it.&nbsp; Unfortunately, I have no idea how Recount is associating the extra attack with an ability.&nbsp; Looking through the ingame combatlog, there is no official link between ability usage and the extra melee, and the log even uses a terrible method of showing the proc (&quot;01:23:37&gt; Aerowyn's gains 1 extra attacks through Sword Specialization.&quot;, a gaining of an aura as opposed to a distinguishable proc; spell ID is 16459).</p>\r\n<p>http://www.tankspot.com/photoplog/images/3287/1_dot_proc.jpg - this is not mine, but mine shows essentially the same thing.</p>",
+    "PostedDate": "2009-10-03T22:43:52.597-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "241823",
+    "ThreadId": "57253",
+    "Html": "<p>Trinket procs appear to be tamed, and Sword Spec appears to be outputting sensible numbers.&nbsp; ;)</p>",
+    "PostedDate": "2009-10-03T23:34:36.16-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "241833",
+    "ThreadId": "57253",
+    "Html": "<p>Rend and DW ticks will not activate an extra attack by themselves.</p>\r\n<p>The issue with the test for DW / Rend that you've recommended, Ebs, is that the effect is technically an extra attack.&nbsp; It confers no buff, and it seems the only proc that is shown in the combatlog is an echo of when the attack goes through.&nbsp; It's entirely possible that DW or Rend &quot;activate&quot; SS, and then is released upon the next swing of the sword.&nbsp; I highly doubt this, but it is entirely possible.</p>\r\n<p>After further thought, I will not be testing for further Rend/DW activates of the SS extra melee attack.&nbsp; It is much more probable that Recount looks to the combatlog data to see what action was taken at the same time as the Sword Spec swing, and a DW/Rend tick just happened to be close enough to &quot;steal&quot; the ownership of the activate from the proper owner, either a melee swing or some special ability.</p>\r\n<p><strong>Rend (application), Hamstring, Mocking Blow, Cleave/HS, Exe, OP, MS, Slam, BS, and WW</strong> all proc Sword Spec - just personally confirmed each of these abilities.&nbsp; I did not test Victory Rush.&nbsp; Heroic Throw does not, but I am unsure of Shattering Throw (leaning towards &quot;no&quot;, and don't intend to test further).</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-10-04T00:47:47.437-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "243292",
+    "ThreadId": "57253",
+    "Html": "<p>I've looked very closely at a log of my own and one posted on Tankspot where we had a discussion about the changes to sword spec.&nbsp; I haven't found an instance where the procs from SS would glance after 3.2.2.&nbsp; Analysis of one of the logs here <a href=\"http://www.filefront.com/14553693/CombatLogAnalysis.xls\">http://www.filefront.com/14553693/CombatLogAnalysis.xls</a>&nbsp; No macros in that, I promise it's safe.&nbsp; :)&nbsp; Combat log this refers to is here <a href=\"http://www.wowmeteronline.com/combat/detail/203668392#damageout\">http://www.wowmeteronline.com/combat/detail/203668392#damageout</a></p>\r\n<p>If you post your logs I'd be happy to check them, but it appears an undocumented change was made where the procs no longer glance.&nbsp; Again, as you said, the way they document the procs makes it difficult to analyze, but looking really closely it seems clear.&nbsp; Of course, finding the rage gained from these is next to impossible.&nbsp; I've had no luck on the official forums getting clarification on this change, but it's possible they reverted to a yellow attack that grants rage = c * swing speed.</p>",
+    "PostedDate": "2009-10-08T00:24:08.527-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "247182",
+    "ThreadId": "57253",
+    "Html": "<p>More earthshattering news: http://elitistjerks.com/f81/t37680-depth_fury_dps_discussion/p95/#post1428758 , and the subsequent post.&nbsp; This should drastically affect the value of UW.</p>",
+    "PostedDate": "2009-10-19T00:39:47.547-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "247338",
+    "ThreadId": "57253",
+    "Html": "<p>To clarify, nothing about UW is &quot;drastic&quot;&nbsp; :P</p>\r\n<p>We're working out the best method to incorporate this back in but I doubt we'll see a huge change in DPS.</p>",
+    "PostedDate": "2009-10-19T09:31:25.13-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "247459",
+    "ThreadId": "57253",
+    "Html": "<p>True, this realization won't make it a fantastic talent, but if the value of each point used to be worth a .2% DPS increase, and now becomes a .4% DPS increase, that's a pretty huge <em>change</em>.&nbsp; ;)</p>",
+    "PostedDate": "2009-10-19T14:04:39.027-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "247460",
+    "ThreadId": "57253",
+    "Html": "<p>1 * 2 = 2 is a 100% change, 5000 DPS becoming 5004 isn't&nbsp;&nbsp; =P</p>",
+    "PostedDate": "2009-10-19T14:11:23.177-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "247464",
+    "ThreadId": "57253",
+    "Html": "<p>Exactly.&nbsp; =D</p>\r\n<p>Still, this may turn out to be nice for AoE situations.&nbsp; Constant Cleaving is extremely expensive, and this should help to facilitate more Cleaves.&nbsp; Given that my Cleaves are easily hutting for 20+ thousand damage per swing, any way to get more rage for Cleaves is a welcome addition to our arsenal.&nbsp; If the black sheep of UW turns out to be a player here, then sure, whatever works!</p>\r\n<p>I'll say that I still don't think it'll be worth taking in a typical build, but given this new info, I think it's worth investigating.</p>",
+    "PostedDate": "2009-10-19T14:37:59.78-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "247529",
+    "ThreadId": "57253",
+    "Html": "<p>I've taken UW in most of my fury builds since Ulduar came out. &nbsp;My other options were imp demo and commanding presence, which were already covered by other warriors/paladins in my guild.</p>\r\n<p>And while it's only a few additional DPS over the course of the fight, it's definitely more rage than Anger Management and doesn't eat a GCD like Imp Berserker Rage.</p>",
+    "PostedDate": "2009-10-19T19:49:42.243-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "249963",
+    "ThreadId": "57253",
+    "Html": "<p>Rampage buff not working:</p>\r\n<p>Since 2.2.19 (now 2.2.24) I tried to activate Rampage or Leader of the pack and they neither are affecting the Overall/DPS rating nor Crit %. I tried to activate them first, last, untalented, etc. and still nothing.</p>\r\n<p>I apologize if this issue has been already discussed (I couldn't find it with the discussion search tool)</p>\r\n<p>Thanks to the community and for this awesome software =)</p>\r\n<p>&nbsp;</p>\r\n<p>Gloom - proud warrior of the dwarven kingdom (EU Exodar)</p>",
+    "PostedDate": "2009-10-26T15:41:34.95-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "249966",
+    "ThreadId": "57253",
+    "Html": "<p>If you're Fury and you have the Rampage talent, toggling the buff will do nothing. &nbsp;If you do not have the Rampage talent, then the buff works as expected.</p>",
+    "PostedDate": "2009-10-26T15:54:47.803-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "250900",
+    "ThreadId": "57253",
+    "Html": "<p>Officially closing this thread as it's growing to an unmanagable size. I have moved the Road Map to the Model Status Page (See the Documentation Tab). I'll be adding a FAQ in there to answer a lot of the questions that were asked here (like the Rampage buff noted directly above this post, which we've repeated a few <em>dozen</em> times to users).</p>",
+    "PostedDate": "2009-10-28T14:54:44.177-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,130 @@
+[
+  {
+    "Id": "255626",
+    "ThreadId": "74690",
+    "Html": "<p>Using 2.2.27 for ShadowPriest,<br>Zabra's Pants of Conquest (ilevel 232) is listed as BiS at 1408.42, while<br>Zabra's Pants of Triumph (ilevel 258) is listed below it at 1392.30.<br>I cannot understand the math for this as the higher version is 24 int, 22 haste, 22 hit, and 38 spellpower more than the lower.<br>Included in the zip is a screenshot and my character file.<br><a href=\"http://www.scanhelper.com/files/WeirdPantsValues.zip\">http://www.scanhelper.com/files/WeirdPantsValues.zip</a><br>Am I using Rawr incorrectly?&nbsp; I am always having baffling (to me) results like this.</p>",
+    "PostedDate": "2009-11-10T10:37:28.477-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "255642",
+    "ThreadId": "74690",
+    "Html": "<p>There is a known haste issue with the shadow priest model. You would have found it if you searched before posting. Heres a link to the prior post:</p>\r\n<p><a href=\"http://rawr.codeplex.com/Thread/View.aspx?ThreadId=65904\">http://rawr.codeplex.com/Thread/View.aspx?ThreadId=65904</a></p>",
+    "PostedDate": "2009-11-10T11:06:43.85-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "255651",
+    "ThreadId": "74690",
+    "Html": "<p>Ok no need to be snippy.&nbsp; In no way could I have known this was a haste issue, so what exactly would I have searched for?&nbsp; Secondly, while we are on the subject, I have previously posted about my concerns with haste, even recently, and was told everything was fine.&nbsp; Third, I don't see from that post you linked that would suggest that MORE spellpower, int, and haste would cause the total score of an item to be LOWER.&nbsp; That was my issue here.&nbsp; All stats are higher, but the math ranks the item lower.&nbsp; The haste post you referred to does not indicate that some values of haste would result in huge negative score for an item.&nbsp; It doesn't even imply that, and I don't know if that's what you're suggesting it implies.&nbsp; I am attempting to discuss a possible problem without calling it one outright.</p>",
+    "PostedDate": "2009-11-10T11:25:26.75-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "255652",
+    "ThreadId": "74690",
+    "Html": "<p>I believe the problem might actually be the way the set bonus is applied.&nbsp; Rawr possibly is not properly considering the set bonus for the two items as an equivalent side-grade, so it sees the 258 pieces' total score as lower.&nbsp; It's a guess but not a bad one.&nbsp; Thoughts?</p>",
+    "PostedDate": "2009-11-10T11:28:38.12-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "255673",
+    "ThreadId": "74690",
+    "Html": "<p>I didn't mean to come off snippy. I did fool with your character file and noticed that equipping the 258 pants modified your rotation/cast sequence such that Rawr got really confused and could not find an optimal rotation, creating the deficit in DPS that you notice. I checked the set bonuses per each item, and that does not appear to be the issue. If I mark the 258 pants as available for optimization, it selects the 258 pants and swaps a few items around to lower your hit cap/change your haste a little, netting a DPS increase.</p>\r\n<p>The problem still appears to be an issue with haste/rotations in the model.</p>",
+    "PostedDate": "2009-11-10T12:25:28.807-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "255677",
+    "ThreadId": "74690",
+    "Html": "<p>Indeed. Hopefully the hastened DoT's in 3.3 will minimize this problem so that you can stop making these posts. &gt;_&lt;</p>\r\n<p>&nbsp;</p>\r\n<p>I'm really sorry about all the confusion these haste issues cause, but trust me, some values of haste CAN lower your DPS. Although not as insanely as Rawr may suggset.</p>",
+    "PostedDate": "2009-11-10T12:52:35.217-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "255708",
+    "ThreadId": "74690",
+    "Html": "<p>TNSe, can you explain the mechanism behind this? It seems to me that if additional haste were to change your rotation from a higher DPS rotation to a lower DPS rotation, then you could simply add delays in your rotation to bring you back to the origional rotation. For instance (this is a highly simplified example) if enough haste to turn a 2.5 second cast time spell into a 2.4 second cast time spell causes a drop in DPS, then couldn't you simple cast at 2.4 seconds and add a 0.1 second delay between each cast?</p>\r\n<p>Using this logic additional haste may not increase your DPS, but it should never decrease your DPS, or perhaps I am missing something.</p>\r\n<p>~Droid</p>",
+    "PostedDate": "2009-11-10T14:18:11.147-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "255714",
+    "ThreadId": "74690",
+    "Html": "<p>Mathematically you can do as you say, just wait 0.1s.</p>\r\n<p>&nbsp;</p>\r\n<p>Just remember that you are actually playing the game, watching your DoTs count down. When you get that extra haste, you can get situations where you normally have 0.1s left to MB and 1.2s left to VT. Obviously in that case you will do a MB then VT. As you gain more and more haste, your choice gets somewhat blurred. You will still probably end up doing MB and then VT. But what happens when you get so much haste (or so much time has elapsed) that you end up doing VT before the MB? Surely you gained DPS? Yeah. You did.</p>\r\n<p>&nbsp;</p>\r\n<p>Problem here is, down the line, a situation where VT, MB and DP perfectly lined up when you cast MB before VT earlier, you can end up getting all 3 cooldowns getting ready at the same time. This is a huge DPS loss, maybe a 15-20 seconds LATER than the earlier situation where you gained DPS. So you end up losing more dps in total over that period of time, even though EARLIER you gained DPS.</p>\r\n<p>&nbsp;</p>\r\n<p>Choices like this are streamlined when you play, and its really hard for you to know how dots are going to line up 20-50 seconds down the line. In some cases a good and easy DPS choice now could end up being negated by a massive DPS loss in 20-50 seconds. All because you play perfectly. Some values of haste may prevent any of these situations from ever coming to the surface. Some values of haste may give you these situations a whole lot.</p>\r\n<p>&nbsp;</p>\r\n<p>Right now Rawr.ShadowPriest plays like a player would, so in some cases of haste Rawr ends up losing haste over a lower haste value. It does what seems like a good choice earlier, and ends up getting a worse total result. Luckily this problem seems to be mostly negated with the hasted DoT changes coming for 3.3.</p>\r\n<p>&nbsp;</p>\r\n<p>If this is still unclear to you I'll try to get another Dev to help me explain it. :P</p>",
+    "PostedDate": "2009-11-10T14:25:00.653-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "255719",
+    "ThreadId": "74690",
+    "Html": "<p>I understand what you are saying, however I disagree with the approach. Delaying action for maximum DPS is something that several classes have to do in order to play optimally, might I suggest that you take a look at the mage model, specifically the cycle analyzer. This will calculate and show you the optimal cycle for your spec, including what to do if a certain cooldown has more or less then a specified amount of time left on it. It does not specifically deal with with delays in a cycle, but the concept could be extended to deal with this as well.</p>\r\n<p>I am certinly not saying this type of modeling is easy, it isn't. But I believe that it is more accurate, especially for players (like myself) who have spreadsheets full of cycles showing exactly when cooldowns will come up, and when they will come up at the exact same time, etc. There was a post on these forums recently (I can't find it at this moment) talking about feral DPS, and stating that optimal feral DPS required looking at what will happen with your cooldowns 30-40 seconds in the future, this is a very similar situation.</p>\r\n<p>That being said, 3.3 isn't terribly far away at this point.</p>\r\n<p>~Droid</p>",
+    "PostedDate": "2009-11-10T14:42:56.05-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "255723",
+    "ThreadId": "74690",
+    "Html": "<p>Indeed it is a very similar situation, however, right now the only problem with not (spending additional time calculating and) coding this in, is that haste sometimes gets weird results. And we're not talking about a huge change in DPS, its just minor, but enough to make you get the occational weird gear choice. Like in OP describes. Using optimizer before and after changing some gear around can help you figure out if Rawr hits one of these haste bumps.</p>",
+    "PostedDate": "2009-11-10T14:47:10.103-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "255763",
+    "ThreadId": "74690",
+    "Html": "<p>Additionally, I recommend you look at what Landsoul's Fury spreadsheet does on elitist jerks. &nbsp;What he does is he computes these types of scenarios, and comes up with the optimal rotation regardless, and outputs something similar to:</p>\r\n<p>&quot;If your BT and WW have &gt;1.5secs left, then Slam&quot;</p>\r\n<p>&quot;If your BT has between 1.1 and 1.5secs left and your slam has more than 1.5secs left, then BT&quot;</p>\r\n<p>&quot;If your BT has between 1.1 and 1.5secs left and your slam has less than 1.5secs left, then BT&quot;</p>\r\n<p>&quot;If your BT has less than 1.1secs left, then BT&quot;</p>\r\n<p>Here, the user just needs to remember 1.1secs, and chooses to delay a fraction of a GCD when it could cause those overlapping situations in the near future.</p>\r\n<p>Personally, I think you're downplaying the severity of this. &nbsp;The OP has a bug that essentially makes Rawr unusable for him, and it's not because he's asking to model bad play (like a shield-wearing retadin or a non-TG fury build). &nbsp;I dunno...</p>",
+    "PostedDate": "2009-11-10T16:17:43.127-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "255818",
+    "ThreadId": "74690",
+    "Html": "<p>The problem is that those exact breakpoints don't exist for SPriests, since the DoTs don't line up. Delaying a spell at one point may make things line up poorly later on, while putting that same delay before the same spell, at a different point in time, would not.</p>",
+    "PostedDate": "2009-11-10T19:43:32.057-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "255827",
+    "ThreadId": "74690",
+    "Html": "<p>Can't you always expand the parameters? &nbsp;Rather than delaying based on just one ability, make it based on two.</p>\r\n<p>It's a closed system. &nbsp;There *is* a solution where increasing a stat provides either no change or positive change. &nbsp;Following that system is achieving &quot;perfect play&quot;. &nbsp;Following any system where adding haste yields a decrease in DPS means it's not following perfect play.</p>\r\n<p>Sure, nobody's perfect, and maybe that pain is greater in some stats than others. &nbsp;This kinda ties back into what Astry was talking about before in the cat model, with a user option for how far into the future the user can see (or, how complex of a priority list s/he can remember).</p>\r\n<p>If you do think that we shouldn't always model perfect play when such perfect play is unattainable, that's fine w/me. &nbsp;I just thought that was against what Rawr was all about (and I point to the Cat model as an example)</p>",
+    "PostedDate": "2009-11-10T20:42:09.227-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "255836",
+    "ThreadId": "74690",
+    "Html": "<p>It's a complex problem. There are ways to solve it but solving the exact solution is not exactly feasible for realtime comparisons. It's doable with a few short cooldowns, but as things become more comples you have to resort to approximations. The problem is when you're solving for optimal play on approximation, but&nbsp;then try to apply that solution to a more complex model. That's when you'll get the issues as described here where the play that is optimal on approximation will result in suboptimal play on the more complex model. My personal opinion for gear comparisons the results are best when you're using the same approximation model for comparisons as you're using for solving ability selection. If the two are not the same then issues such as this are not avoidable in general.</p>",
+    "PostedDate": "2009-11-10T22:00:40.68-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "255933",
+    "ThreadId": "74690",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Astrylian wrote:</strong><br>\r\n<p>The problem is that those exact breakpoints don't exist for SPriests, since the DoTs don't line up. Delaying a spell at one point may make things line up poorly later on, while putting that same delay before the same spell, at a different point in time, would not.</p>\r\n</blockquote>\r\n<p>Thanks all for the interest.&nbsp; Has it not been previously modelled and simulated that those certain breakpoints so exist, thus the soft haste cap of 400 (till ~900)?&nbsp; Where 900 is infeasible and 400 is quite easy to attain, thus above 400 haste should be 0 for single target evaluation.&nbsp; I realize this is a kludge for realtime calculations.&nbsp; If you're already equipped with 600 haste, then that 42 haste on that item IS worth nothing to your dps.&nbsp; How are Stats vs Relative Stats used in Rawr gear calculations?&nbsp; I notice that Haste often floats in &quot;relative stat values&quot; up below spellpower and int, while Haste is 0 in the &quot;stat values&quot; list.</p>\r\n<p>Do there exist Discussions or a document explaining the algorithm as implemented for the gear comparison calculations?</p>",
+    "PostedDate": "2009-11-11T05:16:22.053-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "255948",
+    "ThreadId": "74690",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Kavan wrote:</strong><br>\r\n<p>It's a complex problem. There are ways to solve it but solving the exact solution is not exactly feasible for realtime comparisons. It's doable with a few short cooldowns, but as things become more comples you have to resort to approximations. The problem is when you're solving for optimal play on approximation, but&nbsp;then try to apply that solution to a more complex model. That's when you'll get the issues as described here where the play that is optimal on approximation will result in suboptimal play on the more complex model. My personal opinion for gear comparisons the results are best when you're using the same approximation model for comparisons as you're using for solving ability selection. If the two are not the same then issues such as this are not avoidable in general.</p>\r\n</blockquote>\r\n<p>&nbsp;Let's try.&nbsp; To review, Haste introduces scheduling variations in the &quot;rotation&quot; (emphasis: spriest meaning).&nbsp; As haste increases linearly, the perfect rotations that result are not proportional. 550 haste rotation might be lower dps than 450 haste rotation. We know this. Also, I'm assuming that gear comparisons are done based on how valuaable each displayed item is versus our equipped stats and options.&nbsp; Knowing this, could we, at some time after the Options and Buffs are set, and before gear comparisons are done, model a table of &quot;relative dps&quot; at all values of haste 0 to nnn (something ridiculous in 3.2.x like 1200), and arbitrary values for sp, int, mp5, etc?&nbsp; This table would have points where dps(haste) &gt; dps(haste+1).&nbsp; Those haste values would be of limited count, maybe producing 4-5 values of haste above which an item's haste is worth 0 to dps, until the next point.&nbsp; Would it be feasible to realtime compare against 4-5 values?</p>",
+    "PostedDate": "2009-11-11T05:42:48.833-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

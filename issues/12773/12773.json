@@ -1,0 +1,106 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.RestoSham",
+      "DisplayName": "Rawr.RestoSham"
+    },
+    "ClosedComment": "Fixed in most recent build and on other work items",
+    "ClosedDate": "2009-03-11T06:40:37.147-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "There seems to be something odd going on with valuation of mp5 in the resto-shaman model.  With the attached data file, \"Stat Relative Weights\" is valuing stats:\n  Mp5 1.32\n  +Heal 1.00\n  Spell Crit 0.23\n  Haste 0\n  Int 0\nWhile \"Relative Stat Values\" shows the values at\n  Intellect 23.48\n  Mp5 18.11\n  Spell Power 13.71\n  Crit Rating 3.16\n \nI would think that these should agree with each other better.  Also it's odd that Mp5 is being valued so high since I've set if for a 2 minute fight and the \"Totals\" section on the Stats tab is showing that I don't go oom until 145 seconds.  \n \nIf I change the fight time to 6 minutes, it's showing I'll go oom at 270 seconds (even though in an actual 6 mintues fight I never went below 25% mana).",
+    "LastUpdatedDate": "2013-05-16T05:26:05.597-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-03-07T06:27:00.23-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[RestoSham] MP5 Overvalued",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 12773
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1726,
+      "FileName": "Zanvar Resto.xml",
+      "DownloadUrl": ".\\1726"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "The \"Stat Relative Weights\" chart is old, wrong, and will be removed soon; just ignore it.\r\n\r\nStill, it looks like there may be a problem with the OOM calculations; have you made sure that you're correctly buffing yourself with all relevant mana regen buffs?",
+      "PostedDate": "2009-03-07T12:50:54.497-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Which build were you using?",
+      "PostedDate": "2009-03-09T06:53:21.37-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The above numbers were observed with build 32016",
+      "PostedDate": "2009-03-09T09:48:50.58-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'll grab 32075 and give it a test.",
+      "PostedDate": "2009-03-09T09:51:54.487-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "With 32075 and using the saved character file included in the original message, I'm still seeing the same values in \"Relative Stat Values\" except that crit is now 3.17 rather than 3.16.  All other numbers are the same.",
+      "PostedDate": "2009-03-09T10:24:38.053-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Relative Stat Values is the amount of \"Points\" that each stat gives.  It basically becomes exactly how much healing you will get from a specific stat.  So, for your full fight time, One intellect will increase your total amount healed by 23.48, and one crit rating will give you 3.16 healing (I'm guessing you're chain heal specific by the looks of the stats).\r\n\r\nThe Stat relative weights IS the same thing, except weighted.  1 Spellpower is the baseline, and each stat is represented as a % better or worse, so 1 MP5 is better then 1 healing.  However, I would not use those as they still contain some old calculations that are being worked out.  Changing the chart is on the list, though I am currently looking into why Intellect would be 0, it should AT least be .15 * Healing's score.\r\n\r\nAlso, as to oom, if you cast non-stop you would go oom.  It does not take into account movement or time not casting.  In the most recent build there is logic put in so Haste will have a value if you do not go oom.",
+      "PostedDate": "2009-03-10T06:02:10.477-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Latest build should have statistics a lot closer to what you would benefit from.  If you don't see any other error (exlcuding the chart, that's on the list still), then I'll be considering it fixed.",
+      "PostedDate": "2009-03-10T08:26:32.957-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The overvalueing appears to be fixed.  I did open several other items for specific mp5 related issues.  Rawr still seems to be telling me I'll run out of mana faster than I do in game even for fights like patchwerk where I'm just spam healing but I can' really point to anything in particular that appears to be wrong.",
+      "PostedDate": "2009-03-10T16:47:54.947-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-03-11T06:40:37.147-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T17:53:39.3-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:35:16.447-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:05.597-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+[
+  {
+    "Id": "363109",
+    "ThreadId": "155469",
+    "Html": "<p>Stats is an object that sees extensive use in all of rawr.&nbsp; It gets frequent updates, and there's a lot of stale bits in it popping up.<br><br>A lot of the stats in there are totally obsolete, and yet, models still make use of them.&nbsp; Stats.bloodlust is probably the most obvious one of this.&nbsp; While this may at one point in time has served the purpose of taking care of the bloodlust/heroism buff, it no longer does so.&nbsp; Bloodlust/heroism today is just coded as an OnUse trigger with a PhysicalHaste, Meleehaste and Spellhaste specialeffect.&nbsp; I talked about this with Orlangur last night and it seems he already took this one out and done some more cleanup already as well.</p>\r\n<p>Once rawr is fully loaded and you have an empty character , there's a whopping 13000ish different stat objects 'alive'.&nbsp; Each time you add a new stat to Stats, this effectively means rawr consumes 52K extra memory. Weeding out the old obsolete/unused stats does make a lot of sense.&nbsp; It also means it makes sense trying to be a bit more conservative on memory use.</p>\r\n<p>Quite a few of the variables in Stats are currently intermediate variables used by a particular model to conveniently pass around a calculated value (a talent turned into a stat for example) from one part of the model to the next.&nbsp; A nice idea, but it has a few&nbsp;problems.<br>1) By adding this variable in stats.cs, you're adding weight to EVERY instance of a stat object.<br>2) The variable you created may get picked up by another model under the assumption it's a stat that can come from an item/enchant/buff. Especially if the name have been chosen rather generically.&nbsp; Example: The stat 'AverageAgility' is listed under the category &quot;Feral&quot;. It's not used anymore (likely an inermediate variable for an old talent or set bonus?). Both hunter and rogue are using it. Probably because when the model devs had a look over the various stats, they figured they needed it. <br>3) It increases the list of possible values listed in the item editor. And it likely won't even have any impact if a user does fill one in, even in a right module. Because that model will only set this intermediate but not use a potential value already there.</p>\r\n<p>&nbsp;</p>\r\n<p>I.m.o.&nbsp; the ideal situation would be that Stats.cs only has those stats that can come from Items, Enchants and Buffs.&nbsp; To accomodate for these intermediate variables, Stats.cs can be change to provide for model specific values.&nbsp; Maintaining those extra variables is then the sole responsability of each model meaning less chance of clutter and overall lower memory usage (which should translate into some performance gain as well).&nbsp; It also means that stale intermadiates are more likely to get removed.&nbsp; Right now, when you stop using a variable, you probably don't immediately think about removing that variable in stats.cs.&nbsp; If some other model made a reference to it (in error), you're just going to let it be, perpetuating the problem.</p>\r\n<p>Probably the easiest way would be to have a string/float dictionary added to stats.cs</p>\r\n<p>Stats.cs:</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public Dictionary&lt;string,float&gt; ModelStats = new Dictionary&lt;string,float&gt;();</p>\r\n<p>In your model.</p>\r\n<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stats.ModelStats[&quot;MyStats1&quot;] = &lt;calculation&gt;;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stats.ModelStats[&quot;MyStats2&quot;] = &lt;calculation&gt;;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float Something = stats.ModelStats[&quot;MyStats1&quot;] + stats.ModelStats[&quot;MyStats2&quot;];</p>\r\n<p>But there's other possibilities (such as an array and using an enum in this array).<br>The&nbsp;clone, multiplication, averaging etc could be made to also account for these model vars, but I'm not sure that's even needed.&nbsp; Model devs should know best how they expect their model specific intermediate/helper variables to get used.</p>\r\n<p>&nbsp;</p>\r\n<p>Good idea, Bad idea ?<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-02-23T03:46:51.26-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "363135",
+    "ThreadId": "155469",
+    "Html": "<p>Some thoughts:<br>- the problem is, currently Stats are designed to allow + and - operators<br>- Stat objects have a short lifespan, they are only used to calculate CharacterCalculations, so they are just garbage collected when needed and memory should not be an issue here<br>- at present, a number of different stats is really huge and it's really hard to extract stats your module needs to handle from them all<br>- some stats are duplicated like having a proc as a special effect granting some stats and at the same time as a custom &quot;blablablaProc&quot; stat that is handled separately in some calculations&nbsp;</p>",
+    "PostedDate": "2010-02-23T05:17:26.463-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "363174",
+    "ThreadId": "155469",
+    "Html": "<p>I know Stats has operators. I even mentioned this in the post, I just didn't refer to the + and - ones...&nbsp; It shouldn't necessarily be a problem, you can enumerate all the stats in the dictionary and add them to the other dictionary.&nbsp;&nbsp; But as I wrote...&nbsp; &quot;I don't know if this is needed&quot;.&nbsp; I'm not sure the stats objects that are used to pass those extra vars around are indeed also used in this way.&nbsp; If yes, then the operators need to account for this dictionary, if not, then they don't &quot;have to&quot; (but still could) just to be complete.</p>\r\n<p>Most stats objects have a short lifespan. Around 13000 of them stay alive for the duration of rawr. All the enchants, buffs, their special effects, cached items and their special effects etc...&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-02-23T07:02:11.217-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "363257",
+    "ThreadId": "155469",
+    "Html": "<p>We definitely can audit it and remove the unused stats. The memory usage isn't really the significant problem, it's the CPU load on working with them that's the issue. Because of the indexes that are used under the hood, it doesn't actually cost much (anything?) to have unused or rarely used stats in there. Kavan's most familiar with that system, so can comment further, I'm sure.</p>",
+    "PostedDate": "2010-02-23T09:34:12.01-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "363415",
+    "ThreadId": "155469",
+    "Html": "<p>workign with 1 stat object won't change much indeed... but 13000 stats objects each using that bit more memory, means a bigger overall memory usage.&nbsp; THat usually translates to some performance loss due to L1/L2 cache misses, more paging needed etc.&nbsp; Not a huge performance factor, but trimming 1Mb or so (what I'm guessing at) &nbsp;should make a small change at least.</p>",
+    "PostedDate": "2010-02-23T14:34:43.77-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "363496",
+    "ThreadId": "155469",
+    "Html": "<p>Regardless of impact on performance or otherwise Stats should ideally be used only for things coming from gear/enchants/buffs. As far as I'm concerned talents have no place in there. If some models are using Stats to store intermediate variables in it that needs serious audit. Ideally from the point where you accumulate all stats on character the Stats&nbsp;would be considered read only.</p>",
+    "PostedDate": "2010-02-23T19:01:26.743-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "363497",
+    "ThreadId": "155469",
+    "Html": "<p>Aye, agreed. I may be a little bit guilty of that myself; I think there are a couple talents I may translate to Stats properties, that aren't otherwise on gear/enchants/buffs (like reduced energy cost on abilities). Do you reinspect the talents in GetCharacterCalculations, for that sort of thing, Kavan?</p>",
+    "PostedDate": "2010-02-23T19:05:26.49-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "363510",
+    "ThreadId": "155469",
+    "Html": "<p>For talents that modify abilities I usually check them in the ability class when constructing data for that ability.</p>",
+    "PostedDate": "2010-02-23T20:33:09.11-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "397956",
+    "ThreadId": "155469",
+    "Html": "<p>I cleaned up the usage of Stats.cs in Rogue, it now only has set bonuses and the normal things from enchants/gear/buffs in it, all talent info has been pulled out.<br>If anyone encounters anything Rogue related that doesn't belong there let me know or just delete it, break Rogue and I'll fix it (just don't do the latter right before a release :) ).</p>",
+    "PostedDate": "2010-02-25T08:02:57.533-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "406136",
+    "ThreadId": "155469",
+    "Html": "<p>Suggestion for set bonuses: instead of having separate 2pc and 4pc stats that are really just bools masquerading as floats (either you have the set bonus or you don't), can't we just have a DPSWarr_T10 = 1 on each tier item, and then have set bonus buffs added by inspecting your equipment stats? &nbsp;Currently we have DPSWarr_2T10 = float and DPSWarr_4T10 = float</p>\r\n<p>That would cut down the number of set bonus stats 50% (which can be a big deal when you consider that all stats objects have a stat for Warrior 2T7, Mage 2T7, Feral 2T7, ..., Warrior 4T7, Mage 4T7, Feral 4T7, ..., Warrior 2T8, ..., Warrior 4T10, Mage 4T10, Feral 4T10.</p>",
+    "PostedDate": "2010-02-25T10:56:30.42-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "406333",
+    "ThreadId": "155469",
+    "Html": "<p>No, don't do that. Set bonuses are stats, and have values associated with them, which are frequently used elsewhere as well Stats properties should be named what they do, not where they come from.</p>",
+    "PostedDate": "2010-02-25T11:08:39.12-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "406390",
+    "ThreadId": "155469",
+    "Html": "<p>With the set bonuses that are not generic (like +AP) and are more specific (like -2 sec MS CD or +1 Sudden Death Proc effect on Proc) it's easier to determine where these things come from and how to deal with them, and eventually how to get rid of them (when the current tiers become out of date in the next expansion due to the new Tiers).</p>",
+    "PostedDate": "2010-02-25T12:25:43.123-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "406457",
+    "ThreadId": "155469",
+    "Html": "<p>Nope, please use descriptions of what the stat does, not it's source. That promotes code readability and maintainability.</p>",
+    "PostedDate": "2010-02-25T12:53:22.353-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "406589",
+    "ThreadId": "155469",
+    "Html": "<p>I don't speak for the other classes but here's the list of DPSWarr set bonues as found in the code, they do both:</p>\r\n<p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre>BonusWarrior_T7_4P_RageProc,\r\nBonusWarrior_T8_2P_HasteProc,\r\nBonusWarrior_T8_4P_MSBTCritIncrease,\r\nBonusWarrior_T9_2P_Crit,\r\nBonusWarrior_T9_2P_ArP,\r\nBonusWarrior_T9_4P_SLHSCritIncrease,\r\nBonusWarrior_T10_2P_DWAPProc,\r\nBonusWarrior_T10_4P_BSSDProcChange,\r\nBonusWarrior_PvP_4P_InterceptCDReduc,\r\n</pre>\r\n</div>\r\n</p>",
+    "PostedDate": "2010-02-25T13:12:25.49-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "406751",
+    "ThreadId": "155469",
+    "Html": "<p>Would something like this be acceptable?</p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre>        <span style=\"color:Gray\">///</span> <span style=\"color:Gray\">&lt;summary&gt;</span>\r\n        <span style=\"color:Gray\">///</span><span style=\"color:Green\"> Tier 8 4-piece bonus</span>\r\n        <span style=\"color:Gray\">///</span> <span style=\"color:Gray\">&lt;/summary&gt;</span>\r\n        [System.ComponentModel.DefaultValueAttribute(0f)]\r\n        [DisplayName(<span style=\"color:#A31515\">&quot;ShoR Block Value&quot;</span>)]\r\n        [Category(<span style=\"color:#A31515\">&quot;ProtPaladin&quot;</span>)]\r\n        <span style=\"color:Blue\">public</span> <span style=\"color:Blue\">float</span> ShieldOfRighteousnessBlockValue\r\n        {\r\n            <span style=\"color:Blue\">get</span> { <span style=\"color:Blue\">return</span> _rawAdditiveData[(<span style=\"color:Blue\">int</span>)AdditiveStat.ShieldOfRighteousnessBlockValue]; }\r\n            <span style=\"color:Blue\">set</span> { _rawAdditiveData[(<span style=\"color:Blue\">int</span>)AdditiveStat.ShieldOfRighteousnessBlockValue] = value; }\r\n        }\r\n</pre>\r\n</div>\r\n<p>This satisfies that the property name describes what it does, but you can still reference where it came from by simply hovering over the property. &nbsp;I like the idea of being able to reference what custom stat came from where as well.</p>",
+    "PostedDate": "2010-02-25T13:57:22.03-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "406893",
+    "ThreadId": "155469",
+    "Html": "<p>Roncli's example looks perfect.</p>",
+    "PostedDate": "2010-02-25T14:50:34.7-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "406920",
+    "ThreadId": "155469",
+    "Html": "<p>I don't know, I kind of prefer Mage2T10 over inventing a name for &quot;<a href=\"/?spell=70752\">Your Hot Streak, Missile Barrage, and Brain Freeze talents also grant you 12% haste for 5 sec when the effect of the talent is consumed.</a>&quot;</p>",
+    "PostedDate": "2010-02-25T15:05:38.16-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "407040",
+    "ThreadId": "155469",
+    "Html": "<p>MageProcUseHaste? :)</p>\r\n<p>I know what you're saying, though. &nbsp;Some of the ProtPaladin ones are pretty long. &nbsp;I don't mind it too much, though.</p>",
+    "PostedDate": "2010-02-25T16:12:52.527-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "407047",
+    "ThreadId": "155469",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Kavan wrote:</strong><br>\r\n<p>I don't know, I kind of prefer Mage2T10 over inventing a name for &quot;<a href=\"/?spell=70752\">Your Hot Streak, Missile Barrage, and Brain Freeze talents also grant you 12% haste for 5 sec when the effect of the talent is consumed.</a>&quot;</p>\r\n</blockquote>\r\n<p>There's always 'YHSMBaBFtagy12Perchf5secwtetic'</p>",
+    "PostedDate": "2010-02-25T16:16:41.887-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "407450",
+    "ThreadId": "155469",
+    "Html": "<p>HasteOnMageSpecProc?</p>\r\n<p>...Or just make it into a SpecialEffect, with a trigger of HS/MB/BF?</p>",
+    "PostedDate": "2010-02-25T20:41:07.433-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "407686",
+    "ThreadId": "155469",
+    "Html": "<p>Personally I prefer Priest_T10_4pc over PriestMindFlayCastDurationAndTickIntervalDecrease. Also blizzard are known to change set bonuses from time to time.</p>",
+    "PostedDate": "2010-02-25T22:59:21.237-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "407722",
+    "ThreadId": "155469",
+    "Html": "<p>Come on, quit being obtuse guys. You don't have to name it overly long shit like that. MindFlayTickOffset.</p>",
+    "PostedDate": "2010-02-25T23:19:08.877-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "408199",
+    "ThreadId": "155469",
+    "Html": "<p>My 5 cents worth.</p>\r\n<p>My main problem I'm having with it now, is that when I was working on the Retribution relevancy modelling and passed over stats.cs several times. I continuously had to ask myself. &quot;is this useful for a ret?&quot;. And that wasn't always easy to answer.</p>\r\n<p>Part of that problem is that not all class/model specific stats are listed under a &quot;Added by Rawr.&lt;Model&gt;&quot;.&nbsp; so you get to a stat called &quot;AverageAgility&quot;. And the problem starts.&nbsp; Agility is usefull, so I need to add this right ?&nbsp; Several models did, but when you do some more investigation, you find it's not even used at all anymore. It's probably a leftover from an old feral setbonus. BaseAgillity, ok I want agility, I even want base agility.&nbsp; but again that's not what this stat does, it's a helper variable for the Dodge calculation.</p>\r\n<p>In this particular case. The names itself wouldn't have been a problem if it had been listed under &quot;Added by Rawr.feral&quot;.&nbsp; And to a further extent, how a model names their setbonus variables/members.&nbsp; doesn't really matter either since it's largely hidden for everyone but that model.&nbsp; Just be aware that you do always provide a usefull &quot;name&quot; that will be visible in the&nbsp;item editor.&nbsp; And in that respect, a&nbsp;user will probably have a better time understanding &quot;2T10 mage bonus&quot; than &quot;%haste when consuming talent procs&quot;.&nbsp; Set bonusses are a bit of a weird thing... you're not likely to find these bonusses on anything other than set tiers.&nbsp; They're stats, but they aren't as generic a stat like strength, haste...</p>\r\n<p>&nbsp;</p>\r\n<p>Of course, 'hiding' everything in a &quot;Added by Rawr.&lt;model&gt;&quot; region still is no excuse for overloading stats with stuff that shouldn't be there. ;-)&nbsp;&nbsp;&nbsp; I agree that stats.cs should be restricted to only those stats that are needed in buffs/items/enchants.</p>",
+    "PostedDate": "2010-02-26T03:43:56.163-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

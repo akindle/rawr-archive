@@ -1,0 +1,66 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.LoadCharacter",
+      "DisplayName": "Rawr.Base.LoadCharacter"
+    },
+    "ClosedComment": "Rawr 4.1.02 Released",
+    "ClosedDate": "2011-04-03T22:24:28.477-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "A new error pops up when I load a character.xml file after manually increasing the aoe targets to greater than 1. It now reports a null reference exception error and totally fails to load any data.\n \nSteps to Reproduce:\n1) Launch Rawr\n2) File > Open Character File\n3) Select \"Exo Fire.xml\"\n4) Click the \"OK\" button\n5) Observe the error message\n \nAdditional Information:\nRawr v4.1.1.0\nGoogle Chrome / Windows Vista Home Premium\n== Error Message ==\n   at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, Object events)\n   at System.Xml.Serialization.XmlSerializer.Deserialize(TextReader textReader)\n   at Rawr.Mage.CalculationsMage.DeserializeDataObject(String xml)\n   at Rawr.Character.LoadCalculationOptions()\n   at Rawr.Character.get_CalculationOptions()\n   at Rawr.Mage.CalculationOptionsPanelMage.set_Character(Character value)\n   at Rawr.UI.MainPage.set_Character(Character value)\n   at Rawr.UI.MainPage.OpenCharacter(Object sender, RoutedEventArgs args)\n   at System.Windows.Controls.MenuItem.OnClick()\n   at System.Windows.Controls.MenuItem.OnMouseLeftButtonDown(MouseButtonEventArgs e)\n   at System.Windows.Controls.Control.OnMouseLeftButtonDown(Control ctrl, EventArgs e)\n   at MS.Internal.JoltHelper.FireEvent(IntPtr unmanagedObj, IntPtr unmanagedObjArgs, Int32 argsTypeIndex, Int32 actualArgsTypeIndex, String eventName)\n \n== StackTrace ==\n   at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, Object events)\n   at System.Xml.Serialization.XmlSerializer.Deserialize(TextReader textReader)\n   at Rawr.Mage.CalculationsMage.DeserializeDataObject(String xml)\n   at Rawr.Character.LoadCalculationOptions()\n   at Rawr.Character.get_CalculationOptions()\n   at Rawr.Mage.CalculationOptionsPanelMage.set_Character(Character value)\n   at Rawr.UI.MainPage.set_Character(Character value)\n   at Rawr.UI.MainPage.OpenCharacter(Object sender, RoutedEventArgs args)\n   at System.Windows.Controls.MenuItem.OnClick()\n   at System.Windows.Controls.MenuItem.OnMouseLeftButtonDown(MouseButtonEventArgs e)\n   at System.Windows.Controls.Control.OnMouseLeftButtonDown(Control ctrl, EventArgs e)\n   at MS.Internal.JoltHelper.FireEvent(IntPtr unmanagedObj, IntPtr unmanagedObjArgs, Int32 argsTypeIndex, Int32 actualArgsTypeIndex, String eventName)",
+    "LastUpdatedDate": "2013-05-16T05:18:22-07:00",
+    "PlannedForRelease": "Rawr 4.1.01",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-03-30T02:16:56.047-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[LoadCharacter] Error Opening Character File (New)",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 20357
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4772,
+      "FileName": "Exo Fire.xml",
+      "DownloadUrl": ".\\4772"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Ok, another workaround. Disable boss handler in the xml.",
+      "PostedDate": "2011-03-30T12:39:44.15-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-03T22:24:28.477-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:25:30.94-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:22-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

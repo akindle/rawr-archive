@@ -1,0 +1,191 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "Fixed with workaround.",
+    "ClosedDate": "2009-01-19T15:27:26.437-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I experienced a System.ObjectDisposedException while attempting to modify the gems on my items.\n \nSteps to reproduce:\nLoad the following character from armory. Boxtor on Doomhammer (US)\nAfter it loads, edit the gems in Footwraps on wild encroachment to use 10 agi gems.\nThen click on the leggings -> exception appears\n \nSee the end of this message for details on invoking \njust-in-time (JIT) debugging instead of this dialog box.\n \n************** Exception Text **************\nSystem.ObjectDisposedException: Cannot access a disposed object.\nObject name: 'ItemButton'.\nat System.Windows.Forms.Control.CreateHandle()\nat System.Windows.Forms.Control.get_Handle()\nat System.Windows.Forms.Control.GetSafeHandle(IWin32Window window)\nat System.Windows.Forms.ToolTip.Hide(IWin32Window win)\nat System.Windows.Forms.ToolTip.HideAllToolTips()\nat System.EventHandler.Invoke(Object sender, EventArgs e)\nat System.Windows.Forms.Form.OnDeactivate(EventArgs e)\nat System.Windows.Forms.Form.WmActivate(Message& m)\nat System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)\nat System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)",
+    "LastUpdatedDate": "2013-05-16T05:27:18.84-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-05-12T21:24:33.43-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] System.ObjectDisposedException",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 10177
+  },
+  "FileAttachments": [
+    {
+      "FileId": 976,
+      "FileName": "Rawr b14 -crash.zip",
+      "DownloadUrl": ".\\976"
+    },
+    {
+      "FileId": 982,
+      "FileName": "Rawr a14.2.zip",
+      "DownloadUrl": ".\\982"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "The mode was set to cat.",
+      "PostedDate": "2008-05-12T21:26:21.223-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Can you reliably reproduce this? If so, please zip up your whole Rawr folder, including whatever character file you're loading if any, and attach it here, or send it to one of us, along with the steps to repro it.",
+      "PostedDate": "2008-05-12T21:53:34.223-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The steps were provided above when starting with a new copy of my toon from armory.  I will zip up the entire directory (contains some old 13.1 files, but they are not used).\r\n\r\nIt seems to happen reliably when you edit the gemming of an item and then click on a separate position (like legs) to select a different item.",
+      "PostedDate": "2008-05-12T22:32:36.837-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-05-12T22:32:39.443-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks very much.",
+      "PostedDate": "2008-05-12T23:08:31.607-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I tried a new install on XP Pro and I did not have these issues.  The crash is from Vista x64.",
+      "PostedDate": "2008-05-13T15:32:48.02-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Oddly, I'm on Vista x64 too, and not having it happen.",
+      "PostedDate": "2008-05-13T15:46:49.037-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I may have some insight to this...I use rawr at work, where my internet connection is heavily restricted, and cannot access the armory. I get this error CONSTANTLY to the point where rawr is unusable. I could reproduce it with out a problem, every single time, and it would crash every single time.\r\n\r\nWhen I got home today I downloaded rawr on my home pc, and had no issues. I messed with it for 15 minutes doing everything I could to get it to crash or get this error and nothing happened. In fact rawr loaded items and loaded options much much faster, and actually seemed to work like it is supposed to! :) \r\n\r\nI downloaded rawr with in an hour at home and at work, but had completely different  experiences using it. The only thing I can think of is a difference in .Net maybe (doubtful), and the internet connection. Both were using XP pro. \r\n",
+      "PostedDate": "2008-05-15T16:48:36.777-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well I disconnected my connection at home, and could not get the error. So I guess it is not that.",
+      "PostedDate": "2008-05-16T09:27:23.053-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I still have the problem.  Is there any additional information I can collect for you such as running building it and running it in Visual Studio?",
+      "PostedDate": "2008-05-17T02:03:51.917-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Actually, if you can download, build, and run the latest version from source code, and let me know if it still happens, that'd be great.",
+      "PostedDate": "2008-05-17T02:51:58.87-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "\"Well I disconnected my connection at home, and could not get the error. So I guess it is not that.\"\r\n\r\nMaybe at work it's returning a \"You cannot access this page,\" response. While at home with the internet disconnected, it's simply timing out.",
+      "PostedDate": "2008-05-17T05:43:38.187-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Pretty sure this issue is not network related.",
+      "PostedDate": "2008-05-17T11:24:56.39-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I tried build 14.1 again and it works.  I could not get it to crash.  It did crash earlier today.  However, between the crashes and now is when I installed VS 2008 express edition.",
+      "PostedDate": "2008-05-17T16:35:05.523-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Anyone who can reproduce this bug, please try out this build (don't distribute this or promote it for normal use, please, this is just a debug build with a possible fix, most users should stay on 14.1 for the time being). Note that this build will say it's 14.1, just ignore that.",
+      "PostedDate": "2008-05-19T09:39:08.29-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-05-19T09:39:09.227-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I am able to repro this still with the a14.2 build.  I am running XP Pro SP 2 and MSVC 2005.  It seems to take a bit more fiddling than the previous version, but it's still consistent that repeatedly editing gemmed items leads to a crash.  ",
+      "PostedDate": "2008-05-19T15:36:18.883-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Can you guys give me repro steps, down to each exact click? \r\n\r\nie, something like...\r\n1) Double-click Rawr.exe, wait for it to load.\r\n2) Click File, then click MyCharacter.xml from the recent characters list, wait for it to load.\r\n3) Click on the Legs button.\r\n4) Right-click on item X, click on Edit...\r\n5) etc\r\n\r\nSorry for the odd request, it may help.",
+      "PostedDate": "2008-05-19T15:41:57.51-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "New problem a14.2:   \r\n\r\nI just got a \"Window handle already exists\" error opening the Item Editor from the Tools menubar and then closing it with OK.  The window closed and I got the error a second or two later.\r\n\r\nOld problem a14.2:\r\n\r\nI haven't found a case that's 100% repro like the case I mentioned in the Discussion thread for b14.1.  But I did this:\r\n\r\n1) open rawr\r\n2) left-click the pants slot and select first item; Leggings of the Immortal Beast.\r\n3) right-click to edit this item\r\n4) click OK to close Item Editor without editing anything\r\n5) goto 3 until crash.\r\n\r\nIt seems to take 3-5 times of cycling like this to crash.   I am trying to strip this down to the simplest possible case, this method doesn't involve loading a character; just the pants.  ",
+      "PostedDate": "2008-05-19T16:28:45.76-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "1)\tdouble click rawr to open ( 30ish seconds to load \r\n2)\tclick any item box ( usually start with head )\r\n3)\tclick item to edit ( 15ish seconds to open Item Editor )\r\n4)\tchange gem (usually to runed crimson spinal), select ok\r\n5)\tclick same item box (head in this case)\r\n6)\tdrop down menu starts to come up and them I am hit with the\r\n“System.ObjectDisposedException: Cannot access a disposed object.\r\nObject name: 'ItemButton'.”\r\n\r\nI get this every time, no matter what item slot I choose, what model I am using, or what gem I select. Is their anything else that I can gather regarding my system specs? This doesn’t happen at all on my home pc, but constantly on my work pc and they are comparable hardware wise. \r\n",
+      "PostedDate": "2008-05-20T09:20:53.603-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ugh, this is such a weird bug guys. Is there by chance anyone who has Visual C# 2008 Express, or Visual Studio 2008, so that you can build and run Rawr, that wouldn't mind helping me solve this via SharedView or Remote Assistance (so I can watch your screen and we can debug it).",
+      "PostedDate": "2008-05-20T09:43:48.587-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'll try to look at this here in the debugger during a quiet moment.  Probably in a day or two.  It's tricky to say anything intelligent without having looked at the project and not knowing C#.  But:\r\n\r\nDo we know what DLLs Rawr requires?  I notice that Boxtor's DLL dump includes stuff which is probably slightly different on different versions of MS.NET like: C:/Windows/Microsoft.NET/Framework64/v2.0.50727/mscorlib.dll.  And he did say the problem went away when he want to 2008.  OTOH, it could be something much simpler like an uninitialized var somewhere thats getting different starting values depending on the exact config.  ",
+      "PostedDate": "2008-05-20T15:11:38.99-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks fishhead88! \r\nI updated .Net from 2.0.50727.832 Version 2.0 RTM with Hotfix Jun 2007 to 3.0.4506.648 \r\n\r\nand have been using Rawr for about an hour now and have had no problems. I guess it was an issue with an older version of .Net ....",
+      "PostedDate": "2008-05-21T09:58:00.61-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-01-19T15:27:26.437-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T15:37:17.003-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:15.273-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:54.127-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:27:18.84-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

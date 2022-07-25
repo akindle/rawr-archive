@@ -1,0 +1,71 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Optimizer",
+      "DisplayName": "Rawr.Base.Optimizer"
+    },
+    "ClosedComment": "Rawr 4.1.0 Released",
+    "ClosedDate": "2011-03-10T18:49:56.857-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I added the Soul Breath Belt and selected a few int suffixes (as seen in the attached file). When the belt is selected, the optimizer gives the error below.\n \nI have performed the Suggested Fix and continue to receive this error. If I am posting this message without having performed the Suggested Fix I am aware that I am consuming the Developer(s) time in managing my Issue unnecessarily.\n \n== Error Message ==\n[Arg_NullReferenceException]\nArguments: \nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.60129.0&File=mscorlib.dll&Key=Arg_NullReferenceException\n \n== StackTrace ==\n   at Rawr.Optimizer.AvailableItemGenerator.StatsColors.CompareTo(StatsColors other)\n   at Rawr.Optimizer.AvailableItemGenerator.FilterList(List`1 unfilteredList, Boolean itemsFilteredHint)\n   at Rawr.Optimizer.AvailableItemGenerator.PopulateAvailableIds(Boolean positiveCostItemsAvailable)\n   at Rawr.Optimizer.AvailableItemGenerator..ctor(List`1 availableItems, Boolean generateDirectUpgrades, Boolean templateGemsEnabled, Boolean overrideRegem, Boolean overrideReenchant, Boolean overrideReforge, Boolean slotFiltering, Boolean positiveCostItemsAvailable, Character[] characters, CalculationsBase[] models)\n   at Rawr.Optimizer.ItemInstanceOptimizer.InitializeItemCache(Character character, List`1 availableItems, Boolean overrideRegem, Boolean overrideReenchant, Boolean overrideReforge, Boolean templateGemsEnabled, CalculationsBase model, Boolean optimizeFood, Boolean optimizeElixirs, Boolean mixology, List`1 talentSpecs, Boolean mutateTalents, Boolean mutateGlyphs, Boolean positiveCostItemsAvailable)\n   at Rawr.UI.OptimizeWindow.OptimizeButton_Click(Object sender, RoutedEventArgs e)\n   at System.Windows.Controls.Primitives.ButtonBase.OnClick()\n   at System.Windows.Controls.Button.OnClick()\n   at System.Windows.Controls.Primitives.ButtonBase.OnMouseLeftButtonUp(MouseButtonEventArgs e)\n   at System.Windows.Controls.Control.OnMouseLeftButtonUp(Control ctrl, EventArgs e)\n   at MS.Internal.JoltHelper.FireEvent(IntPtr unmanagedObj, IntPtr unmanagedObjArgs, Int32 argsTypeIndex, Int32 actualArgsTypeIndex, String eventName)\n \n== These are the Steps that I have tried ==\n[Please fill in steps here]",
+    "LastUpdatedDate": "2013-05-16T05:18:31.597-07:00",
+    "PlannedForRelease": "Rawr 4.0.20 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-03-03T01:17:03.543-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Optimizer] Errors when using random suffix belt",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 20131
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4670,
+      "FileName": "mage-t11-372-379-bis-test.xml",
+      "DownloadUrl": ".\\4670"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "This is already fixed for next release. As a workaround only enable the suffixes that you mark available.",
+      "PostedDate": "2011-03-03T03:01:20.053-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-03T09:49:13.57-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-10T18:49:56.857-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:25:44.6-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:31.597-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

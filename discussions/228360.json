@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "497683",
+    "ThreadId": "228360",
+    "Html": "<p>I have been trying to use the optimiser to help me change my talents/gems slightly but it keeps telling me that armor penetration is the way for me to go.&nbsp; With the changes coming in Cataclysm and the removal of armor pen I would like to avoid respeccing for ArP but can't seem to find a way of disabling the ArP gemming options. Is this possible at the moment?</p>\r\n<p>Thanks,</p>",
+    "PostedDate": "2010-09-23T10:37:31.743-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "497684",
+    "ThreadId": "228360",
+    "Html": "<p>Go to Tools &gt; Edit Gemming Templates and turn off the ArP ones</p>",
+    "PostedDate": "2010-09-23T10:39:30.273-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "497707",
+    "ThreadId": "228360",
+    "Html": "<p>I thought I had done that already - I went through and unchecked any of the combinations with ArP gems in, I even tried setting an additional requirement on the optimizer of less than 40% arp (around what I am at the minute) but it didn't seem to like that either.</p>\r\n<p>Thanks,</p>",
+    "PostedDate": "2010-09-23T11:34:06.78-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "497729",
+    "ThreadId": "228360",
+    "Html": "<p>Does the gear you have equipped have ArP on it? &nbsp;That will flag it as available in the actual Gem list. &nbsp;You have two options:</p>\r\n<p>a) Uncheck the equiped gear and Ctrl-Check the gear that has the gemming options you want.</p>\r\n<p>b) Go to Slot:Gems -&gt; Normal and find the ArP gems. &nbsp;Uncheck them and run the optimizer. &nbsp;You'll get an error saying that the equipped ArP gems are marked unavailable. &nbsp;Click Ok anyways and let it do it's thing.</p>",
+    "PostedDate": "2010-09-23T12:28:04.12-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "497913",
+    "ThreadId": "228360",
+    "Html": "<p>I'm not using any ArP gems at the minute. My kit has some on but thats all. Looking on the gems menu the ArP gems have no diamond next to them for me to remove but is is coloured a pale red colour which I can't seem to change at all.</p>\r\n<p>Thanks,</p>",
+    "PostedDate": "2010-09-23T23:39:39.443-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "497926",
+    "ThreadId": "228360",
+    "Html": "<p>If the optimizer is using ArPen gems, one or both of the following are true:</p>\r\n<ol>\r\n<li>You have a gemming template enable which contains an ArPen gem.</li>\r\n<li>You have an ArPen gem marked available in the Gems chart.</li>\r\n</ol>",
+    "PostedDate": "2010-09-24T00:25:10.087-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "501418",
+    "ThreadId": "228360",
+    "Html": "<p>I have a similar situation with spellpower gems on my shaman so I hope you don't mind me joining this topic as it seems related.&nbsp;I currently have gemmed for spell power but I want to see how gemming for haste will affect things. I have done everything I think I should yet it is still telling me to go with runed cardinal ruby so:</p>\r\n<ol>\r\n<li>I have disabled all gemming templates that include runed Cardinal Rubies including, for the sake of simplicity, all jeweler specific templates. The only 2 templates I have available are Straight 20 haste (5 x Quick King's Amber + Meta) and Haste mixed (Haste/SP, Haste, Hast/MP5, Haste, Meta).</li>\r\n<li>On top of selecting only these 2 templates, under the optimizer settings in Tools &gt; Options... I have disabled &quot;Consider gems in enabled gemming templates to be available&quot;.</li>\r\n<li>In Slot: Gems &gt; All Normal I have unselected all gems except Haste/SP, Haste and Haste/MP5</li>\r\n</ol>\r\n<p>So I run optimizer and whether I check &quot;Override regem&quot; or not it first gives me a warning saying so many gems are not available <strong>including Runed Cardinal Ruby </strong>and yet when I run the optimizer it still tells me to equip items with Runed Cardinal Ruby (some items are being changed to no longer use that gem and instead go with the Haste/SP or Haste/MP5 but some items are sticking with the full Spell Power ones.</p>\r\n<p>Am I missing something?</p>",
+    "PostedDate": "2010-10-02T05:19:32.853-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "501421",
+    "ThreadId": "228360",
+    "Html": "<p>Really, we'd have to see the character XML to really figure out why. &nbsp;I'd suggest making a ticket if you truly believe it is marking gems when you don't have them marked, but chances are we'll find somewhere in your XML that it is. &nbsp;</p>\r\n<p>Or, for the Adventurous, try this. &nbsp;Right click on your character XML and click 'edit' or open it from Notepad. &nbsp;Search (hit ctrl+f) for the item ID of the offending gem, in this case 40113 (Runed Cardinal Ruby). &nbsp;You can also, for the more adventurous, use replace instead (ctrl+h) and change 40113 to 40155 (Reckless Ametrine), then save the file. &nbsp;This will replace any Runed's you actually have in any gear you ever clicked as available into reckless.</p>\r\n<p>If you do the adventurous route, and it STILL uses the wrong gems that you are SURE you don't have selected, then please post an issue in the issue tracker, as it could be a bug.</p>",
+    "PostedDate": "2010-10-02T05:32:24.62-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

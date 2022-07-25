@@ -1,0 +1,146 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Mage",
+      "DisplayName": "Rawr.Mage"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-01-24T14:46:33.73-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "While optimizing my mage for fire, I tried running Sequence Reconstruction and noticed that scorch spam; when 1 or 2 points of Improved Scorch is selected; is not used. I know part of the SimulationCraft Priority list says to scorch spam when low on mana and evocation is on cooldown:\n \nscorch,debuff=1\ncombustion,if=dot.living_bomb.ticking&dot.ignite.ticking&dot.pyroblast.ticking\nmirror_image,if=target.time_to_die>=25\nliving_bomb,if=!ticking\npyroblast_hs,if=buff.hot_streak.react\nflame_orb,if=target.time_to_die>=12\nscorch,if=mana_pct<5\nfireball,if=target.time_to_die<60\nfireball,if=mana_pct>39\nscorch,if=mana_pct<95&cooldown.evocation.remains>60",
+    "LastUpdatedDate": "2017-11-27T11:02:05.817-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-01-14T11:58:31.333-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Mage] Does not support scorch spam in rotation",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19703
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4423,
+      "FileName": "Fire.xml",
+      "DownloadUrl": ".\\4423"
+    },
+    {
+      "FileId": 4458,
+      "FileName": "sig rawr 4.xml",
+      "DownloadUrl": ".\\4458"
+    },
+    {
+      "FileId": 4467,
+      "FileName": "sig rawr 4 no scorch.xml",
+      "DownloadUrl": ".\\4467"
+    },
+    {
+      "FileId": 4468,
+      "FileName": "rawr screenshots.rar",
+      "DownloadUrl": ".\\4468"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "When I load this character I see about 18 seconds of ScLBPyro used in the solution (which is the scorch based rotation).\r\n\r\nAs far as simc priorities go, if there is sufficient mana to only use FB there should be no need to use Scorch. As far as I understand it their priority uses the 39% mana as a breakpoint as a way to balance dps/mps, but that is not necessarily optimal.",
+      "PostedDate": "2011-01-14T16:04:39.737-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-19T04:41:09.543-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hi,\r\n\r\nI've been using rawr for a long time now even though I've never posted in the issue tracker, the issues I find are already reported in this section most of the time. I'm posting in this thead because my main question is about the use of scorch in the fire mage \"rotation\".\r\n\r\nI've noticed that rawr gives me a high dps output for fire but does not use scorch and goes hard oom 4min into the fight, even with most advanced options enabled. If a enable the segment cooldown option (for display), rawr starts using scorch and gives a more realistic dps without going hard oom.\r\nI wandered if this was the way it's supposed to be, or if I'm doing it all wrong. The problem is that enabling the segment cooldown option (for display or comparison) is really heavy on the calculation and it takes longer and longer to compute the results anytime I make event the slightest changes.\r\n\r\nThe secondary questions don't really belong to this thread but I'm not sure if I should make a new one for them.\r\n- The optimizer gives sometimes \"funky\" results, as the upgrade propositions. It says an item or a reforge is better, and when changed, the dps is lower. I have to fine tune everything. It can take a long time whith segment cooldowns option enabled. Maybe I'm doing it wrong again.\r\n- The mastery stat seem to have doubled in value (relative stat value) and is now stronger thant crit. Except when I enable segment cooldowns option (comparison), it goes down to the value of the previous rawr release. I'm a bit lost with rawr now telling me to take as much mastery as I can.\r\n\r\nI hope this comment will be helpful and that those results are not only because I'm using rawr the wrong way.\r\nI apologize for my english mistakes, I'm not a native speaker (and writer). ^^",
+      "PostedDate": "2011-01-19T04:41:11.37-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Can you upload the xml where it doesn't use scorch? If I remove cooldown segmentation for me it uses more than 1 minute of scorch rotations.\r\n\r\nYou were right to try cooldown segmentation to improve the results of sequence reconstruction, but it appears there is a bug there currently which cuts combustion duration to 1 second. So until I fix that the numbers without cooldown segmentation will be more accurate.\r\n\r\nThe reason why optimizer gives conflicting results in this case is because you're using different setting for comparison and display. For comparison you're using without cooldown segmentation, so while it's optimizing it's using that, but for the final result it displays the results with segmentation.\r\n\r\nAs for the reason why mastery is so high, I think this is just an artifact of your specific gear. In general value of crit gets much higher once you get above the point where T3 hot streak stops working (it has a negative effect on crit until you get over that point, there's about a 1000 crit rating area as you approach this point where crit gets lower value because of this as T4 isn't quite catching for what T3 is losing that gets more pronounced as you get closer to that point). So going just straight by relative stat value it might seems as though crit is not that good (in fact locally it really isn't), but globally it is and if it's possible using all your gear to get you over that point the optimizer will most likely realize this and do so.",
+      "PostedDate": "2011-01-19T13:37:26.243-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-20T08:40:52.223-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks for the fast answer.\r\n\r\nI'll uplaod my \"no scorch\" xml, though its the exact same file without the segment cooldowns option enabled. I've also made some screenshots, if needed.\r\nI looked a little closer to the results this time. Yes, it is using scorch, but it uses evocation a the start of the fight, goes hard oom, doesn't evo back up and doesn't use scorch à 0 mana. It is quite counterintuitive, nobody plays like that. That's something I already noticed in WotLK rawr, but mana wasn't a problem at the time. I hope this isn't a result of bad option use from my side.\r\nThe reason I don't like to use segment cooldowns option is because it is very heavy on the calculations and it oftens crashes rawr.\r\n\r\nFor the optimisation, its with the same settings that the results changes. I don't touch any options or buffs. In rawr 4.0.15b it was telling me to change some crit into haste, but by doing it I was losing dps, and when the change was done, it was telling me to revert haste to crit. In rawr 4.0.16b its telling me to do the same thing with with mastery. I don't really see this as a \"real\" issue, I'm fine by doing my \"fine tuning\" with the items / enchants / gems available to me.\r\nThe trinkets are all \"funky\" that way, giving huge diffrences in dps and weird results, but I know its hard to model them.\r\n\r\nAs for mastery, it concerned me because without changing anything in my settings, going from 4.0.15b to 4.0.16b mastery doubled in value and was the \"go to\" stat for fire, though I know there is many discussions about that and other simulators don't always agree with each other (simc, vontre, ...). I know that relative stats value tends to change a lot and maybe I'm reading it wrong (graph) but it seems now that mastery is just better, even when I equip some t11 359 items and getting my crit higher (giving 20% crit with fight mechanics, etc).\r\nAll I could see in the version history is that you changed \" support for mastery procs for fire and frost specialization\", I thought it was for trinkets, maybe I'm reading it wrong.\r\n\r\nI hope this was helpfull and thank you on the very good work you're doing.\r\nI hope were not getting sidetracked with this, that I should have opened another issue thread.",
+      "PostedDate": "2011-01-20T08:40:54.73-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-20T08:44:31.227-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Oops, messed up the end of ma previous post and I couldn't find a way to upload more than one file at a time. Here's the screenshots.",
+      "PostedDate": "2011-01-20T08:44:32.84-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Don't use the sequence reconstruction as means of verifying if it has enough mana. That is just a side result of trying to convert the actual spell cycles result into a linear sequence and without cooldown segmentation (which is broken for fire right now) it probably won't work perfectly. If you check the actual spell cycles and cooldowns used and sum up all the mana you'll see that it should match perfectly.\r\n\r\nI'm not exactly sure I understand what you mean by results changing with the same settings. If you're talking between different versions, then that is expected. There's actually been a lot more changes than that and several improvements in modeling fire, specifically because it was valueing mastery too low, the reason identified besides some plain bugs was too low predicted Pyro dot uptime and too low Combustion both of which increased the value of Mastery. The other difference was change in T3 Hot Streak model based on new found theorycrafting data, which lowered the value of crit. Both those changes make mastery better than crit locally for your specific gear, but you should know that this is just a local phenomenon. As your gear gets better crit will take over again. Whether you want to optimize for current results and go for more mastery or go straight for crit even if it's lower so you'll need less changes later on is up to you.\r\n\r\nFor the optimizer results, do you see funky results with the cooldown segmentation only, or also without? If you see it without that might be an indication of a bug and I'd need some more information on what exactly happens.",
+      "PostedDate": "2011-01-20T10:49:21.28-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Next release will have a fix for combustion cooldown segmentation.",
+      "PostedDate": "2011-01-22T14:00:04.733-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sorry, I was out for the weekend.\r\n\r\nI feel so stupid right now for not doing my basic math first before posting here. I hope I didn't waste too much of your time.\r\n\r\nFor the results changing with the same settings, what I had in 4.0.15b was that it was telling me to go for crit. Then, if I ran optimizer again (without changing anything, setting, build ...) or looked at the upgrades, it said to go all out for haste. If I did, I lost some dps and so it said to go all out for crit again. The \"crit\" list was telling me to go for haste after saying crit was best, and the haste \"list\" was telling me to go for crit after saying haste was best, back and forth. After thinking about it (what I probably should have done before coming here), I was probably playing around some breakpoint for haste and t3-t4 HS pyro crit.\r\n\r\nI can't seem to reproduce this for 4.0.16b now I had time to \"play\" with it. With segment cooldowns disabled it gives me a constant higher dps result. With that option enabled, the result is lower dps (than the \"crit\" build I had) but the optimizer gives the same result when running it over again, and you just said it will be fixed in the next release.\r\n\r\nThank you for your time and I hope that I will be helpful a next time around.",
+      "PostedDate": "2011-01-24T09:54:09.973-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'll be closing this issue, but just in case you run into similar situation with optimizer again. If optimizer says that something has a higher score than your current set then after equipping it it should actually increase the value. If you're using incremental optimizations the increase could actually be higher, but it should not be lower. So if you get a situation where you can at least somewhat reproduce getting lower value after equipping something reported as better open a new issue with the character xml (except for arcane which uses quadratic solver where things can be a bit more chaotic).",
+      "PostedDate": "2011-01-24T14:45:49.143-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-24T14:46:33.73-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-21T00:00:19.307-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:23.45-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:01.96-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:02:05.817-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

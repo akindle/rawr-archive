@@ -1,0 +1,101 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.LoadCharacter",
+      "DisplayName": "Rawr.Base.LoadCharacter"
+    },
+    "ClosedComment": "4.1.05 Released. If this is still an issue, please reopen with exact steps to reproduce and any necessary character files",
+    "ClosedDate": "2011-05-08T21:37:17.157-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Importing a prot warrior wow (4.1.0)  fails with:\n \n  at System.ThrowHelper.ThrowKeyNotFoundException()\n   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)\n   at Rawr.ProtWarr.CalculationsProtWarr.ApplySpecialEffect(Player player, SpecialEffect effect, Single weaponSpeed, Dictionary`2 triggerIntervals, Dictionary`2 triggerChances, StatsWarrior& statsSpecialEffects)\n   at Rawr.ProtWarr.CalculationsProtWarr.GetSpecialEffectStats(Player player)\n   at Rawr.ProtWarr.CalculationsProtWarr.AccumulateCharacterStats(Player player, Item additionalItem)\n   at Rawr.ProtWarr.CalculationsProtWarr.GetCharacterStats(Character character, Item additionalItem)\n   at Rawr.CalculationsBase.GetCharacterStats(Character character)\n   at Rawr.BossHandler.GenInfoString(Character character)\n   at Rawr.UI.BossPicker.bossOpts_PropertyChanged(Object sender, PropertyChangedEventArgs e)\n   at Rawr.UI.BossPicker.set_BossOptions(BossOptions value)\n   at Rawr.UI.BossPicker.set_Character(Character value)\n   at Rawr.UI.MainPage.set_Character(Character value)\n   at Rawr.UI.MainPage.RawrAddonLoad_Closed(Object sender, EventArgs e)\n   at System.Windows.Controls.ChildWindow.OnClosed(EventArgs e)\n   at System.Windows.Controls.ChildWindow.Close()\n   at System.Windows.Controls.ChildWindow.set_DialogResult(Nullable`1 value)\n   at Rawr.UI.RawrAddonLoadDialog.OKButton_Click(Object sender, RoutedEventArgs e)\n   at System.Windows.Controls.Primitives.ButtonBase.OnClick()\n   at System.Windows.Controls.Button.OnClick()\n   at System.Windows.Controls.Primitives.ButtonBase.OnMouseLeftButtonUp(MouseButtonEventArgs e)\n   at System.Windows.Controls.Control.OnMouseLeftButtonUp(Control ctrl, EventArgs e)\n   at MS.Internal.JoltHelper.FireEvent(IntPtr unmanagedObj, IntPtr unmanagedObjArgs, Int32 argsTypeIndex, Int32 actualArgsTypeIndex, String eventName)\n \nThe imported toon:\n \n// MOVED TO FILE",
+    "LastUpdatedDate": "2013-05-16T05:18:06.397-07:00",
+    "PlannedForRelease": "Rawr 4.1.04",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-04-29T23:36:47.057-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[LoadCharacter] Importing ProtWarr from Addon Fails",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 20600
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4870,
+      "FileName": "import.xml",
+      "DownloadUrl": ".\\4870"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Did you update to the new version yet?",
+      "PostedDate": "2011-04-29T23:46:13.693-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-29T23:46:18.817-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Its using RAWR 0.65 (the one currently available) from curse, and web application.",
+      "PostedDate": "2011-04-30T09:46:21.83-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Not the addon, Rawr itself, did you update to 4.1.04",
+      "PostedDate": "2011-04-30T12:11:52.453-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-30T12:12:26.573-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "ProtWarr isn't set up to read Avalanche correctly (should you even have that enchant?) Edit your import to not have that enchant id on your main hand and it will import correctly.\r\n\r\nA fix has been committed to get around this in future versions",
+      "PostedDate": "2011-04-30T12:28:36.043-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-30T12:30:44.193-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Prob not, but its not the greatest one hander.",
+      "PostedDate": "2011-04-30T12:55:56.13-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-08T21:37:17.157-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:25:13.46-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:06.397-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

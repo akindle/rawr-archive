@@ -1,0 +1,75 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Bear",
+      "DisplayName": "Rawr.Bear"
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-08T07:16:22.47-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "You offer this option to turn on calculations for post 3.04. But I beleive you do not take into account for the multipliers only working on white values. as I see it this is what the calculations should be.\narmor=whitearmoronly(head,back,gloves,boots,bracers,leggs,chest)*4.7*(1+.022*(points in survival of the fittest)*thickhide multiplyer+armor(trinkets,rings,neck)+greenarmor((head,back,gloves,boots,bracers,leggs,chest)\n \nthen if they have the meta it would 1.02 times that\n \nyour current equation is which I thinkis wrong.\ncharBaseArmorItems.Finger1 = charBaseArmorItems.Finger2 = charBaseArmorItems.MainHand =\n\t\t\t\t\tcharBaseArmorItems.Neck = charBaseArmorItems.OffHand = charBaseArmorItems.Projectile =\n\t\t\t\t\tcharBaseArmorItems.ProjectileBag = charBaseArmorItems.Ranged = charBaseArmorItems.Shirt =\n\t\t\t\t\tcharBaseArmorItems.Tabard = charBaseArmorItems.Trinket1 = charBaseArmorItems.Trinket2 = null;\n\t\t\t\tStats statsBaseItems = GetItemStats(charBaseArmorItems, null);\n\t\t\t\tstatsItems.Armor += statsBaseItems.Armor * 4.7f * (1f + 0.22f * talents.SurvivalOfTheFittest) * thickHideMultiplier;\n \nsorry to bug you if I am wrong.",
+    "LastUpdatedDate": "2013-05-16T05:26:48.347-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-11-25T12:36:08.933-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Bear] Armor Post 3.04",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 11689
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "The bug there is the 4.7 should be a 3.7. This has been fixed locally for the next version. Additionally, cloak armor will still be overvalued, since we don't track base and bonus armor separately yet, but we will soon.",
+      "PostedDate": "2008-11-25T13:59:14.887-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hi.\r\nAs a quickfix for the next release, and until Raws becomes able to track base and bonus armor separately, most lv80 rare and epic cloaks have base armor near its ilvl - 50 (not exact, but only a small difference though), so for cloaks you can do a \"quick'n dirty\" rounding like the one I use in my Excel files to track my druid tanking upgrades:\r\n(sorry for any code mistake, I don't know the internals of rawr source):\r\n\r\n// Temporal code only for Cloak section\r\nfloat cloakBaseArmor = statsBaseItems.iLvl - 50;\r\nif ( statsBaseItems.Armor > cloakBaseArmor)\r\n{\r\n  statsItems.Armor += baseArmor * 3.7f * (1f + 0.22f * talents.SurvivalOfTheFittest) * thickHideMultiplier;\r\n}\r\nelse\r\n{\r\n  statsItems.Armor += statsBaseItems.Armor * 3.7f * (1f + 0.22f * talents.SurvivalOfTheFittest) * thickHideMultiplier;\r\n}\r\n\r\nThe convenience of this fix depends on the difficulty of Rawr recording the difference between base and bonus armor on items, (as I'm not sure wowhead itself keeps track on this).",
+      "PostedDate": "2008-11-27T03:13:42.073-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hi again.\r\nI've just cheked that you don't keep record of item iLvs, so my previous post is meaningless.\r\n\r\nYet still, for lv80 cloaks base armor is almost always about 150 armor points or lower. So you can assume that cloaks with more than 150 armor have it as extra armor. Just replace in my code the line\r\n--> float cloakBaseArmor = statsBaseItems.iLvl - 50; <--\r\nfor\r\n--> float cloakBaseArmor = 150; <--\r\nand you are good to go.\r\n\r\nWhen you have the true base armor or cloaks kept into your XML files, then the change would be trivial, just having to update that line with:\r\n--> float cloakBaseArmor = statsBaseItems.BaseArmor; <--\r\nor something like...\r\n\r\nRegards\r\n\r\nLocks",
+      "PostedDate": "2008-11-27T03:52:26.637-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-08T07:16:22.47-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T19:22:29.263-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:14.777-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:48.347-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

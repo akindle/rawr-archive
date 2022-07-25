@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "441106",
+    "ThreadId": "212158",
+    "Html": "My situation: I use progressive optimize on my cat spec first, and then the leftovers go to my bear.  I also have multiple copies of the same gear, but I cannot get the optimizer to recognize that I have 2 of them available, which ends up with my bear set claiming the best it can do is to wear my dps gem/enchants for that piece.\r\n\r\n\r\nI remember that there used to be a workaround for this by entering an invalid itemId in the Item Editor, but when I do that nowadays, Rawr softlocks. It doesn't crash outright, but it becomes completely unresponsive as soon as the ID field loses focus (with an invalid id).\r\n\r\n\r\nHow can I make it so that Rawr recognizes that I have 2 of a particular piece of gear and thus, considers that when doing the progressive optimization?  I've searched through the forums but came up with nothing.\r\n\r\nThanks",
+    "PostedDate": "2010-05-10T08:06:46.273-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "441256",
+    "ThreadId": "212158",
+    "Html": "<p>One option would be to make the copy with invalid id manually in item cache xml file. But also open an issue to get this hang fixed. I remember fixing it at some point, but I guess it's possible it got reintroduced somehow.</p>",
+    "PostedDate": "2010-05-10T16:46:32.293-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "442192",
+    "ThreadId": "212158",
+    "Html": "<p><span style=\"font-size:small;font-family:Calibri\">This may or may not of been my doing :&gt; I&rsquo;m now working the item cache, source and filters full time. For the 3.2.15 release,&nbsp;I only had enough time to add in all the missing items but was only focused on ensuring the stats, gem slot bonuses and any special procs were correct. If there are any additional ID lines I should add to the new items, I'd be happy to do so. I&rsquo;ll also go and check all the previous ones just in case.</span></p>\r\n<p><span style=\"font-size:small\"><span style=\"font-family:Calibri\">Omichron, c﻿an you please provide me either a list or a couple examples of ﻿i﻿t﻿e﻿m﻿s﻿ ﻿﻿t﻿h﻿a﻿t﻿﻿﻿ ﻿n﻿e﻿e﻿d ﻿﻿t﻿h﻿i﻿s﻿?</span></span></p>\r\n<p><span style=\"font-size:small\"><span style=\"font-family:Calibri\">Kavan, would you be able to email me examples of ones you did in the past? Thank you much.</span></span></p>",
+    "PostedDate": "2010-05-12T11:23:44.083-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "442509",
+    "ThreadId": "212158",
+    "Html": "I've already created the issue as http://rawr.codeplex.com/WorkItem/View.aspx?WorkItemId=17630\r\n\r\nBasically, I have 2 of the Armor of Shifting Shadows (Heroic) http://www.wowhead.com/item=47954 and needed a way to make sure that the progressive optimizer knew about it. Using the workaround described in the issue posting above, I've been able to achieve this.  \r\n\r\nThis wasn't a case of missing items or of stats being incorrect, or anything like that. ",
+    "PostedDate": "2010-05-13T06:42:40.563-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "442528",
+    "ThreadId": "212158",
+    "Html": "<p>Yes, I realized this didn't have to do with stats, but I suppose I was misreading Kavan's reply.&nbsp; When he mentioned fixing it in the past, I took it as him fixing the cache by adding special tags to items that would allow Rawr to recognize you had two.&nbsp; Now that I read his reply again, I see he was referring to fixing the hang.</p>",
+    "PostedDate": "2010-05-13T07:28:52.563-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

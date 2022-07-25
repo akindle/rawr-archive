@@ -1,0 +1,71 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.TankDK",
+      "DisplayName": "Rawr.TankDK"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-03-26T12:20:28.06-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have three main issues as discussed with Shazear on EJ:\n \n- Defense rating valuation appears to be accurate, however the relative stat value is not. The model (like the game, I believe) only counts whole points of Defense skill. As such, depending on whether adding a defense rating will increase your defense skill, the relative stat value display will either highly overvalue defense rating, or not value it at all. This can be reproduced with the attached XML: the RSV for defense rating currently shows as 2.04 (the model normalizes stamina to 1.00, and comparable avoidance ratings are 0.32 and 0.4 - about equal to the Def RSV divided by the number of rating required for one defense skill), and if an item is edited to add one additional defense rating on gear, the RSV for defense rating disappears. Note that one additional rating does increase this profile's defense skill from 449 to 450. I am led to believe by Shazear's posts that this behavior is not intended.\n \n \n- Threat values (as observed in RSV and gems, but presumably this is symptomatic of some problems in the underlying threat model) differ greatly from common wisdom or the results of DPS-related tools. Theoretically, a profile with no pet or Rune Strike use should have very similar relative stat weights for both TankDK threat and DPSDK. Some difference is certainly expected due to presence and parries, but the numbers I've observed aren't even in the same ballpark. As an easy example, in the attached XML, switch the model to DPSDK, set \"Ghoul survival time\" to 0, set the rotation to Blood, then set it to Custom, turn off runic power management, and change HoW to 1 and DC to 2. This gives these RSVs: ( Pawn: v1: \"Rawr\": Agility=0.41, Armor=0.01, ArmorPenetration=0.62, Ap=0.36, CritRating=0.54, ExpertiseRating=0.84, HasteRating=0.29, HitRating=1.00, Strength=0.85 )\n \nNow reload the original XML, change the number of Rune Strikes in the rotation to 0, and compare this to the 'threat' (green) portion of the TankDK RSV. We need to put them on the same relative scale to compare, so I'll normalize to Strength - the TankDK Strength value is 0.18, so I'll multiply all the numbers by 4.722, so Strength is equal on both scales and we can easily see how other stats are valued in proportion to it. This gives these RSVs: Agility=1.13, Armor= (Too small to read), ArmorPenetration=1.46, Ap=0.33, CritRating=1.09, ExpertiseRating=0.71, HasteRating=0.61, HitRating=0.76, Strength=0.85\n \nNote that the stats that are not Agility, Strength, AP, Hit, or Expertise are about double their DPSDK-model values but pretty much in the same proportion to one another. This suggests that they are probably not where the problems lie.\n \nMy supposition would be that there is some error in attack power benefit calculations, and a further error (or at least a very large difference in handling relative to DPSDK) in calculations related to hit and expertise. Note in particular that one would expect expertise to be rated proportionally higher in TankDK than DPSDK due to parries being a factor, and it -is- rated proportionally higher relative to hit, but it falls greatly relative to all other DPS stats.\n \nThere is also something going on with Agility causing its value to be higher than expected; I would suggest ensuring that the correct crit mechanics are being used (I am fairly certain that agility or 'melee crit' does not affect any of our 'spell' crits, though you should not take that on my word - the equality of the 'melee crit' and 'crit rating' RSVs suggest that this is not how it is currently modeled in TankDK), and also investigate the issue below.\n \n \n- I am very inconsistently observing an issue where avoidance stats (defense, dodge, and parry) have non-zero threat values. I have found that setting Rune Strike to 0 in the rotation of the attached XML is one scenario that will cause this. According to Shazear a previous version of the model attempted to model the threat gain from increased Rune Strike procs, but this was problematic and was removed; it seems that this code might be still active in a few odd situations. (It's not always there when Rune Strike is set to zero - it shows up if you set RS to 0 in the frost rotation as well, but vanishes if you then set FS to 2). This is probably affecting agility as well, which may be relevant to the previous issue.",
+    "LastUpdatedDate": "2017-11-27T11:04:33.74-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-01-07T16:43:33.21-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[TankDK] Various stat valuation issues",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15770
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2743,
+      "FileName": "stank2.xml",
+      "DownloadUrl": ".\\2743"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Partial fix for the last point in changelist: 45434\r\nI really did finally tear out all that RS funny business.",
+      "PostedDate": "2010-01-14T16:18:02.28-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Resolved with changeset 48716.",
+      "PostedDate": "2010-03-26T12:20:28.06-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:30:45.55-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:32.94-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:04:33.74-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

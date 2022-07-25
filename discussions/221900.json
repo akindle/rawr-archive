@@ -1,0 +1,154 @@
+[
+  {
+    "Id": "474411",
+    "ThreadId": "221900",
+    "Html": "<p>The TFS Server for Rawr has been updated to a new url. As such, you will no longer be able to connect to the TFS server using the old link of <a href=tfs03.codeplex.com>tfs03.codeplex.com</a></p>\r\n<p>The new TFS Server for Rawr is <a href=tfs.codeplex.com>tfs.codeplex.com</a> and you will select Rawr from a <b>Collection</b> named TFS03</p>\r\n<p>I have updated the project files to this new link so once you connect to the new TFS and update to the latest version you shouldn't see any more warnings.</p>",
+    "PostedDate": "2010-07-29T12:23:28.877-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "474548",
+    "ThreadId": "221900",
+    "Html": "<p>Uh... yeah.&nbsp; What?&nbsp; All I know is that I'm being asked for my TFS credentials.&nbsp; I don't even know wtf this &quot;TFS&quot; <strong><em>is</em></strong>.</p>",
+    "PostedDate": "2010-07-29T20:24:17.903-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "474557",
+    "ThreadId": "221900",
+    "Html": "<p>TFS = Alternate form of SVN, created by Microsoft</p><p>The source code page can tell you how to connect</p>",
+    "PostedDate": "2010-07-29T20:42:23.773-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "474565",
+    "ThreadId": "221900",
+    "Html": "<p>Yeah, so... I have only a basic understanding of what SVN <em>does</em>, and none whatsoever as to how it works or how to use it, so I'll just ask: can I get by just ignoring the &quot;username and password&quot; prompt when I open Visual Studio?&nbsp; (For the record, the Source Code page did not shout a simple method of connecting, it just threw a bunch of programs, GUIs, etc. at me.&nbsp;&nbsp; I'm working under the assumption that Visual Studio has the capabilities to connect to TFS baked into the standard release of the program, and the extra programs are superfluous to my very basic/possibly non-existent needs?)</p>",
+    "PostedDate": "2010-07-29T21:04:37.283-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "474573",
+    "ThreadId": "221900",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>BrWarner wrote:</strong><br>\r\n<p>Yeah, so... I have only a basic understanding of what SVN <em>does</em>, and none whatsoever as to how it works or how to use it, so I'll just ask: can I get by just ignoring the &quot;username and password&quot; prompt when I open Visual Studio?&nbsp; (For the record, the Source Code page did not shout a simple method of connecting, it just threw a bunch of programs, GUIs, etc. at me.&nbsp;&nbsp; I'm working under the assumption that Visual Studio has the capabilities to connect to TFS baked into the standard release of the program, and the extra programs are superfluous to my very basic/possibly non-existent needs?)</p>\r\n</blockquote>\r\n<p>No. Dunno what Source Code tab you're looking at... The on our site? See the big &quot;Source Control Setup&quot; panel on the right side? Click on Visual Studio Team Explorer. That's all the info you need; it's pretty clear. And no, you can't just ignore the username/password prompt. The CodePlex wiki help pages on the source control client has the way to save that username/password.</p>",
+    "PostedDate": "2010-07-29T21:27:59.13-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "474617",
+    "ThreadId": "221900",
+    "Html": "I am connected in my Team Explorer, but not in the Solution Explorer, when I click go online there it still tries to connect to tfs03. I'm not using the express version.",
+    "PostedDate": "2010-07-30T01:05:41.933-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "474731",
+    "ThreadId": "221900",
+    "Html": "<p>My problem has been fixed, no idea how but without changing anything I can connect again.</p>",
+    "PostedDate": "2010-07-30T06:17:53.443-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "474936",
+    "ThreadId": "221900",
+    "Html": "<p>I had the same problem, Fes, but I closed the solution, reopened it, and it magically fixed itself.</p>",
+    "PostedDate": "2010-07-30T16:50:35.937-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "475202",
+    "ThreadId": "221900",
+    "Html": "<p>Please, everyone, take the time to understand TFS, if that's what you use. It's important that you understand things like how TFS is designed to be used (&quot;Get Latest&quot;-&gt;&quot;Decide to modify a file&quot;-&gt;&quot;Check out that file&quot;-&gt;&quot;Edit that file&quot;-&gt;&quot;Check in that file&quot;; don't check out the whole tree.)</p>\r\n<p>Everyone, (especially Anaeradranax, you have almost the entire source control repository checked out), please undo your checkout of everything you're not actually editing. It helps us keep the repository clean and clear about who's working on what.</p>",
+    "PostedDate": "2010-08-01T11:43:15.423-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "475450",
+    "ThreadId": "221900",
+    "Html": "<p>Perhaps a small explanation might assist those new to TFS/SVN. Apologies to those for whom this is old hat, I've tried to go for intelligent but need info audience, forgive me if I hit too low and went for (L)user level descriptions.</p>\r\n<p>The idea is that a central &quot;repository&quot; of code is held so that developers from all over the world can work on the same project. This is the Team Foundation Server (TFS). Now VS2010 allows you to connect to a TFS box and download the code from there. Codeplex is setup so that you can view the code but you need a password to make any changes. This means that the project co-ordinator can make sure that only authorised developers can amend the code.</p>\r\n<p>So once you run VS2010 and connect to the TFS you can download the code and start working on it. It is a good idea that prior to starting <strong>every </strong>session of working on the code that you <strong>always </strong>run an update to ensure you get the latest changes. This ensures you aren't about to go fix something someone else has already fixed.</p>\r\n<p>So you have your VS2010 running you've downloaded the code now you open the solution file - and can start work. I work with the settings so that if I start editing a file then VS2010 automatically contacts the TFS and &quot;checks-out&quot; the file I edited. What this means is that the TFS is told that I wish to change that file and so it marks the file as checked out. This tells the other developers that the file is in use and their changes might conflict with another developer. It is for this reason that people should <strong>never </strong>check out any file they aren't working on. As otherwise other developers cannot tell if a conflict might happen.</p>\r\n<p>Once you have made your changes and tested them you should then use the Commit Changes option (usually got by right clicking on the file or the project). This option pops up a dialog that you can enter a description of what you have done. Always try to make this clear and easy to understand. Try to commit a change as a simple unit, ie: don't checkout dozens of files make a lot of unrelated changes and then check them in again with a brief description. Far better to make simple changes and checkin that change so other developers can understand what has changed.</p>\r\n<p>So it should be fairly simple...</p>\r\n<p>1) Use Get latest code - to download the code to your machine</p>\r\n<p>2) start work on a file and have it auto check out (or manually right click it and say check out if you prefer)</p>\r\n<p>3) Complete your changes and test them</p>\r\n<p>4) Check in your changes with a description of what you changed.</p>\r\n<p>There is also the possibility that you want to undo your changes in which case you can simply tell it to revert to the version on the server and &quot;undo check-out&quot;. This gets rid of your changes and fetches the current version from the server.</p>\r\n<p>In the event that two people are editing the same file, the TFS &amp; VS2010 can also manage merging two updates together. There is a conflict resolution option where the application will show you your changes vs the server changes and you can choose to merge the changes, keep your change and throw away the server one, or keep the server change and throw away your one. It works through each conflict showing you exactly what has changed. Once you have resolved the conflict it is always a good idea to test the results and then commit the changes with a note to say what has changed.</p>\r\n<p>I hope this helps those struggling to understand what TFS is and why we need it.</p>",
+    "PostedDate": "2010-08-02T07:12:39.693-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "475468",
+    "ThreadId": "221900",
+    "Html": "<p>Now, for those of you wondering &quot;Why in the world would I change off of just using SVN?&quot;, here's what TFS offers that SVN doesn't:</p>\r\n<ul>\r\n<li>Direct integration with the Issue Tracker page (they call it &quot;Work Items&quot;). This allows you to run reports, get better filtered lists, edit issues from inside VS, add comments/attachments, create new issues, link your commits directly to an issue so that people know you are working on it, resolve an issue directly with a commit.</li>\r\n<li>Better control when it comes to &quot;shelving&quot; a series of changes. This is for when you are working on that awesome new system for calculating &lt;X thingy&gt; but its not ready yet and you are only going to work on it in your spare time and instead focus on other fixes. You can &quot;shelve&quot; that work until you are ready to commit it and not have to weed through all the affected files while doing your other work. This also makes it easier to work on multiple development boxes without having to actually commit something. Shelve your work and go to your other system, update, then unshelve it to continue working.</li>\r\n<li>You can actually see who else has the same files checked out *cough*Anaeradranax*cough* so if you need to check something in and someone else has it checked out, you know a conflict resolution might be necessary.</li>\r\n</ul>\r\n<p>Now that's not to say it's all gravy baby, there are a couple of things you lose by switching to TFS:</p>\r\n<ul>\r\n<li>When you install SVN, you are most likely installing TortoiseSVN or an equivalent, which has Windows Shell Extensions. Meaning you can commit and check out directly from Windows Explorer. TFS doesn't have this, and I haven't found a suitable program that mimics it yet.</li>\r\n<li>SVN has better &quot;difference&quot; checks/editors. To get somewhat around this, you can actually change the Merge and Diff tools in TFS to those provided by TortoiseSVN, which are MUCH better. However I haven't found a way to set up UDiff (which I love for quick summary files).</li>\r\n</ul>",
+    "PostedDate": "2010-08-02T08:26:04.75-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "475506",
+    "ThreadId": "221900",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Jothay wrote:</strong> \r\n<ul>\r\n<li>When you install SVN, you are most likely installing TortoiseSVN or an equivalent, which has Windows Shell Extensions. Meaning you can commit and check out directly from Windows Explorer. TFS doesn't have this, and I haven't found a suitable program that mimics it yet.</li>\r\n</ul>\r\n</blockquote>\r\n<p>It's obsolete in TFS; Visual Studio just checks out as necessary; and provides the check in functionality right in the IDE. There's no reason to want to do anything in explorer.</p>",
+    "PostedDate": "2010-08-02T09:42:41.567-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "475524",
+    "ThreadId": "221900",
+    "Html": "<p>I used to do most of the checkin/checkouts from explorer because it guaranteed that I was checking in for both Rawr2 &amp; Rawr3 solutions. In VS, if you tried to check in for one it might not necessarily alert you to the fact that the other has changed files too. TFS does the same so you have to use the TFS Source Control Explorer to get updates and when checking in, hit the Refresh button to force it to check the other solutions' files for any changes.</p>\r\n<p>Either way you can't just go to the VS Solution Explorer's solution root and tell it to check in or get latest because it may miss something for the other project.</p>",
+    "PostedDate": "2010-08-02T10:18:08.077-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "475602",
+    "ThreadId": "221900",
+    "Html": "Err, yeah, it sounds like you have been (are?) doing it wrong, Jothay. You should be letting VS auto check out, using Source Control Explorer to check out anything not in a solution (default data files pretty much), and using the Pending Changes pane to check in. You should not be checking in/out via Solution Explorer, for exactly the reasons you describe. ",
+    "PostedDate": "2010-08-02T13:10:12.25-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "475608",
+    "ThreadId": "221900",
+    "Html": "<p>Right, but here's the scenario I have been (have are?) been running into:</p>\r\n<p>I open Rawr.sln and Rawr3.sln side by side, each with their own VS2010 instance. I type in the password (haven't updated the stored creds since from server switch yet) into each and they connect. I then open a file in Hunter, say CalculationOptionsHunter.cs and begin to type something so it auto-checks out. Then in Rawr3, I open CalculationsHunter.cs and do the same, auto-checks out. Now I have a file checked out in each solution.</p>\r\n<p>I bring up the Pending Changes viewer in both VS's, each one only sees the one file checked out UNTIL I hit Refresh, then it finds both in both.</p>\r\n<p>That's all I was trying to say. The point of doing it in Windows Explorer meant I didn't have to remember to hit Refresh, it just found everything that needed to be committed.</p>",
+    "PostedDate": "2010-08-02T13:26:01.29-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "475940",
+    "ThreadId": "221900",
+    "Html": "Is it possible for non-developers to get read-only access through tfs, or do we need to stick to just downloading the source .zip?\r\n\r\nI managed to get to the user-name/password prompt, but couldn't get past that (using tfs via VS 2008 on this machine, or using Tortise SVN).\r\n",
+    "PostedDate": "2010-08-03T06:38:19.867-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "476019",
+    "ThreadId": "221900",
+    "Html": "<p>Nope, TFS access is dev only. Non-devs should stick to downloading the source.</p>",
+    "PostedDate": "2010-08-03T09:50:43.05-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "477509",
+    "ThreadId": "221900",
+    "Html": "<p>And I would assume that we can still use our regular SVN (Tortoise for example) to download the proper SVN source, and then just use our VS2010 in offline mode to compile etc....&nbsp; ?</p>",
+    "PostedDate": "2010-08-06T13:58:51.407-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "477511",
+    "ThreadId": "221900",
+    "Html": "<p>Yes.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-08-06T14:06:48.567-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

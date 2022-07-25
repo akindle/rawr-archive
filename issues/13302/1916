@@ -1,0 +1,15 @@
+Index: Rawr.DPSDK/CalculationsDPSDK.cs
+===================================================================
+--- Rawr.DPSDK/CalculationsDPSDK.cs	(revision 436)
++++ Rawr.DPSDK/CalculationsDPSDK.cs	(working copy)
+@@ -929,8 +929,8 @@
+                 if (talents.HeartStrike > 0 && calcOpts.rotation.HeartStrike > 0f)
+                 {
+                     float HSCD = realDuration / calcOpts.rotation.HeartStrike;
+-                    float HSDmg = ((MH.baseDamage + ((stats.AttackPower / 14f) * (DW ? 2.4f : 3.3f))) * (0.5f + 0.1f * 0.5f * (float)calcOpts.rotation.avgDiseaseMult) * (1f + stats.BonusPerDiseaseHeartStrikeDamage)) +
+-                        368f + stats.BonusHeartStrikeDamage;
++                    float HSDmg = ((MH.baseDamage + ((stats.AttackPower / 14f) * (DW ? 2.4f : 3.3f))) * 0.5f + 368f + stats.BonusHeartStrikeDamage ) *
++                        (1f + (0.1f * (float)calcOpts.rotation.avgDiseaseMult) * (1f + stats.BonusPerDiseaseHeartStrikeDamage));
+                     dpsHeartStrike = HSDmg / HSCD;
+                     //float HSCrit = 1f + physCrits + ( .03f * (float)talents.Subversion );
+                     float HSCritDmgMult = 1f + (.15f * (float)talents.MightOfMograine) + stats.CritBonusDamage;

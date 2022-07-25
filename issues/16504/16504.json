@@ -1,0 +1,76 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Hunter",
+      "DisplayName": "Rawr.Hunter"
+    },
+    "ClosedComment": "Same haste issues as already reported",
+    "ClosedDate": "2010-02-23T13:01:11.617-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "After extracting Rawr 2.3.10 and loading a hunter from the armory, using a fresh install directory and no saved profiles, configuring the character for latencies below 200, and displaying the stats graph, the haste plot is extremely erratic, fluctuating between two lines.\n \nTo reproduce: \nExtract Rawr 2.3.10 to a new folder. Open the character Mavrande from the realm Cenarius-US. Set latency to 100ms, and run the stats graph (Options->Basic->scroll down). Attached is a result - 300ms latency on the left, 100ms latency on the right.\n \n100ms, 121 haste, 4660dps\nRapidFire     :    2\nKillShot      :    8\nExplosiveShot :   48\nBlackArrow    :   10\nSerpentSting  :   17\nAimedShot     :   27\nSteadyShot    :   69\n \n100ms, 120 haste, 4672dps\nRapidFire     :    2\nKillShot      :    8\nExplosiveShot :   48\nBlackArrow    :   10\nSerpentSting  :   17\nAimedShot     :   26\nSteadyShot    :   69\n \n100ms, 119 haste, 4659dps\nRapidFire     :    2\nKillShot      :    8\nExplosiveShot :   48\nBlackArrow    :    9\nSerpentSting  :   17\nAimedShot     :   26\nSteadyShot    :   71\n \nThe transition from 120 haste to 121 haste here is the bug: I get off 1 /more/ aimed shot than I did at 120 haste, but my DPS decreases.",
+    "LastUpdatedDate": "2013-05-16T05:21:44.22-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-02-23T12:45:30.85-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Hunter] Haste erratic at low latencies",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16504
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3010,
+      "FileName": "Rawr Erratic haste at low latencies.png",
+      "DownloadUrl": ".\\3010"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Note that that is my 'priority rotation DPS' decreasing from 120 haste to 121 haste, not my 'autoshot DPS'. That extra point of haste decreases my explosive shot DPS by 12, even though it is still cast 48 times. A few other shots decrease, and aimed shot increases (which makes sense, because I'm getting one extra aimed shot off).",
+      "PostedDate": "2010-02-23T12:53:17.91-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-23T13:01:11.617-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T18:40:00.327-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:18.067-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:29:46.65-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:44.22-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

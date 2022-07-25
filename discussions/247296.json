@@ -1,0 +1,106 @@
+[
+  {
+    "Id": "571034",
+    "ThreadId": "247296",
+    "Html": "<p>As some of you may have noticed I've been trying to get the hunter module at least off the ground. With the next update I'll be posting (sometime tonight) I should have base Hunter stats and Pet stats correct. I've also implemented several updates to the  Hunter shots, and I would love if people could double check my calculations. Hunters are not really my forte (I'm normally a Mage/Feral Druid), but I do have an 85 Hunter I use mostly for profession reasons. Hence my complete understanding of the class maybe  a bit off at times.</p>\n<p>Known Issues:</p>\n<ul>\n<li>Focus implementation is not in </li>\n<li>Rotation is not implemented </li>\n<li>Abilities done by pets affect the Hunter </li>\n<li>Absurd amount of gemming options (would love for suggestions on how to trim this down)</li>\n</ul>\n<p>If anyone finds anything off anywhere please post an Issue in the Issue tab.</p>",
+    "PostedDate": "2011-02-23T12:42:09.477-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "572462",
+    "ThreadId": "247296",
+    "Html": "<p>Just want to direct a huge thanks to giving the Hunter Module some love :)</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;/bow</p>\r\n<p>&nbsp;</p>\r\n<p>/Drizz</p>",
+    "PostedDate": "2011-02-25T22:46:50.1-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "576915",
+    "ThreadId": "247296",
+    "Html": "<p>Hey, a huge thanks for helping to bring the model back.&nbsp; I wasn't sure if someone already provided a response on the gems, but hunter can benefit from:</p>\n<p><em>Meta - Agile, Chaotic, Destructive, Enigmatic, Fleet, Impassive, Invigorating, Relentless, Swift, Thundering</em><br /><em> Red - Delicate</em><br /><em> Orange - Adept, Deadly, Deft, Lucent</em><br /><em> Yellow - Fractured, Quick, Smooth</em><br /><em> Purple - Glinting, Shifting</em><br /><em> Green - Forceful, Jagged, Lightning, Piercing, Puissant, Sensei's</em><br /><em> Blue - Rigid</em><br /><em> Prismatic - Nightmare Tear</em></p>\n<p>&nbsp;</p>\n<p>However, no gem that doesn't provide 20 agility minimum is even worth considering.&nbsp; It would be ideal if you could hide all except the following:</p>\n<p><strong>Meta - Agile, Chaotic, Relentless</strong><br /><strong> Red - Delicate</strong><br /><strong> Orange - Adept, Deadly, Deft</strong><br /><strong> Purple - Glinting</strong></p>",
+    "PostedDate": "2011-03-07T16:24:19.303-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "577001",
+    "ThreadId": "247296",
+    "Html": "<p>Thanks for the reply. I can try to get that narrowed down tomorrow.</p>\n<p>Also I'll be adding support for Smooth, Rigid, Quick, and Fractured Cogwheels for those engineers out there.</p>\n<p>With the 4.1 patch allowing for taming of pets to level up to the level of the hunter, I was finally able to get all of the lvl 85 pets' base information (yes I tamed all 37 pet types on the ptr). However I'm not 100% happy with my health calculations (Simulation craft uses pet stamina still however Blizzard uses a static conversion of Hunter stamina -&gt; Pet Health [1 hunter stamina &asymp; 10.4 pet health]). and I'm still trying to figure everything out. What I have currently on my local build (and I'll post what I have before the next release) is as close as I can get it at this time (I'm hoping at most total pet health will be 1k off).</p>\n<p>My main issue I currently have is the hunter shot information is not directly tied right now to the shot information and I'm still trying to get that squared away. What I mean is the I have the shot data inputed, but the thing that the rotation module from before is pulling from is not reading any of the new shot data. Once I can get that working and shot output is looking good, the hunter module itself could probably be ugraded out of inopperable.</p>",
+    "PostedDate": "2011-03-07T23:04:34.903-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "646512",
+    "ThreadId": "247296",
+    "Html": "<p>Hina: Let me know what I can do to help with this.&nbsp; My wife is pestering me to get this working again (as I knew she would).</p>",
+    "PostedDate": "2011-07-23T08:19:35.257-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "646557",
+    "ThreadId": "247296",
+    "Html": "<p>Yea I have started doing some major gutting of the entire module. It needs a complete re-work, re-organization. I know a lot of hunters are using FemaleDwarf.com</p>\r\n<p>Right now what I'm trying to do is start almost from scratch. Remove as much of the hunter stats out of the stats file. For the most part I was able to do just that. The only variable I wasn't able to remove was the Pet multiplicative variable since it appears the EnhShamman module is also using that variable. Which is probably fine. Once I can get the basics in place I'll probably need help getting the skills to show and get the rotation set up. Skill info themselves for the most part is in place (besides traps but that is another thing entirely)</p>",
+    "PostedDate": "2011-07-23T12:33:37.553-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "646613",
+    "ThreadId": "247296",
+    "Html": "<p>From a user perspective:</p>\r\n<p>The old rotation should have used mana as the resource limiter and intellect as the resource regen as well as for the resource maximum caculations.</p>\r\n<p>You MIGHT be able to redirect the rotation model to look at Focus level instead of mana pool and redirect the regen portion to haste instead of intellect while the resource maximum would be 100.</p>\r\n<p>This is coming from a non-programmer and from someone who is unsure where in the rotation module you are as far as re-coding goes. My apologies if you've already thought/tried this.</p>\r\n<p>And last, but certainly not least, thank you for taking the model out of the graveyard it was rotting away in.</p>",
+    "PostedDate": "2011-07-23T16:23:21.36-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "646619",
+    "ThreadId": "247296",
+    "Html": "<p>Problem with that is that Cobra Shot and Steady Shot are the two main Focus regen abilities in addition to how the base Focus Regen works as well as I think (don't quote me since I'm doing this from memory and I have it written down somewhere) Pet ability  to regen focus. Plus there are abilities like Lock-and-Load that reduces the cost of Explosive Shot for Survival (Personally speaking I play a Survival Hunter alt; prefer the rotation over Marks; I like more engaging rotations [Frost Mage, Feral Druid, Survival  Hunters]).</p>\n<p>&nbsp;</p>\n<p>Just as a bit of info for where I'm coming from. I actually tried to get in contact with FemaleDwarf's dev to see if I could look at his code to get an idea of how to attack the Rawr's Hunter module (my first programming gig was programming in PHP which  is what FemaleDwarf is coded in). He refused and told me to look at SimC. What is currently implemented in Rawr is the old Hunter Spreadsheet from Wrath that was okayish in converting but still had that Spreadsheet feel. Shots were being calculated within  the main calculation, sometimes in multiple places which was diffiuclt to keep track of as well as making updating a headache. WAY TOO MANY variables were being generated even if they were temporary which was slowing the system down.</p>\n<p>What I am planning on first doing is just remove/comment everything and kindof work as if I'm starting from scratch. I know a lot of the calculations still hold true, but I just want to start with a clean slate. I'm going to be basing a lot of the look and  feel of the front and back end to that of the Mage and Warrior Modules. I have already done a second pass at the StatsHunter file and that looks a lot better and works a lot like the DPSWarrior's stat file (get this set up so that I can build upon it if needbe). The Shot files are already fairly set up.  But the two files I really need to clean up and move things around are the two main Calculation files. Following this would be either the pet calculations (which probably don't need AS much cleaning but still needs to be looked at) once those two are done  then I'll look at the actual damage numbers and rotations. But first it's just cleaning up that needs to be done.</p>",
+    "PostedDate": "2011-07-23T16:36:09.387-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "646815",
+    "ThreadId": "247296",
+    "Html": "<p>Okay I kinda see what you are saying but this also seems to be a good time to apply the KISS (Keep It Simple Silly) theory. Since Cobra and Steady are Focus Regen shots hence they \"cost\" a positive Focus while everything else has a negative value. Hunters' focus pool should be easier to manage than both the Warrior's Rage and the Mage's Mana. To my knowledge, the only thing effecting a hunter's resource is Haste and associated buffs (RF, Heroism, etc) whereas warriors have to calculate whether they hit or not and weapon speed plus other things like Battle Shout, and Berzerker Rage as well as the haste buffs that hunters use&nbsp;and the mages have to use Intel/Spirit and a wide variety of mana regen/saving buffs and talents and again the haste bufs already mentioned.</p>\r\n<p>Maybe I'm just not aware of all the behind the curtain workings and forgive the non-programming language but something like this for shots:</p>\r\n<p>Get Shot;</p>\r\n<p>If Shot = \"Steady\", Focus=Focus+9;</p>\r\n<p>If Shot = \"Arcane\", Focus=Focus-25;</p>\r\n<p>If Focus&gt;100, Focus = 100;</p>\r\n<p>or something along those lines (conditionals would probably work better)</p>\r\n<p>Again sorry if you have already addressed or looked into using this as a possibility.</p>",
+    "PostedDate": "2011-07-24T12:29:17.91-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "646818",
+    "ThreadId": "247296",
+    "Html": "<p>I do some similar work with the DK abilities.&nbsp;&nbsp; Not sure if that model ends up being the best for others, since DKs have so much to keep track of.&nbsp; But yeah something like what you mention will probably be how it looks. :)</p>",
+    "PostedDate": "2011-07-24T12:48:55.403-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "646827",
+    "ThreadId": "247296",
+    "Html": "<p>I'll take a look at the DPSDK module once I get around to the regen portion of the coding. I'm just at this stage just trying to clean up the back up.</p>",
+    "PostedDate": "2011-07-24T13:40:02.893-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "646836",
+    "ThreadId": "247296",
+    "Html": "<p>The INT[] AbilityCosts include all sorts of things.&nbsp; Positive values assume a Cost.&nbsp; and Negative values assume a return.&nbsp; So in the case of like IcyTouch:&nbsp; Costs 1 Frost Rune, and Returns 10 Runic Power modified by talents and such.&nbsp; It gets a bit more cludgy in the rotations but we can talk about that more one you're ready.</p>",
+    "PostedDate": "2011-07-24T14:20:11.163-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "646846",
+    "ThreadId": "247296",
+    "Html": "<p>Yea I actually have something similar set up in the Shot info file where it asks for the Focus cost (though not the negative bit but I can easily modify that for Cobra and Steady).</p>",
+    "PostedDate": "2011-07-24T14:47:48.113-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

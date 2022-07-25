@@ -1,0 +1,85 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Items",
+      "DisplayName": "Rawr.Base.Items"
+    },
+    "ClosedComment": "Astry did a major push to fix parsing for a lot of items, should fix this issue",
+    "ClosedDate": "2009-09-16T17:33:53.117-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "There are many items which are not properly described in XML file therefore reacts wrongly on filtering. \n \nFor example some Ulduar gear is not correctly assigned to hard modes or 25-man or even to any boss (like Pendant of Fiery Havoc or Amice of Inconceivable Horror). Some PVP pieces don't disappear when PVP filter is off, etc. I manually updated the file (ItemSource.xml) and it started to work as expected (regarding the gear I was interested in) but I cannot do the same thing everytime new version is released (especially when item list is updated with new gear - like when WOW content patches are released)\n \nIs there someone who is responsible for that or you fully rely on wowhead database which also lacks some information about some gear?\nIs it subject to be fixed ever?",
+    "LastUpdatedDate": "2017-11-27T11:01:13.16-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-08-12T04:35:03.85-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Items] ItemCache lacks some location/boss/mode information",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13850
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "We pull the database directlly off wowhead and provide it, unmessed with. Unfortunately, scrubbing a database with literally 99999 possible records takes a LOT of time so unless someone is willing to donate their time and become the Item Database Dev then there's little hope of it being fixed pre-each-release. We do provide the menu options for manually updating the database with Armory/Wowhead information (en masse or individually). Alternately if you have some XML experience users can do what you mentioned doing and manually editing the items in the ItemSource.xml file to correct these issues.",
+      "PostedDate": "2009-08-12T10:09:47.62-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thank you for the explanation. I understand the point. \r\nMaybe it would be possible to allow editing item location in item editor? Currently it is read only and it is in form of custom description created from a few pieces of data in the XML file.",
+      "PostedDate": "2009-08-12T23:18:12.083-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You can edit the Note field, which is compared against for all filtering as well.",
+      "PostedDate": "2009-08-12T23:25:18.12-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-16T17:33:53.117-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:33:04.973-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T22:45:43.24-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:39.807-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:52.023-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:01:13.16-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Warlock",
+      "DisplayName": "Rawr.Warlock"
+    },
+    "ClosedComment": "Fixed for next release, but options panel is not functional.",
+    "ClosedDate": "2010-04-24T14:18:36.013-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Using the online version saved to desktop and whenever I open my Warlock I see the error message below and unable to click any item and rawr crashes and close.\n \n[Arg_IndexOutOfRangeException]\nArguments:\nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=3.0.50106.0&File=mscorlib.dll&Key=Arg_IndexOutOfRangeException\n \n   at Rawr.Warlock.CalculationOptionsWarlock.GetBaseHitRate()\n   at Rawr.Warlock.CharacterCalculationsWarlock..ctor(Character character, Stats stats)\n   at Rawr.Warlock.CalculationsWarlock.GetCharacterCalculations(Character character, Item additionalItem, Boolean referenceCalculation, Boolean significantChange, Boolean needsDisplayCalculations)\n   at Rawr.Calculations.GetCharacterCalculations(Character character, Item additionalItem, Boolean referenceCalculation, Boolean significantChange, Boolean needsDisplayCalculations)\n   at Rawr.UI.MainPage.character_CalculationsInvalidated(Object sender, EventArgs e)\n   at Rawr.UI.MainPage.set_Character(Character value)\n   at Rawr.UI.MainPage.armoryLoad_Closed(Object sender, EventArgs e)\n   at System.Windows.Controls.ChildWindow.OnClosed(EventArgs e)\n   at System.Windows.Controls.ChildWindow.Close()\n   at System.Windows.Controls.ChildWindow.set_DialogResult(Nullable`1 value)\n   at Rawr.UI.ArmoryLoadDialog._armoryService_GetCharacterCompleted(Object sender, EventArgs`1 e)\n   at Rawr.ElitistArmoryService.bwParseCharacter_RunWorkerCompleted(Object sender, RunWorkerCompletedEventArgs e)\n   at System.ComponentModel.BackgroundWorker.OnRunWorkerCompleted(RunWorkerCompletedEventArgs e)\n   at System.ComponentModel.BackgroundWorker.<OnRun>b__1(Object state)",
+    "LastUpdatedDate": "2013-05-16T05:20:58.497-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-04-21T08:53:44.29-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Warlock] GetBaseHitRate Crash",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 17339
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "When you say you \"open your warlock\", is that from a saved file?  And if so, when was it saved.  Also if so, please always get in the habit of attaching your character file when you create issues.",
+      "PostedDate": "2010-04-22T14:07:53.63-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Excuse for the ambigious phrasing. When I \"open\" I meant to say to Load From Armory. And by unable to click any item I meant that when I hover the mouse pointer over a item I have a revolving hourglass icon over all the items. When I do click a item Rawr crashes and close. This only happens with my warlock. ",
+      "PostedDate": "2010-04-22T17:10:50.037-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-23T03:31:08.77-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I get the same error while importing my Warlock from armory too:\r\n\r\n[Arg_IndexOutOfRangeException]\r\nArguments: \r\nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.50401.0&File=mscorlib.dll&Key=Arg_IndexOutOfRangeException\r\n\r\n   at Rawr.Warlock.CalculationOptionsWarlock.GetBaseHitRate()\r\n   at Rawr.Warlock.CharacterCalculationsWarlock..ctor(Character character, Stats stats)\r\n   at Rawr.Warlock.CalculationsWarlock.GetCharacterCalculations(Character character, Item additionalItem, Boolean referenceCalculation, Boolean significantChange, Boolean needsDisplayCalculations)\r\n   at Rawr.Calculations.GetCharacterCalculations(Character character, Item additionalItem, Boolean referenceCalculation, Boolean significantChange, Boolean needsDisplayCalculations)\r\n   at Rawr.UI.MainPage.character_CalculationsInvalidated(Object sender, EventArgs e)\r\n   at Rawr.UI.MainPage.set_Character(Character value)\r\n   at Rawr.UI.MainPage.armoryLoad_Closed(Object sender, EventArgs e)\r\n   at System.Windows.Controls.ChildWindow.OnClosed(EventArgs e)\r\n   at System.Windows.Controls.ChildWindow.Close()\r\n   at System.Windows.Controls.ChildWindow.set_DialogResult(Nullable`1 value)\r\n   at Rawr.UI.ArmoryLoadDialog._armoryService_GetCharacterCompleted(Object sender, EventArgs`1 e)\r\n   at Rawr.ElitistArmoryService.bwParseCharacter_RunWorkerCompleted(Object sender, RunWorkerCompletedEventArgs e)\r\n   at System.ComponentModel.BackgroundWorker.OnRunWorkerCompleted(RunWorkerCompletedEventArgs e)\r\n   at System.ComponentModel.BackgroundWorker.<OnRun>b__1(Object state)",
+      "PostedDate": "2010-04-23T03:32:14.703-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "If any devs out there would care to help troubleshoot this issue I'd appreciate it.  I don't really want to install 7 software packages including a different IDE just to fix an array-out-of-bounds exception.  (I'm not set up to develop in Rawr 3.)",
+      "PostedDate": "2010-04-23T15:31:18.077-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-24T14:18:36.013-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T14:40:24.39-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T15:52:23.48-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Still not fixed",
+      "PostedDate": "2011-01-04T08:11:34.337-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yes, it is, read the crapload of duplicates to find out when, how and why",
+      "PostedDate": "2011-01-04T08:49:13.613-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:42:11.687-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:28:44.757-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:58.497-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

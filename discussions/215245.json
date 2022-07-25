@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "452691",
+    "ThreadId": "215245",
+    "Html": "<p>The RAWR mage model allows you to specify a haste modifier.&nbsp; When messing with this&nbsp;option I noticed that RAWR&nbsp;does not allow the cast times of non-channeled/non-instant spells&nbsp;to&nbsp;go below 1.04 seconds,&nbsp;regardless of&nbsp;how high you set the modifier.&nbsp; We all know that, in game,&nbsp;the GCD forces spells to cap out at 1.00 second.&nbsp; Why then,&nbsp;does RAWR cap out .04 seconds higher.</p>\r\n<p>If any of you would like to observe this for yourselves, go to the mage model,&nbsp;click on the options tab, and then click&nbsp;the effects tab.&nbsp; Set the haste modifier to something retardedly high, like 5 (which would be 400% haste in game).&nbsp; After doing this, click back to the stats tab and&nbsp;hover over individual spells.&nbsp; You will notice&nbsp;that cast times of&nbsp;non-channeled/non-instant spells&nbsp;cap out at&nbsp;1.04 seconds.&nbsp; (IE:&nbsp;Frostbolt, Fireball, Arcane Blast, Frostfire Bolt, Flamestrike, etc.)&nbsp; The only exception to this&nbsp;was Scorch.</p>\r\n<p>NOTE:&nbsp; I'm assuming RAWR does this intentionally, and therefore it is&nbsp;not a bug.&nbsp; Correct me if I am wrong.</p>",
+    "PostedDate": "2010-06-07T14:40:56.883-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "452706",
+    "ThreadId": "215245",
+    "Html": "<p>This is a display bug. Internally all spells have an actual cast time of cast time + latency. For display purposes in tooltip I remove the latency based on&nbsp;base cast time,&nbsp;which is a bit incorrect in this case. Default settings are 0.01 for&nbsp;chain cast&nbsp;latency and 0.05 for gcd latency. Normally a spell like frostbolt can be chain casted and uses the 0.01 latency, but when it's haste goes below gcd it starts behaving as a gcd spell. So it also takes 0.05 latency because you can no longer use the spell queue. Internally the cast time is correctly 1.05 and displayed in tooltip as 1.04 (1.05 - 0.01 because tooltip incorrectly thinks it's a chain cast spell). Scorch is the exception because it always behaves as a gcd spell.</p>",
+    "PostedDate": "2010-06-07T15:29:05.223-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "452715",
+    "ThreadId": "215245",
+    "Html": "<p>I extremely&nbsp;appreciate the speedy, detailed response to my question.&nbsp; You fully addressed everything I needed.&nbsp; Thank you very much!</p>\r\n<p>EDIT:&nbsp; I have one more question.&nbsp;&nbsp;Can I still use the spell queue&nbsp;if my cast times are below 1.04 seconds but above the GCD (say 1.02 seconds)?</p>",
+    "PostedDate": "2010-06-07T15:55:52.343-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "453257",
+    "ThreadId": "215245",
+    "Html": "<p>You can't, the enforced limit is 1 sec + gcd latency, at least in Rawr. It could be argued whether this is an accurate representation of reality, but it has some validation based on the fact that if your cast is let's say 1.01 sec and you try to queue it, you'll on average hit a bit too soon some of the time and hit the client enforced gcd and miss the queue.</p>",
+    "PostedDate": "2010-06-08T17:36:31.29-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

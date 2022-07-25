@@ -1,0 +1,101 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Retribution",
+      "DisplayName": "Rawr.Retribution"
+    },
+    "ClosedComment": "&#34;Working as intended&#34;.If it don&#39;t, delete your Addon and WTF folder and try again. &#59;-&#41;",
+    "ClosedDate": "2010-05-21T02:19:35.59-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The value of Glyph of Consecration seems to be bugged. If you change the delay setting, it will jump around between negative and positive DPS for every 0.01 second.\nAlso, why does the Mob type setting affect the value of Glyph of Consecration? Shouldn't setting it to \"Undead\" just enable Glyph of Sense Undead and let Exorcism always crit?\n \nSteps to Reproduce:\n1. Open the attached \"Cremor Ret New.xml\" file.\n2. Switch to the Glyphs view -> Glyph of Consecration gives negative DPS.\n3. Change the Delay value or Mob type setting -> DPS value of Glyph of Consecration will jump around.\n \nRawr 2.3.17\nWindows 7 x64",
+    "LastUpdatedDate": "2013-05-16T05:21:12.073-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-03-31T04:15:34.4-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Retribution] Glyph of Consecration negative DPS",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17049
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3292,
+      "FileName": "Cremor Ret.xml",
+      "DownloadUrl": ".\\3292"
+    },
+    {
+      "FileId": 3575,
+      "FileName": "Cremor Ret New.xml",
+      "DownloadUrl": ".\\3575"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I updated the issue with some additional information and a new character XML file.",
+      "PostedDate": "2010-05-20T09:53:30.657-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "2) This isn't necessarily wrong from a pure theory P.O.V.   A shorter Cons CD means you may be hitting it more and this means you may indeed get more Cons casts over Exo casts.  That could be a DPS increase.  THe issue to remember is that we're NOT taking this glyph because it increases DPS all on it's own.\r\nWe're using it because it saves mana.  And without it you'll probably drain your mana faster causing you to cast fewer consecrations. thus reducing dps.   Rawr.Ret doesn't model mana usage.\r\n\r\n3) Normal.  Check the Crusade talent :-)  Unless what your seeing in Rawr doesn't match up with that.",
+      "PostedDate": "2010-05-20T10:41:06.783-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Crusade talent: Oops! Forgot about that ;-)\r\nBut I still don't get it completely. Ok, the GoCons really might be a DPS decrease without mana modelling, but how can the mob type affect the glyph's value in a way that can't be expressed as +x% or -x%?\r\n\r\nE.g.: Setting the delay for my character to 0.11 sec gives 1.34 DPS for mob type Undead, but setting it to Humanoid changes the value to -14.68 DPS. Switching from Undead to Humanoid should:\r\n1) Lower the DPS of the GoCons by x% (glyph and talent).\r\n2) Raise the DPS again by some amount, because Exorcism looses value (same x% as for GoCons and additionally doesn't have 100% crit any more).\r\n\r\nHow can it be better to use Exorcism more often against Humanoids than against Undead?",
+      "PostedDate": "2010-05-20T13:55:18.187-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "GoCons - Changing mob type:\r\nChanging humanoid to Undead (or vice versa), this changes because of crusade.  It also changes because of glyph of sense undead.  It'll also cause Exorcisms to crit (on udnead).\r\nIf you have multiple priorities defined, this might be enough to tip the scale and also make you alter the actual rotation you should be using.  The change won't be a percentage in that case.\r\n\r\nThe prob is that you're doing a wrong type comparison that makes no sense.\r\nUsing your profile:\r\nWith GoCons: the ECD of Cons is 14.68sec\r\nWithout GoCons the ECD of Cons is 9.20sec\r\nThe ECD's of all the other abilities changes as well.  If you want comparisons, you don't look at the value of the glyph in the glyph comparisons (+1.4 and -14.57) and try to make sense of it because it just doesn't work out. you're comparing apples and oranges.\r\n\r\nHumanoid (with gocons enabled):  Total DPS: 9620\r\nCons damage: 404\r\nExo damage: 169\r\n\r\nUndead (with gocons enabled): Total DPS: 9762 (difference: 1.01476%  which makes for the 1% in sense undead glyph and exo's being guaranteed crits. nothing else changes)\r\nCons damage: 408 (1% more due to sense undead)\r\nExo damage: 217 (difference: 1.284021%.  Caused by 1% more due to sense undead and 58% more crits on exo (at 50% more damage each)\r\n\r\nConclusion: Nothing wrong here.\r\n\r\nDoing a same comparison between the two with GoCons disabled I get the similarly comparable results that make sense.\r\n\r\nYou're trying to make sense of the DPS variance between two entirely different ability usages for 2 different mob types just by looking at a single number.  That's not even comparing apples and oranges, you're comparing an orange against a light blue pocket calculator created by the Ximzoblutzzz aliens from another dimension.",
+      "PostedDate": "2010-05-21T01:44:27.923-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "TLDR version:\r\nUsing your 'new' profile and changing delay to 0.11\r\n\r\nHumanoid with GoCons: 9620DPS (A)\r\nUndead with GoCons:  9762DPS (B)\r\nHumanoid without GoCons: 9634 DPS (C)\r\nUndead without GoCons: 9761 DPS (D)\r\n\r\nComparing A with C (= GoCons value) : A-C = -14DPS  this makes sense\r\nComparing A with B (= change mob type) : B/A = 10147609% (sense undead and 100% exo crit) this makes sense\r\nComparing B with D (= GoCons value) : B-D = 1 DPS  this makese sense\r\nComparing C with D (= change mob type) : D/C = 10131824% (sense undead and 100% exo crit) this makes sense (it's lower than A with B since Exo ECD is lower here)\r\n\r\nA-C (orange)\r\nB-D (light blue pocket calculator from the Ximzoblutzzz aliens from another dimension)\r\n\r\nA-C (-14) <--?????---> B-D (1)\r\n\r\nIncidently  the light blue pocket calculators from the Ximzoblutzzz aliens from another dimension are indeed eddible.  They taste a bit like chicken.\r\nStay away from the dark blue ones, those taste like crap (really).\r\n",
+      "PostedDate": "2010-05-21T02:14:45.2-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-05-21T02:19:35.59-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T17:20:27.2-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:40:45.093-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:29:01.823-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:12.073-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

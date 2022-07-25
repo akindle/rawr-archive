@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.HealPriest",
+      "DisplayName": "Rawr.HealPriest"
+    },
+    "ClosedComment": "dev explained",
+    "ClosedDate": "2009-10-14T10:20:11.003-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "From adjusting values, the following doesn't seem to be modeled:\n \nGlyph of Renew\nGlyph of Penance\nGlyph of PW:S\n \nWorks:\nGlyph of Holy Nova\nGlyph of Flash Heal\n \nAdditionally, given the way the roles are setup, a custom \"cast list\" can't be created that would allow things like three flash heals, then a GH to be scripted which would allow functions like serendipity and borrowed time to be modeled, which is enormously important in understanding the impact of things, i.e. if you use borrowed time before a flash heal, your haste may end up being wasted above a certain point.\n \nJust from glancing at the code of this and other tools that attempt to model behaviors of spell casting, I realize that getting a good model in place is darn difficult, and wanted to thank you for the effort getting what you have in place now.",
+    "LastUpdatedDate": "2013-05-16T05:25:02.99-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-07-21T10:36:15.5-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[HealPriest] Missing modeled effects",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13685
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Renew, Penance and PWS should all be modeled. Although the impact of Penance is at best minimal. Renew doesn't really change things much, but it should change things. Glyph of PWS should increase HPS.",
+      "PostedDate": "2009-07-21T14:52:37.04-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "How can the impact of penance be minimal--it should change the overall number of casts in a given time, and change the mana and hps effeciency overall.  I can see that it wouldn't change anything if the cast list doesn't change however.  Same with renew--shortening the time it takes for renew to heal should increase it's frequency, which doesn't seem to be modeled.  As for PW:S, when you set the talents to disc tank (using PW:S), and click and unclick the glyph for PW:S, it does have an impact on the values of items, but the values in the stats for PW:S never change, so it looks like it may be partially implemented but not reflected in all parts of the code.",
+      "PostedDate": "2009-07-22T07:39:09.353-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Glyph of PWS is implemented as a 20% increase in healing when you would have absorbed from PWS (not entirely correct but close enough). I could probably add a display on PWS that its actually healing for 20%. Its taken into account, even if not displayed on the abilities. The code itself should reflect it. Its just not displayed to the user.\r\n\r\nNone of the built-in Roles rely heavily on Renew, so unless you are using Custom Role, you will not see much effect with Glyph of Renew. If you are using Custom Role, you must increase the amount of Renews you cast to see an effect.\r\n\r\nThis also applies to Penance. The built-in Roles are assuming that you always glyph and talent Penance for minimum cooldown (which probably should be more dynamic). For Custom Role you gotta increase/decrease the amount of Penance's you cast.",
+      "PostedDate": "2009-07-22T07:54:02.18-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-26T09:40:54.207-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-14T10:20:11.003-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T17:40:50.853-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:53.98-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:02.99-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

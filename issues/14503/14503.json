@@ -1,0 +1,105 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.TankDK",
+      "DisplayName": "Rawr.TankDK"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-11-07T12:36:19.693-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I also noticed that my avoidance on rawr is sightly off from in game. Mainly the miss from defense, altho the dodge/parry is off little too. (I don't run any avoidance trinkets and removed sigil so it isn't because of the averaging on that)",
+    "LastUpdatedDate": "2017-11-27T11:04:28.6-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-10-22T09:09:21.71-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[TankDK] Avoidance numbers off",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14503
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Is the Target level 83 or 80? values change depending on target level",
+      "PostedDate": "2009-10-22T09:31:43.907-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Agreed... now that I have the paper-doll and proc rates separated out a bit better in the code, I'm looking at what's going on w/ the various avoidance numbers.\r\nI'm seeing Dodge is high, parry is low.  Didn't check miss specifically, ",
+      "PostedDate": "2009-10-22T09:32:42.92-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Note that paperdoll shows \"before diminishing returns\", and models (should) use the Diminishing Returns formula, which will indeed make your actual dodge/parry/miss different from what the in-game paperdoll shows.\r\n\r\nOptimal solution would be to show both values, I'd say, possibly with a tooltip breaking down the source of each chunk of stats.  This could cause negative performance, however, as it will require you to access your BuffStats, ProcStats, etc (for those who don't actually create those stats but instead just accumulate them into statsTotal)",
+      "PostedDate": "2009-10-22T13:25:41.217-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Agreed.  I currently do use the diminishing return functions.  However, the key note is that I'm seeing the discrepancy between dodge and parry.  I would expect that both Dodge and Parry should both be lower, or higher (depending on settings and such).  I'm keeping this active so that when I get home, while waiting for the raid to start, I'll spend 30 mins or so playing with gear and settings and such to ensure that what I display in the Rawr UI makes sense.  ",
+      "PostedDate": "2009-10-22T13:45:06.45-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Values are still off in 2.24",
+      "PostedDate": "2009-10-26T12:42:08.627-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "still tracing into this issue.  They will *NOT* match paper doll values due to procs, however, there are still some issues even at that level.",
+      "PostedDate": "2009-10-26T13:51:40.887-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 38874.",
+      "PostedDate": "2009-11-07T10:25:16.473-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok... Parry is currently w/i .01% vs. level 80 character.  That's within tolerances for rounding errors.\r\nDodge is ~.4% off on my TankDK.  and ~.51% off for my guild's head TankDK.  So definitely something odd in the dodge-specific math in the DR function.\r\nI'm trying to get this resolved today.\r\n",
+      "PostedDate": "2009-11-07T12:13:07.223-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Resolved with changeset 38889.",
+      "PostedDate": "2009-11-07T12:36:19.693-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:39:00.11-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:32:16.253-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:44.453-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:04:28.6-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

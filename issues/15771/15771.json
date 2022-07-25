@@ -1,0 +1,136 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Warlock",
+      "DisplayName": "Rawr.Warlock"
+    },
+    "ClosedComment": "Fixed in 2.3.14.",
+    "ClosedDate": "2010-04-11T20:27:30.74-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Arcanum of Blissful Mending and Arcanum of Burning Mysteries are both listed as 10.36 point upgrades, despite the fact that the latter has 20 additional crit (Blissful Mending is just spell power as far as the warlock model is concerned, which is reasonable, though it may also be a bug that mp5 is completely ignored).\n \nThis is with the current SVN version of rawr, as of revision 45080.\n \nCharacter file and screenshot attached.",
+    "LastUpdatedDate": "2013-05-16T05:22:32.8-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-01-07T16:48:55.393-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Warlock] Upgrade values appear to ignore crit",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 3,
+    "Id": 15771
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2744,
+      "FileName": "head-enchants.jpg",
+      "DownloadUrl": ".\\2744"
+    },
+    {
+      "FileId": 2745,
+      "FileName": "Yrstan.xml",
+      "DownloadUrl": ".\\2745"
+    },
+    {
+      "FileId": 2762,
+      "FileName": "Rhaidyn.xml",
+      "DownloadUrl": ".\\2762"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Here's the character file.",
+      "PostedDate": "2010-01-07T16:49:21.873-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-07T16:49:23.617-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Mp5 is considered a 'bad' stat for warlocks, so the module ignores any items with Mp5. \r\n\r\nHaving said that, the Arcanum of Burning Mysteries should definitely be rated higher than the Arcanum of Blissful Mending because of the +20 additional crit rating, so I'll have figure out what's going on there.",
+      "PostedDate": "2010-01-07T23:58:12.313-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Is the same issue with Greater Inscription of the Storm and Greater Inscription of the Crag. Both rated the same even though the Storm has 15 Crit rating also. Appears maybe this is ignoring Crit as one of the better stats.",
+      "PostedDate": "2010-01-10T13:17:16.25-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-10T13:17:19.17-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Character file attached from me - Rhaidyn.",
+      "PostedDate": "2010-01-10T13:17:44.437-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "For an even easier way to figure out that Rawr's warlock model ignores crit, go to the Relative Stat Values ranking.  Crit does not even appear.",
+      "PostedDate": "2010-01-12T06:15:11.837-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-12T06:15:28.97-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It looks like this also affects hit, by the way.\r\n\r\nI think I see what's going on. The relative stat values page works by making an item with, e.g. 1 crit rating, and calculating how much more DPS you get out of that. But your simulation algorithm is more or less discrete with regard to hit and crit -- you need to crit with one additional spell, or miss with one additional spell, for the final DPS value to change. So \"small\" changes in crit don't affect the simulation.\r\n\r\nYou can verify this by taking an item, and adding 1, 10, 100, 1000 crit rating in succession; it'll stay constant for a while, and then go up all at once.\r\n\r\nI think some of the other models calculate damage as crit% * avgCritDamage + non-crit%* avgNonCritDamage, so that even a slight increase in crit chance leads to a slight increase in overall DPS.\r\n\r\nThis could be completely wrong, of course, but it seems to be what's happening.",
+      "PostedDate": "2010-01-13T21:45:38.14-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-19T12:21:29.523-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-11T20:27:30.74-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T14:51:22.127-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T14:51:58.31-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:42:11.687-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:30:45.39-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:32.8-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

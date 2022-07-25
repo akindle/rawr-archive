@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "97203",
+    "ThreadId": "29173",
+    "Html": "Rawr appears to treat identical combinations of gems as if they were different. It's checking every gem Permutation, rather than every gem Combination. For example, an item with two red slots... it can create one item with +12 spell damage in the left slot, and +6 damage, +5 hit in the right slot... and a second item where the two gems are reversed. This dramatically increases the number of gem possibilities that it has to check, or means it's missing actual unique gemming combinations.<br>\r\n<br>\r\nObviously gems in different color slots matter, but when there is more than one slot of a particular color, Rawr needs to change how it processes gems somehow, so that it treats items with the same gems as identical, no matter which side the gem is on.<br>\r\n",
+    "PostedDate": "2008-06-06T00:36:27.16-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "97212",
+    "ThreadId": "29173",
+    "Html": "Are you sure? I think the duplicates are removed during filtering.\r\n",
+    "PostedDate": "2008-06-06T01:25:55.88-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "97550",
+    "ThreadId": "29173",
+    "Html": "Well, I'm absolutely certain that two items were created in my itemcache, with the same gems, but on opposite sides. I almost never edit gems manually; both gemmings were created during an optmization run (with different talents selected). It's possible that it does not repeatedly consider the same gemming during optimization, but it can still create duplicate items due to choosing a different gemming pattern for some reason than it did during a previous optimization run.<br>\r\n<br>\r\nBut the fact that (for example) gemming has indeterminate order (for example, on an item with identical red slots, the odd-gem-out might be in the left, center, or right) indicates that duplicate gems are very likely to be considered, and/or duplication testing is inefficient.<br>\r\n<br>\r\nTo test for duplication, you need to sort the order of the gems within identical slot colors. But since the gemming routine (that creates a set of gems for the optimizer to consider) does not create sorted gemmings that means that the routine that tests for duplicates must have to sort them itself... and that's assuming that it is properly detecting duplicates at all. By only creating sorted gemmings (for example, always in the order of blue, green, yellow, orange, red, purple left to right) for consideration, you could skip the sorting step when checking for duplication. That would likely save a lot of processing.<br>\r\n",
+    "PostedDate": "2008-06-08T18:52:28.177-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "97555",
+    "ThreadId": "29173",
+    "Html": "Effectively identical gemmings, or effectively inferior gemmings, are not considered by the optimizer. Which gemming in a tie that it does use is largely random, however, meaning that yes, you can end up with duplicates like that in your itemcache",
+    "PostedDate": "2008-06-08T19:39:29.917-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "97557",
+    "ThreadId": "29173",
+    "Html": "Actually initial gemming is deterministic. The likely cause where the alternative was introduced was during a mutation operation.<br>\r\n<br>\r\nPerformance of the initial filtering is not an issue at all. I'm profiling the application regularly and the filtering is dwarfed by other things. At least I haven't seen the app stall for any noticeable amount of time before progress bar starts moving.\r\n",
+    "PostedDate": "2008-06-08T20:02:55.933-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "98298",
+    "ThreadId": "29173",
+    "Html": "So gemming is determined prior to the bar moving? That makes sense, and explains the long pause when I have many items selected.<br>\r\n<br>\r\nI thought it might indicate a problem, but I'm glad to see I was wrong.<br>\r\n",
+    "PostedDate": "2008-06-11T17:01:17.72-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

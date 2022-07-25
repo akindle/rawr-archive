@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "82002",
+    "ThreadId": "24445",
+    "Html": "\r\nI'm having problems trying to add/model the Charm of Alacrity.<br />I loaded it into the item database individually (via the normal tools / edit /etc), and it shows up in the inventory list fine.<br />Unfortunately, I can't get it to select the item in the char screen.<br /><br />http://www.wowhead.com/?item=25787<br />Charm of Alacrity<br />Binds when picked up<br />Unique<br />Trinket<br />Use: Increases dodge rating by 192 (16.64% @ L58) for 10 sec. (1.5 Min Cooldown)<br /><br />If I understand how Rawr works, this would count as a 'buff'.  (it's a purely on-use item w/ no base stats)<br />From looking at the BuffCache.xml, I'm guess it would be modeled as such:<br /><br />  &lt;Buff&gt;<br />    &lt;Name&gt;Charm of Alacrity&lt;/Name&gt;<br />    &lt;Category&gt;TemporaryBuffs&lt;/Category&gt;<br />    &lt;Stats&gt;<br />      &lt;DodgeRating&gt;192&lt;/DodgeRating&gt;<br />    &lt;/Stats&gt;<br />    &lt;Type&gt;ShortDurationDW&lt;/Type&gt;<br />    &lt;ConflictingBuffs /&gt;<br />    &lt;SetThreshold&gt;0&lt;/SetThreshold&gt;<br />  &lt;/Buff&gt;<br /><br />Is this right?  <br />However, even after I added this and reloaded Rawr, I still can't select the Charm of Alacrity for one of my trinket slots.<br />i.e. from the main character screen I click on the empty trinket slot, and it brings up the list of possibles.  Charm of Alacrity isn't in the list.<br />(presumably because all stats are 0, and hence 'worthless').<br /><br />If I manually edit the trinket and give it a bogus, non-zero value, like a dodge rating of 1, then it shows up.   Is there any better way to do this?<br /><br /><br />Using Rawr Beta 12.1, btw.<br />",
+    "PostedDate": "2008-03-20T20:01:33.587-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "82014",
+    "ThreadId": "24445",
+    "Html": "\r\nOne way to work around this would be to include the average of the trinket's on-use stats. The model would then be correct, assuming you used the trinket every 90 seconds.<br /><br />If you get 192 Dodge Rating for 10 out of every 90 seconds, that's an average of 21.333... Dodge Rating overall.<br />",
+    "PostedDate": "2008-03-20T23:33:51.36-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "82023",
+    "ThreadId": "24445",
+    "Html": "\r\nIt's not showing up to select to put on your character because it has no relevant stats on it. You added the buff to the buff cache, so you can select it on the buffs tab. Equipping the item has no value, as far as Rawr is concerned.<br />",
+    "PostedDate": "2008-03-21T02:16:18.913-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

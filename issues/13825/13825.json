@@ -1,0 +1,71 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Optimizer",
+      "DisplayName": "Rawr.Base.Optimizer"
+    },
+    "ClosedComment": "Issue resolved",
+    "ClosedDate": "2009-08-26T09:19:35.457-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I'm attempting to run a Build Upgrade list and with the Thoroughness slider at anything less than ~25% it throws an error.\n \n== ERROR TEXT ==\nAn unhandled exception of type 'System.Reflection.TargetInvocationException' occurred in mscorlib.dll\nAdditional information: Exception has been thrown by the target of an invocation.\n \nand it runs back to line 1533 in Rawr.FormMain.cs\n \nprivate void optimizeToolStripMenuItem_Click(object sender, EventArgs e) {\n\tFormOptimize optimize = new FormOptimize(Character);\n\toptimize.ShowDialog(this); // this line\n \nUnfortunately the call stack is indecipherable for my lack of expertise.\n \nAttached is my character file for reference",
+    "LastUpdatedDate": "2013-05-16T05:24:54.6-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-08-09T00:01:12.87-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Optimizer] Build Upgrade List Throws Exception",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13825
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2083,
+      "FileName": "jothay-arms.xml",
+      "DownloadUrl": ".\\2083"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Will try to look at this when I get a chance, but FYI, to debug issues like this... \"Exception has been thrown by the target of an invocation\" means that some code called another method asynchronously, and that that other method threw an unhandled exception. If you look at the InnerException property of the TargetInvocationException, it'll give you the exception that the other thread threw. Most likely, in this case, it'll be some exception thrown within CalculationsDPSWarr.",
+      "PostedDate": "2009-08-09T16:43:10.18-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-26T09:19:35.457-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T16:19:37.49-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:43.257-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:54.6-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

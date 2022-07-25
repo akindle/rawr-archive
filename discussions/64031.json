@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "217701",
+    "ThreadId": "64031",
+    "Html": "<p>First, I would like to say that I love your product and use it extensively.&nbsp; However, I do have some questions regarding the Warlock portion of the program.</p>\r\n<p>I have realized after using Rawr that the program doesn't weigh Haste very well.&nbsp; In fact, no matter what my gear setup, Haste has a Relative Stat of around 0.2.&nbsp; Is this working as intended?&nbsp; Looking at other theorycrafting sites, it seems most other think Haste should be weighed around 1.5, which isn't much less then spell power.&nbsp; I am generating these numbers with a Destruction build, which can and does use Haste very effectively.&nbsp; However, Rawr constantly tells me that Haste items aren't worth much more (if not less) then an item with lesser or no haste.</p>\r\n<p>Is anybody else seeing this occur?&nbsp; If so, did you manage to deal with it somehow?&nbsp; I am currently attempting to go through the code to apply a static stat value table, but if there is a more efficient means I would like to know about it.</p>",
+    "PostedDate": "2009-07-30T11:21:40.87-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "217729",
+    "ThreadId": "64031",
+    "Html": "<p>Haste has many plateaus and valleys; it's a very unstable stat to value. You can't look at the Relative Stat Values chart and assume that that's what Rawr bases item values on. Read the gigantic warning on the Relative Stat Values chart. Use the actual gear charts for comparisons.</p>",
+    "PostedDate": "2009-07-30T12:43:05.55-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "217751",
+    "ThreadId": "64031",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Astrylian wrote:</strong><br>\r\n<p>Haste has many plateaus and valleys; it's a very unstable stat to value. You can't look at the Relative Stat Values chart and assume that that's what Rawr bases item values on. Read the gigantic warning on the Relative Stat Values chart. Use the actual gear charts for comparisons.</p>\r\n</blockquote>\r\n<p>Thanks for the response.</p>\r\n<p>I want to use the gear charts for comparisons, however, with the way Haste is rated, it isn't very reliable.&nbsp; Items that are clearly a DPS increase in real world usage are shown as decreases.&nbsp; This pertains to items with Haste versus items without it.&nbsp; Haste rating is weighted so low that no matter what gear setup, Rawr will recommend I use a different setup.&nbsp; However, based on every other theorycrafting site, Haste is actually the 2nd most valuable stat to Destruction Warlocks (3rd if you count Hit).&nbsp; To resolve this, I wanted to go through the code and hardcode in stat values.&nbsp; I just cannot agree with the way Haste is weighted so low, while Spirit is (sometimes) weighted as the top stat I can get.</p>\r\n<p>I hope I am not coming off as bashing your product.&nbsp; I use your program as a &quot;guide&quot; of sorts, then try to figure things out myself.&nbsp; However, I want to be able to get a little more out of it ^_^</p>",
+    "PostedDate": "2009-07-30T13:44:32.15-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "217774",
+    "ThreadId": "64031",
+    "Html": "<p>Rawr is specifically designed NOT to attach static &quot;values&quot; to stats.&nbsp; The reason being is that the program does not look at individual stats and multiply by some set number, but rather, determines on the fly (according to your specific class / spec / gear) how the infusion of a certain stat / set of stats would affect your spells / abilities.</p>\r\n<p>If there's something severely wrong with the Warlock modeling handling Haste effects, then that would need to be looked at.&nbsp; I am going to play devil's advocate a bit here, and ask you to put in a) an arguably best-in-slot setup found elsewhere (top of Uld25), b) a middle-of-the-road setup (Naxx25), c) a low-end setup (Heroic/blues) gear, and d) A separate arguably best-in-slot setup, found elsewhere, and see how the Haste changes, if at all, between the setups.</p>\r\n<p>Also, I'm of the opinion that Astrylian is correct, and you just happen to be at one of those &quot;plateaus&quot; inherent in the way the Haste stat works.&nbsp; Try also adding a few different upgrades that have Haste on them (at the same time), and see how your values change.&nbsp; Then, try swapping out a good portion of your Haste gear for other gear, and again evaluate how Haste changes.</p>\r\n<p>&nbsp;</p>\r\n<p>As a side note, I seem to recall that there's been some recent discussion as to Haste in the Warlock model specifically, though I could just be projecting here.</p>",
+    "PostedDate": "2009-07-30T14:40:22.083-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "218419",
+    "ThreadId": "64031",
+    "Html": "<p>The warlock model is not working properly atm, specifically in regard to haste.&nbsp; There's an issue somewhere and there are a few posts about it.</p>\r\n<p>A few new individuals signed on to help with the warlock module, but not sure where it currently stands.</p>\r\n<p>-xone</p>",
+    "PostedDate": "2009-08-02T00:12:52.847-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "221381",
+    "ThreadId": "64031",
+    "Html": "<p>As mentioned above, haste in general is a finicky stat (just due to how it changes interactions between spell casts and cooldowns). There have been some changes to the warlock module that might help out with your particular situation. If you want a general idea of what Rawr thinks of various haste increases you might get, there is a haste rating summary report that shows you how your current setup would be affected by 1 extra haste rating, 2 extra haste rating, all the way up to 99 extra haste rating.</p>\r\n<p>That said, the warlock module is undergoing active development at the moment. There are a couple people working on it (I'll try and take another look at it after real life settles back down in a week or so too) so keep checking with new versions of rawr (especially after you see warlock-related check-ins).</p>",
+    "PostedDate": "2009-08-09T21:21:44.9-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

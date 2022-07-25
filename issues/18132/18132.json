@@ -1,0 +1,116 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.MultipleModels",
+      "DisplayName": "Rawr.MultipleModels"
+    },
+    "ClosedComment": "Not something we can really answer and the models have undergone drastic changes since this was posted",
+    "ClosedDate": "2010-12-27T22:41:51.713-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Not really sure if this has an easy fix or is even worthwhile but may as well put it out there for discussion.\n \nAt the moment, if you have just enough mana for a fight length then regen stats have no value.    Increase the fight length a few seconds and suddenly they are worth more than spellpower.    I understand the reason for this in the Rawr models, but in the real world it doesn't usually work that way.      Fight lengths, damage taken and time not needed to be casting are all variable.      \n \nSomething like the Bear modules softcap may be an option to make the transition smoother.",
+    "LastUpdatedDate": "2013-05-16T05:20:22.283-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-07-04T16:01:27.82-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Healing] Binary nature of regen value",
+    "Type": {
+      "Name": "Task",
+      "Id": 2
+    },
+    "VoteCount": 2,
+    "Id": 18132
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3757,
+      "FileName": "Raress.xml",
+      "DownloadUrl": ".\\3757"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I don't think it really works this way either. It sounds like the problem is that whatever models have this issue are working on a very static rotation. When really, your rotation varies by how much mana you have; having less mana just means you're forced to use more mana efficient spells.\r\n\r\nMore mana should have value by increasing how much of the inefficient spells you can cast.",
+      "PostedDate": "2010-07-04T16:33:50.113-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-06T20:40:21.273-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "HolyPriest should handle this well as I tuned this a lot when I started working on it. It may change radically in 4.0, but for now, we don't know enough!",
+      "PostedDate": "2010-07-08T10:35:29.63-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-09T01:43:04.08-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It was actually as a disc priest I was playing around with this.   Mp5 had zero value, then by increasing the fight length by 2-3 secs it increased to being worth more than Spellpower.\r\n\r\n\r\nIn the attached profile, at a fight length of 294 secs, Mp5 is worthless but increase the fight to 295 secs and it jumps to 10.25 (vs 8.05-8.06 for spellpower).\r\n\r\nI know this is the RSV's I am talking about but it is symptomatic of the issue I have seen in a few modules (although I haven't checked the others for a while).\r\n\r\n",
+      "PostedDate": "2010-07-09T01:43:05.137-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Playing around more, i'm not sure that this isn't just a \"relative stat value\" issue.    The optimiser seems much more gradual in its shift from Int gemming to SP gemming.  \r\n\r\n",
+      "PostedDate": "2010-07-09T01:51:19.78-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-09T12:25:20.777-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Putting a magic number on how much mana is needed is very very tricky.  There isn't really a 'softcap' as RestoSham goes, either you have enough mana for 100% of the duration or not.  Unfortunately, most users just leave the static number there instead of doing something useful with it, like setting it to the bosses enrage timer and correctly setting activity, or setting it to how long your guild/pug usually takes to down Rotface, or even setting it to how long your chain-pull trash halls last.  The reason for such a harsh contrast between the two I believe is from the two schools of healing thought in regards to mana.  One side believes in achieving infinite mana and then scaling other stats while maintining that mana, and the second (The one I personally subscribe to) is that if you are not at or near mana at the end of the fight, you have invested too much in mana and not enough in throughput.  \r\n\r\nAt this time in Restosham, my only advice is to set it perhaps a minute beyond what is standard for you if you are worried your mana may not last the fight.  As to the others, I believe for most of them the same will work.  However, remember, random odd occurences can make a fight last longer then normal, and those kinds of things can't necessarily be modeled.  At least for me, I hope to in the future have things better modeled around the boss handler to take more of the guesswork out of mana.",
+      "PostedDate": "2010-07-21T20:18:39.603-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-08-12T01:20:57.093-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T16:26:39.733-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This has actually been somewhat resolved in the restosham model of V4, the 'burst' mana usage is applied to the sustained calc, so as long as you put the fight length at or a little above how long the fight will go, it should function correctly and better then before.",
+      "PostedDate": "2010-10-23T23:47:00.933-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-27T22:41:51.713-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:28:03.683-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:22.283-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

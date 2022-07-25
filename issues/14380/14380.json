@@ -1,0 +1,100 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Mage",
+      "DisplayName": "Rawr.Mage"
+    },
+    "ClosedComment": "Fixed for 2.2.22.",
+    "ClosedDate": "2009-10-08T17:16:27.59-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Howdy.\n \nI'm wondering why my Rawr is suggesting wrong enchants? I am an arcanemage and here are the surprising results:\n \nHead: 10mp5 30spellpower (56,83) >> 20crit 30spellpower (42,77)\n(mp5 over the crit huh?)\n \nShoulders: 10crit 18spellpower (41,69) >> 15crit 24spellpower (27,19)\n(this could never be true)\n \nCloak: 15haste (28,92) >> 27spellpower (17,14)\n(I highly doubt this as well)\n \nChest: +10stats (-8.39) >> +8stats (18,26)\n(yes the +10stats gives a minusvalue...)\n \nWrists: +23spellpower (40,26) >> +30spellpower (22,39)\n(...)\n \nLegs: +50spellpower +30sta (87,30) >> +50spellpower +20spirit (79,02)\n(Also Sanctified and Brilliant spellthreads are both +50sd +20spi, other one shows 109,14)\n \nFeet: +18spirit (19,22) >> Nitro boosts +24 Crit (-5,51)\n(minusvalue again d'oh)\n \nMain Hand: +50spellpower (80,16) >> +63spellpower (87,53)\n(...)\n \n \nI'm very confused. All I do is load my character from armory and then start browsing those Comparisons -> Enchants.\nIf this is very rare case and happens only on my char, then feel free to try it out.\nIf I'm nubbering and doing something very wrong, then feel free to correct me. Thanks.\n \nRuntu @ Arathor-EU",
+    "LastUpdatedDate": "2017-11-27T11:01:53.267-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-10-08T14:03:53.82-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Mage] Worse enchant is better than better one",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14380
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Everyone, please give us all the information we need when asking questions or posting issues. Don't make us ask for your character file every single time, please?",
+      "PostedDate": "2009-10-08T14:52:29.273-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "No character file needed, I can reproduce it easy enough.  Just run the client, and load his character from armory, then go to Enchants comparisons chart.\r\n\r\n20resil/29spellpower is listed as more DPS than 20crit/30spellpower on helms, and 10crit/18spellpower is listed as more DPS than 15crit/24spellpower.\r\n\r\nIf I have the 10crit/18sp enchant selected, then the 15crit/24sp increases to best.  If I switch back to the 15crit/24sp, it shoots back down low on the list.",
+      "PostedDate": "2009-10-08T15:10:38.383-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "We still always want the character file, because it's static, and the armory is not. The issue may not repro tomorrow if he changes a piece of gear.",
+      "PostedDate": "2009-10-08T15:35:54.913-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ebs's statement sounds like the Multi-threaded issue. What happens if you turn multi-threading off?",
+      "PostedDate": "2009-10-08T16:34:48.423-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm tracking down the problem still, as a temporary workaround disable incremental optimizations in advanced options.",
+      "PostedDate": "2009-10-08T16:41:40.527-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Found the problem. When using incremental optimizations it wasn't taking into account that you can't use accelerators and trinkets at the same time.",
+      "PostedDate": "2009-10-08T17:15:55.847-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-08T17:16:27.59-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:16:44.847-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-21T00:00:21.103-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:32:32.443-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:57.277-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:01:53.267-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

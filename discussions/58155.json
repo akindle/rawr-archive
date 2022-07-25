@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "196652",
+    "ThreadId": "58155",
+    "Html": "<p>I just got some new gear and thought it would be a good time to re-run the &quot;Build upgrade&quot; wizard. I noticed after it ran that it listed Dying Curse as only being a +13.88 upgrade. This seemed odd to me since when it is listed in the normal UI, it shows as a +40 upgrade.</p>\r\n<p>&nbsp;</p>\r\n<p>I tried telling Rawr that I had Dying Curse and ran the full optimizer, and sure enough, it picked it as a trinket for me and showed&nbsp;that the new optimized gear would be +xx better (forgot the exact number ... but it was more like 40-80 and not +14.</p>\r\n<p>This makes me think that the build upgrade wizard has something wrong with it...</p>\r\n<p>&nbsp;</p>\r\n<p>I can upload my character file if that would help...</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-06-01T20:29:07.86-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "196689",
+    "ThreadId": "58155",
+    "Html": "<p>Are you sure your current gear was optimized before you ran build upgrade list?</p>",
+    "PostedDate": "2009-06-01T22:11:47.763-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "196817",
+    "ThreadId": "58155",
+    "Html": "<p>If the gear *wasn't* optimized Kavan, I would still expect the build upgrade list to show the item as more of an upgrade.</p>\r\n<p>&nbsp;</p>\r\n<p>For instance, let's say you haven't optimized yet (But everything equipped on the character is marked as 'available', in addition to other items) and your score is 5,000.</p>\r\n<p>&nbsp;</p>\r\n<p>If you *were* to optimize, your score would be 5,050</p>\r\n<p>&nbsp;</p>\r\n<p>If you were to optimize after marking a new item available (Dying Curse, in our case) your score would be 5,100.</p>\r\n<p>&nbsp;</p>\r\n<p>If you were to build an upgrade list without first optimizing your character, it should show Dying Curse as a +100 upgrade.&nbsp; To get the best results, you obviously want to optimize before building an upgrade list (after which, Dying Curse should show as a +50 upgrade), but I'm giving an example why, even if he wasn't optimized first, his results are inconsistent with what should happen (Unless something that is equipped currently is not marked as available).</p>\r\n<p>&nbsp;</p>\r\n<p>A very likely reason though is you have so many options checked as available that the program can't find the best possible gear set with dying curse added (in upgrade list), that it comes up with something sub-optimal until you do an actual optimization with the item.</p>",
+    "PostedDate": "2009-06-02T06:29:40.233-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "196847",
+    "ThreadId": "58155",
+    "Html": "<p>Dying Curse being a trinket, it sounds like you're running into the same bug I reported a few weeks ago, where the Upgrade List only reports the difference between the new trinket and your current trinket in slot 1.&nbsp; In other words, if Dying Curse is 14 better than slot 1 and 40 better than slot 2, the Upgrade List will show +14 and not +40.</p>\r\n<p>According to the Issue Tracker, this will be fixed in 2.2.6.</p>",
+    "PostedDate": "2009-06-02T07:52:42.623-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "196923",
+    "ThreadId": "58155",
+    "Html": "<p>Hankz,</p>\r\n<p>&nbsp;</p>\r\n<p>I'll take a second look at the upgrade list and see if anything else jumps out as &quot;potentially wrong&quot;, but I'd be willing to bet that is exactly it.</p>\r\n<p>BTW, is (or was) there a similar issue with rings?</p>\r\n<p>&nbsp;</p>\r\n<p>I have a memory of a similar disparity in the value of &quot;Lost Jewel&quot; in a previous optimizer/load upgrade run, but I could be mistaken.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-06-02T10:30:13.033-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "197006",
+    "ThreadId": "58155",
+    "Html": "<p>Yeah, I didn't test as extensively with rings, but I'm pretty sure both rings and trinkets are affected.</p>",
+    "PostedDate": "2009-06-02T14:15:14.903-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "197037",
+    "ThreadId": "58155",
+    "Html": "<p>Yes that bug affects both rings and trinkets. It was introduced when a change was made to not display unique items in comparison chart if it's equipped in the other slot. As said it should be fixed for 2.2.6.</p>",
+    "PostedDate": "2009-06-02T16:16:49.497-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

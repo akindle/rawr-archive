@@ -1,0 +1,106 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.TankDK",
+      "DisplayName": "Rawr.TankDK"
+    },
+    "ClosedComment": "Fixed... This is a dupe of 17712Changelist&#58;  50590  ",
+    "ClosedDate": "2010-05-18T17:10:37.66-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Zie het einde van dit bericht voor meer informatie over het aanroepen \nvan JIT-foutopsporing (Just In Time) in plaats van dit dialoogvenster.\n \n************** Tekst van uitzondering **************\nSystem.ArgumentException: IComparer (of de IComparable-methoden waarvan deze afhankelijk is) heeft als resultaat geen nul opgeleverd bij de aanroep van x door Array.Sort. CompareTo(x). x:  type van x: 'AbilityDK_Base' De IComparer: 'System.Array+FunctorComparer`1[Rawr.TankDK.AbilityDK_Base]'.\n   bij System.Collections.Generic.ArraySortHelper`1.Sort(T[] keys, Int32 index, Int32 length, IComparer`1 comparer)\n   bij System.Array.Sort[T](T[] array, Int32 index, Int32 length, IComparer`1 comparer)\n   bij System.Collections.Generic.List`1.Sort(Comparison`1 comparison)\n   bij Rawr.TankDK.CombatTable2.BuildRotation()\n   bij Rawr.TankDK.CombatTable2..ctor(Character c, Stats stats, CharacterCalculationsTankDK calcs, CalculationOptionsTankDK calcOpts)\n   bij Rawr.TankDK.CalculationsTankDK.GetCharacterCalculations(Character character, Item additionalItem, Boolean referenceCalculation, Boolean significantChange, Boolean needsDisplayCalculations)\n   bij Rawr.Calculations.GetCharacterCalculations(Character character, Item additionalItem, Boolean referenceCalculation, Boolean significantChange, Boolean needsDisplayCalculations)\n   bij Rawr.FormMain._character_ItemsChanged(Object sender, EventArgs e)\n   bij Rawr.FormMain.set_Character(Character value)\n   bij Rawr.FormMain.Calculations_ModelChanged(Object sender, EventArgs e)\n   bij System.EventHandler.Invoke(Object sender, EventArgs e)\n   bij Rawr.Calculations.OnModelChanged()\n   bij Rawr.Calculations.LoadModel(CalculationsBase model)\n   bij Rawr.Calculations.LoadModel(Type type)\n   bij Rawr.FormMain.LoadModel(String displayName)\n   bij Rawr.FormMain.comboBoxModel_SelectedIndexChanged(Object sender, EventArgs e)\n   bij System.Windows.Forms.ComboBox.OnSelectedIndexChanged(EventArgs e)\n   bij System.Windows.Forms.ComboBox.WmReflectCommand(Message& m)\n   bij System.Windows.Forms.ComboBox.WndProc(Message& m)\n   bij System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)\n   bij System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)\n   bij System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)",
+    "LastUpdatedDate": "2017-11-27T11:04:39.303-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-05-18T14:43:43.547-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[TankDK] Error when loading character",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17729
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3562,
+      "FileName": "Rawr.Mordicia.xml",
+      "DownloadUrl": ".\\3562"
+    },
+    {
+      "FileId": 3563,
+      "FileName": "Rawr.MordiciaDps.xml",
+      "DownloadUrl": ".\\3563"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Here my dps file",
+      "PostedDate": "2010-05-18T14:44:41.207-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-05-18T14:44:42.54-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-05-18T15:46:56.343-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-05-18T17:10:37.66-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You sais same? Well comment there states his char works in Rawr 3, mine doesn't",
+      "PostedDate": "2010-05-19T11:02:55.41-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The exception being thrown is in Combat2 in the rotation code.  And I took out that section of code.",
+      "PostedDate": "2010-05-19T19:21:18.613-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:40:46.86-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:39:00.11-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:28:25.867-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:41.473-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:04:39.303-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

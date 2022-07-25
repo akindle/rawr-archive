@@ -1,0 +1,90 @@
+[
+  {
+    "Id": "232867",
+    "ThreadId": "68463",
+    "Html": "<p>I'm only referring to the Prot Paladin module.</p>\r\n<p>Well, it seems that when avoidance values were changed in 2.2.14 to the correct values, they were changed back in 2.2.15.</p>\r\n<p>The gems are in the same order in 2.2.13 &amp; 2.2.15, but 2.2.14 shows a different ranking for best gems, which is how I noticed the difference.</p>\r\n<p>Just helping you guys out in case someone noticed!</p>\r\n<p>Thanks,<br>Dave</p>",
+    "PostedDate": "2009-09-09T16:12:45.687-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "233136",
+    "ThreadId": "68463",
+    "Html": "<p>Any chance you can link to a character file?</p>",
+    "PostedDate": "2009-09-10T08:13:00.19-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "233159",
+    "ThreadId": "68463",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>roncli wrote:</strong><br>\r\n<p>Any chance you can link to a character file?</p>\r\n</blockquote>\r\n<p>&nbsp;How would one do this?</p>",
+    "PostedDate": "2009-09-10T08:52:08.633-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "233176",
+    "ThreadId": "68463",
+    "Html": "<p>Attach it to an issue, or post it anywhere on the web and post the link here.</p>",
+    "PostedDate": "2009-09-10T09:18:24.677-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "233196",
+    "ThreadId": "68463",
+    "Html": "<p>Playing with the TankDK module, I couldn't find an avoidance difference between 2.2.13 and 2.2.14. I did find an increase in dodge in 2.2.15, but this seems to be a result of change 36485, which mentions re-adjusting agi/dodge values for post 3.2. This makes sense, because with my current weapon (Hellion Glaive) providing 128 agility, Rawr 2.2.13 and 2.2.14 only showed a net dodge increase of 0.01% (obviously incorrect), whereas 2.2.15 correctly gave it an approximately 1.5% dodge increase.</p>\r\n<p>I was unable to spot any avoidance differences between 2.2.13 and 2.2.14 as the OP stated, could me something unique to the ProtPaladin module.</p>",
+    "PostedDate": "2009-09-10T09:58:40.243-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "233399",
+    "ThreadId": "68463",
+    "Html": "<p>I took a look at the ProtPaladin module earlier today and all the calculations seemed correct. &nbsp;I'm hoping that a character file will help spot the difference, might be a trinket or something like that being modeled wrong, or more likely a proc effect is responsible for the difference.</p>",
+    "PostedDate": "2009-09-10T20:32:23.127-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "233555",
+    "ThreadId": "68463",
+    "Html": "<p>When I get home from the office today, I'll post the character file, as well as some screenshots. One quick question, while I can upload a file to my own domain and link it here for you to view, I don't know what the character file is. Are you referring to the XML file when you do a 'save as'?</p>",
+    "PostedDate": "2009-09-11T06:01:35.263-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "233631",
+    "ThreadId": "68463",
+    "Html": "<p>Yes, that's correct.</p>",
+    "PostedDate": "2009-09-11T08:12:52.043-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "233676",
+    "ThreadId": "68463",
+    "Html": "<p>I'm pretty sure the issue here is that 2.2.14 was incomplete in its handling of the 3.2 changes.</p>\r\n<p>3.2 included three distinct changes to avoidance:</p>\r\n<ul>\r\n<li>Agility: The amount of agility required per percentage of dodge has been increased by 15%. This change required recalibrating the amount of dodge a player has with 0 agility by a slight amount as well, so all players will see their dodge percentage vary a small amount.</li>\r\n<li>Dodge Rating: The amount of dodge rating required per percentage of dodge has been increased by 15%. This is before diminishing returns. Combined with other changes, this makes dodge rating and parry rating equally potent before diminishing returns apply.</li>\r\n<li>Parry Rating: The amount of parry rating required per percentage of parry has been reduced by 8%. This is before diminishing returns. Combined with other changes, this makes dodge rating and parry rating equally potent before diminishing returns apply. Parry still diminishes more quickly than dodge.</li>\r\n</ul>\r\n<p>The 2.2.14 version modeled the last two, but not the first. Therefore, the avoidance levels shown in 2.2.14 were probably a little inaccurate.</p>\r\n<p>The new values should be pretty accurate, provided ProtPaladin is using StatConversion and BaseStats for all relevant stats. For my Warrior, all avoidance totals were accurate to within a tenth of a percentage point compared to my in-game statistics. Unfortunately, I cannot confirm if the Paladin module is using everything correctly at the moment.</p>\r\n<p>I can look into it if something is posted, though, as the Paladin and Warrior code is very similar and I can make any adjustments quickly if needed even though I mostly work on ProtWarr.</p>",
+    "PostedDate": "2009-09-11T10:13:43.997-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "233703",
+    "ThreadId": "68463",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>EvanM wrote:</strong><br>\r\n<p>The new values should be pretty accurate, provided ProtPaladin is using StatConversion and BaseStats for all relevant stats. For my Warrior, all avoidance totals were accurate to within a tenth of a percentage point compared to my in-game statistics. Unfortunately, I cannot confirm if the Paladin module is using everything correctly at the moment.</p>\r\n</blockquote>\r\n<p>I can confirm ProtPaladin is using StatConversion, and it appears to be using it correctly, but it is using its own internal data to get base stats instead of the BaseStats class. &nbsp;I think this may be because ProtPaladin is returning base stats for every level, not just 80, but I don't know for sure. &nbsp;See Rawr.ProtPaladin/CalculationsProtPaladin.cs starting at line 466-729 and 744 for how ProtPaladin is implementing its own base stats.</p>",
+    "PostedDate": "2009-09-11T11:23:47.76-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "233759",
+    "ThreadId": "68463",
+    "Html": "<p>Yeah, it could be that it is still that way due to accuracy concerns. I personally had to tweak some NE and Human racial stats for Warriors to get them correct, but the old ProtWarr ones had less research behind them (I think) than the ProtPaladin ones.</p>\r\n<p>I'll take a look to see if the base dodge values are correct.</p>\r\n<p>Edit: The value in the ProtPaladin code for the base dodge post-3.2 appears to be correct to me. I also loaded a guildmate's profile with the latest build and his Dodge/Parry was exactly the same as it appears on the Armory vs. a Level 80 target. So it appears everything should be correct.</p>",
+    "PostedDate": "2009-09-11T14:37:15.507-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

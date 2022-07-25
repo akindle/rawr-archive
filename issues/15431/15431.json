@@ -1,0 +1,71 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Hunter",
+      "DisplayName": "Rawr.Hunter"
+    },
+    "ClosedComment": "Fixed with commit 44057",
+    "ClosedDate": "2009-12-14T22:40:08.66-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I just have a quick question using the Optimizer.\n \nI tried using \"% chance to miss\" with \"<=\" 0 and 0.1 and it gave me an output that had me more than 2% below hit cap.\n \nMy current gear has me hit capped, but I recently acquired some new gear and was wondering if I could flip it around for this new stuff.\n \nWhen I optimize with it, it just tells me to drop all my hit gear for pure offensive gear and drop all my hit gems.\n \nI also tried optimizing without \"% chance to miss\" but that resulted in the same thing.\n \nHere's my file. To recreate the issue, just optimize \"Hunter DPS\" as the Main Calculation with \"% Chance to Miss\" of \"<=\" 0.00  as the Additional Requirement.\nI already have all the gear I have access to \"Available to Optimize\". \n \nI wanted to see if there is some upgrades to my dps, I also wanted to stay hit capped. Becuase I am an SV, and I have MANY gears with Hit Rating on them, I do not need to talent into Focused Aim, nor do I plan on it.\n \nBefore the optimize, I have my current gear set equipped which is indeed Hit Capped (Specifically, 8.17% / 267 Hit Rating)\nWhen I finish optimizing with those 2 requirements, I get an output which increases my dps by 100, but drops my Hit % to 5.89%, or 70 Hit Rating below the cap. \nThe optimizer ignored my additional requirement to stay hit capped and just shot for the highest dps I can get with my gear.\n \nAny help would be appreciated, thanks.\n \n(As a side note, I set the Optimizer to \"% chance to miss\" as the MAIN Calculation, and it really gave me this weird error at the end of the optimize that said it could not ____ (It's cut off, I can't read it because the window cannot be stretched), and it then recommended this horribly strange gear set which made no sense.)",
+    "LastUpdatedDate": "2013-05-16T05:22:57.737-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-12-14T20:34:30.823-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Hunter] Hit Cap Problem",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15431
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2631,
+      "FileName": "Nanaya.xml",
+      "DownloadUrl": ".\\2631"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "A) You are optimizing completely unbuffed, that's a really bad idea. You should be setting your Buffs to be what you normally run with. (Pet buffs too)\r\nB) Don't use the req as the main optimization, that doesn't work\r\nC) Side-Note: You didn't mark Nightmare Tear available, marked it on this one\r\nD) You get a big phat warning that you have a lot of items selected for 5+ slots. If you have ilevel 245 gear, trash the 200 (or at least unmark it) cuz it's degrading your optimizer performance\r\nE) I found the bug with Optimizing the Hit Requirement, there was a multiplier involved on the req but it wasn't being applied properly.\r\n\r\nFixed for next version.",
+      "PostedDate": "2009-12-14T22:39:12.197-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-14T22:40:08.66-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T18:24:37.557-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:18.65-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:57.737-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

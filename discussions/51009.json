@@ -1,0 +1,226 @@
+[
+  {
+    "Id": "170939",
+    "ThreadId": "51009",
+    "Html": "Is there some way I can get Rawr to include the 1sec soft cap on haste is reached while optimizing gear?<br>\r\n",
+    "PostedDate": "2009-03-23T10:49:42.97-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "170941",
+    "ThreadId": "51009",
+    "Html": "Not currently... Trolando, looks like there's no optimizable stats for Tree; wanna add some?",
+    "PostedDate": "2009-03-23T10:52:46.753-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "170990",
+    "ThreadId": "51009",
+    "Html": "Okies, thanks for the quick response... thought I might be missing something :)<br>\r\n",
+    "PostedDate": "2009-03-23T13:04:20.98-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "173176",
+    "ThreadId": "51009",
+    "Html": "Actually... is 'Trol' is doing this?.... wow this would be hugely beneficial!&nbsp; I love RAWR, but I have to hit the sof-cap on the gcd, so wind up using spreadsheets until I've geared up way past it.<br>\r\n",
+    "PostedDate": "2009-03-29T01:13:24.023-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "173217",
+    "ThreadId": "51009",
+    "Html": "I have to ask why you want to force this constraint? If your real goal is to maximise burst healing output, just optimise for that value, it includes haste and nature's grace effects in the model, along with crit and spell power effects.<br>\r\nIf you are going to optimise for sustained healing output, haste will only fully come to its own, if you don't run OOM during the fight and have mana remaining, else the model will reduce your casting fraction in order to conserve mana.<br>\r\n<br>\r\nIf I understand better your reasoning, maybe we can ensure that the model inherently considers it (or allows it to be considered easily).<br>\r\n<br>\r\nPatch 32639 now exposes some values, but I'm not sure if they are what you need and are the easiest format to use. <br>\r\n",
+    "PostedDate": "2009-03-29T07:03:43.5-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "173866",
+    "ThreadId": "51009",
+    "Html": "To clarify (I hope)... when optimizing, for say my mage... the hit-cap can be included as a requirement, and the optimization is being done on the best gear I can have <strong>after</strong> that cap is reached to keep up an optimal rotation.<br>\r\n<br>\r\nFor healing, I need to not only ensure I'm getting the best throughput or not going OOM, but also that when I'm hitting a heal for an emergency situation, outside 'perfect' rotation, that I've reached the soft-cap GCD so I can fire off that big heal to save someone as quickly as possible.&nbsp; <br>\r\n<br>\r\nCurrently when I optimize my gear, I come up short almost an entire second from reaching my 1 sec haste soft-cap, meaning I'm at a disadvantage for a 'save that person who is almost dead' knee-jerk reaction.&nbsp; <br>\r\n<br>\r\nBasically, I want to be able to treat that haste soft cap as a necessity, because it's not all about a rotation for healing.&nbsp; <br>\r\n<br>\r\nSo I look at it a bit like the hit cap... I want to 'force' that soft-cap of haste (1 sec GCD) to make sure my 'oh shit' heals are fast enough, and then optimize on top of that.&nbsp; If more haste gets added after that (as you mentioned, particularly in the sustained model), that's great, but I still need to ensure that when things get hairy, I've cut the time off the GCD to save someone as fast as possible.<br>\r\n<br>\r\nDoes that make more sense?<br>\r\n<br>\r\nAnd thank you for looking at this!<br>\r\n<br>\r\nEdit: Also, <a href=\"http://elitistjerks.com/f73/t37578-restoration_itemization/\">the OP of this EJ thread</a> has the Haste rating break-down druids are using to ensure that soft-cap is reached.&nbsp; Most restos consider that 1 sec GCD a requirement much like the hit-cap for other classes/specs, so of course talents and raid composition come into play as well as listed there (and sorry if I'm giving you tmi, just not sure if you're a resto druid or not =P).<br>\r\n",
+    "PostedDate": "2009-03-31T05:35:57.067-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "174042",
+    "ThreadId": "51009",
+    "Html": "I play a druid in a 10-man guild. It tends to change from week to week :-) <br>\r\nSo I know the basics, but definately not an expert.<br>\r\n<br>\r\nPlus I typically play with 600ms of lag, so to me, cutting of a few miliseconds of the cast, doesn't feel like it will make a difference. If you get yourself in that much trouble, hope your important enough that my fellow healer will save your ass, or that I am willing to use my battle res on you.<br>\r\n<br>\r\nFurthermore doesn't your instants hit at the beginning of the cast, so for swiftmend and nature-swiftness as oh-crap buttons, haste shouldn't matter (unless you need 2 gcd's to use).<br>\r\n<br>\r\nI cannot think how to easily incorporate that into the model. I don't want to artificially penalise your throughput, if your not haste capped. The extra constraint should probably be able to help you achieve what you want though. <br>\r\n<br>\r\nPlease just help check the haste numbers. I did a quick compare against the post you mentioned, and the model seems to be aiming for 504 haste rating for the soft-cap, and 1640 for the hard cap (with no buffs or talents) while they quote very different numbers there. (These values are calculated, not coded as constants. Maybe a formula issue?) The conversion ratio of 32.79 does seem to be correctly used. I'm guessing something else isn't being modelled. Under the talents tab, it looks like Celestial Focus isn't getting a value, so that might be part of the problem. I'll look into that, but if you can find anything else, please let me know.<br>\r\n<br>\r\n<br>\r\n<br>\r\n<br>\r\n<br>\r\n<br>\r\n",
+    "PostedDate": "2009-03-31T12:50:01.12-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "174057",
+    "ThreadId": "51009",
+    "Html": "Ok, added haste buff from Celestial Focus and fixed formula for soft-cap calculation (patch 32712). Now haste numbers are looking much closer to numbers in the EJ Post.<br>\r\n<br>\r\nBut yell, if you still find any further differences.<br>\r\n",
+    "PostedDate": "2009-03-31T13:21:23.843-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "174116",
+    "ThreadId": "51009",
+    "Html": "I don't know how to load up the source :(<br>\r\n",
+    "PostedDate": "2009-03-31T15:51:07.997-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "174133",
+    "ThreadId": "51009",
+    "Html": "Wait for b6.",
+    "PostedDate": "2009-03-31T17:44:05.51-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "174379",
+    "ThreadId": "51009",
+    "Html": "Ah okies cool... thanks again for this!!<br>\r\n",
+    "PostedDate": "2009-04-01T08:47:22.68-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "176528",
+    "ThreadId": "51009",
+    "Html": "I posted elsewhere, but as this is the thread we'd chatted on, thought I'd repost here:<br>\r\n<br>\r\nThe new tree additions are confusing to me.&nbsp; I LOVE that restrictions are being added... but as the person who brought them up, found myself confused as to how to use them.<br>\r\n<br>\r\nThere are people WAY better at math than I am who can help I'm sure... but I wanted to bring up the stuff I was confused about.<br>\r\n<br>\r\nI mentioned the 1sec GCD soft-cap as a semi-requirement for restos, there seems to be several different haste choices, when only the one is the typical.&nbsp; From those choices, I've been unable to optimize my gear.&nbsp; One I realize is a bug that is unrelated with items not being slotted, but the others I think come from too many choices... I just want to hit the one soft-cap, and there's a bunch of haste choices, and I'm not sure what they all mean.<br>\r\n<br>\r\nI 'think' (correct me if I'm wrong), I should have 3 optimization choices:<br>\r\n<br>\r\n&nbsp;&nbsp; 1. Overall Rating<br>\r\n&nbsp;&nbsp; 2. Heal-burst<br>\r\n&nbsp;&nbsp; 3. Heal Sustained<br>\r\n<br>\r\nAnd what I expected in the Optimizer (again, sorry if I'm fumbling this).<br>\r\nI could add a requirement of 'haste soft-cap' and it would optimize my gear based on one of the 3 above optimizations while meeting (or coming close to) that soft-cap... INCLUDING buffs I'd manually added as well as my talents.<br>\r\n<br>\r\nPerhaps I'm doing it all wrong and don't understand how to set it up, but I *think* I do... but by manually switching out my gear, I got myself to 4pts below the haste soft-cap, and had a higher score for all 3 of the above optimization choices.<br>\r\n<br>\r\nI TOTALLY understand that Rawr isn't perfect and thrilled about the work that has been done on the tree module... I'm just confused why the haste soft-cap isn't a static requirement option and why there are so many haste options.&nbsp; Perhaps when messing with it, a bunch got uploaded?<br>\r\n<br>\r\nAgain, thanks for doing this... just after asking for it, I'm still confused how to use it.... requiring +hit on my mage optimizes, +haste on my druid does not.<br>\r\n<br>\r\n<br>\r\n",
+    "PostedDate": "2009-04-07T03:17:15.747-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "176683",
+    "ThreadId": "51009",
+    "Html": "Can you explain what actually doesn't work? We don't understand what you're asking.<div><br></div><div>Having almost never used Tree before, just looking at what requirements are available, it makes sense to me that you'd optimize for Overall Rating, with an additional requirement of 'Haste until Soft Cap &lt;= 0'. Or if I wanted a specific percentage of haste, 'Haste Percentage &gt; 30' or whatever.</div><div><br></div><div>Is this a usability issue? What are you expecting that you're not seeing?</div>",
+    "PostedDate": "2009-04-07T09:54:45.7-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "176715",
+    "ThreadId": "51009",
+    "Html": "Think of the haste like +hit for mages... it's a static number, which of course is effected by talents/buffs.<br>\r\n<br>\r\nOn my mage, if I put in 237 MUST be attained (this means I get every buff possible from boomkins, dranei, etc). i.e. Hit rating &gt;= 237<br>\r\n<br>\r\nOptimizing puts me within 2 of the hit cap<br>\r\n<br>\r\n<br>\r\nOn my druid, if I put in the number that must be attained with all buffs: i.e. Haste rating &gt;= 253<br>\r\n<br>\r\nOptimized for Overall Rating using 253 haste as an additional req I get:<br>\r\n<br>\r\n&nbsp;&nbsp; 1. Overall Rating: 14122<br>\r\n&nbsp;&nbsp; 2. Heal-burst: 5100<br>\r\n&nbsp;&nbsp; 3. Heal Sustained: 9022<br>\r\n&nbsp;&nbsp; 4. Haste Rating: 188<br>\r\n&nbsp;&nbsp; 5. GCD: 353 short<br>\r\n<br>\r\nRunning the optimizer <strong>without </strong>the haste req I get the EXACT same numbers as above.<br>\r\n<br>\r\nManually adding my gear, I get:<br>\r\n<br>\r\n&nbsp;&nbsp; 1. Overall Rating: 13850<br>\r\n&nbsp;&nbsp; 2. Heal-burst: 5183<br>\r\n&nbsp;&nbsp; 3. Heal Sustained: 8567<br>\r\n&nbsp;&nbsp; 4. Haste Rating: 320<br>\r\n&nbsp;&nbsp; 5. GCD: 221 short <br>\r\n<br>\r\nNow granted, my Over-all Rating &amp; Heal Sustained is lower in my manual gear... BUT I really care about that haste rating getting damn close (like a mage gives up dps for +hit), so as far as I can tell, the gear isn't getting optimized to meet that requirement.<br>\r\n<br>\r\nDoes that make sense, or am *I* doing something wrong?<br>\r\n<br>\r\n<br>\r\n<br>\r\n<br>\r\n<br>\r\n<br>\r\n<br>\r\n<br>\r\n<br>\r\n<br>\r\n<br>\r\n<br>\r\n",
+    "PostedDate": "2009-04-07T11:04:49.28-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "176732",
+    "ThreadId": "51009",
+    "Html": "Uhmmm... I'm confused. In the model I'm looking at (latest dev version), there's no additional requirement for a specific number of haste rating. So I don't know what you're optimizing '<span style=\"font-family:'segoe ui';font-size:13px;color:rgb(48, 51, 45)\">using 253 haste as an additional req'</span>. I don't think there should be an optimizable value like that, either. We don't want users to have to look up specific breakpoints of numbers of haste ratings on other websites or calculate it or whatever. We want users to care about what <span style=\"font-weight:bold\">actually matters</span>. The haste % actually matters. Whether you're past the soft or hard haste cap actually matters. And those things adjust based on everything that affect them, including buffs, talents, whatever, not just haste rating. Are you not able to optimize for what actually matters?<div><br></div><div>Again, I have very little experience with the tree model, so please correct me if I'm wrong. It's very possible that this is broken somehow, and I look forward to wildebees responding soon. I'm looking at the latest development build too, so it may be that the optimizable value you're using was removed since b6 came out or something? I'm not sure.</div>",
+    "PostedDate": "2009-04-07T11:29:02.817-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "176739",
+    "ThreadId": "51009",
+    "Html": "I guess we're coming at it from two different mindsets... so bear with me =)<br>\r\n<br>\r\nThe haste was JUST added in b6, wildebees was a rockstar for putting it in =)) so this is all new... but a resto druid drives to hit a haste soft-cap of 1 sec GCD.<br>\r\n<br>\r\nIn a raid with every single talent and buff possible (perfect world) that takes a haste rating of 253.<br>\r\n<br>\r\nAFTER that cap is reached, we'd want our gear optimized.<br>\r\n<br>\r\nAnd I guess I'm confused about what you mean by &quot;actually matters&quot;.... for tree, getting that GCD down <strong>does</strong> matter, and having gear optimized ignoring that as a requirement doesn't work.&nbsp; You can look at a mage rotation and balance out +hit against dps, and come to a happy medium... but for a healer, that GCD is about firing off a quick heal, not a rotation, so the haste has to be met, regardless of how it 'optimizes'.<br>\r\n<br>\r\nDoes that make sense?<br>\r\n<br>\r\n<br>\r\n",
+    "PostedDate": "2009-04-07T11:45:07.017-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "176744",
+    "ThreadId": "51009",
+    "Html": "Right, but the haste <span style=\"font-weight:bold\">rating</span> doesn't matter on its own, does it? It's just part of the equation.<div><br></div><div>haste rating + talents + buffs (+ some other stuff?) = Total Haste</div><div><br></div><div>Total Haste is what matters. That's what brings your GCD down, right? Rawr users should not have to know that 'In a ... perfect world ... [it] takes a haste rating of 253'. And they should be able to use the exact same optimization requirements for whatever buff/talent situation they're in. Rawr should just 'automagically' get you to the soft haste cap (if that's what you set for requirement), for whatever situation you're in.</div><div><br></div><div>Standard Disclaimer: I've spec'd tree once in my life, am terrible at healing, totally unfamiliar with the Tree model, so again, take everything I say with a huge grain of salt. Wildebees, help! :)</div>",
+    "PostedDate": "2009-04-07T11:55:13.97-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "176750",
+    "ThreadId": "51009",
+    "Html": "It's a language/thinking issue (and somewhat a display one too I suppose) but NOT a code issue (btw, I'm Rusty's hubby, so I'm not just randomly jumping in =P ).<br>\r\n<br>\r\nAfter reading through this I was able to get optimizer to do what she wanted using the current Beta version.&nbsp; It is not completely intuitive (at least to me) but it works...I got a set of gear that gave her 259 haste from gear (and it recognized that was -6 haste from the Soft Cap).&nbsp; The Global CD shows at 1.25 seconds, which, while that is probably right for spells not effected by GotEM, is NOT the number that resto druids generally care about, as the GCD really only matters for their instant cast spells, which ARE effected by GotEM, and would therefore have a GCD of 1 second (not 1.25).<br>\r\n<br>\r\nBut it looks to have done everything asked of it properly...just doesn't actually show the 1 sec GCD that she expected.<br>\r\n<br>\r\nFor the record, method of use was as Ast suggested above:<br>\r\n<br>\r\nHaste until soft cap &lt;= 0<br>\r\n",
+    "PostedDate": "2009-04-07T12:01:55.737-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "176753",
+    "ThreadId": "51009",
+    "Html": "Ah hah. So would everything be solved if we made the following changes? (bear with me, bear at work, not a tree)<div><br></div><div>A) Show both &quot;Standard GCD&quot; (1.25 in that case), and &quot;Instant GCD&quot; (1.0 in that case) on the main screen.</div><div>B) Provide both of those as optimizable values, so that you could do the following Optimization:</div><div>Calculation to Optimize: Overall Rating</div><div>Additional Requirement: Instant GCD &lt;= 1.0</div><div><br></div><div>Would that be more easily understood? I agree that that 'haste until soft capped' value seems kinda odd.</div>",
+    "PostedDate": "2009-04-07T12:07:48.223-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "176758",
+    "ThreadId": "51009",
+    "Html": "That would make a lot more sense to me, that's for sure.<br>\r\n<br>\r\nWhile we're on the subject of trees, I just noticed that running the Optimizer on her gear caused Rawr to buff her OH with Exceptional Spellpower, which is obviously wrong, since ES is a weapon buff.&nbsp; Seems like it's probably a bug, although I've not ruled out user error on my part. =P<br>\r\n<br>\r\nEdit:&nbsp; Should I move this last piece to some other part of your web site?&nbsp; I see an &quot;Issue Tracker&quot; section...<br>\r\n",
+    "PostedDate": "2009-04-07T12:16:35.487-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "176762",
+    "ThreadId": "51009",
+    "Html": "That's a known display bug. I <span style=\"font-style:italic\">think</span> it doesn't actually count those stats, it just shows the enchant, but doesn't actually count it. Wildebees, let me know if you need help fixing that; it's pretty simple.",
+    "PostedDate": "2009-04-07T12:25:20.043-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "176765",
+    "ThreadId": "51009",
+    "Html": "Sorry for not responding earlier, I just got online.<br>\r\n<br>\r\nYes, trees are now in a bit of a weird situation, where there are 2\r\nGCDs being used, one for &quot;normal&quot; spells and one for certain spells,\r\nwhich benefit from the GotEM talent. I didn't invent the naming, it was\r\nin the model like that, and just exposed it in the most unambiguous way\r\n(in terms of the code). The question is what terminology does the\r\nnormal tree community use? (I'm only a part time healer myself).<br>\r\n<br>\r\nI had problems trying to have constraints based on floating point\r\nnumbers. I'm not sure if they are supported, that is why I exposed the\r\nfields in the way I did as percentages or rating values. <br>\r\n<br>\r\nFirstly the actual requirement for a haste rating value of 253, is some\r\ncalculation some1 did determining conversion factors, assuming certain\r\ntalents, group buffs etc. (Even the elitistjerk link that was posted\r\nearlier in this thread, provides a table of values instead of just a\r\nsingle 253 constant. So I agree with Astrylian, that the user should\r\nnever have to specify that value, since it depends on too many things\r\nto remember. If you want to specify something, you want to say you want\r\nhaste to get you within X (percent/rating/time ratio) of the cap,\r\nwhatever is more intuitive to you. And again, remembr, you are adding\r\nit to fullfill some sense of better that you have, that doesn't\r\nneccesarily exist in the true model/game. (In your case, you want to be\r\nable to land an instant (rejuv, wild growth or lifebloom) in 1 second.\r\nWhy? Since a single tick of any of those are not likely to save the\r\ntarget. In my opinion atleast).<br>\r\n<br>\r\n<br>\r\nIdeally you should probably be aiming to reach the hard cap, if you really want to aim for something, but practical?<br>\r\n<br>\r\nI can add the time value in there, just not sure if I add the time in\r\ntenth of seconds, or what units to cause the least additional confusion.<br>\r\n<br>\r\n*Edit: Moved to end of post* Advice on fixing the off-hand enchant bug would be appreciated. Thanks\r\nin advance. (I also don't think it is being used in the calculation\r\nthough)<br>\r\n<br>\r\n<br>\r\n",
+    "PostedDate": "2009-04-07T12:31:46.103-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "176768",
+    "ThreadId": "51009",
+    "Html": "Thanks for straightening me out!&nbsp; <br>\r\n<br>\r\nIt's working great now that I understand what the hell I'm doing.&nbsp; I was using &gt;= on the cap, rather than &lt;=<br>\r\n<br>\r\n... sorry for the confusion!<br>\r\n<br>\r\nAnd big hugs and kisses to everyone involved in adding this!!!<br>\r\n<br>\r\n[quote]Ideally you should probably be aiming to reach the hard cap, if you really want to aim for something, but practical?[/quote]<br>\r\n<br>\r\nI'd 'guess' the hard-cap gets thrown under the bridge over loss of other stats... but I've not delved to far into 3.1 gear, so who knows :D<br>\r\n",
+    "PostedDate": "2009-04-07T12:33:36.203-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "176781",
+    "ThreadId": "51009",
+    "Html": "And yes, I checked...the bug is cosmetic only...no impact to the numbers.<br>\r\n<br>\r\nThanks for everyone's help! =)<br>\r\n",
+    "PostedDate": "2009-04-07T12:43:51.527-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "176784",
+    "ThreadId": "51009",
+    "Html": "Thanks for all the help, everyone. So much of making Rawr work for people is just usability issues, not technical issues, and we need help understanding how best to word it for users, so thanks for that. :)<div><br></div><div>Wildebees, you're looking to override CalculationsBase.EnchantFitsInSlot(), and return false if it's a weapon enchant and it's in the offhand.</div>",
+    "PostedDate": "2009-04-07T12:50:31.043-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "176795",
+    "ThreadId": "51009",
+    "Html": "Thanks Astrylian, I will have a look at that.<br>\r\n<br>\r\nRustyDogma, you might be right that the hard cap is achievable and might not sacrifice too many other stats. I haven't looked at 3.1 gear at all, so cannot comment on that. But I just tried to make the point that I cannot just add a single constraint haste capped, since different people might want different values. You were implicitly asking for the haste cap on rejuv and lifeblooms, while now you are hinting at changing that constraint to be the haste cap for other spells (nourish, swiftmend, etc.) in 3.1 gear. <br>\r\n<br>\r\nI'm actually also not very happy with the way haste percentage constraint is used currently, since you still need to lookup/calculate that the cap would require about 20% for GotEM spells. Would percentage from cap make more sense, or is the haste percentage an ok value to have available?<br>\r\n<br>\r\n",
+    "PostedDate": "2009-04-07T13:06:29.827-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "176802",
+    "ThreadId": "51009",
+    "Html": "Astrylian, shouldn't that check be part of CalculationsBase so it can be used by all models, instead of being applied in each model seperately? <br>\r\nI realise you need to be careful with dual-wielding, but it should be possible to distinguish between an offhand item and a second weapon or are their types not distinguishable?<br>\r\n",
+    "PostedDate": "2009-04-07T13:27:15.3-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "176844",
+    "ThreadId": "51009",
+    "Html": "Patch 32903 checked in (should be included in the next beta/release, whenever that is released):<br>\r\nDisabled all Offhand enchants for Trees.<br>\r\nAdded GCD and Lifebloom GCD values on main display and Optimisable Value list (as millisecond values).<br>\r\n<br>\r\nI now use Lifebloom GCD instead of talking about the soft cap.<br>\r\n<br>\r\nI think the time value will probably be the easiest for users to use in the long run, but for now I leave the other variations (haste percentage, rating until GCD or Lifebloom GCD caps) in there as well.<br>\r\n<br>\r\nI trust you guys will manage with the current version, until the next release, when this naming takes effect. But let me know if there are additional changes that you expect will make life easier.<br>\r\n<br>\r\n<br>\r\n",
+    "PostedDate": "2009-04-07T15:05:27.757-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

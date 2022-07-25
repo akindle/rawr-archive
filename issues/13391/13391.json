@@ -1,0 +1,210 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Warlock",
+      "DisplayName": "Rawr.Warlock"
+    },
+    "ClosedComment": "The Conflagrate talent was changed in patch 3.3 - its now as follows&#58;&#91;Causes&#93;&#91;Consumes&#93; an Immolate or Shadowflame effect on the enemy target to instantly deal damage equal to 60&#37; of your Immolate or Shadowflame, and causes an additional 20&#37; damage over 6 sec.Fixed in changeset 44598.",
+    "ClosedDate": "2009-12-30T18:28:57.203-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Warlock Rawr is calculating incorrect stat values due to it valuing Conflagrate way too high - it should be at about 20% or lower damage done, instead it is around 70%, thus calculating its average hit at 24k+ (instead of 7k+ it should be), and average crit over 50k (instead of 13k+ it should be). Rawr is assigning too much value in Crit rating due to this. iI do not know the math used in Rawr, so I can't say what's causing this. Perhaps the spell's cooldown has been left out it or maybe it has wrong coefficients. Bottom line is, Rawr does not work for Destruction due to this, and any result it gives can't be trusted.",
+    "LastUpdatedDate": "2013-05-16T05:25:21.377-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-05-31T18:26:30.89-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Warlock] Conflagrate calculation is wrong",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 10,
+    "Id": 13391
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I believe I may have found the cause of this. \r\n\r\nI am not a dev here so I'll just post my proposed fix for anyone to checkin or how it works here =)\r\n\r\nIndex: C:/Users/jowi/Desktop/Rawr/Rawr.Warlock/Spell.cs\r\n===================================================================\r\n--- C:/Users/jowi/Desktop/Rawr/Rawr.Warlock/Spell.cs\t(revision 34296)\r\n+++ C:/Users/jowi/Desktop/Rawr/Rawr.Warlock/Spell.cs\t(working copy)\r\n@@ -1060,7 +1060,7 @@\r\n         public override void Calculate(Stats stats, Character character)\r\n         {\r\n                 Spell tmpImmo = new Immolate (stats, character);\r\n-                MinDamage = MaxDamage = tmpImmo.DotDamage / (tmpImmo.DebuffDuration / tmpImmo.TimeBetweenTicks) * 15;\r\n+                MinDamage = MaxDamage = tmpImmo.DotDamage / tmpImmo.DebuffDuration * 12;\r\n \r\n1st, the nerf to Conflag was not implemented (12 instead of 15 sec worth of immolate)\r\n2nd, you got an inflated value due to some freaky math. The total damage was calculated involving time between ticks aswell as total duration basicly ending up with that immo ticks once per second at the normal 3s damage which lead to a multiple of 3 too much damage\r\n\r\nSide note:\r\nI've been using Rawr for my druid @ 70 and came back today to check up on a Destro lock model, found the issue, DL the source and tried to fix it (primarily for personal use, but im happy to share). Although it seems to work, as Im quite unfamiliar with the codebase there could possibly be lots of other places changes need to go in aswell so dont count on this to be a 100% fix\r\n\r\n\r\nIn Rawr.Warlock.Spell.cs @ line 1063\r\nMinDamage = MaxDamage = tmpImmo.DotDamage / tmpImmo.DebuffDuration * 12;\r\n\r\n",
+      "PostedDate": "2009-06-01T09:12:38.08-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-06-01T09:14:28.7-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-06-02T05:37:34-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks for reporting and Johanwim for spotting the issue. We'll have a look at it!",
+      "PostedDate": "2009-06-04T06:54:03.85-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "While you're looking at the calculation for Conflagrate, you should also check how it's calculating using the Glyph of Conflagrate which is supposed to \"Use: Your Conflagrate spell no longer consumes your Immolate or Shadowflame spell from the target.\"  This should be a hands down DPS increase.  When I *uncheck* to use this glyph it increases my calculated dps from 4080 to 4375.  I don't think rotation would even effect this, but I set my spell priority to immolate, conflag, chaos bolt, incinerate.\r\n",
+      "PostedDate": "2009-06-04T12:21:41.397-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-06-04T12:25:35.61-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-06-05T17:12:52.493-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-07-08T10:19:27.49-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-07-17T21:05:46.637-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "fixed by Kintarooe  change set 35469",
+      "PostedDate": "2009-07-20T03:52:30.023-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-07-20T04:53:46.283-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "\r\n\r\n\n\n** Closed by matt99t 7/20/2009 4:53 AM",
+      "PostedDate": "2009-07-20T04:55:20.72-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "is now calculating dmg correctly however we are still implementing the glyph support so will leave this open until this is patched",
+      "PostedDate": "2009-07-20T04:55:22.677-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It still isn't calculating damage correctly. Conflagrate damage is affected by spell power, Emberstorm and Malediction, but you've left those bits commented out. It most certainly does not hit as weakly as an unadjusted 4 ticks of Immolate. Change BaseMinDamage to MinDamage and BaseMaxDamage to MaxDamage and take the comments out and it should be correct.",
+      "PostedDate": "2009-07-23T01:52:38.313-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It does hit exactly like 4 ticks of immolate. However the immolate damage is calculated differently for conflagrate compared to immolate. Conflag is driving theorycrafters insane :-)\r\n\r\n\r\nBased on my testing: \r\nTests have been done on targeting dummies so reservations that they may not be 100% accurate on \"live\" targets. The only external damage multiplier I've tried with is CoE, So im unsure if the rest of them are addative or multiplicative.\r\n\r\nCalculations for Immolate is \r\nTotalImmolateDotDamage = ( BaseDamage + (SpellPowerCoefficient * SpellPower) ) * (AfterMath + ImprovedImmolate + SpellStone + EmberStorm) * CoE\r\n\r\nCalculations For Conflagrate is \r\nConflagMinDamage = ConflagMaxDamage =(  ( BaseImmolateDamage + (ImmolateDotSpellPowerCoefficient * SpellPower) ) * (Aftermath + ImprovedImmolate + Firestone) * EmberStorm * CoE  ) / 15 * 12\r\n\r\nThe big difference being that Conflag calculates Immolate Dot Damage using Firestone instead of Spellstone and that EmberStorm is multiplicative in conflag and addative in Immolate",
+      "PostedDate": "2009-07-23T02:28:28.693-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I forgot the Glyph of Immolate. Its an additive multiplier in both cases. Although I havent tested I assume that the 2piece T8 bonus is aswell\r\n\r\nAnd some constants i forgot to mention\r\nBaseDotDamage for Immolate = 785\r\nImmolateDotSpellPowerCoefficient = 0,2 per tick * 5 ticks = 1",
+      "PostedDate": "2009-07-23T02:43:59.623-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "after the last patch, conflagrate hit as 4 tick of immolate.\r\nonly buff it gain is debuff on mob (like coe)\r\nIn spell detail, the calculation is without it (coe), becoase it consider ONLY spell dmg and Talent (i have done this to help lock to know how effective dmg they do without any buff except fel armor).\r\nso the dmg of confla is the dmg of 4 tick of immolate.\r\ni'm wrong ? :)",
+      "PostedDate": "2009-07-23T02:44:46.167-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "(naturally, i haven't considered glyph as talent... so the increase dps from glyph of immolate is only calculated on overall and personal dps , but not in spell detail window).\r\nglyph of conflagrate still don't work (working to fix it)",
+      "PostedDate": "2009-07-23T02:47:12.443-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Looking at my latest world of logs report, I can see my Conflagrate consistently hitting for 4 ticks plus around 8%. It's never as weak as just 4 ticks. But given that 5 points in Emberstorm is 15%, that doesn't really make a whole lot of sense.",
+      "PostedDate": "2009-07-23T03:58:39.237-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "As I said, the +8% is due to emberstorm being Multiplied separatly instead of added together with the rest of the talents. It can also be due to spell/firestone as 1% direct damage from firestone afffects immolate when damage is calculated for conflag, but 1% dot damage spellstone affects immolate when its calculated for the immolate dot",
+      "PostedDate": "2009-07-23T04:13:43.483-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "sorry, but my english is not very good.\r\nactual calculate of conflagrate:\r\nMinDamage=maxDamage = TmpImmo.dotdamage / (tmpimmo.debuffduration / tmpimmo.timebetweenticks) * 4;\r\nin tmpimmo.dotdamage there are the total damage done by dot in 15 second = 5 tick\r\nto calculate the dmg , i take total damage, divide by number of tick, and multiply it for 4 (12 sec duration).\r\n\r\nto calculate immolate dot damage:\r\nDotDamage = (baseDotDamage + (stats.spellpower + stats.spellfiredamagerating) * dotDamageCoef) \r\n* (1 + character.warlocktalents.erbestorm * 0.03f) -> 15% if full talented\r\n* (1 + character.warlocktalents.malediction * 0.01f) -> it can be fixed becoase malediction work on spell dmg and not on spell but is a little difference in calc\r\n* (1 + character.warlocktalents.aftermath * 0.03f) -> 6% dot increase il full talented\r\n* (1 + character.warlocktalents.improvedimmolate * 0.1f) -> 30% more dmg if full talented\r\n* (1 + stats.warlock2T8 /2) > 10% increase.\r\n\r\nit don't count Coe and glyph (but is a choise), only affected by talent and spell power.\r\nwhat's wrong in this ?",
+      "PostedDate": "2009-07-23T04:13:54.147-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This is where I found out about it\r\nhttp://www.bakkadps.com/?p=91 (near the bottom)\r\nThere is also a link to a related EJ post",
+      "PostedDate": "2009-07-23T04:17:42.393-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The problem is that if you want accurate damage for conflag you can't use the same calculations you use for immolate\r\n\r\nSo for Immolate:\r\nSingle AddativeMultipliers = character.warlocktalents.erbestorm * 0.03f + character.warlocktalents.aftermath * 0.03f + character.warlocktalents.improvedimmolate * 0.1f\r\nif (character.ActiveBuffsContains(\"Grand SpellStone\"))\r\n{\r\n   AddativeMultipliers += 0.01f\r\n}\r\nDotDamage = (baseDotDamage + (stats.spellpower + stats.spellfiredamagerating) * dotDamageCoef)\r\n* (1 + AddativeMultipliers)\r\n* (1 + stats.warlock2T8 /2)  //Assuming this is how 2T8 works\r\n* (1 + character.warlocktalents.malediction * 0.01f) //Assuming this is how malediction works\r\n\r\nAnd Conflag:\r\nSingle AddativeMultipliers = character.warlocktalents.aftermath * 0.03f + character.warlocktalents.improvedimmolate * 0.1f\r\nif (character.ActiveBuffsContains(\"Grand Firestone\"))\r\n{\r\n   AddativeMultipliers += 0.01f\r\n}\r\nDotDamage = (baseDotDamage + (stats.spellpower + stats.spellfiredamagerating) * dotDamageCoef)\r\n* (1 + AddativeMultipliers)\r\n* (1 + character.warlocktalents.erbestorm * 0.03f)\r\n* (1 + stats.warlock2T8 /2)  //Assuming this is how 2T8 works\r\n* (1 + character.warlocktalents.malediction * 0.01f) //Assuming this is how malediction works\r\n\r\nThe 2T8 and Malediction im quite unsure about, but I think they are added together with the rest of the talents rather than being multiplied on their own\r\nFor the Glyph I know it is added together with the rest of the talents in both cases\r\n\r\nAnd sorry if my C# is a bit rusty, due to work I'm (unfortunatly) more of a VB kind of guy",
+      "PostedDate": "2009-07-23T04:34:19.953-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "i read your code, and read the post you link and ej.\r\ni have calculate conflagrate as blizzard talent tree talk \"....deals equal to 12 sec of your immolate...\" but if i'm wrong, i'll fix it with no problem.\r\na question.\r\nthe additive multiplier is multiplier so dmg = dmg * (1 + multiplier) * (1 + multiplier)  and not dmg = dmg * (1+ multiplier 1 + multiplier 2) .\r\nin every theorycraft i have write, the bonus is multiplier and not additive (as top, if i'm wrong, i fix it, no problem ^^).\r\ni promise i'll check it when i resolve the bad issue with conflagrate glyph (now doesn't works).\r\nabout Spellstone and Firestone , as glyph, i haven't count it (for old programmer choise and my choise) in spell detail, but put them on math about dps (if you see change dps but not spell detail window) ^^\r\ni'll try to update (with other dev) the lock module step by step , until is near real :D\r\nany issue and comment are welcome :)\r\n",
+      "PostedDate": "2009-07-23T05:09:45.187-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Using those two calculations with 3000 spellpower and maximum ranks of each spell leaves Conflagrate hitting for 7492 and Immolate ticking for 1580. That simply doesn't bear out what actually happens in the game. We still have Conflagrate hitting too hard. That's 4 ticks plus 18.5%, not 4 ticks plus 8%. And, in fact, when I take a lot more fights (I've just checked a whole month's worth) into consideration it's actually probably closer to 6%.",
+      "PostedDate": "2009-07-23T05:50:57.31-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Assume\r\n* Immolate Base Damage = 785\r\n* Immolate Spell Power Coefficient = 0,2 (From WowWiki and observed ingame result) per tick * 5 ticks  = 1\r\n* 5/5 Emberstorm = 15% more fire damage\r\n* 3/3 Improved Immolate = 30% more immolate damage\r\n* 2/2 Aftermath = 6% more immolate dot damage\r\n* Neither Spell stone or firestone equiped\r\n\r\nUsing 3000 spellpower:\r\n\r\nTotal Immolate Damage = (785 + 3000 * 1) * (1 + 0.15 + 0.3 + 0.06) = 3785 * 1.51 = 5715.35\r\nImmolate Tick Damage = 5715.35 / 5 = 1143.07\r\n\"Conflagrate\" damage = 1143.07 * 4 = 4572.28\r\nTotal Immolate Damage calculated for Conflagrate = (785 + 3000 * 1) * (1 + 0.3 + 0.06) * (1 + 0.15)  = 3785 * 1.36 * 1.15 = 5919.74\r\nImmolate Tick Damage calculated for Conflagrate = 5919.74 / 5 = 1183.948\r\nReal Conflagrate damage = 1183.948 * 4 = 4735.792\r\n\r\nThe real conflag damage is 4735.792 / 4572.28 = about 3,6% higher than expected.\r\n\r\n\r\nNow we add a firestone to the mix\r\n\r\nTotal Immolate Damage = (785 + 3000 * 1) * (1 + 0.15 + 0.3 + 0.06) = 3785 * 1.51 = 5715.35\r\nImmolate Tick Damage = 5715.35 / 5 = 1143.07\r\n\"Conflagrate\" damage = 1143.07 * 4 = 4572.28\r\nTotal Immolate Damage calculated for Conflagrate = (785 + 3000 * 1) * (1 + 0.3 + 0.06 + 0.01) * (1 + 0.15)  = 3785 * 1.37 * 1.15 = 5963.2675\r\nImmolate Tick Damage calculated for Conflagrate = 5963.2675 / 5 = 1192.6535\r\nReal Conflagrate damage = 1192.6535 * 4 = 4770.614\r\n\r\nThe real conflag damage is 4770.614 / 4572.28 = about 4,3% higher than expected.\r\n\r\nFor Lulz we add the glyph aswell\r\n\r\nTotal Immolate Damage = (785 + 3000 * 1) * (1 + 0.15 + 0.3 + 0.06 + 0,1) = 3785 * 1.61 = 6093,85\r\nImmolate Tick Damage = 6093,85 / 5 = 1218,77\r\n\"Conflagrate\" damage = 1218,77 * 4 = 4875,08\r\nTotal Immolate Damage calculated for Conflagrate = (785 + 3000 * 1) * (1 + 0.3 + 0.06 + 0.01 + 0.1) * (1 + 0.15)  = 3785 * 1.47 * 1.15 = 6398,5425\r\nImmolate Tick Damage calculated for Conflagrate = 6398,5425 / 5 = 1279,7085\r\nReal Conflagrate damage = 1279,7085 * 4 = 5118,834\r\n\r\nThe real conflag damage is 5118,834 / 4875,08 = about 5% higher than expected.\r\n\r\n\r\nBy using the calculations for 0 spell damage you should get values matching the ingame tooltips.\r\n\r\nReservations for rounding errors as I dont know exactly where Blizzard applies rounding errors",
+      "PostedDate": "2009-07-23T08:23:49.36-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-10T00:31:42.943-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-17T12:08:54.577-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-17T14:42:54.91-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-14T02:45:13.22-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-30T12:01:43.323-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-30T18:28:57.203-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:15.41-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:21.377-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

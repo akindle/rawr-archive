@@ -1,0 +1,85 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-09-16T18:11:31.803-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When I try to load my character \"Лиосса\" from EU-Подземье I recieve this error:\nAny other character loads normally.\n \nStep Name: Get Character\nDescription: Rawr encountered an error retrieving the Character - Лиосса@EU-Подземье from the armory\nIndex was outside the bounds of the array.\n   at Rawr.Wowhead.GetItem(String site, String query, Boolean filter)\n   at Rawr.Item.LoadFromId(Int32 id, Boolean forceRefresh, Boolean raiseEvent, Boolean useWowhead, String locale, String wowheadSite)\n   at Rawr.Item.LoadFromId(Int32 id, Boolean forceRefresh, Boolean raiseEvent, Boolean useWowhead, String locale)\n   at Rawr.Item.LoadFromId(Int32 id, Boolean forceRefresh, Boolean raiseEvent, Boolean useWowhead)\n   at Rawr.ItemInstance.get_Item()\n   at Rawr.Character.RecalculateSetBonuses()\n   at Rawr.Character..ctor(String name, String realm, CharacterRegion region, CharacterRace race, String head, String neck, String shoulders, String back, String chest, String shirt, String tabard, String wrist, String hands, String waist, String legs, String feet, String finger1, String finger2, String trinket1, String trinket2, String mainHand, String offHand, String ranged, String projectile, String projectileBag)\n   at Rawr.Armory.GetCharacter(CharacterRegion region, String realm, String name, String[]& itemsOnCharacter)\n \n \nAny idea why I can't load my character?",
+    "LastUpdatedDate": "2013-05-16T05:25:04.697-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-07-17T05:18:01.827-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] Index was outside the bounds of the array",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 13663
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Found that was core of problem.\r\nIt's \"White Tuxedo Shirt\", from Noble Garden Ivent and \"Tabard of Summer Skies\" from Midsummer Fires.",
+      "PostedDate": "2009-07-18T07:46:23.327-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-19T07:30:08.363-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This problem is still an issue...",
+      "PostedDate": "2009-08-19T07:30:52.52-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I think this one might have to do with the localization. I got an error on this Item when loading from wowhead.",
+      "PostedDate": "2009-08-20T08:14:00.06-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The Item is missing from the ItemCache.xml because it fails to update frolm wowhead when I load my German localization from there.\r\n\r\nAdding a fake entry in the file removes the problem until the next update:\r\n\r\n  <Item>\r\n    <ItemLevel>25</ItemLevel>\r\n    <IconPath>INV_Shirt_White_01</IconPath>\r\n    <Stats />\r\n    <Quality>Common</Quality>\r\n    <Type>None</Type>\r\n    <SocketBonus />\r\n    <LocalizedName>Weißes Smokinghemd</LocalizedName>\r\n    <Name>White Tuxedo Shirt</Name>\r\n    <Id>6833</Id>\r\n    <Slot>Shirt</Slot>\r\n  </Item>\r\n",
+      "PostedDate": "2009-08-20T08:24:56.393-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-16T18:11:31.803-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T19:01:11.76-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:56.693-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:04.697-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

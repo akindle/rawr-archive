@@ -1,0 +1,116 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Items",
+      "DisplayName": "Rawr.Base.Items"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-12-18T17:09:28.88-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "There are a lot of older items (in the latest offline download) that are missing from the optimizer, and since the Import functionality is [NYI], I've tried to add the items via \"Tools > Edit Items...\"\n \nI am able to add an item via wowhead (e.g. http://www.wowhead.com/item=48368), and it shows up (and stays) in the item list...\n \nBut when I go back to the main window, the item doesn't show up to be \"equipped,\" and is not in [available to] the optimizer list (e.g. Gear > Head) as well.\n \nI've double-checked my filters (and I haven't changed any from the default - I've even reset them to be sure), and going back into \"Tools > Edit Items...\" shows that the item still exists in the DB.",
+    "LastUpdatedDate": "2013-05-16T05:19:38.563-07:00",
+    "PlannedForRelease": "Rawr 4.0.09 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-12-12T18:07:12.99-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Items] Editing/importing items seems to add them to the cache, but are unavailable to equip. or optimizer",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 19287
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4205,
+      "FileName": "Screen shot 2010-12-12 at 6.06.58 PM.PNG",
+      "DownloadUrl": ".\\4205"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "1) You are REALLY confused about what functions do what\r\n2) Adding an item to the database doesn't automatically equip it, nor should it\r\n3) Adding an item to the database doesn't automatically mark it as available to the Optimizer, nor should it\r\n4) You describe that when you add the item to the database it doesn't show up in Gear > Head which is a CHART. If its not showing up there, you most likely have it filtered out, or it's an Item that isn't relevant to your class, like Defense Plate for a DPS Warrior. Or you tried to add an \"____ of the Bear\" or whatever type of item, which we don't directly support. You have to go into the Item Database and change the stats on the item to whatever it is that you needed.\r\n5) If none of the above is making it work, then we still have an issue and we need your Character.xml file and need to know what model, etc.",
+      "PostedDate": "2010-12-12T18:33:49.59-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Also check your version.  I had this issue with a prior version.  Uninstalling from Windows then redownloading from the web version resolved it.",
+      "PostedDate": "2010-12-12T21:03:19.18-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-13T11:08:51.73-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "1) You are either a REALLY tired developer or REALLY don't have a lot of experience with HCI .. I'm leaning towards the former. ;-)\r\n2) I'm not expecting it to equip it automatically. I'm expecting to be available to *select* it to equip it.\r\n3) I'm not expecting it to add it automagically to the optimizer. I'm expecting to be *able* to add it to the optimizer if I wish.\r\n4) I know it's a CHART, and I know how to USE it - I told you the item, I told you the filters I have set up, although I should have mentioned that I'm a shammy and it's shammy (lower) t9 gear. A headpiece. Made of mail. That I was rocking for awhile.\r\n5) I believe it is still an issue .. and rpgo-CharacterProfiler doesn't seem to be able to spit out profiles any more .. is there another/a better way to provide character data?",
+      "PostedDate": "2010-12-13T20:19:51.827-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Actually Jothay, I had a similar issue myself. When I was trying to add the ilvl 308 version of the Quicksliver Amulet to the default data list:\r\n\r\na) the item would not show up in the edit item listing until after I close out the edit item form\r\nb) the item would not show up in the graph until I restarted the program\r\nc) However, the item would come up in the drop down list after closing the edit item listing but before restarting the program.",
+      "PostedDate": "2010-12-13T20:34:38.28-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I resolved this for myself and it was just not understanding how it worked.\r\n\r\nWhen I first opened Rawr and went to start creating my Mage from scratch, I didn't take into account the the only gear it would show you to choose from was the gear FOR YOUR CLASS.    So I unknowingly started as a blank \"Druid\" and added a \"Mage\" item.  I was then seeing it in the item cache filter but it still wasn't showing up in the gear lilst when I went to \"choose\" it wear.\r\n\r\nChanging to \"Mage\" now allows me to see the correct gear.    Hope that helps.",
+      "PostedDate": "2010-12-15T18:21:04.403-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-16T12:59:25.507-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "One of the changes I did recently may have fixed this.",
+      "PostedDate": "2010-12-16T13:06:31.62-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Had you set your Race to a Horde Race yet? It wasn't showing up for me (except for the Item Browser) and then I switched to Orc from Night Elf and it showed up.\r\n\r\nI'm betting that's what happened, because when I start the process as an Orc, it shows up about a second after clicking ok on the Add Item dialog.\r\n\r\nI'm also committing another piece that should help ensure it gets added",
+      "PostedDate": "2010-12-16T18:53:51.783-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-16T18:56:13.383-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm having a similar issue, but with Cata items, and I haven't changed my race and haven't messed with the default options on Rawr.  I'll give a quick example, this particular item is \"Tunic of Sinking Envy\" (http://www.wowhead.com/item=58131)  The item is in the cache but I cannot equip it, because it is not shown.  I have a Night Elf Druid Cat, always have.  I go and type it in to check the cache, and it is there, however if i type it in the find under chest and the bar turns red.\r\n\r\nEadric US- Thrall Night Elf Druid Cat",
+      "PostedDate": "2010-12-18T13:17:55.067-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-18T17:09:28.88-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:27:10.36-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:38.563-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

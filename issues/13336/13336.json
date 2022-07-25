@@ -1,0 +1,131 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSDK",
+      "DisplayName": "Rawr.DPSDK"
+    },
+    "ClosedComment": "This issue has been open for 30&#43; days without response. If this is still an issue, please resubmit with current files and references to the versions affected.",
+    "ClosedDate": "2009-09-16T17:49:54.16-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When using the optimizer occasionally, and when building an upgrade list, sometimes gem selections will occur that make no sense whatsoever. Building an upgrade list and viewing offhand weaponry, Remorse was actually listed as a downgrade compared to Last Laugh, which should not be the case. When examining the situation, Rawr had actually replaced almost all of the +16 str gems with +8str +8hit gems, resulting in a much lower estimated DPS for that equipment choice.\n \nFor my gear set, Rawr Upgrade List stated Remorse was an 8dps downgrade from my current offhand. Actually equipping the item on the sheet yields a 20dps upgrade. I did notice a Source Code update mentioning fixing some optimizer issues, but saw nothing specific to this. If this problem is known, then disregard.",
+    "LastUpdatedDate": "2017-11-27T11:04:21.087-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-05-26T12:13:39.52-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSDK] Odd Behavior From Optimizer/Upgrade Lists",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13336
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1933,
+      "FileName": "devwar-dk-dw.xml",
+      "DownloadUrl": ".\\1933"
+    },
+    {
+      "FileId": 1999,
+      "FileName": "devwar-dk-dw - Copy.xml",
+      "DownloadUrl": ".\\1999"
+    },
+    {
+      "FileId": 2002,
+      "FileName": "devwar-dk-dw-upgrades.xml",
+      "DownloadUrl": ".\\2002"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "With the release of version 2.2.7, the DPSDK module is still making strange optimizer suggestions, such as replacing two +16 str gem in t7 chest with a +8str/+8crit and a +27str gem to attain the stamina socket bonus. Also doing odd suggestions with other gemming/enchanting to sub-optimal gems, like +8expertise/+12stam in a red socket, or replacing glove/boot/helm enchants with ones yielding lower dps results.\r\n\r\nAll of these optimizer results tend to yield lower optimized numbers than the currently equipped gear. This may still be somehow related to rotations as some of these optimizations were run with 4pc T7 bonus breaking (although some were run without 4pc t7 bonus equipped).",
+      "PostedDate": "2009-06-22T09:05:33.123-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Since rotation is specified manually rather than automatically derived, there are still issues with modeling the 4pc T7 bonus.  Enabling the automatic RP management may correct that particular issue.\r\n\r\nThe issue with the gems you state is odd and shouldn't happen.  This suggests either some sort of issue with the enchants/gems/gear specified for the optimizer or it suggests that there are still calculation issues with the model.\r\n\r\nI see that you attached a character file.  Should I use this for testing?  Or would you prefer that I use a newer one?  If you'd prefer a newer one, would you attach that?",
+      "PostedDate": "2009-06-22T10:13:10.39-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Heres my newer xml file, the older one was from 2.2.5 or 2.2.6, can't remember which.\r\nHere are also some images I took from the optimizer, to show its odd behavior.\r\n\r\nhttp://devwar.net/images/oddoptimize.jpg\r\nhttp://devwar.net/images/oddoptimize2.jpg\r\n\r\nOne other note, I've listed a couple weapons as unique on my item cache since I don't have two of them to optimize with, although in the 2nd shot you can see that, while no new set bonuses were appearing, Rawr still optimized oddly, and for a decrease in overall DPS even with a significantly better weapon in the OH.",
+      "PostedDate": "2009-06-22T11:25:49.06-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-06-22T11:25:50.88-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The only metric that DPSDK currently does is for DPS.  Stamina is not given any sort of weight or value.  So, at a glance, the results in http://devwar.net/images/oddoptimize.jpg don't seem too off.\r\n\r\nThe other image definitely shows odd behavior.  I'll run some tests with your character file shortly and see what I can find.",
+      "PostedDate": "2009-06-22T12:00:06.277-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I downloaded your file and did some testing.\r\n\r\nOne thing I noticed is that you did not have any gems selected.  This could be part of the issue you were seeing.  I got the optimizer to function normally for most attempts.  However, once I equipped the gear set found by the optimizer, future runs of the optimizer returned sets with less DPS.  I'm not entirely sure why.  I remember seeing such results in the past so maybe it's expected from the optimizer.\r\n\r\n(I did my tests after equipping the Spiked Titansteel Helm to ensure that the 4pc T7 bonus did not enter the picture.)\r\n\r\nIt seems to me that the 4pc T7 bonus really needs to be modeled outside of the rotation configuration.",
+      "PostedDate": "2009-06-23T12:53:01.203-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "My mistake, I was under the impression that gem choices were selected from the Gemming Templates, and not the gear list. Still, after selecting the gems I wanted to be used for optimization, and removing t7 pants/head from my optimization settings, optimizer results SEEM to be slightly less inaccurate.\r\n\r\nAnother problem I am still encountering along these lines, though, is, that when building an upgrade list, sometimes odd results in DPS increase show up with no noticeable difference in the gear suggested; taking the attached upgrade list, one example being Ring of Scarlet Shadows showing a 70-some-odd DPS gain, when, in fact, it should do nothing of the sort. Also, the suggestion of upgrading to the verdungo's barbarian cording netting a similar increase in DPS, when equipping that set in fact yields no such increase as well.",
+      "PostedDate": "2009-06-23T14:26:14.92-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-06-23T14:26:19.837-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-19T12:50:26.187-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-16T17:49:54.16-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:53:02.267-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:21:17.93-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:21.467-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:26.483-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:04:21.087-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

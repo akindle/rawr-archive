@@ -1,0 +1,120 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Bear",
+      "DisplayName": "Rawr.Bear"
+    },
+    "ClosedComment": "Rawr 4.1.0 Released",
+    "ClosedDate": "2011-03-10T18:49:32.417-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "4.0.20.0b, Bear model\n \nThis version of Rawr introduces a new multiplier for armor, which increases a bear's apparent survivability by a lot due to the increase in effective health that results.  However, the existing survival soft caps were put in place when most bears' actual survivability was about the same as it is now due to a ghosted talent.  If the same gear has a much higher survival metric than before but that represents the same actual survivability, using the same survival soft caps will result in transitioning from stamina to agility at lower levels than before.\n \nThe new armor multipler Rawr is using is higher than in the live game even after the 4.0.6 patch.  To test this, take an unbuffed bear with normal bear talents and equip a single piece of gear, say a pair of 346 wrists.  Base armor on this is 687; Rawr shows effective armor as 3578 (a 5.2 multiplier) while in-game in bear form I am seeing 2959 armor (a 4.3 multiplier).\n \nSummary: bear form armor multiplier does not appear to be correct.  Even if it were correct, however, the survival soft caps would need to be reconsidered anyway.\n \nWith both of these effects combined, Rawr results for bear currently seem to be pretty weird and I can't see that they are reliable.  For example, it turns out that you can get way past the survival soft cap for Tier 11 *heroic* raids in only 346 gear (544K vs. 525K).  This seems implausible, to say the least.  I mean, we're awesome by definition, but I don't think we're *that* awesome.",
+    "LastUpdatedDate": "2013-05-16T05:18:38.087-07:00",
+    "PlannedForRelease": "Rawr 4.0.20 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-02-21T02:35:30.583-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Bear] Armor Multiplier, Survival Soft Caps",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 20043
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Seems to be that the code is:\r\nBaseArmorMultiplier = 2.2f * (1f + 0.26f * talents.ThickHide) * (1f + 0.11f * talents.ThickHide) - 1f,\r\n\r\nThe 0.26 is fine, since that's the .78 multiplier in Bear, but the .11 is wrong, as the base version is simply 0.1 at 3 ranks (.04/0.7/0.1)\r\n\r\n2.2 * 1.78 * 1.1 = 4.3076 which would seem to match your results. (There may have been some confusion, as the .11 per rank of Thick Hide was the old Bear Form multiplier, whereas the 0.26 is the new one. So looks like the old base 10% was changed into the new Bear one, leaving the old Bear one as well.)\r\n\r\nAs the survival soft cap is affected by armor, things should return to 'normal' when this bug is fixed. \r\n\r\nIn regard to pre- and post-patch: it was shown that the pre and post-patch damage intake for Bears with the bugged Survival of the Fittest talent is roughly the same as the new Thick Hide, so provided the soft caps were done with that in mind originally, it should be pretty similar other than for magical damage fights.",
+      "PostedDate": "2011-02-21T08:57:34.387-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-02-21T10:23:32.15-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yes, there needs to be a '/3' after the 2nd 'talents.ThickHide'. And yeah, can we rebalance the default survivability soft caps? Multiplying each one by about 1.2x seems about right to be, but I dunno.",
+      "PostedDate": "2011-02-21T11:18:32.83-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Rawr4/Rawr.Bear/CalculationsBear.cs:\r\n[57819] BaseArmorMultiplier = 2.2f * (1f + 0.1f * talents.ThickHide / 3f) * (1f + 0.11f * talents.ThickHide) - 1f,\r\n[57921] BaseArmorMultiplier = 2.2f * (1f + 0.26f * talents.ThickHide) * (1f + 0.11f * talents.ThickHide) - 1f,\r\n\r\nIn 57819, the first expression with Thick Hide is for the 3/7/10% increased armor from cloth and leather, and the second expression with Thick Hide is for the armor bonus from Bear Form.  In 57921, the first expression was incorrectly modified -- all that needed to be done was to change the 0.11 in the second expression to be 0.26.  The correct line should be:\r\n\r\nBaseArmorMultiplier = 2.2f * (1f + 0.1f * talents.ThickHide / 3f) * (1f + 0.26f * talents.ThickHide) - 1f,",
+      "PostedDate": "2011-02-21T13:53:07.903-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-02-21T13:55:49.017-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Fixed by commit 58218",
+      "PostedDate": "2011-02-21T19:35:09.113-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "EvanM: yes, pre- and post-patch damage intake is roughly the same.  That's why, if there is an increase in armor (modelled by Rawr) that is balanced in the game by removal of a ghosted talent (not modelled by Rawr) then Rawr will be unbalanced in respect of the survival soft cap unless the latter is increased by about the same amount as the damage reduction value of the ghosted talent.\r\n\r\nPut another way, a gearset which exactly met one of the soft caps before the 4.0.6 changes should ideally exactly meet the new soft cap after the change, in order for Rawr to recommend the same gearing.  (This of course assumes that the old soft cap values were reasonable, which as we're only 1/13 heroic right now I can't really confirm)\r\n\r\nOf course, these are just arbitrary values anyway and people who are more familiar with Rawr can just crank them up themselves.  But it's nice if Rawr's defaults give plausible results.",
+      "PostedDate": "2011-02-22T01:58:28.467-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I actually am not sure why the soft cap should go up, in either case though.\r\n\r\nFor a Bear that had the ghosted talent, incoming damage is still roughly the same with the armor talent adjustment. For a Bear without the ghosted talent, incoming damage is lower.\r\n\r\nIn no case other than magical damage is incoming damage higher, so why would the soft cap increase? If anything, it should decrease if it was factored without the ghosted talent or remain the same if it was factored with the ghosted talent.\r\n\r\nThe main reason the soft cap would be off in the .20 release would be the armor multipliers being so high, which will increase passive mitigation to the point where you meet the survival soft cap much sooner that you 'should' in reality. With the armor fix, it shouldn't be needed to adjust the soft cap if the existing value were sound prior to the patch.",
+      "PostedDate": "2011-02-22T02:17:51.2-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "EvanM, Rawr did not model the 'ghosted' talent before. Now that it models the armor buff, the survival soft caps need to go up accordingly.",
+      "PostedDate": "2011-02-22T09:30:57.39-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Why would that be the case? Gaining the additional Armor makes us gain more passive mitigation, which actually lowers how much survival we need rather than increases it.\r\n\r\nWhy would we need to stack more survival than prior to the patch when we have gained a bunch of free survival?\r\n\r\nIf Druids survived at the survival soft cap prior to the patch, they will survive either exactly the same (if they had PotP) or better (if they didn't) after the patch, so why would we aim to have more survival than that?",
+      "PostedDate": "2011-02-23T02:39:30.11-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "We don't need to stack more *real* survival after the patch, as our real survival has not changed: the armor buff is balanced out in-game by the loss of the ghosted talent.\r\n\r\nHowever, because Rawr's model has changed to include the armor buff but *not* the removal of the ghosted talent, any gearset will have a higher survival *score* than it did before.  It will *look* better to Rawr without actually *being* better.  Its survival *score* will be higher, and therefore closer to any soft cap that has been set.\r\n\r\nThe way to fix that is to increase the soft cap so that gear scores the same *relative to the soft cap* as it did before the armor modelling change.",
+      "PostedDate": "2011-02-23T03:16:23.367-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Indeed, but you're not really considering that real survival actually _was_ increased for a large number of bears.\r\n\r\nThose who didn't have ghosted PotP (which are quite a few, if not the majority of Bears) certainly don't need to stack 25% more survival than they did prior to the patch, as they are taking 12% less damage than they did before. That just isn't very logical.\r\n\r\nHowever, even if one wanted to compensate for the bugged talent, the proper value would be the actual ghosted damage reduction of 12%, not 25%.",
+      "PostedDate": "2011-02-24T02:56:27.2-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The current soft caps were set out of Astrylian's personal experience, I believe.  I'm assuming that he did have the ghosted talent, as will most people who were bears before Cataclysm arrived.  It's true that different arguments apply to people who went bear more recently, but Rawr's recommendations were probably not working for them before and I'm trying to do \"apples to apples\" here.\r\n\r\nAs to the amount, yes I agree that something like a 12% lift is probably a good starting point until we again get someone who is actually experienced with the higher levels of content to give us a better guideline based on what is working for them.  I agree that the 25% or so that is required to bring 4.0.20 back into line is way too much now that the model has been fixed.",
+      "PostedDate": "2011-02-24T03:39:56.91-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-10T18:49:32.417-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:25:52.797-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:38.087-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

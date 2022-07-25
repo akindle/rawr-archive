@@ -1,0 +1,111 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtPaladin",
+      "DisplayName": "Rawr.ProtPaladin"
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Rawr tells me that my armor provides 55.86% damage reduction and my CTC is 100.00%.  I calculate that my guaranteed damage reduction is\n \n1 - 0.6*0.4414 = 0.73516 with Holy Shield\n1 - 0.7*0.4414 = 0.69102 without Holy Shield\n \nRawr tells me it is 0.6425 = 1 - 0.81*0.4414\n \n(see Karm capped.xml)",
+    "LastUpdatedDate": "2013-02-21T18:24:48.83-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-06-22T12:46:56.113-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtPaladin|ProtWarr] Is the Guaranteed Reduction calculation correct for block-capped prot paladin?",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 21011
+  },
+  "FileAttachments": [
+    {
+      "FileId": 5075,
+      "FileName": "Karm capped.xml",
+      "DownloadUrl": ".\\5075"
+    },
+    {
+      "FileId": 5076,
+      "FileName": "Karm squishy.xml",
+      "DownloadUrl": ".\\5076"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "If Rawr is basing its calculations on 19% DR per blocked attack, as it would appear, that might explain why Rawr advises paladins to stack stamina instead of mastery.",
+      "PostedDate": "2011-06-23T05:42:41.123-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-06-23T14:16:33.07-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-06-23T14:17:34.54-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-06-29T21:22:10.833-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Block cap is 102.4% avoidance.  Yours, listed under \"Avoidance + Block\", is 96.8637%.  Unless I'm missing something here, you're not block-capped.\r\n\r\nFurther, \"guaranteed reduction\" never takes block into account, even if you're block-capped.  It does, however, take Vindication and Inspiration into account, both of which you have checked.\r\n\r\nGuaranteedReduction = 1 - ((1 - armorReduction) * (1 - damageTakenReduction) * (1 - bossDamageDoneReduction))\r\nGuaranteedReduction = 1 - ((1 - 0.5586) * (1 - 0.1) * (1 - 0.1))\r\nGuaranteedReduction = 1 - (0.4414 * 0.9 * 0.9)\r\nGuaranteedReduction = 1 - (0.4414 * 0.81)\r\nGuaranteedReduction = 1 - 0.357534\r\nGuaranteedReduction = 0.642466",
+      "PostedDate": "2011-06-29T22:22:09.83-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I misspoke.  Block cap is 102.4% avoidance when comparing against a level 85 mob.  Rawr compares against the level of the boss selected under boss handler, which in this case is 88.  Thus, in Rawr you're looking for \"Avoidance + Block\" = 100% to be block-capped.",
+      "PostedDate": "2011-06-29T22:24:10.86-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Taking this further...\r\n\r\nLet's assume you get some dodge to get exactly block-capped without changing other stats.  We've established that your Guaranteed Reduction is 0.642466.  Here's how to calculate GuaranteedReductionWhenBlockCapped:\r\n\r\nGuaranteedReductionWhenBlockCapped = 1 - (BlockChance * (1 - GuaranteedReduction) * (1 - BlockReduction) + (1 - BlockChance) * (1 - GuaranteedReduction))\r\nGuaranteedReductionWhenBlockCapped = 1 - (0.7043 * (1 - 0.642466) * (1 - 0.4) + (1 - 0.7043) * (1 - 0.642466))\r\nGuaranteedReductionWhenBlockCapped = 1 - (0.7043 * 0.357534 * 0.6 + 0.2957 * 0.357534)\r\nGuaranteedReductionWhenBlockCapped = 1 - (0.15108671772 + 0.1057228038)\r\nGuaranteedReductionWhenBlockCapped = 1 - 0.25680952152\r\nGuaranteedReductionWhenBlockCapped = 0.74319047848\r\n\r\nThe only real concern I have with considering block-capping is that if you're even one rating point shy of being block-capped, your guaranteed reduction is 0.6425, but adding in that single point bumps the number up to 0.7432.  I would have to question the significance of this stat if we were to include block-capping.",
+      "PostedDate": "2011-06-29T22:59:07.15-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks for explaining.  I forgot about the other sources of DR.\r\n\r\nBy the way, \"Karm capped.xml\" was block-capped in 4.1, when this question was posted.\r\n\r\nI don't buy the \"one rating point shy\" argument.  You could say the same about haste thresholds that give extra ticks on dots or heals.  Prior to 4.0 you could have said the same thing about uncrittable. ",
+      "PostedDate": "2011-06-30T07:43:00.277-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Haste is different, as increasing haste will still speed up other spells and will always have another step where haste will give yet another tick.\r\n\r\nI don't remember if not being crit-immune affected Guaranteed Reduction at all, but your point is noted.\r\n\r\nThis affects the ProtWarr model as well.",
+      "PostedDate": "2011-06-30T17:26:56.46-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-06-30T17:27:14.407-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-10-01T17:11:23.357-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:24:48.83-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "271911",
+    "ThreadId": "79428",
+    "Html": "<p>Currently in the cat module I know the various crit caps are taken into account, but it is difficult for the user to know if where they are at with regard to the various caps (other than the relative stat values chart which can be a minefield).</p>\r\n<p>The displayed crit % is, I believe, an average crit rate for the fight which takes into account idol &amp; trinket procs etc.&nbsp;&nbsp; Would there be a relatively simple way to display some more information in a hover tooltip ?&nbsp;&nbsp;&nbsp; I have had a bit of a think about this for a while and am struggling to come up with a meaningful way to display this info as there is a lot of variables involved such as the aforementioned procs.&nbsp;&nbsp; If you include the idol in your &quot;base crit&quot; (as it is up pretty consistantly in a lot of fights then also show a % with trinket procs (complicated if you have 2 proccing trinkets) + some info on what the various crit caps are - once again this is complicated by not being hit/expertise capped as well.</p>\r\n<p>&nbsp;</p>\r\n<p>As I said - there doesn't seem to be an easy way to do this.&nbsp; I just feel a bit lost on my druid when it comes to crit.&nbsp;&nbsp; I know my hit cap, expertise cap, ArpPen soft &amp; hard caps and know where my current gear places me in relation to them but all I know with crit is that I must be getting &quot;close&quot; to the crit caps with my trinkets up and think I MAY have seen Rawr make a gear change due to this to include a haste item instead of a crit item&nbsp; - but I am not really sure.</p>\r\n<p>&nbsp;</p>\r\n<p>Just thought someone else's brain may be able to puzzle out a neat way to display this information - maybe even a custom chart rather than a hover box.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-12-30T23:40:32.717-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "271912",
+    "ThreadId": "79428",
+    "Html": "<p>Technically this would be in the Feature request in the Issue panel, but there are some displays that I've always had issues with.</p>\r\n<p>a) One is the Crit cap you speak of. Now not high on my issue but it is one of the things that semi-annoys me.</p>\r\n<p>b) ArP display confuses the hell out of me. I have to think backwards on what it is trying to say (when it says 17% ArP, it's really saying that 17% of the 1/3 armor that ArP goes through is not being mitigated)</p>\r\n<p>c) Haste in the Mage Model REALLY confuses me. 1.43 = 43% raid buff haste O_o</p>\r\n<p>Also, I really like what the warrior model does and (on hover) describe where each of the numbers comes from</p>",
+    "PostedDate": "2009-12-30T23:59:15.563-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "271917",
+    "ThreadId": "79428",
+    "Html": "<p>Then you will probably like our new one even more, we still need to outfit more of the stats with it but it shows you averaged values ont eh pane and the tooltip explains sources and your&nbsp; Unproc'd and Proc'd states and how far from the caps you are with each.</p>",
+    "PostedDate": "2009-12-31T00:46:17.977-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "271921",
+    "ThreadId": "79428",
+    "Html": "<p>Aye, this is a feature request, but I don't know how it should work exactly either. Let me explain what data there is, how it works, and we can chat about how best to display it.</p>\r\n<p>The underlying data there is to display works like this...&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>There's a base set of pre-specialeffect stats that's totaled up. Lets call that <strong>statsBase</strong>.</p>\r\n<p>Then we average out all the special effects <em>except</em> ArPen and Crit. Lets call that <strong>statsAveragedProcs</strong>. In that, I convert the Agi to AP as appropriate, and drop the crit portion of it. So statsAveragedProcs contains the AP from agi procs, but not the crit.</p>\r\n<p>Then I add together statsBase and statsAveragedProcs, to make <strong>statsTotal</strong>.</p>\r\n<p>Then we use a special set of calculations on all of the Agi/Crit special effects, to come up with a list of possible crit values, and what % of the time they're each going to be up. Lets call that <strong>listCritWeights</strong>. For example, it looks something like this:</p>\r\n<ul>\r\n<li>+0%crit, 40% of the time</li>\r\n<li>+2%crit, 20% of the time</li>\r\n<li>+5%crit, 25% of the time</li>\r\n<li>+7%crit, 15% of the time</li>\r\n</ul>\r\n<p>Then we do the same thing for ArPen. Lets call that <strong>listArPenWeights</strong>.</p>\r\n<p>&nbsp;</p>\r\n<p>statsTotal, listCritWeights, and listArPenWeights are then passed on to the next major step in the calculation process, which starts determining ability crit chances, damage, etc. Using the list of possible crit chances, we can calculate the crit chance for each ability (and cap it by each ability's cap), for each one, and then average it out, weighted by the % of time that that crit bonus will be up. And then the same thing for ArPen.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>So there's alot of things we can display about this. For one thing, we could pass statsBase on as well, so that we can show the passive stats (without any special effects). We could also somehow show those lists of crit chances, down to each ability. We could display a list like the example above, for each ability, but I don't know if that would be valuable. Thoughts?</p>",
+    "PostedDate": "2009-12-31T01:23:36.777-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "271926",
+    "ThreadId": "79428",
+    "Html": "<p>At the very least I can SEE the Crit cap within DPSWarr module, using the new stat chart thingy.&nbsp; The one with all the colorful lines.&nbsp; It's under Misc(ellaneous) in the Options menu, you'll see what I mean.&nbsp; Load in my character (Soleniae, Uldum-US), check off all buffs, ratchet the increment up to 1000, and prepare yourself for the graphtacular glory that is... y'know, I really don't know where I was going with that.&nbsp; Must be the 2AM talking.&nbsp; Anyways, you can visually see where the Crit cap is where the line for Crit (and Agility, for that matter) suddenly lose some degrees.</p>\r\n<p>Now that I'm done singing the glories of the new stat graph, it is severely limited in that it only provides a vidual representation, but doesn't supply the exact values that are somewhat helpful in this matter.&nbsp; That aforementioned tooltip info is probably the best place to place this data.</p>\r\n<p>[edit] Did I say 2AM?&nbsp; I meant 3AM.&nbsp; And by 3, I mean, nearly 4.&nbsp; Yeeeeah.&nbsp; I swear I'm not an insomniac.</p>",
+    "PostedDate": "2009-12-31T01:44:13.583-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

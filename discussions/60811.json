@@ -1,0 +1,82 @@
+[
+  {
+    "Id": "206050",
+    "ThreadId": "60811",
+    "Html": "<p>There seems to be no explanation of how the Incoming Damage field is to be used.&nbsp; I tried to lower it because my DK is currently level 68, but I can only get it down to 10,000, 10,000 what?&nbsp; Can anyone explain how this field is supposed to be used / what units its measured in.</p>",
+    "PostedDate": "2009-06-26T13:05:21.08-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "206063",
+    "ThreadId": "60811",
+    "Html": "<p>It's incoming damage. The unit it's measured in is damage. It works in unison with the next field that says the frequency of those hits. That one is damage per hit, the next one is hits per second.</p>\r\n<p>&nbsp;</p>\r\n<p>Holy</p>",
+    "PostedDate": "2009-06-26T13:36:14.527-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "206086",
+    "ThreadId": "60811",
+    "Html": "<p>I agree that I need to provide additional verbage on how to use the options and the fight model.&nbsp;</p>\r\n<p>Holymist has it very close.</p>\r\n<p>It's how much damage is incoming over any period of time.&nbsp; Avoidance is factored in as a % of raw damage reduction.&nbsp; The handle the velocity of Boss hits, is to model the expertise/parry-hasting that can happen.&nbsp; And given that most of the models are setup for level 80 toons.&nbsp; It will not always give very accurate results for toons below that level.</p>\r\n<p>The user can tune how much damage they expect to see incoming over a given period of time.&nbsp; Increasing this value places more value on Avoidance.&nbsp; Decreasing this value will decrease Avoidance values for Gear and Gems and such.</p>",
+    "PostedDate": "2009-06-26T14:28:26.893-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "206090",
+    "ThreadId": "60811",
+    "Html": "<p>Over what period of time? &nbsp;I dont see this other field holymist is talking about that lets you set frequency of hits. &nbsp;Theres a fight length slider but it doesn't change anything on the weightings and seems to just sit at 10. &nbsp;So does this mean 10,000 damage or 100,000 damage over a time period of 10 minutes (fight length)? The # of targets also has no affect on the stat ratings.</p>",
+    "PostedDate": "2009-06-26T14:54:54.627-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "206798",
+    "ThreadId": "60811",
+    "Html": "<p>in the next release I've changed the model to reflect Incoming DPS and Mitigation will also be counted in DPS.</p>\r\n<p>I agree that the previous releases, the slider wasn't being properly implemented, and with this change, it's unnecessary.&nbsp; The boss hit speed is for factoring parry-hasting for those who are not expertise capped.&nbsp;</p>\r\n<p># of targets also properly effects threat as expected.</p>",
+    "PostedDate": "2009-06-29T15:43:27.617-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "206817",
+    "ThreadId": "60811",
+    "Html": "<p><em>&quot;...and Mitigation will also be counted in DPS.&quot;</em></p>\r\n<p>What does this mean?</p>",
+    "PostedDate": "2009-06-29T17:33:00.63-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "206818",
+    "ThreadId": "60811",
+    "Html": "<p>It's relative to the incoming DPS.&nbsp; So that if 100,000 is incoming and you have 40% mitiation (avoidance), then the value of mitigation will be 40,000.</p>",
+    "PostedDate": "2009-06-29T17:36:07.42-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "206822",
+    "ThreadId": "60811",
+    "Html": "<p>No, please change this back to the current system shared by the other models. Mitigation needs to scale up relative to the inverse of your damage taken %.</p>",
+    "PostedDate": "2009-06-29T17:49:21.833-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "206842",
+    "ThreadId": "60811",
+    "Html": "<p>That is how it works.&nbsp; As you take more damage, you would mitigate more damage, and therefore value of mitigation would increase.&nbsp;</p>",
+    "PostedDate": "2009-06-29T18:33:10.017-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "206857",
+    "ThreadId": "60811",
+    "Html": "<p>Well, perhaps your example was wrong. Regardless, it shouldn't be proportional to the incoming damage. A boss hitting you harder does not make Mitigation more valuable. Please fix this so that we can release 2.2.8.</p>",
+    "PostedDate": "2009-06-29T19:07:30.88-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-03-09T11:13:04.14-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Today I've got my Inet connection down and try to run Rawr, waiting for it to come back.\nI discovers than for some item (trinket, idol, ...) popupmenu where very very slow.\n \nI put some debug on, and find possibly a \"bug\".\n \nIn Item.cs, line 1159 we have : \nif (Id == 0) return null;\nif (_itemCached == null || _itemCached.Id != Id || _itemCached.Invalid)\n{\n      _itemCached = Item.LoadFromId(Id);\n}\nreturn _itemCached;\n \nBut this line is execute a lot of time with an Item Id = -1 and then try to load from internet this Item (the one with Id = -1). \nAs there is no Item with Id <=0, I choose to change the first line  to :\nif (Id <= 0) return null;\n \nAnd then Rawr, without a internet connexion, can run better except when some icon is missing but the later case is normal as Rawr must wait for the timeout to strop freezing.",
+    "LastUpdatedDate": "2013-05-16T05:21:41.21-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-02-25T04:04:26.453-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Doesn't Load Item with Id = -1",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16547
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Possible fix with commit 46971, however I do not guarantee that it will fully resolve the issue",
+      "PostedDate": "2010-03-01T11:11:47.277-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-09T11:13:04.14-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:29:42.45-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:41.21-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

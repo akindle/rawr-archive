@@ -1,0 +1,141 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Bear",
+      "DisplayName": "Rawr.Bear"
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-09T17:31:24.597-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I'm not sure if you guys realized or not but some of your Bear/Kitty base stats in the latest Beta(b6) for Night Elves is off. I maybe being picky about this, but anything to be more accurate in your calculations would help I would hope.\n \nHere is my Female druid untalented in caster form:\nhttp://img15.imageshack.us/my.php?image=wowscrnshot040709020331.jpg\n \nCurrently you have:\n \nHealth = 7237 \nStrength = 86 \nAgility = 87\nStamina = 96\nAttackPower = 120\nNatureResistance = 10\nDodge = 0.04951\n \nI am currently in the process on trying to figure out why some of your calculations are coming up off from the latest Beta build and what I'm seeing on the PTR. Thought this should help a bit.",
+    "LastUpdatedDate": "2017-11-27T10:59:27.23-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-04-08T15:37:47.843-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Bear|Cat] NE Base stats incorrect",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 12965
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1787,
+      "FileName": "CalculationsBear.cs",
+      "DownloadUrl": ".\\1787"
+    },
+    {
+      "FileId": 1788,
+      "FileName": "CalculationsBear.cs",
+      "DownloadUrl": ".\\1788"
+    },
+    {
+      "FileId": 1789,
+      "FileName": "CalculationsCat.cs",
+      "DownloadUrl": ".\\1789"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "For clarification from what I can calculate these are supposed to be the base stats:\r\n\r\nHealth: 7417\r\nStrength: 86\r\nAgility: 87\r\nStamina: 97\r\nAttack Power: 152 (in caster form)",
+      "PostedDate": "2009-04-08T16:00:34.377-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well, caster form doesn't matter (and doesn't line up with cat/bear form, so can't be used as a base).\r\n\r\nCan you compare to naked untalented cat/bear form and see if you still see a discrepancy?",
+      "PostedDate": "2009-04-08T21:18:21.593-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I've already started doing that. I'm double checking and compiling new versions of that CS file using version 32929 as a base to work from. I'm attaching what I've done so far (not much) but I've already fixed the Stamina calculations in that it is so far correct in all of my base testing.",
+      "PostedDate": "2009-04-09T05:35:19.903-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-04-09T05:35:24.12-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok, I've done as much as I could in testing Bear. Not much was changed from the last attachment and this one, but EVERYTHING comes out within acceptable numbers of what they should be (+/- 1 point). Armor, because of the \"Floor\" math function does this and I noticed about half-way of going through my gear that the Tier 7 gear will sometimes inadvertently add an extra Stamina point (resulting in an addition 10 HP). Besides that these calculations are good for Bear. I'm currently double checking Kitty calculations.",
+      "PostedDate": "2009-04-09T13:21:26.777-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-04-09T13:21:28.19-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Last post unless you guys have any further questions. I've tested the Kitty CS file and besides the base stats change and the Stamina Change, everything seems to be working fine. A few comments out of all of this:\r\n\r\na) You guys are generalizing the Stam-to-Health mechanic and not being exact in the calculations. Currently you have \"Base health + (Stam * 10)\" when in actuality it should be \"Base health + ((Stam - 20) * 10) + 20.\" The first 20 stam is point-for-point, and every other Stam point is worth 10 Health.\r\n\r\nb) I missed this while working on the Bear CS but caught it during the Kitty CS, but you guys don't add in the 5% increase to Tauren Health for Bears. you have it for Kitty though.\r\n\r\nc) I don't know the exact base stats for 80 Tauren Druids, since I don't have one, so I could not test these stats on a Tauren.\r\n\r\nI hope some of this helps in the long run though.",
+      "PostedDate": "2009-04-09T14:58:53.167-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-04-09T14:58:55.56-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The 5% health is based off base health, not total health, so can safely be included in the base health. (I believe)",
+      "PostedDate": "2009-04-09T17:05:04.297-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-09T17:31:24.597-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:58:06.167-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T16:26:39.733-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:21:12.76-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T22:45:40.733-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:57.95-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:53.47-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T10:59:27.23-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

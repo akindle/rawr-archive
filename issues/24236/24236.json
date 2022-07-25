@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Random suffix gear should be fixed in 5.4.2.  Please open a new issue if you find a new character that won't load after downloading 5.4.2.",
+    "ClosedDate": "2013-11-27T09:15:52.107-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi. My character will not load. I am able to load alts and also other peoples battle.net toons but not mine.\nHere is the error:\nSystem.IndexOutOfRangeException: Index was outside the bounds of the array.\n   at Rawr.RandomSuffix.GetStatValue(Item item, Int32 id, AdditiveStat stat) in C:\\Rawr-5.0\\Rawr.Base\\RandomSuffix.cs:line 681\n   at Rawr.Reforging.CurrentStatValue(Item baseItem, Int32 randomSuffixId, AdditiveStat stat) in C:\\Rawr-5.0\\Rawr.Base\\Reforging.cs:line 243\n   at Rawr.Reforging.ApplyReforging(Item baseItem, Int32 randomSuffixId) in C:\\Rawr-5.0\\Rawr.Base\\Reforging.cs:line 186\n   at Rawr.ItemInstance.OnIdsChanged() in C:\\Rawr-5.0\\Rawr.Base\\Items\\Item.cs:line 1399\n   at Rawr.ItemInstance.set_ReforgeId(Int32 value) in C:\\Rawr-5.0\\Rawr.Base\\Items\\Item.cs:line 1359\n   at Rawr.ItemInstance..ctor(String gemmedId) in C:\\Rawr-5.0\\Rawr.Base\\Items\\Item.cs:line 1688\n   at Rawr.Character.SetGemmedId(CharacterSlot slot, String gemmedId) in C:\\Rawr-5.0\\Rawr.Base\\Character.cs:line 689\n   at Rawr.Character.set__wrist(String value) in C:\\Rawr-5.0\\Rawr.Base\\Character.cs:line 706\n   at Rawr.Server.Controllers.CharacterController.ConvertBattleNetJsonToCharacter(String json, String region) in C:\\Rawr-5.0\\Child Projects\\Rawr.Server\\Rawr.Server\\Controllers\\CharacterController.cs:line 400\n   at Rawr.Server.Controllers.CharacterController.HandleBattleNetCharacterRequest(String characterRegionServer) in C:\\Rawr-5.0\\Child Projects\\Rawr.Server\\Rawr.Server\\Controllers\\CharacterController.cs:line 97",
+    "LastUpdatedDate": "2013-11-27T09:15:52.107-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2013-05-09T11:14:35.68-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Fixed"
+    },
+    "Summary": "specific character wont load",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 24236
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "First things first, tell us specifically what character won't load.  Name and realm.",
+      "PostedDate": "2013-05-09T12:30:55.087-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Duh, sorry about that:\nServer: Firetree (US)\nName: Ammonia",
+      "PostedDate": "2013-05-09T13:03:48.723-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Alright, good news and bad news.  Bad news is, Rawr is choking on your bracers, which are some type of random \"of the something\" gear that it doesn't recognize.  Good news is, that's the whole problem - equip different bracers and you can load your character again.  In the meantime, I'll figure out what to do about the random enchantment gear as soon as I can.  Thank you!",
+      "PostedDate": "2013-05-09T20:00:56.877-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Got same issue Rakot EU-Frostmane",
+      "PostedDate": "2013-05-13T04:19:00.54-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sorry for the delay... That was indeed the issue and it is resolved now.\nThanks very much.\r\n\r\nJohn",
+      "PostedDate": "2013-06-05T11:59:31.623-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I have same issue. Knojac -Moon Gaurd",
+      "PostedDate": "2013-10-01T07:21:44.893-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Knojac, yours loads fine here.  Did you try the new 5.4.1 build?",
+      "PostedDate": "2013-10-01T16:26:41.65-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-11-27T09:15:52.107-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+<div class="wikidoc">
+<h1>Troubleshooting</h1>
+<p>If you cannot start Rawr or frequently run into Crashes/Errors, this is the page for you.</p>
+<h2>&gt;&gt;ISSUES SHOULD BE POSTED IN THE <a title="Issue Tracker" href="WorkItem/AdvancedList.aspx" target="_blank">
+ISSUE TRACKER</a> PER THE <a title="Posting Guidelines" href="wikipage?title=PostingGuidelines" target="_blank">
+POSTING GUIDELINES</a>&lt;&lt;</h2>
+<p><strong>These Issues are preventing people from running Rawr4, follow the advice and you won't see the same problems.</strong></p>
+<p><strong><span style="color:#ff0000">THE MOST COMMON ISSUE IS USING AN OUT OF DATE SILVERLIGHT (AKA SILVERLIGHT 3 OR EARLIER) YOU NEED SILVERLIGHT 4.</span><br>
+</strong></p>
+<ol>
+<li>Windows update may not be enough to get you the current Silverlight version, which is what we are using for Rawr4.<br>
+- Go to the Silverlight download page so you can be prompted to get the latest version:
+<a title="Microsoft Silverlight Website" href="http://www.microsoft.com/getsilverlight/Get-Started/Install/Default.aspx" target="_blank">
+http://www.microsoft.com/getsilverlight/Get-Started/Install/Default.aspx</a><br>
+- <strong>FIXED:</strong> You should be getting appropriately popped for SL4 now </li><li>Cannot Launch Rawr because of a <strong>Parser Error</strong><br>
+- See #1 </li><li>Cannot Launch Rawr because of an <strong>IsolatedStorage_Operation_ISFS</strong><br>
+- You denied Rawr the ability to make a Cache/Use Storage. Go into Silverlight settings and allow it.
+</li><li>Cannot Launch Rawr because the <strong>ItemCache </strong>loads in and breaks due to
+<strong>HolyShield being a bad Trigger</strong> (or some other similar nonsense)<br>
+- You need to delete your Rawr3 saved caches, Right-click the window, choose Silverlight go to the last tab (named Application Storage) and select elitistjerks.com then click the Delete button, then Relaunch Rawr (or refresh the browser page)
+</li><li>You got into Rawr but there are <strong>no Items present</strong><br>
+- Your ItemCache didn't load for whatever reason. Go to Tools &gt; Reset All Caches to redownload the new data<br>
+- DPSDK also had this issue specifically, this was a filtering bug and has been fixed for 4.0.11 (current release 4.0.10)
+</li><li><strong>Install Offline</strong> button <strong>doesn't work</strong><br>
+- You probably already installed it offline, right click anywhere and it will tell you &quot;Remove Application&quot; in the menu if you have
+</li><li><strong>Google Chrome Users</strong>, it looks like you need to force the browser to refresh the page instead of running the cached version using
+<strong>Shift&#43;F5</strong>. Otherwise you will see the old version and that can cause other crashes since new data files have been posted.
+</li></ol>
+<h2>Common Preventions of Rawr2's Launch</h2>
+<p><strong>The application failed to initialize properly (0xc0000135)</strong><br>
+If you get a 'The application failed to initialize properly (0xc0000135)' or similar error when starting Rawr you most likely don't have .NET Framework installed. You can get it from http://www.microsoft.com/NET/.
+<br>
+<br>
+<strong>Cannot access a disposed object</strong><br>
+If you get a 'Cannot access a disposed object' error, that's a bug in an old version of the .NET Framework.
+<strong>Uninstall all versions</strong> of .NET Framework that you have, and reinstall the latest from Microsoft (3.5SP1)<br>
+<br>
+<strong>Could not load file or assembly Rawr.Base</strong><br>
+You have to fully unzip Rawr from the zip file.<br>
+<br>
+<strong>Using Rawr 2.x with Mono</strong><br>
+If you're running Rawr via Mono on OSX/Linux, you'll need to use Mono v2.2. The latest version (v2.4) has a bug that prevents Rawr from running. Some users have reported that the issues with 2.4 have been resolved, however others still report crashing.<br>
+<br>
+<strong>Using Rawr 4 with Mono/Moonlight</strong><br>
+Unfortunately, the Silverlight port to Linux (Moonlight) will not be able to support the Silverlight 3 protocols in time for Rawr3. At the time of Rawr3's full release, Rawr 2 will be retired and, unless a drastic change occurs with Moonlight, Linux Users will
+ no longer be able to run Rawr.<br>
+<br>
+<strong>TalentPicker.cs has Thrown an Exception</strong><br>
+You may see this if you are running a Mac OS and trying to launch Rawr2 with Parallels. Try running it with bootcamp instead.</p>
+<h2>Troubleshooting Questions: Launching Rawr</h2>
+<ol>
+<li>Did you recently update to the current version (unless told otherwise for specific model use)?
+<ol>
+<li>Try going back a version and see how it behaves differently </li></ol>
+</li><li>Did you recently perform a Windows Update or install any major component on your system (Drivers, etc.)?
+<ol>
+<li>Try rolling back using the Windows System Restore setting </li></ol>
+</li><li>Did you install the correct version of .NET for your Operating System?
+<ol>
+<li>Try searching for the installer that best matches your OS, taking note of the Version (3.5 SP1), type (x86 or x64) and OS it's for (XP, Vista, 7)
+</li></ol>
+</li><li>Did you install Rawr using the <a href="/wikipage?title=url%3ahttp%3a%2f%2fletmegooglethatforyou.com%2f%3fq%3dBeginners%2bGuide%2b-%2bHow%2bTo%2bUnzip%2band%2bZip%2bFiles%26l%3d1&referringTitle=Troubleshooting">
+Installation Instructions</a> to a directory where you have full access rights, such as My Documents or the Desktop?
+<ol>
+<li>We don't recommend installing Rawr to the Program Files directory as on many systems, even if you do have access rights, it won't have the ability to call and edit it's files where necessary.
+</li><li>We don't recommend extracting a new version of Rawr onto the same directory as a previous version without deleting the original. Several files may get their wires crossed if you do and that can cause crashing.
+</li></ol>
+</li><li>Have you run a Virus/Malware Scan lately?
+<ol>
+<li>It's entirely possible that a Virus/Malware program is preventing Rawr (and other programs) from launching
+</li></ol>
+</li><li>Are you running an Internet Security Suite, such as AVG or Norton?
+<ol>
+<li>Security Suites have been known to flag some programs inappropriately as Malware and prevent them from launching. Check with your Suite's Help documentation to see if there's a way to add Rawr as an Exception if this is the case.
+</li></ol>
+</li></ol>
+<h2>Troubleshooting Questions: Character Armory Imports</h2>
+<ol>
+<li>Did it work in your previous version?
+<ol>
+<li>Check the settings you had in the previous version and try to match. It is possible to Run multiple versions of Rawr at the same time (but not multiple of the same version).
+</li></ol>
+</li><li>Are you using a Proxy (as many Corporate Environments do)?
+<ol>
+<li>Did you enter the proxy info into Rawr (Tools &gt; Options &gt; Network Settings)
+</li><li>Are you using a Domain and did you enter <em>DOMAINNAME\username</em> vs just
+<em>username</em>? If you did, try the other method </li></ol>
+</li><li>Is your Region's Armory down for Maintenance? </li><li>Is the US's Armory down for Maintenance (even though you are using a non-US region server)?
+</li><li>Is it erroring on a specific item?
+<ol>
+<li>Many tabards and shirts cause issues as they are not posted to the Armory as items (and therefore can't be called by Rawr). We have tried to work around this as much as possible but new items do get added and we don't know there's a problem until it happens
+</li></ol>
+</li><li>Does your Toon have any special characters in it's name?
+<ol>
+<li>This is a translation issue when talking to the Armory, you may need to put the ASCII Character Code in instead of the character itself to get it to work
+</li></ol>
+</li><li>Have you added exceptions for Rawr to ALL of your Firewalls (including Windows)?
+</li><li>Try the following: Go to Tools &gt; Options &gt; NetworkSettings, and change User Agent from &quot;Internet Explorer 6&quot; to &quot;FireFox 2&quot;.
+</li><li>Make sure Rawr internet access is not blocked by any other programs. From one of our users that resolved the issue: &quot;At one time in the recent past I had a trial of a norton product on my computer and uninstalled it.. However it would appear that not all
+ of it was removed so there is a tool you can download from symantec that is called norton removal tool. I ran that and rebooted and i was able to use rawr to import from armory again.&quot;
+</li><li>Is the Armory up but not able to display your character per the reasons listed below (taken from an armory error message)
+<ol>
+<li>The character has been inactive for an extended period of time. </li><li>The character name was spelled incorrectly. </li><li>The profile is temporarily unavailable while the character is in the midst of a process such as a realm transfer or faction change.
+</li><li>Characters that have been deleted are no longer available on the Armory. </li></ol>
+</li></ol>
+<p><br>
+If/when you receive an error on the Armory Load status pane, you can double-click the error listing and it will open a box with more details. Use the Copy to Clipboard button for providing us the error message in a new Issue per the
+<a href="/wikipage?title=PostingGuidelines&referringTitle=Troubleshooting">Posting Guidelines</a>.<br>
+<br>
+In addition we might need additional logging information to assist in the issue. To generate a System.Net log follow these steps:<br>
+<br>
+Open Rawr.exe.config file in a text editor (i.e. notepad). Insert the following before the last line of the document (so it is nested inside the configuration element):<br>
+<br>
+</p>
+<pre>&lt;system.diagnostics&gt;<br>    &lt;sources&gt;<br>        &lt;source name=&quot;System.Net&quot; switchValue=&quot;Verbose&quot;&gt;<br>            &lt;listeners&gt;<br>                &lt;add name=&quot;System.Net&quot;/&gt;<br>            &lt;/listeners&gt;<br>        &lt;/source&gt;<br>        &lt;source name=&quot;System.Net.Sockets&quot; switchValue=&quot;Verbose&quot;&gt;<br>            &lt;listeners&gt;<br>                &lt;add name=&quot;System.Net&quot;/&gt;<br>            &lt;/listeners&gt;<br>        &lt;/source&gt;<br>    &lt;/sources&gt;<br>    &lt;sharedListeners&gt;<br>        &lt;add name=&quot;System.Net&quot; type=&quot;System.Diagnostics.TextWriterTraceListener&quot; initializeData=&quot;System.Net.log&quot;/&gt;<br>    &lt;/sharedListeners&gt;<br>    &lt;trace autoflush=&quot;true&quot; /&gt;<br>&lt;/system.diagnostics&gt;</pre>
+<p><br>
+and then start Rawr again and try to open character from armory.<br>
+<br>
+Attach the generated System.Net.log file in the new issue together with the error message.</p>
+<h2>Troubleshooting Questions: Other Stuff</h2>
+<p>Rawr has <a href="/wikipage?title=FAQ&referringTitle=Troubleshooting">FAQ</a> which answers several common questions</p>
+<ol>
+<li>My Profession Related Buff/Enchant isn't showing up
+<ol>
+<li>Please read the <a href="/wikipage?title=Professions&referringTitle=Troubleshooting">
+Professions</a> section of the Documentation </li></ol>
+</li><li>If none of the above helped, did you try manually creating your toon?
+<ol>
+<li>Sometimes there's just nothing we can do, so you will have to manually create your character by going through each slot and selecting the items yourself.
+</li></ol>
+</li></ol>
+<h2>Submit an Issue</h2>
+<p>If going through these questions did not reveal a solution to you, please follow the
+<a href="/wikipage?title=PostingGuidelines&referringTitle=Troubleshooting">Posting Guidelines</a> and create an Issue. We ask that you not down-rate a version just because you, specifically, have difficulty running it while
+<strong>thousands</strong> of other users don't until we have a chance to resolve your issue.</p>
+<h2>Note: We don't respond to comments on these Documentation pages, if you have questions, start a Discussion or Issue per the Posting Guidelines and we will address it there</h2>
+</div><div class="ClearBoth"></div>

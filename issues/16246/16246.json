@@ -1,0 +1,126 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Bear",
+      "DisplayName": "Rawr.Bear"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-07-02T11:35:50.1-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Using the raid buffs tab, it shows boss attack speed buffs like Infected Wounds giving -583 mitigation score for my current character file.\n \nOn mitigation stats section, when buff is selected, savage defence goes from 76.8% to 82%, but total mitigation goes from 82.543 to 82.438%. \n \nWithout looking at code details, my guess is that the slower attack speed is used to calculate the average boss hit. I believe the average boss hit calculation should be done before applying the debuff. The debuff should then only be used when calculating how frequently savage defense is up.\n \nAs side notes, related to this that I discovered while trying to locate the issue:\nIt seems Infected Wounds talent isn't being considered. To get it consistent with LoTP, by hvaing this talent, the attack speed debuff should be auto applied.\n \nShowing savage defense in the combat rating breakdown would also be useful.",
+    "LastUpdatedDate": "2013-05-16T05:21:58.377-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-02-05T02:22:10.16-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Bear] Boss Attack Speed Debuffs Give Negative Mitigation Score",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 3,
+    "Id": 16246
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2905,
+      "FileName": "wildebees-cp_bear.xml",
+      "DownloadUrl": ".\\2905"
+    },
+    {
+      "FileId": 3223,
+      "FileName": "Aurox Bear.xml",
+      "DownloadUrl": ".\\3223"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Oh, forgot to mention, this is with version 2.3.8. Haven't synced with latest code yet, to see if anything has changed after last release",
+      "PostedDate": "2010-02-05T02:26:31.883-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Notes from Processing your file:\r\n* GOOD LORD that's a lot of items marked as available. You should REALLY go thru that and remove all those items like Red Winter Hat. Keep only your top 3-4 items per slot. You are severely hampering your ability to optimize.\r\n\r\nI am seeing the values on those buffs as Negative but I can't really see fully why they would be negative. I'll let Astry do some more digging on this.",
+      "PostedDate": "2010-02-08T17:56:51.977-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-08T17:57:20.79-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-10T15:20:01.2-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Jothay, whatever you did with attack speeds on Bear, you prolly screwed up. Fix it plz?",
+      "PostedDate": "2010-02-10T15:52:09.843-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "No, the direct relationship with the attack speed specified and the Attack Speed debuffs was coming out correct, but it seems that the attack speed is affecting something else in the Bear model. Hell it may even be *correct* that it shows as a negative based on how the rest of the model is designed. (Ya, I know the last statement is a longshot.)",
+      "PostedDate": "2010-02-10T15:58:09.28-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-11T08:22:48.03-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The number of items are a side-effect of \r\na) using character profiler as the main import function to keep rawr in sync with ingame setup (not sure if there is any easy way to automatically drop novelty items after each import? having to manually go through the file every time i have made a gear change to drop items, taken even longer)\r\nb) being a druid, that over time tries all specs\r\nc) being a pack-rat.\r\n\r\nAlthough I attached my one xml file, just to have an example of this issue, it definitely isn't gear specific gear specific: I randomly loaded on druids from armory. Whether they are in resto gear or ICC tanking gear, selecting the bear model and looking at the buffs give the same result: Boss attack speed slow buffs have negative scores.\r\n\r\nFurther testing shows that the \"issue\" is related to parry haste. When your below the parry haste cap, the slower boss attack speed increases the parry haste effect. So the negative score part is probably correct. (Jothay, you seem to get by with your lucky statement :-) )\r\n\r\nWhat I think is missing is:\r\nCalculationsBear.cs:488            calculatedStats.DamageTaken = (hits + crits) * (1f - blockedPercent) * parryHasteDamageMuliplier ;\r\n\r\nShouldn't it be:\r\nCalculationsBear.cs:488            calculatedStats.DamageTaken = (hits + crits) * (1f - blockedPercent) * parryHasteDamageMuliplier * (1f + stats.BossAttackSpeedMultiplier);\r\n\r\n20% slower hits means less damage taken overall. \r\n\r\nIn essence boss attack speed has 3 effects:\r\na) Small positive: Improved block chance (Seems correct in the code)\r\nb) Small negative: Potentially worse parry haste (Seems correct in the code)\r\nc) Big positive: Fewer hits overall (Not in the code from what I can see)\r\n\r\n",
+      "PostedDate": "2010-02-11T11:48:07.807-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Talked to Astrylian and he says that change looked good (he's gonna review it more in-depth later). So after implementing it, the values on those buffs went from a small negative to about 23-24k positive in your file, which I believe to be reasonably correct.\r\n\r\nCheck out commit 46440",
+      "PostedDate": "2010-02-11T12:24:03.43-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "In my file (Aurox Bear.xml), defense and dodge rating are showing negative Survival values, and Haste rating gives a negative Mitigation value.\r\nNone of that makes sense to me.\r\nRawr v2.3.12",
+      "PostedDate": "2010-03-21T02:58:24.603-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-21T02:58:27.743-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Midnightlynx. I had a quick look at your file: The negative values of haste is correctly due to parry haste effects: Your expertise is below the parry cap. More haste means you attack more, means more chances for the boss to parry and get an extra hit in. That is related to the same potential negative effect of slowing the boss, that was the original topic of this issue. But it in itself is a game mechanic and not an issue.\r\n\r\nThe negative defense and dodge rating is weird. I did toggle \"Chill of the Throne\" on and off and then it was gone. I'm not sure if some part of the calculation is being cached and out of sync? This looks to be an unrelated issue. I'm not sure if we close this issue and create that as a separate issue or if this will be tracked and handled in this issue.",
+      "PostedDate": "2010-03-21T04:15:40.047-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T11:35:50.1-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:30:03.63-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:58.377-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

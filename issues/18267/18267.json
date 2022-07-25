@@ -1,0 +1,81 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Bear",
+      "DisplayName": "Rawr.Bear"
+    },
+    "ClosedComment": "Fixed for next release.",
+    "ClosedDate": "2010-08-22T10:58:31.69-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I'm working on Sindragosa 25 hard mode, and am therefore interested in modelling frost resistance.  There's a section for this in the bear model, but although it appears to compute the total resistance numbers correctly, the tooltip which gives expected average resulting resistance, and a little table of probabilities for each level of resist, appears to deviate from the standard theorycrafting, which you can find here:\n \nhttp://elitistjerks.com/f15/t44675-resistance_mechanics_wotlk/\n \nExample: bear with 341 frost resist (attached).  EJ theory indicates that this should result in an average 40% resist, with 40% happening with p=0.5 and both 30% and 50% happening with p=0.25.  Rawr says an average of 52%, with 40% resisted at p=0.1995, 50% at 0.4495, 60% at 0.3005 and 70% at p=0.05.  In other words, Rawr is estimating around 10% high.\n \nLooking at the source, it seems that this is the way the table is computed (in CalculationsBear):\n \ntipResist = StatConversion.GetResistanceTableString(80, TargetLevel, BasicStats.FrostResistance, 0);\n \nThe parameters to GetResistanceTableString are:\n \n        /// <param name=\"AttackerLevel\">Level of the Attacker</param>\n        /// <param name=\"TargetLevel\">Level of the Target</param>\n \nWhat this seems to be saying (to someone who has just opened the codebase for a quick peek for the first time) is that the tooltip is calculating a table for an attacker of level 80 (the bear) and a target of level 83 (the boss) where the boss is wearing the bear's frost resistance gear (give it baaaack!).  Unless I'm misunderstanding something, what we're actually interested in would be where the boss is attacking the bear instead:\n \ntipResist = StatConversion.GetResistanceTableString(TargetLevel, 80, BasicStats.FrostResistance, 0);\n \nUsing the character level rather than literal 80 might be more future-proof, of course.",
+    "LastUpdatedDate": "2013-05-16T05:20:15.15-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-07-21T04:00:25.58-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Bear] Target/Attacker Swapped in Resistance Table Calculation",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 18267
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3802,
+      "FileName": "Alerre.xml",
+      "DownloadUrl": ".\\3802"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Nice catch, will investigate.",
+      "PostedDate": "2010-07-21T10:00:28.297-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-24T20:32:36.403-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-24T20:34:55.147-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "My realm was down all day, so I downloaded a stack of stuff and tried making this change.  Good news is that swapping those parameters does get me exactly the results I'd predict from the information in the EJ topic.  Couldn't figure out how to generate a patch from within Visual ... Express so here's the section of CalculationsBear.cs as revised, hope that's of some use:\r\n\r\n            tipResist = StatConversion.GetResistanceTableString(TargetLevel, 80, BasicStats.NatureResistance, 0);\r\n            dictValues.Add(\"Nature Resist\", BasicStats.NatureResistance.ToString() + \"*\" + tipResist);\r\n            tipResist = StatConversion.GetResistanceTableString(TargetLevel, 80, BasicStats.ArcaneResistance, 0);\r\n            dictValues.Add(\"Arcane Resist\", BasicStats.ArcaneResistance.ToString() + \"*\" + tipResist);\r\n            tipResist = StatConversion.GetResistanceTableString(TargetLevel, 80, BasicStats.FrostResistance, 0);\r\n            dictValues.Add(\"Frost Resist\", BasicStats.FrostResistance.ToString() + \"*\" + tipResist);\r\n            tipResist = StatConversion.GetResistanceTableString(TargetLevel, 80, BasicStats.FireResistance, 0);\r\n            dictValues.Add(\"Fire Resist\", BasicStats.FireResistance.ToString() + \"*\" + tipResist);\r\n            tipResist = StatConversion.GetResistanceTableString(TargetLevel, 80, BasicStats.ShadowResistance, 0);\r\n            dictValues.Add(\"Shadow Resist\", BasicStats.ShadowResistance.ToString() + \"*\" + tipResist);\r\n",
+      "PostedDate": "2010-08-04T13:42:54.753-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-08-22T10:58:31.69-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:27:54.347-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:15.15-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

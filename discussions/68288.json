@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "232256",
+    "ThreadId": "68288",
+    "Html": "<p>Hi,</p>\r\n<p>&nbsp;</p>\r\n<p>I'm not sure who to address this to but I just had some feedback for the protection warrior module. Basically most of the calculations are correct now but there is just a minor problem in terms of the way proc items have their proc values averaged out and added to base stats.</p>\r\n<p>&nbsp;</p>\r\n<p>I know that for myself and many other tanks you really try to gear toward being able to survive the worst case scenario, which is why going for effective health is so... effective :P</p>\r\n<p>&nbsp;</p>\r\n<p>The problem with averaging out procs like these and adding them to the base stats is that it doesn't reflect that worst case scenario well at all. I'm looking specifically for myself at things like mongoose proc and the black heart proc but there are many other items that fall into this.</p>\r\n<p>&nbsp;</p>\r\n<p>I realise that in terms of the gear optimization process these sort of procs probably need to be allocated some sort of static value. What I'm wondering though is if it is possible to at least implement some sort of option that prevents procs being added to our base stats?</p>\r\n<p>&nbsp;</p>\r\n<p>Thanks! Appreciate all the good work on the project.</p>\r\n<p>&nbsp;</p>\r\n<p>- Bings</p>",
+    "PostedDate": "2009-09-08T08:33:47.387-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "232268",
+    "ThreadId": "68288",
+    "Html": "<p>Well, procs that add mitigation will always add mitigation; mitigation isn't guaranteed to be reliable, like survival is.</p>\r\n<p>However, procs that add 'survival' violate the rule that survival is reliable; we realize that, and intend to make an adjustment for it. (Not just ProtWarr, but all tank models) The plan currently is to have a slider on the options tab, to control the value of 'burst survival', ranging from 0 to Average to Full. (Average = averaged out, like now. Full = as if it was a constant effect)</p>",
+    "PostedDate": "2009-09-08T09:09:08.477-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "232295",
+    "ThreadId": "68288",
+    "Html": "<p>For procs that add mitigation (I'm assuming by your definition we're talking about avoidance here) that works. It's problematic though to average out use effects out to a static value, even if the use effect is mitigation/avoidance based.</p>\r\n<p>The Heart of Iron is a good example. The way you have modeled it is such that, unless you are popping it every time it is off cooldown you won't see those returns. It also eliminates being able to see how your stats would look if (with use rather than proc items) you would rather save these as a &quot;cooldown' type of ability, i.e. to pop them when you're in trouble rather than whenever they are available.</p>\r\n<p>Good to hear about the change with the slider though :)</p>",
+    "PostedDate": "2009-09-08T10:18:16.507-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

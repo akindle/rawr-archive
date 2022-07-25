@@ -1,0 +1,101 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Enhance",
+      "DisplayName": "Rawr.Enhance"
+    },
+    "ClosedComment": "This apears to have been fixed at some point, loading the character file and looking at Tia&#39;s Grace, if I edit it to provide no stacking agi it drops in value, changing it back to normal it goes back up in value",
+    "ClosedDate": "2011-03-26T19:26:43.707-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I've found what I suspect is erroneous modeling on the trinket Tia's Grace.  It does not seem that rawr calculates the dps from the proc correctly.  I believe there might be an issue with calculating agility gained from a proc.\n \nIn the example file I posted Tia's Grace grants 386 dps for trinket slot 2.  If you change the trinket to have no proc but instead grant a flat 340 agility the dps changes to 1039.  This is very suspect considering that the trinket should be up at full power for close to 100% of a fight.  I'm also using the default battle configuration.\n \nI was thinking it could be a problem with modeling the stacking proc, but Herkuml War Token appears to be modeled properly.  It grants 446 dps as listed, and only increases to 456 dps when the proc is replaced with a flat 340 attack power.  This leads me to believe that there is a problem specifically with agility granted due to a proc.",
+    "LastUpdatedDate": "2013-05-16T05:18:54.6-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-01-25T17:49:41.617-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Enhance] Agility Stacking Trinket Proc",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19813
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4496,
+      "FileName": "Tia's Grace.xml",
+      "DownloadUrl": ".\\4496"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "What model is this?",
+      "PostedDate": "2011-01-25T18:37:28.763-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The proc is set correctly. Only thing I can think of is an issue with Enhancement's conversion of Agility to Attack Power for procs.",
+      "PostedDate": "2011-01-25T18:53:51.357-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-25T18:59:55.247-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-25T19:03:18.957-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I can reproduce the problem... but I have had a quick look and can't find the reason for this.  Will look closer later tonight.",
+      "PostedDate": "2011-01-26T22:59:12.683-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Rawr.EnhSham is currently applying special effects in GetCharacterCalculations(); it should be in GetCharacterStats(), before all of the multipliers are applied (or, alternatively, apply all the multipliers to the stats as well. Either way, it should be in GetCharacterStats()). Looks like a whole lot of stuff done in GetCharacterCalculations() which should be put into a StatsEnhSham type object and added up in GetCharacterStats().",
+      "PostedDate": "2011-01-26T23:43:36.977-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "See StatsBear for an example of what I mean by a 'StatsEnhSham type object'.",
+      "PostedDate": "2011-01-26T23:47:57.297-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "As an update, I am working on a fix for this.  Hopefully to have it fixed soon.",
+      "PostedDate": "2011-02-24T17:54:28.653-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-26T19:26:43.707-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:14.193-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:54.6-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

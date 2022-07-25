@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "160448",
+    "ThreadId": "48093",
+    "Html": "Hi All<br>\r\n<br>\r\nWhile playing with the Tree model I realised something was a bit weird when I selected most of the raid healing spell usage. Telling me I would be doing 350 HPS as the raid healing part of my rotation on a Sapphiron fight doesn't work that well for me. <br>\r\n<br>\r\nI tracked it down and essentially it boils down to the fact that if a spell is used for raid healing, the HPS is scaled by the fraction of time available to spend on raid healing. This works for direct heals, but not for HoTs where you can have several HoTs running on different raid members simultanuously.<br>\r\n<br>\r\nI changed this to be based on the healing per cast time value of the raid healing spell ( (direct heal + total HoT healing)/cast time ). If we can assume that the full HoT effect will be effective, this should be the correct value.<br>\r\n<br>\r\n(Now I can get over 4000 HPS for this raid healing situation and running 3-healers on a 10-man Sapphiron like we have done is practical. )<br>\r\n<br>\r\nI checked in the changes, so for those of you getting the sources and building yourself. You might want to consider updating if your interested in this scenario.<br>\r\n<br>\r\nWould anyone be interested in seeing the healing per cast time value for different spells on the character display as well? I can think that in certain situations, this is more of importance, while in most cases the standard HPS value is better. I was afraid it will cause more confusion than its added value, so decided not to add it yet. But this can be added without too much hassle, if people will find it valuable.&nbsp; Is there a standard abbreviation for this value?<br>\r\n<br>\r\nEnjoy<br>\r\n",
+    "PostedDate": "2009-02-21T08:35:16.733-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "160523",
+    "ThreadId": "48093",
+    "Html": "argh there's so many changes that are so amazing right now please to release the beta 2.2 *right now*&nbsp; =p<br>\r\n<br>\r\nChanges I'm interested in:<br>\r\n<br>\r\nGemming System<br>\r\nArcane Mage changes (this is huge!)<br>\r\nResto Druid changes (my alt!&nbsp; me wants these in)<br>\r\nMoonkin Druid calculation revamp (again, my alt....grrr)<br>\r\n<br>\r\n<br>\r\n<br>\r\nI need 2.2, but don't know if I want to take the time to try to build from source,&nbsp; I think I'm going to break down here and do it though if you guys don't get this release out the door =p<br>\r\n",
+    "PostedDate": "2009-02-21T14:42:08.52-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "160759",
+    "ThreadId": "48093",
+    "Html": "Ew, that surprised me. Went over your changes, looks ok.<br>\r\n",
+    "PostedDate": "2009-02-22T17:13:16.37-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "161658",
+    "ThreadId": "48093",
+    "Html": "Thinking only in Health per Cast Time can get you in trouble as well.&nbsp; My priest GF was trying to explain to me why pre-casting Renew on Blood Boil groups, back in the day, increased her HPS.&nbsp; <br>\r\nI said &quot;What the hell are you talking about?&nbsp; The spell has the same Health-per-cast-time whenever you cast it!&quot;<br>\r\n<br>\r\nThen I realized that she was trying to explain how she delaying the delivery of the healing so she could spike the real-time healing output where she wanted to.<br>\r\n<br>\r\nJust something to think about, in case the model doesn't already think about it.<br>\r\n",
+    "PostedDate": "2009-02-24T14:42:46.053-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

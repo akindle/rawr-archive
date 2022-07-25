@@ -1,0 +1,90 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.TankDK",
+      "DisplayName": "Rawr.TankDK"
+    },
+    "ClosedComment": "fixed.",
+    "ClosedDate": "2009-07-09T08:04:47.967-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Just loaded up Rawr 2.2.7 with my DK tank and I noticed the default relative weights between Survival/Mitigation/Threat have been changed radically.  If you look at the selection of MH weapons, the vast majority of their value is attributed to Survival.  This seems misleading as the majority of contribution of weapons to a tanking DK is their threat; this is reflected in previous versions of Rawr, where you virtually had to lower the threat weighting to tease out different defensive tanking contributions of different weapons.\n \nThis does not seem to affect ProtPally or ProtWar modules.",
+    "LastUpdatedDate": "2017-11-27T11:04:22.357-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-06-22T19:10:38.547-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[TankDK] Survival/Mitigation/Threat weights suddenly changed",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13528
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Loading up 2.2.7 and looking at my TankDK, the ratios I see are probably around 2:1:10 survability:mitigation:threat. I currently have a threat weight of 0.05 and a Survival Weight of 1.20. If you could include your attached character file maybe I could see whats going on, on your end.",
+      "PostedDate": "2009-06-23T08:26:34.203-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This was expected that I re-tuned the values to have a base-line of Threat weight and Surival Weights set to 1.0 and then allow users to re-tune.  I basically removed or reduced some \"magic numbers\" that were floating around the model.  I wanted the values to be more realistic to what people should be seeing in the game.  EG. incoming damage can be set, and Survival is now just Armor + HP, mitigation can be tuned to factor in resistances by setting how much of the incoming damage number is from magic.  Players can setup a rotation to better tune the threat and trigger value.  As well as multi vs single target threat.\r\n\r\nSo yeah, alot of changes to help bring the TankDK data more in-line with all the different options available to them.\r\n\r\nIf you have some specific problems w/ the values you're seeing, EG what's not implemented, let me know and I'll get to work on that.",
+      "PostedDate": "2009-06-23T12:42:23.63-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Revision: 35031\r\nAuthor: SND\\Shazear_cp\r\nDate: 3:23:17 PM, Monday, June 29, 2009\r\nMessage:\r\nTankDK:\r\nFix for def: 13541 - Gear & Gem values constantly in flux. Significantly reduced window for multi-threaded problems.  There's still the occasional glitch, but much better than it was.\r\n\r\nFix for def: 13530 - Optimizer glitches from Expertise.  the real probablems were w/ the multi-threaded safety and that's gone now.\r\n\r\nPseudo-Fix for def 13528 - Values suddenly changed.  Values are still changing, but should be more reasonable now.\r\n----\r\nModified : /Rawr.TankDK/CalculationOptionsPanelTankDK.Designer.cs\r\nModified : /Rawr.TankDK/CalculationOptionsPanelTankDK.cs\r\nModified : /Rawr.TankDK/CalculationsTankDK.cs\r\nModified : /Rawr.TankDK/CharacterCalculationsTankDK.cs\r\nModified : /Rawr.TankDK/CombatTable.cs\r\nModified : /Rawr.TankDK/Readme.TankDK.txt\r\nModified : /Rawr.TankDK/RotationViewer.cs\r\nModified : /Rawr.TankDK/ShotRotation.cs\r\nModified : /Rawr.TankDK/StatsSpecialEffects.cs\r\n\r\n",
+      "PostedDate": "2009-06-29T15:26:13.6-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "While it is nice to see the TankDK module getting some attention, with the recent revaluations of Survivability, Mitigation, and Threat, along with random quirks, and no valid baseline values for any of these weightings, I actually find myself using 2.2.5 for my tank stuff as I find it much more accurate than most recent implementation in its current state.\r\n\r\nAre there any plans to get any set static values for the weightings any time soon? Or at least similar base values to, for example, the ProtWarrior module, for default values of 1.0 for threat and mitigation?",
+      "PostedDate": "2009-07-02T08:03:23.47-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yes!  There is currently a discussion amongst the team members about what the specific formulas should look like for tanking values.  I agree that at this point there is no-one-good baseline model.  Each Tanking model (Bear, Pally, Warr, DK) has a slightly different and derived way of determining each sub-value.  We're working on narrrowing it down and once a consensus is reached, I expect all of the models to adopt the agreed upon methods.  This is currently an active discussion and no single answer has been determined at this point.  \r\n\r\nI've started a tanking formulas wiki page that still needs alot of work, but once a decision is made, I'll post the results on that wiki page and probably do a little advertisement about it on the front page or something. While I agree that the numbers in 2.2.5 seemed reasonable, there were alot of things missing from the equations.  Most Talents, expertise, ar pen, etc.  I apologize for the constant flux of things while I implement more or deal with bugs during the transitional period.",
+      "PostedDate": "2009-07-02T08:55:14.953-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-07-09T08:04:47.967-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:42:14.79-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:04.363-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:11.923-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:04:22.357-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

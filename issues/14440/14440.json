@@ -1,0 +1,95 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Retribution",
+      "DisplayName": "Rawr.Retribution"
+    },
+    "ClosedComment": "Fixed in commit 49511",
+    "ClosedDate": "2010-04-14T09:33:39.36-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The Vengeance of the Forsaken trinkets (ID 48020 and 47881) both provide 83 expertise, and an on-use effect that stacks AP (either 215 or 250 AP per stack) on melee hit, up to a maximum of 5 stacks, up to a maximum total time of 20 seconds (with a 2 minute CD). The on-use effect does not seem to be evaluated in the Rawr.Retribution ret paladin model (and perhaps other models as well); Rawr is exclusively scoring only the value of the 83 expertise.",
+    "LastUpdatedDate": "2013-05-16T05:23:51.057-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-10-15T10:57:37.693-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Retribution] Vengeance of the Forsaken trinket on-use effect",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14440
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Ret isn't set up for recursive SpecialEffects (which is how those particular trinkets are set up).\r\n\r\nErmad do you have an ETA on when you will make the update to cover these types of effects?",
+      "PostedDate": "2009-10-15T11:21:21.9-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-15T11:41:10.913-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "In the interim, does it make sense to modify how the item is used in Rawr.Retribution, if only to flag it with a comparable static amount of AP so that its value isn't grossly understated in the optimizer?\r\n\r\nEven just a basic formula like assuming that on average you put up 1 stack per second (since it appears to proc off of melee swings, DS, CS, with I believe an extra application for SoV procs as well), means your weighted average is 19 seconds with 1 stack, 18 seconds with 2 stacks, 17 seconds with 3 stacks, 16 seconds with 4 stacks, and 15 seconds with all 5 stacks. This would yield an average per on-use effect of (19*215 + 18*215 + 17*215 + 16*215 + 15*215) / 20 = 913.75 average AP per use, and with an uptime of 20 seconds every 2 minutes, would yield an average AP of 913.75 / (20 / 120) = 152.3 AP.   Similarly, the heroic version, stacking 250AP per stack instead of 215, would result in an average of 1062.5AP per use and 177.1 AP on average.\r\n\r\nSo if we could even just plug in a static +152AP for the regular trinket and +177AP for the heroic trinket for Rawr.Retribution would go a long way towards a better evaluation of this trinket (and in point of fact, I've already modified the item to do this in my local file). Alternatively, you could scale down the on-use effect slightly assuming the user doesn't pop it precisely every 120 seconds, perhaps to 150AP and 175AP assuming that it is used ~2 seconds late each time it comes up.",
+      "PostedDate": "2009-10-19T11:58:38.453-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "  *edit to prior comment   - I posted this, because I'm assuming that adding a Rawr.Retribution item interpretation of this trinket is a faster/easier solution than implementing the recursive SpecialEffects piece that Jothay mentioned below?",
+      "PostedDate": "2009-10-19T11:59:39.3-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The model's don't add their own item instances, they pull that from Base. If you want to add a special effect yourself for you own use until Ret does the Recursive SpecialEffects set of changes then you are welcome to.",
+      "PostedDate": "2009-10-19T12:59:03.54-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I've added the special effect manually - it's still not actually coming into the dps calculations (ostensibly because of the lack of the SpecialEffects model?). The only way I can get Rawr.Retribution to acknowledge anything more than the static 83 expertise on these trinkets is to enter in an estimate of the equivalent value of static AP directly to the main item stats (and not the Special Effects section of the Item Editor). \r\n\r\nHonestly, it's working fine for me as an estimate of value on this basis. My concern is simply that without the on-use effect, this is ranking as a bottom-of-the-barrel trinket. With even my rough estimate of the static AP equivalent value, it jumps to a top-8 trinket in game for non-expertise-capped paladins. I'm just trying to see if there's a more easily implemented solution so that this trinket isn't overlooked/underrated for all the OTHER Rawr.Retribution users who aren't aware of the 0-value currently being tagged to the on-use effect and are probably radically undervaluing this trinket. It's still not BiS by any means, but it does beat out a lot of other i200 - i213 trinkets that are commonly used by ret pallies.",
+      "PostedDate": "2009-10-19T13:47:24.97-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-31T17:43:39.403-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-14T09:33:39.36-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:40:45.093-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:32:25.307-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:51.057-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

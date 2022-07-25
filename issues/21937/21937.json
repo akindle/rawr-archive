@@ -1,0 +1,76 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-12-18T23:35:14.47-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Description:\nSince using the Retribution Model after my first install I can't get the interface or program to even load.\n \nSteps to Reproduce:\n \n1. Launch Rawr\n \nAdditional Information:\n \nRawr WDF 4.2.3b\nWindows 7 64bit\nTrace:\n   at System.String.Remove(Int32 startIndex)\n   at Rawr.Retribution.CharacterCalculationsRetribution.SkillDesc(sCasts casts)\n   at Rawr.Retribution.CharacterCalculationsRetribution.GetCharacterDisplayCalculationValues()\n   at Rawr.UI.MainPage.character_CalculationsInvalidated(Object sender, EventArgs e)\n   at Rawr.UI.MainPage.set_Character(Character value)\n   at Rawr.UI.MainPage..ctor(String configModel)\n   at Rawr.WPF.WindowMain.LoadFinished(Object sender, EventArgs e)\n   at Rawr.UI.LoadScreen.filesLoaded(Object sender, EventArgs e)\n \nAttachment:\nTawa DS LFR.xml",
+    "LastUpdatedDate": "2013-05-16T05:17:10.95-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-12-18T17:21:01.127-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Crash errors after using Retribution Model",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 21937
+  },
+  "FileAttachments": [
+    {
+      "FileId": 5502,
+      "FileName": "Tawa DS LFR.xml",
+      "DownloadUrl": ".\\5502"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "To expand, here's the error I got earlier for the same issue:\r\n\r\nSystem.ArgumentOutOfRangeException was unhandled by user code\r\n  Message=StartIndex cannot be less than zero.\r\nParameter name: startIndex\r\n  Source=mscorlib\r\n  ParamName=startIndex\r\n  StackTrace:\r\n       at System.String.Remove(Int32 startIndex)\r\n       at Rawr.Retribution.CharacterCalculationsRetribution.SkillDesc(sCasts casts) in C:\\Users\\John\\Documents\\Visual Studio 2010\\Projects\\Rawr\\Rawr.Retribution\\CharacterCalculationsRetribution.cs:line 113\r\n       at Rawr.Retribution.CharacterCalculationsRetribution.GetCharacterDisplayCalculationValues() in C:\\Users\\John\\Documents\\Visual Studio 2010\\Projects\\Rawr\\Rawr.Retribution\\CharacterCalculationsRetribution.cs:line 93\r\n\r\nCut off the big long stack trace to the first few lines...\r\n",
+      "PostedDate": "2011-12-18T19:33:16.7-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm not able to reproduce this.",
+      "PostedDate": "2011-12-18T23:32:09.097-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ah, timetodance fixed it already.",
+      "PostedDate": "2011-12-18T23:35:04.887-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-12-18T23:35:14.47-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:23:58.58-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:17:10.95-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

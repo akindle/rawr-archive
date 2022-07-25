@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Enhance",
+      "DisplayName": "Rawr.Enhance"
+    },
+    "ClosedComment": "Fixed for 2.2.21.",
+    "ClosedDate": "2009-10-07T00:47:47.417-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I've been successfully using 2.2.19 and prior versions. With 2.2.20, I start from scratch.\n \nI enter my character's details:\n \nName: Hoofee\nRealm: Dath'Remar\nRegion: US\nRace: Draenei\nClass: Shaman\nModel: Enhancement\n \nI then choose Tools -> Reload Current Character From Armory\n \nI then choose File -> Save As -> specify Hoofee.xml\n \nThen I get a dialog box pop up with the error:\n \n-----------------\nUnhandled exception has occurred in your application. If you click Continue, the application will ignore this erro and attempt to continue. if you click Quit, the application will close immediately.\n \nThe was an error generating the XML document.\n-----------------\n \nClicking on the Details button shows:\n \n----------------------\n \nSee the end of this message for details on invoking \njust-in-time (JIT) debugging instead of this dialog box.\n \n************** Exception Text **************\nSystem.InvalidOperationException: There was an error generating the XML document. ---> System.InvalidOperationException: Instance validation error: '165' is not a valid value for Rawr.Profession.\nat Microsoft.Xml.Serialization.GeneratedAssembly.XmlSerializationWriter1.Write96_Profession(Profession v)\nat Microsoft.Xml.Serialization.GeneratedAssembly.XmlSerializationWriter1.Write98_Character(String n, String ns, Character o, Boolean isNullable, Boolean needType)\nat Microsoft.Xml.Serialization.GeneratedAssembly.XmlSerializationWriter1.Write219_Character(Object o)\n--- End of inner exception stack trace ---\nat System.Xml.Serialization.XmlSerializer.Serialize(XmlWriter xmlWriter, Object o, XmlSerializerNamespaces namespaces, String encodingStyle, String id)\nat System.Xml.Serialization.XmlSerializer.Serialize(TextWriter textWriter, Object o)\nat Rawr.Character.Save(String path)\nat Rawr.FormMain.saveAsToolStripMenuItem_Click(Object sender, EventArgs e)\nat Rawr.FormMain.saveToolStripMenuItem_Click(Object sender, EventArgs e)\nat System.Windows.Forms.ToolStripItem.RaiseEvent(Object key, EventArgs e)\nat System.Windows.Forms.ToolStripMenuItem.OnClick(EventArgs e)\nat System.Windows.Forms.ToolStripItem.HandleClick(EventArgs e)\nat System.Windows.Forms.ToolStripItem.HandleMouseUp(MouseEventArgs e)\nat System.Windows.Forms.ToolStripItem.FireEventInteractive(EventArgs e, ToolStripItemEventType met)\nat System.Windows.Forms.ToolStripItem.FireEvent(EventArgs e, ToolStripItemEventType met)\nat System.Windows.Forms.ToolStrip.OnMouseUp(MouseEventArgs mea)\nat System.Windows.Forms.ToolStripDropDown.OnMouseUp(MouseEventArgs mea)\nat System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)\nat System.Windows.Forms.Control.WndProc(Message& m)\nat System.Windows.Forms.ScrollableControl.WndProc(Message& m)\nat System.Windows.Forms.ToolStrip.WndProc(Message& m)\nat System.Windows.Forms.ToolStripDropDown.WndProc(Message& m)\nat System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)\nat System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)\nat System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)",
+    "LastUpdatedDate": "2013-05-16T05:24:00.913-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-10-07T00:28:00.077-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Enhance] Crashing when saving profile",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14348
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

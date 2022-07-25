@@ -1,0 +1,115 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.HealPriest",
+      "DisplayName": "Rawr.HealPriest"
+    },
+    "ClosedComment": "FIX OF AWESOMENESS HAS BEEN PERFORMED. THERE WAS MUCH REJOICE AND THEN NOT SO MUCH AFTER THAT.",
+    "ClosedDate": "2009-12-29T08:29:22.867-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hello!\n \nI've got a question: How is this trinket calculated?\n \n158 SP + 1625 Mana restored 2 min. CD - this would be about 67,7 Mp5\n \nMy overall rating of this trinket is 664,52 (calculated with the \"Special Effect\").\nIf I change the Special Effect into a normal Mp5 of 67 my overall rating is 1119,77 (nearly the same like Talisman of Resurgence)\n \nI am just wondering, because I tried to find the rule such a trinket effect is calculated. \n \nI tried it out with the use effect of Talisman of Resurgence (599 SP for 20 sec. / 2 min. CD). I removed the effect and replaced it with an average of it (100 SP all the time) and the rating is nearly the same.\n \nWhy is this such a big difference? Is the calculation of the special effect \"Mana restore\" wrong or am I? Sorry, but I don't understand it. ^^\n \nPS: Sorry for my English. ;)\n \nEdit:\n \nI tried to halve the CD of \"Mana restore\" because of rumors (http://www.wowhead.com/?item=50346#comments) the heroic version would have an 1 min. CD and nothing changed... Now I'm sure there's something wrong. ^^",
+    "LastUpdatedDate": "2013-05-16T05:22:43.717-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-12-28T20:02:29.797-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[HealPriest] Sliver of Pure Ice | ManaRestore Stat not modeled",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15628
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Depends on your model. It's quite possible that it's not modeled by your model.",
+      "PostedDate": "2009-12-28T20:49:03.177-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-28T20:50:31.817-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "@ Astrylian\r\n\r\nOk. Let's take my naked char witout talents or buffs:\r\n\r\nSliver of Pure Ice (with \"Mana restore\" 1625 every 2 min.) 105,03\r\nSliver of Pure Ice (with equal 67 Mp5) 165,10\r\n\r\nTalisman of Resurgence (with 599 SP use effect 2 min. CD) 104,08\r\nTalisman of Resurgence (with equal 100 SP all time) 104,92\r\n\r\nDo you still see the diffrence? Yes? So it's NOT because of my model...\r\n\r\n",
+      "PostedDate": "2009-12-28T21:07:44.233-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "...what?\r\nReread what I said.",
+      "PostedDate": "2009-12-28T21:34:31.34-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "@ Astrylian\r\n\r\nOk, I don't know what you exactly mean with \"model\" and \"modeled by your model\". Sorry, I'm from Germany. ^^\r\nFirst I thought you mean my char and it's configuration in Rawr... so, sorry for missunderstanding.\r\n\r\nIs it possible that you mean the configuration of the special effect? If it's so - I \"modeled\" nothing of it by myself... It was loaded from armory.\r\n\r\nTooltip text of the trinket:\r\nEquip: Increases spell power by 158.\r\nUse: Restores 1625 mana. (2 Min Cooldown)\r\n\t\r\nThis is the configuration loaded from armory:\r\nspecial effect: Mana restore: 1625\r\nTrigger: use\r\nDuration: 0\r\nCooldown: 120\r\nChance: 100,00%\r\nStacks: 1\r\n\r\nThis configuration sounds right, but it isn't. If I remove it at all item rating doesn't change. So this default effect configuration does nothing. And that's what I tried to say. ^^ Somewhere in Rwar something's wrong, isn't it? o.O",
+      "PostedDate": "2009-12-29T00:33:08.663-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This configuration I tried does nothing too:\r\nspecial effect: Mana per 5 sec: 1625\r\nTrigger: use\r\nDuration: 5\r\nCooldown: 120\r\nChance: 100,00%\r\nStacks: 1",
+      "PostedDate": "2009-12-29T00:58:50.2-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ahhh thanks for mail! :)\r\n\r\nmodel is Rawr.HolyPriest\r\n\r\nhehe :D",
+      "PostedDate": "2009-12-29T01:00:54.59-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I think the issue here is that the Mana Restore stat isn't modeled in HolyPriest. It may be marked as relevant so you can see it but it doesn't know what to do with the stat. You'll have to wait for the HolyPriest dev to add modeling for it.",
+      "PostedDate": "2009-12-29T01:25:31.45-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-29T01:26:04.083-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "ManaRestore stat is handled, its just a poor implementation from my side on the Use proc. (I think). I have fixed this and it should be peachy for next release. Right now you can do as you say, model it as ~67.5mp5.",
+      "PostedDate": "2009-12-29T08:28:42.22-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-29T08:29:22.867-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-09T12:29:22.793-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T13:56:10.437-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:30:59.75-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:43.717-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

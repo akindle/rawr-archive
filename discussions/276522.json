@@ -1,0 +1,138 @@
+[
+  {
+    "Id": "686637",
+    "ThreadId": "276522",
+    "Html": "\r\n<p>Want to post about some key changes I just made to the model.&nbsp; This should manage some issues people were having about extreme swings between all avoidance and all mastery or all stam.</p>\r\n<p>Old way: (see http://rawr.codeplex.com/wikipage?title=TankingForumulas&amp;referringTitle=Rawr.TankDK for more info)</p>\r\n<p>4 Categories:</p>\r\n<ol>\r\n<li>Survival<br>\r\n- This is the usual &quot;effective health&quot; number.&nbsp; Health &#43; static damage reduction (Armor, resistances, etc)\r\n</li><li>Mitigation<br>\r\n- Armor, Crit reduction, avoidance, heal auto-procs, etc. </li><li>Burst<br>\r\n- On use Trinkets/abilities<br>\r\n- DS Heals &amp; Blood Shield (affected by avoidance) </li><li>Threat<br>\r\n- Any questions? </li></ol>\r\n<p>New way:</p>\r\n<p>5 Categories:</p>\r\n<ol>\r\n<li>Survival<br>\r\n- No change </li><li>Mitigation<br>\r\n- No change </li><li>Burst<br>\r\n- On use Trinkets/abilities </li><li>Recovery<br>\r\n- DS Heals &amp; Blood Shield (optional affected by avoidance (default off)) </li><li>Threat<br>\r\n- No change </li></ol>\r\n<p>Burst &amp; Recovery have their own weight options in the options.&nbsp; This allows you to push/pull these numbers to lean in the direction of your preference.<br>\r\nI changed the affect of avoidance because mastery really matters when you're getting pounded into the ground and avoidance has failed you.&nbsp;\r\n<br>\r\nAdditionally, In the very old model Mitigation was affected by incoming damage and was causing problems.&nbsp; We changed it to be a static value and it resolved many of the problems, so it makes sense to do the same with Recovery.&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>Let me know if you have any questions.&nbsp; I can go into extensive detail. I'll be updating the wiki page when we ship the next release.</p>\r\n<ol>\r\n</ol>\r\n",
+    "PostedDate": "2011-10-19T19:44:38.06-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "690918",
+    "ThreadId": "276522",
+    "Html": "<p>Additionally:</p>\r\n<p>I'm working on providing an option with Burst.&nbsp; If you don't want to see a separate value of all On-Use abilities, setting Burst Weight to 0 will allow those abilities to be rolled back into the body without any distinction.&nbsp; The key noticeable change you'll see is that it will change the balance of Dodge to Parry.&nbsp;</p>",
+    "PostedDate": "2011-10-28T11:14:11.77-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "697969",
+    "ThreadId": "276522",
+    "Html": "<p>Now that 4.2.7 is out, Bumping this thread.</p>",
+    "PostedDate": "2011-11-14T10:14:03.853-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "698128",
+    "ThreadId": "276522",
+    "Html": "<p>Hello! &nbsp;It has been a while since I've made myself seen around here. &nbsp;I have been playing WoW again, but not as intensely; not enough to want to work on a model again. &nbsp;But I have been using Rawr. &nbsp;I recently made my DK tank my top-priority alt, so to see work on this model makes me happy! &nbsp;I took it for a spin today and I have several questions. &nbsp;I just wanted to say thank you, and that you may be hearing more from me again after you update the model page and I'm still confused :P.</p>",
+    "PostedDate": "2011-11-14T15:28:44.25-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "698175",
+    "ThreadId": "276522",
+    "Html": "<p>Welcome.&nbsp; Let me know what your questions are, and I'll answer them.&nbsp; I'll have the docs updated by EOD tomorrow.</p>",
+    "PostedDate": "2011-11-14T18:09:33.79-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "698203",
+    "ThreadId": "276522",
+    "Html": "<p>My first question is why parry provides a better \"burst\" score than dodge. &nbsp;Currently I have more parry than dodge (by more than double), and my trinkets are Bedrock Talisman and Leaden Despair.</p>",
+    "PostedDate": "2011-11-14T19:22:04.877-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "698292",
+    "ThreadId": "276522",
+    "Html": "<p>Because Dancing Rune Weapon is a parry based cooldown.&nbsp; As long as Burst has a value of 0 or 1, then the optimizer will balance for an even amount of dodge and parry.&nbsp; As Burst &gt; 1, then you will see the optimizer looking to lean more towards parry because of that Burst value.</p>",
+    "PostedDate": "2011-11-15T01:52:23.83-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "698548",
+    "ThreadId": "276522",
+    "Html": "<p><span style=\"text-decoration: line-through;\">Got it! &nbsp;So because DRW gives a bunch of parry that does not get lumped into the diminishing returns, it makes parry better than dodge, even though it suffers more diminished returns. &nbsp;And since the parry we get  from swordshattering does the same thing, it also answers why parry would balance out with dodge at a higher rating even without DRW. &nbsp;(Sorry for being a little noob-ish). &nbsp;There's still a lot for me to chew on, but between this and just spending more time  playing with it I'm understanding more and more.</span> &nbsp;Thanks for your work, and I look forward to figuring the rest out!</p>\n<p>- edit -</p>\n<p>Never mind. &nbsp;I still don't get it. &nbsp;Why would parry rating be stronger during Dancing Rune Weapon?</p>",
+    "PostedDate": "2011-11-15T10:28:46.427-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "698659",
+    "ThreadId": "276522",
+    "Html": "<p>If you have Burst set to 0 or 1, parryrating should optimize towards balancing with dodgerating.&nbsp;</p>\r\n<p>You will automatically probably have more parry than dodge in the current gear.&nbsp; Assuming you have things like SwordShattering on your weapon.&nbsp; However, because of the on-use value of DRW, if burst has a weight of &gt;1 it will artificially inflate the value of parryrating.&nbsp; That's not what you're looking for hence the default value for Burst should be 1.&nbsp;</p>\r\n<p>You can remove the Burst evaluation completely by setting it's weight to 0 and then those on-use abilities will be rolled back into their appropriate category.</p>",
+    "PostedDate": "2011-11-15T14:21:45.92-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "698691",
+    "ThreadId": "276522",
+    "Html": "<p>I'm sorry, but my question remains: why does DRW, when it is active with a burst rating &gt; 1, increase the value of parry rating?</p>\r\n<p>On a perhaps related note: I notice that the balance between parry and dodge can be shifted if you get them close to each other, then take off Swordshattering. &nbsp;It's my understanding that Swordshattering does not factor into diminishing returns, so I don't understand why that would happen either. &nbsp;What am I missing?</p>",
+    "PostedDate": "2011-11-15T15:44:35.887-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "699080",
+    "ThreadId": "276522",
+    "Html": "<blockquote style=\"border: solid .1em #ccc; font-style: italic; margin: .25em 1em 0 1em; padding: 0 .25em 0 .25em;\"><strong>Xemnosyst wrote:</strong><br />\r\n<p>I'm sorry, but my question remains: why does DRW, when it is active with a burst rating &gt; 1, increase the value of parry rating?</p>\r\n</blockquote>\r\n<p>For this first question:  For any 1 pt of Parry Rating, you gain X overall score value.  For Burst, it is the different in score between using the Cool-down and Not using the Cool-down.  This means that if normally parry rating gives you x, and you have burst set to x2, then it would be doubling the value of parry rating for that difference. The optimizer knows that change in scores come mostly from rating values rather than raw scores.</p>\r\n<blockquote style=\"border: solid .1em #ccc; font-style: italic; margin: .25em 1em 0 1em; padding: 0 .25em 0 .25em;\">\r\n<p>On a perhaps related note: I notice that the balance between parry and dodge can be shifted if you get them close to each other, then take off Swordshattering. &nbsp;It's my understanding that Swordshattering does not factor into diminishing returns, so I don't  understand why that would happen either. &nbsp;What am I missing?</p>\r\n</blockquote>\r\n<p>That definitely is odd since it is added in before ratings are calculated.  I'll have to look into that.</p>",
+    "PostedDate": "2011-11-16T09:42:06.983-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "699124",
+    "ThreadId": "276522",
+    "Html": "<p>OK! &nbsp;So it's all because of the Bedrock Talisman! &nbsp;(Not DRW.) &nbsp;Since it procs dodge rating, dodge will have more diminished returns during burst, so parry will be more favored. &nbsp;Now it all makes sense! &nbsp;Ok, on to my next question :).</p>\r\n<p>What's a sensible way to choose the weight for recovery? &nbsp;I'm sure it shouldn't be so high that armor gets a negative value (because that just seems silly), and I know it should be greater than zero, but that's about all I know :(. &nbsp;My instinct is to figure out what weight would end up giving me the least damage taken total during a fight, but then it's the same as mitigation, and I don't know how to figure out that weight anyway. &nbsp;Here's my little case study - let me know what you think of this method. &nbsp;I notice that Domo favors mastery more than any other fight, so I choose Domo and set recovery such that armor has a just-barely-positive value. &nbsp;That makes mastery just about double the value of parry &amp; dodge. &nbsp;Now I switch to Shannox to see the results, and parry/dodge has more than quadruple the value of mastery. &nbsp;Strength actually has more than double the value of mastery. &nbsp;It seems a bit odd to me, but maybe that's valid for those fights?</p>",
+    "PostedDate": "2011-11-16T11:10:33.467-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "704588",
+    "ThreadId": "276522",
+    "Html": "<blockquote style=\"border: solid .1em #ccc; font-style: italic; margin: .25em 1em 0 1em; padding: 0 .25em 0 .25em;\"><strong>Xemnosyst wrote:</strong><br />\r\n<p>My instinct is to figure  out what weight would end up giving me the least damage taken total during a fight...</p>\r\n</blockquote>\r\n<p>I've done some thinking on this, and I'm looking for feedback on what I came up with.  I think what I need to calculate is the incoming, un-healed-by-death-strike, melee damage if I had 1 more bonus armor verses the same for 1 more mastery.  Then I can make my stat values match that by adjusting the weight of recovery.  My gut tells me I should compare mastery against armor instead of dodge or parry, but I couldn't say why.  I do the calculations assuming I will always be taking enough damage to make death strike's heal be based on damage taken (instead of 7% of my health).</p>\r\n<p>Do you see any inherent flaw in that technique?  Will that really give an accurate weighting of mastery vs. armor for reducing total damage?  If not, there's no need to read on; the rest explains how I do the calculations, to see if you can see any mistake(s).</p>\r\n<p>To calculate those values I use this recurrence:</p>\r\n<p style=\"padding-left: 30px;\">Incoming(0) = 0<br />Incoming(t) = 100 - ReductionFromArmor - Bubble(t - 1)</p>\r\n<p>Where:</p>\r\n<p style=\"padding-left: 30px;\">Bubble(t) = Heal(t) * MasteryMultiplier<br />Heal(t) = Incoming(t) * .2 * DeathStrikesPer5Seconds</p>\r\n<p>&nbsp;I put those in a spreadsheet and have it calculate out to t=50 (enough to be stable to 6 decimal places) and use this as my final un-healed-by-death-strike melee damage:</p>\r\n<p style=\"padding-left: 30px;\">&nbsp;Unhealed(50) = Incoming(50) - Heal(50)</p>\r\n<p>&nbsp;I calculate that 3 times, once for my current stats, once if I had 1 more bonus armor, and once if I had 1 more mastery rating.  My final ratio of mastery/armor, then, is</p>\r\n<p style=\"padding-left: 30px;\">&nbsp;(Unhealed_current - Unhealed_mastery) / (Unhealed_current - Unhealed_armor)</p>\r\n<p>&nbsp;Then I adjust the weight of recovery until the ratio in the stat values graph matches.</p>\r\n<p>&nbsp;Do you see any holes in my logic or my formulas?  What's the right number for DeathStrikesPer5Seconds?</p>",
+    "PostedDate": "2011-11-28T22:54:59.19-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "704816",
+    "ThreadId": "276522",
+    "Html": "<p>I now see a big hole! &nbsp;I calculate ratio between mastery and armor on melee damage, but set the ratio in Rawr for mastery and armor on <strong>all</strong> damage. &nbsp;What I need is a ratio that I can see easily in Rawr, and can caluclate. &nbsp;For my second attempt I'm using the stat value for Dodge with and without \"Include Avoidance Effects in Recovery Value\". &nbsp;I then use</p>\r\n<p style=\"padding-left: 30px;\">Incoming(0) = 0<br />Incoming(t) = 100 - PassiveReduction - Bubble(t - 1)</p>\r\n<p>Where Bubble(t) is the same as above, and:</p>\r\n<p style=\"padding-left: 30px;\">PassiveReduction = 1 -&nbsp;(1 - Avoidance) * (1 - ArmorReduction)</p>\r\n<p>I calculate that twice, once for my current stats and once if I had 1 more dodge rating. &nbsp;My ratio of dodge's value before and after considering death strike, then, is:</p>\r\n<p style=\"padding-left: 30px;\">(PassiveReduction_plus1Dodge - PassiveReduction_current) / (Unhealed_current - Unhealed_plus1Dodge)</p>\r\n<p>Then I adjust the weight of recovery until the penalty that dodge gives it matches that ratio. &nbsp;This seems to be give fairly consistent results in gear choices between fights, so I'm optimistic this technique is getting close to accurate! &nbsp;Any thoughts?</p>",
+    "PostedDate": "2011-11-29T08:02:59.463-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "704825",
+    "ThreadId": "276522",
+    "Html": "<p>DSp5 is a relatively small number,&nbsp; Generally it's around 1.&nbsp; Given a GCD of 1.5 and a perfect situation, you can max at 3.&nbsp; I could provide the calculated value in the UI if you want it.</p>\r\n<p>The graph of what you're looking for is already available on the DK Options pane.&nbsp; Using the stat graph, compare just Armor to Mastery.&nbsp; You can adjust the weight and align the curves as close or as far as you want. Personally, I just use the tier content I'm currently tanking, and generally look for a couple things.&nbsp; I look for about how close I am to the survival soft-cap.&nbsp; Under soft cap, it will recommend more Survival stats (stam &amp; armor), over the cap, it will either recommend avoidance or mastery.&nbsp; Additionally for the Boss Options, I just set to use the Average Boss for that tier.&nbsp; The exception would be if there's a particular boss that's giving us trouble:&nbsp; E.G. Rag or Nef, or something like that.</p>",
+    "PostedDate": "2011-11-29T08:21:25.907-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "704884",
+    "ThreadId": "276522",
+    "Html": "<p>Sure, seeing average DSp5 sounds great! &nbsp;And I'm aware that armor and mastery are shown in the stat graph; I'm trying to calculate how close or far I want to align the curves.&nbsp;</p>",
+    "PostedDate": "2011-11-29T10:04:43.647-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "704927",
+    "ThreadId": "276522",
+    "Html": "<p>Adding it to my next DK check in, so hopefully it'll make it into the next build.</p>",
+    "PostedDate": "2011-11-29T11:49:20.513-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

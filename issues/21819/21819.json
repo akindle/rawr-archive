@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Cat",
+      "DisplayName": "Rawr.Cat"
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Trinket procs that give secondary stats can confuse the optimizer, giving less than optimal results.\nExample is a feral druid with the 2 current BiS trinkets: Hungerer and Matrix. The optimizer will compute the haste from both, which might end up giving you a gear setup where haste is not the highest secondary stat. That way, you might end up during a fight getting Crit or Mastery from the Matrix, instead of Haste.\nTo avoid that problem, I have been editing the trinkets and removing the procs before running the optimizer, and ending up with better results (by better I mean: haste is always the highest stat).\nMy request is for an optimize option that, for the duration of said optimization calculations, will disable (not take into account) stats provided by those procs.",
+    "LastUpdatedDate": "2014-03-07T18:40:11.363-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-11-22T20:39:38.343-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Request][Cat] Option to disable trinket procs for optimizer",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 21819
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Currently hungerer and matrix ARE your BiS trinkets (go ask Mew if you disagree). But I do agree that Cat seems to favor haste a bit more than it should. I know my early testing with Dragon Soul trinkets are coming up slightly behind what Mew is giving me (Mew is saying to use Vial of Shadows and Will of Unbinding; where-as Rawr is saying use Will of Unbinding and Starcatcher Compass [Rawr, even after I adjusted the proc info is saying Vial is 7th BiS])",
+      "PostedDate": "2011-11-23T15:04:10.057-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Oh, I agree those trinkets are BiS, and I don't mind rawr favoring Haste (makes sense with 4xT12). The problem is that it pretends you have haste from both trinkets all the time (divided, subtracted etc, but all the time). Since both trinkets don't proc together, or even worse Matrix doesn't proc right after hungerer, you can easily end up in a situation where Matrix will proc without the hunger proc, and you will get Mastery instead of Haste (since before the proc mastery is your highest stat).",
+      "PostedDate": "2011-11-23T17:16:36.527-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I think the issue your trying to get at is the Matrix proc itself and how Rawr handles it. I think that coding can be a bit better. I'll see what I can do about it.",
+      "PostedDate": "2011-11-23T20:28:45.657-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It is the old chicken and egg problem. Matrix will increase the higher stat by alot. That gets added, so Rawr sees you have too much of that stat, lower it in favor of others, which means that without the proc, you have a different stat as the highest.\r\nIt just needs to understand that a proc is different than a direct stat gain, and should handle it accordingly.\r\nWhen you add a second trinket with a stat proc, things get even messier.\r\n",
+      "PostedDate": "2011-11-30T08:19:35.873-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:24:07.353-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2014-03-07T18:40:11.363-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

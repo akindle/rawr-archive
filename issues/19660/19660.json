@@ -1,0 +1,96 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Buffs",
+      "DisplayName": "Rawr.Base.Buffs"
+    },
+    "ClosedComment": "Closing this issue, as the user&#39;s specific problem was resolved.  Will open a new item for actual work to be done.",
+    "ClosedDate": "2011-01-13T09:42:41.71-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "My character has mixology and when I tick the Flask of Draconic Mind as my chosen flask it seems to be only treating the 80 int mixology bonus as the flask effect and then adding another small bonus on top of that. So I go from 4941 - 5034 int when I tick Draconic Mind (mixology). I think the 13 extra is probably Heart of the Wild's 6% being applied to the 80 int from the flask (seems close enough given rounding).\n \nI'd expect that to go from 4941 - 5321. Since the initial flask buff is untickable now, only the mixology bit as enabled maybe it's not added that? I've attached a save of my character, hopefully it captured the buffs that are applied. Character is Carnacki@nagrand",
+    "LastUpdatedDate": "2013-05-16T05:19:05.053-07:00",
+    "PlannedForRelease": "Rawr 4.0.15 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-01-10T23:33:24.817-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Buffs] Flask of Draconic Mind",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19660
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4400,
+      "FileName": "mixology.xml",
+      "DownloadUrl": ".\\4400"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I don't quite understand your problem. The way the flasks and mixology's is set up in Rawr you have:\r\nFlask of the Draconic Mind (+300 Intellect)\r\n- Flask of the Draconic Mind (Mixology) (+80 Intellect)\r\n\r\nYou tick both to get the full 380 Int bonus, not just the Mixology. Any other % modifiers to your Int after that would also increase you further.",
+      "PostedDate": "2011-01-12T09:54:07.943-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "OP is correct - sorta \r\nto reproduce problem: Start with a blank, Druid - Boomkin.  Set First Profession to Alchemy.\r\nselect UNBuffed, note INT (at the time of my testing, on the Stats page INT was 156)\r\n\r\nUnbuffed 156\r\njust Flask  456\r\njust mixology 236\r\nFlask And Mixology 536\r\n\r\nin Rarw 4, the user MUST select BOTH the flask and The Mixology, in Rawr 2/3 if you clicked mixology, it automaticly selected the base flask for you.  This may be confusing the user.",
+      "PostedDate": "2011-01-12T15:38:45.147-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "In case you hadn't noticed in Rawr 4.15 you are *unable* to select the flask and mixology. You can *only* select mixology. Thats the problem - you only get that bit not the value of the flask itself. I even said that in my original post.",
+      "PostedDate": "2011-01-12T20:39:45.21-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "For the record, the following flasks have their \"base\" effect disabled - ie: you can't tick them, only the mixology bit.\r\nDraconic Mind, Flowing water, Flask of enhancement (intellect), Adepts Elixir, Elixer of Healing Power, Elixir of Accuracy, Elixir of Deadly Strikes, Elixir of Lightning Speed, Gurus Elixir, Spellpower Elixir,Elixir of the Master, Ghost Elixir, Elixir of the Cobra, Elixir of Mighty Speed and Elixir of Impossible Accuracy.",
+      "PostedDate": "2011-01-12T20:45:17.197-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Further update, I just checked this on my level 80 priest - on that model I *can* select both the normal part of the flask and the mixology part as well. So it seems to be related to the moonkin model specifically. Either that or it's level related.",
+      "PostedDate": "2011-01-12T20:51:16.76-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Your druid has Scroll of Intellect IX enabled.  This buff does not stack with flasks, but it appears that it does not disable the Mixology flask bonus.  Uncheck the Scroll and the base flask should become enabled.",
+      "PostedDate": "2011-01-13T05:18:29.01-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That was it. Thanks Dopefish. I didn't realise they were mutually exclusive.",
+      "PostedDate": "2011-01-13T08:28:34.58-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-13T09:42:41.71-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:27.817-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:05.053-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

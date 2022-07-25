@@ -1,0 +1,90 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Hunter",
+      "DisplayName": "Rawr.Hunter"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-03-22T08:58:07-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "1)  Within Rawr as SV hunter\n2)  Select MM hunter talents\n3)  Rawr crashes\n \n*Selecting 'no talents', BM, or other spec does _not_ cause a crash.\n \n**Also, importing a 2.3.11 MM Hunter save .xml crashes Rawr on program load.",
+    "LastUpdatedDate": "2013-05-16T05:21:30.693-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-03-15T15:40:25.313-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Hunter] Crashes on MM Talent Selection",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16789
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I also ran into this problem, and it seems to be an interaction between enabling the +10% AP buffs and having a point in Trueshot Aura (not sure if this also affects other classes that bring the +10% AP buff)\r\n\r\nDisabling the buff for the Hunter and Pet in the XML file should allow it to work, or disabling the talent point.",
+      "PostedDate": "2010-03-15T17:46:23.91-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks for the Reply,\r\n\r\nI was able to reproduce this.\r\n\r\nIf I remove the Trueshot aura buff from my both myself and my pet, Rawr will no longer crash upon selecting MM.  (with 1 pt in the TSA talent)\r\n\r\nThis is still a relatively serious flaw however.  If you are specced in SV, but have TSA listed as a buff, and then try to use the Optimizer with talents selected, Rawr will crash.",
+      "PostedDate": "2010-03-15T18:36:27.333-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Don't use Talents in with the Optimizer in Hunter, period.",
+      "PostedDate": "2010-03-15T22:14:52.163-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Fixed with commit 48058",
+      "PostedDate": "2010-03-15T23:33:19.88-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-15T23:33:59.497-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Is this going live in the 2.3.13 version?  I had the same issue out of the blue on my hunter last night.    My hunter (and only the hunter) crashed within 30 secs or so fo use or if I started to optimise.  It took me a couple of goes to turn the True-Shot Aura buff for myself and pet (due to crashes) but since then everything has worked fine again.\r\n\r\nThanks\r\n\r\n",
+      "PostedDate": "2010-03-21T15:06:22.56-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-22T08:58:07-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:18.067-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:29:25.453-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:30.693-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "128612",
+    "ThreadId": "38766",
+    "Html": "I'm not sure if this qualifies as a bug or what...<br>\r\n<br>\r\nI have the Guardians Pendant of Subjugation (http://www.wowhead.com/?item=37928) and it was ranked very low on the gear list. This seemed strange so I checked it out and realised it didn't have any Haste Rating on it. So I added the 24 haste rating to the Spell haste (in the spell combat ratings section) and it made zero difference to the ranking. It was only when I added it to the flat Haste rating (in the Combat ratings section) that it worked. I would have expected the spell haste rating to actually affect the item score. If it doesn't is there any point retaining the spell haste rating?<br>\r\n<br>\r\nI'm also surprised to see the dragonspine trophy (http://www.wowhead.com/?item=28830) ranking right near the top for trinkets. I thought it's haste proc was only based on melee and ranged attacks, and that it only affected melee haste? And even if the haste proc affects spell damage it's only triggered by melee/ranged attacks making it useless for a caster anyway.<br>\r\n<br>\r\nedit: There also seems to be something wrong with the Thunderheart Pants (http://www.wowhead.com/?item=31046) too. They are ranking way near the bottom below even things like the Moonchild leggings (http://www.wowhead.com/?item=27492). Using those items as a point of comparison (both gemmed as per the default RAWR item set) Thunderheart has;<br>\r\n70 spellpower (41 more than Moonchild)<br>\r\n48 Int (8 more than Moonchild)<br>\r\n32 Spirit (13 More than Moonchild)<br>\r\n4 LESS MP5 than Moonchild<br>\r\n21 Crit (same as Moonchild)<br>\r\n21 HIT more than Moonchild.<br>\r\n<br>\r\nThe hit is useless once you're over the cap, and the crit is the same so those two stats can be discarded. Which leaves just 4mp5 in favour of the Moonchild. I can't see 4mp5 making up for 41 spellpower, 8 Int and 13 Spirit, especially when the spell rotations all show &quot;Not OOM during fight&quot;.<br>\r\n<br>\r\nI took a look at the item details using edit item and I can't see anything greatly different between the two in terms of where the ratings are entered. And I'm using Hood of Hexing so there is no meta-gem being lost because of gem colours. Any ideas?<br>\r\n",
+    "PostedDate": "2008-10-29T07:41:58.663-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "128638",
+    "ThreadId": "38766",
+    "Html": "Dopefish'll be able to talk about the Thunderheart pants vs Moonchild, but I can explain the first two things... <br>\r\n<br>\r\nSpell Haste Rating is still there because I wanted to support users opening their old itemcache. It converts all spell haste rating into haste rating when Rawr is launched. Also, Guardian's Pendant of Subjucation didn't have haste rating on it in the first place because the armory says it doesn't (no idea why, looks like a bug in the armory's data).<br>\r\n<br>\r\nDragonspine Trophy shows up because of the way it's defined, now that haste rating works for spells too. It's obviously useless for casters because they can never actually proc it. I'd try to hide it from Casters, but it's just not worth the trouble for these two weeks.<br>\r\n",
+    "PostedDate": "2008-10-29T08:43:57.697-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "128640",
+    "ThreadId": "38766",
+    "Html": "1) As for spell haste rating, since 3.0 all melee/spell ratings have been merged.&nbsp; &quot;Spell haste rating&quot; as we knew it no longer exists, and is no longer used in models.<br>\r\n<br>\r\n2) Dragonspine Trophy is a known issue in some models.&nbsp; I believe the proc was treated as flat haste for a while, and since the merging of spell and melee haste, that caused issues with the spellcaster models, which have no way to trigger the proc.&nbsp; Just ignore it for now.<br>\r\n<br>\r\n3) Hmm.&nbsp; That's interesting.&nbsp; I can't reproduce it on my local test cases, so can you give me some more information?&nbsp; If you could send me your character XML file, that would be perfect.&nbsp; Also, make sure that your buffs and options are all set correctly.<br>\r\n",
+    "PostedDate": "2008-10-29T08:50:35.807-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "128767",
+    "ThreadId": "38766",
+    "Html": "Fair enough, thanks for the responses. It'd probably be handy to remove some of those depreciated fields at some point just so you don't confuse nubs like me :)<br>\r\n<br>\r\nRegarding the thunderheart pants. They're still showing with a really low ranking on my interface. I've zipped up my character file and extracted the appropriate items from the itemcache.xml.<br>\r\n<br>\r\nInterestingly, the thunderheart legguards (the old healing ones) still rank fairly high (not as high as I'd expect but still...), so it's just something peculiar to the caster legs.<br>\r\n",
+    "PostedDate": "2008-10-29T17:38:54.573-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "128901",
+    "ThreadId": "38766",
+    "Html": "I can't seem to reproduce it, even using your xml files.&nbsp; True, the Thunderheart pants aren't as high as I would expect, but they're higher than the Moonchild, for certain.&nbsp; I've got a few other things I can try to track down this bug, but you may want to try re-loading possible upgrades from Armory.&nbsp; I also notice that your character has one piece of Thunderheart already and that the legs would activate the 2T6 bonus.&nbsp; That could be part of the problem, as well.&nbsp; I'll let you know if I find anything.<br>\r\n",
+    "PostedDate": "2008-10-30T06:10:56.623-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "129225",
+    "ThreadId": "38766",
+    "Html": "I measured a few stats between wearing my current pants (Crystalwind), the moonchild and T6 (I've ignored hit as it's over cap, and I've ignored haste as it's identical);<br>\r\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Crit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Spellpower&nbsp;&nbsp;&nbsp;&nbsp; Best DPS rotation (IS/MF/SF)<br>\r\nCW&nbsp; 35.79&nbsp;&nbsp; 1680&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2463<br>\r\nMC&nbsp; 35.47&nbsp;&nbsp; 1622&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2401<br>\r\nT6&nbsp;&nbsp;&nbsp; 35.59&nbsp;&nbsp; 1667&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2394<br>\r\n<br>\r\nWith either pants it's &quot;not OOM during fight&quot; so mana regen isn't an issue.<br>\r\n<br>\r\nI'm really not sure what the problem is, a lot of leggings that *should* be higher are quite low. I've checked with my character straight after an armory import (ie; unbuffed), fully raid buffed, switching a few pieces of gear but there are still leggings that don't *seem* to rank properly. Maybe you're right and it's to do with the two piece bonus but I can't see why. I know the bonus extends the MF duration, but that shouldn't screw up DPS, so badly - especially when MF is essentially infinite duration at the moment. Looking at the amount of crit and spellpower I'd expect T6 to fall roughly halfway between Crystalwind on Moonchild when it comes to DPS rotation.<br>\r\n<br>\r\nI tried making my druid from a clean sheet adding a piece of gear at a time and watching the ranking on the pants. Practically naked they rank midrange, but higher than the crappy blues (probably about where they should rank). As I continue adding gear they continue to rank well. It's definitely something to do with getting two piece T6. The pants actually drop rating when I switch from Grasp of the Moonkin to T6 gloves. They fall way down the list.<br>\r\n<br>\r\nNow just to make things more fun... <br>\r\n<br>\r\nI equipped the pants, unequipped the gloves, re-equipped the gloves and the pants now rank high again. I've just tried reloading my character from the armory and the pants rank high. However, if I shut down RAWR and reload my character (either from the Armory or from a save) the T6 pants rank low again. Once I switch pants and gloves around they rank properly again.<br>\r\n<br>\r\nAnd now it's nearly 3am and my brain is hurting.<br>\r\n",
+    "PostedDate": "2008-10-31T09:43:06.28-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "129290",
+    "ThreadId": "38766",
+    "Html": "Just from reading this, two possibilities occur to me:<br>\r\nA) Something's bugged with Moonkin 2T6, which lowers the overall DPS.<br>\r\nB) You're losing your metagem with T6 legs of the gemming in question.<br>\r\n",
+    "PostedDate": "2008-10-31T14:33:54.933-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "129482",
+    "ThreadId": "38766",
+    "Html": "As I mentioned before I'm not using a meta. It's definitely something to do with T6. <br>\r\n<br>\r\nTo get it to produce the weird results, I start RAWR, load my saved character (same one I emailed Dopefish) and the Pants rank badly (scoring about 125). I switch my gloves to Barbed Gloves of the Sage (seems to work switching to any gloves apart from T6) and the T6 pants jump to a score pf 256. Puts them right amongst Channeled Elements, Crystalwind and Corrupted Soulcloth (which is about right).<br>\r\n<br>\r\n*shrugs*<br>\r\n<br>\r\nIt's probably only going to matter for a few weeks, it's just driving me crazy because I'm trying to decide whats better at the moment :)<br>\r\n",
+    "PostedDate": "2008-11-02T05:59:25.437-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "129509",
+    "ThreadId": "38766",
+    "Html": "You've done excellent work on this.&nbsp; I will hook up the debugger and take a look at what's going on.&nbsp; I _suspect_ I know what the problem is, and it does have to do with the 2T6 bonus and how I calculate some things related to the rotations that cast both IS and MF.&nbsp; Very interesting.<br>\r\n",
+    "PostedDate": "2008-11-02T10:24:41.56-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

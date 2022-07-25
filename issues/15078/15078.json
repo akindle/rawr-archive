@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Hunter",
+      "DisplayName": "Rawr.Hunter"
+    },
+    "ClosedComment": "Fixed",
+    "ClosedDate": "2009-12-06T13:43:32.03-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The BM talent \"Beast Within\" in theory \"Increases all damage you deal by 10%...\". In Rawr, adding or removing that talent has no impact on DPS, indicating that it might not be incorporated.  This of course may substantially change the relative DPS value of gear or talents.\n \nRepro:\n1. make a new hunter\n2. select BM talents and rotation, and make sure a pet is present\n3. Equip a bow and ammo.\n4. Right click Beast Within and see the DPS not change.\n \nAdditional Information:\nRawr 2.2.27\nWindows Vista\n \nDetails:\n \nIn CalculationHunter.cs, the computation looks like the pre-patch computation (E.g.- the hunter damage bonus is only applied when Bestial Wrath is up).\n \nfloat beastWithinDamageAdjust = 1f;\nif (calculatedStats.beastialWrath.freq > 0) {\n    beastWithinDamageAdjust = 1f + (0.1f * beastialWrathUptime);\n}",
+    "LastUpdatedDate": "2013-05-16T05:23:15.277-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-11-27T17:29:15.37-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Hunter] Beast Within does not apply 10% DMG buff",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15078
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Per Wowhead: http://www.wowhead.com/?spell=34692\r\n\r\n\"Increases all damage you deal by 10% and while your pet is under the effects of Bestial Wrath, you also go into a rage causing 10% additional damage and reducing mana costs of all spells by 50% for 10 sec. While enraged, you do not feel pity or remorse or fear and you cannot be stopped unless killed.\"\r\n\r\nSo it looks like it needs to be 10% passive and another 10% with the effect active. I'll investigate the best method of application and will set it in for next version.",
+      "PostedDate": "2009-11-27T18:53:16.383-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Alright, it looks like that talent and Bestial Wrath hadn't been updated in a while, was still trying to use a Duration of 18 seconds. I've done some reworking on both so that they are calc'd on the GetCharacterStats side and the uptime reference you have isn't in use anymore.",
+      "PostedDate": "2009-11-27T20:12:03.813-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Checked in a few rounds of changes, check it out for me",
+      "PostedDate": "2009-11-27T23:22:16.863-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-06T13:43:32.03-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:41.613-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:15.277-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

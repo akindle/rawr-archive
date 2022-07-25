@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "All of the suggestions have been included as of build number 26393.",
+    "ClosedDate": "2008-10-21T14:15:48.603-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I tried out mass gem replacement. Mostly it seems to work, but items the didn't have gems placed in them before remain ungemmed and not all unspecified gemmings are removed. It would also be good if the currently equipped items/items marked as available aren't removed.",
+    "LastUpdatedDate": "2013-05-16T05:26:57.39-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-10-12T19:26:13.51-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Mass Gem Replacement",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 11436
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "can you give me a little more detail re: what you're describing? (Example of how to repeat what you're seeing?)\r\nThe currently equipped items/available items issue I will look into.",
+      "PostedDate": "2008-10-12T22:10:45.79-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "For example I entered some new items with sockets so that the only instance of that item was nongemmed. When I used mass gem replacement it did not populate that item with socketed version.",
+      "PostedDate": "2008-10-12T23:40:28.92-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Found what I think was being described by Kavan. \r\nA resolution to it has been worked into changeset 23496",
+      "PostedDate": "2008-10-13T12:48:08.747-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "From what I tested it appears to be working correctly now.\r\n\r\nTo determine if a gemmed item is marked as available in order not to delete it you can call GetItemAvailability on the Character. If the result is ItemAvailability.Available or ItemAvailability.AvailableWithEnchantRestrictions then that item is currently in use and shouldn't be deleted.",
+      "PostedDate": "2008-10-17T18:34:52.233-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This issue has been resolved.",
+      "PostedDate": "2008-10-21T14:14:47.87-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-10-21T14:15:48.603-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:26.613-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:57.39-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

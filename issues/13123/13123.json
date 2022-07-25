@@ -1,0 +1,256 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Optimizer",
+      "DisplayName": "Rawr.Base.Optimizer"
+    },
+    "ClosedComment": "After lengthy debate (all over 24 hours) user indicated problem solved.",
+    "ClosedDate": "2009-04-29T15:10:18.937-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "It would be nice if there was a toggle, that would allow you to switch from relative to absolute rating of items.  Right now it shows absolute rating for all items (e.g. \"This item will contribute 500 DPS to your overall DPS.\"), but all that I often care about is how much an item will improve me (e.g. \"This item will contribute 25 DPS more than the current item worn in that slot.\").  At that point, it would be nice if all items that contribute less score than the lowest scoring item selected as available (i.e. the item you're wearing) disappeared from the list, while in \"relative mode\".  This would make for much more meaningful, and compact, upgrade lists.",
+    "LastUpdatedDate": "2013-05-16T05:25:43.347-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-04-27T08:33:57.817-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Feature Request.Optimizer.UL] Add ability to show relative and absolute rating in Upgrade List",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 13123
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1847,
+      "FileName": "upgradelist.png",
+      "DownloadUrl": ".\\1847"
+    },
+    {
+      "FileId": 1849,
+      "FileName": "helms.png",
+      "DownloadUrl": ".\\1849"
+    },
+    {
+      "FileId": 1850,
+      "FileName": "CorruptedOptimize.png",
+      "DownloadUrl": ".\\1850"
+    },
+    {
+      "FileId": 1851,
+      "FileName": "Ret 29Apr09.xml",
+      "DownloadUrl": ".\\1851"
+    },
+    {
+      "FileId": 1852,
+      "FileName": "properupgradelist.png",
+      "DownloadUrl": ".\\1852"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Upgrade list shows relative values. Comparison charts show absolute values.",
+      "PostedDate": "2009-04-27T18:38:30.673-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Relative to what?  Not something that is easily figured out, or people are likely to find useful.  \r\n\r\nLet's test this in a real example:  Right now I'm looking at my upgrade list, for a Ret paladin.  I'm wearing Spiked Titansteel Helmet, which ranks 7th, in its current gemmed form, as worn (it's marked with the green diamond, for available).  So the Spiked Titansteel Helmet shows up on the top half of the first page or so of helmet upgrades.  Yet I have about 30+ helmets listed here, which are ranked relative to some very crappy helmet from heroic Oculus, that my Spiked Titansteel Helm does 200 MORE DPS than.  And on top of that, it tells me that crappy helmet does 7.09 DPS, which means that it is not even the reference point, but is 7 DPS more than some reference point that I don't even know what it is.  So because I have to do the math to figure out how much better helmets are than my current one anyways, it is no different than if they were all absolute, since I have to do the same math either way.\r\n\r\nIn reality all points are relative.  What we call absolute are just relative to zero.  THIS IS WORSE.  Being relative to some arbitrary point that has no meaning is a step down, because at least zero has meaning.  Why not make it from some other arbitrary point, like a random helmet that drops in Scarlet Monestary?  The point I'm trying to make, is that the only other reference point that makes sense is the helm I'm currently wearing (or possibly the lowest DPS of any helms I mark as available).",
+      "PostedDate": "2009-04-28T11:06:54.163-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Try right-clicking an item in the comparisons chart you don't have, but ranks better absolute (to zero, ie no helmet) than your currently equipped helmet.\r\nSelect 'Evaluate Upgrade'.  (it uses your optimizer setting, so be sure to set your requirements, ie hitcapped and whatnot)\r\nThat's your relative increase. Relative to what you currently wear. If you don't see a bar, it means it's no upgrade.\r\n\r\nDid I understand you correctly, that you want the comparisons chart to show the upgrade list instead ? \r\nThat would result in extensive waiting time everytime you change just about anything, including boss level. (just an observation) And I believe that is not intended.",
+      "PostedDate": "2009-04-28T14:59:52.2-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Awesomeness, you should look at the documentation for building upgrade lists (and what that means). What you are asking for, you don't really want, because it doesn't actually mean anything useful, like you think it does. Upgrade Lists really are what you're looking for, functionally.",
+      "PostedDate": "2009-04-28T19:34:49.577-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "(In your example, they are *not* related to some crappy helmet from heroic Oculus. The reference point is your current character. You do not have to do any math. There is no arbitrary point that it's relative to. It's relative to what you want: your current performance.)",
+      "PostedDate": "2009-04-28T19:37:04.997-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok, unless I'm misunderstanding (and I will re-read the documentation), here is a picture of my upgrade list for helmets.  The green diamond'ed helmet is the one I have.  The list is not relative to that (what I'm currently wearing) since it continues below.\r\n\r\n[image:upgradelist.png]",
+      "PostedDate": "2009-04-28T19:57:12.87-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-04-28T19:57:15.85-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The list *is* relative your current performance, by definition. Items shown in the upgrade list which you have available are still upgrades, because you could make a more optimal set with them. Just because you have an item available does not mean that it wouldn't be an upgrade to use it optimally.",
+      "PostedDate": "2009-04-28T20:19:22.347-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The item in the picture marked with the green diamond is what I have on.  Everything below that is NOT an upgrade, correct?",
+      "PostedDate": "2009-04-28T21:00:48.073-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "If the item that I have on, marked with the green diamond, is my current performance, nothing below that item (or other gemmed variants of it, if there are some) is an upgrade.  That is the definition of upgrade that I'm using.  Is that what you are using?",
+      "PostedDate": "2009-04-28T21:03:13.203-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Look closely. You may have an item available/equipped, but that does not mean that it is used optimally.  Everything in that picture is a potential upgrade, because your optimized performance with it equipped is better than your current performance. That includes the helm you already have available/equipped.",
+      "PostedDate": "2009-04-28T21:59:50.317-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The line in that picture marked with the green diamond is *not* your current performance. That line is the optimal performance with that helm equipped. Its value is displayed as the optimal performance with that helm equipped, minus your current performance. ie, it is relative to your current performance.",
+      "PostedDate": "2009-04-28T22:01:33.533-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "(Are you thinking that your current performance is your optimal performance with your currently available gear, perhaps? It's not; you're 200.90dps off from your optimal performance)",
+      "PostedDate": "2009-04-28T22:03:25.423-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Then something else is wrong.  Because the item with the green diamond IS the item I have on, in that optimal configuration (gem + enchant + meta).  I double checked.  I'll look into it more.",
+      "PostedDate": "2009-04-28T22:39:41.9-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That seriously is how it works, really. It really does mean what I say. Just because that one item may be gemmed/enchanted as it would be in the optimal set, does not mean that your total optimal performance couldn't be better.\r\n\r\nYou could increase your DPS by 200.90 by equipping that helm, and optimizing your gear.",
+      "PostedDate": "2009-04-29T08:10:24.003-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "But I have that helm (exactly, including gem/enchant) equipped.  So do you have an explanation as to how changing OTHER gear would provide an increase?  It seems that it's supposed to do what I asked for, according to you, but this obviously isn't.  I'm wondering if it's bugged somehow.  I can provide screenshots, that is 100% the helm EXACTLY that I have on, so the only thing that could change to affect it is some other piece of gear.",
+      "PostedDate": "2009-04-29T09:13:28.477-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Please reread what I've said. That helm may be exactly how you're wearing it, but that doesn't mean that your current performance is your optimal performance.\r\n\r\nYou could increase your DPS by 200.90 by equipping that helm, and optimizing your gear. <-- Really.\r\n",
+      "PostedDate": "2009-04-29T09:16:04.47-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "There is a screenshot showing both helms, in the two windows... helms.png",
+      "PostedDate": "2009-04-29T09:17:44.823-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-04-29T09:17:47.667-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "There is no bug here, it is working exactly as intended, and the results are very simple.\r\n\r\nIn an upgrade list, an item listed there is valued specifically as has been said: (Optimal performance with that item equipped) - (Current performance). Just because you happen to already be wearing that helm, exactly as is optimal, doesn't change the fact that the character's optimal performance with it equipped is 200.90dps higher than the character's current performance.",
+      "PostedDate": "2009-04-29T09:19:19.127-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Seriously, I believe you, you're wearing that helm, exactly gemmed/enchanted as is optimal. That doesn't matter.",
+      "PostedDate": "2009-04-29T09:20:17.623-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I understand what you are saying, and I think you're discounting what I'm saying because you think I'm not understanding you.\r\n\r\nWhat I'm understanding (my assumptions)...\r\n- Rawr thinks that I can increase my DPS by 200 if I equip that helm.\r\n- I have that helm equipped.\r\n- This leaves two options; Either that helm has some DPS relationship with another item, that causes the helm's DPS influence to increase because items other than this helm are changed, -OR- something is not calculating or displaying correctly.\r\n\r\nWhen I do an optimize, it doesn't have any suggestions as to what could be changed, and why.  Is there a way I could get it to elaborate on that?  When I run the optimizer, all it tells me is to swap my trinkets between 2 slots, swap my 2 rings between the 2 slots, and change 1 purple gem to a red gem.\r\n\r\nI understand that it is relative, and that my original request is no longer necessary.  What I'm trying to figure out now is why it's showing me what it is, and how this information is useful to me.",
+      "PostedDate": "2009-04-29T09:29:09.017-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Is there a way I can get Rawr to display what relationship other items have that is affecting the helms optimal configuration?",
+      "PostedDate": "2009-04-29T09:30:30.833-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Post your character file.",
+      "PostedDate": "2009-04-29T09:30:54.82-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The helm *seriously* *really* _entirely_ >>completely<< has nothing to do with it. Really. Yes, really. No, I do mean it. Yes, I do. Really. Yes. Yes, really.",
+      "PostedDate": "2009-04-29T09:32:16.757-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Is this relationship something that is specific to this computational model?  I'm not familiar with how Rawr is computing it \"under the covers\", so I'm trying to figure out where this optimality relationship comes from, what it is, and how I can figure out what the relationship is (so that I could move to it, to gain the optimality).  \r\n\r\nIs optimality a word?  haha",
+      "PostedDate": "2009-04-29T09:32:57.597-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "How do you optimize? o.O\r\n\r\nYou use the optimizer...?",
+      "PostedDate": "2009-04-29T09:34:57.713-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Again, nothing has anything to do with that helm. There's no 'relationship' to that helm. It's a good helm. It's gemmed/enchanted optimally, and you already have it equipped. Joy. (Character Optimal) - (Character Current) is still 200.9. If you post your character, I can be more specific.",
+      "PostedDate": "2009-04-29T09:36:35.42-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok, I think something is wrong with just this copy of Rawr.  I saved the character profile, and reran fresh upgrade and optimize lists.  Same results (put the same helm on add 200 DPS, swap my rings and trinkets, make a couple minor gem changes).  I opened Rawr on one of my other computers, opened the character profile, and ran the upgrade and optimize lists.  The optimize is the same, but the upgrades list is short, only a handful of items, that seem to reference off my current helmet.\r\n\r\nHere's a pic of this corrupted Rawr giving the same results, all in one shot.",
+      "PostedDate": "2009-04-29T10:02:59.08-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-04-29T10:03:01.44-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Profile",
+      "PostedDate": "2009-04-29T10:03:30.22-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-04-29T10:03:31.25-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I deleted, and redownloaded Rawr.  Now it builds the proper upgrade list, as you described it shoud look, and as I was \"feature requesting\" for it to look.\r\n\r\nI don't have any explanation for what could have happened to the previous corrupted version that was building bad lists.",
+      "PostedDate": "2009-04-29T10:08:50.767-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-04-29T10:08:51.927-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-04-29T15:10:18.937-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T19:23:08.487-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:41.303-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:43.347-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

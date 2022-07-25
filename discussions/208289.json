@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "427202",
+    "ThreadId": "208289",
+    "Html": "<p>I made the mistake of saving my Druid's equipment sets into multiple files.&nbsp; So I have a saved document for Druid_Kitty, Druid_Tree, and Druid_Bear.&nbsp; Now that I realize Rawr will actually store my equipment information per spec, I'd like to consolidate all three of those saves into one, so that I can have one save document, Druid, with a record of all my gear acquisitions.&nbsp; Is such a thing possible?</p>",
+    "PostedDate": "2010-04-04T05:44:15.767-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "427239",
+    "ThreadId": "208289",
+    "Html": "<p>Yes... Open them up with a text editor, and look for all of the lines that look like this:</p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre><span style=\"color:Blue\">&lt;</span><span style=\"color:#A31515\">AvailableItems</span><span style=\"color:Blue\">&gt;</span>40329<span style=\"color:Blue\">&lt;/</span><span style=\"color:#A31515\">AvailableItems</span><span style=\"color:Blue\">&gt;</span>\r\n</pre>\r\n</div>\r\n<p>Combine all of those, making sure to remove any duplicates; order doesn't matter.</p>\r\n<p>&nbsp;</p>\r\n<p>(And if you're wondering, positive numbers are item IDs, negative numbers are enchant IDs. Strings of numbers with dots in them are specifically available items, where you marked only a specific gemming/enchanting of an item available)</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-04-04T09:51:01.163-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "428184",
+    "ThreadId": "208289",
+    "Html": "<p>Alternatively, get a mod called characterprofiler.&nbsp; This will save you character inventory and bank information.&nbsp; You can load this saved variables file into rawr to automatically mark all the gear you have available into each of the profiles you want it.&nbsp;</p>",
+    "PostedDate": "2010-04-07T00:51:44.957-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "428397",
+    "ThreadId": "208289",
+    "Html": "<p>OK been browsing around Rawr to see how/where it saves different spec equipment at with no luck. I've always used seperate files for each spec and use the save option under talents to save my particular spec setup. But according to OP, rawr can save (for example) my tree and my moonkin gear/talents in a single file vice two files? I have 4 toons that are level 80 so I currently have 8 different files; 1 for each spec and gear setup. If there is a way to use only 1 file for each toon I'd be interested in learning how.</p>",
+    "PostedDate": "2010-04-07T10:33:58.98-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "428420",
+    "ThreadId": "208289",
+    "Html": "<p>You almost certainly should stick to multiple files. Single files work OK in a few cases, where there can be crossover between gear for the specs (Cat/Bear or Arcane/Fire, for example), but is simply a negative for most things. The more items you have available, the slower and more inaccurate the optimizer is going to be. And changing buffs/spec/model all the time would be troublesome and mistake-prone, for no point, when you can more quickly just open a different file.</p>",
+    "PostedDate": "2010-04-07T11:20:20.573-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

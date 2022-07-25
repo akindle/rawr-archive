@@ -1,0 +1,146 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Enhance",
+      "DisplayName": "Rawr.Enhance"
+    },
+    "ClosedComment": "Now fixed for v2.3.6. Mana calcs are now completely disabled.",
+    "ClosedDate": "2010-01-14T16:49:27.117-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Overnight, it appears that the intellect calculations have become broken in a fashion such that intellect is now showing as the main DPS stat and is overriding previous gem and gear priorities.\n \nscreenshot of borked interface is attached.\n \nI have redownloaded 2.3.5 and extracted it to a separate location and duplicated the above borkedness.",
+    "LastUpdatedDate": "2013-05-16T05:22:25.217-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-01-14T07:17:34.813-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Enhance] Intellect Calculations Borked",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15905
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2777,
+      "FileName": "borked-rawr.jpg",
+      "DownloadUrl": ".\\2777"
+    },
+    {
+      "FileId": 2778,
+      "FileName": "Borked.xml",
+      "DownloadUrl": ".\\2778"
+    },
+    {
+      "FileId": 2779,
+      "FileName": "BW_Borked Int.xml",
+      "DownloadUrl": ".\\2779"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "A jpg tell me nothing. You MUST post your XML file if I am able to reproduce the problem. Without it I'll have to close the issue due to lack of information.",
+      "PostedDate": "2010-01-14T08:32:37.773-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I saw this issue since upgrading to 2.3.5 (when it came out).  I upgraded at the same time I respec'd for fire nova, so I thought at the time that it might have had to do with that, but I haven't had any time for investigation.  I did notice that my glyph of fire nova is not showing up as an option in the glyphs.",
+      "PostedDate": "2010-01-14T08:48:22.56-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Here's mine",
+      "PostedDate": "2010-01-14T08:51:04.587-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-14T08:51:16.443-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-14T10:40:25.523-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I have attached my xml.  This is a clean install with a fresh loaded armory import with no additional tweaks (same conditions as the screenshot)\r\n\r\nI assumed based on the screenshot you would have been able to duplicate the results as I have.  I'll provide the xml on future issues.",
+      "PostedDate": "2010-01-14T10:50:22.503-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-14T10:50:26.71-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'll also add that I respec'd last night to the current max DPS build from the BIS thread on EJ.  Perhaps there is an issue related to the skill import from the armory which is the root cause.",
+      "PostedDate": "2010-01-14T11:17:03.773-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I think I found the problem.  Your xml file has you using the Fire Nova glyph even though that option is no longer available in the Enhance module.  And since it's not available, no amount of checking/unchecking things in the gui can fix it.  But if I manually edit your xml and remove the glyph it seems to work fine.\r\n\r\nHere are your talents/glyphs:\r\n\r\n<ShamanTalents>05303005200000000000000003020503310500133303113123105100000000000000000000000000.00000001000000000000001000010</ShamanTalents>\r\n\r\nLook for the period and find the first 1 after the period.  Change that 1 to a 0 and problem solved.\r\n\r\nDon't know if this was an armory import issue or stemmed from using an old xml file.  Also there must be lingering code in the Enhance module that checks the use of that glyph for some calculation or another.",
+      "PostedDate": "2010-01-14T12:10:46.077-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The Glyph of Fire Nova is in my xml because that is the glyph my character is using.  I respec'd to take advantage of the significantly improved AOE gained from specing for fire nova in the 3.3 patch.  Glyph of Fire Nova Totem was replaced by Glyph of Fire Nova.  Why was it completely removed from the enhance module?",
+      "PostedDate": "2010-01-14T15:19:00.297-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I, on the other hand am NOT using that glyph nor did I manually change the xml file to do so.\r\n\r\nI just tested on a completely different machine with the same results.  I suggest you import my character and see it for yourself.  If it is indeed buried in the xml file, its the result of an error elsewhere.\r\n\r\nChar:  Bubbawilkins\r\nServer: Uther",
+      "PostedDate": "2010-01-14T15:48:10.47-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-14T15:50:09.14-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Fixed for v2.3.6\r\n\r\n\n\n** Closed by Levva 1/14/2010 3:50 PM",
+      "PostedDate": "2010-01-14T16:06:46.737-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hmmm nope that didn't fully fix it only moved it a bit.",
+      "PostedDate": "2010-01-14T16:06:48.1-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-14T16:49:27.117-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T19:46:29.79-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:30:34.183-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:25.217-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

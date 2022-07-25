@@ -1,0 +1,101 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "This issue has been open for 30&#43; days without response. If it is still an issue, please resubmit against current versions and provide current files.",
+    "ClosedDate": "2009-09-16T18:14:10.593-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Tested using 2.2.13, 2.2.12, and 2.2.11, results are the same throughout.  Values for item enchants are zero for any item's current enchant.  This is evident in two places.  First, the enchant dropdown on each item slot.  Second, the right-hand-panel (Comparison), dropdown for Slot: Enchants->(slot name).\nScreenshots attached.",
+    "LastUpdatedDate": "2013-05-16T05:24:48.703-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-08-15T22:30:15.34-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Enchant Values No Longer Calculated Correctly",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13890
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2101,
+      "FileName": "EnchantsZeroed.PNG",
+      "DownloadUrl": ".\\2101"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Correction: The bug here actually is that Lightweave isn't modeled for SPriest.",
+      "PostedDate": "2009-08-16T01:37:23.12-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Maybe, but this is true for other current enchants I have, all of which were previously modelled correctly.\r\nThe issue tracker would only allow me to upload 1 screenshot as a file.  See also:\r\nhttp://www.scanhelper.com/images/EnchantsHead.PNG\r\nhttp://www.scanhelper.com/images/EnchantsShoulder.PNG\r\nhttp://www.scanhelper.com/images/EnchantsBack.PNG\r\n",
+      "PostedDate": "2009-08-16T05:40:11.707-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "http://www.scanhelper.com/images/EnchantsWeapon.PNG\r\nhttp://www.scanhelper.com/images/EnchantsChest.PNG\r\nhttp://www.scanhelper.com/images/EnchantsWrists.PNG\r\nIntrestingly, the Chest enchant has a non-zero value, while all other enchants (including all currently-applied enchants I did not screenshot) are displayed as 0.",
+      "PostedDate": "2009-08-16T05:54:20.737-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "OK, that's odd. What we really need is the character file.",
+      "PostedDate": "2009-08-16T10:50:54.453-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "that seems like maybe the SP comparison model is broken - even where it's generating survivability for chest enchants, it should be generating dps numbers too (powerful stats and super stats have the same effects, so we would expect the same type of output:\r\nhttp://hunterloot.com/misc/hunter_chest_enchants.png\r\n\r\nin the SP case, powerful stats has the 'expected' amount of survivability compared to super stats, but is missing the other two components.",
+      "PostedDate": "2009-08-16T12:57:13.94-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "http://www.scanhelper.com/files/ProfessCharFile.zip",
+      "PostedDate": "2009-08-16T13:05:23.497-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I have narrowed down the symptoms.  Equipping only certain helms will cause these symptoms.\r\nTo reproduce:\r\n1.  Load my model from armory, Profess on Ysera.\r\n2.  Click any enchant dropdown.  Notice the value of the currently-equipped enchant.\r\n3.  Change my helm to \"Empty\" or equip most any other helm.\r\n4.  Observe that the values of currently-equipped enchants now display as expected.\r\n5.  Restore the Conqueror's Circlet of Sanctification.\r\n6.  Observe that currently-equiped enchant values on all items (i.e. gloves, boots, weapon) are now displayed wrong.\r\nSince getting rid of the Conqueror's Circlet of Sanctification fixes the problem, I tested many other helms on the list.  The following break the modelling:\r\n* Conqueror's Circlet of Sanctification\r\n* Hood of Smoldering Aftermath\r\n* Hood of Fiery Aftermath\r\n(may be more, only test equipped the top 40 helm comparisons)\r\nThis seems to be restricted to the ShadowPriest modelling rather than the items themselves, as switching to the HolyPriest model while equipping the 3 broken helms does not reproduce the problem.",
+      "PostedDate": "2009-08-21T08:09:56.863-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "i can't reproduce this (using your steps) on 2.2.13 or source-latest. have you changed any of the SP settings away from their defaults?",
+      "PostedDate": "2009-08-21T14:32:45.807-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-16T18:14:10.593-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:35.2-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:48.703-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

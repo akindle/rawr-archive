@@ -1,0 +1,166 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSWarr",
+      "DisplayName": "Rawr.DPSWarr"
+    },
+    "ClosedComment": "Fixed in commit 46169",
+    "ClosedDate": "2010-02-01T10:14:58.53-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "There is something wrong with how it calculates hit for me as arms warrior. When i add any of the 3% crit debuffs on target the hit graph turns into what you can see on the attached image.\n \nThat graph is not suppose to go up when my hit is lowered, when i deactivate the debuff again the line becomes straight as it should be.",
+    "LastUpdatedDate": "2013-05-16T05:22:04.11-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-01-27T17:45:52.1-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSWarr] Hit Rating Error",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16147
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2865,
+      "FileName": "hiterror.JPG",
+      "DownloadUrl": ".\\2865"
+    },
+    {
+      "FileId": 2866,
+      "FileName": "nalhabug.xml",
+      "DownloadUrl": ".\\2866"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Are you crit capping?",
+      "PostedDate": "2010-01-27T18:27:15.35-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "\"UnProc'd: 1101,4 Rating Under White Cap\"",
+      "PostedDate": "2010-01-27T19:29:31.37-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "And this occurs both when im above and below hit cap.",
+      "PostedDate": "2010-01-27T19:31:17.78-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Found now that its only happening when i got 2 parts or more of t10 equipped.",
+      "PostedDate": "2010-01-27T19:37:25.25-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "And it is only happening with axe specc (ofc u need a axe equipped too).",
+      "PostedDate": "2010-01-27T19:50:08.67-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Please post your char file so we can see it",
+      "PostedDate": "2010-01-27T19:52:13.567-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It is as soon as i hit above 50% crit.",
+      "PostedDate": "2010-01-27T19:53:46.737-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Here it is",
+      "PostedDate": "2010-01-27T19:58:13.99-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-27T19:58:17.257-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Oh, yes i am crit capping but only overpower (which is quite easy as arms).",
+      "PostedDate": "2010-01-28T05:32:17.993-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm 95% sure that's what you are seeing, because you are crit capping, that affects the hit/miss caps too.",
+      "PostedDate": "2010-01-28T09:16:36.687-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "But why would the crit cap make me gain from lowering my hit? Not even replacing it, by just lowering it.",
+      "PostedDate": "2010-01-28T18:52:33.33-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hmm, no, something's definitely wrong if adding hit will lower your DPS.\r\nIf I edit your character to be near the hit cap and change the hit rating slowly, I notice that your AP is in fact going down rather than up.  Something strange is happening, I'm going to have to look into this more closely.",
+      "PostedDate": "2010-01-28T20:38:14.94-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It's definitely something with the T10/deep wounds calculations.  It may be accurate (where adding hit will actually increase your crit rate just to the point where you actually tick deep wounds less), but I need to do some stepping through the code to know for sure.",
+      "PostedDate": "2010-01-28T20:42:18.527-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It is possible to increase your crit to the point that you keep pushing back Deep Wounds, delaying Deep Wounds ticks because you are critting more than once per second.  While this isn't really a problem in terms of total damage output (except in extreme theoretical corner cases that are completely unobtainable), it is a problem when Deep Wounds ticks provide value based on their consistency of ticking.  This is what Ebs is referring to in his previous comment.\r\n\r\nThat said, I don't believe this should be an issue in a real situation, at least given our gear (BiS or near-BiS levels may be another ballgame entirely).  I'm inclined to say that this is a modeling issue, and may need some \"smoothing out\", similar to how we've smoothed the value of Haste across different \"breakpoints\".",
+      "PostedDate": "2010-01-29T00:00:12.02-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Critting more then once per second? No way, at least not as arms.",
+      "PostedDate": "2010-01-29T20:50:25.73-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Not critting more than once per second necessarily.  What I was referring to is simply that the more often you crit, the less frequently your Deep Wounds will tick.  Each crit pushes back the next deep wounds tick 1sec; critting every 1.99secs on the nose means that you get 1 tick every 2secs.  Critting every 2.01secs on the nose means you get 2 ticks every 3 secs.\r\n\r\nHowever, I recently made changes so that you don't crit every X seconds on the nose (because that's not how it works in the real world), rather it's a distribution based on how frequently each attack lands.  I'm double checking these now.",
+      "PostedDate": "2010-02-01T09:45:18.397-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Notes from your file:\r\n* You aren't meeting your Meta requirement, turn on Enforce Gem Requirements. This is especially important since you are a JC and need to ensure you don't equip more than 3 Dragonseye's when using the optimizer\r\n* You are 39 Hit rating over your cap as a Draenei, while you aren't gemming for hit, it would be a good idea to find another item to swap out hit for different itemization.\r\n* Tactical Mastery is a debatable talent, personally I feel it's useless as an Arms Warrior and you would be better served to put the 3 points in Iron will for the Stun duration reduction.\r\n* I noticed your Ability Maintenance section is left untouched. I would recommend taking a look at it and making any adjustments to what you normally do in raids. I almost always have to keep commanding shout up and many times I have to aid in Sunder upkeep.\r\n* Your Boss Selection is left untouched. I would VERY HIGHLY recommend changing that to 'The Average Boss' as that will greatly value the enchants, talents, buffs etc that are used against Impedences (stuns, fears, etc) and show your DPS Losses from Time in Movement, etc\r\n\r\nThat said, Ebs just fixed the issue (it was causing Deep Wounds to break due you crit capping a yellow ability)",
+      "PostedDate": "2010-02-01T10:06:58.977-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I found the bug.  It was occuring when you hit 100% crit chance on an ability, basically changing deep wounds tick rate to infinity :P\r\n\r\nFixed",
+      "PostedDate": "2010-02-01T10:13:32.813-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-01T10:14:58.53-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T16:08:54.537-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:30:10.793-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:04.11-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

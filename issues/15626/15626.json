@@ -1,0 +1,101 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.LoadCharacter",
+      "DisplayName": "Rawr.Base.LoadCharacter"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-02-22T13:10:22.927-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I play russian wow.\nSo names in lua also russian.\nI have tried to purge data and reload, doesnt help.\nDownloaded all russian translation from wowhead, doesnt help.\n \nCan you help?",
+    "LastUpdatedDate": "2013-05-16T05:22:43.993-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-12-28T11:12:31.067-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[LoadCharacter] Load from Character Profiler Error",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 15626
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2691,
+      "FileName": "CharacterProfiler.lua",
+      "DownloadUrl": ".\\2691"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I too have this problem\r\nMy file is attached too: Is there a list of character profilers out there or is it just rpgo-character profiler:\r\n\r\nBasically RAWR throws an exception when looking up a key in a dictionary - no call stack or anything to report, so just attached my lua as requested. \r\nAn additional problem is once this happens you cant close the status dialog; you have to close the main form - annoying.\r\n\r\nDetails of add-on:\r\n\r\n## Interface: 30100\r\n## Title: rpgo-CharacterProfiler\r\n## Notes: Export Character Profiles for use out-of-game\r\n## Version: 3.1.0\r\n## Author: calvin\r\n## X-Date: May 20, 2009\r\n## X-Email: calvin@rpgoutfitter.com\r\n## X-Publisher: RPG Outfitter\r\n## X-Website: http://www.rpgoutfitter.com/CharacterProfiler/\r\n## SavedVariables: rpgoCPpref,myProfile\r\n## License: http://rpgoutfitter.com/addons/license.cfm\r\n\r\n\r\n",
+      "PostedDate": "2010-01-02T11:42:42.13-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-04T04:45:33.627-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok - I've debugged the code and found the exporter doesn't list the talents. \r\n\r\nSavedVariablesDictionary talent_tree = characterInfo[\"Talents\"] as SavedVariablesDictionary;\r\n323: Rawr.CharacterProfilerData.cs\r\nDespite being an 'as' clause an exception of type 'System.Collections.Generic.KeyNotFoundException'\" is thrown for 'characterInfo[\"Talents\"]'\r\n\r\nThis also happens in RAWR 2.3.5",
+      "PostedDate": "2010-01-04T05:12:10.88-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "So sad.\r\nI still can't optimize my banked gear.\r\nHoped it will work in 2.3.5",
+      "PostedDate": "2010-01-04T06:21:57.1-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-04T09:18:39.133-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "2.3.6 is working nice.\r\nThank you!",
+      "PostedDate": "2010-01-21T15:30:20.463-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-22T13:10:22.927-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-09T15:44:00.157-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:21.047-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:00.32-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:43.993-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

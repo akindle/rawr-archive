@@ -1,0 +1,101 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Bear",
+      "DisplayName": "Rawr.Bear"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-04-05T18:09:54.203-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I don't know if this is just my file being messed up or if this is part of the Tier 11 10N preset but...Every time I select the above to optimize to it reforges everything to expertise.  \n \nI found an old issue from a couple Rawr versions ago that said this is due to a parry haste bug but I can't find anywhere in my character file nor inside Rawr to turn parry haste off.",
+    "LastUpdatedDate": "2013-05-16T05:18:16.453-07:00",
+    "PlannedForRelease": "Rawr 4.1.03",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-04-05T09:14:48.213-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Bear] Tier 11 10N->Average Boss includes parry haste [No, it doesn't, no one think this ever again, please]",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 20415
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4818,
+      "FileName": "tank.xml",
+      "DownloadUrl": ".\\4818"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Actually I'm not sure it's my file.  I closed Rawr, started a new file, and imported my armory info and it still wanted to reforge everything to expertise.  Is it just a problem in the boss handler for 10N?",
+      "PostedDate": "2011-04-05T09:17:48.173-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Parry Haste has been completely removed from the program, so that's not even possible. If your file is coming from an earlier version it might still say that somewhere but as soon as you save it again, it will no longer say it.",
+      "PostedDate": "2011-04-05T10:04:22.507-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-05T10:05:11.753-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Today, I  tried Rawr for bears for the first time, creating the character from scratch since my druid currently has no feral specc. Both the online version (cleared the cache after the latest update) and the offline version values expertise high due to it's mitigation.",
+      "PostedDate": "2011-04-05T10:14:04.12-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It just seems odd that as of 4.1.02 expertise suddenly is so good that it trumps dodge across all my gear.  The only explanation that made any sense to me was that parry haste was somehow inserted back in.  I expect small changes in my gear in each Rawr release but this was huge.",
+      "PostedDate": "2011-04-05T11:56:37.677-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-05T16:58:49.983-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok, seriously, everyone listen very closely on this (I'm not trying to insult anyone by saying this the way I'm saying it, I'm in a bad mood and it's not your fault, fair warning given).\r\n\r\nI load your file and I see the following, and this is going to be common for a lot of people:\r\n1) You had set your Boss to T11 10N-> Average Boss which leaves an incoming melee attack at 100,625 every 2.5s. This attack is all that Bear looks at right now (the others don't matter) even though the boss is doing more attacks.\r\n2) Parry Haste has absolutely, totally, completely been removed from the program. There's no way that it's possible that Parry haste affects these calcs. Period. Anyone thinking that because Expertise *seems* high is totally wrong.\r\n3) Your survival is over 400k and your Hits to Survive is at the default 3.5 (where it should be). Your Your Survival Soft cap is effectively the Default Melee Attack's Damage Per Hit of 100,625 times 3.5 = 352,187.5. This is how we determine the Survival Soft cap now so that users don't have to worry about figuring out whether they need to put in 450k or 200k or whatever. That's what it was originally intended to be, but it never worked out that way because the Boss Handler didn't exist back then. You can adjust the 3.5 if you want, but there's really no reason to as any moron healer can get a heal off on you inside 3.5 hits (which with an attack speed of 2.5s is 8.75s, Debuffed would be even more time).\r\n4) The above said, you are already about 60k above your soft cap, so Stamina and other Survivability stats aren't helping you much anymore. Those stats at this point, all *look* really low, because they are, you told it you really don't need any more of them.\r\n5) You have a couple of effects that are dependant on one thing or another.\r\n- The MeleeHit Trigger on you Windwalk Enchant is giving you 600 dodge rating which is a very good thing for mitigation.\r\n- The DamageTakenPutsMeBelow35Perc Trigger on your Leaden Despair is providing a chunk of Bonus Armor, which *would* up your survival score, but you are way soft capped, so it's not helping you. And the more avoidance you stack period (soft capped or not) the less this Trinket helps you. Your Windwalk is actually working *against* your Leaden Despair.\r\n\r\nTo recap, your current values are:\r\nBoss Attack: 100,625 every 2.5s | Survivability: 411,282 | Soft Cap: 100,625*3.5=352,187.5 | Distance over Soft Cap: 59,094.5 | Dodge Rating Value: 12.65 | Expertise Rating Value: 91.5 | Stamina Value: 9.02\r\n\r\nWhat do I (meaning you) do about this? Kick up the incoming Damage, you are overgeared for what you selected:\r\n- Selecting T11 25N's Average Boss doesn't quite do it, that's another 25k incoming damage, but still below your current Survivability score. Here are your new values:\r\nBoss Attack: 125,781 every 2.5s | Survivability: 489,098 | Soft Cap: 125,781*3.5=440,233.5 | Distance over Soft Cap: 48,864.5 | Dodge Rating Value: 48.06 | Expertise Rating Value: 67.81 | Stamina Value: 13.12\r\n- Selecting T11 10H's Average Boss just about puts you there. You sit right at the soft cap and look! Dodge surpassed Expertise!\r\nBoss Attack: 173,333 every 2.2s | Survivability: 599,499 | Soft Cap: 173,333*3.5=596,165.5 | Distance over Soft Cap: 03,333.5 | Dodge Rating Value: 56.75 | Expertise Rating Value: 39.31 | Stamina Value: 45.32\r\n- Selecting T11 25H's Average Boss puts you well into the range\r\nBoss Attack: 219,000 every 2.2s | Survivability: 603,010 | Soft Cap: 219,000*3.5=766,500.0 | Distance under Soft Cap: 163,490 | Dodge Rating Value: 52.38 | Expertise Rating Value: 25.30 | Stamina Value: 74.79",
+      "PostedDate": "2011-04-05T17:34:14.903-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This Ticket will be closed and continued in a Discussion. See: http://rawr.codeplex.com/discussions/252692",
+      "PostedDate": "2011-04-05T18:09:47.683-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-05T18:09:54.203-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:25:25.187-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:16.453-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

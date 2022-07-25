@@ -1,0 +1,116 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Moonkin",
+      "DisplayName": "Rawr.Moonkin"
+    },
+    "ClosedComment": "4.0.18 Released",
+    "ClosedDate": "2011-02-03T21:11:30.13-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Consistently recieve this error at 20% when attempting to build an upgrade list in optimization.\n \nI have performed the Suggested Fix and continue to receive this error. If I am posting this message without having performed the Suggested Fix I am aware that I am consuming the Developer(s) time in managing my Issue unnecessarily.\n \n== Error Message ==\n[Async_ExceptionOccurred]\nArguments: \nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.51204.0&File=System.dll&Key=Async_ExceptionOccurred\n[InvalidCrossThreadAccess]\nArguments: \nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.51204.0&File=System.Windows.dll&Key=InvalidCrossThreadAccess\n \n== StackTrace ==\n   at System.ComponentModel.AsyncCompletedEventArgs.RaiseExceptionIfNecessary()\n   at Rawr.UI.OptimizeWindow.optimizer_ComputeUpgradesCompleted(Object sender, ComputeUpgradesCompletedEventArgs e)\n   at Rawr.Optimizer.ItemInstanceOptimizer.OnComputeUpgradesCompleted(ComputeUpgradesCompletedEventArgs e)\n   at Rawr.Optimizer.ItemInstanceOptimizer.PrivateComputeUpgradesCompleted(Object state)\n \n== These are the Steps that I have tried ==\n[Please fill in steps here]",
+    "LastUpdatedDate": "2017-11-27T11:00:19.84-08:00",
+    "PlannedForRelease": "Rawr 4.0.16 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-01-27T16:27:07.34-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Moonkin] Upgrade List Error",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19830
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4521,
+      "FileName": "RAWR_Claw.xml",
+      "DownloadUrl": ".\\4521"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Can you attach the character xml where this happens?",
+      "PostedDate": "2011-01-27T16:46:02.6-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-27T20:11:55.54-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-29T11:21:57.607-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I apologize i thought i had, I've attached xml below. Same issue has occured again at 20%.",
+      "PostedDate": "2011-01-29T11:21:59.187-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-29T14:02:02.347-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This is a threading issue in moonkin at CalculationsMoonkin.cs line 172. It tries to access a WPF controls data context. This can be called from worker threads in the context of optimizer which creates a invalid cross thread access (The calling thread cannot access this object because a different thread owns it.). Suggested fix would be to store the reference character or calculation options in the CalculationsMoonkin.",
+      "PostedDate": "2011-01-29T14:06:13.787-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Argh.  I knew that stupid feature request would come back to bite me in the butt.",
+      "PostedDate": "2011-01-29T19:03:54.52-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Dopefish, the method you are using to call back the setting of allowing spirit to hit reforges can be handled a different way. Look at DPSWarr's settings for Hiding Bad Items. The same variable push method will work for you as a simple Bool.",
+      "PostedDate": "2011-01-30T10:39:46.3-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Fixed the issue in latest source.  Jothay, thanks a lot, but I think I've got it.  As I said in the checkin, I don't know what possessed me to do it the way I did.",
+      "PostedDate": "2011-01-30T12:55:30.37-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-02-03T21:11:30.13-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:03:27.03-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:13.297-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:53.83-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:00:19.84-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

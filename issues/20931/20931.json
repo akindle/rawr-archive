@@ -1,0 +1,96 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtWarrior",
+      "DisplayName": "Rawr.ProtWarrior"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-06-26T21:19:20.227-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Rawr WPF Debug Build 4.1.05.60775\n \nWhen I load up my Tauren Prot Warrior and Select Gear->Enchants I cannot find the Peerless Stats enchant in order to select it.\n \nI also tried loading up a prot warrior that already has this enchant and it still doesn't show up in the list.  (US, Aman'Thul, Dracomaniac)\n \nI would be happy to fix this myself if you'd like.  I work from home so having one extra copy of Visual Studio open for Rawr hacking is not a problem.",
+    "LastUpdatedDate": "2013-05-16T05:17:49.66-07:00",
+    "PlannedForRelease": "Rawr Debug Build (4.1.05.60775)",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-06-08T07:48:55.52-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtWarr] Unable to Select Enchant: Peerless Stats",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 20931
+  },
+  "FileAttachments": [
+    {
+      "FileId": 5038,
+      "FileName": "Kaesensha.Prot.xml",
+      "DownloadUrl": ".\\5038"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "If you have a fix before we do, please post to the Patches section with the affected files.",
+      "PostedDate": "2011-06-08T08:59:48.67-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-06-08T09:00:12.44-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Grabbing the code now. :)",
+      "PostedDate": "2011-06-08T09:39:46.29-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Had a bit of trouble compiling Rawr, but that is sorted now.\r\n\r\nIn CalculationsProtWarr::HasRelevantStats() the logic removes enchants that have more useless stats than useful stats.  So all of the +Stats to chest enchants will get removed even though they happen to be best in slot.\r\n\r\nSince this does not happen in ProtPaladin one solution would be to use the much more simple logic from that module.  Thus the logic for CalculationsProtwarr::HasRelevantStats() becomes:\r\n\r\n        public override bool HasRelevantStats(Stats stats)\r\n        {\r\n            if( IsSuperRelevant(stats) ) {\r\n                return true;\r\n            }\r\n\r\n            bool relevant = IsRelevant(stats);\r\n\r\n            foreach (SpecialEffect effect in stats.SpecialEffects())\r\n            {\r\n                if (RelevantTriggers.Contains(effect.Trigger))\r\n                {\r\n                    relevant |= HasRelevantStats(effect.Stats);\r\n                }\r\n            }\r\n            return relevant;\r\n        }\r\n\r\n",
+      "PostedDate": "2011-06-20T21:59:21.073-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Uploaded as patch #9761.\r\n",
+      "PostedDate": "2011-06-20T22:04:56.88-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-06-26T03:03:47.173-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "In the end, based on Kavan's advice, we ended up special casing this enchant.  As of 4.2 it is also no longer the best ProtWarr chest enchant.\r\n",
+      "PostedDate": "2011-06-26T03:04:20.02-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-06-26T21:19:20.227-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:24:51.937-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:17:49.66-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

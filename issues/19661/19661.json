@@ -1,0 +1,141 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.LoadCharacter",
+      "DisplayName": "Rawr.Base.LoadCharacter"
+    },
+    "ClosedComment": "This shouldn&#39;t happen anymore with .18",
+    "ClosedDate": "2011-02-04T23:04:15.323-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have a Mage character with Tailoring and Enchanting professions.  When I reload my character - either from battle.net or the rawr addon - the Intellect enchant for rings is cleared so when I try to optimize it tells me that \"intellect is not available\".   Sure enough, if I go to the Enchant -> Finger pager, the Intellect does not have a green diamond next to it.  If I manually click it, everything works fine.  All my other enchants seem to persist in between re-loads of my character.",
+    "LastUpdatedDate": "2013-05-16T05:19:04.883-07:00",
+    "PlannedForRelease": "Rawr 4.0.15 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-01-10T23:50:01.807-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[LoadCharacter] Reloading my character clears the \"Intellect\" enchant for fingers",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19661
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4406,
+      "FileName": "riverider.xml",
+      "DownloadUrl": ".\\4406"
+    },
+    {
+      "FileId": 4427,
+      "FileName": "after loading XML.jpg",
+      "DownloadUrl": ".\\4427"
+    },
+    {
+      "FileId": 4428,
+      "FileName": "after load from battle net.jpg",
+      "DownloadUrl": ".\\4428"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Please provide your character name/realm and your addon export data so that we can actually test this and find out what is wrong.",
+      "PostedDate": "2011-01-11T03:19:33.087-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-11T22:59:25.44-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Realm: Whisperwind\r\nCharacter: Riverider\r\n\r\nAttached my character XML file.  If you load the XML file and then load the same character from battle.net this bug will appear.",
+      "PostedDate": "2011-01-11T22:59:26.92-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That XML file is NOT from Rawr.Addon",
+      "PostedDate": "2011-01-12T06:53:20.477-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I followed the following steps (your description had no steps and wasn't clear EXACTLY what you did).\r\n\r\n1) Ran Rawr4\r\n2) Clicked File | Open and loaded your XML file\r\n3) noted that int enchant was present on rings\r\n4) Clicked File | Load from Battle.Net\r\n5) Entered character name, realm and clicked OK\r\n6) Noted that loaded file STILL had an enchant present on rings.\r\n\r\nTest 2 repeated steps 1-3\r\n4) Clicked Import | Reload Current Character from Battle.Net\r\n5) Noted that loaded file STILL had an enchant present on rings.\r\n\r\nie: I've been unable to replicate your problem. Could you therefore provide the steps you took to show the bug so we are 100% clear what you did. DO NOT leave anything out and ensure that you test what you send so you know it gives the bug so we can work out where the exact cause of the problem is. \r\n\r\nI am also curious where the addon comes into this as your XML file is not an addon file, so I have no idea if that is part of the problem. Again details of step by step way of showing the problem will help make sure we can solve it and you don't suffer from this issue in future releases.",
+      "PostedDate": "2011-01-12T07:03:16.507-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-12T09:40:39.19-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I tried this on two different computers and was able to repro it.  Using Internet Explorer 8.0.6001.18702\r\n\r\n1) Navigate to http://elitistjerkes.com/rawr.php\r\n2) Click \"Open Saved Character\" - open the XML file I supplied.\r\n3) Click on \"Enchants -> Finger 1\" and note that the Intellect enchant has a green diamond next to it.\r\n4) Click \"File -> Load from Battle.net\".   Region \"US\", Realm \"Whisperwind\", Character \"Riverider\"\r\n5) Click OK and the character info will be refreshed from Battle.net\r\n6) Now on the \"Enchants -> Finger 1\" there is no longer a green diamond next to it (Althought it still has a green box around it to indicate that I currently have an item equipped with that enchant). \r\n7) Click \"Tools -> Optimizer -> Optimize\".   Warning pops up that \"Intellect is not available\"\r\n\r\nI will try it on a third computer that has never had rawr on it and see if it repros there also...",
+      "PostedDate": "2011-01-15T11:04:05.587-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "BTW - this happens whether I refresh my character from Battle.net or using RAWR add-on.  If it is fixed using Battle.net I suspect it will be fixed using the add-on as well.",
+      "PostedDate": "2011-01-15T11:07:08.537-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "OK - I just tried it on a third computer that has never had RAWR installed on it - followed the steps I gave and was able to repro the problem.  I also attached screen shots.",
+      "PostedDate": "2011-01-15T11:13:36.56-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-15T11:15:27.66-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Here is what the Enchant -> Finger 1 screen looks like after I load my character from the XML file (my save character)",
+      "PostedDate": "2011-01-15T11:15:29.09-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-15T11:16:20.583-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Here is what the Enchant -> Finger 1 screen looks like after I re-load my character from battle.net.",
+      "PostedDate": "2011-01-15T11:16:21.81-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Another data point - Enchants -> Legs - Master's Spellthread (Rank 1) also has this problem.  i.e. If it is available as part of your saved character XML file, it will be cleared if you refresh that character from battle.net.   I not longer notice it because I have now use \"Master's Spellthread (Rank 2)\" which does NOT get cleared.\r\n\r\nBoth the Finger -> Intellect and Legs -> Master's Spellthread are enchants that are only available to Enchanters and Tailors respectively...",
+      "PostedDate": "2011-01-15T11:25:12.107-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-02-04T23:04:15.323-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:27.63-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:04.883-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

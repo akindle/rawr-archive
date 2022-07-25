@@ -1,0 +1,3789 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+
+    <title>Simulationcraft Results</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <style type="text/css" media="all">
+      * { border: none; margin: 0; padding: 0; }
+      body { padding: 5px 25px 25px 25px; font-family: "Lucida Grande", Arial, sans-serif; font-size: 14px; background-color: #f9f9f9; color: #333; text-align: center; }
+      p { margin-top: 1em; }
+      h1, h2, h3, h4, h5, h6 { color: #777; margin-top: 1em; margin-bottom: 0.5em; }
+      h1, h2 { margin: 0; padding: 2px 2px 0 2px; }
+      h1 { font-size: 24px; }
+      h2 { font-size: 18px; }
+      h3 { margin: 0 0 4px 0; font-size: 16px; }
+      a { color: #666688; text-decoration: none; }
+      a:hover, a:active { color: #333; }
+      ul, ol { padding-left: 20px; }
+      ul.float, ol.float { padding: 0; }
+      ul.float li, ol.float li { display: inline; float: left; padding-right: 6px; margin-right: 6px; list-style-type: none; border-right: 2px solid #eee; }
+      .clear { clear: both; }
+      .hide, .charts span { display: none; }
+      .float { float: left; }
+      .no-wrap { max-width: 1200px; outline: 1px solid #ccc; margin: 10px 0 0 16px; padding: 8px; word-wrap: no-wrap; overflow-x: scroll; }
+      .mt { margin-top: 20px; }
+      .mb { margin-bottom: 20px; }
+      .toggle { cursor: pointer; }
+      h2.toggle { padding-left: 16px; background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAeCAIAAACT/LgdAAAABGdBTUEAANbY1E9YMgAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAD1SURBVHja7JQ9CoQwFIT9LURQG3vBwyh4XsUjWFtb2IqNCmIhkp1dd9dsfIkeYKdKHl+G5CUTvaqqrutM09Tk2rYtiiIrjuOmaeZ5VqBBEADVGWPTNJVlOQwDyYVhmKap4zgGJp7nJUmCpQoOY2Mv+b6PkkDz3IGevQUOeu6VdxrHsSgK27azLOM5AoVwPqCu6wp1ApXJ0G7rjx5oXdd4YrfQtm3xFJdluUYRBFypghb32ve9jCaOJaPpDpC0tFmg8zzn46nq6/rSd2opAo38IHMXrmeOdgWHACKVFx3Y/c7cjys+JkSP9HuLfYR/Dg1icj0EGACcXZ/44V8+SgAAAABJRU5ErkJggg==) 0 -10px no-repeat; }
+      h2.open { margin-bottom: 10px; background-position: 0 9px; }
+      h3.toggle { padding-left: 16px; background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAaCAIAAAAMmCo2AAAABGdBTUEAANbY1E9YMgAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAEfSURBVHjazJPLjkRAGIXbdSM8ACISvWeDNRYeGuteuL2EdMSGWLrOmdExaCO9nLOq+vPV+S9VRTwej6IoGIYhCOK21zzPfd/f73da07TiRxRFbTkQ4zjKsqyqKoFN27ZhGD6fT5ZlV2IYBkVRXNflOI5ESBAEz/NEUYT5lnAcBwQi307L6aZpoiiqqgprSZJwbCF2EFTXdRAENE37vr8SR2jhAPE8vw0eoVORtw/0j6Fpmi7afEFlWeZ5jhu9grqui+M4SZIrCO8Eg86y7JT7LXx5TODSNL3qDhw6eOeOIyBJEuUj6ZY7mRNmAUvQa4Q+EEiHJizLMgzj3AkeMLBte0vsoCULPHRd//NaUK9pmu/EywDCv0M7+CTzmb4EGADS4Lwj+N6gZgAAAABJRU5ErkJggg==) 0 -11px no-repeat; }
+      h3.open { background-position: 0 7px; }
+      h4.toggle { margin: 0 0 8px 0; padding-left: 12px; background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAVCAIAAADw0OikAAAABGdBTUEAANbY1E9YMgAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAD8SURBVHjavJHLjkRAGIUbRaxd3oAQ8QouifDSFmysPICNIBZ2EhuJuM6ZMdFR3T3LOYtKqk79/3/qKybLsrZteZ5/3DXPs67rxLbtvu+bprluHMexrqumaZZlMdhM05SmaVVVhBBst20zDMN1XRR822erJEnKsmQYxjRNz/M4jsM5ORsKguD7/r7vqHAc5/Sg3+orDsuyGHGd3OxXsY8/9R92XdfjOH60i6IAODzsvQ0sgApw1I0nAZACVGAAPlEU6WigDaLoEcfxleNN8mEY8Id0c2hZFlmWgyDASlefXhiGqqrS0eApihJFkSRJt0nHj/I877rueNGXAAMAKcaTc/aCM/4AAAAASUVORK5CYII=) 0 -8px no-repeat; }
+      h4.open { background-position: 0 6px; }
+      a.toggle-details { margin: 0 0 8px 0; padding-left: 12px; background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAXCAYAAADZTWX7AAAABGdBTUEAANbY1E9YMgAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAADiSURBVHjaYvz//z/DrFmzGBkYGLqBeG5aWtp1BjTACFIEAkCFZ4AUNxC7ARU+RlbEhMT+BMQaQLwOqEESlyIYMIEqlMenCAQsgLiakKILQNwF47AgSfyH0leA2B/o+EfYTOID4gdA7IusAK4IGk7ngNgPqOABut3I1uUDFfzA5kB4YOIDTAxEgOGtiAUY2vlA2hCIf2KRZwXie6AQPwzEFUAsgUURSGMQEzAqQHFmB8R30BS8BWJXoPw2sJuAjNug2Afi+1AFH4A4DCh+GMXhQIEboHQExKeAOAbI3weTAwgwAIZTQ9CyDvuYAAAAAElFTkSuQmCC) 0 4px no-repeat; }
+      a.open { background-position: 0 -11px; }
+      td.small a.toggle-details { background-position: 0 2px; }
+      td.small a.open { background-position: 0 -13px; }
+      .toggle-content { display: none; }
+      #active-help, .help-box { display: none; }
+      #active-help { position: absolute; width: 350px; padding: 3px; background: #fff; z-index: 10; }
+      #active-help-dynamic { padding: 6px 6px 18px 6px; background: #eeeef5; outline: 1px solid #ddd; font-size: 13px; }
+      #active-help .close { position: absolute; right: 10px; bottom: 4px; }
+      .help-box h3 { margin: 0 0 5px 0; font-size: 16px; }
+      .help-box { border: 1px solid #ccc; background-color: #fff; padding: 10px; }
+      a.help { cursor: help; }
+      .section { position: relative; max-width: 1260px; padding: 8px; margin-left: auto; margin-right: auto; margin-bottom: -1px; border: 1px solid #ccc; background-color: #fff; -moz-box-shadow: 4px 4px 4px #bbb; -webkit-box-shadow: 4px 4px 4px #bbb; box-shadow: 4px 4px 4px #bbb; text-align: left; }
+      .section-open { margin-top: 25px; margin-bottom: 25px; -moz-border-radius: 10px; -khtml-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; }
+      .grouped-first { -moz-border-radius-topright: 10px; -moz-border-radius-topleft: 10px; -khtml-border-top-right-radius: 10px; -khtml-border-top-left-radius: 10px; -webkit-border-top-right-radius: 10px; -webkit-border-top-left-radius: 10px; border-top-right-radius: 10px; border-top-left-radius: 10px; }
+      .grouped-last, .final { -moz-border-radius-bottomright: 10px; -moz-border-radius-bottomleft: 10px; -khtml-border-bottom-right-radius: 10px; -khtml-border-bottom-left-radius: 10px; -webkit-border-bottom-right-radius: 10px; -webkit-border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; }
+      .section .toggle-content { padding: 0 0 20px 16px; }
+      #raid-summary .toggle-content { padding-bottom: 0px; }
+      ul.params { padding: 0; }
+      ul.params li { float: left; padding: 2px 10px 2px 10px; margin-right: 10px; list-style-type: none; background: #eeeef5; font-family: "Lucida Grande", Arial, sans-serif; font-size: 12px; }
+      .player h2 { margin: 0; }
+      .player ul.params { position: relative; top: 2px; }
+      #masthead h2 { margin: 10px 0 5px 0; }
+      #notice { border: 1px solid #ddbbbb; background: #ffdddd; font-size: 12px; }
+      #notice h2 { margin-bottom: 10px; }
+      .toc { float: left; padding: 0; }
+      .toc-wide { width: 560px; }
+      .toc-narrow { width: 375px; }
+      .toc li { margin-bottom: 10px; list-style-type: none; }
+      .toc li ul { padding-left: 10px; }
+      .toc li ul li { margin: 0; list-style-type: none; font-size: 13px; }
+      .charts { margin: 10px 60px 0 4px; float: left; width: 550px; text-align: center; }
+      .charts img { padding: 8px; margin: 0 auto; margin-bottom: 20px; border: 1px solid #ccc; -moz-border-radius: 6px; -khtml-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px; -moz-box-shadow: inset 1px 1px 4px #ccc; -webkit-box-shadow: inset 1px 1px 4px #ccc; box-shadow: inset 1px 1px 4px #ccc; }
+      .talents div.float { width: auto; margin-right: 50px; }
+      table.sc { border: 0; background-color: #eee; }
+      table.sc tr { background-color: #fff; }
+      table.sc tr.head { background-color: #aaa; color: #fff; }
+      table.sc tr.odd { background-color: #f3f3f3; }
+      table.sc th { padding: 2px 4px; text-align: center; background-color: #aaa; color: #fcfcfc; }
+      table.sc th.small { padding: 2px 2px; font-size: 12px; }
+      table.sc th a { color: #fff; text-decoration: underline; }
+      table.sc th a:hover, table.sc th a:active { color: #f1f1ff; }
+      table.sc td { padding: 2px 4px; text-align: center; font-size: 13px; }
+      table.sc td.small { padding: 2px 2px; font-size: 11px; }
+      table.sc th.left, table.sc td.left, table.sc tr.left th, table.sc tr.left td { text-align: left; padding-right: 6px; }
+      table.sc th.right, table.sc td.right, table.sc tr.right th, table.sc tr.right td { text-align: right; padding-right: 6px; }
+      table.sc tr.details td { padding: 0 0 15px 15px; text-align: left; background-color: #fff; }
+      table.sc tr.details td ul { padding: 0; margin: 4px 0 8px 0; }
+      table.sc tr.details td ul li { clear: both; padding: 2px; list-style-type: none; }
+      table.sc tr.details td ul li span.label { display: block; float: left; width: 150px; margin-right: 4px; background: #f3f3f3; }
+      table.sc tr.details td ul li span.tooltip { display: block; float: left; width: 190px; }
+      table.sc tr.details td ul li span.tooltip-wider { display: block; float: left; width: 350px; }
+      table.sc tr.details td div.float { width: 350px; }
+      table.sc tr.details td div.float h5 { margin-top: 4px; }
+      table.sc tr.details td div.float ul { margin: 0 0 12px 0; }
+      table.sc td.filler { background-color: #ccc; }
+      table.sc .dynamic-buffs tr.details td ul li span.label { width: 120px; }
+      .sample-sequence { width: 500px; word-wrap: break-word; outline: 1px solid #ddd; background: #fcfcfc; padding: 6px; font-family: "Lucida Console", Monaco, monospace; font-size: 12px; }
+    </style>
+
+  </head>
+
+  <body>
+
+    <div id="active-help">
+      <div id="active-help-dynamic">
+        <div class="help-box">
+        </div>
+        <a href="#" class="close">close</a>
+      </div>
+    </div>
+
+    <div id="masthead" class="section section-open">
+
+      <h1>SimulationCraft 406-6</h1>
+      <h2>for World of Warcraft 4.0.6 Live (build level 13623)</h2>
+
+      <ul class="params">
+        <li><b>Timestamp:</b> Mon Mar 28 21:54:55 2011
+</li>
+        <li><b>Iterations:</b> 1000</li>
+        <li><b>Fight Length:</b> 450</li>
+        <li><b>Vary Combat Length:</b> 0.20</li>
+        <li><b>Smooth RNG:</b> false</li>
+      </ul>
+      <div class="clear"></div>
+
+    </div>
+
+    <div id="menance" class="player section section-open">
+      <h2 class="toggle open">menance&nbsp;:&nbsp;20645dps</h2>
+      <div class="toggle-content">
+        <ul class="params">
+          <li><b>Race:</b> human</li>
+          <li><b>Class:</b> warlock</li>
+          <li><b>Tree:</b> destruction</li>
+          <li><b>Level:</b> 85</li>
+          <li><b>Role:</b> Spell</li>
+        </ul>
+        <div class="clear"></div>
+        <div class="player-section results-spec-gear mt">
+          <h3 class="toggle open">Results, Spec and Gear</h3>
+          <div class="toggle-content">
+            <table class="sc">
+              <tr>
+                <th><a href="#help-dps" class="help">DPS</a></th>
+                <th><a href="#help-error" class="help">Error</a></th>
+                <th><a href="#help-range" class="help">Range</a></th>
+                <th><a href="#help-dpr" class="help">DPR</a></th>
+                <th><a href="#help-rps-out" class="help">RPS Out</a></th>
+                <th><a href="#help-rps-in" class="help">RPS In</a></th>
+                <th>Resource</th>
+                <th><a href="#help-waiting" class="help">Waiting</a></th>
+                <th><a href="#help-apm" class="help">APM</a></th>
+              </tr>
+              <tr>
+                <td>20644.6</td>
+                <td>24.9 / 0.1%</td>
+                <td>1424.8 / 6.9%</td>
+                <td>10.7</td>
+                <td>1922.4</td>
+                <td>1744.9</td>
+                <td>mana</td>
+                <td>0.00%</td>
+                <td>46.2</td>
+              </tr>
+            </table>
+            <table class="sc mt">
+              <tr class="left">
+                <th><a href="#help-origin" class="help">Origin</a></th>
+                <td><a href="http://us.battle.net/wow/en/character/arathor/menance/advanced" rel="_blank">http://us.battle.net/wow/en/character/arathor/menance/advanced</a></td>
+              </tr>
+              <tr class="left">
+                <th>Talents</th>
+                <td><a href="http://www.wowhead.com/talent#warlock-22000000000000000013200000000000000003322202312201310211" rel="_blank">http://www.wowhead.com/talent#warlock-22000000000000000013200000000000000003322202312201310211</a></td>
+              </tr>
+              <tr class="left">
+                <th>Glyphs</th>
+                <td>
+                  <ul class="float">
+                    <li>conflagrate</li>
+                    <li>imp</li>
+                    <li>incinerate</li>
+                    <li>healthstone</li>
+                    <li>soulstone</li>
+                    <li>fear</li>
+                    <li>drain_soul</li>
+                    <li>unending_breath</li>
+                    <li>ritual_of_souls</li>
+                  </ul>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="player-section">
+          <h3 class="toggle open">Charts</h3>
+          <div class="toggle-content">
+            <div class="charts">
+              <img src="http://9.chart.apis.google.com/chart?chs=550x390&amp;cht=bhg&amp;chd=t:55433|35542|18442|16291|15500|13689|12879|11477|8963|3539|1112|474&amp;chds=0,110866&amp;chco=9482C9,C41F3B,C41F3B,9482C9,9482C9,C41F3B,9482C9,C41F3B,C41F3B,C41F3B,C79C6E,C79C6E&amp;chm=t++55433++bane_of_doom,9482C9,0,0,15|t++35542++immolate,C41F3B,1,0,15|t++18442++conflagrate,C41F3B,2,0,15|t++16291++corruption,9482C9,3,0,15|t++15500++shadowflame,9482C9,4,0,15|t++13689++chaos_bolt,C41F3B,5,0,15|t++12879++shadowburn,9482C9,6,0,15|t++11477++incinerate,C41F3B,7,0,15|t++8963++soul_fire,C41F3B,8,0,15|t++3539++firebolt,C41F3B,9,0,15|t++1112++infernal_melee,C79C6E,10,0,15|t++474++ebon_imp_melee,C79C6E,11,0,15&amp;chtt=menance+Damage+Per+Execute+Time&amp;chts=666666,18" alt="Action DPET Chart" />
+              <img src="http://0.chart.apis.google.com/chart?chs=550x350&amp;cht=p&amp;chd=t:17,16,14,12,8,7,6,6,6,5,1,1,1,1,0&amp;chds=0,100&amp;chco=C41F3B,C41F3B,C41F3B,C41F3B,C41F3B,9482C9,C41F3B,9482C9,9482C9,C41F3B,C79C6E,9482C9,C79C6E,C41F3B,C41F3B&amp;chl=firebolt|incinerate|immolate|conflagrate|soul_fire|shadowflame|burning_embers|bane_of_doom|corruption|chaos_bolt|infernal_melee|shadowburn|ebon_imp_melee|infernal_immolation|infernal_awakening&amp;chtt=menance+Damage+Sources&amp;chts=666666,18" alt="Action Damage Chart" />
+              <img src="http://1.chart.apis.google.com/chart?chs=550x280&amp;cht=p&amp;chd=t:46,30,9,8,4,3,0,0&amp;chds=0,100&amp;chco=2459FF&amp;chl=soul_leech|life_tap|initial_mana|mp5_regen|replenishment|blessing_of_might|flask|food&amp;chtt=menance+Resource+Gains&amp;chts=666666,18" alt="Resource Gains Chart" />
+                          </div>
+            <div class="charts">
+                            <img src="http://2.chart.apis.google.com/chart?chs=525x185&amp;cht=lc&amp;chf=c,ls,0,EEEEEE,0.2,FFFFFF,0.2&amp;chg=100,20&amp;chd=s:s78543210zurrqqqqpomkjiiiiijiiihgfdcbaaZZaaaaZYYZYWWVVUUUTTSSSRQQONMMMMMMMLKJIIIHGGGGHHHHIJJKMMMLMMNNNNMMLLLLKJIHGGGGHIIJKKLMMMMLLLLKKKKKKKLLLKJIHHHHHHHIIJJJKKKLMMMMNMMMMLLLKJJIIIIIIIIIHHIJJKKLLLMMMMMMLKKJJIIHHIIJJJJJJKKJJJKKKLLMMMMMLLKKJIIIIIIJKKKKKKKKKKKKKLLLKKKKKJJIIJJKKKKKKKKKKKKKKKLLLLLKKKKJJJJJJJJKKKKKKKKKKKJJJKKKLLLLLKKKKJJJJJJJKKLLLLLKKKKKJJJKKKKKKKKKJJJJKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKLKKKKKKKKKKKKKKKKKKKKKKKKKJJKKKKKKKKKK&amp;chds=0,60&amp;chxt=x,y&amp;chxl=0:|0|sec=437|1:|0|max=97764&amp;chtt=menance+Mana+Timeline&amp;chts=666666,18&amp;chco=2459FF" alt="Resource Timeline Chart" />
+                            <img src="http://4.chart.apis.google.com/chart?chs=525x185&amp;cht=lc&amp;chf=c,ls,0,EEEEEE,0.2,FFFFFF,0.2&amp;chg=100,20&amp;chd=s:lopqqrsuxzz22013356783232211zwutrqrrrtvusrrqpppqpponnpqqqpnkkjkkllkkjjkjkljjijijjjkllmllkkkkllllkkklnnonmljkkllmmmmnnooonmmllllmopqqrrqpooononnmmnnoomlkkjijjkkjkklmmnnmmlllmmmnnnmmmllkjjiiiiiiijjjiihhhhiiijjkkklllkkjijjjkkkkklkkkjjiiiijjkllmmnnmnnnnooppqrssssssrqqqqqqqqqqqppponnmmmnnnnnnnmnmmmlllmmmmmmnmmlllkkllllmmmnnnnmmmmmmnnooooooooonnmmnnnnoooooonnooooppqqrssttttuuuvvvvvvuuuuuttsrrrqqqqpppoooooooooopppqqqqqpppqqqqrrrrrrrrqqqqqqr&amp;chds=0,60&amp;chxt=x,y&amp;chxl=0:|0|sec=437|1:|0|avg=20645|max=30887&amp;chxp=1,1,67,100&amp;chtt=menance+DPS+Timeline&amp;chts=666666,18" alt="DPS Timeline Chart" />
+              <img src="http://5.chart.apis.google.com/chart?chs=525x185&amp;cht=bvs&amp;chf=c,ls,0,EEEEEE,0.125,FFFFFF,0.125&amp;chg=100,100&amp;chd=t:1,0,0,1,0,0,4,5,6,11,7,12,18,24,37,47,43,50,67,43,61,56,54,56,65,53,50,35,32,31,27,25,20,10,15,6,5,5,3,4,5,2,2,0,0,0,0,1,0,1&amp;chds=0,67&amp;chbh=5&amp;chxt=x&amp;chxl=0:|min=19271|avg=20645|max=22121&amp;chxp=0,1,48,100&amp;chtt=menance+DPS+Distribution&amp;chts=666666,18" alt="DPS Distribution Chart" />
+              <img src="http://3.chart.apis.google.com/chart?chs=525x130&amp;cht=bvs&amp;chd=t:4,4,10,17,23,22,22,25,19,26,24,16,27,30,16,23,20,21,27,24,25,28,18,24,32,15,29,27,18,21,18,13,24,25,23,27,25,15,21,13,25,23,15,22,21,16,15,10,6,4&amp;chds=0,32&amp;chbh=5&amp;chxt=x&amp;chxl=0:|min=274|avg=450|max=574&amp;chxp=0,1,59,100&amp;chtt=Timeline+Distribution&amp;chts=666666,18" alt="Encounter Timeline Distribution Chart" />
+            </div>
+            <div class="clear"></div>
+          </div>
+        </div>
+        <div class="player-section">
+          <h3 class="toggle open">Abilities</h3>
+          <div class="toggle-content">
+            <table class="sc">
+              <tr>
+                <th class="small"></th>
+                <th class="small"><a href="#help-dps" class="help">DPS</a></th>
+                <th class="small"><a href="#help-dps-pct" class="help">DPS%</a></th>
+                <th class="small">Res%</th>
+                <th class="small"><a href="#help-count" class="help">Count</a></th>
+                <th class="small"><a href="#help-interval" class="help">Interval</a></th>
+                <th class="small"><a href="#help-dpe" class="help">DPE</a></th>
+                <th class="small"><a href="#help-dpet" class="help">DPET</a></th>
+                <th class="small"><a href="#help-dpr" class="help">DPR</a></th>
+                <th class="small">RPE</th>
+                <th class="small"><a href="#help-hit" class="help">Hit</a></th>
+                <th class="small"><a href="#help-crit" class="help">Crit</a></th>
+                <th class="small"><a href="#help-max" class="help">Max</a></th>
+                <th class="small"><a href="#help-crit-pct" class="help">Crit%</a></th>
+                <th class="small"><a href="#help-miss-pct" class="help">M%</a></th>
+                <th class="small"><a href="#help-dodge-pct" class="help">D%</a></th>
+                <th class="small"><a href="#help-parry-pct" class="help">P%</a></th>
+                <th class="small"><a href="#help-glance-pct" class="help">G%</a></th>
+                <th class="small"><a href="#help-block-pct" class="help">B%</a></th>
+                <th class="small"><a href="#help-ticks" class="help">Ticks</a></th>
+                <th class="small"><a href="#help-ticks-hit" class="help">T-Hit</a></th>
+                <th class="small"><a href="#help-ticks-crit" class="help">T-Crit</a></th>
+                <th class="small"><a href="#help-ticks-crit-pct" class="help">T-Crit%</a></th>
+                <th class="small"><a href="#help-ticks-miss-pct" class="help">T-M%</a></th>
+                <th class="small"><a href="#help-ticks-uptime" class="help">Up%</a></th>
+              </tr>
+              <tr>
+                <th class="left small">menance</th>
+                <th class="right small">20645</th>
+                <td colspan="23" class="filler"></td>
+              </tr>
+              <tr>
+                <td class="left small"><a href="#" class="toggle-details" rel="spell=603">bane_of_doom</a></td>
+                <td class="right small">1165</td>
+                <td class="right small">5.6%</td>
+                <td class="right small">2.7%</td>
+                <td class="right small">7.4</td>
+                <td class="right small">60.29sec</td>
+                <td class="right small">68807</td>
+                <td class="right small">55433</td>
+                <td class="right small">22.3</td>
+                <td class="right small">3082</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">33.9%</td>
+                <td class="right small">1.9%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">28</td>
+                <td class="right small">13737</td>
+                <td class="right small">27444</td>
+                <td class="right small">33.9%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">95.0%</td>
+              </tr>
+              <tr class="details hide">
+                <td colspan="23" class="filler">
+                  <h4>Database details</h4>
+                  <div class="float">
+                    <h5>Static Values</h5>
+                    <ul>
+                      <li><span class="label">name:</span>bane_of_doom</li>
+                      <li><span class="label">id:</span>603</li>
+                      <li><span class="label">school:</span>shadow</li>
+                      <li><span class="label">resource:</span>mana</li>
+                      <li><span class="label">tree:</span>affliction</li>
+                      <li><span class="label">range:</span>40.0</li>
+                      <li><span class="label">travel_speed:</span>0.0000</li>
+                      <li><span class="label">trigger_gcd:</span>1.5000</li>
+                      <li><span class="label">base_cost:</span>3082.0</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">base_execute_time:</span>0.00</li>
+                      <li><span class="label">base_crit:</span>0.08</li>
+                      <li><span class="label">target:</span>Fluffy_Pillow</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">Suffering $w1 Shadow damage every $t1 sec.</span></li>
+                      <li><span class="label">description:</span><span class="tooltip">Banes the target with impending doom, causing $s1 Shadow damage every $T1 sec.  When Bane of Doom deals damage, it has a $s2% chance to summon a Demon guardian. 
+
+Only one target can have Bane of Doom at a time, only one Bane per Warlock can be active on any one target. Lasts for $d.</span></li>
+                    </ul>
+                  </div>
+                  <div class="float">
+                    <h5>Damage Over Time</h5>
+                    <ul>
+                      <li><span class="label">tick_may_crit:</span>true</li>
+                      <li><span class="label">tick_zero:</span>false</li>
+                      <li><span class="label">tick_power_mod:</span>0.880000</li>
+                      <li><span class="label">base_td:</span>1947.77</li>
+                      <li><span class="label">num_ticks:</span>4</li>
+                      <li><span class="label">base_tick_time:</span>15.00</li>
+                      <li><span class="label">hasted_ticks:</span>false</li>
+                      <li><span class="label">dot_behavior:</span>DOT_REFRESH</li>
+                    </ul>
+                  </div>
+                  <div class="clear"></div>
+                </td>
+              </tr>
+              <tr class="odd">
+                <td class="left small"><a href="#" class="toggle-details" rel="spell=85421">burning_embers</a></td>
+                <td class="right small">1179</td>
+                <td class="right small">5.7%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">300.0</td>
+                <td class="right small">1.46sec</td>
+                <td class="right small">1719</td>
+                <td class="right small">0</td>
+                <td class="right small">0.0</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">25.8%</td>
+                <td class="right small">1.8%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">435</td>
+                <td class="right small">1185</td>
+                <td class="right small">0</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">99.5%</td>
+              </tr>
+              <tr class="details hide">
+                <td colspan="23" class="filler">
+                  <h4>Database details</h4>
+                  <div class="float">
+                    <h5>Static Values</h5>
+                    <ul>
+                      <li><span class="label">name:</span>burning_embers</li>
+                      <li><span class="label">id:</span>85421</li>
+                      <li><span class="label">school:</span>fire</li>
+                      <li><span class="label">resource:</span>mana</li>
+                      <li><span class="label">tree:</span>Unknown</li>
+                      <li><span class="label">range:</span>50000.0</li>
+                      <li><span class="label">travel_speed:</span>0.0000</li>
+                      <li><span class="label">trigger_gcd:</span>0.0000</li>
+                      <li><span class="label">base_cost:</span>0.0</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">base_execute_time:</span>0.00</li>
+                      <li><span class="label">base_crit:</span>0.00</li>
+                      <li><span class="label">target:</span>Fluffy_Pillow</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">Deals $w1 Fire damage every $t1 sec.</span></li>
+                      <li><span class="label">description:</span><span class="tooltip">Your Soulfire and your Imp's Firebolt cause a Burning Ember damage-over-time effect on the target equal to a percentage of the damage done lasting $85421d.</span></li>
+                    </ul>
+                  </div>
+                  <div class="float">
+                    <h5>Damage Over Time</h5>
+                    <ul>
+                      <li><span class="label">tick_may_crit:</span>false</li>
+                      <li><span class="label">tick_zero:</span>false</li>
+                      <li><span class="label">tick_power_mod:</span>0.000000</li>
+                      <li><span class="label">base_td:</span>1107.04</li>
+                      <li><span class="label">num_ticks:</span>7</li>
+                      <li><span class="label">base_tick_time:</span>1.00</li>
+                      <li><span class="label">hasted_ticks:</span>false</li>
+                      <li><span class="label">dot_behavior:</span>DOT_REFRESH</li>
+                    </ul>
+                  </div>
+                  <div class="clear"></div>
+                </td>
+              </tr>
+              <tr>
+                <td class="left small"><a href="#" class="toggle-details" rel="spell=50796">chaos_bolt</a></td>
+                <td class="right small">1134</td>
+                <td class="right small">5.5%</td>
+                <td class="right small">4.9%</td>
+                <td class="right small">28.6</td>
+                <td class="right small">15.27sec</td>
+                <td class="right small">17341</td>
+                <td class="right small">13689</td>
+                <td class="right small">12.1</td>
+                <td class="right small">1438</td>
+                <td class="right small">13326</td>
+                <td class="right small">27431</td>
+                <td class="right small">34008</td>
+                <td class="right small">30.7%</td>
+                <td class="right small">1.8%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+              </tr>
+              <tr class="details hide">
+                <td colspan="23" class="filler">
+                  <h4>Database details</h4>
+                  <div class="float">
+                    <h5>Static Values</h5>
+                    <ul>
+                      <li><span class="label">name:</span>chaos_bolt</li>
+                      <li><span class="label">id:</span>50796</li>
+                      <li><span class="label">school:</span>fire</li>
+                      <li><span class="label">resource:</span>mana</li>
+                      <li><span class="label">tree:</span>destruction</li>
+                      <li><span class="label">range:</span>40.0</li>
+                      <li><span class="label">travel_speed:</span>20.0000</li>
+                      <li><span class="label">trigger_gcd:</span>1.5000</li>
+                      <li><span class="label">base_cost:</span>1438.0</li>
+                      <li><span class="label">cooldown:</span>12.00</li>
+                      <li><span class="label">base_execute_time:</span>2.00</li>
+                      <li><span class="label">base_crit:</span>0.00</li>
+                      <li><span class="label">target:</span>Fluffy_Pillow</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">(null)</span></li>
+                      <li><span class="label">description:</span><span class="tooltip">Sends a bolt of chaotic fire at the enemy, dealing $s1 Fire damage. Chaos Bolt cannot be resisted, and pierces through all absorption effects.</span></li>
+                    </ul>
+                  </div>
+                  <div class="float">
+                    <h5>Direct Damage</h5>
+                    <ul>
+                      <li><span class="label">may_crit:</span>true</li>
+                      <li><span class="label">direct_power_mod:</span>0.628000</li>
+                      <li><span class="label">base_dd_min:</span>1311.57</li>
+                      <li><span class="label">base_dd_max:</span>1665.89</li>
+                    </ul>
+                  </div>
+                  <div class="clear"></div>
+                </td>
+              </tr>
+              <tr class="odd">
+                <td class="left small"><a href="#" class="toggle-details" rel="spell=17962">conflagrate</a></td>
+                <td class="right small">2508</td>
+                <td class="right small">12.1%</td>
+                <td class="right small">18.8%</td>
+                <td class="right small">48.0</td>
+                <td class="right small">9.16sec</td>
+                <td class="right small">22860</td>
+                <td class="right small">18442</td>
+                <td class="right small">7.0</td>
+                <td class="right small">3288</td>
+                <td class="right small">16521</td>
+                <td class="right small">32943</td>
+                <td class="right small">58383</td>
+                <td class="right small">40.3%</td>
+                <td class="right small">1.7%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+              </tr>
+              <tr class="details hide">
+                <td colspan="23" class="filler">
+                  <h4>Database details</h4>
+                  <div class="float">
+                    <h5>Static Values</h5>
+                    <ul>
+                      <li><span class="label">name:</span>conflagrate</li>
+                      <li><span class="label">id:</span>17962</li>
+                      <li><span class="label">school:</span>fire</li>
+                      <li><span class="label">resource:</span>mana</li>
+                      <li><span class="label">tree:</span>destruction</li>
+                      <li><span class="label">range:</span>40.0</li>
+                      <li><span class="label">travel_speed:</span>0.0000</li>
+                      <li><span class="label">trigger_gcd:</span>1.5000</li>
+                      <li><span class="label">base_cost:</span>3288.0</li>
+                      <li><span class="label">cooldown:</span>8.00</li>
+                      <li><span class="label">base_execute_time:</span>0.00</li>
+                      <li><span class="label">base_crit:</span>0.15</li>
+                      <li><span class="label">target:</span>Fluffy_Pillow</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">(null)</span></li>
+                      <li><span class="label">description:</span><span class="tooltip">Instantly deals fire damage equal to $s2% of your Immolate's periodic damage on the target.</span></li>
+                    </ul>
+                  </div>
+                  <div class="float">
+                    <h5>Direct Damage</h5>
+                    <ul>
+                      <li><span class="label">may_crit:</span>true</li>
+                      <li><span class="label">direct_power_mod:</span>0.000000</li>
+                      <li><span class="label">base_dd_min:</span>6822.84</li>
+                      <li><span class="label">base_dd_max:</span>6822.84</li>
+                    </ul>
+                  </div>
+                  <div class="clear"></div>
+                </td>
+              </tr>
+              <tr>
+                <td class="left small"><a href="#" class="toggle-details" rel="spell=172">corruption</a></td>
+                <td class="right small">1145</td>
+                <td class="right small">5.5%</td>
+                <td class="right small">3.6%</td>
+                <td class="right small">24.8</td>
+                <td class="right small">17.79sec</td>
+                <td class="right small">20205</td>
+                <td class="right small">16291</td>
+                <td class="right small">16.4</td>
+                <td class="right small">1233</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">25.9%</td>
+                <td class="right small">1.7%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">175</td>
+                <td class="right small">2266</td>
+                <td class="right small">4525</td>
+                <td class="right small">26.2%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">97.9%</td>
+              </tr>
+              <tr class="details hide">
+                <td colspan="23" class="filler">
+                  <h4>Database details</h4>
+                  <div class="float">
+                    <h5>Static Values</h5>
+                    <ul>
+                      <li><span class="label">name:</span>corruption</li>
+                      <li><span class="label">id:</span>172</li>
+                      <li><span class="label">school:</span>shadow</li>
+                      <li><span class="label">resource:</span>mana</li>
+                      <li><span class="label">tree:</span>affliction</li>
+                      <li><span class="label">range:</span>40.0</li>
+                      <li><span class="label">travel_speed:</span>0.0000</li>
+                      <li><span class="label">trigger_gcd:</span>1.5000</li>
+                      <li><span class="label">base_cost:</span>1233.0</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">base_execute_time:</span>0.00</li>
+                      <li><span class="label">base_crit:</span>0.00</li>
+                      <li><span class="label">target:</span>Fluffy_Pillow</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">Suffering $w1 Shadow damage every $t1 sec.</span></li>
+                      <li><span class="label">description:</span><span class="tooltip">Corrupts the target, causing $o1 Shadow damage over $d.</span></li>
+                    </ul>
+                  </div>
+                  <div class="float">
+                    <h5>Damage Over Time</h5>
+                    <ul>
+                      <li><span class="label">tick_may_crit:</span>true</li>
+                      <li><span class="label">tick_zero:</span>false</li>
+                      <li><span class="label">tick_power_mod:</span>0.176000</li>
+                      <li><span class="label">base_td:</span>147.24</li>
+                      <li><span class="label">num_ticks:</span>6</li>
+                      <li><span class="label">base_tick_time:</span>3.00</li>
+                      <li><span class="label">hasted_ticks:</span>true</li>
+                      <li><span class="label">dot_behavior:</span>DOT_REFRESH</li>
+                    </ul>
+                  </div>
+                  <div class="clear"></div>
+                </td>
+              </tr>
+              <tr class="odd">
+                <td class="left small"><a href="#" class="toggle-details" rel="spell=77801">demon_soul</a></td>
+                <td class="right small">0</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">1.1%</td>
+                <td class="right small">4.1</td>
+                <td class="right small">120.87sec</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0.0</td>
+                <td class="right small">2336</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+              </tr>
+              <tr class="details hide">
+                <td colspan="23" class="filler">
+                  <h4>Database details</h4>
+                  <div class="float">
+                    <h5>Static Values</h5>
+                    <ul>
+                      <li><span class="label">name:</span>demon_soul</li>
+                      <li><span class="label">id:</span>77801</li>
+                      <li><span class="label">school:</span>shadow</li>
+                      <li><span class="label">resource:</span>mana</li>
+                      <li><span class="label">tree:</span>demonology</li>
+                      <li><span class="label">range:</span>100.0</li>
+                      <li><span class="label">travel_speed:</span>0.0000</li>
+                      <li><span class="label">trigger_gcd:</span>0.0000</li>
+                      <li><span class="label">base_cost:</span>3082.0</li>
+                      <li><span class="label">cooldown:</span>120.00</li>
+                      <li><span class="label">base_execute_time:</span>0.00</li>
+                      <li><span class="label">base_crit:</span>0.00</li>
+                      <li><span class="label">target:</span>Fluffy_Pillow</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">(null)</span></li>
+                      <li><span class="label">description:</span><span class="tooltip">You and your summoned demon fuse souls, granting the Warlock a temporary power depending on the demon currently enslaved.
+
+Imp - Critical strike chance of your cast time Destruction spells increased by $79459m1% for $79459d. 
+
+Voidwalker - All threat generated by you transferred to your Voidwalker for $79464d.
+
+Succubus - Shadow Bolt damage increased by $79463s1% for $79463d.
+
+Felhunter - Periodic shadow damage increased by $79460s1% for $79460d.
+
+Felguard - Spell haste increased by $79462s1% and fire and shadow damage done increased by $79462s2% for $79462d.</span></li>
+                    </ul>
+                  </div>
+                  <div class="float">
+                  </div>
+                  <div class="clear"></div>
+                </td>
+              </tr>
+              <tr>
+                <td class="left small"><a href="#" class="toggle-details" rel="spell=348">immolate</a></td>
+                <td class="right small">2959</td>
+                <td class="right small">14.3%</td>
+                <td class="right small">5.6%</td>
+                <td class="right small">28.6</td>
+                <td class="right small">15.37sec</td>
+                <td class="right small">45264</td>
+                <td class="right small">35542</td>
+                <td class="right small">27.5</td>
+                <td class="right small">1644</td>
+                <td class="right small">5618</td>
+                <td class="right small">11620</td>
+                <td class="right small">14105</td>
+                <td class="right small">31.9%</td>
+                <td class="right small">1.7%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">176</td>
+                <td class="right small">4585</td>
+                <td class="right small">9486</td>
+                <td class="right small">31.9%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">98.6%</td>
+              </tr>
+              <tr class="details hide">
+                <td colspan="23" class="filler">
+                  <h4>Database details</h4>
+                  <div class="float">
+                    <h5>Static Values</h5>
+                    <ul>
+                      <li><span class="label">name:</span>immolate</li>
+                      <li><span class="label">id:</span>348</li>
+                      <li><span class="label">school:</span>fire</li>
+                      <li><span class="label">resource:</span>mana</li>
+                      <li><span class="label">tree:</span>destruction</li>
+                      <li><span class="label">range:</span>40.0</li>
+                      <li><span class="label">travel_speed:</span>0.0000</li>
+                      <li><span class="label">trigger_gcd:</span>1.5000</li>
+                      <li><span class="label">base_cost:</span>1644.0</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">base_execute_time:</span>1.50</li>
+                      <li><span class="label">base_crit:</span>0.00</li>
+                      <li><span class="label">target:</span>Fluffy_Pillow</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">Suffering $s3 Fire damage every $t3 sec.</span></li>
+                      <li><span class="label">description:</span><span class="tooltip">Burns the enemy for $s2 Fire damage and then an additional $o3 Fire damage over $d.$?s30108[  Only one Unstable Affliction or Immolate per Warlock can be active on any one target.][]</span></li>
+                    </ul>
+                  </div>
+                  <div class="float">
+                    <h5>Direct Damage</h5>
+                    <ul>
+                      <li><span class="label">may_crit:</span>true</li>
+                      <li><span class="label">direct_power_mod:</span>0.220000</li>
+                      <li><span class="label">base_dd_min:</span>665.94</li>
+                      <li><span class="label">base_dd_max:</span>665.94</li>
+                    </ul>
+                    <h5>Damage Over Time</h5>
+                    <ul>
+                      <li><span class="label">tick_may_crit:</span>true</li>
+                      <li><span class="label">tick_zero:</span>false</li>
+                      <li><span class="label">tick_power_mod:</span>0.176000</li>
+                      <li><span class="label">base_td:</span>422.47</li>
+                      <li><span class="label">num_ticks:</span>5</li>
+                      <li><span class="label">base_tick_time:</span>3.00</li>
+                      <li><span class="label">hasted_ticks:</span>true</li>
+                      <li><span class="label">dot_behavior:</span>DOT_REFRESH</li>
+                    </ul>
+                  </div>
+                  <div class="clear"></div>
+                </td>
+              </tr>
+              <tr class="odd">
+                <td class="left small"><a href="#" class="toggle-details" rel="spell=29722">incinerate</a></td>
+                <td class="right small">3352</td>
+                <td class="right small">16.2%</td>
+                <td class="right small">32.1%</td>
+                <td class="right small">93.7</td>
+                <td class="right small">4.54sec</td>
+                <td class="right small">15651</td>
+                <td class="right small">11477</td>
+                <td class="right small">5.4</td>
+                <td class="right small">2877</td>
+                <td class="right small">12041</td>
+                <td class="right small">24874</td>
+                <td class="right small">31503</td>
+                <td class="right small">30.3%</td>
+                <td class="right small">1.7%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+              </tr>
+              <tr class="details hide">
+                <td colspan="23" class="filler">
+                  <h4>Database details</h4>
+                  <div class="float">
+                    <h5>Static Values</h5>
+                    <ul>
+                      <li><span class="label">name:</span>incinerate</li>
+                      <li><span class="label">id:</span>29722</li>
+                      <li><span class="label">school:</span>fire</li>
+                      <li><span class="label">resource:</span>mana</li>
+                      <li><span class="label">tree:</span>destruction</li>
+                      <li><span class="label">range:</span>40.0</li>
+                      <li><span class="label">travel_speed:</span>20.0000</li>
+                      <li><span class="label">trigger_gcd:</span>1.5000</li>
+                      <li><span class="label">base_cost:</span>2877.0</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">base_execute_time:</span>2.25</li>
+                      <li><span class="label">base_crit:</span>0.00</li>
+                      <li><span class="label">target:</span>Fluffy_Pillow</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">(null)</span></li>
+                      <li><span class="label">description:</span><span class="tooltip">Deals $s1 Fire damage to your target and an additional $/6;s1 Fire damage if the target is affected by an Immolate spell.</span></li>
+                    </ul>
+                  </div>
+                  <div class="float">
+                    <h5>Direct Damage</h5>
+                    <ul>
+                      <li><span class="label">may_crit:</span>true</li>
+                      <li><span class="label">direct_power_mod:</span>0.539000</li>
+                      <li><span class="label">base_dd_min:</span>510.06</li>
+                      <li><span class="label">base_dd_max:</span>592.77</li>
+                    </ul>
+                  </div>
+                  <div class="clear"></div>
+                </td>
+              </tr>
+              <tr>
+                <td class="left small"><a href="#" class="toggle-details" rel="spell=22703">infernal_awakening</a></td>
+                <td class="right small">49</td>
+                <td class="right small">0.2%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">1.0</td>
+                <td class="right small">0.00sec</td>
+                <td class="right small">21356</td>
+                <td class="right small">0</td>
+                <td class="right small">0.0</td>
+                <td class="right small">0</td>
+                <td class="right small">17132</td>
+                <td class="right small">34234</td>
+                <td class="right small">34280</td>
+                <td class="right small">26.5%</td>
+                <td class="right small">1.8%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+              </tr>
+              <tr class="details hide">
+                <td colspan="23" class="filler">
+                  <h4>Database details</h4>
+                  <div class="float">
+                    <h5>Static Values</h5>
+                    <ul>
+                      <li><span class="label">name:</span>infernal_awakening</li>
+                      <li><span class="label">id:</span>22703</li>
+                      <li><span class="label">school:</span>fire</li>
+                      <li><span class="label">resource:</span>mana</li>
+                      <li><span class="label">tree:</span>Unknown</li>
+                      <li><span class="label">range:</span>50000.0</li>
+                      <li><span class="label">travel_speed:</span>0.0000</li>
+                      <li><span class="label">trigger_gcd:</span>0.0000</li>
+                      <li><span class="label">base_cost:</span>0.0</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">base_execute_time:</span>0.00</li>
+                      <li><span class="label">base_crit:</span>0.00</li>
+                      <li><span class="label">target:</span>Fluffy_Pillow</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">Stunned.</span></li>
+                      <li><span class="label">description:</span><span class="tooltip">An infernal falls from the sky, dealing $s1 Fire damage to all targets, stunning them for $d.</span></li>
+                    </ul>
+                  </div>
+                  <div class="float">
+                    <h5>Direct Damage</h5>
+                    <ul>
+                      <li><span class="label">may_crit:</span>true</li>
+                      <li><span class="label">direct_power_mod:</span>0.765000</li>
+                      <li><span class="label">base_dd_min:</span>438.73</li>
+                      <li><span class="label">base_dd_max:</span>494.74</li>
+                    </ul>
+                  </div>
+                  <div class="clear"></div>
+                </td>
+              </tr>
+              <tr class="odd">
+                <td class="left small"><a href="#" class="toggle-details" rel="spell=1454">life_tap</a></td>
+                <td class="right small">0</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">11.7</td>
+                <td class="right small">30.51sec</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0.0</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+              </tr>
+              <tr class="details hide">
+                <td colspan="23" class="filler">
+                  <h4>Database details</h4>
+                  <div class="float">
+                    <h5>Static Values</h5>
+                    <ul>
+                      <li><span class="label">name:</span>life_tap</li>
+                      <li><span class="label">id:</span>1454</li>
+                      <li><span class="label">school:</span>shadow</li>
+                      <li><span class="label">resource:</span>health</li>
+                      <li><span class="label">tree:</span>affliction</li>
+                      <li><span class="label">range:</span>0.0</li>
+                      <li><span class="label">travel_speed:</span>0.0000</li>
+                      <li><span class="label">trigger_gcd:</span>1.5000</li>
+                      <li><span class="label">base_cost:</span>0.0</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">base_execute_time:</span>0.00</li>
+                      <li><span class="label">base_crit:</span>0.00</li>
+                      <li><span class="label">target:</span>Fluffy_Pillow</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">(null)</span></li>
+                      <li><span class="label">description:</span><span class="tooltip">You Life Tap for $s3% of your total health, converting $<mana>% of that into mana.</span></li>
+                    </ul>
+                  </div>
+                  <div class="float">
+                  </div>
+                  <div class="clear"></div>
+                </td>
+              </tr>
+              <tr>
+                <td class="left small"><a href="#" class="toggle-details" rel="spell=17877">shadowburn</a></td>
+                <td class="right small">173</td>
+                <td class="right small">0.8%</td>
+                <td class="right small">1.8%</td>
+                <td class="right small">5.0</td>
+                <td class="right small">18.04sec</td>
+                <td class="right small">15129</td>
+                <td class="right small">12879</td>
+                <td class="right small">4.9</td>
+                <td class="right small">3082</td>
+                <td class="right small">12204</td>
+                <td class="right small">24498</td>
+                <td class="right small">31915</td>
+                <td class="right small">25.4%</td>
+                <td class="right small">1.6%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+              </tr>
+              <tr class="details hide">
+                <td colspan="23" class="filler">
+                  <h4>Database details</h4>
+                  <div class="float">
+                    <h5>Static Values</h5>
+                    <ul>
+                      <li><span class="label">name:</span>shadowburn</li>
+                      <li><span class="label">id:</span>17877</li>
+                      <li><span class="label">school:</span>shadow</li>
+                      <li><span class="label">resource:</span>mana</li>
+                      <li><span class="label">tree:</span>destruction</li>
+                      <li><span class="label">range:</span>40.0</li>
+                      <li><span class="label">travel_speed:</span>0.0000</li>
+                      <li><span class="label">trigger_gcd:</span>1.5000</li>
+                      <li><span class="label">base_cost:</span>3082.0</li>
+                      <li><span class="label">cooldown:</span>15.00</li>
+                      <li><span class="label">base_execute_time:</span>0.00</li>
+                      <li><span class="label">base_crit:</span>0.00</li>
+                      <li><span class="label">target:</span>Fluffy_Pillow</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">(null)</span></li>
+                      <li><span class="label">description:</span><span class="tooltip">Instantly blasts the target for $17877s2 Shadow damage.  If the target dies within $29341d of Shadowburn, and yields experience or honor, the caster gains $29341s1 Soul Shards. Only usable on enemies that have less than 20% health.</span></li>
+                    </ul>
+                  </div>
+                  <div class="float">
+                    <h5>Direct Damage</h5>
+                    <ul>
+                      <li><span class="label">may_crit:</span>true</li>
+                      <li><span class="label">direct_power_mod:</span>1.056000</li>
+                      <li><span class="label">base_dd_min:</span>649.32</li>
+                      <li><span class="label">base_dd_max:</span>724.90</li>
+                    </ul>
+                  </div>
+                  <div class="clear"></div>
+                </td>
+              </tr>
+              <tr class="odd">
+                <td class="left small"><a href="#" class="toggle-details" rel="spell=47897">shadowflame</a></td>
+                <td class="right small">1360</td>
+                <td class="right small">6.6%</td>
+                <td class="right small">18.9%</td>
+                <td class="right small">31.0</td>
+                <td class="right small">14.17sec</td>
+                <td class="right small">19216</td>
+                <td class="right small">15500</td>
+                <td class="right small">3.7</td>
+                <td class="right small">5138</td>
+                <td class="right small">971</td>
+                <td class="right small">1922</td>
+                <td class="right small">4601</td>
+                <td class="right small">25.9%</td>
+                <td class="right small">1.7%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">108</td>
+                <td class="right small">3834</td>
+                <td class="right small">7654</td>
+                <td class="right small">26.3%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">39.7%</td>
+              </tr>
+              <tr class="details hide">
+                <td colspan="23" class="filler">
+                  <h4>Database details</h4>
+                  <div class="float">
+                    <h5>Static Values</h5>
+                    <ul>
+                      <li><span class="label">name:</span>shadowflame</li>
+                      <li><span class="label">id:</span>47897</li>
+                      <li><span class="label">school:</span>shadow</li>
+                      <li><span class="label">resource:</span>mana</li>
+                      <li><span class="label">tree:</span>destruction</li>
+                      <li><span class="label">range:</span>0.0</li>
+                      <li><span class="label">travel_speed:</span>0.0000</li>
+                      <li><span class="label">trigger_gcd:</span>1.5000</li>
+                      <li><span class="label">base_cost:</span>5138.0</li>
+                      <li><span class="label">cooldown:</span>12.00</li>
+                      <li><span class="label">base_execute_time:</span>0.00</li>
+                      <li><span class="label">base_crit:</span>0.00</li>
+                      <li><span class="label">target:</span>Fluffy_Pillow</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">(null)</span></li>
+                      <li><span class="label">description:</span><span class="tooltip">Targets in a cone in front of the caster take $47897s1 Shadow damage and an additional $47960o1 Fire damage over $47960d.</span></li>
+                    </ul>
+                  </div>
+                  <div class="float">
+                    <h5>Direct Damage</h5>
+                    <ul>
+                      <li><span class="label">may_crit:</span>true</li>
+                      <li><span class="label">direct_power_mod:</span>0.102000</li>
+                      <li><span class="label">base_dd_min:</span>668.14</li>
+                      <li><span class="label">base_dd_max:</span>731.10</li>
+                    </ul>
+                  </div>
+                  <div class="clear"></div>
+                  <h4>Database details</h4>
+                  <div class="float">
+                    <h5>Static Values</h5>
+                    <ul>
+                      <li><span class="label">name:</span>shadowflame_dot</li>
+                      <li><span class="label">id:</span>47960</li>
+                      <li><span class="label">school:</span>fire</li>
+                      <li><span class="label">resource:</span>mana</li>
+                      <li><span class="label">tree:</span>Unknown</li>
+                      <li><span class="label">range:</span>100.0</li>
+                      <li><span class="label">travel_speed:</span>0.0000</li>
+                      <li><span class="label">trigger_gcd:</span>1.5000</li>
+                      <li><span class="label">base_cost:</span>0.0</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">base_execute_time:</span>0.00</li>
+                      <li><span class="label">base_crit:</span>0.00</li>
+                      <li><span class="label">target:</span>Fluffy_Pillow</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">Suffering $w1 Fire damage every $t1 sec.</span></li>
+                      <li><span class="label">description:</span><span class="tooltip">Targets in a cone in front of the caster take $47897s1 Shadow damage and an additional $47960o1 Fire damage over $47960d.</span></li>
+                    </ul>
+                  </div>
+                  <div class="float">
+                    <h5>Damage Over Time</h5>
+                    <ul>
+                      <li><span class="label">tick_may_crit:</span>true</li>
+                      <li><span class="label">tick_zero:</span>false</li>
+                      <li><span class="label">tick_power_mod:</span>0.200000</li>
+                      <li><span class="label">base_td:</span>162.63</li>
+                      <li><span class="label">num_ticks:</span>3</li>
+                      <li><span class="label">base_tick_time:</span>2.00</li>
+                      <li><span class="label">hasted_ticks:</span>true</li>
+                      <li><span class="label">dot_behavior:</span>DOT_REFRESH</li>
+                    </ul>
+                  </div>
+                  <div class="clear"></div>
+                </td>
+              </tr>
+              <tr>
+                <td class="left small"><a href="#" class="toggle-details" rel="spell=6353">soul_fire</a></td>
+                <td class="right small">1598</td>
+                <td class="right small">7.7%</td>
+                <td class="right small">8.2%</td>
+                <td class="right small">37.5</td>
+                <td class="right small">11.81sec</td>
+                <td class="right small">18642</td>
+                <td class="right small">8963</td>
+                <td class="right small">10.1</td>
+                <td class="right small">1849</td>
+                <td class="right small">14203</td>
+                <td class="right small">29211</td>
+                <td class="right small">35498</td>
+                <td class="right small">31.7%</td>
+                <td class="right small">1.8%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+              </tr>
+              <tr class="details hide">
+                <td colspan="23" class="filler">
+                  <h4>Database details</h4>
+                  <div class="float">
+                    <h5>Static Values</h5>
+                    <ul>
+                      <li><span class="label">name:</span>soul_fire</li>
+                      <li><span class="label">id:</span>6353</li>
+                      <li><span class="label">school:</span>fire</li>
+                      <li><span class="label">resource:</span>mana</li>
+                      <li><span class="label">tree:</span>destruction</li>
+                      <li><span class="label">range:</span>40.0</li>
+                      <li><span class="label">travel_speed:</span>24.0000</li>
+                      <li><span class="label">trigger_gcd:</span>1.5000</li>
+                      <li><span class="label">base_cost:</span>1849.0</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">base_execute_time:</span>3.00</li>
+                      <li><span class="label">base_crit:</span>0.00</li>
+                      <li><span class="label">target:</span>Fluffy_Pillow</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">(null)</span></li>
+                      <li><span class="label">description:</span><span class="tooltip">Burn the enemy's soul, causing $s1 Fire damage.$?s74434[
+
+|CFFE55BB0Soulburn: Instant cast.|R][]</span></li>
+                    </ul>
+                  </div>
+                  <div class="float">
+                    <h5>Direct Damage</h5>
+                    <ul>
+                      <li><span class="label">may_crit:</span>true</li>
+                      <li><span class="label">direct_power_mod:</span>0.628000</li>
+                      <li><span class="label">base_dd_min:</span>2171.91</li>
+                      <li><span class="label">base_dd_max:</span>2722.53</li>
+                    </ul>
+                  </div>
+                  <div class="clear"></div>
+                </td>
+              </tr>
+              <tr class="odd">
+                <td class="left small"><a href="#" class="toggle-details" rel="spell=74434">soulburn</a></td>
+                <td class="right small">0</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">100.0%</td>
+                <td class="right small">4.0</td>
+                <td class="right small">45.81sec</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0.0</td>
+                <td class="right small">1</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+              </tr>
+              <tr class="details hide">
+                <td colspan="23" class="filler">
+                  <h4>Database details</h4>
+                  <div class="float">
+                    <h5>Static Values</h5>
+                    <ul>
+                      <li><span class="label">name:</span>soulburn</li>
+                      <li><span class="label">id:</span>74434</li>
+                      <li><span class="label">school:</span>shadow</li>
+                      <li><span class="label">resource:</span>soul_shards</li>
+                      <li><span class="label">tree:</span>demonology</li>
+                      <li><span class="label">range:</span>0.0</li>
+                      <li><span class="label">travel_speed:</span>0.0000</li>
+                      <li><span class="label">trigger_gcd:</span>0.0000</li>
+                      <li><span class="label">base_cost:</span>1.0</li>
+                      <li><span class="label">cooldown:</span>45.00</li>
+                      <li><span class="label">base_execute_time:</span>0.00</li>
+                      <li><span class="label">base_crit:</span>0.00</li>
+                      <li><span class="label">target:</span>Fluffy_Pillow</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">Secondary effects of some of your spells have been unlocked:
+
+Drain Life
+Summon Imp, Voidwalker, Succubus, Felhunter, Felguard
+Demonic Circle: Teleport
+Soul Fire
+Healthstone
+Searing Pain</span></li>
+                      <li><span class="label">description:</span><span class="tooltip">Consumes a Soul Shard, allowing you to use the secondary effects on some of your spells.
+
+Drain Life
+Summon Imp, Voidwalker, Succubus, Felhunter, Felguard
+Demonic Circle: Teleport
+Soul Fire
+Healthstone
+Searing Pain</span></li>
+                    </ul>
+                  </div>
+                  <div class="float">
+                  </div>
+                  <div class="clear"></div>
+                </td>
+              </tr>
+              <tr>
+                <th class="left small">pet - imp</th>
+                <th class="right small">3535</th>
+                <td colspan="23" class="filler"></td>
+              </tr>
+              <tr>
+                <td class="left small"><a href="#" class="toggle-details" rel="spell=3110">firebolt</a></td>
+                <td class="right small">3535</td>
+                <td class="right small">100.0%</td>
+                <td class="right small">100.0%</td>
+                <td class="right small">270.1</td>
+                <td class="right small">1.62sec</td>
+                <td class="right small">5720</td>
+                <td class="right small">3539</td>
+                <td class="right small">9.1</td>
+                <td class="right small">632</td>
+                <td class="right small">4581</td>
+                <td class="right small">9145</td>
+                <td class="right small">12031</td>
+                <td class="right small">27.6%</td>
+                <td class="right small">2.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+              </tr>
+              <tr class="details hide">
+                <td colspan="23" class="filler">
+                  <h4>Database details</h4>
+                  <div class="float">
+                    <h5>Static Values</h5>
+                    <ul>
+                      <li><span class="label">name:</span>firebolt</li>
+                      <li><span class="label">id:</span>3110</li>
+                      <li><span class="label">school:</span>fire</li>
+                      <li><span class="label">resource:</span>mana</li>
+                      <li><span class="label">tree:</span>Unknown</li>
+                      <li><span class="label">range:</span>40.0</li>
+                      <li><span class="label">travel_speed:</span>16.0000</li>
+                      <li><span class="label">trigger_gcd:</span>1.5000</li>
+                      <li><span class="label">base_cost:</span>632.0</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">base_execute_time:</span>1.75</li>
+                      <li><span class="label">base_crit:</span>0.00</li>
+                      <li><span class="label">target:</span>Fluffy_Pillow</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">(null)</span></li>
+                      <li><span class="label">description:</span><span class="tooltip">Deals $<damage> Fire damage to a target.</span></li>
+                    </ul>
+                  </div>
+                  <div class="float">
+                    <h5>Direct Damage</h5>
+                    <ul>
+                      <li><span class="label">may_crit:</span>true</li>
+                      <li><span class="label">direct_power_mod:</span>0.649000</li>
+                      <li><span class="label">base_dd_min:</span>111.86</li>
+                      <li><span class="label">base_dd_max:</span>124.88</li>
+                    </ul>
+                  </div>
+                  <div class="clear"></div>
+                </td>
+              </tr>
+              <tr>
+                <th class="left small">pet - infernal</th>
+                <th class="right small">2622</th>
+                <td colspan="23" class="filler"></td>
+              </tr>
+              <tr>
+                <td class="left small"><a href="#" class="toggle-details" rel="spell=19483">infernal_immolation</a></td>
+                <td class="right small">834</td>
+                <td class="right small">31.8%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">1.0</td>
+                <td class="right small">0.00sec</td>
+                <td class="right small">45990</td>
+                <td class="right small">0</td>
+                <td class="right small">0.0</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0</td>
+                <td class="right small">2133</td>
+                <td class="right small">0</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">2.0%</td>
+                <td class="right small">0.0%</td>
+              </tr>
+              <tr class="details hide">
+                <td colspan="23" class="filler">
+                  <h4>Database details</h4>
+                  <div class="float">
+                    <h5>Static Values</h5>
+                    <ul>
+                      <li><span class="label">name:</span>infernal_immolation</li>
+                      <li><span class="label">id:</span>19483</li>
+                      <li><span class="label">school:</span>fire</li>
+                      <li><span class="label">resource:</span>mana</li>
+                      <li><span class="label">tree:</span>Unknown</li>
+                      <li><span class="label">range:</span>0.0</li>
+                      <li><span class="label">travel_speed:</span>0.0000</li>
+                      <li><span class="label">trigger_gcd:</span>0.0000</li>
+                      <li><span class="label">base_cost:</span>0.0</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">base_execute_time:</span>0.00</li>
+                      <li><span class="label">base_crit:</span>0.00</li>
+                      <li><span class="label">target:</span>Fluffy_Pillow</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">Burns nearby enemies for $20153s1 fire damage every $t1 seconds.</span></li>
+                      <li><span class="label">description:</span><span class="tooltip">Burns nearby enemies for $20153s1 fire damage every $t1 seconds.</span></li>
+                    </ul>
+                  </div>
+                  <div class="float">
+                    <h5>Damage Over Time</h5>
+                    <ul>
+                      <li><span class="label">tick_may_crit:</span>false</li>
+                      <li><span class="label">tick_zero:</span>false</li>
+                      <li><span class="label">tick_power_mod:</span>0.000000</li>
+                      <li><span class="label">base_td:</span>0.00</li>
+                      <li><span class="label">num_ticks:</span>1</li>
+                      <li><span class="label">base_tick_time:</span>2.00</li>
+                      <li><span class="label">hasted_ticks:</span>false</li>
+                      <li><span class="label">dot_behavior:</span>DOT_CLIP</li>
+                    </ul>
+                  </div>
+                  <div class="clear"></div>
+                  <h4>Database details</h4>
+                  <div class="float">
+                    <h5>Static Values</h5>
+                    <ul>
+                      <li><span class="label">name:</span>immolation_dmg</li>
+                      <li><span class="label">id:</span>20153</li>
+                      <li><span class="label">school:</span>fire</li>
+                      <li><span class="label">resource:</span>mana</li>
+                      <li><span class="label">tree:</span>Unknown</li>
+                      <li><span class="label">range:</span>0.0</li>
+                      <li><span class="label">travel_speed:</span>0.0000</li>
+                      <li><span class="label">trigger_gcd:</span>0.0000</li>
+                      <li><span class="label">base_cost:</span>0.0</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">base_execute_time:</span>0.00</li>
+                      <li><span class="label">base_crit:</span>0.00</li>
+                      <li><span class="label">target:</span>Fluffy_Pillow</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">(null)</span></li>
+                      <li><span class="label">description:</span><span class="tooltip">Deals Fire damage to all enemies near the caster.</span></li>
+                    </ul>
+                  </div>
+                  <div class="float">
+                    <h5>Direct Damage</h5>
+                    <ul>
+                      <li><span class="label">may_crit:</span>false</li>
+                      <li><span class="label">direct_power_mod:</span>0.400000</li>
+                      <li><span class="label">base_dd_min:</span>42.50</li>
+                      <li><span class="label">base_dd_max:</span>42.50</li>
+                    </ul>
+                  </div>
+                  <div class="clear"></div>
+                </td>
+              </tr>
+              <tr class="odd">
+                <td class="left small"><a href="#" class="toggle-details" rel="spell=0">infernal_melee</a></td>
+                <td class="right small">1787</td>
+                <td class="right small">68.2%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">54.0</td>
+                <td class="right small">0.81sec</td>
+                <td class="right small">1825</td>
+                <td class="right small">1112</td>
+                <td class="right small">0.0</td>
+                <td class="right small">0</td>
+                <td class="right small">1863</td>
+                <td class="right small">3738</td>
+                <td class="right small">4346</td>
+                <td class="right small">18.1%</td>
+                <td class="right small">7.9%</td>
+                <td class="right small">6.3%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">24.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+              </tr>
+              <tr class="details hide">
+                <td colspan="23" class="filler">
+                  <h4>Database details</h4>
+                  <div class="float">
+                    <h5>Static Values</h5>
+                    <ul>
+                      <li><span class="label">name:</span>infernal_melee</li>
+                      <li><span class="label">id:</span>0</li>
+                      <li><span class="label">school:</span>physical</li>
+                      <li><span class="label">resource:</span>none</li>
+                      <li><span class="label">tree:</span>Unknown</li>
+                      <li><span class="label">range:</span>0.0</li>
+                      <li><span class="label">travel_speed:</span>0.0000</li>
+                      <li><span class="label">trigger_gcd:</span>1.5000</li>
+                      <li><span class="label">base_cost:</span>0.0</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">base_execute_time:</span>2.00</li>
+                      <li><span class="label">base_crit:</span>0.00</li>
+                      <li><span class="label">target:</span>Fluffy_Pillow</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">(null)</span></li>
+                      <li><span class="label">description:</span><span class="tooltip">(null)</span></li>
+                    </ul>
+                  </div>
+                  <div class="float">
+                    <h5>Weapon</h5>
+                    <ul>
+                      <li><span class="label">normalized:</span>false</li>
+                      <li><span class="label">weapon_power_mod:</span>0.071429</li>
+                      <li><span class="label">weapon_multiplier:</span>1.00</li>
+                    </ul>
+                  </div>
+                  <div class="clear"></div>
+                </td>
+              </tr>
+              <tr>
+                <th class="left small">pet - ebon_imp</th>
+                <th class="right small">183</th>
+                <td colspan="23" class="filler"></td>
+              </tr>
+              <tr>
+                <td class="left small"><a href="#" class="toggle-details" rel="spell=0">ebon_imp_melee</a></td>
+                <td class="right small">183</td>
+                <td class="right small">100.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">89.2</td>
+                <td class="right small">0.83sec</td>
+                <td class="right small">783</td>
+                <td class="right small">474</td>
+                <td class="right small">0.0</td>
+                <td class="right small">0</td>
+                <td class="right small">801</td>
+                <td class="right small">1602</td>
+                <td class="right small">1602</td>
+                <td class="right small">18.3%</td>
+                <td class="right small">8.0%</td>
+                <td class="right small">6.5%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">23.8%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+                <td class="right small">0.0%</td>
+              </tr>
+              <tr class="details hide">
+                <td colspan="23" class="filler">
+                  <h4>Database details</h4>
+                  <div class="float">
+                    <h5>Static Values</h5>
+                    <ul>
+                      <li><span class="label">name:</span>ebon_imp_melee</li>
+                      <li><span class="label">id:</span>0</li>
+                      <li><span class="label">school:</span>physical</li>
+                      <li><span class="label">resource:</span>none</li>
+                      <li><span class="label">tree:</span>Unknown</li>
+                      <li><span class="label">range:</span>0.0</li>
+                      <li><span class="label">travel_speed:</span>0.0000</li>
+                      <li><span class="label">trigger_gcd:</span>1.5000</li>
+                      <li><span class="label">base_cost:</span>0.0</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">base_execute_time:</span>2.00</li>
+                      <li><span class="label">base_crit:</span>0.00</li>
+                      <li><span class="label">target:</span>Fluffy_Pillow</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">(null)</span></li>
+                      <li><span class="label">description:</span><span class="tooltip">(null)</span></li>
+                    </ul>
+                  </div>
+                  <div class="float">
+                    <h5>Weapon</h5>
+                    <ul>
+                      <li><span class="label">normalized:</span>false</li>
+                      <li><span class="label">weapon_power_mod:</span>0.071429</li>
+                      <li><span class="label">weapon_multiplier:</span>1.00</li>
+                    </ul>
+                  </div>
+                  <div class="clear"></div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="player-section buffs">
+          <h3 class="toggle open">Buffs</h3>
+          <div class="toggle-content">
+            <table class="sc mb">
+              <tr>
+                <th class="left"><a href="#help-dynamic-buffs" class="help">Dynamic Buffs</a></th>
+                <th>Start</th>
+                <th>Refresh</th>
+                <th>Interval</th>
+                <th>Trigger</th>
+                <th>Up-Time</th>
+                <th>Benefit</th>
+              </tr>
+              <tr>
+                <td class="left"><a href="#" class="toggle-details">backdraft</a></td>
+                <td class="right">26.5</td>
+                <td class="right">20.7</td>
+                <td class="right">16.5sec</td>
+                <td class="right">9.3sec</td>
+                <td class="right">87%</td>
+                <td class="right">90%</td>
+              </tr>
+              <tr class="details hide">
+                <td colspan="7" class="filler">
+                  <h4>Database details</h4>
+                  <ul>
+                    <li><span class="label">id:</span>54277</li>
+                    <li><span class="label">cooldown name:</span>buff_backdraft</li>
+                    <li><span class="label">tooltip:</span><span class="tooltip-wider">Reduced cast time for your Shadow Bolt, Incinerate and Chaos Bolt by $s1%.</span></li>
+                    <li><span class="label">max_stacks:</span>3</li>
+                    <li><span class="label">duration:</span>15.00</li>
+                    <li><span class="label">cooldown:</span>0.00</li>
+                    <li><span class="label">default_chance:</span>100.00%</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr class="odd">
+                <td class="left"><a href="#" class="toggle-details">bloodlust</a></td>
+                <td class="right">1.0</td>
+                <td class="right">0.0</td>
+                <td class="right">0.0sec</td>
+                <td class="right">0.0sec</td>
+                <td class="right">9%</td>
+                <td class="right">9%</td>
+              </tr>
+              <tr class="details hide">
+                <td colspan="7" class="filler">
+                  <h4>Database details</h4>
+                  <ul>
+                    <li><span class="label">id:</span></li>
+                    <li><span class="label">cooldown name:</span>buff_bloodlust</li>
+                    <li><span class="label">tooltip:</span><span class="tooltip-wider">(null)</span></li>
+                    <li><span class="label">max_stacks:</span>1</li>
+                    <li><span class="label">duration:</span>40.00</li>
+                    <li><span class="label">cooldown:</span>0.00</li>
+                    <li><span class="label">default_chance:</span>100.00%</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td class="left"><a href="#" class="toggle-details">demon_soul_imp</a></td>
+                <td class="right">4.1</td>
+                <td class="right">0.0</td>
+                <td class="right">120.9sec</td>
+                <td class="right">120.9sec</td>
+                <td class="right">18%</td>
+                <td class="right">17%</td>
+              </tr>
+              <tr class="details hide">
+                <td colspan="7" class="filler">
+                  <h4>Database details</h4>
+                  <ul>
+                    <li><span class="label">id:</span>79459</li>
+                    <li><span class="label">cooldown name:</span>buff_demon_soul_imp</li>
+                    <li><span class="label">tooltip:</span><span class="tooltip-wider">Critical strike chance of your cast time Destruction spells increased by $s1%.</span></li>
+                    <li><span class="label">max_stacks:</span>1</li>
+                    <li><span class="label">duration:</span>20.00</li>
+                    <li><span class="label">cooldown:</span>0.00</li>
+                    <li><span class="label">default_chance:</span>100.00%</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr class="odd">
+                <td class="left"><a href="#" class="toggle-details">empowered_imp</a></td>
+                <td class="right">10.2</td>
+                <td class="right">0.3</td>
+                <td class="right">38.7sec</td>
+                <td class="right">37.4sec</td>
+                <td class="right">5%</td>
+                <td class="right">11%</td>
+              </tr>
+              <tr class="details hide">
+                <td colspan="7" class="filler">
+                  <h4>Database details</h4>
+                  <ul>
+                    <li><span class="label">id:</span>47283</li>
+                    <li><span class="label">cooldown name:</span>buff_empowered_imp</li>
+                    <li><span class="label">tooltip:</span><span class="tooltip-wider">Soulfire is instant cast.</span></li>
+                    <li><span class="label">max_stacks:</span>1</li>
+                    <li><span class="label">duration:</span>8.00</li>
+                    <li><span class="label">cooldown:</span>0.00</li>
+                    <li><span class="label">default_chance:</span>4.00%</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td class="left"><a href="#" class="toggle-details">figurine__jeweled_serpent</a></td>
+                <td class="right">4.1</td>
+                <td class="right">0.0</td>
+                <td class="right">120.8sec</td>
+                <td class="right">120.8sec</td>
+                <td class="right">18%</td>
+                <td class="right">18%</td>
+              </tr>
+              <tr class="details hide">
+                <td colspan="7" class="filler">
+                  <h4>Database details</h4>
+                  <ul>
+                    <li><span class="label">id:</span></li>
+                    <li><span class="label">cooldown name:</span>buff_figurine__jeweled_serpent</li>
+                    <li><span class="label">tooltip:</span><span class="tooltip-wider">(null)</span></li>
+                    <li><span class="label">max_stacks:</span>1</li>
+                    <li><span class="label">duration:</span>20.00</li>
+                    <li><span class="label">cooldown:</span>0.00</li>
+                    <li><span class="label">default_chance:</span>100.00%</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr class="odd">
+                <td class="left"><a href="#" class="toggle-details">hurricane_s</a></td>
+                <td class="right">9.2</td>
+                <td class="right">0.0</td>
+                <td class="right">49.7sec</td>
+                <td class="right">49.7sec</td>
+                <td class="right">25%</td>
+                <td class="right">25%</td>
+              </tr>
+              <tr class="details hide">
+                <td colspan="7" class="filler">
+                  <h4>Database details</h4>
+                  <ul>
+                    <li><span class="label">id:</span></li>
+                    <li><span class="label">cooldown name:</span>buff_hurricane_s</li>
+                    <li><span class="label">tooltip:</span><span class="tooltip-wider">(null)</span></li>
+                    <li><span class="label">max_stacks:</span>1</li>
+                    <li><span class="label">duration:</span>12.00</li>
+                    <li><span class="label">cooldown:</span>45.00</li>
+                    <li><span class="label">default_chance:</span>100.00%</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td class="left"><a href="#" class="toggle-details">improved_soul_fire</a></td>
+                <td class="right">9.2</td>
+                <td class="right">27.5</td>
+                <td class="right">47.8sec</td>
+                <td class="right">12.0sec</td>
+                <td class="right">96%</td>
+                <td class="right">94%</td>
+              </tr>
+              <tr class="details hide">
+                <td colspan="7" class="filler">
+                  <h4>Database details</h4>
+                  <ul>
+                    <li><span class="label">id:</span>85383</li>
+                    <li><span class="label">cooldown name:</span>buff_improved_soul_fire</li>
+                    <li><span class="label">tooltip:</span><span class="tooltip-wider">Shadow and Fire damage increased by $w1%.</span></li>
+                    <li><span class="label">max_stacks:</span>1</li>
+                    <li><span class="label">duration:</span>15.00</li>
+                    <li><span class="label">cooldown:</span>0.00</li>
+                    <li><span class="label">default_chance:</span>100.00%</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr class="odd">
+                <td class="left"><a href="#" class="toggle-details">lightweave_embroidery</a></td>
+                <td class="right">8.9</td>
+                <td class="right">0.0</td>
+                <td class="right">51.6sec</td>
+                <td class="right">51.6sec</td>
+                <td class="right">30%</td>
+                <td class="right">30%</td>
+              </tr>
+              <tr class="details hide">
+                <td colspan="7" class="filler">
+                  <h4>Database details</h4>
+                  <ul>
+                    <li><span class="label">id:</span></li>
+                    <li><span class="label">cooldown name:</span>buff_lightweave_embroidery</li>
+                    <li><span class="label">tooltip:</span><span class="tooltip-wider">(null)</span></li>
+                    <li><span class="label">max_stacks:</span>1</li>
+                    <li><span class="label">duration:</span>15.00</li>
+                    <li><span class="label">cooldown:</span>50.00</li>
+                    <li><span class="label">default_chance:</span>20.00%</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td class="left"><a href="#" class="toggle-details">soulburn</a></td>
+                <td class="right">4.0</td>
+                <td class="right">0.0</td>
+                <td class="right">45.8sec</td>
+                <td class="right">45.8sec</td>
+                <td class="right">0%</td>
+                <td class="right">14%</td>
+              </tr>
+              <tr class="details hide">
+                <td colspan="7" class="filler">
+                  <h4>Database details</h4>
+                  <ul>
+                    <li><span class="label">id:</span>74434</li>
+                    <li><span class="label">cooldown name:</span>buff_soulburn</li>
+                    <li><span class="label">tooltip:</span><span class="tooltip-wider">Secondary effects of some of your spells have been unlocked:
+
+Drain Life
+Summon Imp, Voidwalker, Succubus, Felhunter, Felguard
+Demonic Circle: Teleport
+Soul Fire
+Healthstone
+Searing Pain</span></li>
+                    <li><span class="label">max_stacks:</span>1</li>
+                    <li><span class="label">duration:</span>15.00</li>
+                    <li><span class="label">cooldown:</span>45.00</li>
+                    <li><span class="label">default_chance:</span>100.00%</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr class="odd">
+                <td class="left"><a href="#" class="toggle-details">volcanic_potion</a></td>
+                <td class="right">2.0</td>
+                <td class="right">0.0</td>
+                <td class="right">337.8sec</td>
+                <td class="right">337.8sec</td>
+                <td class="right">10%</td>
+                <td class="right">10%</td>
+              </tr>
+              <tr class="details hide">
+                <td colspan="7" class="filler">
+                  <h4>Database details</h4>
+                  <ul>
+                    <li><span class="label">id:</span></li>
+                    <li><span class="label">cooldown name:</span>buff_volcanic_potion</li>
+                    <li><span class="label">tooltip:</span><span class="tooltip-wider">(null)</span></li>
+                    <li><span class="label">max_stacks:</span>1</li>
+                    <li><span class="label">duration:</span>25.00</li>
+                    <li><span class="label">cooldown:</span>60.00</li>
+                    <li><span class="label">default_chance:</span>100.00%</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td class="left"><a href="#" class="toggle-details">witching_hourglass</a></td>
+                <td class="right">5.8</td>
+                <td class="right">0.0</td>
+                <td class="right">81.7sec</td>
+                <td class="right">81.7sec</td>
+                <td class="right">19%</td>
+                <td class="right">19%</td>
+              </tr>
+              <tr class="details hide">
+                <td colspan="7" class="filler">
+                  <h4>Database details</h4>
+                  <ul>
+                    <li><span class="label">id:</span></li>
+                    <li><span class="label">cooldown name:</span>buff_witching_hourglass</li>
+                    <li><span class="label">tooltip:</span><span class="tooltip-wider">(null)</span></li>
+                    <li><span class="label">max_stacks:</span>1</li>
+                    <li><span class="label">duration:</span>15.00</li>
+                    <li><span class="label">cooldown:</span>75.00</li>
+                    <li><span class="label">default_chance:</span>10.00%</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr class="odd">
+                <td class="left"><a href="#" class="toggle-details">imp-bloodlust</a></td>
+                <td class="right">1.0</td>
+                <td class="right">0.0</td>
+                <td class="right">0.0sec</td>
+                <td class="right">0.0sec</td>
+                <td class="right">9%</td>
+                <td class="right">9%</td>
+              </tr>
+              <tr class="details hide">
+                <td colspan="7" class="filler">
+                  <h4>Database details</h4>
+                  <ul>
+                    <li><span class="label">id:</span></li>
+                    <li><span class="label">cooldown name:</span>buff_bloodlust</li>
+                    <li><span class="label">tooltip:</span><span class="tooltip-wider">(null)</span></li>
+                    <li><span class="label">max_stacks:</span>1</li>
+                    <li><span class="label">duration:</span>40.00</li>
+                    <li><span class="label">cooldown:</span>0.00</li>
+                    <li><span class="label">default_chance:</span>100.00%</li>
+                  </ul>
+                </td>
+              </tr>
+            </table>
+              <table class="sc">
+                <tr>
+                  <th class="left"><a href="#help-constant-buffs" class="help">Constant Buffs</a></th>
+                </tr>
+              <tr>
+                  <td class="left"><a href="#" class="toggle-details">arcane_brilliance</a></td>
+                </tr>
+                <tr class="details hide">
+                  <td>
+                    <h4>Database details</h4>
+                    <ul>
+                      <li><span class="label">id:</span></li>
+                      <li><span class="label">cooldown name:</span>buff_arcane_brilliance</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">(null)</span></li>
+                      <li><span class="label">max_stacks:</span>1</li>
+                      <li><span class="label">duration:</span>0.00</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">default_chance:</span>100.00%</li>
+                    </ul>
+                  </td>
+                </tr>
+              <tr class="odd">
+                  <td class="left"><a href="#" class="toggle-details">blessing_of_kings</a></td>
+                </tr>
+                <tr class="details hide">
+                  <td>
+                    <h4>Database details</h4>
+                    <ul>
+                      <li><span class="label">id:</span></li>
+                      <li><span class="label">cooldown name:</span>buff_blessing_of_kings</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">(null)</span></li>
+                      <li><span class="label">max_stacks:</span>1</li>
+                      <li><span class="label">duration:</span>0.00</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">default_chance:</span>100.00%</li>
+                    </ul>
+                  </td>
+                </tr>
+              <tr>
+                  <td class="left"><a href="#" class="toggle-details">blessing_of_might</a></td>
+                </tr>
+                <tr class="details hide">
+                  <td>
+                    <h4>Database details</h4>
+                    <ul>
+                      <li><span class="label">id:</span></li>
+                      <li><span class="label">cooldown name:</span>buff_blessing_of_might</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">(null)</span></li>
+                      <li><span class="label">max_stacks:</span>1</li>
+                      <li><span class="label">duration:</span>0.00</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">default_chance:</span>100.00%</li>
+                    </ul>
+                  </td>
+                </tr>
+              <tr class="odd">
+                  <td class="left"><a href="#" class="toggle-details">blessing_of_might_regen</a></td>
+                </tr>
+                <tr class="details hide">
+                  <td>
+                    <h4>Database details</h4>
+                    <ul>
+                      <li><span class="label">id:</span></li>
+                      <li><span class="label">cooldown name:</span>buff_blessing_of_might_regen</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">(null)</span></li>
+                      <li><span class="label">max_stacks:</span>1</li>
+                      <li><span class="label">duration:</span>0.00</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">default_chance:</span>100.00%</li>
+                    </ul>
+                  </td>
+                </tr>
+              <tr>
+                  <td class="left"><a href="#" class="toggle-details">dark_intent</a></td>
+                </tr>
+                <tr class="details hide">
+                  <td>
+                    <h4>Database details</h4>
+                    <ul>
+                      <li><span class="label">id:</span>85767</li>
+                      <li><span class="label">cooldown name:</span>buff_dark_intent</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">Haste increased by $s1%.</span></li>
+                      <li><span class="label">max_stacks:</span>1</li>
+                      <li><span class="label">duration:</span>0.00</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">default_chance:</span>100.00%</li>
+                    </ul>
+                  </td>
+                </tr>
+              <tr class="odd">
+                  <td class="left"><a href="#" class="toggle-details">dark_intent_feedback</a></td>
+                </tr>
+                <tr class="details hide">
+                  <td>
+                    <h4>Database details</h4>
+                    <ul>
+                      <li><span class="label">id:</span></li>
+                      <li><span class="label">cooldown name:</span>buff_dark_intent_feedback</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">(null)</span></li>
+                      <li><span class="label">max_stacks:</span>3</li>
+                      <li><span class="label">duration:</span>0.00</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">default_chance:</span>100.00%</li>
+                    </ul>
+                  </td>
+                </tr>
+              <tr>
+                  <td class="left"><a href="#" class="toggle-details">fel_armor</a></td>
+                </tr>
+                <tr class="details hide">
+                  <td>
+                    <h4>Database details</h4>
+                    <ul>
+                      <li><span class="label">id:</span>28176</li>
+                      <li><span class="label">cooldown name:</span>buff_fel_armor</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">Increases spell power by $s1 causes you to be healed for $w2% of any single-target spell damage you deal.</span></li>
+                      <li><span class="label">max_stacks:</span>1</li>
+                      <li><span class="label">duration:</span>-0.00</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">default_chance:</span>100.00%</li>
+                    </ul>
+                  </td>
+                </tr>
+              <tr class="odd">
+                  <td class="left"><a href="#" class="toggle-details">focus_magic</a></td>
+                </tr>
+                <tr class="details hide">
+                  <td>
+                    <h4>Database details</h4>
+                    <ul>
+                      <li><span class="label">id:</span>54646</li>
+                      <li><span class="label">cooldown name:</span>buff_focus_magic</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">Chance to critically hit with spells increased by $s1%.  When a critical hit occurs, the caster's chance to critically hit is increased.</span></li>
+                      <li><span class="label">max_stacks:</span>1</li>
+                      <li><span class="label">duration:</span>0.00</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">default_chance:</span>100.00%</li>
+                    </ul>
+                  </td>
+                </tr>
+              <tr>
+                  <td class="left"><a href="#" class="toggle-details">fortitude</a></td>
+                </tr>
+                <tr class="details hide">
+                  <td>
+                    <h4>Database details</h4>
+                    <ul>
+                      <li><span class="label">id:</span></li>
+                      <li><span class="label">cooldown name:</span>buff_fortitude</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">(null)</span></li>
+                      <li><span class="label">max_stacks:</span>1</li>
+                      <li><span class="label">duration:</span>0.00</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">default_chance:</span>100.00%</li>
+                    </ul>
+                  </td>
+                </tr>
+              <tr class="odd">
+                  <td class="left"><a href="#" class="toggle-details">replenishment</a></td>
+                </tr>
+                <tr class="details hide">
+                  <td>
+                    <h4>Database details</h4>
+                    <ul>
+                      <li><span class="label">id:</span>57669</li>
+                      <li><span class="label">cooldown name:</span>buff_replenishment</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">Replenishes $s1% of maximum mana per 10 sec.</span></li>
+                      <li><span class="label">max_stacks:</span>1</li>
+                      <li><span class="label">duration:</span>0.00</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">default_chance:</span>100.00%</li>
+                    </ul>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="player-section uptimes">
+            <h3 class="toggle">Uptimes</h3>
+            <div class="toggle-content">
+              <table class="sc">
+                <tr>
+                  <th></th>
+                  <th>%</th>
+                </tr>
+                <tr>
+                  <td class="left">backdraft_0</td>
+                  <td class="right">9.2%</td>
+                </tr>
+                <tr class="odd">
+                  <td class="left">backdraft_1</td>
+                  <td class="right">20.9%</td>
+                </tr>
+                <tr>
+                  <td class="left">backdraft_2</td>
+                  <td class="right">32.4%</td>
+                </tr>
+                <tr class="odd">
+                  <td class="left">backdraft_3</td>
+                  <td class="right">37.5%</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="player-section procs">
+            <h3 class="toggle">Procs</h3>
+            <div class="toggle-content">
+              <table class="sc">
+                <tr>
+                  <th></th>
+                  <th>Count</th>
+                  <th>Interval</th>
+                </tr>
+                <tr>
+                  <td class="left">ebon_imp</td>
+                  <td class="right">5.5</td>
+                  <td class="right">65.6sec</td>
+                </tr>
+                <tr class="odd">
+                  <td class="left">empowered_imp</td>
+                  <td class="right">10.5</td>
+                  <td class="right">37.4sec</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="player-section gains">
+            <h3 class="toggle">Gains</h3>
+            <div class="toggle-content">
+              <table class="sc">
+                <tr>
+                  <th></th>
+                  <th>Count</th>
+                  <th>mana</th>
+                  <th>Average</th>
+                  <th>Overflow</th>
+                </tr>
+                <tr>
+                  <td class="left">blessing_of_might</td>
+                  <td class="right">1749.2</td>
+                  <td class="right">28465.4</td>
+                  <td class="right">16.3</td>
+                  <td class="right">0.2%</td>
+                </tr>
+                <tr class="odd">
+                  <td class="left">flask</td>
+                  <td class="right">1.0</td>
+                  <td class="right">4500.0</td>
+                  <td class="right">4500.0</td>
+                  <td class="right">0.0%</td>
+                </tr>
+                <tr>
+                  <td class="left">food</td>
+                  <td class="right">1.0</td>
+                  <td class="right">1350.0</td>
+                  <td class="right">1350.0</td>
+                  <td class="right">0.0%</td>
+                </tr>
+                <tr class="odd">
+                  <td class="left">initial_mana</td>
+                  <td class="right">1.0</td>
+                  <td class="right">92528.0</td>
+                  <td class="right">92528.0</td>
+                  <td class="right">0.0%</td>
+                </tr>
+                <tr>
+                  <td class="left">life_tap</td>
+                  <td class="right">11.7</td>
+                  <td class="right">316356.8</td>
+                  <td class="right">27155.1</td>
+                  <td class="right">0.0%</td>
+                </tr>
+                <tr class="odd">
+                  <td class="left">mp5_regen</td>
+                  <td class="right">1749.2</td>
+                  <td class="right">89661.5</td>
+                  <td class="right">51.3</td>
+                  <td class="right">0.2%</td>
+                </tr>
+                <tr>
+                  <td class="left">replenishment</td>
+                  <td class="right">1749.2</td>
+                  <td class="right">44088.3</td>
+                  <td class="right">25.2</td>
+                  <td class="right">0.2%</td>
+                </tr>
+                <tr class="odd">
+                  <td class="left">soul_leech</td>
+                  <td class="right">139.1</td>
+                  <td class="right">494436.4</td>
+                  <td class="right">3553.4</td>
+                  <td class="right">21.6%</td>
+                </tr>
+                <tr>
+                  <th>pet - imp</th>
+                  <th>mana</th>
+                </tr>
+                <tr>
+                  <td>initial_mana</td>
+                  <td>70891.8</td>
+                  <td>0.0%</td>
+                </tr>
+                <tr>
+                  <td>mana_spring_totem</td>
+                  <td>8802.8</td>
+                  <td>69.1%</td>
+                </tr>
+                <tr>
+                  <td>mp5_regen</td>
+                  <td>151775.4</td>
+                  <td>62.8%</td>
+                </tr>
+                <tr>
+                  <td>replenishment</td>
+                  <td>10032.4</td>
+                  <td>69.1%</td>
+                </tr>
+                </table>
+              </div>
+            </div>
+            <div class="player-section action-priority-list">
+              <h3 class="toggle">Action Priority List</h3>
+              <div class="toggle-content">
+                <table class="sc">
+                  <tr>
+                    <th class="right">#</th>
+                    <th class="left">action,conditions</th>
+                  </tr>
+                <tr>
+                    <th class="right">0</th>
+                    <td class="left">flask,type=draconic_mind</td>
+                  </tr>
+                <tr class="odd">
+                    <th class="right">1</th>
+                    <td class="left">food,type=seafood_magnifique_feast</td>
+                  </tr>
+                <tr>
+                    <th class="right">2</th>
+                    <td class="left">fel_armor</td>
+                  </tr>
+                <tr class="odd">
+                    <th class="right">3</th>
+                    <td class="left">summon_imp</td>
+                  </tr>
+                <tr>
+                    <th class="right">4</th>
+                    <td class="left">dark_intent</td>
+                  </tr>
+                <tr class="odd">
+                    <th class="right">5</th>
+                    <td class="left">snapshot_stats</td>
+                  </tr>
+                <tr>
+                    <th class="right">6</th>
+                    <td class="left">use_item,name=figurine__jeweled_serpent</td>
+                  </tr>
+                <tr class="odd">
+                    <th class="right">7</th>
+                    <td class="left">volcanic_potion,if=buff.bloodlust.react|!in_combat|target.health_pct&lt;=20</td>
+                  </tr>
+                <tr>
+                    <th class="right">8</th>
+                    <td class="left">demon_soul</td>
+                  </tr>
+                <tr class="odd">
+                    <th class="right">9</th>
+                    <td class="left">soulburn,if=buff.bloodlust.down</td>
+                  </tr>
+                <tr>
+                    <th class="right">A</th>
+                    <td class="left">soul_fire,if=buff.soulburn.up</td>
+                  </tr>
+                <tr class="odd">
+                    <th class="right">B</th>
+                    <td class="left">fel_flame,if=buff.tier11_4pc_caster.react&amp;dot.immolate.remains&lt;8</td>
+                  </tr>
+                <tr>
+                    <th class="right">C</th>
+                    <td class="left">immolate,if=(remains&lt;cast_time+gcd|!ticking)&amp;target.time_to_die&gt;=4&amp;miss_react</td>
+                  </tr>
+                <tr class="odd">
+                    <th class="right">D</th>
+                    <td class="left">conflagrate</td>
+                  </tr>
+                <tr>
+                    <th class="right">E</th>
+                    <td class="left">bane_of_doom,if=!ticking&amp;target.time_to_die&gt;=15&amp;miss_react</td>
+                  </tr>
+                <tr class="odd">
+                    <th class="right">F</th>
+                    <td class="left">corruption,if=(!ticking|dot.corruption.remains&lt;tick_time)&amp;miss_react</td>
+                  </tr>
+                <tr>
+                    <th class="right">G</th>
+                    <td class="left">shadowflame</td>
+                  </tr>
+                <tr class="odd">
+                    <th class="right">H</th>
+                    <td class="left">soul_fire,if=buff.empowered_imp.react&amp;buff.empowered_imp.remains&lt;(buff.improved_soul_fire.remains+action.soul_fire.travel_time)</td>
+                  </tr>
+                <tr>
+                    <th class="right">I</th>
+                    <td class="left">chaos_bolt</td>
+                  </tr>
+                <tr class="odd">
+                    <th class="right">J</th>
+                    <td class="left">summon_infernal</td>
+                  </tr>
+                <tr>
+                    <th class="right">K</th>
+                    <td class="left">soulburn,if=buff.bloodlust.down</td>
+                  </tr>
+                <tr class="odd">
+                    <th class="right">L</th>
+                    <td class="left">soul_fire,if=buff.improved_soul_fire.remains&lt;(cast_time+travel_time+action.incinerate.cast_time+gcd)&amp;!in_flight</td>
+                  </tr>
+                <tr>
+                    <th class="right">M</th>
+                    <td class="left">shadowburn</td>
+                  </tr>
+                <tr class="odd">
+                    <th class="right">N</th>
+                    <td class="left">incinerate</td>
+                  </tr>
+                <tr>
+                    <th class="right">O</th>
+                    <td class="left">life_tap,moving=1,if=mana_pct&lt;80&amp;mana_pct&lt;target.health_pct</td>
+                  </tr>
+                <tr class="odd">
+                    <th class="right">P</th>
+                    <td class="left">fel_flame,moving=1</td>
+                  </tr>
+                <tr>
+                    <th class="right">Q</th>
+                    <td class="left">life_tap</td>
+                  </tr>
+                </table>
+                <h4 class="mt">Sample Sequence</h4>
+                <div class="sample-sequence">012346789ACDEFGIJNDNLNNCNDFGILNDNCHNGDIFNNL9ACDGINNNDFLCEGDINNLDFNCGINDLNNN9AFCDHQGINNDNNLCGDFINNL68DNECQGFDHINN9ADCGNNNIDFLGNCDQNINLDFGNCNNDILNNGDEFQCILDGNNNNDCFIGLDNNNNCFQDGILNNDCNGNFD68IQLENNCDGNNIFLDNNNNCGQDILNFNDGCNILDNNGFNCDIQLNGDENNCFIDLGNNNDNNCQFGDILNNNDCGNNFIDQLNGCDN68NILDEFGNCNDILNNDFQGCILDNNNNGDCFFILNDNGQNNNCD7FILGENDNNNQCNIDGFLNNNDMHNCGINDNNQFLNDGCHIMNDNNFGL68CDIMENNGQDFLCINDGMNNHLDFCGHIMDNNNLCDFGIMNNDQLNCGNDFILMND</div>
+              </div>
+            </div>
+            <div class="player-section stats">
+              <h3 class="toggle">Stats</h3>
+              <div class="toggle-content">
+                <table class="sc">
+                  <tr>
+                    <th></th>
+                    <th>Raid-Buffed</th>
+                    <th>Unbuffed</th>
+                    <th>Gear Amount</th>
+                  </tr>
+                  <tr>
+                    <th class="left">Strength</th>
+                    <td class="right">658</td>
+                    <td class="right">78</td>
+                    <td class="right">15</td>
+                  </tr>
+                  <tr class="odd">
+                    <th class="left">Agility</th>
+                    <td class="right">667</td>
+                    <td class="right">86</td>
+                    <td class="right">15</td>
+                  </tr>
+                  <tr>
+                    <th class="left">Stamina</th>
+                    <td class="right">6280</td>
+                    <td class="right">5280</td>
+                    <td class="right">4981</td>
+                  </tr>
+                  <tr class="odd">
+                    <th class="left">Intellect</th>
+                    <td class="right">5247</td>
+                    <td class="right">4589</td>
+                    <td class="right">4197</td>
+                  </tr>
+                  <tr>
+                    <th class="left">Spirit</th>
+                    <td class="right">202</td>
+                    <td class="right">203</td>
+                    <td class="right">16</td>
+                  </tr>
+                  <tr class="odd">
+                    <th class="left">Health</th>
+                    <td class="right">125718</td>
+                    <td class="right">111844</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr>
+                    <th class="left">Mana</th>
+                    <td class="right">98378</td>
+                    <td class="right">89093</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr class="odd">
+                    <th class="left">Spell Power</th>
+                    <td class="right">8368</td>
+                    <td class="right">6311</td>
+                    <td class="right">1732</td>
+                  </tr>
+                  <tr>
+                    <th class="left">Spell Hit</th>
+                    <td class="right">15.21%</td>
+                    <td class="right">15.21%</td>
+                    <td class="right">1558</td>
+                  </tr>
+                  <tr class="odd">
+                    <th class="left">Spell Crit</th>
+                    <td class="right">22.80%</td>
+                    <td class="right">13.79%</td>
+                    <td class="right">899</td>
+                  </tr>
+                  <tr>
+                    <th class="left">Spell Haste</th>
+                    <td class="right">15.62%</td>
+                    <td class="right">6.91%</td>
+                    <td class="right">885</td>
+                  </tr>
+                  <tr class="odd">
+                    <th class="left">Spell Penetration</th>
+                    <td class="right">0</td>
+                    <td class="right">0</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr>
+                    <th class="left">Mana Per 5</th>
+                    <td class="right">1027</td>
+                    <td class="right">1027</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr class="odd">
+                    <th class="left">Attack Power</th>
+                    <td class="right">1416</td>
+                    <td class="right">126</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr>
+                    <th class="left">Melee Hit</th>
+                    <td class="right">12.97%</td>
+                    <td class="right">12.97%</td>
+                    <td class="right">1558</td>
+                  </tr>
+                  <tr class="odd">
+                    <th class="left">Melee Crit</th>
+                    <td class="right">16.02%</td>
+                    <td class="right">8.07%</td>
+                    <td class="right">899</td>
+                  </tr>
+                  <tr>
+                    <th class="left">Melee Haste</th>
+                    <td class="right">6.91%</td>
+                    <td class="right">6.91%</td>
+                    <td class="right">885</td>
+                  </tr>
+                  <tr class="odd">
+                    <th class="left">Expertise</th>
+                    <td class="right">0.00</td>
+                    <td class="right">0.00</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr>
+                    <th class="left">Armor</th>
+                    <td class="right">7584</td>
+                    <td class="right">7584</td>
+                    <td class="right">7584</td>
+                  </tr>
+                  <tr>
+                    <th class="left">Tank-Miss</th>
+                    <td class="right">4.70%</td>
+                    <td class="right">4.70%</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr class="odd">
+                    <th class="left">Tank-Dodge</th>
+                    <td class="right">3.93%</td>
+                    <td class="right">2.02%</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr>
+                    <th class="left">Tank-Parry</th>
+                    <td class="right">0.00%</td>
+                    <td class="right">0.00%</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr class="odd">
+                    <th class="left">Tank-Block</th>
+                    <td class="right">0.00%</td>
+                    <td class="right">0.00%</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr>
+                    <th class="left">Tank-Crit</th>
+                    <td class="right">0.00%</td>
+                    <td class="right">0.00%</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr class="odd">
+                    <th class="left">Mastery</th>
+                    <td class="right">14.07</td>
+                    <td class="right">14.07</td>
+                    <td class="right">1088</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div class="player-section gear">
+              <h3 class="toggle">Gear</h3>
+              <div class="toggle-content">
+                <table class="sc">
+                  <tr>
+                    <th></th>
+                    <th>Encoded</th>
+                  </tr>
+                  <tr>
+                    <th class="left">head</th>
+                    <td class="left">cowl_of_pleasant_gloom,type=cloth,ilevel=346,quality=rare,stats=942armor_182crit_162hit_242int_454sta,reforge=hit_mastery,gems=bracing_shadowspirit_67int,enchant=60int_35crit</td>
+                  </tr>
+                  <tr>
+                    <th class="left">neck</th>
+                    <td class="left">lightning_flash_pendant,ilevel=359,quality=epic,stats=127crit_190int_127mastery_286sta,reforge=crit_hit</td>
+                  </tr>
+                  <tr>
+                    <th class="left">shoulders</th>
+                    <td class="left">meadow_mantle,type=cloth,ilevel=346,quality=rare,stats=870armor_130crit_205int_150mastery_337sta,reforge=crit_hit,gems=40mastery_10int,enchant=50int_25haste</td>
+                  </tr>
+                  <tr>
+                    <th class="left">shirt</th>
+                    <td class="left">empty</td>
+                  </tr>
+                  <tr>
+                    <th class="left">chest</th>
+                    <td class="left">robes_of_orsis,type=cloth,ilevel=346,quality=rare,stats=1160armor_172crit_192hit_262int_454sta,gems=40mastery_40hit_20int,enchant=15all</td>
+                  </tr>
+                  <tr>
+                    <th class="left">waist</th>
+                    <td class="left">dreamless_belt,type=cloth,ilevel=359,quality=epic,stats=704armor_149hit_233int_169mastery_380sta,reforge=mastery_haste,gems=40int_20crit_20hit</td>
+                  </tr>
+                  <tr>
+                    <th class="left">legs</th>
+                    <td class="left">flame_pillar_leggings,type=cloth,ilevel=359,quality=epic,stats=1094armor_188crit_228hit_301int_512sta,reforge=crit_haste,gems=67int_67int,enchant=95int_80sta</td>
+                  </tr>
+                  <tr>
+                    <th class="left">feet</th>
+                    <td class="left">desert_walker_sandals,type=cloth,ilevel=359,quality=epic,stats=860armor_149haste_169hit_233int_380sta,reforge=haste_mastery,gems=40int,enchant=30sta</td>
+                  </tr>
+                  <tr>
+                    <th class="left">wrists</th>
+                    <td class="left">bracers_of_the_dark_pool,type=cloth,ilevel=359,quality=epic,stats=547armor_127crit_127hit_190int_286sta,reforge=crit_haste,enchant=50haste</td>
+                  </tr>
+                  <tr>
+                    <th class="left">hands</th>
+                    <td class="left">flamebloom_gloves,type=cloth,ilevel=359,quality=epic,stats=782armor_149haste_233int_169mastery_380sta,reforge=mastery_hit,gems=20hit_20int_10int,enchant=50haste</td>
+                  </tr>
+                  <tr>
+                    <th class="left">finger1</th>
+                    <td class="left">band_of_rays,heroic=1,ilevel=346,quality=rare,stats=112crit_112hit_168int_252sta,reforge=crit_mastery</td>
+                  </tr>
+                  <tr>
+                    <th class="left">finger2</th>
+                    <td class="left">anthias_ring,heroic=1,ilevel=346,quality=rare,stats=98hit_168int_120mastery_252sta</td>
+                  </tr>
+                  <tr>
+                    <th class="left">trinket1</th>
+                    <td class="left">figurine__jeweled_serpent,ilevel=346,quality=rare,stats=285int,use=1425sp_20dur_120cd</td>
+                  </tr>
+                  <tr>
+                    <th class="left">trinket2</th>
+                    <td class="left">witching_hourglass,heroic=1,ilevel=346,quality=rare,stats=285int,equip=onspellcast_1710haste_10%_15dur_75cd</td>
+                  </tr>
+                  <tr>
+                    <th class="left">back</th>
+                    <td class="left">haunt_of_flies,ilevel=359,quality=epic,stats=625armor_127crit_127haste_190int_286sta,reforge=crit_mastery,enchant=lightweave_embroidery</td>
+                  </tr>
+                  <tr>
+                    <th class="left">main_hand</th>
+                    <td class="left">insidious_staff,ilevel=346,quality=rare,stats=202haste_302int_202mastery_1732sp_454sta,reforge=mastery_hit,enchant=hurricane,weapon=staff_2.10speed_344min_517max</td>
+                  </tr>
+                  <tr>
+                    <th class="left">off_hand</th>
+                    <td class="left">empty</td>
+                  </tr>
+                  <tr>
+                    <th class="left">ranged</th>
+                    <td class="left">corlas_baton,heroic=1,ilevel=346,quality=rare,stats=56hit_95int_68mastery_143sta</td>
+                  </tr>
+                  <tr>
+                    <th class="left">tabard</th>
+                    <td class="left">guild_tabard,ilevel=1</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div class="player-section talents">
+              <h3 class="toggle">Talents</h3>
+              <div class="toggle-content">
+                <div class="float">
+                  <table class="sc">
+                    <tr>
+                      <th class="left">Affliction</th>
+                      <th>Rank</th>
+                    </tr>
+                    <tr>
+                      <td class="left">Doom and Gloom</td>
+                      <td>2</td>
+                    </tr>
+                    <tr class="odd">
+                      <td class="left">Improved Life Tap</td>
+                      <td>2</td>
+                    </tr>
+                    <tr>
+                      <td class="left">Improved Corruption</td>
+                      <td>0</td>
+                    </tr>
+                    <tr class="odd">
+                      <td class="left">Jinx</td>
+                      <td>0</td>
+                    </tr>
+                    <tr>
+                      <td class="left">Soul Siphon</td>
+                      <td>0</td>
+                    </tr>
+                    <tr class="odd">
+                      <td class="left">Siphon Life</td>
+                      <td>0</td>
+                    </tr>
+                    <tr>
+                      <td class="left">Curse of Exhaustion</td>
+                      <td>0</td>
+                    </tr>
+                    <tr class="odd">
+                      <td class="left">Improved Fear</td>
+                      <td>0</td>
+                    </tr>
+                    <tr>
+                      <td class="left">Eradication</td>
+                      <td>0</td>
+                    </tr>
+                    <tr class="odd">
+                      <td class="left">Improved Howl of Terror</td>
+                      <td>0</td>
+                    </tr>
+                    <tr>
+                      <td class="left">Soul Swap</td>
+                      <td>0</td>
+                    </tr>
+                    <tr class="odd">
+                      <td class="left">Shadow Embrace</td>
+                      <td>0</td>
+                    </tr>
+                    <tr>
+                      <td class="left">Death's Embrace</td>
+                      <td>0</td>
+                    </tr>
+                    <tr class="odd">
+                      <td class="left">Nightfall</td>
+                      <td>0</td>
+                    </tr>
+                    <tr>
+                      <td class="left">Soulburn: Seed of Corruption</td>
+                      <td>0</td>
+                    </tr>
+                    <tr class="odd">
+                      <td class="left">Everlasting Affliction</td>
+                      <td>0</td>
+                    </tr>
+                    <tr>
+                      <td class="left">Pandemic</td>
+                      <td>0</td>
+                    </tr>
+                    <tr class="odd">
+                      <td class="left">Haunt</td>
+                      <td>0</td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="float">
+                  <table class="sc">
+                    <tr>
+                      <th class="left">Demonology</th>
+                      <th>Rank</th>
+                    </tr>
+                    <tr>
+                      <td class="left">Demonic Embrace</td>
+                      <td>1</td>
+                    </tr>
+                    <tr class="odd">
+                      <td class="left">Dark Arts</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                      <td class="left">Fel Synergy</td>
+                      <td>2</td>
+                    </tr>
+                    <tr class="odd">
+                      <td class="left">Demonic Rebirth</td>
+                      <td>0</td>
+                    </tr>
+                    <tr>
+                      <td class="left">Mana Feed</td>
+                      <td>0</td>
+                    </tr>
+                    <tr class="odd">
+                      <td class="left">Demonic Aegis</td>
+                      <td>0</td>
+                    </tr>
+                    <tr>
+                      <td class="left">Master Summoner</td>
+                      <td>0</td>
+                    </tr>
+                    <tr class="odd">
+                      <td class="left">Impending Doom</td>
+                      <td>0</td>
+                    </tr>
+                    <tr>
+                      <td class="left">Demonic Empowerment</td>
+                      <td>0</td>
+                    </tr>
+                    <tr class="odd">
+                      <td class="left">Improved Health Funnel</td>
+                      <td>0</td>
+                    </tr>
+                    <tr>
+                      <td class="left">Molten Core</td>
+                      <td>0</td>
+                    </tr>
+                    <tr class="odd">
+                      <td class="left">Hand of Gul'dan</td>
+                      <td>0</td>
+                    </tr>
+                    <tr>
+                      <td class="left">Aura of Foreboding</td>
+                      <td>0</td>
+                    </tr>
+                    <tr class="odd">
+                      <td class="left">Ancient Grimoire</td>
+                      <td>0</td>
+                    </tr>
+                    <tr>
+                      <td class="left">Inferno</td>
+                      <td>0</td>
+                    </tr>
+                    <tr class="odd">
+                      <td class="left">Decimation</td>
+                      <td>0</td>
+                    </tr>
+                    <tr>
+                      <td class="left">Cremation</td>
+                      <td>0</td>
+                    </tr>
+                    <tr class="odd">
+                      <td class="left">Demonic Pact</td>
+                      <td>0</td>
+                    </tr>
+                    <tr>
+                      <td class="left">Metamorphosis</td>
+                      <td>0</td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="float">
+                  <table class="sc">
+                    <tr>
+                      <th class="left">Destruction</th>
+                      <th>Rank</th>
+                    </tr>
+                    <tr>
+                      <td class="left">Bane</td>
+                      <td>3</td>
+                    </tr>
+                    <tr class="odd">
+                      <td class="left">Shadow and Flame</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                      <td class="left">Improved Immolate</td>
+                      <td>2</td>
+                    </tr>
+                    <tr class="odd">
+                      <td class="left">Aftermath</td>
+                      <td>2</td>
+                    </tr>
+                    <tr>
+                      <td class="left">Emberstorm</td>
+                      <td>2</td>
+                    </tr>
+                    <tr class="odd">
+                      <td class="left">Improved Searing Pain</td>
+                      <td>0</td>
+                    </tr>
+                    <tr>
+                      <td class="left">Improved Soul Fire</td>
+                      <td>2</td>
+                    </tr>
+                    <tr class="odd">
+                      <td class="left">Backdraft</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                      <td class="left">Shadowburn</td>
+                      <td>1</td>
+                    </tr>
+                    <tr class="odd">
+                      <td class="left">Burning Embers</td>
+                      <td>2</td>
+                    </tr>
+                    <tr>
+                      <td class="left">Soul Leech</td>
+                      <td>2</td>
+                    </tr>
+                    <tr class="odd">
+                      <td class="left">Backlash</td>
+                      <td>0</td>
+                    </tr>
+                    <tr>
+                      <td class="left">Nether Ward</td>
+                      <td>1</td>
+                    </tr>
+                    <tr class="odd">
+                      <td class="left">Fire and Brimstone</td>
+                      <td>3</td>
+                    </tr>
+                    <tr>
+                      <td class="left">Shadowfury</td>
+                      <td>1</td>
+                    </tr>
+                    <tr class="odd">
+                      <td class="left">Nether Protection</td>
+                      <td>0</td>
+                    </tr>
+                    <tr>
+                      <td class="left">Empowered Imp</td>
+                      <td>2</td>
+                    </tr>
+                    <tr class="odd">
+                      <td class="left">Bane of Havoc</td>
+                      <td>1</td>
+                    </tr>
+                    <tr>
+                      <td class="left">Chaos Bolt</td>
+                      <td>1</td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </div>
+            <div class="player-section profile">
+              <h3 class="toggle">Profile</h3>
+              <div class="toggle-content no-wrap">
+                <p>#!./simc <br>
+<br>
+warlock=menance<br>
+origin="http://us.battle.net/wow/en/character/arathor/menance/advanced"<br>
+level=85<br>
+race=human<br>
+use_pre_potion=1<br>
+professions=Tailoring=525/Jewelcrafting=525<br>
+talents=http://www.wowhead.com/talent#warlock-22000000000000000013200000000000000003322202312201310211<br>
+glyphs=conflagrate/imp/incinerate/healthstone/soulstone/fear/drain_soul/unending_breath/ritual_of_souls<br>
+actions=flask,type=draconic_mind<br>
+actions+=/food,type=seafood_magnifique_feast<br>
+actions+=/fel_armor<br>
+actions+=/summon_imp<br>
+actions+=/dark_intent<br>
+actions+=/snapshot_stats<br>
+actions+=/use_item,name=figurine__jeweled_serpent<br>
+actions+=/volcanic_potion,if=buff.bloodlust.react|!in_combat|target.health_pct<=20<br>
+actions+=/demon_soul<br>
+actions+=/soulburn,if=buff.bloodlust.down<br>
+actions+=/soul_fire,if=buff.soulburn.up<br>
+actions+=/fel_flame,if=buff.tier11_4pc_caster.react&dot.immolate.remains<8<br>
+actions+=/immolate,if=(remains<cast_time+gcd|!ticking)&target.time_to_die>=4&miss_react<br>
+actions+=/conflagrate<br>
+actions+=/bane_of_doom,if=!ticking&target.time_to_die>=15&miss_react<br>
+actions+=/corruption,if=(!ticking|dot.corruption.remains<tick_time)&miss_react<br>
+actions+=/shadowflame<br>
+actions+=/soul_fire,if=buff.empowered_imp.react&buff.empowered_imp.remains<(buff.improved_soul_fire.remains+action.soul_fire.travel_time)<br>
+actions+=/chaos_bolt<br>
+actions+=/summon_infernal<br>
+actions+=/soulburn,if=buff.bloodlust.down<br>
+actions+=/soul_fire,if=buff.improved_soul_fire.remains<(cast_time+travel_time+action.incinerate.cast_time+gcd)&!in_flight<br>
+actions+=/shadowburn<br>
+actions+=/incinerate<br>
+actions+=/life_tap,moving=1,if=mana_pct<80&mana_pct<target.health_pct<br>
+actions+=/fel_flame,moving=1<br>
+actions+=/life_tap<br>
+head=cowl_of_pleasant_gloom,type=cloth,ilevel=346,quality=rare,stats=942armor_182crit_162hit_242int_454sta,reforge=hit_mastery,gems=bracing_shadowspirit_67int,enchant=60int_35crit<br>
+neck=lightning_flash_pendant,ilevel=359,quality=epic,stats=127crit_190int_127mastery_286sta,reforge=crit_hit<br>
+shoulders=meadow_mantle,type=cloth,ilevel=346,quality=rare,stats=870armor_130crit_205int_150mastery_337sta,reforge=crit_hit,gems=40mastery_10int,enchant=50int_25haste<br>
+chest=robes_of_orsis,type=cloth,ilevel=346,quality=rare,stats=1160armor_172crit_192hit_262int_454sta,gems=40mastery_40hit_20int,enchant=15all<br>
+waist=dreamless_belt,type=cloth,ilevel=359,quality=epic,stats=704armor_149hit_233int_169mastery_380sta,reforge=mastery_haste,gems=40int_20crit_20hit<br>
+legs=flame_pillar_leggings,type=cloth,ilevel=359,quality=epic,stats=1094armor_188crit_228hit_301int_512sta,reforge=crit_haste,gems=67int_67int,enchant=95int_80sta<br>
+feet=desert_walker_sandals,type=cloth,ilevel=359,quality=epic,stats=860armor_149haste_169hit_233int_380sta,reforge=haste_mastery,gems=40int,enchant=30sta<br>
+wrists=bracers_of_the_dark_pool,type=cloth,ilevel=359,quality=epic,stats=547armor_127crit_127hit_190int_286sta,reforge=crit_haste,enchant=50haste<br>
+hands=flamebloom_gloves,type=cloth,ilevel=359,quality=epic,stats=782armor_149haste_233int_169mastery_380sta,reforge=mastery_hit,gems=20hit_20int_10int,enchant=50haste<br>
+finger1=band_of_rays,heroic=1,ilevel=346,quality=rare,stats=112crit_112hit_168int_252sta,reforge=crit_mastery<br>
+finger2=anthias_ring,heroic=1,ilevel=346,quality=rare,stats=98hit_168int_120mastery_252sta<br>
+trinket1=figurine__jeweled_serpent,ilevel=346,quality=rare,stats=285int,use=1425sp_20dur_120cd<br>
+trinket2=witching_hourglass,heroic=1,ilevel=346,quality=rare,stats=285int,equip=onspellcast_1710haste_10%_15dur_75cd<br>
+back=haunt_of_flies,ilevel=359,quality=epic,stats=625armor_127crit_127haste_190int_286sta,reforge=crit_mastery,enchant=lightweave_embroidery<br>
+main_hand=insidious_staff,ilevel=346,quality=rare,stats=202haste_302int_202mastery_1732sp_454sta,reforge=mastery_hit,enchant=hurricane,weapon=staff_2.10speed_344min_517max<br>
+ranged=corlas_baton,heroic=1,ilevel=346,quality=rare,stats=56hit_95int_68mastery_143sta<br>
+tabard=guild_tabard,ilevel=1<br>
+# Gear Summary
+# gear_strength=15<br>
+# gear_agility=15<br>
+# gear_stamina=4981<br>
+# gear_intellect=4197<br>
+# gear_spirit=16<br>
+# gear_spell_power=1732<br>
+# gear_hit_rating=1558<br>
+# gear_crit_rating=899<br>
+# gear_haste_rating=885<br>
+# gear_mastery_rating=1088<br>
+# gear_armor=7584<br>
+# meta_gem=bracing_shadowspirit<br>
+# back=haunt_of_flies,enchant=lightweave_embroidery<br>
+# main_hand=insidious_staff,weapon=staff_2.10speed_344min_517max,enchant=hurricane<br>
+</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="auras" class="section grouped-first">
+          <h2 class="toggle">Auras</h2>
+            <div class="toggle-content">
+              <table class="sc mb">
+                <tr>
+                  <th class="left">Dynamic Buff</th>
+                  <th>Start</th>
+                  <th>Refresh</th>
+                  <th>Interval</th>
+                  <th>Trigger</th>
+                  <th>Up-Time</th>
+                  <th>Benefit</th>
+                </tr>
+              </table>
+              <table class="sc">
+                <tr>
+                  <th class="left">Constant Buff</th>
+                </tr>
+                <tr class="left">
+                  <td>communion</td>
+                </tr>
+                <tr class="left odd">
+                  <td>demonic_Pact</td>
+                </tr>
+                <tr class="left">
+                  <td>leader_of_the_pack</td>
+                </tr>
+                <tr class="left odd">
+                  <td>mana_spring_totem</td>
+                </tr>
+                <tr class="left">
+                  <td>strength_of_earth</td>
+                </tr>
+                <tr class="left odd">
+                  <td>windfury_totem</td>
+                </tr>
+                <tr class="left">
+                  <td>wrath_of_air</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+    <div id="Fluffy_Pillow" class="player section final grouped-last">
+      <h2 class="toggle open">Fluffy_Pillow&nbsp;:&nbsp;0dps</h2>
+      <div class="toggle-content">
+        <ul class="params">
+          <li><b>Race:</b> humanoid</li>
+          <li><b>Class:</b> enemy</li>
+          <li><b>Level:</b> 88</li>
+          <li><b>Role:</b> Tank</li>
+        </ul>
+        <div class="clear"></div>
+        <div class="player-section results-spec-gear mt">
+          <h3 class="toggle open">Results, Spec and Gear</h3>
+          <div class="toggle-content">
+            <table class="sc">
+              <tr>
+                <th><a href="#help-dps" class="help">DPS</a></th>
+                <th><a href="#help-error" class="help">Error</a></th>
+                <th><a href="#help-range" class="help">Range</a></th>
+                <th><a href="#help-dpr" class="help">DPR</a></th>
+                <th><a href="#help-rps-out" class="help">RPS Out</a></th>
+                <th><a href="#help-rps-in" class="help">RPS In</a></th>
+                <th>Resource</th>
+                <th><a href="#help-waiting" class="help">Waiting</a></th>
+                <th><a href="#help-apm" class="help">APM</a></th>
+              </tr>
+              <tr>
+                <td>0.0</td>
+                <td>0.0 / 0.0%</td>
+                <td>0.0 / 0.0%</td>
+                <td>0.0</td>
+                <td>19556.3</td>
+                <td>0.0</td>
+                <td>health</td>
+                <td>100.02%</td>
+                <td>0.0</td>
+              </tr>
+            </table>
+            <table class="sc mt">
+            </table>
+          </div>
+        </div>
+        <div class="player-section">
+          <h3 class="toggle open">Charts</h3>
+          <div class="toggle-content">
+            <div class="charts">
+                                                                    </div>
+            <div class="charts">
+                            <img src="http://1.chart.apis.google.com/chart?chs=525x185&amp;cht=lc&amp;chf=c,ls,0,EEEEEE,0.2,FFFFFF,0.2&amp;chg=100,20&amp;chd=s:t877777777666655555444433333322222211111111000000zzzzzzzyyyyyyyyxxxxxxxxwwwwwwwwvvvvvvvvuuuuuuutttttttttsssssssrrrrrrrrqqqqqqqppppppppoooooonnnnnnnmmmmmmmmmllllllllkkkkkkkjjjjjjjjiiiiiiihhhhhhhhhgggggggggffffffffeeeeeeeeddddddddccccccccbbbbbbbbaaaaaaaZZZZZZZYYYYYYXXXXXXXWWWWWWWVVVVVVVVUUUUUUUTTTTTTTTSSSSSSSSRRRRRRRRQQQQQQQQPPPPPPPOOOOOOOOONNNNNNNNNMMMMMMMMMLLLLLLLLKKKKKKKJJJJJJJIIIIIIIHHHHHHHHGGGGGGGGFFFFFFFFEEEEEEEEDDDDDDDDCCCCCCCCB&amp;chds=0,60&amp;chxt=x,y&amp;chxl=0:|0|sec=437|1:|0|max=8975359&amp;chtt=Fluffy_Pillow+Health+Timeline&amp;chts=666666,18&amp;chco=336600" alt="Resource Timeline Chart" />
+                            <img src="http://3.chart.apis.google.com/chart?chs=525x185&amp;cht=lc&amp;chf=c,ls,0,EEEEEE,0.2,FFFFFF,0.2&amp;chg=100,20&amp;chd=s:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&amp;chds=0,60&amp;chxt=x,y&amp;chxl=0:|0|sec=437|1:|0|avg=0|max=0&amp;chxp=1,1,-1,100&amp;chtt=Fluffy_Pillow+DPS+Timeline&amp;chts=666666,18" alt="DPS Timeline Chart" />
+                            <img src="http://3.chart.apis.google.com/chart?chs=525x130&amp;cht=bvs&amp;chd=t:4,4,10,17,23,22,22,25,19,26,24,16,27,30,16,23,20,21,27,24,25,28,18,24,32,15,29,27,18,21,18,13,24,25,23,27,25,15,21,13,25,23,15,22,21,16,15,10,6,4&amp;chds=0,32&amp;chbh=5&amp;chxt=x&amp;chxl=0:|min=274|avg=450|max=574&amp;chxp=0,1,59,100&amp;chtt=Timeline+Distribution&amp;chts=666666,18" alt="Encounter Timeline Distribution Chart" />
+            </div>
+            <div class="clear"></div>
+          </div>
+        </div>
+        <div class="player-section">
+          <h3 class="toggle open">Abilities</h3>
+          <div class="toggle-content">
+            <table class="sc">
+              <tr>
+                <th class="small"></th>
+                <th class="small"><a href="#help-dps" class="help">DPS</a></th>
+                <th class="small"><a href="#help-dps-pct" class="help">DPS%</a></th>
+                <th class="small">Res%</th>
+                <th class="small"><a href="#help-count" class="help">Count</a></th>
+                <th class="small"><a href="#help-interval" class="help">Interval</a></th>
+                <th class="small"><a href="#help-dpe" class="help">DPE</a></th>
+                <th class="small"><a href="#help-dpet" class="help">DPET</a></th>
+                <th class="small"><a href="#help-dpr" class="help">DPR</a></th>
+                <th class="small">RPE</th>
+                <th class="small"><a href="#help-hit" class="help">Hit</a></th>
+                <th class="small"><a href="#help-crit" class="help">Crit</a></th>
+                <th class="small"><a href="#help-max" class="help">Max</a></th>
+                <th class="small"><a href="#help-crit-pct" class="help">Crit%</a></th>
+                <th class="small"><a href="#help-miss-pct" class="help">M%</a></th>
+                <th class="small"><a href="#help-dodge-pct" class="help">D%</a></th>
+                <th class="small"><a href="#help-parry-pct" class="help">P%</a></th>
+                <th class="small"><a href="#help-glance-pct" class="help">G%</a></th>
+                <th class="small"><a href="#help-block-pct" class="help">B%</a></th>
+                <th class="small"><a href="#help-ticks" class="help">Ticks</a></th>
+                <th class="small"><a href="#help-ticks-hit" class="help">T-Hit</a></th>
+                <th class="small"><a href="#help-ticks-crit" class="help">T-Crit</a></th>
+                <th class="small"><a href="#help-ticks-crit-pct" class="help">T-Crit%</a></th>
+                <th class="small"><a href="#help-ticks-miss-pct" class="help">T-M%</a></th>
+                <th class="small"><a href="#help-ticks-uptime" class="help">Up%</a></th>
+              </tr>
+              <tr>
+                <th class="left small">Fluffy_Pillow</th>
+                <th class="right small">0</th>
+                <td colspan="23" class="filler"></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="player-section buffs">
+          <h3 class="toggle open">Buffs</h3>
+          <div class="toggle-content">
+            <table class="sc mb">
+              <tr>
+                <th class="left"><a href="#help-dynamic-buffs" class="help">Dynamic Buffs</a></th>
+                <th>Start</th>
+                <th>Refresh</th>
+                <th>Interval</th>
+                <th>Trigger</th>
+                <th>Up-Time</th>
+                <th>Benefit</th>
+              </tr>
+            </table>
+              <table class="sc">
+                <tr>
+                  <th class="left"><a href="#help-constant-buffs" class="help">Constant Buffs</a></th>
+                </tr>
+              <tr>
+                  <td class="left"><a href="#" class="toggle-details">bleeding</a></td>
+                </tr>
+                <tr class="details hide">
+                  <td>
+                    <h4>Database details</h4>
+                    <ul>
+                      <li><span class="label">id:</span></li>
+                      <li><span class="label">cooldown name:</span>buff_bleeding</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">(null)</span></li>
+                      <li><span class="label">max_stacks:</span>1</li>
+                      <li><span class="label">duration:</span>0.00</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">default_chance:</span>100.00%</li>
+                    </ul>
+                  </td>
+                </tr>
+              <tr class="odd">
+                  <td class="left"><a href="#" class="toggle-details">blood_frenzy_physical</a></td>
+                </tr>
+                <tr class="details hide">
+                  <td>
+                    <h4>Database details</h4>
+                    <ul>
+                      <li><span class="label">id:</span></li>
+                      <li><span class="label">cooldown name:</span>buff_blood_frenzy_physical</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">(null)</span></li>
+                      <li><span class="label">max_stacks:</span>1</li>
+                      <li><span class="label">duration:</span>0.00</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">default_chance:</span>100.00%</li>
+                    </ul>
+                  </td>
+                </tr>
+              <tr>
+                  <td class="left"><a href="#" class="toggle-details">critical_mass</a></td>
+                </tr>
+                <tr class="details hide">
+                  <td>
+                    <h4>Database details</h4>
+                    <ul>
+                      <li><span class="label">id:</span>22959</li>
+                      <li><span class="label">cooldown name:</span>buff_critical_mass</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">Spells have a $s1% additional chance to critically hit.</span></li>
+                      <li><span class="label">max_stacks:</span>1</li>
+                      <li><span class="label">duration:</span>0.00</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">default_chance:</span>101.00%</li>
+                    </ul>
+                  </td>
+                </tr>
+              <tr class="odd">
+                  <td class="left"><a href="#" class="toggle-details">earth_and_moon</a></td>
+                </tr>
+                <tr class="details hide">
+                  <td>
+                    <h4>Database details</h4>
+                    <ul>
+                      <li><span class="label">id:</span>60433</li>
+                      <li><span class="label">cooldown name:</span>buff_earth_and_moon</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">Increases spell damage taken by $s1%.</span></li>
+                      <li><span class="label">max_stacks:</span>1</li>
+                      <li><span class="label">duration:</span>0.00</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">default_chance:</span>101.00%</li>
+                    </ul>
+                  </td>
+                </tr>
+              <tr>
+                  <td class="left"><a href="#" class="toggle-details">hunters_mark</a></td>
+                </tr>
+                <tr class="details hide">
+                  <td>
+                    <h4>Database details</h4>
+                    <ul>
+                      <li><span class="label">id:</span>1130</li>
+                      <li><span class="label">cooldown name:</span>buff_hunters_mark</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">All attackers gain $s2 ranged attack power against this target.</span></li>
+                      <li><span class="label">max_stacks:</span>1</li>
+                      <li><span class="label">duration:</span>0.00</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">default_chance:</span>100.00%</li>
+                    </ul>
+                  </td>
+                </tr>
+              <tr class="odd">
+                  <td class="left"><a href="#" class="toggle-details">mangle</a></td>
+                </tr>
+                <tr class="details hide">
+                  <td>
+                    <h4>Database details</h4>
+                    <ul>
+                      <li><span class="label">id:</span></li>
+                      <li><span class="label">cooldown name:</span>buff_mangle</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">(null)</span></li>
+                      <li><span class="label">max_stacks:</span>1</li>
+                      <li><span class="label">duration:</span>0.00</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">default_chance:</span>100.00%</li>
+                    </ul>
+                  </td>
+                </tr>
+              <tr>
+                  <td class="left"><a href="#" class="toggle-details">poisoned</a></td>
+                </tr>
+                <tr class="details hide">
+                  <td>
+                    <h4>Database details</h4>
+                    <ul>
+                      <li><span class="label">id:</span></li>
+                      <li><span class="label">cooldown name:</span>buff_poisoned</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">(null)</span></li>
+                      <li><span class="label">max_stacks:</span>-1</li>
+                      <li><span class="label">duration:</span>0.00</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">default_chance:</span>100.00%</li>
+                    </ul>
+                  </td>
+                </tr>
+              <tr class="odd">
+                  <td class="left"><a href="#" class="toggle-details">replenishment</a></td>
+                </tr>
+                <tr class="details hide">
+                  <td>
+                    <h4>Database details</h4>
+                    <ul>
+                      <li><span class="label">id:</span>57669</li>
+                      <li><span class="label">cooldown name:</span>buff_replenishment</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">Replenishes $s1% of maximum mana per 10 sec.</span></li>
+                      <li><span class="label">max_stacks:</span>1</li>
+                      <li><span class="label">duration:</span>0.00</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">default_chance:</span>100.00%</li>
+                    </ul>
+                  </td>
+                </tr>
+              <tr>
+                  <td class="left"><a href="#" class="toggle-details">sunder_armor</a></td>
+                </tr>
+                <tr class="details hide">
+                  <td>
+                    <h4>Database details</h4>
+                    <ul>
+                      <li><span class="label">id:</span></li>
+                      <li><span class="label">cooldown name:</span>buff_sunder_armor</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">(null)</span></li>
+                      <li><span class="label">max_stacks:</span>1</li>
+                      <li><span class="label">duration:</span>0.00</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">default_chance:</span>100.00%</li>
+                    </ul>
+                  </td>
+                </tr>
+              <tr class="odd">
+                  <td class="left"><a href="#" class="toggle-details">thunder_clap</a></td>
+                </tr>
+                <tr class="details hide">
+                  <td>
+                    <h4>Database details</h4>
+                    <ul>
+                      <li><span class="label">id:</span></li>
+                      <li><span class="label">cooldown name:</span>buff_thunder_clap</li>
+                      <li><span class="label">tooltip:</span><span class="tooltip">(null)</span></li>
+                      <li><span class="label">max_stacks:</span>1</li>
+                      <li><span class="label">duration:</span>0.00</li>
+                      <li><span class="label">cooldown:</span>0.00</li>
+                      <li><span class="label">default_chance:</span>100.00%</li>
+                    </ul>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="player-section uptimes">
+            <h3 class="toggle">Uptimes</h3>
+            <div class="toggle-content">
+              <table class="sc">
+                <tr>
+                  <th></th>
+                  <th>%</th>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="player-section procs">
+            <h3 class="toggle">Procs</h3>
+            <div class="toggle-content">
+              <table class="sc">
+                <tr>
+                  <th></th>
+                  <th>Count</th>
+                  <th>Interval</th>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="player-section gains">
+            <h3 class="toggle">Gains</h3>
+            <div class="toggle-content">
+              <table class="sc">
+                <tr>
+                  <th></th>
+                  <th>Count</th>
+                  <th>health</th>
+                  <th>Average</th>
+                  <th>Overflow</th>
+                </tr>
+                </table>
+              </div>
+            </div>
+            <div class="player-section action-priority-list">
+              <h3 class="toggle">Action Priority List</h3>
+              <div class="toggle-content">
+                <table class="sc">
+                  <tr>
+                    <th class="right">#</th>
+                    <th class="left">action,conditions</th>
+                  </tr>
+                <tr>
+                    <th class="right">0</th>
+                    <td class="left">snapshot_stats</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div class="player-section stats">
+              <h3 class="toggle">Stats</h3>
+              <div class="toggle-content">
+                <table class="sc">
+                  <tr>
+                    <th></th>
+                    <th>Raid-Buffed</th>
+                    <th>Unbuffed</th>
+                    <th>Gear Amount</th>
+                  </tr>
+                  <tr>
+                    <th class="left">Strength</th>
+                    <td class="right">0</td>
+                    <td class="right">0</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr class="odd">
+                    <th class="left">Agility</th>
+                    <td class="right">0</td>
+                    <td class="right">0</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr>
+                    <th class="left">Stamina</th>
+                    <td class="right">0</td>
+                    <td class="right">0</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr class="odd">
+                    <th class="left">Intellect</th>
+                    <td class="right">0</td>
+                    <td class="right">0</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr>
+                    <th class="left">Spirit</th>
+                    <td class="right">0</td>
+                    <td class="right">0</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr class="odd">
+                    <th class="left">Health</th>
+                    <td class="right">0</td>
+                    <td class="right">9529506</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr>
+                    <th class="left">Mana</th>
+                    <td class="right">0</td>
+                    <td class="right">0</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr class="odd">
+                    <th class="left">Spell Power</th>
+                    <td class="right">0</td>
+                    <td class="right">0</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr>
+                    <th class="left">Spell Hit</th>
+                    <td class="right">0.00%</td>
+                    <td class="right">0.00%</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr class="odd">
+                    <th class="left">Spell Crit</th>
+                    <td class="right">0.00%</td>
+                    <td class="right">0.00%</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr>
+                    <th class="left">Spell Haste</th>
+                    <td class="right">0.00%</td>
+                    <td class="right">0.00%</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr class="odd">
+                    <th class="left">Spell Penetration</th>
+                    <td class="right">0</td>
+                    <td class="right">0</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr>
+                    <th class="left">Mana Per 5</th>
+                    <td class="right">0</td>
+                    <td class="right">0</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr class="odd">
+                    <th class="left">Attack Power</th>
+                    <td class="right">0</td>
+                    <td class="right">0</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr>
+                    <th class="left">Melee Hit</th>
+                    <td class="right">0.00%</td>
+                    <td class="right">0.00%</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr class="odd">
+                    <th class="left">Melee Crit</th>
+                    <td class="right">5.00%</td>
+                    <td class="right">5.00%</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr>
+                    <th class="left">Melee Haste</th>
+                    <td class="right">0.00%</td>
+                    <td class="right">0.00%</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr class="odd">
+                    <th class="left">Expertise</th>
+                    <td class="right">0.00</td>
+                    <td class="right">0.00</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr>
+                    <th class="left">Armor</th>
+                    <td class="right">11977</td>
+                    <td class="right">11977</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr>
+                    <th class="left">Tank-Miss</th>
+                    <td class="right">0.00%</td>
+                    <td class="right">0.00%</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr class="odd">
+                    <th class="left">Tank-Dodge</th>
+                    <td class="right">0.00%</td>
+                    <td class="right">0.00%</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr>
+                    <th class="left">Tank-Parry</th>
+                    <td class="right">0.00%</td>
+                    <td class="right">0.00%</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr class="odd">
+                    <th class="left">Tank-Block</th>
+                    <td class="right">5.00%</td>
+                    <td class="right">5.00%</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr>
+                    <th class="left">Tank-Crit</th>
+                    <td class="right">0.00%</td>
+                    <td class="right">0.00%</td>
+                    <td class="right">0</td>
+                  </tr>
+                  <tr class="odd">
+                    <th class="left">Mastery</th>
+                    <td class="right">0.00</td>
+                    <td class="right">0.00</td>
+                    <td class="right">0</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div class="player-section gear">
+              <h3 class="toggle">Gear</h3>
+              <div class="toggle-content">
+                <table class="sc">
+                  <tr>
+                    <th></th>
+                    <th>Encoded</th>
+                  </tr>
+                  <tr>
+                    <th class="left">head</th>
+                    <td class="left">empty</td>
+                  </tr>
+                  <tr>
+                    <th class="left">neck</th>
+                    <td class="left">empty</td>
+                  </tr>
+                  <tr>
+                    <th class="left">shoulders</th>
+                    <td class="left">empty</td>
+                  </tr>
+                  <tr>
+                    <th class="left">shirt</th>
+                    <td class="left">empty</td>
+                  </tr>
+                  <tr>
+                    <th class="left">chest</th>
+                    <td class="left">empty</td>
+                  </tr>
+                  <tr>
+                    <th class="left">waist</th>
+                    <td class="left">empty</td>
+                  </tr>
+                  <tr>
+                    <th class="left">legs</th>
+                    <td class="left">empty</td>
+                  </tr>
+                  <tr>
+                    <th class="left">feet</th>
+                    <td class="left">empty</td>
+                  </tr>
+                  <tr>
+                    <th class="left">wrists</th>
+                    <td class="left">empty</td>
+                  </tr>
+                  <tr>
+                    <th class="left">hands</th>
+                    <td class="left">empty</td>
+                  </tr>
+                  <tr>
+                    <th class="left">finger1</th>
+                    <td class="left">empty</td>
+                  </tr>
+                  <tr>
+                    <th class="left">finger2</th>
+                    <td class="left">empty</td>
+                  </tr>
+                  <tr>
+                    <th class="left">trinket1</th>
+                    <td class="left">empty</td>
+                  </tr>
+                  <tr>
+                    <th class="left">trinket2</th>
+                    <td class="left">empty</td>
+                  </tr>
+                  <tr>
+                    <th class="left">back</th>
+                    <td class="left">empty</td>
+                  </tr>
+                  <tr>
+                    <th class="left">main_hand</th>
+                    <td class="left">skullcrusher,weapon=axe2h_3.00speed_180000min_240000max</td>
+                  </tr>
+                  <tr>
+                    <th class="left">off_hand</th>
+                    <td class="left">empty</td>
+                  </tr>
+                  <tr>
+                    <th class="left">ranged</th>
+                    <td class="left">empty</td>
+                  </tr>
+                  <tr>
+                    <th class="left">tabard</th>
+                    <td class="left">empty</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div class="player-section talents">
+              <h3 class="toggle">Talents</h3>
+              <div class="toggle-content">
+                <div class="clear"></div>
+              </div>
+            </div>
+            <div class="player-section profile">
+              <h3 class="toggle">Profile</h3>
+              <div class="toggle-content no-wrap">
+                <p>#!./simc <br>
+<br>
+enemy=Fluffy_Pillow<br>
+origin="unknown"<br>
+level=88<br>
+race=humanoid<br>
+use_pre_potion=1<br>
+actions=snapshot_stats<br>
+main_hand=skullcrusher,weapon=axe2h_3.00speed_180000min_240000max<br>
+# Gear Summary
+# main_hand=skullcrusher,weapon=axe2h_3.00speed_180000min_240000max<br>
+</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    <!-- Help Boxes -->
+    <div id="help-apm">
+      <div class="help-box">
+        <h3>APM</h3>
+        <p>Average number of actions executed per minute.</p>
+      </div>
+    </div>
+    <div id="help-constant-buffs">
+      <div class="help-box">
+        <h3>Constant Buffs</h3>
+        <p>Buffs received prior to combat and present the entire fight.</p>
+      </div>
+    </div>
+    <div id="help-count">
+      <div class="help-box">
+        <h3>Count</h3>
+        <p>Average number of times an action is executed per iteration.</p>
+      </div>
+    </div>
+    <div id="help-crit">
+      <div class="help-box">
+        <h3>Crit</h3>
+        <p>Average crit damage.</p>
+      </div>
+    </div>
+    <div id="help-crit-pct">
+      <div class="help-box">
+        <h3>Crit%</h3>
+        <p>Percentage of executes that resulted in critical strikes.</p>
+      </div>
+    </div>
+    <div id="help-dodge-pct">
+      <div class="help-box">
+        <h3>Dodge%</h3>
+        <p>Percentage of executes that resulted in dodges.</p>
+      </div>
+    </div>
+    <div id="help-dpe">
+      <div class="help-box">
+        <h3>DPE</h3>
+        <p>Average damage per execution of an individual action.</p>
+      </div>
+    </div>
+    <div id="help-dpet">
+      <div class="help-box">
+        <h3>DPET</h3>
+        <p>Average damage per execute time of an individual action; the amount of damage generated, divided by the time taken to execute the action, including time spent in the GCD.</p>
+      </div>
+    </div>
+    <div id="help-dpr">
+      <div class="help-box">
+        <h3>DPR</h3>
+        <p>Average damage per resource point spent.</p>
+      </div>
+    </div>
+    <div id="help-dps">
+      <div class="help-box">
+        <h3>DPS</h3>
+        <p>Average damage per second.</p>
+      </div>
+    </div>
+    <div id="help-dps-pct">
+      <div class="help-box">
+        <h3>DPS%</h3>
+        <p>Percentage of total DPS contributed by a particular action.</p>
+      </div>
+    </div>
+    <div id="help-dynamic-buffs">
+      <div class="help-box">
+        <h3>Dynamic Buffs</h3>
+        <p>Temporary buffs received during combat, perhaps multiple times.</p>
+      </div>
+    </div>
+    <div id="help-error">
+      <div class="help-box">
+        <h3>Error</h3>
+        <p>( 2 * dps_stddev / sqrt( iterations ) ) / dps_avg</p>
+      </div>
+    </div>
+    <div id="help-glance-pct">
+      <div class="help-box">
+        <h3>G%</h3>
+        <p>Percentage of executes that resulted in glancing blows.</p>
+      </div>
+    </div>
+    <div id="help-block-pct">
+      <div class="help-box">
+        <h3>G%</h3>
+        <p>Percentage of executes that resulted in blocking blows.</p>
+      </div>
+    </div>
+    <div id="help-hit">
+      <div class="help-box">
+        <h3>Hit</h3>
+        <p>Average non-crit damage.</p>
+      </div>
+    </div>
+    <div id="help-interval">
+      <div class="help-box">
+        <h3>Interval</h3>
+        <p>Average time between executions of a particular action.</p>
+      </div>
+    </div>
+    <div id="help-max">
+      <div class="help-box">
+        <h3>Max</h3>
+        <p>Maximum crit damage over all iterations.</p>
+      </div>
+    </div>
+    <div id="help-miss-pct">
+      <div class="help-box">
+        <h3>M%</h3>
+        <p>Percentage of executes that resulted in misses.</p>
+      </div>
+    </div>
+    <div id="help-origin">
+      <div class="help-box">
+        <h3>Origin</h3>
+        <p>The player profile from which the simulation script was generated. The profile must be copied into the same directory as this HTML file in order for the link to work.</p>
+      </div>
+    </div>
+    <div id="help-parry-pct">
+      <div class="help-box">
+        <h3>Parry%</h3>
+        <p>Percentage of executes that resulted in parries.</p>
+      </div>
+    </div>
+    <div id="help-range">
+      <div class="help-box">
+        <h3>Range</h3>
+        <p>( dps_max - dps_min ) / ( 2 * dps_avg )</p>
+      </div>
+    </div>
+    <div id="help-rps-in">
+      <div class="help-box">
+        <h3>RPS In</h3>
+        <p>Average resource points generated per second.</p>
+      </div>
+    </div>
+    <div id="help-rps-out">
+      <div class="help-box">
+        <h3>RPS Out</h3>
+        <p>Average resource points consumed per second.</p>
+      </div>
+    </div>
+    <div id="help-scale-factors">
+      <div class="help-box">
+        <h3>Scale Factors</h3>
+        <p>DPS gain per unit stat increase except for <b>Hit/Expertise</b> which represent <b>DPS loss</b> per unit stat <b>decrease</b>.</p>
+      </div>
+    </div>
+    <div id="help-ticks">
+      <div class="help-box">
+        <h3>Ticks</h3>
+        <p>Average number of periodic ticks per iteration. Spells that do not have a damage-over-time component will have zero ticks.</p>
+      </div>
+    </div>
+    <div id="help-ticks-crit">
+      <div class="help-box">
+        <h3>T-Crit</h3>
+        <p>Average crit tick damage.</p>
+      </div>
+    </div>
+    <div id="help-ticks-crit-pct">
+      <div class="help-box">
+        <h3>T-Crit%</h3>
+        <p>Percentage of ticks that resulted in critical strikes.</p>
+      </div>
+    </div>
+    <div id="help-ticks-hit">
+      <div class="help-box">
+        <h3>T-Hit</h3>
+        <p>Average non-crit tick damage.</p>
+      </div>
+    </div>
+    <div id="help-ticks-miss-pct">
+      <div class="help-box">
+        <h3>T-M%</h3>
+        <p>Percentage of ticks that resulted in misses.</p>
+      </div>
+    </div>
+    <div id="help-ticks-uptime">
+      <div class="help-box">
+        <h3>UpTime%</h3>
+        <p>Percentage of total time that DoT is ticking on target.</p>
+      </div>
+    </div>
+    <div id="help-timeline-distribution">
+      <div class="help-box">
+        <h3>Timeline Distribution</h3>
+        <p>The simulated encounter's duration can vary based on the health of the target and variation in the raid DPS. This chart shows how often the duration of the encounter varied by how much time.</p>
+      </div>
+    </div>
+    <div id="help-waiting">
+      <div class="help-box">
+        <h3>Waiting</h3>
+        <p>This is the percentage of time in which no action can be taken other than autoattacks. This can be caused by resource starvation, lockouts, and timers.</p>
+      </div>
+    </div>
+    <!-- End Help Boxes -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      jQuery.noConflict();
+      jQuery(document).ready(function($) {
+        function open_anchor(anchor) {
+          var img_id = '';
+          var src = '';
+          var target = '';
+          anchor.addClass('open');
+          var section = anchor.parent('.section');
+          section.addClass('section-open');
+          section.removeClass('grouped-first');
+          section.removeClass('grouped-last');
+          if (!(section.next().hasClass('section-open'))) {
+            section.next().addClass('grouped-first');
+          }
+          if (!(section.prev().hasClass('section-open'))) {
+            section.prev().addClass('grouped-last');
+          }
+          anchor.next('.toggle-content').show(150);
+          anchor.next('.toggle-content').find('.charts').each(function() {
+            $(this).children('span').each(function() {
+              img_class = $(this).attr('class');
+              img_alt = $(this).attr('title');
+              img_src = $(this).html().replace(/&amp;/g, "&");
+              var img = new Image();
+              $(img).attr('class', img_class);
+              $(img).attr('src', img_src);
+              $(img).attr('alt', img_alt);
+              $(this).replaceWith(img);
+              $(this).load();
+            });
+          })
+          setTimeout('window.scrollTo(0, anchor.position().top', 500);
+        }
+        var anchor_check = document.location.href.split('#');
+        if (anchor_check.length > 1) {
+        	var anchor = anchor_check[anchor_check.length - 1];
+        }
+        var pcol = document.location.protocol;
+        if (pcol != 'file:') {
+          var whtt = document.createElement("script");
+          whtt.src = pcol + "//static.wowhead.com/widgets/power.js";
+          $('body').append(whtt);
+        }
+        $('a[ rel="_blank"]').each(function() {
+          $(this).attr('target', '_blank');
+        });
+        $('.toggle-content, .help-box').hide();
+        $('.open').next('.toggle-content').show();
+        $('.toggle').click(function(e) {
+          var img_id = '';
+          var src = '';
+          var target = '';
+          e.preventDefault();
+          $(this).toggleClass('open');
+          var section = $(this).parent('.section');
+          if (section.attr('id') != 'masthead') {
+            section.toggleClass('section-open');
+          }
+          if (section.attr('id') != 'masthead' && section.hasClass('section-open')) {
+            section.removeClass('grouped-first');
+            section.removeClass('grouped-last');
+            if (!(section.next().hasClass('section-open'))) {
+              section.next().addClass('grouped-first');
+            }
+            if (!(section.prev().hasClass('section-open'))) {
+              section.prev().addClass('grouped-last');
+            }
+          } else if (section.attr('id') != 'masthead') {
+            if (section.hasClass('final') || section.next().hasClass('section-open')) {
+              section.addClass('grouped-last');
+            } else {
+              section.next().removeClass('grouped-first');
+            }
+            if (section.prev().hasClass('section-open')) {
+              section.addClass('grouped-first');
+            } else {
+              section.prev().removeClass('grouped-last');
+            }
+          }
+          $(this).next('.toggle-content').toggle(150);
+          $(this).next('.toggle-content').find('.charts').each(function() {
+            $(this).children('span').each(function() {
+              img_class = $(this).attr('class');
+              img_alt = $(this).attr('title');
+              img_src = $(this).html().replace(/&amp;/g, "&");
+              var img = new Image();
+              $(img).attr('class', img_class);
+              $(img).attr('src', img_src);
+              $(img).attr('alt', img_alt);
+              $(this).replaceWith(img);
+              $(this).load();
+            });
+          });
+        });
+        $('.toggle-details').click(function(e) {
+          e.preventDefault();
+          $(this).toggleClass('open');
+          $(this).parents().next('.details').toggleClass('hide');
+        });
+        $('.toggle-db-details').click(function(e) {
+          e.preventDefault();
+          $(this).toggleClass('open');
+          $(this).parent().next('.toggle-content').toggle(150);
+        });
+        $('.help').click(function(e) {
+          e.preventDefault();
+          var target = $(this).attr('href') + ' .help-box';
+          var content = $(target).html();
+          $('#active-help-dynamic .help-box').html(content);
+          $('#active-help .help-box').show();
+          var t = e.pageY - 20;
+          var l = e.pageX - 20;
+          $('#active-help').css({top:t,left:l});
+          $('#active-help').toggle(250);
+        });
+        $('#active-help a.close').click(function(e) {
+          e.preventDefault();
+          $('#active-help').toggle(250);
+        });
+          if (anchor) {
+            anchor = '#' + anchor;
+            target = $(anchor).children('h2:first');
+            open_anchor(target);
+          }
+          $('ul.toc li a').click(function(e) {
+            anchor = $(this).attr('href');
+            target = $(anchor).children('h2:first');
+            open_anchor(target);
+          });
+      });
+    </script>
+
+  </body>
+
+</html>

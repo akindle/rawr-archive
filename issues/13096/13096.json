@@ -1,0 +1,96 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Retribution",
+      "DisplayName": "Rawr.Retribution"
+    },
+    "ClosedComment": "Verified that the issue does not occur in the Enhance model in v2.2.2",
+    "ClosedDate": "2009-05-04T05:10:44.93-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "My DPS bars are set too wide on some items. I did do a search for this but nothing showed up. Happens with all classes.\n \nSomehow i have a feeling its a problem on my end. \n \nWhen i select Trinkets 1 for example, the bars for all the trinkets are so far stretched that i would have to expand the window maybe 20x before i saw the end of them.\n \nPicture attached. Didn't load a profile, i know, bars are even longer when i do.",
+    "LastUpdatedDate": "2013-05-16T05:25:45.757-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-04-23T08:00:27.063-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Retribution] DPS Bars stretched too wide",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13096
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1836,
+      "FileName": "stretched bars.JPG",
+      "DownloadUrl": ".\\1836"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "That's a bug that occurs when there are any negative values in the chart. Regardless, you're using it wrong; calculations are pretty useless when you're comparing them against equipping them to a naked character. You need a current set of gear to get any meaningful calculations. I suggest you watch the Tour of Rawr movie.",
+      "PostedDate": "2009-04-23T09:29:49.233-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "What i mean is, i didn't load my profile because the bars just become even longer and i didn't feel i needed to load it to show the issue. I don't use it to compare naked people stats.\r\n\r\nI have an average level of competence of using Rawr already, and i did watch the video. However im wondering which charts are you referring to and how can i set them so they are not negative.",
+      "PostedDate": "2009-04-23T12:52:50.32-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I really do mean it. Load a profile, and it won't have the bug. The bars don't 'become longer'. If they stretch past the edge of the screen, it's a bug, and resizing the window has no effect on them. That bug only happens in very specific circumstances, one of which happens to be enhancement shamans, before equipping weapons.",
+      "PostedDate": "2009-04-23T21:59:42.49-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "From what I have seen thus far, it generally isn't from negative numbers as such, but rather from NaN values. (Not a number, mostly the result of a division by zero).  \r\n\r\nThis will typically be caused by bugs or weird coincidental situations. Average value for a zero fight duration, maybe. Like Astrylian mentions, a naked character could cause these type of weird values (no hits, no dps, potentially directly OOM, etc.) \r\n\r\nIf you see this behaviour in a fully populated model, it is probably a bug that needs to be reported and addressed. \r\n\r\nThere was a bug in some of the new proc handling that caused issues on some procs with fight durations less than item cooldowns. (I saw it with the Figurine - Twilight Serpent, which has a 5 min cooldown, for fights with less than 5 min duration). But one of the other developers addressed that. It might be that your version was still suffering from this issue.\r\n\r\nIf you do see this again, use the export to CSV option. Load the CSV and search for the NaN values in the Overall colomn. Those items are what is causing the issue. Go back into Rawr and try refreshing those items (maybe the stats weren't correctly imported). If still no luck, reporting the specific item and settings you used, might help us chase it down. A temporary work around could be to edit or even delete the item. That way atleast you can read the other bars.\r\n\r\n",
+      "PostedDate": "2009-04-24T11:23:08.013-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Astrylian I fixed the \"before equipping weapons thing\" back in March, the issue is a NaN issue. I had that with off-hand weapons if you equip a trinket in Enhance model in v2.2.0.9 but it is fixed in latest version. Since the poster is using v2.2.0.9 the solution is to upgrade to latest version. v2.2.1.0. I'll verify the same issue doesn't happen with empty character on trinkets.",
+      "PostedDate": "2009-05-04T04:31:02.693-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-05-04T05:10:44.93-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T17:32:34.253-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:40:45.093-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:44.813-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:45.757-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

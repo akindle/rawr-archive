@@ -1,0 +1,75 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "I&#39;m going to close the issue since the cycle generator is no longer in use.  If there are issues with the simulator used to generate the current cast tables, go ahead and open a new issue for discussion.",
+    "ClosedDate": "2011-09-26T11:04:49.473-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Note: The current code doesn't appear to directly use MoonkinCycleGenerator.cs.  I'm assuming it is used externally, to generate some of the static tables that are used in Rawr.  If not, ignore this completely.\n \nIn MoonkinStateSpaceGenerator.GetInitialState()\n \n1) Starsurge cast time is set at 2.5s in GetInitialState().  The correct value is 2.0s.\n \n2) Much of the transition-table complexity is associated with the question of whether or not Starsurge (SS) will be available for casting as the next nuke.  There are two ways SS can become available:\n \na) The SS cooldown could expire\nb) A DoT tick could proc Shooting Stars\n \nThe probability for either event depends on how much time is associated with the current cast.  Rawr is saying the \"associated time\" equals the current spell's cast time.\n \nHowever, the Markov table contains only state transitions associated with Nuke casts.  A Moonkin on Patchwerk spends about 15% of his time casting non-nukes (MF, IS, FoN, Starfall).  If I cast Wrath then FoN, then SS could become available during the GCD of FoN.  In that case the proper state transition would be to a state where SS is available.\n \nTo reflect that, I think that when building the Markov table, the \"associated time\" for a spell should be roughly 15% to 20% larger than the spell's cast time.\n \nIts neat that you've used the Markov stuff to track energy transitions.  I hope this helps give slightly more realistic spell distributions.",
+    "LastUpdatedDate": "2013-05-16T05:17:25.96-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-09-14T11:55:59.157-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "MoonkinCycleGenerator.cs",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 21521
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Your initial note is correct: MoonkinCycleGenerator is used to generate the cast distribution tables in the Solver class.\r\n\r\n1) Oops, my bad.  I'm sure I looked it up, but apparently that must've been one of my brain-dead-coding sessions.  This could explain why my Starfire probabilities were down.\r\n2) You make a good point with Moonfire/Insect Swarm.  As far as the larger cooldowns (FoN, Starfall, etc.) go, their weight in the cast distribution is low enough that it's only a very minor error if I ignore that time.  I'm also not sure how big of a difference it would make even if I ignored the casting time of MF and IS.  Rest assured I have given it at least some thought, and another revision is clearly due thanks to my mistake with the Starsurge cast time (though I don't know if that affects the actual tables at all... suppose I'll find out).",
+      "PostedDate": "2011-09-14T12:56:20.307-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Another similarly related issue is that the cycle generator does not take Nature's Grace into account when calculating Shooting Stars procs.  If I add all this information to the state space, obviously, it will explode and I won't get any useful information out of it.  I'm still working on a way to accommodate all these different variables and come up with a good solid idea that is simple yet accurate enough.",
+      "PostedDate": "2011-09-15T07:26:29.3-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Nature's Grace is an issue, but a smaller one.  It speeds up both spellcasting and dots (=shooting stars) by 15%.  If their uptime was the same, the impact on state transitions would be negligable.  However something like 75% of our spell casts benefit from NG.  Perhaps 45%-60% of our DoTs get the benefit (since the DoT that procs NG does not get the benefit).  You may have a 15% (NG) mistake, 25% (75%-50%) of the time, would be a ~4% error in ratio of shooting-stars casts to other nuke casts.\r\n\r\nFor my item (2) in the first post, I was guessing a 15% error with 100% uptime in the same statistic.\r\n\r\nFortunately, small haste errors won't have a very large impact for most Rawr users.  I believe they are mainly looking for gearing, gemming, and reforging help.  It is pretty clear that for any 85 PvE Moonkin, Hit (to the cap) is substantially stronger than Haste, and Haste is substantially stronger than Mastery or Crit.  If the Rawr \"rotation\" misses the Haste value by a few percent in either direction, it won't change many gearing decisions (and the ones it might change, such as glove enchant, 50 haste vs. 65 Mastery) will have been very close anyway.",
+      "PostedDate": "2011-09-17T20:28:27.617-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I made a change that should satisfy the constraints.  I switched from a Markov cycle - which, while capable, was a bit underpowered to match the accuracy that I needed - to a simulator.  In addition to generating the cast distributions (including MF and IS), I was able to resolve the circular dependency on Nature's Grace uptime and provide a more accurate reflection of how the Glyph of Starfire affects the rotation.  I haven't attempted to derive the precision of the simulator results yet.",
+      "PostedDate": "2011-09-19T19:31:53.217-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-09-26T11:04:49.473-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:24:18.53-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:17:25.96-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Optimizer",
+      "DisplayName": "Rawr.Base.Optimizer"
+    },
+    "ClosedComment": "Fixed for 2.2.16.",
+    "ClosedDate": "2009-09-09T15:15:44.637-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "First off, nice find Astrylian on the Armory finally showing Faction info items. I saw what you did in the source code, looked and saw the \"<translationFor factionEquiv=\"%n\">\" line in the XML. I tested out the source code and I saw a minor bug with the optimizer. Say I have the Loop of the Twin Val'kyr [ilevel 245] (Alliance), Band of the Twin Val'kyr [ilevel 245] (Horde), and the Clutch of Fortification (the badge right) selected on my bear from a saved file. When I run the Optimizer, it will ask me to equip both the Loop and the Band. Yet if I try to manually switch the Band to the clutch, the band is no longer to be selected (which is correct). Yet if I run the optimizer again, it was ask to equip the band again. It won't go away until after deselect the band.",
+    "LastUpdatedDate": "2013-05-16T05:24:31.29-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-09-07T13:41:19.177-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Optimizer] Not taking into account new faction info in Source Code",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14067
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2179,
+      "FileName": "Deldruid - Bear Trial of the Crusader 10-man.xml",
+      "DownloadUrl": ".\\2179"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I'm not sure I see what the bug is. You have it marked available (though it's hidden now), so the Optimizer will use it. You can use the Current Gear/Enchants/Buffs chart to un-available it.",
+      "PostedDate": "2009-09-07T14:41:13.73-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That is what I did AFTER the optimizer equipped the band. Until then the Band  is marked but does not show up in the Current Gear/Enchants/Buffs chart. Meaning in 2.2.14, the band, the loop, and the clutch is all marked as available. In the source, specifically r36548, Loop is in Ring 1, Clutch is in ring 2. Band is not showing up in the Current Gear/Enchants/Buffs chart nor the quick select in either Ring 1 or Ring 2 slots. I run Optimizer and it wants me to put the Band in Ring 2. I equip the band. Now the Band shows up in the Current Gear/Enchants/Buffs chart. I de-mark the band now and equip the Clutch back into Ring 2. The program hides the Band again. I run the Optimizer again and now it does not want to change the Loop and the Clutch since those are BiS for that gear-set.\r\n\r\nI'm supplying the file that I'm using. I've re-selected the Band so that you can see what I am talking about.",
+      "PostedDate": "2009-09-07T14:58:38.45-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-07T14:58:41.107-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Right, so you've got an 'irrelevant' item marked as available, even though you can't see it anymore... Perhaps we can force it to show items in that situation. However, that's a pretty low priority, since this is a one-time thing.",
+      "PostedDate": "2009-09-07T16:20:46.817-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Aside from the interface, if you want to unmark it as available you can delete the line that has it available in your XML file then reopen your file. Since the gear is now properly setting Horde/Alliance filters the Optimizer shouldn't need to be modified as this is more of a 'translation from previous versions' issue.",
+      "PostedDate": "2009-09-07T21:55:17.293-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-09T15:15:44.637-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-09T16:03:17.383-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:21:12.76-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:13.377-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:31.29-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

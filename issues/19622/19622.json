@@ -1,0 +1,91 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.AddOn",
+      "DisplayName": "Rawr.AddOn"
+    },
+    "ClosedComment": "Coded workaround for patch 4.0.3",
+    "ClosedDate": "2011-01-09T15:45:24.02-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Addon v 0.42\nRawr Silverlight v4.0.14.0b\n \nWhen I import my character from the addon, the talents are wrong.\n \nHere is my character: http://eu.battle.net/wow/en/character/eitrigg/tikh/advanced\nThe export data from the addon is attached: rawr_addon.xml\nThe resulting Rawr save file is also included: rawr_savefile.xml",
+    "LastUpdatedDate": "2013-05-16T05:19:08.42-07:00",
+    "PlannedForRelease": "Rawr 4.0.14 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "High",
+      "Severity": 150,
+      "Id": 3
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-01-08T02:46:13.377-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Addon] Talents not getting imported correctly",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19622
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4381,
+      "FileName": "rawr.zip",
+      "DownloadUrl": ".\\4381"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Hmm your arcane tree has an extra zero the ONLY way this can happen is if the info from in game that Blizzard supplies is wrong. \r\n\r\nIn game can you do a \r\n\r\n/run Rawr:Print(\"Number of Arcane Talents is :\"..GetNumTalents(1))\r\n\r\nplease and let me know the result. You can cut n paste the above into game. Do this on your mage of course. If the answer is wrong we URGENTLY need Blizzard to fix this before they launch patch 4.0.6. So submitting tickets and posting on US \"UI & Macros\" forums that there is a bug is useful.\r\n\r\nThe bug to post would be \"GetNumTalents() for the Arcane tree for Mages is returning 22 talents when there are only 21.\"",
+      "PostedDate": "2011-01-08T04:02:05.65-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I created a lvl 1 mage and can confirm this is a Blizzard bug. They have 22 talents in Arcane tree. Number 14 is \"Incanter's Absortion\", number 15 is nil, number 16 is \"Improved Arcane Explosion\".\r\n\r\nie: they have a bug and are returning a fictitious talent at talent 15. \r\n\r\nSomeone PLEASE report that \"GetNumTalents(1) for the Arcane tree for Mages is returning 22 talents when there are only 21. The offending nil talent is talent 15 which is reported as nil by GetTalentInfo(1,15) for mages.\" We need this fix in for patch 4.0.6 so now is time to report it.\r\n",
+      "PostedDate": "2011-01-08T04:17:17.267-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-08T04:17:46.74-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Posted a ticket on the bug forums. Bug report can be found here:\r\n\r\nhttp://us.battle.net/wow/en/forum/topic/1827665982",
+      "PostedDate": "2011-01-08T15:47:41.267-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-09T12:49:58.647-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-09T15:45:24.02-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T19:16:05.59-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:32.25-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:08.42-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

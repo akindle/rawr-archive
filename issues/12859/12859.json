@@ -1,0 +1,296 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Optimizer",
+      "DisplayName": "Rawr.Base.Optimizer"
+    },
+    "ClosedComment": "3 months without responses, if this is still an issue please resubmit",
+    "ClosedDate": "2009-08-19T12:48:13.297-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "While optimizing my arcane mage, I was watching the Windows task manager and noticed something odd.   While I think it's VERY cool that youve made the optimizer multithreaded so that my dual-proc box runs faster (50% CPU utilization -> 60-70% CPU utilization = 33% faster ), it looks like there's some room for more improvement.  \n \nI would have expected that an unloaded dual proc box would approach 100% cpu usage (no blocking), it looks like it going from ~66% to 100% cpu utilization would be another 50% perf improvement.  I suspect that this means that quad-proc solutions would be impacted at least this much by a fix.\n \nWhile I understand that this is V1.0 of the multithreaded solution, I would urge you to look into refactoring the code/data and/or mutex usage of shared optimizer resources.",
+    "LastUpdatedDate": "2013-05-16T05:25:59.787-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-03-23T15:47:02.18-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Optimizing the Optimizer",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 12859
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1749,
+      "FileName": "Rawr-CPU-Mem.png",
+      "DownloadUrl": ".\\1749"
+    },
+    {
+      "FileId": 1750,
+      "FileName": "Rawr-Processes.png",
+      "DownloadUrl": ".\\1750"
+    },
+    {
+      "FileId": 1751,
+      "FileName": "Sorbe.80.boss.55-3-13.endgame.ulduar.xml",
+      "DownloadUrl": ".\\1751"
+    },
+    {
+      "FileId": 1752,
+      "FileName": "Rawr-System.png",
+      "DownloadUrl": ".\\1752"
+    },
+    {
+      "FileId": 1753,
+      "FileName": "Rawr-Resources.png",
+      "DownloadUrl": ".\\1753"
+    },
+    {
+      "FileId": 1782,
+      "FileName": "Sorbe.80.endgame.xml",
+      "DownloadUrl": ".\\1782"
+    },
+    {
+      "FileId": 1783,
+      "FileName": "RawrOptimizing.JPG",
+      "DownloadUrl": ".\\1783"
+    },
+    {
+      "FileId": 1784,
+      "FileName": "RawrOptimizingDualproc.JPG",
+      "DownloadUrl": ".\\1784"
+    },
+    {
+      "FileId": 1820,
+      "FileName": "Rawr-Grinding.PNG",
+      "DownloadUrl": ".\\1820"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "This was reported against Rawr V2.2.0b5.",
+      "PostedDate": "2009-03-23T15:49:26.037-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Can you clarify the system information more? It sounds like your performance is bound my something else (memory, most likely). How is memory usage looking during these tests?",
+      "PostedDate": "2009-03-23T16:17:08.02-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm assuming you're using genetic algorithm as optimization method, if you're using simulate annealing there is nothing to be gained by multithreading.\r\n\r\nFor genetic algorithm the optimization cycle consists of several parts. Fitness evaluation, sorting/ranking of population, generation of next generation population. Based on profiling of the application I have done the bulk of the computation is in fitness evaluation and that part is multithreaded. Note that mage model limits parallelism to 2 threads to limit memory usage, but this should not have effect in your case. The second ranking phase does not give opportunities for parallelism and should be insignificant in execution time. There is possibility to add parallelism for the third phase of the cycle. I'll do some more profiling to see what can be gained from there.",
+      "PostedDate": "2009-03-23T17:37:39.27-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm not sure, profiling shows that phase 2 and 3 takes only about 2% time. On my dual core cpu utilization is in the 90-95% sure. Not sure exactly what is causing lower performance in your case.",
+      "PostedDate": "2009-03-24T02:57:35.38-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Here is a screenshot of the Rawr CPU & Memory Usage from Taskmanger.",
+      "PostedDate": "2009-03-24T13:27:09.677-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-03-24T13:27:10.95-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Here is a 2nd screenshot of the Rawr process usage from Taskmanager.   A very large number of pagefaults & pagefaults / sec?",
+      "PostedDate": "2009-03-24T13:28:14.033-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-03-24T13:28:15.51-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Here is the character I was running an optimize on:  (throughness slider to the far right)",
+      "PostedDate": "2009-03-24T13:30:10.133-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "File attached.",
+      "PostedDate": "2009-03-24T13:30:33.42-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-03-24T13:30:33.96-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Machine / OS info attached.  Yes, this is Win7 Build 7058 - I will repro this on WinXP SP3 too.",
+      "PostedDate": "2009-03-24T13:35:20.06-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-03-24T13:35:20.96-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That would indicate that Rawr is memory-bound, and it's not maxing out the processor, because the processor is waiting for data to be read from virtual memory on the hard disk. The odd thing is that your physical memory isn't being fully used.",
+      "PostedDate": "2009-03-24T13:49:37.933-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Attached is a snapshot of the \"Resources\" that are being used on the machine.  Even though there are a large number of page faults, the commit size and working set sizes are very similar at any point in time.   However, the memory sizes are continually growing and shrinking by like 40MB out of 200MB.   \r\n\r\nI dont think this is a disk paging issue.   Perhaps the machine is just busy Allocing and Zeroing out memory buffers during optimization?",
+      "PostedDate": "2009-03-24T15:02:23.213-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-03-24T15:02:24.247-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yep... I'm seeing working set size change +40MB, -30MB, +90MB, -87MB, etc.   Perhaps the app should reuse these buffers rather deallocating/zero'ing them?",
+      "PostedDate": "2009-03-24T15:06:34.8-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks for the feedback. I'll do some memory profiling to see what is the main culprit for this. I'm thinking this is not specific to mage model as the mage solver is reusing memory resources. My initial guess is that it is related with stats aggregation on characters, at least that's what I remember from last time I did memory profiling on Rawr.\r\n\r\nOne reason why I didn't want to change things too much at that point was that .NET is supposed to be efficient with short term memory allocations. However if the problem is in garbage collector promoting too many of those to 2nd generation we might have too many GC collects. If that is the case we might have to rework the Stats class to use a shared pool for data arrays. I'll investigate to see what is happening.",
+      "PostedDate": "2009-03-24T18:31:25.43-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "From some preliminary testing it would seem that the problem is specific to mage model actually.",
+      "PostedDate": "2009-03-24T19:35:30.13-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I made some changes that should improve performance. Let me know how it works for you when you get the new version.",
+      "PostedDate": "2009-03-25T02:16:38.3-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "OK, I gave this a reasonable test.  I had it optimize my character in 3.1 mode for BiS type gear.  Here are the results:\r\nThe CPU load for the Rawr Process STILL hovers betwee 60 and 67%.   The system load is usually about 20%.  System Idle is 12-17%.\r\nThe \"Mem Usage\" from task manager jumps up/down every second or so (per taskmgr) from 100MB to 254MB, peaking at 482MB.\r\nAfter running a \"mid slider\" setting optimize, I see 147 MILLION page faults have occured over about 10 minutes.\r\nAttaching character file and screenshots.",
+      "PostedDate": "2009-04-08T03:39:31.877-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-04-08T03:39:34.827-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "And it crashed after about 12 minutes with some \"Out of Memory\" error from Rawr.\r\n\r\n",
+      "PostedDate": "2009-04-08T03:41:55.72-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Here is the task before it crashed and taskmanger.",
+      "PostedDate": "2009-04-08T03:44:47.19-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-04-08T03:44:50.127-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Here is the memory usage before it crashed. (RawrOptimizingDualproc.jpg)",
+      "PostedDate": "2009-04-08T03:45:49.49-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-04-08T03:45:50.923-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The file the ran out of memory is Sorbe.80.endgame.xml and the 2nd to the last image was RawrOptimizing.jpg",
+      "PostedDate": "2009-04-08T03:47:26.713-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I don't know what to say. There has to be something system specific going on. On a quadcore if I change multithreading setting to 4 I get 70-80% cpu utilization by Rawr. Max thoroughness setting memory usage constantly hovers at 80MB, never going above 90MB and after about 10 mins of optimization there's only about 10 million page faults.",
+      "PostedDate": "2009-04-08T14:06:33.917-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "By the way which version of .NET Framework are you running? Have you tried installing the latest and applying all service packs?",
+      "PostedDate": "2009-04-08T14:18:46.463-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I just want you to know that while your performance seems to be lower than what I am seeing I am aware of the problem. Main cause for lower cpu utilization comes from high rate of garbage collections which must interrupt all executing threads. This is a very complex problem and doesn't have an easy solution, but I'm continually working on performance improvements so it should be better each version. The only question is how good does it have to be that it is good enough, because at some point further improvements won't be practical if at all possible.",
+      "PostedDate": "2009-04-08T19:19:59.567-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Here is another screen shot of the TaskManager and Rawr.  Rawr-Grinding.png",
+      "PostedDate": "2009-04-18T21:35:49.477-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Rawr-Grinding.png attached?",
+      "PostedDate": "2009-04-18T21:38:14.09-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-04-18T21:38:16.143-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "There have been a ton of improvements made. This is normal behavior. I'm not sure what you are trying to say.",
+      "PostedDate": "2009-04-18T22:58:29.377-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Also are you still using the same character xml? If you're using something different please post it. I would suggest you don't use advanced optimizer for comparisons if you're concerned with performance.",
+      "PostedDate": "2009-04-18T23:13:43.563-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It appears that Rawr causes an outrageous quantity of page faults (as reported by Task Manager) whenever it has to redraw the screen often.  This can be observed when the optimizer is running (the progress bar dancing), or when dragging another window over any Rawr window with 'Show window contents while dragging' enabled.\r\n\r\nI happen to be using calc.exe for toying with it, and the PF Delta column in TaskMan.  When I wave the calc window over the 'Comparisons' section, the PF Delta spikes much higher than over the rest of the main window or the Optimize window.  The Optimize window is spiking higher than the left half of the main window...  And, interestingly, not all of the Optimization window is affected.  The left half isn't outrageous, even with all the extra controls displayed under 'Additional Requirements'.  Waving calc over 'Build Upgrade List' or 'Options', however, sends PF Delta spiking to the thousands.\r\n\r\nI'm sure we'd all be willing to concede some inefficiency in the main window's repaint, but the Optimize window repaints itself enough (every update to that progress bar) that it seems like some kind of optimization is in order.  It might be as easy as putting the progress bar in a separate (very fast to paint) window with its cancel button, and ignoring the repaint issues the other windows have.\r\n\r\nI'm running MS .Net 3.5 SP1 on Windows XP Pro x64 SP2 in a Core 2 Duo 3Ghz box w/ 4GB and no page file.  The performance implications don't exactly seem dire to me on this rig, but different systems will have different page fault costs, and it's a potential (if nominal) performance gain for everyone, right?",
+      "PostedDate": "2009-05-20T05:14:37.75-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Here's some info from Microsoft on related issue:\r\n\r\n\"You should not be concerned about these pagefaults, because these are soft pagefaults (where the faulted page is found elsewhere in physical memory). Memory is allocated and released dynamically at every paint event. The disk is not touched. To verify this use perfmon and not taskmanager.\r\n\r\nTake a look at the following perf\\counters:\r\nMemory\\Page Faults\\sec - the number of pagefaults (soft and hard)\r\nMemory\\Page Reads\\sec - the rate at which the disk was read to resolve hard pagefaults\r\nMemory\\Page Input\\sec - the number of pages that was read to resolve hard pagefaults\r\n\r\nWhile the first number is high (thousands) the other two numbers are low ( tens). Performance hit comes from the last two counters being high. Soft pagefaults are uncomparably cheaper than hard pagefaults.\r\n\r\nThis behavior is typical for the process that performs many dynamic allocations and is by design. I hope this helps alleviate your concern.\"",
+      "PostedDate": "2009-05-20T14:30:22.33-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-19T12:48:13.297-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-09T16:03:17.383-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:35:06.947-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:59.787-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Enhance",
+      "DisplayName": "Rawr.Enhance"
+    },
+    "ClosedComment": "fixed in commit 46560",
+    "ClosedDate": "2010-01-19T16:55:40.793-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I'm back to fiddling with Rawr again after a couple weeks break, and now Enhance seems to be broken for me.\n \nAny time the model is loaded, the CPU usage goes up for a bit, the stats window changes like it's going to load, and then it just... stops... Rawr becomes unresponsive and I have to SIGTERM mono.\nI worked on it a little bit and discovered that if I disable all item filters, the problem goes away, but that's not very useful. :) I put some MessageBoxes at various locations in the code and I can't really see where or why it is stopping.\nAfter a bit I decided to bisect the repository and it looks like it breaks at changeset 44777, which is a priority thing fix. I looked at the 44769->44777 diff and not having worked on the Enhance model before, I'm not sure what it changed.\n \nAnyway, I thought I'd post a ticket just in case someone has an idea that I could work with. I'll continue to fiddle with it and see if I can fix it on accident. ^^\n \nI'm attaching the 44769->44777 diff so you guys don't have to go through the hassle of making one. I didn't change anything, so this is not a patch. :)",
+    "LastUpdatedDate": "2013-05-16T05:22:33.077-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-01-07T15:31:08.443-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Enhance] Possible Mono breakage",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15768
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2742,
+      "FileName": "Rawr.Enhance-44769-to-44777.diff",
+      "DownloadUrl": ".\\2742"
+    },
+    {
+      "FileId": 2791,
+      "FileName": "DO-NOT-COMMIT-rawr-enhance-sort-priority-mono-wip1.diff",
+      "DownloadUrl": ".\\2791"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "This was quite a significant change to the priority list code. I had noted that abilities were using their original priority value despite any changes users made. So I introduced a sorting function to assign new priority values based on what users entered. I've never used a Mac so no idea what the issue is but I'd hazzard a guess its something to do with \r\n\r\n_sortedList.Sort(\r\n+                delegate(KeyValuePair<EnhanceAbility, Priority> firstPair, KeyValuePair<EnhanceAbility, Priority> nextPair)\r\n+                {\r\n+                    return firstPair.Value.PriorityValue.CompareTo(nextPair.Value.PriorityValue);\r\n+                }\r\n\r\nI wouldn't worry too much - the beta of Rawr3 should be available soon.",
+      "PostedDate": "2010-01-09T19:12:34.41-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Finally had a chance to mess with Rawr a bit again.\r\n\r\nYour guess seems to be correct. Removing the entire sort operation fixes it. :S\r\nFirst I tried to pull the sort solver out of a delegate and into a separate function, but that was broken too. I think I'm either doing it wrong (never been good with sort) or Mono just doesn't like calling functions from pointers. I'll have to implement a manual sort and see if I can get it working. In the meantime I'll just disable sorting. I really hope that doesn't screw the calculations too much. My PR list is pretty much the default anyway.\r\n\r\nI'd love to frolic in Rawr3 land, but I'm using Linux, so no Silverlight for me. I'll basically have to backport everything when Rawr3 comes out. :(\r\n",
+      "PostedDate": "2010-01-13T09:27:48.233-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "you could easily add a bubble sort.  Inefficient, yes, but extremely simple to do.\r\n\r\nCreate a new List of the same type as _sortedList (call it _returnList).\r\n\r\nfloat savedPri = -1f; KeyValuePair<EnhanceAbility, Priority> savedKVP = new KeyValuePair<EnhanceAbility, Priority>();\r\nwhile (_sortedList.Count > 0) {\r\nforeach (KeyValuePair<EnhanceAbility, Priority> kvp in _sortedList) {\r\nif (kvp.Value > savedPri) { savedPri = kvp.Value; savedKVP = kvp; }\r\n}\r\n_returnList.Add(savedKVP);\r\n_sortedList.Remove(savedKVP);\r\n}\r\n\r\nI haven't debugged this, but the basic algorithm is very simple and works.  It's not efficient, but for small lists it's easy to add.  You'd just replace the \"_sortedList.Sort(delegate(...))\" with your bubble sort, and you should be good to go.",
+      "PostedDate": "2010-01-13T10:13:06.173-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Forgot to add a line.  After _sortedList.Remove(savedKVP); you should have \"savedPri = -1f;\" again, otherwise it will fail to find anything :P",
+      "PostedDate": "2010-01-13T11:33:18.257-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks for the tip. I had to edit your example a bit, but it's still not working. I attached my changes. Did I do it right? It seems like altering _sortedList at all makes it hang. Man I wish it gave me some kind of error or something I could trace. :\\\r\n\r\nEh, I'll just hard-code the priorities in SetPriorityDefaults(). It's probably not worth your valuable dev time to help the 1 Mono/Linux user that refuses to use Windows like everyone else. :)\r\n\r\nOn another note, is there a reason it doesn't just sort _priorityList itself? Seems kind-of silly to have a whole 'nother list just for 1 reference. Especially when they're basically the same.\r\n",
+      "PostedDate": "2010-01-15T10:08:18.777-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-15T10:08:20.63-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Looks like this is fixed in commit 45650 (Enhance: Fix for priority thread safety.)\r\n",
+      "PostedDate": "2010-01-19T16:50:02.557-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-19T16:55:40.793-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T19:50:45.903-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:30:45.757-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:33.077-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

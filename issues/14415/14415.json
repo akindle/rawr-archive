@@ -1,0 +1,95 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.TankDK",
+      "DisplayName": "Rawr.TankDK"
+    },
+    "ClosedComment": "Fixed 37568",
+    "ClosedDate": "2009-10-16T02:06:15.577-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "As i went from V.2.2.21 to 2.2.22, i loaded my saved profiles into the new version. I noticed some extreme differences, due mainly in threat but overall score as well and stat value. As you said, you updated many of the modules in this version... I think a few coefficiants are set wrong somewhere in the DK tank setup.\n \n-MAJOR ISSUE- The \"to hit\" \"to parry\" and \"to dodge\" the boss displays are bugged and are unaffected by stat changes completely, causing stat and upgrade valuation to deviate terribly.\n \n-MAJOR ISSUE- The total score is coming out to roughly 3 times what it used to, and the TPS, which was about 17k at best is estimating 67k TPS!!! This CANNOT be right... can it?\n \n-Minor Issue- The new version grossly values Agility for some odd reason, while this very well may be accurate.... gaining .02% armor for each 10 agi (11 raid buffed?) could be right, but it seems a bit high, as when i tried agi stam gems before, the ammount was less, about .007 per 10. \n \n-Minor Issue- The Setup also greatly values STR to an extreme, to the point where the 25 badge dps sigil beats the 25 badge tank sigil. 200 STR is NOT > 200 dodge... is it? I doubt it..... Using the DPS sigil raises TPS by about 3k (once again, refer to 2nd issue) and total score by the same. I mark this as a minor issue due to my second major issue of threat and values being incorrect.\n \n-Minor Issue- The enchant valuation seems off as well. Up until now, 240 armor has always been shown as by-far the best for DK tanks (if this was incorrect in previous versions, forgive me here). Now it is valuing Armsman as better, if only slightly. Same for AGI to cloak beating 225 armor, which has always been somewhat close, but the armor had a good bit on the AGI before, roughly 33% more value. 275 hp to chest has also been one upped by +10 stats, which had always been about 60% of the valuation of 275 hp.\n \nOverall, the avoidance and armor stats seem to work as they always have, with some discrepencies due to the overvalue(?) of AGI. If i have missed something, be it another issue or a valid point as to why these values ARE correct, please leave comments of what they are, and why.\n \n-Hope to see it fixed soon, Piro",
+    "LastUpdatedDate": "2017-11-27T11:04:27.857-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "High",
+      "Severity": 150,
+      "Id": 3
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-10-13T07:14:30.573-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[TankDK] Severe Issues",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14415
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "It sounds like some more talents for threat may have finally been implemented, thus you're seeing the higher threat values. If you don't want to weight threat so highly, click the options tab and lower the slider.",
+      "PostedDate": "2009-10-13T08:31:14.213-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I agree 200 STR is NOT > 200 dodge... That was actually the key thing I wanted fixed for this release.  Got the parser in, but it sounds like some of my refactoring made it into the release build by accident.  I thought I had validated the numbers that I was seeing.\r\n\r\nSVN isn't letting me connect right now, so I can't diff the 2 builds, to see what's going on.  \r\nMy current checked out files are a mess w/ the meat of the refactoring and I hope to have them done in the next day or so.  \r\n\r\n",
+      "PostedDate": "2009-10-13T09:05:39.563-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok... Found where parryrating was getting blasted when I was bringing in the str -> parryrating values.\r\nI'm sure there's more to be found.",
+      "PostedDate": "2009-10-13T10:14:01.85-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "-Minor/major Issue- Hit rating is not affecting tanking dks at all. Zilch effect.",
+      "PostedDate": "2009-10-13T11:50:54.117-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Completed: At revision: 37568  \r\n\r\nPlease review your issues and let me know if there are any remaining.  ",
+      "PostedDate": "2009-10-15T11:23:29.35-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-15T11:23:47.613-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-16T02:06:15.577-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:42:14.79-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:32:27.317-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:52.88-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:04:27.857-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

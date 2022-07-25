@@ -1,0 +1,146 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.RestoSham",
+      "DisplayName": "Rawr.RestoSham"
+    },
+    "ClosedComment": "Trinkets appear to be working as intended in most recent commit",
+    "ClosedDate": "2010-05-21T18:07:57.897-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Um, I hate to bring it up again, but RestoSham is acting really weird again. Would have posted this sooner, but I've been away.\n \nEver since #43290, there has been a /huge/ change in the calculation results. It looks like triggers might be broken again. All of a sudden any trinkets with Use:SP effects are being waaaaay over-valued. The test case this time is the Talisman of Resurgence. If I'm doing it right, 599 SP for 20s/2m should average to ~100 SP right? Equipping it (over an empty slot) makes the SP field go up by 601 (already took out the 22 SP from Ancestral Knowledge/Nature's Blessing from the Int). This looks like special effect cooldowns are not being honored and effects are counted as being up the entire fight.\n \nAnother weird thing; Previously, the difference between MAPS and MUPS was around 20, but after #43290, MAPS took a huge dive and now the difference is around 140! This must be a mistake; without a doubt it takes me longer than 2 minutes to go OOM with raid buffs, even when spam healing. Maybe this has to do with #43290's mana restore proc change?\n \nI'll attach my character file this time so you can make sure it's not just me this stuff is happening to. (...and so you can hunt me down and yell at me in /tell for posting too many vexing bug reports. ;P )\n \nSeriously though, if you want to think aloud in these bug reports about what you think might be going on, I'll do everything I can to help you figure it out. Two heads banging against a wall will surely make a bigger hole (or at least a bigger bloody spot. >.>) right? ;)",
+    "LastUpdatedDate": "2013-05-16T05:22:59.46-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-12-14T11:06:55.93-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[RestoSham] Yay more trigger fun-ness! :D",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15416
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2628,
+      "FileName": "Laraine-Restoration.xml",
+      "DownloadUrl": ".\\2628"
+    },
+    {
+      "FileId": 2641,
+      "FileName": "rawr-restosham-trigger-fix-wip1.patch",
+      "DownloadUrl": ".\\2641"
+    },
+    {
+      "FileId": 2645,
+      "FileName": "rawr-restosham-trigger-fix.diff",
+      "DownloadUrl": ".\\2645"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Most recent update should bring the use trinkets back in line, and mana restoration should be a little closer to realistic.  Note, the RT+CH+LHW means you are RT, CH, and then enough LWH's to fill the cooldown back to Riptide, so it uses more mana then you probably actually use.  It's part of the research i've been doing, happen to have a raid parse handy?  I've found that the only way the model will really get better is by refining down the sequences, or adding in a 'set your own % spells' feature.",
+      "PostedDate": "2009-12-15T06:59:53.08-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I don't have a parse available unfortunately, but I can tell you that I don't really follow that \"rotation\". Some times I just to do a couple CHs or I skip CH altogether (which would make it burst). I do drop Riptide nearly every cooldown though, which is why I've been keeping my T8 2-piece (it's part of my healing \"style\", don't know if that is the best way). RT-CH-LHW is just \"pretty close\" to how I heal, in that it includes all the spells I use regularly in roughly the same order, but I usually switch it up a bit. In any case, MUPS was extremely high in that revision. Lately I've even been dropping MP5 gear because I can end a really bad 12-minute Northrend Beasts fight with 30% of my mana left. It may have just been a problem with the triggers again though.\r\n\r\nLooking at the code, it looks like RT+LHW and RT+CH+LHW is just the first part and 2 LHWs, maybe you could calculate the cast times on stuff and see how many LHW casts you can fit into a RT cooldown? With various levels of haste, you might be able to do 3-4 LHWs before a 6-second RT is up. (1.5s RT GCD+2.5s CH+1.5s*2 = 7s \"rotation\", and I know having that little haste isn't viable, but still. :P ). Actually, now that I look at it, 1.5s RT GCD+1.5s*2 LHW is only 4.5 seconds. Shouldn't RT+LHW*2 be RT+LHW*3? With enough haste, you might even be able to do RT+LHW*4. In any case, giving RT+* rotations a variable number of LHWs based on haste would give the T8/2 bonus some value.\r\n\r\nOh yeah, I don't know if you got the mail I sent you a while back, but I still have a copy of CalculationsRestoSham.cs that I've filled with comments about anything and everything I've noticed about the code, if you wanted to take a look at it.\r\n",
+      "PostedDate": "2009-12-15T09:51:17.033-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Oh, it currently does try to fit in as many LHW as possible before the cooldown refreshes I believe.  However, all that aside, is the use trinket working better along with the rest of things?",
+      "PostedDate": "2009-12-15T10:55:48.563-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Looks like it is still broken, every trinket I checked (talisman of Resurgence, Energy Siphon, Winged Talisman, Cannoneer's Morale, and even some other effects like Meteorite Crystal (MP5) and Scale of Fates (Haste)) just applies the full effect without averaging it out based on cooldown.\r\n\r\nit looks like only effects with on-use triggers are affected. \"chance-on-X\" triggers seemed to work as expected.\r\n\r\nI'll try to make some custom trinkets with various effects and see if I can get some more information.\r\n",
+      "PostedDate": "2009-12-15T12:02:06.843-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Alrighty, I did a bit of work on this tonight and I learned a couple things. The reason use effects are not being modified by their uptimes is because the Trigger.Use code uses the effect duration as the fight duration. Changing if from effect.Duration to FightSeconds brought it much closer to reality. It still looks a little bit off though, so I'm going to be working with that tomorrow. I'm also not sure that the effect stuff for mana restore actually needs to be there. I'm still working on it.\r\n\r\nAnyway, I've attached a patch that shows what I've changed so far in case you're wondering what I'm up to. Note that this doesn't appear to completely fix the issue at hand. I'm just uploading it so you can have a look at it while I'm asleep tonight. So don't consider it a fix patch. Hope it helps! :)\r\n",
+      "PostedDate": "2009-12-16T00:51:58.887-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-16T00:52:00.103-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Poked at it again today. Changing the Trigger.Use lines to: \"effect.AccumulateAverageStats(statsProcs, 0f, 1f, 0f, FightSeconds);\" makes use triggers work as expected over the course of a bunch of tests.\r\n\r\nHere's the another patch. I put the mana restore trigger code back in as Tears of the Vanquished wasn't working without it. The Insightful meta was still working, so that's why I originally removed it. Is there a reason they both aren't covered by the same code?\r\n\r\nAlrighty, to test ManaRestore procs, I created a completely blank character; No gear, no talents, no buffs. Disabled everything in the options panel, set the fight to 1 minute and set both styles to \"LHW Spam\". I'm using the new \"Mana Available\" value for testing this. At this point, it is the same as the base mana pool.\r\n\r\nI took Tears of the Vanquished and replaced the static Intellect with Stamina, then I changed proc effect to be 500 ManaRestore on use every 2 minutes. I equip it and Mana Available jumps up by 508. Not sure where the extra 8 is coming from (MP5 is 0), but whatever. It looks okay. Since I couldn't edit the Insightful Earthsiege Diamond procs correctly, I edited Powerful Earthsiege Diamond instead; I removed it's stats (sans the Stamina) and added a proc for 500 ManaRestore on use every 2 minutes. I stuck it in a hat with no useful stats (Mask of Lethal Intent) by itself. Again, Mana Available went up by 508. Looks like it is working again. Just to be sure I changed the triggers on the test items to TriggerSpellCast and got the same results.\r\n\r\nFixed?",
+      "PostedDate": "2009-12-16T12:06:11.343-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-16T12:06:18.467-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I opened my saved character in 2.3.3, and it's still overprioritizing the on-use trinkets. Is the model still broken, or do I have bad data saved?",
+      "PostedDate": "2009-12-18T17:14:59.877-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I fixed this in patch #4687. It's in the patches section. Unfortunately, it didn't make it into 2.3.3 (which advertises fixed trinkets). :(",
+      "PostedDate": "2009-12-18T18:01:48.037-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Excuse my noobishness - is there a way I can apply this patch at home? I don't have VS, compilers, or any other dev paraphernalia. I downloaded the .patch file but I have no idea what to do next.",
+      "PostedDate": "2009-12-18T21:27:03.417-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Wish I could help you with that, but I use a completely different and incompatible with 99% of computers development system than probably all the other developers because I'm speshul. :)\r\n\r\nI want to say you need Visual Studio or something, and probably a .NET SDK of some kind. I haven't developed on Windows in many years, so I wouldn't know. :(",
+      "PostedDate": "2009-12-18T23:48:09.473-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Main reason the triggers appear in two locations is how the model uses the mana created by them.  Should be working in 44333.  Let me know if it's not.  And the holidays are keeping me away off and on, hence the long responses.",
+      "PostedDate": "2009-12-19T13:16:43.293-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-18T08:24:08.677-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Are these issues still going on in the most recent release/commit?",
+      "PostedDate": "2010-04-21T22:15:44.87-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-05-21T18:07:57.897-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:21.13-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:59.46-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

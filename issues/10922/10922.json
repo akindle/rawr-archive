@@ -1,0 +1,81 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Tree",
+      "DisplayName": "Rawr.Tree"
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-08T06:55:16.237-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I'm still getting some strange results in Rawr.Tree.  I was unable to replicate exactly the same issue that I had before, with the +10 vs. +8 Spirit, but now I'm getting it telling me that Brilliant Lionseye is my best gem.\n \nI checked my rotations, and it seems sensible.  Its' giving me LB(stack), Rejuv, LB, LB, repeat.  As I mentioned over at EJ, I'm still noobish on Tree, so I haven't really settled out the rotation question completely.  But it passes the sanity check.\n \nThe attached xml is showing +10 intellect as my best gem.  I tried looking at the \"Relative Stat Values\" instead of the gems directly, but it seems like it's still over-valuing intellect with this gear set.  +10 Int shouldn't be beating out +10 Spirit, according to everything I think I know about Tree.\n \nAs an experiment, I replaced the +heal Oshu'gun trinket with the Violet +40 intellect.  When I do that, the gem values and the Relative Stat Values snap back to values that are much more in line with my expectations.\n \nI looked the Rotations, both before and after, and for some reason the +intellect is affecting my cycle length, without actually affecting my *cycle*.\n \nWith the Oshu'gun trinket equipped:\n \n6.0s: Lifebloom Stack, Rejuvenation, Lifebloom (No Aura), Lifebloom (No Aura)\n6.0s: Lifebloom Stack, Rejuvenation, Lifebloom (No Aura), Lifebloom (No Aura)\n0.80s Dead time in the rotation\n1.60s per cast\n \nWith the Violet trinket:\n \n6.0s: Lifebloom Stack, Rejuvenation, Lifebloom (No Aura), Lifebloom (No Aura)\n6.0s: Lifebloom Stack, Rejuvenation, Lifebloom (No Aura), Lifebloom (No Aura)\n0.30s Dead time in the rotation\n1.54s per cast\n \nIt's pretty clear that the rotation with less dead time is going to have better HpS, simply through more casts in less time.  But it's not clear what this \"dead time\" is, and why it's being changed when my intellect changes?",
+    "LastUpdatedDate": "2017-11-27T11:05:36.987-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-08-05T17:46:56.927-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Tree] Healing rotations",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 10922
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1203,
+      "FileName": "Jed-Tree.xml",
+      "DownloadUrl": ".\\1203"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Well, the fight is only 5 minutes. This means a higher emphasis will be put on int. You also innervate yourself, this also puts a higher emphasis on int.\r\nThere is no arcane intellect selected as buff, but +50 spirit (we don't even have a priest with that talent in the guild, but we sure do have mages). With int and no spi buff, heal/spi is better than heal/int even for a short 5-minute fight.\r\nNote that due to the new mana-regen formula, int is an important stat for trees (especially if you innervate yourself). If it lags too much behind spirit, it will be seen as better than spirit. The sweet spot seems to be keeping int close to spi if you want to keep things optimal.\r\n\r\nThe dead time is the difference between the time your rotations take you to cast and the actual time the solver decided to wait (12.8 seconds, 0.8 seconds of which are dead time, just filler). Since you increased your total mana pool by increasing int, the solver decides that you can keep a tighter rotation (recasting a LB Stack sooner, and keep casting the other spells as well).",
+      "PostedDate": "2008-08-05T22:40:12.087-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-08T06:55:16.237-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T17:44:29.67-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:09:45.937-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:36.487-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:27:04.947-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:05:36.987-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

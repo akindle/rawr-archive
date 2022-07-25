@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "178203",
+    "ThreadId": "52992",
+    "Html": "The current Cat model, works on a model that looks at the whole fight as a single thing: calculate total energy available in the fight, subtract energy to keep rake, mangle and SR up. Use remaining energy, to generate CPs to spend on RIP/FB/both. It doesn't worry about the details of what ability to use next.<br>\r\n<br>\r\nI just checked in Patch 33030. This patch adds checks to the Cat model, to cater for the variability of CP generation due to crits, i.e. if your on 4 CP and get a crit, the 6th CP is wasted. (The result is that the predicted DPS of the cat model will drop slightly. Mine was about 2%).<br>\r\nFor Savage Roar, CP listed, is the normal value you would use, but a crit might allow you to use a longer duration SR. (But if you normally aim for 5, the crit will again just be wasted).<br>\r\nThe result of this, is that 4pt SR works slightly more favourable than 5pt.<br>\r\n<br>\r\nThis starts modelling the discrete nature of CPs slightly better. What is still bothering me in the model, is the relative timing that isn't being modelled (this is important due to the limited energy pool and that finishers use all CPs, you cannot have carry-over between them). With a short SR duration (2/3 pts), I can see how you can create a &quot;cycle&quot; where the RIP and SR buffs are equal lengths. Extra CP+Energy could become FB. <br>\r\nFor longer SR durations, you need to look at refreshing RIP, before SR, this means at some point, you have a sequence: ..., <strong>SR1, build CP1, RIP1, build CP2, RIP2, build CP3, SR2, build CP4, RIP3,...</strong>&nbsp; <br>\r\nMy problem is that <strong>RIP1</strong>, only needs to last for <strong>build CP2</strong> (5CPs), before <strong>RIP2</strong> gets applied, while <strong>RIP2</strong>, needs to last for <strong>build CP3, SR2, build CP4</strong> (10CPs?). Does that mean we clipped <strong>RIP1</strong> badly, or rested during&nbsp; <strong>build CP2 </strong>(wasting energy?)<strong> </strong>or had a FB in there as well? Or does <strong>RIP2</strong>, drop off before we get to apply <strong>RIP3</strong>? Or where does the energy for the faster CP generation in <strong>build CP3 </strong>and<strong> build CP4</strong> come from? Tigers Fury and a full energy bar at <strong>SR2</strong>, can help some, but doesn't seem enough to me. Mangle spam as a cheaper source of energy here? Whichever way you go seems to result in lost dps to me. <br>\r\n<br>\r\nI did a quick test against a target dummy yesterday and was about 15%\r\nbelow rawr's dps value. But I'm guessing better players can get closer.<br>\r\n<br>\r\nSo the question is, how accurate do we want or need to model? And how close can good players get to the ratings reported by rawr? <br>\r\nHopefully someone can give me hints on how this works, so that only my dps gets boosted and the model doesn't need to get nerfed.<br>\r\n&nbsp;<br>\r\n",
+    "PostedDate": "2009-04-11T10:43:25.133-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "178214",
+    "ThreadId": "52992",
+    "Html": "<div>(Note to developers: Do not modify the functionality of other peoples models without asking. If you're just adding a param to an overridden method or something, and need to replicate the change in all models, or anything like that, that's fine. But don't change actual functionality without asking.)</div><div><br></div>I've undone these changes, and will work on implementing accurate variability of combo point usage when I have time.",
+    "PostedDate": "2009-04-11T11:39:41.063-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "178379",
+    "ThreadId": "52992",
+    "Html": "I implemented this feature using accurate chances of getting extra combo points due to crits.<div><br></div><div>For anyone interested in the math:</div><div><br></div><div>c=chance to crit, h= (1-c)</div><div><span style=\"white-space:pre\">\t\t\t\t\t</span>Exact CP<span style=\"white-space:pre\">\t\t\t\t</span>Extra CP<br></div><div>When aiming for 1CP: <span style=\"white-space:pre\">\t</span>h<span style=\"white-space:pre\">\t\t\t\t\t</span>c</div><div>When aiming for 2CP:<span style=\"white-space:pre\">\t\t</span>c+hh<span style=\"white-space:pre\">\t\t\t\t\t</span>ch</div><div>When aiming for 3CP:<span style=\"white-space:pre\">\t\t</span>2ch+hhh<span style=\"white-space:pre\">\t\t\t\t</span>cc+chh</div><div>When aiming for 4CP:<span style=\"white-space:pre\">\t\t</span>cc+3chh+hhhh<span style=\"white-space:pre\">\t\t\t</span>2cch+chhh</div><div>When aiming for 5CP:<span style=\"white-space:pre\">\t\t</span>3cch+4chhh+hhhhh<span style=\"white-space:pre\">\t\t</span>ccc+3cchh+chhhh</div><div><br></div><div>ie, if aiming for 4CP, with a 30% crit rate, the chance of getting 5CP is...</div><div>2cch+chhh</div><div>2*.3*.3*.7+.3*.7*.7*.7</div><div>.2289</div><div>22.89% chance to get 5CP, when aiming for 4CP.</div><div><br></div>",
+    "PostedDate": "2009-04-12T13:29:15.62-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

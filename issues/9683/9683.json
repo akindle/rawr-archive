@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "I think I found the issue. Caching wasn't working properly if you enabled meta requirements after it cached the value when meta requirements were disabled. Changeset 16859 should have a fix.",
+    "ClosedDate": "2008-03-17T18:31:50.903-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Prior to 16801, Enforcing Meta Requirements was working fine for me. However with the caching of Total Stats, enforcing meta requirements doesn't work anymore.",
+    "LastUpdatedDate": "2013-05-16T05:27:29.667-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-03-17T09:37:09.75-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Meta Requirements Broken?",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 9683
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I'll take a look.",
+      "PostedDate": "2008-03-17T10:21:23.047-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I made some more tests and I can't find a problem. Changing gear properly disabled the meta gem for me. Can you tell me specifically what model, meta, and gem combo you're having problems with or just attach an xml file with the syptoms.",
+      "PostedDate": "2008-03-17T18:11:11.45-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-03-17T18:31:50.903-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I had added the Enforce Meta Requirements checkbox to the options panel in my retribution model recently(not checked in). It was working with me just setting Character.CalculationOptions[\"EnforceMetaRequirements\"] to \"Yes\" or \"No\" depending on whether the checkbox is checked or not. However now, checking the checbox on or off doesn't make a difference till I comment out the line in GetTotalStats() in Item.cs which loads from cache. \r\n\r\nIf you think it's working fine, I'll give it another go.",
+      "PostedDate": "2008-03-17T18:33:21.28-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:37:07.84-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:27:29.667-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

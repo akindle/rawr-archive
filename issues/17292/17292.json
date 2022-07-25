@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSDK",
+      "DisplayName": "Rawr.DPSDK"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-04-25T20:53:07.973-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When loading a DPS DK (Blood) from armory, I get multiple (20ish) instances of the following error:\n \n[Arg_DivideByZero]\nArguments:\nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=3.0.50106.0&File=mscorlib.dll&Key=Arg_DivideByZero\n \n   at Rawr.DPSDK.BloodCycle.GetDamage(Int32 fightDuration)\n   at Rawr.DPSDK.CalculationsDPSDK.GetCharacterCalculations(Character character, Item additionalItem, Boolean referenceCalculation, Boolean significantChange, Boolean needsDisplayCalculations)\n   at Rawr.Calculations.GetCharacterCalculations(Character character, Item additionalItem, Boolean referenceCalculation, Boolean significantChange, Boolean needsDisplayCalculations)\n   at Rawr.UI.MainPage.character_CalculationsInvalidated(Object sender, EventArgs e)\n   at System.EventHandler.Invoke(Object sender, EventArgs e)\n   at Rawr.Character.OnCalculationsInvalidated()\n   at Rawr.UI.MainPage.ItemCacheInstance_ItemsChanged(Object sender, EventArgs e)\n   at Rawr.ItemCacheInstance.OnItemsChanged()\n   at Rawr.ItemCacheInstance.AddItem(Item item, Boolean raiseEvent)\n   at Rawr.ItemCache.AddItem(Item item, Boolean raiseEvent)\n   at Rawr.Item.armoryService_GetItemCompleted(Object sender, EventArgs`1 e)\n   at Rawr.ElitistArmoryService.bwParseItem_RunWorkerCompleted(Object sender, RunWorkerCompletedEventArgs e)\n   at System.ComponentModel.BackgroundWorker.OnRunWorkerCompleted(RunWorkerCompletedEventArgs e)\n   at System.ComponentModel.BackgroundWorker.<OnRun>b__1(Object state)",
+    "LastUpdatedDate": "2017-11-27T11:04:38.297-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-04-17T13:49:39.793-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSDK] Unhandled Exception - Div by Zero",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17292
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

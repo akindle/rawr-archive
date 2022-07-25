@@ -1,0 +1,151 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Mage",
+      "DisplayName": "Rawr.Mage"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-04-18T23:50:07.287-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Rawr.Mage Sequence Reconstructor crashes when loading FFB_opt.xml. FFB.xml, which afaik simply contains less items, does not crash.",
+    "LastUpdatedDate": "2017-11-27T11:01:47.983-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-04-17T23:03:30.303-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Mage] Sequence Reconstructor",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13037
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1808,
+      "FileName": "FFB_Opt.xml",
+      "DownloadUrl": ".\\1808"
+    },
+    {
+      "FileId": 1809,
+      "FileName": "FFB.xml",
+      "DownloadUrl": ".\\1809"
+    },
+    {
+      "FileId": 1810,
+      "FileName": "ItemCache.xml",
+      "DownloadUrl": ".\\1810"
+    },
+    {
+      "FileId": 1811,
+      "FileName": "Talents.xml",
+      "DownloadUrl": ".\\1811"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "System.NullReferenceException: Object reference not set to an instance of an object.\r\n   at Rawr.Mage.SequenceReconstruction.Sequence.SplitAt(Int32 index, Double time) in Sequence.cs:line 813\r\n   at Rawr.Mage.SequenceReconstruction.Sequence.GroupCooldown(List`1 cooldownItems, Double maxDuration, Double cooldown, Boolean combustionMode, Boolean coldSnapMode, Cooldown type, VariableType activation, Double activationDuration) in Sequence.cs:line 1405\r\n   at Rawr.Mage.SequenceReconstruction.Sequence.GroupIcyVeins() in Sequence.cs:line 1070\r\n   at Rawr.Mage.CharacterCalculationsMage.GenerateRawSequence(Boolean ignoreSegments) in CharacterCalculationsMage.cs:line 715\r\n   at Rawr.Mage.CharacterCalculationsMage.ReconstructSequence() in CharacterCalculationsMage.cs:line 612\r\n   at Rawr.Mage.CharacterCalculationsMage.GetCharacterDisplayCalculationValuesInternal(Boolean computeReconstruction) in CharacterCalculationsMage.cs:line 860\r\n   at Rawr.Mage.CharacterCalculationsMage.GetCharacterDisplayCalculationValues() in CharacterCalculationsMage.cs:line 756\r\n   at Rawr.FormMain._character_ItemsChanged(Object sender, EventArgs e) in FormMain.cs:line 425\r\n   at Rawr.FormMain.set_Character(Character value) in FormMain.cs:line 271\r\n   at Rawr.FormMain.LoadCharacterIntoForm(Character character, Boolean unsavedChanges) in FormMain.cs:line 780\r\n   at Rawr.FormMain.bw_LoadSavedCharacterComplete(Object sender, RunWorkerCompletedEventArgs e) in FormMain.cs:line 858\r\n   at System.ComponentModel.BackgroundWorker.OnRunWorkerCompleted(RunWorkerCompletedEventArgs e)\r\n   at System.ComponentModel.BackgroundWorker.AsyncOperationCompleted(Object arg)\r\n",
+      "PostedDate": "2009-04-17T23:05:06.26-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-04-17T23:05:07.773-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Itemcache attached.",
+      "PostedDate": "2009-04-17T23:06:31.333-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-04-17T23:06:38.487-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Talents attached.",
+      "PostedDate": "2009-04-17T23:07:12.953-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-04-17T23:07:15.47-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I don't get a crash, but I get \"no item returned from armory\" errors when loading it even when using your item cache.",
+      "PostedDate": "2009-04-18T01:47:18.957-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The armory error I assume is expected, since there are some Ulduar items. Is there any other file I can give you to help repro the issue?",
+      "PostedDate": "2009-04-18T01:49:59.363-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok I found something that might be related with this, give it another try.",
+      "PostedDate": "2009-04-18T02:13:01.28-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Works great now, thanks!",
+      "PostedDate": "2009-04-18T19:12:30.833-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-04-18T23:50:07.287-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:32:49.537-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:34:22.25-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:24.073-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-21T00:00:21.103-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:48.687-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:48.7-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:01:47.983-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

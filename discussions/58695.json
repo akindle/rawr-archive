@@ -1,0 +1,218 @@
+[
+  {
+    "Id": "198736",
+    "ThreadId": "58695",
+    "Html": "<p>I know that there has been some work done already that has improved greatly the way haste is evaluated in Rawr for warlocks.&nbsp;</p>\r\n<p>It seems though that there are still major issues where haste is not being calculated or evaluated properly, especially when playing around with the Options-&gt;Brain/Game Latency slider.&nbsp;</p>\r\n<p>I've been playing as 0/13/58 with 4 pc T8.5 but been unable to match the DPS of a fellow warlock guildie with comparable gear during Ulduar raids.&nbsp; Since both of us use the same spell priorty/rotation I figured it may have to do with latency and how crit and haste scale.&nbsp; His gearset has roughly 26% crit were as I am only around 19%.&nbsp; On the other hand my haste is also comparably higher than his by 7% or so.&nbsp; I do have some relatively high latency (between 200ms - 300ms most of the time).</p>\r\n<p>I've run the optomizer several different times with several different latency options selceted (100ms default, 125ms, 184ms, 185ms, 200ms, 225ms, 226ms, 300ms).&nbsp; With each run of the optomizer I get different gear/gem reccomendations.&nbsp; At times they make sense, but at other times I have asked myself what is Rawr thinking?&nbsp; Looking at the &quot;Haste Rating Gain&quot; drop down and then playing with the &quot;Brain/Game Latency&quot; slider shows some really weird results.&nbsp; 8 haste gives 0 dps boost where as 7 gives 22 dps boost?&nbsp; 34 haste gives more dps boost than 47 haste?&nbsp; This are just some examples.</p>\r\n<p>Any case, I know that the Warlock module really hasn't been mentioned in the patch note area of the last 2-3 updated releases so I was hopin the community may get some kind of update on the progress of things involving Haste.</p>\r\n<p>Thanks!&nbsp;</p>",
+    "PostedDate": "2009-06-07T07:58:50.167-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "199156",
+    "ThreadId": "58695",
+    "Html": "<p>This seems to be effecting many caster classes.</p>\r\n<p>For my Elemental Shaman I've been playing around and it is counting Haste rating as Negative DPS at almost every interval. I haven't found a way to get around this, and it makes RAWR almost useless right now for me because any piece with Haste Rating on it (most Elemental gear...) is downgraded so low its impossible to get an accurate representation of gear.</p>\r\n<p>At one point it rated Voice of Reason as being worse than Saronite Protector.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-06-08T10:58:14.417-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "199529",
+    "ThreadId": "58695",
+    "Html": "<p>We are aware of the haste-issues in Rawr.warlock. In fact, it's all we've been working on lately. For affliction we have it working quite ok now, but destro needs a lot of work still unfortunatly. We're trying to pick up the pace again.</p>",
+    "PostedDate": "2009-06-09T07:17:06.817-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "199569",
+    "ThreadId": "58695",
+    "Html": "<p>Thanks for the update.&nbsp; I really appreciate all the hard work you guys are putting into this free tool.&nbsp; As the previous poster stated Rawr is basically non-functional at the moment due to mis-weighting things.</p>\r\n<p>Hopefully there will be some new updates with the next release!</p>",
+    "PostedDate": "2009-06-09T09:21:33.403-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "204274",
+    "ThreadId": "58695",
+    "Html": "<p>/bump</p>\r\n<p>New version of Rawr, no patch notes mentioning haste issues are even partially corrected.</p>\r\n<p>Any updates?</p>",
+    "PostedDate": "2009-06-22T17:46:45.2-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "204311",
+    "ThreadId": "58695",
+    "Html": "<p>Fes/Issa, still there? :)</p>",
+    "PostedDate": "2009-06-22T20:20:06.913-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "204456",
+    "ThreadId": "58695",
+    "Html": "<p>Hello,</p>\r\n<p>I'm not in the developer team but i think those modifications could solve the haste issue for most destruction spell (If someone of the team could just <strong>Test it</strong> and apply them if Okay)</p>\r\n<p>In Project &quot;Rawr.Warlock&quot; : File : Spell.cs : lines 415, 458, 909, 1113</p>\r\n<p>Replace <strong><em>BaseCastTime -&nbsp; &quot;Talent reduction&quot; </em></strong>by <strong><em>(</em></strong><strong><em>BaseCastTime -&nbsp; &quot;Talent reduction&quot; </em></strong><strong><em>) / (1 + stats.SpellHaste)</em></strong></p>\r\n<p>&nbsp;</p>\r\n<p>Sorry for even bad English,</p>\r\n<p>Bye</p>",
+    "PostedDate": "2009-06-23T05:25:43.03-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "204668",
+    "ThreadId": "58695",
+    "Html": "<p>I'm looking forward to this being corrected.&nbsp; I think rawr has great potential for warlock modelling.&nbsp; I'm currently using both rawr and bakka's spreadsheet.&nbsp; Currently the gear sets are not being generated optimal for me using rawr (probably this haste issue; about 900dps difference).</p>\r\n<p>Works great for my paladin and dk though.</p>\r\n<p>Excellent work by all involved!!&nbsp; Your time is appreciated.&nbsp; If i could program outside of dos, i'd be glad to help:)</p>\r\n<p>-xone</p>",
+    "PostedDate": "2009-06-23T14:31:09.033-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "204770",
+    "ThreadId": "58695",
+    "Html": "<p>Bakka has quit wow, so his spreadsheet will soon be outdated.&nbsp; I love the concept of Rawr and just hope to see it working for locks sometime soon.</p>",
+    "PostedDate": "2009-06-23T19:50:36.81-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "205730",
+    "ThreadId": "58695",
+    "Html": "<p>/bump&nbsp;&nbsp; wondering the same thing</p>",
+    "PostedDate": "2009-06-25T18:13:10.247-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "206429",
+    "ThreadId": "58695",
+    "Html": "<p>You guys still there working on the lock module?</p>",
+    "PostedDate": "2009-06-28T19:07:55.897-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "206444",
+    "ThreadId": "58695",
+    "Html": "<p>im still waiting for a reponse, they must be done with wow, or busy with rl</p>",
+    "PostedDate": "2009-06-28T20:33:30.093-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "206764",
+    "ThreadId": "58695",
+    "Html": "<p>I assume they are working on the changes to 3.2 as well as correcting the outstanding haste issues.&nbsp; I wouldn't get too worried.</p>\r\n<p>Note that Bakka's (formerly Leulier's) spreadsheet is still working (at least until 3.2; www.bakkadps.com).&nbsp;</p>\r\n<p>I for one, cannot wait for rawr to get these issues ironed out.&nbsp; It looks very promising.</p>\r\n<p>-xone</p>",
+    "PostedDate": "2009-06-29T13:53:53.423-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "209052",
+    "ThreadId": "58695",
+    "Html": "<p>Hello.</p>\r\n<p>&nbsp;</p>\r\n<p>Any update on the progress of the warlock module?&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>Thanks</p>\r\n<p>-xone</p>",
+    "PostedDate": "2009-07-06T11:05:57.697-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "209565",
+    "ThreadId": "58695",
+    "Html": "<p>Its been over a month since anything with warlocks and the haste issues has been updated/patched...</p>\r\n<p>Is the warlock class module still being supported?</p>",
+    "PostedDate": "2009-07-07T10:03:50.563-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "210070",
+    "ThreadId": "58695",
+    "Html": "<p>I'd like to take a shot at trying to identify potential issues with haste handling. I've already found a couple things that can be fixed (drain soul/drain life incorrectly using haste, reliance on using haste rating instead of letting the rawr engine calculate haste on its own), but am a little confused by some of the remaining logic going on. Is there someone out there familiar with this code that's a developer that would have some time to try and work through some of these issues?</p>\r\n<p>I've also opened a ticket on GetSpellCastNew not ever really wanting to fire drain soul if it's not the only spell in the rotation, also. If there's a current developer that's working on this, please contact me!</p>",
+    "PostedDate": "2009-07-08T10:25:36.037-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "211381",
+    "ThreadId": "58695",
+    "Html": "<p>/ bump</p>",
+    "PostedDate": "2009-07-13T10:04:20.703-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "211391",
+    "ThreadId": "58695",
+    "Html": "<p>There's <em>still</em>&nbsp;no progress on the Warlock module, because we <em>still</em>&nbsp;don't have a Warlock dev. Please spread the word to the Warlock theorycrafting community that we're in need of an experienced Warlock theorycrafter / C# developer.&nbsp;</p>",
+    "PostedDate": "2009-07-13T10:23:45.713-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "211555",
+    "ThreadId": "58695",
+    "Html": "<p>I am available to work on the warlock module.&nbsp; I have extensive experience with C# (my day job), and some experience with theorycrafting, but more with Linear and Dynamic Programming.&nbsp; If there was an idea of what was missing/needed changed in the module, I could provide the coding to model it easily enough.</p>",
+    "PostedDate": "2009-07-13T19:24:34.793-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "211560",
+    "ThreadId": "58695",
+    "Html": "<p>Hey, that'd be excellent. Sent me an IM, cnervig@hotmail.com on MSN, or Astro tSD on AIM.</p>",
+    "PostedDate": "2009-07-13T20:06:01.077-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "211755",
+    "ThreadId": "58695",
+    "Html": "<p>Finally :)&nbsp; ShadowWeaver I eagerly await your developments :)</p>",
+    "PostedDate": "2009-07-14T08:57:57.897-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "211815",
+    "ThreadId": "58695",
+    "Html": "<p>If you ever need a hand let me know.&nbsp; I also play a lock and have pretty extensive professional software development experience in addition to theory crafting.&nbsp; Of course, my primary language is Java as opposed to C#...however the jump over is not difficult.</p>",
+    "PostedDate": "2009-07-14T11:59:01.233-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "211957",
+    "ThreadId": "58695",
+    "Html": "<p>I'd love to help out, also, either with testing or implementation. I've got a good amount of C# experience, although my theorycrafting experience is not that extensive.</p>",
+    "PostedDate": "2009-07-14T22:34:08.383-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "212001",
+    "ThreadId": "58695",
+    "Html": "<p>As a good place to start, I believe there are one or more Warlock-centric patches in the Patch queue, which need reviewing and applying; that should be a good jump-start on it. :)</p>",
+    "PostedDate": "2009-07-15T00:51:33.007-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "212050",
+    "ThreadId": "58695",
+    "Html": "<p>i'm a developer and a theoricraft.</p>\r\n<p>busy with rl in the last 3 mounth, i have begin to modify the free code from this site.</p>\r\n<p>if you want , i can help with more time that in past ^^</p>",
+    "PostedDate": "2009-07-15T02:48:57.517-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "212064",
+    "ThreadId": "58695",
+    "Html": "<p>Is the haste issue affecting the grand Spellstone buff?&nbsp; I'm 0/13/58 and when I click that buff - suddenly all the tier 7 pieces are better than tier 8.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-07-15T03:44:19.913-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "212145",
+    "ThreadId": "58695",
+    "Html": "<p>Azraela: The general problem with haste in the warlock module is that certain haste thresholds would cause a dps LOSS due to some bugs existing in the current code which does the simulation. Your observation fits quite neatly in with that, you add a bit of haste (spellstone buff), and suddenly the T8 pieces cause a jump over one of these false cliffs, resulting in the T7 appearing better.</p>",
+    "PostedDate": "2009-07-15T08:11:08.827-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

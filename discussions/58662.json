@@ -1,0 +1,138 @@
+[
+  {
+    "Id": "198596",
+    "ThreadId": "58662",
+    "Html": "<p>Does Rawr work with Macs ? Just need a simple answer is all. Thanks</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-06-06T13:47:40.467-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "198609",
+    "ThreadId": "58662",
+    "Html": "<p>Simple answer: Yes.</p>\r\n<p>See the readme for details.</p>",
+    "PostedDate": "2009-06-06T15:12:30.487-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "198734",
+    "ThreadId": "58662",
+    "Html": "<p>Almost as simple: yes, but not natively.</p>",
+    "PostedDate": "2009-06-07T07:28:33.9-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "198799",
+    "ThreadId": "58662",
+    "Html": "<p>I've got a mac running windows XP on parallels</p>\r\n<p>i tried running this program on it but it says the application failed to initialize properly(0xc0000123)</p>\r\n<p>&nbsp;</p>\r\n<p>Any ideas?</p>\r\n<p>&nbsp;</p>\r\n<p>EDIT: ah i read the readme and found the answer :P</p>",
+    "PostedDate": "2009-06-07T13:48:53.29-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "208310",
+    "ThreadId": "58662",
+    "Html": "<p>i have rawr running under mono 2.2 and osx 10.5.7. what i would like to do is compile it into a .app. im close, just not there yet. here is what i am using to compile:</p>\r\n<p>&nbsp;</p>\r\n<p>macpack -m:1 -o:. -r:/Library/Frameworks/Mono.framework/Versions/Current/lib/ libCocoaSharpGlue.dylib -r:Rawr.base.dll -r:Rawr.Base.XmlSerializers.dll -r:Rawr.exe.config -n:Rawr -a:Rawr.exe</p>\r\n<div>it compiles fine, but when i run rawr form the finder i get a srs errs</div>\r\n<div>&nbsp;anyone know what im doing wrong?</div>\r\n<p>EDIT: i got it. forgot to compile the data directory :P just add &quot;-r:Data&quot; in there with the other -r's</p>",
+    "PostedDate": "2009-07-03T05:50:30.87-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "208331",
+    "ThreadId": "58662",
+    "Html": "<p>Alternatively wait a week or so for Rawr3 which will run natively on a Mac as well as a PC.</p>",
+    "PostedDate": "2009-07-03T07:05:21.107-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "213244",
+    "ThreadId": "58662",
+    "Html": "<p>Any update on the native version of Rawr3, so we can run it on Macs?&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>Was wondering where to download it from, and if there were additional holdups (its been more than a &quot;week or so&quot; :))</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-07-17T16:57:49.76-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "213262",
+    "ThreadId": "58662",
+    "Html": "<p>Yeah, dunno where Levva got the 'week or so' estimate from. It's still in development.</p>",
+    "PostedDate": "2009-07-17T17:57:10.407-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "216039",
+    "ThreadId": "58662",
+    "Html": "<p>Any idea on when Rawr3 will come out? I'm trying to get Mono to work for me, but it's being a pain in the arse. &gt;_&lt; It installs but I can't figure out where the heck it is and it wont show up when I search the computer for it.</p>",
+    "PostedDate": "2009-07-25T14:26:11.38-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "216060",
+    "ThreadId": "58662",
+    "Html": "<p>When it's ready&trade;</p>",
+    "PostedDate": "2009-07-25T17:04:56.467-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "216635",
+    "ThreadId": "58662",
+    "Html": "<p>mono is not an application per se. it doesnt behave the way most mac friendly programs do. the way to access mono after install is to use the terminal app. its kinda tricky to get the hang of because it is a command line interface (think of dos), but if you launch terminal the mono framework is built right in (assuming you installed it :P). now if you would like to get rawr running like a mac friendly application, ie an icon you can click on, run the script i posted above in terminal. first you must navigate to the rawr directory using the cd command. for instance you type &quot;cd users&quot; &quot;cd desktop&quot; &quot;cd rawr&quot;. thats where mine is, yours might be somewhere else, you can always type &quot;ls&quot; if you get lost. (that is LS, not to be confused with IS). and dont forget to add the -r:Data like i did. it will take a few minutes to compile depending on the speed of you machine. beware though, running rawr under mono is SLOOOOOOWWWWWWW and somewhat buggy. the buggieness isnt too bad though. hope that helped.</p>",
+    "PostedDate": "2009-07-27T21:49:48.57-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "226086",
+    "ThreadId": "58662",
+    "Html": "<p>I've located Rawr using Terminal, and 'cd Rawr' yet when I try to input mono Rawr.exe or the command string listed above, even with '-r.Data' I get a message saying the app already exists with the command string, and with 'mono Rawr.exe' I am told there is no such directory, even though LS brings up 'Rawr.app'. Is there something I am doing wrong, or it the best bet to just wait for 3.0?</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-08-20T16:01:02.87-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "226677",
+    "ThreadId": "58662",
+    "Html": "<p>Sounds like you don't have Mono installed.</p>",
+    "PostedDate": "2009-08-22T09:00:37.513-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "226915",
+    "ThreadId": "58662",
+    "Html": "<p>if you see something that says &quot;rawr.app&quot; it means it has already been compiled, at least thats what i would assume. what happens when you run the rawr.app?</p>",
+    "PostedDate": "2009-08-23T22:24:39.183-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "229623",
+    "ThreadId": "58662",
+    "Html": "<p>I am having trouble locating / launching Rawr. The Rawr v2.2.14 folder is on my desktop but when I enter cd rawr from the desktop dir i get and unknown file error message. If I move the rawr.exe file to the desktop and then hit 'mono rawr.exe' I get this message:</p>\r\n<p>* (rawr.exe:2887): WARNING **: The following assembly referenced from /Users/caseybates/Desktop/rawr.exe could not be loaded:<br>&nbsp;&nbsp;&nbsp;&nbsp; Assembly:&nbsp;&nbsp; Rawr.Base&nbsp;&nbsp;&nbsp; (assemblyref_index=4)<br>&nbsp;&nbsp;&nbsp;&nbsp; Version:&nbsp;&nbsp;&nbsp; 2.2.14.0<br>&nbsp;&nbsp;&nbsp;&nbsp; Public Key: (none)<br>The assembly was not found in the Global Assembly Cache, a path listed in the MONO_PATH environment variable, or in the location of the executing assembly (/Users/caseybates/Desktop/).<br><br><br>** (rawr.exe:2887): WARNING **: Could not load file or assembly 'Rawr.Base, Version=2.2.14.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies.<br><br>Unhandled Exception: System.TypeLoadException: A type load exception has occurred.</p>\r\n<p>I am not sure what this means or how I go about having terminal recognize the rawr folder as a directory, I can access certain files with the cd command but not other folders on my desktop. The error message is similar to:</p>\r\n<p>casey-batess-macbook-pro:desktop caseybates$ cd rawr<br>-bash: cd: rawr: No such file or directory</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-09-01T02:18:11.223-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "229752",
+    "ThreadId": "58662",
+    "Html": "<p>The folder is probably named 'Rawr v2.2.14', not 'Rawr', so 'cd rawr' won't work. Rename the folder, or adjust your command. Rawr.exe has to be left in its folder, so it can find all its data.</p>",
+    "PostedDate": "2009-09-01T08:51:54.663-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "229822",
+    "ThreadId": "58662",
+    "Html": "<p>Thank you for the help. Renaming the file worked perfectly I'm not sure why it didn't work when I entered Rawr v2.2.14.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-09-01T11:32:07.857-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

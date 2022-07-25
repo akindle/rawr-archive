@@ -1,0 +1,101 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-09T17:31:17.45-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi!\n \nI started to play with Rawr and the caracter profiler data, and I noticed that the items in the bank/bags were not flagged as available for the optimizer.\n \nRawr 2.2.0b6 - WoW french - Character at line 110000",
+    "LastUpdatedDate": "2013-05-16T05:25:54.03-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-04-06T15:33:33.9-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Character profiler",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 12954
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1776,
+      "FileName": "CharacterProfiler.lua",
+      "DownloadUrl": ".\\1776"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "at line 11063\r\n",
+      "PostedDate": "2009-04-06T15:35:26.517-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Rawr gets information about your character from the Armory. The WoW Armory does not display your bank or bags to the world, so there is no way for Rawr to know about the equipment you have in your inventory unless you tell it or are wearing it.\r\n\r\nYou'll need to find and add the equipment from your inventory yourself.",
+      "PostedDate": "2009-04-06T16:13:37.09-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hy MyrddinE,\r\n\r\nThat's incorrect.  You can also import characters from data output from the CharacterProfiler addon, which will include all items in your bags as well as in your bank.  (I never considered items in your mailbox).\r\n\r\nCorwin:  I'll check out your file and get back to you.\r\n\r\nChar\r\n",
+      "PostedDate": "2009-04-06T17:26:04.923-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hi Corwin,\r\n\r\nThere are two problems going on here, and they are both related to your use of the French version of WoW.\r\n\r\nFirst, in terms of your bank issues, it is because there was no good way to identify items that could be equipped without searching through the tooltip for things like \"Back,\" \"Shoulders,\" and \"Wrists.\"  The problem is that your gear has tooltips in a different language and the code needs to be adjusted for that.  This is to avoid trying to tell Rawr that the healing potion in your bank is also a piece of gear you may be interested in.\r\n\r\nSecond, your talents are not being imported either, and they could be.  The problem is that the talents are being compared against the talents stored in Rawr when the talent tree is populated.  Unfortunately, all the talents in Rawr are listed in English, and your's are listed in French.  When it doesn't find a match for your talents, it ignores them.\r\n\r\nLet me see what I can do.  Solving the talent issue in general may not be too big a deal if I switch the code to use talent IDs instead of talent names.  Unfortunately, for the gear there may be little issue but to start writing things like \"Shoulder\" in as many languages as WoW is playable in.\r\n\r\nChar",
+      "PostedDate": "2009-04-06T17:46:33.377-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I just had a look at the CP data... I can provide you the gear data without any problem but wouldn't it be possible to compare the items ID with the ones stored in the item cache?",
+      "PostedDate": "2009-04-06T23:35:45.77-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "We can't assume that we already have data on every item that you have. Most items in your bags/bank won't be in the item cache, nor should they be.",
+      "PostedDate": "2009-04-06T23:41:49.683-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Of course, but the items that are in the cache are the ones that are interesting, so if the ItemId of an item in a bag matches the ItemID of an item in the cache -> flagged as available\r\n\r\nDunno if that's possible though...",
+      "PostedDate": "2009-04-07T12:17:44.43-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I could do that but I'm afraid you'd be disappointed by the results.  The cache often doesn't have stuff you consider interesting.\r\n\r\nIt actually wouldn't take all that long to enter translations for word like \"back\" and \"chest\" in various languages, I just need to get my hands on the text.\r\n\r\nChar",
+      "PostedDate": "2009-04-07T15:15:28.403-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-09T17:31:17.45-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:58.667-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:54.03-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

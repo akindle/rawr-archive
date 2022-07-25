@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "128579",
+    "ThreadId": "38761",
+    "Html": "Hi, first thanks for this amazing tool.<br>\r\n<br>\r\nI noticed that you said bear calculations are pretty much done, and I know that rawr modifies which gear is best for you based on your stats (if you are not crit immune give more importance to defence/resi, etc etc).<br>\r\n<br>\r\nHowever what I would like to know is if after being crit immune, resi is still taken into account at all for a bear because of dmg reduction to dots.<br>\r\n<br>\r\nAlso, I would like to know which stats count for Survival points and which count for mitigation points if possible. Also, the miss bit, is it my chance to miss the target, or the target's chance to miss me? And one more thing, is total mitigation calculated based on avoidance preDR and avoidance postDR?<br>\r\n<br>\r\nBasically the reason why I am asking this is because I am trying to figure out why rawr classifies S2 feral shoulders as being better than T5 feral shoulders (with same gems) in every single possible scenario except if the tank is already armor capped. In some scenarios, I have noticed that the total mitigation ends up being lower with S2 rather than T5, but rawr still says the S2 shoulders are better than T5 on the graph to the right on the survival points. In this model I'm viewing, it already says that mitigation points of T5 are better than S2 (by roughly 20 points), however survival points are better in S2 by about 800 points (even though there's only 3 stamina difference between them).<br>\r\n<br>\r\nI know that the 3 stamina don't make up 800 points, hence me asking how survival points is calculated and if resi still counts even after crit immune.<br>\r\n<br>\r\n<br>\r\nThanks.<br>\r\n",
+    "PostedDate": "2008-10-29T05:33:47.577-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "128608",
+    "ThreadId": "38761",
+    "Html": "Resilience for DoT reduction is extremely situational and cannot be accurately modeled.&nbsp; There are only a handful of raid encounters where an irremovable DoT is applied to the main tank.<br>\r\n<br>\r\nS2 and T5 are similar ilevels.&nbsp; The reason S2 is statistically better is the bonus armor and diminishing returns.&nbsp; PvP gear did not lose the bonus armor like PvE gear.&nbsp; Also, diminishing returns has made agility less valuable if you already have high dodge rating.&nbsp; The difference between 21 and 34 agility isn't very big if you already have 50% dodge.&nbsp; <br>\r\n<br>\r\nRight now, I think armor is over valued as it is counting for both survival points and mitigation points. Right now, armor is almost equally weighted between survival and mitigation points.&nbsp; For example, I'm in BT tanking gear (4/5 T6, best in slot items pre-Sunwell).&nbsp; Right now, for my glove enchant, Rawr says the 240 armor enchant is almost as good as 15 agility.&nbsp; Even with DR, the +15 agility is .4% more avoidance while the 240 armor is only .04% more mitigation.<br>\r\n<br>\r\nRawr is a tool.&nbsp; Weights like survival or mitigation points are somewhat subjective and you may not agree with Astrylian's weighting.&nbsp; Prior to 3.0, I thought he under-valued stamina once you hit 20K HP.&nbsp; So, I adjusted my thinking and used the tool to compare relative mitigation values.&nbsp; I made judgements on whether .2% mitigation was worth 500 HP.&nbsp; Tanking is not DPS.&nbsp; It cannot be geared strictly from a spreadsheet as decisions between HP, avoidance or armor are subjective and depend greatly on your healers, your style and the encounter.<br>\r\n",
+    "PostedDate": "2008-10-29T07:26:00.473-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "128630",
+    "ThreadId": "38761",
+    "Html": "Thx for your fast reply first of all.<br>\r\n<br>\r\nI am aware that resi for DoT reduction is very situational and impossible to calculate accurately, that is why I wondered if it had *any* weight at all in either survival points or mitigation (after crit immune ofc).<br>\r\n<br>\r\nI agree with you that S2 and T5 are in similar levels, however it's being rated with a difference of 50 points in mitigation and 700 points in survival in my case. I have 37% dodge and 20k armor, so it is true that total mitigation, in my case, does rise from the little extra armor S2 gives, even though dodge drops by about 0.51%. What I still can't see though, is where the difference in 700 points in survival come from.<br>\r\n<br>\r\nThese are the stats of S2 comparing to T5:<br>\r\n<br>\r\n+45.3 HP (after 2x 15sta gems)<br>\r\n-11.2 AP<br>\r\n-0.34% Crit<br>\r\n+298.2 Armor<br>\r\n-0.51% Dodge<br>\r\n<br>\r\nFrom what I saw the armor gained barely covers the dodge lost in terms of total mitigation, hence what I assume are the 50 points in mitigation. But surely 700 points in survival cannot come from the 45.3 HP gained!<br>\r\n<br>\r\nI am just wondering if the fact that the tooltip for crittable/uncritabble is bugged (it always says you need 1 defence rating or 1 resi to be crit immune no matter how much you stack) makes rawr think you are still crittable and therefore gives more important to resi than it should...<br>\r\n<br>\r\n",
+    "PostedDate": "2008-10-29T08:19:58.39-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "128646",
+    "ThreadId": "38761",
+    "Html": "Hey. These calculations are actually correct. S2 really are much better than T5 now, in general. The meaning of the Survival and Mitigation Ratings can be found in Rawr; just mouse over their label. Basically, Survival is effective health, considering only reliable sources of mitigation (Protector of the Pack, Armor, Grace, etc). Mitigation is an inverted measure of the % of total damage that you take, on average.<br>\r\n<br>\r\nIt's important to recognize that these are two different things. Overall Rating is provided as a convenience, but it's not always what you want to maximize (as ken7824 pointed out). Rather, you want to have 'enough' Survival, and then maximize Mitigation. <br>\r\n<br>\r\nArmor has always been (and likely always will be) our most valuable stat, by far; it reduces the damage we take, by quite alot, and is reliable. Also, &quot;+15 agility is .4% more avoidance while the 240 armor is only .04% more mitigation&quot; is flawed. First, 240 armor, even at very high armor values, provides much more than .04% damage reduction, it's more like .15% to .3%, depending on your current armor. Second, you can't compare avoidance and damage reduction like that. They need to be compared in terms of % of damage taken. If you've got 20% dodge, adding 0.4% reduces the damage taken by 0.5%, not 0.4%. If you've got 70% damage reduction, 0.15% more damage reduction actually reduces your total damage taken by 0.5%, not 0.15%. Those levels of dodge and damage reduction are extreme (and not very realistic), but they illustrate that you can't just compare dodge% to damage reduction% like that. 15agi almost always is better than 240armor, but in most situations they really are relatively close, and Rawr reflects that.<br>\r\n<br>\r\nSo S2 is better than T5, because it achieves almost the same Mitigation, using Armor instead of Dodge, and the extra armor and health give it significantly more Survival.<br>\r\n<br>\r\nAlso, no, resil has 0 value when you're uncrittable (ie, always, if talented correctly).<br>\r\n",
+    "PostedDate": "2008-10-29T09:14:31.387-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "128665",
+    "ThreadId": "38761",
+    "Html": "Thank you for your reply.<br>\r\n<br>\r\nI wasn't saying the calculations were off, don't get me wrong, just trying to figure out what survival and mitigation points are composed of. In any case, I now have to change my T5 shoulders for S2 shoulders because I bought them without verifying which were better in rawr :(<br>\r\n<br>\r\nThanks for your help.<br>\r\n",
+    "PostedDate": "2008-10-29T10:01:27.133-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

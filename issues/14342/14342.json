@@ -1,0 +1,90 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Enchants",
+      "DisplayName": "Rawr.Base.Enchants"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-11-19T15:13:46-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Please add / model the following newly updated weapon enchant to Rawr and particularly to Rawr.Mage.\n \n\"Enchant Weapon - Black Magic now cause your harmful spells to sometimes increase haste rating by 250.\"\n \nhttp://db.mmo-champion.com/s/59625/enchant-weapon-black-magic/",
+    "LastUpdatedDate": "2017-11-27T11:01:13.773-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-10-06T14:56:29.157-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Enchants] Enchant Weapon - Black Magic",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 14342
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "This will be available in WoW Patch 3.3:  \r\n\r\nhttp://ptr.wowhead.com/?spell=59625#comments\r\n",
+      "PostedDate": "2009-10-06T15:01:40.44-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You can manually add in the modelling for Black Magic yourself. Go to your RAWR folder and in the Data folder open up your EnchantCache.xml file. At the bottom add the following lines:\r\n\r\n  <Enchant>\r\n    <Id>3790</Id>\r\n    <Name>Black Magic</Name>\r\n    <Slot>OneHand</Slot>\r\n    <Stats>\r\n      <SpecialEffects>\r\n        <SpecialEffect>\r\n          <Trigger>SpellHit</Trigger>\r\n          <Stats>\r\n            <HasteRating>250</HasteRating>\r\n          </Stats>\r\n          <Duration>10</Duration>\r\n          <Cooldown>35</Cooldown>\r\n          <Chance>0.35</Chance>\r\n          <MaxStack>1</MaxStack>\r\n        </SpecialEffect>\r\n      </SpecialEffects>\r\n      <SpecialEffectCount>1</SpecialEffectCount>\r\n    </Stats>\r\n  </Enchant>\r\n\r\nThe Reasoning for the \"SpellHit\" Trigger is because the patch notes say \"It is also now triggered by landing any harmful spell rather than inflicting damage with a spell.\" I could be wrong on the terminology but that is my understanding of that line.",
+      "PostedDate": "2009-10-06T17:00:19.823-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-17T21:25:41.277-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-04T10:42:07.017-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-19T15:13:46-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:18.067-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-21T00:00:17.077-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:32:38.14-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:01.76-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:01:13.773-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

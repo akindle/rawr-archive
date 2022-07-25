@@ -1,0 +1,136 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.TankDK",
+      "DisplayName": "Rawr.TankDK"
+    },
+    "ClosedComment": "see prev. comment.",
+    "ClosedDate": "2011-06-21T14:05:56.563-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "After using Rawr to optimize my DK Tank, I was surprised to find that parry gems were chosen over dodge gems for all slots, leading to character totals of:\n \nDodge 13.62%\nParry 21.54%\n \nMost other advice I've seen has suggested the two stats should be of similar value, with the player's goal being to equalize so them so as to hit the minimum levels of declining returns.\n \nPerhaps Rawr means to tell me that this folk wisdom really is wrong and I really should be going for parry wherever possible, but thought I'd file it here just to be sure.\n \n[Yes, both parry and dodge are checked off as available in the gemming template]",
+    "LastUpdatedDate": "2013-05-16T05:18:12.363-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-04-11T12:29:12.61-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[TankDK] Parry heavily preferred over dodge",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 20486
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4840,
+      "FileName": "Alathas.xml",
+      "DownloadUrl": ".\\4840"
+    },
+    {
+      "FileId": 4842,
+      "FileName": "Alathas.xml",
+      "DownloadUrl": ".\\4842"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Uhhh... you don't have any rings equipped, or even marked available. Fix that first and try again, if it's still happening, post your fixed character file.",
+      "PostedDate": "2011-04-11T12:54:37.87-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "And no glyphs",
+      "PostedDate": "2011-04-11T12:54:50.637-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "And your incoming attack damage on the boss handler is at 125k, up that to like 160k.",
+      "PostedDate": "2011-04-11T12:56:44.763-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks Jothay!  I do have rings and glyphs on my character, and the Rawr on my desktop shows the rings as available but (now) not equipped -- could the optimizer have removed them?  I do believe the default boss being off is leading to interesting things.\r\n\r\nI will redo everything, make sure its sane, then update.",
+      "PostedDate": "2011-04-11T13:22:15.227-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-11T13:57:21.38-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-11T14:15:42.83-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Updated file attached.  Parry still somewhat favored although at 160K incoming damage +Stam is frequently selected over either parry or dodge, with ratings not being so far apart (dodge now 2023 vs parry 2513.)\r\n\r\nI did optimizer runs at 100K (\"average 10N boss\"), 125K, and 160K incoming damage.  Stat values vary dramatically between the three.  Optimized gear does not change between 100K and 125K (save the metagem), but changes dramatically between 125K and 160K with +Stam being much more heavily favored.  Only at 125K do I see the negative value for Symbiotic Worm.\r\n\r\nIt does not surprise me that gear would dramatically differ for handling a boss that hits for 100K vs one that hits for 160K.  It does leave me wondering what setting I should really use for my situation (I run with a group that's 9/12 on 10N).\r\n\r\nOther updates:\r\n.  I understand now that the addon exports only available glyphs, not active glyphs\r\n.  I did not see the rings become de-equipped again\r\n",
+      "PostedDate": "2011-04-11T14:15:44.253-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The Addon should be exporting the glyphs you have active, not what you have available.\r\n\r\nThe 100k you see right now for 10m Normal should be 140k, we've changed that for next version. The reason you see such a huge difference between 125k and 160k is because of the Soft Cap, which is why you have the Hits to Survive setting. You need to survive 3.5 hits without any healing, so that 140k * 3.5 = Soft Cap of 490,000 survival, after that Survival stats drop off in value along a curve (the higher you are above it, the more the curve hurts the extra survival). When the hits you are needing to survive go up, the numbers for these items will stop appearing to have negative Burst, because it will no longer be hitting the soft cap.",
+      "PostedDate": "2011-04-11T14:58:20.863-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks.  I've reproduced the \"no glyphs selected after importing from addon\" issue several times today (both for blood and frost DK, but haven't tried any other class.)  I can file a separate report if you'd like?",
+      "PostedDate": "2011-04-11T15:12:51.97-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "There's definitely something wrong here.  A standard T11 room is showing a strong preference for parry.  I'm looking into it.",
+      "PostedDate": "2011-04-12T05:13:16.49-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Adding in the stats progression graph to help debug this, and I'm not seeing any actual diminishing returns from either Parry or Dodge.   So it's likely something going wrong in there.  ",
+      "PostedDate": "2011-04-15T14:33:13.327-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "ok... further looking... Diminishing Returns is working.  Need to track down some place else where that difference is coming.",
+      "PostedDate": "2011-04-18T15:07:51.75-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-06-10T08:25:05.21-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Looks like while it can be considered accurate that Parry is favored, much of this comes dependant upon the Burst value provided by procs and on-use items and abilities (like DRW).  The value of avoidance has always increased with the value of more avoidance, and while looking at the Parry and Dodge curves across sub-components as well as over-all value, I believe this is functioning as expected.  In other words, the Negative effects of Diminishing returns is not doing enough to completely cancel out the positive effects of having more avoidance.  This is seen by seeing that the value of Dodge and Parry stays consistent for Mitigation values, we see a large positive slope in Parry in Burst Value.  This pushes Parry ahead of Dodge.  ",
+      "PostedDate": "2011-06-21T14:05:22.68-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-06-21T14:05:56.563-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:25:20.93-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:12.363-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

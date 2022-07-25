@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "139500",
+    "ThreadId": "42004",
+    "Html": "Yeah so is the 3.0.4 armor mode working properly because items that are getting their armor multiplier removed (necks, e.c.t) are still ranking higher than items i think would be better. For example, Rawr is saying that the &quot;Amulet of Autopsy&quot; (http://www.wowhead.com/?item=39246) is better than &quot;Heritage&quot; (http://www.wowhead.com/?item=40069). I could be wrong but this really doesn't seem right. Can someone explain this to me?\r\n",
+    "PostedDate": "2008-12-10T16:48:54.583-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "139511",
+    "ThreadId": "42004",
+    "Html": "You are looking at 350 vs. 8 Sta, 14 dodge, 7 def &amp; 28 hit (ignoring the Str difference)<br>\r\n<br>\r\n14 dodge = 0.35% dodge<br>\r\n7 def = 0.056% dodge &amp; 0.056% to be missed  <br>\r\n<br>\r\n<br>\r\nSo you have basically 0.46% dodge, 140 health (with Kings), +0.85% hit<br>\r\n<br>\r\nThe Hit is the only thing that would make me wonder a bit about the ranking you mention - but I must admit I don't really worry too much about +hit in my tanking gear.  Armor is nowhere near as good as it used to be on those slots, but it is still a VERY important stat for us, particularly with the dimishing returns from dodge.   All the lists still show the armor trinkets as near the top of the lists even after the patch - they are no longer 5+ times better than any non-armor trinkets, but they are still right up there.<br>\r\n<br>\r\nIs the ranking between them pretty close?  I would expect so.<br>\r\n<br>\r\n    \r\n",
+    "PostedDate": "2008-12-10T17:24:32.433-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "139512",
+    "ThreadId": "42004",
+    "Html": "Kinda close. Its ranking Heritage at 6570 and Amulet of Autopsy at 6991. I was thinking that the armor was making the difference even though its not being multiplied, it still seems a little odd to me\r\n",
+    "PostedDate": "2008-12-10T17:29:38.027-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "139812",
+    "ThreadId": "42004",
+    "Html": "Yeah, armor still is useful. As far as I know, the 3.0.4 armor calculations in the current version of Rawr are accurate, except for on cloaks (where it multiplies the whole thing, because it doesn't know the difference between base and bonus armor). That'll be fixed in an upcoming version.<br>\r\n",
+    "PostedDate": "2008-12-11T12:58:22.097-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "140138",
+    "ThreadId": "42004",
+    "Html": "Last I knew, armor goes on the item budget at a rate of <br>\r\n7 Armor = 1 Rating<br>\r\n<br>\r\nIf I look at Rawr's relative stat values for my character, armor is 6.25 and dodge rating is just over 42. &nbsp;<br>\r\nFrom all appearances the armor nerf basically put it on par with our junior avoidance stats.\r\n",
+    "PostedDate": "2008-12-12T11:34:18.22-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "140208",
+    "ThreadId": "42004",
+    "Html": "Are you sure it's working correctly?  Here's a test I did:<br>\r\nCleared Rawr<br>\r\nSet to NE-Druid-Bear<br>\r\nTurned on every feral talent + up to OoC in resto<br>\r\n3.0.4 armour mode is off<br>\r\n<br>\r\nBase armour: 184.44<br>\r\nEquip bracers, bottom of the list, Iceborne Wristguards - 150 armour<br>\r\nNew armour total: 959.94<br>\r\nMath: 959.94 - 184.44 = 775.50<br>\r\n         150 * 4.7 * 1.1 = 775.50  (old mode working)<br>\r\n<br>\r\nSwitch to 3.0.4<br>\r\nNew armour total: 1347.87<br>\r\nMath: 1347.87 - 184.44 = 1163.43<br>\r\n          150 * 4.7 * 1.66 * 1.1 = 1287.33 (not a match)<br>\r\nworking backwords 1163.43 / 4.7 / 1.1 / 150 = 1.50 (new 3.0.4 armour multiplier set to 1.50 instead of 1.66?)<br>\r\n<br>\r\nMaybe I'm not understanding the change and have my math wrong.<br>\r\n<br>\r\n",
+    "PostedDate": "2008-12-12T18:28:01.07-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "140286",
+    "ThreadId": "42004",
+    "Html": "Rawr does seem to be underestimating 3.0.4 armor.&nbsp; I just copied my character to the PTR, and Rawr is about 2250 armor low (http://www.stevensaysno.com/ptrarmor.jpg).&nbsp; My Armory page (http://www.wowarmory.com/character-sheet.xml?r=Shadowsong&amp;n=Anirul) should be accurate aside from the cloak, I swapped on my Cloak of Holy Extermination to avoid issues with the bonus armor on my tanking one.<br>\r\n",
+    "PostedDate": "2008-12-13T12:08:12.047-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "140328",
+    "ThreadId": "42004",
+    "Html": "Rawr.Bear is currently calculating 3.0.4 armor by the following equation...<br>\r\n<br>\r\n<br>\r\nBASE = Base Armor<br>\r\nAAGI = Armor Contribution from Agility<br>\r\nBONUS = Bonus Armor<br>\r\n<br>\r\n<br>\r\nTOTAL = BASE +BONUS+ AAGI+ (BASE*3.7*1.1*1.66)<br>\r\n<br>\r\n<br>\r\n<br>\r\nNote that the base armor at this time contains ALL armor from cloak as there is currently no calculation to differentiate bonus from base armor.<br>\r\n<br>\r\nAlso, I'm not sure it takes into account any bonus from the 2% metagem.<br>\r\n<br>\r\nAs you can see, the equation is not correct and I believe it has been posted elsewhere that it will be corrected when numbers can be verified through PTR or Live.<br>\r\n<br>\r\nThe correct calculation from what I have seen will be as follows:<br>\r\n<br>\r\nTOTAL = AAGI + BONUS + (BASE*4.7*1.1*1.66)<br>\r\n<br>\r\nFiguring in metagem:<br>\r\n<br>\r\nTOTAL = AAGI + (BONUS*1.02) + (BASE*4.7*1.1*1.66*1.02)<br>\r\n<br>\r\n<br>\r\n",
+    "PostedDate": "2008-12-13T18:34:25.263-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

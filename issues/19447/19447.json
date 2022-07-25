@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.AddOn",
+      "DisplayName": "Rawr.AddOn"
+    },
+    "ClosedComment": "Rawr 4.0.13 Released",
+    "ClosedDate": "2010-12-29T02:47:39.47-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When parsing the version numbers in RawrAddonLoadDialog.isValidVersion() float.Parse() is used with the system default CultureInfo. If that culture doesn't use \".\" as decimal separator an exception will be thrown.\n \nSolution:\nChange:\nversion = float.Parse(match.Groups[1].Value);\nto\nversion = float.Parse(match.Groups[1].Value,System.Globalization.NumberFormatInfo.InvariantInfo);\n \nConsider changing the culture info for the complete process/instance.",
+    "LastUpdatedDate": "2013-05-16T05:19:24.127-07:00",
+    "PlannedForRelease": "Rawr 4.0.12 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-12-26T02:34:14.49-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Addon] float.Parse() does not work as expected for some culture settings",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19447
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

@@ -1,0 +1,106 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-09-16T18:50:00.767-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "On my DPS DK its not picking up set bonus for 9.0 only 9.5. Currently have 2 pieces of 9.0 and 1 9.5 and it doesn't give me any bonus. If I changed one of the 2x 9.0's to 9.5 it does give me the set bonus.",
+    "LastUpdatedDate": "2013-05-16T05:24:30.263-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-09-08T02:56:28.957-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Set bonuses not active",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 14077
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2184,
+      "FileName": "Rkdpsreg.xml",
+      "DownloadUrl": ".\\2184"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Double-check that you are using all Alliance or all Horde T9/9.5",
+      "PostedDate": "2009-09-08T07:34:33.213-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Also, double-check the spelling of the set names in the item editor. Wowhead mis-lists it for many of the pieces as \"Kolitra's Battlegear\" when it should be \"Koltira's Battlegear\".",
+      "PostedDate": "2009-09-08T08:18:17.94-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "There are two issues with the ItemCache.xml file that ships with 2.2.15.\r\n\r\n1) The sets Koltira's Battlegear and Koltira's Plate are coming up as Thassarian's Battlegear and Thassarian's Plate.\r\n\r\n2) Specifically, the Conqueror's Koltira's Battlegear set is postfixing a tab onto the set name.\r\n\r\n#2 is actually causing the bug, as #1 is just a cosmetic issue.  As a temporary work around, refresh your T9 items from the Armory, then close Rawr, and then reload your character.  Doing that fixed both issues for me.",
+      "PostedDate": "2009-09-08T08:57:36.263-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Also, if you are interested in getting an upgrade list, you probably will want to refresh ALL of the T9 items from the Armory (and then reloading Rawr and your character).  If you are only interested in optimizing what you currently have, you only need to refresh your 3 pieces.",
+      "PostedDate": "2009-09-08T09:01:21.89-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ah hah, nice typo in the set name from Blizz... That makes 2 T9 set names with typos.\r\n1) Intended. We standardize on all Alliance set names, so we don't have to have duplicate buffs.\r\n2) I'll look into this, and into fixing the typo in our wowhead/armory parsing.",
+      "PostedDate": "2009-09-08T09:19:38.16-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "thank you that worked but you will have to update all pieces including heroic version, its funny watching the program pick 232 piece over 258 because it doesn't pick up the set bonus.",
+      "PostedDate": "2009-09-08T09:23:07.203-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Is there a way to get updated information for the heroic pieces because there not on armory to update information",
+      "PostedDate": "2009-09-08T09:35:27.047-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Aha.  I thought that using the Alliance set name on Horde pieces might have been intended (prepare for the onslaught of angry Horde crying \"Discrimination!\" coming your way! hehe).\r\n\r\nIn that case, be aware that the refresh from Armory is replacing it with the Horde set name.\r\n\r\nThis whole faction-specific business is a PITA for devs.",
+      "PostedDate": "2009-09-08T09:36:06.47-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yea, i just went in and changed it all back to horde so it works correctly with the updated items",
+      "PostedDate": "2009-09-08T09:53:03.607-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-16T18:50:00.767-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:12.387-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:30.263-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

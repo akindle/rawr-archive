@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Retribution",
+      "DisplayName": "Rawr.Retribution"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2012-10-16T08:02:07.787-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi guys,\n\nwhen I want to load my character from battle.net I receive the following error message:\n\nI have performed the Suggested Fix and continue to receive this error. If I am posting this message without having performed the Suggested Fix I am aware that I am consuming the Developer(s) time in managing my Issue unnecessarily.\n\n== Version: 5.0.0.0 WPF ==\n\n== Error Message ==\nDer Index war außerhalb des Arraybereichs.\n\n== StackTrace ==\n   bei Rawr.Retribution.BaseCombatTable.get_ChanceToMiss()\n   bei Rawr.Retribution.BasePhysicalCombatTable.get_ChanceToLand()\n   bei Rawr.Retribution.BasePhysicalYellowCombatTable.get_ChanceToHit()\n   bei Rawr.Retribution.BasePhysicalCombatTable.CombatTableMultiplier()\n   bei Rawr.Retribution.Ability`3.set_HitDamage(Single value)\n   bei Rawr.Retribution.CrusaderStrike..ctor(Character character, StatsRetri stats)\n   bei Rawr.Retribution.RotationCalculation..ctor(Character character, StatsRetri stats)\n   bei Rawr.Retribution.CalculationsRetribution.GetCharacterStats(Character character, Item additionalItem, Boolean computeAverageStats)\n   bei Rawr.Retribution.CalculationsRetribution.GetCharacterStats(Character character, Item additionalItem)\n   bei Rawr.BossHandler.GenInfoString(Character character)\n   bei Rawr.UI.BossPicker.bossOpts_PropertyChanged(Object sender, PropertyChangedEventArgs e)\n   bei Rawr.UI.BossPicker.set_Character(Character value)\n   bei Rawr.UI.MainPage.set_Character(Character value)\n   bei Rawr.UI.MainPage.bnetLoad_Closed(Object sender, EventArgs e)\n   bei System.Windows.Window.WmDestroy()\n   bei System.Windows.Window.WindowFilterMessage(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)\n   bei System.Windows.Interop.HwndSource.PublicHooksFilterMessage(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)\n   bei MS.Win32.HwndWrapper.WndProc(IntPtr hwnd, Int32 msg, IntPtr wParam, IntPtr lParam, Boolean& handled)\n   bei MS.Win32.HwndSubclass.DispatcherCallbackOperation(Object o)\n   bei System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)\n   bei MS.Internal.Threading.ExceptionFilterHelper.TryCatchWhen(Object source, Delegate method, Object args, Int32 numArgs, Delegate catchHandler)\n\n== These are the Steps that I have tried ==\nInstall of Silverlight 5",
+    "LastUpdatedDate": "2013-05-16T05:16:58.633-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2012-10-10T17:09:00.48-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Error: Loading Character from Battle.net",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 23485
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "When you load up Rawr it show the splash screen that mentions which models are currently working.   The Ret Pally model is showing as \"inoperable\".    I would imagine this is why it isn't working.\r\n\r\nI'm not sure if there is a Ret module developer or not at the moment.   Hopefully there will be some work done in the future but until then you are out of luck unfortunately :(",
+      "PostedDate": "2012-10-12T15:27:48.58-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-10-14T08:21:07.467-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I've checked in a change (69883) that will allow loading of Ret Pallys from Battle.net (and other supported sources) by fixing the index out of range error.  Note this does not include any other updates for MoP as I'm still working on the Hunter module, just gives the ability to load a character.  The Ret Pally module continues to be unsupported at this time.\r\n\r\nThe next build should include this fix, or it is available by SVN if you'd like to build it yourself.",
+      "PostedDate": "2012-10-16T07:56:53.447-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-10-16T07:57:39.877-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This issue is being closed as it is a duplicate of an issue previously submitted by another user on October 7",
+      "PostedDate": "2012-10-16T08:00:40.54-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-10-16T08:02:07.787-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:23:35.903-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:16:58.633-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

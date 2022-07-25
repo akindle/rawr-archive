@@ -1,0 +1,86 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-08T06:55:51.047-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Seems like socket bonuses for spellpower all became 1 point less than what they should be.\n \nE.g. gloves of the tempest (#31055) should have +2 spellpower, in Rawr it's +1, robes of the tempest (#31057) should have +5 spellpower, in Rawr it's +4.",
+    "LastUpdatedDate": "2013-05-16T05:26:56.513-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-10-14T05:22:54.787-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Spellpower socket bonus incorrect",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 11445
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1422,
+      "FileName": "foo1.zip",
+      "DownloadUrl": ".\\1422"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "The values for spellpower in Rawr right now are just educated guesses based on rules. Once the armory is back up, and has all the correct data, I'll refresh it all.",
+      "PostedDate": "2008-10-14T08:13:25.317-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Errata - robes of the tempest in rawr had +3 spellpower. Looking further, it seems like every +5 damage and healing item gets +3 spellpower. I had a quick look to compare with Rawr 16.1 and there the socket bonuses are marked as 'healing', so I'm guessing you are taking 60% of the 'healing' value to convert to spellpower, whereas actually it seems socket bonuses for 'spell damage and healing' are straight 1-to-1 equivalents.\r\n\r\nSo ye, not worth changing the ruleset just for this exception when all the armories will be live with the new values before the end of the week.",
+      "PostedDate": "2008-10-14T09:37:22.863-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "From another user:\r\n\r\nJust checked 2.0.2 and it seems to be broken again, in reference tosocket bonus being broken (optimizer). (Notice the Corrupted SoulclothPantaloons gemming) Some items are still broken for instance Band of the Eternal Sagedoesn't have the proc effect modeled as well as Ashtongue Talisman ofInsight and Sextant of Unstable Currents. On theorycrafting, crit seems to have an ubnormaly high value relatedto other stats especially spellpower. I doubt 10 crit is better then12 spellpower.\r\n\r\n(see foo1.zip)",
+      "PostedDate": "2008-10-16T12:37:47.127-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-10-16T12:37:50.203-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok I just did an update of Item Cache to make sure I have data as parsed from armory. After running the optimizer it suggest gemming reckless/runed for pantaloons. The reason why it's not matching gem colors is because blue gems are bad compared to yellow/red. Also you don't have enforce metagem requirements enabled if that is why you were expecting to see blue gems.\r\n\r\nI corrected the parsing for Band of the Eternal Sage and Sextant of Unstable Currents, Ashtongue Talisman of Insight was parsed correctly.\r\n\r\nI'm pretty sure the crit value is correct. All the math is documented in code. If you have a specific argument to backup your claim we can investigate further.",
+      "PostedDate": "2008-10-17T18:15:17.21-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-08T06:55:51.047-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:25.453-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:56.513-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

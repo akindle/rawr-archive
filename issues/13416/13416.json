@@ -1,0 +1,120 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Cat",
+      "DisplayName": "Rawr.Cat"
+    },
+    "ClosedComment": "This was fixed a long time ago",
+    "ClosedDate": "2009-12-24T20:55:51.31-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Current formula used by rawr:\n1640 + AP*0,24 for 5CP\nabove value * ((1+x)/6) for x CP\n \nFormula on Wowhead:\nhttp://www.wowhead.com/?spell=48577\n190 + (290 + AP*0,07)*CP\n \nTests I have done on a target dummy match the formula from wowhead, which is also used in feralbynight.\n \nUpdated code would look like this:\n \nCalculationsCat:\n \nfloat biteBaseDamageRaw = 190f * (1f + stats.BonusPhysicalDamageMultiplier) * (1f + stats.BonusDamageMultiplier) * (1f + stats.BonusFerociousBiteDamageMultiplier) * modArmor;\nfloat biteCPDamageRaw = (290f + stats.AttackPower * 0.07f) * (1f + stats.BonusPhysicalDamageMultiplier) * (1f + stats.BonusDamageMultiplier) * (1f + stats.BonusFerociousBiteDamageMultiplier) * modArmor;\nfloat biteEnergyDamageRaw = (9.4f + stats.AttackPower / 410f) * (1f + stats.BonusPhysicalDamageMultiplier) * (1f + stats.BonusDamageMultiplier) * (1f + stats.BonusFerociousBiteDamageMultiplier) * modArmor;\n---\nfloat biteBaseDamageAverage = (1f - chanceCritBite) * biteBaseDamageRaw + chanceCritBite * biteBaseDamageRaw * critMultiplier;\nfloat biteCPDamageAverage = (1f - chanceCritBite) * biteCPDamageRaw + chanceCritBite * biteCPDamageRaw * critMultiplier;\nfloat biteEnergyDamageAverage = (1f - chanceCritBite) * biteEnergyDamageRaw + chanceCritBite * biteEnergyDamageRaw * critMultiplier;\n----\ncalculatedStats.BiteDamagePerHit = biteBaseDamageRaw + biteCPDamageRaw * 5;\ncalculatedStats.BiteDamagePerSwing = (biteBaseDamageAverage + biteCPDamageAverage * 5) * chanceNonAvoided;\n \nCatRotationCalculator:\n \nfloat biteDamageMultiplier = Math.Min(1f, (BiteBaseDamage + BiteCPDamage * biteCycleCP) / (BiteBaseDamage + BiteCPDamage * 5f));\n---\nfloat biteDamageMultiplier = Math.Min(1f, (BiteBaseDamage + BiteCPDamage * biteCycleCP) / (BiteBaseDamage + BiteCPDamage * 5f));\n---\nfloat biteDamageTotal = biteCount * (BiteBaseDamage + BiteCPDamage * 5f);",
+    "LastUpdatedDate": "2017-11-27T10:59:29.553-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-06-04T05:38:33.703-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Cat] Ferocious Bite calculation error",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 13416
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "No need to move the factors around; only change needed is the AP factor should be 35%, not 24%. Wonder when that changed...",
+      "PostedDate": "2009-06-04T10:27:08.733-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Actually there is, because Rawr does use less than 5 CP in the Rip & Ferocious Bite cycle, currently counting a 1CP Bite as 2/6 of a 5CP Bite which is pretty far from the truth.\r\nThe \"per energy\" part is completely unused right now but would be useful for additional work on the cat rotations.\r\n\r\nOf course that cycle isn't very realistic, but that is a seperate issue I'd like to work on at some point in the future (which is why I am poking around in the code).",
+      "PostedDate": "2009-06-04T12:52:04.93-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "If you want to keep the current code, estimating it at 1/5 of a Bite per CP should be pretty close to the truth for decent gear (which will also result in close to 5 CP for the Bites in the mixed cycle, keeping the error very small).",
+      "PostedDate": "2009-06-04T12:56:34.753-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ah, I see, the static value isn't the same base any scalar anymore.",
+      "PostedDate": "2009-06-04T13:44:29.923-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "any=and",
+      "PostedDate": "2009-06-04T13:44:50.107-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks, fixed for v2.2.6 (will release tonight).",
+      "PostedDate": "2009-06-04T19:14:10.27-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "In Rawr 2.2.6, Strenght has more relative value than Agility or Armor Penetration. Doesn't seem accurate, maybe a side effect of this change?",
+      "PostedDate": "2009-06-05T00:27:42.47-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The relative stat values are fairly unstable in Rawr. Tiny changes to your equipment (or the calculations) can result in major changes to the graph. This is mostly an issue with the cat damage cycle used by Rawr.\r\n\r\nSwap one of your items for a couple alternatives and watch the graph.\r\n\r\nI did not see a major shift in stat weights when comparing 2.2.5 vs my modified version with the updated FB calculations, with Hit and Expertise benefitting the most.",
+      "PostedDate": "2009-06-05T00:48:55.743-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Indeed, this didn't have much of an affect on stat values, frodo. You're just seeing the standard issue (not really an issue, just not typically expected) where there are periodic dips in the value of agility, and you happen to sit within one.",
+      "PostedDate": "2009-06-05T01:25:24.993-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-19T14:00:30.25-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-17T11:33:24.35-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-24T20:55:51.31-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T22:45:40.733-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:13.2-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:19.483-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T10:59:29.553-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

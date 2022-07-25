@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.HealPriest",
+      "DisplayName": "Rawr.HealPriest"
+    },
+    "ClosedComment": "user misconception, devs explained",
+    "ClosedDate": "2009-10-13T08:16:19.6-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I was looking around in the mp5 sources in the slot tab and found that the evaluator thingy is putting in intellect as a source of MP5 for holy priests. to my knowlege, i can safely say that intellect is not a source of MP5 for a Holy Priest, and it is instead detremental to a Holy Priest due to priest spells costing a percentage of mana rather than a set amount, (although for the purposes of a disc priest its valid, yadda yadda yadda,) and that it should be evaluating Spirit in its place. Ive tried looking around in the program to change this factor, but i dont seem to be able to. I've tried to find a way to balance it by custom setting the value iof intellect, but it throws off my mana pool, thus lowering my sustained healing numbers by alot. Please help!! Thanks!",
+    "LastUpdatedDate": "2013-05-16T05:23:53.683-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-10-12T08:05:47.883-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[HealPriest] Int calc'd for MP5",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14407
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Intellect increases your mana pool.  Your spells cost a percentage of BASE mana, not of your current mana.  Therefore, more intellect = more mana = more spells to cast.  You said it yourself; changing intellect throws off your mana pool and lowers your sustained healing.  As a result, increasing intellect would increase your mana pool, and thus your sustained healing (because your spell costs remain CONSTANT with respect to intellect).  If you don't believe me, get yourself a mage and go in-game, then check the spell costs before and after he casts Arcane Intellect on you.",
+      "PostedDate": "2009-10-12T08:15:18.503-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yeah, please check again, take off all your gear, see how much a spell cost, then requip all your gear, and check again. You will see that more mana = you can cast more spells, not the same amount.\r\n\r\nThe reason HolyPriest assumes that Intellect = MP5 is that it converts the additional mana from gaining intellect into mana over time. And MP5 is Mana per 5 sec. So if you gain 150 extra mana over 6 minutes, that is the same as 150 / (6*60) * 5 = 2.0383 MP5. If duration of fight increases or is lowered, the MP5 effect of Intellect will change.",
+      "PostedDate": "2009-10-12T10:59:37.98-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-13T08:16:19.6-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:40:35.48-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:32:27.98-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:53.683-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

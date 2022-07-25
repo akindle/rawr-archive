@@ -1,0 +1,125 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Items",
+      "DisplayName": "Rawr.Base.Items"
+    },
+    "ClosedComment": "Patch 3666 applied for version 2.2.14",
+    "ClosedDate": "2009-08-22T22:29:54.543-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I was going through the Item Location xml file to manually edit where items were being dropped, and I noticed that part of the reason that items are being filtered incorrectly was because the program was looking for the \"<Heroic>\" tag before the \"<Area>\" tag. Normally, the program saves the location \"<Area>\" then \"<Heroic>.\" However there are several Hard mode items, such as the \"Pendulum of Infinity\" that do not register as being from a Heroic unless you switch the two tags around. Also when the program saves the file, if \"<Heroic>true</Heroic>\" is set for an item, it will always save this after \"<Area>\" tag. otherwise, the program leaves the \"<Heroic>\" tag before the \"<Area>\" tag. I'm also in the process of helping updating the Filter xml and the Item Cache/Item Location files for 3.2 so that most of the currently known items are available once 3.2 hits (probably tomorrow). I'm planning on adding a <Faction> tag to the Item Cache file to help differentiate Alliance and Horde items.",
+    "LastUpdatedDate": "2017-11-27T11:01:12.77-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-08-03T11:19:37.763-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Items] How Item Location is saved",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13766
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Err....huh? Can you explain how you see the order mattering at all? It's just an object that's serialized/deserialized to xml. The order of xml tags should have no impact on anything.",
+      "PostedDate": "2009-08-03T14:57:15.337-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I think a chunk of the problems with the item filter mismatches would be fixed if we could update the cache from Armory/Wowhead and have it saving the txt of \"Vault of Archavon Heroic\" as \"Heroic Vault of Archavon\" (subbing in the relative instance) and the Trash tooltip same issue.",
+      "PostedDate": "2009-08-03T15:14:44.423-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I don't know. I was just having issues with getting items to come up with their Heroic or Hard mode tooltip when manually editing them. And switching the two lines was the only thing that affected it. I noticed what you mean by the Trash tooltip. having the items appear as \"World Drop\" items is confusing the system. Maybe adding a \"Boss\" tag tagged as \"Trash\" may help.\r\n\r\nLike I said before, I'm in the process of cleaning up the current database and updating it with 3.2 Loot list.",
+      "PostedDate": "2009-08-03T15:36:40.783-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Adding to my earlier point, can we have it filter multiple name types at time of refresh and/or new database build to take these kinds of things into account and make them uniform?\r\n\r\n\"Vault of Archavon\"\r\n\"Archavon\"\r\n\"Vault\"\r\n\"Vault Archavon\"\r\n\r\nShould all be \"Vault of Archavon\" or \"Normal Vault of Archavon\" or \"Vault of Archavon (10)\" (pick one and make them all that) for simplicities sake.\r\n\r\nHeroic versions would be \"Heroic Vault of Archavon\" or \"Vault of Archavon (25)\"",
+      "PostedDate": "2009-08-03T16:49:34.847-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Can you give an example of a time that it's not \"Vault of Archavon\" or \"Heroic Vault of Archavon\"? Those are the correct zone names, and if that data is getting screwed up somehow, that's what we should fix.",
+      "PostedDate": "2009-08-03T19:21:17.04-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Trash example: Inevitable Defeat \"Trash Drop in Naxxramas Heroic\" when it should be \"Trash Drop in Heroic Naxxramas\"\r\n\r\nOn the Vault of Archavon naming I may have confused the name Archavon the Stonewatcher into that OR I've already manually fixed the items in my cache. However I can state that in my current Item Filters. The top one on Tier 7 Raids (heroic) includes \"Heroic Archavon\" which isn't right and when you break it down to the named VoA selector below, it's regex is \"Heroic.*Archavon\". By Comparison the Non-heroic says \"(?<! Heroic )Vault of Archavon\" on top and (?<! Heroic )Vault of Archavon on the named subfilter.\r\n\r\nCan you show me where these naming conventions for the filters are coming from? I'd like to know the formatting and maybe I can make this better.",
+      "PostedDate": "2009-08-03T20:59:34.033-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Combination of Wowhead.cs, and Armory.cs (importing the items) and ItemLocation.cs (building the location object).",
+      "PostedDate": "2009-08-03T22:23:32.143-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Just as an update, cleaning up the pre-3.2 database took longer than expected (didn't help my raid last night finally downed Hard Mode Heroic Iron Council which distracted me quite a bit [yay in before the buffs/nerfs]), but I should have a patch uploaded in the next couple of hours with at least a pre-3.2 item database completely updated as well as a 3.2 based filter. Yay for patch day/servers-are-down down-time.",
+      "PostedDate": "2009-08-04T05:42:59.3-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "If by 3.2 filter you mean all the new dungeons listed and broken out like the T8 raids are, great. If you mean Filter '3.2' showing only 3.2 items we won't be needing that. You probably do mean the former, I just wanted to be clear :P",
+      "PostedDate": "2009-08-04T09:56:03.383-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well, I just posted a patch in the source code section so hopefully it can be evaluated in time of tonights build. Unfortunately I didn't have enough time to include any 3.2 items in that patch but I did leave in the T9 Filter Tree list. It's not much. I just left it as \"Normal Alliance Trial\" \"Hard Horde Trial\" etc. I did correct the \"Vault\" issue though. But I did update some of the enchants an the gemming to 3.2 (stats, epic gem images, and some naming [ie: Potent Flawless Ametrine -> Potent Ametrine]) Lastly I did update the \"Val'anyr, Hammer of Ancient Kings\" to it's 3.2 stats.",
+      "PostedDate": "2009-08-04T11:43:20.12-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Please see patch 3666 for a partial fix.  It fixes the issue where trash drops show up as \"* Heroic\" instead of \"Heroic *\".  With the patch, trash drops are now filtered correctly.",
+      "PostedDate": "2009-08-22T17:37:37.4-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-22T22:29:54.543-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:33:04.973-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T22:45:43.24-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:51.33-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:00.883-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:01:12.77-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

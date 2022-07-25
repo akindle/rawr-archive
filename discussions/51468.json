@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "172580",
+    "ThreadId": "51468",
+    "Html": "Thanks Levva for:<br>\r\n<br>\r\n&quot;Added Export feature requested in Issue Tracker. Now has ability to :<br>\r\n<br>\r\n1) Export a Pawn addon string to clipboard<br>\r\n2) View weighted upgrades on Wowhead.com<br>\r\n3) View weighted upgrades on Lootrank.com&quot;<br>\r\n<br>\r\nA feature I wanted for quite a while :)<br>\r\n<br>\r\nJust a heads up to any other using Rawr in case they missed the latest source builds :)<br>\r\n<br>\r\nedit: now that I tried it, I have a smallish request for the export function. Is it possible you can add gems as well? Like take the highest ranked gems that fits the socket-colors and highest ranked metagem. I know at least Pawn supports it, not sure about the websites. While matching socket-color is not always the best combination, its probably as good as you can do.<br>\r\n",
+    "PostedDate": "2009-03-26T18:00:50.597-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "172688",
+    "ThreadId": "51468",
+    "Html": "What my code does is to generate a weighted value string and pass that to the website or pawn addon, its up to the website or the addon to deal with the items including gems. I'm not a Pawn user - I prefer Equivalence Points (which I must add to the export) so I have no idea of what needs to go in the &quot;Pawn string&quot; to make that work. If someone can tell me I can probably code it.<br>\r\n",
+    "PostedDate": "2009-03-27T02:45:04.953-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "172751",
+    "ThreadId": "51468",
+    "Html": " RedSocket=, YellowSocket=, BlueSocket=, MetaSocket=\r\n",
+    "PostedDate": "2009-03-27T06:45:42.49-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "172772",
+    "ThreadId": "51468",
+    "Html": "yes but RedSocket= WHAT??<br>\r\n<br>\r\nIs it a weighting? Is it the name of a gem? If its the name of a gem is it localised? Is it an item id?<br>\r\n",
+    "PostedDate": "2009-03-27T07:36:18.823-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "172794",
+    "ThreadId": "51468",
+    "Html": "<p>( Pawn: v1: &quot;Name&quot;: ArcaneResist=45, Mana=7, TwoHandSpeed=88, ShadowResist=43, ExpertiseRating=21, OffHandDps=77, IsCrossbow=50, IsPolearm=55, IsThrown=58, ArmorPenetration=22, MeleeDps=65, FireSpellDamage=25, RangedSpeed=72, IsBow=49, ShadowSpellDamage=26, ParryRating=40, OffHandMaxDamage=79, AllResist=41, NatureResist=44, Ap=19, IsMace=54, OffHandSpeed=80, BonusArmor=34, HasteRating=18, IsDagger=51, Speed=15, BlockRating=36, RedSocket=8, MaxDamage=14, IsCloth=60, HitRating=16, BlueSocket=10, Stamina=3, Rap=20, IsAxe=48, Intellect=4, OneHandMinDamage=82, ArcaneSpellDamage=28, FrostResist=46, ResilienceRating=38, Agility=2, OneHandMaxDamage=83, Spirit=5, NatureSpellDamage=27, MainHandDps=73, SpeedBaseline=89, HolySpellDamage=30, RangedMinDamage=70, TwoHandMaxDamage=87, TwoHandMinDamage=86, MetaSocket=11, Health=6, Hp5=47, OneHandSpeed=84, OneHandDps=81, Mp5=24, OffHandMinDamage=78, IsWand=59, IsFist=52, MainHandSpeed=76, MinDamage=13, CritRating=17, MainHandMaxDamage=75, MainHandMinDamage=74, MeleeMinDamage=66, RangedMaxDamage=71, RangedDps=69, MeleeSpeed=68, MeleeMaxDamage=67, DefenseRating=37, IsShield=64, FrostSpellDamage=29, BlockValue=35, IsPlate=63, Armor=32, SpellPenetration=31, BaseArmor=33, YellowSocket=9, Strength=1, IsMail=62, IsSword=57, IsLeather=61, IsStaff=56, DodgeRating=39, Dps=12, FireResist=42, TwoHandDps=85, IsGun=53, SpellPower=23 )</p>\r\n<p></p>\r\n<p>Pawn basically takes a ( Pawn: v1: &quot;&lt;Name&gt;&quot;: &lt;comma seperated values&gt; ).</p>\r\n<p>The above list shows all valid fields for Pawn. For a simple example:</p>\r\n<p>Agility is worth 2.1 AEP, AP is 1.0 AEP, STR is 1.1 AEP, you'd get the following Pawn string:</p>\r\n<p></p>\r\n<p>( Pawn: v1: &quot;Pawn AEP&quot;: Agility=2.1, Strength=1.1, Ap=1 )</p>\r\n<p></p>\r\n<p>You can then import this into Pawn.</p>\r\n<p></p>\r\n",
+    "PostedDate": "2009-03-27T07:59:20.32-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "172814",
+    "ThreadId": "51468",
+    "Html": "Yes I knew this that was how I was able to code the Pawn string export, what I didn't know was what the RedSocket=??, BlueSocket=??, etc was. Now if they are simply ratings too then no this cannot be put into the Rawr -&gt; Pawn export as Rawr doesn't do EP values for sockets.<br>\r\n",
+    "PostedDate": "2009-03-27T08:49:25.19-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "172828",
+    "ThreadId": "51468",
+    "Html": "Yes, Pawn's values for sockets are just ratings; you'd have to find the best (available?) gem of each color, and put its value there.<div><br></div><div>Also, can we move this functionality to the Relative Stat Values chart somehow, instead of the main menu? I'm thinking an extra toolbar dropdown named &quot;Export&quot; that's only visible when you're on that chart. We also still need to do that &quot;WARNING: THESE VALUES SUCK! USE AT YOUR OWN RISK!&quot; or whatever on that chart.</div>",
+    "PostedDate": "2009-03-27T09:24:01.517-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "172852",
+    "ThreadId": "51468",
+    "Html": "It would be somewhat odd that stuff to do with external websites and addons would be buried deep in Rawr so people have problems finding it. I can understand that you personally don't like Relative Stat Values however they do have their uses and a large proportion of the Wow community use them to analyse their gear and skills. Since Rawr can calculate the data regardless of whether the chart is shown or not do we really need to hide the menu so users struggle to find it?<br>\r\n",
+    "PostedDate": "2009-03-27T10:31:04.637-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "172888",
+    "ThreadId": "51468",
+    "Html": "That's the point. We need to guide users to the correct solutions, not just give them what they think they want. They should not be able to get/use/generate/whatever any relative stat values without that warning, so that they understand just how bad they are.",
+    "PostedDate": "2009-03-27T11:42:36.743-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

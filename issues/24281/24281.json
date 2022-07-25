@@ -1,0 +1,166 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Mage",
+      "DisplayName": "Rawr.Mage"
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When I initially load a frost mage file, either existing or download new from Battle.net, gear is ranked by survivability. If I change the mage spec to fire, gear is evaluated for dps, but tier pieces are given a negative rating. I tried this for my own mage Veviseron-Eitrigg and for Omnia-Stormreaver (both logged out as frost). Loading Omnia-Ticondrius (logged out as fire) worked normally.",
+    "LastUpdatedDate": "2014-03-07T18:33:47.643-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2013-05-12T17:23:06.083-07:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "frost mage rating",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 24281
+  },
+  "FileAttachments": [
+    {
+      "FileId": 6359,
+      "FileName": "Veviseron-Eitrigg.xml",
+      "DownloadUrl": ".\\6359"
+    },
+    {
+      "FileId": 6363,
+      "FileName": "Veviseron-ArcaneFrost.xml",
+      "DownloadUrl": ".\\6363"
+    },
+    {
+      "FileId": 6364,
+      "FileName": "Veviseron-ArcaneFrost.xml",
+      "DownloadUrl": ".\\6364"
+    },
+    {
+      "FileId": 6365,
+      "FileName": "Veviseron-Arcane.xml",
+      "DownloadUrl": ".\\6365"
+    },
+    {
+      "FileId": 6366,
+      "FileName": "Veviseron-Frost.xml",
+      "DownloadUrl": ".\\6366"
+    },
+    {
+      "FileId": 6370,
+      "FileName": "Veviseron02.xml",
+      "DownloadUrl": ".\\6370"
+    },
+    {
+      "FileId": 6371,
+      "FileName": "Omnia-Tichond-fire.xml",
+      "DownloadUrl": ".\\6371"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I logged Veviseron out as arcane, and was able to load normally, and switch to frost ok. I relogged back as frost, and again got the survivability/tier issue with a fresh load from battle.net.",
+      "PostedDate": "2013-05-12T20:18:58.593-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-12T22:28:47.403-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Could you post both the \"good\" xml (log out as arcane, load, switch to frost, save) and the \"bad\" xml (log out as frost, load, save)? -- Assuming the \"good\" xml is still good after you close/restart Rawr and reopen that same saved XML. Thanks!",
+      "PostedDate": "2013-05-12T22:34:16.293-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-13T23:27:50.91-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Veviseron-Arcane (logged out as arcane, fresh load in Rawr, save)\nVeviseron-ArcaneFrost (file above, switch spec in Rawr to frost, save)\nVeviseron-Frost (logged out as frost, fresh load in Rawr, save)",
+      "PostedDate": "2013-05-13T23:27:52.193-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-13T23:30:09.323-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hm, except the post here doesn't want to save the files. Trying again.",
+      "PostedDate": "2013-05-13T23:30:09.8-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-13T23:31:39.04-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "got it, sorry.",
+      "PostedDate": "2013-05-13T23:31:39.5-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-13T23:33:27.31-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks for the help, and all the work overall. I've appreciated Rawr for a long time.",
+      "PostedDate": "2013-05-13T23:33:27.81-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I looked at your profiles and the only difference between \"ArcaneFrost\" and \"Frost\" XML are the Talent and Glyph selections. You could give a try to taking your \"ArcaneFrost\" XML and switching Talents and Glyphs one by one (to match \"Frost\" XML) until you find the culprit. Or I might be able to get to it later this week.",
+      "PostedDate": "2013-05-14T15:02:33.49-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-14T23:28:00.633-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Changed Incanter's Ward to Rune of Power in frost spec, logged. Load into Rawr, works normally. Saved as Veviseron02.\nIn that file, unselect Rune talent switches to rating for survival. Select Incanters = rating for survival. Unselect, reselect Rune, rating goes back to dps. (I think Invocation was normal also.)\nProblem solved, from my end: I can find gear for frost. I'm attaching the file, if you want to figure out what's going on. Thanks.",
+      "PostedDate": "2013-05-14T23:28:01.97-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks, I think you're saying the following?\r\n\r\n- No talent: broken for frost\n- IW: broken for frost\n- ROP: works for frost\n- Invo: works for frost\n",
+      "PostedDate": "2013-05-15T14:03:23.6-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-15T16:16:31.57-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yes, that's a clearer summary. Also,\r\n\r\nswitch spec in Rawr to fire or arcane (in the Vev02 file above):\nNo talent: broken for fire (tier pieces are rated negative dps)\nIW: broken for fire (tier pieces are rated negative dps)\nNo talent: broken for arcane (tier pieces are rated negative dps)\nIW: broken for arcane (tier pieces are rated negative dps)\nRoP: works for both\nInvo: works for both\r\n\r\nIf I download Omnia-Tichondrius into Rawr (Omnia-Tichond-fire):\nNo talent: broken for fire (survival rating)\nIW: broken for fire (survival rating)\nRoP: works\nInvo: works\r\n\r\nWeird, broken in different ways depending on how I got there.",
+      "PostedDate": "2013-05-15T16:16:32.387-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2014-03-07T18:33:47.643-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

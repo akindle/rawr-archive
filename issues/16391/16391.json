@@ -1,0 +1,101 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtPaladin",
+      "DisplayName": "Rawr.ProtPaladin"
+    },
+    "ClosedComment": "Fixed in revision 46605.",
+    "ClosedDate": "2010-02-19T08:31:36.157-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I've been testing a bit and found a 'bug' the base stats you have as a prot paladin is wrong:\nhttp://www.wowhead.com/?talent#sVZV0xA0uGGsIufdxf00b\nI also have toughness max rank (60 sta)\n \nI have the stats:\nsta 223\nint 101\n \nmy avoidance is (with 400 def):\n10,03% dodge\n10,00% parry\n5.00% miss\n \n \nNow my rawr is:\nsta 221\nint 102\n \n9,4307% dodge\n9,4000% parry\n4,400% miss",
+    "LastUpdatedDate": "2013-05-16T05:21:50.213-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-02-17T07:45:11.59-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtPaladin] Blood Elf Base Stats",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16391
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2977,
+      "FileName": "3.3.2belfpala.jpg",
+      "DownloadUrl": ".\\2977"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Avoidance stats are correct.  WoW looks at vs. Level 80, Rawr.ProtPaladin by default looks at vs. Level 83, which can be changed in the options tab.\r\n\r\nYour report is very interesting, because it exposes that WoW is not adding things correctly.  From several sources, I find Blood Elf Paladin starting stamina to be 141.  You get 60 from mining's toughness.  You get +4% from Sacred Duty and +6% from Combat Expertise. (141+60) * 1.04 * 1.06 = 221.5824.  Rawr rounds down stamina, so it is reporting 221.  Even if you rounded up it would still be wrong.\r\n\r\nYour 101 int is confusing because a Blood Elf Paladin's starting intellect has traditionally been 102, and I don't know of any patch that has changed that.  If you could get me a screenshot of a naked, untalented blood elf paladin, I'll compare that against what we've got.\r\n\r\nIn the future, instead of linking to talent specs, please upload a file with the proper spec, makes things a lot easier. :)\r\n",
+      "PostedDate": "2010-02-17T12:20:40.837-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Here you go :) you owe me 30g for respec ;) i took a screenshot of me being in holy spec aswell in case you wanted it (remember i got toughness and thats it, no buffs!)",
+      "PostedDate": "2010-02-18T13:51:39.843-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-18T13:51:41.317-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "ps i guess my paladin is more dumb than other paladins so im missing an int point?",
+      "PostedDate": "2010-02-18T13:53:26.803-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "5 + 54 + 11 = 70!  I hope that prot spec's a typo. :)\r\n\r\nSo according to this screen cap, Stamina should be 143 (up from 141), Intellect 101 (down from 102), and spirit 103 (down from 104).  These numbers have been like this since the BaseStats.cs file was made, so I'll get with the person who created it and see where they got their information from.  I'm a little iffy about playing around with this part of Rawr as it's not directly part of the ProtPaladin module.  But hopefully we'll get it in before 2.3.10.",
+      "PostedDate": "2010-02-18T20:50:00.723-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The base stats were adjusted in a recent patch, change them as you need to roncli",
+      "PostedDate": "2010-02-18T22:24:28.62-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-19T08:31:36.157-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks, Jothay.  I remember seeing something about stats changing for low-level toons, but didn't realize it had affected 80's.  We may want to look into other race/class combinations as well, do you know of a resource that has this info, or is it something we'll need to figure out on our own?",
+      "PostedDate": "2010-02-19T08:33:15.767-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "i am sry but i do not know of such website :/ maybe elitist jerks got something http://elitistjerks.com/forums.php",
+      "PostedDate": "2010-02-22T04:22:20.13-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:29:53.99-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:50.213-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

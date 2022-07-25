@@ -1,0 +1,35 @@
+I have performed the Suggested Fix and continue to receive this error. If I am posting this message without having performed the Suggested Fix I am aware that I am consuming the Developer(s) time in managing my Issue unnecessarily.
+
+== Error Message ==
+[Arg_IndexOutOfRangeException]
+Arguments: 
+Debugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.51204.0&File=mscorlib.dll&Key=Arg_IndexOutOfRangeException
+
+== StackTrace ==
+   at Rawr.Warlock.CalculationOptionsWarlock.GetBaseHitRate()
+   at Rawr.Warlock.CharacterCalculationsWarlock..ctor(Character character, Stats stats, Stats petBuffs)
+   at Rawr.Warlock.CalculationsWarlock.GetCharacterCalculations(Character character, Item addlItem, Boolean _u1, Boolean _u2, Boolean _u3)
+   at Rawr.Calculations.GetCharacterCalculations(Character character, Item additionalItem, Boolean referenceCalculation, Boolean significantChange, Boolean needsDisplayCalculations)
+   at Rawr.UI.MainPage.character_CalculationsInvalidated(Object sender, EventArgs e)
+   at Rawr.UI.MainPage.set_Character(Character value)
+   at Rawr.UI.MainPage.Calculations_ModelChanged(Object sender, EventArgs e)
+   at System.EventHandler.Invoke(Object sender, EventArgs e)
+   at Rawr.Calculations.OnModelChanged()
+   at Rawr.Calculations.LoadModel(CalculationsBase model)
+   at Rawr.UI.MainPage.ModelCombo_SelectionChanged(Object sender, SelectionChangedEventArgs e)
+   at System.Windows.Controls.Primitives.Selector.OnSelectionChanged(SelectionChangedEventArgs e)
+   at System.Windows.Controls.Primitives.Selector.InvokeSelectionChanged(List`1 unselectedItems, List`1 selectedItems)
+   at System.Windows.Controls.Primitives.Selector.SelectionChanger.End()
+   at System.Windows.Controls.Primitives.Selector.SelectionChanger.SelectJustThisItem(Object o)
+   at System.Windows.Controls.Primitives.Selector.OnSelectedItemChanged(Object oldValue, Object newValue)
+   at System.Windows.Controls.Primitives.Selector.OnSelectedItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+   at System.Windows.DependencyObject.RaisePropertyChangeNotifications(DependencyProperty dp, Object oldValue, Object newValue)
+   at System.Windows.DependencyObject.UpdateEffectiveValue(DependencyProperty property, EffectiveValueEntry oldEntry, EffectiveValueEntry& newEntry, ValueOperation operation)
+   at System.Windows.DependencyObject.SetValueInternal(DependencyProperty dp, Object value, Boolean allowReadOnlySet)
+   at Rawr.UI.ClassModelPicker.SetCurrentModel()
+   at Rawr.UI.ClassModelPicker.Grid_MouseLeftButtonUp(Object sender, MouseButtonEventArgs e)
+   at MS.Internal.CoreInvokeHandler.InvokeEventHandler(Int32 typeIndex, Delegate handlerDelegate, Object sender, Object args)
+   at MS.Internal.JoltHelper.FireEvent(IntPtr unmanagedObj, IntPtr unmanagedObjArgs, Int32 argsTypeIndex, Int32 actualArgsTypeIndex, String eventName)
+
+== These are the Steps that I have tried ==
+[Please fill in steps here]

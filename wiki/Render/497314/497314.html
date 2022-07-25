@@ -1,0 +1,209 @@
+<div class="wikidoc">
+<p><img src="http://dl.dropbox.com/u/15727672/RawrVisible/ModelStatus/4.1.05_Rawr.TankDK.png" border="0" alt="TankDK Options Panel" style="float:right"></p>
+<h1>Rawr.TankDK</h1>
+<p>Rawr.TankDK is a tool to help Tanking Death Knights choose and optimize their gear, from brand new 85s, to endgame raiders.</p>
+<p><span style="font-weight:bold; font-size:large">Current Status</span></p>
+<p>This model is currently <span style="color:#008000">FULLY </span>functional, consistently maintained by
+<strong>Shazear</strong>, and you can safely rely on it for your gear choices in Cataclysm. There may be some specific defects and if such instances are found, please post them to the Issue Tracker with the affected character file per the Posting Guidelines.&nbsp;
+ The last section on the paperdoll should provide the modeled data for DeathStrike and Blood Shield heals &amp; absorbs.&nbsp; Please provide feedback on it's accuracy to what you are experiencing in-game.</p>
+<p><span style="font-weight:bold; font-size:large">Current ToDo's</span></p>
+<ul>
+<li>Finish fleshing out T12 Bosses in Bosshandler. </li></ul>
+<p><span style="font-weight:bold; font-size:large">Fight Options<br>
+</span></p>
+<ul>
+<li><strong>Raid Role:</strong> This determines what kinds of events in a multi-tank fight you will have to deal with.
+</li></ul>
+<ul>
+<li><strong>Hits to Survive:</strong> This affects the &quot;survival soft-cap.&quot;&nbsp; How many hits from the selected boss will you need to survive without heals?
+</li><li><strong>Burst:</strong> How much weight should the CDs, Death Strike Heals, and Blood Shields have in the overall score?&nbsp; Increasing this will show a greater strength in CDs and Mastery, but reduce the effectiveness of Avoidance and &quot;static&quot; Damage
+ Mitigation/Reduction </li><li><strong>Threat:</strong> How much significance should threat have in the overall score?
+</li><li><strong>Vengeance:</strong> How much value should Vengeance have in the Threat score?
+</li><li><strong>Overhealing %:</strong> How much overhealing should Rawr assume in your Death Strike Heals.
+</li></ul>
+<p><span style="font-weight:bold; font-size:large"><a name="FAQ"></a>Frequently Asked Questions</span></p>
+<ul>
+<li><a name="01"></a>See <a href="/wikipage?title=TankingForumulas&referringTitle=Rawr.TankDK">
+Tanking Formulas</a> for details on how we are evaluating each subvalue: Mitigation, Survival, Burst, Threat
+</li></ul>
+<ul>
+<li><strong><a name="02"></a>Q: Why is Rawr constantly recommending dps items over my tanking items?</strong>
+<ul>
+<li>A: There is a balancing act between Mitigation via Avoidance and Damage reductions vs. DeathStrike Heals and Blood Shield. As your avoidance and damage reduction increases, DeathStrike Heals and Blood shield decreases. In some configurations, the gains
+ of taking more damage and therefore increasing average DS &#43; BS values may outweigh the mitigation of the tanking piece in the same slot.&nbsp; Do you want to see fewer DPS pieces? Lower Threat weight, Vengeance weight, and/or Burst weight.
+</li></ul>
+</li></ul>
+<p><span style="font-weight:bold; font-size:large">Known Issues</span></p>
+<p>There are presently no known major Issues with TankDK.</p>
+<p><span style="font-weight:bold; font-size:large">Troubleshooting</span></p>
+<p>This section has not yet been written.</p>
+<p><span style="font-weight:bold; font-size:large">Recent Changes<br>
+</span></p>
+<p><strong>Rawr 4.2.7:<br>
+</strong>- Update defaults to go with the changes I implemented.<br>
+- Wrap the 4.3 changes w/ the PTR Mode flag from general options incase we have another release before 4.3<br>
+- Update Blood Rotation for Outbreak change. (1 more DS since we have those runes free)<br>
+- Provide the option to roll burst back into the body of values (burst changes to survival will appear in survival, and burst changes to mitigation will appear in mitigation)<br>
+- Fix for T12 set bonus evaluations<br>
+- Update more 4.3 PTR values (Bone Shield count &amp; Unholy Might)<br>
+- Refactor model to better deal with DS Heals and Blood Shield.&nbsp; <br>
+- Fix for Defect 21634: Negative Burst value in stam.<br>
+- Start the T13 work.<br>
+- Update DS healing to not be reliant on hit.<br>
+<strong>Rawr 4.2.6:<br>
+</strong>- Fix for 21596: I forgot to update STR - parry conversion to 27%<br>
+- Fix for Issue: 21602: Mastery Rating was being added in twice.&nbsp; Once from the AccumulateTalents and once in AccumulateRatings.<br>
+- Fix for some inflated White Hit values due to hit rating providing benefits past cap.<br>
+Feature 21095 Implemented:<br>
+* Mark JC gemming template if JC<br>
+- All models JC templates groups renamed to &quot;Jewelcrafter&quot; if not previously named that<br>
+- All models Cog templates groups renamed to &quot;Engineer&quot; if not previously named that<br>
+- On UpdateProfessions, JC/Eng templates will now auto-enable/disable based on character's professions<br>
+<strong>Rawr 4.2.5:<br>
+</strong>- Stop filtering out ALL caster stats since it was filtering out things like Kings.<br>
+<strong>Rawr 4.2.4:<br>
+</strong><strong>Rawr 4.2.3:<br>
+</strong>- Adjustment for Vengeance calcs by player role. <br>
+- Skip the Solver UnitTest for now.<br>
+- Hanging on imports, so hopefully this resolves that issue.<br>
+<strong>Rawr 4.2.2:<br>
+</strong>- Implemented 4/7 of the Firelands Bosses in BossHandler.&nbsp; This will improve accuracy of T12 calcs.&nbsp;
+<br>
+- Update DPS from Boss values to ensure proper handling of non-physical dots as well as % of health values in the DPH numbers.<br>
+- Defect 21131: Reduce problems with stacking Razorice, Cinderglacier, and Fallen Crusader<br>
+<strong></strong><strong>Rawr 4.2.1:<br>
+</strong><strong>Rawr 4.2.0:</strong><br>
+<strong>Rawr 4.1.06:<br>
+</strong>- Some initial t12 set bonus work.<br>
+- Clean up t11 set bonus implementation.<br>
+- Update the new graphs<br>
+- Fix from EJ Frost Post: Frost Haste (Icy Talons) doesn't translate to faster runes.&nbsp; (Still can't confirm that UH is the preferred presence with my gear while DW.)<br>
+- Fix White Damage being so far, far off from tested values.<br>
+- Fixed stat display.&nbsp; Wasn't applying ratings to BasicStats before displaying them.<br>
+- Added Stats Graph<br>
+- Luck of the draw buff not factored in.<br>
+<strong>Rawr 4.1.05:</strong><br>
+<strong>Rawr 4.1.04:</strong><br>
+- Fixed the top two most expensive operations in calcs. Now runs at 1/6 original speed<br>
+- Allow users to optimize by Mastery<br>
+- Adding Stats Graph to help stat valuation research<br>
+-Tank Models now have new methods in the SetDefaults function. They will dynamically adjust the starting values for bosses based on the avg ilevel worn. This is to make the model start with more appropriate values for it's level.<br>
+<strong>Rawr 4.1.03:</strong> <br>
+- No significant changes<br>
+<strong>Rawr 4.1.02:</strong> <br>
+- Fine Tuning base stats. More to do here.<br>
+- Implement Runic Empowerment.<br>
+- Fix Rotation report.<br>
+- Fix white swing hit chance to properly use WhiteHit rather than Yellow Hit.<br>
+- Cleanup VampiricBlood implmentation<br>
+- Add Rotation list null checks.<br>
+- Fix OnUse Trigger evaluation.<br>
+- Total refactor of the evalutation logic flow to provide more complete burst value.<br>
+- Implement Death Pact.<br>
+- Update Trigger handling in special effects for tanking related triggers.<br>
+- Parry Haste Completely removed from Rawr, including Parry Haste not generated by the Boss Handler<br>
+- Cleanup of the options tab.<br>
+- Revamped Options Pane for ease of use<br>
+- Tweaking some of the output values via code review.<br>
+- Updated the order, naming and colors of the SubPoints<br>
+- Changed the Threat Slider to a combobox selector as seen in Bear<br>
+- Fixed a bug with SetDefaults<br>
+- Rawr.Base: Fixed several stats that should have been in the InverseMultiplicative list. Had to adjust it's usage across Rawr in all models.<br>
+- Updated Values for several DK Abilities<br>
+- Fixed Threat Multiplier<br>
+- Fixed some other minor bugs<br>
+- Changed how the Scores are reported to the user, now use the same scaling system that Bear does &#43; Burst<br>
+<strong>Rawr 4.1.01:</strong> <br>
+- Fix for Issue 19979: Missing trinket effects with the &lt;35% player HP trigger
+<br>
+&nbsp; Properly modelled all of the trinkets with this trigger and their stats. Verified they all refresh properly.<br>
+&nbsp;&nbsp; All Tank Models (except TankDK) are now modelling this trigger<strong><br>
+</strong>- Tweak Defaults for BossOptions.<br>
+- Fix an issue where in certain situations, invalid Boss attack data can really screw up values.<br>
+- Changed the Targeting mechanic for Attacks to state AffectsRole[Role] instead of IgnoresRole<br>
+- Implement Burst Subpoint.<br>
+- Some Code Clean up and moved to be better.&nbsp; More to do on this course.<br>
+- Total Refactor of the DeathStrike and Blood Shield code. <br>
+- Fix for Bone Shield causing negative avoidance values.<br>
+- Implement UI for Burst Weight<br>
+- Setup Framework for the Rotation Report.<br>
+- Fix getting stack overflow from adding a default attack when there isn't one. Applied same fix to Bear just in case.<br>
+<strong>Rawr 4.1.00:</strong><br>
+- Update to new Cogs template<br>
+- Fix issue 19851: Lack of Haste value in RSV because HasteRating wasn't being properly handled.<br>
+- Fix a null reference problem on clean characters.<br>
+- Fix for 20091: DamageModifier problem causing ability value inflation causing HUGE values in most abilities.<br>
+- Fix for 19864: Default over-healing should not be 0%<br>
+<strong></strong><strong></strong><strong></strong><strong>Rawr 4.0.20b:</strong><br>
+- No significant changes<br>
+<strong></strong><strong></strong><strong>Rawr 4.0.19b:</strong><strong><br>
+</strong>- No significant changes<br>
+<strong>Rawr 4.0.18b:</strong><br>
+- Adjust some additional talent tweaks based on in-game values.<br>
+- Implement Rage of Rivendare<br>
+- Fix for Defects 19769 &amp; 19812 - though there is still some stats normalization that I need to do.&nbsp; Dodge &amp; Parry are now correct and validated.<br>
+- Fix for Defect 19863: DRW was screwing up my RP math.&nbsp; Not perfect, but it's alot better.&nbsp; Refactored Blood rotation.<br>
+<strong>Rawr 4.0.17b:</strong><br>
+- Implementation of some combat data metrics as requested in the discussion forums.&nbsp; This should help us figure out why the mastery numbers are so far off.&nbsp; Includes a tweak to the DS &amp; BShield methodology.&nbsp; Which, while making things worse
+ for Mastery valuation, is much more accurate.&nbsp; Looking at the avoidance numbers next.<br>
+- Fix for Improved DeathStrike properly buffing Healing done.<br>
+- Adjustment of Survival math to include all static damage reduction, not just armor.<br>
+- Some Cleanup.&nbsp; Additional NoCS tweak.<br>
+- Fixed Missing Dodge from Agi.<br>
+<strong>Rawr 4.0.16b:</strong><br>
+- Adding in initial rough of DRW<br>
+- Adding in rough of T11 set bonuses.<br>
+- Implmenting some of the 4.0.6 changes.<br>
+- Fixed RuneTap implementation SE.<br>
+- Fix for BoneShield &amp; Vengeance based on dynamic attack info.<br>
+- Implement BonusWhiteDamageMultiplier<br>
+- Fix for Defect to get Basic vs. Buffed (Special Effects) stats on main frame<br>
+<strong>Rawr 4.0.15b:</strong><br>
+- Tweak the GetSpec() function<br>
+- Add Mastery to Paperdoll output on TankDK<br>
+- Add SpellDamageTakenMultiplier so that Effluent Meta is properly evaluated<br>
+- Update Gem Template slightly<br>
+- Pull out dead function<br>
+- Adding in initial rough of DRW<br>
+- Adding in rough of T11 set bonuses<br>
+- Implmenting some of the 4.0.6 changes<br>
+- Fixed RuneTap implementation SE<br>
+<strong></strong>- Updating one of the BossHandler GetDPS functions to include Attack Speed adjustments.<br>
+- Adding Initial Impedence handling in the mitigation section. Things like Run Speed increases &amp; Stun reductions should now have values when using a Boss that includes those kinds of impedences. You will see this in the tooltip of Mitigation values.<br>
+- Fixed/added some gemming templates<br>
+<strong></strong><strong>Rawr 4.0.14b:</strong><br>
+- Fix issue w/ Base damage valuation for Spell v. Physical hit.<br>
+- Rotations: Provide pre-set rotations to help until solver is handled.<br>
+- Fix issue w/ rotation math coming up w/ weird values for rotation duration.<br>
+- Implement initial Scent of Blood work.<br>
+- Gem Templates for TankDK using new gems.<br>
+- Updated Relevant stats for DPSDK to exclude defensive stats.<br>
+- White damage wasn't properly included in the rotation outputs.<br>
+- Fixed base stats... they'll need some further tweaking.<br>
+- Fix for melee/spell special counts<br>
+- Use Pre-made blood rotation in DPSDK when in a Blood Spec.<br>
+- Update discription of TankDK DPS &amp; Threat values to include max Vengeance.<br>
+- Fix for 16078: Display the rotation on the options tab and it's working w/o going crazy.<br>
+- Solver is now actually doing some work. The rotations don't always make alot of sense and it's way big on the DPS numbers, but it's now a working set.<br>
+- Setting TankDK as 'Mostly' since Survival and Mitigation values are looking reasonable. And threat is OK as long as it's using the pre-set rotation. DPSDK on the other hand still needs work. It's work will dial in the Threat on TankDK.<br>
+<strong>Rawr 4.0.13b:<br>
+</strong>- No Significant Changes<br>
+<strong>Rawr 4.0.12b:<br>
+</strong>- No Significant Changes<br>
+<strong>Rawr 4.0.11b:</strong><br>
+- Fix for Defect 19241: Items not showing on list - This was due to bad gemming templates. So I shamelessly stole the template format from DPSWarr. It works great!<br>
+- Fix for possible rotation exception Found during new unit test.<br>
+- Fix for sorting issue in sorting by DPS/TPS<br>
+- Fix for BB weirdness.<br>
+- Fix bug w/ exception in rotation cost evaluation. Found during unittest.<br>
+- Fixed Tanking runes<br>
+- Fixed special effects handler<br>
+- Fixed Blood Parasite implementation<br>
+- Implemented basic RPP5 code<br>
+- Implemented combined swing time for DW.<br>
+- Implemented Mitigation Subvalues like the survival subvalues.<br>
+- Fix for 19288: Hang when looking at trinkets.<br>
+- Unittests failing because of a config change.<br>
+<strong>Rawr 4.0.10b:<br>
+</strong>- No Significant Changes</p>
+</div><div class="ClearBoth"></div>

@@ -1,0 +1,75 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Retribution",
+      "DisplayName": "Rawr.Retribution"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-09-17T11:32:48.253-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Occured when switching from an empty Healadin model to the Retribution model.\nUsing Rawr v2.2.13 with .NET 3.5 SP1 on Win XP SP2.\n \nSystem.NullReferenceException: Object reference not set to an instance of an object.\n   at Rawr.Retribution.CalculationsRetribution.GetCharacterCalculations(Character character, Item additionalItem, Boolean referenceCalculation, Boolean significantChange, Boolean needsDisplayCalculations)\n   at Rawr.CalculationsBase.GetItemCalculations(Item additionalItem, Character character, CharacterSlot slot)\n   at Rawr.Calculations.GetItemCalculations(Item item, Character character, CharacterSlot slot)\n   at Rawr.FormItemSelection.LoadItemsBySlot(CharacterSlot slot)\n   at Rawr.FormItemSelection.ItemCache_ItemsChanged(Object sender, EventArgs e)\n   at System.EventHandler.Invoke(Object sender, EventArgs e)\n   at Rawr.ItemCacheInstance.OnItemsChanged()\n   at Rawr.ItemCache.OnItemsChanged()\n   at Rawr.FormMain.Calculations_ModelChanged(Object sender, EventArgs e)\n   at System.EventHandler.Invoke(Object sender, EventArgs e)\n   at Rawr.Calculations.OnModelChanged()\n   at Rawr.Calculations.LoadModel(CalculationsBase model)\n   at Rawr.Calculations.LoadModel(Type type)\n   at Rawr.FormMain.LoadModel(String displayName)\n   at Rawr.FormMain.comboBoxModel_SelectedIndexChanged(Object sender, EventArgs e)\n   at System.Windows.Forms.ComboBox.OnSelectedIndexChanged(EventArgs e)\n   at System.Windows.Forms.ComboBox.WmReflectCommand(Message& m)\n   at System.Windows.Forms.ComboBox.WndProc(Message& m)\n   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)\n   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)\n   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)",
+    "LastUpdatedDate": "2013-05-16T05:24:47.863-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-08-16T23:40:59.73-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Retribution] Exception in Retribution model",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13898
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Can you provide any more detail on this? With a fresh copy of 2.2.13 I am unable to reproduce this issue.",
+      "PostedDate": "2009-08-20T10:35:43.967-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm sorry, I also can't find a way to reproduce it again.\r\n\r\nAs far as I remember I just did the following steps when I got it:\r\n- Opened Rawr, previousely selected model was Healadin.\r\n- Switched to Retribution model.\r\n\r\nThere might have been something wrong in one of my data files because I also can't reproduce the gemming template issue I mentioned in the EJ forum after doing a complete wipe of program and application data files.",
+      "PostedDate": "2009-08-21T05:49:53.23-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-17T11:32:48.253-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T17:33:18.447-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:40:45.093-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:34.09-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:47.863-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

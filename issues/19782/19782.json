@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-01-21T00:49:28.053-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "== Error Message ==\nThe attachable property 'ContextMenu' was not found in type 'ContextMenuService'. [Line: 23 Position: 50]\n \n== StackTrace ==\n   at System.Windows.Application.LoadComponent(Object component, Uri resourceLocator)\n   at Rawr.UI.ComparisonGraphItem.InitializeComponent()\n   at Rawr.UI.ComparisonGraphItem..ctor()\n   at Rawr.UI.ComparisonGraphItem..ctor(IEnumerable`1 colors)\n   at Rawr.UI.ComparisonGraph.DisplayCalcs(ComparisonCalculationBase[] calcs)\n   at Rawr.UI.GraphDisplay.UpdateGraphGear(String subgraph)\n   at Rawr.UI.GraphDisplay.UpdateGraph()\n   at Rawr.UI.GraphDisplay.set_Character(Character value)\n   at Rawr.UI.MainPage.set_Character(Character value)\n   at Rawr.UI.MainPage..ctor()\n   at Rawr.Silverlight.App.LoadFinished(Object sender, EventArgs e)\n   at Rawr.UI.LoadScreen.filesLoaded(Object sender, EventArgs e)\n \n== These are the Steps that I have tried ==\nDownloaded latest build [57379] and system crashes on debug\n \nAlso get 4 sets of the same following message afterwards:\n \n== Error Message ==\nSpecified argument was out of the range of valid values.\nParameter name: index\n \n== StackTrace ==\n   at System.Windows.PresentationFrameworkCollection`1.RemoveAtImpl(Int32 index)\n   at System.Windows.PresentationFrameworkCollection`1.RemoveAt(Int32 index)\n   at Rawr.Silverlight.App.LoadFinished(Object sender, EventArgs e)\n   at Rawr.UI.LoadScreen.filesLoaded(Object sender, EventArgs e)\n \nI thought maybe it was a problem with the ret build so I forced Rawr to only build Base, Bear, Mage, Silverlight, and UI and it still was appearing.",
+    "LastUpdatedDate": "2013-05-16T05:18:56.073-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-01-20T21:04:47.613-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] Program crashes due to UI issue",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19782
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

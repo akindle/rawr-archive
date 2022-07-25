@@ -1,0 +1,95 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtPaladin",
+      "DisplayName": "Rawr.ProtPaladin"
+    },
+    "ClosedComment": "duplicate to 14031",
+    "ClosedDate": "2009-09-03T10:27:01.523-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The crit damage calculation in ProtPaladin adds an extra 100% critical damage (so spells are modeled as critting for 2.5 damage, and melee for 3x damage) and thus gives vastly inflated values for crit. This has been in there for  a long time, I think.",
+    "LastUpdatedDate": "2017-11-27T11:04:05.507-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-08-06T07:45:03.997-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtPaladin] Miscalculates crit damage, vastly overvalues crit",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13790
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Where do you see this at? The only numbers I can see displayed is average DPS with out a breakdown.",
+      "PostedDate": "2009-08-07T08:23:00.18-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You can't see it directly in the output, only the symptoms (the inability to easily audit the models is a weakness in rawr). For example, look at the value of the talents for threat. Sanctity of Battle (3% crit) is worth more than Crusade (3% increase to all damage). This is simply impossible. I looked at the source code to find out why it was getting this result and the answer is that the protadin model calculates crit bonus damage incorrectly.",
+      "PostedDate": "2009-08-07T11:04:53.013-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm working on trying to learn C# for updating the protpally stuff. Its slow going right now.... lol I hope a dev can work on this model till I can get up to speed on C#.",
+      "PostedDate": "2009-08-07T11:13:29.55-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Just to clarify, Rawr's models are entirely auditable; you just need to be able to pseudo-read code.",
+      "PostedDate": "2009-08-07T15:47:42.63-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-26T09:28:13.643-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I believe this should be fixed for issue 14031.",
+      "PostedDate": "2009-09-03T09:35:38.14-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-03T10:27:01.523-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-21T00:00:21.103-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:48.91-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:58.93-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:04:05.507-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

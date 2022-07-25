@@ -1,0 +1,131 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "We don&#39;t need to add an export function, last post states theirs can use our normal save files",
+    "ClosedDate": "2009-10-21T12:14:35.63-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "\"SimulationCraft\" (http://code.google.com/p/simulationcraft/) is a well-respected DPS simulator and stat weighter for many classes.\n \nIts only real problem is its complete lack of UI, so testing different items or stats is .. well.. a pain in the behind.\n \nI would suggest adding an export mechanism to it that at least handles the basics of gear & talents. \n \nI completely see why you wouldn't want to allow control of actions used etcetc, so my suggestion for on how to quickly get something up and working would be to:\n1. Allow the user to select :\n   - The path to simcraft.exe\n   - A template .simcraft file to use\n   - Select unbuffed or fully buffed (optimal_raid=0/1)\n   ( & probably explain to the user that any fine control needs manual file tweaking & please go to simcraft's web site )\n2. Strip away all lines that the exporter knows about (gear_*, main_hand, glyphs, idol, and a few more)\n3. Add lines of our own\n4. Dump into a temporary file, e.g. \"Rawr.simcraft\"\n5. Run SCALE_FACTORS.BAT Rawr.simcraft\n6. Open the resulting \"Rawr.html\" for pretty graphs & scale factors",
+    "LastUpdatedDate": "2013-05-16T05:25:10.893-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-06-27T10:52:43.237-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Suggestion: SimulationCraft export & execution",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 13556
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2009,
+      "FileName": "Druid_T8_00_55_16.simcraft",
+      "DownloadUrl": ".\\2009"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Wishlist:\r\n- Talent export (simcraft takes a wowhead.com talent link in the .simcraft file)\r\n\r\nAnd um you probably shouldn't run SCALE_FACTORS.BAT since it pops up annoying .txt files in a notepad. Just run the exe directly with the appropriate arguments.\r\n",
+      "PostedDate": "2009-06-27T11:07:43.457-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well, the point of Rawr is that 'scale factors' or 'stat weights' or 'relative stat values', or whatever you want to call them, are wrong. If you're using Rawr, you actively *shouldn't* be using stat weights. That said, that's just part of what SimulationCraft has to offer, and its actual simulation is quite nice, and a great benefit to the community; it can act as a sort of sanity check for Rawr models, and I think that's great. What we could do is implement some sort of \"Export to SimulationCraft\", that just runs it and shows the resulting DPS, that you could then compare to Rawr. More than anything though, that'd be a developer tool, to (assuming the SimCraft model was correct, which isn't always a safe assumption) double-check their Rawr model's calculations.\r\n\r\nRawr.Enhance has something like this for EnhSim.",
+      "PostedDate": "2009-06-27T21:25:47.717-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The Rawr.Enhance export to EnhSim has been enormous boon to improving Rawr.Enhance. As I have been able to run debuggers side by side and compare values being processed to check the formulae used and ensure the Rawr.Enhance model is accurate. However that said it was a large amount of work. My principal concern about Simulation craft is that the models are incredibly varied in their accuracy which is entirely understandable. \r\n\r\nEven Rawr with lots of developers working on it has a wide range of model accuracies, from Cat, Bear & Mage which are more in-depth than most to Hunter, Rogue & Warlock which are lagging behind although have recently been updated by new developers. There is no information on how well along each model is in Simulation Craft so it would be difficult to tell which results were right. For instance you will note there are no simulation craft Shaman, Mage, DK or Paladin forums this suggests that those models might not have active developers. I have been approached to assist with the Shaman model but have enough on my plate doing Rawr.Enhance.\r\n\r\nSo I'm not entirely sure what you gain with this suggestion.",
+      "PostedDate": "2009-06-28T03:26:13.957-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm well aware of the problem with using raw scaling factors and nothing else (caps, setbonuses, etc) but I merrily use them for a quick sanity check of whether or not I'm interested in a piece of gear that drops. (Via pawn scales in tooltips)\r\n\r\nOf course, there's also cases where I know for a fact that SimCraft outperforms Rawr (see e.g. [workitem:13555]).\r\n\r\nAlso as Levva says, it kicks ass for development, something which I suggested in the DPSWarr ticket.\r\n\r\nSo, yeah, there's obviously \"value\" in the idea, for the user/dev that knows what he's doing. And it comes at a fairly low cost to the Rawr developers. Hence me suggesting it.\r\n",
+      "PostedDate": "2009-06-28T06:37:53.743-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "mikeclueby4, I think you underestimate how bad stat weights are; if you do have a good Rawr model for your class/spec, then you should be using Rawr's tools, instead of stat weights/pawn. Really. They are there, and they fully replace the need for Pawn or anything like it.\r\n\r\nAnyway, like I said, this sounds like something we definitely could do, primarily as a development tool.",
+      "PostedDate": "2009-06-28T10:18:21.45-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The best use of \"Stat Weights\" is to compare the accuracy of different models.  If you want a quick sanity check, you're better off just using RatingsBuster to convert agi and crit rating, etc, and look at the actual stats yourself.  Of course, if you were being a diligent raider, you'd already know before the fight if you're interested in such-and-such item :)",
+      "PostedDate": "2009-06-29T14:59:06.947-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Personally, I use all of RatingBuster, Pawn, Rawr, SimulationCraft, and I also trial run other tools when I find them.\r\n\r\nAnd I will merrily use stat weights for offspec items or upgrades while levelling thankyouverymuch. I simply cannot be arsed to map out an upgrade path for those :P",
+      "PostedDate": "2009-06-30T01:13:14.21-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-07-18T23:48:35.877-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "\"I simply cannot be arsed to map out an upgrade path for those\"\r\n\r\nWhy not? I'm honestly asking. It's supposed to be so simple with Rawr, that you want to do it. So tell us, why isn't it?\r\n\r\nAs far as I can tell, it comes down to... Load from Armory (or Character Profiler, even better). Check a few buffs. Optimize, with default settings. Great, now you know how to fix your current gear. Build upgrade list, with default settings. Export to an image file (or LootPlan, even better). Great, now you've got an image to alt tab to, or a list in LootPlan to bring up in-game.\r\n\r\nHow can we make that easier, so that you want to do it, even for alts and offspecs?",
+      "PostedDate": "2009-07-19T00:01:15.093-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "(I'm asking everyone who feels that way, not just mikeclueby4)",
+      "PostedDate": "2009-07-19T00:04:56.263-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well.. if someone hollers at me in guildchat and says \"oi, relog your 65 warrior alt and tank this instance for us!\", I have two choices:\r\n\r\n1. When loot drops, I just shift+mouseover to see Pawn scales for the item next to the Pawn scale of my current item. If it's higher, I probably will Need the item. (I should mention that for DPS specs I have two scales: one for hitcapped and one not)\r\n\r\n2. Tab out, start up rawr, go find the upgrade list, load that up. Select the right slot. Scroll around in the list until I find the piece I'm currently wearing. Then scroll around until I find the piece that dropped. By now the group has moved on and is annoyed with me.\r\n\r\nAnd frankly the same is true for offspecs in raids until you've started getting very good offspec gear.\r\n\r\nYeah, I'll probably end up using Rawr when the raid is over to optimize my setup given new gear. But for the quick decision when figuring out if you're interested in an item or not...  scales just win on sheer speed.  Yeah I know there's guilds that spend several minutes hashing out who gets each item. But at least for us it tends to be over and done with in ~20 seconds in the majority of cases.\r\n",
+      "PostedDate": "2009-07-19T20:53:29.177-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Take a look at the LootPlan export from upgrade lists, using the LootPlan mod in game it lets you know if something is an upgrade with one mouseover the item and checking the tooltip.",
+      "PostedDate": "2009-07-20T01:04:56.023-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Basically, your #2 there wasn't using all the features that I described to make it easier/faster. So again, why not use it, when you have all the features to make it easier/faster?\r\n\r\nAdditionally, one of feature to point out: Right click any item, Evaluate Upgrades. Instant 'upgrade list', of just that item, no waiting.",
+      "PostedDate": "2009-07-20T01:24:13.557-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "To help aid modeling confirmation, SimulationCraft can import a rawr character save file.  If both tools gave similar answers, then it lends credence to their models.\r\n\r\nSo.....  It can be done, but why bother?  Absolute-DPS values are not nearly as interesting as relative-DPS values.  By this I mean that understanding the relative worth of glyphs, talents, and gear is far more useful than an actual DPS value.  If Rawr officially supports a class/spec combo, then its relative-DPS values are trustworthy enough to drive character development in game.\r\n\r\nChoices in character development (glyphs, talents, gear) are not infinite.  Gear itemization is especially granular which dramatically reduces the required level of accuracy to determine optimal gear choices.\r\n\r\n",
+      "PostedDate": "2009-07-23T07:29:34.07-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-21T12:14:35.63-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:02.963-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:10.893-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

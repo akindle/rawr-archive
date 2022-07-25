@@ -1,0 +1,106 @@
+[
+  {
+    "Id": "114031",
+    "ThreadId": "34350",
+    "Html": "The currently checked in version of this model doesn't seem to conform with any information source that I know about.&nbsp; (It doesn't seem to follow the Shadow Priest information available at the elitist jerks Think Tank.)<br>\r\n<br>\r\nWhat is the development status of this?&nbsp; Can I help?&nbsp; (My spriest turns 70 on Friday, so ...)<br>\r\n<br>\r\n",
+    "PostedDate": "2008-08-27T00:06:38.477-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "114150",
+    "ThreadId": "34350",
+    "Html": "It's incomplete and not ready for release, last I saw. Morwen, any update on its progress?<br>\r\n",
+    "PostedDate": "2008-08-27T08:31:53.097-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "115558",
+    "ThreadId": "34350",
+    "Html": "I had a look at it and it seems like the basics are all there.&nbsp; I'm guessing it might not yet take everything into account, but if I tweak the fight parameters a little bit it does give useful information.&nbsp; However, if you setup a really long fight it starts telling you to stack spirit and mp5 gear so I think it might not be adding back the mana you get from VT.&nbsp; (Either that or my spirit really is too low for a 10 minute fight!)<br>\r\n<br>\r\nMy priest just turn 70 last week and I finally have her in pre-Kara gear.&nbsp; I've done several heroics, but they were all guild runs so it was easy mode.&nbsp; (Most of the other members are between Tier 5 and Tier 6 so there wasn't an pressure on me to preform.)<br>\r\n<br>\r\nTLDR: I can tell it isn't 100% complete, but I don't know where to get information for what needs to be added.<br>\r\n<br>\r\nIn the meantime I'm speeding up the solver and fixing any little bugs I can find.&nbsp; Just changing code like:<br>\r\n<br>\r\nfloat value = float_variable * 2;<br>\r\n<br>\r\ninto:<br>\r\n<br>\r\nfloat value = float_variable * 2.0f;<br>\r\n<br>\r\nsped up the solver by a factor of 10 or more.&nbsp; Those float-&gt;int-&gt;float conversions really hurt on .NET.&nbsp; It reminds me a lot of the PS2.<br>\r\n<br>\r\n",
+    "PostedDate": "2008-09-02T23:56:25.013-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "115725",
+    "ThreadId": "34350",
+    "Html": "I'm kindof surprised by this actually. Were you running in release mode without debugger attached?\r\n",
+    "PostedDate": "2008-09-03T10:31:10.343-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "115900",
+    "ThreadId": "34350",
+    "Html": "I noticed the Shadow Priest solver is slower than all of the other modules when running the regular release version on my laptop.&nbsp; My laptop does not run .NET apps very well and it hates Rawr a lot.&nbsp; Usually I just change things until it locks up and then come back to it later.<br>\r\n<br>\r\nIn any case once I started to look at it that problem just popped out right away.&nbsp; So I changed all the values and then tested a full release build.&nbsp; No modules using debug code.&nbsp; I'm really not sure if it sped up debug mode or not.<br>\r\n<br>\r\nI rarely test programs in debug mode unless I'm forced too.&nbsp; Running debug all the time is a really bad habit since the generated code is completely different from release to debug.<br>\r\n<br>\r\nEdit:&nbsp; I just tested it in a sample app and they do generate the same assembly in release no matter which way it is coded.&nbsp; (Yay, optimizer.)&nbsp; I still don't know why the ShadowPriest model is so much slower than other models.&nbsp; I guess I'll check out the Warlock and Mage ones to see what approach they use.<br>\r\n<br>\r\n",
+    "PostedDate": "2008-09-03T21:45:30.967-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "116153",
+    "ThreadId": "34350",
+    "Html": "Morwen has let me know that she won't be able to continue working on HolyPriest or ShadowPriest. Anyone want to take over maintaining/improving HolyPriest, and finishing ShadowPriest?<br>\r\n",
+    "PostedDate": "2008-09-04T13:41:14.333-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "116190",
+    "ThreadId": "34350",
+    "Html": "<blockquote><em>float value = float_variable * 2;<br>\r\n<br>\r\n</em></blockquote>Interesting, I always thought such things are optimized by the compiler...<br>\r\n",
+    "PostedDate": "2008-09-04T15:55:11.76-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "116222",
+    "ThreadId": "34350",
+    "Html": "<em>Interesting, I always thought such things are optimized by the compiler...<br>\r\n<br>\r\n</em>On the PS2 that constant is treated like a double.&nbsp; The hardware has no native support for doubles so it ends up calling a bunch of really slow software routines.&nbsp; Once you've worked on a platform like that day in and day out for 6-7 years you get paranoid.&nbsp; The C# compiler does properly optimize it to three x86 instructions.<br>\r\n<br>\r\nAstrylian:<br>\r\nWith some help from Kavan I am going to take a stab at improving ShadowPriest.&nbsp; I don't fully understand the solver yet, but Kavan gave me some excellent tips so I just need to find a little time to look at it again.<br>\r\n<br>\r\n",
+    "PostedDate": "2008-09-04T19:48:52.45-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "117089",
+    "ThreadId": "34350",
+    "Html": "Update:<br>\r\n<br>\r\nI feel pretty stupid that it took me this long to figure this out:&nbsp; The talent trees aren't properly implemented in ShadowPriest.&nbsp; (I was wondering why it kept telling me to stack Spell Hit gear even though I was well over the hit cap after talents.)<br>\r\n<br>\r\nIs there a generic way of implementing this?&nbsp; The model became really useful once I convinced it I really am shadow spec. :)<br>\r\n<br>\r\n",
+    "PostedDate": "2008-09-08T21:04:00.647-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "117099",
+    "ThreadId": "34350",
+    "Html": "No, not really. There's a generic talent tree control, but it's got some serious problems, and none of the models use it because of that. Rawr 2.0 will include a centralized talent picker. In the mean time, I'd suggest trying to implement the talent picker that is used by most of the models... Mage, Rogue, etc.<br>\r\n",
+    "PostedDate": "2008-09-08T22:24:54.75-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "117543",
+    "ThreadId": "34350",
+    "Html": "I'm really looking forward to testing this module.&nbsp; My spriest hits 70 today... it will be nice to be able to use rawr for this toon too.&nbsp; Thanks for picking this up, tarix!<br>\r\n",
+    "PostedDate": "2008-09-10T06:46:36.323-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "118733",
+    "ThreadId": "34350",
+    "Html": "WotLK has a release date and 3.0.2 is on the PTR.&nbsp; I think I'm going to punt the talent tree stuff for now.<br>\r\n<br>\r\nWould everyone be okay manually putting in the important talents in the interim?&nbsp; (I would just add it to the generic options panel.)&nbsp; Unless you are holy spec there's really only one talent that the model uses right now anyway.<br>\r\n<br>\r\n",
+    "PostedDate": "2008-09-15T23:11:35.93-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "120674",
+    "ThreadId": "34350",
+    "Html": "I was curious if you'd had any progress on this.&nbsp; :)&nbsp; I have no problem with manually adding talents at this point.<br>\r\n",
+    "PostedDate": "2008-09-24T09:15:43.493-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

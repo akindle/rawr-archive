@@ -1,0 +1,106 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Hunter",
+      "DisplayName": "Rawr.Hunter"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-03-09T22:24:27.353-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hunter's Marksmanship tree Talent skill Readiness is not used correctly in the Details calculation tab. The skill resets all the Hunter skills, except Bestial Mastery's Bestial Wrath, meaning I can double shot any priority rotation skills. The way Rawr calculates it today is to use it immediately after other skills, not considering the previous skills \"up timers\".\n \nFor example, Rapid Fire lasts 15 seconds after activated. The current model today activates Readiness immediately, wasting those 15 seconds.",
+    "LastUpdatedDate": "2013-05-16T05:22:54.22-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-12-18T03:33:45.36-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Hunter] MM Talent Readiness modeling is not right",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15509
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2735,
+      "FileName": "ZeroUm.xml",
+      "DownloadUrl": ".\\2735"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Can you post your character file where this is happening as well as a screenshot that highlights the issue where you see it?",
+      "PostedDate": "2009-12-18T10:36:37.7-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hey, I was bored and saw this was still open.  All you need to do is go into the Rotations tab and place Readiness after everything but Steady Shot.  I've just been doing this myself each release, but that'd be cool if we could have this set as the default.  Thanks for all you do!",
+      "PostedDate": "2010-01-06T15:02:26.033-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Character file in attachment. Readiness after Steady Shot for me, Readiness is never activated.\r\nDoing the deafault MM rotation, minus Silencing Shot:\r\n\r\nTime  :Shot          :CastTime:Done   :CD Until\r\n  0,00:RapidFire     :   0,000:  0,000:180,000\r\n  0,00:Readiness     :   2,000:  2,000:180,500\r\n  2,00:SerpentSting  :   2,000:  4,000: 23,500\r\n  4,00:ChimeraShot   :   2,000:  6,000: 13,500\r\n  6,00:AimedShot     :   2,000:  8,000: 16,500\r\n  8,00:SteadyShot    :   1,462:  9,462: 10,000\r\n 10,00:SteadyShot    :   1,462: 11,462: 12,000\r\n 12,00:SteadyShot    :   1,462: 13,462: 14,000\r\n 14,00:ChimeraShot   :   2,000: 16,000: 23,500\r\n 16,00:RapidFire     :   0,000: 16,000:196,000\r\n 16,50:AimedShot     :   2,000: 18,500: 27,000\r\n 18,50:SteadyShot    :   1,462: 19,962: 20,500\r\n 20,50:SteadyShot    :   1,462: 21,962: 22,500\r\n 22,50:SteadyShot    :   1,462: 23,962: 24,500\r\n 24,50:ChimeraShot   :   2,000: 26,500: 34,000\r\n 27,00:AimedShot     :   2,000: 29,000: 37,500\r\n 29,00:SteadyShot    :   1,462: 30,462: 31,000\r\n 31,00:SteadyShot    :   1,847: 32,847: 33,000\r\n 33,00:SteadyShot    :   1,847: 34,847: 35,000\r\n\r\nReadiness should be used after Rapid Fire duration fades away, which is a good 15 seconds after. Also I usually wait until boss goes 20% to do Kill Shot, Readiness, Kill Shot.",
+      "PostedDate": "2010-01-06T16:25:34.33-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-06T16:25:37.627-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The reason Readiness never activates is you put it after Steady, which is a spammable shot and will always be available.  That's why I said to put if after everything BUT Steady ;P\r\n\r\nAlso, you're incorrect on using Readiness after Rapid Fire buff fades.  You want to use it as soon as you can after Rapid Fire, whether immediately or after all your shots are on cooldown and Rapid Fire is still going.  Using Readiness won't remove the Rapid Fire buff, it only resets the cooldown, so doing it the way you're saying is causing you to lose 9 seconds before you can use Rapid Fire the 3rd time.  I myself have it all in one macro:\r\n#showtooltip Rapid Fire\r\n/cast [combat] Call of the Wild    *Always keep this from autofiring\r\n/cast [combat] Rapid Fire\r\n/cast [combat] Readiness\r\n\r\nThis way I hit it once after my aimed and then a second time to activate Rapid Fire again after the buff runs out for 30 continous seconds of Rapid Fire.  There's no dps difference between using Rapid Fire at the beginning or using it after Aimed.\r\n\r\nIf you put Readiness after everything EXCEPT Steady Shot, it should look like this for your file:\r\nTime  :Shot          :CastTime:Done   :CD Until\r\n  0.00:RapidFire     :   0.000:  0.000:180.000\r\n  0.00:SerpentSting  :   2.000:  2.000: 21.500\r\n  2.00:ChimeraShot   :   2.000:  4.000: 11.500\r\n  4.00:AimedShot     :   2.000:  6.000: 14.500\r\n  6.00:Readiness     :   2.000:  8.000:186.500\r\n  8.00:ChimeraShot   :   2.000: 10.000: 17.500\r\n 10.00:AimedShot     :   2.000: 12.000: 20.500\r\n 12.00:SteadyShot    :   1.462: 13.462: 14.000\r\n 14.00:SteadyShot    :   1.462: 15.462: 16.000\r\n 16.00:RapidFire     :   0.000: 16.000:196.000\r\n\r\nand then:\r\n196.50:RapidFire     :   0.000:196.500:376.500\r\n196.50:ChimeraShot   :   2.000:198.500:206.000\r\n199.00:AimedShot     :   2.000:201.000:209.500\r\n201.00:Readiness     :   2.000:203.000:381.500\r\n203.00:ChimeraShot   :   2.000:205.000:212.500\r\n205.00:AimedShot     :   2.000:207.000:215.500\r\n207.00:SteadyShot    :   1.462:208.462:209.000\r\n209.00:SteadyShot    :   1.462:210.462:211.000\r\n211.00:SteadyShot    :   1.462:212.462:213.000\r\n213.00:RapidFire     :   0.000:213.000:393.000\r\n\r\nLastly, you should really change Chimera glyph to Steady Shot, saves you mana and is more dps both now and with best in slot.  I'd also recommend going from Hunter's Mark glyph to Hawk, but wasn't sure if you would prefer keeping it for the other hunters' benefit.  Laters.",
+      "PostedDate": "2010-01-10T15:56:07.41-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "So is this still an actual issue or was it just that the priority list was incorrect? If the *default* list is incorrect please post an updated one for me and I'll take a look. Soon you'll have the ability to add/remove your own cookie cutter shot priorities",
+      "PostedDate": "2010-03-09T11:00:37.797-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You may close this, I was wrong, Rawr is implementing it correctly. Thanks for the lecture.",
+      "PostedDate": "2010-03-09T20:27:20.04-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-09T22:24:27.353-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:27:55.74-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:18.067-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:13.983-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:54.22-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtWarrior",
+      "DisplayName": "Rawr.ProtWarrior"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2008-07-16T12:58:56.137-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "System.NullReferenceException: Object reference not set to an instance of an object.\n   at Rawr.ProtWarr.CalculationsProtWarr.GetCharacterCalculations(Character character, Item additionalItem) in C:\\Documents and Settings\\holymist\\My Documents\\My Downloads\\Rawr-19887\\Rawr.ProtWarr\\CalculationsProtWarr.cs:line 201\n   at Rawr.CalculationsBase.GetCharacterCalculations(Character character) in C:\\Documents and Settings\\holymist\\My Documents\\My Downloads\\Rawr-19887\\Rawr.Base\\Calculations.cs:line 321\n   at Rawr.Optimizer.OptimizeCharacterThreadStart(Character character, String calculationToOptimize, OptimizationRequirement[] requirements, Int32 thoroughness, Boolean injectCharacter) in C:\\Documents and Settings\\holymist\\My Documents\\My Downloads\\Rawr-19887\\Rawr.Base\\Optimizer.cs:line 369",
+    "LastUpdatedDate": "2013-05-16T05:27:08.86-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-07-15T10:02:17.083-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtWarr] Object reference not set to an instance of an object",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 10554
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "This happens whenever I try to run optimize. I'm working on familiarizing myself with the code (I'm a C# noob even). The farthest I've been able to debug it is PrivateOptimizeCharacter hitting an error.",
+      "PostedDate": "2008-07-15T10:04:13.083-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Try going to Debug->Exceptions in VS and enable \"Common Language Runtime Exceptions\" in the Thrown column before running the optimizer. That should point you to the root of the problem.",
+      "PostedDate": "2008-07-15T10:09:14.537-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That did wonders for pointing it out. I've got King's Defender and it's checking ItemEnchantValid with enchants that aren't in the King's Defender item.EnchantValid list. Throws the error \"The given key was not present in the dictionary.\"\r\n",
+      "PostedDate": "2008-07-15T10:43:55.787-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The line\r\nreturn (item.EnchantValid ?? itemEnchantValid[item.GemmedId])[enchant.Id];\r\nin optimizer.cs is the one throwing the error. I'm stumbling trying to come up with something to replace it with.\r\nSeems like there should be some fault tolerance in that line, but it also seems that the list of enchants for the weapon is short there. I this part of creating the dictionary and that's why it's short or should the dictionary already be complete?",
+      "PostedDate": "2008-07-15T13:11:04.823-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Looks like the filter for offhands does not include shield enchants. I'll take a look at this.",
+      "PostedDate": "2008-07-15T13:38:50.48-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok obviously I don't know that King's Defender is a weapon :O Anyway, I got a fix, let me know if all works now.",
+      "PostedDate": "2008-07-15T14:06:08.293-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yep, that fixed it.",
+      "PostedDate": "2008-07-16T07:03:19.963-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-07-16T12:58:56.137-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T16:29:32.52-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:42.087-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:27:08.86-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

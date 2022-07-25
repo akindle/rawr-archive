@@ -1,0 +1,132 @@
+Index: Spell.cs
+===================================================================
+--- Spell.cs	(revision 18155)
++++ Spell.cs	(working copy)
+@@ -252,7 +252,7 @@
+ 
+             // New cast time calculations to deal with NG and clipping
+             double castTimeNoNG = Math.Max(unhastedCastTime / hasteCoefficient, Spell.GlobalCooldown);
+-            double castTimeWithNG = Math.Max(castTimeNoNG - naturesGraceTime, Spell.GlobalCooldown);
++            double castTimeWithNG = Math.Max(castTimeNoNG - naturesGraceTime / hasteCoefficient, Spell.GlobalCooldown);
+             double NGChance = critChanceCoefficient * hitCoefficient;
+             CastTime = (float)((1 - NGChance) * castTimeNoNG + NGChance * castTimeWithNG);
+             CastTime += latency;
+@@ -323,7 +323,7 @@
+ 
+             // New cast time calculations to deal with NG and clipping
+             double castTimeNoNG = Math.Max(unhastedCastTime / hasteCoefficient, Spell.GlobalCooldown);
+-            double castTimeWithNG = Math.Max(castTimeNoNG - naturesGraceTime, Spell.GlobalCooldown);
++            double castTimeWithNG = Math.Max( castTimeNoNG - naturesGraceTime / hasteCoefficient, Spell.GlobalCooldown ); 
+             double NGChance = critChanceCoefficient * hitCoefficient;
+             CastTime = (float)((1 - NGChance) * castTimeNoNG + NGChance * castTimeWithNG);
+             CastTime += latency;
+@@ -444,6 +444,7 @@
+                         timeSpentCasting += sp.CastTime;
+                         ++numberOfCasts;
+                     }
++                    lastSpellCastTime = 0.0f;
+                 }
+                 else
+                 {
+@@ -482,6 +483,17 @@
+                 TimeToOOM = new TimeSpan(0, (int)secsToOOM / 60, (int)secsToOOM % 60);
+             return accumulatedDamage / accumulatedDuration * (secsToOOM >= fightLength ? fightLength : secsToOOM) / fightLength;
+         }
++        
++        public void RecalcVars()
++        {
++            _castCount = 0.0f;
++            _dotTicks = 0;
++            _starfireCount = 0;
++            _duration = 0.0f;
++            _avgCritChance = 0.0f;
++            CalculateRotationalVariables();
++        }
++        
+         private void CalculateRotationalVariables()
+         {
+             Dictionary<float, float> activeDots = new Dictionary<float, float>();
+@@ -515,6 +527,7 @@
+                         timeSpentCasting += sp.CastTime;
+                         ++_castCount;
+                     }
++                    lastSpellCastTime = 0.0f;
+                 }
+                 else
+                 {
+@@ -548,7 +561,7 @@
+         {
+             get
+             {
+-                if (_avgCritChance == 0.0f)
++                if( _castCount == 0.0f )
+                     CalculateRotationalVariables();
+                 return _avgCritChance;
+             }
+@@ -580,7 +593,7 @@
+         {
+             get
+             {
+-                if (_dotTicks == 0)
++                if( _castCount == 0.0f )
+                     CalculateRotationalVariables();
+                 return _dotTicks;
+             }
+@@ -602,7 +615,7 @@
+         {
+             get
+             {
+-                if (_starfireCount == 0)
++                if (_castCount == 0.0f)
+                     CalculateRotationalVariables();
+                 return _starfireCount;
+             }
+@@ -795,12 +808,15 @@
+             foreach (SpellRotation rotation in SpellRotations)
+             {
+                 // Reset all parameters to defaults
+-                Spell.GlobalCooldown = 1.5f;
+                 float effectiveArcaneDamage = calcs.ArcaneDamage;
+                 float effectiveNatureDamage = calcs.NatureDamage;
+                 float effectiveSpellCrit = calcs.BasicStats.SpellCritRating;
+                 float effectiveSpellHaste = calcs.BasicStats.SpellHasteRating;
+                 float effectiveMana = GetEffectiveManaPool(character, calcs);
++                Spell.GlobalCooldown = 1.5f / (1 + effectiveSpellHaste * (1 / CalculationsMoonkin.hasteRatingConversionFactor));
++                // Reset the cast time on Insect Swarm and Moonfire, since this is affected by haste
++                insectSwarm.CastTime = Spell.GlobalCooldown + calcs.Latency;
++                moonfire.CastTime = Spell.GlobalCooldown + calcs.Latency;
+ 
+                 // Trinkets
+                 trinketExtraDPS = 0.0f;
+@@ -812,15 +828,27 @@
+                 effectiveMana += DoManaRestoreCalcs(calcs, rotation, baseHitRate + effectiveSpellHit / CalculationsMoonkin.hitRatingConversionFactor) * (fightLength / rotation.Duration);
+ 
+                 // Calculate average global cooldown based on effective haste rating (includes trinkets)
+-                Spell.GlobalCooldown /= 1 + effectiveSpellHaste * (1 / CalculationsMoonkin.hasteRatingConversionFactor);
++                Spell.GlobalCooldown = 1.5f / (1 + effectiveSpellHaste * (1 / CalculationsMoonkin.hasteRatingConversionFactor));
+                 // Reset the cast time on Insect Swarm and Moonfire, since this is affected by haste
+-                insectSwarm.CastTime = Spell.GlobalCooldown;
+-                moonfire.CastTime = Spell.GlobalCooldown;
++                insectSwarm.CastTime = Spell.GlobalCooldown + calcs.Latency;
++                moonfire.CastTime = Spell.GlobalCooldown + calcs.Latency;
++                rotation.DPS( effectiveArcaneDamage, effectiveNatureDamage, baseHitRate + effectiveSpellHit / CalculationsMoonkin.hitRatingConversionFactor, effectiveSpellCrit / CalculationsMoonkin.critRatingConversionFactor, effectiveSpellHaste / CalculationsMoonkin.hasteRatingConversionFactor, effectiveMana, fightLength, naturesGrace, calcs.BasicStats.StarfireBonusWithDot, calcs.Latency );
++                rotation.RecalcVars();
+                 // Incorporate Nature's Grace with Moonfire into the rotational calculations
+                 if (naturesGrace && rotation.HasMoonfire && rotation.StarfireCount > 0)
+                 {
+                     float critFromGear = effectiveSpellCrit * (1 / CalculationsMoonkin.critRatingConversionFactor);
+-                    starfire.CastTime -= ((1 - (rotation.AverageCritChance + critFromGear)) * (moonfire.SpecialCriticalModifier + critFromGear) * 0.5f) / rotation.StarfireCount;
++                    float curHitRate = baseHitRate + effectiveSpellHit / CalculationsMoonkin.hitRatingConversionFactor;
++                    float extraNGChanceForFirstSF = Math.Max((1 - (rotation.AverageCritChance + critFromGear) * curHitRate) * 
++                        (moonfire.SpecialCriticalModifier + critFromGear) * curHitRate, 0.0f);
++                    float timeSavedInRotation = extraNGChanceForFirstSF * 0.5f / 
++                        ( 1 + effectiveSpellHaste / CalculationsMoonkin.hasteRatingConversionFactor);
++                    // change that extra saved time into a haste improvement
++                    // this makes use of 1/(1+x/k) * y == 1/(1+(x+z)/k) <=> z == (k + x - k y - x y) / y
++                    float rotationSpeedup = (rotation.Duration - timeSavedInRotation) / rotation.Duration; // y
++                    float extraHaste = ( CalculationsMoonkin.hasteRatingConversionFactor + effectiveSpellHaste - 
++                        CalculationsMoonkin.hasteRatingConversionFactor * rotationSpeedup - effectiveSpellHaste * rotationSpeedup) / rotationSpeedup;
++                    effectiveSpellHaste += extraHaste;
+                 }
+ 
+                 float currentDPS = rotation.DPS(effectiveArcaneDamage, effectiveNatureDamage, baseHitRate + effectiveSpellHit / CalculationsMoonkin.hitRatingConversionFactor, effectiveSpellCrit / CalculationsMoonkin.critRatingConversionFactor, effectiveSpellHaste / CalculationsMoonkin.hasteRatingConversionFactor, effectiveMana, fightLength, naturesGrace, calcs.BasicStats.StarfireBonusWithDot, calcs.Latency) + trinketExtraDPS;

@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "217844",
+    "ThreadId": "64066",
+    "Html": "<p>I thought I had this sorted out and I just found a counter example that proved me wrong. I know some of you have worked on this before so I'm looking for any fresh perspective. The question of course is how are the racial, talent and buff multipliers combined to get the final value of the stat. For my specific case I'm looking at intellect on a gnome mage with Arcane Mind. The test gear has 1010 Intellect. The following are results as shown by ingame tooltip.</p>\r\n<p>5% Gnome, 15% Arcane Mind: 1441=222+1219</p>\r\n<p>5% Gnome, 6% Arcane Mind: 1328=204+1124</p>\r\n<p>5% Gnome, 6% Arcane Mind, Arcane Intellect (60): 1394=204+1190</p>\r\n<p>5% Gnome, 15% Arcane Mind, Arcane Intellect (60): 1514=222+1292</p>\r\n<p>5% Gnome, 15% Arcane Mind, Mark of the Wild (51): 1503=222+1281</p>\r\n<p>5% Gnome, 15% Arcane Mind, Mark of the Wild (51), Arcane Intellect (60), 10% Blessing of Kings: 1732=222+1510</p>\r\n<p>Any ideas are welcome while I put my mind to rest.</p>",
+    "PostedDate": "2009-07-30T20:07:21.597-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "217852",
+    "ThreadId": "64066",
+    "Html": "<p>Racial_Int = Math.Floor(Racial_Base * IntMultBuff1 * IntMultBuff2 * IntMultBuff3 ...) // note that Kings is included here</p>\r\n<p>Gear_Int = Math.Floor((gearStats.Int + IntBuff1 + IntBuff2 + ...) * IntMultBuff1 * IntMultBuff2 * ...) // kings here, as well</p>\r\n<p>Int = Racial_Int + Gear_Int</p>\r\n<p>For your last entry, 1732 is correct, but it should be 244+1488 and not 222+1510. &nbsp;If the tooltip is showing 222+1510, that's because there's a bug in the tooltip that doesn't count Kings. &nbsp;Presumably, the second number listed in the tooltip is simply (Stats.Int - BuggedNumberDisplayed).</p>\r\n<p>For reference: 184*1.05*1.15*1.10 = 244, (1010+51+60)*1.05*1.15*1.10 = 1488. &nbsp;1488+244 = 1732</p>",
+    "PostedDate": "2009-07-30T21:24:00.36-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "217877",
+    "ThreadId": "64066",
+    "Html": "<p>Well I had it as floor before but I had to change it because of this data set (this is undead mage I believe):</p>\r\n<p>Intellect (with AI) 179+806=985<br>Intellect with Kings 179+904=1083<br><br>Spirit 179+231=410<br>Spirit with Kings 179+272=451<br>Spirit with 7% SotM &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 191+247=438<br>Spirit with 7% SotM + Kings 191+291=482</p>",
+    "PostedDate": "2009-07-30T23:00:10.593-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "217965",
+    "ThreadId": "64066",
+    "Html": "<p>Hmm, I'm wondering if the base stats for that race aren't something like 179.0909090... ie, it was 197 at one point, and was bumped down 10%.</p>\r\n<p>I'm really at a loss right now, because it's not like it's a weird edge case -- the last one with kings/motw/ai also came out &nbsp;to like 1488.96, but fit the pattern</p>",
+    "PostedDate": "2009-07-31T05:11:49.13-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "217980",
+    "ThreadId": "64066",
+    "Html": "<p>Has it been disproved that SotM isn't 10%*1/3/10%*2/3/10%*3/3 ?</p>\r\n<p>&nbsp;</p>\r\n<p>179 * 2/3*10% = 190.93333333</p>\r\n<p>Although it fails for gear (246.4)</p>",
+    "PostedDate": "2009-07-31T05:59:08.607-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "218014",
+    "ThreadId": "64066",
+    "Html": "<p>The rogue value right now is the Intellect with Kings 179+904=1083. &nbsp;I didn't even bother looking at the spirit and crunching those numbers.</p>\r\n<p>I tried different combinations of flooring just the racial stat, or just the gear stat, flooring both. &nbsp;I tried rounding base and flooring gear, rounding gear and flooring base, rounding both, and rounding just the sum. &nbsp;None of these approaches seem to work. &nbsp;I wonder if it's floating point related.</p>",
+    "PostedDate": "2009-07-31T07:24:21.023-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

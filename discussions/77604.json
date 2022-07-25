@@ -1,0 +1,434 @@
+[
+  {
+    "Id": "265334",
+    "ThreadId": "77604",
+    "Html": "<p>We got a Deathbringer's Will last night. &nbsp;That's the trinket with passive arpen and a proc that changes your form and gives you one of six procs:</p>\r\n<ul>\r\n<li>600str or 1200ap</li>\r\n<li>600arp or 600crit</li>\r\n<li>600haste or 600agi</li>\r\n</ul>\r\n<p>It went to a MM hunter, and he only saw 3 of the procs: 600agi, 600crit, 1200ap. &nbsp;Need more data to know what other classes/specs get.</p>",
+    "PostedDate": "2009-12-09T07:08:36.857-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "265344",
+    "ThreadId": "77604",
+    "Html": "<p>http://elitistjerks.com/f73/t36932-feral_questions/p33/#post1484662</p>\r\n<p>&nbsp;</p>\r\n<p>Copy/paste from EJ druid forums. He's feral - http://www.wowarmory.com/character-sheet.xml?r=Bleeding%20Hollow&amp;n=Supah</p>\r\n<table id=post1484662 border=0 cellspacing=0 cellpadding=3 width=\"100%\" align=center>\r\n<tbody>\r\n<tr valign=top>\r\n<td style=\"background:#f4f3e8 none repeat scroll 0% 0%;border:0px 1px none solid -moz-use-text-color #ffffff\" rowspan=2 width=175 align=center>&nbsp;</td>\r\n<td id=\"td_post_1484662\" style=\"border-right:1px solid #ffffff\">\r\n<div id=\"post_message_1484662\"><br> <br> Got Deathbringer's Will, seems like its limited to Arp, Str, Agi (600 each). It DOES transform you as well.</div>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>",
+    "PostedDate": "2009-12-09T07:31:07.27-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "265360",
+    "ThreadId": "77604",
+    "Html": "<p>a DK in the unholy thread got strength, crit, and haste procs.</p>",
+    "PostedDate": "2009-12-09T07:59:48.717-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "265439",
+    "ThreadId": "77604",
+    "Html": "<p>Tentatively, it looks like the proc is split out in the following way:</p>\r\n<p>Warrior - Str, ArP, Crit<br>Rogue - Agi, ArP, AP<br>Paladin - Str, Haste, Crit<br>Hunter - AP, Agi, Crit<br>Death Knight - Str, Crit, Haste<br>Druid - ArP, Str, Agi</p>\r\n<p>If that's the case, war/rog/druid will need to handle it separately for the arp proc (you can't just say it gives 200str 200arp and 200crit every time it procs, for the same reason you can't say Mjolnir Runestone gives uptime*ArpenRating as passive). &nbsp;With ICC having people seeing the crit cap, it's probably a good idea to do special math for agi/crit, and possibly haste if it's non-linear for you.</p>",
+    "PostedDate": "2009-12-09T12:41:13.833-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "265448",
+    "ThreadId": "77604",
+    "Html": "<p>God, this is going to be a bitch of a trinket to model. :)</p>\r\n<p>EDIT: Still missing Shamans from that list too. I'd guess Agi/AP/Crit, but not sure.</p>\r\n<p>For completeness, we probably should see what procs it gives for mages/priests/warlocks too. :)</p>",
+    "PostedDate": "2009-12-09T13:01:35.583-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "265495",
+    "ThreadId": "77604",
+    "Html": "<p>Knowing what I know about how it changes your character model, I'm going to model this trinket the easy way: If Optimizing for &quot;Cool Factor&quot;, this trinket is BIS. &nbsp;I don't care if it's 3yrs from now and you're level 100.</p>",
+    "PostedDate": "2009-12-09T15:34:24.08-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "265522",
+    "ThreadId": "77604",
+    "Html": "<p>Can we collectively yell at Blizz for putting a &quot;sometimes&quot;-ArP-proc on a trinket?&nbsp; That's ridiculously stupid for those of us that are passively ArP capped, and doesn't even make sene to gear around it.&nbsp; Only seems to be designed for those who don't actively go after ArP, but can use it as a free proc (some Rogues would be it, looking at the above list).</p>",
+    "PostedDate": "2009-12-09T19:02:58.09-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "265526",
+    "ThreadId": "77604",
+    "Html": "<p>Attempting to hand model each type led me to an interesting bug:</p>\r\n<p>Open a char</p>\r\n<p>Go to 264 version of trinket</p>\r\n<p>Right click, edit</p>\r\n<p>Add effect</p>\r\n<p>30 sec</p>\r\n<p>600 AGI</p>\r\n<p>Exit edit screen, look at it, ok</p>\r\n<p>Right click, edit again</p>\r\n<p>0 AGI, 600 STR</p>\r\n<p>Exit edit screen</p>\r\n<p>PROGRAM CRASH</p>\r\n<p>Edit: also seems to crash randomly if I try to put the ArP on it...I think it may be due to me being at or near ArP cap with needler on.&nbsp; It only does it if I am on the trinket tab with my not-arp-trinket.&nbsp; Like I can edit it and add arp on the same trinket tab I have Needler.&nbsp; If I change to the other tab, crash.&nbsp; I swapped trinkets in my slots to verify.</p>\r\n<p>Edit#2: happens with MeleeHit 100% as the proc reason...I changed it to PhysicalHit 15% (like Mjol etc) and no longer crashes.</p>",
+    "PostedDate": "2009-12-09T19:39:36.52-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "265532",
+    "ThreadId": "77604",
+    "Html": "<p>As for real model, 3 different 30 second out of 6 minute procs is probably the way to go?&nbsp; Having them tailor to each class is a bitch...</p>",
+    "PostedDate": "2009-12-09T20:00:35.197-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "265558",
+    "ThreadId": "77604",
+    "Html": "<p>[Edit] Base info, for the lazy: 105s CD (1m45s), roughly 50% chance to proc.</p>",
+    "PostedDate": "2009-12-09T22:32:46.32-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268136",
+    "ThreadId": "77604",
+    "Html": "<p>I've noticed some models have begun to deal with this. &nbsp;I thought I'd share my solution to the problem and get some feedback. &nbsp;I'm breaking it up into three SpecialEffects (one for each stat), and tripling the Cooldown on each effect.</p>\r\n<p>&nbsp;</p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre><span style=\"color:Blue\">if</span> (effect.Stats.DeathbringerProc &gt; 0f)\r\n                {\r\n                    SpecialEffect proc1 = <span style=\"color:Blue\">new</span> SpecialEffect(effect.Trigger, <span style=\"color:Blue\">new</span> Stats { Strength = effect.Stats.DeathbringerProc }, effect.Duration, effect.Cooldown * 3f, effect.Chance, effect.MaxStack);\r\n                    SpecialEffect proc2 = <span style=\"color:Blue\">new</span> SpecialEffect(effect.Trigger, <span style=\"color:Blue\">new</span> Stats { CritRating = effect.Stats.DeathbringerProc }, effect.Duration, effect.Cooldown * 3f, effect.Chance, effect.MaxStack);\r\n                    SpecialEffect proc3 = <span style=\"color:Blue\">new</span> SpecialEffect(effect.Trigger, <span style=\"color:Blue\">new</span> Stats { ArmorPenetrationRating = effect.Stats.DeathbringerProc }, effect.Duration, effect.Cooldown * 3f, effect.Chance, effect.MaxStack);\r\n                    secondPass.Add(proc1); <span style=\"color:Green\">// strength and arp go in second pass</span>\r\n                    firstPass.Add(proc2); <span style=\"color:Green\">// crit rating goes in first pass</span>\r\n                    secondPass.Add(proc3);\r\n                }\r\n</pre>\r\n</div>\r\n<p>Note that my first/second pass is just how I split up my special effects. &nbsp;Crit/Haste/Hit effects are iteratively computed (because they can change other effects' triggers), while all other stats are added in one pass after my final haste/crit/hit ratings are determined.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-12-16T11:53:42.853-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268140",
+    "ThreadId": "77604",
+    "Html": "<p>Shouldn't that be 1/3'g the proc chance instead?</p>",
+    "PostedDate": "2009-12-16T11:56:39.2-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268150",
+    "ThreadId": "77604",
+    "Html": "<p>nvm, ebs clarified it for me. I'm creating a static function in SpecialEffects that can be called to do essentially what you see above, where-in you pass your character class and it spits out the 3 of 6 relevant procs for you.</p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre><span style=\"color:Gray\">///</span> <span style=\"color:Gray\">&lt;summary&gt;</span><br><span style=\"color:Gray\">///</span><span style=\"color:Green\"> Special Handler for Deathbringer's Will to be call from INSIDE the model.</span><br><span style=\"color:Gray\">///</span> <span style=\"color:Gray\">&lt;/summary&gt;</span><br><span style=\"color:Gray\">///</span> <span style=\"color:Gray\">&lt;param name=&quot;Class&quot;&gt;</span><span style=\"color:Green\">The class of the character&lt;/param&gt;</span><br><span style=\"color:Gray\">///</span> <span style=\"color:Gray\">&lt;param name=&quot;value&quot;&gt;</span><span style=\"color:Green\">The current stats.DeathBringerProc value&lt;/param&gt;</span><br><span style=\"color:Gray\">///</span> <span style=\"color:Gray\">&lt;returns&gt;</span><span style=\"color:Green\">List of Special Effects relevant to your class. Will be a list of 3 items or 0 if passing an invalid class.&lt;/returns&gt;</span><br><span style=\"color:Blue\">public</span> <span style=\"color:Blue\">static</span> <span style=\"color:#008080\">List</span>&lt;<span style=\"color:#008080\">SpecialEffect</span>&gt; GetDeathBringerEffects(<span style=\"color:#008080\">CharacterClass </span>Class, <span style=\"color:Blue\">float</span> value) {<br>    <span style=\"color:#008080\">List</span>&lt;<span style=\"color:#008080\">SpecialEffect</span>&gt; retVal = <span style=\"color:Blue\">new</span> <span style=\"color:#008080\">List</span>&lt;<span style=\"color:#008080\">SpecialEffect</span>&gt;();<br><br>    <span style=\"color:#008080\">SpecialEffect </span>procSTR   = <span style=\"color:Blue\">new</span> <span style=\"color:#008080\">SpecialEffect</span>(<span style=\"color:#008080\">Trigger</span>.PhysicalHit, <span style=\"color:Blue\">new</span> <span style=\"color:#008080\">Stats </span>{ Strength               = value }, 30, 90 * 3f, 0.15f);<br>    <span style=\"color:#008080\">SpecialEffect </span>procCrit  = <span style=\"color:Blue\">new</span> <span style=\"color:#008080\">SpecialEffect</span>(<span style=\"color:#008080\">Trigger</span>.PhysicalHit, <span style=\"color:Blue\">new</span> <span style=\"color:#008080\">Stats </span>{ CritRating             = value }, 30, 90 * 3f, 0.15f);<br>    <span style=\"color:#008080\">SpecialEffect </span>procArP   = <span style=\"color:Blue\">new</span> <span style=\"color:#008080\">SpecialEffect</span>(<span style=\"color:#008080\">Trigger</span>.PhysicalHit, <span style=\"color:Blue\">new</span> <span style=\"color:#008080\">Stats </span>{ ArmorPenetrationRating = value }, 30, 90 * 3f, 0.15f);<br>    <span style=\"color:#008080\">SpecialEffect </span>procHaste = <span style=\"color:Blue\">new</span> <span style=\"color:#008080\">SpecialEffect</span>(<span style=\"color:#008080\">Trigger</span>.PhysicalHit, <span style=\"color:Blue\">new</span> <span style=\"color:#008080\">Stats </span>{ HasteRating            = value }, 30, 90 * 3f, 0.15f);<br>    <span style=\"color:#008080\">SpecialEffect </span>procAGI   = <span style=\"color:Blue\">new</span> <span style=\"color:#008080\">SpecialEffect</span>(<span style=\"color:#008080\">Trigger</span>.PhysicalHit, <span style=\"color:Blue\">new</span> <span style=\"color:#008080\">Stats </span>{ Agility                = value }, 30, 90 * 3f, 0.15f);<br>    <span style=\"color:#008080\">SpecialEffect </span>procAP    = <span style=\"color:Blue\">new</span> <span style=\"color:#008080\">SpecialEffect</span>(<span style=\"color:#008080\">Trigger</span>.PhysicalHit, <span style=\"color:Blue\">new</span> <span style=\"color:#008080\">Stats </span>{ AttackPower            = value * 2 }, 30, 90 * 3f, 0.15f);<br><br>    <span style=\"color:Blue\">switch</span> (Class) {<br>        <span style=\"color:Blue\">case</span> <span style=\"color:#008080\">CharacterClass</span>.Warrior:     retVal.Add(procSTR); retVal.Add(procArP);   retVal.Add(procCrit);  <span style=\"color:Blue\">break</span>;<br>        <span style=\"color:Blue\">case</span> <span style=\"color:#008080\">CharacterClass</span>.Rogue:       retVal.Add(procAGI); retVal.Add(procArP);   retVal.Add(procAP);    <span style=\"color:Blue\">break</span>;<br>        <span style=\"color:Blue\">case</span> <span style=\"color:#008080\">CharacterClass</span>.Paladin:     retVal.Add(procSTR); retVal.Add(procHaste); retVal.Add(procCrit);  <span style=\"color:Blue\">break</span>;<br>        <span style=\"color:Blue\">case</span> <span style=\"color:#008080\">CharacterClass</span>.Hunter:      retVal.Add(procAP ); retVal.Add(procAGI);   retVal.Add(procCrit);  <span style=\"color:Blue\">break</span>;<br>        <span style=\"color:Blue\">case</span> <span style=\"color:#008080\">CharacterClass</span>.DeathKnight: retVal.Add(procSTR); retVal.Add(procCrit);  retVal.Add(procHaste); <span style=\"color:Blue\">break</span>;<br>        <span style=\"color:Blue\">case</span> <span style=\"color:#008080\">CharacterClass</span>.Druid:       retVal.Add(procArP); retVal.Add(procSTR);   retVal.Add(procAGI);   <span style=\"color:Blue\">break</span>;<br>        <span style=\"color:Blue\">case</span> <span style=\"color:#008080\">CharacterClass</span>.Shaman:      retVal.Add(procAGI); retVal.Add(procAP);    retVal.Add(procCrit);  <span style=\"color:Blue\">break</span>;<br>        <span style=\"color:Blue\">default</span>: <span style=\"color:Blue\">break</span>; <span style=\"color:Green\">// None</span><br>    }<br><br>    <span style=\"color:Blue\">return</span> retVal;<br>}<br></pre>\r\n</div>",
+    "PostedDate": "2009-12-16T12:33:25.487-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268160",
+    "ThreadId": "77604",
+    "Html": "<p>As long as there's no added benefit of all 3 of them procing together at the start, as compared to procing sequentially, that should be fine. That's probably how I'll handle it in Cat too.</p>",
+    "PostedDate": "2009-12-16T12:49:26.58-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268163",
+    "ThreadId": "77604",
+    "Html": "<p>So what you see above there is the code of the function that you are calling, below is how I got that to work. When displayed in the comparison pane it will state the DeathBringer Proc as it should, but this code swaps it to the actual effects. Your ArP, crit caps, etc would need to be handled after this point (and I'm assuming with most of the models, they already are). I've already verified this works in Hunter, should work for everyone else without significant changes.</p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre><span style=\"color:#008080\">Stats </span>statsItems = GetItemStats(character, additionalItem);<br><span style=\"color:Blue\">if</span>(statsItems._rawSpecialEffectData != <span style=\"color:Blue\">null</span>){<br>    <span style=\"color:Blue\">foreach</span> (<span style=\"color:#008080\">SpecialEffect</span> effect <span style=\"color:Blue\">in</span> statsItems._rawSpecialEffectData) {<br>        <span style=\"color:Blue\">if</span> (effect != <span style=\"color:Blue\">null</span> &amp;&amp; effect.Stats != <span style=\"color:Blue\">null</span> &amp;&amp; effect.Stats.DeathbringerProc &gt; 0)<br>        {<br>            statsItems.RemoveSpecialEffect(effect);<br>            <span style=\"color:#008080\">List</span>&lt;<span style=\"color:#008080\">SpecialEffect</span>&gt; new2add = <span style=\"color:#008080\">SpecialEffects</span>.GetDeathBringerEffects(character.Class, effect.Stats.DeathbringerProc);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; foreach (<span style=\"color:#008080\">SpecialEffect </span>e <span style=\"color:#0000ff\">in</span> new2add) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    e.Stats.DeathbringerProc = 1;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    statsItems.AddSpecialEffect(e);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br>       &nbsp;}<br>    }<br>}<br><br></pre>\r\n</div>",
+    "PostedDate": "2009-12-16T13:00:38.657-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268169",
+    "ThreadId": "77604",
+    "Html": "<p>There was one problem with the method that I've uncovered, and it comes with passing the fight duration to the various SpecialEffect methods (ie AccumulateAverageStats).</p>\r\n<p>If you set the fight duration as something a little over 270secs, it will assume you can get 6 procs off instead of only 4 (two of each instead of 1.33 of each). &nbsp;I couldn't come up with a way to add 1.33 of each proc easily, so instead I opted to always pass 0 for these effects. &nbsp;This gets around the issue of getting 6 procs (it instead will give you 3 plus a small amount, depending on the duration you put in).</p>\r\n<p>I'm achieving this by setting DeathbringerProc=1 in those three special effects, and then when I process my effect I check for DeathbringerProc==1 and pass 0 for the fight duration instead of 1. &nbsp;Using Jothay's code, you can change it to:</p>\r\n<p>&nbsp;</p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre><span style=\"color:Blue\">foreach</span> (SpecialEffect e <span style=\"color:Blue\">in</span> new2add) {\r\n                e.Stats.DeathbringerProc = 1;\r\n                statsItems.AddSpecialEffect(e);\r\n}\r\n</pre>\r\n</div>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-12-16T13:17:21.993-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268172",
+    "ThreadId": "77604",
+    "Html": "<p>Updated the post to include this change</p>",
+    "PostedDate": "2009-12-16T13:24:51.667-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268183",
+    "ThreadId": "77604",
+    "Html": "<p>Err, that duration=0 workaround doesn't work when combining special effects. :(</p>",
+    "PostedDate": "2009-12-16T13:48:57.09-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268185",
+    "ThreadId": "77604",
+    "Html": "<p>What do you mean combining special effects? &nbsp;Like, I can't have duration=0 for some SEs but not others? &nbsp;Or you mean when doing funky things with SEs like computing when SEs stack together?</p>",
+    "PostedDate": "2009-12-16T13:51:08.643-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268255",
+    "ThreadId": "77604",
+    "Html": "<p>Isn't this a single special effect that just has one of 3 random stats when it procs? I would strongly suggest that you use a single SpecialEffect with actual cooldown for this. Compute the uptime of the effect and then your average uptime for each of 3 stats is a third of that.</p>\r\n<p>Also if you're making static functions in SpecialEffect make sure you use thread synchronization and if you're creating SpecialEffect objects try to cache them if possible.</p>",
+    "PostedDate": "2009-12-16T17:52:10.987-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268266",
+    "ThreadId": "77604",
+    "Html": "<p>(Working with Kavan on this now, to build an actually correct model for it)</p>",
+    "PostedDate": "2009-12-16T18:19:09.103-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268402",
+    "ThreadId": "77604",
+    "Html": "<p>Here's how it finally ends up working.</p>\r\n<p>1) Item is parsed with the following special effect:</p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre>stats.AddSpecialEffect(<span style=\"color:Blue\">new</span> SpecialEffect(Trigger.PhysicalHit, <span style=\"color:Blue\">new</span> Stats() { DeathbringerProc = ilvl == 277 ? 700 : 600 }, 30f, 105f, 0.15f));\r\n</pre>\r\n</div>\r\n<p>2) Don't split it into 3 procs, or anything of the sort. Proceed with special effect handling as normal.</p>\r\n<p>3) When accumulating average stats from procs, pass the weight value to the proc of (effect.Stats.DeathbringerProc &gt; 0 ? 1f/3f : 1f), such as:</p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre>statsProcs.Accumulate(effect.GetAverageStats(triggerIntervals[effect.Trigger], triggerChances[effect.Trigger], 1f, calcOpts.Duration), effect.Stats.DeathbringerProc &gt; 0 ? 1f/3f : 1f);</pre>\r\n</div>\r\n<p>4) When summing up the value of the procs, count DeathbringerProc as all 3 stats that your class/spec gets (just str/agi shown here):</p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre>statsProcs.Agility += statsProcs.HighestStat + statsProcs.Paragon + statsProcs.DeathbringerProc;\r\nstatsProcs.Strength += statsProcs.DeathbringerProc;\r\n</pre>\r\n</div>\r\n<p>5) For stats which you combine multiple procs to form the chance of each value of that stat, continue on.</p>\r\n<p>6) When building the list of special effects to pass to SpecialEffect.GetAverageCombinedUptimeCombinations(), count DeathbringProc as the same stat as you're combining for (ie ArPen):</p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre><span style=\"color:Blue\">foreach</span> (SpecialEffect effect <span style=\"color:Blue\">in</span> statsTotal.SpecialEffects(se =&gt; triggerIntervals.ContainsKey(se.Trigger) &amp;&amp; se.Stats.ArmorPenetrationRating + se.Stats.DeathbringerProc &gt; 0))\r\n</pre>\r\n</div>\r\n<p>7) Also, build a list of scales along with each SpecialEffect:</p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre>tempArPenEffectScales.Add(effect.Stats.DeathbringerProc &gt; 0 ? 1f / 3f : 1f);</pre>\r\n</div>\r\n<p>8) If you've only got a single SpecialEffect, and just use effect.GetAverageUptime, be sure to add the DeathbringerProc to your total value:</p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre><span style=\"color:Blue\">float</span> uptime = effect.GetAverageUptime(triggerIntervals[effect.Trigger], triggerChances[effect.Trigger], 1f, calcOpts.Duration) * tempArPenEffectScales[0];\r\narmorPenetrationUptimes = <span style=\"color:Blue\">new</span> WeightedStat[] { <span style=\"color:Blue\">new</span> WeightedStat() { Chance = uptime, Value = effect.Stats.ArmorPenetrationRating + effect.Stats.DeathbringerProc },\r\n</pre>\r\n</div>\r\n<p>9) For multiple SpecialEffect, just before calling SpecialEffect.GetAverageCombinedUptimeCombinations, create a new List&lt;SpecialEffect&gt; to hold adjusted copies of the SpecialEffects that you were going to calculate for. Add to this list the same SpecialEffects, except where DeathbringerProc&gt;0. There, add a new SpecialEffect with ArmorPenetration=DeathbringerProc:</p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre>List&lt;SpecialEffect&gt; tempArPenEffectsAdjusted = <span style=\"color:Blue\">new</span> List&lt;SpecialEffect&gt;();\r\n<span style=\"color:Blue\">foreach</span> (SpecialEffect effect <span style=\"color:Blue\">in</span> tempArPenEffects)\r\n{\r\n\tSpecialEffect adjustedEffect = effect;\r\n\t<span style=\"color:Blue\">float</span> totalArPen = effect.Stats.ArmorPenetrationRating + effect.Stats.DeathbringerProc;\r\n\t<span style=\"color:Blue\">if</span> (effect.Stats.DeathbringerProc &gt; 0)\r\n\t{\r\n\t\tadjustedEffect = <span style=\"color:Blue\">new</span> SpecialEffect(effect.Trigger,\r\n\t\t\t<span style=\"color:Blue\">new</span> Stats() { ArmorPenetrationRating = totalArPen },\r\n\t\t\teffect.Duration, effect.Cooldown, effect.Chance, effect.MaxStack);\r\n\t}\r\n\ttempArPenEffectsAdjusted.Add(adjustedEffect);\r\n}</pre>\r\n</div>\r\n<p>10) Call SpecialEffect.GetAverageCombinedUptimeCombinations() with the adjusted list of SpecialEffects, and the list of scales:</p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre>WeightedStat[] arPenWeights = SpecialEffect.GetAverageCombinedUptimeCombinations(tempArPenEffectsAdjusted.ToArray(), intervals, chances, offset, tempArPenEffectScales.ToArray(), 1f, calcOpts.Duration, AdditiveStat.ArmorPenetrationRating);\r\n</pre>\r\n</div>\r\n<p>11) Poof, accurate modeling of Deathbringer's Will.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-12-17T01:45:01.103-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268875",
+    "ThreadId": "77604",
+    "Html": "<p>Is this working correctly? For my druid, ive created a set that has 73% crit, and 1400 arpen. So the agility proc of DW will be partially wasted (since it pushes me way over the white crit cap) and the arpen proc is 100% wasted. Yet Rawr still ranks it at 800 DPS (compared to Herkuml War Toen and 258 Death's Choice at 590 dps)</p>",
+    "PostedDate": "2009-12-18T04:20:53.567-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268970",
+    "ThreadId": "77604",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Mihirr wrote:</strong><br>\r\n<p>Is this working correctly? For my druid, ive created a set that has 73% crit, and 1400 arpen. So the agility proc of DW will be partially wasted (since it pushes me way over the white crit cap) and the arpen proc is 100% wasted. Yet Rawr still ranks it at 800 DPS (compared to Herkuml War Toen and 258 Death's Choice at 590 dps)</p>\r\n</blockquote>\r\n<p>Even in my current set at 74% crit agility is still worth just as much as str (ok a TINY bit less but still).</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-12-18T08:54:11.86-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269001",
+    "ThreadId": "77604",
+    "Html": "<p>Send me the character file, but yeah, it likely is that good (heavily depends upon fight length too).</p>",
+    "PostedDate": "2009-12-18T09:58:13.663-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269073",
+    "ThreadId": "77604",
+    "Html": "<p>It sounds absolutely right. &nbsp;As ArP gets closer to cap, it gets exponentially worthwhile. &nbsp;so the 155 or 167 static ArP starts getting in the 2.5-3 DPS-per-point range by itself in endgame gear.&nbsp;</p>\r\n<p>And then, you get 10% uptime on each of the procs (Str and Agi). &nbsp;</p>\r\n<p>In other words: when going after the hard cap, the static ArP on the item itself makes up for the lack of benefit from the ArP proc.&nbsp;</p>",
+    "PostedDate": "2009-12-18T12:46:13.353-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269075",
+    "ThreadId": "77604",
+    "Html": "<p>I think Khan is more refering to the fact that at 74% Crit, he is just a hair shy of white crit cap (75% crit against a lvl 83 boss [79.8% according to your live character sheet]). There is currently a discussion going on over at EJ discussing this 4.8% crit reduction on hit. Even Landsoul is able to verify that 4.8% of his hits on I belive it was shield slam (I could be seriously wrong on the ability). But needless to say talented, he had 54.8% crit and used an ability that has an extra 50% chance to crit. After 1600 attempts (or something like that) about 4.8% of those attempts &quot;hit&quot;</p>",
+    "PostedDate": "2009-12-18T13:00:41.91-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269079",
+    "ThreadId": "77604",
+    "Html": "<p>Yes, there is a 4.8% reduction on yellow attacks against bosses, which can be bypassed with 4.8% more crit.</p>\r\n<p>There is a conversion of 4.8% of crits to hits on why attacks against bosses, which cannot be bypassed.</p>\r\n<p>Rawr is already calculating this accurately (and has been for a while); the crit chance you see on the stats tab is your yellow crit, after the 4.8% reduction.</p>\r\n<p>Regardless, just because you hit the white crit cap, doesn't mean Agi is worthless; it's certainly not. It's about a 35% reduction in value of crit (white+FB; you cap FB crit at almost the same time).</p>",
+    "PostedDate": "2009-12-18T13:13:45.33-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269082",
+    "ThreadId": "77604",
+    "Html": "<p>http://elitistjerks.com/f31/t76785-crit_depression_combat_table/</p>\r\n<p>http://forums.worldofwarcraft.com/thread.html?topicId=21724987878&amp;sid=1</p>",
+    "PostedDate": "2009-12-18T13:26:13.87-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269145",
+    "ThreadId": "77604",
+    "Html": "<p>Okay, I've gotten the crit capping in now, but I'm seeing a HUGE perf hit whenever I'm passing in a combat duration.</p>\r\n<p>I did some instrumentation, and it LOOKS like the problem is in Rawr.SpecialFunction.Ibeta. &nbsp;Specifically, that I'm creating a new temporary effect with a stats object with Stats.CritRating = (effect.Stats.DeathbringerProc + effect.Stats.CritRating). &nbsp;I have to do this because there's no way for the combinations method to combine additive stats.</p>\r\n<p>The perf hit doesn't occur when not passing in a combat duration, and it doesn't happen if I'm not using DeathbringerProc (ie if I'm not creating a new special effect every iteration of calcing special effects).</p>\r\n<p>So, I have two questions:</p>\r\n<p>1) Astry, are you also noticing a huge performance hit? &nbsp;I'm noticing a cycle taking 10x longer</p>\r\n<p>2) Kavan, is there another way we can do this?</p>",
+    "PostedDate": "2009-12-18T17:34:55.993-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269149",
+    "ThreadId": "77604",
+    "Html": "<p>1) Yes. Don't think it's that bad, but yes.</p>\r\n<p>2) Kavan, could we perhaps pass in an AdditiveStat[] instead of an AdditiveStat[], and all of those stats would just be summed up? Err, now that I think further on that, that wouldn't work, because I need to not only combine DeathbringerProc and ArPen, but also convert Agility to CritRating, and combine all the CritRating... Hmm... Perhaps pass in some lamba function to create the WeightedStat Value from the Stats object? SpecialEffects already has the uptime graph of the special effect, it's just the summing up of stats that needs to be done.</p>",
+    "PostedDate": "2009-12-18T17:51:45.303-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269159",
+    "ThreadId": "77604",
+    "Html": "<p>Ebs, make sure you go to general settings in options and set&nbsp;Effect Combinations Calculation Mode to cubic interpolation (suggested and default) or linear interpolation. It sounds like you're using the high precision one which is the cause for (HUGE instead of huge) perf hit you're seeing.</p>",
+    "PostedDate": "2009-12-18T18:21:54.993-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269190",
+    "ThreadId": "77604",
+    "Html": "<p>I'm using Cubic (but I wasn't using combinations at all). &nbsp;FOr Proc Effect Calculation Mode, I have Advanced - Interpolation.</p>\r\n<p>Just a little more data: DPSWarr has a &quot;Calculation Time&quot; stat at the bottom that uses a Diagnostics.Stopwatch to count how long it takes to do the &quot;DisplayValues = true&quot; calc. &nbsp;With Deathbringer's Will equipped and passing FightDuration=0, I have ~13k on my dev box. &nbsp;When I pass FightDuration=300, my calc time is 1198k. &nbsp;It's 100 times slower. &nbsp;Instrumentation puts this to UpdateGrid, which was only called on that specialeffect (although its caller, Interpolator.get_Item(float,float) was called 6x).</p>\r\n<p>If you want to reproduce it in DPSWarr right now, just load up my character (Ebs @ US-Sisters of Elune), equip the DBW trinket, and go to Options&gt;Misc&gt;Use Duration for Special Effects. &nbsp;I recommend you change the Comparisons Pane to Slot: Gear&gt;Projectile, or you may be waiting a while :P</p>\r\n<p>&nbsp;</p>\r\n<p>The only workaround I've been able to come up with is caching that effect so I don't re-create it (I only need two, one for each Deathbringer proc).</p>",
+    "PostedDate": "2009-12-18T21:00:33.083-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269193",
+    "ThreadId": "77604",
+    "Html": "<p>Yes, if you're using the noncombination GetAverage functions you need to cache the SpecialEffect, because they create an internal cache for interpolating the data which has a large one time initialization cost. My suggestion would be to just use the GetAverageUptime, that way you don't have to create a new SpecialEffect, but if you want to simplify your workflow by always using Accumulate functions that is ok also.</p>\r\n<p>Actually correcting myself, you should not create a new effect and you can still use the Accumulate. The result Stats will have the value of DeathbringerProc equal to its uptime * actual value. You just need to convert this into the appropriate value of other stats.</p>",
+    "PostedDate": "2009-12-18T21:12:56.06-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269194",
+    "ThreadId": "77604",
+    "Html": "<p>Where's the best place for us to do that?</p>\r\n<p>EDIT: Nevermind, yeah, see your edit.</p>",
+    "PostedDate": "2009-12-18T21:14:52.2-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "273555",
+    "ThreadId": "77604",
+    "Html": "<p>The procced stats are very likely to change soon.&nbsp; Thank GOD.</p>",
+    "PostedDate": "2010-01-05T16:44:32.987-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "273618",
+    "ThreadId": "77604",
+    "Html": "<p>Great, after all that time modelling it..</p>",
+    "PostedDate": "2010-01-05T21:24:06.07-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "273621",
+    "ThreadId": "77604",
+    "Html": "<p>xD</p>",
+    "PostedDate": "2010-01-05T21:27:16.51-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "273847",
+    "ThreadId": "77604",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>BrWarner wrote:</strong><br>\r\n<p>The procced stats are very likely to change soon.&nbsp; Thank GOD.</p>\r\n</blockquote>\r\n<p>Hopefully they don't change for feral :(.</p>\r\n<p>The modeling time isn't wasted though.&nbsp; The effect will remain the same.&nbsp; Just which classes get which stats may change.</p>",
+    "PostedDate": "2010-01-06T08:39:46.5-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "273991",
+    "ThreadId": "77604",
+    "Html": "<p>Not sure if this has been talked about yet but DBW now procs haste instead of ArP. WOOT</p>",
+    "PostedDate": "2010-01-06T13:26:36.747-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "273993",
+    "ThreadId": "77604",
+    "Html": "<p>For feral btw.</p>",
+    "PostedDate": "2010-01-06T13:27:56.11-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "273999",
+    "ThreadId": "77604",
+    "Html": "<p>Source?</p>",
+    "PostedDate": "2010-01-06T13:33:52.663-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "274003",
+    "ThreadId": "77604",
+    "Html": "<p>First noticed in 5 man this morning.&nbsp; Spent last hour autoattacking dummy and saw a high procrate for &quot;Speed of the Vrykul&quot; which is the 600 haste buff.&nbsp; This is on live.&nbsp; If you know of a good proc monitor i will run autoattacks for the next few hours to see what the procrate looks like, for some reason i seem to get mostly haste, followed by strength with agi the least often.&nbsp; I assume this is RNG but its very strange how little the agi procs in relation to the other 2.</p>",
+    "PostedDate": "2010-01-06T13:40:43.877-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "274007",
+    "ThreadId": "77604",
+    "Html": "<p><a href=\"http://img341.imageshack.us/img341/1985/wowscrnshot010610143208.jpg\">http://img341.imageshack.us/img341/1985/wowscrnshot010610143208.jpg</a></p>\r\n<p>http://elitistjerks.com/f81/t37462-warrior_dps_calculation_spreadsheet/p95/#post1513460</p>\r\n<p>Confirmed that warriors get haste instead of arp, at least.</p>",
+    "PostedDate": "2010-01-06T13:59:00.737-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "274079",
+    "ThreadId": "77604",
+    "Html": "<p>Changed also for kitties</p>\r\n<p>http://elitistjerks.com/f73/t63774-cat_dps_guide_dummies/p21/#post1513634</p>\r\n<p>&nbsp;</p>\r\n<pre>DBW procs Str Agi and Haste now, WOOT</pre>\r\n<p>Just throwing it out there ;)</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-01-06T17:45:08.12-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "274115",
+    "ThreadId": "77604",
+    "Html": "<p>Nifty :).</p>\r\n<p>Too bad it's hard coded, can't adjust my proc really to see what it does for me :(.</p>",
+    "PostedDate": "2010-01-06T20:26:28.963-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "274129",
+    "ThreadId": "77604",
+    "Html": "<p>Warriors should be able to see the new version (with haste) if they can run the unreleased code</p>",
+    "PostedDate": "2010-01-06T21:12:42.823-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "274133",
+    "ThreadId": "77604",
+    "Html": "<p>The Warrior one looks to be about where I expect it to be, as Fury.&nbsp; It looks to be severely undervalued (or maybe just underpowered?) for Arms, if you don't mind taking a look at it.</p>",
+    "PostedDate": "2010-01-06T21:28:01.13-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "274369",
+    "ThreadId": "77604",
+    "Html": "<p>Given that haste is more or less terrible for an Arms Warrior, I'm not too surprised to see it be a lot less valuable than for Fury--which actually sees some tangible value from Haste.</p>",
+    "PostedDate": "2010-01-07T08:25:55.373-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "274377",
+    "ThreadId": "77604",
+    "Html": "<p>Arm doesn't already ArP cap?</p>\r\n<p>I would have thought the change would net positive for Arms since they would already cap and then the ArP proc would be nothing....though haste would be something even if it's not that great of a something.</p>",
+    "PostedDate": "2010-01-07T08:33:03.067-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "274378",
+    "ThreadId": "77604",
+    "Html": "<p>Not to mention the crit proc is more or less wasted on Overpower. &nbsp;I will double check that everything works for Arms but if it's working for fury, there's no reason why it wouldn't be for arms (that I can come up with)</p>",
+    "PostedDate": "2010-01-07T08:33:41.333-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "274440",
+    "ThreadId": "77604",
+    "Html": "<p>DBW changes worth a release?</p>\r\n<p>Too bad we don't have Tiny Abom data yet :(.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-01-07T10:37:52.247-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "274471",
+    "ThreadId": "77604",
+    "Html": "<p>Khanthal, DBW wasn't as strong for Arms at the arp cap in general. &nbsp;Yes, adding a 600 haste proc here is an improvement, but if you weren't using any of the arp proc at all then it wasn't nearly as strong as, say, Whisper Fanged Skull and Death's Choice. &nbsp;The value in it for arms was when you were close to the arp cap, but not at it yet (ie, passive arp was past the soft-cap and you're working towards the hard cap).</p>\r\n<p>And I did confirm that there was a bug in the DBW handling -- the crit still wasn't done correctly for the final DPS calculation. &nbsp;Weird that it wasn't caught earlier, but thanks BrWarner for the heads up :) &nbsp;Take another look when you get a chance, if you could :)</p>",
+    "PostedDate": "2010-01-07T11:48:53.327-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "274477",
+    "ThreadId": "77604",
+    "Html": "<p>Looks pretty good, now.&nbsp; I'll keep playing with it, and let you know if I can break it again.&nbsp; xD</p>",
+    "PostedDate": "2010-01-07T12:04:11.413-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

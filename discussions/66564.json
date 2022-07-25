@@ -1,0 +1,122 @@
+[
+  {
+    "Id": "226148",
+    "ThreadId": "66564",
+    "Html": "<p>Hey, like to say great tool.</p>\r\n<p>Armory shows my armor to be 24162 but Rawr shows it to be 22052. Is it possible Toughness from the talent tree is not being added? It looks like its losing around 10%</p>\r\n<p>Most of my values are out by a tiny bit. Is there anything i can do to make it match?</p>\r\n<p>Thanks</p>",
+    "PostedDate": "2009-08-20T21:41:05.843-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "226153",
+    "ThreadId": "66564",
+    "Html": "<p>Toughness is being used in the calcs and 22052 * 1.1 = 24257.2 - 24162 means 95.2 off from 10% difference.</p>\r\n<p>What is your character and server so I can load it directly?</p>",
+    "PostedDate": "2009-08-20T22:00:34.62-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "226159",
+    "ThreadId": "66564",
+    "Html": "<p>Char: Klinkanator</p>\r\n<p>Realm: Caelestrasz</p>\r\n<p>US</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-08-20T22:32:52.223-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "226390",
+    "ThreadId": "66564",
+    "Html": "<p>Having the same issue msyelf. Rawr does not seem to be adding any armor value through the Toughness talent. The armor value from the Austere Earthsiege Diamond is also not being added.</p>\r\n<p>Removing/changing the talent or gem does not affect my armor total which is lower in rawr than in game.</p>\r\n<p>In game armor value: 25792</p>\r\n<p>Rawr armor value: 23325</p>\r\n<p>Char: Bings</p>\r\n<p>Realm: Proudmoore</p>\r\n<p>US</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-08-21T09:04:54.137-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "226395",
+    "ThreadId": "66564",
+    "Html": "<p>LOL, I'm telling you, the Toughness bonus *is there*. The problem seems to be stemming more from Bonus Armor vs Base Armor and how bonuses should stack. I'm looking into it.</p>",
+    "PostedDate": "2009-08-21T09:20:32.39-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "226398",
+    "ThreadId": "66564",
+    "Html": "<p>But if that is the case then why does my armor value not change when I remove talent points from toughness?</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-08-21T09:23:17.943-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "226399",
+    "ThreadId": "66564",
+    "Html": "<p>Also, re: the first guys armor being off by 95.2. Toughness wouldn't affect any armor being gained from agility which may account for the difference.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-08-21T09:26:54.59-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "226403",
+    "ThreadId": "66564",
+    "Html": "<p>NVM, wow, I'm an idiot.</p>\r\n<p>The Toughness reference was there.... but it was BaseArmorMultiplier, not BonusArmorMultiplier. The original coder had only used one of the two *separate* bonus modifiers.</p>",
+    "PostedDate": "2009-08-21T09:39:56.34-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "226409",
+    "ThreadId": "66564",
+    "Html": "<p>After adjusting the calculations to the following formula:</p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre>statsTotal.Armor       = (<span style=\"color:Blue\">float</span>)Math.Floor(statsTotal.Armor      * (1f + statsTotal.BaseArmorMultiplier ));\r\nstatsTotal.BonusArmor += statsTotal.Agility * 2f;\r\nstatsTotal.BonusArmor  = (<span style=\"color:Blue\">float</span>)Math.Floor(statsTotal.BonusArmor * (1f + statsTotal.BonusArmorMultiplier));\r\nstatsTotal.Armor      += statsTotal.BonusArmor;\r\n</pre>\r\n</div>\r\n<p>then after procs are run (this is against the proc stats only)</p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre>statsProcs.Armor        = (<span style=\"color:Blue\">float</span>)Math.Floor(statsProcs.Armor      * (1f + statsTotal.BaseArmorMultiplier  + statsProcs.BaseArmorMultiplier ));\r\nstatsProcs.BonusArmor  += statsProcs.Agility * 2f;\r\nstatsProcs.BonusArmor   = (<span style=\"color:Blue\">float</span>)Math.Floor(statsProcs.BonusArmor * (1f + statsTotal.BonusArmorMultiplier + statsProcs.BonusArmorMultiplier));\r\nstatsProcs.Armor       += statsProcs.BonusArmor;\r\n</pre>\r\n</div>\r\n<p>I'm now getting 24161 Armor in Rawr against 24162 in the Armory for Klinkanator @ Caelestrasz.</p>\r\n<p>I'm now getting 27214 Armor in Rawr against 25792 in the Armory for Bings @ Proudmoore. The difference here is because you have The Black Heart which has a 7k armor proc and Mongoose which is giving that Agility Proc. Taking those two off leaves 25788 in Rawr, only 4 off. I took a quick look at the items and noticed that in the item cache, Veranus' Bane (ID 45137) had -25.4 Armor and 25.4 BonusArmor. The Armory doesn't show this and neither does Wowhead so i have no idea why it's there. Got rid of that and we have 25792 exactly.</p>\r\n<p>BTW, Mongoose only has like 1/4 the total value of Bladewarding. On your toon directly it's even less valued than Adamantite Weapon Chain.</p>",
+    "PostedDate": "2009-08-21T09:54:00.417-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "226410",
+    "ThreadId": "66564",
+    "Html": "<p>As far as any other stats being off, check the numbers against yourself unprocced, things like Heart of Iron add averaged values to the Stats pane.</p>\r\n<p>Also, check the Target Level is equal to 80, the stats change with diminishing returns, etc against higher level mobs and the Armory and in game paper dolls only show stats vs level 80.</p>\r\n<p>If they are still off, let me know which ones and we'll work it out.</p>",
+    "PostedDate": "2009-08-21T09:57:01.463-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "226420",
+    "ThreadId": "66564",
+    "Html": "<p>Thanks much :)</p>",
+    "PostedDate": "2009-08-21T10:17:14.2-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "226572",
+    "ThreadId": "66564",
+    "Html": "<p>Thanks Jothay, much appreciated. Will keep you posted</p>",
+    "PostedDate": "2009-08-21T18:49:40.32-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "226573",
+    "ThreadId": "66564",
+    "Html": "<p>Im still showing 22052 armor. HP is +60 too high and my def is 1 point up than it should be.</p>\r\n<p>Is there something i should do to update anything since you changed it?</p>\r\n<p>cheers</p>",
+    "PostedDate": "2009-08-21T18:59:37.917-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "226574",
+    "ThreadId": "66564",
+    "Html": "<p>The changes won't be in effect for the release until 2.2.14. If you have access to a full development environment you can download the source and build it yourself to try out.</p>\r\n<p>A stam Difference of 60 usually means Toughness (from mining) is either selected or not selected when it is/isn't supposed to be. 1 point off on Def is just a differnce in rounding.</p>",
+    "PostedDate": "2009-08-21T19:12:15.087-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "226593",
+    "ThreadId": "66564",
+    "Html": "<p>Re: tanking enchants, I intentionally ignore the value of Blade Ward within Rawr, and just go with Mongoose or Blood Draining, depending on my own situational analysis.&nbsp; Blade Ward just plain isn't as good as Rawr (through the ProtWarr module) says that it is.</p>",
+    "PostedDate": "2009-08-21T22:37:39.857-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

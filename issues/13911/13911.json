@@ -1,0 +1,130 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Items",
+      "DisplayName": "Rawr.Base.Items"
+    },
+    "ClosedComment": "This has been added fully in 4.0.12, up to 3 sources can be set on any item",
+    "ClosedDate": "2010-12-19T21:34:57.18-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "With Rawr v2.2.13, it seems the item descriptions don't include 'purchaseable with emblem of [...]'.\nI try to refresh it through wowhead or the armory, but it only seems to get where it drops and from whom, but it doesn't note that it can be bought through emblems as well.\nConqueror's Aegis Greaves is one of many examples.\n \nAny way to parse \"emblem\" information as well and add it to item descriptions for filtering?",
+    "LastUpdatedDate": "2013-05-16T05:24:46.27-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-08-18T11:12:47.187-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Feature Request.Items] Show Multiple Sources",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 13911
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Only one Item source can be parsed at a time, the items that are purchasable *only* via emblems are already marked as such. Tier pieces are marked usually either by the Mob that the token drops from or the vendor that sells them (by giving them the matching token). You can add the Emblems statement yourself to the Notes box however I'm not entirely sure that it will work against the filters. I believe Astry has said that it's supposed to but I've tried it myself and I probably just did something wrong as it didn't work.",
+      "PostedDate": "2009-08-18T11:36:55.957-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Also please note that this is a duplicate issue, please check discussions and open/closed issues before posting a new one.",
+      "PostedDate": "2009-08-18T11:37:24.43-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thank you for the prompt note, Jothay.\r\nI imagined it would be somewhere around the opened/closed issues. I really didn't check the discussions.\r\nI therefore searched for 'badge(s)', 'emblem(s)' and 'source' to try to find issues about this, but didn't find any. That's why I posted.\r\n\r\nI'm looking at the xml info from wowhead about an item. Yes, the source(s) is an array with 'all possible sources'. \r\n\r\nAssuming the filters are string based, one could add all possible item sources to the item info, comma separated for example, and the filters would match for both cases. Just a thought.",
+      "PostedDate": "2009-08-18T12:37:32.32-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-17T15:20:35.593-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "post from other related issue:\r\n\r\n\"We are missing valuable resource information.\r\n\r\nI propose a slight change in the source handling.\r\n\r\nWith two sources available, why not use them both at the same time? This may require adding separate variables for Wowhead and Armory, but the information from both will eliminate a lot of the filtering problems.\r\nAlso the benefit of having both sources at the same time would be that items that are actually available in more then one place will now be filtered accordingly.\r\nAs for hovering over an item, you would then have two location information instead of just the one or the other.\r\n\r\nAnother problem is the NULL variables. We can not filter for NULL, not without causing other problems, so if the location information returns a NULL value, can you fill it with \"NULL\" or \"No Data\" or something? If not this information will just fall down into the \"Other\" tab. Of-course if both resources are being used together, the number of items that would have a NULL value from BOTH sources would be minimal.\r\n\r\nSo now comes the question of how to filter for two sources instead of just one? Truthfully, it will depend on how the sources are put together, or whether or not they can be sorted individually. This part I am not sure of, however I am sure someone can come up with an answer.\"",
+      "PostedDate": "2009-10-12T11:07:22.033-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Personally, here's what I've seen so far in looking at the code. I have not changed anything nor do I intend to (I'll leave that for other persons who know this code better).\r\n\r\nI'd like to see the tier gear that can be purchased via badges and picked up from drops show both of it's information states as well as the names of the tokens used to purchase them. So for example:\r\n\r\nConqueror's Siegebreaker Battleplate [226] (46146) [Chest]\r\n\r\nThis item currently states (from a wowhead refresh):\r\n\"Found in Cache of Winter in Heroic Ulduar\"\r\nThis info is pulled by the fact that Wowhead shows the item to have a \"Cost 1 Breastplate of the Wayward Protector\" and then follows to that token and gets it's drop source of the Cache of Winter.\r\n\r\nBut that token can also be purchased with 58 Emblems of Conquest.\r\n\r\nSo here's an example line:\r\n\r\n\"Found in Cache of Winter in Heroic Ulduar\\n\r\nPurchaseable with 1 Breastplate of the Wayward Protector\\n\r\nPurchaseable with 58 Emblems of Conquest\"\r\n\r\nThis way you can treat the separate sources split via '\\n' and you see all the separate ways to get that item. Question is, how would your Filters handle that MTRazer?",
+      "PostedDate": "2009-10-12T12:19:11.253-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "In reference to only one source being parsed at a time, this does not seem to be a hard thing to work around. In fact it may even make the rest of the coding easier. The two sources could be added to just one field for source. The source would look something like \"W-Found in Cache of Winter in Heroic Ulduar A-Drops from Matilda Brightlink in Crystalsong Forest\" the end user would see the info as two separate lines with out the \"W-\" or \"A-\", but the filter can be setup to note the two as needed for various filter needs. The key thing here would be the use of the \"W-\" and \"A-\" as part of the filter for certain items that need special consideration as the source may handle things different. As in \"Heroic Ulduar\" as apposed to \"Uldaur (25)\", depending on the source, both could mean \"Uldaur (25)\" as apposed to \"Heroic Ulduar (10)\" as one might assume.\r\n\r\nEven with all this said, the new patch will be out soon and for the most part the filters will be all over the place again until the info settles down and new standards are created. ",
+      "PostedDate": "2009-10-12T14:10:01.227-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-18T11:08:04.713-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T12:44:20.973-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well, I'm for going through the code to download more sources. It's currently on my to-do list on things to look at. I've skimmed through the section just haven't really gone through the thought process of it yet.",
+      "PostedDate": "2010-07-02T13:24:30.83-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T13:57:18.75-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T14:22:42.08-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T15:30:18.42-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Relevant for Rawr4",
+      "PostedDate": "2010-11-20T20:07:00.85-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-11-22T19:54:38.037-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-19T21:34:57.18-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:31.887-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:46.27-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Items",
+      "DisplayName": "Rawr.Base.Items"
+    },
+    "ClosedComment": "Fix committed, new regex reads it properly now",
+    "ClosedDate": "2009-12-14T21:52:28.293-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Line 91 of ProcessMetaGem in SpecialEffects.cs is failing with meta gems. An example XML is passed in as \n \n+32 Stamina and <a href=\"http://www.wowhead.com/?spell=55344\">2% Increased Armor Value from Items</a>\n \nThis is being parsed as \n+32 Stamina - works ok\n<a href=\"http://www.wowhead.com/?spell=55344\">2% Increased Armor Value from Items</a>  - fails\n \nIt looks like wowhead have added an extra spell link to meta gem items. The HTML will need to be stripped in the parse. It may be an opportunity however as we now have the spellID to work with which may be more useful specifically when dealing with multi languages.",
+    "LastUpdatedDate": "2013-05-16T05:23:04.99-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-12-11T05:08:48.947-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Items] Update Item Cache from Wowhead failing on Meta Gems",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15359
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

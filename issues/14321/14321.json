@@ -1,0 +1,71 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Enhance",
+      "DisplayName": "Rawr.Enhance"
+    },
+    "ClosedComment": "New methodology implemented for v2.2.23 should reduce or eliminate incidence of this issue.",
+    "ClosedDate": "2009-10-14T06:41:26.7-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi Levva,\n \nIn the attached file, you can find an example where Rawr recommends an increase in hit rating even though EnhSim (and my gut feeling as well) disagrees.  To achieve this, simply insert a 20 hit rating or a 40 attack power gem in the gloves.  It won't affect any sockets, nor the meta gem, so the change is completely isolated.  Here is what I observed :\n \n- with +20 hit:  Rawr 6305.83 DPS points, EnhSim 5955.57 DPS\n- with +40 ap:  Rawr 6255.58 DPS points, EnhSim 5960.80 DPS\n \nAs expected EnhSim's DPS slightly increases with more attack power, even though Rawr calculates a pretty sharp drop (50 points!) when switching that one gem.  If Rawr estimated a slight DPS decrease I would not be worried, but 50 points certainly does not seem right.\n \nAlso note that adding another +20 hit gem in the bracers (again instead of +40 ap) results in 6297.29 DPS points in Rawr and 5952.01 DPS in EnhSim.  Everything looks correct in this case, as both Rawr and EnhSim calculate a minor DPS drop.  \n \nIn summary, jumping from 380 to 400 hit rating is behaving wonky, but jumping from 400 to 420 hit rating seems to behave correctly.",
+    "LastUpdatedDate": "2013-05-16T05:24:03.463-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-10-02T12:44:02.283-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Enhance] Example of hit variability",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14321
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2290,
+      "FileName": "Eris - Enhance Raid (Levva).xml",
+      "DownloadUrl": ".\\2290"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Implemented a new PriorityQueue function for determining GCD interference this has moved the goal posts on this issue. Closing this one - re-open if it still appears at some point.",
+      "PostedDate": "2009-10-14T06:40:53.52-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-14T06:41:26.7-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:47:08.56-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:32:40.27-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:03.463-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

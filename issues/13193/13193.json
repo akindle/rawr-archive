@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "Closing old Fixed defects.... Esp. since there&#39;s been quite a few builds since these were marked fixed.  Any new instances of those issues should be created in new defects.",
+    "ClosedDate": "2009-08-07T18:01:41.74-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Figuring this is code related so putting here rather than in Discussions.\n \nSo looking at the TankDK code, I see special handling for defensive stats that have separate diminishing and non-diminishing components, however, the global Get*FromRating() functions do not have that involved, making them less useful.  Is there a plan/means for making that happen?  EG.  Talent Foo provides 5% straight dodge after DR then stack your normal Dodge rating which is affected by DR for a final number. \n I realize there are possible performance issues, but I could see how that lack of functionality could make the global functions less useful despite the improvement of a central library of those needed evaluators.\n \nHopefully I'm making sense.",
+    "LastUpdatedDate": "2013-05-16T05:25:38.113-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-05-08T13:07:39.45-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Feature Request] Diminishing Returns in StatConversion.cs",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 13193
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "It is on my todo list (GetDiminishingDodge/Parry/Miss).",
+      "PostedDate": "2009-05-08T13:18:10.9-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I've got some prototype work done on this.  still need to finish the unittests, but once that is done, I'll check it in.  It won't be called by any existing code except the unittests so we can get some testing on it.\\",
+      "PostedDate": "2009-05-15T18:46:49.323-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I realize it was on your todo list... But I did it since I'm re-writing the TankDK evaluation code anyhow.  Please take a look at let me know what you think.  \r\nFixed in 34126",
+      "PostedDate": "2009-05-22T14:45:02.813-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Looks good, just wondering if some things should be changed, like the death knight unbreakable armor. You might want to call GetDRAvoidanceChance twice and average them instead of baking it into the class. Also just wondering if HitResult.Crit should also deal with defense?",
+      "PostedDate": "2009-05-22T16:28:04.343-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-07T18:01:41.74-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T19:40:14.677-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:35.357-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:38.113-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

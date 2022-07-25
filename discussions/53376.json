@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "179634",
+    "ThreadId": "53376",
+    "Html": "This just strikes me as odd which is why I post...<br>\r\n<br>\r\nIt appears that hit rating and expertise are at an extremely low relative value in this edition of Rawr.  <br>\r\n<br>\r\nGetting at least near hit/exp cap has always worked out previously as a high value, why not so any longer?  Has the math changed that much?  Or a bug? <br>\r\n<br>\r\nMost of the DPS in in the DoTs now, is it not accounting for DoTs missing?\r\n",
+    "PostedDate": "2009-04-15T08:18:47.427-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "180299",
+    "ThreadId": "53376",
+    "Html": "Astrylian, is the expert on this model, so don't take what I say as anything more than a fellow druid, that has looked at the cat model's code in the past.<br>\r\nThe cat model takes misses into account by scaling the energy of special attacks based on this rate: e.g. 5% miss would scale the energy of an unimproved mangle from 40 to 42, this is equavalent to using 21 mangles to get 20 mangle effects (on average over the whole duration of a fight). I don't think this has changed recently.<br>\r\n<br>\r\nI'm assuming that crits on DoTs, will scale the total damage of an ability, but shouldn't affect misses any further. If I remove Primal Gore and reoptimise my current set, I find that the optimiser includes 1 hit gem (in both cases I'm expertise capped) but overall I don't seem to get very different relative weighting for hit or expertise. Thus I don't see any obvious bug on how misses are being handled, now that we have extra DoT damage.<br>\r\n<br>\r\nMy personal belief is that missing an attack, causes me confusion in my &quot;rotation&quot;, resulting in some down time before all my debuffs/dots are in place again.&nbsp; For good players recovering from that might not be such a problem. The way I work around it, is to enforce a constraint on avoided attacks to be &lt;= 1 or 0. This approach cannot be justified by results from the current model. (The cat model works on averaged values and doesn't model local streaks of bad or good luck and how that affects your dps). Whether a much more complex model, modelling local good and bad luck streaks, would suggest anything differently, is in my opinion an open question. But I'm also sure that will depend a lot on how well you adapt to these events and capturing that level of player skill in a model is difficult at best.<br>\r\n<br>\r\n<br>\r\n",
+    "PostedDate": "2009-04-16T14:10:54.983-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "180303",
+    "ThreadId": "53376",
+    "Html": "I did some digging in the model and I think that's the issue.<br>\r\n<a href=\"http://rawr.codeplex.com/WorkItem/View.aspx?WorkItemId=13032\">http://rawr.codeplex.com/WorkItem/View.aspx?WorkItemId=13032</a><br>\r\n<br>\r\nIt does not value up 40 to 42, it values it up from 40 to 40.4\r\n",
+    "PostedDate": "2009-04-16T14:14:32.213-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "180310",
+    "ThreadId": "53376",
+    "Html": "I think I know where the problem cames from:<br>\r\nThe 0.2 scale factor that is used since for missed finishers, you only use 20% of the energy. <br>\r\nBut this factor should:<br>\r\na) Be tied to the primal precision talent and not always be included if you don't have the talent.<br>\r\nb) Only apply to finishers and not to combo generators.<br>\r\n<br>\r\nI'm sure Astrylian will look at fixing this, as soon as he gets a gap.<br>\r\n",
+    "PostedDate": "2009-04-16T14:29:09.933-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "180315",
+    "ThreadId": "53376",
+    "Html": "There is a different calc for finishers, the one I referanced in the link was for non-finishers.<br>\r\n<br>\r\nThe finishers one is affected by primal precision.\r\n",
+    "PostedDate": "2009-04-16T14:36:40.833-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "180337",
+    "ThreadId": "53376",
+    "Html": "I see what you mean. In that case I cannot think of any reason why the 0.2 should be included on the combo generator side. I guess it must have slipped in there at some point. Anyone know if something with energy refunds was maybe tried on the PTR at some point? <br>\r\n<br>\r\nLet's give Astrylian a chance, he might know of another reason. <br>\r\n<br>\r\n",
+    "PostedDate": "2009-04-16T15:50:28.93-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "180369",
+    "ThreadId": "53376",
+    "Html": "Mk.  Removing the 0.2 also simplifies the equation to (1f /chanceNonAvoided) which is nice.<br>\r\n<br>\r\nSide note:<br>\r\nThe timeToReapplyDebuffs usage threw me for a loop for a while but as I poked at it in Excel with examples I was suprised to see it worked.  I can see how it reduces to the simple addition as it's really a ratio being applied to the 1 second GCD.  Quite elegant.\r\n",
+    "PostedDate": "2009-04-16T16:56:40.6-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "180848",
+    "ThreadId": "53376",
+    "Html": "Reposting here... <span style=\"color:rgb(48, 51, 45);font-family:'segoe ui';font-size:13px\">You only lose 20% of the energy cost of a combo point generator on a miss (whether you have Primal Precision or not). For finishers, it's 100% by default, 20% if you have 2/2 Primal Precision. If you see any way that this doesn't match the code, let us know.</span>",
+    "PostedDate": "2009-04-18T11:39:17.517-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

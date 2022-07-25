@@ -1,0 +1,106 @@
+[
+  {
+    "Id": "224031",
+    "ThreadId": "65859",
+    "Html": "<p>I am not sure if I am doing something wrong or what the deal is but when I go into the rawr Optimizer and choose to add an <span id=\"ctl00_ctl00_MasterContent_Content_CommentsRepeater_ctl00_MessageLabel\" style=\"display:inline-block;width:99%\">additional requirement the list box only displays for choices</span></p>\r\n<p>Overall Rating</p>\r\n<p>DPS Rating</p>\r\n<p>Health</p>\r\n<p>Meele Avoid %</p>\r\n<p>&nbsp;</p>\r\n<p>After watching the video it looks like there is a ton more options, like hit rating, etc. Any help is appreciated, thanks.</p>\r\n<p><span style=\"display:inline-block;width:99%\"><br></span></p>",
+    "PostedDate": "2009-08-16T08:17:45.713-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224039",
+    "ThreadId": "65859",
+    "Html": "<p>Those options are specific to each model. Which model are you using, and which requirements are you looking for?</p>",
+    "PostedDate": "2009-08-16T10:04:42.29-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "224083",
+    "ThreadId": "65859",
+    "Html": "<p>BloodElf Ret Pally, Hit Cap and Expertise Cap</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-08-16T15:24:27.433-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "225312",
+    "ThreadId": "65859",
+    "Html": "<p>So is there anyway to do this?</p>",
+    "PostedDate": "2009-08-19T01:01:38.277-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "225412",
+    "ThreadId": "65859",
+    "Html": "<p>My guess is that Melee Avoid % is a combination of Hit and Expertise caps (ie, Melee Avoid % = 0 means you're at both hit and expertise caps. &nbsp;1% means that you're only going to have 1% of your attacks dodged or miss -- 4 expertise below the cap, 1% below the hit cap, or a combination of the two).</p>",
+    "PostedDate": "2009-08-19T06:33:17.487-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "225665",
+    "ThreadId": "65859",
+    "Html": "<p>I dont think this takes the Expertise Cap into consideration at all. Can Anyone verify? And it doesn't seem to be working properly for the Hit cap either. Would there be any other possible way to do this inside the program? If not is there a place for suggestions and improvements to the program. Thanks in advance</p>",
+    "PostedDate": "2009-08-19T17:52:30.13-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "225669",
+    "ThreadId": "65859",
+    "Html": "<p>Looking at the function it is calling:</p>\r\n<p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre><span style=\"color:Blue\">public</span> <span style=\"color:Blue\">float</span> GetMeleeAvoid() {\r\n    <span style=\"color:Blue\">return</span> 1f\r\n        - GetMissChance(_stats.PhysicalHit, _calcOpts.TargetLevel)\r\n        - GetDodgeChance(_stats.Expertise, _calcOpts.TargetLevel)\r\n        - GetParryChance(_stats.Expertise, _calcOpts.TargetLevel) * _calcOpts.InFront;\r\n</pre>\r\n</div>\r\nSetting 'Melee Avoid % &lt;= 0' should make you both Hit capped (8% @ 83 targ) and Expertise Hard capped (13.75% @ 83 targ if standing in front 100% of the time)</p>",
+    "PostedDate": "2009-08-19T18:10:22.457-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "225670",
+    "ThreadId": "65859",
+    "Html": "<p>Thank you for the quick response, is there anyway to adjust the expertise cap without affecting the hit cap? As a Ret Pally should never really be in front of the target therefore that would bring the cap to 214 expertise rating (26 expertise, 6.5%). From what i am understanding its all built into one where if I change the Melee Avoid then that will effect the hit cap as well. This would explain why it is unable to Optimize my results for Melee Avoid % &lt;= 0 when I clearly am reaching the hit cap and the expertise cap for being behind a targ @ 83. Thanks again.</p>",
+    "PostedDate": "2009-08-19T18:19:21.833-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "225674",
+    "ThreadId": "65859",
+    "Html": "<p>uhhh, you dont seem to grasp what this thing is doing.</p>\r\n<pre><span style=\"color:Blue\">return</span> 1f<br>        - GetMissChance(_stats.PhysicalHit, _calcOpts.TargetLevel)<br>        - GetDodgeChance(_stats.Expertise, _calcOpts.TargetLevel)<br>        - GetParryChance(_stats.Expertise, _calcOpts.TargetLevel) * _calcOpts.InFront;<br><br></pre>\r\n<p>GetMissChance is &quot;8% - (Total Hit Bonuses As A Percent)&quot; so you want this to be '&lt;= 0' and this section is not affected by being in font or back</p>\r\n<p>GetDodgeChance is &quot;6.5% - (Total Expertise and Dodge Reduction Bonuses As A Percent)&quot; so you want this to be '&lt;= 0' and this section is not affected by being in font or back</p>\r\n<p>GetParryChance is &quot;13.75% - (Total Expertise and Parry Reduction Bonuses As A Percent)&quot; so you want this to be '&lt;= 0' and this section <strong>is</strong> affected by being in font or back so standing in back 100% of the time will put this part at 0% automagically. However, I do not suggest for any model to blatently state that you are behind the mob 100% of the time as most fights involve movement and you cannot guarantee being behind the mob 100% of the time. I personally use 75% time in back as it's a decent average amongst most boss fights.</p>\r\n<p>However, I just noticed something else. If you are nice and capped the result of the function is 1, which is being multiplied by 100 (to handle the percentage translation). So in the Optimizer, the requirement that you want to set, with the way the code is currently written, is 'Melee Avoid % &gt;= 100' which means your attacks land 100% of the time.</p>\r\n<p>Since this is counter-intuitive and backwards from how other models are doing it, I can change it to function differently and break out the values in case someone (though there's no reason to) wants to just make themselves hit capped and skip expertise, etc.</p>",
+    "PostedDate": "2009-08-19T18:39:20.947-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "225685",
+    "ThreadId": "65859",
+    "Html": "<p>Thank you very much for your explanation and time. Changing 'Melee Avoid % &gt;= 100' worked and showed the values that I needed. It does seem a little backwards but thank you for your help and time. If it is not to much trouble I think it would be a great to have a break down of different values, more options are never a bad thing :) .... Thanks again</p>",
+    "PostedDate": "2009-08-19T19:17:40.953-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "225694",
+    "ThreadId": "65859",
+    "Html": "<p>I've made a commit that gives new optimizer options, basically I copied over DPSWarr's and tweaked them so they work for for Ret.</p>\r\n<p>To be Hit capped (8%) and Dodge Capped (6.5%) use '% Chance to be Avoided (Yellow/Dodge) &lt;= 0'</p>",
+    "PostedDate": "2009-08-19T20:29:35.26-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "225698",
+    "ThreadId": "65859",
+    "Html": "<p>Thanks Again for your time really appreciate you taking a look at this and making the changes!</p>",
+    "PostedDate": "2009-08-19T20:39:20.223-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "236881",
+    "ThreadId": "65859",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Jothay wrote:</strong><br>\r\n<p>I've made a commit that gives new optimizer options, basically I copied over DPSWarr's and tweaked them so they work for for Ret.</p>\r\n<p>To be Hit capped (8%) and Dodge Capped (6.5%) use '% Chance to be Avoided (Yellow/Dodge) &lt;= 0'</p>\r\n</blockquote>\r\n<p>Hey. Sorry bout opening the discussion again... ive looked for new option in the optimiser and cant seem to find it? Was it removed again or did i miss another discussion</p>\r\n<p>stating it was?</p>\r\n<p>&nbsp;</p>\r\n<p>Thank you for the nice work!</p>",
+    "PostedDate": "2009-09-21T07:02:10.673-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,402 @@
+[
+  {
+    "Id": "536991",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>Hey all,</p>\r\n<p>&nbsp;A lot of people have been letting us know lately how much they hate the new online Silverlight-based version of Rawr4. I wanted to take a moment to respond to that feedback, and to discuss the issues with you, the users.</p>\r\n<p style=\"padding-left:30px\"><em>See <strong>TLDR</strong><em>&nbsp;at the bottom if you don't want to read the wall of text.</em></em></p>\r\n<ul>\r\n<li>Developing Rawr is a <strong>huge</strong> undertaking. It's done mostly by myself, Kavan, and Jothay working on the core shared components, and numerous more people working on all the models. Personally, I've been extremely busy lately, and my available\r\n time to work on it has been restricted. </li><li>I feel your pain. You're telling us that using Rawr4 is so much harder than it was to use Rawr2, and I absolutely agree (except for you Mac users, of course).\r\n</li><li>Rawr4 is far from finished, complete, or polished. It's very 'alpha' quality, and was definitely rushed out the door, before it was really ready, for Cataclysm. I'm sorry we haven't had time to get it polished and working well.\r\n</li><li>A lot of people are asking why we moved to Silverlight; what were we <em>thinking?</em>&nbsp;We moved to Silverlight due to user request. Users wanted to use Rawr without having to download anything, without having to install or unzip anything, and they\r\n wanted to use it from anywhere, on any computer. Us power users probably found it stupidly easy to download Rawr on our PCs, unzip it, and run it. But don't forget that there are a whole ton of people out there, many of who are totally clueless about that\r\n sort of thing, so they instead go use terrible tools for what they want to do, like Gearscore or MaxDPS.com. Silverlight was chosen because it satisfied those needs best of all the available options.&nbsp;\r\n<ul>\r\n<li>Something purely HTML based would be either extremely slow (and require a full rewrite of all code) if the processing was done on the client, or expensive server time/hosting if it was done on the server (and then wouldn't be available offline either).\r\n</li><li>Something done in some other framework like Air or Flash would be slow, require a full rewrite of all code, and wouldn't leverage any of the skills that us developers have.\r\n</li><li>Silverlight is fast <em>(before you object, keep reading)</em>, cross platform, processing is done on the client-side, is available offline, uses the same codebase we already have for all the models and the majority of the core shared components, and leverages\r\n the development skills that we already have. </li></ul>\r\n</li><li>&quot;But Silverlight is slow/memoryhog/buggy/errors/etc!&quot; All those things that users are complaining about are totally valid complaints, but they're misdirected. Those things aren't Silverlight's fault; they're Rawr4's.&nbsp;\r\n<ul>\r\n<li>Super slow performance in many cases? That bugs in Rawr, not Silverlight. </li><li>Huge memory usage? That's bugs in Rawr, not Silverlight. </li><li>Issues with cache files, version updates, errors? Those are bugs in Rawr (or just features we haven't completely implemented), not Silverlight.\r\n</li><li>Seriously, performance was a major concern when we were considering switching to Silverlight, and something we extensively tested at the time. Our tests showed that calculation performance was 20% slower in Silverlight than in WinForms (WinForms is the\r\n framework that Rawr2 was built on). 20%. To be running on the web, that's acceptable to us. But we didn't want to lose that performance, so we decided to split Rawr into both Silverlight\r\n<em>and</em> WPF (Silverlight and WPF are very closely related technologies; WPF is the full desktop-focused UI framework, whereas Silverlight is a scaled down, subset of WPF, intended for use on the web). The WPF version would run only 2-3% slower than the\r\n WinForms version did, and would share 98% of the same code as the Silverlight version, so was feasible to maintain in parallel. Unfortunately, running out of time for Cataclysm, the WPF version has fallen by the wayside; we still fully intend to release a\r\n WPF version, it just has been a lower priority than the Silverlight version, and when we're stretched for time like we have been, the lower priority items get put on the back burner.\r\n</li><li>Again, let me stress: <strong>Silverlight is not slow.</strong>&nbsp;The slowness that most people are experiencing is the result of some major bugs in Rawr, currently.\r\n</li></ul>\r\n</li><li>So, where do we go from here? Our priorities are these:\r\n<ul>\r\n<li>Fix the major bugs plaguing Rawr4, that are making you hate it.\r\n<ul>\r\n<li>Performance should be solid. The app should be smooth loading, not use more memory than it needs, process about 20% slower than Rawr2 did, and be totally usable, on a&nbsp;\r\n</li><li>It should automatically update to the latest version whenever possible. </li><li>It should load the latest data files automatically, whenever possible (probably prompting you to overwrite your local changes if you've locally changed your item cache or something).\r\n</li><li>Armory imports should work flawlessly. This one is a tough one because Blizzard has told us that they'd be releasing XML services of the character/item data soon, and so we're waiting for that before investing too much time in the HTML-based parsing, which\r\n is very error-prone. But at least, invest the time to make it work for the majority of characters now, which shouldn't take too long.\r\n</li></ul>\r\n</li><li>Once Rawr4 in Silverlight is functioning to our satisfaction, if users are still unhappy with it, focus more on the WPF version instead.\r\n</li></ul>\r\n</li></ul>\r\n<p><strong>TLDR:&nbsp;</strong>So what am I trying to say here? Basically, <strong>\r\nI'm sorry</strong>. Most people have had a <em>terrible</em>&nbsp;first impression of Rawr4, and I'm very sorry for that, and we're going to be working hard to rectify that. It's not Silverlight's fault, it's ours, for releasing a very buggy product. Please\r\n don't let that terrible first impression be your <em>last</em>&nbsp;impression.</p>\r\n",
+    "PostedDate": "2010-12-16T13:40:19.233-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "537107",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>At the moment, &quot;It should automatically update to the latest version whenever possible.&quot; is what I'm most looking forward to. I still have no idea how to compile/use the new versions from the source code, I'm not a programer and its all to confusing for\r\n me, but with the amount of issues being fixed everyday (very good job btw) it suck's to use a version over 10 days old.</p>\r\n<p>As for silverlight I've never had any contact with it before rawr3 and even then I didn't like it as much as the normal, stand alone version of rawr2. I totally understand the usefulness of silverlight and not having to install the program on your machine\r\n but having a normal version aswell would be nice.</p>\r\n<p>Just putting it out there really, all of you guys have done an excellent work and we're not in any position of asking anything of you =)</p>\r\n",
+    "PostedDate": "2010-12-16T20:29:29.477-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "537118",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>The 10day old version is the latest version currently; what I'm talking about is that when there is a new version (planning for this weekend), if you have the offline version installed, you'll have to uninstall and reinstall it.</p>\r\n",
+    "PostedDate": "2010-12-16T21:37:37.793-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "537125",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>Aah! Well that's not really a major problem tbh, at least its easily doable, the reinstall... I was thinking more on the lines of the elitist jerks page being updated with the new source codes either as they come out or daily or something, but i have no\r\n idea how hard or bothersome that might be... Really no idea how it all works.</p>\r\n",
+    "PostedDate": "2010-12-16T22:16:56.32-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "537263",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>I had to create an account to post this I spend 1 min of my time so I could let you know what countless hours of your time means to me.</p>\r\n<p>Astrylian, Kavan, Jothay and each and every other person who has contributed to the development of RAWR.</p>\r\n<p>You guys are heroes and have nothing to be sorry for: absolutely nothing. You guys craft an application, with the latest buzz development tools available to you, which I would not have a scooby do about, to make a game I do give a scooby do about more enjoyable.\r\n I hope you guys get something resembling enjoyment out of the development process be it the experience of using new tools,honing your already considerable skills or merely pride in creating an awesome final&nbsp; product.</p>\r\n<p>I can't even think of a time when I would contemplate criticism or indeed for any criticism to be valid of you or your application. You guys give your own time freely for the benefit of others.</p>\r\n<p>Its a new day and however long it takes you to get RAWR4 up and running is time I can spend gazing into my magic turtle.</p>\r\n<p>I haven't&nbsp; seen any other product that comes close to RAWR's brilliant and intuitive interface. Simple to use and real easy, even for a nub like me, to kick my character performance in WOW to another level.</p>\r\n<p>The biggest issue for me is no armoury lookup but that's down to Blizzard, a gaming superpower with super resources, and not you. I could manually input but read below. If you can do some extra work to get it to work before Blizzard updates all the more\r\n kudos to you. I assume if you do it will need to be undone when Blizzard extract the digit!</p>\r\n<p>Silverlight is fine in so far as I can tune my character when I am at work and I don't need to install any application on anyone else's computer (although I suppose technically Silverlight is an application but as usual I digress and my turtle is giving\r\n me evils). It's accessible from anywhere and works brilliantly (when it works). But at home on my desktop not really fussed to be honest. I use it in preference to the WPF as I always assumed a cloud application would be better as it would always be up to\r\n date and I&nbsp; wouldn't have to spend say all of 7 mins checking to see if a&nbsp; newer version was available to download and install. You guys have made my laziness lazier.:-)</p>\r\n<p>How you guys do what you do I will never know and that is the sad fact.</p>\r\n<p>Humbly yours</p>\r\n<p>ME:-)</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2010-12-17T05:44:26.027-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "537265",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>any chance of a downloadable version? i would happily pay good money for the return of rawr2, i can tell you now that silverlight runs much slower than rawr 2, it also relies on the internet conection wich i dont like, i used to save my profiles and open\r\n them up for raids, was the best wow app there was. It is now erm shocking. your app is amazing pleshease keep it that way!</p>\r\n<p>&nbsp;</p>\r\n<p>edit, im not having a go, im just gutted/shocked that my most fav app has gone this way.</p>\r\n<p>I would happily donate for this app to become downloadable, as i for one never have a web browser open while raiding, and at the moment it would be raid suicide to do so, i know you have said that rawr will speed up, but to be honest you can not convince\r\n people who have used silverlight in the past. its a sluggish platform and was defunct from the word go.</p>\r\n<p>&nbsp;</p>\r\n<p>yes im repeating myself,</p>\r\n<p>Br</p>\r\n<p>Tesh</p>\r\n",
+    "PostedDate": "2010-12-17T05:46:08.42-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "537282",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>Please actually read Astrylian's post. There WILL be a downloadable WPF version as this shares 90%&#43; of the code of the Silverlight version. We just need to get Rawr4 working and stable first. In fact it should appear as a button to &quot;download&quot; or &quot;Work offline&quot;\r\n on the Rawr4 page once its ready.</p>\r\n",
+    "PostedDate": "2010-12-17T06:24:45.753-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "537298",
+    "ThreadId": "238675",
+    "Html": "\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n<strong>Talade wrote:</strong><br>\r\n<br>\r\n<p>You guys are heroes&nbsp;</p>\r\n</blockquote>\r\n<p>Signed.</p>\r\n",
+    "PostedDate": "2010-12-17T06:48:06.24-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "537344",
+    "ThreadId": "238675",
+    "Html": "\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n<strong>I did &quot;actually&quot;read it, i will rephrase, i meant download, not a work off line webpage (unless you are planning a standalone wpf then you would have to provide all the files for offline use),&nbsp; I love your old app, this 1 is just unuseable, i can\r\n bet if a poll were drawn up, downloadable program/or fill your cache with junk or fill your cache with junk offline version&nbsp; i bet 80% of the player base would like a faster downloadable, non memory hogging non cache filling easy to use program that doesnt\r\n rely on perfect synergy between web browser/internet/silverlight. rawr 2 was perfect, it worked when you didnt have internet, all the files were there in the folders, yes i would love a Wow-heros type of rawr but please god still make it a native app for when\r\n people cant get on the internet or the computer they use blows the cache on restart or this program will be useless if you have to sit at a loading screen for 10mins each time you want to use it, then have it crash, freeze/is not responding/ please insert\r\n another quad core for me to chow down on type error, bring back the old download, not a browser based app. testing this program on multiple rigs/set ups, still unusable.</strong></blockquote>\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n<br>\r\n</blockquote>\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n<strong>yes it shares like 90% of the code, Silverlight was basicly written to use WPF libraries,<br>\r\n</strong></blockquote>\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n<br>\r\n</blockquote>\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n<strong>best regards</strong></blockquote>\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n<strong>tesh<br>\r\n</strong></blockquote>\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n</blockquote>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2010-12-17T07:56:14.077-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "537385",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>Tesh, that's specifically what we're saying. The Silverlight version is already fully usable offline (well, as usable as it is online, anyway; baring the other huge bugs we have right now). In addition, we'll be releasing a WPF version, which is a truly\r\n native desktop app, just like Rawr2 was (though built on the WPF platform instead of WinForms; WPF is the technology that Microsoft released to fully replace WinForms, a few years ago).</p>\r\n<p>&nbsp;</p>\r\n<p>Thanks to everyone for the feedback, both good and bad, and for keeping it civil while giving it. I do understand and appreciate that it's terribly unusable for a large number of people (probably a majority, in fact), and am honestly embarrassed about how\r\n shitty the currently released version is.</p>\r\n",
+    "PostedDate": "2010-12-17T09:32:53.72-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "537457",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>Have any of the devs done any profiling on Rawr4 yet? I remember when we were having severe performance issues with DPSWarrior I was able to identify a few specific function calls that were causing the problems, and Jothay was able to fix it pretty quickly.\r\n I have no experence profiling Silverlight apps, but I can do some digging on this if it would help.</p>\r\n<p>~Droid</p>\r\n",
+    "PostedDate": "2010-12-17T11:16:58.687-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "537465",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>Yes, we're on it.</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2010-12-17T11:30:14.93-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "537505",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>Astrylian,</p>\r\n<p>&nbsp; I wanted to thank you for giving us all a State of the Project&nbsp;posting.&nbsp; I do appreciate all the hard work and your own personal lives spent on this project&nbsp; Keep up the good job guys, and please, oh please release a wpf version.&nbsp;\r\n I loved Rawr2!</p>\r\n<p>Happy Holidays everyone!</p>\r\n",
+    "PostedDate": "2010-12-17T12:54:54.417-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "537558",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>why should you be embarressed?, yes it doesnt work great, everyone knows the problems, and they will be fixed. i will however be waiting on the native app, the web page gives me a headache, thank you for confiming it is non browser WPF, i think you should\r\n porbably post something to that effect on the main page, i for one have only ever seen crappy browser plugins/web tools ect using borked WPF libraries, so it will be interesting to see how it works,</p>\r\n<p>&nbsp;</p>\r\n<p>BR</p>\r\n<p>Tesh</p>\r\n",
+    "PostedDate": "2010-12-17T14:27:21.15-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "537559",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>I have set myself up with a profiler that will work with silverlight. Would you like me to spend some time analyzing the code, and put my findings in the issue tracker/discussions, or would you prefer if I left it to you and the other devs? Not trying to\r\n pressure you at all on this, just want to see if I can help out in any way. Thank you for working on Rawr, and I am excited to see where it goes from here.</p>\r\n",
+    "PostedDate": "2010-12-17T14:29:05.903-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "537560",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>Email it to the <a href=\"mailto:WarcraftRawr@gmail.com\" target=\"_blank\">WarcraftRawr@gmail.com</a> mailbox and I'll dig into it.</p>\r\n<p>Edit: Astry tells me that the new VS2010 SP1 Beta has Silverlight profiling built in without the need for command prompt crap. I'll be trying this soon if I have time.</p>\r\n",
+    "PostedDate": "2010-12-17T14:30:28.863-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "537613",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>I have also used ANTS before, it is really good but expensive. It does come with a 14 day free trial peroid though.</p>\r\n<p>http://www.red-gate.com/products/dotnet-development/ants-performance-profiler/</p>\r\n<p>http://www.red-gate.com/products/dotnet-development/ants-memory-profiler/</p>\r\n",
+    "PostedDate": "2010-12-17T18:53:58.313-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "537754",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>I just wanted to say thank you for all the hard work that goes into something like this. People take for granted how much effort this all takes.</p>\r\n",
+    "PostedDate": "2010-12-18T12:14:03.313-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "537795",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>BTW, I do want to say... &quot;You're welcome.&quot; The words of encouragement mean a lot. We do this because it honestly is enjoyable for us to do. We wouldn't do it otherwise. Sure, there are ups and downs, but on a whole, I love working on Rawr.</p>\r\n",
+    "PostedDate": "2010-12-18T14:43:11.167-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "537808",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>If anyone is reading this right now (within the next hour or so), who reliably has Rawr4 working much slower than it 'should' for them, and has some time to help test some things, and has AIM or MSN, please IM me: cnervig@hotmail.com on MSN, Astro tSD on\r\n AIM. Thanks!</p>\r\n",
+    "PostedDate": "2010-12-18T16:24:54.237-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "537815",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>Just posted a new version, b4.0.11. If anyone who has been having the poor performance problems can try it out on http://elitistjerks.com/rawr.php, and let me know whether it's&nbsp;noticeably&nbsp;faster or not, that would be appreciated.</p>\r\n",
+    "PostedDate": "2010-12-18T16:43:08.257-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "537837",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>Takes a lot of guts to put the blame for poor performance on yourselves, much easier to blame MS. Bravo for stepping up. As much as I'd prefer to see a wholly Winforms version I can feel your pain - trying to develop something thats going to be run on random\r\n PCs, macs etc across the world is a nightmare to support. You guys should go with what makes your life easier. That said, I am still looking forward to the WPF version though :)</p>\r\n<p>Thanks again for the hard work you guys have put in for years on Rawr. Looking forward to the new, shinier version once its ready.</p>\r\n",
+    "PostedDate": "2010-12-18T19:48:27.42-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "537843",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>Wow... Astrylian says he may have just fixed out primary performance woes. With one build setting.</p>\r\n<p>Anyone that can build from source and is experiencing the significant slowdowns, please update to the latest source after Astrylian's next commit and test this. If we're right we can post a new build shortly that should make a lot of people happy.</p>\r\n",
+    "PostedDate": "2010-12-18T20:23:13.967-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "537849",
+    "ThreadId": "238675",
+    "Html": "\r\n<p><em>&lt;PutricideVoice&gt;</em></p>\r\n<p><strong>Good news, everyone! I think I perfected a fix that will resolve performance for everybody!</strong></p>\r\n<p><em>&lt;/PutricideVoice&gt;</em></p>\r\n<p>&nbsp;</p>\r\n<p>Seriously. Should be a like <em>1.7 bajillion</em> percent performance boost for all the UI interaction. Give it a try now. b4.0.12.</p>\r\n",
+    "PostedDate": "2010-12-18T22:28:40.203-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "537904",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>I can't even get to rawr because I have an updated version of silverlight installed.</p>\r\n",
+    "PostedDate": "2010-12-19T05:10:42.13-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "537905",
+    "ThreadId": "238675",
+    "Html": "\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n<strong>cabbey77 wrote:</strong><br>\r\n<p>I can't even get to rawr because I have an updated version of silverlight installed.</p>\r\n</blockquote>\r\n<p>uhh what?</p>\r\n",
+    "PostedDate": "2010-12-19T05:16:21.95-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "537972",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>This latest build requested an update to Silverlight, despite having the SDK and such installed.&nbsp; Once I ran the updater, everything runs just fine.</p>\r\n",
+    "PostedDate": "2010-12-19T10:18:52.42-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "537984",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>(Yes, b4.0.12 uses the latest version of Silverlight, which everyone *should* have if they're running Windows Update frequently, but you can just install manually too.)</p>\r\n<p>An update on Battle.net Character Loading...</p>\r\n<p>It should be working completely for 95% of characters now, and at least mostly for 4% more. I'm having trouble parsing a few of the things on korean characters, so if any koreans are reading this, please note that it won't properly load your glyphs or professions,\r\n and might get the default model wrong for you (but it should be at least the right class). For pretty much all foreign characters, it'll probably screw up the encoding of special characters, so your name/realm may look like gibberish when it finishes loading,\r\n but it should have loaded the data alright.</p>\r\n",
+    "PostedDate": "2010-12-19T10:57:10.563-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "537988",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>One other note about Battle.net Character Loading... Be patient.&nbsp;It may take up to a few minutes for your character to be loaded.</p>\r\n<p><em>(Technical details for anyone interested: Actually loading and parsing a character takes only 1-3sec, but Battle.net will ban you if you make too many requests too often. Since all of the requests from all Rawr users are routed through Rawr's server,\r\n I have to throttle how fast it makes requests. Currently it is set to load 1 character (which takes 2 requests) every 10 seconds. So if more than 1 person every 10 sec is trying to load their character, it delays the later ones. Looking at the queue right\r\n now, it's getting up to 12 people long, meaning that you'll typically have to wait 2 minutes. That's the highest I've ever seen the queue. Guess Sunday mornings are popular. I may bump up the frequency that it'll load characters at, if that gets too bad.)</em></p>\r\n<p><em><span style=\"font-style:normal\">EDIT: Up to 3min queues now... Ugh...&nbsp;</span></em></p>\r\n<p><em><span style=\"font-style:normal\">EDIT 2: This is just getting worse and worse. Up to 12min now. I'm gunna bump the frequency up. Cross your fingers that we don't get banned! (And sorry to the people currently in queue, it'll dump you out soon, and you'll\r\n have to try again)</span></em></p>\r\n<p><em><span style=\"font-style:normal\">EDIT 3: Queue seems to be running smoothly now; 0-30sec wait times on average.\\</span></em></p>\r\n<p>EDIT 4: ...and the queue is back up to a few min. ugh. Bumping the frequency higher...</p>\r\n",
+    "PostedDate": "2010-12-19T11:10:48.933-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "538042",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>Double thumbs up for me on the performance issues.&nbsp;&nbsp; Even the crappy PC here at work is handling it nicely.&nbsp; Good job!</p>\r\n<p>&nbsp;</p>\r\n",
+    "PostedDate": "2010-12-19T14:24:02.07-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "538046",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>Also double thumbs up on the performance gain!</p>\r\n",
+    "PostedDate": "2010-12-19T14:48:42.61-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "538082",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>Very nice! Not only is it much faster this is the first time I've actually been able to load my character from the armory. Top work!</p>\r\n",
+    "PostedDate": "2010-12-19T19:09:53.233-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "538125",
+    "ThreadId": "238675",
+    "Html": "Hey astrylian, isn't there a way to make silverlight perform the armory request from the client-end instead of doing it using the rawr server? That would be the ideal solution :)",
+    "PostedDate": "2010-12-19T22:44:58.917-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "538130",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>No, because it shows everyone's requests as the same IP address and then it gets banned by the Armory. Its just a behavior of Silverlight, that's why we did this server middle-man in the first place.</p>\r\n<p>The WPF build won't have the same problem.</p>\r\n",
+    "PostedDate": "2010-12-19T23:04:28.813-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "538136",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>As an additional factor, as soon as WPF is released, there will be a drop in the total number of people on the Silverlight platform issuing requests, which will make it that much easier on the queue times.</p>\r\n",
+    "PostedDate": "2010-12-19T23:20:19.097-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "538139",
+    "ThreadId": "238675",
+    "Html": "\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n<strong>Jothay wrote:</strong><br>\r\n<p>No, because it shows everyone's requests as the same IP address and then it gets banned by the Armory. Its just a behavior of Silverlight, that's why we did this server middle-man in the first place.</p>\r\n<p>The WPF build won't have the same problem.</p>\r\n</blockquote>\r\n<p>No, Silverlight can't make the request directly because of cross site scripting security settings in Silverlight.</p>\r\n<p>&nbsp;</p>\r\n<p>Also, speaking of number of people using it... <strong>Rawr4 got a record 10k visits today.</strong></p>\r\n",
+    "PostedDate": "2010-12-19T23:37:31.547-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "538144",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>Bah, 10k?&nbsp; I met that many people just today over coffee.</p>\r\n<p>;)&nbsp; Just kidding - that's AWESOME!</p>\r\n",
+    "PostedDate": "2010-12-19T23:49:12.25-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "538162",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>Love me for I am awesome. I just got Item Set Comparisons working :)</p>\r\n<p><a href=\"http://dl.dropbox.com/u/15727672/RawrVisible/ItemSetComps.png\" target=\"_blank\"><img src=\"http://dl.dropbox.com/u/15727672/RawrVisible/ItemSetComps.png\" alt=\"\" width=\"420\" height=\"262\"></a></p>\r\n<p><a title=\"Comparing Item Sets\" href=\"http://rawr.codeplex.com/wikipage?title=ItemSetComparing&referringTitle=Documentation\" target=\"_blank\">http://rawr.codeplex.com/wikipage?title=ItemSetComparing&amp;referringTitle=Documentation</a></p>\r\n",
+    "PostedDate": "2010-12-20T01:16:04.503-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "538346",
+    "ThreadId": "238675",
+    "Html": "\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n<strong>Astrylian wrote:</strong><br>\r\n<p><em>&lt;PutricideVoice&gt;</em></p>\r\n<p><strong>Good news, everyone! I think I perfected a fix that will resolve performance for everybody!</strong></p>\r\n<p><em>&lt;/PutricideVoice&gt;</em></p>\r\n<p>&nbsp;</p>\r\n<p>Seriously. Should be a like <em>1.7 bajillion</em> percent performance boost for all the UI interaction. Give it a try now. b4.0.12.</p>\r\n</blockquote>\r\n<p>Really nice work, Astrylian. This is much, much, much faster for me and a lot of people I know who are using it. Awesome. :)</p>\r\n",
+    "PostedDate": "2010-12-20T09:25:08.55-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "538463",
+    "ThreadId": "238675",
+    "Html": "\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n<strong>Astrylian wrote:</strong><br>\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n<strong>Jothay wrote:</strong><br>\r\n<p>No, because it shows everyone's requests as the same IP address and then it gets banned by the Armory. Its just a behavior of Silverlight, that's why we did this server middle-man in the first place.</p>\r\n<p>The WPF build won't have the same problem.</p>\r\n</blockquote>\r\n<p>No, Silverlight can't make the request directly because of cross site scripting security settings in Silverlight.</p>\r\n<p>&nbsp;</p>\r\n<p>Also, speaking of number of people using it... <strong>Rawr4 got a record 10k visits today.</strong></p>\r\n</blockquote>\r\n<p></p>\r\nOh of course :) forgot about that part thanks for the response :)",
+    "PostedDate": "2010-12-20T12:24:32.197-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "538653",
+    "ThreadId": "238675",
+    "Html": "\r\n<blockquote style=\"border:solid .1em #ccc; font-style:italic; margin:.25em 1em 0 1em; padding:0 .25em 0 .25em\">\r\n<strong>Astrylian wrote:</strong>\r\n<p>Also, speaking of number of people using it... <strong>Rawr4 got a record 10k visits today.</strong></p>\r\n</blockquote>\r\n<p>...and <strong>11k</strong>&nbsp;today.</p>\r\n",
+    "PostedDate": "2010-12-21T01:20:37.08-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "538776",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>First of all, I want to thank Astrylian for this thread.</p>\r\n<p>I tried out Rawr4 for the first time today after having stopped using Rawr for at least half a year due to not raiding, and now getting into Cata heroics. I guess my experience could be summarized by me thinking, as I was using it, &quot;Errr...wow.&quot; in both\r\n extremely positive and negative ways.</p>\r\n<p>The reason I want to thank Astrylian for this thread is because I'm now assured that he and I are completely on the same page about the state of Rawr. Your post and replies are a GREAT communication to your users. Your bolded &quot;<strong>I'm sorry</strong>&quot;\r\n at the end was what sealed it for me. I now have zero worries about how Rawr4 will eventually turn out. Keep it up. Keep replying and sharing your thoughts with us on things. Also thank you to Jothay, Kavan, and all of the other developers on the team.</p>\r\n<p>A few thoughts:</p>\r\n<p style=\"padding-left:30px\">1) The disappointment people have are magnified due to how good a tool Rawr2 was. If it sucked, there would be few people complaining here. You guys should be enormously proud of what you've accomplished and will accomplish. The\r\n scope of Rawr is amazing, it looks amazing, it just doesn't function amazingly...yet. Although this doesn't need to be said since you are already aware of how amazing your product is, otherwise you wouldn't be spending so much of your own time working on it\r\n for free.</p>\r\n<p style=\"padding-left:30px\">2) You should remove the giant &quot;Rawr4 v4.0.12b Released!&quot; on top of several pages.</p>\r\n<p style=\"padding-left:30px\">3) In my opinion, you guys should just drop the web version altogether for now and just focus on the WPF version. Make the desktop client up to par with Rawr2 for your core audience, THEN shift focus to building a good web one for\r\n the new audience you're trying to attract.</p>\r\n",
+    "PostedDate": "2010-12-21T07:19:08.053-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "538833",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>Astrylian,</p>\r\n<p>Thanks for the thread.&nbsp; I think my own biggest frustration was suddenly having to use Silverlight, period - While I consider myself a power-user as a general rule, I didn't use anything with Silverlight so I'd never bothered installing it (why add holes?).&nbsp;\r\n Now that I do use something with Silverlight, it's installed (and seems to be working fine).</p>\r\n<p>Great job, and thanks for your efforts.</p>\r\n<p>Of course, you guys do realize you're getting more hits because of the way it's run now, right?&nbsp; Before, I'd only come to the site when there was a problem (I play a lock, so I was here frequently for a while) or to get the new version.</p>\r\n<p>&nbsp;</p>\r\n<p>Korey:</p>\r\n<p>(1) is accurate.</p>\r\n<p>(2) is less so; I think it's important to have the latest version splashed, not everyone pays attention.</p>\r\n<p>(3) I disagree with.&nbsp; I've gotten the impression that the hardest part of making it usable is complete - usability is what's left, and that will afflict them in either location.&nbsp; If they were to have to do it over again?&nbsp; Yeah, I think that\r\n would've been better.&nbsp; But at this point, there's no reason to stop developing the working version to get the nonworking version functional.</p>\r\n",
+    "PostedDate": "2010-12-21T09:25:27.59-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "540670",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>Agreed, Rawr is a wonderful program, and you are doing for free what many people, myself included, would willingly pay good money for. We owe you eternal gratitude, you owe us nothing :)</p>\r\n<p>Having said that, it would be so sad to be without Rawr for the next three or four months! Face it, at the moment you just don't have a working application. Yes, we are 85 already... I know you guys are fantastic programmers, but you cannot do miracles -\r\n some things take weeks or months. IMHO you really, REALLY should be working on the Cata models instead of wasting your limited, precious time fighting the bugs in the Silverlight app and the character lookup queue. All these things were working already in\r\n Rawr 2... if you still have time to make changes, do useful ones. Like, for instance, improve the filtering to make it easier to do optimizations like &quot;I have 500 badges, and I decided never to buy the Tier legs - what are my best buys?&quot;</p>\r\n<p>By the way, I cannot open Rawr from work now. This old XP computer is barely fast enough, and I don't have admin rights. Two months ago it took me quite some time to get the administrator to install Silverlight as a personal favor. Now I cannot upgrade...</p>\r\n<p>If you really want Rawr to be usable <em>&quot;from anywhere, on any computer&quot;</em>&nbsp; you should make it a standalone application; and write it as a portable app. No registry modifications, all data kept in the user profile, etc. You know about it. Then Rawr\r\n will be back to the five stars it deserves.</p>\r\n<p>Edit: Ah, another thing: the old Rawr was usable at 1024x768. Rawr 4 really needs a full HD monitor. That's inconvenient too.</p>\r\n",
+    "PostedDate": "2010-12-26T18:13:17.34-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "540675",
+    "ThreadId": "238675",
+    "Html": "\r\n<ol>\r\n<li>You can go to the Rawr webpage and run it. There's an Install Offline button, which installs it to your system just like a standalone would, it even auto-updates when we post new versions. The only disadvantage is that it is about 20% slower than using\r\n WPF (which is still coming). </li><li>We're working on both the Cataclysm models AND the UI. This is because you need BOTH to work, and there's no way in hell we're going back to Rawr2 to get it up to Cataclysm because that's just a giant series of extra headaches and would take even longer.\r\n</li><li>Why wouldn't we be resolving issues with the Character Armory Importing? Without it we lose like 80% of our user-base.\r\n</li><li>What you describe with Filtering there... is just wrong. You check/uncheck Item Filters to show/hide items in the Comparisons Charts that you do/don't want to be seeing at that time. Trying to figure out what is the best upgrade per point for your Justice\r\n and Valor points can be seen from the 'Direct upgrades &gt; Direct / Cost' chart, we've had that for like a year. Alternatively, you can use the Cost restraint in the optimizer. There's several threads on this and a Documentation page describing it. The default\r\n Item Database has a lot of broken Item Sources in it, so to get this to work you need to edit the sources on all those items to fix them. We have an update coming that will correct most of those issues.\r\n</li><li>Someone posted a method where you can install an updated Silverlight without Admin Rights on the box. Go find it, if it doesn't work then I'm sorry, but that's a restriction by your company that they don't want you doing this kind of thing at work. We don't\r\n condone doing something that would get you fired. </li><li>With Silverlight, we're getting what we want with portability right now, get over it.\r\n</li><li>Rawr is best viewed on a monitor made after the year 2000, kthxbye. For those of you with Netbooks that have low height but wide screens, it wraps the item selectors so you don't get them cut off completely like they did in Rawr2. The item buttons have\r\n to take up more room because of all the different stuff you have to do them. When we add Tinkering they will be even taller. You got a better way to make it do everything it still needs to do but take less space we're all ears to Feature Requests made following\r\n the Posting Guidelines (eg- put in the Issue Tracker). </li></ol>\r\n",
+    "PostedDate": "2010-12-26T18:42:07.61-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "540676",
+    "ThreadId": "238675",
+    "Html": "Thanks for the words of encouragement, martinzul. Fortunately, every point you brought up is already solvable. The Silverlight/character lookup issues that you suggest aren't worth spending the time to solve, have already been solved. The performance on\r\n your ailing XP machine should be usable now. Filtering options are an ongoing challenge, regardless of platform. You already can use Silverlight with Firefox, without admin privs, using a workaround. (search other posts, or google, for it) Rawer actually is\r\n usable to a much much wider array of users than Rawr2 was. Rawr4 is actually much more usable at lower resolutions than Rawr2 was, due to fully supporting browser zoom features.",
+    "PostedDate": "2010-12-26T18:47:32.017-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "540679",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>Thanks for the answer, but I remain unconvinced. Make me change my mind with your next release!<br>\r\n<br>\r\nAs for being fired, don't worry for me. The atmosphere is relaxed. It's a small branch office and we are all friends.<em>\r\n</em>Sometimes the IT guy will say yes, often he'll say no because of guidelines from above, but we're still friends. The only thing is I don't want to pester him.<br>\r\n<br>\r\nKeep up the good work and thanks again.</p>\r\n<p><em>(Sorry. Fixed the reply.)</em></p>\r\n",
+    "PostedDate": "2010-12-26T19:11:17.29-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "540680",
+    "ThreadId": "238675",
+    "Html": "\r\n<p><span style=\"font-size:larger\"><strong>NOTE TO ALL USERS. DO NOT USE THE REPLY BY EMAIL METHOD OF POSTING. WE HATE THAT.</strong></span></p>\r\n",
+    "PostedDate": "2010-12-26T19:13:34.863-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "543284",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>Hey I was with you using the old way , download and unzip, and off you go. Easy as pie. And, yes like everyone I'm dieing with anticipation for&nbsp;a more stable/usable&nbsp;release. I hovever understand the hours of painstaking work a project like this&nbsp;\r\n requires. While I'm not a programmer myself, I've dabbled in the field. People seem the think you can wave a magic wand and voila! finished flawless program! They don't realize that it takes a small army of people to write, test, rewrite, retest, and troubleshoot\r\n everything involved in this. To put it in layman's terms, think of 2 people trying to hand write every historical book ever written as fast as they possibly can, and then blend them into one whole book.&nbsp;Mistakes happen, have to be fixed, which requires\r\n rewriting whole pages, etc, until you have a finished project. Complaining about how long it takes or how bad it is doesn't help. Just be happy someone is actually working on it. We are the proof-readers to help the writers find and fix the errors. People\r\n that post &quot;It sucks!&quot; aren't helping at all. If it sucks for you, tell them what isn't working so they can fix it.</p>\r\n<p>Personnally I applaud all the people involved in this project. The work involved in something this huge is daunting.</p>\r\n",
+    "PostedDate": "2011-01-03T09:58:28.747-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "545710",
+    "ThreadId": "238675",
+    "Html": "\r\n<p>This thread is now retired and should be considered locked. The initial pertinent information relayed was for a broken version of Rawr now several versions behind current, which is far more functional.</p>\r\n<p>A TL;DR summary of the thread:</p>\r\n<ul>\r\n<li>We're sorry the first few versions of Rawr4 as released were so slow and buggy. These things have almost entirely been fixed in the core and performance should be normal now instead of painstakingly slow.\r\n</li><li>The WPF Version, which will be an EXE to install directly into your computer rather than running in browser (or the install offline option from running in browser), is still in development but we are now very close to having it released as well. I would\r\n expect it to be out the door before the online version reaches 4.0.20 (presently released is 4.0.14 at the time of this writing).\r\n</li></ul>\r\n<p>We are appreciative of everyone's patience while we worked out the initial major issues with Rawr4 and look forward to future discussions.</p>\r\n",
+    "PostedDate": "2011-01-07T15:33:44.153-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

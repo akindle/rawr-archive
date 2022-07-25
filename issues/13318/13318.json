@@ -1,0 +1,136 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSDK",
+      "DisplayName": "Rawr.DPSDK"
+    },
+    "ClosedComment": "fixed back in 2.2.7",
+    "ClosedDate": "2009-09-16T17:49:10.037-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Tried 2.2.5 today (absolutely love the new optimized gear side by side comparison).\n \nI'm wielding a 2 handed staff (The Lifebinder) which Rawr indicates I should keep, but it's trying to equip an off-hand (Surplus Limb) which can't be done at the same time.",
+    "LastUpdatedDate": "2017-11-27T11:04:20.85-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-05-25T02:00:44.68-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSDK] Optimizer trying to equip off-hand item",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 13318
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1920,
+      "FileName": "Rawr Fornica FIRE.xml",
+      "DownloadUrl": ".\\1920"
+    },
+    {
+      "FileId": 1940,
+      "FileName": "dkdualwield.patch",
+      "DownloadUrl": ".\\1940"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "In rawr having a two-hander and offhand equipped at the same time is not an error. When this happens the offhand is automatically not counted. By having the offhand equipped this lets you compare twohanders with onehanders.",
+      "PostedDate": "2009-05-25T03:34:07.89-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Two things here.  1) On my DPSDK Rawr definition seems to be counting the offhand weapon, even though it is greyed out, if I actually remove it my dps drops significantly. However, more importantly is that the Optimizer seems to be factoring it into its calculations.   This is a problem for me as it is adding a fang of truth into my offhand (on top of my titansteel destroyer), using its +hit to decide that I have plenty of +hit and am over the hit cap and then recommends that I change my equip/regem to lower the +hit on the rest of my gear.",
+      "PostedDate": "2009-05-26T16:09:05.917-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-05-26T16:09:13.503-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Whether the offhand is included in the calculations is determined by the model. I'm not sure how DPSDK model takes into account dual wielding talent.",
+      "PostedDate": "2009-05-26T16:28:47.007-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Fair enough, is there a way to allocate this defect specifically to the DPSDK model?",
+      "PostedDate": "2009-05-27T05:21:01.087-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Could this be related to 13338?",
+      "PostedDate": "2009-05-27T08:11:44.817-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-05-27T18:07:02.897-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Not related to 13338.\r\n\r\nDKDPS simply uses (character.OffHand != null) to determine if DW is in use or not.  Since Rawr allows equipping off-hands even though the main-hand weapon is 2h, DKDPS factors in the off-hand weapon.\r\n\r\nUploaded patch dkdualwield.patch \"should\" correct this issue.  I do suggest proofreading the patch before including it because there are some changes which could probably be done in a better fashion.\r\n\r\nThere exists a separate bug in the DKDPS model: Equipping an off-hand weapon when wielding a 2h weapon will cause the Main-Hand display to show \"NaN\" for all items.  If equipping a 1h weapon for the main-hand, this is not present.  I wasn't able to find the source of this bug and my patch does not correct this.",
+      "PostedDate": "2009-05-28T13:08:04.423-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-05-28T13:08:06.773-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I modified my original patch and checked it in.  This should be fixed for 2.2.7.\r\n\r\nOne behavior I don't like is that changing the item equipped in the OH changes the ranking of the two-handed MH weapons.  It doesn't seem to change their ranking relative to each other though.",
+      "PostedDate": "2009-06-16T14:57:03.257-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-19T12:50:25.47-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-16T17:49:10.037-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:53:02.267-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:21:17.93-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:23.633-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:28.307-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:04:20.85-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.LoadCharacter",
+      "DisplayName": "Rawr.Base.LoadCharacter"
+    },
+    "ClosedComment": "Duplicate of 19571 which has been fixed",
+    "ClosedDate": "2011-01-28T10:52:37.063-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Loading characters from Battle.Net with standard names is fine. However, one of my characters has a \"ú\" in it. Rawr attempts to load, but the imported data is blank and it tells says that the \"ú\" is now \"%c3%b\".",
+    "LastUpdatedDate": "2013-05-16T05:18:58.88-07:00",
+    "PlannedForRelease": "Rawr 4.0.16 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-01-17T04:46:40.397-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[LoadCharacter] Issues with special characters in names",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19733
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Can you please provide your character's name and server/region so that we can test this?",
+      "PostedDate": "2011-01-17T05:40:39.317-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Túrin (ironically, the site wouldn't let me register with it either). Vek'nilash-EU.",
+      "PostedDate": "2011-01-17T06:10:16.92-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm assuming this is the same problem as \r\nhttp://rawr.codeplex.com/workitem/19571\r\n",
+      "PostedDate": "2011-01-18T04:59:55.9-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "19571 Is about the display of the characters since they are being encoded. Turin I believe is stating that having the special character is preventing him from loading his character.",
+      "PostedDate": "2011-01-18T08:42:29.837-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Unicode string \"Túrin\" converted to UTF-8 and converted to an URI would be \"T%C3%BArin\"\r\n\r\nThe problem seems related to 19571 at least, there's a mismatch in the encoding of usernames/servernames (unicode) into the URI needed for the armory.\r\n\r\nOther way around, the URI's seems to be used as is without decoding and converting back to unicode.\r\n",
+      "PostedDate": "2011-01-19T05:32:49.57-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-19T08:26:36.457-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-28T10:52:37.063-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:21.047-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:19.9-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:58.88-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Items",
+      "DisplayName": "Rawr.Base.Items"
+    },
+    "ClosedComment": "Enable the global &#39;Other&#39; filter until you refresh that data.",
+    "ClosedDate": "2010-02-23T12:40:52.74-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "After extracting Rawr 2.3.10 and loading a character from the armory, using a fresh install directory and no saved profiles, configuring the character, and filtering for emblem of frost gear only, no gear exists. \n \nTo reproduce: \nExtract Rawr 2.3.10 to a new folder. Open the character Gylnael from the realm Cenarius-US. Uncheck all filters, and then check only Special Currency->Emblem of Frost. Select any slot, or select direct upgrades.\nYou will not see any gear except what I have equipped (and alternate gemmings thereof). You will not see any frost emblem gear, and I believe you should.\n \nPossible cause:\nCreate a new filter, 'Wowhead lacks data'. Activate this filter, and all the Emblem of Frost gear will appear. 2.3.10 appears to have shipped with an incomplete item cache.\n \nAttempted solutions:\nAttempting to load all Emblem of Frost gear from the Wowhead filter http://www.wowhead.com/?items&filter=cr=118;crs=49426;crv=0 caused an error the first few times I tried it, though seems to complete without any issues now. Even so, it only loads 200 out of 225 items, and doesn't actually correct the issue.\n\"Load possible upgrades\" from either armory or wowhead does not correct the error.\n\"Refresh item data from Wowhead\" on individual items does not correct the error.\n \nTemporary solution:\nThe user can individually \"refresh item data from armory\" for each item in the \"Wowhead lacks data\" filter. This corrects the error.",
+    "LastUpdatedDate": "2013-05-16T05:21:44.37-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-02-23T12:20:24.497-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Items] Appears to be missing some items",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16503
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "That's not the issue here - it's that the source information for all of these items is missing, and difficult to acquire. The information being missing makes the detection of upgrades difficult, since Rawr claims these items drop from ICC, but they really are badge gear. This breaks the direct upgrades/cost screen.",
+      "PostedDate": "2010-02-23T13:54:49.55-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T16:32:01.283-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T19:05:05.29-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:29:46.817-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:44.37-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

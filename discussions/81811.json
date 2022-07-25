@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "280947",
+    "ThreadId": "81811",
+    "Html": "<p>New feature in the build (that Astrylian is making right now) includes savable Pet Specs.</p>\r\n<p>This should resolve some of the usability issues that users (including myself) have been seeing and allow me to bridge the gap between normal and Pet talents. Next version after this will have tie-ins between different pet types, setting rotations, etc.</p>\r\n<p>Have run raiders<br>:)</p>",
+    "PostedDate": "2010-01-23T14:55:08.33-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "284274",
+    "ThreadId": "81811",
+    "Html": "<p>By tie-ins between different pets, do you mean something like a chart showing the dps difference between their special abilities or am I overshooting your words?&nbsp; I'm rather excited for this if&nbsp;my guess is right&nbsp;:)</p>",
+    "PostedDate": "2010-02-01T07:40:57.533-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "284282",
+    "ThreadId": "81811",
+    "Html": "<p>What I was referencing was the ability to load in all your pets off the armory and be able to quickly switch between them in Rawr, much like you do now on the Talents screen in the Armory.</p>\r\n<p>However you do make an interesting point, and once I have the above step done it probably wouldn't be that difficult to make a chart showing your 4 pets against each other.</p>\r\n<p>The step after that would be to find some way to tie the pet into the optimizer so you can optimize for best pet.</p>",
+    "PostedDate": "2010-02-01T08:08:02.85-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "284439",
+    "ThreadId": "81811",
+    "Html": "<p>For those of you capable of compiling from source, please download commit 46181 as this implements what I was talking about above (except for the chart).</p>\r\n<p>I need more people to verify that all of their pets were loaded in and ALL the talents are getting set correctly when you change pets. I'm still a little iffy on the numbering for the Cunning tree, I was getting the right results with what I had but I didn't have one to check all the individual talents on Tier 2.</p>\r\n<p>Also, I added in a check for not having a Shot Priority set on load, if you haven't set one, it will try to use a default setup based on your Spec.</p>",
+    "PostedDate": "2010-02-01T15:05:13.857-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "284496",
+    "ThreadId": "81811",
+    "Html": "<p>I see what you mean about cunning. I'm working with a guildie's hunter pet</p>\r\n<p>http://www.wowarmory.com/character-talents.xml?r=Crushridge&amp;cn=Incizion&amp;gn=Ewiges+Licht</p>\r\n<p>Using his spider; Hilldawg; he has 1 point in Mobility and 2 points in Owl's Focus. Yet if I load it into RAWR I was coming up as 0 in Mobility and 1 in Owl's Focus.</p>\r\n<p>Using another guildies' Spider; TamerofBeast's TamerofBeast (yea I know naming your pet after yourself), he had 0, 0, 0, 3 in the Tier 2 and that seem to work fine.</p>\r\n<p>Finally, I tried with an alt of a guildy; Leclevion. First of all when I tried to load in his character, his Chimaera is his first pet and I was having difficulties loading in his pet info. I had to manually select a second pet, select the Chimaera type pet then load in his info. This finally worked. However, I was having more issue with Tier 1 with him than Tier 2, he had a 21001201 Tier 1 &amp; 2 setup. However, Dive/Dash (the 1 in Tier 1) did not seem to register.</p>",
+    "PostedDate": "2010-02-01T17:25:01.05-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "284513",
+    "ThreadId": "81811",
+    "Html": "<p>See now that was the problem I was having, there are ghost talents listed in the talent strings (2 in ferocity and 2 in Cunning, but none in Tenacity).</p>\r\n<p>It wasn't that big a deal to line them up but I didn't have another Cunning to test against. I'll use those char names next to flesh out Cunning now.</p>",
+    "PostedDate": "2010-02-01T18:38:34.547-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "286440",
+    "ThreadId": "81811",
+    "Html": "<p>Thanks to Hina's Incizion link, I was able to correct the Tier 2 parsing for Cunning pets. I'll look at the Leclevion character now to see what was happening there.</p>\r\n<p><strong>Edit: </strong>Ok well I fixed Incizion but the &quot;ghost&quot; talents are in different spots for Leclevion's Chimaera...</p>\r\n<p>Also, the reason it wasn't setting itself correctly was because the Pet Family box didn't have 'Chimaera' spelled the same way, fixed that and it started going to Cunning correctly on load.</p>",
+    "PostedDate": "2010-02-05T15:02:24.06-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

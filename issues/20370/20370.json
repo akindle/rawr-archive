@@ -1,0 +1,106 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.ItemFilters",
+      "DisplayName": "Rawr.Base.ItemFilters"
+    },
+    "ClosedComment": "Rawr 4.1.02 Released",
+    "ClosedDate": "2011-04-03T22:24:18.043-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Items that are purchasable using Conquest Points are not being filtered out by \"Hide PvP gear\" in Warrior or Pally models nor by the Source: PvP filter on the items listing.\n \nSee attached Warrior file",
+    "LastUpdatedDate": "2013-05-16T05:18:21.3-07:00",
+    "PlannedForRelease": "Rawr 4.1.01",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-03-31T09:47:38.213-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ItemFilters] Conquest Point Items",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 20370
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4786,
+      "FileName": "Turambar Fury.xml",
+      "DownloadUrl": ".\\4786"
+    },
+    {
+      "FileId": 4787,
+      "FileName": "Bristef Retro.xml",
+      "DownloadUrl": ".\\4787"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "And attached Pally file",
+      "PostedDate": "2011-03-31T09:48:20.537-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Just to be clear, the items in question do have proper source information?",
+      "PostedDate": "2011-03-31T10:18:03.467-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "oh wait, nvm, you meant the option on the pane, not the actual filters.\r\n\r\nThe items that you are seeing as not filtered out, do they have Resilience on them? That's what it's looking for.",
+      "PostedDate": "2011-03-31T10:19:13.493-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Actually I meant both. Some models have a \"Hide PvP Gear\" option (Warr, Pally, Hunter in my case) which is probably the easiest way to not see PvP gear in the Upgrade Panel. The Hunter model hides the PvP gear but the Warrior and Paladin models do not. Next method to hide PvP gear would be to deselect (uncheck) the PvP box under the Source Filters, however there is no \"Conquest\" box so you have to deselect the \"upper tier\" box to disable ALL PvP gear. \r\n\r\nI'll also add that it seems to be the Conquest weapons and not the armor that is showing the most but I also have the iLvl 359 box has the highest iLvl since I'm still Pre-Raid geared.",
+      "PostedDate": "2011-03-31T13:13:42.063-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "As I can see the items are in deed being filtered out as intended. The only PVP items that are not being filtered out are he ones with \"less then perfect\" source information. I can redesign the filters to include a \"Unknown PVP\" in the PVP filters to catch PVP items from going to the \"Unkown/Not found on wowhead\" which is why you are seeing these items. In fact, I will do it now... LOL",
+      "PostedDate": "2011-04-01T08:14:04.173-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-01T12:48:32.573-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "While I understand what you are saying about items with \"less than perfect\" being enabled by the \"Unknown/Not found..\" filters, I am not convinced that this is the case here.\r\nThe weapon upgrades for both main hand and off hand (Turambar Fury file) lists 3 PvP \"Vicious Gladiator...\" items with no check in the PvP nor Unknown boxes. The source for all three items is NOT unknown but \"Purchasable for 3400 [Conquest Points].\r\n\r\nI thought maybe my ItemCache was out-of-date but they remain that way even after I refreshed ItemCache.",
+      "PostedDate": "2011-04-01T20:00:06.933-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well there is still more places that PVP items can be found, \"Baradin Hold\", \"Special Currency\", \"Crafted\", along with \"PvP\", \"Unknown\", and \"Other\". Although not in the default database, there are other places PVP items can get sorted to if those items have been loaded into your cache. This would include \"Wrath of the Lich King\", \"Burning Crusade\", and \"Classic\". I am looking into making every item that has resilience also have \"PvP\" in there source info. This would make it possible to filter ALL PvP items into one place and make it easy to ignore them if you are not interested in them.",
+      "PostedDate": "2011-04-02T09:45:00.37-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-03T22:24:18.043-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:25:29.907-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:21.3-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

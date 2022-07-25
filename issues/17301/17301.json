@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Items",
+      "DisplayName": "Rawr.Base.Items"
+    },
+    "ClosedComment": "Fixed for next release.",
+    "ClosedDate": "2010-04-22T19:51:36.097-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When Rawr is configured to run single threaded all the variants of refresh from Armory/Wowhead fail to show status updates and hangs.  The issue with the hang is that when single threaded, there's nobody to set update.Done so this code in FormMain.cs loops until the user cancels:\n \n            while (!updater.Done)\n            {\n                StatusMessaging.UpdateStatus(UpdateCacheStatusKey(slot, true), \"Updating \" + (skippedItems + updater.ItemsDone) + \" of \" + updater.ItemsToDo + \" items\");\n                Thread.Sleep(1000);\n            }\n \nA partial solution to this is to change FinishAdding() in ItemUpdater.cs to read:\n \n        public void FinishAdding()\n        {\n            if (!multiThreaded)\n            {\n                done = true;\n            }\n \n            lock (lockObject)\n            {\n                finishedInput = true;\n            }\n        }\n \n \nHowever this does not help with the issue of no status updates.",
+    "LastUpdatedDate": "2013-05-16T05:21:01.487-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-04-18T18:41:48.61-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Items] Refresh from Armory or Wowhead hangs when singlethreaded",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17301
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

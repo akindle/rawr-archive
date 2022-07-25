@@ -1,0 +1,106 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-10-10T12:18:12.803-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I've noticed this as a general issue, not really a problem for most people but maybe someone could take a look.\n \nWhen you have 3 Dragonseye gems equipped already and Enforce Gem Reqs is active, any additional addage of Dragonseyes in the Comparisons Charts  seems to cause a large Negative DPS value on that item, more so for multiple eyes in a single item. I could understand no DPS gain from those gems of course, as that would be intended, but for some reason this appears to take what would be positive and make it negative (just spitballing there).\n \nAttached is the screen shot (I clipped in the tooltip).",
+    "LastUpdatedDate": "2013-05-16T05:23:55.94-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-10-09T15:37:13.437-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Jewelcrafter +34 Gems Odd Behaviour with Enforce Gem Requirements",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14390
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2329,
+      "FileName": "jc gems.png",
+      "DownloadUrl": ".\\2329"
+    },
+    {
+      "FileId": 2330,
+      "FileName": "BIS-Arms.xml",
+      "DownloadUrl": ".\\2330"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Adding test char file",
+      "PostedDate": "2009-10-09T15:37:27.457-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "oops",
+      "PostedDate": "2009-10-09T15:37:51.27-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-09T15:37:52.577-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-09T15:46:02.127-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Correct, that's intended, for a somewhat non-obvious reason. \r\n\r\nEnforce Gem Requirements means that you can't have more than 3 Dragon's Eyes, of course. But, how do we actually enforce that? Well, we count how many Dragon's Eyes there are in the character, and if there are >3, we deactivate *all of them*. We can't just disable the 4th one, because we don't know which one is 'the 4th one', we only see whole characters at once. We can't just pick one and disable it, because it would cause all kinds of weird issues if the one you were comparing an item with an agi gem, and your hit gem got deactivated by it.",
+      "PostedDate": "2009-10-09T16:08:39.307-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well ya, getting back to my statement, it would be fine to disable them, that would be intended, but it seems it's not just disabling them it's turning them negative, which is bad",
+      "PostedDate": "2009-10-09T17:21:51.24-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It's negative because it's worse than empty slot since empty slot doesn't disable the other dragon's eyes.",
+      "PostedDate": "2009-10-09T17:46:28.01-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "ohh ok, I get it.",
+      "PostedDate": "2009-10-10T12:17:54.55-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-10T12:18:12.803-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:32:30.887-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:55.94-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

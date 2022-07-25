@@ -1,0 +1,13 @@
+Index: FormMain.cs
+===================================================================
+--- FormMain.cs	(revision 32033)
++++ FormMain.cs	(working copy)
+@@ -718,7 +718,7 @@
+                 // TODO: log this to the status screen.
+                 MessageBox.Show(e.Error.Message);
+             }
+-            else
++            else if (e.Result != null)
+             {
+                 Character character = e.Result as Character;
+                 LoadCharacterIntoForm(character);

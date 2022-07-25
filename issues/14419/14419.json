@@ -1,0 +1,75 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Fixed for v2.2.28",
+    "ClosedDate": "2009-11-17T06:54:41.973-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When right clicking on an item and choosing Equip Custom Gemming, the results in the item comparison window includes JC gems even if you already have 3 JC gems equipped. Thus actually displaying an invalid result as if you choose the JC gem you now have 4 and so all your JC gems get turned off. The item comparison when displaying these gems should take numbers of JC gems equipped into consideration, so as to provide an accurate display of what is the best upgrade for that slot.",
+    "LastUpdatedDate": "2013-05-16T05:23:52.73-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-10-13T09:30:35.723-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Equip Custom Gemming issue",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14419
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I don't understand, can you try to clarify further? Everything you describe sounds like it's working as intended.",
+      "PostedDate": "2009-10-13T11:24:44.2-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Load up character from Armoury\r\n\r\nSelect ring with empty slot and right click to equip custom gemming. It has an empty yellow socket.\r\n\r\nLeft click on empty socket to display list of possible gems sorted by dps order. The top gem will be a JC gem as my char is a JC and I have the JC gemming templates enabled. HOWEVER I already have 3 JC gems equipped. If I select the top gem it suggests which is a 4th JC gem then click ok it equips the gem and suddenly all the JC gems equipped are disabled. So selecting that gem wasn't actually the best gem to equip. \r\n\r\nI would expect that the CharacterCalculationsBase GetCharacterCalulations(character, additional item, ...) call would have done a calc based on \"oh you have 4 JC gems that means they are deactivated\" and thus the resultant points object returned would have a lower value than the base equipped set where additional item is null. So somewhere the way that the data is getting passed to the model for this specific display is ignoring the 3 JC gems max restriction and thus the results are invalid.\r\n\r\nAs it probably matters for this example I have \"Enforce Gem Requirements\" ticked.",
+      "PostedDate": "2009-10-14T03:25:17.007-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Did the further text help? I'll have another look at this myself, perhaps, unless it is genuinely working as intended which seems unlikely as its counter intuitive.",
+      "PostedDate": "2009-10-16T02:09:29.493-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I think the problem is that additional item is not counted against gem requirements. If this is required then an additional check needs to be made in AccumulateItemStats for\r\n\r\n                if (additionalItem != null)\r\n                    stats.AccumulateUnsafe(additionalItem.Stats);\r\n\r\nand not count the additionalItem if it would violate gemming constraints.",
+      "PostedDate": "2009-10-16T15:07:07.41-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-17T06:54:41.973-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:32:27.16-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:52.73-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

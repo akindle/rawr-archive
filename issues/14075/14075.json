@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Tree",
+      "DisplayName": "Rawr.Tree"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-09-19T19:16:24.103-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I took a look at the Insightful Earthsiege Diamond gem, cause it really does look to be undervalued for resto druids in Rawr. First I replaced the triggered effect with a bonus of 60MP5, this is a conservative estimate, but it sent the gem's value way up. That's odd, right? Then I twiddled with the value for MP5, and a value of 18 MP5 made it comparable to how it's currently estimated.\n \nThen I looked into the code, the effect is (I think correctly) modelled as a SpecialEffect with a Trigger.SpellCast, and Stats.ManaRestore = 600, duration 0, cooldown 15, chance 0.05. But when the tree model evaluates it, it calculates the getAverageProcsPerSecond and adds the ManaRestore (PER SECOND) to MP5\n \nCalculationsTree.cs, line 420:\n \nMp5 = resultNew.Mp5 + resultNew.ManaRestore\n \nThat last bit sounds off. Shouldn't it multiply the ManaRestore procs per second with 5 before adding it to the MP5?",
+    "LastUpdatedDate": "2017-11-27T11:05:39.57-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-09-08T01:01:20.46-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Tree] Calculations heavily underestimate Mana Restore procs (such as from IED)",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14075
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Fixed in patch 36873. Thanks for reporting.",
+      "PostedDate": "2009-09-19T14:07:38.653-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-19T19:16:24.103-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-09T12:30:54.787-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T18:08:07.987-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:09:45.937-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:12.723-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:30.737-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:05:39.57-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+[
+  {
+    "Id": "273576",
+    "ThreadId": "79852",
+    "Html": "<p>The module notes indicate that EM is being&nbsp;modeled as its average amount of haste spread out over the 3 min CD vs. &quot;reality&quot; which is a burst.&nbsp;</p>\r\n<p>I've stacked a fair amount of +Haste gear on my EM shammie. I am concerned that I am going to be hitting the +Haste cap (i.e. not getting the full value from) Elemental Mastery, Heroism, etc and that the effect of modelling EM as an average rather than a burst causes Rawr to overvalue +Haste.</p>\r\n<p>I also noticed something &quot;odd&quot;. When I have Heroism checked as a buff, it was valuing Haste as a decent sized negative number on the relative stat value charts. I recall seeing some analysis that too much haste could actually hurt your DPS and while I can't quite get my brain around how the math would work that way, I will take it as an article of faith that the statement is correct. I understand that relative stat values aren't used for the actual gear calculations, but it did seem strange to me that Rawr would give Haste a negative value and then recommend to me that I use a +Haste/SP trinket (i.e. Abyssal Rune) over Broodmother and Nevermelting Ice Crystal (+SP/+Crit) in that case. I couldn't help but wonder if this behavior was connected to the issues/questions raised above.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-01-05T18:05:46.18-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "274397",
+    "ThreadId": "79852",
+    "Html": "<p>Just a small quick answer.</p>\r\n<p>I originally wrote most of the code in there (hah, that explains the mess &lt;/selfsarcasm&gt;) so maybe I should answer this one.</p>\r\n<p>The Elemental author is away at the moment, I may inject a similar solution into Elemental as I did with Tree: enable the option to ignore certain kind of procs... the essential question is: what is the impact on gear evaluation. Our primary concern is that the right gear evaluation occurs, not that our model is perfect. If excluding EM doesn't impact the gear evaluation, this would be a good solution. Since EM is a 3-minute CD with a 15 seconds 15% spell haste buff, I think this is justified. An option would be to add a &quot;statistics&quot; line, saying &quot;Haste Rating until cap before EM&quot; and &quot;Haste Rating until cap with EM&quot;. I could also add the double stats statistics (base stats and average combat stats) that I did with Tree.</p>\r\n<p>&nbsp;</p>\r\n<p>Modelling effects as an average is valid if it can be shown that the stat can be modelled as a linear relationship with DPS, e.g. twice the increase in haste will result in twice the increase in DPS.</p>\r\n<p>Or: d(<em>DPS)</em>/d<em>(haste)</em> = constant</p>\r\n<p>In case of capped stats, this does not hold, as obviously a double increase of haste will not double the increase in DPS, because of the cap.</p>\r\n<p>&nbsp;</p>\r\n<p>Regarding your haste problem, I see it has probably something to do with T9 4set. I will take a look later. There is probably a continuity problem causing the effect (the haste-DPS relation is discontinuous at some point and evaluation stats around the discontinuity causes strange phenomena).</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-01-07T09:10:32.047-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "274442",
+    "ThreadId": "79852",
+    "Html": "<p>Thanks for the reply.</p>\r\n<p>I'm not sure if this effects your analysis or not, but it seems to me that if you are indeed close to the +Haste cap, that you would get a &quot;double whammy&quot; from both EM and Heroism (i.e. being haste capped for just EM might not be enough to effect gear recommendations, but perhaps both would??).</p>\r\n<p>I don't have enough hard evidence to support this, but I did spend some more time whacking on training dummies and with a 3 minute rotation, I seem to be getting substantially (i.e. ~200) better DPS using the nevermelting ice trinket than the abyssal rune (which Rawr ranked quite a bit higher). It just occurred to me that Rawr's rankings were based upon my selection of raid buffs that were certainly not present while I solo'd the dummy -- so I'll need to reset those and see if that effects Rawrs suggestions before I &quot;cry fowl&quot;.&nbsp;</p>\r\n<p>BTW, do you think that the relative stat value issue I reported is effecting gear recommendations or just the display of the relative stat values?</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-01-07T10:42:01.103-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "275156",
+    "ThreadId": "79852",
+    "Html": "<p>I've added a custom chart to the Elemental model that will show you the discontinuity in the stats graph. The discontinuity is not unique for the T9 set bonus, but happens along the entire Haste stat graph. The T9 set bonus simply moved the haste value such that the 'current haste' lies around a discontinuity, causing strange effects in relative stat values.</p>\r\n<p>I've added Combat (average) stats to the Statistics pane, as well as a tooltip showing how far you are from a cap. I never got my Ele to 80, but I'm assuming LvB and FS have 1.5s cast speed and LB has 2s cast speed.</p>\r\n<p>I advise against enabling Heroism/Bloodlust in the Buffs pane. It will mess with your cap and it will not improve your gear evaluation.</p>\r\n<p>I've temporarily disabled Elemental Mastery calculation. I don't know what the module author will do when he gets back. I noticed the rotations got a bit more complex, my suggestion is to work on removing the discontinuity and keep Elemental Mastery out of the rotation, it's not needed for good gear evaluation.</p>",
+    "PostedDate": "2010-01-09T08:13:32.947-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "427691",
+    "ThreadId": "79852",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Trolando wrote:</strong><br>\r\n<p>I've added a custom chart to the Elemental model that will show you the discontinuity in the stats graph. The discontinuity is not unique for the T9 set bonus, but happens along the entire Haste stat graph.</p>\r\n</blockquote>\r\n<p>I've got nothing really to discuss, just wanted to share something that I found amusing.&nbsp; Attached is a screen-shot of the stats graph that was implemented into elemental.&nbsp; If you couldn't tell, the squiggly line is the haste line.&nbsp; Talk about discontinuous&nbsp; :P.</p>\r\n<p>http://tinypic.com/r/1z4x20l/5</p>",
+    "PostedDate": "2010-04-05T21:44:46.887-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "427731",
+    "ThreadId": "79852",
+    "Html": "<p>Ummm, duh?</p>",
+    "PostedDate": "2010-04-06T00:25:47.69-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "427736",
+    "ThreadId": "79852",
+    "Html": "<p>Yes it's quite terrible.</p>\r\n<p>Unfortunately I've got some sort of permanent head thing and I can't really concentrate a lot. Maybe I did too much thinking last year ;)</p>",
+    "PostedDate": "2010-04-06T00:39:57.29-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "427825",
+    "ThreadId": "79852",
+    "Html": "<p>I noticed it, while implementing the 4pt10 bonus. The same happened to my char.</p>\r\n<p>But yet I have no idea on what to do against it, because it models what happens to your flameshock duration.</p>\r\n<p>Shifting your stats a little produces another graph that has one big bump instead of all these small ones.</p>",
+    "PostedDate": "2010-04-06T05:40:44.897-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "427833",
+    "ThreadId": "79852",
+    "Html": "<p>OMG!</p>\r\n<p>And I thought the ret module had it bad with haste fluctuations O.O</p>\r\n<p>Kinda intrigued about seeing such type of stat in the right hand panel, I thought it was only bars... (I guess I need to have a closer look at other models).&nbsp; For ret, I ended up making an extra popup window to have something similar&nbsp;(currently active in debug builds only).</p>\r\n<p>the advantage to a popup is having more width though :)</p>",
+    "PostedDate": "2010-04-06T06:09:55.747-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "428046",
+    "ThreadId": "79852",
+    "Html": "<p>I don't have a good idea on how to overcome these discontinuities, yet.</p>",
+    "PostedDate": "2010-04-06T14:43:21.667-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "428072",
+    "ThreadId": "79852",
+    "Html": "<p>Glad to hear 4p10 getting modelled. Any idea if we will be seeing it first in Rawr 2.x, Rawr 3b, or both branches?</p>\r\n<p>thanks again!</p>",
+    "PostedDate": "2010-04-06T16:28:14.47-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "428076",
+    "ThreadId": "79852",
+    "Html": "<p>The source code of Rawr2 has it modeled already.</p>",
+    "PostedDate": "2010-04-06T16:45:09.963-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

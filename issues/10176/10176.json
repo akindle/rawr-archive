@@ -1,0 +1,81 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Fixed.",
+    "ClosedDate": "2009-01-19T15:30:01.263-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Water Elementals appear to be modeled as an instantaneous blast of damage (a single spell that takes no time, causes no global cooldown, and delivers all 45 seconds of WE damage instantaneously). This skews DPS for water specs, particularly in short fights (under 90 seconds), but also in fights where the WE cooldown comes up right near the end of the fight duration... there's a spike of false DPS when you hit 270 seconds. And that brings up a second point... The first WE should last from 0 to 45, the second WE from 45 to 90, and the third should come out at 3:45... lasting from 225 to 270. So before 90 seconds, the solver is adding damage too early, later elementals appear to be factored in too late. The next spike in damage occurs at 7:15... also odd. If the solver was just adding damage LATE (at the end of the 45 second life of the WE) then the damage spike should occur at 7:30 instead, since it would get summoned at 6:45. And, just to top it off, another quick WE should pop out at 8 minutes... but sadly, no.\n \nBasically, the calculations for frost dps are rather skewed, because the WE is such a large part of their damage, and their timing and damage are modeled rather incorrectly. You can easily see the effect of the WE skewing by looking at the Talents tab of the browser as you change the fight duration. The value of the WE talent is a direct measure of the DPS that the WE adds over the course of the fight.",
+    "LastUpdatedDate": "2013-05-16T05:27:18.973-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-05-12T19:27:27.507-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Short Duration Fights allow stacking Water Elementals",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 10176
+  },
+  "FileAttachments": [
+    {
+      "FileId": 975,
+      "FileName": "RawrDPSBug.png",
+      "DownloadUrl": ".\\975"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I made a chart illustrating the discrepancy between the DPS Rawr adds for a water elemental, and the actual DPS a WE adds over the course of a fight.\r\n\r\nhttp://www.dotnet.com/~myrddin/images/RawrDPSBug.png",
+      "PostedDate": "2008-05-12T20:45:17.18-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Since this forum seems to not do links, and to block easy copy/pasting, I'm attaching the PNG as a file.\r\n\r\nFor further notes... my build's WE damage is almost exactly 300dps. The DPS should be constant for the first 90 seconds, then trail down (after the second WE's duration is up) until I can cast third WE 3:45 into the fight. The fourth WE is at 6:45, and the fifth gets summoned at 8:00, when the Cold Snap cooldown is up.\r\n\r\nRawr.Mage is accurate for some periods... after 90 seconds, and before or after periods when a WE would be out. But in the periods of time when a WE would be up, Rawr.Mage notably under-measures the DPS by over 50 points at times.",
+      "PostedDate": "2008-05-12T20:53:42.913-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-05-12T20:53:46.35-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I made some improvements to how water elemental duration is calculated. It should now correctly show damage from partial water elementals. Let me know how it works for you.",
+      "PostedDate": "2008-05-13T17:56:44.66-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-01-19T15:30:01.263-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:54.277-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:27:18.973-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

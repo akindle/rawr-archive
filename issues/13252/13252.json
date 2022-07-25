@@ -1,0 +1,101 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "This issue has reached the 90 day marker without responses.If this is still an issue please resubmit with the Character file in question and related Version where the issue is still present.",
+    "ClosedDate": "2009-08-19T13:39:05.143-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hiya! I tried using the search to find this specific issue but i didnt see any returns on it...But im sure its been reported on before though.  In some item lists theres a whole row of items with negative values starting at roughly half the page down on the Elemental shaman module.  Legs, neck, shoulders, chest, hands, feet, and trinkets all have this issue which makes the module effectively unuseable. For instance, Leggings of the Winged Serpent are returning a value of negative -420 points...and im currently using the inferior Legguards of Natures Power. Scale of Fates is sitting under Sundial of the Exiled by just a few points(?)...until you put 76 haste on the Scale and it goes negative.  Im not sure if its a setting or a bug, but im a pretty savvy mod user and I havent seen a setting yet that would cause it..im using verstion 2.2.4 and running on WindowsXP 64.   Theres also an issue in trinkets on the Enhancement side where its valuing items like the Dying Curse and Sundial way way too highly.  Known issues or am i goofing something up?\n \nAlso, as a request, could you install a feature that would allow you to enter in a target value for hit/spell hit in the itemization calculations? IE lower target hit for Drane ienhance shaman to say 400 rather then 420.   I dont seem to be able to find a way around the hard coding the program has on it.",
+    "LastUpdatedDate": "2013-05-16T05:25:32.517-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-05-15T00:39:46.967-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Negative values on certain slots",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13252
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1898,
+      "FileName": "SethEle80.csv",
+      "DownloadUrl": ".\\1898"
+    },
+    {
+      "FileId": 1905,
+      "FileName": "SethEle.xml",
+      "DownloadUrl": ".\\1905"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "CSV file is pretty useless. You need to post the saved XML file from File | Save menu.\r\n\r\nThe values shown (depending on the graph) will show you how much dps is added (or subtracted) by having that item. Not sure why you might be getting huge negatives we would need to see the XML file to work that out.\r\n\r\nOn target values for hit/spell hit. WHY??? It sounds like you just don't get what Rawr is doing. If you tick the box for Heroic Presence (which from v2.2.3 is AUTO ticked for you) then it already takes the extra 1% into account. BTW hit cap for Enhancement is 368 for Horde 342 for Draenei. Those figures don't ever change so why should that be user editable?",
+      "PostedDate": "2009-05-16T02:40:15.797-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thank you for the reply Levva, ive attached the file i think your looking for.  \r\n\r\nTarget values for hit numbers would be helpful to users who dont value reaching the whichever the cap is.  Enhancement cap is only 342 if you take elemental precision.",
+      "PostedDate": "2009-05-17T14:49:54.42-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-05-17T14:49:58.577-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The item that you mentioned specifically has a bunch of haste on it, can you check and see if more of the items that are showing negative DPS also have haste?",
+      "PostedDate": "2009-05-18T10:06:05.687-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "yep, i will check as soon as i get home. Ill run through a list with that item line. Thank you Jothay!",
+      "PostedDate": "2009-05-18T14:00:43.78-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Tried a quick fiddling with your XML file. Initially I assumed it had to do with extra haste causing you to go OOM, but that doesn't look to be the problem.\r\nIt seems all the items that are giving issues give extra haste. Also adding the haste bonus buff from Moonkin or Swift Ret gives reduced DPS. Essentially it looks to me like it is related to a change in the rotation: The profile as loaded uses 4 Lightning Bolts, adding the haste buff goes to 5 Lightning Bolts. Tickining/Unticking the round up options also seem to cause this issue to go away.\r\n\r\nEssentially I think the problem comes down to your current haste. Complete spells need to be used. Your right on the edge of being able to fit in a 5th Lightning Bolt.  Adding a bit more haste causes the model to round differently. I don't know the inside details of the model, but probably causing some \"downtime\" on a DoT or higher dps ability, which ends up reducing your dps more than the extra LB adds.\r\n\r\nMy guess is there is a rounding issue on how the model switches between rotations. Either it is statically switching based on haste or only a subset of the calculations are done when comparing 2 rotations and there is an effect in the part that is assumed to be consistent for both rotations. Or the optimal rotation decision is being cached somewhere.\r\n\r\n------------------------\r\nIn terms of the hit cap: Rawr tries to optimise dps, if the most effective way to do that using your current gear happens to be using hit, that is the way it will go. It doesn't try to chase the cap, just for the sake of reaching it. In some models (cat for example), hit rating typically isn't the most effective and you will end up not reaching the cap. In some models miss chance and the like are made available as extra outputs which can be used as constraints when optimising. I typically use that to say I don't want to miss, even if it lowers my dps slightly (it simplifies my rotation). It sounds like you want the option to say, prevent reaching the hit cap (and thus ensure I miss atleast 1% of the time), even if it lowers my dps. I must admit I don't understand my. (Once you consider that all hit bonus effects should already automatically be handled). The only reason I can think of, is if you want to optimise a gearset for lvl 82 mobs, instead of bosses.",
+      "PostedDate": "2009-05-18T14:15:44.603-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Jothay-  For the trinkets section yes, all the items that are showing up with negative values also add haste. Embrace of the spider and Pendulum of Telluric currents are on that list. Add a hard value of haste to anything and it goes negative. Yes, i think theres something to that in theres an issue there. However checking off the rounding N and M boxes does strange things to your offhand...like telling you to put a weapon there for +1000 points.  And does anyone know why the Enhance model is valuing trinkets like Dying Curse/Sundial so highly? In Enhsim, they sim out pretty poorly compared to whetstone/mirror of truth.",
+      "PostedDate": "2009-05-18T17:37:55.92-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-19T13:39:05.143-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:28.993-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:32.517-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "Fixed for next release.",
+    "ClosedDate": "2010-03-28T15:19:11.55-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "This error was reproducible 100% every time I Tried to \"Edit\" the item \"Vambraces of the Frost Wyrm Queen\" from the bear model (have not tried any other model)\nThere is no item level Text [264] or anything next to the item like everything else. I tried editing the item because i noticed there is no socket bonus of 4 agility that should be there.\nI can safely edit all other items, including all the pvp items that do not have item level text next to them as well, but this one errors out.\n \n \n[Arg_KeyNotFound]\nArguments:\nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=3.0.50106.0&File=mscorlib.dll&Key=Arg_KeyNotFound\n \n   at System.ThrowHelper.ThrowKeyNotFoundException()\n   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)\n   at Rawr.UI.ItemEditor.set_CurrentItem(Item value)\n   at Rawr.UI.ItemContextMenu.ContextList_SelectionChanged(Object sender, SelectionChangedEventArgs e)\n   at System.Windows.Controls.Primitives.Selector.OnSelectionChanged(SelectionChangedEventArgs e)\n   at System.Windows.Controls.Primitives.Selector.InvokeSelectionChanged(List`1 unselectedItems, List`1 selectedItems)\n   at System.Windows.Controls.Primitives.Selector.SelectionChanger.End()\n   at System.Windows.Controls.Primitives.Selector.SelectionChanger.SelectJustThisItem(Int32 oldIndex, Int32 newIndex)\n   at System.Windows.Controls.ListBox.MakeSingleSelection(Int32 index)\n   at System.Windows.Controls.ListBox.HandleItemSelection(ListBoxItem item, Boolean isMouseSelection)\n   at System.Windows.Controls.ListBox.OnListBoxItemClicked(ListBoxItem item)\n   at System.Windows.Controls.ListBoxItem.OnMouseLeftButtonDown(MouseButtonEventArgs e)\n   at System.Windows.Controls.Control.OnMouseLeftButtonDown(Control ctrl, EventArgs e)\n   at MS.Internal.JoltHelper.FireEvent(IntPtr unmanagedObj, IntPtr unmanagedObjArgs, Int32 argsTypeIndex, String eventName)",
+    "LastUpdatedDate": "2013-05-16T05:21:14.887-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-03-27T22:33:52.627-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] Arg_KeyNotFound Error",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17001
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I'm not able to reproduce this. Can you try resetting item cache from options menu and see if the issue persists?",
+      "PostedDate": "2010-03-28T00:22:09.537-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-28T04:03:42.95-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I just tested this again, without even resetting my item cache, and it works now. I did do a lot of loading various .xml files and spec switching before i tried editing it.  I will play around with it some more and get back if i can reproduce it happening again.",
+      "PostedDate": "2010-03-28T13:22:20.883-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Okay, it looks like for me, that doing a \"refresh item data from wowhead\"  or even armory, causes that error for that particular item(s), once refreshed until I reset the item cache, or close and re-open Rawr3",
+      "PostedDate": "2010-03-28T13:44:57.823-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "There is no Wowhead parsing support in Rawr3 yet; trying to use it likely just breaks the item somehow.",
+      "PostedDate": "2010-03-28T15:16:19.38-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-28T15:19:11.55-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Just an added note, maybe you meant both, maybe not. This also happens when refreshing from the Armory, not just wowhead. I'm also able to add items using wowheads numbers (i.e. adding the LK weapons for my druid) and it all works perfectly and am able to edit those items once added. Once i try to refresh those items though, from either, it goes boom.",
+      "PostedDate": "2010-03-29T07:53:28.927-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-11-22T19:56:47.293-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:15:00.62-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:29:05.61-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:14.887-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

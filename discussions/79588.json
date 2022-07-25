@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "272503",
+    "ThreadId": "79588",
+    "Html": "<p>So I equip mjolnir's and whispering fanged skull. I am not at ArP cap so I can take the whole ArP proc.</p>\r\n<p>It would seem to me that I would always want these two trinkets to proc together so that the increased AP is used when I have loads of bonus ArP.&nbsp; Them being desynced should lower DPS.</p>\r\n<p>When I move the trinket offset slider the expected DPS remains constant.&nbsp; Are these sorts of interactions not modeled?</p>",
+    "PostedDate": "2010-01-02T20:15:30.73-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "272506",
+    "ThreadId": "79588",
+    "Html": "<p>Correct; the offset is only for syncing or desyncing procs which share a cap. ArPen and AP don't scale significantly non-linearly with each other, so averaging them out as far as each other are concerned is fine.</p>",
+    "PostedDate": "2010-01-02T20:29:32.39-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "272593",
+    "ThreadId": "79588",
+    "Html": "<p>Did some napkin math since it was still bugging me heh...</p>\r\n<p>With a set of gear I was testing with Mjol and WFS I was 9554 DPS.</p>\r\n<p>So then I removed the proc effects from both trinkets.&nbsp; Now I show 9003 DPS.&nbsp;</p>\r\n<p>Then I added the procs as static values to show what I would be with them proced and am at 10697 DPS.</p>\r\n<p>Given that the two procs &quot;should&quot; line up exactly throughout the fight so my average DPS &quot;should&quot; be 9003*2/3+10697*1/3 = 9568 DPS.</p>\r\n<p>That is assuming instant up and always in sync of course.&nbsp; Assuming only 30% up time instead of 33% gets you 9511 DPS.</p>\r\n<p>So the net answer is that you are right.&nbsp; The approximation done in the modeling is good enough. It could be over valuing or under valuing but it's in the right ball park regardless. Chances are, actually, it's overvaluing.&nbsp; Only on the &quot;perfect&quot; case of 33% and always lined up do you beat the listed DPS and then only barely.&nbsp; A couple percentage points off and you start to plummet.</p>\r\n<p>Once you add in the ICC ring procs, berserking, various buffs that might be on or off at a given time, whether or not Bloodlust lines up with the procs...you're in the land of approximation anyhow I guess heh.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-01-03T12:08:32.35-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "272757",
+    "ThreadId": "79588",
+    "Html": "<p>Our &quot;averaging&quot; is more complex than your napkin math. &nbsp;We consider how long it takes to refresh based on the ICD *and* the trigger chance (ie 50% on crit, or 15% on hit, etc).</p>\r\n<p>Also note that the fight duration means a lot here -- if you're looking at 15sec effects and 45sec ICDs constant refresh, your uptime over a 60sec fight is going to be 50% (two procs occur). &nbsp;Over a 300sec fight, we expect to see 35% uptime (7 full procs), but at 315 we expect 33.333%.</p>",
+    "PostedDate": "2010-01-03T23:53:46.503-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

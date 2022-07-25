@@ -1,0 +1,91 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Fixed.",
+    "ClosedDate": "2009-06-27T23:07:53.11-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Using the attached character, if I go and select optimise gear, then go and play with the fight sliders, rawr will not update the calculations until I change (or reselect) a piece of gear. To get back to the 'live' updating, I need to save/reload.",
+    "LastUpdatedDate": "2013-05-16T05:25:12.057-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-06-22T18:48:01.597-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Rawr doesn't update for fight changes after an optimisation",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13527
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2000,
+      "FileName": "meowmeow.xml",
+      "DownloadUrl": ".\\2000"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "You have to tell us what model you are referring to. Please also be a bit more specific what exactly do you mean by \"play with the fight sliders\". WHICH SLIDER? Specifics please.\r\n\r\nIts a simple issue to fix if you provide specific info. Without that we have to hunt high and low to try to work out what you are talking about. For instance I loaded your file and it went to Healadin model. I then went to the options tab and changed every single option. Every single one changed the stats output so I'm assuming this is NOT what you mean.",
+      "PostedDate": "2009-06-27T18:25:54.107-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Obviously, considering I updated my paladin character, I was referring to the paladin model. This happens to the mage model as well, though. Any slider, burst scale, activity, BoL efficiency. Any change in the fight settings does not update. That _is_ what I mean. This happens to me every time. I tried loading random characters off the armory, of multiple specs and classes. All models I tried exhibit this bug. Additionally, I tried this using both Windows XP and Windows 7, same problem. Even more, this bug has been present in rawr for at least a month, so it's not version specific.\r\n\r\nI have no idea how I can make this any clearer. Load random character from armory, tools, optimise, optimise, load optimised gear, change fight options.",
+      "PostedDate": "2009-06-27T20:59:21.023-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yep, I can repro that. Ermad, when you made the Optimizer Results window, did you make 'load optimized gear' copy the gear on the results character to the existing character, to did you make it replace the existing character? It should be the former, guessing it's the later.",
+      "PostedDate": "2009-06-27T21:15:55.123-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Isn't this for Rawr 2.2.x? I didn't touch the optimizer there at all.\r\n\r\nFor Rawr3 I had it copy the gear onto the current character.",
+      "PostedDate": "2009-06-27T22:40:24.99-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This also happens for the moonkin, feral (cat) and mage models.",
+      "PostedDate": "2009-06-27T22:55:57.573-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I found and fixed the bug.\r\n\r\nThe Optimizer Results window Levva made was setting then new Character for the options panel as a clone of the current one. ",
+      "PostedDate": "2009-06-27T23:06:11.5-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-06-27T23:07:53.11-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:04.537-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:12.057-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

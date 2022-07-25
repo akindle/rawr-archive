@@ -1,0 +1,98 @@
+[
+  {
+    "Id": "592475",
+    "ThreadId": "252692",
+    "Html": "<p>This is a reposting of the information in Issue 20415 (and similar, already closed issues) if you want to follow along by loading the file provided there into your own Rawr you are welcome to. I am reposting here to give more visibility to this issue to Bears so they don't just think \"Rawr is nuts\" and walk away from using it.</p>\n<p>I loaded this typical Bear file (Mostly 359 gear, a couple 372 and a couple 346) and I see the following, and this is going to be common for a lot of people:</p>\n<ol>\n<li>You had set your Boss to <strong>T11 10N &gt; Average Boss</strong> which leaves an incoming melee attack at <strong>100,625 every 2.5s</strong>. This attack is all that Bear looks at right now (the others don't matter) even though the boss is doing more attacks. </li>\n<li><span style=\"color: #ff0000;\"><strong>Parry Haste has absolutely, totally, completely been removed from the program. There's no way that it's possible that Parry haste affects these calcs. Period. Anyone thinking that because Expertise *seems* high is totally wrong.</strong></span> </li>\n<li>Your <strong>Survivability Score</strong> is <strong>over 400k</strong> and your <strong>Hits to Survive</strong> is at the default <strong>3.5</strong> (where it should be). Your <strong>Survival Soft Cap</strong> is effectively the Default Melee Attack's Damage Per Hit of <strong>100,625 times 3.5 = 352,187.5</strong>. \n<ul>\n<li>This is how we determine the <strong>Survival Soft Cap</strong> now so that users don't have to worry about figuring out whether they need to put in 450k or 200k or whatever. That's what it was originally intended to be, but it never worked out that way because the Boss Handler didn't exist back then. </li>\n<li>You can adjust the 3.5 if you want, but there's really no reason to as any moron healer can get a heal off on you inside 3.5 hits (which with an attack speed of 2.5s is 8.75s, Debuffed would be even more time). </li>\n</ul>\n</li>\n<li>The above said, you are already about <strong>60k above your soft cap</strong>, so <strong>Stamina</strong> and other <strong>Survivability stats aren't helping you much anymore</strong>. Those stats at this point, all <strong>look</strong> really low, because they are, you told it you really don't need any more of them. </li>\n<li>You have a couple of effects that are dependant on one thing or another. \n<ul>\n<li>The <strong>MeleeHit</strong> Trigger on your <strong>Windwalk Enchant</strong> is giving you <strong>600 Dodge Rating</strong> which is a very good thing for <strong>Mitigation</strong>. <strong>Melee Hit</strong> is of course affected by having more <strong>Expertise, ergo, more Expertise is more Mitigation.</strong> </li>\n<li>The <strong>DamageTakenPutsMeBelow35Perc</strong> Trigger on your <strong>Leaden Despair</strong> is providing a chunk of <strong>Bonus Armor</strong>, which <strong>would</strong> up your survival score, <strong>but</strong> you are way, way soft capped, so it's not helping you. And the more avoidance you stack period (soft capped or not) the less this Trinket helps you. </li>\n<li><strong>Your Windwalk is actually working *against* your Leaden Despair.</strong> </li>\n</ul>\n</li>\n</ol>\n<p>What do I (meaning you) do about this? Kick up the incoming Damage, you are overgeared for what you selected:</p>\n<ul>\n<li>Selecting <strong>T11 25N &gt; Average Boss</strong> doesn't quite do it, that's another 25k incoming damage, but still below your current Survivability score. </li>\n<li>Selecting <strong>T11 10H &gt; Average Boss</strong> just about puts you there. You sit right at the soft cap and look! Dodge surpased Expertise! </li>\n<li>Selecting <strong>T11 25H &gt; Average Boss</strong> puts you well into the range. </li>\n</ul>\n<table width=\"75%\">\n<tbody>\n<tr>\n<td><strong>Content</strong></td>\n<td><strong>Boss Attack</strong></td>\n<td><strong>Survivability</strong><br /><strong>Score</strong></td>\n<td><strong>Soft Cap</strong></td>\n<td><strong>Distance Over/Under</strong><br /><strong>Soft Cap</strong></td>\n<td><strong>Dodge Rating</strong><br /><strong>Value</strong></td>\n<td><strong>Expertise Rating</strong><br /><strong>Value</strong></td>\n<td><strong>Stamina</strong><br /><strong>Value</strong></td>\n<td><strong>Agility</strong><br /><strong>Value</strong></td>\n</tr>\n<tr>\n<td>T11 10N (Current)</td>\n<td>100,625 every 2.5s</td>\n<td>411,282</td>\n<td>100,625*3.5=352,187.5</td>\n<td>59,094.5 (over)</td>\n<td>12.65</td>\n<td>91.50</td>\n<td>9.02</td>\n<td>159.27</td>\n</tr>\n<tr>\n<td>T11 25N</td>\n<td>125,781&nbsp;every 2.5s</td>\n<td>489,098</td>\n<td>125,781*3.5=440,233.5</td>\n<td>48,864.5&nbsp;(over)</td>\n<td>48.06</td>\n<td>67.81</td>\n<td>13.12</td>\n<td>118.96</td>\n</tr>\n<tr>\n<td>T11 10H</td>\n<td>173,333&nbsp;every 2.2s</td>\n<td>599,499</td>\n<td>173,333*3.5=596,165.5</td>\n<td>3,333.5&nbsp;(over)</td>\n<td>56.75</td>\n<td>39.31</td>\n<td>45.32</td>\n<td>86.51</td>\n</tr>\n<tr>\n<td>T11 25H</td>\n<td>219,000&nbsp;every 2.2s</td>\n<td>603,010</td>\n<td>219,000*3.5=766,500.0</td>\n<td>163,490.0 (under)</td>\n<td>52.38</td>\n<td>25.30</td>\n<td>74.79</td>\n<td>68.72</td>\n</tr>\n<tr>\n<td colspan=\"9\"><span style=\"color: #ff0000;\"><strong>New data (with WoL parsing adjustments, v4.1.04)</strong></span></td>\n</tr>\n<tr>\n<td>T11 10N</td>\n<td>148,500&nbsp;every 2.1s</td>\n<td>551,152</td>\n<td>148,500*3.5=519,750.0</td>\n<td>31,402&nbsp;(over)</td>\n<td>44.28</td>\n<td>49.62</td>\n<td>37.35</td>\n<td>100.07</td>\n</tr>\n<tr>\n<td>T11 25N</td>\n<td>185,625&nbsp;every 2.1s</td>\n<td>603,046</td>\n<td>185,625*3.5=556,875.0</td>\n<td>46,171&nbsp;(over)</td>\n<td>55.06</td>\n<td>34.19</td>\n<td>77.36</td>\n<td>79.04</td>\n</tr>\n<tr>\n<td>T11 10H</td>\n<td>212,143&nbsp;every 2.2s</td>\n<td>603,046</td>\n<td>212,143*3.5=742,500.5</td>\n<td>139,454.5&nbsp;(under)</td>\n<td>52.88</td>\n<td>27.81</td>\n<td>74.95</td>\n<td>70.03</td>\n</tr>\n<tr>\n<td>T11 25H</td>\n<td>238,661&nbsp;every 2.1s</td>\n<td>603,046</td>\n<td>238,661*3.5=838,813.5</td>\n<td>235,767.5&nbsp;(under)</td>\n<td>51.38</td>\n<td>24.67</td>\n<td>73.5</td>\n<td>64.31</td>\n</tr>\n</tbody>\n</table>",
+    "PostedDate": "2011-04-05T18:06:44.043-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "592540",
+    "ThreadId": "252692",
+    "Html": "<p>Thanks for explaining this! I was very confused there for a while.</p>\r\n<p>Making the changes you suggest puts me slightly under the soft cap, which doesn't solve the problem - it only changes it! Ok, the value for expertise goes down, but the value for stamina goes up since I'm just under the soft cap. So one bad stat changed for another...</p>\r\n<p>The problem here is that we can't set the survival cap. I am the one that knows best if I survive the encounters that we do, and if I do need to focus more on mitigation than survivability. As it is now I'm trying to construct a boss that sets the survival points soft cap to what I want - and that feels like a bad thing to have to do...</p>\r\n<p>So at least, please put back the setting where we can adjust the soft cap!</p>",
+    "PostedDate": "2011-04-05T23:04:06.663-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "592548",
+    "ThreadId": "252692",
+    "Html": "<p>As I explained, you <strong>can</strong> adjust the soft cap, by changing the number of <strong>Hits To Survive</strong></p>",
+    "PostedDate": "2011-04-05T23:18:14.96-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "592569",
+    "ThreadId": "252692",
+    "Html": "<p>This makes a lot of sense and I understand why the large shift happened.&nbsp;</p>\r\n<p>My ticket was entered because, as far as I could tell I hadn't changed anything and suddenly Rawr was giving massively different answers from one version to another.&nbsp;</p>\r\n<p>The truth was that the new boss handler changed my effective softcap which is a completely believable and understandable reason for my gearing to be massively different.</p>",
+    "PostedDate": "2011-04-05T23:52:43.31-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "592696",
+    "ThreadId": "252692",
+    "Html": "<p>Jothay, are you certain the Dodge vs.&nbsp;Expertise&nbsp;issue is due to the survival soft-cap and not simply mechanical given the size of the incoming attacks? For me, changing the soft cap doesn't do anything in regard to the relative value of Expertise vs. Dodge.</p>\n<p>Expertise is going to increase the uptime of your absorbs (as is Dodge, but possibly by a smaller amount) while the value of Dodge will somewhat decrease vs. lower sized attacks in terms of damage avoided. This could lead to a scenario where Rawr believes that adding more Expertise will reduce more damage of the incoming attack due to the increased SD uptime.</p>\n<p>As the size of hits increase, SD becomes less powerful so Dodge would naturally increase in value.</p>\n<p>I don't see how this has anything to do with the survival soft cap, however--as that should only affect the survival score. The fact that avoidance works against an Armor proc trinket should become less of an issue when soft-capped, not more of an issue--as the value of the armor will reduce, but mitigation is not soft-capped.</p>\n<p>Additionally, I lose about 1k Attack Power in going from 10N to 25H boss attack sizes from Vengeance. In this case, each Dodge reforge is being translated into about -20 Attack Power against a 10N boss vs. only around -8 Attack Power against a 25H boss.</p>\n<p>My guess is that this is simply a result of the increased power of SD absorbs vs. attacks significantly below the player's gear threshold combined with a minor effect of Dodge-based&nbsp;Vengeance fall-off with smaller attacks.</p>\n<p>As the mitigation score directly compares the BlockedPercent to Avoidance, it's not difficult to see how this would downplay minor increases in Avoidance at certain gear levels for small incoming hits. Expertise, as far as the calculations are concerns, <strong>IS </strong>actually giving you more total mitigation than Dodge when the incoming base attacks are extremely low. (For my full 359 Bear, this starts to happen somewhere between 125k-150k base attacks.)</p>\n<p>It is also worth noting that in using the Overall score, Expertise will have a threat value associated with it. When the value of Dodge and Expertise become close, this Threat gain can put Expertise over the edge unless you are turning your threat scale to 'Almost None'.</p>\n<p>The moral of the story is: don't choose gear based on incoming damage which is significantly weaker than what your gear is intended for--unless you really aren't planning on doing new content any time soon.</p>\n<p>(Although I do have a hunch that the values being set for many 10N fights are too low, as they currently are not being adjusted for things that cause the boss or player to take more damage. e.g. The average swing I took on Magmaw is 53k in 10N last week due to the Armor debuff while single-tanking.&nbsp;Rawr estimates that my SD absorbs are worth 41% on Magmaw, which is clearly over-estimated. In reality based on my SD gains it appears that the actual value was no more than 20%. Even on Maloriak which has very weak swings of 22k, my actual SD absorb seemed to be in the realm of 25-35%.)</p>",
+    "PostedDate": "2011-04-06T04:07:14.553-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "592817",
+    "ThreadId": "252692",
+    "Html": "<blockquote style=\"padding-bottom: 0px; font-style: italic; margin: 0.25em 1em 0px; padding-left: 0.25em; padding-right: 0.25em; padding-top: 0px; border: #ccc 0.1em solid;\"><strong>khanthal wrote:<br /></strong>This makes a lot of sense and I understand why the large shift happened.&nbsp;<br />My ticket was entered because, as far as I could tell I hadn't changed anything and suddenly Rawr was giving massively different answers from one version to another.&nbsp;<br />The truth was that the new boss handler changed my effective softcap which is a completely believable and understandable reason for my gearing to be massively different.</blockquote>\r\n<p>Your ticket was entirely valid as it was something we needed to research and explain. No worries there.</p>\r\n<p>I'm working on getting parses of T11 10N kills of Magmaw and other bosses so I can manually determine what their hits are like. Unfortunately it's a slow process as I have to hunt for logs.</p>\r\n<p>If anyone can provide recent (like, last couple of days) World of Logs parses for their guild killing a boss in an instance, please link them on this thread and I'll review them. When doing so, include the name of the boss, what version of him he was and who was the main tank and off tank for him. I need kills, not just attempts.</p>",
+    "PostedDate": "2011-04-06T07:51:40.973-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "592913",
+    "ThreadId": "252692",
+    "Html": "<p>Well I'm planning on running a 10man BWD on Thursday night so I can see if I can get parses running on that.</p>",
+    "PostedDate": "2011-04-06T09:43:58.853-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "592930",
+    "ThreadId": "252692",
+    "Html": "<blockquote style=\"border: 0.1em solid #cccccc; font-style: italic; margin: 0.25em 1em 0pt; padding: 0pt 0.25em;\"><strong>EvanM wrote:</strong><br />\r\n<p>Jothay, are you certain the Dodge vs.&nbsp;Expertise&nbsp;issue is due to the survival soft-cap and not simply mechanical given the size of the incoming attacks? For me, changing the soft cap doesn't do anything in regard to the relative value of Expertise vs. Dodge.</p>\r\n</blockquote>\r\n<p>I can speak to this in a roundabout sort of way.&nbsp; In prior versions of Rawr (where you could enter your softcap) changing it could cause exactly what I saw in this latest version of Rawr: it suddenly reforging everything expertise/mastery instead of dodge when the softcap was quite low.&nbsp; So this result is not new to boss handler.</p>",
+    "PostedDate": "2011-04-06T10:02:35.647-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "592935",
+    "ThreadId": "252692",
+    "Html": "<p>I've been keeping guild logs for my guild. &nbsp;The link is:&nbsp;<a href=\"http://www.worldoflogs.com/guilds/32920/\">http://www.worldoflogs.com/guilds/32920/</a></p>\n<p>There aren't a ton of recent kills in early BWD, but we run raids most nights, so the kills may show up later on.</p>\n<p>Edit: Reports uploaded by \"Delvalroy\" are mine, with the main tank as Delvalroy (paladin) and the offtank as Erroodwen (bear). &nbsp;Reports uploaded by \"runicviewer\" are our 2nd 10-man group and are tanked by Eschelan (warrior) and offtanked by Rajahten (death knight). &nbsp;All logs except for the last two Tuesdays are 10-man normal; the two Tuesday logs are 25-man normal.</p>",
+    "PostedDate": "2011-04-06T10:05:40.783-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "593277",
+    "ThreadId": "252692",
+    "Html": "<p>Here's a recent parse with kills of Magmaw and Omnotron. <a href=\"http://www.worldoflogs.com/reports/fs3qbgg0sj8tfucl/\">http://www.worldoflogs.com/reports/fs3qbgg0sj8tfucl/</a>&nbsp;</p>\r\n<p>Tanks are Romolo (Paladin) and Eaowyn (druid). I was tanking the worms with Magmaw, so that may not be particularly helpful for damage on bears.</p>",
+    "PostedDate": "2011-04-06T22:27:20.277-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "593866",
+    "ThreadId": "252692",
+    "Html": "<p>Ty dope and Eaowyn, your parses got me 10N and 25N. Now I need a 10H to round things out.</p>",
+    "PostedDate": "2011-04-07T18:17:08.633-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "597283",
+    "ThreadId": "252692",
+    "Html": "<p>Just for everyone's edification, some changes are happening for 4.1.04 that make this stuff more apparent to the user.</p>\n<ul>\n<li>In Tank models, when loading a toon from armory or addon (note loading, not reloading), the incoming attack damage and Boss Health values are now dynamically assigned based on your average worn item level. This way if you are almost 372, you aren't starting off with a T11 10N attack value, you get a T11 25H attack value. </li>\n<li>The Boss Handler now detects issues and reports them to you in the Summary. Here is an incomplete list of the kinds of issues it will report: \n<ul>\n<li>Incoming default melee attack damage is too low. This is from files created before we fixed the default melee values for bosses. </li>\n<li>The attack, target group, buffstate, impedance has a problem such as its Frequency is above the berserk timer or it does negative damage or it has a 0% chance of happening, or it's not affecting any roles (meaning it doesn't target anyone). </li>\n</ul>\n</li>\n</ul>\n<p>I'm still working on this and hope to have even more in for the next version.</p>\n<p><strong>Edit:</strong> I've updated the opening post with some more data that comes from 4.1.04 changes</p>",
+    "PostedDate": "2011-04-14T09:09:20.71-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

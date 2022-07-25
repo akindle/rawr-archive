@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "193960",
+    "ThreadId": "57399",
+    "Html": "<p>Sorry if this has been brought up already but it was tough to search for and it may be easily answered so I hope you don't mind.</p>\r\n<p>If I click Sort: Overall &gt; Overall or Sort Overall &gt; DPS it shows a different list each subsequent time I click it.&nbsp; What's the difference each&nbsp; time I click it?&nbsp; I don't know what upgrades are correct now and I think I just spent 1K Gold on the wrong item... not complaining, just showing the impact of the lack of explanation.&nbsp;</p>\r\n<p>Example: I have a DPSDK and found that&nbsp;the Titanium Earthguard Chain necklace was presented as a better upgrade over the Titanium Impact Choker.&nbsp; I searched several different discussions about this and sure enough, the added stg and armor added enough AP to make the Earthguard better even though it's considered a &quot;tanking&quot; necklace.&nbsp; However, I clicked Sort: Overall &gt; Overall and it resorted and now says the Impact is better.&nbsp; To be honest, the dps shuffles around 3-5 dps difference eitherway so I think the Earthguard was still a good choice for it's dual purpose value&nbsp;but now I don't know which is better in other areas that compares a true&nbsp;DPS to DPS item.</p>\r\n<p>Thanks for the awesome program!&nbsp; I've been using it for a long time and have had only minor quirks that I could figure out, I'm stuck on this one.</p>",
+    "PostedDate": "2009-05-25T10:41:06.707-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "193971",
+    "ThreadId": "57399",
+    "Html": "<p>OK, I just realized something that changes, the value of the increments changes. I'm still not sure why the total dps value can change so much however.&nbsp; Maybe it's just my problem with understanding the differences of the increments.</p>\r\n<p>By default I think it increments dps every 10 points.&nbsp; One click may change it to 8.75, another back to 10 with a base of -10, another back to 10... 8.57... 7.14... etc.&nbsp; I'm still confused about the total dps value changes when the increments stay the same.&nbsp; Right now at a value of 10, it shows the necklace as 41.21 dps... at 8.75 it jumps to 57.11 but a few more clicks and at 8.75 it backs down to 41.21.&nbsp; What changed?</p>\r\n<p>Thanks for any help you can provide!</p>",
+    "PostedDate": "2009-05-25T11:17:40.867-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "194403",
+    "ThreadId": "57399",
+    "Html": "<p>I don't understand the issue as presented.&nbsp; What &quot;increments&quot; and &quot;points&quot; are you referring to?</p>\r\n<p>Here's the behavior I could reproduce:</p>\r\n<ul>\r\n<li>For a given display, change Sort from Overall to DPS.&nbsp; This shows the items in DPS order.&nbsp; (This is the same as Overall since there is no rating for survival.</li>\r\n<li>Change Sort from DPS to DPS.&nbsp; This reorders the items in a strange order (maybe the order of how items are loaded?).&nbsp; However, the ratings for each item do not change.</li>\r\n<li>Changing Sort back to Overall restores it to DPS order.</li>\r\n<li>Changing Sort from Overall to Overall results in no change.</li>\r\n</ul>",
+    "PostedDate": "2009-05-26T11:16:16.243-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "200609",
+    "ThreadId": "57399",
+    "Html": "<p>Sorry Soraia, I thought you were right about resetting the Sort but I was just switching through each piece of gear and all of a sudden I noticed the Pendant of the Outcast Hero crushing the other 2 necklaces by a margin of 11 DPS.&nbsp; I tried resetting it by clicking Sort &gt; DPS and then back to Sort &gt; Overall and it changed the values but now my Earthguard Chain was back on top?&nbsp; I did it several more times and sure enough it's all over the map.&nbsp; the values are usually pretty similar but there is no clear winner of these 3 items using this method.</p>\r\n<p>It seems the only way I can get consistent results is by closing the program completley and reopening before changing to a new piece of gear.</p>\r\n<p>The scale values are at the top that mark the lines going doing.&nbsp; They are supposed to be just a graphical representation but the numbers do change and my only reason for bringing them up is they are the only other thing that has a random value change every time.&nbsp; I'm still lost, does no one else have this problem?</p>",
+    "PostedDate": "2009-06-11T15:51:40.867-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "200628",
+    "ThreadId": "57399",
+    "Html": "<p>Yeah, there's a major bug in the DPSDK model in 2.2.5 and 2.2.6 where something wasn't being thread-safe.&nbsp; See discussion #58417 and issues #13346 and #13355.&nbsp; Bloodysorc committed a change after 2.2.6 was released which should fix this.&nbsp; This behavior should hopefully not appear in 2.2.7.</p>",
+    "PostedDate": "2009-06-11T16:29:23.867-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "200879",
+    "ThreadId": "57399",
+    "Html": "<p>Thanks for the replies Soraia!&nbsp; I look forward to 2.2.7 then. :)&nbsp; This is still a fantastic program and I'm actually glad the only mistake I made was buying a tank necklace as it is still very good for tanking even when I get a true dps necklace.&nbsp; So in my case, I'm cool... but I have about 100 badges and 80K honor saved up and I'm unsure of what to spend stuff in at the moment... I rely on this program too much some times :)</p>\r\n<p>Very good, I'll watch the referenced Discussions you gave... thanks for finding them better than I&nbsp;could.&nbsp;</p>\r\n<p><a href=\"http://rawr.codeplex.com/Thread/View.aspx?ThreadId=58417\">http://rawr.codeplex.com/Thread/View.aspx?ThreadId=58417</a></p>\r\n<p>I read thisissue&nbsp;before but didn't attribute my problem to&nbsp;the gemming issues mentioned.</p>\r\n<p><a href=\"http://rawr.codeplex.com/WorkItem/View.aspx?WorkItemId=13355\">http://rawr.codeplex.com/WorkItem/View.aspx?WorkItemId=13355</a></p>\r\n<p>And here's the third you mentioned&nbsp;for mine (and others) easy reference.&nbsp;</p>\r\n<p><a href=\"http://rawr.codeplex.com/WorkItem/View.aspx?WorkItemId=13346\">http://rawr.codeplex.com/WorkItem/View.aspx?WorkItemId=13346</a></p>\r\n<p>I'm glad the devs find time around their work schedule to keep up with this fantastic... and free... program.</p>",
+    "PostedDate": "2009-06-12T09:09:25.833-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

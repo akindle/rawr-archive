@@ -1,0 +1,91 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Hunter",
+      "DisplayName": "Rawr.Hunter"
+    },
+    "ClosedComment": "Fixed in commit 49172",
+    "ClosedDate": "2010-04-06T08:26:01.48-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Description: Whenever I switch glyphs, my custom rotation keeps defaulting back to the marksman rotation, which is not optimal. Silencing Shot and Readiness should be swapped in the shot priority.  I don't know if it's always been like this and is simply a result of not having the option to save shot priorities, but it's the first I've noticed it.\n \nSteps to Reproduce:\n1) Load my attached character file\n2) Note that Silencing shot has second shot priority and Readiness second to last\n3) Swap out Glyph of the Hawk for Glyph of Chimera Shot\n4) Hunter Shot Priority has gone back to \"Marksman\"\n \nAdditional Info:\n- Rawr 2.3.12\n- Windows XP",
+    "LastUpdatedDate": "2013-05-16T05:21:29.7-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-03-16T08:38:04.487-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Hunter] Losing Custom Rotation",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16801
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3181,
+      "FileName": "Dyzek.xml",
+      "DownloadUrl": ".\\3181"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "First, I acknowledge the issue and can duplicate it, working on a fix now.\r\n\r\nSecond, from what I understand, that's wrong, the default readiness and silencing shot rotations are in fact correct and you swapping them while calculationally in Rawr shows a slight improvement is actually wrong. I think the current Rotation code is doing that whole 'allow one extra shot in the duration' thing that is making it look better than it actually is. The new rotation code (when finished) should show more accurate values.",
+      "PostedDate": "2010-03-16T10:55:35.25-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "After messing around with this more, I noticed Rawr is modeling Silencing Shot as top priority along with Rapid Fire regardless of where you put it in the priority list.  I could’ve swore I saw it long before doing Chimera then Aimed then Silencing+Steady, but when I checked it today, everything looks good.  Did this change with a release over the last 2 months or am I just loony? :>\r\n\r\n(Btw I love the Details tab – any chance that will get implemented for all models in Rawr3 or should I make that a discussions post?)\r\n\r\nI also get what you mean about the extra shot in duration (Turns out it gave me an extra Chimera), but is popping Readiness at any given time really better than using it right after your big shots or are they equal and just not matter?  I know the GCD from Readiness can hit your dps a little, but I was under the assumption that you don’t want to just hit Readiness mid Steady Shot spam but after your big shots, especially on your last Readiness of the fight so you can get an extra Kill Shot.  Granted the Kill Shot thing is more work than it’s worth to model in Rawr, but isn’t it correct Readiness should be after Chimera/Kill/Aimed Shot?\r\n",
+      "PostedDate": "2010-03-17T12:41:03.803-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The Priority system you see there and the Details tab is part of the Sim model that won't exist in the future. So what you see there doesn't truly matter as it's going away.",
+      "PostedDate": "2010-03-17T12:44:00.73-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-06T08:21:06.867-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-06T08:26:01.48-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T18:28:12.98-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:18.067-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:29:24.13-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:29.7-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

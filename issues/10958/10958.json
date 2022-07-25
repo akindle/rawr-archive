@@ -1,0 +1,116 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Optimizer",
+      "DisplayName": "Rawr.Base.Optimizer"
+    },
+    "ClosedComment": "Thanks much!",
+    "ClosedDate": "2008-08-16T12:32:10.62-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Open up Rawr, load up this xml file.\n \nGo to optimizer, select anything but the minimum thoroughness, and click optimize.  Acknowledge that no gems have been selected, and then the optimizer gets stuck working forever.\n \nNote that all gear has been pregemmed & enchanted, selected gemmings should not be necessary.\n \nChar",
+    "LastUpdatedDate": "2013-05-16T05:27:04.423-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-08-09T10:43:45.407-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Optimizer gets stuck on this file",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 10958
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1217,
+      "FileName": "CharinnaOptimizerLoop.xml",
+      "DownloadUrl": ".\\1217"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I think that the optimizer is a bit broken when it comes to choosing enchants.\r\n\r\nWhen I load my character using the character profiler -- it selects all my gear given their current gemmings & enchants.  If I run the optimizer (making it so that it doesn't run into an infinite loop when checking for viable echants by breaking out of GeneratorFillSlot after an absurdly large number --- 10000 -- iterations), it runs for a long time, 2 minutes and 29 seconds, (for maximum thoroughness setting) and then gives me a score (814).\r\n\r\nIf I click on override gems & enchant settings, I run it, it runs much faster (15 seconds) and gives me a significantly lower score (755).\r\nIf I click _only_ on override gems, it runs slow again (2+ minutes) and gives me the high score again (814)\r\nIf I click _only_ on override enchants, it runs faster again (14 seconds), and gives me a lower score (755).\r\n\r\nIn fact, I've run the original optimizer code to confirm that I didn't break it by putting the abort in the enchant loop.  If you don't override the enchant settings it runs forever as mentioned above.  If you DO override the enchant settings, it's pretty quick, but gives a lower result.\r\n",
+      "PostedDate": "2008-08-14T15:03:23.62-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Kavan, have you gotten a chance to take a look at this?\r\n\r\n95% certain that the loop you were running into is because it can't find a valid choice for some slot. Did you mark enchants available? Sounds like the problem is that you didn't.",
+      "PostedDate": "2008-08-14T18:29:07.433-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Problem is with this entry in available items.\r\n\r\n31971.32194.34831.0.2978\r\n\r\nThis is Merciless Gladiator's Dragonhide Spaulders, but the enchant 2978 is not known by Rawr. When it tries to select a valid enchant it can't do so because the only valid enchant is not available in Rawr. Code is assuming that anything marked as available is actually known by Rawr currently. Let me know how you want to handle this.",
+      "PostedDate": "2008-08-15T01:38:17.693-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I was not able to reproduce the \"override reenchant\" bug. If you have a specific character file where that happens please upload it.",
+      "PostedDate": "2008-08-15T01:47:11.207-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It's a good call on the enchant selection -- I haven't been selecting enchants which explains why override enchant yields a lower score.\r\n\r\nI'll take a look at the shoulder pieces and see if they look suspect & cause the problem.  I guess I have to figure out why the bad number came in there in the first place (it's probably my CharacterProfiler import -- but I wonder why...?)",
+      "PostedDate": "2008-08-15T12:28:11.29-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Incidentally, 2978 is the Greater Inscription of Warding -- it should be known...",
+      "PostedDate": "2008-08-15T12:35:50.193-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It's known, but not relevant to Cat. That's probably why it can't find it in the optimizer in Cat. Kavan, I suppose it should probably be made smarter, to count it as No Enchant if it can't find the enchant in the relevant list? Or perhaps just add all enchants that are specifically available like that to the list of relevant enchants for the optimizer?",
+      "PostedDate": "2008-08-15T13:10:13.257-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok, I think you're on the right track.\r\n\r\nI took my gear with all enchants specified.  Whittled it down just to my tanking gear.  Optimize in bear mode runs fine.  Switch to cat & optimize runs infinite loop.\r\n\r\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<Character xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <Name>Charinna</Name>\r\n  <Realm>Shadowsong</Realm>\r\n  <Region>US</Region>\r\n  <Race>NightElf</Race>\r\n  <Class>Druid</Class>\r\n  <ActiveBuffs>Gladiator Sanctuary 2 Piece Bonus</ActiveBuffs>\r\n  <Head>33672.32409.35758.0</Head>\r\n  <Neck>34680.0.0.0</Neck>\r\n  <Shoulders>31971.32194.34831.0</Shoulders>\r\n  <Back>33593.0.0.0</Back>\r\n  <Chest>34906.32194.0.0</Chest>\r\n  <Shirt>2575.0.0.0</Shirt>\r\n  <Tabard>36941.0.0.0</Tabard>\r\n  <Wrist>33580.32223.0.0</Wrist>\r\n  <Hands>34911.32220.0.0</Hands>\r\n  <Waist>30042.32212.32212.0</Waist>\r\n  <Legs>34910.32194.32226.0</Legs>\r\n  <Feet>33582.32194.32223.0</Feet>\r\n  <Finger1>34888.0.0.0</Finger1>\r\n  <Finger2>29279.0.0.0</Finger2>\r\n  <Trinket1>31858.0.0.0</Trinket1>\r\n  <Trinket2>32658.0.0.0</Trinket2>\r\n  <MainHand>30021.0.0.0</MainHand>\r\n  <Ranged>33509.0.0.0</Ranged>\r\n  <HeadEnchant>3004</HeadEnchant>\r\n  <ShouldersEnchant>2978</ShouldersEnchant>\r\n  <BackEnchant>368</BackEnchant>\r\n  <ChestEnchant>2661</ChestEnchant>\r\n  <WristEnchant>2649</WristEnchant>\r\n  <HandsEnchant>2564</HandsEnchant>\r\n  <LegsEnchant>3013</LegsEnchant>\r\n  <FeetEnchant>2649</FeetEnchant>\r\n  <Finger1Enchant>0</Finger1Enchant>\r\n  <Finger2Enchant>0</Finger2Enchant>\r\n  <MainHandEnchant>2670</MainHandEnchant>\r\n  <OffHandEnchant>0</OffHandEnchant>\r\n  <RangedEnchant>0</RangedEnchant>\r\n  <CalculationOptions>\r\n    <item>\r\n      <key>\r\n        <string>Cat</string>\r\n      </key>\r\n      <value>\r\n        <string>&lt;?xml version=\"1.0\" encoding=\"utf-16\"?&gt;\r\n&lt;CalculationOptionsCat xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"&gt;\r\n  &lt;TargetLevel&gt;73&lt;/TargetLevel&gt;\r\n  &lt;TargetArmor&gt;7700&lt;/TargetArmor&gt;\r\n  &lt;ExposeWeaknessAPValue&gt;200&lt;/ExposeWeaknessAPValue&gt;\r\n  &lt;NumberOfFerociousInspirations&gt;2&lt;/NumberOfFerociousInspirations&gt;\r\n  &lt;Powershift&gt;4&lt;/Powershift&gt;\r\n  &lt;PrimaryAttack&gt;Both&lt;/PrimaryAttack&gt;\r\n  &lt;Finisher&gt;Rip&lt;/Finisher&gt;\r\n  &lt;BloodlustUptime&gt;0.15&lt;/BloodlustUptime&gt;\r\n  &lt;DrumsOfBattleUptime&gt;0.25&lt;/DrumsOfBattleUptime&gt;\r\n  &lt;DrumsOfWarUptime&gt;0.25&lt;/DrumsOfWarUptime&gt;\r\n  &lt;ShattrathFaction&gt;Aldor&lt;/ShattrathFaction&gt;\r\n&lt;/CalculationOptionsCat&gt;</string>\r\n      </value>\r\n    </item>\r\n    <item>\r\n      <key>\r\n        <string>Bear</string>\r\n      </key>\r\n      <value>\r\n        <string>&lt;?xml version=\"1.0\" encoding=\"utf-16\"?&gt;\r\n&lt;CalculationOptionsBear xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"&gt;\r\n  &lt;TargetLevel&gt;73&lt;/TargetLevel&gt;\r\n  &lt;ThreatScale&gt;10&lt;/ThreatScale&gt;\r\n  &lt;EnforceMetagemRequirements&gt;false&lt;/EnforceMetagemRequirements&gt;\r\n&lt;/CalculationOptionsBear&gt;</string>\r\n      </value>\r\n    </item>\r\n  </CalculationOptions>\r\n  <Talents>\r\n    <Trees />\r\n    <Region>US</Region>\r\n    <Class>Druid</Class>\r\n  </Talents>\r\n  <AvailableItems>33672.32409.35758.0.3004</AvailableItems>\r\n  <AvailableItems>34680.0.0.0.0</AvailableItems>\r\n  <AvailableItems>31971.32194.34831.0.2978</AvailableItems>\r\n  <AvailableItems>34906.32194.0.0.2661</AvailableItems>\r\n  <AvailableItems>2575.0.0.0.0</AvailableItems>\r\n  <AvailableItems>36941.0.0.0.0</AvailableItems>\r\n  <AvailableItems>30042.32212.32212.0.0</AvailableItems>\r\n  <AvailableItems>33582.32194.32223.0.2649</AvailableItems>\r\n  <AvailableItems>34888.0.0.0.0</AvailableItems>\r\n  <AvailableItems>31858.0.0.0.0</AvailableItems>\r\n  <AvailableItems>34471.0.0.0.0</AvailableItems>\r\n  <AvailableItems>33509.0.0.0.0</AvailableItems>\r\n  <AvailableItems>29169.0.0.0.0</AvailableItems>\r\n  <AvailableItems>34910.32194.32226.0.3013</AvailableItems>\r\n  <AvailableItems>31383.0.0.0.0</AvailableItems>\r\n  <AvailableItems>34911.32220.0.0.2564</AvailableItems>\r\n  <AvailableItems>24390.0.0.0.0</AvailableItems>\r\n  <AvailableItems>32481.0.0.0.0</AvailableItems>\r\n  <AvailableItems>32658.0.0.0.0</AvailableItems>\r\n  <AvailableItems>25653.0.0.0.0</AvailableItems>\r\n  <AvailableItems>33593.0.0.0.368</AvailableItems>\r\n  <AvailableItems>25978.0.0.0.0</AvailableItems>\r\n  <AvailableItems>34608.24029.24047.24035.2343</AvailableItems>\r\n  <AvailableItems>25643.0.0.0.0</AvailableItems>\r\n  <AvailableItems>30841.0.0.0.0</AvailableItems>\r\n  <AvailableItems>34029.0.0.0.0</AvailableItems>\r\n  <AvailableItems>24673.0.0.0.0</AvailableItems>\r\n  <AvailableItems>33580.32223.0.0.2649</AvailableItems>\r\n  <AvailableItems>28508.24029.32836.0.0</AvailableItems>\r\n  <AvailableItems>30021.0.0.0.2670</AvailableItems>\r\n  <AvailableItems>29390.0.0.0.0</AvailableItems>\r\n  <AvailableItems>28568.0.0.0.0</AvailableItems>\r\n  <AvailableItems>28322.0.0.0.0</AvailableItems>\r\n  <AvailableItems>25055.0.0.0.0</AvailableItems>\r\n  <AvailableItems>24675.0.0.0.0</AvailableItems>\r\n  <AvailableItems>24681.0.0.0.0</AvailableItems>\r\n  <AvailableItems>24690.0.0.0.0</AvailableItems>\r\n  <AvailableItems>24674.0.0.0.0</AvailableItems>\r\n  <AvailableItems>24670.0.0.0.0</AvailableItems>\r\n  <AvailableItems>24672.0.0.0.2841</AvailableItems>\r\n  <AvailableItems>24652.0.0.0.0</AvailableItems>\r\n  <AvailableItems>24691.0.0.0.0</AvailableItems>\r\n  <AvailableItems>23323.0.0.0.0</AvailableItems>\r\n  <AvailableItems>25007.0.0.0.0</AvailableItems>\r\n  <AvailableItems>28259.0.0.0.0</AvailableItems>\r\n  <AvailableItems>12846.0.0.0.0</AvailableItems>\r\n  <AvailableItems>29355.0.0.0.0</AvailableItems>\r\n  <AvailableItems>22397.0.0.0.0</AvailableItems>\r\n  <AvailableItems>31025.0.0.0.0</AvailableItems>\r\n  <AvailableItems>25315.0.0.0.0</AvailableItems>\r\n  <AvailableItems>28109.0.0.0.0</AvailableItems>\r\n  <AvailableItems>29279</AvailableItems>\r\n  <AvailableItems>29279.0.0.0.0</AvailableItems>\r\n  <CurrentModel>Bear</CurrentModel>\r\n  <EnforceMetagemRequirements>false</EnforceMetagemRequirements>\r\n  <CalculationToOptimize>[Overall]</CalculationToOptimize>\r\n  <OptimizationRequirements />\r\n</Character>",
+      "PostedDate": "2008-08-15T15:27:16.36-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I got a fix in, let me know if everything is ok now.",
+      "PostedDate": "2008-08-16T06:13:34.627-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hi Kavan,\r\n\r\nWorks like a charm.\r\n\r\nI can explain the difference in timing -- the way I had got the optimizer to make progress was to give up after a number of attempts to find an enchant for a slot.  It was this loop of trying & failing that was causing the optimizer to take longer.\r\n\r\nChar",
+      "PostedDate": "2008-08-16T12:31:08.273-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-08-16T12:32:10.62-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-09T16:03:17.383-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:35.767-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:27:04.423-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

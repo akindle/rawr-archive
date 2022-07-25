@@ -1,0 +1,322 @@
+[
+  {
+    "Id": "268113",
+    "ThreadId": "78355",
+    "Html": "<p>Devs, get things checked in for v2.3.3 tonight, please. I'll be making the build after my raid ends at midnight PST. ie, 14hr from now.</p>",
+    "PostedDate": "2009-12-16T10:11:38.087-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268173",
+    "ThreadId": "78355",
+    "Html": "<p>Astrylian, just a heads up, I submitted a small change in Bear. &nbsp;&quot;CalculationOptionsBear calcOpts = character.CalculationOptions as CalculationOptionsBear&quot; returns null when the character isn't a bear, which causes a crash when I'm in DPSWarr and then try to open another character in DPSWarr. &nbsp;I just added a null check to calcOpts after assigning it, and if it's null creating a new CalcOptsBear object so the code doesn't consistently crash. &nbsp;</p>\r\n<p>It shouldn't change bear functionally, although it will slightly affect performance. &nbsp;If this is no good, feel free to revert it and please accept my apologies.</p>",
+    "PostedDate": "2009-12-16T13:25:01.95-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268175",
+    "ThreadId": "78355",
+    "Html": "<p>Fingers crossed that Lock changes are included this evening!</p>\r\n<p>Thanks DEVS!!!!</p>",
+    "PostedDate": "2009-12-16T13:31:51.307-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268182",
+    "ThreadId": "78355",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>ebs2002 wrote:</strong><br>\r\n<p>Astrylian, just a heads up, I submitted a small change in Bear. &nbsp;&quot;CalculationOptionsBear calcOpts = character.CalculationOptions as CalculationOptionsBear&quot; returns null when the character isn't a bear, which causes a crash when I'm in DPSWarr and then try to open another character in DPSWarr. &nbsp;I just added a null check to calcOpts after assigning it, and if it's null creating a new CalcOptsBear object so the code doesn't consistently crash. &nbsp;</p>\r\n<p>It shouldn't change bear functionally, although it will slightly affect performance. &nbsp;If this is no good, feel free to revert it and please accept my apologies.</p>\r\n</blockquote>\r\n<p>np. I need to fix it so that it doesn't try to load a bear in between character loads anyway, but this is a fine interim solution.</p>",
+    "PostedDate": "2009-12-16T13:46:43.733-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268213",
+    "ThreadId": "78355",
+    "Html": "<p>Don't forget to do a new Wowhead item cache import before release due to the new item source format!</p>\r\n<p>Also might want to get the Triumph/Trophy item filters updated before release too.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-12-16T14:57:06.867-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268299",
+    "ThreadId": "78355",
+    "Html": "<p>There's no way I will get the new handling of DBW and the new arp stuff in dpswarr by tonight. &nbsp;I can tomorrow if you want to push it off, or we can release as-is. &nbsp;I'd like to fix the dual-executioner bug and the like.</p>",
+    "PostedDate": "2009-12-16T20:10:45.19-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268322",
+    "ThreadId": "78355",
+    "Html": "<p>Just release as-is tonight, and we'll release again tomorrow night.</p>",
+    "PostedDate": "2009-12-16T21:25:07.603-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268414",
+    "ThreadId": "78355",
+    "Html": "<p>So Trolando made this cool addition today... The item cache refreshes are now multithreaded, which makes them go much much faster. However, that has a very sharp downside, which I've just run into. The Armory doesn't like getting a bajillion requests a second. My IP is now (temp, I hope) banned from the Armory.</p>",
+    "PostedDate": "2009-12-17T02:14:57.893-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268424",
+    "ThreadId": "78355",
+    "Html": "<p>OK, due to delays, pushing v2.3.3 back til tomorrow. Same time.</p>",
+    "PostedDate": "2009-12-17T02:34:32.963-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268450",
+    "ThreadId": "78355",
+    "Html": "<p>Speaking of optimizations to the item reloading stuff... no items are limited to Trinket1/Trinket2 and Ring1/Ring2 slots AFAIK, so it would seem we could cut down a little bit of query action by removing the Ring2/Trinket2 passes?</p>",
+    "PostedDate": "2009-12-17T04:46:58.317-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268459",
+    "ThreadId": "78355",
+    "Html": "<p>Basically it queues all 6800 or so items in the entire item cache, not per slot.</p>\r\n<p>&nbsp;</p>\r\n<p>I just modified the implementation to allow for maximum number of items per second. Hopefull this will prevent blocked IP issues in the future. Current value: maximum 10 requests per second. Maybe it should be even lower.</p>",
+    "PostedDate": "2009-12-17T05:15:34.99-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268528",
+    "ThreadId": "78355",
+    "Html": "<p>Has anyone asked an Armory or Wowhead developer about implementing some sort of XML package download for this kind of data so Rawr doesn't have to scrape individual item pages? Seems like it would save them a lot of fuss and bother on both ends. I'm sure at least the Wowhead guys would consider it.</p>",
+    "PostedDate": "2009-12-17T08:41:12.07-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268548",
+    "ThreadId": "78355",
+    "Html": "<p>Well, Armory is run by Blizzard, and I'm sure any request for this will be ignored. &nbsp;Wowhead (or possibly MMO-Champ? I know we were talking about working with them a while back) would be more likely.</p>",
+    "PostedDate": "2009-12-17T09:24:00.837-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268668",
+    "ThreadId": "78355",
+    "Html": "<p>I know Emmerald used to get an XML package from WowHead for generating his list - i'm sure this would be doable</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-12-17T14:22:38.617-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268719",
+    "ThreadId": "78355",
+    "Html": "<p>MMO-champ always seems to get upgrade data on their database page faster than wowhead does.&nbsp; Would be awesome to be able to pull from the mmo data.&nbsp; I know all of the items that are known are on that site, but much of it is missing from the &quot;default&quot; rawr item cache download.</p>",
+    "PostedDate": "2009-12-17T17:44:10.397-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268721",
+    "ThreadId": "78355",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Zifnab wrote:</strong><br>\r\n<p>MMO-champ always seems to get upgrade data on their database page faster than wowhead does.&nbsp; Would be awesome to be able to pull from the mmo data.&nbsp; I know all of the items that are known are on that site, but much of it is missing from the &quot;default&quot; rawr item cache download.</p>\r\n</blockquote>\r\n<p>They certainly seem to be more &quot;cutting edge&quot; on getting things posted.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-12-17T17:46:27.243-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268790",
+    "ThreadId": "78355",
+    "Html": "<p>Any news on 2.3.3 release?</p>",
+    "PostedDate": "2009-12-17T22:28:41.607-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268799",
+    "ThreadId": "78355",
+    "Html": "<p>Still planning to release tonight.</p>",
+    "PostedDate": "2009-12-17T23:15:51.7-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268833",
+    "ThreadId": "78355",
+    "Html": "<p>1:48 AM PST, is it going to go tonight or can I go to bed now?</p>",
+    "PostedDate": "2009-12-18T01:39:45.673-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268838",
+    "ThreadId": "78355",
+    "Html": "<p>If only you could have waited another 8 minutes... Released.</p>",
+    "PostedDate": "2009-12-18T01:57:20.693-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268872",
+    "ThreadId": "78355",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Trolando wrote:</strong><br>\r\n<p>Basically it queues all 6800 or so items in the entire item cache, not per slot.</p>\r\n<p>&nbsp;</p>\r\n<p>I just modified the implementation to allow for maximum number of items per second. Hopefull this will prevent blocked IP issues in the future. Current value: maximum 10 requests per second. Maybe it should be even lower.</p>\r\n</blockquote>\r\n<p>&nbsp;I was speaking more in regard to the &quot;Load possible upgrades from...&quot;&nbsp;which searches based on slot.</p>",
+    "PostedDate": "2009-12-18T04:13:26.89-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269416",
+    "ThreadId": "78355",
+    "Html": "<p>How about a 2.3.4 that includes warlocks?</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-12-20T13:11:16.887-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269445",
+    "ThreadId": "78355",
+    "Html": "<p>Don't be rude. Warlock support sucks. ArPharazon has been working on it, and is pissing us devs off that it's being delaying, just as much as it's pissing you warlock users off too. But we're not bitching, because we know that it's what we do in our free time, for free, and if he doesn't have free time, then he doesn't have free time.</p>",
+    "PostedDate": "2009-12-20T17:01:51.09-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269448",
+    "ThreadId": "78355",
+    "Html": "<p>I dont work on Rawr on weekends - its summer here in Australia, and that means Beer [lots of it], Babes, Barbequeues &amp; Beaches.</p>\r\n<p>Today is monday so I'm back to working on it ...</p>",
+    "PostedDate": "2009-12-20T17:28:25.473-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269463",
+    "ThreadId": "78355",
+    "Html": "<p>Thats fine ArPharazon. I think whats gotten to people the most is you have been saying it's very very close for almost 2 months, and even a week ago said you'd release what you had that day or the next. It probably would be better to either release fixes in increments compared to a complete re-write, and also pull a blizzard and don't tell anyone when its coming. When ya say that we kind of get excited about it being released and then no word for a week or two annoys people. We are appreciative at the work you are doing on it, but its get frustrating since we haven't had a working model in so long and the comments about releasing it coming and going have frustrated people even more. I hope you understand our frustration, but also know that we do appreciate the time and effort put into things.</p>",
+    "PostedDate": "2009-12-20T19:41:39.95-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269471",
+    "ThreadId": "78355",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><br></blockquote>\r\n<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>ArPharazon wrote:</strong><br>\r\n<p>I dont work on Rawr on weekends - its summer here in Australia, and that means Beer [lots of it], Babes, Barbequeues &amp; Beaches.</p>\r\n<p>Today is monday so I'm back to working on it ...</p>\r\n</blockquote>\r\n<p>&nbsp;</p>\r\n<p>Heh - Aussie here to and I have a BBQ around the pool yesterday with all the dance teachers from my wifes dance school :) &nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>Thanks for the work ArParazon.&nbsp;&nbsp; Looking forward to it as my Warlock is now 78 :)</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-12-20T20:39:00.107-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269527",
+    "ThreadId": "78355",
+    "Html": "<p>Asteru.... you said it perfectly.&nbsp; I do appreciate all the work devs do on Rawr and I don't want to be a bitch so I will apologize for any rudeness tones&nbsp;in my postings.&nbsp; You stated my exact feelings.&nbsp; I'm just more than frustrated sometimes and the more I wait the worse it gets. lol.&nbsp; I'm trying to be patient, but wish they would release what they do have and continue to work on improving the model.&nbsp; Happy Holidays guys!</p>",
+    "PostedDate": "2009-12-21T02:29:32.007-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269750",
+    "ThreadId": "78355",
+    "Html": "<p>Agreed!&nbsp; Have always liked the program but am past frustrated as warlocks have been ignored for weeks and the lame excuse we get is I don't work on RAWR on the weekends even though on other threads he posted that he would upload what he has.&nbsp; Would much rather just be told the truth.&nbsp; I'm sure the other developers are tired of it as well and I'm surprised someone else hasn't stepped up and worked on the warlock modules.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-12-21T17:19:28.51-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269788",
+    "ThreadId": "78355",
+    "Html": "<p>Astry, I noticed a bug that I had checked in for 2.3.3 when I thought I got it in beforehand. &nbsp;Basically, the method that does most of my specialeffects handling swapped trigger intervals and trigger chances, which is leading to some very interesting results, as for some levels of gear we're passing a number &gt;1f for the TriggerChance.</p>\r\n<p>Any chance we could get a 2.3.4 release sometime soon? :-\\</p>",
+    "PostedDate": "2009-12-21T20:48:18.593-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269797",
+    "ThreadId": "78355",
+    "Html": "<p>@Navyat - you're an idiot.</p>\r\n<p>I work on rawr.warlock in my free time, and since 1) I dont work for you, or 2) you dont pay for anything, this means that I can damn well do whatever I like on my weekends.</p>\r\n<p>For the other warlocks out there who are waiting for the update (@kharistan, @rarebeast, etc) - thank you for your patience, it will be worth it.</p>",
+    "PostedDate": "2009-12-21T21:28:03.55-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269817",
+    "ThreadId": "78355",
+    "Html": "<p>Well ArP, I for one appreciate the dedication. It's unfortunate that your overhauling the module all at once instead of incremental but, that's life. With the check in 44441, nice to see that your at least starting to update and to many more to come. ;)</p>",
+    "PostedDate": "2009-12-21T23:04:37.95-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269846",
+    "ThreadId": "78355",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Astrylian wrote:</strong><br>\r\n<p>Don't be rude. Warlock support sucks. ArPharazon has been working on it, and is pissing us devs off that it's being delaying, just as much as it's pissing you warlock users off too.</p>\r\n</blockquote>\r\n<p>Why is it I said pretty much the same thing as Asteru, Zarie, and Astrylian but I'm the idiot? LOL&nbsp; All I'm saying is that you have been posting for weeks about the lock module is coming and it's going to be ready soon but we haven't seen a thing.&nbsp; You have had other developers offer help so if your busy and need help just man up and ask them.&nbsp; If it's not ready that's fine but let us locks know where things are and we would be much more appreciative and sympathetic to your situation.&nbsp; By the way, we do pay for it through donations.</p>",
+    "PostedDate": "2009-12-22T01:03:45.107-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269849",
+    "ThreadId": "78355",
+    "Html": "<p>Because you're the one that said &quot;the lame excuse we get is I don't work on RAWR on the weekends&quot;.</p>",
+    "PostedDate": "2009-12-22T01:15:49.26-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269855",
+    "ThreadId": "78355",
+    "Html": "<p>It is lame!&nbsp; What about the other 5 days a week for the last several weeks.&nbsp; Even you yourself said &quot;Warlock support sucks&quot; and &quot;is pissing us devs off that it's being delayed&quot;.&nbsp; You have repeatedly asked for what he has and what have you got from him?&nbsp; Nothing absolutely nothing.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-12-22T01:29:29.62-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269859",
+    "ThreadId": "78355",
+    "Html": "<p>Indeed, however I'm not being a jerk to him. You realize you're actually <strong>hurting</strong>&nbsp;Rawr's Warlock support?</p>",
+    "PostedDate": "2009-12-22T01:49:41.453-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269863",
+    "ThreadId": "78355",
+    "Html": "<p>One way or another there is a lack of developers. It's not like we're all queueing to do our contribution. We already have multiple models that lack development time.</p>\r\n<p>&nbsp;</p>\r\n<p>If you donate, you donate for development that has been done, not to buy guarantees that it will be done in the future.</p>",
+    "PostedDate": "2009-12-22T01:57:50.63-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269864",
+    "ThreadId": "78355",
+    "Html": "<p>Stating that it's a lame excuse isn't being a jerk to him.&nbsp; I'm sure he is a great person.&nbsp; I also know that he posted on November 3rd that he was working on lock issues and that it was coming soon!&nbsp; That's almost 2 months ago so it really is a lame excuse.&nbsp; Hurting Rawr's Warlock support??&nbsp; What warlock support?&nbsp; All that the warlocks have asked for in a countless number of threads during the last two months is an update or an ETA or anything to show that there is some work in progress.&nbsp; After two months we finally have T10 bonuses but no working module to use them.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-12-22T02:01:27.423-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269866",
+    "ThreadId": "78355",
+    "Html": "<p>Navyat, stop overreacting.</p>\r\n<p>&nbsp;</p>\r\n<p>He's checking in parts at a time, because that's good practice in software development.</p>",
+    "PostedDate": "2009-12-22T02:03:17.383-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269868",
+    "ThreadId": "78355",
+    "Html": "<p>It's not overreacting everything I said is true and taken straight from these forums.&nbsp; But it's cool I'll check back in 2 months when the next part is uploaded.&nbsp; Yea, that was being a jerk.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-12-22T02:09:45.607-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269878",
+    "ThreadId": "78355",
+    "Html": "<p><strong><span style=\"color:#ff0000\">CONVERSATION OVER, NO MORE REPLIES</span></strong></p>",
+    "PostedDate": "2009-12-22T02:35:10.41-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

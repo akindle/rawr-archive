@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Items",
+      "DisplayName": "Rawr.Base.Items"
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "From the reports that I've seen it looks like the effect from this trinket scales with spell power. I don't think any other trinket effect behaves in this way, so we'll probably need to add a new stat for specifically this case.",
+    "LastUpdatedDate": "2013-02-21T18:23:54.453-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2012-01-02T11:44:45.567-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Cunning of the Cruel",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 22008
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Well all of the random trinkets from DS act this way. Vial of shadows and Cunning of the Cruel Both act this way but with Attack power.",
+      "PostedDate": "2012-01-02T11:51:29.407-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sorry I meant Vial of Shadows and Bone-Link Fetish",
+      "PostedDate": "2012-01-02T12:01:45.57-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Representation for spell power and attack power modified special effects was added, models need to add support to modify the actual damage in computations.",
+      "PostedDate": "2012-01-02T17:39:01.187-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The way it is handled is there are two new parameters on special effects, SpellPowerScaling and AttackPowerScaling. Wherever you used effect.Stats.ShadowDamage for example replace with (effect.Stats.ShadowDamage + effect.SpellPowerScaling * characterStats.SpellPower).",
+      "PostedDate": "2012-01-02T17:40:52.16-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-01-02T17:41:33.923-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:23:54.453-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

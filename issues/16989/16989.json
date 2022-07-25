@@ -1,0 +1,96 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSDK",
+      "DisplayName": "Rawr.DPSDK"
+    },
+    "ClosedComment": "Fixed in commit 49515",
+    "ClosedDate": "2010-04-14T10:42:27.703-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "It seems this is slightly off, i imported my char from armory and so i should not have any talent/items off (and buffs dont influence expertise).\n \ni have 169 expertise rating, the ingame windows show me 28/25 (human dualwield with sword/axe), but rawr shows me 29/26 (so on the cap, but i am not, tested ingame on the heroic target dummy it manages to dodge an attack once in a thousand years ^^)\n \narmory should stay the same for a while (but only shows the 28 from mainhand)\nAlbiona@EU-Kult der Verdammten",
+    "LastUpdatedDate": "2017-11-27T11:04:37.557-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-03-27T03:39:13.93-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSDK] Expertise",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16989
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3268,
+      "FileName": "Albiona.xml",
+      "DownloadUrl": ".\\3268"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "got now 172 rating, it still shows 25 ingame/armory (or 28 with the sword mainhand) and 26 in rawr (or 29 with the sword)",
+      "PostedDate": "2010-03-30T03:18:06.593-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You have 172 rating. This amounts to 172/8.1974969 = 20.98 expertise.\r\nAdd 5 from talents.\r\nAdd 3 to MH for sword.\r\n\r\nIn game rating to stat conversions are floored, so even though you're close to 21 expertise from gear, you only see 20 of it.  DPSDK isn't currently truncating the calculated expertise value.  The value as is is fed into the text Formatter, and that rounds it to 21. so the displayed value in rawr is too high.\r\n\r\nThe dodges you got are likely from your offhand (?)",
+      "PostedDate": "2010-03-30T08:44:53.337-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "yes only the offhand, thats why they are like once in a million, because mainhand hits quite nice",
+      "PostedDate": "2010-03-31T15:57:22.613-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Actually, the character screen rounds in-game, but the actual mechanics do not. Individual expertise rating is indeed valuable.",
+      "PostedDate": "2010-03-31T19:40:27.247-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-31T21:55:43.46-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-14T10:42:27.703-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:21:17.93-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:29:06.793-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:16.113-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:04:37.557-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

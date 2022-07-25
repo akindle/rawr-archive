@@ -1,0 +1,31 @@
+Index: Armory.cs
+===================================================================
+--- Armory.cs	(revision 49871)
++++ Armory.cs	(working copy)
+@@ -575,6 +575,7 @@
+                 // they do note that it IS bonus armor w/ the attribute armorBonus="1" (vs. armorBonus="0")
+                 // this help out to determine if we even need to do the bonus armor work below.
+                 // flag for if the armor value contains Bonus Armor.
++                // Except that blizzard seems to have forgotten to set armorBonus for lots of items
+                 bool bBonusArmor = false;
+                 foreach (XmlNode node in docItem.SelectNodes("page/itemTooltips/itemTooltip/armor")) 
+                 { 
+@@ -582,6 +583,18 @@
+                     XmlNode nodeAttribute = node.Attributes.GetNamedItem("armorBonus");
+                     bBonusArmor = (int.Parse(nodeAttribute.Value) > 0);
+                 }
++
++                if (slot == ItemSlot.Finger ||
++                    slot == ItemSlot.MainHand ||
++                    slot == ItemSlot.Neck ||
++                    (slot == ItemSlot.OffHand && type != ItemType.Shield) ||
++                    slot == ItemSlot.OneHand ||
++                    slot == ItemSlot.Trinket ||
++                    slot == ItemSlot.TwoHand)
++                {
++                    bBonusArmor = true;
++                }
++
+ 				foreach (XmlNode node in docItem.SelectNodes("page/itemTooltips/itemTooltip/bonusDefenseSkillRating")) { stats.DefenseRating = int.Parse(node.InnerText); }
+ 				foreach (XmlNode node in docItem.SelectNodes("page/itemTooltips/itemTooltip/bonusDodgeRating")) { stats.DodgeRating = int.Parse(node.InnerText); }
+                 foreach (XmlNode node in docItem.SelectNodes("page/itemTooltips/itemTooltip/bonusParryRating")) { stats.ParryRating = int.Parse(node.InnerText); }

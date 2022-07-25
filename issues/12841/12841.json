@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-03-22T15:07:55.25-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have seen this before, but it is particularly prevalent on the latest beta version  2.20b4.  Whenever I download this version, it works just fine.  If I turn the computer off and then back on (like when I get some sleep), and then try to again load Rawr, I get a message that I have attempted to load a previous version of the item cache, and that I need to load the new version.  The only way I can bypass this is to delete the current version and re-unzip the b4 package.  I actually deleted all previous versions of the software, but this problem still manifests itself.  I hope you can offer a fix for it.",
+    "LastUpdatedDate": "2013-05-16T05:26:01.373-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-03-19T21:35:48.85-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Availability of Item Cache",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 12841
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Sounds like you're not letting Rawr save its ItemCache when you close it. Be sure to just close Rawr normally (ya know, File > Close, or hit the X in the corner), don't EndTask it, or power off your machine while it's running, or something. If that doesn't solve it for you, let us know.",
+      "PostedDate": "2009-03-19T22:39:33.403-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You are correct in that I normally let Windows XP close all my open programs and files (I never just power off).  Apparently because of the nature of the executable Rawr program running in the Microsoft .NET Framework environment, it will not close automatically when one just shuts down normally.  Consequently, I have to separately close Rawr and everything works fine.  Thanks for the tip.   This raises the question though of why the item cache is not just a file available to Rawr when one starts it.  It is not clear to me why the cache \"disappears\" when one inappropriately closes Rawr.",
+      "PostedDate": "2009-03-21T09:56:49.92-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It doesn't disappear, it is just a file available to Rawr when you start it. It's also written back to disk when Rawr is closed. It's in the middle of writing it when you inappropriately close it, leaving a half-complete ItemCache.xml file, which is effectively corrupt.",
+      "PostedDate": "2009-03-21T10:42:50.093-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-03-22T15:07:55.25-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:35:09.42-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:01.373-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

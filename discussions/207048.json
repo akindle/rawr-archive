@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "422682",
+    "ThreadId": "207048",
+    "Html": "<p>I've been using ProtWarr for several months now, and I've always wondered: why are Shield Block and Shield Wall not modeled?</p>\r\n<p>I would think it would be important to consider that</p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre>(Stats.BlockValue*2)*((Options.FightSeconds/Options.SwingTimer)*(1.0f-(Stats.Avoidance+Stats.BlockChance)))*(10/((60-(10*Talents.ShieldMastery))+Stats.ShieldBlockCooldownMod))</pre>\r\n</div>\r\n<p>damage could be avoided through the use of Shield Block alone, and all damage throughout a fight can be reduced by a factor of</p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre>(0.6-(0.2*Talents.ShieldWallGlyph))*((12+Stats.ShieldWallDurationMod)/((300-(30*Talents.ImprovedDisciplines))-(120*Talents.ShieldWallGlyph)))</pre>\r\n</div>\r\n<p>through the use of Shield Wall. This kind of modeling could give value to talents and bonuses that affect these abilities. What is the reason for leaving them out completely?</p>\r\n<p>I can understand Last Stand/Enraged Regen being left out, since those are a little weird and depend on healing too.</p>",
+    "PostedDate": "2010-03-23T11:04:08.37-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "423178",
+    "ThreadId": "207048",
+    "Html": "<p>Shield Block may be integrated at some point, although its value can swing wildly based on hard or soft-caps on damage dealt.</p>\r\n<p>Shield Wall is unlikely to ever be averaged in. It just doesn't make sense. It is never used on every cooldown as a way to reduce your total damage taken--it is used when you drop low or when you know a specific burst damage source is incoming. Averaging it would simply throw off other calculations by modeling a passive damage reduction that doesn't exist in that sense in realistic raid scenarios. The same goes for Last Stand, as averaging it as health over X period of time would simply throw off calculations which rely on your health pool.</p>\r\n<p>I will investigate Shield Block again, as it's been on my to-do list and is used in a more cyclic fashion.</p>",
+    "PostedDate": "2010-03-24T11:37:04.75-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "423195",
+    "ThreadId": "207048",
+    "Html": "<p>That's what I figured, and it makes sense. Nice to get some clarification. :) Shield Block modeling would still be really cool though if you can get some time to work on it. Maybe with a checkbox to disable it if you want a more &quot;worst case&quot; scenario.</p>\r\n<p>Actually, I just remembered another question I wanted to ask: I'm a bit (read: very) confused about the ranking system options. All this time I've just left it on &quot;Mitigation Scale&quot; set to 1.0 and ranked gear on the overall value. Over time I've been dropping the threat value (down to 0.5 now) since my threat is just crazy-sick. Is this the correct way to use this model? I'm assuming so, as so far it's been working pretty well. I generate 2-3 times as much threat as any of our other tanks and I get good reviews from healers all the time.</p>\r\n<p>What are some examples where I would change these settings? I'm not really sure what they do or what they are for. Note that I'm talking about the &quot;Ranking System&quot; options, the others are pretty self-explanatory. (except maybe the &quot;Attacker Stats&quot; thing, but I managed to figure that one out.)</p>\r\n<p>If I can get it explained to me, I'd be happy to write a documentation page for the Wiki. ^^</p>",
+    "PostedDate": "2010-03-24T12:26:06.99-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "423279",
+    "ThreadId": "207048",
+    "Html": "<p>Yeah, that is not a bad way to be looking at ranking. Frankly, a lot of tanks have been simply looking at EH (Survival) perhaps with a low Mitigation rate and setting Threat to 0, in my experience, and just making sure the TPS on the main page (or when optimizing) doesn't drop below a certian threshold--typically around 9k TPS or so.</p>\r\n<p>Warriors single-target threat is so insanely high after the last couple patches that it is hardly a consideration other than trying to get a somewhat decent amount of Expertise.</p>",
+    "PostedDate": "2010-03-24T15:23:13.557-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

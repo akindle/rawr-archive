@@ -1,0 +1,85 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-12-12T16:07:18.767-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have tried multiple places within the Item.cs, Character.cs, and Enchant.cs files and I cannot seem to force an exception so that this enchant (id = 4091) shows for casters's off-hand. The main function I have been backtracking between the three files is the function IsEnchantRelevant(Enchant, Character). This enchant seems to work fine on shields, but for non-shield items, it does not want to show. This enchant is a first of it's kind in that it is designed to give a main-hand and off-hand enchant to be as good, if not better than a staff which got buffed this expansion.",
+    "LastUpdatedDate": "2013-05-16T05:19:42.943-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-12-04T18:59:54.697-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] Unable to see Enchant Off-Hand - Superior Intellect on non-shields",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19231
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "At the model level, most caster models specifically disallow enabling any enchants on off-hands because they used to pick up enchants that were meant for shields.  I'll be looking at this with Moonkin here shortly, as I didn't know there was an off-hand enchant.",
+      "PostedDate": "2010-12-05T07:30:57.667-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Although I'm having a bit of a different issue - I enabled the enchant in Moonkin, and it is not providing any value even though I have a MH/OH equipped.",
+      "PostedDate": "2010-12-05T10:51:05.53-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "We'll need to do a bit more to properly support this. Currently if an enchant is marked for item slot OffHand it is assumed to be for a shield. There is no way currently to distinghuish whether an enchant is for shields only or for shields and held in hand items also. Once we decide how to distinguish the two we can make the proper adjustments to the rest of the code.",
+      "PostedDate": "2010-12-05T13:34:39.367-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "What I did specifically was just hack it so that if the item was a held in offhand item and the enchant was ID 4091, return true (relevant).  I'd still like to know why it isn't providing any value.",
+      "PostedDate": "2010-12-06T04:05:48.113-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It's not providing value because the shield check is done in base code when accumulating item stats.",
+      "PostedDate": "2010-12-06T13:15:09.343-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-12T16:07:18.767-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:40:45.093-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:27:15.663-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:42.943-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

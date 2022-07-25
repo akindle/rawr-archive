@@ -1,0 +1,66 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2008-07-16T01:27:47.143-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Using the attached character file in build 19929, Enchant Boots - Vitality reduces DPS as compared to having no enchant at all.",
+    "LastUpdatedDate": "2013-05-16T05:27:08.73-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-07-15T21:45:44.953-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Enchant Boots - Vitality reduces DPS",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 10577
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1088,
+      "FileName": "illy.xml",
+      "DownloadUrl": ".\\1088"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I've made a fix that will somewhat alleviate the problem, but I doubt there will ever be a 100% solution for this. At the core of the problem is that this is a very tight border case situation where your mana regen increases just enough that you can no longer use full 5 gem+pot based on the estimates used. In reality things will depend on luck depending on how much mana you actually get restored, so for now I just relaxed the constraint a bit to allow more mana consumables to be used. Using SMP will give a more accurate result because it calculates mana constraints per segment now, but even that will only work up to the resolution of the segmentation which is 30 seconds right now.",
+      "PostedDate": "2008-07-16T01:27:38.627-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-07-16T01:27:47.143-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:41.927-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:27:08.73-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

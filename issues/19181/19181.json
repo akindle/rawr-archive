@@ -1,0 +1,120 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "We dont use this process anymore. We have a Battle.Net parser in place instead of wowarmory.com",
+    "ClosedDate": "2010-12-06T11:34:08.43-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "************************************************************************************************************************************************\n************************   EVERYBODY PLEASE READ THE COMMENTS FROM THE DEVS BELOW  ***********************************\n************************************************************************************************************************************************\n \nAlthough it's not clear from the threads at Elitist Jerks (where you are asked to report issues like this), the current version of \nRawr that you can access via EJ DOES NOT WORK and IS NOT SUPPOSED TO WORK ANY MORE.\n \nPlease don't add any more \"Me too\"s to this issue for this particular bug\n \n************************************************************************************************************************************************\n************************   EVERYBODY PLEASE READ THE COMMENTS FROM THE DEVS BELOW  ***********************************\n************************************************************************************************************************************************\n \n \n \nThis has already been raised this week in defect 19169, which was correctly marked as a duplicate of 18698.\n \nHowever, 18698 has been closed despite the issue seemingly still occurring/having recurred. I have tested on two different machines, online and offline versions, and caches cleared, several days apart.\n \nCould you confirm whether you've retested this since 18698 was closed and 19169 was raised? It may be that 18698 needs re-opening or that the EA guy has killed off Rawr's access (apologies for teaching you to suck eggs here).\n \nThe error is as per the other threads:\nAn exception occurred during the operation, making the result invalid.  Check InnerException for exception details.\n \n   at System.ComponentModel.AsyncCompletedEventArgs.RaiseExceptionIfNecessary()\n   at System.Net.DownloadStringCompletedEventArgs.get_Result()\n   at Rawr.ElitistArmoryService._webClient_DownloadStringCompleted(Object sender, DownloadStringCompletedEventArgs e)\n   at System.Net.WebClient.OnDownloadStringCompleted(DownloadStringCompletedEventArgs e)\n   at System.Net.WebClient.DownloadStringOperationCompleted(Object arg)The remote server returned an error: NotFound.\n \n   at System.Net.Browser.AsyncHelper.BeginOnUI(SendOrPostCallback beginMethod, Object state)\n   at System.Net.Browser.BrowserHttpWebRequest.EndGetResponse(IAsyncResult asyncResult)\n   at System.Net.WebClient.GetWebResponse(WebRequest request, IAsyncResult result)\n   at System.Net.WebClient.DownloadBitsResponseCallback(IAsyncResult result)The remote server returned an error: NotFound.\n \n   at System.Net.Browser.BrowserHttpWebRequest.InternalEndGetResponse(IAsyncResult asyncResult)\n   at System.Net.Browser.BrowserHttpWebRequest.<>c__DisplayClass5.<EndGetResponse>b__4(Object sendState)\n   at System.Net.Browser.AsyncHelper.<>c__DisplayClass2.<BeginOnUI>b__0(Object sendState)",
+    "LastUpdatedDate": "2013-05-16T05:19:44.097-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-11-27T09:50:53.777-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Exception on Armory Import",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 5,
+    "Id": 19181
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Tested with Aberdee and Fatalis on Ravencrest EU",
+      "PostedDate": "2010-11-27T09:52:28.003-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It was closed because the version posted is well out of date, no one should be using it for any sort of calculations, we only posted it because it had updated talent trees (the 41 pt instead of 71 pt setup) so people would leave us to work on the real thing.\r\n\r\nWe will have a new version (that actually works) posted soon.",
+      "PostedDate": "2010-11-27T16:39:18.68-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-11-28T07:45:07.24-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Tested with Brimbar on Argent Dawn EU",
+      "PostedDate": "2010-11-28T07:55:24.603-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Title - Armory import error\r\n\r\nDescription - Rawr returns error when trying to load character from Armory. \r\n\r\nSteps to Reproduce :\r\n1. enter elitistjerks.com/rawr.php\r\n2. File > Load from Armory\r\n3. Enter EU - Argent Dawn - Brimbar\r\n4. Observe Error message\r\n\r\nVersion Number/Additional Information - Se error message above. Mac OS X 10.6.5. Rawr 3 beta I assume?\r\n",
+      "PostedDate": "2010-11-28T09:45:26.1-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The problem is that you are referring to a version of Rawr that is out of date by several months. We have a new version coming out that does work in a week and a half. So if you can hold off until then...",
+      "PostedDate": "2010-11-28T14:39:46.02-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-01T07:26:30.943-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-01T14:44:13.1-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Im getting that set of errors from the beta posted on EJ.  12/2 is the date.  I'm using silverlight 4 on a machine running Win 7 64 bit. The browser is the regular 32 bit browser. \r\n\r\nThis error occurs during the import of a toon. I select File/Load from Armory, then enter the toon name and realm. The system spins a bit then spits out the pop up error that is pasted below. (I dont know what Jothay is referring to but I never get to the analysis stage. This error is with the import.) Below is the error text: \r\n------------------------------------------------------------------------------------------------------------------------\r\n[Async_ExceptionOccurred]\r\nArguments: \r\nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.50917.0&File=System.dll&Key=Async_ExceptionOccurred\r\n\r\n   at System.ComponentModel.AsyncCompletedEventArgs.RaiseExceptionIfNecessary()\r\n   at Rawr.ElitistArmoryService._webClient_DownloadStringCompleted(Object sender, DownloadStringCompletedEventArgs e)\r\n   at System.Net.WebClient.OnDownloadStringCompleted(DownloadStringCompletedEventArgs e)\r\n   at System.Net.WebClient.DownloadStringOperationCompleted(Object arg)\r\n\r\n   at System.Net.Browser.AsyncHelper.BeginOnUI(SendOrPostCallback beginMethod, Object state)\r\n   at System.Net.Browser.BrowserHttpWebRequest.EndGetResponse(IAsyncResult asyncResult)\r\n   at System.Net.WebClient.GetWebResponse(WebRequest request, IAsyncResult result)\r\n   at System.Net.WebClient.DownloadBitsResponseCallback(IAsyncResult result)[Arg_SecurityException]\r\nArguments: \r\nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.50917.0&File=mscorlib.dll&Key=Arg_SecurityException\r\n\r\n   at System.Net.Browser.BrowserHttpWebRequest.InternalEndGetResponse(IAsyncResult asyncResult)\r\n   at System.Net.Browser.BrowserHttpWebRequest.<>c__DisplayClass5.<EndGetResponse>b__4(Object sendState)\r\n   at System.Net.Browser.AsyncHelper.<>c__DisplayClass2.<BeginOnUI>b__0(Object sendState)\r\n\r\n----------------------------------------------------------------------------------------------------",
+      "PostedDate": "2010-12-02T04:27:07.43-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Seriously? How much clearer can I be that the thing obviously doesn't work BECAUSE THE VERSION POSTED DOESN'T WORK, ITS NOT CATACLYSM/4.X READY.\r\n\r\nWE WILL HAVE A NEW ONE UP SOON.",
+      "PostedDate": "2010-12-02T08:01:34.89-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I am getting the following on Build 55840 build using developer access to svn for Rawr4.\r\n\r\n{System.Security.SecurityException ---> System.Security.SecurityException: Security error.\r\n   at System.Net.Browser.BrowserHttpWebRequest.InternalEndGetResponse(IAsyncResult asyncResult)\r\n   at System.Net.Browser.BrowserHttpWebRequest.<>c__DisplayClass5.<EndGetResponse>b__4(Object sendState)\r\n   at System.Net.Browser.AsyncHelper.<>c__DisplayClass2.<BeginOnUI>b__0(Object sendState)\r\n   --- End of inner exception stack trace ---\r\n   at System.Net.Browser.AsyncHelper.BeginOnUI(SendOrPostCallback beginMethod, Object state)\r\n   at System.Net.Browser.BrowserHttpWebRequest.EndGetResponse(IAsyncResult asyncResult)\r\n   at System.Net.WebClient.GetWebResponse(WebRequest request, IAsyncResult result)\r\n   at System.Net.WebClient.DownloadBitsResponseCallback(IAsyncResult result)}\r\n\r\nI don't know enough about the Security model to be aware of whether this is an issue at my end with my work's firewall (I'm the IT Administrator so can change the firewall if required). Is this meant to work with the very latest build of Rawr 4?\r\n\r\nPS. I fully understand your frustration Jothay with users complaining about the error in Rawr 2/Rawr 3 however this is the very latest Rawr4 I'm getting a similar error on. I'd like to get back up to speed on Rawr4 development so I can assist on a couple of things with Rawr.Enhance and possibly to start work on Rawr character import addon. However this is proving a show stopper.",
+      "PostedDate": "2010-12-02T09:04:07.713-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-03T02:07:11.27-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-04T17:41:17.97-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-06T11:34:08.43-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:27:16.97-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:44.097-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

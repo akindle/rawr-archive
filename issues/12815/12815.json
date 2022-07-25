@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Fixed in v2.2.0b5",
+    "ClosedDate": "2009-03-19T09:49:25.443-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When I download my druid from the armory using 2.2.0b4, the talents are not used.  The talents are used when I load my mage from the armory.",
+    "LastUpdatedDate": "2013-05-16T05:26:02.837-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-03-15T23:14:37.877-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Talents not downloading",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 12815
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Not a bug. The Armory is still using 3.0 talents, whereas v2.2.0b4 uses 3.1 talents, which are different in some cases, including for druids.",
+      "PostedDate": "2009-03-16T00:48:12.13-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "A lot of models have implemented 3.1 talent trees. Where those models have differing numbers of talents they will simply not load the talents. That is unless the model designer has implemented a temporary fix.\r\n\r\nThe Shaman models have the 3.1 talent trees but will still load the 3.0 talents from the armory. However the fix will recognise that some talents are now 3 pts rather than 5 pts and will cap the talent at that number. This may mean that whilst the tree is loaded it may not have a full 71 points spent. \r\n\r\nTherefore users will get the benefit of the tree loading but will have to decide where to spend the extra talents.",
+      "PostedDate": "2009-03-16T05:19:59.017-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Just checked in a change, it'll now correctly understand Druid 3.0 talents (by inserting an extra 0 into the talent string at the right spot if it's short).",
+      "PostedDate": "2009-03-16T08:24:31.957-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-03-19T09:49:25.443-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:35:12.447-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:02.837-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

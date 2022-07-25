@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "277709",
+    "ThreadId": "80986",
+    "Html": "<p>I am trying to specify a target expertise level for my protection paladin, and I see the score on the &quot;Stats&quot; tab.</p>\r\n<p>The question is, &quot;How can I specify this value during optimize?&quot;</p>\r\n<p>I see that I can specify &quot;% Hit Chance&quot; and make it &gt;= 100, but the closest I see for what might be an expertise requirement is &quot;% Chance to be Avoided&quot;.</p>\r\n<p>If this &quot;% Chance ..&quot; is the right requirement, how is it used and what are applicable values for the soft and hard cap?</p>\r\n<p>Thank you.</p>",
+    "PostedDate": "2010-01-15T12:56:51.807-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "277748",
+    "ThreadId": "80986",
+    "Html": "<p>Chance to be avoided is 1-Miss+Dodge+Parry. &nbsp;So, if you want 95% of your attacks to land (ie, have 2.5% dodge and 2.5% miss). &nbsp;If you want hit and expertise cap, then set this requirement to 100.</p>",
+    "PostedDate": "2010-01-15T14:12:55.347-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "277778",
+    "ThreadId": "80986",
+    "Html": "<p>Then I am not sure if this function is working as intended.</p>\r\n<p>/ To make sure testing is the same, max boss damage is set to 100k, mitigation is set to 50%, chill of the throne buff is activated. Buffs are as I, as a 0/53/18 protection paladin can cast on myself. /</p>\r\n<p>Using a &quot;wish list protection paladin&quot; set which basically can utilize the best pieces from ICC, ToC, Emblems of Frost and Triumph, and optimizing for &quot;% Chance to be Avoided&quot; and an extensive thoroughness .. it caps out at 20.5 which relates to an expertise of 16.00 (including paladin talents and the glyph of SoV).</p>\r\n<p>However, optimizing for Overall rating given &quot;Defense Skill &gt;= 540&quot; and &quot;% Hit Chance &gt;= 100&quot;, Expertise successfully gets to 26.</p>\r\n<p>&nbsp;</p>\r\n<p>Am I still misunderstanding or is something not working as intended?</p>\r\n<p>Thank you.</p>",
+    "PostedDate": "2010-01-15T15:33:22.38-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "278051",
+    "ThreadId": "80986",
+    "Html": "<p>I'm sorry, I totally messed up in my previous response. &nbsp;You want to MINIMIZE the % chance to be avoided. &nbsp;To be expertise and hit capped, you do % chance to be avoided &lt;= 0. &nbsp;(Serves me right for responding when I was distracted by work :P)</p>\r\n<p>You don't want to optimize for % chance to be avoided, that means you're trying to find the set with the least amount of hit/expertise. &nbsp;Instead, optimize for Overall Rating, and as an additional requirement, add &quot;% Chance to Be Avoided &lt;= 0&quot; where you are also setting the defense skill req.</p>\r\n<p>Does that work in your scenario? &nbsp;If not, then please open an issue in the Issue Tracker (and be sure to attach your character file)</p>",
+    "PostedDate": "2010-01-16T18:42:17.777-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "278952",
+    "ThreadId": "80986",
+    "Html": "<p>This did work.</p>\r\n<p>Soft cap: &lt;= 7.5%</p>\r\n<p>Hard cap: &lt;= 0%</p>\r\n<p>&nbsp;</p>\r\n<p>Thank you.</p>",
+    "PostedDate": "2010-01-19T06:47:55.6-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

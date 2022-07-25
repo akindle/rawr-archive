@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "283403",
+    "ThreadId": "82467",
+    "Html": "<p>I will gladly fill out a bug report if this turns out to be one, but I bet it makes sense and I just can't figure out why.&nbsp; I'm looking at the sustained relative stat values for my resto shammy (I know I know, insert warnings here about relative stat values), and it gives a high number for mp5.&nbsp; I believe that means that if I were to spam continuously I would run out of mana, so I have to slow down, but wouldn't have to slow down as much if I had more mp5.&nbsp; However, it ALSO gives a small sustained value for haste.&nbsp; How could haste help me if I have to slow down casting anyway to conserve mana?</p>",
+    "PostedDate": "2010-01-29T10:31:43.67-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "283408",
+    "ThreadId": "82467",
+    "Html": "<p>Probably because haste naturally increases your HPS, and the extra OOM penalty you get for casting (and OOMing) faster just doesn't outweigh the HPS benefit as far as the model is concerned.</p>",
+    "PostedDate": "2010-01-29T10:35:53.657-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "283410",
+    "ThreadId": "82467",
+    "Html": "<p>Oh so maybe I just don't understand the way it handles OOM.&nbsp; If it spams until OOM then waits, you could get outside the 5 second rule and regen extra mana, so yeah in that case haste could be increasing the &quot;sustained&quot; number (thought that doesn't sound very &quot;sustained&quot; to me).&nbsp; But if it does not account for the 5 second rule, then I don't see how haste could increase the amout of mana you can convert in heals (thus increasing your average hps in an OOM situation).</p>",
+    "PostedDate": "2010-01-29T10:49:26.307-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "283467",
+    "ThreadId": "82467",
+    "Html": "<p>As far as I can tell (this part of the code is still very confusing for me), all it does is divide MAPS by MUPS use that as a factor to penalize sustained HPS. It doesn't do any rotation or FSR simulation or anything.</p>\r\n<p>The reason you're seeing positive value on sustained is basically because a given amount of haste is unlikely to increase your MAPS/MUPS factor fast enough to counteract the direct HPS benefit casting faster gives.</p>\r\n<p>To test, you can set both healing styles to the same setting (I used RT+HW since it's a mana beast) and check again, if you're on a setup that goes OOM, sustained should be less than burst. Change the &quot;Time Spent Casting&quot; just until MP5 disappears off the list. Haste should be pretty much equal on both sides now (you can't get it perfect with the 1% granularity of the slider).</p>\r\n<p>(EDIT: Actually, after writing this, I understand that code a lot better! ^^<br>Still kind-of weird the way it is set up though &gt;.&gt; )</p>",
+    "PostedDate": "2010-01-29T13:21:19.2-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "283502",
+    "ThreadId": "82467",
+    "Html": "<p>Ah HA!&nbsp; Using your formula, sHPS</p>\r\n<p style=\"padding-left:30px\">= bHPS * MAPS / MUPS</p>\r\n<p>then adding in effects from haste:</p>\r\n<p style=\"padding-left:30px\">= bHPS*addedHasteFactor * (MAPS+manaFromExtraCrits) / MUPS*addedHasteFactor</p>\r\n<p style=\"padding-left:30px\">= bHPS * (MAPS+manaFromExtraCrits) / MUPS</p>\r\n<p>I verified this is indeed what's happening by removing the Improved Water Shield talent, which gave haste no value.&nbsp; As soon as I add it back in, haste has value.&nbsp; Thanks for the help figuring this out!&nbsp; So it looks like the problem is that MAPS is being calculated as if you will not go OOM, but can spam for the entire fight.&nbsp; I'll post this as a bug tonight when I have time.&nbsp; Perhaps by then I can also think about a correct formula to use and offer it as a suggestion.</p>",
+    "PostedDate": "2010-01-29T15:02:15.91-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "283820",
+    "ThreadId": "82467",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>xemnosyst wrote:</strong><br>\r\n<p>Oh so maybe I just don't understand the way it handles OOM.&nbsp; If it spams until OOM then waits, you could get outside the 5 second rule and regen extra mana, so yeah in that case haste could be increasing the &quot;sustained&quot; number (thought that doesn't sound very &quot;sustained&quot; to me).&nbsp; But if it does not account for the 5 second rule, then I don't see how haste could increase the amout of mana you can convert in heals (thus increasing your average hps in an OOM situation).</p>\r\n</blockquote>\r\n<p>Spirit based regen was removed a long time ago in the shaman model. &nbsp;It's so minor that&nbsp;realistically&nbsp;it's just not worth throwing back in (yet). &nbsp;The way it determines your healing done for sustained works this way. &nbsp;First, it takes the base rating for your sustained sequence. &nbsp;At this point, it is exactly equal to Burst. &nbsp;Then, it finds the mana it would take to cast that sequence non-stop in the time allotted. &nbsp;If you have enough mana to cast it non-stop, then it will indeed continue to equal burst. &nbsp;If you do not have the mana, then the percentage of mana you have compared to the mana you need (Say, 80%), is set as the number the HPS will be multiplied by to get your HPS. &nbsp;So, if you had 10k burst, after mana % is added you would have 8k sustained. &nbsp;I'm working on a few ways to clean this up.</p>",
+    "PostedDate": "2010-01-30T21:24:11.51-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "283836",
+    "ThreadId": "82467",
+    "Html": "<p>As of recent commit, this was cleaned up a bit. &nbsp;I've renamed that very confusing variable Converter to something that should make more sense, ESDowntime. &nbsp;This simply multiplies the Burst or Sustained value by the % of the fight you are NOT casting ES. &nbsp;This makes it easier to add in ES's healing in the final formula, and not have it as part of the rotations (Especially if say, later, they change it to be on more targets then one).</p>",
+    "PostedDate": "2010-01-31T00:17:55.447-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "284072",
+    "ThreadId": "82467",
+    "Html": "<p>After looking through things, haste should be knocked down a little bit more when you are going oom in this most recent commit, however from current review I can't find a case where an item with say High Int, High MP5, and Crit is being valued more then an item the same level that has Haste instead of crit. &nbsp;So, unless haste begins to have a value that begins to make Rawr choose equal level haste gear over equal level crit gear, I'm more inclined to not do a full re-write to change it.</p>",
+    "PostedDate": "2010-01-31T16:03:17.693-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

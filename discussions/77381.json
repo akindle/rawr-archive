@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "264531",
+    "ThreadId": "77381",
+    "Html": "<p>Was the current version, 2.2.28, suppose to support 3.3 patch? Thought I read somewhere it would.</p>",
+    "PostedDate": "2009-12-07T08:39:14.467-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "264538",
+    "ThreadId": "77381",
+    "Html": "<p>Where there is an active developer that has written the changes for the model then yes there is 3.3 support. If you use a model where there isn't an active developer or they have been too busy with other things then no your model doesn't have 3.3 support.</p>\r\n<p>It would have helped had you mentioned which model you were interested in.</p>",
+    "PostedDate": "2009-12-07T09:09:55.547-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "264542",
+    "ThreadId": "77381",
+    "Html": "<p>I use a lot of the models lol, however main model I'm curious about is the Tree model.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-12-07T09:17:33.133-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268770",
+    "ThreadId": "77381",
+    "Html": "<p>Any idea if v2.3.3 Tree model will fix GotEM and add Frost emblem idol?</p>",
+    "PostedDate": "2009-12-17T20:15:11.587-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268778",
+    "ThreadId": "77381",
+    "Html": "<p>GotEM is functioning properly already, but v2.3.3 will fix the tooltip as well. I think it'll add support for the 264 tree idol as well, but not&nbsp;positive.</p>",
+    "PostedDate": "2009-12-17T20:54:40.547-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268789",
+    "ThreadId": "77381",
+    "Html": "<p>Hey Astrylian thanks for the reply. Reason I question GotEM is non-buffed I sit at 657 haste, it's telling me -74 haste till hardcap GCD. Now correct me if I'm wrong here, everywhere theorycrafting has put the number at more like 780ish for 1 sec GCD. Kind of a number related question, not so much program related. Going by everything I've seen it seems GotEM was configured wrong.</p>",
+    "PostedDate": "2009-12-17T22:03:07.777-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268806",
+    "ThreadId": "77381",
+    "Html": "<p>*** Correction ***</p>\r\n<p>&quot;everywhere theorycrafting has put the number at more like 780ish for 1 sec GCD&quot;</p>\r\n<p>Seems the magic number is 856.</p>",
+    "PostedDate": "2009-12-17T23:52:04.5-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268871",
+    "ThreadId": "77381",
+    "Html": "<p>The new version of Rawr.Tree has the option to disable the effect of Haste and Spell Haste trinkets and effects (Nature's Grace for example) in the model calculation. Because of performance issues this is calculated as an average and spread out over every spell cast. This artificially increases the haste ratings. This effect is much like the 'soft cap', except that the soft cap is the haste cap when Nature's Grace is active (or when a trinket is up), instead of the average effect.|</p>\r\n<p>Hard Cap = Haste Rating required to reduce GCD to 1 second<br>Soft Cap = Hard Cap&nbsp; -&nbsp; haste from Nature's Grace<br>Rawr Cap = Hard Cap - average effects from Nature's Grace and trinkets</p>\r\n<p>The original &quot;haste cap&quot; calculated by previous versions of Rawr.Tree will sit somewhere between the soft cap and the hard cap. I'm working on a way to calculate haste contributions from trinkets in a better way (right now, trinkets with haste on proc/use will not have any value if you don' t enable the effects). I don't know if I can find a way to model Nature's Grace. Because the effect triggers on crits and has such a short uptime, it's hard to model which spells are affected and what will be the uptime. There is a big difference between using a statistical model based on average spell casting, and calculating/simulating actual casting patterns.</p>\r\n<p>For example: if you have a pattern where you cast loads of rejuvenations, then a couple of nourishes, then refresh all rejuvenations, this will mean that nourish crits will mostly affect nourish casts. However, if you cast a combination of regrowth and rejuvenation, the rejuvenations will have lower durations, changing the amount of times you need to cast rejuvenation to keep it up on tanks or on your raid, effectively changing your spell casting behavior. That's why Nature's Grace can be great when it procs (faster healing, faster ticks from Rejuvenation if you have the Glyph) but is nearly impossible to accurately model in the Tree model.</p>\r\n<p>It's easier for moonkins, because moonkins have a single, well defined and much more predictable casting pattern.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>TLDR: original &quot;haste cap&quot; caused by the model is between the &quot;soft cap&quot; and the &quot;hard cap&quot;. The new version has the option to ignore procs of haste in combat (trinkets/Nature's Grace) and you will see haste being useful until the hard cap of 856 haste. I'm working on an improved model of haste trinkets (haste is less useful if your haste trinkets boost haste half the fight) and will probably not implement Nature's Grace.</p>",
+    "PostedDate": "2009-12-18T04:12:20.557-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268914",
+    "ThreadId": "77381",
+    "Html": "<p>Kinda makes sense now.... thanks Trolando for the break down.</p>",
+    "PostedDate": "2009-12-18T06:39:06.293-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

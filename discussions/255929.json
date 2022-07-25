@@ -1,0 +1,162 @@
+[
+  {
+    "Id": "605648",
+    "ThreadId": "255929",
+    "Html": "\r\n<p>Hello there i have just&nbsp; instaleed then rawr 4.1.04 and when i use the optimiser for the bear tank it is telling me to stack stam with all my gems and enchs.</p>\r\n<p>I have it set to overall for the upgrade preference.</p>\r\n<p>it was my understanding that for feral tanks agi&gt;everything. unless something changed that in the warcraft 4.1 patch. or is my rawr just doin something funky?</p>\r\n<p>Cheers</p>\r\n<p>James</p>\r\n",
+    "PostedDate": "2011-05-01T18:35:37.847-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "605654",
+    "ThreadId": "255929",
+    "Html": "<p>Stam vs Agi is almost entirely dependent on your survival soft cap. Rawr isn't doing anything wrong.</p>",
+    "PostedDate": "2011-05-01T19:05:56.9-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "605700",
+    "ThreadId": "255929",
+    "Html": "<p>Cool thanks</p>\r\n<p>as far as i know i haven't set one. is there a default level for survival softcap with the 4.1.04 because it never did this with the earlier version</p>\r\n<p>Where can i look to change this?</p>\r\n<p>Appreciate the help</p>\r\n<p>James</p>",
+    "PostedDate": "2011-05-01T21:34:34.953-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "605710",
+    "ThreadId": "255929",
+    "Html": "<p>See the Options screen, it's always been there.</p>",
+    "PostedDate": "2011-05-01T22:42:37.183-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "611775",
+    "ThreadId": "255929",
+    "Html": "<p>Hello. I can actually use a brief tip or even a link to a page with helpful information about the same issue. As I understand it, the \"Hits to Survive\" is set to 3.5 by default, but depending on the character and its gear, there's a \"breaking point\" where&mdash;literally&mdash;the whole thing just switches into a completely different mode, from recommending stamina &gt; agility to the opposite. For example, the breaking point for one Bear can be 2.5-2.6; at Hits to Survive 2.5, you get agility recommendations across the board, but at 2.6 HtS you get stamina and armor recommendation. For another Bear, this breaking point can be 3.0-3.1 HtS. And unfortunately, this survival soft cap or Hits to Survive number does not change automatically when I change the boss.</p>\r\n<p>So my question or request for info or help now is: [how] do we set up this survival soft cap? How do we figure out the best \"Hits to Survive\" value for our tank? Is it safe to leave it at the default 3.5 value while play around with the Boss Handler options or change to \"Crazy About Threat\" scale if we're having threat issues, for example? What to do?</p>",
+    "PostedDate": "2011-05-12T09:09:40.527-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "611782",
+    "ThreadId": "255929",
+    "Html": "<p>To clarify, <strong>Hits To Survive</strong> is what the <strong>Survival Soft Cap</strong> always was, just written from a different angle. This is the formula:</p>\r\n<p style=\"padding-left: 30px;\">SurvSoftCap = BossMeleeAttackDmg_RawUnmitigated * HitsToSurvive</p>\r\n<p>An example value would be:</p>\r\n<p style=\"padding-left: 30px;\">612,500&nbsp;= 175,000&nbsp;* 3.5</p>\r\n<p>In the old way of doing things, you were required to just know off the top of your head that you needed to put in 612,500 for your Soft Cap. Now, it's controlled by the Incoming Damage from the Boss Handler and this simple slider value.</p>\r\n<p>3.5 Is the default as it covers (3.5*2s=7 seconds) of time where you get no heals. If your raid healers suck or are undergeared, you need to adjust this higher to 4 or 4.5. If you healers are fan-fudging-tastic you might not need as much survival time so you could lower it to 2.5 or 3.</p>\r\n<p>We suggest you leave it at 3.5, only in more extreme cases would you ever need to adjust it.</p>\r\n<p>Also, your logic for the \"breaking\" point is off, it's switching to agility because you lowered the soft cap to the point where you were then&nbsp;suprassing the&nbsp;adjusted soft cap with your current gear.</p>\r\n<p>Your Threat scale is completely separate, that only affects Threat. use Crazy about Threat if you are having a hard time holding the boss. There are also in between values you can use beyond just the presets we provided.</p>",
+    "PostedDate": "2011-05-12T09:21:56.277-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "611795",
+    "ThreadId": "255929",
+    "Html": "<p>Thank you very much for explaining this, Jothay.</p>\r\n<p>It's just that I was very tempted to lower the 3.5 Hits to Survive to something like 2.9 or so, just to see more agility gems and expertise-friendly recommendations (which would contribute to my threat generation). My Bear is tanking heroics just fine while getting ready for 10-mans, but with occasional aggro problems (and yes I know my spell priorities &amp; use addons to help me optimize them &amp; monitor things well), yet I have followed Rawr.Bear's recommendations to the letter. This made my Bear end up looking stacked in blue stamina gems, even at the expense of +10 agility bonus, and also reforging from Expertise to Dodge, although I am under the dodge cap! Other druids who seem my armory tell me that I shouldn't be stacking stamina gems that way, and reforging from Expertise would be the cause of my occasional aggro problems (and I know that I'm still under the cap). Now I know that Rawr.Bear model is regularly maintained, and it sounds like it's the only model labeled \"fully cata ready\", so I trust it, and I thought that maybe I just haven't adjusted the settings correctly, which led me to ask my previous question.</p>\r\n<p>Although admittedly, I haven't tried to [only] change the Threat Scale to \"Crazy About Threat\", which now makes Rawr recommend reforges to Expertise, rather than to Dodge.</p>\r\n<p>But all in all, I wanted to make sure that I'm not using the tool incorrectly, and that those recommendations of stamina gems all over the place are actually indeed the better enhancements for my current gear and chosen raid in Boss Handler.</p>",
+    "PostedDate": "2011-05-12T09:45:13.277-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "611803",
+    "ThreadId": "255929",
+    "Html": "<p>Ya, turning down the Survival Soft Cap to get more threat based suggestions is the wrong way to go, that will actually put more focus on Mitigation (which just happens to share more stats with Threat).</p>\r\n<p>If you need more threat, up your threat scale, don't turn down survival.</p>\r\n<p>Also, since you are still running Heroics and are preparing for starting raids, set your Boss Handler to \"Content&nbsp;=&gt; T11 10N\". Then select \"The Average Boss\". That will apply the right melee attack values for the content you will be going into. Some time down the road, when your raids progress to T11 25N and so on, change the Content and select a new Average Boss at that time.</p>",
+    "PostedDate": "2011-05-12T09:52:01.493-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "611804",
+    "ThreadId": "255929",
+    "Html": "<p>Oh, and one point I wanted to add is that, for example, a well known Bear tanking guide on Battle.net's WoW US forums actually recommends Shifting Demonseye (+20 agility &amp; +30 stamina), and doesn't recommend very much the Solid Ocean Sapphire (+60 stamina) that I have stacked in most sockets. And with many Druids around bashing the stacking of stamina gems too (perhaps they're just following the same guide(s)), along with the slight aggro issues, one's confidence in Rawr's recommendations can be shaken a bit. =)</p>",
+    "PostedDate": "2011-05-12T09:52:36.11-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "611813",
+    "ThreadId": "255929",
+    "Html": "<p>Thank you very much again, Jothay. The tip about choosing Average Boss is helpful. I'll stick to that and choosing \"Crazy About Threat\" setting.</p>",
+    "PostedDate": "2011-05-12T10:00:17.773-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "611837",
+    "ThreadId": "255929",
+    "Html": "<p>There is a Gemming Template in place for using the Shifting gem, which almost always gets underrated in comparison to just using the 60 stam gem in a blue socket.</p>\r\n<p>Most of those guides out there try to make general sweeping statements as if one thing worked for every player no matter what gear they have. While it does work in most cases, especially when talking about making BiS gear, this is unfortunately not the case at just about any other time. You have to consider what content you are doing <strong>at that time</strong>, and what gear <strong>you actually have</strong>. That's where Rawr shines, we don't just post some Stat Weights and hope for the best, we're actually calculating what that gear is doing for you. In more recent versions now that we've stabilized the Boss Handler a lot more, you can actually far better input the content you are doing as part of the calculations.</p>",
+    "PostedDate": "2011-05-12T10:39:59.457-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "612017",
+    "ThreadId": "255929",
+    "Html": "<p>This makes perfect sense, Jothay. I agree with you, and those were my thoughts too when thinking of using such guides as a reference or even some sort of class / gearing bible. Yes, it is acceptable to \"refer\" to them for general guidelines, but how can we assume that stat prioritizing is going to apply to everyone the same way if two tanks can get completely different sets of items, and each set gives different amounts of stamina compared to agility, and so on. This is also why I was always convinced by using Rawr as a solid reference, as long as one chooses settings correctly and the specific model used is reported as Cataclysm-ready; the depth of customization and gear, stat, conditions consideration inspires trust.</p>",
+    "PostedDate": "2011-05-12T13:46:13.137-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "617051",
+    "ThreadId": "255929",
+    "Html": "<p>After setting option as suggested (with T11 10N and Average Boss), when I check \"fully buffed\" Rawr tells me to stack agility like crazy, but if I uncheck 3 or 4&nbsp; buffs just to see what happens (trying to stay as close as possible to how I am actually buffed in my very casual 10-man runs), there is a complete reversal and Rawr wants me to put stamina everywhere. One can see the huge change in the stats values screen. Therefore, \"Stam vs Agi is almost entirely dependent on your survival soft cap\" seems to me a bit misleading. \"Dependent on buffs\" might be another take on the situation.</p>\r\n<p>Assuming Rawr's calculations are correct, I realize it is Blizzard's fault, not yours, but bear tanking seems to be very unstable: small changes produce huge differences in the suggested gear. If it is so, wouldn't \"just post some Stat Weights and hope for the best\" actually make sense, unless you want to keep switching items, regemming and reforging all the time, depending on what people are in the raid?</p>\r\n<p>This noob bear just tries to stay in the middle, reforging everything to dodge, and stacking about 3/4 agility and 1/4 stamina. And it seems to me that the \"well known Bear tanking guide\" actually gives rather good advice.</p>",
+    "PostedDate": "2011-05-23T18:28:56.38-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "617057",
+    "ThreadId": "255929",
+    "Html": "<p>Most main spec tanks, including Bears, have pieces they can swap out for more stamina vs mitigation.&nbsp; Trinkets in particular are commonly swapped out as needed, but any spare pieces can be gemmed / enchanted / reforged to suit different needs.&nbsp; In this way  a tank can define different tank sets that might differ by 2-3 pieces, to gain significantly more stamina / survival vs mitigation.&nbsp; Then you don't need to regem or reforge anything.&nbsp; This fits with the general consensus that the \"best\" tank set is very situation dependent, including what buffs you have available.</p>",
+    "PostedDate": "2011-05-23T18:46:33.807-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "617199",
+    "ThreadId": "255929",
+    "Html": "<p>I'm actually interested in why would buffs affect survivability (stamina), rather than mitigation (avoidance &amp; absorption)! Martinzul reports that being fully buffed changes recommendations from stamina to agility in Rawr. Can someone please explain why that can be? Does the \"fully buffed\" option include certain debuffs on the boss, for example, on top of the normal tank debuff of Infected Wounds, Thunder Clap, etc? Debuffs on the attacker / boss that reduce the need for extra survivability / stamina? I'd like to intelligently see the link or relationship here.</p>\r\n<p>And thank you very much for this idea, Molotok. In higher scenarios, I could've been blindly re-reforging &amp; re-gemming to help my raid with a specific boss or something, rather than simply taking extra tanking gear with different settings, and saving a new tanking Rawr profile for my character, one that has the spare pieces of gear, and simply make sure that that slightly different set is optimized to the highest score possible. Definitely a simple, yet easily forgotten idea by a too focused person.</p>",
+    "PostedDate": "2011-05-24T01:51:25.427-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "617201",
+    "ThreadId": "255929",
+    "Html": "<p>It makes total sense. Raid Buffs and Debuffs affect just about everything (obviously including your own survivability and mitigation). They easily can push you over/under your survival softcap. As I said, the survival softcap is almost always what matters  in the choice between Agi and Sta.</p>\n<p>&nbsp;</p>\n<p>EDIT: Err, you're asking why buffs affect survivability? I hope that's obvious; there are direct stam buffs, and % stam buffs, and armor buffs, and food, and flask, and... etc.</p>",
+    "PostedDate": "2011-05-24T02:05:54.707-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "617210",
+    "ThreadId": "255929",
+    "Html": "<p>Thank you for the reply, Astrylian. Yes, of course, there are the obvious parts about the direct stamina buffs (Priest's Fortitude, for example), but I was curious what the \"fully buffed\" option offers that is so extra to a customized \"reasonable buff set\" that we'd handpick, for example. My understanding from Martinzul's comment is that if he is putting a reasonable amount of handpicked buffs only, then he would get those stamina-stacking recommendations, but if he goes for the \"fully raid buffed\" option, then Rawr switches to agility recommendations. And I was curious what the fully raid-buffed option offers that is so extra to what we would choose (even for a 5-person heroic, for example, where we know we have a Priest with us), which would push Rawr to switch recommendation from stamina to agility.</p>\r\n<p>You brought some examples that opened my mind up to how that can make sense, though. For example, I was thinking, What's after a Druid &amp; Priest's buff anyway? If I'm running just a 5-person heroic, but there's a Druid &amp; Priest, and I have those minimal buffs, I'm still getting stamina recommendations, but what is after those buffs anyway? I guess adding the food and flask buffs, plus any others that we forgot, plus perhaps debuffs on the boss other than the standard tank debuffs (IW, TC, etc), could indeed account for that switch in recommendations...full raid buffs could empower a tank's survivability enough to make agility more important for some tanks &amp; their gear sets.</p>",
+    "PostedDate": "2011-05-24T02:41:41.543-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "617229",
+    "ThreadId": "255929",
+    "Html": "<p>I noticed, for example, that Ancestral Healing / Inspiration - which is included in \"fully buffed bear\" - by itself makes a big difference. And I think I understand why it should.</p>",
+    "PostedDate": "2011-05-24T03:11:56.48-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "617464",
+    "ThreadId": "255929",
+    "Html": "<p>There's really not much left of a 'reasonable amount of handpicked buffs'. There's so few, you should almost always have most of them in a reasonable group. But missing a couple does make a big difference in some cases.</p>",
+    "PostedDate": "2011-05-24T09:31:51.013-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "617756",
+    "ThreadId": "255929",
+    "Html": "<p>Thank you for the part about Ancestral Healing / Inspiration, Martinzul! Indeed, the researcher in me was pleasantly amused to actually see that if I have no buffs on my Bear other than my self-buffs (all of them), plus just the Priest's Fortitude and Resto Shaman's Ancestral Healing, then my gem recommendations switch from stamina to agility instantly. Worth noting is that I had to take both, Fortitude &amp; AH, for the recommendations to switch. And it was interesting to see how as soon as Ancestral Healing was ticked, the recommendations changed. It is kind of wondrous to play around with these things and discover what math says would be the most effective buffs and so on.</p>\r\n<p>And this reminds me of something I observed (and posted about) on another Rawr model! That of the Resto Shaman. For my Resto Shaman, I get recommendations away from Spirit and into Crit! This really surprised me, but looking at how Ancestral Healing (which comes from a Resto Shaman's criticals) affects the survivability of a Bear so significantly, it actually makes more sense to me now that Crits can be so important for a Resto Shaman.</p>",
+    "PostedDate": "2011-05-24T17:05:08.587-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

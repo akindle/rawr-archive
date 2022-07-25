@@ -1,0 +1,130 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "This should be fixed now",
+    "ClosedDate": "2010-07-05T19:05:12.9-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When clicking to change a gem in an item using Equip Custom Gemming, You get the dialog as expected. Clicking on the gem brings up a comparison chart. Yet this comparison chart has Jewelcrafter gems in it despite those gems being marked as unavailable in Gemming Templates.\n \nIs this an issue of us needing to define professions better so we know what is available? Or is this an issue of not excluding Gemming Templates from the list?\n \nI'll investigate and close if I can code a fix meanwhile posted to maintain it on the TODO list.",
+    "LastUpdatedDate": "2013-05-16T05:24:02.46-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-10-05T06:29:37.86-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Feature Request] Selecting to equip a gem shows Jewelcrafter gems when not enabled",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 14334
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "There should be a filter \"Options > disable JC items\"",
+      "PostedDate": "2009-10-05T06:49:52.097-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Looks like Character.cs GetRelevantItems needs to be aware of if Jewelcrafter gems are available. \r\n\r\nA design decision is needed as to how best to approach this. I would imagine it would be better not showing JC gems for characters that are not JC.",
+      "PostedDate": "2009-10-05T07:09:41.527-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "We don't currently have settings for specifying which professions your character has, or a way to update them without having to do an armory reload.",
+      "PostedDate": "2009-10-05T07:37:53.517-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "There already is a filter to hide gems.\r\n\r\nFilters > Options > Disable BoP Jewelcrafting (non-additive filter, so checking it will remove all BoP items made by a Jewelcrafter)\r\n\r\nIt would be nice if we could set this filter by default, based on your proficiencies as parsed by the Armory, but we'd also want to add it to the character file and the UI in some way, which is probably more work than it's worth.\r\n\r\nBest bet is to rename the \"Options\" filter to \"Disable BoP Crafted Items\".",
+      "PostedDate": "2009-10-05T15:24:39.713-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ah, I just looked at it closer.  This is when you're seeing the Comparison's Chart through equip custom gemming only.  I think the best option is to have that chart use item filters.",
+      "PostedDate": "2009-10-05T15:26:32.413-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "**grumble grumble** ignore my last comment.  Item Filters are being used, I just left mine in a \"show JC gems\" state.\r\n\r\nBack to my original point: the filter exists already.  We just need to make it more obvious",
+      "PostedDate": "2009-10-05T15:27:32.3-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I noted that Primary & Secondary profession has been added to the Character and so perhaps we should be setting the status of this filter during character load from armoury if JC turn filter on otherwise turn it off.\r\n\r\nAdding a deafult UI feature to display current professions should be left as something to implement in Rawr3 and leave it as a known to the model but not displayed feature in Rawr2. Of course individual developers could display the value on their model if they wished.",
+      "PostedDate": "2009-10-07T08:25:04.477-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I worry about automatically changing users filters behind the scenes.  I've already heard a few reports of items disappearing/not showing up with the 2.2.20 release, with default filters changing.\r\n\r\nIf there was a UI element in Rawr.Base that displays professions, I'd be okay with it.  Since there isn't, we should be storing it and let models deal with it as they wish (ie through the options pane, like DPSWarr does).",
+      "PostedDate": "2009-10-07T09:26:54.17-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yup valid point. No point generating additional issues unnecessarily . ",
+      "PostedDate": "2009-10-07T09:31:01.7-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-14T10:35:59.257-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T13:58:24.587-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T14:42:08.887-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-05T19:05:12.9-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-11-22T19:56:47.293-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T18:49:40.763-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T19:23:08.487-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:32:39.013-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:02.46-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Issue resolved Jul 10th",
+    "ClosedDate": "2009-08-26T09:06:18.007-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Rawr v2.2.9, my armory: http://www.wowarmory.com/character-sheet.xml?r=Korialstrasz&n=Fuseitana\n \nI have dual Angry Dread, one with Berserking the other with Accuracy.  I need to keep the enchants I have until funds are more abundant.  So, I click the diamond and set the enchants I want to keep.  Every time Optimizer wants to reenchant one of the weapons, either changing the Berserking to Accuracy or vice versa.  How can I force it to optimize just the gear gemmings and leave the enchants alone?  Can I force it to leave all enchants alone?  I already have the enchants it would recommend (except for Berserking).\n \nThanks.",
+    "LastUpdatedDate": "2013-05-16T05:25:07.27-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-07-08T14:29:48.09-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Reenchanting Problem",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13621
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "http://www.codeplex.com/Rawr/Wiki/View.aspx?title=GearOptimization\r\n\r\nProblem being, as dual wield, I don't see a way of doing it, unless you create a second item called Angry Dread #2, and lock 1 enchant per each item.",
+      "PostedDate": "2009-07-08T16:36:02.327-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ah, I see. Yeah, only way to do that would be to add a 2nd item called Angry Dread, equip that in one hand, and set the specific enchants available for each one.\r\n\r\nEasiest way to create the 2nd one would be to rename the current one, and change its ID to something that's unused (anything over 90000), then add the actual Angry Dread after that.",
+      "PostedDate": "2009-07-08T19:43:52.08-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "OK, I tried editing the original Angry Dread by changing it's name to 'Angry Dread 2' and changing it's ID to 90001.  When I click the OK, I get a runtime error with these params:\r\nEvent Type: clr20r3\r\nP1: rawr.exe\r\nP2: 2.2.90\r\nP3: 4a4c6db3\r\nP4: rawr.base\r\nP5: 2.2.9.0\r\nP6: 4a4c6da5\r\nP7: 3e3\r\nP8: 13\r\nP9: system.nullreferenceexception\r\n\r\nI can change the name of the item just fine, it's when I try to change it's ID that I'm hitting the runtime err.\r\n\r\nIncidentally, this is the release version of the Rawr.  I could download a changeset and find out where the crash is occurring if it would help.\r\n\r\nPS.  The Min Damage & Max Damage boxes are behaving oddly.  When I enter values in the min then the max then set the speed it zeroes out the min.  When I reenter the min the max is zeroed.  In order to manually enter the numbers I have to enter the min, leave that frame, enter the max, leave the frame, enter the speed.\r\n\r\nThanks for your your time.",
+      "PostedDate": "2009-07-09T13:31:04.227-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "OK, I got changeset 35090 and tried adding the second Angry Dread with ID 90001.\r\n\r\nThe error is on this line: \r\n\r\nif ((object)item != null && !string.IsNullOrEmpty(item.Item.SetName))\r\n\r\nin RecalculateSetBonuses of Rawr.Character.  The Error is NullReference Exception was unhandled.  It's as if the 90001 id is not being allowed to be created.",
+      "PostedDate": "2009-07-09T14:33:08.007-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Can't debug it at the moment; will check later. But for now, try it with lower ID, like 50000 or something. I may have had some special case for over 90000, that broke.",
+      "PostedDate": "2009-07-09T20:18:13.753-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well, I tried it with 50000, 60000, 70000 & 80000 (90000 you know about), then 50001, 60001, 70001, 80001 and all gave the same run time error.",
+      "PostedDate": "2009-07-10T07:07:40.623-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I was able to recreate this error in several modules (Enhance, DpsDK, TankDK). Rawr apparently does not like you changing ItemIDs of items that are currently equipped into a character slot. \r\nPennelope, try unequipping Angry Dread from your character sheet, editing the Item ID to something else (like 90000), then add item 40189 again to the Rawr Item Cache, then make each item unique/enchant-locked. See if thise solves your issue.\r\n\r\nOn an added note, I was not able to re-create the odd behavior with the weapon dmg/speed boxes during these tests.",
+      "PostedDate": "2009-07-10T07:49:52.503-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ahh, yeah, that makes sense. Thanks, Devwar. I'll look into that when I've got a chance. ",
+      "PostedDate": "2009-07-10T08:47:49.587-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "OK, dewar.  That appears to have done it.\r\n\r\nThanks for everyones help.\r\n",
+      "PostedDate": "2009-07-10T09:16:13.88-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-26T09:06:18.007-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:59.383-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:07.27-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

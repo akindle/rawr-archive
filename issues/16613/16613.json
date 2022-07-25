@@ -1,0 +1,110 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Buffs",
+      "DisplayName": "Rawr.Base.Buffs"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-03-04T13:17:26.12-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Is it possible to add this buff to the options list? Currently on live we are looking at a 5% buff to health, dps, and HPS. However, according to the latest Blizzcast, they will be increasing this number once a month. From data files, this should end with either a 30% buff or a 35% buff.",
+    "LastUpdatedDate": "2013-05-16T05:21:37.447-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-03-02T13:42:19.9-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Buffs] Add Strength of Wrynn / Hellscream's Warsong",
+    "Type": {
+      "Name": "Task",
+      "Id": 2
+    },
+    "VoteCount": 2,
+    "Id": 16613
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I've uploaded a patch that adds this buff to the temporary Buff tab. I used the BonusStaminaMultiplier, BonusDamageMultiplier, and HealingReceivedMultiplier variables for this buff. I wasn't sure if the HealingReceivedMultiplier variable was correct, but I did find the variable used in both the Holy Priest and the Healadin modules so I assume this is correct.",
+      "PostedDate": "2010-03-02T16:13:04.153-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "After some testing with the code it appears that Resto Shamans and Resto Druids do not appear to support the HealingReceivedMultiplier, yet Holy Priests and Healadins do support the variable (the later two the buff seems to work correctly). Also I'm not sure but Resto Shamans don't seem to support Temporary buffs. All modules I tried testing the code I posted showed the buff, except for Resto Shamans. I'll post another issue about those two.",
+      "PostedDate": "2010-03-02T16:57:43.693-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-02T22:40:06.35-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It's worth noting that BonusStamina and BonusHealth aren't quite the same thing",
+      "PostedDate": "2010-03-03T07:56:35.927-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "From what I can tell, the ICC buff affects healing /done/, not received. (As noted in: http://www.wowhead.com/?spell=73816 / 73762) I'm sure that makes a difference in the calculations. (such as /where/ the multiplication is performed in the calculation chain)\r\n\r\nAlso, perhaps the dungeon finder \"Luck of the Draw\" buff should have an entry for completeness sake?",
+      "PostedDate": "2010-03-03T08:42:17.69-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The buff was just added in commit 47094, you will see all 6 stages of the Buff (you can only select 1 at a time):\r\nStrength of Wrynn/Hellscream's Warsong (1) | 5%\r\nStrength of Wrynn/Hellscream's Warsong (2) | 10%\r\nStrength of Wrynn/Hellscream's Warsong (3) | 15%\r\nStrength of Wrynn/Hellscream's Warsong (4) | 20%\r\nStrength of Wrynn/Hellscream's Warsong (5) | 25%\r\nStrength of Wrynn/Hellscream's Warsong (6) | 30%\r\n\r\nI added them all at once right now so we don't have to make a new release just to edit this buff.",
+      "PostedDate": "2010-03-04T13:13:14.663-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "There, just added Luck of the Draw too",
+      "PostedDate": "2010-03-04T13:17:19.127-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-04T13:17:26.12-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T16:10:16.55-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T16:13:40.12-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-09T15:32:37.58-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T19:52:23.52-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:29:37.023-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:37.447-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+[
+  {
+    "Id": "213412",
+    "ThreadId": "62856",
+    "Html": "<p>Seriously, what is standing in the way of some limited PvP modelling in Rawr?</p>\r\n<p>I know. PvP is an abomonation. However I'm a feral tank, and Rawr does indicate that, pre Ulduar, lots of th eHateful and Deadly gladiator items are worthy upgrades. And to get them, all you need is Honor, and to get that, being at least slightly competent in Wintergrasp or battlegrounds IS called for. And the Wintergrasp quests being weeklies does make them easy to tolerate.</p>\r\n<p>Anyway, as a result I really would like the option in Rawr to see the effects of resiliance vs a PvP target. Both in terms of my mitigation from resil in PvP and in terms of my decreased dps vs a target that has resiliance.</p>\r\n<p>While I am a programmer, Im an old school c++ guy, so C# really isn't my thing :/ so I can't contribute myself.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-07-18T11:21:59.053-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "213418",
+    "ThreadId": "62856",
+    "Html": "<p>What is standing in the way of PvP models? The fact that PvP isn't modelable.</p>",
+    "PostedDate": "2009-07-18T11:49:36.673-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "213421",
+    "ThreadId": "62856",
+    "Html": "<p>That makes no sense. How is it not modelable? I cant imagine any argument that doesnt count just as much for PvE really.</p>\r\n<p>&nbsp;</p>\r\n<p>The point is not to try and model the too and fro of a PvP battle. The point is to model the expected dps vs a ... a... PvP version of a combat dummy. The only difficulty I can see is the building of the reference PvP 'opponent' to run the models against. So you just make up a mytical class that does a mix of melee and spell damage, and put some fields in the options tab where the specific numbers can be played with - where, at the moment, the targets level and armor can be plugged in.</p>",
+    "PostedDate": "2009-07-18T12:05:09.393-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "213446",
+    "ThreadId": "62856",
+    "Html": "<p>I'd say it makes perfect sense. PvE mobs follow strict rules. Mob level armour, chance to crit, miss, dodge, parry, etc.</p>\r\n<p>Players do not. Consider armour alone: a single model would have to be able to factor in facing a 2000 armour cloth-wearer versus a 35,000 armour bear. How about whether that bear has Protector of the Pack or not? Chance you'd be crit depends on the opponent's chance to crit. Likelyhood the opponent misses you with a spell depends on spell hit, and then there's the issue of how much penetration they carry. Or resists on your part.</p>\r\n<p>Perhaps it would be better to say that it could be modelled if the developers had unlimited time, and money, and access to multiple supercomputers. The sheer volume of variables when both parties have access to millions of gear combinations spread across thirty specs, plus the human unpredictability of what abilities they chose to use in what sequence makes it impossible under any reasonable circumstances.</p>",
+    "PostedDate": "2009-07-18T15:17:33.043-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "213471",
+    "ThreadId": "62856",
+    "Html": "<p>The only sort of PvP modeling that is at all possible is factoring resiliance into survival ratings, since it is simple and reliable. A couple models do that. Anything involving healing, damage, avoidance, etc, isn't possible to model.</p>",
+    "PostedDate": "2009-07-18T18:20:21.937-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "213537",
+    "ThreadId": "62856",
+    "Html": "<p>&quot;The only sort of PvP modeling that is at all possible is factoring resiliance into survival ratings, since it is simple and reliable. A couple models do that. Anything involving healing, damage, avoidance, etc, isn't possible to model.&quot;</p>\r\n<p>This I feel would actually give the most benefit. In terms of modelling damage in PvP, maxing one's PvE damage is probably the best you can do anyway. Depending on the targets specific mix of resiliance, armor etc is just going to modify that.</p>\r\n<p>the modeling really needed most is how to equip, gem and 'chant &nbsp;for defense in PvP - is it better to take resiliance on an item, but trade off dodge or armor?&nbsp;</p>",
+    "PostedDate": "2009-07-19T06:49:33.663-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "213553",
+    "ThreadId": "62856",
+    "Html": "<p>Anything giving Dodge and Parry are close to worthless in PvP sadly enough. While feared, stunned, etc., you cannot dodge or parry. So if you are going for survival you are really only looking for resistance, armor, stamina and resilience. Also how much to weigh Stamina compared to Resilience is a really hard one to nail. Too much resilience and you may end up with too low hp to survive a long non-crit streak, too little Resilience and you may go down to a few lucky crits. The only way I've found to reasonably compare Resilience to Stamina, is to say that each % of Resilience increases your existing HitPoints by ~2%. (For 3.2 patch.) I'm sure people can and will argue over this, but thats probably why microsoft invented sliders.</p>",
+    "PostedDate": "2009-07-19T07:51:27.53-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "213574",
+    "ThreadId": "62856",
+    "Html": "<p>The way I'm combining stamina and resilience in mage model is by using a survivability model based on chance to die in a window where you don't get any heals. The duration of the window has gaussian distribution, resilience affects the crit rate and crit damage of incoming damage profile and health affects how much damage is fatal. I basically compute Pr(damage &gt; health) where damage is a weighted&nbsp;sum of binomial distributions modeling crits.</p>",
+    "PostedDate": "2009-07-19T10:19:56.143-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "213581",
+    "ThreadId": "62856",
+    "Html": "<p>Right. The only things that are reliable are stamina and resilience. You can combine both of those into Survivability, and as I said, a few models do that. But comparing those to dodge or armor isn't possible.</p>",
+    "PostedDate": "2009-07-19T11:16:25.587-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "214402",
+    "ThreadId": "62856",
+    "Html": "<p>If I understand correctly, with the 3.2 change that resil reduces all incoming PVP damage, that part of the effect should be the same as armor (atleast for physical attacks). Thus it should be possible to calculate an equivalent for resilience: 1 resil = x defense (for the crit reduction effect) + y armor (for the physical damage reduction) + z resistance (for equavalent damage reduction for spells). Granted neither the armor or resistance values are constants, but change based on your current totals.</p>\r\n<p>Potentially useful information to have, but in the larger scheme of making a good pvp probably inconsequencial.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-07-21T09:42:42.173-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "214439",
+    "ThreadId": "62856",
+    "Html": "<p>I agree with Wildebees, but we need to be careful here. &nbsp;Resilience only adds a damage reduction in PvP content. &nbsp;We'd need a definite toggle between PVP and PVE, and probably a giant warning as well, so less-informed players don't get confused into thinking a full set of Hateful gear is better than Ulduar plate or something of that nature.</p>",
+    "PostedDate": "2009-07-21T10:59:00.923-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "214546",
+    "ThreadId": "62856",
+    "Html": "<p>Too many people already do.&nbsp; Amazing to see so many pug groups pick their MT based on pure HP, then when I inspect it's Polar+PVP gear :(</p>\r\n<p>Few things make me bang my head against the desk like knowing I can heal uld25 and hardmodes, then running oom in a pug with a mana sponge tank who generates 0 threat, so dps is piss poor, and hearing people go &quot;Omg, how did you let the MT die?!&nbsp; Look how much hp he has!&quot;&nbsp; This one made me laugh last night.&nbsp; 10man Kologarn, 5dps+2 tanks (nooo, you cant solo tank that!) put out a whopping 12,000 raid dps, yes less than 2,000dps each.&nbsp; Kolo is not exactly meant to be a 7 minute fight, especially with a tank with no mitigation at all and only HP. :S</p>\r\n<p>* Sorry for the aside, it was just the saddest-funny thing I've seen in game in a bit.&nbsp; Welcome to lvl 70 dps.&nbsp; Why are you in Uld?</p>\r\n<p>I'd like the pvp survivability printout too.&nbsp; It might not be modelable whether a trade off of survivability for dps/hps is worthwhile, but at least we'd know exactly how much of each quantity we'd be trading.</p>",
+    "PostedDate": "2009-07-21T15:36:38.063-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "214554",
+    "ThreadId": "62856",
+    "Html": "<p>that's insane dimple</p>\r\n<p>&quot;I'd like the pvp survivability printout too.&nbsp; It might not be modelable whether a trade off of survivability for dps/hps is worthwhile, but at least we'd know exactly how much of each quantity we'd be trading.&quot;. Yeah, who wouldn't want that..</p>",
+    "PostedDate": "2009-07-21T16:07:16.253-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

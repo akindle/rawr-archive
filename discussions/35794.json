@@ -1,0 +1,114 @@
+[
+  {
+    "Id": "118954",
+    "ThreadId": "35794",
+    "Html": "I wanted to gather some opinions, both from fellow devs, and from users, about using an installer with Rawr. Right now, the root folder is a little scattered with the libs and other files. What does everyone think about bundling Rawr into an installer (TBD)?<br>\r\n<br>\r\n",
+    "PostedDate": "2008-09-16T15:02:13.093-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "118969",
+    "ThreadId": "35794",
+    "Html": "Definately. I prefer an installer. As long as it is able to safely update from a previous installed version that is.<br>\r\n<br>\r\nAlso I have checked this site daily for the past few days because I read something about 16.1 coming out soon (which it is now). Therefore I would like to suggest that Rawr got a feature to check for updates online. This should be a completely optional feature offcourse.<br>\r\n<br>\r\n",
+    "PostedDate": "2008-09-16T16:06:19.953-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "118972",
+    "ThreadId": "35794",
+    "Html": "Excellent, thanks a lot for the feedback. I'll discuss this with some other devs, and wait for more feedback!<br>\r\n",
+    "PostedDate": "2008-09-16T16:13:43.267-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "118973",
+    "ThreadId": "35794",
+    "Html": "Been considering making it ClickOnce distributed for a while, what do others thing of that? (Do users even know what that means?) That would take care of both concerns.<br>\r\n",
+    "PostedDate": "2008-09-16T16:23:52.487-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "119105",
+    "ThreadId": "35794",
+    "Html": "I agree that ClickOnce would address the installing and updating concerns.&nbsp; However, would that add more concerns like security?&nbsp; Personally, I'd go through the minor inconvenience of manually downloading new versions.<br>\r\n",
+    "PostedDate": "2008-09-17T06:51:17.473-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "119123",
+    "ThreadId": "35794",
+    "Html": "Hmm. ClickOnce would work fine. As far as security, is there a way to disable ClickOnce from checking for updates? The user could choose on an individual basis whether or not to allow updating, solving the security problem. Thoughts?<br>\r\n",
+    "PostedDate": "2008-09-17T07:55:10.447-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "119126",
+    "ThreadId": "35794",
+    "Html": "There is, but not any intended way. I know there are alot of users who would rather it not check for updates every time it launches, so haven't really seriously considered ClickOnce. My thought is that a simple Tools &gt; Check for Update... menu item, which just pops a message box saying something like &quot;You have the latest version.&quot; or &quot;New version has been released. Click OK to goto the download page.&quot; or something, would be best.<br>\r\n",
+    "PostedDate": "2008-09-17T08:12:56.13-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "119129",
+    "ThreadId": "35794",
+    "Html": "Yeah, I agree. I think in the long run, that would be a much better solution. So if that was the case, would we still use ClickOnce for the install portion?<br>\r\n",
+    "PostedDate": "2008-09-17T08:18:46.633-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "119166",
+    "ThreadId": "35794",
+    "Html": "Nope. I don't see a need for an installer at all. Nothing needs to be installed, really. Rawr just needs to be unzipped somewhere. I can see the point about the root folder being cluttered, and wouldn't mind putting all the dll's and cache xml's into a 'data' subfolder, would that help?<br>\r\n",
+    "PostedDate": "2008-09-17T10:12:57.767-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "119173",
+    "ThreadId": "35794",
+    "Html": "Yeah, placing those files in a subfolder might help it appear more organized. This, of course, is just my thought, not necessarily the thoughts of all the users... Maybe no one cares?<br>\r\n",
+    "PostedDate": "2008-09-17T10:49:11.04-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "119187",
+    "ThreadId": "35794",
+    "Html": "I think a data folder would be great. A cleaner look and an easier time finding char files if you just save them in the rawr root.",
+    "PostedDate": "2008-09-17T11:40:13.1-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "119326",
+    "ThreadId": "35794",
+    "Html": "Moved all of Rawr's assemblies and data files into a Data folder. The root folder contains just Rawr.exe, ReadMe.txt, and the Data folder now.<br>\r\n<strong><br>\r\nVERY IMPORTANT! Devs, and anyone building Rawr from the latest source: I've updated all the projects to build into that Data folder. However, you'll need to manually move your images and talent_images folders, and your BuffCache.xml, EnchantCache.xml, ItemSource.xml, and ItemCache.xml into that new Data folder.</strong><br>\r\n",
+    "PostedDate": "2008-09-18T02:01:23.303-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "119940",
+    "ThreadId": "35794",
+    "Html": "One of the things I like about Rawr is that I don't have to install it any where.&nbsp; It runs off my flash drive reguardless of the PC I am working on.\r\n",
+    "PostedDate": "2008-09-21T22:39:21.11-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "120200",
+    "ThreadId": "35794",
+    "Html": "boxtor, <br>\r\nThanks for the feedback. Don't worry, Rawr will continue to work this way. The folder will now just be a bit more organized.\r\n",
+    "PostedDate": "2008-09-22T15:51:48.653-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

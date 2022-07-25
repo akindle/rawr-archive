@@ -1,0 +1,141 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.LoadCharacter",
+      "DisplayName": "Rawr.Base.LoadCharacter"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-03-09T22:49:07.04-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "after i load armory show following error, Kindly help to fix it  : (\n \nstep\nget character\n \ndetails\nyour character's talent sheet could not be download......",
+    "LastUpdatedDate": "2013-05-16T05:21:36.753-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-03-02T23:54:32.007-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[LoadCharacter] Load from Armory Error",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 16623
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3120,
+      "FileName": "processes for rawr team.JPG",
+      "DownloadUrl": ".\\3120"
+    },
+    {
+      "FileId": 3121,
+      "FileName": "System.Net.log",
+      "DownloadUrl": ".\\3121"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Please read and follow the Posting Guidelines, you did not give us any info for steps to replicate",
+      "PostedDate": "2010-03-03T09:53:46.607-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm also getting an error when I try to load from armory. I used to use rawr back in burning crusade and it worked perfectly fine. \r\n\r\n-I'm currently using windows xp 64 sp 2, and I believe I was using 64bit before and it was working fine. \r\n-I've changed router's since then, however I've tried direct connection to the internet to no avail, and there are other computers behind the router that can import from armory with rawr just fine.\r\n-I've downloaded every release of rawr to test all of them and none of them successfully import from the armory. At this point I was kind of stumped.\r\n-The armory IS up at this time, I have it loaded and searching properly from 3 different computers.\r\n-I'm using FireFox 3.5.8, there's no option in Rawr to use FireFox 3, only FireFox 2, however I've tried setting it to FF2, IE6, and IE7, neither of them worked.\r\n-I've disabled Windows Internet Connection Sharing/Internet Connection Firewall, and I've tried keeping it on and adding Rawr as an exception, no change.\r\n-I've gone into safemode with networking, successfully connect to the armory and load my character, rawr still gets the error.\r\n-Set myself as DMZ under the router to see if that'd change anything (knew it wouldn't cause I've already tried direct connect) and it didn't change anything.\r\n-I have AVG running, I've tried turning off the resident but that didn't help, and since I've already tried it in safemode with networking (nothing loads) I don't think there's anything stopping rawr from connecting.\r\n\r\nStep Name: Get Character\r\nDescription: No character returned from the Armory. Is the Armory down?\r\nException: No exception\r\nWeb Client Exception: Unable to connect to remote server\r\n\r\nI've attached a screenshot of my currently running processes\r\n",
+      "PostedDate": "2010-03-09T16:52:55.597-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-09T16:52:59.36-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Not sure how to edit a comment, but I suppose I should add the character I'm attempting to load from armory is kaetarian from hyjal US server. I've tried over 20 different characters from 3 different servers and none of them load with rawr yet I can load them in the armory.",
+      "PostedDate": "2010-03-09T16:55:45.36-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-09T16:56:11.59-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Just testing whether or not rawr can connect to the armory, and I set up a character manually and then loaded upgrades successfully from the armory, and am currently updating my item cache from the armory so I can definitely connect to it.",
+      "PostedDate": "2010-03-09T17:16:55.1-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "We'll need additional information to assist you with this issue.\r\n\r\nOpen Rawr.exe.config file in a text editor (i.e. notepad). Insert the following before the last line of the document (so it is nested inside the configuration element):\r\n\r\n<system.diagnostics>\r\n<sources>\r\n<source name=\"System.Net\" switchValue=\"Verbose\">\r\n<listeners>\r\n<add name=\"System.Net\"/>\r\n</listeners>\r\n</source>\r\n<source name=\"System.Net.Sockets\" switchValue=\"Verbose\">\r\n<listeners>\r\n<add name=\"System.Net\"/>\r\n</listeners>\r\n</source>\r\n</sources>\r\n<sharedListeners>\r\n<add name=\"System.Net\"\r\ntype=\"System.Diagnostics.TextWriterTraceListener\"\r\ninitializeData=\"System.Net.log\"/>\r\n</sharedListeners>\r\n<trace autoflush=\"true\" />\r\n</system.diagnostics>\r\n\r\nand then start Rawr again and try to open character from armory.\r\n\r\nAttach the generated System.Net.log file here so we can analyse it.",
+      "PostedDate": "2010-03-09T17:19:14.607-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Here's the file.",
+      "PostedDate": "2010-03-09T18:10:17.483-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-09T18:10:19.923-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This would be the relevant error:\r\n\r\nNo connection could be made because the target machine actively refused it 127.0.0.1:5555\r\n\r\nFor some reason it appears your requests get routed through this address. I would highly suspect that you have some malware or virus on your machine redirecting the traffic.",
+      "PostedDate": "2010-03-09T19:25:39.337-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Odd, I've scanned with AVG and norton's online scan while in safemode with networking and haven't found anything.",
+      "PostedDate": "2010-03-09T21:45:46.543-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Make sure to also run malware detection, not virus only. Google for 127.0.0.1:5555, you should get many relevant reports. Specifically I'd suggest to look at your proxy settings in internet settings in control panel.",
+      "PostedDate": "2010-03-09T22:22:10.397-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "well that fixed it, I did have a proxy set to 127.0.0.1:5555 for some reason. \r\n\r\nI've been playing the \"unloaded\" version of sc2 beta and had to turn off my resident shield because of the way the loaders were made. During that time I did get a virus/malware that impersonated an antivirus and wanted me to buy it by locking me out of all my programs / using the internet. I suppose it may have added the proxy and my method of getting rid of it didn't reverse its change.\r\n\r\nThanks for the help!",
+      "PostedDate": "2010-03-09T22:27:34.417-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-09T22:49:07.04-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-09T15:44:00.157-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:21.047-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:29:36.027-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:36.753-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

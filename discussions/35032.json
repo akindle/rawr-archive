@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "116428",
+    "ThreadId": "35032",
+    "Html": "I'm trying to set up my own itemcache.xml with only the mage-relevant items.&nbsp; I'm getting the hang of it now so I can do it again at 80 when the xpac drops.&nbsp; However, a few items aren't importing properly.&nbsp; I can set their stats using the &quot;Edit Item&quot; feature, but they don't stick when I update my item cache.&nbsp; In particular the following items are not working:<br>\r\n<ul>\r\n    <li>32639 - Unstable Talasite - Spell Crit is not showing</li>\r\n    <li>27820 - Notched Deep Peridot - Spell Crit is not showing</li>\r\n    <li>25936 - Terokkar Tablet of Vim - Spell Damage 15/1.5 not showing</li>\r\n    <li>30340 - Starkiller's Bauble - Spell Damage 15/1.5 not showing</li>\r\n    <li>27924 - Mark of Defiance - Mana regen not showing</li>\r\n</ul>\r\n<br>\r\nI know these aren't powerhouse items, but I'd like to know if there is a way I can correct them permanently for my own use.&nbsp; With the exception of the Mark of Defiance, they are relatively straightforward.<br>\r\n<br>\r\nAlso, if anyone is interested in taking a look at the mage-only itemcache.xml, you can grab a copy <a href=\"http://toshimo.com/rawr/ItemCache.xml\">here</a>.&nbsp;&nbsp; I'd appreciate any feedback.&nbsp; Hopefully, if I get these last bits sorted out, it will ease the learning curve for the folks I am recommending rawr to.\r\n",
+    "PostedDate": "2008-09-05T14:40:05.287-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "116445",
+    "ThreadId": "35032",
+    "Html": "The armory doesn't actually give us stats on gems, just the tooltip, so we have to parse that, which means specifically adding the text formats for each possible stats. Looks like those 2 gems use an abnormal format, that we missed. I'll try to get that fixed. 'Use' effects also have to be parsed in the same way, and it looks like we missed the abnormal format on those too. And same with Mark of Defiance.<br>\r\n<br>\r\nBut besides those, can you explain your reasoning for creating a mage-only itemcache.xml to begin with? We're working on some filtering features, and feedback on why you're doing that, and what you want Rawr to do that it doesn't, or how you choose to filter it that is different from what Rawr already does, etc, could really help. Thanks!<br>\r\n",
+    "PostedDate": "2008-09-05T15:36:40.32-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "116456",
+    "ThreadId": "35032",
+    "Html": "Reasons for creating my own itemcache.xml<br>\r\n<ul>\r\n    <li>Inappropriate items showing up in the mage view (from 27896<span> - Alembic of Infernal Power, a +resilience trinket</span><span> to 34339&nbsp; - Cowl of Light's Purity, a healer helm from Kil'jaeden) - While they may be optimal in some situations, 99.9% of the time, they are wasted space causing me to weed out more and more with each update.</span></li>\r\n    <li><span>Missing low level items (such as the aforementioned </span>25936 - Terokkar Tablet of Vim  and 30340 - Starkiller's Bauble) - Rawr isn't very friendly to those just hitting 70 as it excludes some key greens that get you started.&nbsp; I'm looking to pass this itemcache.xml out to some folks rolling alts who will want to be min/maxing as soon as possible.&nbsp; I'll note that I'm only including about 8 greens total (almost all of which have spell hit), so it's not like I'm filling up the cache with junk.</li>\r\n    <li>Too many gems - I took out any gem that is an exact duplicate of an easier to obtain gem.&nbsp; I don't see the need for both versions of Runed Crimson Spinel and the Runed Ornate Ruby to be in the cache by default.&nbsp; It's unneccessary.&nbsp; Same thing with all the survival gems (i.e. +stam/+resil) and healing-only gems (i.e. Teardrop Crimson Spinel).&nbsp; Mages won't ever use them.&nbsp; Ditto on Relentless Earthstorm Diamond.</li>\r\n    <li>Too many duplicates made deciphering the value of items a pain.&nbsp; Some of the socketable items are coming with 6 or more duplicates in the default cache.&nbsp; I'd rather see one of each and have the option to duplicate if I so chose.</li>\r\n    <li>Updating your item cache takes 15 minutes with the default cache.&nbsp; 'Nuff said.</li>\r\n</ul>\r\n",
+    "PostedDate": "2008-09-05T16:32:06.677-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "116458",
+    "ThreadId": "35032",
+    "Html": "Awesome, thanks!<br>\r\n",
+    "PostedDate": "2008-09-05T16:37:56.81-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

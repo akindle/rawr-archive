@@ -1,0 +1,105 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtWarrior",
+      "DisplayName": "Rawr.ProtWarrior"
+    },
+    "ClosedComment": "Closing these issues as they are basically invalidated by Cataclysm mechanic changes",
+    "ClosedDate": "2010-11-15T16:13:43.137-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "well this is something that I have noticed in the past, and yet still with the latest version. This is something that I have noticed on my warrior and on my DK.  although it seems to be fixed on my DK.  But from what I've seen, equipping a 4 piece set does not trigger a 4-piece set in the buffs tab. regardless if its impossible to factor in the statistical gain of having a 4 piece set, it would be nice to see that Rawr is recognizing that a warrior is wearing one. In T9 4-piece it would be factorable imo for avoidance as the set bonus is \"decreases the cooldown on your shield block ability by 10sec\". which if there was a option in the \"options\" tab to set your avg. shield block uptime much like diseases or dots, this would play a role in overall avoidance.\n \nHowever the T10 4-piece set bonus \"your Bloodrage ability no longer costs health to use, and now causes you to absorb damage equal to 20% of your maximum health. Lasts until canceled.\".  As yes this is a huge factor in avoidance for a prot warrior, and idk if its even possible to factor in \"uptime\" for a bonus like this.\n \nBut none the less, would really be nice to see Rawr acknowledging, that a character has the 4 piece set, wither or not the devs can get a mathematical factor in the program or not.",
+    "LastUpdatedDate": "2013-05-16T05:22:50.26-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-12-22T06:07:55.123-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtWarr] 4-peice sets",
+    "Type": {
+      "Name": "Task",
+      "Id": 2
+    },
+    "VoteCount": 1,
+    "Id": 15566
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "However which is better? Being able to see that no T10 bonus is implemented? Or seeing the text but not knowing if its doing anything?\r\n\r\nI'd suggest knowing that its yet to be properly implemented is a lot better than trying to guess if its working or not.",
+      "PostedDate": "2009-12-22T06:33:46.853-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "If you want to know if it's implemented, you can go to the All Buffs chart.  Set bonuses are in there; if you don't see it, it's not implemented.  If you see it but it provides 0 score, then it's not implemented.",
+      "PostedDate": "2009-12-22T10:22:30.987-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "But if it's there and it does zero it could be that you aren't doing what triggers it. Like in DPSWarr, if you don't have Slam and Heroic Strike active in your ability maintenance, half the set bonuses would be 0 then.",
+      "PostedDate": "2009-12-22T12:53:06.507-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-22T13:03:59.617-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Side-note: The special effect of the T10 4 for ProtWarr would be calculated with a recursive effect. The primary being the activation times of Bloodrage, the secondary being an UNstacking buff that went down as you took damage. I think we'd have to add a new stat for the damage absorption and Evan would need some special handling but that's about it.",
+      "PostedDate": "2009-12-22T13:06:52.333-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The issue with this, and similar effects (e.g. the Shield Block set bonus) is that they often aren't actually used on the cooldown.\r\n\r\nThis is one where it would be easy enough (as it's an absorb) to remove X damage every 60 second cycle--or presuming you are taking enough DPS to remove it over the duration (almost certainly) just X/60 per second. \r\n\r\nHowever, it is unlikely the average tanking Warrior will actually use it like this. As Shield Wall or whatever, it will most likely be used as an 'oh crap' cooldown or to avoid something specific. One could model in the average reduction of Shield Wall every cooldown period, but that would be ignoring how it is actually used.\r\n\r\nSo, that said, I'm reluctant to model it in as direct damage reduction... although I will have a think about it as to if it's appropriate.\r\n\r\n(I most likely wouldn't do this with a Special Effect, since that's kinda overly complicated--I'd simply remove X DPS from your net damage taken after all calculations, capped by how much damage you are taking over the duration of the buff if applicable. It's pretty simple since the absorb is a set finite value.)",
+      "PostedDate": "2009-12-31T09:54:32.177-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-18T10:57:56.46-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-05-03T20:25:26.303-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T15:47:29.33-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-06T20:41:23.743-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-11-15T16:13:43.137-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:09.093-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:50.26-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

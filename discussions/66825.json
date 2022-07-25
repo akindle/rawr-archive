@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "227136",
+    "ThreadId": "66825",
+    "Html": "<p>Quote from the front page: &quot;If you're running Rawr via Mono on OSX/Linux, you'll need to use Mono v2.2. The latest version (v2.4) has a bug that prevents Rawr from running.&quot;</p>\r\n<p>What is the number of that bug, please.</p>\r\n<p>I run Debian Stable (Lenny). Testing (Squeeze) has v2.4.2.3 available, which I can use. There is a long list of bug fixes for v2.4.2.3 and I'd like to see if the bug that is mentioned in the quote is in that list.</p>\r\n<p>&nbsp;</p>\r\n<p>Thanks,</p>\r\n<p>slopoke</p>",
+    "PostedDate": "2009-08-24T10:21:31.173-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "227203",
+    "ThreadId": "66825",
+    "Html": "<p>I do not know. Feel free to try it and let us know if the newer version has fixed it.</p>",
+    "PostedDate": "2009-08-24T13:01:09.58-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "228457",
+    "ThreadId": "66825",
+    "Html": "<p>I found the bug that is causing Mono 2.4 to not work, <a title=\"https://bugzilla.novell.com/show_bug.cgi?id=434583\" href=\"https://bugzilla.novell.com/show_bug.cgi?id=434583\">https://bugzilla.novell.com/show_bug.cgi?id=434583</a>. There is a pretty easy fix, just to not use SetResolution on line 383-384 in ItemIcons.cs while on Mono. I commented it out and rebuilt it with MonoDevelop, and then Rawr would run just fine with Mono 2.4.</p>",
+    "PostedDate": "2009-08-27T09:42:22.993-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

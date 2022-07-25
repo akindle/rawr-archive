@@ -1,0 +1,106 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Enhance",
+      "DisplayName": "Rawr.Enhance"
+    },
+    "ClosedComment": "Rawr 4.1.04 Released",
+    "ClosedDate": "2011-04-29T22:02:24.84-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Basically, after reforging gear to Rawr's optimize, the last few times I have had four more hit then what Rawr suggests I should have. I have checked every item so that it matches how much hit it should have from the tooltips in Rawr to the tooltips in game.\n \nI've attached the setup in Rawr showing 1747 hit value. When I load from Battle.net in Rawr it still shows 1747 as well. \nhttp://us.battle.net/wow/en/character/magtheridon/forknroad/advanced\n \nHowever, in the game I still show up with 1751. Here is a screenshot showing that (I couldn't make two attachments in the post http://i865.photobucket.com/albums/ab216/ethanhunteg/1751hit.jpg  ) Any suggestions on what I can do or what I'm missing?\n \nAdditional Information:\nRawr v4.1.3.0 standalone version\nWindows 7 64 SP1",
+    "LastUpdatedDate": "2013-05-16T05:18:12.08-07:00",
+    "PlannedForRelease": "Rawr 4.1.03",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-04-11T13:10:56.557-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Enhance] Hit value in game different",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 20489
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4841,
+      "FileName": "enhance 4-11-11 new.xml",
+      "DownloadUrl": ".\\4841"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "4 hit rating sounds like a socket bonus",
+      "PostedDate": "2011-04-11T13:17:11.673-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-11T13:17:30.617-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Or you have an \"of the something\" that's got the wrong suffix id (a lower version of itself) so it's giving you 4 less hit and one other stat than it should",
+      "PostedDate": "2011-04-11T15:00:52.323-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The only item I have that is \"of the something\" is the ring from Al'Akir that is the Mistral Circle of the Windstorm which is agility/crit/mastery and is properly showing up with all the same numbers in Rawr, Armory, and in game tooltip. All of my socket bonuses are either 10, 20, or 30 points. I'm wondering now if this is a problem with the game that I would ask a GM about. I guess the reason I say that is that my armory still says 1747 but in game it says 4 more. I'm not sure its very strange.",
+      "PostedDate": "2011-04-11T17:53:42.827-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Just checked you armoury (battle.net), and it is saying 1751 hit rating for 17.09% hit chance.\r\nLoaded you char from the provided .xml, and it shows 1747 hit rating for 17.05% hit chance.\r\nFresh download shows the same as the .xml\r\n\r\nWill look into it.",
+      "PostedDate": "2011-04-12T00:37:34.4-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok, on Battle.Net\r\n-> Melee Hit Rating 1747\r\n-> Spell Hit Rating 1751\r\nThis discrepancy is from elemental precision:  33% of spirit from your items to [b]spell[/b] hit.   15 * 0.33 = 4.95.  (The fifteen is from your chest enchant).\r\n\r\nThis is a display issue in Rawr.Enhance.  Currently revamping that section, and the display of hit from elemental precision got lost in one of my changes (it is still being counted in calculations).\r\nAlso found out that there is something funny going on in my crit display.  Sigh.",
+      "PostedDate": "2011-04-12T01:00:40.777-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok that's great to know. I wouldn't have thought of that. Also, this probably explains why sometimes I have set the Spell Hit % to be <= 0  under the additional requirements of the optimizer and it still was coming up just shy of it. If optimizer was correctly counting the 4 spirit as hit and knew I would get that in the game, then it was was putting me below on purpose.\r\n\r\nThanks a bunch",
+      "PostedDate": "2011-04-12T01:20:31.177-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Have checked in a fix so that Elemental Precision is counted in the display (again :P).  You would think that I would remember to put it back in when I change something (Jothay has fixed it once, me twice now)\r\nHowever, because of the formula I am using, it is now putting you at 1752 Hit Rating (as 15 * 1 / 3 == 5).  I am putting that extra 1 hit rating down to a rounding error somewhere.  Which I will look into when I have the time.",
+      "PostedDate": "2011-04-12T01:35:40.53-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-12T01:36:08.2-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-29T22:02:24.84-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:25:20.573-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:12.08-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

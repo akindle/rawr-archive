@@ -1,0 +1,121 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Optimizer",
+      "DisplayName": "Rawr.Base.Optimizer"
+    },
+    "ClosedComment": "Should be fixed for next release.",
+    "ClosedDate": "2010-02-26T17:35:41.59-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "This is an issue in Rawr.Enhan version 2.3.6.0 Every time I go into the optimizer and try to optimize my gear the following message pops up: \"The following currently equipped items are not available: Enchanted Tear not available. Do you want to continue with the optimization?\". Now, I'm pretty sure it's not something I'm doing wrong because when I go to the Comparisons menu and select the Gems > Blue list I see Enchanted tear is marked with a green diamond as available but the program just won't recognize it as such (and I even have 1 Enchanted Tear socketed in my shoulder slot). I tried to un-mark it and mark it again manually but I keep getting the same message. I'm including my XML fire for reference, hope this information is helpful enough.",
+    "LastUpdatedDate": "2013-05-16T05:22:09.22-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-01-23T08:12:24.88-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Enchanted Tear showing as unavailable even though it's marked",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16065
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2845,
+      "FileName": "Gortrash.xml",
+      "DownloadUrl": ".\\2845"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "As a confirmation, this is happening to me too when I optimize with Enhance.\r\n",
+      "PostedDate": "2010-01-23T09:44:35.09-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Though totally unintuitive, that happens because it's 'effectively' not available, due to Nightmare Tear being available, which eclipses it in every regard. I suppose you could use one of each, but if you're using epic gems, is there ever a case where 6stats beats 10+10 or 20?",
+      "PostedDate": "2010-01-23T10:17:00.267-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well, I manually disabled Nightmare Tear in order to see if Rawr will choose Enchanted Tear instead but I kept getting the same message: Enchanted Tear not available. Then I manually disabled Enchanted tear in order to completely remove it from the equation, so to speak but I kept getting the message regardless of the fact that I have already disabled it. It seems the program won't \"recognize\" Enchanted Tear no matter what. ",
+      "PostedDate": "2010-01-23T11:30:50.063-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You say you manually disabled Nightmare Tear, but did you really? You need to both unmark it as available (clear the green diamond) and disable any gemming templates that use it.",
+      "PostedDate": "2010-01-23T12:59:01.65-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "If by \"templates\" you mean the gemming possibilities for each gear slot on the right side of the screen, then yes I did that (my chest was the only possible gear slot using Nightmare Tear so I only disabled that) and then again manually disabled it from the Gems list and Rawr still refuses to use Enchanted Tear instead or recognize it as available.",
+      "PostedDate": "2010-01-23T14:24:36.51-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well, I use a Nightmare Tear + Enchanted Tear because even +6 to all stats can be great for some classes. Take Enhancment here: Agility gives AP and melee crit, Int gives AP, spell crit and mana, Strength gives AP, plus, all that aforementioned AP gives you more SP. Only Stam and Spirit are effectively useless. That's 18 points of DPS-relevant stats in addition to the socket bonus you're likely picking up (since Enh gear has /a lot/ of blue sockets). What other blue-compatible gem can come close to that performance other than the Nightmare Tear, which you already have as the first half of your meta requirement? Not to mention Enchanted Tears are freakin' cheap.\r\n\r\nNow, if you have a gear set that only needs 1 blue gem, then yeah, solo Nightmare Tear away. :)\r\n\r\nIn any case, Rawr stops complaining about Enchanted Tears if I take the one I put in my gear out or remove my Nightmare Tear and mark Nightmare Tears unavailable. It's probably just the optimizer deprecating Enchanted Tears because they are weaker than something functionally identical marked available. Doing that is great for regular gems and likely saves a lot of computation time in cases where people are silly and mark both Epic and Rare gems as available, but there should probably an exception for Tears due to their unique-equip status and special-use cases like the one stated above.\r\n",
+      "PostedDate": "2010-01-23T14:28:43.237-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "OK, so if it is useful, we should make it not ignore them when you have Nightmare Tears available.\r\n\r\nGortrash: No, I really do mean gemming templates. See the help docs on gemming templates for help.",
+      "PostedDate": "2010-01-23T15:04:28.63-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "OK, I went to Tools > Edit Gemming Templates and disabled the one using Nightmare Tears, then unmarked it from the gem list as well and keep getting the message that Enchanted Tear is not available. Could you please load my XML file to verify if the issue really exists and I'm not imagining things, please? Thank you.",
+      "PostedDate": "2010-01-23T15:23:26.62-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yeah Astrylian, for Enhance using a Nightmare tear AND an Enchanted Tear is usually the best setup, as it typically eclipses any combo of blue gem required to get the meta gem activated. ie: If using Chaotic Diamond which needs 2 blues using these two are typically better than using a Nightmare Tear + a blue/purple/green gem. This is because typically the blue gives no useful stats and with purple/green the best you can get from them is +10 of a stat. The 6 all stats will give us 18 AP (6 from str, 6 from Agi & 6 from Int + spell crit + melee crit) This often outweighs a purple/green.\r\n\r\nWas this a recent \"fix\" to hide Enchanted Tear? I'm sure it worked before.",
+      "PostedDate": "2010-01-28T08:15:03.95-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I wouldn't say it was a recent fix? I've been getting this message ever since I first started using Rawr a few months ago. Anyway, did you check my attached .xml file, Levva, and how did it work for you?",
+      "PostedDate": "2010-02-02T15:12:04.74-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Any news on this? Enchanted Tears are still deprecated by Nightmare Tears as of build 46894.",
+      "PostedDate": "2010-02-26T16:07:27.417-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-26T17:35:41.59-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-09T15:57:52.72-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:30:16.673-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:09.22-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

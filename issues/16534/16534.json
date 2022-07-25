@@ -1,0 +1,216 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.LoadCharacter",
+      "DisplayName": "Rawr.Base.LoadCharacter"
+    },
+    "ClosedComment": "The original postings for this issue have been resolved. Later postings may have occurred due to armory being down for maintenance &#40;the timings coincide&#41;.",
+    "ClosedDate": "2010-03-09T11:47:00.817-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "v2.3.10 - \"Tools-->Reload current character form armory\" hangs after around 3 minutes with \"Get character            No character returned from armory. I...\". Same issue using \"File-->Load from armory...\". Tried it with v2.3.9 too. Trying to load \"SENRA\" from \"STEAMWHEEDLE CARTEL\", EU",
+    "LastUpdatedDate": "2013-05-16T05:21:42.057-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-02-24T15:28:37.893-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Cannot load character from armory 2.3.9 and 2.3.10",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 8,
+    "Id": 16534
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3030,
+      "FileName": "senra-holy.xml",
+      "DownloadUrl": ".\\3030"
+    },
+    {
+      "FileId": 3035,
+      "FileName": "armory.txt",
+      "DownloadUrl": ".\\3035"
+    },
+    {
+      "FileId": 3089,
+      "FileName": "Caile Arcane.xml",
+      "DownloadUrl": ".\\3089"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "We need more information. Please refer to http://rawr.codeplex.com/wikipage?title=Troubleshooting and post error report from step 8 in armory import section.",
+      "PostedDate": "2010-02-24T15:33:27.567-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Doesn't the EU armory go down for maintenance on Wednesdays?",
+      "PostedDate": "2010-02-24T15:58:25.347-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I am having the same problem, have tried downloading most versions right back to 2.3.4, they are all giving the same error but only 2.3.10 is giving a full error on the \"web\" execptions section of the error box, error is as follows:\r\n\r\nStep Specific:\r\nStep Name: Get Character\r\nDescription: No character returned from the Armory. Is the Armory down?\r\nException: No Exception\r\n\r\nWeb Client:\r\nException: Too many automatic redirections were attempted.",
+      "PostedDate": "2010-02-24T23:33:59.79-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Duplicate of http://rawr.codeplex.com/WorkItem/View.aspx?WorkItemId=16520, it is fixed for next release.",
+      "PostedDate": "2010-02-24T23:36:09.97-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-24T23:46:24.703-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I've the same problem. I think, Blizzard have change the link for the Characters in the armory. Newly if the Guildname on the end of the Link.",
+      "PostedDate": "2010-02-24T23:59:36.727-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-25T00:23:40.443-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Step Name: Get Character\r\nDescription: No character returned from the Armory. Is the Armory down?\r\n",
+      "PostedDate": "2010-02-25T00:40:07.977-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-25T01:14:45.257-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Step Name: Get Character\r\nDescription: No character returned from the Armory. Is the Armory down?\r\n\r\nWeb Client:\r\nException: \"Es wurden zu viele automatische Umleitungen versucht\"",
+      "PostedDate": "2010-02-25T01:24:48.91-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Error report as per trobleshooting wiki page:\r\nStep Name: Get Character\r\nDescription: No character returned from the Armory. Is the Armory down?\r\n\r\nAcessing the armory using a browser and a debug tool you can see that the client is redirected to some kind of login service at battle.net before it returns to wowarmory.com. It would seem that the key to accessing the armory page without being redirected is having a cookie: loginChecked=1 in the request headers (which is the result of the battle.net detour). \r\n\r\nRawr doesn't seem to care about the redirect or the Set-Cookie in the response, it just repeatedly tries to access the initial armory page.\r\n\r\nComplete header dump of  a working browser conversation attached. Names have been changed to protect the innocent.",
+      "PostedDate": "2010-02-25T01:57:29.37-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-25T01:57:32.227-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-25T02:00:15.45-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I just realized this is fixed. I should read before posting.",
+      "PostedDate": "2010-02-25T02:00:46.793-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-25T02:14:06.093-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-25T02:34:18.84-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "After roughly 4 minutes of nothing happening in the status dialogue an error is displayed:\r\n\r\nStep Name: Get Character\r\nDescription: No character returned from the Armory. Is the Armory down?\r\nWeb Client:\r\nException: \"Es wurden zu viele automatische Umleitungen versucht\"\r\n(translation: \"Too many automatic redirection attempts\")\r\n\r\nI've tried with versions 2.3.8, 2.3.9 and 2.3.10 ... none of my characters are loaded from the EU armory.\r\nManually accessing the armory page shows the characters just fine.\r\ne.g.: http://eu.wowarmory.com/character-sheet.xml?cn=Coppacabana&r=Die+Arguswacht\r\n\r\nI can load a previously saved character sheet and I can update it from the character profiler (ver. 2.3.8), but I cannot update the charcter from the armory.",
+      "PostedDate": "2010-02-25T02:35:25.653-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "From www.wow-heroes.com administrators. They have fixed the problem in their side.\r\n\r\nThere's a \"problem\" with EU armory since yesterday, they are internally redirecting all requests to from\r\nhttp://eu.wowarmory.com/character-sheet.xml\r\nto\r\nhttps://eu.battle.net/login/login.xml?r ... -sheet.xml and then back to\r\nhttp://eu.wowarmory.com/character-sheet.xml\r\nand our bot wasn't being redirected through that new connection. We made a quick fix on our side so everything should be working fine now, thanks for your patience :)",
+      "PostedDate": "2010-02-25T03:09:54.23-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I have this issue and have tried earl;ier version and reinstalled\r\n\r\nStep Specific:\r\nStep Name: Get Character\r\nDescription: No character returned from the Armory. Is the Armory down?\r\nException: No Exception\r\n",
+      "PostedDate": "2010-02-25T05:05:54.91-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Still having the same problem its been 24h since it started",
+      "PostedDate": "2010-02-25T10:20:16.027-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Still having the same problem. The error message is sometimes slightly different now, usually \"No character returned from the Armory. Is the Armory down?\" but occasionally \"Rawr encountered an error retrieving the Character - shaminx@EU-alonsus from the armory\".\r\nWith the new error, this was the additional info-\r\n\r\nStep Name: Get Character\r\nDescription: Rawr encountered an error retrieving the Character - shaminx@EU-alonsus from the armory\r\nObject reference not set to an instance of an object.\r\n   at Rawr.Armory.GetCharacter(CharacterRegion region, String realm, String name, String[]& itemsOnCharacter)\r\nWeb client:  The remote server returned an error:(503) Server unavailable\r\n\r\n(I did double chack that the armory was still functioning through a browser when this message came up, and it was).\r\n\r\n Wasn't getting that error initially, no idea if it makes any difference.\r\n",
+      "PostedDate": "2010-02-25T11:47:20.927-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "WE HAVE FIXED THE ISSUE, THE RELEASE IS COMING WITH THE FIX",
+      "PostedDate": "2010-02-25T12:38:12.843-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-25T23:05:35.65-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Today i've tested again the Version 2.3.9 ... and it works. Looks like Blizz has it fixed.",
+      "PostedDate": "2010-02-26T00:50:47.697-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "As of 2.3.11 Rawr is back to not loading from the Armory.  It seems that every other release has this problem.  I wait for the next release, it's fixed.  Next release, it breaks.  Could that pattern be a clue for someone as to the problem?",
+      "PostedDate": "2010-03-02T19:12:49.24-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "2.3.11 is working for me with the EU armory.\r\nMaybe it's actually the armory which is not working at the time for those who have problems.",
+      "PostedDate": "2010-03-03T02:05:14.25-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Never had a problem loading from Armory with ANY version of RAWR (been using RAWR for more then a year).  2.3.11 ... Can't load from armory...or load a saved toon from 2.3.10.",
+      "PostedDate": "2010-03-03T05:59:45.707-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-03T05:59:46.597-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-09T11:47:00.817-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-09T15:35:22.037-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:29:43.467-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:42.057-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

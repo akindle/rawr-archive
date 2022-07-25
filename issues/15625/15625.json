@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.HealPriest",
+      "DisplayName": "Rawr.HealPriest"
+    },
+    "ClosedComment": "I will have this in mind when I redesign the HolyPriest module for Cata.",
+    "ClosedDate": "2010-07-05T01:56:10.21-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "With the four piece priest PVP set, the weakened soul effect is reduced by 2 seconds, yet the cast sequence is the same with or without the four piece bonus.  As such, the benefit of a shorter recast time on pw:s isn't being modeled properly.  This was tested at least for Gladiator's raiment 4 piece bonus, but may apply to the Gladiator's investiture 4 piece bonus as well.  In addition, there are now +sp bonuses for the two and four piece sets that aren't modeled in.  Tested on v2.3.4.  Thanks!",
+    "LastUpdatedDate": "2013-05-16T05:22:44.133-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-12-28T09:35:02.553-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[HealPriest] Reduced Weakened Soul time isn't reflected in modeling for PVP gear",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15625
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Priest model doesn't handle the Weakened Soul debuff directly, and thus I have to think on how to implement this.  SpellPower additions have been updated.",
+      "PostedDate": "2009-12-29T09:07:13.663-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Personally, I would like a different way to model things, based on a priority scheme more like with the shadow priest.  I.e. you specify the priority of the spells, and the number of healing targets to consider, so you could set your priority list to be:\r\nPenance\r\nPoM\r\nPW:S\r\nrenew\r\nflash heal\r\n\r\nFrom there it would look at each target, and consider what to cast next and on what target, i.e. the first cast would be penance on #1, then PoM on #1 (since Penance is on cooldown), then pw:s on #1 (since penance and PoM are both on cooldoown), then pw:s on #2 (since target 1 is on \"cooldown\" with weakened soul, then renew on #1, then renew on #2, then flash heal on #1 (until a cooldown came up).  I think this would allow the cooldowns to be modeled better, and would better fit how people actually heal, and would be a good replacement for the custom role as it is now.\r\n\r\nAlternatively, allowing a cast sequence to be defined vs. the current method of custom roles would work, as you can create a cyclical cast sequence that accounts for weakened soul yourself, and all rawr has to do is model the sequence in sequential order.  This would allow you to do a sequence of:\r\n\r\n1. pw:s\r\n2. pom (3) anticipating 3 jumps\r\n3. renew\r\n4. pw:s (assuming on a 2nd target)\r\n5. PoH\r\n6. pw:s\r\n7. flash heal\r\n8. renew\r\n9. penance\r\n10. pw:s\r\n11. renew\r\n",
+      "PostedDate": "2009-12-29T12:17:22.14-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T15:48:52.937-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-05T01:56:10.21-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-09T12:29:22.793-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:37:50.02-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:00.71-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:44.133-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

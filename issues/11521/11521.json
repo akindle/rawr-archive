@@ -1,0 +1,75 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Only need one thread citing this open at a time.\n\nClosing this and using work item 11605.",
+    "ClosedDate": "2008-11-12T21:36:46.31-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When I try to delete the non-listed gemmings, my machine chugs for a while, and reliably comes up with an error message:\n \n************** Exception Text **************\nSystem.NullReferenceException: Object reference not set to an instance of an object.\n   at Rawr.Character.IsEquipped(Item itemToBeChecked, CharacterSlot slot)\n   at Rawr.Character.IsEquipped(Item itemToBeChecked)\n   at Rawr.FormMassGemReplacement.OKButton_Click(Object sender, EventArgs e)\n   at System.Windows.Forms.Control.OnClick(EventArgs e)\n   at System.Windows.Forms.Button.OnClick(EventArgs e)\n   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)\n   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)\n   at System.Windows.Forms.Control.WndProc(Message& m)\n   at System.Windows.Forms.ButtonBase.WndProc(Message& m)\n   at System.Windows.Forms.Button.WndProc(Message& m)\n   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)\n   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)\n   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)\n \n...this has happened on two different computers. Adding gemmings works fine, I only run into the problem when I want it to delete the old ones. Any ideas?",
+    "LastUpdatedDate": "2013-05-16T05:26:54.287-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-10-27T11:36:22.98-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Gem Replacement",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 11521
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I've also seen this crash upon gem replacement.  It looked very similar to the other crash I reported during optimization.\r\n\r\nI also noticed that while all of my current gear was still shown in it's slots, the some of the popup lists of gear AND some of the right side pane views would not have the item \"selected\" any longer(blue highlight).  The original item that was 'selected' in some of the slots no longer existed in the item lists after regemming, causing this error: \"Object reference not set to an instance of an object\".  Essentially regemming deleted the current item out from under the character?\r\n",
+      "PostedDate": "2008-10-27T16:47:09.81-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Which version of Rawr are you using?\r\n\r\ncan you give me a scenario that reproduces the problem you have?",
+      "PostedDate": "2008-10-27T21:24:40.67-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok. I think I've got it nailed, \r\nthrow another comment up here if there are any more problems. ",
+      "PostedDate": "2008-10-27T23:53:12.763-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-10-31T09:23:13-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-11-12T21:36:46.31-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:22.23-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:54.287-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

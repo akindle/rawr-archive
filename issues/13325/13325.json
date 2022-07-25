@@ -1,0 +1,111 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Optimizer",
+      "DisplayName": "Rawr.Base.Optimizer"
+    },
+    "ClosedComment": "Working as designed. Please see Rawr Help&#47;FAQs for further information on selecting items and enchants for Optimizer",
+    "ClosedDate": "2009-07-08T10:24:07.213-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When trying to use the optimizer for my druid cat spec, it actually suggests switching to a lower spec set. It removes enchants from shoulders and gloves and reduces the cloak enchant from major agility (+22) to superior agility (+16). It seems to suggest a completely wrong enchant (stalwart protector) on my head piece. The end result is a drop from 6301.735 before optimization to 6288.493 afterward.\n \nI have enclosed the character file for this to be verified.\n \nIt appears that someone else already reported the issue of checking for food buffs causing a crash. I find that the same is true if I check talents and/or flasks as well. Let me know if you want a separate report on that.",
+    "LastUpdatedDate": "2013-05-16T05:25:27.47-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-05-25T15:30:32.423-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Feature Request.Optimizer] Add warning when equipped gear is not available or when common enchants are not available",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 13325
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1923,
+      "FileName": "Finandir - Cat for optimizer.xml",
+      "DownloadUrl": ".\\1923"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "There's no issue here. Anything you want the Optimizer to use, you need to mark as available. Everything you mentioned, you haven't marked as available.",
+      "PostedDate": "2009-05-25T17:03:22.427-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That actually isn't true. It does correctly suggest upgrading my headpiece, which is marked as available (Valorous Dreamwalker Headguard has a green diamond next to it). Again, it is actually removing enchants from two items and also putting the wrong enchant on the new headpiece that gets selected. There should be nothing suggested other than the new headpiece from what I can see. Properly gemmed, Valorous Dreamwalker Headpiece should be an upgrade for me over the Helm of the Vast Legions. It shows this when I look in the comparisons screen, but the optimizer is not showing me this. It does also (though I forgot to mention it before) seem to correctly suggest that I equip the Mechanists Bindings over the Sinner's Bindings. It is correctly showing the leatherworking self enchant on the wrist item.\r\n\r\nLooking in the XML file I enclosed above, I do see item 40473, the Tier 7 helm, being available, also 45108, the mechanists bindings. So, unless there is a reason that I don't understand that the optimizer should remove enchants and put a tanking enchant on a helm when optimizing for overall in cat spec at maximum thoroughness, there does seem to be a problem.",
+      "PostedDate": "2009-05-25T17:37:05.47-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I see that I did forget to select the enchants. I was just paying attention to items. So, I see what you mean. My apologies for that.\r\n\r\nIt does seem kind of strange that currently equipped items wouldn't be taken into account when comparing, though. I at least see what I did incorrectly. It doesn't seem very intuitive that a currently geared item with an applied enchant wouldn't be deemed as available to the optimizer. I suppose there could be some cases where people throw away their current gear and only want to look at lower level gear, but it doesn't seem that likely. Is this something that might change in a future version?",
+      "PostedDate": "2009-05-25T17:45:02.007-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "OK, one more clarification and then I'll leave this alone...\r\n\r\nSince it does say in several places that only marked items are available to the optimizer, I can understand you not wanting to change that. Given that there was a lot of previous discussion about making this clearer for everyone and the fact that this was re-worded to clarify what was going on, it probably wouldn't make sense to change things to include equipped items automatically.\r\n\r\nTo make it more friendly to Optimizer noobs, like me, evidently, would it make sense to give a warning if someone tries to optimize without their current gear selected? There could be a checkbox in the warning dialog allowing that warning to not be shown in the future so that people wanting to bypass this wouldn't be annoyed by it.",
+      "PostedDate": "2009-05-25T17:58:06.167-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Not a bad idea, sure. ",
+      "PostedDate": "2009-05-25T21:56:28.28-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm having a similar problem with my holy pally gear. The \"optimized\" set contains the gear I've switched out of, and with lower enchants (e.g., Lesser Crag vs. Greater Crag). It even reports a lower score for the optimized set. (I'll post a screenshot when I manage to get Rawr to start up again--see startup issue)",
+      "PostedDate": "2009-05-25T22:11:22.697-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "On a related/similar note, you might consider a warning if common enchanter enchants are marked as unavailable.",
+      "PostedDate": "2009-05-26T03:17:11.583-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-05-26T19:40:23.107-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "So would it be safe to say, that what he would be asking for then is that all the enchants (or at least the \"Top 5\" commonly used for each spec) should be available by default, so that Rawr can suggest the most opitmal one without having to go select them?  It seems silly, and a bit contrary to the definition, for you to have to tell the optimizer which enchants to try, because if you already knew which ones were best why would you use an optimizer?\r\n\r\nI understand that the issue here may be permutations, and that by turning more on by default, the optimizer's work increases.  But there must be some happy medium.  The Comparisons tables obviously \"know\" a few enchants that are better, you could pull some of that information into the optimizer?\r\n\r\nTo say \"There's no issue here\" is misleading.  While the original poster may have miscommunicated or misunderstood what was happening, the way it currently works clearly isn't intuitive, or the way users think it will work when they use it.  And isn't having Rawr help more easily solve people's problems the most important issues of all?",
+      "PostedDate": "2009-05-28T08:11:29.823-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-07-08T10:24:07.213-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T16:41:47.643-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:22.64-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:27.47-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

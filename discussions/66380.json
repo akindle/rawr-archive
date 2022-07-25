@@ -1,0 +1,114 @@
+[
+  {
+    "Id": "225498",
+    "ThreadId": "66380",
+    "Html": "<p>I'm lazy. &nbsp;I like to update my character from the Character Profiler and run the batch optimization for the situations I care about.</p>\r\n<p>Unfortunately the Profiler import marks all my gear as Available, even gear that I know, in advance, won't be part of the optimum set. &nbsp;Having that gear marked available slows down the optimizer (I know that, because I can manually mark it as unavailable, and the optimizer runs faster). &nbsp;However doing the marking manually also costs me time (perhaps even more time), and is somewhat error prone.</p>\r\n<p>I'd like to suggest some ways that the optimizer could safely decide pieces of gear to ignore:</p>\r\n<p>1) If an item has no relevant stats for the current model (that fishing quest reward: Battered Jungle Hat)</p>\r\n<p>2) If an item is strictly worse (lower values in all relevant stats, (including gem colors if Enforce Meta is in effect) than some other piece of gear. &nbsp;The only relevant stat from Hallowed Helm is 3 Armor. &nbsp;Assuming I have any helmet with more than 3 armor, removing it from consideration should not lower my optimized total score. &nbsp;For melee classes you probably shouldn't remove a weapon from consideration unless it worse (in other stats) than another weapon of the same speed.</p>\r\n<p>Character profiler shows that I have 19 helms. &nbsp;For my &quot;Tree&quot; model, the two optimizations above would remove all but three from consideration.</p>\r\n<p>The two suggestions above are safe. &nbsp;You'll never remove an item that could possibly help. &nbsp;I'm assuming that having too much of a stat might be a waste, but never results in a reduced score. &nbsp;I guess some tanking models could give Haste a negative score (faster auto-attack means more parry-haste for the boss) but I'm not aware of any other situations where increasing a stat is bad.</p>",
+    "PostedDate": "2009-08-19T09:33:25.373-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "225636",
+    "ThreadId": "66380",
+    "Html": "<p>There's merit to this idea, but I'd rather not implement it as part of the optimizer. One of the reasons is that specially for batch mode optimizations it is not uncommon that an item that is lower will be reused for some less important character to fit some specific niche. This could potentially however be implemented as a separate tool to trim available items that works independent of the optimizer.</p>",
+    "PostedDate": "2009-08-19T15:47:56.997-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "225642",
+    "ThreadId": "66380",
+    "Html": "<p>As a druid who is dual spec kitty/tree this affects me greatly.&nbsp; One way around this is just to save your character twice, once with resto spec and gear and once with feral spec and gear.</p>\r\n<p>&nbsp;</p>\r\n<p>Of course, that all gets stuffed up if you are in your resto save and you reload from armory and find out you last logged out in your feral gear.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-08-19T16:12:14.38-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "225672",
+    "ThreadId": "66380",
+    "Html": "<p>Actually, the Optimizer already does ignore items when there is something else better in every way available (ie, hallowed helm). It takes a bit of time to process this at the very beginning, but that's relatively tiny. However, I don't think it filters that to just relevant stats, so an item with irrelevant stats would still be considered. We could see about adding that too...</p>",
+    "PostedDate": "2009-08-19T18:32:50.383-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "225684",
+    "ThreadId": "66380",
+    "Html": "<p>Setting something that has 2 or more irrelevant stats as not even considered by the Optimizer or the Build Upgrade List (I presume that is simply built on top of the Optimizer, though) would help in saving a lot of time.</p>",
+    "PostedDate": "2009-08-19T19:15:10.473-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "225688",
+    "ThreadId": "66380",
+    "Html": "<p>Like the Healadin model, models themselves should set items that have multiple irrelevant stats to be removed, then they wouldn't hit the Optimizer in the first place.</p>",
+    "PostedDate": "2009-08-19T19:42:37.563-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "225689",
+    "ThreadId": "66380",
+    "Html": "<p>What the Healadin model is doing seems like a poor way of handling it.&nbsp; Items with irrelevant stats are unlikely to be useful, but it's hardly impossible to find a situation where they are.&nbsp; A &quot;Deselect inferior items&quot; option seems like the right way to do it, like Kavan mentioned.&nbsp; Obviously you don't want the Tree model showing rogue leather, but excluding caster leather because it has hit seems like a bad idea too.</p>",
+    "PostedDate": "2009-08-19T20:04:06.523-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "225691",
+    "ThreadId": "66380",
+    "Html": "<p>Yeah, even blacklisting things because they have blatantly irrelevant stats (like spell power on a rogue) cause problems when you look at things like Fish Feasts, or +Stats enchants, etc.</p>",
+    "PostedDate": "2009-08-19T20:12:22.66-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "225732",
+    "ThreadId": "66380",
+    "Html": "<p>Is there any way to restrict the potential &quot;blindness&quot; that the model would enforce on the program to only apply to gear, not simply blacklisting the stats themselves?</p>\r\n<p>&nbsp;</p>\r\n<p>[edit] Typo.</p>",
+    "PostedDate": "2009-08-19T23:11:50.137-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "225744",
+    "ThreadId": "66380",
+    "Html": "<p>I know for a long time into Naxx, I still had a blue tanking helm with no meta gem.&nbsp;&nbsp;&nbsp; In that situation, any decent iLvl epic leather caster helm with a meta would have been a big upgrade due to more stam, more armor &amp; the gemslots to put a meta and agi gems in.&nbsp;&nbsp;&nbsp; So there are definitely situations where it happens.</p>\r\n<p>&nbsp;</p>\r\n<p>Having said that, if I had tried to wear my caster helm while tanking, I would have got laughed out of the guild!&nbsp; So maybe having Rawr not show them would be useful :)</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-08-20T00:12:11.76-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "227154",
+    "ThreadId": "66380",
+    "Html": "<p>I'd like to also say that having a way to produce a list of unnecessary items would be extremely helpful.</p>\r\n<p>It would be nice if it looked like the upgrade list and show you a list of gear that you could delete.&nbsp; It would show that item 'x', is bested ability-wise by item 'y' thus showing you why that item should be removed.&nbsp; It would be a very handy utility to use to clean up my bank.</p>",
+    "PostedDate": "2009-08-24T11:01:56.403-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "227700",
+    "ThreadId": "66380",
+    "Html": "<p>You do have to be careful about that, though, Fro.&nbsp; For example, for a given gear availability/setup, http://www.wowhead.com/?item=45608 and http://www.wowhead.com/?item=46322 for a Warrior could easily be the best option.&nbsp;</p>\r\n<p>If that feature was available for all single slots (everything but rings, trinkets, and non-ranged weapons), then it would be a nice option.&nbsp; Especially with how Coli loot is being handled (H Coli drops the same stuff as on normal mode, just with more total points allocated to the item), this will be coming up a lot.</p>",
+    "PostedDate": "2009-08-25T16:51:49.54-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "228074",
+    "ThreadId": "66380",
+    "Html": "<p>Well sure, you'd make special considerations for trinkets and rings. &nbsp;Best two instead of single best.</p>",
+    "PostedDate": "2009-08-26T11:34:42.473-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "228086",
+    "ThreadId": "66380",
+    "Html": "<p>And weapons, as many can dual-wield.</p>",
+    "PostedDate": "2009-08-26T12:06:28.06-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

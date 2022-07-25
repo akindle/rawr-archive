@@ -1,0 +1,75 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "Closed for no contact",
+    "ClosedDate": "2010-03-09T11:05:24.537-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When try to load a new char or change the class or model manually rawr crashes. This happens since 2.3.9.  If I restart the computer the new settings work as long as I don`t change class/model. \nI use a XP64bit, SP2 with 4GB Memory (and nothing else is running)\nError Message:\nSee the end of this message for details on invoking \njust-in-time (JIT) debugging instead of this dialog box.\n \n************** Exception Text **************\nSystem.InvalidOperationException: Unable to generate a temporary class (result=1).\nerror CS0008: Unexpected error reading metadata from file 'c:\\WINDOWS\\assembly\\GAC_MSIL\\System\\2.0.0.0__b77a5c561934e089\\System.dll' -- 'Für diesen Vorgang ist nicht genügend Speicher verfügbar. '\n \n   at System.Xml.Serialization.Compiler.Compile(Assembly parent, String ns, XmlSerializerCompilerParameters xmlParameters, Evidence evidence)\n   at System.Xml.Serialization.TempAssembly.GenerateAssembly(XmlMapping[] xmlMappings, Type[] types, String defaultNamespace, Evidence evidence, XmlSerializerCompilerParameters parameters, Assembly assembly, Hashtable assemblies)\n   at System.Xml.Serialization.TempAssembly..ctor(XmlMapping[] xmlMappings, Type[] types, String defaultNamespace, String location, Evidence evidence)\n   at System.Xml.Serialization.XmlSerializer.GenerateTempAssembly(XmlMapping xmlMapping, Type type, String defaultNamespace)\n   at System.Xml.Serialization.XmlSerializer..ctor(Type type, String defaultNamespace)\n   at Rawr.Enhance.CalculationsEnhance.DeserializeDataObject(String xml)\n   at Rawr.Character.get_CalculationOptions()\n   at Rawr.Enhance.CalculationOptionsPanelEnhance.LoadCalculationOptions()\n   at Rawr.FormMain.set_Character(Character value)\n   at Rawr.FormMain.LoadCharacterIntoForm(Character character, Boolean unsavedChanges)\n   at Rawr.FormMain.bw_LoadSavedCharacterComplete(Object sender, RunWorkerCompletedEventArgs e)",
+    "LastUpdatedDate": "2013-05-16T05:21:41.627-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-02-25T01:00:10.957-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] Rawr crashes when I change chars",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16541
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "What model(s) are involved?  if you can, please attach the character XML(s)",
+      "PostedDate": "2010-02-25T09:06:30.017-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-25T10:06:22.467-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It looks like you might have a corruption in your System.dll file at that path.",
+      "PostedDate": "2010-02-25T10:07:50.43-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-09T11:05:24.537-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T19:55:24.483-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:29:42.98-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:41.627-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

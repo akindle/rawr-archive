@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Cat",
+      "DisplayName": "Rawr.Cat"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-12-27T17:42:51.623-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "First off, long-time user of Rawr, love it passionately, many thanks to the developers who volunteer their time for it.\n \nThat said, I've been using Rawr to paperdoll gear sets of different ilvls for a blog post I'm working on, and I've run into a small, vexing display inconsistency. Procs that affect AP(STR/AGI/AP) or Haste get displayed as part of your base stats, averaged over fight duration based on uptime; others, such as crit, show the same base value regardless of procs. I'm not sure if this is intended behavior, but I think showing just the base stats, with perhaps an option to show average stats over fight time, would be better.\n \nEasily reproducible by equipping a trinket/enchant with a AP/Haste proc and observing reported base stats at different durations.",
+    "LastUpdatedDate": "2017-11-27T10:59:33.383-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-12-23T21:23:21.82-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Cat] Variance in the display of proc effects on base stats",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15592
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "This is due to how I have to manage crit and arpen caps. Stats which affect those are not being averaged out, and are handled separately. This produces the odd side-effect you describe of the averaged out ones being displayed on the Stats tab, and the others not. And before anyone asks, this is just a display oddity; the capped stats are indeed included in the derived calculations like DPS, ratings, etc.\r\n\r\nI'd like to have some sort of way to show the constant, average, and perhaps other levels of each stat, but since it's a display-only thing, it's relatively low priority at the moment.",
+      "PostedDate": "2009-12-23T23:13:34.5-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Figured it was something like that. Thanks for the explanation.",
+      "PostedDate": "2009-12-24T00:49:09.537-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-27T17:42:51.623-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:51:41.47-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T22:45:40.733-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:05.39-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:47.58-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T10:59:33.383-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

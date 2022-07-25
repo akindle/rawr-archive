@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "290716",
+    "ThreadId": "85347",
+    "Html": "<p>I've noticed with the latest release that if I lose the meta bonus lots of &quot;weird&quot; items start popping up at the top of my gear lists. My character is boomkin and as I was experimenting with gear I lost a blue gem - dropping the meta bonus. Things like Earthguard ring with a blue stam+something gem popped up in the list over rings like Maddening Whispers and similar tanking/melee items popped up in other slots as well. I don't recall the non-caster items jumping so high on the lists in the past, possibly because in the past there were more variations of gemming for different items included in the download.</p>\r\n<p>Anyway, what I was wondering;</p>\r\n<p>1. Could we get a warning of some sort when we swap out an item and it loses the meta bonus? Don't care if it's a popup, or highlight the head piece or something.</p>\r\n<p>2. Is there a way we could filter offspec items? ie: If you're a caster filter out melee/tank items so they don't suddenly pop to the top of the list.</p>\r\n<p>3. At the moment the socketed items don't always have a variety of gemmings listed. Would it be possible for RAWR to automatically(dynamically) create custom gemmings? So instead of only having one ring of maddening whispers it creates a version with a blue gem if there is a blue gem needed for meta bonus. I can see that being a pain to code, but it'd be a godsend. Maybe to make it simpler, RAWR could just create three variants for socketed items with red, blue and yellow gems. Not sure how to deal with items that have multiple sockets though...</p>",
+    "PostedDate": "2010-02-14T20:13:51.457-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "290721",
+    "ThreadId": "85347",
+    "Html": "<p>1. A &quot;<strong>Your Metagem is inactive!</strong>&quot; warning would seem nice, but not actually benefit you very much, until we implemented some sort of warning on each item in the comparison charts, indicating something like &quot;<strong>Swapping to this item would deactivate your Metagem!</strong>&quot;, probably in a somewhat less verbose manner. That's what we want to do, but is low priority at the moment.</p>\r\n<p>2. Kind of. Some models support this, but it can be problematic. What seems like a 'melee/tank' item isn't always clearcut.</p>\r\n<p>3. Rawr definitely already supports this, and is the Gemming Templates system. See the help topic on it.</p>",
+    "PostedDate": "2010-02-14T20:48:51.223-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "290844",
+    "ThreadId": "85347",
+    "Html": "<p>1) The headpiece should have a red border when you swap items out.</p>\r\n<p>2) DPSWarr supports this, but the way it decides it is based on filtering out items with stats we don't want. &nbsp;There are 3 checkboxes: Tank, PVP and Caster. &nbsp;If you have Tank filtered out, it will ignore anything with defense/dodge/parry. &nbsp;If you have PVP, anything with resilience. &nbsp;If you have caster, Int/Spirit/MP5/SpellPower (and special effects with SpellCast/HealingDone/etc). &nbsp;However, as Astrylian pointed out, this has caused us some problems, especially with trinkets (Darkmoon:Greatness can proc on HealingDone as well as DamageDone, which confuses the model). &nbsp;I suppose a caster could filter out things with AttackPower/Str/Agi, but the implementation can certainly cause problems like what DPSWarr has seen before.</p>\r\n<p>3) Gemming templates is another touchy subject for what is included &quot;out of the box&quot;. &nbsp;While we could certainly include every possible gem template you might possibly need, that affects performance. &nbsp;It's better left to have the common templates left as available, and for us to help users create their own templates based on what they're trying to do. &nbsp;There's a few ways we do this on different models; some have a lot enabled by default (at the cost of performance -- I think EnhSham does this) to make it easier for users. &nbsp;Others create a whole bunch but disable most by default (like DPSWarr), but this has the risk of people enabling a whole bunch that they don't need and again, affecting performance. &nbsp;Yet others only have a handful of templates even created, and encourage users to create their own.</p>\r\n<p>We've talked a bit about re-vamping the Gemming Template feature to make it more intuitive for users in Rawr3, but as of yet we haven't decided on a set direction. &nbsp;I highly recommend learning how Gem Templates work :)</p>",
+    "PostedDate": "2010-02-15T07:25:21.943-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "291018",
+    "ThreadId": "85347",
+    "Html": "<p>Just as an aside, Int is not counted in the &quot;ignore caster gear&quot; custom model &quot;filter&quot; (It's not a Filter in Rawr terms, but acts to a similar effect).&nbsp; This is because mail DPS gear comes with free (itemization allocation, that is) Int.&nbsp; The other stats cover all caster gear (between Spirit/Mp5/SP) - not including Int in the caster &quot;filter&quot; does not accidentally leave any caster gear in the lists.</p>",
+    "PostedDate": "2010-02-15T14:33:08.893-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "291550",
+    "ThreadId": "85347",
+    "Html": "<p>Thanks for the answers guys.</p>\r\n<p>I just retested, and you're right the head piece does have a red border. I can't believe I never noticed that before.</p>\r\n<p>I also tried adding a custom filter for Strength since a lot of melee/tank items that don't interest me have Strength and it doesn't seem to work. Well, more accurately I'm not sure how to make it work. Taking the ring &quot;Might of Blight&quot; as an example - it has 108 STR on it, but in RAWR it doesn't actually display that in the moonkin model (because its a &quot;useless&quot; stat I assume). With the Strength filter on/off the ring appears anyway. Does the regular expression matching only apply to what is visible in the tooltips for that model rather than the raw item data? I'm thinking it must because the Ring of Earthen Might has a socket bonus of Strength which shows up in the tooltip and that item disappears when I filter out strength items.</p>\r\n<p>And finally, I played with the gemming templates and they do exactly what I needed. Thanks for that information. It's a little slower now, but after putting in a few more options I do see variations of caster items back at the top of the list.</p>",
+    "PostedDate": "2010-02-16T21:13:42.95-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "291554",
+    "ThreadId": "85347",
+    "Html": "<p>The Item Filters dont work with stat names</p>",
+    "PostedDate": "2010-02-16T21:28:21.007-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

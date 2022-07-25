@@ -1,0 +1,161 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Bear",
+      "DisplayName": "Rawr.Bear"
+    },
+    "ClosedComment": "User misconception. The 48.5&#37; is the chance for each attack to be blocked, meaning there&#39;s a 48.5&#37; that any given incoming attack will be 100&#37; blocked.Reduction in agility after an optimize is a separate issue, if it even is one. Please open a new ticket and attach the before and after optimize files so we can see what&#39;s different.",
+    "ClosedDate": "2011-03-31T10:28:59.15-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Under my mitigation stats for bear form it says that I have approximately 48.5% chance for my savage defense to absorb, but I'm pretty sure it's supposed to absorb damage from the NEXT HIT which means it's 100%. At first I thought this meant that there was a 48.5% chance my crits would activate SD which is also incorrect because it's supposed to be a straight 50%. When I try to optimize my gear, it takes this flaw into account which, I'm assuming, totally messes up the optimization. Am I missing something here or is this a huge bug?",
+    "LastUpdatedDate": "2013-05-16T05:18:21.443-07:00",
+    "PlannedForRelease": "Rawr 4.1.01",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-03-31T00:40:23.507-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Bear] Savage Defense 48.5% Chance to Absorb",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 20369
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4783,
+      "FileName": "Untitled.png",
+      "DownloadUrl": ".\\4783"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I thought that it might be saying \"there's a 48.5% chance to absorb the next attack\" based on how often Savage Defense procs, but my crit rating is the same for my original build and the optimization. ALSO, the optimization reduced my agility by a significant amount, but I still have the same crit rating and there aren't any reforges or gems that the optimization is telling me to put in.",
+      "PostedDate": "2011-03-31T00:42:26.623-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-31T07:22:01.5-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-31T07:35:55.39-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "WTB your Character file",
+      "PostedDate": "2011-03-31T07:36:28.787-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That means, quite simply, exactly what it says. You have a 48.5% chance for each hit on you to be blocked.",
+      "PostedDate": "2011-03-31T09:09:46.58-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-31T10:28:59.15-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "If this is so... Is it referring to a single target or multiple targets? I think that would make a difference considering the crit proc of SD. If there are 10 targets hitting you, obviously the chance for \"any given incoming attack will be 100% blocked\" will be reduced rather than one target. I'll open up a new ticket with the before/after.",
+      "PostedDate": "2011-03-31T13:29:20.05-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Unless, of course, you're taking into account AOE attacks... xP I guess my question is, is this 48.5% the average chance an attack for ANY given situation? Ex: boss, small mob, big mob, etc.",
+      "PostedDate": "2011-03-31T13:40:55.607-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Jothay said, \"The 48.5% is the chance for each attack to be blocked, meaning there's a 48.5% that any given incoming attack will be 100% blocked.\"\r\n\r\nThat '100%' is obviously not supposed to be there. Savage defense does not fully absorb all attacks. Without that, it is correct.",
+      "PostedDate": "2011-03-31T14:27:44.287-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "So just to clarify, there is a 48.5% chance for any given attack to be blocked by Savage Defense (at any percentage of damage absorption)? I'm still wondering how this 48.5% is calculated. Is it an average of all the situations I could possibly be in? Ex: boss, small mob, big mob, etc. Or are they all pretty much the same anyway?",
+      "PostedDate": "2011-03-31T14:48:18.023-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Uh... Savage Defense is not a % absorb. It absorbs a flat amount of damage. What that flat amount is for you is shown right there next to this %, and in its tooltip. There are no multiple situations, nothing changes between a boss, a 'small' mob, or a 'big' mob, whatever those mean. You have a 48.5% chance to block each hit from a single mob that you are tanking. The calculation to get that % is rather complex, involving your crit rate, your dodge, your chance to be missed, your chance to hit, etc. You can find the full formulae in the source code if you want to study it.",
+      "PostedDate": "2011-03-31T16:25:33.483-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I understand that it is a flat amount, but it is affected by your Mastery which is why I put ANY PERCENTAGE in my comment. \"There are no multiple situations, nothing changes between a boss, a 'small' mob, or a 'big' mob, whatever those mean.\" Uh... Let me give you a hypothetical situation: Savage Defense procs at a 50% rate when I crit strike. Let's say I'm fighting a mob of 5 targets. After a span of 5 seconds, let's say I get hit 50 times. The more enemies = the more I'm going to get hit. Let's say during those 5 seconds I only proc 1 Savage Defense. That would be a 2% chance that I absorbed any given hit during that battle. New situation: I'm fighting one guy. He hits me twice over the course of 5 seconds and I proc 1 Savage Defense somewhere in the beginning. That would be a 50% chance that I absorbed any given hit during that battle. 2% does not equal 50%. That's the difference I'm trying to point out.",
+      "PostedDate": "2011-03-31T19:02:55.407-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "No. A mob does not mean multiple. A mob is a mob. That means one unit.",
+      "PostedDate": "2011-03-31T19:13:21.033-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Disregard my incorrect terminology. Now can you answer my question?",
+      "PostedDate": "2011-03-31T19:21:31.197-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Huh? What question? Please, really, try to communicate clearly. We don't understand what you're asking, in either of these issues.",
+      "PostedDate": "2011-03-31T19:25:25.987-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "My apologies for not communicating clearly enough. You stated that \"There are no multiple situations, nothing changes between a boss, a 'small' mob, or a 'big' mob, whatever those mean.\" So you're saying that the percentage of any given attack during a fight, whether it be multiples enemies at once or just one, stays the same? How so?",
+      "PostedDate": "2011-03-31T19:28:35.51-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "No.\r\nOne mob. Single. Just one. There is no multi-mob situation modeled. It's one mob. Just one. Still one. A single mob. Using the attack speed you have defined. That's it. Still, just a single mob.",
+      "PostedDate": "2011-03-31T19:30:20.393-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "There's no 'difference' between those situations shown, because it's only modeling one of those situations.",
+      "PostedDate": "2011-03-31T19:30:53.06-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That's all you had to say. I wasn't aware that the calculations are only modeling a single-target situation. You didn't have to be so disrespectful :P",
+      "PostedDate": "2011-03-31T19:37:00.957-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You mean like I did, 3 hours ago? \r\n\"You have a 48.5% chance to block each hit from a single mob that you are tanking.\"",
+      "PostedDate": "2011-03-31T21:10:20.647-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sorry the term \"mob\" means something significantly different in the English language. You know... The language I'm speaking now? Like I've said already, I'm new to this game. I apologize for missing that the first time when I didn't know what the WoW term of \"mob\" meant.",
+      "PostedDate": "2011-04-01T00:06:05.347-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:25:30.07-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:21.443-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

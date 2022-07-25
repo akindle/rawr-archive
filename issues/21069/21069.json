@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSDK",
+      "DisplayName": "Rawr.DPSDK"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-07-24T13:41:51.657-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "It seems that the code caters to create triggered abilities based on certain talents etc. It seems like this is considered in some parts of the calculation, but doesn't seem to be considered for the final dps rating output.\n \nThis can be seen in talents like Unholy blight, Sudden Doom (Unholy spec) and Killing Machine (Frost Spec) and potentially others having a score of 0 (or even negative with certain character setups).\n \n(I tried to make a quick fix to add this in, but either got into infinite loop stack overflows (UB damage depends on DC damage, so you cannot just add the triggered damage to the base abilities damage) or got unrealisticly high numbers for these talents.)",
+    "LastUpdatedDate": "2013-05-16T05:17:44.12-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-07-03T03:37:29.33-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "DPSDK - Triggered abilities not counted",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 21069
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "KM procs should already be factored into the Frost build, same w/ UB.  SD is not and still need to implement that, that's for pointing that out. I forgot about it.",
+      "PostedDate": "2011-07-04T20:21:53.887-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Found the UB issue.  Working on a fix.",
+      "PostedDate": "2011-07-05T12:11:26.853-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 61811.",
+      "PostedDate": "2011-07-05T16:12:18.27-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 62061.",
+      "PostedDate": "2011-07-18T13:55:51.14-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-07-18T13:56:00.767-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-07-24T13:41:51.657-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:24:45.01-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:17:44.12-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

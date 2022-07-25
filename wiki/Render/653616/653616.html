@@ -1,0 +1,55 @@
+<div class="wikidoc">
+<h1>Developing Rawr4</h1>
+<p>Rawr4 is a complex application that is developed in <strong>Silverlight</strong>. The vast majority of its code is identical to the code in Rawr2. In fact, the Rawr4 projects currently just use references to the same Rawr2 code files, so that Rawr4 uses
+ the same core code as Rawr2, as we make fixes/updates to Rawr2.</p>
+<h2>WPF Compatibility</h2>
+<p>In addition to Silverlight, we're also planning to release Rawr4 as a WPF application. This isn't as big of an ordeal as it may sound at first glance, however. Since WPF and Silverlight both use XAML and C#, the actual functionality can be identical. The
+ only difference is the class libraries they depend on. Since Silverlight is <em>
+mostly</em> a subset of WPF, we can develop for Silverlight, and have it work in WPF too. The only thing that other devs should need to worry about is XAML files, which reference different namespaces for WPF and Silverlight.
+<em>Currently</em> we have preprocessing tags in the XAML, around the different namespaces, but that makes invalid XAML, which means Blend doesn't like it. We're working on a different system, to avoid that situation. In the mean time, just copy out the preprocessor
+ tags somewhere safe when using Blend, and put them back in before checking in. Sorry for that hassle in the mean time.</p>
+<h2>Development Environment</h2>
+<p>Most developers are probably not setup for Silverlight development yet, so here's how to set things up:</p>
+<ol>
+<li>Install <strong>.NET Framework 3.5SP1</strong> </li><li>Install <strong>Visual Studio 2010</strong>, or <strong>Visual Web Developer 2010</strong>
+<em>(Visual C# Express will not work)</em> </li><li>Install <strong>Visual Studio 2010 SP1</strong>, or <strong>Visual Web Developer 2010 SP1</strong>
+</li><li>Restart </li><li>Install <strong>Silverlight 4</strong> - <a href="http://silverlight.net/">http://silverlight.net/</a>
+</li><li>Install <strong>Silverlight Tools</strong> - <a href="http://www.microsoft.com/downloads/en/confirmation.aspx?FamilyID=b3deb194-ca86-4fb6-a716-b67c2604a139&displaylang=en" target="_blank">
+http://www.microsoft.com/downloads/en/confirmation.aspx?FamilyID=b3deb194-ca86-4fb6-a716-b67c2604a139&amp;displaylang=en</a>&nbsp;(see&nbsp;<a title="http://stackoverflow.com/questions/5402774/cannot-install-silverlight-4-tools-on-visual-studio-2010-sp1" href="http://stackoverflow.com/questions/5402774/cannot-install-silverlight-4-tools-on-visual-studio-2010-sp1" target="_blank">http://stackoverflow.com/questions/5402774/cannot-install-silverlight-4-tools-on-visual-studio-2010-sp1</a>&nbsp;for
+ info on how to install if you already have VS 2010 SP1) </li><li>Install <strong>Silverlight Toolkit</strong> - <a href="http://silverlight.codeplex.com/releases/view/43528" target="_blank">
+http://silverlight.codeplex.com/releases/view/43528</a> </li><li>Restart </li><li>Open <strong>Rawr/Rawr4/Rawr4.sln</strong> <em>(That's the normal Silverlight solution)</em>
+<strong>NOTE: While opening for the first time, there will be a dialog about opening projects securely. Choose &quot;Open Normally&quot;, and uncheck &quot;Ask me for each project&quot;.</strong>
+</li><li>Once it finishes opening, right-click on the Rawr.Silverlight.Web project, and choose &quot;<strong>Set as Startup Project...</strong>&quot;
+</li><li>If you use a default web browser <em>other than</em> Internet Explorer, choose
+<strong>ONE</strong> of the following:
+<ol>
+<li>Make VS always use IE for debugging: Right click on Default.aspx in the Rawr.Silverlight.Web project, and choose &quot;Browse With...&quot;. Select Internet Explorer, and click Set Default. Hit OK. VS will use IE when you debug now, instead of your OS-wide default
+ browser, whatever that may be. </li><li>Or if you want to debug in your normal browser, you can, it just may be a bit complicated. I use Chrome, which uses a different process for each window, and one master process. Unfortunately, when you start debugging, VS will attach to the master process,
+ but it's the process for the new window that actually is running the Silverlight code, so you have to goto Debug &gt; Attach to process, and choose the one running Silverlight. It's annoying having to do that all the time, but it works. I
+<em>think</em> Firefox will work normally as well, but I'm not sure. </li></ol>
+</li><li>Go to <strong>Rawr.Silverlight/App.xaml.cs</strong>, and put a breakpoint in the
+<strong>Application_UnhandledException</strong> method. That will be hit whenever there's an unhandled exception.
+</li><li>Hit Play to start debugging. </li><li>The first time you start debugging, it'll ask you if you want to use Silverlight Debugging. Choose Yes.
+</li><li><strong>You should now have Rawr4 running in your browser, fully debuggable.</strong> Note that unlike with WinForms development, you can't use Edit and Continue, so you have to relaunch after making changes. Annoying, I know.
+</li></ol>
+<h2>XAML Editing</h2>
+<p>XAML is the language used for creating GUIs in WPF and Silverlight. VS2010 has a designer for it in Silverlight 4.</p>
+<p>One important thing to note while designing interfaces is that it XAML is designed to be vector-based, with very dynamic layouts, that resize, and relayout, as the size of the containing object changes. So you don't typically lay things out by assigning
+ pixel coordinates for controls (you <em>can</em> do that, but it's frowned upon, and gives inferior results). Instead, you let it lay things out using Grids (where you assign controls to cells in a grid, with col/rowspans, etc), StackPanels (where controls
+ are just stacked on top of each other, or next to each other), or DockPanels (where controls are docked to a side, or fill, the container). XAML is also designed with data binding especially in mind. There's a wealth of info out on the internet and in books
+ about XAML; the things you can do compared to Winforms are incredible. I'd suggest checking out some of the showcases on
+<a href="http://silverlight.net">http://silverlight.net</a> for some idea of the things you can do.</p>
+<p>All that said, most model devs won't need to create amazing complex visually stunning controls. Rather, you just need some simple labels, text boxes, dropdowns, numerics, perhaps a tab control, etc. VS2010 will help you do that very quickly and easily. Here's
+ how to get started:</p>
+<ol>
+<li>In Visual Studio, with the Rawr4 solution open, go to the project for the model you intend to work on.
+</li><li>Check to see if the following references are there; <strong>add them if they're not</strong>:
+<ul>
+<li>System.Windows.Controls </li><li>System.Windows.Controls.Input.Toolkit </li><li>System.Windows.Controls.Layout.Toolkit </li></ul>
+</li><li>Save all, the project and solution. </li><li>Find a XAML file to look at. <strong>Rawr.Mage/CalculationOptionsMage.xaml</strong> is a good one that's not too complex, but has a decent number of controls, across a few tabs. Double click on it in the Projects tab.
+</li><li>You should see the control in the middle of the screen. In the bottom left, in the
+<strong>Objects and Timeline tab</strong>, is a tree of all the controls in the xaml file. This one has a Grid (named LayoutRoot), which has a TabControl, several TabItems, some Grids, a whole bunch of TextBlocks (labels), TextBoxes, CheckBoxes, Buttons, etc.
+</li><li>On the left edge of the screen is a vertical bar of tools, including common controls like grids, textboxes, and buttons. The last tool there pops out a list of all controls, which are grouped in several categories, that you can choose from.
+</li></ol>
+<p>That should get you started on making the XAML controls you need for Rawr4.</p>
+</div><div class="ClearBoth"></div>

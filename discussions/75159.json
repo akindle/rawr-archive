@@ -1,0 +1,170 @@
+[
+  {
+    "Id": "257188",
+    "ThreadId": "75159",
+    "Html": "<p>The last version of Rawr I used prior to downloading v2.2.27 was v2.2.19. I've notice some <em>major</em>&nbsp;differences for shadow priests. In v2.2.19, if I upload my character and select only to use self buffs, Rawr tell me that I should be able to sustain around 4.6k dps, while in v2.2.27, it says I am only able to sustain around 3.9k dps. I have made absolutely sure that all gems, enchants, and buffs were the same in each version.</p>\r\n<p>On a heroic boss dummy, I am able to easily sustain around 4.6k dps self buffed, so obviously the 3.9k dps from v2.2.27 is wrong. There are a couple of things I noticed that may be the cause of this error:</p>\r\n<p>1. Devouring Plague higher than Mind Blast in the Spell Priority list. I realize that in WotLK 3.3, with enough haste, this may become a reality. However, the fact of the matter is that right now, the spell power coefficient for Mind Blast is more than twice that of Devouring Plague (per tick). Mind Blast is far superior.</p>\r\n<p>2. In v2.2.27, I noticed that the castlist did not include Shadow Word: Pain, I don't know if that's because the castlist doesn't include the opener, but if SW:P really is being left out, that's definitely a major contributor to why the new version of Rawr's calculation for shadow priests is so off.</p>\r\n<p>&nbsp;</p>\r\n<p>Another thing I noticed that Rawr calculates incorrectly is that it stacks buffs which do not stack in the game. For example, Moonkin Aura (5% crit increase) and Focus Magic (3% crit increase) or Improved Scorch (5% crit increase) and Heart of the Crusader (3% crit increase). I don't know if this &quot;error&quot; was actually intentional for some reason, as it hasn't been changed after many versions, but I thought I'd bring up just in case.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-11-14T23:06:35.387-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "257244",
+    "ThreadId": "75159",
+    "Html": "<p>Did you remember to set the slider for Movement DPS loss to 0?</p>\r\n<p>&nbsp;</p>\r\n<p>There are 2 new sliders under options that lets you tell how often you move and for how long you move each time. Setting the time you move to 0 will be more realistic to a training dummy. Also you can change the Priority list yourself if you wish to do so.</p>\r\n<p>&nbsp;</p>\r\n<p>Also note that the model does not currently include the DPS gain from using ShadowFiend. On the todo list.</p>",
+    "PostedDate": "2009-11-15T06:51:30.247-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "257284",
+    "ThreadId": "75159",
+    "Html": "<p>Also, two other things... First, your expectations about buff stacking are way off. The correct categories that involve spell crit are: [5% spell crit to raid, Moonkin Aura/Elemental Oath], [3% spell crit to single character, Focus Magic], [3% all crit taken by target, Heart of the Crusader, Master Poisoner, Totem of Wrath], and [5% spell crit taken by target, Improved Scorch, Improved Shadow Bolt, Winter's Chill]. Note that that's exactly how they stack in Rawr.</p>\r\n<p>Second, just curious, I sometimes hear of cases such as yours, where you keep using old versions of Rawr, long <em>long</em>&nbsp;after new versions are released (waiting til .27 to upgrade from .19). We'd really like to improve this situation. Can you comment on why this is? Why don't you upgrade as soon as it tells you there's an upgrade (or does it not tell you there's an upgrade)? Do you expect that upgrades don't matter? Is it too much inconvenience to upgrade? etc? Again, just want to understand why people do that, so that we can help try to solve that problem.</p>",
+    "PostedDate": "2009-11-15T10:45:25.517-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "257301",
+    "ThreadId": "75159",
+    "Html": "<p>Here is my own personal reason for not upgrading sometimes to the latest Rawr version; maybe it will help you out as to why some others don't upgrade as well. I only upgrade when I see in the change log that the modules I use are updated, otherwise I wait until i'm 5 or more revisions behind usually. This is because I personally like to edit or create items either from the PTRs or to test some ideas out. The issue with PTR items could be potentially fixed if Rawr could grab item stats from mmo-champion's database as well since they're almost always the first to find new items, whereas wowhead requires people to actually see the item firsthand before adding it to their database.</p>",
+    "PostedDate": "2009-11-15T12:35:15.8-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "257305",
+    "ThreadId": "75159",
+    "Html": "<p>If you wish to simply preserve your existing item data cache, you can upgrade to the new version, and then simply copy over your pre-existing item cache into location of the new Rawr, replacing the premade cache that comes with the new version.</p>\r\n<p>We've discussed importing MMO-Champ's database in the past. but the issue is that there isn't any data to be had from there.&nbsp; While the Armory and Wowhead store each line of data about an item, MMo-Champ only stores an image (.jpg) of the stats, so <em>there are no stats to grab from MMO-Champ</em>.&nbsp; Now, this may have changed, but I don't believe that's the case.</p>",
+    "PostedDate": "2009-11-15T13:14:06.05-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "257368",
+    "ThreadId": "75159",
+    "Html": "<p>Err, that's incorrect about MMO-Champ's db. They have full data, I believe there's a way to get xml data, and their dev has even posted here, saying to let him know if we needed any changes. We simply haven't gotten to building an MMO-Champ import, since it's low priority at the moment.</p>",
+    "PostedDate": "2009-11-15T22:24:49.673-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "257370",
+    "ThreadId": "75159",
+    "Html": "<p>I'm very sorry -&nbsp; stand corrected!</p>",
+    "PostedDate": "2009-11-15T22:47:29.593-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "258221",
+    "ThreadId": "75159",
+    "Html": "<p>I'm an MMO-Champion Administrator I'll have a chat with Boubouille about their database and how we might get data from it. It would give me something to do at work as work machine can't have Silverlight stuff on it at present due to need to maintain old code for work purposes. Thus all my Rawr3 work is laptop or home PC.</p>",
+    "PostedDate": "2009-11-18T03:13:22.633-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "258291",
+    "ThreadId": "75159",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Astrylian wrote:</strong><br>\r\n<p>Second, just curious, I sometimes hear of cases such as yours, where you keep using old versions of Rawr, long <em>long</em>&nbsp;after new versions are released (waiting til .27 to upgrade from .19). We'd really like to improve this situation. Can you comment on why this is? Why don't you upgrade as soon as it tells you there's an upgrade (or does it not tell you there's an upgrade)? Do you expect that upgrades don't matter? Is it too much inconvenience to upgrade? etc? Again, just want to understand why people do that, so that we can help try to solve that problem.</p>\r\n</blockquote>\r\n<p>I'll chime in on the &quot;why not update every version&quot; question.</p>\r\n<p>Personally, I only use the Feral modules.&nbsp; So each time there's a new version, I check for relevant updates, and if I don't see any I generally skip it.&nbsp; Since the cat and bear models are updated frequently, I'm not usually very far behind.&nbsp; The main reason for not upgrading more often is that it takes too long.&nbsp; The download is fairly quick, but upzipping the archive takes a long time mainly because of all the item images.</p>",
+    "PostedDate": "2009-11-18T07:24:44.65-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "258326",
+    "ThreadId": "75159",
+    "Html": "<p>Seriously? 2-3 minutes to unzip on the *very high end* for a *really slow* machine is too much for you? o.O</p>\r\n<p>The biggest argument against updating 'only when the model you use has notes on it' is that the base code ALWAYS has updates and those updates <strong>can</strong> and <strong>will</strong> affect every module. That and Astry of course doesn't every single note from every single commit, he just kind of throws a summary up there. He does this as DPSWarr's notes alone are sometimes several pages for a single version, not to mention the other models.</p>",
+    "PostedDate": "2009-11-18T08:35:23.93-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "258379",
+    "ThreadId": "75159",
+    "Html": "<p>Jothay, I personally think that it takes far too long to unzip Rawr as well. The biggest problem is there are over 4000 files in the Rawr folder due to the large nunber of 1-2k image files, the OS is a major bottleneck in creating this large number of small files (especially using the zip file decompression built into windows). Every time I download a new release of Rawr I get frustrated due to this.</p>\r\n<p>&nbsp;</p>\r\n<p>~Droid</p>",
+    "PostedDate": "2009-11-18T10:38:14.747-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "258388",
+    "ThreadId": "75159",
+    "Html": "<p>The images never change; you don't need to extract them. &nbsp;In fact, all you really need to extract from the data files are the DLLs.</p>\r\n<p>And Jothay, it's not 2-3mins to unzip on the high end for a really slow machine. &nbsp;It takes me 5mins to unzip on my gaming machine while WoW is running. &nbsp;Admittedly, it's not super-high end, but it's enough that I get 50-60fps in 25man raids with graphics set mid to high.</p>\r\n<p>I do agree that people really should be updating at least the dlls for every release. &nbsp;We could have a &quot;full download&quot; and a &quot;patch&quot;, where the full download is what we've currently been releasing, and the patch is just the DLLs and changed xml files.</p>\r\n<p>Also, since people are worried about their custom items or filters, we could have separate xml files for user changes versus base. &nbsp;Have a ItemFilterBase.xml and an ItemFilterCustom.xml, ItemCacheBase.xml and ItemCacheCustom.xml (where custom overwrites base whenever there are conflicts).</p>",
+    "PostedDate": "2009-11-18T11:14:48.167-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "258390",
+    "ThreadId": "75159",
+    "Html": "<p>Even so, I really don't understand the complaint. You start the unzip, it does its thing, it finishes. Even if it took an hour how is that frustrating? You can still run the previous version until it's done unzipping the new one if you have to have something on screen right that second. This is also kind of a moot point when it comes to Rawr3 since that will be out of a browser (with optional system install).</p>",
+    "PostedDate": "2009-11-18T11:19:16.59-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "258395",
+    "ThreadId": "75159",
+    "Html": "<p>If you really want me to make a list about all the reasons why this is bad, I can...but this is Software Engineering 101.</p>\r\n<ol>\r\n<li>The user loses interest while waiting</li>\r\n<li>It takes resources to unzip all these files, which can affect game experience if running while playing</li>\r\n<li>If you are unzipping to the same directory, you can't have the old version running or you'll mess up the update when in-memory and on-disk doesn't match</li>\r\n<li>If you are unzipping to a different directory for some weird reason, you need to wait for it to finish unzipping before updating your shortcut to the new directory, and by the time it's done you've likely forgotten</li>\r\n<li>Updates should be patched into existing directories, and should only patch in things that have changed. &nbsp;What if blizzard made us download and install the entire contents of Vanilla and TBC, all the Naxx/Ulduar/ToC files for every patch? &nbsp;Even if it let us login while we wait, it doesn't make sense to force the user to download and install things that haven't changed.</li>\r\n</ol>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-11-18T11:34:10.213-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "258404",
+    "ThreadId": "75159",
+    "Html": "<p>deleted</p>",
+    "PostedDate": "2009-11-18T12:00:18.397-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "258447",
+    "ThreadId": "75159",
+    "Html": "<p>I was finding that the Windows unzipping was very slow on my work PC (which is a bit old).&nbsp;&nbsp; I switched to 7-zip (http://www.7-zip.org/) and it unzips in about 30 secs now.&nbsp;&nbsp; There are plenty of free unzipping programs which are probably more efficient for older PC's to use.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-11-18T14:08:25.473-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "258549",
+    "ThreadId": "75159",
+    "Html": "<p>Unzipping a fresh copy of Rawr 2.2.17 into a fresh directory runs between 10-13s for me, using 7-Zip, over the course of three test extractions.</p>",
+    "PostedDate": "2009-11-18T23:56:27.17-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "258555",
+    "ThreadId": "75159",
+    "Html": "<p>Most users will not be using 7-zip, the vast majority of them will be using the windows built-in zip extraction.</p>\r\n<p>&nbsp;</p>\r\n<p>~Droid</p>",
+    "PostedDate": "2009-11-19T00:18:08.407-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "258558",
+    "ThreadId": "75159",
+    "Html": "<p>Would be nice if download was only assemblies, config, modules, etc (everything not in the images directory).&nbsp; Upon unzipping and running Rawr.exe, the program compared local ancillary files (images) and downloaded missing ones from server.</p>",
+    "PostedDate": "2009-11-19T00:35:10.897-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "258559",
+    "ThreadId": "75159",
+    "Html": "<p>I'm not concerned about things that we already have solved in Rawr3, like images, or unzip time. Keep em coming though!</p>",
+    "PostedDate": "2009-11-19T00:35:16.727-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "258862",
+    "ThreadId": "75159",
+    "Html": "<p>Is there an &quot;Under Development&quot; page where we can read and salivate over all the cool new things coming in Rawr3?&nbsp; I searched around but failed to find anything.</p>\r\n<p>And actually, I forgot the other thing that prevents me from updating more often... the gem templates.&nbsp; These appear to be saved separately from your character, which means that when I create my new Rawr 2.2.28 folder, it comes with the default templates, not my modified templates.&nbsp; So I have to go in and update them to make sure all my options are covered.&nbsp; This is much better now that the defaults use the Epic gems, but it's still extra time.</p>\r\n<p>Just for your reference, here's the steps I take when I decide to update:</p>\r\n<p>0) press the &quot;get new version&quot; button in Rawr</p>\r\n<p>1) download the file to my Downloads folder</p>\r\n<p>2) navigate to the Downloads folder, open the zip file, CTRL-C to copy the compressed file</p>\r\n<p>3) navigate to my Programs folder, hit CTRL-V to uncompress the file to the correct location</p>\r\n<p>4) edit my desktop shortcut to refer to the new location</p>\r\n<p>5) open the new Rawr, open my Bear saved character (using the Open menu, since the &quot;recent character&quot; list has been cleared)</p>\r\n<p>6) check the gemming templates</p>\r\n<p>7) make sure nothing else changed that would cause Rawr to give me bad results (meaning new options I need to check, not Rawr bugs)</p>\r\n<p>8) repeat steps 5-7 for my Cat saved character</p>\r\n<p>Each individual thing doesn't take long, but I'd estimate it takes me about 10-15 minutes to switch versions, and it's a bunch of steps, not a start it up and come back later thing.&nbsp; It's not a big deal when there's updates I think are meaningful to my characters, but I'm not going to do it if the only changes are to models I don't use.&nbsp; In an ideal world, steps 0 and 7 would be all would be required.</p>\r\n<p>To be perfectly honest, as a user this doesn't really concern me much.&nbsp; The program is great and I don't mind being a few versions behind.&nbsp; But you asked, so there you are.</p>",
+    "PostedDate": "2009-11-19T14:45:56.44-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

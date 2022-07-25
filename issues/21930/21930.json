@@ -1,0 +1,75 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSDK",
+      "DisplayName": "Rawr.DPSDK"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2012-01-31T20:56:36.297-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Unless I'm missing it, it appears that some spells don't benefit from Unholy's mastery effect:\n \nBloodPlague\nDeathNDecay\nDeathCoil\nUnholyBlight\nScourgeStrike (currently only seems to benefit from BonusShadowDamageMultiplier and not from the extra mastery effect)\n \nI believe the term\n(CState.m_Stats.BonusShadowDamageMultiplier + CState.m_Stats.BonusShadowDamageMultiplierFromMastery)\nshould be added to their respective DamageMultiplierModifer functions.",
+    "LastUpdatedDate": "2013-05-16T05:17:11.763-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-12-18T11:33:39.897-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSDK] Unholy: All Shadow damage not benefitting from mastery",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 21930
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Yeah, I'm working a new damage object to fix this issue.  ",
+      "PostedDate": "2011-12-18T12:16:28.65-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Verified that BP, DND, DC, do check the base.DMM which includes the Shadowdamagefrommastery value.\r\nThe Shadow part of SS was not properly factoring it in since it's weird.  Need to finish the damage object so we don't have to worry about those kinds of things in the future.  \r\n",
+      "PostedDate": "2012-01-18T08:52:18.407-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 64650.",
+      "PostedDate": "2012-01-18T09:00:31.62-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-01-18T09:00:51.2-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-01-31T20:56:36.297-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:23:59.983-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:17:11.763-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

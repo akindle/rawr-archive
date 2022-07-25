@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "268992",
+    "ThreadId": "78575",
+    "Html": "<p>I've posted this as a discussion rather than an issue because it pertains more to the definition of what should be filtered rather than a filter not working. If this was wrong I apologize.</p>\r\n<p>The items that require a Trophy of the Crusade show up in the Emblems of Triumph filter because they require triumphs and that's all the default filter checks for. I consider the Trophy of the Crusade to be more of an armor token than an emblem piece, simply because it requires the character to be actively raiding and to win a drop, whereas Triumphs can be guaranteed to be obtained through five-mans.</p>\r\n<p>My question is: Is this something that I am alone on, or is there any consensus as to what these items should appear under. Also, I've changed my filter to match only Triumph only pieces by simply adding (?!(.*)) to the end of the default, ensuring that pieces that have anything written in the source after Emblem of Triumph should be discarded from the filter. Is there a better way to do that. As an aside, why is that regex even working, as I've just noticed I have no closing bracket on the Emblem of Triumph?</p>\r\n<p>&nbsp;</p>\r\n<p>EDIT: I've just noticed that in fact my regex change hasn't worked, as I was just seeing gear I already have.</p>",
+    "PostedDate": "2009-12-18T09:26:11.813-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269012",
+    "ThreadId": "78575",
+    "Html": "<p>Since I only just made that change for multiple token cost, our 'Filters Guy' MTRazeR hasn't had a chance to post an updated version of the Filters that handles this.</p>",
+    "PostedDate": "2009-12-18T10:20:17.27-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269029",
+    "ThreadId": "78575",
+    "Html": "<p>Oh alright, good to know that it will be changed in an upcoming release.</p>\r\n<p>On a related note for custom filters: Which version of the source text does the filter look at? What I mean, if you look at an item with multiple lines in the source field, it states &quot;Purchasable with 45 [Emblem of Triumph] \\n<br>Purchasable with 1 [Trophy of the Crusade]&quot; (\\n is inferred, correct me if I'm wrong) whereas the tooltip text shortens this to &quot;Purchasable with 45 [Emblem of Triumph] and 1 [Trophy of the Crusade]&quot; Which of these is the filter applied to? I presume it's the actual field but I'd like to be sure.</p>",
+    "PostedDate": "2009-12-18T10:57:08.64-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269033",
+    "ThreadId": "78575",
+    "Html": "<p>Right now it's reading them separately (not as the &quot; and &quot; or the &quot;\\n&quot; examples you provide imply).</p>",
+    "PostedDate": "2009-12-18T11:05:54.553-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269060",
+    "ThreadId": "78575",
+    "Html": "<p>How does the item filter decide whether or not to show something? It looks like now it shows an item if any of it's sources are matched.<br><br>This is a good thing to take into account items that drop from multiple bosses (Like several Naxx-25 items) or can be purchased from multiple vendors (Like PvP gear from Honor, Rating/Points or Emblems). However, it doesn't work for items that have more than 1 simultaneous cost.<br><br>It looks like the ItemSource.xml format needs to change a little bit to take these situations into account. I propose the item sources continue to be separated, but all costs should be contained in the same location. Also, items that cost more than 1 type of currency simultaneously should be concatenated (&quot;75 Emblems of Triumph &amp; 1 Trophy of the Crusade&quot; or &quot;1000 Honor Points &amp; 500 Arena Points&quot;) at the time of filtering for regex purposes.<br><br>Here's my idea of what the XML format could look like:</p>\r\n<p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre><span style=\"color:Blue\">&lt;</span><span style=\"color:#A31515\">ArrayOfItemLocation</span><span style=\"color:Blue\">&gt;</span>\r\n\t<span style=\"color:Blue\">&lt;</span><span style=\"color:#A31515\">ItemLocation</span> <span style=\"color:Red\">xsi:type</span><span style=\"color:Blue\">=</span><span style=\"color:Black\">&quot;</span><span style=\"color:Blue\">VendorItem</span><span style=\"color:Black\">&quot;</span><span style=\"color:Blue\">&gt;</span>\r\n\t\t<span style=\"color:Blue\">&lt;</span><span style=\"color:#A31515\">VendorName</span><span style=\"color:Blue\">&gt;</span>Arena Lady Person<span style=\"color:Blue\">&lt;/</span><span style=\"color:#A31515\">VendorName</span><span style=\"color:Blue\">&gt;</span>\r\n\t\t<span style=\"color:Blue\">&lt;</span><span style=\"color:#A31515\">VendorArea</span><span style=\"color:Blue\">&gt;</span>Dalaran<span style=\"color:Blue\">&lt;/</span><span style=\"color:#A31515\">VendorArea</span><span style=\"color:Blue\">&gt;</span>\r\n\t\t<span style=\"color:Blue\">&lt;</span><span style=\"color:#A31515\">Cost</span><span style=\"color:Blue\">&gt;</span>\r\n\t\t\t<span style=\"color:Blue\">&lt;</span><span style=\"color:#A31515\">Token</span><span style=\"color:Blue\">&gt;</span>Arena Points<span style=\"color:Blue\">&lt;/</span><span style=\"color:#A31515\">Token</span><span style=\"color:Blue\">&gt;</span>\r\n\t\t\t<span style=\"color:Blue\">&lt;</span><span style=\"color:#A31515\">Count</span><span style=\"color:Blue\">&gt;</span>500<span style=\"color:Blue\">&lt;/</span><span style=\"color:#A31515\">Count</span><span style=\"color:Blue\">&gt;</span>\r\n\t\t<span style=\"color:Blue\">&lt;/</span><span style=\"color:#A31515\">Cost</span><span style=\"color:Blue\">&gt;</span>\r\n\t\t<span style=\"color:Blue\">&lt;</span><span style=\"color:#A31515\">Cost</span><span style=\"color:Blue\">&gt;</span>\r\n\t\t\t<span style=\"color:Blue\">&lt;</span><span style=\"color:#A31515\">Token</span><span style=\"color:Blue\">&gt;</span>Honor Points<span style=\"color:Blue\">&lt;/</span><span style=\"color:#A31515\">Token</span><span style=\"color:Blue\">&gt;</span>\r\n\t\t\t<span style=\"color:Blue\">&lt;</span><span style=\"color:#A31515\">Count</span><span style=\"color:Blue\">&gt;</span>15000<span style=\"color:Blue\">&lt;/</span><span style=\"color:#A31515\">Count</span><span style=\"color:Blue\">&gt;</span>\r\n\t\t<span style=\"color:Blue\">&lt;/</span><span style=\"color:#A31515\">Cost</span><span style=\"color:Blue\">&gt;</span>\r\n\t<span style=\"color:Blue\">&lt;/</span><span style=\"color:#A31515\">ItemLocation</span><span style=\"color:Blue\">&gt;</span>\r\n\t<span style=\"color:Blue\">&lt;</span><span style=\"color:#A31515\">ItemLocation</span> <span style=\"color:Red\">xsi:type</span><span style=\"color:Blue\">=</span><span style=\"color:Black\">&quot;</span><span style=\"color:Blue\">VendorItem</span><span style=\"color:Black\">&quot;</span><span style=\"color:Blue\">&gt;</span>\r\n\t\t<span style=\"color:Blue\">&lt;</span><span style=\"color:#A31515\">VendorName</span><span style=\"color:Blue\">&gt;</span>Vendor Lady Person<span style=\"color:Blue\">&lt;/</span><span style=\"color:#A31515\">VendorName</span><span style=\"color:Blue\">&gt;</span>\r\n\t\t<span style=\"color:Blue\">&lt;</span><span style=\"color:#A31515\">VendorArea</span><span style=\"color:Blue\">&gt;</span>Dalaran<span style=\"color:Blue\">&lt;/</span><span style=\"color:#A31515\">VendorArea</span><span style=\"color:Blue\">&gt;</span>\r\n\t\t<span style=\"color:Blue\">&lt;</span><span style=\"color:#A31515\">Cost</span><span style=\"color:Blue\">&gt;</span>\r\n\t\t\t<span style=\"color:Blue\">&lt;</span><span style=\"color:#A31515\">Token</span><span style=\"color:Blue\">&gt;</span>Emblem of Triumph<span style=\"color:Blue\">&lt;/</span><span style=\"color:#A31515\">Token</span><span style=\"color:Blue\">&gt;</span>\r\n\t\t\t<span style=\"color:Blue\">&lt;</span><span style=\"color:#A31515\">Count</span><span style=\"color:Blue\">&gt;</span>50<span style=\"color:Blue\">&lt;/</span><span style=\"color:#A31515\">Count</span><span style=\"color:Blue\">&gt;</span>\r\n\t\t<span style=\"color:Blue\">&lt;/</span><span style=\"color:#A31515\">Cost</span><span style=\"color:Blue\">&gt;</span>\r\n\t<span style=\"color:Blue\">&lt;/</span><span style=\"color:#A31515\">ItemLocation</span><span style=\"color:Blue\">&gt;</span>\r\n\t<span style=\"color:Blue\">&lt;</span><span style=\"color:#A31515\">ItemLocation</span> <span style=\"color:Red\">xsi:type</span><span style=\"color:Blue\">=</span><span style=\"color:Black\">&quot;</span><span style=\"color:Blue\">StaticDrop</span><span style=\"color:Black\">&quot;</span><span style=\"color:Blue\">&gt;</span>\r\n\t\t<span style=\"color:Blue\">&lt;</span><span style=\"color:#A31515\">Area</span><span style=\"color:Blue\">&gt;</span>Vault of Free Stuff (10)<span style=\"color:Blue\">&lt;/</span><span style=\"color:#A31515\">Area</span><span style=\"color:Blue\">&gt;</span>\r\n\t\t<span style=\"color:Blue\">&lt;</span><span style=\"color:#A31515\">Heroic</span><span style=\"color:Blue\">&gt;</span>false<span style=\"color:Blue\">&lt;/</span><span style=\"color:#A31515\">Heroic</span><span style=\"color:Blue\">&gt;</span>\r\n\t\t<span style=\"color:Blue\">&lt;</span><span style=\"color:#A31515\">Boss</span><span style=\"color:Blue\">&gt;</span>Candavon the Pinata Watcher<span style=\"color:Blue\">&lt;/</span><span style=\"color:#A31515\">Boss</span><span style=\"color:Blue\">&gt;</span>\r\n\t<span style=\"color:Blue\">&lt;/</span><span style=\"color:#A31515\">ItemLocation</span><span style=\"color:Blue\">&gt;</span>\r\n<span style=\"color:Blue\">&lt;/</span><span style=\"color:#A31515\">ArrayOfItemLocation</span><span style=\"color:Blue\">&gt;</span>\r\n</pre>\r\n</div>\r\n</p>\r\n<p>Thoughts?</p>",
+    "PostedDate": "2009-12-18T12:11:49.96-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269063",
+    "ThreadId": "78575",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Jothay wrote:</strong><br>\r\n<p>Right now it's reading them separately (not as the &quot; and &quot; or the &quot;\\n&quot; examples you provide imply).</p>\r\n</blockquote>\r\n<p>Ah well that explains why my regex changes weren't working. Guess I'll be sticking with my non-additive filter for the current version. Thanks again.</p>",
+    "PostedDate": "2009-12-18T12:22:40.453-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269070",
+    "ThreadId": "78575",
+    "Html": "<p>ZD, i would love to see it work that way and I'm doing some verification testing now to see if my changes to multiple &quot;and&quot; costs will allow me to migrate in multiple &quot;or&quot; costs too.</p>",
+    "PostedDate": "2009-12-18T12:38:38.053-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

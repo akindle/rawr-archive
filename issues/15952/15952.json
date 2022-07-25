@@ -1,0 +1,86 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Hunter",
+      "DisplayName": "Rawr.Hunter"
+    },
+    "ClosedComment": "If anything, there&#39;s some issue with the rotation setup, which I already have a ticket open for. Otherwise, let&#39;s assume this is correct",
+    "ClosedDate": "2010-02-01T11:20:30.94-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hello,\n \nI have tried researching this thoroughly on the discussion forums (and here in the issue tracker), and I did find some posts which helped me. However, even after checking everything I could (taking out useless items, etc), Rawr is still trying to trade in some agi gems for agi/haste gems, and an ap/haste gem for a pure haste.\n \nI modeled this using femaledwarf.com as well, and it tells me it would be a 60 dps loss. Not a big deal, but when combined with the fact that rawr is telling me its about a 100 dps gain, I just figured I would check this out.\n \nMy char is Tyrik (Shadowsong US). I'm attaching my saved char file. Any help in determining what might be happening here would be appreciated. Thanks!",
+    "LastUpdatedDate": "2013-05-16T05:22:20.9-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-01-18T09:59:58.57-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Hunter] Haste Valued over AGI",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15952
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2804,
+      "FileName": "Tyrik.xml",
+      "DownloadUrl": ".\\2804"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "oh, and for the record I am using 2.3.6, but experienced this problem in 2.3.5 as well.",
+      "PostedDate": "2010-01-18T10:44:52.957-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Notes from your Char File:\r\n* Hunter Rotations, Hunter Buffs, Pet Talents, Pet Buffs, Pet Rotations are all set so those aren't the issue (like the last 4 that I saw)\r\n* The RSV's show AGI at the top, followed by Hit (because you are 4 under cap, this is completely ok) then Int then Haste. So at it's current point, AGI still well over Haste.\r\n* Ran an Optimize, replicated issue as stated.\r\n- Gem Swaps in Optimize occurred as follows:\r\n- - Helm: AP/Haste to AGI/Haste -> AGI has greater value and keeps the socket bonus\r\n- - Chest: Dif chest with Pure AGI\r\n- - Wrist: AGI to AGI/Haste -> Socket bonus active either way, this just drops AGI for Haste\r\n- - Moved the Nightmare Tear to legs to pick up that Socket bonus instead of the Belt (change 12 AP to 6 AGI)\r\n- - Waist: Belt to Pure AGI\r\n- - Legs: AGI to AGI/Hit (fulfilling Hit cap)\r\n- - Weapon: AGI to AGI/Haste (picks up socket bonus of 8 AP)\r\n- - Different Weapon (Njorndar instead of Zod)\r\n\r\n(Not couting the item changes)\r\nTotal Stats Lost: 20 AP, 10 AGI, 12 AP, 10 AGI, 10 AGI\r\nTotal Stats Gained: 10 AGI, 10 Haste, 6 AGI, 10 Hit, 10 Haste, 8 AP\r\n\r\n* After Optimize, RSV's were in same order\r\n\r\nSo I honestly don't know what this was about.\r\n\r\nI went to femailedwarf.com and speced it out and the end result DPS in both us and the sheet was negligible, considering we calculate all procs very differently than they do.",
+      "PostedDate": "2010-01-18T10:51:55.69-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Opening up your file \"as is\" all your equipment lists show gear with Delicate gems to be the highest rated for that piece. I saw this problem on my friend's hunter some of the filters and all of them switched from haste to Agi. Try opening your file on this page again and see if there it is as I saw.",
+      "PostedDate": "2010-01-18T10:55:51.123-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-18T20:24:45.653-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-01T11:20:30.94-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:27:55.74-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:30:29.083-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:20.9-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Optimizer",
+      "DisplayName": "Rawr.Base.Optimizer"
+    },
+    "ClosedComment": "Fixed for 2.3.15.",
+    "ClosedDate": "2010-04-11T19:44:36.383-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "It seems that when you specify cost options, the optimizer will not check whether a piece of gear is equippable before considering it.  This causes two distinct issues.\n \n1) The optimizer suggests gear that is impossible to equip, such as hunter-only gear for a paladin.\n2) The optimizer will ignore your preference for gear, recommending mail or leather even if you disabled that option in the \"Refine types of items listed\" dialog.\n \nSteps to reproduce:\n1) Load the attached character.\n2) Click Tools -> Refine types of items listed.\n3) Uncheck Leather and Mail, then click OK.\n4) Click Tools -> Item Cost -> Reset\n5) Click Tools -> Item Cost -> Load Emblem of Frost\n6) Click Tools -> Optimize\n7) Ensure that the cost option is set to <= 194.\n8) Ensure that the thoroughness slider is all the way to the right.\n9) Ensure that all check-boxes are NOT checked.\n9) Click Optimize.\n10) If prompted to confirm that you wish to proceed with a large number of items, click yes.\n11) Wait for the optimizer to complete.\n \nResult:\nThe optimizer recommends two pieces of hunter-only gear (Ahn'Kahar Blood Hunter's xxx) and/or a mail item (Band of the Night Raven).  The specific items vary from attempt to attempt.\n \nExpected result:\nThe optimizer recommends gear usable by paladins, and only plate armor.",
+    "LastUpdatedDate": "2017-11-27T11:01:58.507-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-02-11T17:34:48.213-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Optimizer] Recommends impossible gear when using cost",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16312
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2936,
+      "FileName": "Christiane Ret 2.xml",
+      "DownloadUrl": ".\\2936"
+    },
+    {
+      "FileId": 3347,
+      "FileName": "Christiane Ret 2.xml",
+      "DownloadUrl": ".\\3347"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "This was already fixed\r\n\r\n\n\n** Closed by Jothay 2/11/2010 6:09 PM",
+      "PostedDate": "2010-04-11T19:03:20.137-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This problem has re-appeared as of version 2.3.13.  Load the newly-attached character, then follow the steps above.  After the (now very long) wait for the optimizer to finish, the the optimizer suggests upgrading the belt to a Vengeful Noose, which is a leather item.",
+      "PostedDate": "2010-04-11T19:03:21.007-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Adding new character",
+      "PostedDate": "2010-04-11T19:03:49.833-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-11T19:03:51.54-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-11T19:44:36.383-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T18:39:44.597-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:46:45.763-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:29:59.863-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:55.103-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:01:58.507-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "180888",
+    "ThreadId": "53738",
+    "Html": "I~27m trying to optimize my gear around my usual 10-man and I do not want to be under or over hit cap by too much. The moonkin that I run with only puts 2 points into Imp. Faerie fire so I~27m only getting 2~25 hit. Is there a way to tell Rawr this~3f~26nbsp~3b I see the option for Imp. Faerie Fire~2c but it~27s the fully talented version. Some help around this issue would be extremely helpful.\r\n",
+    "PostedDate": "2009-04-18T16:11:14.08-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "180893",
+    "ThreadId": "53738",
+    "Html": "One way to solve it is to edit BuffCache.xml and look for this:<br>\r\n<br>\r\n  &lt;Buff&gt;<br>\r\n    &lt;Name&gt;Improved Faerie Fire&lt;/Name&gt;<br>\r\n    &lt;Group&gt;Spell Hit Chance Taken&lt;/Group&gt;<br>\r\n    &lt;Stats&gt;<br>\r\n      &lt;SpellHit&gt;0.03&lt;/SpellHit&gt;<br>\r\n    &lt;/Stats&gt;<br>\r\n    &lt;Source&gt;Moonkin Druid&lt;/Source&gt;<br>\r\n    &lt;SetThreshold&gt;0&lt;/SetThreshold&gt;<br>\r\n    &lt;Improvements /&gt;<br>\r\n    &lt;IsCustom&gt;false&lt;/IsCustom&gt;<br>\r\n    &lt;ConflictingBuffs&gt;<br>\r\n      &lt;string&gt;Spell Hit Chance Taken&lt;/string&gt;<br>\r\n    &lt;/ConflictingBuffs&gt;<br>\r\n  &lt;/Buff&gt;<br>\r\n<br>\r\nAdd a similar one with a different name and change how much SpellHit it gives and set IsCustom to true.\r\n",
+    "PostedDate": "2009-04-18T16:43:42.957-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

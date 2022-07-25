@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtPaladin",
+      "DisplayName": "Rawr.ProtPaladin"
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-08T06:56:13.25-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The health is off by 20 hp and more in some cases due to rounding.\nIn CalculationsTankadin.cs replace\nstats.Stamina = (float)Math.Round(stats.Stamina * (1 + stats.BonusStaminaMultiplier) * (1f + talents.SacredDuty * .03f) * (1f + talents.CombatExpertise * .02f));\nwith\nstats.Stamina = (float)Math.Floor(stats.Stamina * (1 + stats.BonusStaminaMultiplier) * (1f + talents.SacredDuty * .03f) * (1f + talents.CombatExpertise * .02f));",
+    "LastUpdatedDate": "2013-05-16T05:26:52.923-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-10-31T10:13:09.47-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtPaladin] health not accurate",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 11544
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "It was still of by a little, i replaced it with two lines instead\r\n\r\nstats.Stamina = (float)Math.Floor(stats.Stamina * (1 + talents.SacredDuty * 0.03));\r\nstats.Stamina = (float)Math.Floor(stats.Stamina * (1 + talents.CombatExpertise * 0.02));",
+      "PostedDate": "2008-11-01T04:14:09.007-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "this is driving me insane, but i have tested and equppied every piece of gear one after another while calculating the stamina with this new method.\r\nthe thing is that base stamina and stamina from gear seems to be calculated separately, so my char that is a blood elf paladin it would be\r\n1,1236(118 + 930), otherwise stamina is off by one or two sometimes.",
+      "PostedDate": "2008-11-01T05:08:26.397-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sorry for not responding to this sooner, I didn't see it at first. But yea the health is probably slightly off by rounding. I am sort of confused though as what you are suggesting it is. Are you saying that it should be Floor(BaseStam * stamMultiply) + Floor(AllOtherStam * stamMultiply)? ",
+      "PostedDate": "2008-11-10T23:08:29.847-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That actually is how it works. Base stats and bonus stats are rounded separately. And then pretty much every multiplier has a different type/order of rounding.\r\n\r\nI gave up trying to get it exactly accurate 100% of the time in Bear; I just live with it being off by 10 health half the time.",
+      "PostedDate": "2008-11-11T09:12:46.05-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-08T06:56:13.25-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T17:47:59.44-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:20.437-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:52.923-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

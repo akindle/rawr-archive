@@ -1,0 +1,95 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.LoadCharacter",
+      "DisplayName": "Rawr.Base.LoadCharacter"
+    },
+    "ClosedComment": "4.1.05 Released. If this is still an issue, please reopen with exact steps to reproduce and any necessary character files",
+    "ClosedDate": "2011-05-08T21:37:11.52-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "There was no Suggested Fix and I've tried saving with different file names. \n \n== Version: 4.1.4.0 ==\n \n== Error Message ==\nAbsolute path information is required.\n \n== StackTrace ==\n   at System.Security.Util.StringExpressionSet.CreateListFromExpressions(String[] str, Boolean needFullPath)\n   at System.Security.Permissions.FileIOPermission.AddPathList(FileIOPermissionAccess access, AccessControlActions control, String[] pathListOrig, Boolean checkForDuplicates, Boolean needFullPath, Boolean copyPathList)\n   at System.Security.Permissions.FileIOPermission.AddPathList(FileIOPermissionAccess access, String[] pathListOrig, Boolean checkForDuplicates, Boolean needFullPath, Boolean copyPathList)\n   at System.Security.Permissions.FileIOPermission..ctor(FileIOPermissionAccess access, String path)\n   at Microsoft.Win32.SaveFileDialog.OpenFile()\n   at Rawr.UI.MainPage.SaveAsCharacter(Object sender, RoutedEventArgs args)\n   at System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)\n   at System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)\n   at System.Windows.Controls.MenuItem.InvokeClickAfterRender(Object arg)\n   at System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)\n   at MS.Internal.Threading.ExceptionFilterHelper.TryCatchWhen(Object source, Delegate method, Object args, Int32 numArgs, Delegate catchHandler)\n \n== These are the Steps that I have tried ==\n1) After having loaded a toon from a file or using the rawr addon.\n2) Optimized the toon.\n3) Try to overwrite either the existing file or \"Save As\" a new file, either one produces this error.\n \nI'm using 64-bit Windows 7.\n \nI was not having this problem with Rawr 4.1.03.\n \nThe directory I'm trying to use I've been using since starting with Rawr. It's the SavedVariables folder under World of Warcraft\\WTF\\Account\\<username>\\SavedVariables.\n \nThanks for a great tool by the way! Kudos!",
+    "LastUpdatedDate": "2013-05-16T05:18:05.43-07:00",
+    "PlannedForRelease": "Rawr 4.1.04",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-05-01T17:49:43.887-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[LoadCharacter] File Save gives Absolute path information is required error",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 20610
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Not a duplicate, but already identified and fixed for next version by dev. You should still be able to use Save As",
+      "PostedDate": "2011-05-01T19:58:42.127-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-01T19:58:54.927-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-01T19:59:11.623-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I currently can't save anything, not even a new file, not even with save as. \r\n\r\n   at Microsoft.Win32.SaveFileDialog.OpenFile()\r\n   at Rawr.UI.MainPage.SaveAsCharacter(Object sender, RoutedEventArgs args)\r\n   at System.Windows.EventRoute.InvokeHandlersImpl(Object source, RoutedEventArgs args, Boolean reRaised)\r\n   at System.Windows.UIElement.RaiseEventImpl(DependencyObject sender, RoutedEventArgs args)\r\n   at System.Windows.Controls.MenuItem.InvokeClickAfterRender(Object arg)\r\n   at System.Windows.Threading.ExceptionWrapper.InternalRealCall(Delegate callback, Object args, Int32 numArgs)\r\n   at MS.Internal.Threading.ExceptionFilterHelper.TryCatchWhen(Object source, Delegate method, Object args, Int32 numArgs, Delegate catchHandler)",
+      "PostedDate": "2011-05-04T03:29:34.78-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It may be related to issue 20607 since I believe I got that after I got this.",
+      "PostedDate": "2011-05-04T07:08:18.013-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Not sure if it's worth mentioning, but I have the exact same problem.\r\nIn my case, I find I can save once after each load of Rawr, but the second and any sebsequent saves gives the above error.\r\nIf I quit Rawr and load again, I am back to one more save before I have to quit again.\r\n\r\nI'm finding I can hardly use Rawr at the moment because of this, no long rambling muck arounds with gear for me at the moment. :-(",
+      "PostedDate": "2011-05-06T01:33:09.44-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yes exactly. I can save the very first time and then it fails. Also notice the direct relation to 20607 which is probably what you actually have.",
+      "PostedDate": "2011-05-06T02:02:16.58-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "By the way, a temporary workaround is to use the web client for settings and the local client for optimization because the first saves (and the latter is faster).",
+      "PostedDate": "2011-05-06T02:03:40.753-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-08T21:37:11.52-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:25:12.17-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:05.43-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

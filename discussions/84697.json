@@ -1,0 +1,146 @@
+[
+  {
+    "Id": "289365",
+    "ThreadId": "84697",
+    "Html": "<p>First, thanks to all the awesome volunteers that make Rawr great.&nbsp; Fantastic idea, fantastic app, great job.</p>\r\n<p>I realize the Warlock module is still being worked on, so forgive me if this question is premature.&nbsp; It's my understanding that the current 2.3.8 version of the module is more-or-less complete as far as number-crunching is concerned, however, and is just missing pets and the combat event list.&nbsp; I'm posting under that assumption, so if it's wrong, let me know.</p>\r\n<p>I'm curious about how the spell priority list is calculating its numbers.&nbsp; I'm assuming (again) that it's taking the listed priorities (for AffLocks, generally accepted to be Haunt &gt; Corruption &gt; CoA &gt; Unstable Affliction &gt; SB filler, or some variation thereof) and calculating a per-stat DPS value based on what contribution each stat would contribute to improving DPS of the given rotation.&nbsp; If <em>that's</em> wrong, let me know. ;)</p>\r\n<p>This is probably something that wouldn't even come up if the combat event list was functional, but until it is, I just want to make sure that I'm correctly configuring the spell priority to get correct numbers.&nbsp; Here is, as I understand it, the generally accepted combat events list for an AffLock:</p>\r\n<ol>\r\n<li>Life Tap (to proc Glyph of Life Tap, granting spirit bonus to spell power)</li>\r\n<li>Haunt (to apply Shadow Embrace, increasing DoT damage, and to &quot;capture&quot; dealt damage for healing)</li>\r\n<li>Corruption (straight-up DoT)</li>\r\n<li>Curse of Agony (straight-up DoT)</li>\r\n<li>Unstable Affliction (straight-up DoT)</li>\r\n<li>Shadow Bolt (filler DD; also stacks Shadow Embrace up to 3x)</li>\r\n<li>Re-cast Haunt when it falls off (also stacks Shadow Embrace up to 3x)</li>\r\n<li>Re-cast UA when it falls off</li>\r\n<li>Continue re-casting as necessary</li>\r\n</ol>\r\n<p>The missing component (which I understand is coming in the future, so I'm not including it for now) is Drain Soul's &lt; 25% HP execute, which replaces Shadow Bolt in the priority list after that line has been crossed.&nbsp; I've left this out of my Rawr priority list for that reason.</p>\r\n<p>So, after all that, my question is: is Rawr doing what I assume it is with spell priorities, or is it handling it in a different way?&nbsp;</p>\r\n<p>Thanks!</p>",
+    "PostedDate": "2010-02-11T05:59:15.257-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "289652",
+    "ThreadId": "84697",
+    "Html": "<p>Most likely, yes.&nbsp; However, see issue # 16291 - it appears that the talent Everlasting Affliction isn't working.&nbsp; This means that Corruption falls off, requiring recasting it frequently.&nbsp; This will alter the Haste/Crit usefulness.&nbsp; Trinket Procs are also screwed, particularly the #3 BiS trinket for Affliction Locks [NIC].&nbsp; Between the lack of pets working [and therefore Dark Pact working properly], everlasting affliction borkedness, trinket issues and drain soul problems - I wouldn't trust the model to provide precise gearsets.</p>",
+    "PostedDate": "2010-02-11T08:15:16.877-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "289728",
+    "ThreadId": "84697",
+    "Html": "<p>The quick answer is: yes - the combat simulator is built around a priority queue, and will cast each spell based on its priority in the event timeline.</p>\r\n<p>&nbsp;</p>\r\n<p>Think of the combat simulation as a sequence of events over time, starting at 0 and finishing at say 300 (for 5 mins combat).</p>\r\n<p>At the start of combat, all spells in the queue have the same priority (i.e. 0). (General rule of thumb in this implementation is that when spells have the same priority, the simulator casts them in FIFO order.)</p>\r\n<p>&nbsp;</p>\r\n<p>The casting process is (briefly):</p>\r\n<p>- remove spell at the front of the queue,</p>\r\n<p>- evaluate damage (miss, hit, crit)</p>\r\n<p>- re-prioritize, i.e. take the current event simulation time and calculate when the spell should be recast (based on its cooldown, duration, casttime or gcd [in that order])</p>\r\n<p>- add it to the back of the queue</p>\r\n<p>- rinse / repeat until the end</p>\r\n<p>- calculate total damage,</p>\r\n<p>- calculate an effective DPS value (which is a quick and dirty TotalDamage / ActiveTime - not really 100% correct, but it will do for now)</p>\r\n<p>&nbsp;</p>\r\n<p>Now thats just 1 simulation. This gets repeated for every single item in the comparison list and compared to the baseline for your actual gear.</p>\r\n<p>&nbsp;</p>\r\n<p>Having said all that, its still a work in progress and there are some buff mechanics (e.g. Everlasting Affliction) on my todo list.</p>",
+    "PostedDate": "2010-02-11T08:46:52.177-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "289744",
+    "ThreadId": "84697",
+    "Html": "<p>I had a go at the code trying to fix the warlock model, atleast for affliction. I found the spell priority system a bit redundant, yes, it can be used to provide very precise results, but it will take alot of work imo. What I did was to replace it with a simple model, just calculate DPS on all spells, assume 100% uptime on dots and haunt, then figure out time left to cast filler spell(shadowbolt or drain soul). No priority system, no combat simulation, not accurate, I know, but it's not Rawr's job to tell exacly what DPS you will be doing, but figure out what item that will give you the most DPS increase.</p>\r\n<p>&nbsp;</p>\r\n<p>One or two drawbacks with this model, no ramp up time, so very inaccurate DPS on short fights, stat values _should_ be correct though.&nbsp; Also having problems figuring out haste softcaps, but i'm working on that one.</p>",
+    "PostedDate": "2010-02-11T09:21:32.203-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "289750",
+    "ThreadId": "84697",
+    "Html": "<p>That's exactly the same approach that's used in the warlock spreadsheet. Its not very accurate though.</p>",
+    "PostedDate": "2010-02-11T09:46:15.997-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "289752",
+    "ThreadId": "84697",
+    "Html": "<p>Thanks, Karindra and ArPharazon. :)</p>\r\n<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>Neurohex wrote:</strong><br>\r\n<p>I had a go at the code trying to fix the warlock model, atleast for affliction. I found the spell priority system a bit redundant, yes, it can be used to provide very precise results, but it will take alot of work imo. What I did was to replace it with a simple model, just calculate DPS on all spells, assume 100% uptime on dots and haunt, then figure out time left to cast filler spell(shadowbolt or drain soul). No priority system, no combat simulation, not accurate, I know, but it's not Rawr's job to tell exacly what DPS you will be doing, but figure out what item that will give you the most DPS increase.</p>\r\n<p>&nbsp;</p>\r\n<p>One or two drawbacks with this model, no ramp up time, so very inaccurate DPS on short fights, stat values _should_ be correct though.&nbsp; Also having problems figuring out haste softcaps, but i'm working on that one.</p>\r\n</blockquote>\r\n<p>Er, I think this is going to produce wildly inaccurate gear predictions, actually.  You <em>can't</em> just calculate the DPS of a spell without accounting for talents, procs, and stacking, which requires simulation and modeling.  AffLocks, in particular, do substantially more damage the longer they're fighting.</p>\r\n<p>Personally, I would prefer accuracy (and giving ArPharazon the time he needs to implement it) over a generic semi-sorta-okay boilerplate calculation that could diverge wildly from actual experience.</p>",
+    "PostedDate": "2010-02-11T09:50:21.567-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "289774",
+    "ThreadId": "84697",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\">You <em>can't</em> just calculate the DPS of a spell without accounting for talents, procs, and stacking,&nbsp;which requires simulation and modeling</blockquote>\r\n<p>All buffs and procs are in account, but no synergy between the procs/buffs during the active time on the procs. &nbsp;It will affect DPS calculation, but I belive it will have very little effect on stat values (except haste stacking and reaching haste softcaps, but I think that can be worked out).</p>\r\n<p>&nbsp;</p>\r\n<p>Also, the combat simulation give an inaccurate haste value in it's current form, haste it worth nothing unless it's value is high enough to allow the simulator to cast an extra spell.</p>",
+    "PostedDate": "2010-02-11T10:47:38.387-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "289778",
+    "ThreadId": "84697",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong></strong>\r\n<p>Personally, I would prefer accuracy (and giving ArPharazon the time he needs to implement it) over a generic semi-sorta-okay boilerplate calculation that could diverge wildly from actual experience.</p>\r\n</blockquote>\r\n<p>As corny as this sounds, THIS.&nbsp; As much as I complain about how long things are taking, I'd rather have a 99.99% accurate model available in April than a 95% accurate model in February.&nbsp; Well, I guess the ideal would be having both, with the 95% accurate being fully labeled as inaccurate.</p>\r\n<p>Since nobody here knows me, I just thought I'd mention I'm a Civil Engineer.&nbsp; Math is my strong suit; people aren't.&nbsp; And as an Engineer, I get mortally offended by the idea of being compared to &quot;Software Engineers&quot; - if my work had half as many issues as most programs I see - commercial or not - I'd be destitute and homeless.&nbsp; So, I tend to be harder on programmers than most people; most programmers I talk to seem to think 95% is good enough, when it really isn't.</p>\r\n<p>Oh yeah, and I'm an asshole.&nbsp; Can't forget that.&nbsp; But hey, I'm cognizant of this and fully admit it.</p>\r\n<p>Neurohex, the model you are discussing would be terribly, horribly inaccurate.&nbsp; Something like it *might* come close to accuracy for a Destro spec, but would be next to worthless for Affliction - between ramp up times, specially-timed procs, DoT uptime losses and execute range, a model is required.&nbsp; Warlocks don't [well, rarely] clip dots and there's always a priority of spells to reapply, so 100% uptime is a pipe dream.&nbsp; UA, CoA and Haunt will have cast-time collisions dozens of times in a single fight; each one will drop uptime.&nbsp; I'd rather do the math by hand &lt;shudder&gt; then use a spreadsheet or other system that did that.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-02-11T10:51:44.43-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "289784",
+    "ThreadId": "84697",
+    "Html": "<p>You can estimate the dps of a spell (taking talents, buffs) into account without having to do a full simulation :P</p>\r\n<p>&nbsp;</p>\r\n<p>The main difference is that the spreadsheet model (which is the approach that Neurohex is following) only looks at 1 minute of combat, which is not accurate enough imo.</p>\r\n<p>The simulation model attempts to replicate all combat events over the fight duration. Yeah it is a lot of work, but worth it in the end.</p>",
+    "PostedDate": "2010-02-11T11:01:15.257-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "289789",
+    "ThreadId": "84697",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\">Since nobody here knows me, I just thought I'd mention I'm a Civil Engineer.&nbsp; Math is my strong suit; people aren't.&nbsp; And as an Engineer, I get mortally offended by the idea of being compared to &quot;Software Engineers&quot; - if my work had half as many issues as most programs I see - commercial or not - I'd be destitute and homeless.&nbsp; So, I tend to be harder on programmers than most people; most programmers I talk to seem to think 95% is good enough, when it really isn't.\r\n<p>Oh yeah, and I'm an asshole.&nbsp; Can't forget that.&nbsp; But hey, I'm cognizant of this and fully admit it.</p>\r\n<p>Neurohex, the model you are discussing would be terribly, horribly inaccurate.&nbsp; Something like it *might* come close to accuracy for a Destro spec, but would be next to worthless for Affliction - between ramp up times, specially-timed procs, DoT uptime losses and execute range, a model is required.&nbsp; Warlocks don't [well, rarely] clip dots and there's always a priority of spells to reapply, so 100% uptime is a pipe dream.&nbsp; UA, CoA and Haunt will have cast-time collisions dozens of times in a single fight; each one will drop uptime.&nbsp; I'd rather do the math by hand &lt;shudder&gt; then use a spreadsheet or other system that did that.</p>\r\n<p>&nbsp;</p>\r\n</blockquote>\r\n<p>&nbsp;Hey, go easy on me then, I'm a truck driver, not a programmer! ;)</p>",
+    "PostedDate": "2010-02-11T11:10:34.223-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "289801",
+    "ThreadId": "84697",
+    "Html": "<p>Hey Karindra, I already like what you say :D</p>\r\n<p>&nbsp;</p>\r\n<p>I agree entirely on what you say with software issues. However this isn't a full time job for any of us, so its slightly unfair if you intended to compare your work to what we do in Rawr.</p>\r\n<p>&nbsp;</p>\r\n<p>And yes, the rotation of Affli/Demo and ShadowPriests is horrid to get right due to collisions. And sometimes a collision lots later might make an earlier choice wrong, although it looked smart earlier. Rawr attempts to model play, not simulate it, mostly for performance reasons.</p>",
+    "PostedDate": "2010-02-11T11:37:33.547-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "290058",
+    "ThreadId": "84697",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>ArPharazon wrote:</strong><br>...............</blockquote>\r\n<p>He lives!!</p>\r\n<p>Welcome back m8!</p>\r\n<p>To be frank ill go ahead and ask the question on behalf of the rest of us demon-magic users out there..... Makin any progress with the module?</p>\r\n<p>Good luck!</p>",
+    "PostedDate": "2010-02-12T03:24:42.487-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "290108",
+    "ThreadId": "84697",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>ArPharazon wrote:</strong><br>\r\n<p>At the start of combat, all spells in the queue have the same priority (i.e. 0). (General rule of thumb in this implementation is that when spells have the same priority, the simulator casts them in FIFO order.)</p>\r\n</blockquote>\r\n<p>This is a bit confusing.  Say, for example, that I like to open combat with Haunt.  My instinct would be to put Haunt at the top of the priority queue.  However, Haunt has a cast time of 1.5s (or so, depending on buffs, equip, etc.).  Suppose I have Corruption next in my queue.  When you say &quot;FIFO,&quot; does that mean that since Corruption would go out &quot;faster&quot; (no cast time), it would get cast <em>before</em> Haunt, despite being lower in the priority list?</p>\r\n<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\">\r\n<p>- re-prioritize, i.e. take the current event simulation time and calculate when the spell should be recast (based on its cooldown, duration, casttime or gcd [in that order])</p>\r\n</blockquote>\r\n<p>I'm a little uncertain why cooldown comes before duration.  Using Haunt as an example again, Haunt's cooldown (8sec) will generally be up before it finishes its duration (12sec).  That's an extra 4 seconds of cast time for something else that, if I understand you correctly, would be &quot;wasted&quot; re-casting Haunt while it's still on the target.</p>\r\n<p>Have I got it wrong?</p>",
+    "PostedDate": "2010-02-12T06:09:03.69-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "290254",
+    "ThreadId": "84697",
+    "Html": "<blockquote style=\"border:0.1em solid #cccccc;margin:0.25em 1em 0pt;padding:0pt 0.25em;font-style:italic\"><strong>McC wrote:</strong><br>\r\n<blockquote style=\"border:0.1em solid #cccccc;margin:0.25em 1em 0pt;padding:0pt 0.25em;font-style:italic\"><strong>ArPharazon wrote:</strong><br>\r\n<p>At the start of combat, all spells in the queue have the same priority (i.e. 0). (General rule of thumb in this implementation is that when spells have the same priority, the simulator casts them in FIFO order.)</p>\r\n</blockquote>\r\n<p>This is a bit confusing. Say, for example, that I like to open combat with Haunt. My instinct would be to put Haunt at the top of the priority queue. However, Haunt has a cast time of 1.5s (or so, depending on buffs, equip, etc.). Suppose I have Corruption next in my queue. When you say &quot;FIFO,&quot; does that mean that since Corruption would go out &quot;faster&quot; (no cast time), it would get cast <em>before</em> Haunt, despite being lower in the priority list?</p>\r\n<blockquote style=\"border:0.1em solid #cccccc;margin:0.25em 1em 0pt;padding:0pt 0.25em;font-style:italic\">\r\n<p>- re-prioritize, i.e. take the current event simulation time and calculate when the spell should be recast (based on its cooldown, duration, casttime or gcd [in that order])</p>\r\n</blockquote>\r\n<p>I'm a little uncertain why cooldown comes before duration. Using Haunt as an example again, Haunt's cooldown (8sec) will generally be up before it finishes its duration (12sec). That's an extra 4 seconds of cast time for something else that, if I understand you correctly, would be &quot;wasted&quot; re-casting Haunt while it's still on the target.</p>\r\n<p>Have I got it wrong?</p>\r\n</blockquote>\r\n<p>Haunt is a very odd spell.&nbsp; Under truly ideal circumstances, you would cast it every 11.5 seconds.&nbsp; However, this true ideal is [almost] never in play.&nbsp; It's a missile spell, meaning it has travel time - coincidentally, at maximum range it takes about 1.5 seconds to travel [12 seconds - 8 seconds - 1.5 second cast = 2.5 seconds, leaving only a slight lag overlap], so casting it on CD is the way to go unless you are in melee or very close to melee.&nbsp; Keep in mind that while the damage it does is extremely minimal, the buff is vital.</p>\r\n<p>I'm hoping that ArP is actually intending different things when he says priority vs. cast order; starter rotation needs to be different than continuing rotation.&nbsp; Example standard rotation, keeping in mind that LT/DP needs to be cast @ 40 second cd's as well:</p>\r\n<ol style=\"list-style-type:decimal\">\r\n<li> Haunt</li>\r\n<li> Corruption [should be kept rolling]</li>\r\n<li> Unstable Affliction</li>\r\n<li> Curse of Agony</li>\r\n<li> Drain Soul @ &lt;25% HP</li>\r\n<li> Shadow Bolt </li>\r\n</ol>\r\n<p>However, this isn't the ideal start rotation.&nbsp; To start, I suggest (assuming you are using the NIC, and that the fight will allow you to keep corruption rolling:</p>\r\n<p>(pre-combat) LT rank 1, Pot of Wild Magic [time this correctly, you don't want to waste it during BL - wait if BL is cast early]</p>\r\n<ol style=\"list-style-type:decimal\">\r\n<li> Shadow Bolt</li>\r\n<li>Shadow Bolt</li>\r\n<li> Haunt</li>\r\n<li> Unstable Affliction [use NIC after casting UA if you have it]</li>\r\n<li>Corruption [recast NIC and refresh @ 35%]</li>\r\n<li> Curse of Agony</li>\r\n<li> Drain Soul @ &lt;25% HP</li>\r\n<li>Sbolt otherwise [if you are the only demo/affliction lock or if you are assigned Shadow Mastery duty, Sbolt often enough to keep it up]</li>\r\n</ol>\r\n<p>This rotation allows you to stack up Shadow Embrace with the initial Sbolts and Haunt, and casting UA between Haunt and Corruption allows the Haunt missile to land (it can crit, which would reduce the NIC proc by 4% before corruption is cast).&nbsp; By stacking all of these abilities at the front-end of the fight, Corruption's crit rating should be somewhere around 50-60% even for a poorly-crit-centric warlock.&nbsp; If you don't have the NIC available, the initial rotation changes to</p>\r\n<ol style=\"list-style-type:decimal\">\r\n<li>Pre-combat Lifetap/Pot</li>\r\n<li> Shadow Bolt [to try to proc Shadow Mastery and add a stack of SE]</li>\r\n<li>Haunt </li>\r\n<li>Unstable Affliction</li>\r\n<li>Corruption [refresh @ 35%]</li>\r\n<li> Curse of Agony</li>\r\n<li> Drain Soul @ &lt;25% HP</li>\r\n<li>Sbolt otherwise [if you are the only demo/affliction lock or if you are assigned Shadow Mastery duty, Sbolt often enough to keep it up]</li>\r\n</ol>",
+    "PostedDate": "2010-02-12T11:24:48.883-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "290305",
+    "ThreadId": "84697",
+    "Html": "<p><strong>Karindra wrote:</strong> Haunt is a very odd spell.&nbsp; Under truly ideal circumstances, you would cast it every 11.5 seconds.&nbsp; However, this true ideal is [almost] never in play.&nbsp; It's a missile spell, meaning it has travel time - coincidentally, at maximum range it takes about 1.5 seconds to travel [12 seconds - 8 seconds - 1.5 second cast = 2.5 seconds, leaving only a slight lag overlap], so casting it on CD is the way to go unless you are in melee or very close to melee.&nbsp; Keep in mind that while the damage it does is extremely minimal, the buff is vital.</p>\r\n<p>You do not need to factor in travel time, since the debuff didn't start until that long AFTER the last cast.&nbsp; So you still only need to cast every [cooldown - cast_time] seconds to keep 100% uptime.&nbsp; Unless you are farther away this time than you were last time, in which case you have to cast a little earlier to make up the *difference* in travel time.</p>",
+    "PostedDate": "2010-02-12T13:37:22.45-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "290350",
+    "ThreadId": "84697",
+    "Html": "<p>erm - I never said &quot;priority vs cast order&quot; anywhere in my original post, but yes - your example outlines exactly what I mean Karindra.</p>\r\n<p>At the start of combat, all spells have priority 0, they are performed in the order listed (btw FIFO = first-in-first-out), so Shadowbolt &gt; Haunt &gt; UA &gt; Corr &gt; CoA and so on.&nbsp; [basically shadowbolting before haunt to get maximum stacks of the shadow buff up].</p>\r\n<p>As each spell is cast, I take the current event time and calculate when that spell must be cast again (based on cooldown &gt; duration &gt; its actual cast time or GCD), which basically means that the continuing rotation (I hate that word) will definitely be different - infact its very likely that UA, Corr and CoA will trade places due to their different durations. Haunt is basically cast on every cooldown, and the rest of the time is spent spamming shadowbolts.</p>\r\n<p>Please note that the simulator is quite basic at the moment, and will be updated to handle pre-casting actions and also the execution phase just as soon as I get pets finished (aiming for today!).</p>",
+    "PostedDate": "2010-02-12T15:59:50.09-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "290449",
+    "ThreadId": "84697",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>ArPharazon wrote:</strong><br>\r\n<p>(I hate that word)</p>\r\n</blockquote>\r\n<p>Perhaps 'sequence' might be more accurate and palatable?</p>\r\n<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\">\r\n<p>Please note that the simulator is quite basic at the moment, and will be updated to handle pre-casting actions and also the execution phase just as soon as I get pets finished (aiming for today!).</p>\r\n</blockquote>\r\n<p>Awesome!  Thanks for the update. :)</p>",
+    "PostedDate": "2010-02-13T06:32:28.023-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "290644",
+    "ThreadId": "84697",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>ArPharazon wrote:</strong><br>\r\n<p>erm - I never said &quot;priority vs cast order&quot; anywhere in my original post, but yes - your example outlines exactly what I mean Karindra.</p>\r\n<p>At the start of combat, all spells have priority 0, they are performed in the order listed (btw FIFO = first-in-first-out), so Shadowbolt &gt; Haunt &gt; UA &gt; Corr &gt; CoA and so on.&nbsp; [basically shadowbolting before haunt to get maximum stacks of the shadow buff up].</p>\r\n<p>As each spell is cast, I take the current event time and calculate when that spell must be cast again (based on cooldown &gt; duration &gt; its actual cast time or GCD), which basically means that the continuing rotation (I hate that word) will definitely be different - infact its very likely that UA, Corr and CoA will trade places due to their different durations. Haunt is basically cast on every cooldown, and the rest of the time is spent spamming shadowbolts.</p>\r\n<p>Please note that the simulator is quite basic at the moment, and will be updated to handle pre-casting actions and also the execution phase just as soon as I get pets finished (aiming for today!).</p>\r\n</blockquote>\r\n<p>I apologize, I was unclear.&nbsp; I meant that when you said &quot;At the start of combat, all spells in the queue have the same priority (i.e. 0)&quot; you meant that that they all needed to be cast, not that they wouldn't be cast in a specific rotation.&nbsp; The vs. cast order was my short-form way of telling myself to edit it when I could think of a way to phrase it better; I got interrupted halfway through the post and forgot to change it.&nbsp; FIFO and all spells being priority 0 would tell me that the spells would be launched in a way to get them all on the boss asap [because instant are faster to get out than shadowbolt, for example] if I followed the logic pedanticly.&nbsp; [I prefer FCFS; I know it's a little inaccurate but what can you do?]</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-02-14T11:08:30.647-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

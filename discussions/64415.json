@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "219234",
+    "ThreadId": "64415",
+    "Html": "<p>Gemming templates.&nbsp; Given the JC profession benefit change in 3.2 (released today), I need some clarification as to how the gem system in Rawr works, through pointed questioning.&nbsp; And, yes, it's just because I've missed the constant talk of gems that we had around the time of the last Gem Revolution.</p>\r\n<p>&nbsp;</p>\r\n<ul>\r\n<li> If I enable a gem in the Comparisons&gt;Slot:Gems&gt;Normal/Meta section, does that make it available to any socket in any piece of gear, regardless of gemming templates? </li>\r\n<li> If I enable one specific type of gem in the gemming templates - say, an Expertise gem is placed in a red socket - does that make it available to Rawr to gem any socket with that gem?  To be more direct, would enabling that one gem in that one red socket make it available to Rawr for placement in any yellow/blue/prismatic socket, as well? </li>\r\n<li> If I enable one specific type of gem in the gemming templates - say, an Armor Penetration gem is placed in a blue socket - does that make it available to Rawr to gem any of that same color socket with that gem (any blue socket would now </li>\r\nBasically, do, or can we somehow toggle, the gemming templates to act like &quot;seeds&quot;?  If not, and if the only gemmings available to Rawr are through what is explicitly provided by the user through the gemming templates, then the damage may be severe.  Spending just a few minutes on setting up new gemming templates for 3.2, I am now working with 34 gemmings <em>at a minimum</em>.  This is not optimal by any stretch of the imagination.    On the same topic, is there a quick fix we can put in to force the JC gems to not be treated as Prismatic?  As of the last I've heard (http://rawr.codeplex.com/WorkItem/View.aspx?WorkItemId=13753), it requires some sort of logic fixin, more than just turning off the Prismatic attribute.  Will turning off the Prismatic attribute work for at least a temporary fix, or, can we expect some other method or a checkin/patch/update for the new 3.2 functionality?    Oh.  And, if the Slot:Gems section really does make the gems totally flexible (re: is usable in handling gems within Rawr), then can we add some sort of filters to the gems, in terms of rarity and color?\r\n</ul>",
+    "PostedDate": "2009-08-04T06:28:27.29-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219237",
+    "ThreadId": "64415",
+    "Html": "<p>For the Enhance model I changed the templates so that it used the same colour schemes for dragons eyes as the other gems with just a lot better stats. I also needed to do a refresh itemcache from wowhead (with the ptr data button ticked) to force the itemcache data to be updated to use new JC gem data.</p>",
+    "PostedDate": "2009-08-04T06:39:30.27-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219240",
+    "ThreadId": "64415",
+    "Html": "<p>Is that a workaround from the core, or do all modules handle Prismatics independently of the method other models employ?&nbsp; I'm definitely tending to think the former for efficiency's sake.</p>\r\n<p>&nbsp;</p>\r\n<p>[Edit] That's a question as to the handling of Prismatics, not a question as to the the default gemming templates for each module.</p>\r\n<p>&nbsp;</p>\r\n<p>[DoubleEdit] After refreshing the item cahce from WowHead's PTR data, the new values are implemented, but the JC handling is a bit... off.&nbsp; While they are not acting prismatic, they seem to have switched from a &quot;Unique (3) (all available JC gems)&quot; to &quot;Unique (1) (that particular gem)&quot;.&nbsp; In other words, it's trying to use 5 different gems, a Crit, a Hit, an Exp, an ArP, and a Str.&nbsp; Not quite so awesome, but I suppose there's a simple fix for this...?</p>",
+    "PostedDate": "2009-08-04T07:02:02.64-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219317",
+    "ThreadId": "64415",
+    "Html": "<p>We're still working on the gemming changes for 3.2 (hope to have it all fixed tonight).</p>\r\n<p>&nbsp;</p>\r\n<p>Regarding your original questions, I think you're confusing gemming templates and &quot;Available to the Optimizer&quot;. There's an option in the Options dialog to consider all gems in any enabled gemming templates as &quot;available to the optimizer&quot;; it'll use any gem from there in any socket, just like if you marked them all available normally. Gemming templates on the other hand remain slot-specific. If you only have a gem used in a blue socket in a gemming template, then the only time you'll see that gem used is in a blue socket, and only with other gems from that gemming template if there are other sockets. See the help page on gemming.</p>",
+    "PostedDate": "2009-08-04T09:52:07.513-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219717",
+    "ThreadId": "64415",
+    "Html": "<p>I just downloaded 2.2.11 and I'm not seeing any changes in the JC gems. Was this finished in the 2.2.11 release?</p>",
+    "PostedDate": "2009-08-05T06:11:09.673-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219774",
+    "ThreadId": "64415",
+    "Html": "<p>i'm going to repeat BrWarner's question, in a slightly more compact way, since it wasn't really answered:</p>\r\n<p><strong>Question: </strong>How do i enable all gems to be available to the optimizer?</p>\r\n<p>&nbsp;</p>\r\n<p>1. Is it enough that i've gone through</p>\r\n<p>&nbsp;&nbsp;&nbsp; Slot:Gems &gt;Normal<br>&nbsp;&nbsp;&nbsp; Slot:Gems &gt; Meta</p>\r\n<p>And made sure a green diamond is next to each one? Will that make the optimizer optimize my gems?</p>\r\n<p>2. Is it enough that i've gone through Tools -&gt; Edit Gemming Templates, and put a checkbox next to every combination? Will that make the optimizer optimize my gems?</p>\r\n<p>3. Is it enough that i've gone to Tools -&gt; Edit Gemming Templates, and set the &quot;Top Gemmings to Show&quot; to 100? Will that make the optimizer optimize my gems?</p>\r\n<p>4. Is it enough that i check the &quot;Override Regem&quot; checkbox on the Optimizer dialog? Will that make the optimizer optimize my gems?</p>\r\n<p>5. is it enough that i change the optimizer's &quot;Thoroughness&quot; to maximum? Will that make the optimizer optimize my gems?</p>\r\n<p><strong>Notes</strong></p>\r\n<ul>\r\n<li>i don't care how long it takes the optimizer to run. With the above settings chosen, it takes less than 5 minutes to run. i'm quite happy with less than 5 minutes. </li>\r\n<li>i can do all the above, but i still don't know if it's giving me optimial gem choices - because i don't understand why there are &quot;gemming templates&quot; and then you &quot;select gems&quot;.</li>\r\n<li>what effect does gemming templates have on the optimizer, if any?</li>\r\n<li>what effect does gemming templates have on the Slot:Gems list?</li>\r\n<li>what effect does the Slot:Gems list have on gemming templates?</li>\r\n<li>what effect does the Slot:Gems list have on the optimizer?</li>\r\n</ul>\r\n<p>&nbsp;</p>\r\n<p>But really i can forget all that: i just want Rawr to optimize my gems. And computers are faster than you think. Even if my Core2 Duo 1.8GHz took an hour (rather than 5 minutes), i'm still happy as long as i know that the optimizer has optimized my gems.</p>\r\n<p>How do i get the optimizer to optimize my gems?</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-08-05T08:14:09.27-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219898",
+    "ThreadId": "64415",
+    "Html": "<p>Not sure if you're just trolling josejimeniz... Read the help page on Gemming. Gemming Templates are for comparison charts, Available to the Optimizer is for the optimizer.</p>\r\n<p>As has been said many times before, <strong>you <em>really</em>&nbsp;do not want to mark all gems (or all items of any slot) available. Period. You just don't. Trust us.</strong></p>",
+    "PostedDate": "2009-08-05T10:56:30.98-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "219899",
+    "ThreadId": "64415",
+    "Html": "<p>Gemming is looked at in two ways:</p>\r\n<p>1) It considers each item with all possible gemming templates (which is socket-related)</p>\r\n<p>2) It considers each item with all gems selected in Slot:Gems in any socket</p>\r\n<p>When optimizing, if you want to consider the possibility of all gems in all sockets, then you should have all of those gems selected in Slot:Gems.</p>\r\n<p>Regardless of what's selected in Slot:Gems, the dropdown when setting your gear is limited to your gemming templates (and does NOT look at Slot:Gems).</p>\r\n<p>Lastly, be wary when the optimizer warns you about having too many choices. &nbsp;It slows down execution time, yes, but it also affects the effectiveness of the Optimizer. &nbsp;The optimizer only checks a subset of all possible gear/gem/enchant combinations. &nbsp;It is NOT an exhaustive search. &nbsp;If you have too many gems selected, there's a chance that the optimizer will not give you the best gemming combination because of this. &nbsp;You will need to re-run the optimizer multiple times to ensure that you really do have the optimal set.</p>\r\n<p>----</p>\r\n<p>For this reason, I personally recommend using a combination of the two. &nbsp;I set up my gemming templates with common gem configurations (generally speaking, you should only have a handful of these). &nbsp;Then I individually select the JC gems that I use, and any weird cap-like gems (hit, expertise). &nbsp;I'm pretty satisfied with the results, and only have to run the optimizer once to get the best combination (&gt;95% of the time at least)</p>",
+    "PostedDate": "2009-08-05T10:58:56.72-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

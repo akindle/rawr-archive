@@ -1,0 +1,111 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Mage",
+      "DisplayName": "Rawr.Mage"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-12-10T13:36:32.397-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I attached the profile it uses 2t10 and is undercapped by 26 (for arcane spells), if I calculate the worth of the wands according to the Relative Stat Values Petrified Ivy Sprig looks to be much better then Rod of Imprisoned Souls however rawr suggests it isn't. I understand the values of each stat change when you change them still this seems counter intuitive. Is it expected or maybe a bug.",
+    "LastUpdatedDate": "2017-11-27T11:01:55.387-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-12-07T03:08:11.11-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Mage] Odd Results",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15226
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2588,
+      "FileName": "arcane.xml",
+      "DownloadUrl": ".\\2588"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Relative stat values are a really bad way to calculate things, which is why we have that giant disclaimer at the bottom of it. It only shows the next rating of each of those points, not what would happen when you stick an item that has 40 of that rating on it. The charts do not display the value of the item as \"40 Int * 1.2 RSV = 48 value\" it's whatever the item's total DPS change is from empty slot.",
+      "PostedDate": "2009-12-07T08:09:46.6-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-07T08:10:07.947-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I understand that, that said in this case the character is unercapped by 26 hit rating, which makes it value hit very highly. From previous version of rawr the two wands in question aren't that different DPS wise while the one that has hit provides it at a good cost benefit.\r\n\r\nAgain I understand how Stat Values are calculated and that they aren't supposed to be taken as engraved since they change with each point. Still in this case the difference is very very high.\r\n\r\nI also checked the same character in 2.2.27 with the results being as expected ie. the hit wand is valued higher. So unless 2.2.27 was broken my point stands.",
+      "PostedDate": "2009-12-07T09:20:16.287-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "What exactly are you seeing? When I load your character I'm seeing Petrified Ivy Sprig at 274.46 and Rod of Imprisoned Souls at 215.21. Maybe there's a problem with item data?",
+      "PostedDate": "2009-12-07T14:59:13.22-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This is odd, I'm seeing the Rod at 364.78 and the Sprig at 285.80. I downloaded 2.3.0 and loaded the same file and I get the same results. I haven't changed the data files at all, it's a clean download and even loaded the attached profile.\r\n\r\nI think it has something to do with the 2t10 pieces I placed, replacing those with the Sanctified version yields the expected results but swapping back returns the wrong ones. It even places Wand of the San'layan above the Sprig.",
+      "PostedDate": "2009-12-08T01:43:54.657-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok I see the same thing now. You had patch 3.3 disabled in that file, which is now the default. The reason is indeed the 2T10, specifically there exists a haste barrier where the 2T10 gains a large increase in value. The main rotation is ABSpam0234MBAM and it has the following breakdown.\r\n\r\nWith Rod:\r\n\r\n9430.146 Dps\r\n185.2225 Mps\r\n7261.589 Tps\r\n\r\nArcaneBlast3:\t8.00%\r\nArcaneBlast4:\t12.00%\r\n2T10:ArcaneBlast0:\t22.22%\r\n2T10:ArcaneBlast1:\t22.22%\r\n2T10:ArcaneBlast2:\t13.33%\r\n2T10:MBAM2:\t8.89%\r\nMBAM3:\t5.33%\r\nMBAM4:\t8.00%\r\n\r\nWith Sprig:\r\n\r\n9258.16 Dps\r\n174.9611 Mps\r\n7131.833 Tps\r\n\r\nArcaneBlast2:\t13.33%\r\nArcaneBlast3:\t8.00%\r\nArcaneBlast4:\t12.00%\r\n2T10:ArcaneBlast0:\t22.22%\r\n2T10:ArcaneBlast1:\t22.22%\r\nMBAM3:\t5.33%\r\nMBAM2:\t8.89%\r\nMBAM4:\t8.00%\r\n\r\nAs you can see the main difference is that with the higher haste you can get the 2T10 to apply to your 2 stack spell. The reason why you don't see this on relative stats graph is because there it shows you the value of adding stat, but here the drop comes from losing haste, not from adding hit.",
+      "PostedDate": "2009-12-08T13:32:14.147-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Oh, I understand, thank you very much.",
+      "PostedDate": "2009-12-10T02:05:23.967-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-10T13:36:32.397-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:21.047-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-21T00:00:19.307-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:37.083-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:11.917-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:01:55.387-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

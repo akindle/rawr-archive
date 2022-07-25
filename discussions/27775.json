@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "92677",
+    "ThreadId": "27775",
+    "Html": "I believe the Moonfire computations are slightly off.  Considering just talents, and ignoring crits, there are two issues:<br>\r\n<br>\r\n1) Interaction of Moonfury and Improved Moonfire.  Rawr (b14) treats those as multipliers, so fully talented you have a damage multiplier of 1.21.  I believe those should be added together, giving a multiplier of 1.20.  Note that the fully talented tooltip says that the dot does 720 = 600 * 1.20.<br>\r\n<br>\r\n2) Spell damage coefficient.  EJ says that for hybrid spells, the DoT portion should get<br>\r\n<br>\r\nDuration/15 * DotBaseDamage / (DotBaseDamage + DirectBaseDamage)<br>\r\n<br>\r\nWowwiki says that for hybrid spells, the DoT portion should get<br>\r\n<br>\r\nDuration/15 * Duration/15 / (Duration/15 + CastTime/3.5)<br>\r\n<br>\r\nRawr is using the EJ fomula, for a coefficient of 0.5156.  The WoWiki version yields a coefficient of 0.5209, so the difference is not huge.<br>\r\n<br>\r\nEffectively, fully talented, Rawr is using (per tick)<br>\r\n<br>\r\n(600 + Spell*.5156) * 1.21 / 4<br>\r\n<br>\r\nI believe it should be using<br>\r\n<br>\r\n(600 + Spell*.5209) * 1.20 / 4<br>\r\n<br>\r\nThe difference in the two formulas is 1.5 damage/tick at zero +spell.  It drops to about 1.0 damage/tick at 1500 +spell.  At some spell levels the difference is clear.  For instance at 825, the Rawr formula predicts ticks of 310.2 (meaning in-game ticks of 310 or 311), while my suggested formula predicts ticks of (308.9) meaning in-game ticks of 308 or 309.<br>\r\n<br>\r\nWhen I've run tests, I've seen better matches for the second formula.  If I'm right, my results should be easy to verify, since there is no damage &quot;range&quot; for MF dots.<br>\r\n<br>\r\nThe corresponding formulas for direct damage would be<br>\r\n<br>\r\n(331+Spell*.1524)*1.21<br>\r\n(331+Spell*.1495)*1.20<br>\r\n<br>\r\nAt 1000 +spell, those differ by about 8.  Of course direct-damage has a range, so you'd need a lot of MF to verify the average.  It would probably be easier to see what range of values you get.  Untalented base MF damage is 305 to 357, so at 1000 +spell, the valid range for MF is either<br>\r\n<br>\r\n553.4 to 616.3<br>\r\n545.4 to 607.8<br>\r\n<br>\r\nI haven't recorded results for this test (probably a good idea to NOT use the MF idol, since you don't want procs changing your +spell).  Presumably you'll find that all MF values match one, but not both, of these ranges.<br>\r\n<br>\r\nNote that for some hybrid spells (notably Regrowth), the EJ formula is much better than the WowWiki one.  For other hybrid spells (lifebloom), neither formula comes close.<br>\r\n<br>\r\nAnyway, the difference is not large, no more than 2 DPS even with a high crit rate and CoS.\r\n",
+    "PostedDate": "2008-05-15T06:52:43.907-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "92686",
+    "ThreadId": "27775",
+    "Html": "As for the interaction, I realized a little while back that those were additive and not multiplicative.&nbsp; It's on my todo list.&nbsp; Thanks.<br>\r\n<br>\r\nAs for the coefficient formula, you are correct in that I used the EJ formula for my coefficient calculations.&nbsp; I would like to stick to that formula for now; if it is incorrect, it can (and probably will) be updated on EJ, at which point I will gladly change it.&nbsp; Thanks for bringing it to my attention, though.<br>\r\n",
+    "PostedDate": "2008-05-15T07:18:59.337-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "92844",
+    "ThreadId": "27775",
+    "Html": "I went and killed some basilisks around slymer lake for some blackened basilisk, and the SSO gathering (skinning) quest.<br>\r\n<br>\r\n893 +spell.  I had the +5% Terokar Forest zone bonus.<br>\r\n<br>\r\nUsing the EJ formula, and additive Moonfury+Improved Moonfire I'd expect<br>\r\n<br>\r\nTicks = 1.05*(720 + 1.2 * 893 * .5156) / 4 = 334.03<br>\r\nMin Direct  = 1.05*(366 + 1.2 * 893 * .1524) = 555.7<br>\r\nMax Direct = 1.05*(429 + 1.2 * 893 * .1524) = 621.9<br>\r\n<br>\r\nUsing the WowWiki Formula, the coefficients change to .5209 and .1495 giving<br>\r\n<br>\r\nTicks = 335.5<br>\r\nMin Direct = 552.5<br>\r\nMax Direct = 618.7<br>\r\n<br>\r\nOver 17 non-crits and 6 crits:<br>\r\n<br>\r\nAll ticks were 335 or 336<br>\r\nMininum damage(crit) was 554(1126)<br>\r\nMaximum damage(crit) was 619(1232)<br>\r\n<br>\r\nHardly conclusive, but the Wowwiki numbers look better to me.  Again, the differences are so small that they make no practical difference, other than getting various spreadsheets and theorycrafting tools to agree with the game.\r\n",
+    "PostedDate": "2008-05-15T20:37:50.83-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

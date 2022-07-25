@@ -1,0 +1,136 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Mage",
+      "DisplayName": "Rawr.Mage"
+    },
+    "ClosedComment": "Not an issue&#47;by design.",
+    "ClosedDate": "2009-11-19T15:14:21.727-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I was trying to set up an Anub 25 HM file for my mage to try and recreate the fight as best I could in RAWR. This required a fair amount of tweaking in the AoE section as well as well as the survivability section. Because of the computation of the encounter I've had to use settings I normally do for Arcane and Frost. However, Due to the massive amount of computation, one small change would extend the length of the computation and thus add an exorbitant amount of time to get an accurate dps rating. after just a few small changes and many hours of waiting, RAWR was taking up almost a Gig of RAM alone. I am not sure if there is a possible memory leak somewhere but this doesn't look right at all that it would take such a long time to get an accurate reading as well as taking up to a gig of RAM and counting. A few notes on my advance settings. \n \na) I had to set the amount of itterations so high was because after 10,000 itterations, it was still saying it had reached it's limit.\nb) I was trying to use the old EJ Mage settings for the BiS listings, so this could be part of the problem\nc) The Survivability settings I was using were based on 8 1/2 minute kill logs from WorldofLogs.com Some are averaged out (since they don't come into effect until 2/3rds of the way into the fight) while others I'm not 100% sure if I understood the notes about each box correctly.\nd) one small change would cause the system to churn away for over 2 hours before it would give me a result and I am running with a decent amount of RAM (8 Gigs but Windows Vista x64 is only registering 6 of them [meh]) as well as a decent CPU (IBM Dual Core that I got a year and a half ago).\n \nI was also trying to see how much of an advantage having Frost Ward up at all times for 2/2 Frost Warding (http://www.wowhead.com/?spell=28332) would help with this mana intensive fight.",
+    "LastUpdatedDate": "2017-11-27T11:01:54.503-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-11-03T10:16:04.893-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Mage] Possible Memory Leakage",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14603
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2435,
+      "FileName": "Anub 25 HM.xml",
+      "DownloadUrl": ".\\2435"
+    },
+    {
+      "FileId": 2437,
+      "FileName": "Arcane.xml",
+      "DownloadUrl": ".\\2437"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "This is by design, it is not a memory leak. The Best Bound branching method is very memory demanding. You should have switched to Depth First. Please read the Rawr.Mage wiki on advanced settings.",
+      "PostedDate": "2009-11-03T13:21:58.49-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I thought I left it as Depth First O_o I can try it again as Depth First though. But shouldn't there be a reset every time a change has been made? I'm unfamiliar with the Best Bound Branching programming method, so I maybe unaware of it's limitations.",
+      "PostedDate": "2009-11-03T14:17:40.197-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I went back into that uploaded file, and it was set to Depth First. So maybe you jumped the gun on your comment.",
+      "PostedDate": "2009-11-03T14:24:21.95-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "If it's set to Depth First it never pops up a message box that it reached the limit, that's why I said that.",
+      "PostedDate": "2009-11-03T15:28:32.88-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Are you sure you saw the high memory consumption while the solver was in Depth First mode? I've just first been changing fight parameters for a long while and then let it run and the memory consumption is stable for me (it goes up for a while and falls down as garbage collector kicks in and repeats).\r\n\r\nJust to clarify, I know that it takes a long time to compute, that is a separate issue. I'm only questioning the report about memory leak. Regarding long computation time my guess is that the main cause for that is combination of relatively long fight duration and enabled hasted evocation computation, not something specific to this fight.\r\n\r\nAlso you should note that aoe optimization is not really supported at the moment. As you probably have noticed the solver will try to place the aoe all over the fight length in order to maximize dps with cooldown stacking and stagger mana consumption. It also doesn't support real aoe cycles. I have something planned that will allow you to specify fight conditions more specifically, like specifiying when in the fight aoe happens, when vulnerabilities happen and things like that, most likely as an extension to the cooldown editor, but it's not ready yet.",
+      "PostedDate": "2009-11-03T16:10:11.623-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well I don't know what was happening then. it could have been the amount of times I loaded up a new file or what. Because I opened up the Task Manager while opening up RAWR gave a base memory allocation of 107 Meg. I loaded up the Anub file and went up to 123 Megs and then died down to 121.7 Megs and dropping.\r\n\r\nHowever just before I did have RAWR up and was opening and closing files quite a bit. When I shut down the program, Task Manager said it was allocating 300 Megs to RAWR. Now it could be that every time it loads a new file it does not clear out the cache of the previous file.\r\n\r\nAlso like I said in the Original post I had RAWR running for several hours (9+ since I had it running while I slept last night) that could have affected the amount of Memory used.",
+      "PostedDate": "2009-11-03T16:58:01.797-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I did some testing and it does seem like this is the case. when I loaded up one of my shadow Priests files, it went up about 12 megs. However, it jumped 250 megs when I loaded up my Arcane mage file right after.",
+      "PostedDate": "2009-11-03T17:03:50.177-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-03T17:03:55.647-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "All mage files use a lot of memory, it's nothing specific to that file. Mage files using advanced solver more than others. The memory is relatively fixed though, it doesn't increase the longer you use the program.",
+      "PostedDate": "2009-11-03T17:08:48.037-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Also 300 MB is normal memory for mage files, anything up to 500 MB I'd consider normal behavior.",
+      "PostedDate": "2009-11-03T17:10:46.023-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yea I see what you mean. I tried bugging the system (to no availe) by switching between different files from different classes including my Arcane file every other time and the highest I got was 450 megs and then dropping down 375 megs. So I don't know what would have caused it to jump up to 900+ megs this morning, just seems way too weird for it to happen.",
+      "PostedDate": "2009-11-03T18:18:15.853-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-19T15:14:21.727-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:16:44.847-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-21T00:00:19.307-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:32:02.28-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:32.867-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:01:54.503-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

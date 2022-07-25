@@ -1,0 +1,141 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Healadin",
+      "DisplayName": "Rawr.Healadin"
+    },
+    "ClosedComment": "Per user request.",
+    "ClosedDate": "2010-02-23T09:17:57.61-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Believe it or not, the functionality in Rawr is mirrored in-game, faster weapons have horrible (and I mean absolutely terrible) proc rates for Judgements proccing Seal of Wisdom. You get a nice bit of mana back if you have a slower weapon like Quel'Delar compared to a 1.6 or 1.8 speed weapon.\n \nClose this ticket please.",
+    "LastUpdatedDate": "2013-05-16T05:23:20.257-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-11-18T16:00:57.53-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Healadin] Weapon Speed is affecting Weapon healing values",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 14899
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2514,
+      "FileName": "Simca Holy.xml",
+      "DownloadUrl": ".\\2514"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Going to further clarify - increasing the weapon speed increases the fight healing amount by a LOT, but the burst healing number remains unchanged.\r\nDecreasing the weapon speed has the opposite effect on fight healing, burst healing remains unchanged.\r\n\r\nJust tested increasing weapon speed to 4.00 on the Mace of the Earthborn Chieftain for example and it quickly skyrocketed above all other weapons.",
+      "PostedDate": "2009-11-18T16:05:23.19-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-18T16:25:17.05-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-18T16:25:19.81-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-19T07:49:58.86-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This is related to the \"Maintain Judgement\" option, which, if Wisdom is selected, will give you mana back if you're whacking on a boss in between your casts.\r\n\r\nhttp://www.wowhead.com/?spell=53408\r\n\r\nAs procs such as this are often based on weapon swing speed, the slower the weapon, the more often it will proc. While this action is usually balanced for melee combat, when casting, and your cast ends, assuming your swing timer is off CD, you'll hit the boss before your next cast begins. The slower the weapon, the higher chance of generating more mana for you, and thus more healing. Faster weapons have no more chance than slow weapons at hitting the boss between casts, and have less chance to regain your mana.\r\n\r\nIf this functionality annoys you / does not apply, merely uncheck \"Maintain Judgement\".",
+      "PostedDate": "2009-11-19T10:26:35.653-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That's very confusing functionality to say the least, but good to know.",
+      "PostedDate": "2009-11-19T19:47:33.267-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It is useful on fights like Anub'Arak or XT where your healers might be right up next to the boss, depending on your strat.",
+      "PostedDate": "2009-11-20T06:14:52.083-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That's a good point, but again, it's current description should be changed (imo) to something like \"In Melee Range with JoW\". I had checked the box because I was maintaining my judgment to provide the raid with the 3% crit buff (I know, a healer shouldn't have to do that, but it happens in 10-mans sometimes), and I assumed healbot would slightly lower my healing to account for the wasted GCD every 30 seconds. Instead it increased all my values across the board based on weapon speed, which was very confusing (as I mentioned).",
+      "PostedDate": "2009-11-21T05:21:59.26-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Err... It really does sound like something is wrong here. Heals reset the swing timer. You only get JoW procs if you stop healing for [weapon speed].",
+      "PostedDate": "2009-11-21T12:40:04.02-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yeah. Looked it up and that's definitely right. This functionality probably shouldn't exist at all and definitely not under maintain judgement imo (which does not have an option to select Light or Wisdom btw).\r\n\r\nALSO: another bug then, maintain JotP (which all healadins should have checked) ALSO takes weapon speed into account. I tried disabling maintain judgement and it STILL took weapon speed into account (although at a lower ratio). Raising my current weapon to a 10.0 weapon speed with only JotP checked still caused to be rated higher than every other weapon.",
+      "PostedDate": "2009-11-21T15:41:11.007-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Any possibility of an update on this issue? It's quite large in scale - affecting all Holy Paladins using the Judgment of the Pure talent, so probably 99.9% of them. XD",
+      "PostedDate": "2009-12-11T04:13:40.06-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-13T22:43:54.62-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-14T12:02:16-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Just updated that ticket. I figured out the problem, which was not really a problem. I believe (could be wrong) that Ermad had accounted for the 3.2 change where Judgements proc Seal of Wisdom. So if you were using Seal of Wisdom (which there isn't an option for :S), you would have a chance to gain mana back. The proc chance of Seal of Wisdom proccing for Judgement appears to be based on weapon chance (it's a PPM effect).",
+      "PostedDate": "2010-01-14T13:48:00.773-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-15T20:44:45.913-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-23T09:17:57.61-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T17:39:22.903-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:46.2-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:20.257-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

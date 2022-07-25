@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "110084",
+    "ThreadId": "33211",
+    "Html": "Hey folks,<br>\r\n<br>\r\nSo I recently checked in a feature that allows you to import your character and all his inventory from a character profiler data file.<br>\r\n<br>\r\nThe way to use it is to install the character profiler plugin, export the data (Hit &quot;save&quot; in your character pane then open bank, mailbox &amp; professions).&nbsp; Then just fire up rawr, &quot;File-&gt;LoadFromCharacterProfiler&quot; and load the CharacterProfiler.lua file from your saved variables directory (the&nbsp;CharacterProfiler.lua in WTF, not in Interface!!!).<br>\r\n<br>\r\nThis will load all your data and automatically select for optimization the exact configuration of items in your inventory.<br>\r\n<br>\r\nOne issue I've noticed is the optimizer, for me at least, falls into an infinite loop when I select optimize for anything other than the minimum thoroughness value.&nbsp; Before reporting it I wanted to make sure I didn't break anything, but I don't believe so.<br>\r\n<br>\r\nStill, setting the profile you want &amp; optimizing, even with minimal settings, will make sure you're using the right selection of gear in your inventory.<br>\r\n<br>\r\nLet me know what you think of this feature, and if you find a characterprofiler file that does not load or parse correctly, please let me know!<br>\r\n<br>\r\nThanks,<br>\r\n<br>\r\nChar\r\n",
+    "PostedDate": "2008-08-08T20:19:20.07-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "110090",
+    "ThreadId": "33211",
+    "Html": "Could you post the character xml that the optimizer loops for?<br>\r\n",
+    "PostedDate": "2008-08-08T22:59:09.96-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "110098",
+    "ThreadId": "33211",
+    "Html": "<p>err...&nbsp; Thanks for asking :)&nbsp; You've just exposed a bug I hadn't noticed.</p>\r\n<p>Looks like saving is broken because of my changes -- classes don't serialize.&nbsp; I didn't think they were supposed to serialize.&nbsp; Oh well...&nbsp; (I think it's because I inherited from Character...&nbsp; no reason for that I suppose).&nbsp; Anyway, I've fixed it now but can't seem to check in for the time being (the codeplex server seems a bit unhappy).<br>\r\n<br>\r\nIn any case, I do have a save file for you -- how do I post it?<br>\r\n<br>\r\nChar</p>\r\n",
+    "PostedDate": "2008-08-09T02:52:38.223-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "110099",
+    "ThreadId": "33211",
+    "Html": "(oh, and mind you, the check-in problem has been solved)\r\n",
+    "PostedDate": "2008-08-09T03:00:44.86-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "110120",
+    "ThreadId": "33211",
+    "Html": "Open a new Issue (^Issue Tracker^), attach the xml.<br>\r\n",
+    "PostedDate": "2008-08-09T07:38:41.347-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "110136",
+    "ThreadId": "33211",
+    "Html": "Ok, created an issue.<br>\r\n<br>\r\nDidn't know if you could put attachments in discussions too (I'm not familiar with codeplex).<br>\r\n<br>\r\nChar<br>\r\n",
+    "PostedDate": "2008-08-09T10:44:48.417-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

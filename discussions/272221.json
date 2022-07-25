@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "670337",
+    "ThreadId": "272221",
+    "Html": "\r\n<p>Hello all, especially Kavan,</p>\r\n<p>I am using Rawr.Mage for a while now, and I followed all the additions you made Kavan to better simulate Arcane DPS (arcane light, simple stacking, average cooldown, etc etc)<br>\r\nThe problem I have now is im not able to find a &quot;default&quot; config that would suit both calculation speed and interest.</p>\r\n<p>Which setup would you recommend to optimize stuff today ?<br>\r\nIm using this : http://imageshack.us/photo/my-images/854/rawrl.png/</p>\r\n<p>Any advices, lets say for a &quot;standard setup&quot;&nbsp; and a &quot;deep setup&quot;, compliant with the optimizer ? (as far as I understood, genetic solver is not used by the optimizer)</p>\r\n<p>Thx in advance</p>\r\n",
+    "PostedDate": "2011-09-11T13:34:59.733-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "670438",
+    "ThreadId": "272221",
+    "Html": "<p>A few changes I would make for you</p>\n<p>Spells &amp; Buffs:</p>\n<p>2T10 Evocation - Uncheck</p>\n<p>Advance</p>\n<p>Max Use Assumption - Uncheck (increases your dps by 1-2 dps but still a buff)<br /> Proc Combustion - Uncheck (this is mostly used for Fire)</p>\n<p>Arcane Light - Check</p>\n<p>Reconstruction Sequence is nice to see what your procs and mana looks like but it does stake up a lot of computation power. So if you want to speed up your calc, you can uncheck this.</p>\n<p>SMP Computation Limit - I've set this REAL high (like 1000000) so to allow for enough room to the SMP search to do it's thing.<br /> SMP Search Method - BestBound is best used for Fire and Frost, but for Arcane and it's massive amount of computation needs it is best to use DepthFirst.</p>\n<p>Everything else looks fine.</p>\n<p>The only other optional item you might want to add if you want the optimizer to select it, if you want the 8% movement speed increase to boots add an arbitrary small number to Fight - Movement Frequency and Movement Duration. If I want the enchant to be  top of the chart I generally set these values:</p>\n<p>Movement Frequency - 19 or lower<br /> Movement Duration - 1</p>\n<p>You can mess with these number more to what you want</p>",
+    "PostedDate": "2011-09-11T22:16:53.577-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "670565",
+    "ThreadId": "272221",
+    "Html": "<p>First some comments on above:</p>\r\n<p>2T10 Evocation - won't have any effect unless you actually have 2T10</p>\r\n<p>Max Use Assumption - I would suggest checked, with this unchecked for example it will think it can stack all cooldowns even if they have different cooldown lengths without affecting their uptimes.</p>\r\n<p>Sequence Reconstruction - For arcane it's ok to have this always enabled, it won't have any performance cost usually.</p>\r\n<p>Some other suggestions:</p>\r\n<p>Mirror Image/Flame Orb I would change to averaged, shouldn't have much impact on accuracy, but a large performance improvement.</p>\r\n<p>Mana Neutral Cycle Mix should be enabled.</p>\r\n<p>Hasted Evocation I would disable unless you're using advanced solver at higher settings (too slow to be practical), if you're using genetic solver it will support hasted evocation by default without affecting normal calculations in a negative way.</p>\r\n<p>Arcane Light in general I would have enabled, disable this only if you want to examine effects of ramping up cycles into full burn or if you're using special fight conditions where it would be beneficial to use regen cycles (mini burns and similar), in general if sequence reconstruction chart shows mana neutral cycle used not at full mana I would give this a try.</p>\r\n<p>&nbsp;</p>\r\n<p>I've personally started using Simple Stacking mode enabled for normal optimizations. Mainly I've started doing this because of MWC+JC. Not that I think the normal solver necessarily overvalues that combo, it's more that the simple stacking undervalues it, but I just didn't want to deal with 2 on use trinkets in practice to get the full value out of it.</p>\r\n<p>As far as deep settings for optimizations go I don't have any good suggestions. For non-optimization I would definitely recommend the genetic solver, but that is mainly to solve optimum stacking solutions.</p>",
+    "PostedDate": "2011-09-12T05:45:07.32-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "671019",
+    "ThreadId": "272221",
+    "Html": "<p>Thx for your answers. Very useful.</p>",
+    "PostedDate": "2011-09-13T01:09:20.733-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

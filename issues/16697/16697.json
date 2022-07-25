@@ -1,0 +1,91 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Healadin",
+      "DisplayName": "Rawr.Healadin"
+    },
+    "ClosedComment": "Turns out it was a bug with the HoT implementation.  I&#39;ve fixed the bug in r47350, and the Relative Stat Values seem to be more realistic now, and definitely closer to 2.3.11.Much appreciating you finding this one in the new builds. &#58;&#41;",
+    "ClosedDate": "2010-03-09T21:49:33.903-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I've tried the current development build of Rawr on my holy paladin and the Relative Stat Values comparison chart has changed completly and in a kind of weird way:\nIntellect from 3,05 + 0,31 = 3,36 to 0,92 + 0,31 = 1,23\nMP5 from 3,21 to 0,41\nSpell Power from 1,42 + 0,74 = 2,16 to 1,5 + 0,74 = 2,23\nHaste Rating from 0,62 + 1,31 = 1,93 to 2,39 + 1,31 = 3,7\nCrit Rating from 1,38 + 0,4 = 1,79 to 0,83 + 0,4 = 1,23\n \nLooks like if I had almost endless mana spamming HL (which is not the case). Recommends me changing 264 gear to T9.232 :-)",
+    "LastUpdatedDate": "2013-05-16T05:21:33.44-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "High",
+      "Severity": 150,
+      "Id": 3
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-03-09T15:49:06.17-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Healadin] Weird stat value changes",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16697
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3119,
+      "FileName": "Orlan Rawr Holy.xml",
+      "DownloadUrl": ".\\3119"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Several of the Set Bonuses were just implemented",
+      "PostedDate": "2010-03-09T15:58:31.357-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-09T15:58:58.463-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Plus Infusion of Light's Flash of Light HoT on Sacred Shield targets was just implemented as well.",
+      "PostedDate": "2010-03-09T20:40:14.427-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-09T20:41:20.95-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Looking further into this, set bonuses shouldn't be involved as you don't have one.\r\n\r\nYou state it looks like you have endless mana spamming HL, but that's the case with 2.3.11:\r\n\r\nHoly Light Time: 247.2 in r47337 vs 247.3 in 2.3.11\r\n\r\nThis does uncover a pre-existing bug with Beacon of Light... the HoT is counted in the Beacon of Light... but so is Glyph of Holy Light and possibly Sacred Shield's absorb.  I'll have to fix that.\r\n\r\nAs for why the stats all changed around, that does seem rather odd, and I'll look into at least getting an explanation as to why it's done that.",
+      "PostedDate": "2010-03-09T20:59:19.127-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-09T21:49:33.903-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:18.067-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:29:32.043-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:33.44-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

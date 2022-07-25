@@ -1,0 +1,82 @@
+[
+  {
+    "Id": "207357",
+    "ThreadId": "61148",
+    "Html": "<p>I decided to not make a new issue of this, but decided to put it here because I have a habit of overlooking things and making simple mistakes.</p>\r\n<p>Restoration Shaman Model, Rawr v2.2.8</p>\r\n<p>Minor:</p>\r\n<ul>\r\n<li>Have to either update Item Cache or manually insert in values for Totem bonuses (sometimes get an error when doing this though: get the standard vista &quot;This program has encountered a problem&quot;.&nbsp; If I get this again, I'll post an issue with the details.)</li>\r\n<li>Can only see the very top of the Overhealing slider in the options panel</li>\r\n<li>Trinkets special effects aren't completely modelled (easy enough to make do by putting in average values.. so meh)</li>\r\n<li>Inserting values into the &quot;activity box, the Earth Shield recast box, the cleanse box, changing anything in the mana potion/+mana tide/hymn of hope/inervate/totems/heroism box&quot; in the options panel changes nothing</li>\r\n</ul>\r\n<p>Non-minor (possibly major):</p>\r\n<ul>\r\n<li>Adding/removing talents in Improved Water Shield changes nothing in the stats panel.</li>\r\n<li>Items that &quot;Restore Mana on Cast&quot; don't seem to work at all (this is mainly trinkets but also effects the Meta gem 'Insightful Earthsiege Diamond')</li>\r\n<li>Adding/removing talents in Ancestral Awakening changes nothing in the stats panel.</li>\r\n<li>Because of the two above problems with talents, items with crit seem to be undervalued.</li>\r\n<li>Glyph of Earth Shield and Glyph of Riptide change no values in the stats panel when selected/deselected</li>\r\n</ul>\r\n<p>If I run into any more, ill update this as needed.</p>",
+    "PostedDate": "2009-06-30T20:43:00.47-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "207365",
+    "ThreadId": "61148",
+    "Html": "<p>Not sure about some of the issues there, but for some of the mana regen one eg. Water Shield and the trinkets/meta, if the fight conditions you have selected show you not running out of mana by the end of the fight, then watershield and mana return changes aren't going to affect anything.&nbsp;&nbsp; If you increase the length of the fight or reduce the amount of replenishment you get to the point where you will be OOM without these talents (or indeed with them) then you should see some effect from these on the relative stats etc.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-06-30T21:35:48.14-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "207375",
+    "ThreadId": "61148",
+    "Html": "<p>I did think about this, and all of my mentioned problems are still there when the length of the fight is at 5 mins, 10 mins, or 15 mins.&nbsp; They are also there if i say that I have 0% replenishment uptime.&nbsp; If I say that I don't drop a mana tide totem, the problems are still there.&nbsp; Any combination of these and the problems are still there.</p>\r\n<p>To test even further, I started a new &quot;character&quot;, chose no gear, and went through and did the same tests as before.&nbsp; The problems still appear to be there.&nbsp; Either I'm doing something hopelessly wrong, or the problems are there.</p>\r\n<p>If needed, my character is Timetodance of Nagrand (US).&nbsp; I should be in my resto gear.</p>",
+    "PostedDate": "2009-06-30T22:19:16.843-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "208997",
+    "ThreadId": "61148",
+    "Html": "<p>As of the most recent build, you should see a lot of changes in this part. &nbsp;Mainly the way things were calculated has always been a little off, they should be much more exact. &nbsp;If possible, let me know if you still have this issues in the most recent source build if you can, or the next posted build if you can't compile the source in some way. &nbsp;I rarely get much input in the way of features or issues other then the rare issue ticket, so I am always happy to get input on the module.</p>\r\n<p>&nbsp;</p>\r\n<p>As of most recent posted build:</p>\r\n<p>Mana better defined, before there was almost no way to make haste show up as a benefit, sustained healing is now refined enough to know when to start adding haste.</p>\r\n<p>Earth-shield glyph should now work correctly (Riptide, as of yet, has not. &nbsp;still working on figuring a good way to add it, since most sequences it is either a major component and is always considered &quot;refreshed&quot;, or eaten by CH.)</p>\r\n<p>Ancestral Awakeneing has essentially been converted into a sort of bonus crit healing, but is done after all crit calcs now, should notice a much better impact of it.</p>\r\n<p>Still working on the item procs, like IED, that &quot;should&quot; be coming soon, but I can't put a set time on it yet.</p>\r\n<p>&nbsp;</p>\r\n<p>Again, anything you notice or think might be helpful, just let me know, there are so few of us around some days (Restoration Shaman's that is)</p>",
+    "PostedDate": "2009-07-06T09:20:51.443-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "209270",
+    "ThreadId": "61148",
+    "Html": "<p>OK, playing around with the latest source build (Change Set 35151) and will let you know as I find things.&nbsp; One thing that jumped out at me is that when selecting the ranged slot to change totems, I run into the following problem:</p>\r\n<p>The list of available totems appear, but when I mouse over a totem to either select it or see what bonus it provides, rawr seems to lock up for a period of time until the &quot;tooltip&quot; box appears.&nbsp; The period of time that it locks up for varies but has been upwards of 3 minutes.</p>\r\n<p>&nbsp;</p>\r\n<p>Also, Glyph of Earth Shield does indeed seem to be working now, haven't checked any numbers but it is changing values.&nbsp; Still nothing changing with Ancestral Awakening talents selected/deselected, but I could be missing things as I'm doing this on my break at work.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-07-06T20:51:15.877-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "209515",
+    "ThreadId": "61148",
+    "Html": "<p>I'm playing around with the latest source 35151, and tried setting hymn of hope to 1 and got an exception in the debugger.</p>\r\n<p>&nbsp;</p>\r\n<p>System.ArgumentException was unhandled<br>&nbsp; Message=Object of type 'System.String' cannot be converted to type 'System.Single'.<br>&nbsp; Source=mscorlib<br>&nbsp; StackTrace:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.RuntimeType.CheckValue(Object value, Binder binder, CultureInfo culture, BindingFlags invokeAttr)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Reflection.RtFieldInfo.InternalSetValue(Object obj, Object value, BindingFlags invokeAttr, Binder binder, CultureInfo culture, Boolean doVisibilityCheck, Boolean doCheckConsistency)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Reflection.RtFieldInfo.InternalSetValue(Object obj, Object value, BindingFlags invokeAttr, Binder binder, CultureInfo culture, Boolean doVisibilityCheck)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Reflection.RtFieldInfo.SetValue(Object obj, Object value, BindingFlags invokeAttr, Binder binder, CultureInfo culture)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Reflection.FieldInfo.SetValue(Object obj, Object value)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at Rawr.RestoSham.CalculationOptionsPanelRestoSham.set_Item(String szFieldName, Object value) in c:\\development\\rawr\\Rawr.RestoSham\\CalculationOptionsPanelRestoSham.cs:line 144<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at Rawr.RestoSham.CalculationOptionsPanelRestoSham.cboDivineHymn_TextChanged(Object sender, EventArgs e) in c:\\development\\rawr\\Rawr.RestoSham\\CalculationOptionsPanelRestoSham.cs:line 256<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Windows.Forms.Control.OnTextChanged(EventArgs e)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Windows.Forms.ComboBox.OnTextChanged(EventArgs e)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Windows.Forms.Control.set_Text(String value)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Windows.Forms.ComboBox.set_Text(String value)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Windows.Forms.ComboBox.UpdateText()<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Windows.Forms.ComboBox.WmReflectCommand(Message&amp; m)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Windows.Forms.ComboBox.WndProc(Message&amp; m)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message&amp; m)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message&amp; m)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Windows.Forms.UnsafeNativeMethods.SendMessage(HandleRef hWnd, Int32 msg, IntPtr wParam, IntPtr lParam)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Windows.Forms.Control.SendMessage(Int32 msg, IntPtr wparam, IntPtr lparam)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Windows.Forms.Control.ReflectMessageInternal(IntPtr hWnd, Message&amp; m)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Windows.Forms.Control.WmCommand(Message&amp; m)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Windows.Forms.Control.WndProc(Message&amp; m)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Windows.Forms.ScrollableControl.WndProc(Message&amp; m)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message&amp; m)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message&amp; m)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Windows.Forms.UnsafeNativeMethods.CallWindowProc(IntPtr wndProc, IntPtr hWnd, Int32 msg, IntPtr wParam, IntPtr lParam)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Windows.Forms.NativeWindow.DefWndProc(Message&amp; m)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Windows.Forms.Control.DefWndProc(Message&amp; m)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Windows.Forms.Control.WmCommand(Message&amp; m)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Windows.Forms.Control.WndProc(Message&amp; m)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Windows.Forms.ComboBox.WndProc(Message&amp; m)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message&amp; m)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message&amp; m)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG&amp; msg)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(Int32 dwComponentID, Int32 reason, Int32 pvLoopData)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at System.Windows.Forms.Application.Run(Form mainForm)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at Rawr.Program.Main() in c:\\development\\rawr\\Program.cs:line 28<br>&nbsp; InnerException:</p>",
+    "PostedDate": "2009-07-07T08:09:50.913-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "209706",
+    "ThreadId": "61148",
+    "Html": "<p>I can confirm.&nbsp; I get the same error (as far as I can tell) when changing the value of invervate or hymn of hope.&nbsp; It isn't just to 1, it appears to be any change in the value.</p>",
+    "PostedDate": "2009-07-07T16:05:52.46-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "210100",
+    "ThreadId": "61148",
+    "Html": "<p>Should be a little cleaner. &nbsp;I removed the innervate/divine Hymn/extra mana tide for two reasons, one to clean up the errors and two I started to think that maybe I was going a bit over-board on how accurate. &nbsp;Of course I want it as accurate as possible, but I don't believe you should re-gem every single raid because you have an extra class A over class B. &nbsp;This is the main reason burst was given it's own points, so haste would always have a value. &nbsp;35201 should work much much cleaner now.</p>",
+    "PostedDate": "2009-07-08T11:15:42.243-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "211539",
+    "ThreadId": "61148",
+    "Html": "<p>Using build 35233, everything is looking pretty good.&nbsp; However, the new slider for survival weight doesn't effect anything at this point in time.&nbsp; Also still having problems selecting a totem from the ranged slot (its more than likely just my computer though).</p>\r\n<p>Another funny thing worth mentioning is that looking at the stats panel, my mp5 is showing as 589.8893.&nbsp; Is there a reason why I'm now seeing decimals there?</p>",
+    "PostedDate": "2009-07-13T17:26:47.07-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "211554",
+    "ThreadId": "61148",
+    "Html": "<p>Ah. &nbsp;That's going to be pulled out, but that was more for internal testing. The mana gained from improved water shield and totem items are added into that, it was mainly for making sure it's working correctly.</p>",
+    "PostedDate": "2009-07-13T19:02:10.427-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

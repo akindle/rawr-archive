@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "550351",
+    "ThreadId": "242040",
+    "Html": "\r\n<p>New Rawr (beta) and WoW has been released for a long time. But until now, TankDK module still does not seem to support mastery, model-wise.</p>\r\n<p>Everything information I got, master for TankDK is very important. But Rawr suggested me to low it down. Traditional attributes like parry are more important.</p>\r\n<p>From release note, there sure is something about TankDK, but I do not think it is correct modelized. Since there is so few modifications in release note, I wonder if the module is almost done, or just not started yet.</p>\r\n",
+    "PostedDate": "2011-01-17T00:09:26.527-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "550613",
+    "ThreadId": "242040",
+    "Html": "\r\n<p>I agree with you Magicloud, according to all the theory crafting at pwnwear and the like, I would expect mastery to be coming out more solidly valuable.&nbsp; I'm fairly confident in the current code for mastery should be in-the-ballpark, so I'm not exactly\r\n sure why it's so under valued.&nbsp; The key part that is lacking in the model is generally around threat, but given that DS and such is tied to the rotation, as I continue to work on the rotation, we may see improvements in other areas, like the valuation\r\n for mastery.</p>\r\n",
+    "PostedDate": "2011-01-17T08:28:17.997-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "550738",
+    "ThreadId": "242040",
+    "Html": "\r\n<p>This schism has been concerning me too.&nbsp; I feel like its hard to know if there's a bug in Rawr, or if the pwnwear crowd are off the mark.&nbsp; A few thoughts:</p>\r\n<p>1)&nbsp; Is there some way to see/change the split between physical and magic damage for the &quot;average boss&quot; case?&nbsp; I bet most people are using this scenario.&nbsp; The % magic would obviously make a big difference in the value of traditional avoidance\r\n (physical only) vs. mastery (heals/absorbs both physical and magic.)&nbsp; As an off-the-cuff remark I do feel like there's a lot of magic damage out there in at least the raid fights I've seen so far.</p>\r\n<p>2)&nbsp; Is there any output from Rawr as far as predicted Blood Shield healing/absorbing that could be directly compared to values available from real game sessions (i.e., Recount's Healing Done monitoring, or Blood Shield Tracker's stats, or something\r\n that shows up on World of Logs?)&nbsp; That would allow a bunch of players to each check their predicted vs. actual results which would likely be helpful in getting it dialed in.</p>\r\n<p>3)&nbsp; As far as weighting Stamina vs. everything else -- would it make sense to implement a configurable &quot;soft cap&quot; or like for health?&nbsp; It seems the theory craft discussions are heading towards &quot;total health is important up to the point where you\r\n can take X burst damage and/or give your healers Y reaction time but has rapidly diminishing value vs. avoidance&quot; past that point.&nbsp;&nbsp;&nbsp; Then just like hit/expertise, stamina could have a high value up until this cap and a lower value after.</p>\r\n",
+    "PostedDate": "2011-01-17T12:18:07.207-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "550785",
+    "ThreadId": "242040",
+    "Html": "\r\n<p>Agreed.&nbsp; I'll work on getting the main page to include Combat information that matches Recount/WOL like DTPS, and HPS, etc.&nbsp; W/ the changes that I did a while back, it makes it a easier to provide that data.&nbsp; Some of the data is already available\r\n via the tooltip like what part of the Mitigation score is from things like Armor, Avoidance, Damage reduction, healing, etc.&nbsp; But yeah, getting info that matches what we would see in combat logs would be very helpful.</p>\r\n<p>Re: Stam soft cap, yeah, Bear has that, and I just haven't gotten around to implementing it just yet.&nbsp; It's be low on the priority in comparison to getting core model features implemented.&nbsp;</p>\r\n",
+    "PostedDate": "2011-01-17T13:15:42.063-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "550794",
+    "ThreadId": "242040",
+    "Html": "\r\n<p>Re: Damage %s in the boss handler.</p>\r\n<p>There are only a couple Cata bosses that are modeled currently, and so yes, there are different types of damages that can be used to get managed.&nbsp; Check the each of the Attack Data entries on the Boss tab.&nbsp; The default boss currently is from Baradin\r\n Hold, but others are being implemented over time.</p>\r\n",
+    "PostedDate": "2011-01-17T13:27:55.4-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "550815",
+    "ThreadId": "242040",
+    "Html": "\r\n<p>&nbsp;</p>\r\n<p>I will say this, with the latest release I put in a little bit of the damage information for Omnitron into the Boss Handler. There isn't much in yet and I haven't gotten around to figuring out attack intervals (which will greatly distribute damage). The\r\n intervals I usually base them around time intervals as shown in mods such as Deadly Boss Mods. But as Shazear has said, I haven't put much effort into the Boss Handler. Part of this is due to me not raiding right now (current guild went 10 man and I was left\r\n in the cold [too many dps and not enough tanks/healers]), so my understanding of the bosses are only based on the videos I've watched.</p>\r\n",
+    "PostedDate": "2011-01-17T14:04:33.197-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "550820",
+    "ThreadId": "242040",
+    "Html": "\r\n<p>Ok... In my local build, I have DTPS, HPS, Total DS Heals for the duration of the fight, and Total BShield absorbs for the duration of the fight.</p>\r\n<p>Anything else you think I should add before I check this in?</p>\r\n",
+    "PostedDate": "2011-01-17T14:07:48.913-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "550947",
+    "ThreadId": "242040",
+    "Html": "\r\n<p>Thanks Shazear, I'm impressed by your responsiveness ;-)</p>\r\n<p>I spent a little time poking around in Rawr, Recount, and World of Logs to look for things that might be directly comparable.&nbsp; It's all a little more messy than I'd like, but here's some items that might make for valuable diagnostics:</p>\r\n<p>1) Recount: Healing Done for Death Strike.&nbsp; For example in my last Al'Akir attempt from last night it reports 19 Death Strikes with average heal of 10.8K.&nbsp; The 10.8K seems like the # that you'd most want a direct comparable for in Rawr.&nbsp; I\r\n get a very similar number in World of Logs so that's encouraging.&nbsp; If the Rawr # was a lot different we'd have our answer right there.</p>\r\n<p>2) Recount: Overhealing done for Death Strike.&nbsp; This is puzzling - in that same attempt it shows 4 Death Strikes with average overheal of 10.8K.&nbsp; Either I really did have 19 that were fully used and 4 that were fully overheals, or there's some\r\n measurement issue.&nbsp; I suspect the latter.&nbsp; World of Logs reports a 17.4% overheal which is similar to the 4/(4&#43;19).&nbsp; Not sure what to make of either datapoint but in any case it would be interesting for Rawr to show its estimate of what % of\r\n the Death Strike heal was effective vs. overheal.</p>\r\n<p>3) Recount: Healing Done for Blood Shield.&nbsp; Unfortunately here the #s reported are for individual hits against the shield, vs. the total strength of each shield.&nbsp; (ie in the encounter above 35 hits of 4.9K.)&nbsp; This is hard to use on its own.&nbsp;\r\n Perhaps more valuable would be comparing the total healed with Blood Shield vs. the total healed with Death Strike.&nbsp; In comparing the Rawr % vs the Recount % (which would have to be manually computed unfortunately), you'd get a sense for if Rawr's assumptions\r\n about DS overheal or Blood Shield use vs waste (because it dropped off or was overwritten) were off.</p>\r\n<p>4) Recount: Damage Taken: Summary (click on the magnifying glass, then &quot;click for incoming&quot;.)&nbsp; This breaks damage taken into schools.&nbsp; Ie in my encounter it shows 797K melee vs. 818K nature (making this an example of a fight where the physical\r\n vs. magic distinction is extremely relevant.)&nbsp; It also provides the miss/dodge/parry percent for the melee, and the percent resisted for the magic.&nbsp; All of these percentages seem like items that could be directly comparable between Rawr and Recount\r\n and each of which, if there was a significant delta, could explain why one model was reporting very different results from another.&nbsp; Recount also provides total absorbed for both magic and physical, but this strikes me as risky:&nbsp; the amount absorbed\r\n will vary drastically if you have a discipline priest healing you or not and my guess is if you tried to provide a comparable in Rawr you'd be fending off bug reports about it for the rest of your life.</p>\r\n<p>5) World of Logs:&nbsp; Buffs gained:&nbsp; Includes an uptime % which could also be instructive to compare against Rawr's model.&nbsp; Ie especially for Blade Barrier, Bone Shield, Vampiric Blood, DRW, WotN, IF.</p>\r\n<p>I hope this helps.&nbsp; In the end it could turn out that only one or two of these are what really cracks the puzzle but unfortunately its hard to know which ahead of time.&nbsp; I personally suspect the physical vs. magic distinction (data point #4) is\r\n a huge component in what potentially makes mastery superior vs avoidance.</p>\r\n",
+    "PostedDate": "2011-01-17T18:17:13.443-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

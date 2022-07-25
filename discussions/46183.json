@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "154179",
+    "ThreadId": "46183",
+    "Html": "Prior to v2.1.8 it was possible to use the Copy menu item or CTRL-C to copy data from the model and paste it into a text file this seems to have been removed in v2.1.8 (or possibly earlier I missed a version or two over the xmas holiday period). Is there a reason for this? Would it be possible to include the data this used to capture in the save .XML file? This would then allow using Rawr to examine kit possibilities and give output for more thorough analysis using the EnhSim for Enhancement Shaman. <br>\r\n<br>\r\nIdeally of course at some point the Enhance module in Rawr would provide all this information, however its unlikely to be able to do the 10,000+ hours simulation runs that the EnhSim generates.&nbsp; I may be wrong but the Enhancement Shaman does seem to be one of the few class specs that doesn't lend itself to a spreadsheet calculation, hence we have the EnhSim. If Rawr export could include base stats eg: STR, AGI, INT, STA, SPI etc then it would be simple to write a EnhSim data module to import the Rawr data. Thus Rawr could be used to test out best in slot kit and have the EnhSim verify the degree to which the dps is affected.<br>\r\n<br>\r\nI've been reluctant to touch any of the base code to reinstate this functionality or to add it to the .XML save file myself as whilst I've been granted developer status I am in no way wishing to interfere with core functionality without having a discussion about its merits first.<br>\r\n",
+    "PostedDate": "2009-02-04T03:46:19.73-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "154291",
+    "ThreadId": "46183",
+    "Html": "Tools &gt; Copy Stats to Clipboard<br>\r\n<br>\r\nIt's still there; never has been Edit &gt; Copy, or CTRL-C. In fact, nothing in the edit menu actually does anything, I don't think... I should probably remove that...<br>\r\n",
+    "PostedDate": "2009-02-04T08:39:18.973-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "154298",
+    "ThreadId": "46183",
+    "Html": "DOH!!!<br>\r\n<br>\r\nI'd been using the copy stats to clipboard option before Xmas, things had been busy since then with work and stuff. On getting new version I went to copy n paste and nothing, so I assumed the version change had removed it sorry about that.<br>\r\n<br>\r\nAny chance of getting this stats data included in the XML save file? It would make parsing a single file so much easier. What is protocol on looking at this code. I am reluctant to touch anything I'm not specifically allowed near. I'd rather have blessing before I spend time on stuff and irritate people for committing un-planned changes. What is the protocol on this? \r\n",
+    "PostedDate": "2009-02-04T08:45:27.083-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "154321",
+    "ThreadId": "46183",
+    "Html": "Protocol is... Discuss changes to Rawr.exe or Rawr.Base with me before making them. In this case, I'm still not sure I want to include those stats in the xml file, because they're not data. They're display values. What you want is the results of GetCharacterStats(). I may expose that at some point, but haven't had a reason to, so far.<br>\r\n<br>\r\nIdeally, development toward interaction between Rawr and EnhSim should go toward Rawr.EnhSham instead. We know Rawr.EnhSham is buggy/incomplete; it should be improved/fixed, instead of worked around.<br>\r\n",
+    "PostedDate": "2009-02-04T09:51:41.273-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "154333",
+    "ThreadId": "46183",
+    "Html": "Thanks. My idea is not to work around Rawr but to improve Rawr.Enhance so that Enhancement Shammys have a reason to use it. From what you have said if the Rawr.Enhance module was improved so that it gave fairly accurate figures for most people and allowed for the export of an EnhSim config file via module menu or button for those that want 20,000 hr simulation accuracy then you would be happy that we had a solution that would benefit both categories of user?<br>\r\n<br>\r\nIf so then I'd be happy to put more effort into the Rawr.Enhance so that the general user base was supported, and we had an option within the Enhance module to export to EnhSim for those who are more demanding.<br>\r\n",
+    "PostedDate": "2009-02-04T10:01:39.95-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "154344",
+    "ThreadId": "46183",
+    "Html": "Yes, as long as the simulation isn't what normal users use. If most enhancement shaman end up just using Rawr to load their character, configure buffs, export the stats, and load them in EnhSim, then I'd say that we've failed. If most people use the ratings in Rawr, and find them to be generally accurate, that'd be awesome, and I don't mind at all if a few really hardcore users double-check their results with EnhSim.<br>\r\n<br>\r\nMore than anything, I expect that functionality would be useful to double-check Rawr.Enhance's results, and aid in finding bugs in Rawr.Enhance calculations. You could regularly export characters to EnhSim, and adjust Rawr's calculations to give similar results. Users could post bug reports as well, of things like &quot;Here's my Rawr character file; notice that the EnhSim results are over 300dps higher than what Rawr says.&quot;<br>\r\n<br>\r\nOf course, that's all assuming EnhSim is perfectly accurate. Nothing's perfectly accurate, but from what I've heard, EnhSim is pretty reliable.<br>\r\n",
+    "PostedDate": "2009-02-04T10:23:04.307-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "154445",
+    "ThreadId": "46183",
+    "Html": "I want to improve the Enh Shammy module, but right now I still have some things I need to do on Priest models.\r\n",
+    "PostedDate": "2009-02-04T14:10:23.237-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "154580",
+    "ThreadId": "46183",
+    "Html": "Excellent sounds like we have the same ideas then. The Rawr module should aim to be accurate and sufficient in of itself, and all that the majority of users would need. For the hard core where that extra 0.5% dps matters an export to the sim would be available. As you said come what may it would provide an excellent cross check to ensure the accuracy of both models.<br>\r\n",
+    "PostedDate": "2009-02-05T01:55:45.363-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

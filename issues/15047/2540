@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Character xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>Zamphire</Name>
+  <Realm>Eonar</Realm>
+  <Region>US</Region>
+  <Race>Draenei</Race>
+  <Class>Shaman</Class>
+  <ActiveBuffs>Strength of Earth Totem</ActiveBuffs>
+  <ActiveBuffs>Enhancing Totems (Agility/Strength)</ActiveBuffs>
+  <ActiveBuffs>Windfury Totem</ActiveBuffs>
+  <ActiveBuffs>Improved Windfury Totem</ActiveBuffs>
+  <ActiveBuffs>Fish Feast</ActiveBuffs>
+  <CalculationOptions>
+    <item>
+      <key>
+        <string>Enhance</string>
+      </key>
+      <value>
+        <string>&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;CalculationOptionsEnhance xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;BossName&gt;Custom&lt;/BossName&gt;
+  &lt;TargetLevel&gt;83&lt;/TargetLevel&gt;
+  &lt;TargetArmor&gt;10643&lt;/TargetArmor&gt;
+  &lt;InBack&gt;true&lt;/InBack&gt;
+  &lt;InBackPerc&gt;100&lt;/InBackPerc&gt;
+  &lt;AverageLag&gt;250&lt;/AverageLag&gt;
+  &lt;ReactionTime&gt;250&lt;/ReactionTime&gt;
+  &lt;MinManaSR&gt;1250&lt;/MinManaSR&gt;
+  &lt;MainhandImbue&gt;Windfury&lt;/MainhandImbue&gt;
+  &lt;OffhandImbue&gt;Flametongue&lt;/OffhandImbue&gt;
+  &lt;CalculationToGraph&gt;DPS Rating&lt;/CalculationToGraph&gt;
+  &lt;FightLength&gt;10&lt;/FightLength&gt;
+  &lt;FightLengthMultiplier&gt;5&lt;/FightLengthMultiplier&gt;
+  &lt;TargetFireResistance&gt;0&lt;/TargetFireResistance&gt;
+  &lt;TargetNatureResistance&gt;0&lt;/TargetNatureResistance&gt;
+  &lt;Magma&gt;true&lt;/Magma&gt;
+  &lt;BaseStatOption&gt;true&lt;/BaseStatOption&gt;
+  &lt;UseMana&gt;true&lt;/UseMana&gt;
+  &lt;HideProfessions&gt;true&lt;/HideProfessions&gt;
+  &lt;StatsList&gt;
+    &lt;boolean&gt;true&lt;/boolean&gt;
+    &lt;boolean&gt;true&lt;/boolean&gt;
+    &lt;boolean&gt;true&lt;/boolean&gt;
+    &lt;boolean&gt;true&lt;/boolean&gt;
+    &lt;boolean&gt;true&lt;/boolean&gt;
+    &lt;boolean&gt;true&lt;/boolean&gt;
+    &lt;boolean&gt;true&lt;/boolean&gt;
+    &lt;boolean&gt;true&lt;/boolean&gt;
+    &lt;boolean&gt;true&lt;/boolean&gt;
+    &lt;boolean&gt;true&lt;/boolean&gt;
+  &lt;/StatsList&gt;
+  &lt;PriorityList&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;EnhanceAbility&gt;ShamanisticRage&lt;/EnhanceAbility&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;Priority&gt;
+          &lt;PriorityName&gt;Shamanistic Rage&lt;/PriorityName&gt;
+          &lt;AbilityType&gt;ShamanisticRage&lt;/AbilityType&gt;
+          &lt;Description&gt;Use Shamanistic Rage&lt;/Description&gt;
+          &lt;PriorityValue&gt;1&lt;/PriorityValue&gt;
+          &lt;Checked&gt;true&lt;/Checked&gt;
+        &lt;/Priority&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;EnhanceAbility&gt;FeralSpirits&lt;/EnhanceAbility&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;Priority&gt;
+          &lt;PriorityName&gt;Feral Spirits&lt;/PriorityName&gt;
+          &lt;AbilityType&gt;FeralSpirits&lt;/AbilityType&gt;
+          &lt;Description&gt;Use Feral Sprirts&lt;/Description&gt;
+          &lt;PriorityValue&gt;2&lt;/PriorityValue&gt;
+          &lt;Checked&gt;true&lt;/Checked&gt;
+        &lt;/Priority&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;EnhanceAbility&gt;LightningBolt&lt;/EnhanceAbility&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;Priority&gt;
+          &lt;PriorityName&gt;Lightning Bolt on 5 stacks of MW&lt;/PriorityName&gt;
+          &lt;AbilityType&gt;LightningBolt&lt;/AbilityType&gt;
+          &lt;Description&gt;Use Lightning Bolt when you have 5 stacks of Maelstrom Weapon&lt;/Description&gt;
+          &lt;PriorityValue&gt;3&lt;/PriorityValue&gt;
+          &lt;Checked&gt;true&lt;/Checked&gt;
+        &lt;/Priority&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;EnhanceAbility&gt;FlameShock&lt;/EnhanceAbility&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;Priority&gt;
+          &lt;PriorityName&gt;Flame Shock&lt;/PriorityName&gt;
+          &lt;AbilityType&gt;FlameShock&lt;/AbilityType&gt;
+          &lt;Description&gt;Use Flame Shock if no Flame Shock debuff on target&lt;/Description&gt;
+          &lt;PriorityValue&gt;4&lt;/PriorityValue&gt;
+          &lt;Checked&gt;true&lt;/Checked&gt;
+        &lt;/Priority&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;EnhanceAbility&gt;StormStrike&lt;/EnhanceAbility&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;Priority&gt;
+          &lt;PriorityName&gt;Stormstrike&lt;/PriorityName&gt;
+          &lt;AbilityType&gt;StormStrike&lt;/AbilityType&gt;
+          &lt;Description&gt;Use Stormstrike&lt;/Description&gt;
+          &lt;PriorityValue&gt;5&lt;/PriorityValue&gt;
+          &lt;Checked&gt;true&lt;/Checked&gt;
+        &lt;/Priority&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;EnhanceAbility&gt;EarthShock&lt;/EnhanceAbility&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;Priority&gt;
+          &lt;PriorityName&gt;Earth Shock&lt;/PriorityName&gt;
+          &lt;AbilityType&gt;EarthShock&lt;/AbilityType&gt;
+          &lt;Description&gt;Use Earth Shock&lt;/Description&gt;
+          &lt;PriorityValue&gt;6&lt;/PriorityValue&gt;
+          &lt;Checked&gt;true&lt;/Checked&gt;
+        &lt;/Priority&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;EnhanceAbility&gt;LavaLash&lt;/EnhanceAbility&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;Priority&gt;
+          &lt;PriorityName&gt;Lava Lash&lt;/PriorityName&gt;
+          &lt;AbilityType&gt;LavaLash&lt;/AbilityType&gt;
+          &lt;Description&gt;Use Lava Lash&lt;/Description&gt;
+          &lt;PriorityValue&gt;7&lt;/PriorityValue&gt;
+          &lt;Checked&gt;true&lt;/Checked&gt;
+        &lt;/Priority&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;EnhanceAbility&gt;MagmaTotem&lt;/EnhanceAbility&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;Priority&gt;
+          &lt;PriorityName&gt;Magma Totem&lt;/PriorityName&gt;
+          &lt;AbilityType&gt;MagmaTotem&lt;/AbilityType&gt;
+          &lt;Description&gt;Refresh Magma Totem&lt;/Description&gt;
+          &lt;PriorityValue&gt;8&lt;/PriorityValue&gt;
+          &lt;Checked&gt;true&lt;/Checked&gt;
+        &lt;/Priority&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;EnhanceAbility&gt;SearingTotem&lt;/EnhanceAbility&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;Priority&gt;
+          &lt;PriorityName&gt;Searing Totem&lt;/PriorityName&gt;
+          &lt;AbilityType&gt;SearingTotem&lt;/AbilityType&gt;
+          &lt;Description&gt;Refresh Searing Totem&lt;/Description&gt;
+          &lt;PriorityValue&gt;9&lt;/PriorityValue&gt;
+          &lt;Checked&gt;false&lt;/Checked&gt;
+        &lt;/Priority&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;EnhanceAbility&gt;LightningShield&lt;/EnhanceAbility&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;Priority&gt;
+          &lt;PriorityName&gt;Lightning Shield&lt;/PriorityName&gt;
+          &lt;AbilityType&gt;LightningShield&lt;/AbilityType&gt;
+          &lt;Description&gt;Refresh Lightning Shield&lt;/Description&gt;
+          &lt;PriorityValue&gt;10&lt;/PriorityValue&gt;
+          &lt;Checked&gt;true&lt;/Checked&gt;
+        &lt;/Priority&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+    &lt;item&gt;
+      &lt;key&gt;
+        &lt;EnhanceAbility&gt;RefreshTotems&lt;/EnhanceAbility&gt;
+      &lt;/key&gt;
+      &lt;value&gt;
+        &lt;Priority&gt;
+          &lt;PriorityName&gt;Refresh Totems&lt;/PriorityName&gt;
+          &lt;AbilityType&gt;RefreshTotems&lt;/AbilityType&gt;
+          &lt;Description&gt;Refresh Totems&lt;/Description&gt;
+          &lt;PriorityValue&gt;11&lt;/PriorityValue&gt;
+          &lt;Checked&gt;true&lt;/Checked&gt;
+        &lt;/Priority&gt;
+      &lt;/value&gt;
+    &lt;/item&gt;
+  &lt;/PriorityList&gt;
+&lt;/CalculationOptionsEnhance&gt;</string>
+      </value>
+    </item>
+  </CalculationOptions>
+  <AvailableItems>47564</AvailableItems>
+  <AvailableItems>-13817</AvailableItems>
+  <AvailableItems>47494</AvailableItems>
+  <AvailableItems>41210</AvailableItems>
+  <AvailableItems>47244</AvailableItems>
+  <AvailableItems>47231</AvailableItems>
+  <AvailableItems>45844</AvailableItems>
+  <AvailableItems>-113822</AvailableItems>
+  <AvailableItems>47248</AvailableItems>
+  <AvailableItems>-123826</AvailableItems>
+  <AvailableItems>47496</AvailableItems>
+  <AvailableItems>-83845</AvailableItems>
+  <AvailableItems>47561</AvailableItems>
+  <AvailableItems>43251</AvailableItems>
+  <AvailableItems>47222</AvailableItems>
+  <AvailableItems>47214</AvailableItems>
+  <AvailableItems>49074</AvailableItems>
+  <AvailableItems>42075</AvailableItems>
+  <AvailableItems>48663</AvailableItems>
+  <AvailableItems>45169</AvailableItems>
+  <AvailableItems>47616</AvailableItems>
+  <AvailableItems>47610</AvailableItems>
+  <AvailableItems>47808</AvailableItems>
+  <AvailableItems>47719</AvailableItems>
+  <AvailableItems>-53832</AvailableItems>
+  <AvailableItems>-83231</AvailableItems>
+  <AvailableItems>-91603</AvailableItems>
+  <AvailableItems>-43831</AvailableItems>
+  <AvailableItems>-153788</AvailableItems>
+  <AvailableItems>46212</AvailableItems>
+  <AvailableItems>47245</AvailableItems>
+  <AvailableItems>47508</AvailableItems>
+  <AvailableItems>-33808</AvailableItems>
+  <AvailableItems>47667</AvailableItems>
+  <AvailableItems>47000</AvailableItems>
+  <AvailableItems>45827</AvailableItems>
+  <AvailableItems>-113823</AvailableItems>
+  <AvailableItems>-153789</AvailableItems>
+  <CurrentModel>Enhance</CurrentModel>
+  <EnforceMetagemRequirements>true</EnforceMetagemRequirements>
+  <PrimaryProfession>Jewelcrafting</PrimaryProfession>
+  <SecondaryProfession>Mining</SecondaryProfession>
+  <Head>46212.41398.40053.0.3817</Head>
+  <Neck>47494.0.0.0.0</Neck>
+  <Shoulders>47245.40125.0.0.3808</Shoulders>
+  <Back>42075.0.0.0.3831</Back>
+  <Chest>47000.40125.40125.0.3832</Chest>
+  <Shirt>23345.0.0.0.0</Shirt>
+  <Wrist>47610.0.0.0.3231</Wrist>
+  <Hands>47719.40162.0.0.1603</Hands>
+  <Waist>45827.40125.0.0.0</Waist>
+  <Legs>45844.40118.40162.0.3823</Legs>
+  <Feet>47248.40118.0.0.3826</Feet>
+  <Finger1>43251.49110.0.0.0</Finger1>
+  <Finger2>47222.0.0.0.0</Finger2>
+  <Trinket1>47214.0.0.0.0</Trinket1>
+  <Trinket2>49074.0.0.0.0</Trinket2>
+  <MainHand>47808.0.0.0.3789</MainHand>
+  <OffHand>47508.40125.0.0.3789</OffHand>
+  <Ranged>47667.0.0.0.0</Ranged>
+  <OptimizationRequirements />
+  <WarriorTalents>0000000000000000000000000000000000000000000000000000000000000000000000000000000000000.0000000000000000000000000000000000</WarriorTalents>
+  <PaladinTalents>000000000000000000000000000000000000000000000000000000000000000000000000000000.0000000000000000000000000000000000</PaladinTalents>
+  <HunterTalents>000000000000000000000000000000000000000000000000000000000000000000000000000000000.000000000000000000000000000000000</HunterTalents>
+  <RogueTalents>00000000000000000000000000000000000000000000000000000000000000000000000000000000000.0000000000000000000000000000000000</RogueTalents>
+  <PriestTalents>0000000000000000000000000000000000000000000000000000000000000000000000000000000000.000000000000000000000000000000000</PriestTalents>
+  <ShamanTalents>05303005000000000000000003020521310502133303113123105100000000000000000000000000.00000000000001000100001000000</ShamanTalents>
+  <MageTalents>00000000000000000000000000000000000000000000000000000000000000000000000000000000000000.0000000000000000</MageTalents>
+  <WarlockTalents>000000000000000000000000000000000000000000000000000000000000000000000000000000000.0000000000000000</WarlockTalents>
+  <DruidTalents>0000000000000000000000000000000000000000000000000000000000000000000000000000000000000.000000000000000000000000</DruidTalents>
+  <DeathKnightTalents>0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.000000000000000000000000000000000</DeathKnightTalents>
+  <CustomItemInstances />
+  <WaistBlacksmithingSocketEnabled>true</WaistBlacksmithingSocketEnabled>
+  <HandsBlacksmithingSocketEnabled>false</HandsBlacksmithingSocketEnabled>
+  <WristBlacksmithingSocketEnabled>false</WristBlacksmithingSocketEnabled>
+</Character>

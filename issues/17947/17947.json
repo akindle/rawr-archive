@@ -1,0 +1,90 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "Fix seems to solve the issues I&#39;ve been having.",
+    "ClosedDate": "2010-06-18T03:28:58.28-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Special effect parsing in wowhead.cs is currently 'broken' and it has been for a while.  I'm not sure atm if it's because of changes in how wowhead returns data or because of something that got changed in between the item HTTP retrieval and the parsing.\n \nThe 'broken' part is locate in Rawr.Base/Wowhead.cs, line 1269\nHere nbsp-entities are being replaced by spaces in the htmltooltip variable.\nNote however that neither the Contains() nor the Replace() call have the ampersand entity prefix.\n \nI'm 100% sure that in 2.3.15 (when I went over this very bit of code for fixing TAJ) the htmlTooltip did indeed ONLY contain \"nbsp;\" without the ampersand, and it now DOES have the ampersand.  This line of code is thus removing the \"nbsp;\" replacing it with a space but leaving the ampersands behind and this is then messing up with the regexes in specialeffecs.cs since they don't have provision for these ampersands.\n \nIt's easy enough to fix by changing the \"nbsp;\" to \"&nbsp;\" but... there may be something lurking deeper down.  Did wowhead actually change and send the ampersands now where it didn't before.  Or did some other code get changed that used to removed the ampersands from the htmltooltip but no longer is ?\nOr do we need to play safe and FIRST try to replace all \"&nbsp;\" occurances with spaces, then followup with replacing any stray \"nbsp;\" as well ?\n \nAs a sidenote:  a lot of the regexes in specialeffects.cs still assume that \"nbsp;\" (withtout ampersand) can occur in the tooltip (even though it's being removed (probably this generic cleanup in the htmltooltip postdates the regexes).  regexes also assume double spaces can occur even those are being cleaned up as well now.",
+    "LastUpdatedDate": "2013-05-16T05:20:29.52-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-06-10T02:37:39.317-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Rawr.Base] Wowhead item update broken.",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17947
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I think this relates to WebRequest.DownloadXml:\r\n\r\n                        if (isHtml)\r\n                        {\r\n                            // when trying to load HTML as XML there might be other things in HTML\r\n                            // that are not valid XML, removing & signs makes it able to parse HTML\r\n                            // but it will also break all escaped characters, so don't do this for\r\n                            // valid xml files\r\n                            returnDocument.LoadXml(xml.Replace(\"&\",\"\"));\r\n                        }\r\n                        else\r\n                        {\r\n                            returnDocument.LoadXml(xml);\r\n                        }\r\n",
+      "PostedDate": "2010-06-10T15:49:11.993-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Following up on this:\r\n\r\nPreviously the code was always stripping the & char, which was causing problems:\r\n\r\n// I have no idea why this was here, but it breaks escaped char parsing in strings \r\n// if there is a specific issue that this is supposed to handle make it so \r\n// it doesn't break escaped characters \r\n\r\nThe reason why this was changed was because of quotes in xml files: http://rawr.codeplex.com/workitem/17704\r\n\r\nSo taking this into account we should probably just change \"nbsp;\" to \"&nbsp;\", although I think the xml document should have already resolved all escaped characters, so maybe it should be \" \" instead?",
+      "PostedDate": "2010-06-10T16:06:10.423-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hmm looks like I opened up another can of worms :p\r\n\r\nFrom what I know, you can't rely on HTML being xml-parsable unless it is fully validated xhtml (which is xml, duh).\r\n\r\nOldschool html allowed you to do things that aren't even xml at all: \r\nnesting: <b>bold <i>bold italic</b> italic</i>  Although later HTML revisions have been saying this is invalid also. \r\n<p> and <br> tags not requiring to be closed\r\netc.  It can be quite nasty unless you know the source is xhtml (= html DTD for xml) in which case it shouldn't matter since it's valid xml.\r\n\r\n",
+      "PostedDate": "2010-06-14T02:16:44.863-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "quote: although I think the xml document should have already resolved all escaped characters\r\n\r\nObviously it doesn't, since the whole point of the post is that the htmltooltip does indeed contain '&nbsp;' entities.\r\nif any conversion is made, I would expect that to be made when fetching xml node data/text.  But that isn't happening here.  The entire downloaded html is parsed internally not assuming it's valid xml.",
+      "PostedDate": "2010-06-14T02:19:12.493-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well as far as I know what is happening is the item data is pure xml, but it has html embedded as plain text with CDATA, so the nbsp you see are not part of xml, but the embedded html inside xml, which is why they are not parsed.",
+      "PostedDate": "2010-06-14T20:47:32.977-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I've made the change, but should still be tested.",
+      "PostedDate": "2010-06-17T16:24:05.097-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Looks ok to me just did a ton of updates and everything seems as I expect it to be.  Could have made that change myself ;-).  I just wasn't sure if it was the right kind of change.",
+      "PostedDate": "2010-06-18T00:56:22.14-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-06-18T03:28:58.28-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:28:12.77-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:29.52-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

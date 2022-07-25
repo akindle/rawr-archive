@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "138401",
+    "ThreadId": "41692",
+    "Html": "When I start Rawr, the splash screen pops up for a second, then closes and nothing happens. This happens repeatedly. I uninstalled and then reinstalled .net, deleted Rawr and downloaded it again, and have rebooted. I'm not getting any error messages or anything like that; the splash screen just closes and nothing ever happens.<br>\r\n<br>\r\n<br>\r\nAny ideas?<br>\r\n",
+    "PostedDate": "2008-12-07T09:39:40.71-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "138516",
+    "ThreadId": "41692",
+    "Html": "Me too<br>\r\n",
+    "PostedDate": "2008-12-08T00:14:05.307-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "138548",
+    "ThreadId": "41692",
+    "Html": "Without any error information it will be very hard for us to reproduce this. One thing I would initially try is remove all the files except Rawr.exe, Rawr.exe.config, Rawr.Base.dll and Rawr.Bear.dll. Try what happens with that minimum setup. If even that won't load properly then next steps kind of depend on how much time you have to help us find the cause for it. If you feel like it you can try installing the free Visual C# Express and compile the source code yourself and see if that makes any difference.\r\n",
+    "PostedDate": "2008-12-08T03:33:08.853-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "138588",
+    "ThreadId": "41692",
+    "Html": "I tried removing all but those files, the same thing happens: splash screen opens for an instant, then disappears and nothing further happens.<br>\r\n<br>\r\nI have as much time as you need; it's driving me crazy not being able to use Rawr. :\\ I'm installing Visual C# Express right now; just let me know what to do next.<br>\r\n<br>\r\nSome added details: I'm using Vista Home Premium, 64-bit. This is a fairly new computer (~3 months old), and Rawr had worked fine up until last week, when I downloaded the new version.<br>\r\n<br>\r\nEDIT: Compiling myself seems to have worked; however, I have no idea what I'm doing. After opening the source code in the C# editor, I clicked on &quot;Start Debugging&quot; and Rawr opened and was working fine. However, I have no idea how to finalize it or whatever (I'm in way over my head here) so that I can use it without going through C# each time. Can anyone help?<br>\r\n",
+    "PostedDate": "2008-12-08T06:18:20.96-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "138779",
+    "ThreadId": "41692",
+    "Html": "One thing to do is try running the normal downloaded Rawr to see if that still does not work.<br>\r\n<br>\r\nTo use the compiled version without opening c# each time go to the location where you have the source files. You should see a new folder called bin and inside a folder called Debug. There you should find the Rawr.exe that you can start directly. Another thing to do is from c# on top in the toolbar you will see a dropdown that says Debug. Change that to Release and compile again. That should create a new folder inside bin called Release and is a more optimized version. See if there is any difference between the two. \r\n",
+    "PostedDate": "2008-12-08T15:39:46.877-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,110 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Items",
+      "DisplayName": "Rawr.Base.Items"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-04-25T01:27:55.5-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Rawr3 web client, running in Safari\nCharacter: Fennel - Uldum - US\nCat model\n \nIn the Item Cache, the Dexterous Brightstone Ring is missing the 50 Armor Penetration rating it has, which makes the optimizer see it as being inferior to 226 items rather than the BiS item that it is.\n \nI tried editing the item to add the 50 ArP manually, which changed the tooltip but did not seem to have any effect on the item's ranking.\n \nI tried to update the item from Armory to fetch the stats, and the tooltip for the item changed so that just after the enchant line it reads:\n \nFailed - [ArgumentNull_Generic]\nDebugging resource strings are unavailable.  Often the key an- (here it is cut off by the edge of the tooltip box)\nParameter name: key\n \nThe same happens if I try to update from Wowhead instead; and seems to happen for other item I try to update (not just this ring).  Other times an item will disappear from the list entirely when I try to update it.  Also, once this happens (once I try to update an item), I can no longer edit the item manually (I select \"Edit\" from the dropdown menu but nothing happens).\n \nResetting the item cache doesn't seem to help (actually doesn't seem to do anything).  The only thing that resolves the issue is quitting my browser and re-launching the client.  (However, the Dexterous Brightstone Ring still has the incorrect stats when I open it again.)",
+    "LastUpdatedDate": "2017-11-27T11:01:13.477-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-09-12T13:42:28.76-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Items] Update item gives error \"Failed - [ArgumentNull_Generic]\"",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14128
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I tested all this in Firefox to see if there was anything specific to the browser.  Interestingly, the Dextrous Brightstone Ring had the correct stats and ranking when I initially loaded my profile, but then went back down to missing its ArP when I updated it from armory.  Same error.",
+      "PostedDate": "2009-09-12T13:47:29.8-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "After the initial update,  Firefox always loads the ring with incorrect stats as well.  I tried resetting the item cache multiple times, as mentioned, to no obvious effect, and reset my browser for good measure, but it did not change.  So, it appears that what initially caused the problem for me was trying to fetch updated location information from armory (with the bug described), and that the cache is saved somewhere on my machine (where?) with bad data.",
+      "PostedDate": "2009-09-12T14:59:06.503-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Known Issue. The item parsing is much further behind then the Rawr2 version, what is there is basically a quick port of it so that I could work on UI features related to it.",
+      "PostedDate": "2009-09-13T07:08:36.23-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-13T07:09:04.793-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-14T10:25:57.74-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-25T01:27:55.5-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-09T15:53:05.327-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-11-22T19:56:47.293-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T18:53:02.237-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:33:04.973-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T22:45:43.24-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:06.76-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:25.62-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:01:13.477-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

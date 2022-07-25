@@ -1,0 +1,250 @@
+[
+  {
+    "Id": "186670",
+    "ThreadId": "55282",
+    "Html": "I thought &quot;Relative Stat Values&quot; for Cats were quite stable. Now I change a single item &quot;Footwraps of Veil Deceit&quot; to &quot;Tread of the Invader&quot; and crit-rating fallls from 1.07 to 0.61. Other stats are going wild, too. Agility falls from 1.3 to 1.0 and I dont miss a setbonus or hit/exp cap or something. <br>\r\n<br>\r\nOk now I've tried an older version of Rawr (2.2.1) and this seems like a bug to me:<br>\r\nWhen I load my character from the Armory (with Tread of the Invader) the direct stat values show believable number, when I re-equip the exact same item, stat values are going mad.<br>\r\n",
+    "PostedDate": "2009-05-04T13:26:04.917-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "186682",
+    "ThreadId": "55282",
+    "Html": "This was already discussed in a thread on the previous page, look there for more.<div><br></div><div>Short version: Don't use relative stat values. Use Rawr.</div><div><br></div><div>Rawr doesn't use relative stat values internally. We try to make relative stat values 'smooth', but that's difficult sometimes, especially in the case of procs. I'm working on smoothing those instabilities out, like you mention, but it takes time, for zero actual user benefit, so it's not exactly a high priority. Basically, just don't forget that relative stat values shouldn't be used.</div>",
+    "PostedDate": "2009-05-04T14:07:46.273-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "186689",
+    "ThreadId": "55282",
+    "Html": "Also, keep in mind that what you're seeing isn't necessarily wrong.<div><br></div><div>You say that you're not hitting any caps, but you may not realize that you are. In all of these cases that I've seen lately, the fluctuating value has been agi/crit, aka whatever increases your crit chance. For any given rotation, you need some level of combo point generation to maintain that rotation, and extra combo points are either wasted, or converted to bites. Depending upon how many extra CPs (beyond SR/Rip) you have, it may or may not be worth it to include some Bites. If it's not worth it to bite, crit's value is low, since the extra CPs from more crit are wasted. Once you hit the point where it's worth it to bite, crit's value shoots up, since those extra CPs from extra crit mean more/stronger bites.</div>",
+    "PostedDate": "2009-05-04T14:22:07.88-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "186691",
+    "ThreadId": "55282",
+    "Html": "Also, that situation is why you sometimes see having a mangle bot lower your DPS in Rawr. If you've got a mangle bot, Rawr won't use mangle. However, Mangle provides more CP per Energy than Shred, so in many cases, those extra CP are especially valuable, creating a situation where a few mangles mixed in with the shreds gives higher dps than just Shred.",
+    "PostedDate": "2009-05-04T14:25:09.687-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "186702",
+    "ThreadId": "55282",
+    "Html": "Continuing my stream of thought here... Ideally, Rawr would figure out an ideal split of Mangle/Shred within your cycle, to maximize DPS. However, if that split gets too far in favor of Mangle, then you start not fully utilizing Glyph of Shred.<div><br></div><div>The Cat DPS 'Rotation' is just so frelling complex and nuanced, it's hard to precisely optimize. Basically, <a title=\"blocked::http://photobucket.com/albums/e388/vertidog/catdps.jpg\" href=\"http://photobucket.com/albums/e388/vertidog/catdps.jpg\">http://photobucket.com/albums/e388/vertidog/catdps.jpg</a></div>",
+    "PostedDate": "2009-05-04T14:42:19.477-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "186716",
+    "ThreadId": "55282",
+    "Html": "It's still fairly minor, but this problem does extend beyond the relative stats value page, for the record.&nbsp; The gems page is similarly wonky, tiny changes in stats can drastically change the value of gems.&nbsp; If you happen to have some alternate gemming templates set up, it can suggest incorrect gems when you go to choose gear.&nbsp; It's pretty difficult to get it to select stats that display these little variations, but the optimizer will also select incorrect gems if you happen to hit it just right.<br>\r\n<br>\r\nEdit: Actually, it's not all that hard to get the optimizer to select incorrect gems.&nbsp; Optimizing my standard DPS file with no tweaking aside from telling it strength gems are available results in it choosing two strength gems.<br>\r\n",
+    "PostedDate": "2009-05-04T15:33:50.173-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "186747",
+    "ThreadId": "55282",
+    "Html": "Why do you think that's wrong? The point of this all is that it's not wrong, it's just more accurate than you expect.",
+    "PostedDate": "2009-05-04T17:30:21.553-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "186754",
+    "ThreadId": "55282",
+    "Html": "The problem is that it's more accurate than is useful, to the point that those &quot;accuracies&quot; interfere with normal use of the program.&nbsp; If WoW worked exactly the way Rawr models it, a given fight always lasted exactly as long as Rawr is assuming, and everybody kept up the exactly correct buffs at all times, I'd agree with you that it's working as intended rather than being a bug.&nbsp; It would still be frustrating given that Rawr would be recommending different gems for different fights, but it would at least be correct.<br>\r\n",
+    "PostedDate": "2009-05-04T17:59:11.083-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "186761",
+    "ThreadId": "55282",
+    "Html": "Remember, though, that it's incremental. There's all these subtle balance points. It's going to choose the highest DPS rotation, which doesn't vary the results much; if the results change too much, the rotation changes as well. The whole character isn't being valued at those lower/higher agi RSVs, it's being valued accurately, you just happen to currently end up on a slow patch. As soon as you change one gem in the direction it's finding to be better, everything is reevaluated, and agi may be back to it's high value.<div><br></div><div>It's not line you can increment the fight duration over and over, optimizing each time, and have it swap between all agi gems and all str gems back and forth. There may be a break point, where agi &gt; str above it, but it's not going to drastically swing back and forth without good reason.</div><div><br></div><div>Regardless, how would you propose it be done, if that's &quot;too accurate&quot; to be useful?</div>",
+    "PostedDate": "2009-05-04T18:20:43.61-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "186773",
+    "ThreadId": "55282",
+    "Html": "Accurate may not have been quite the right word to use in my last post.&nbsp; I very much appreciate the ongoing work to make Rawr as accurate as possible, and I think the new proc system is a good step.&nbsp; The problem I see with it is that the finer display options such as the relative stats and gem pages are sometimes reccomending things that aren't wise choices in the game itself.&nbsp; They're correct in the context Rawr is looking at, but they're picking nits too small to be desireable in a display the user will see.&nbsp; I don't have a clue how to implement it, but I think my complaints can be resolved by obfuscating these subtle balance points from the front end of the program, like I think you were already talking about in your first post in this thread.<br>\r\n<br>\r\nI apologize if it seemed like I was unsatisfied with the underlying concepts you're using, I meant to just be arguing that the instabilities affected more than the relative stat values page, and that smoothing them out should probably be a slightly higher priority.<br>\r\n",
+    "PostedDate": "2009-05-04T19:21:35.333-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "186795",
+    "ThreadId": "55282",
+    "Html": "Not at all; I too want Rawr to be as usable as possible, and do understand the difficulty of 'too accurate' values.<div><br></div><div>I'm sorry, I've been somewhat confusing about this. This isn't just the procs adding instability; there really are these dips and rises in the value of certain stats based on rotation.</div>",
+    "PostedDate": "2009-05-04T21:52:56.593-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "186805",
+    "ThreadId": "55282",
+    "Html": "Sorry, but I'm still not convinced that a single additional FB every 3 cycles or whenever cuts the use of crit-rating in half.<br>\r\nI mean, FB is maybe 5-10% of my total damage... that cant change an overall stat value that dramatically... crit-rating is still great for white/shred/rip damage which should have a larger impact on overall stat value than FB.<br>\r\n<br>\r\nAnd even if that's the case I dont know how to make use of Rawr anymore if it suggests a complete re-gem for every new item I aquire. <br>\r\nRight now Rawr favors agility gems, when I wear my new boots I'm told to use strength gems, two items later (on my upgrade list) i should go with haste, another item later agility is top-notch again and after the last item arpen becomes top. :-/<br>\r\n",
+    "PostedDate": "2009-05-04T22:48:15.733-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "186843",
+    "ThreadId": "55282",
+    "Html": "Well, that's the point of a tool such as Rawr: optimize up to the last drop of dps, even if it means regemming everything when one piece of gear becomes available.<div><br></div><div>Rawr *does* make the best suggestion unless you can show that there is a set of gear (including gemming) that has a better score than the optimizer's suggestion.</div><div><br></div><div>Now I quite well understand that regemming everything to gain 0.1 dps might not be your intent (it's mine ;-)).</div><div><br></div><div>For those situation, it might be interesting to add an &quot;hysteresis&quot; setting to the optimizer, basically telling it to not bother equipping a new set of gear unless the improvement is larger than some preset threshold.</div><div><br></div><div>But that would not bring much. You can already do so manually. When the optimizer is done, it tells you the score of the newly found gear set, and gives you the option to not equip it. If you find the gain is not good enough, you can always ignore that suggestion,</div><div><br></div>",
+    "PostedDate": "2009-05-05T01:25:07.693-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "186853",
+    "ThreadId": "55282",
+    "Html": "Santorayo, you're mistakenly thinking that a change like you mention changes the overall stat value. It doesn't. It changes the CURRENT stat value. Like a cap, stats may be worth less once you're to a certain range, but it just changes in value past that point, it doesn't somehow reduce the value of all your existing stats.<div><br></div><div>If you're right on the edge of one of these breakpoints, then yes, you'll run into situations where it's better to include a few different gems, to ride that line. That's not wrong, it doesn't make Rawr unusable, etc. If you do only want to consider one type of gem, it's *super* easy to do so (just enable/disable whatever gemming templates you want to use).</div>",
+    "PostedDate": "2009-05-05T02:11:24.063-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "186883",
+    "ThreadId": "55282",
+    "Html": "Ok, I think I've understood. So putting RSV in Lootrank.com is a bad idea I guess ^^<br>\r\nI'd like to do that so I have a rough overview and quickly ALT+Tab when an item drops to look up how useful it would be for me.<br>\r\n<br>\r\nWouldn it be possible to calculate RSV as a mean &quot;over the next 20 single points of that stat&quot; ?<br>\r\nLike you have a RSV of haste at 1.12, the next point of haste would give you 1.11 and the next would drop to 0.62, 0.64, 0.66. <br>\r\n(1.12+1.11+0.62+0.64+0.66)/5 = 0.83.<br>\r\n",
+    "PostedDate": "2009-05-05T04:03:50.857-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "186923",
+    "ThreadId": "55282",
+    "Html": "<p>What if ArPen gives something like:</p>\r\n<p>(0.8+0.9+0.9+1.0+1.0+1.1)/5  = 1.14.</p>\r\n<p></p>\r\n<p>If we went out from that Average, ArP seems awefully much better, but you were only gaining either 2 points in haste or 2 points of ArP. All the gear/upgrades you can get is relative what you already have, and RSV is dynamic. Its not an easy concept, but this is what happens when Blizzard starts getting stats balanced. Before you could on most classes just keep on stacking 1 or 2 stats and never be wrong. Not so anymore.</p>\r\n",
+    "PostedDate": "2009-05-05T05:58:01.303-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "187008",
+    "ThreadId": "55282",
+    "Html": "The &quot;over the next 20 points&quot; thing is already done, it already does that. That already does take care of the little fluctuations. The problematic fluctuations are larger than that. I'm working on a stat value graph, and will post an image of what I mean in a bit.",
+    "PostedDate": "2009-05-05T10:07:46.293-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "187013",
+    "ThreadId": "55282",
+    "Html": "http://dl.getdropbox.com/u/38028/AgiValues.PNG<br><div><br></div><div>That's a graph of the value of agi, centered on BIS ulduar gear. The dips are rotations where you don't have enough extra combo points for it to be worth including an extra bite, so combo points are being wasted.</div>",
+    "PostedDate": "2009-05-05T10:23:53.697-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "187208",
+    "ThreadId": "55282",
+    "Html": "Didnt Blizzard state they wanted to prevent this massivly changing stat values ? I think I remember a blue post about windfury and enh shamans that have the same problems.<br>\r\n<br>\r\nA last question: are these the results of 3.1 or has this been like this forever and I didnt notice it for the last 4 years? XD<br>\r\n",
+    "PostedDate": "2009-05-05T22:52:47.38-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "187214",
+    "ThreadId": "55282",
+    "Html": "No, they don't mind breakpoints where rotations change and stat values change. The situation you're thinking of was where going past a haste breakpoints with enhshams would drastically *lower* their *entire* DPS. In our case, just the value of one stat is relatively slightly lower, and only within a range, not the entire stack.<div><br></div><div>This probably happened to some extent in 3.0, but it 3.1 certainly made it more noticable.</div>",
+    "PostedDate": "2009-05-05T23:35:45.497-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "187236",
+    "ThreadId": "55282",
+    "Html": "The entire concept of relative stat values and mods that allow you to rank gear based on stat points is massively flawed.  IMO the relative stat value page should never have been implimented and should be removed in the next dot release never to be re-introduced.  What you are wearing at any given moment can, will, and does affect every stat in a large way.  People should be forced to use rawr as rawr was intended instead of enabling them to try to push the square-rawr into the round-statpointmods.<br>\r\n<br>\r\nConsider the bear model that doesn't even have a shifting rotation with break points.  The value of stamina more than doubles if I don't have kings, Agi goes up a hair but mostly stays the same...In the end, with kings, agi actually ends up better than stamina.  Kings is certainly not doubling my stamina.  It's basically a huge influx of all sorts of stats.  As soon as those stats are applied, everything changes massively.  In 25m you will have kings.  In 10m you may not.  If you want to play optimally you will have a second gear set tailored to not having kings.  Rawr gives you the power to do this.  <br>\r\n<br>\r\nSame goes for cat form and the cat model.  As your gear changes it will trigger regemmings.  As buffs change, regemmings.  Should you do that?  Well it's up to you.  It depends on how much you want to try to shoot for perfect optimal DPS and how well you think you can actually do the perfect rotation rawr is modeling...<br>\r\n<br>\r\nSide note: it would be good to add to rawr some form of &quot;slop factor&quot; in the Options tab.  I'm not sure what the best implimentation would be but...I doubt most people can claim to be 100% perfect 100% of the time on their rotation.  It's easy to waste an OOC proc on a rake/mangle, or blow an extra hit into a 5cp target, or end up tossing a bite in but then not getting any crits and having your rip or SR fall off early.\r\n",
+    "PostedDate": "2009-05-06T01:04:01.687-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "187243",
+    "ThreadId": "55282",
+    "Html": "khanthal, I mostly agree with you. There are a few cases where Relative Stat Values are OK to use (ie, when it's something super quick, super dirty, that you *really* don't care about accuracy for), but I do try to push people not to use them how they commonly do. That's why there's that gigantic warning on the RSV page.<div><br></div><div><br></div>",
+    "PostedDate": "2009-05-06T01:12:35.297-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "187245",
+    "ThreadId": "55282",
+    "Html": "Been pouring through the code, implementing new stuff, and doublechecking all my math, and found a bug that has been contributing to this issue.<div><br></div><div>It was mixing up the cap on combo points you can put toward a bite, and the cap on % of max bite damage you can do in each bite. Suffice it to say, it was allowing up to theoretical 29combo point Bites. Removing that, combined with a new system to dynamically trade shreds for mangles, to gain more combo points, in your rotations, is giving much smoother results.</div>",
+    "PostedDate": "2009-05-06T01:16:10.22-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "187273",
+    "ThreadId": "55282",
+    "Html": "That sounds promising ^^<br>\r\n<br>\r\nGenerally speaking: if stat values change with every new item like crazy it's impossible to create a flexible gear-up plan. I dont know for sure, if I'll ever get BiS items... sometimes I get a &quot;almost as good&quot; item faster and pass on the side grade in the future. If that single incident would mess up my stat values completly I have to change my plans concerning any future upgrades on any slot.<br>\r\n<br>\r\nIn a nut shell: you go with &quot;BiS or nothing&quot; or you randomly uprade your items without any future plan what you are looking for (which might very well lead to aquireing much more items than you actually need and then you have to put them in the bank)<br>\r\n",
+    "PostedDate": "2009-05-06T02:37:25.9-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "187349",
+    "ThreadId": "55282",
+    "Html": "&quot;People should be forced to use rawr as rawr was intended instead of enabling them to try to push the square-rawr into the round-statpointmods.&quot;<br>\r\n<br>\r\nIs Rawr intended to keep people from thinking?<br>\r\n<br>\r\nRawr is pretty good at optimizing the gear you have.  It is pretty good at identifying single-item upgrades (things you would equip as soon as they are gemmed/enchanted).<br>\r\n<br>\r\nIt does not have any convenient way to tell me that a piece is something I'd be likely to use for a couple of months in the near future (even if I wouldn't equip it now).  A piece that gets you to 3t8 might be a downgrade, even if 4t8 is a huge upgrade.  Maybe that is not how &quot;rawr was intended&quot;, but it is something your &quot;clients&quot; care about.<br>\r\n<br>\r\nStats weights provide the user with useful insight into how pieces might compare if his environment (gear/fights) changes.<br>\r\n<br>\r\nStats weights are a useful diagnostic on Rawr (and other gear/rotation evaluators), and the user's fight settings.  I suspect that bogus stats weights have led to a number of Rawr bug fixes (perhaps the one Astrylian mentioned a couple of lines up).  They've certainly encouraged me to double check my buff and fight settings a few times.\r\n",
+    "PostedDate": "2009-05-06T06:28:07.823-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "187373",
+    "ThreadId": "55282",
+    "Html": "&quot;It does not have any convenient way to tell me that a piece is\r\nsomething I'd be likely to use for a couple of months in the near\r\nfuture (even if I wouldn't equip it now).&nbsp; A piece that gets you to 3t8\r\nmight be a downgrade, even if 4t8 is a huge upgrade.&nbsp; Maybe that is not\r\nhow &quot;rawr was intended&quot;, but it is something your &quot;clients&quot; care about.&quot;<br>\r\n<br>\r\nErdluf, I think that's exactly what the optimizer is for.<br>\r\n<br>\r\n&lt;Meandering rant removed&gt; \r\n",
+    "PostedDate": "2009-05-06T07:15:56.293-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "187421",
+    "ThreadId": "55282",
+    "Html": "&quot;Erdluf, I think that's exactly what the optimizer is for.&quot;<br>\r\n<br>\r\nAgreed.  It's also very easy to do this by hand.  It does take time, sometimes a lot of it, but rawr isnt doing a simple one-time stat weighting.  <br>\r\n<br>\r\nI have spent many hours on hypothetical gear upgrades, working on upgrade paths, and deciding if various upgrades will have &quot;staying power&quot; or if they will be too quickly replaced.  I still don't see how relative stat values are in any way useful for this.  They are a crutch that you should divorce yourself from.  The insight you speak of those values giving you is a false one since you don't fully understand how and why and when those relative values will change since you don't have a working copy of the model running inside your head.  You can't, in your head, figure out what will happen when you remove one pair of pants and put a different one on.  All of the relative values will change. <br>\r\n<br>\r\n<a href=\"http://www.codeplex.com/site/users/view/Astrylian\" id=\"ctl00_ctl00_MasterContent_Content_PostRepeater_ctl42_UserNameLink\"><span style=\"color:#3e62a6\">Astrylian</span></a>: When is the next planned release for the cat change for bite CP so I know when to download?  Or are these things not scheduled? :)\r\n",
+    "PostedDate": "2009-05-06T09:18:34.987-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "187425",
+    "ThreadId": "55282",
+    "Html": "Yeah, you guys are getting pretty off topic. The sky isn't falling. The point is only that RSVs shouldn't be used to make gear decisions.<div><br></div><div>Next release? Uhmm... Not scheduled yet, but I'd guess friday.</div>",
+    "PostedDate": "2009-05-06T09:23:10.273-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "188971",
+    "ThreadId": "55282",
+    "Html": "<p>Hi Astrylian-- long time, no see :) I haven't been dwelling in the Rawr world much (mostly because I don't have to worry about bear tanking). &nbsp;</p>\r\n<p>I have a couple of comments about various things discussed in this thread:&nbsp;</p>\r\n<p>1) This is the first time I've seen any mention in kitty DPS theorycrafting where it recommended switching to mangle for CP generation. &nbsp;I'm not saying it's wrong-- it's just something that's taken on trust unless you go code-diving. &nbsp;The bigger deal is, if there are discoveries in the theorycraft that are introduced in the model, but don't make it out to the player base, then you're just creating a &quot;perfect&quot; calculator which only people who read this discussion section or read the code every release will know what's going on (and sometimes, not even then). &nbsp;It is the biggest weakness of Rawr-- I barely use it because half the time I don't know why it's reporting something is drastically changed. &nbsp;If the optimal point where I should mangle instead of shred exists, and it depends on my gear, then the calculator absolutely needs to tell me that I need to change how I play. &nbsp;It needs to tell me &quot;Now it's optimal to bite at 8.6 seconds left on Rip, but only if Tiger's Fury will be available before Rip expires&quot; if it's using that in the calculation. &nbsp;Otherwise, the estimations on mangle replacing shred isn't really useful. &nbsp;&nbsp;<br><br>2) I'm also uncertain as to whether the calculator, in saying to do what those cycles require, needs knowledge it can't possibly have-- for instance, at the end of a cycle you know you needed more energy to not have downtime on Rip while getting in an FB, but that's because of a streak of non-crits. &nbsp;Are you using that depth of probability math in mangle/shred replacements? &nbsp;Is the advice necessary to follow these cycles more complex than to effectively use? (I.e. if you crit on your first shred, keep shredding; if you don't, then mangle. &nbsp;If you have 2 CP now, mangle; if you got an OoC proc...)</p>\r\n<p>3) If you're incorporating different attack models/sequences, you REALLY need to spell this out in the application a little more. &nbsp;Right now, the only indication of what is going on is a single tooltip on the player page, and it's not obvious when this changes with every gear replacement. &nbsp;Essentially, the more information about cycle development, the better-- it may be a better delivery system for theorycraft knowledge (given that people don't read forums as much as they'd use Rawr) as well. &nbsp;You might go so far as to have a way to compare different models-- say two models are very close, but one is easier to execute. &nbsp;I'll probably want to use the one that's easier to execute, so long as two are close. &nbsp;Perhaps you might also asterisk an item selection if it forces you into a new model.&nbsp;</p>\r\n<p>4) So, the point is that RSVs shouldn't be used to make gear decisions. The problem is, a lot of in-game quick evaluations are RSV-based. The following circumstances are generally true:<br>- I don't have Rawr open when I raid, because I don't want anything interrupting my main system's performance. &nbsp;Or, I just didn't have it open pre-raid.&nbsp;<br>- I don't have the mental capacity to know the magnitude of all possible upgrades, especially when there are multiple upgrades in every slot.<br>- I certainly don't have the mental capacity to know the magnitude of all possible upgrades after I've taken a first, random upgrade.&nbsp;<br>- I can get more than one upgrade a night, so any &quot;exact&quot; item calculations I've done are, simply wrong.&nbsp;<br>So right now, the options available to me to follow your advice and not use RSVs are:&nbsp;<br>- Research every possible first upgrade in Rawr; then, research every possible second upgrade in Rawr. &nbsp;Write these down or move them to a third-party app and print them out.<br>- Ask my loot master to wait while I alt-tab, fire up Rawr and evaluate the upgrade. (I look like an unprepared raider.)&nbsp;<br>- Evaluate the possible upgrades pre-pull every time.&nbsp;<br><br>Obviously all this gets easier as we approach best-in-slot gear (fewer potential upgrades, greater knowledge of loot tables, etc) but as far as practicality goes, it's not &quot;worth it&quot; to most players to do this every time. &nbsp;Instead, they can set up a Pawn add-on very simply with RSVs, and the entire process is &quot;hover over the item and look at its pawn value, versus your current item.&quot; &nbsp;<br><br>Given the time and effort put into Rawr, perhaps it's time to make an in-game addon simplifying all of this. &nbsp;All it would need to do is store an array of item IDs and Rawr-exported item values, associated to a pre-existing gear set. &nbsp;It would drop the values into a tooltip, just like Pawn does. &nbsp;</p>",
+    "PostedDate": "2009-05-11T11:25:50.757-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "188986",
+    "ThreadId": "55282",
+    "Html": "<p>Hey Allev. Indeed, long time no see. Might be seeing more of me in the not too distant future, BTW. :)</p>\r\n<p>1/2) Trading Shreds for Mangles went away when I fixed the bug where it was allowing more than 5cp per Bite, when paired with Rip. Nevermind. :)</p>\r\n<p>3) That basically comes down needing a better Stats tab, which is coming. The Bear side of things also has a chart of the TPS and DPS of each cycle. I could implement that for Cat as well.</p>\r\n<p>4) Actually, that's one thing Rawr really does handle well. Build an upgrade list, and export it to an image. You can either leave that image open when you raid, open it quick when something drops, or just print it out. Using Pawn to decide on whether to bid on something, when it drops, is a terrible thing to do, and one I really want to discourage users from doing.</p>",
+    "PostedDate": "2009-05-11T11:55:57.53-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "189928",
+    "ThreadId": "55282",
+    "Html": "<p>I dont see #4 as an issue at all.&nbsp; I regularly have Rawr open when I raid.&nbsp; It does not impact system performace at all.&nbsp;</p>\r\n<p>I have planned out my upgrades and if I get one I alt tab during trash and equip it and then quickly glance at the stuff I know I was looking for later in the raid and verify it's still an upgrade.</p>\r\n<p>Pawn should not be used.&nbsp; Period.&nbsp; That entire avenue of theorycrafting is outdated and defunct.</p>",
+    "PostedDate": "2009-05-13T13:31:37.32-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

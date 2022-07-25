@@ -1,0 +1,55 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Whenever I try to load my character, Deadgilder on Frostmane US, it gives the following error. There is no fix action listed. I have tried both the web and downloaded version. It loads some of the gear, but when I try to change the gear type it's listed but all the numbers are 0.\n\nI have performed the Suggested Fix and continue to receive this error. If I am posting this message without having performed the Suggested Fix I am aware that I am consuming the Developer(s) time in managing my Issue unnecessarily.\n\n== Version: 5.0.0.0 SL ==\n\n== Error Message ==\n[Format_InvalidString]\nArguments: \nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.1.10329.0&File=mscorlib.dll&Key=Format_InvalidString\n\n== StackTrace ==\n   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)\n   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)\n   at Rawr.Rogue.CalculationsRogue.GetCharacterStatsWithTemporaryEffects(Character character, Item additionalItem, WeightedStat[]& critRatingUptimes)\n   at Rawr.Rogue.CalculationsRogue.GetCharacterStats(Character character, Item additionalItem)\n   at Rawr.CalculationsBase.GetCharacterStats(Character character)\n   at Rawr.BossHandler.GenInfoString(Character character)\n   at Rawr.UI.BossPicker.bossOpts_PropertyChanged(Object sender, PropertyChangedEventArgs e)\n   at Rawr.UI.BossPicker.set_BossOptions(BossOptions value)\n   at Rawr.UI.BossPicker.set_Character(Character value)\n   at Rawr.UI.MainPage.set_Character(Character value)\n   at Rawr.UI.MainPage.bnetLoad_Closed(Object sender, EventArgs e)\n   at System.Windows.Controls.ChildWindow.OnClosed(EventArgs e)\n   at System.Windows.Controls.ChildWindow.Close()\n   at System.Windows.Controls.ChildWindow.set_DialogResult(Nullable`1 value)\n   at Rawr.UI.BNetLoadDialog._armoryService_GetCharacterCompleted(Object sender, EventArgs`1 e)\n   at Rawr.Rawr4ArmoryService._webClient_DownloadStringCompleted(Object sender, DownloadStringCompletedEventArgs e)\n\n== These are the Steps that I have tried ==\ntried to load Deadgilder from Frostmane",
+    "LastUpdatedDate": "2013-02-21T18:23:36.433-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2012-10-07T23:55:22.777-07:00",
+    "Status": {
+      "Name": "Active",
+      "Id": 2
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Cannot load character",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 23472
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "The rogue module is currently listed as \"inoperable\" on welcome screen that comes up when you start Rawr so you will have to wait until there is an update to support rogues in MoP.\n",
+      "PostedDate": "2012-10-12T15:48:23.967-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-10-16T11:01:57.323-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:23:36.433-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

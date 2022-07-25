@@ -1,0 +1,96 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Bear",
+      "DisplayName": "Rawr.Bear"
+    },
+    "ClosedComment": "Dupe of the Proc&#39;d Agi still giving Armor",
+    "ClosedDate": "2010-12-23T10:09:10.73-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Agility no longer provides armour in game, but in the feral bear module you still get armour. You can easily replicate this by swapping a Solid gem to a Delicate gem.",
+    "LastUpdatedDate": "2013-05-16T05:19:26.003-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-12-23T02:52:35.877-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Bear] Agility is still providing Armor",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19421
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4280,
+      "FileName": "vacc_tank_current.xml",
+      "DownloadUrl": ".\\4280"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Hey Vaccine. Are you perhaps using a very old version? I'm not able to replicate this in the latest version, and nothing in the code that I can find would cause this. Nor do I see Agility having any Survival value at all, which it would if it still gave armor.",
+      "PostedDate": "2010-12-23T03:04:35.457-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "(And/or perhaps you're seeing armor go up when swapping from a delicate to a solid, by that activating your meta if you're still using the WotLK 2% armor meta which required 2 blues?)",
+      "PostedDate": "2010-12-23T03:05:20.533-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-23T05:24:21.643-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hi Astrylian,\r\n\r\nI've tried to recreate it and discovered two things. First that I'm an idiot and had swapped 1 item to a 372 version with an agility gem over a 359 version with a stam gem. Apologies for wasting your time on that.\r\n\r\nSecondly, in trying to recreate it I've discovered another odd behaviour. If you open the provided file, then swap the following items to the best suggested gemming of that item you get these odd results:\r\n\r\nArmour starts at: 39982\r\n1) Helm to same helm with agi/stam instead of stam: Armour: 39981\r\n2) Chest to same chest with agi/dodge instead of stam/mastery: Armour: 39980    (This item keeps the meta active both before and after the change)\r\n3) Belt to the same version of the belt but with Agi gem instead of stam: Armour: 39979\r\n4) Legs to same legs (359) with 2 agi/dodge instead of stams: Armour 39977\r\n5) Boots from stam to agi : No change.\r\n\r\nI'm not really sure whats going on here but it seems to be related to the trinkets. Dropping Unidentifiable Organ's 2128's armour in exchange for Key to the Endless Chamber only drops it by 1050 or so and not the advertised 2128. Leaden despair also does some funky things when you replace it.\r\n\r\n If you empty both trinket slots then add a Key to the Endless Chamber which just provides hit and an agility proc, the armour jumps over 1k. Perform the same test with the Eye of Rajh (which has the same amount of Agi, same amount of dodge, just expertise instead of hit) the armour goes up by about 800 or so. \r\n\r\nSo basically I've no idea whats going on here or why the armour jumps around like that. Is there some calculation of SD uptime into the damage reduction % that is then calculating average armour?\r\n\r\n",
+      "PostedDate": "2010-12-23T05:24:23.14-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It's likely I'm just not understanding how it works but it seemed odd.",
+      "PostedDate": "2010-12-23T05:25:57.767-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Confirmed, the problem here is the special effect agi providing armor. Closing as a dupe of the other one.",
+      "PostedDate": "2010-12-23T10:08:51.91-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-23T10:09:10.73-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:21:12.76-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:54.547-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:26.003-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

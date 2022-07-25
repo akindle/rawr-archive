@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Optimizer",
+      "DisplayName": "Rawr.Base.Optimizer"
+    },
+    "ClosedComment": "Should be fixed in 2.2.6.",
+    "ClosedDate": "2009-05-25T19:45:27.67-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "2.2.5, trying to optimize both a cat and bear set, happens regardless of re-gem/-enchant/food toggles in the optimizer setting.  Rolling back to 2.2.4 fixes it.  Tried with a fresh install as well, though not with a from-scratch character.\n \nSystem.InvalidCastException: Unable to cast object of type 'Rawr.Buff' to type 'Rawr.ItemInstance'.\n   at Rawr.Optimizer.ItemInstanceOptimizer.<>c__DisplayClass2a.<BuildChildIndividual>b__29(Int32 slot, Object[] items)\n   at Rawr.Optimizer.OptimizerBase`3.GeneratorBuildIndividual(GeneratorItemSelector itemSelector)\n   at Rawr.Optimizer.ItemInstanceOptimizer.BuildChildIndividual(OptimizerCharacter father, OptimizerCharacter mother)\n   at Rawr.Optimizer.OptimizerBase`3.OptimizeGA(TIndividual injectIndividual, Single injectValue, Single& bestValue, TValuation& bestValuation, Boolean& injected)\n   at Rawr.Optimizer.OptimizerBase`3.Optimize(TIndividual injectIndividual, Single injectValue, Single& bestValue, TValuation& bestValuation, Boolean& injected)\n   at Rawr.Optimizer.OptimizerBase`3.Optimize(Single& bestValue)\n   at Rawr.Optimizer.ItemInstanceOptimizer.PrivateOptimizeCharacter(Character character, String calculationToOptimize, OptimizationRequirement[] requirements, Int32 thoroughness, Boolean injectCharacter, Boolean& injected, Exception& error)",
+    "LastUpdatedDate": "2017-11-27T11:01:50.153-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-05-25T18:38:46.82-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Optimizer] Unable to cast object of type 'Rawr.Buff' to type 'Rawr.ItemInstance'",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13331
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

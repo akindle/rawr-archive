@@ -1,0 +1,75 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-12-11T23:22:16.747-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I was looking at the tables for fire mage haste plateaus available on MMO-Champion, elitist jerks and elsewhere.  They indicate that at 1849 haste you get an extra tick as a goblin fire mage with bloodlust, netherwind presence and mind quickening.  My own calculation confirms that ( (1849/12805.701+1)*1.05*1.03*1.01*1.3 > 1.625 )\n \nWith 1849 haste, you should have ((1849/12805.701+1)*1.05*1.03*1.01-1)*100% = +25.003307% haste (With 3/3 netherwind presence and +5% raid haste buff).  However, the \"spell stats\" section of rawr indicates only +24.94% haste.  Rawr requires 1856 haste to reach the plateau.\n \nFor some reason, rawr's calculation of a goblin mage with +3% netherwind presence and +5% mind quickening does not match the calculation of myself and prominent theorycraft website.  One or the other is wrong.  Since rawr correctly models the 1996 cap for a non goblin mage with netherwind pressence and mind quickening, I'm thinking something is up with the goblin racial calculation.\n \nedit - I did some further research and read somewhere that the issue here is rounding:\n \n\"I had figured the same thing, but tested on PTR with 1996 / 2004 / 2005 / 2006 haste and 2005 is indeed correct.\n \nHere is the response I got from a simcraft dev about how exactly the math/rounding works:\n \n\"What you're missing is the rounding - read the issue I linked. Unhasted, the tick period is 1 second and the duration is 10 seconds, so at 1996 haste the period between ticks is:\n \n1 / (1.05 * 1.03 * (1 + 1996 / 128.05716 / 100)) = 0.79995448\n \n... which rounds to 800 milliseconds exactly. Divide 10 seconds by 800 milliseconds and you get 12.5 exactly, which rounds to the nearest even integer, which is 12. In other words, you need the period down to at least 799 milliseconds. (Because 10 / 0.799 = 12.5156446, which rounds up to 13.) At 2004 haste it's still not there:\n \n1 / (1.05 * 1.03 * (1 + 2004 / 128.05716 / 100)) = 0.799522356 ~= 0.800\"\n \nIt looks like rawr currently takes this sort of rounding into account for the goblin haste cap... but not the non goblin one.",
+    "LastUpdatedDate": "2013-05-16T05:17:17.677-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-11-28T21:41:51.643-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Goblin haste racial & mage haste caps",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 21838
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "4.3 version should have the correct dot rounding, let me know if it works ok for you.",
+      "PostedDate": "2011-11-30T17:25:02.57-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I was actually a bit wrong too, and rawr was wrong in different ways than I thought.\r\n\r\nAnyways Rawr 4.3 is showing a nongoblin cap (or plateau as some call it) at 2005, which is right.  The previous version of rawr and myself didn't round the way the game does and mistakenly thought it was at 1996.\r\n\r\nFor (non Dark Intented) Goblins, rawr 4.3 shows a haste plateau when you go from 1852 to 1853 haste.  This is incorrect, there is no plateau there.  There should be a plateau at 1858, but rawr does not show this.  At 1858 you get an extra non bloodlusted combustion tick, because the tick time = 1 / (1.05 * 1.03 * 1.01 * 1.0 * (1 + (1 858 / 12 805.701))) = 0.799487841, which rounds to exactly 0.799 . 10 second duration / 0.799 tick time = 12.5156446 ticks, which rounds up to exactly 13.  With 1857 haste the tick time rounds up to .800 which causes the number of ticks to round down to 12 instead.  Similarly 1858 also happens to be a plateau for pyro/lb during bloodlust.\r\n\r\nI'm not sure where the small difference is coming from.\r\n\r\nLooking at the \"spell stats\" section of rawr, I think it is calculating Goblin haste incorrectly.  I have a goblin mage with 3/3 Netherwind + Mind Quickening with 1853 haste rating.  His haste % should be:\r\n\t\r\n1.05 * 1.03 * 1.01 * (1 + (1 853 / 12 805.701)) = 1.25037427\r\n\r\nBut the \"Spell stats\" section says 24.98% - This does not match the figure above (~25.04%).\r\n\r\nI'm thinking that the way rawr determines extra ticks from dots is probably bang on, but there may be something funky in how it calculates a goblin's haste.\r\n\r\n\r\nPS - I love you Kavan and thanks for all your hard work.",
+      "PostedDate": "2011-12-02T12:25:27.49-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "And I was wrong about the pyro/lb break point.  Theoretically it should be the exact same, but because of rounding it ends up being at 1846.",
+      "PostedDate": "2011-12-03T12:12:17.697-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You were right, there was a problem with how goblin haste was applied, will be fixed for next version.",
+      "PostedDate": "2011-12-11T20:24:46.27-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-12-11T23:22:16.747-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:24:06.877-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:17:17.677-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

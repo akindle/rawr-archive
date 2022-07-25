@@ -1,0 +1,106 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-02-15T14:30:26.337-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I just updated to windows 7 and when I installed raw I got the following error message.  I have no idea what I'm doing with code so I'll attach the whole thing... sorry.  I'm also sorry if this was posted elsewhere, I only did a curtsy search and found the .NET bug post.\n \nUnhandled exception has occurred in your application.  If you click Continue, the application will ignore this error and attempt to continue. If you click Quit, the application will close immediately.\n \nIndex was out of range. Must be non-negative and less than the size of the collection.\n \nSee the end of this message for details on invoking \njust-in-time (JIT) debugging instead of this dialog box.\n \n************** Exception Text **************\nSystem.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.\nParameter name: startIndex\n   at System.Globalization.CompareInfo.IndexOf(String source, String value, Int32 startIndex, Int32 count, CompareOptions options)\n   at System.Globalization.CompareInfo.IndexOf(String source, String value, Int32 startIndex)\n   at Rawr.ItemToolTip.get_CachedToolTipImage()\n   at Rawr.ItemToolTip.Show(Character character, ItemInstance item, ItemInstance[] characterItems, CharacterSlot slot, IWin32Window window, Point point)\n   at Rawr.ItemToolTip.Show(Character character, ItemInstance item, IWin32Window window, Point point)\n   at Rawr.ItemButton.ItemButton_MouseEnter(Object sender, EventArgs e)\n   at System.Windows.Forms.Control.OnMouseEnter(EventArgs e)\n   at System.Windows.Forms.ButtonBase.OnMouseEnter(EventArgs eventargs)\n   at System.Windows.Forms.Control.WndProc(Message& m)\n   at System.Windows.Forms.ButtonBase.WndProc(Message& m)\n   at System.Windows.Forms.Button.WndProc(Message& m)\n   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)\n   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)\n \nAll I can think of would be to run it in Vista comparability mode, sorry I'm tired.\n \nThank you in advance.\n \nVaroon",
+    "LastUpdatedDate": "2013-05-16T05:21:56.17-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-02-09T21:36:10.803-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "windows 7 64 bit",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16292
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2942,
+      "FileName": "RawrFailLoaded.png",
+      "DownloadUrl": ".\\2942"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I'm using Win7 x64 for all of my dev work so I'm not sure what specifically could be causing this problem.  It may not be a specific win7 defect considering the call stack provided.",
+      "PostedDate": "2010-02-10T13:19:14.543-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Try running it elevated, see if that helps.",
+      "PostedDate": "2010-02-11T15:07:16.907-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-11T17:00:30.257-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok tried running it as admin and in windows vista (SP 2) compatibility mode\r\n\r\nHere's the error I got.  I think it's the same.\r\n\r\nSee the end of this message for details on invoking \r\njust-in-time (JIT) debugging instead of this dialog box.\r\n\r\n************** Exception Text **************\r\nSystem.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.\r\nParameter name: startIndex\r\n   at System.Globalization.CompareInfo.IndexOf(String source, String value, Int32 startIndex, Int32 count, CompareOptions options)\r\n   at System.Globalization.CompareInfo.IndexOf(String source, String value, Int32 startIndex)\r\n   at Rawr.ItemToolTip.get_CachedToolTipImage()\r\n   at Rawr.ItemToolTip.Show(Character character, ItemInstance item, ItemInstance[] characterItems, CharacterSlot slot, IWin32Window window, Point point)\r\n   at Rawr.ItemToolTip.Show(Character character, ItemInstance item, IWin32Window window, Point point)\r\n   at Rawr.ItemButton.ItemButton_MouseEnter(Object sender, EventArgs e)\r\n   at System.Windows.Forms.Control.OnMouseEnter(EventArgs e)\r\n   at System.Windows.Forms.ButtonBase.OnMouseEnter(EventArgs eventargs)\r\n   at System.Windows.Forms.Control.WndProc(Message& m)\r\n   at System.Windows.Forms.ButtonBase.WndProc(Message& m)\r\n   at System.Windows.Forms.Button.WndProc(Message& m)\r\n   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)\r\n   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)\r\n\r\nI'll attempt to attach a screen shot of what it looks like while running.\r\n\r\nIf you have any ideas on what could be causing it I'm willing to try anything you suggest.\r\n\r\nAlso I had no idea what elevated meant so I just ran it as administrator.\r\n\r\nVaroon",
+      "PostedDate": "2010-02-12T12:33:09.953-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-12T12:33:12.787-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yes elevated meant 'Run as Administrator...'\r\n\r\nJudging from that image, you have your DPI settings not at standard (which will mess up Rawr2). This could be the issue as the resizing might be throwing something outside of it's correct size.",
+      "PostedDate": "2010-02-12T12:55:43.54-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "DPI settings? where are they and how do I fix them? and what should rawr run at?\r\n\r\nThanks,\r\n\r\nVarron",
+      "PostedDate": "2010-02-12T13:58:13.957-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "http://lmgtfy.com/?q=DPI+Settings\r\n\r\nAt Default, and they wouldn't be other than default unless you had changed them in the past.",
+      "PostedDate": "2010-02-12T13:59:55.85-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "My default DPI was 150% (wicked annoying by the way thanks for showing me how to fix that).  But beyond that it appears to be working at the moment armory is just down.\r\n\r\nThank you all for your help.\r\n\r\nVaroon",
+      "PostedDate": "2010-02-12T20:54:52.347-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-15T14:30:26.337-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:30:01.167-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:56.17-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.RestoSham",
+      "DisplayName": "Rawr.RestoSham"
+    },
+    "ClosedComment": "Error in Burst vs Sustained Fixed, if the topic would like to be further discussed at this point I would recommend a discussion topic be made.",
+    "ClosedDate": "2010-01-31T15:49:16.55-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Until version 2.3.8 Rawr told me my best style for sustained healing was RT+LHW.  Now when I select RT+LHW it shows a *lower* rating than when I select RT+HW, but when I open the \"Healing Sequences\" graph it has RT+LHW at the top (when sorting by sustained).  Something seems fishy about that.  Confirming my fishiness theory is that the BURST numbers in the graph match the SUSTAINED numbers in the status bar.  The sustained numbers in the graph don't seem to match anything.",
+    "LastUpdatedDate": "2013-05-16T05:22:05.623-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-01-26T17:31:01.067-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[RestoSham] HW vs LHW",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16111
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2858,
+      "FileName": "chaant-resto-now.xml",
+      "DownloadUrl": ".\\2858"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I'm trying to see where the error is.  That sounds like it's working exactly as it should.  As to the numbers for sustained in the graph, did you not notice the tooltips that say 'A percentage of the mana pool is added to sustained'?  Yes, RT+HW has immense burst healing.  \r\nHowever, I think you might be missing the point of the styles.  This isn't Rawr.Mage or Rawr.Moonkin.  The styles aren't there to tell you what to do.  The use for them is you choose the style you use when you need burst healing, and the style you fall back to when you aren't burst healing is sustained.  You put in 'your' styles, not whatever is highest....unless you are incredibly good at just changing your entire healing style each piece of gear change, then more power too ya.\r\n",
+      "PostedDate": "2010-01-27T01:07:16.857-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I did not ever notice the tooltip that says \"Percentage of mana pool added to sustained rating.\"  What percentage, and why?\r\n\r\nSomething is still fishy, though.  Why would the BURST numbers in the graph match the SUSTAINED numbers in the status bar?  And why would the graph show me one style is better for sustained while the status bar's numbers say a different style is better?\r\n\r\nAnd in response to changing my healing style - swapping in HW for LWH doesn't seem very hard, and I would change if the numbers said it was better, because I'm just like that.",
+      "PostedDate": "2010-01-27T10:38:33.413-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The percentage currently is just an arbitrary number of the fights entire mana pool.  It's enough to make sustained the larger part of the number, but not so much that burst will always win out (Which it would if base ratings were used.  Exact amount is the amount of mana available for use per minute).  Also, I see what you mean about the burst = the sustained, most recent checkin will fix this.",
+      "PostedDate": "2010-01-27T16:27:47.723-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This is turning more into a discussion than a bug report now, but since we started it here ...  I think I just need help understanding the purpose of that graph, or else understanding what you've told me so far (I'm not sure which).\r\n\r\n1) Is it true that the sustained rating is the hps you can achieve when under mana constraints, and burst is if mana is no issue and you can spam away?\r\n\r\n2) If (1) is true, would it make more sense to just pick a fixed percentage to multiply the burst/sustained numbers by for use in that graph?  It seems like the way you described it double-counts your mana pool: once to come up with the sustained number, then AGAIN to get the multiplier for the graph.\r\n\r\n3) If you come up with a multiplier that weighs burst vs sustained in a way that \"makes sense\" when gearing, why only use it in a graph instead of throughout the gear ratings?  Hmm - it occurs to me that perhaps it is in the optimizer menu and I never really looked before, in which case please simply ignore question (3) here :).\r\n\r\nI'm sorry if this comes across as rude, I'm just raising my \"objections\" because I don't know of a better way to ask for clarification.",
+      "PostedDate": "2010-01-28T10:32:00.85-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The reason for adding the mana in is to simply keep it so Burst isn't the sole thing the graph gets aligned on.  If you were to set both by the same multiplier, it would always, and I mean Always be in the order of burst.  That's why mana was added into it, because that's probably the most important part.  Perhaps at this point the best idea might be to seperate mana pool off into it's own rating for that chart, would that clear the confusion entirely?  \r\n\r\nHere is the reason why it's not just Burst/Sustained in that chart.  If you went just off those two, let's say HW Spam was some crazy 12k HPS, but only 2k sustained due to mana.  Now, RT+LHW is 6k Burst with 5k sustained for the same person.  This makes sure that never happens.",
+      "PostedDate": "2010-01-29T01:37:17.103-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-29T01:38:04.393-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Oh, of course multiplying them by the SAME number would be silly and pointless, I didn't mean to suggest that :P.  What I mean is that multiplying a number that already improves w/ mana pool by your mana pool means your sustained portion of the graph increases exponentially with stats that increase you mana pool.  Now that I think about it, that could explain my original question (\"Why does the graph tell me LHW is better, while the status bar tells me HW?\").  RT+LHW provides more crits (from Tidal Waves) and therefore more incoming mana (from Improved Water Shield).  That means the graph gives that sequence an unfair advantage because, although it does not provide as much sustained healing as HW, it gets multiplied by a bigger number.\r\n\r\nSo here is my suggestion (hopefully explained better this time): pick a fixed number to multiply the sustained portion by.  Just make sure it's the same number for every healing sequence, and preferably a number that doesn't scale with gear (since the sustained number itself should be the one doing the scaling, not its multiplier).\r\n\r\nAlso, I have to reiterate the questions of 1) what is the purpose of the graph, and 2) is that purpose good enough to work into the rest of the model?  I would think that if the graph has the problem of always favoring burst if it weren't for the multiplier, so would the Overall rating that is used by default to compare gear and optimize.  Perhaps a slider to weight sustained vs burst could be added, that is used in both the graph AND everywhere else an Overall number shows up?",
+      "PostedDate": "2010-01-29T10:08:57.433-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You could also set it up so both burst and sustained are completely modeled accurately (mana pool included), but name them \"Tank Healing\" and \"Raid Healing\". ;)\r\n\r\nThat way, if you want to optimize your tank healing, you would sort by tank healing, raid the opposite, and Overall value would be just that.\r\n\r\nShould we make a \"RestoSham overall design philosophy\" discussion thread? :)",
+      "PostedDate": "2010-01-29T10:31:49.363-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Lol.  How about calling them \"Style 1\" and \"Style 2\", people can choose tank, raid, sustained or burst for any of them, AND weight them with a slider.  Then everyone's happy :).",
+      "PostedDate": "2010-01-29T10:42:00.393-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Perhaps multiplier wasn't the best choice of word.  Since a percentage of your actual pool for the fight is used, it's not being multiplied by anything.  \r\nSimply put, Burst is Burst Rating, Sustained is Sustained Rating + 1/5 Mana used.  \r\n\r\nThe reason for the graph is to see how you would fair if you changed to a different style in your same gear.  It's more to show expectation of how you will do, not telling you what you should do.  While RT+HW might be at the top of the list, I can't think of a fight where using that style alone is the only way to go about things.  \r\n\r\nIn the most recent commit, however, you should now notice that the Burst number used in the chart doesn't exactly match the sustained number, so as far as the actual issue, that's fixed.  And remember, just like any other simulation or model, it will never truly match up 100% with how you do things in game.  It's hear to assist you in gear choices and talent spec differences, but sometimes it can be wrong.  For a long time it was quite off, as the entire shaman community knew to stack haste even though rawr at the time liked crit more.  That's been fixed, and hopefully as we work on the over-healing chart, RT+HW being at the top will drop down some as well.",
+      "PostedDate": "2010-01-31T00:46:47.02-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I don't actually use that graph, but when I saw a discrepancy between it and the numbers I WAS using I got concerned.  Now that I understand it, I'll just ignore the graph.  However, I do still want to say this because that graph can still be misleading:\r\n\r\nAdding a percentage of the mana pool has the same problem as multiplying by it (though it's not exponential like I thought before).  RT+LHW gives you a larger mana pool than the other rotations, because if the added crits proc'ing extra water shield thingies.  That is already taken into account in the sustained number, but then it gets the unfair advantage of also having a larger number added to it for that graph.  The extra mana gets double counted.  Or rather, 1.2 counted :).",
+      "PostedDate": "2010-01-31T12:39:56.123-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Actually, the mana gained from improved water shield by both is probably quite the same, it will be other sources such as your meta and trinkets that will be improved by the smaller (Just barely smaller) cast times of a RT+HW rotation.",
+      "PostedDate": "2010-01-31T15:13:13.99-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-31T15:49:16.55-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:59:00.707-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T19:44:00.98-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:30:12.51-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:05.623-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

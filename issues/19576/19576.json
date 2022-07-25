@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.AddOn",
+      "DisplayName": "Rawr.AddOn"
+    },
+    "ClosedComment": "Fixed for v0.41",
+    "ClosedDate": "2011-01-06T08:26:28.7-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Version: Rawr (Official) Rawr-v0.40.zip\nSteps to reproduce: open and close the bank frame, /rawr export, use \"Load from Rawr Addon\" in Rawr\n \nThe items won't show up in Rawr (the exported XML only contains \"<Bank></Bank>\").",
+    "LastUpdatedDate": "2013-05-16T05:19:12.033-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-01-05T20:44:44.92-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Addon] Items in bank are not exported",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19576
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "It works for me, not sure how to t/s this with your character",
+      "PostedDate": "2011-01-05T21:30:27.007-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I think there is a typo in the code (Rawr.db.BankItems vs Rawr.BankItems):\r\n\r\nRawr.lua:\r\n\"function Rawr:UpdateBankContents()\r\n\tRawr.db.BankItems = {}\r\n\tRawr.db.BankItems.count = 0\r\n\tfor index = 1, 28 do\r\n\t\tlocal _, _, _, _, _, _, link = GetContainerItemInfo(BANK_CONTAINER, index)\r\n\t\tif link then\r\n\t\t\tRawr.db.BankItems.count = Rawr.db.BankItems.count + 1\r\n\t\t\tRawr.db.BankItems[Rawr.db.BankItems.count] = link\r\n(...)\"\r\n\r\nExport.lua:\r\n\"function Rawr:ExportBank()\r\n\tlocal bag, slot\r\n\tself:AddLine(2, \"<Bank>\")\r\n\tfor index = 1, Rawr.BankItems.count do\r\n\t\tRawr:WriteAvailableItem(3, Rawr.BankItems[index])\r\n\tend\r\n\tself:AddLine(2, \"</Bank>\")\"",
+      "PostedDate": "2011-01-05T23:28:22.547-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-06T08:26:28.7-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T18:42:44.223-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:36.333-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:12.033-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

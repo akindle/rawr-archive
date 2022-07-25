@@ -1,0 +1,96 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Moonkin",
+      "DisplayName": "Rawr.Moonkin"
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-08T07:17:17.58-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Using the attached save file, I notice several bugs (or points of confusion).\n \n1. Rawr is showing the top Ranged to be \"Idon of the Shooting Star\" along with a selected rotation of \"IS/MF/W\".  I suspect that this is because I  have Eclipse and some Starfires are actually being inserted into the selected rotation.  If this is the case, It would be handy to either change the rotation name or add a mouse over comment explaining what the actual rotation used for calculation is.  If IS/M/W really is a prioity list that looks like:\n   Force of Nature, refresh when off cooldown\n   IS, refresh when down\n   MF, refresth when down\n   Starfire, while proc off cooldown until proc\n   W\nit would be nice for Rawr to let me know that.\n \n2. Even though the character is hit capped, The \"Relative Stats Value\" is showing a non-zero value for additional hit.\n \n3. Increasing Est. Fight Time causes damage > raw damage.  For instance, with the attached file which has a 3 minute fight time, Valorous Dreamwalker Mantle has 330.01/330.01 for damage/raw damage.  If you increase the fight lenght to 6 minutes, then numbers change to 424.71/330.01  Which seems to be telling me that for this configuration, I can do more damage with mana constraints (damage) than if I had infinite mana (raw damage).  On the other hand, Idol of the Shooting Star goes from 111.09/111.09 during a 3 minute fight to 91.08/111.09 during a 6 minute fight.",
+    "LastUpdatedDate": "2017-11-27T11:00:10.933-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-12-16T13:20:46.817-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Moonkin] Misc bugs (or my confusion)",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 12064
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1554,
+      "FileName": "demo.xml",
+      "DownloadUrl": ".\\1554"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "1.  Yes, you're right, it's because there's Starfires being added into the rotation.  I thought about adding a tooltip to display this case, so I may go ahead and do that.\r\n2.  I've seen this one before, and I'm not sure what it means.  It may be because of the wonderful floating-point goodness going on behind the scenes.\r\n3.  I'm guessing that the jump in DPS value has to do with multiple casts of Force of Nature.  Why that doesn't apply to the Raw Damage values, I don't know.  I'll look into it.",
+      "PostedDate": "2008-12-17T05:32:54.027-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "As a quick update, the character in the attached file is not hit-capped.  Hit cap for a level 83 mob is 17%, and the displayed spell hit is 16.85%, hence the non-zero value for hit.",
+      "PostedDate": "2008-12-17T07:11:45.843-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Something odd must be going on then.  When I load the file into 2.14, I'm seeing:\r\n   Spell Hit: 17.00%\r\n  Spell Crit: 34.50%\r\n  Spell Haste 21.58%\r\nAnd when I mouseover spell hit, it shows \"341 Hit Rating\" which is what I should need to be above hit cap (340 is a fraction of a percent below cap and 341 is a fraction of a percent above cap).\r\n\r\nAt any rate, if I replace \"Trinket 1\" with \"Dying Curse\", that jumps by Hit 19.71% (412 rating) and still get a non-zero value for additional hit on the \"Relative Stats Value\" page.",
+      "PostedDate": "2008-12-17T07:41:27.97-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Okay, the issue with 2 is part of a larger issue that I've noticed and that I'm looking into, but the bug is subtle and hard to chase down.  Rest assured that I am looking at it, however.  I would guess as well that 3 is related to it, but I can't say for sure what's going on there yet.",
+      "PostedDate": "2008-12-17T11:47:18.11-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-08T07:17:17.58-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:11:02.8-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:03:27.03-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:01.433-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:37.837-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:00:10.933-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

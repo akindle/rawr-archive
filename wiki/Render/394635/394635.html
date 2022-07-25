@@ -1,0 +1,143 @@
+<div class="wikidoc">
+<h1>Rawr.DPSWarr</h1>
+<p>Rawr.DPSWarr is a tool to help DPS Warriors choose and optimize their gear, from brand new 85s, to endgame raiders.</p>
+<p><span style="font-weight:bold; font-size:large">Current Status (Arms)</span></p>
+<p>This model is currently <strong>fully functional</strong>, consistently maintained by
+<strong>Jothay</strong>, and you can safely rely on it for your gear choices in Cataclysm. Arms is implemented as a Priority Queue, taking the most important abilities to activate on each GCD and letting them be activated first. Presently, the priority list
+ cannot be changed in it's order but users can opt out of activating certain abilities using the Options Pane. Arms also takes into consideration a host of fight conditions such as time in movement, being stunned, being feared and to some extent, taking damage.
+ This provides values to talents like Iron Will to reduce stun duration and Lava Walker to reduce time in movement.</p>
+<p><span style="font-weight:bold; font-size:large">Current Status (Fury)<br>
+</span></p>
+<p>This model is currently <span style="color:#ff0000"><strong>non-functional</strong></span>, periodically maintained by
+<strong>Armourdon</strong>, and you <span style="color:#ff0000"><strong>should not</strong></span> rely on it for your gear choices in Cataclysm. Unfortunately, Fury has only partially been implemented for Cataclysm at this time. Check this page periodically
+ for updates.</p>
+<p><span style="font-weight:bold; font-size:large">Options Pane</span></p>
+<table border="0" width="100%">
+<tbody>
+<tr>
+<td valign="top"><img src="http://dl.dropbox.com/u/15727672/RawrVisible/ModelStatus/4.0.14_Rawr.DPSWarr.png" alt=""></td>
+<td width="100%" valign="top">
+<p>This section has not yet been written.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span style="font-weight:bold; font-size:large">Frequently Asked Questions</span></p>
+<ul>
+<li><a href="#x_x_x_x_01">Why is the Mortal Strike talent shown with negative DPS in the Talent Comparison Pane? The ability is doing x DPS.</a>
+</li><li><a href="#x_x_x_x_02">Why does X ability lower my DPS when I check it in the Ability Maintenance Tab?</a>
+</li><li><a href="#x_x_x_x_03">Why does the program show that my character is doing 0 DPS?</a>
+</li><li><a href="#x_x_x_x_04">What about &lt;20% Target Health Execute Spamming?</a> </li><li><a href="#x_x_x_x_05">Why do certain buffs (Blood Frenzy/Savage Combat, Trauma/Mangle, Rampage/Leader of the Pack, Battle Shout/Blessing of Might, Commanding Shout/Blood Pact) buffs sometimes show 0 value, or have their state cleared?</a>
+</li></ul>
+<ul>
+<li><strong><a name="x_x_x_x_01"></a>Q: Why is the Mortal Strike talent shown with negative DPS in the Talent Comparison Pane? The ability is doing x DPS.</strong>
+<ul>
+<li>A: When the standard rotation abilities for Arms are active (including Slam and Heroic Strike) the large rage consumption of the Mortal Strike Ability tends to overshadow the rage left-over for Heroic Strikes. Basically, if you were to Slam instead of Mortal
+ Strike on every time you would have otherwise, there would be more rage left over to Heroic Strike. In some cases, Rawr sees this as a DPS gain and wants you to drop Mortal Strike. Fully 25-Man raid buffed, Mortal Strike usually has a higher DPS value than
+ the rage to Heroic Strikes would provide. </li></ul>
+</li></ul>
+<ul>
+<li><strong><a name="x_x_x_x_02"></a>Q: Why does X ability lower my DPS when I check it in the Ability Maintenance Tab?</strong>
+<ul>
+<li>A: Abilities may not provide additional DPS, but they do absorb Global Cooldowns (GCDs). If the ability is replacing something that would otherwise cause damage and isn't providing at least a temporary buff, the total DPS will go down. This usually occurs
+ when you check the Maintenance abilities. Commanding Shout doesn't add to DPS but takes GCDs to keep up.
+</li></ul>
+</li></ul>
+<ul>
+<li><strong><a name="x_x_x_x_03"></a>Q: Why does the program show that my character is doing 0 DPS?</strong>
+<ul>
+<li>A: There are a couple possible reasons this could occur.
+<ul>
+<li>You don't have a Main Hand Weapon, all DPS is tied to having a Main Hand Weapon.
+</li><li>Your Situational settings on the Fight Info tab are set such that you have no ability to get any DPS out during the fight.
+</li></ul>
+</li></ul>
+</li></ul>
+<ul>
+<li><strong><a name="x_x_x_x_04"></a>Q: What about &lt;20% Target Health Execute Spamming?</strong>
+<ul>
+<li>A: Both Arms and Fury builds should have Execute Spam enabled, along with some additional options for that.
+</li></ul>
+</li></ul>
+<ul>
+<li><strong><a name="x_x_x_x_05"></a>Q: Why do certain buffs (Blood Frenzy/Savage Combat, Trauma/Mangle, Rampage/Leader of the Pack, Battle Shout/Blessing of Might, Commanding Shout/Blood Pact) buffs sometimes show 0 value, or have their state cleared?</strong>
+<ul>
+<li>A: One of the most repeated issue submissions for DPSWarr, this is actually intended functionality. When your character is Maintaining this Buff themselves, we disable the Buff Version so that the Talent can have value instead and we can get a better DPS
+ calculation. We also disable the Buff version to prevent Double-Dipping (getting buff twice, once as Buff and once as Talent).
+<ul>
+<li>Blood Frenzy/Savage Combat: Disabled on having Blood Frenzy Talent (Arms) </li><li>Trauma/Mangle: Disabled on having Trauma Talent (Arms) </li><li>Rampage/Leader of the Pack: Disabled on having Rampage Talent (Fury) </li><li>Battle Shout/Blessing of Might: Disabled on Maintaining Ability </li><li>Commanding Shout/Blood Pact: Disabled on Maintaining Ability </li><li>Presently we do NOT model the following abilities this way: Sunder Armor, Thunder Clap, Demoralizing Shout, Hamstring. Sunder because of the stacking effect we have yet to model, and the others because their Buffs are currently not relevant to DPSWarr.
+</li></ul>
+</li></ul>
+</li></ul>
+<p><span style="font-weight:bold; font-size:large">Known Issues</span></p>
+<p>There are presently no known major Issues with DPSWarr. Please see the Issue Tracker for any new issues that have been opened since this writing.</p>
+<p><span style="font-weight:bold; font-size:large">Troubleshooting</span></p>
+<p>This section has not yet been written.</p>
+<p><span style="font-weight:bold; font-size:large">Recent Changes</span></p>
+<p><strong>Rawr 4.1.0:</strong><br>
+- Migrated DPSWarr files to Root<br>
+- Added several DefaultValue flags to Calcopts, reduces saved file size when defaults aren't changed<br>
+- Updated Gemming Templates to include proper Cogwheel templates<br>
+<strong>Rawr 4.0.20b:</strong><br>
+- Updated Bloodthirst stats with 4.0.6 values<br>
+- Single-Minded Fury bonus has been increased to 20%, up from 15%<br>
+- Bloodsurge procs add 20% damage to instant slams<br>
+- Slam hits with both weapons for characters with SMF talent<br>
+- Don't use WW in rotation by default<br>
+- Raging blow deals 120% weapon damage up from 110%<br>
+- Battle Trance talent now affects fury calculations<br>
+- HS and CL don't use GCD as it was in old model<br>
+- Fixed execute phase calculations<br>
+- SMF-specced warrior calculations use dual-wield miss chances instead of one-handed miss chances<br>
+- Updated Raging Blow values for 4.0.6a patch<br>
+- Fixed base mastery value<br>
+- Fixed stances damage modifiers<br>
+- Fixed infinite rage and 'hit doesn't matter' problem - 'Rage Details' still shows that many rage is unused, but rotation uses other 'source' until common solution for arms and fury is implemented<br>
+- Code cleanup<br>
+- Added 18 Feb hotfix for arms(Two-Handed Weapon Specialization (Arms passive) now gives 20% bonus damage with two-handed weapons, up from 10%)<br>
+<strong>Rawr 4.0.19b:</strong><br>
+- No significant changes<br>
+<strong></strong><strong>Rawr 4.0.18b:</strong><br>
+- No significant changes<br>
+<strong></strong><strong>Rawr 4.0.17b:</strong><br>
+- No significant changes<br>
+<strong>Rawr 4.0.16b:</strong><br>
+- Updated Meta List to add the new Strength Meta to the templates. Will remove other now useless templates once 4.0.6 hits<br>
+<strong>Rawr 4.0.15b:</strong><br>
+- Stat Graph settings for Str and Agi checkboxes weren't assigning to the UI correctly, fixed<br>
+- Fixed the Heroic Strike and Cleave usage against Rage Cost variables, they needed to be inverted<br>
+- Implemented 4.0.6 patch changes for DPSWarr and tied them to the PTRMode check on the model Options Pane<br>
+- Both Warrior models are now using a StatsWarrior class instead of Stats. This reduces the overall size of the Base Stats class. Ours is fully implemented for all accumulate functions, etc.
+<br>
+- Migrated several things to the new StatsWarrior object<br>
+<strong>Rawr 4.0.14b:</strong><br>
+- No significant changes<br>
+<strong></strong><strong>Rawr 4.0.13b:</strong><br>
+- Overhauled using warnings from Code Analysis<br>
+- Fix for Issue 19372: SMT with 1H Weapons doesn't work<br>
+- - This was Three separate things<br>
+- - You need to go to Filters by Item Type and turn on 1h Weapons then click Apply. DPSWarr by default doesn't show them but does leave you the option to turn them on<br>
+- - SMT wasn't handled correctly. I've fixed this<br>
+- - Having a non-1h in the OffHand is throwing a NaN on that chart, so it ends up not knowing what to do and crashes. Added a handler to check for NaN in that core file so no models can make that break anymore.<br>
+- Modelled BonusWhiteDamageMultiplier (some new trinkets use this)<br>
+- More overhauling<br>
+- Fixed a bug that would make all the Buff Selectors disappear<br>
+- More overhauling<br>
+- Added a notice that Fury doesnt work yet, invalidated its calcs<br>
+- Gemming Templates now generate for 4 metas instead of just Chaotic<br>
+<strong>Rawr 4.0.12b:</strong><br>
+- No significant changes<br>
+<strong></strong><strong>Rawr 4.0.11b:</strong><br>
+- Heroic Throw can no longer go nuts and take over your rotation<br>
+- Random work on stuff<br>
+- Worked on Heroic Strike/Cleave and how it interacts with the rotation. I'm liking the numbers I'm seeing and Rage is a lot smoother in interaction. This also greatly boosted Haste's relative value and it's not spikey in the test files like it was before.<br>
+- Changed the weighting of Normal v Exec phase so that they are based on percentage of time instead of direct average.<br>
+<strong>Rawr 4.0.10b:</strong><br>
+- No significant changes<br>
+<strong></strong><strong></strong></p>
+<p><span style="font-weight:bold; font-size:large">Additional DPSWarr Resources</span></p>
+<ul>
+<li><a href="/wikipage?title=DPSWarr%20How%20To%20Guide&referringTitle=Rawr.DPSWarr">DPSWarr How To Guide</a>
+</li><li><a href="/wikipage?title=DPSWarr%20Road%20Map&referringTitle=Rawr.DPSWarr">DPSWarr Road Map</a>
+</li></ul>
+</div><div class="ClearBoth"></div>

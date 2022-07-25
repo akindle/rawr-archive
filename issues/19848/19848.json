@@ -1,0 +1,71 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.LoadCharacter",
+      "DisplayName": "Rawr.Base.LoadCharacter"
+    },
+    "ClosedComment": "4.0.18 Released",
+    "ClosedDate": "2011-02-03T21:11:34.27-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Since 4.0.17.0b, Rawr cannot load my character.xml files.\n \nSteps to Reproduce:\n1) Launch Rawr\n2) File > Open > \"Exo Fire.xml\"\n3) Click the \"OK\" button\n4) Observe the error message\n \n== Error Message ==\n[ArgumentNull_Generic]\nArguments: \nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.51204.0&File=mscorlib.dll&Key=ArgumentNull_Generic\nParameter name: stringToUnescape\n \n== StackTrace ==\n   at System.Uri.UnescapeDataString(String stringToUnescape)\n   at Rawr.Character.LoadFromXml(String xml)\n \nAdditional Information:\n- Rawr v4.0.17.0b\n- Windows Vista Home Premium\n- Error is reproducible in both web client and downloadable client",
+    "LastUpdatedDate": "2013-05-16T05:18:51.947-07:00",
+    "PlannedForRelease": "Rawr 4.0.17 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-01-29T17:42:17.49-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[LoadCharacter] Error Loading 'character.xml' Files",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19848
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4526,
+      "FileName": "Exo Fire.xml",
+      "DownloadUrl": ".\\4526"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "You never set your character name in that file, so when it's loading in and hitting the new escaped characters check, it's throwing a null exception. I've added a fix for .18 to ignore empty character names, but until then you need to edit your XML file to include \"<Name>Exo</Name>\". Then it will load properly.",
+      "PostedDate": "2011-01-30T10:14:38.64-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-30T10:14:49.53-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-02-03T21:11:34.27-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:10.697-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:51.947-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.ItemFilters",
+      "DisplayName": "Rawr.Base.ItemFilters"
+    },
+    "ClosedComment": "Implemented for 2.3.16",
+    "ClosedDate": "2010-04-24T17:47:39.473-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Recently actually using Rawr in anger rather than just programming it I noticed an annoying feature. The filters are set globally and not apparently per character. The result is if I am trying to use Rawr for my main who is doing ToGC25 I need one set of filters enabled. If I am using Rawr for my alt DK tank or alt holy priest these are basically heroic gearing/Ulduar gearing and so when I change the character I need to change all the filters around, to suit what that character needs.\n \nCan we add a feature to save the filter settings with the character XML and to load them back again when you reload that character. This would then store the appropriate filters with the character so that when you reload the character you automatically have the right filters setup.",
+    "LastUpdatedDate": "2013-05-16T05:23:33.677-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-11-02T09:34:56.21-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Feature Request.ItemFilters] Item Filters Load/Save Per Character File",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 11,
+    "Id": 14593
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "We'd have to be sure we didn't crash on the filter no longer existing upon reload.",
+      "PostedDate": "2009-11-02T09:52:12.457-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-02T09:54:05.62-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-02T10:21:18.707-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-04T18:49:52.273-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-04T20:23:30.05-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-03T06:00:05.42-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I don't think the actual filters need to be changed, just which ones are ticked for each character.\r\n\r\n",
+      "PostedDate": "2009-12-03T14:03:54.56-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "correct, but if they do change, like between versions, the char file might crash on reload, I was just thinking out loud when i wrote that",
+      "PostedDate": "2009-12-03T14:59:41.593-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-10T16:07:45.24-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-28T03:23:05.307-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-28T15:46:09.007-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-02T18:17:43.893-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "These filter profiles should ignore a filter that don't exist anymore(soft failing, at best a very light non-fatal error \"The filters x, y, z don't exist anymore\"), or maybe even load its own list of filter, but maintaining multiple lists like that would get complicated really fast.\r\n\r\nAnother problem are filters which change their regex, but not their name, it's not really the same filter anymore. However I don't think Rawr should really treat these cases.",
+      "PostedDate": "2010-01-02T18:24:21.02-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-01T21:29:48.103-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-19T01:20:55.223-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I have the same problem as the OP, a main that is in ICC and alts that are plying much lower content.\r\nI don't want a load of items I'm never going to see on my alts cluttering up the list, I'd like a nice representation of what is available to me. :-)\r\nEither separate filters for different characters, or even the ability to save/load filter sets would solve this problem.",
+      "PostedDate": "2010-02-19T01:23:05.01-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-03-22T01:03:16.513-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-24T17:47:39.473-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T18:58:23.863-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T19:19:11.37-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:32:03.68-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:33.677-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

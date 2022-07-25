@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "653136",
+    "ThreadId": "267914",
+    "Html": "\r\n<p>I downloaded and built the latest source <a id=\"ChangeSetLink2\" title=\"View change set 62330\" href=\"../SourceControl/changeset/changes/62330\" style=\"font-weight:bold\">\r\n62330</a> with the unheeded warning and darkmoon hurricane change. In the trinket list, darkmoon: hurricane is the 2nd best trinket but equipping it results in lower dps than unheeded warning listed far below it. It seems something isn't quite right when darkmoon:\r\n hurricane is listed as the 2nd best feral cat trinket but results in lower dps. Was it only a cosmetic change?</p>\r\n",
+    "PostedDate": "2011-08-05T07:44:25.843-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "653258",
+    "ThreadId": "267914",
+    "Html": "<p>The only two things I changed in that release were</p>\n<p>a) Unheeded Warning proc was changed from 650ish weapon damage proc to 1926 Attack Power proc. No change was made to chance to proc or ICD</p>\n<p>b) Hurricane was listing as a 5% chance on Physical Hit to proc 5k Nature damage. However, if you look at the actual proc on the trinket</p>\n<p>http://www.wowhead.com/item=62051</p>\n<p>it lists it as a 7k proc. I admit I only changed the Agility trinket proc and not the strength trinket proc, and I'll get that fixed.</p>\n<p>Now the ONLY thing I can think of that it is causing the trinket to be valued so high is that Physical Hit are generally considered to proc even on misses. I would need to test the trinket to see if this is the case, otherwise it would have to be changed  to a Physical damaging proc which would probably lower the value of the trinket.</p>",
+    "PostedDate": "2011-08-05T09:56:09.817-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "653298",
+    "ThreadId": "267914",
+    "Html": "<p>This was in the same hotfix:&nbsp; \"Melee auto-attacks should properly trigger trinkets.\"</p>\n<p>It looks like only specials were triggering trinkets before.&nbsp; That said, something seems fairly off about the nerf to the trinket which makes me think that it's not that big of a nerf (if at all).</p>\n<p>Following a bit of logic here:&nbsp; ((680 weapon damage * 14 weapon damage to AP conversion = 9820) / 6 {being active 10/60 seconds and unable to proc again until 60 seconds after initial proc is active}) = 1586.67 effective AP for weapon damage based attacks  (obviously not affecting bleeds or finishers at all).&nbsp; The value of the hotfix is at 1926 AP with no change to the ICD or chance to proc.</p>\n<p>If I do some more funky math, perhaps this is explaining it:&nbsp; (1926 AP / 6 {1 ppm}&nbsp; = 321 Effective AP for all attacks)</p>\n<p>Adding for clarification:&nbsp; It's definitely a nerf in how it affects shred, mangle, and auto-attack.&nbsp; But, it is a buff to rake, rip, and ferocious bite.</p>",
+    "PostedDate": "2011-08-05T10:35:57.09-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "653980",
+    "ThreadId": "267914",
+    "Html": "<p>well, I just double checked the proc rate of the Hurricane card on SimulationCraft and their proc rate differed from ours (we have 5% chance, they have 1 PPM). I've changed the proc rate in my local build and it dropped the value of the trinket quite substantially. This will be updated before the next release.</p>",
+    "PostedDate": "2011-08-07T02:48:02.303-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

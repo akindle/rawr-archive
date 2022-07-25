@@ -1,0 +1,110 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Enhance",
+      "DisplayName": "Rawr.Enhance"
+    },
+    "ClosedComment": "Rawr 4.0.15 Released 01&#47;09&#47;2011",
+    "ClosedDate": "2011-01-09T19:54:02.857-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "In Rawr.Enhance priority.cs, it looks like Lava Lash is set to have a 6-second CD instead of 10 seconds.  Apologies if I'm missing something, I only just started looking at the code.\n \nif (priority > 0 && _talents.LavaLash == 1)\n        abilities.Add(new Ability(EnhanceAbility.LavaLash, 6f, 1.5f, 0.04f * baseMana, priority, false, false));",
+    "LastUpdatedDate": "2013-05-16T05:19:17.643-07:00",
+    "PlannedForRelease": "Rawr 4.0.13 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-01-01T12:02:10.293-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Enhance] Lava Lash CD appears to be too fast",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19511
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Also in CombatStats.cs\r\n\r\n            float lavaLashSpeed = firstPass ? (_talents.LavaLash == 1 ? 6f : 0f) : AbilityCooldown(EnhanceAbility.LavaLash);\r\n",
+      "PostedDate": "2011-01-01T12:14:42.273-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "float lavaLashSpeed = firstPass ? 10f : AbilityCooldown(EnhanceAbility.LavaLash);\r\n\r\nif (priority > 0)\r\nabilities.Add(new Ability(EnhanceAbility.LavaLash, 6f, 1.5f, 0.04f * baseMana, priority, false, false));\r\n\r\nare the lines of code that are the latest.  Which would explain why I have been getting some funny values.\r\n\r\nAlso you have probably looked into an old CombatStats.cs.  I will be going through and cleaning things up in regards to that soonish.",
+      "PostedDate": "2011-01-01T15:53:38.28-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-01T15:54:50.14-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-01T15:55:50.857-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-01T16:20:05.823-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Fixed by 56962 for .15",
+      "PostedDate": "2011-01-07T12:07:53.347-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm still seeing the wrong value in CombatStats.cs, using the source code browser, in version 56968.  Maybe there is something wrong with the browser?  I have not tried downloading the source yet.",
+      "PostedDate": "2011-01-07T14:51:03.787-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You are probably looking at the wrong file",
+      "PostedDate": "2011-01-07T15:07:24.637-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm looking at Rawr.Enhance.CombatStats.  It's the same whether I use the source browser or download the .zip file.  Is this file not actually used?\r\n\r\n            float stormstrikeSpeed = firstPass ? (_talents.Stormstrike == 1 ? 8f : 0f) : AbilityCooldown(EnhanceAbility.StormStrike);\r\n            float shockSpeed = firstPass ? BaseShockSpeed : AbilityCooldown(EnhanceAbility.EarthShock);\r\n            float lavaLashSpeed = firstPass ? (_talents.LavaLash == 1 ? 6f : 0f) : AbilityCooldown(EnhanceAbility.LavaLash);\r\n            float fireNovaSpeed = firstPass ? BaseFireNovaSpeed : AbilityCooldown(EnhanceAbility.FireNova);\r\n",
+      "PostedDate": "2011-01-09T00:17:38.49-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That's the Rawr2 version of the file. Look in the Rawr3 and Rawr4 folders",
+      "PostedDate": "2011-01-09T00:38:13.58-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "D'OH!\r\n\r\nThanks",
+      "PostedDate": "2011-01-09T12:11:39.087-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-09T19:54:02.857-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:43.17-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:17.643-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

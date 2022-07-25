@@ -1,0 +1,121 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSWarr",
+      "DisplayName": "Rawr.DPSWarr"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-12-27T17:19:14.443-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When using the attached character and trying to use the Optimizer the Optimizer will crash and i need to kill Rawr via Task-Manager",
+    "LastUpdatedDate": "2013-05-16T05:22:48.01-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-12-23T15:25:13.373-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSWarr] Optimizer crashes",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15589
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2669,
+      "FileName": "arwyn2.xml",
+      "DownloadUrl": ".\\2669"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "We need some more information, crash can mean a lot of things.\r\n1) Does it reach a point and just sit there for a bit? Have you tried waiting longer (in case it's just needing to make an intense calculation)?\r\n2) Do you get any error messages?\r\n3) Do you have a log in your Rawr folder in the form of a text file named DEBUGME or something?",
+      "PostedDate": "2009-12-23T16:19:11.9-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sorry for the very few informations.\r\nBy crash i mean: \r\nWhen i start the process (with maximum thoroughness) the label in the bottom left corner states: \"-1E+07\" instead of a percent value, the taskbar icon states 0% for a very long time and the hole system barely reacts and even the taskmanager only reacts very slowly (this shouldn't be a hardware issue with my system, because usually when i use the optimizer i can still fully utilize my system) \r\nWhen i put the \"Thoroughness\" skale at the minimum the finishes very quickly without an error.\r\nWhen i put it just a little further right it first states \"-1E+07\" as the percentage value but after a short time there is a real percentage value, but still it stops at some point or becomes very slow (didn't let i run for more than ~3 minutes).\r\nBefore this update the process took with maximum thoroughness about ~3-5 minutes\r\n\r\nSo no i don't get any error since the process doesn't terminate and no errorlog",
+      "PostedDate": "2009-12-23T17:40:07.6-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I /love/ -1E+07!  =D  (http://rawr.codeplex.com/WorkItem/View.aspx?WorkItemId=13977)",
+      "PostedDate": "2009-12-23T19:22:13.28-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "For me seems to only happen when DbW and another ArP trinket is available when optimizing.",
+      "PostedDate": "2009-12-23T20:13:44.36-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hm, I'll look in to this",
+      "PostedDate": "2009-12-23T20:53:45.49-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This isn't a crash, at least on my system.  It's just running slowly.  I got it all the way through to 100%",
+      "PostedDate": "2009-12-24T06:37:28.213-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "i have the same problem, the optimizer is very very slow and the cpu usage ist still 99%. With an Intel Core2Duo@2x 3000 MhZ!",
+      "PostedDate": "2009-12-26T13:17:19.88-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Edit: if i swtich to \"Simulated Annealing\" it works with normal speed",
+      "PostedDate": "2009-12-26T13:20:28.593-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The problem only occurs sometimes, or for some characters.  It occurred only when you have 2 arp effects and try to get your arp uptimes without a weapon equipped, which the optimizer sometimes will consider.  Simulated Annealing should be used as a temporary workaround until the next release.  Checkin #44637 fixed this problem.\r\n\r\nTo clarify some points: it isn't a crash, it just takes a while to process.  No weapon equipped led to a trigger interval of Infinity for your arp procs due to a bug, so the Arp uptime calculation freaked out and did 20 iterations rather than ~2-4.  You can still cancel, and it will eventually stop, although if you're not worried about losing unsaved changes, you can just kill the process to speed it along.",
+      "PostedDate": "2009-12-27T09:22:15.197-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-27T17:19:14.443-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-09T12:30:42.78-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T16:08:54.537-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:15.273-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:05.863-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:48.01-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

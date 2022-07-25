@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Fixed for next release.",
+    "ClosedDate": "2010-04-10T21:50:43.947-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "For instance, doing an update from wowhead for \"Brilliant Titansteel Helm\" results in a source of \"Crafted\". This is due to this code:\n \n            // Remove Id as we've already processed it\n            json1 = json1.Replace(\"\\\"id\\\":\" + item.Id.ToString() + \",\", \"\");\n            // Remove Name as we've already processed it\n            {\n                //\"name\":\"3Vambraces of the Frost Wyrm Queen\",\n                json1 = json1.Replace(item.Name, \"NAME\");\n                //\"name\":\"3NAME\",\n                int start = json1.IndexOf(\"NAME\") - 9;\n                json1 = json1.Remove(start, \"\\\"name\\\":\\\"3NAME\\\",\".Length);\n            }\n \n \nWhich converts \"Brilliant Titansteel Helm\" in both \"\\\"name\\\":\\\"3Brilliant Titansteel Helm\\\"\" and in \\\"n\\\":\\\"Brilliant Titansteel Helm\\\" (part of sourcemore) with NAME.  Later when trying to determine item location it can't determine one due to a now scrambled sourcemore.",
+    "LastUpdatedDate": "2013-05-16T05:21:06.563-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-04-10T14:58:33.77-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Updating from wowhead doesn't work for crafted items (at least some of them)",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17197
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Even after resolving this though there's still an issue with (some) crafted items.  Again for Brilliant Titansteel Helm, the sourcemore string (after some processing) is \"\\\"c\\\":11,\\\"s\\\":164,\\\"t\\\":6,\\\"ti\\\":55374\".\r\n\r\nWhen the \"c\" key is processed, we set continentname to \"Unknown - 11\".\r\nWhen the \"s\" key is processed, we set itemLocation.skill to \"Blacksmithing\"\r\nWhen the \"t\" key is processed, we replace itemLocation with an empty craftedItem loosing the skill we'd set above.",
+      "PostedDate": "2010-04-10T15:34:56.867-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-10T21:50:43.947-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:28:54.5-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:06.563-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

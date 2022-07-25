@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "136516",
+    "ThreadId": "41171",
+    "Html": "Hi,<div><br></div><div>Seen green level 68 weapon above Naxxramas Heroics, make me think there are some error in weight calculation.As these weapon having only armor penetration and no other stats make me look at the following code :</div><div><br></div><div><div>            #region Mitigation</div><div>            {</div><div>                float targetArmor = calcOpts.BossArmor, totalArP = stats.ArmorPenetration;</div><div><br></div><div>                // Effective armor after ArP</div><div>                targetArmor -= totalArP;</div><div><span style=\"font-weight:bold\">                float ratingCoeff = stats.ArmorPenetrationRating / 15.4f;</span></div><div><span style=\"font-weight:bold\">                targetArmor *= ( 1 - ratingCoeff);</span></div><div>                if ( targetArmor &lt; 0 ) targetArmor = 0f;</div><div><br></div><div>                // Convert armor to mitigation</div><div>                //mitigation = 1f - (targetArmor/(targetArmor + 10557.5f));</div><div>                mitigation = 1f - targetArmor / ( targetArmor + 400f + 85f * ( 5.5f * (float)calcOpts.TargetLevel - 265.5f ) );</div><div>            }</div><div>            #endregion</div><div><br></div></div><div>I think the error is in the : </div><div><div><span style=\"font-weight:bold\">                float ratingCoeff = stats.ArmorPenetrationRating / 15.4f;</span></div><div><span style=\"font-weight:bold\">                targetArmor *= ( 1 - ratingCoeff);</span></div><div><br></div><div>Rating are Percent and then must be divide per 100 to make a correct calculation of the target armor. Correcting to</div><div><div><span style=\"font-weight:bold\">                float ratingCoeff = stats.ArmorPenetrationRating / 15.4f;</span></div><div><span style=\"font-weight:bold\">                targetArmor *= ( 1 - ratingCoeff / 100);</span></div><div>seems to make better results in my opinion.</div><div><br></div><div>Another option is to modify this line to reflect the method use for the other calculation :</div><div><div><div><span style=\"font-weight:bold\">                float ratingCoeff = stats.ArmorPenetrationRating / 1540f;</span></div><div><span style=\"font-weight:bold\">                targetArmor *= ( 1 - ratingCoeff);</span></div><div><span style=\"font-weight:bold\"><br></span></div><div>Faerian</div></div></div></div></div>",
+    "PostedDate": "2008-12-01T02:11:51.59-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "136874",
+    "ThreadId": "41171",
+    "Html": "Thanks, I've made this change, will be in the next release.<br>\r\n",
+    "PostedDate": "2008-12-02T03:45:17.187-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

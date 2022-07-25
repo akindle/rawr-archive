@@ -1,0 +1,115 @@
+<div class="wikidoc">
+<p><img src="http://dl.dropbox.com/u/15727672/RawrVisible/ModelStatus/4.0.14_Rawr.Mage.png" alt="" style="float:right"></p>
+<h1>Rawr.Mage</h1>
+<p>Rawr.Mage is a tool to help Mages choose and optimize their gear, from brand new 85s, to endgame raiders.</p>
+<p>Rawr.Mage uses a solver that will optimize spell selection and cooldown stacking to maximize total damage done given the stats, buffs, talents and fight information you set.<br>
+<br>
+When you load your character from the armory it will collect all data about gear, enchants and talents. After you do that you should open the Buffs tab and enable all the buffs that are applicable. Last go to the Options tab and set the fight parameters. You
+ can control many characteristics of the fight, involving external mana regen, rate of interrupts, DPS uptime, fight duration, whether there is any AoE involved, any real resistances on the boss and many other settings.<br>
+<br>
+At that point you are ready to check the Stats tab. At the top you have general stats information which should match your in-game paper doll. The most important part is Solution. Here you will see your expected dps and suggested use of spell cycles to achieve
+ it. If you mouse over the * next to Spell Cycles you'll get a breakdown of all spells you should use and with which cooldowns to pair them.</p>
+<p><span style="font-weight:bold; font-size:large">Current Status</span></p>
+<p>This model is currently fully functional, consistently maintained by <strong>Kavan</strong>, and you can safely rely on it for your gear choices in Cataclysm.</p>
+<p><span style="font-weight:bold; font-size:large">Options Pane</span></p>
+<p>Default settings are set for normal use, but there are several things one can do in order to improve performance or quality of results. First if you won't be doing any talent spec comparisons you can disable Automatic Armor setting and manually enable either
+ Mage or Molten Armor in Buffs panel. Also if you'll stick to more or less normal fight conditions you can enable Global Optimizations.</p>
+<p>You should leave Incremental Optimizations enabled in most situations. An exception where you might want to try disabling it is when you are in a border case where a slight change can drastically change your spell selection. An example of this would be breakpoints
+ in haste where your filler for cycles changes.</p>
+<p>Finally you have options for sequence reconstruction and advanced solver. These allow you to get more detailed/accurate results for your setup. Sequence reconstruction will use the results from the spell cycle optimizer and convert them into a timed sequence
+ trying to maintain all cooldown constraints and performing mana management. It works without advanced solver, but the quality of reconstruction will be generally very low. Best results will be obtained when it is paired with the advanced solver.</p>
+<p>While the basic solver uses a linear programming (LP) model to obtain solutions, it cannot satisfy some packing and scheduling constraints which is evident from attempted sequence reconstruction based on those solutions. Advanced solver is an extended version
+ of the basic solver which segments the fight duration into segments (fixed duration or optimized for specific cooldowns used) and introduces additional scheduling requirements. It is a custom mixed integer programming (MIP) model that will attempt to satisfy
+ the packing and scheduling constraints with several passes of the LP solver using different bounding conditions.</p>
+<p>For small number of cooldowns the advanced solver can work very fast, but as the options increase it might have a harder time finding a solution. As a result it is recommended to use the advanced solver for display only and unless it works reasonably fast
+ have it disabled when making changes to the fight options and gear. In case you want to use the advanced solver to optimize gear you should enable the algorithm for comparisons also. In most cases you will need to enable both global and incremental optimizations
+ to have it work at interactive levels. To enable the advanced solver you have to enable cooldown segmentation, integral mana consumables and/or advanced constraints. You can use them individually but to obtain good sequence reconstructions all should be set
+ to max setting.</p>
+<p>If you get a message that computation limit was reached you have several options. First you can increase the computation limit in advanced options. Default is 300, it's recommended that you try increasing this to 1500-2000. If this still causes computation
+ limit to be reached it is not advisable to increase the limit further. Computation limit has direct correlation to memory used and at higher values will exceed 1GB. Another option is to change branching method in advanced solver to depth first. Best bound
+ method guarantees that if it completes before computation limit it will give you the true optimum. If it reaches computation limit it will give the last working solution. This solution gives you an upper bound on value of optimum solution, but it won't give
+ you good results for sequence reconstruction. Depth first method will guarantee to give you a lower bound on optimum solution. It won't necessarily give you the optimum, but the solution it gives will work well with sequence reconstruction.</p>
+<p>To have an indication of how good the solutions produced by the basic solver are you can enable advanced solver for display only and mouse over Dps in Stats panel. It will report an error margin, showing how much the basic solver is overestimating. When
+ working with advanced solver disabled you can rely on any comparisons that are above that margin. If you need to make decisions between gear where difference is smaller it is best to verify the options with advanced solver.</p>
+<p><span style="font-weight:bold; font-size:large">Frequently Asked Questions</span></p>
+<p>This section has not yet been written.</p>
+<p><span style="font-weight:bold; font-size:large">Known Issues</span></p>
+<p>There are presently no known major Issues with Mage. Please see the Issue Tracker for any new issues that have been opened since this writing.</p>
+<p><span style="font-weight:bold; font-size:large">Troubleshooting</span></p>
+<p>This section has not yet been written.</p>
+<p><span style="font-weight:bold; font-size:large">Recent Changes<br>
+</span></p>
+<p><strong>Rawr 4.1.04:</strong><br>
+- Switching to 4.1 default<br>
+<strong>Rawr 4.1.03:</strong><br>
+- Disabled Pots from Buffs from showing up in Mage<br>
+<strong>Rawr 4.1.02:</strong><br>
+- Fix for Issue 20347<br>
+- Updated optimal arcane cycles based on PTR<br>
+- Fix for Issue 20357<br>
+- Set bonus cleanup<br>
+<strong>Rawr 4.1.01:</strong><br>
+- Support for Arcane AoE cycles<br>
+- Improved support for AoE<br>
+- Option to use boss handler instead of model settings (only using some basic settings for now)<br>
+- Started work on fire AoE cycles<br>
+- Updated Combustion model<br>
+- Updated to latest PTR<br>
+<strong>Rawr 4.1.00:</strong><br>
+- Changing arcane light setting to default enabled<br>
+- Fix for by spell breakdown<br>
+- Improved quadratic solver support for int and mastery procs<br>
+- No dot ignites in ptr mode (you should manually lower ignite munching factor)<br>
+- Implemented PTR changes, arcane aoe cycle solver<br>
+- Fixing improved ae, changing gcd latency to 0.01 default<br>
+<strong>Rawr 4.0.20b:</strong><br>
+- Applying arcane hotfix changes<br>
+- Shard of Woe tweak<br>
+- Support for Dark Intent<br>
+<strong>Rawr 4.0.19b:</strong><br>
+- Changing Improved Mana Gem to 15 sec, fix for 4T11<br>
+- Added AB4ABar1234AM and AB3ABar123AM cycles, added a note for mana neutral mix showing a mix of what it is<br>
+- Cooldown restrictions editor<br>
+- Fix for sequence reconstruction chart in WPF<br>
+- Numerical stability improvements for advanced solver<br>
+<strong>Rawr 4.0.18b:</strong><br>
+- Fix for hasted evocation<br>
+- Fix for Issue 19858: Arg_NullReferenceException when trying to run optimizer<br>
+- Support for execute phase special effect triggers<br>
+- Fix for numerical instability in arcane solver<br>
+<strong>Rawr 4.0.17b:</strong><br>
+- Updated mana cost based on hot fix notes<br>
+- Fix for mirror images in averaged mode<br>
+- Fix for Combustion cooldown segmentation<br>
+- Changing Mirror Image default to averaged<br>
+- Setting for ignite munching, PTR mode (hopefully I got all the changes, could use some review)<br>
+<strong>Rawr 4.0.16b:</strong><br>
+- Fixes, support for Heart of Ignacius, support for mastery procs for fire and frost specialization<br>
+<strong>Rawr 4.0.15b:</strong><br>
+- New Arcane Light option - simplified arcane model using only mana neutral cycle mix and AB spam<br>
+- Fix for Flashburn<br>
+- Added T11 set bonuses<br>
+- Support for Gale of Shadows<br>
+- Updated base stats<br>
+- Fix for Pyroblast coefficient<br>
+- Updated Pyro dot uptime model<br>
+- Updated fire cycles<br>
+- More fixes and rework of Combustion (not finished yet)<br>
+- Heuristic adjustments to Pyro dot uptime and Combustion, switching to latest T3 HS formula<br>
+<strong></strong><strong></strong><strong>Rawr 4.0.14b:</strong><br>
+- Fix for quadratic solver<br>
+- Fix for DotTick trigger proc<strong><br>
+Rawr 4.0.13b:</strong><br>
+- Added average mode for mirror images, default to disabled<br>
+- Performance improvement for incremental optimization with advanced mana segment constraints<br>
+<strong>Rawr 4.0.12b:</strong><br>
+- No Significant Changes<br>
+<strong></strong><strong>Rawr 4.0.11b:</strong><br>
+- Support for mastery procs (arcane only for now, probably slightly overestimates)<br>
+- Partial support for int procs (includes int=&gt; spell power conversion, regen from max mana and negative impact on mana adept, does not include int=&gt;crit conversion at the moment)<br>
+- Fix for int procs<br>
+- Added Draenei hit bonus<br>
+<strong>Rawr 4.0.10b:<br>
+</strong>- Make sure spell cost reduction can't make base spell cost negative<br>
+<strong></strong><strong></strong></p>
+</div><div class="ClearBoth"></div>

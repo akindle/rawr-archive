@@ -1,0 +1,125 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "User Misconception, dev explained",
+    "ClosedDate": "2009-08-19T13:51:59.053-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi everybody,\n \nI'm using Mac OS X 5.6 and I donwload the latest version of Mono (2.4) and RawR 1.9 (the stable version). I have X11 and all the XCode developper Kit installed on my mac so I should have all the requirement needed to run RawR with Mono.\n \nBut when I lauch Mono with the command : \"mono Rawr.exe\", the icon appears and just after I've got this error :\n \nSystem.ArgumentException: A null reference or invalid value was found [GDI+ status: InvalidParameter]\n  at System.Drawing.GDIPlus.CheckStatus (Status status) [0x00000] \n  at System.Drawing.Bitmap.SetResolution (Single xDpi, Single yDpi) [0x00000] \n  at (wrapper remoting-invoke-with-check) System.Drawing.Bitmap:SetResolution (single,single)\n  at Rawr.ItemIcons.ScaleByPercent (System.Drawing.Image img, Int32 Percent) [0x00000] \n  at Rawr.ItemIcons.GetItemIcon (System.String iconName, Boolean small) [0x00000] \n  at Rawr.FormSplash.get_CachedSplash () [0x00000] \n  at Rawr.FormSplash.FormSplash_Paint (System.Object sender, System.Windows.Forms.PaintEventArgs e) [0x00000] \n  at System.Windows.Forms.Control.OnPaint (System.Windows.Forms.PaintEventArgs e) [0x00000] \n  at System.Windows.Forms.Form.OnPaint (System.Windows.Forms.PaintEventArgs e) [0x00000] \n  at System.Windows.Forms.Control.WmPaint (System.Windows.Forms.Message& m) [0x00000] \n  at System.Windows.Forms.Control.WndProc (System.Windows.Forms.Message& m) [0x00000] \n  at System.Windows.Forms.ScrollableControl.WndProc (System.Windows.Forms.Message& m) [0x00000] \n  at System.Windows.Forms.ContainerControl.WndProc (System.Windows.Forms.Message& m) [0x00000] \n  at System.Windows.Forms.Form.WndProc (System.Windows.Forms.Message& m) [0x00000] \n  at System.Windows.Forms.Control+ControlWindowTarget.OnMessage (System.Windows.Forms.Message& m) [0x00000] \n  at System.Windows.Forms.Control+ControlNativeWindow.WndProc (System.Windows.Forms.Message& m) [0x00000] \n  at System.Windows.Forms.NativeWindow.WndProc (IntPtr hWnd, Msg msg, IntPtr wParam, IntPtr lParam) [0x00000] \n \n \nI don't know if it's an error with Mono or Rawr or my mac but I'm post it here. Thx for your help.\n \nGimlinus",
+    "LastUpdatedDate": "2013-05-16T05:25:57.59-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-03-31T03:56:44.24-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Mac OS X Error with Mono",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 12913
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Haven't seen that one before... I'd try reinstalling Mono, and/or trying the latest beta of Rawr.",
+      "PostedDate": "2009-03-31T09:30:26.76-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Unfortunatly I try those solution too and none of them worked. I also try to install mono and Rawr on my iMac and MacBook but the result are the same.\r\n\r\nI also try to force mono to use X11 instead of the quartz environnement i think but the new issue was that mono couldn't find the lib gtk for X11.\r\n\r\nI'm french so i also try to change the format into American in case of a number problem but I've got the same error.\r\n\r\nCan you give me a which version of rawar and Mono have you install (and worked) and which version of OS X are you using ?\r\n\r\nThank you",
+      "PostedDate": "2009-04-01T00:43:05.377-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm also sur it's not a problem of Fink/Macport because on my iMac i have neither of them and got the same error.",
+      "PostedDate": "2009-04-01T00:45:01.11-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well, Mono is simply buggy. It just doesn't work, for unknown reasons, for some people.\r\n\r\nThe most successful method that I've found is to do the following:\r\nUse the latest version of OSX, with all updates.\r\nInstall X11 from the OSX install disc.\r\nInstall the latest version of Mono.\r\nRun Rawr.",
+      "PostedDate": "2009-04-01T13:39:42.943-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "well I trie to install mono with macport but there i had lot of problem with some library and in the end, nothing change. So i will try to install an older verison of mono and I will give you some news",
+      "PostedDate": "2009-04-02T04:01:27.66-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "OMG !!! It Worked !! Well Mono is well bugged... I installed an older version of mono (2.0.1_1) and it worked. I can open Rawr and used it.\r\n\r\nThx for your help :D",
+      "PostedDate": "2009-04-02T04:06:22.653-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Happens to me as well, seems to be a bug of latest (2.4) package for Mono-OSX. Try to downgrade to 2.2",
+      "PostedDate": "2009-04-05T03:38:34.87-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "same problem, downgrading to mono 2.2 does not fix it",
+      "PostedDate": "2009-05-06T00:52:21.583-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sure, fleurr? For everyone who has experienced this (which is everyone who has upgraded to Mono v2.4, as far as I'm aware), downgrading to Mono v2.2 fixes it. Try it again, let us know if it still doesn't work.",
+      "PostedDate": "2009-05-06T02:10:58.953-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "MacBook Pro w/ 10.5.7, Mono 2.4, and Rawr 2.2.4 - receiving the same error. Have tried all versions of rawr back to 2.1 and get the same message. 2.0.3 and lower have trouble with file locations, but after resolving those, give the same error. I have XCode and am using X11.",
+      "PostedDate": "2009-05-15T20:42:21.283-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-05-15T20:42:49.02-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sulaweyo, read the thread you're responding to.",
+      "PostedDate": "2009-05-15T23:53:36.927-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Downgraded Mono from 2.4 to 2.2 - Seems to be working just fine.\r\n\r\n@Astrylian - \"read the thread you're responding to\" calls into question the appropriateness of the thread for the issue, which is not the case here. A more apt comment: \"Try what was suggested in the thread.\"  Hints toward actual problem (downgrading Mono instead of Rawr) while still being snarky and even, more entertaining.",
+      "PostedDate": "2009-05-16T12:36:30.98-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "...wut?\r\n\r\nYou responded to a thread (and not a very long one), which explicitly described your problem, and the solution to the problem. Where's the issue?",
+      "PostedDate": "2009-05-16T18:15:43.96-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-19T13:51:59.053-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:35:03.42-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:57.59-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

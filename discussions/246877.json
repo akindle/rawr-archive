@@ -1,0 +1,226 @@
+[
+  {
+    "Id": "569484",
+    "ThreadId": "246877",
+    "Html": "\r\n<p>Hey everyone,</p>\r\n<p>I'll be the new retribution developer and I'd like to introduce myself very shortly.</p>\r\n<p>I'm currently 20 years old and I work as a software developer in Switzerland. I do not have big knowledge of C# and silverlight, but as I develop in delphi I think with my basic knowledge of C# and my knowledge in delphi it will work =)</p>\r\n<p>&nbsp;</p>\r\n<p>First I'll update the model with the new attacks and spells.</p>\r\n<p>Then the combat model.</p>\r\n<p>Concerning the combat model I do have some questions:</p>\r\n<p>The Dmgnumber of each ability is easy to calculate but there are some problems which i'm not sure how to handle.</p>\r\n<p>Basicly there are 2 problems:</p>\r\n<p>Inq has a uptime which increases the dmgnumber and won't have 100% uptime. So how to calculate?</p>\r\n<p>Exo has a trigger on normal attacks which prevents other attacks to be casted due to the higher priority.</p>\r\n<p>I know simulations are very random sometimes and also slow. But I don't see any other solution at the moment.</p>\r\n<p>I didn't have a close look at the other models, maybe an experienced user or developer can help me here with an good input?</p>\r\n<p>&nbsp;</p>\r\n<p>Cheers,</p>\r\n<p>Caromina</p>\r\n",
+    "PostedDate": "2011-02-21T01:29:56.183-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "569697",
+    "ThreadId": "246877",
+    "Html": "<p>Use the SpecialEffect class to calculate uptimes and procs, don't put any form of Sim into Rawr.</p>",
+    "PostedDate": "2011-02-21T09:23:10.383-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "570354",
+    "ThreadId": "246877",
+    "Html": "<p>Welcome Caromina!</p>",
+    "PostedDate": "2011-02-22T11:49:03.917-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "571565",
+    "ThreadId": "246877",
+    "Html": "<p>Welcome Caromina and best of luck!&nbsp;</p>\r\n<p>I am in no way a programmer, but I would say that you could incorporate Inquisition into the calculations by including a 'slider' somewhere in the Ret model?&nbsp;</p>\r\n<p>I&nbsp;know in the previous downloadable versions of&nbsp;Rawr there were various skills and abilities where the user had a sliding scale (from 0 to 100%) to play around with to set the uptime of that skill or ability.&nbsp; Hopefully someone with a better memory than I can come up with a concrete example.....</p>",
+    "PostedDate": "2011-02-24T08:09:20.677-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "571791",
+    "ThreadId": "246877",
+    "Html": "<p>Well that's an option, but an \"quick and dirty\" one. The Problem is that Inq uses Holy power which is also needed for Templar's verdict.</p>\r\n<p>I'll may implement it that way at first, to show at least some result and then change it to a more accurate one.</p>",
+    "PostedDate": "2011-02-24T14:00:54.553-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "572343",
+    "ThreadId": "246877",
+    "Html": "<p>hey Caromina, welcome to RAWR. I am eagerly looking forward to having a ret module as the RAWR mage module is very helpful. Please let me know if i can assist in any way, althought I\"m not very familiar with silverlight also. :(</p>\r\n<p>I'm chiming in on this topic just to keep in mind that ret without 4piece tier 11 set will use inq and their holy power in a vastly different way than a ret with the four piece tier set will, so a slider or some kind of code that recognizes the implications of having a tier set is necessary.</p>\r\n<p>The art of war proc problem doesn't sound so bad, as the priority now in 4.0.6 actually isn't that high. Exo is not higher priority than CS or TV.</p>",
+    "PostedDate": "2011-02-25T13:26:02.743-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "572367",
+    "ThreadId": "246877",
+    "Html": "<p>It's Rawr, not RAWR. No caps. I need to put that on the top of the website or something.</p>",
+    "PostedDate": "2011-02-25T14:26:24.037-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "572458",
+    "ThreadId": "246877",
+    "Html": "<p>I could be wrong, but it sure looks like it is at the top of the website already.</p>",
+    "PostedDate": "2011-02-25T22:23:19.13-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "572469",
+    "ThreadId": "246877",
+    "Html": "<p>Apparently the pretty image isn't enough</p>",
+    "PostedDate": "2011-02-26T00:08:25.61-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "572886",
+    "ThreadId": "246877",
+    "Html": "<p>Hey</p>\r\n<p>I have a question concerning the rotation modeling.</p>\r\n<p>The ret model is kind of special.</p>\r\n<p>- Not a normal rotation, more a priority list rotation</p>\r\n<p>- Exo is needing a buff from autoattack and will prevent an other ability to cast.</p>\r\n<p>&nbsp;</p>\r\n<p>Those two specialities causes some problems setting up a number of casts / Ability to determine. =&gt; Causes problem with haste will be much overrated.</p>\r\n<p>&nbsp;</p>\r\n<p>Does anyone of the other developer an idea how to set up a propper model?</p>",
+    "PostedDate": "2011-02-27T12:35:15.233-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "573794",
+    "ThreadId": "246877",
+    "Html": "<p>To see how Exo can be modeled you can have a look at.</p>\n<p>&nbsp;</p>\n<table width=\"100%\">\n<tbody>\n<tr>\n<td><strong>Bloodsurge</strong></td>\n<th><strong class=\"q0\">Rank 3</strong></th>\n</tr>\n</tbody>\n</table>\n<p><span class=\"q\">Your Bloodthirst hits have a 30% chance of making your next Slam instant, free, and deal 20% more damage for 10 sec.</span></p>\n<p>&nbsp;</p>\n<p><span class=\"q\">This is for fury warriors<br /> </span></p>",
+    "PostedDate": "2011-03-01T05:34:52.883-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "573832",
+    "ThreadId": "246877",
+    "Html": "<p>Ah, that's an good one, thanks.</p>\n<p>Edit:</p>\n<p>I've just had a quick look into the Warr Model and its quite big and honestly I don't understand what's going on there :) But I'll try to debug and understand the modeling tonight or tomorrow.</p>",
+    "PostedDate": "2011-03-01T06:42:57.01-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "579656",
+    "ThreadId": "246877",
+    "Html": "<p>Hi,</p>\n<p>old ret dev here.&nbsp; Still alive, but RL has been a bitch and I haven't been able to do much in Rawr (or wow for that matter) and it doesn' t look like it'll be changing anywhere soon.</p>\n<p>Combat model wise, the simplest approach \"for now\" is simply have input boxes for everything.&nbsp; Uptime of Inq, and ECD of every ability.<br />This cuts out the need for any sort of modelling and puts that burden on the users they'll have to run tests on dummies (or simcraft) themselves to input usable numbers.&nbsp; You can input numbers based on some of your own findings as basic input. It's not ideal, but good enough for the first phase.</p>\n<p>With the above in place, you can work on everything else and make sure it works and meanwhile ponder on ways to make an actual automated combat model.&nbsp; Combat model will need to be statistics based rather than a sim, the majority of problems in the wotlk model came from being sim based (not my fault there, I just 'inherited' it that way from ermad).</p>",
+    "PostedDate": "2011-03-13T04:39:01.817-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "579951",
+    "ThreadId": "246877",
+    "Html": "<table cellspacing=\"0\" cellpadding=\"0\">\r\n<tbody>\r\n<tr id=\"PostPanel\" class=\"Post\">\r\n<td id=\"PostContent_579656\" class=\"discussionListContent Post\" style=\"width: 100%; vertical-align: top;\"><br /></td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p>What problems did you get for using a sim based modelling?</p>",
+    "PostedDate": "2011-03-14T04:01:32.053-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "580128",
+    "ThreadId": "246877",
+    "Html": "<p>Primarily that Rawr isn't supposed to include sim based modeling at all.</p>",
+    "PostedDate": "2011-03-14T10:49:38.917-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "580480",
+    "ThreadId": "246877",
+    "Html": "<p>Main reason why we don't advise sim based modeling is that it tends to be skewed by rng and computationally intensive. There are proper ways on how to use sim based&nbsp;data in generating mathematically valid models, but there should be considerable thought put into it to make it work.</p>",
+    "PostedDate": "2011-03-14T18:48:24.007-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "581709",
+    "ThreadId": "246877",
+    "Html": "<p>problems with simming in the ret model:</p>\r\n<p>1) performance.</p>\r\n<p>In order to reduce the impact of RNG, simulated fight length ended up being longer and longer.&nbsp; Even down to simulating hours of fight and extrapolating the results.&nbsp;&nbsp; Adding the DS reset proc suddenly made the performance issue explode out of proportion, it added a lot of new RNG and orlangur ended up \"fixing\" this by forking multiple simultaneous sims with various reset points.&nbsp;</p>\r\n<p>2) several inputs of haste/delay/priority/weaponspeed etc ended up with the \"random\" dps rotation falling into short repeatable ability usage.&nbsp; This could cause DPS to either be way too high or way too low.&nbsp; A sim is \"too perfect\".</p>\r\n<p>3) Haste causing sharp changes in DPS done.&nbsp; adding/subtracting 1 haste could change DPS by several hundred because you suddenly fall into a new pattern of ability usage.</p>\r\n<p>4) RNG streaks</p>\r\n<p>If you're trying to sim... how are you handling RNG ? if you use an actual RNG, then the used seed could cause streaks of bad/good procs that severely impact DPS calculation.&nbsp; THis happens in reality also, but if your model always goes off by the worst case or best case, or it falls into either by equipping particular pieces of gear, those pieces of gear will be improperly valued.&nbsp; You can \"fix\" this by increasing simulation length, and/or by running multiple sims with different seeds.&nbsp; that returns us to 1.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2011-03-16T14:10:38.78-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "606000",
+    "ThreadId": "246877",
+    "Html": "<p>i would just suggest you shod look at <strong>Redcape's Ret DPS Spreadsheet 5.19 - 4.1 ready (Updated 04/29), </strong>and that is best ret dps calculator, its just a pain to use it.&nbsp;</p>\n<p>I noticed that current Rawr is setting haste value hair then mastery but Mastery is superior to haste.<strong><br /> </strong></p>\n<p><br /> <strong>Here is the link:&nbsp;&nbsp; </strong>http://elitistjerks.com/f76/t109229-redcapes_ret_dps_spreadsheet_5_19_4_1_ready_updated_04_29_a/&nbsp;</p>",
+    "PostedDate": "2011-05-02T11:14:31.913-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "609300",
+    "ThreadId": "246877",
+    "Html": "<p>I was wondering if Rawr will be fixed so it doesnt show haste as the top stat over mastery? Haste is currently our lowest stat and it's rather irritating trying to figure out what items are best when&nbsp; Rawr keeps showing items with haste as the best stat to keep or reforge to...</p>",
+    "PostedDate": "2011-05-08T18:58:10.17-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "609320",
+    "ThreadId": "246877",
+    "Html": "<p>Cufta, Tanner: I believe you are misunderstanding how Rawr actually works. It does not \"set haste value\" nor does it always \"keep showing items with haste as the best stat to keep or reforge to\"; the RSV chart&nbsp;simply reflects how much DPS you can&nbsp;expect to gain<em> IF </em>you get 1 (or 10) more point(s) of a particular stat. This is based off of the following: <strong>CURRENT</strong> gear, gems, enchants, and reforges; Boss handler selections; and <strong><em>User (or default)</em> </strong>priority settings. Currently the priority/rotation is a work in progress therefore ALL gear recommendations must be taken with a grain of salt and with some thought behind the \"why\" not just blind following.</p>\r\n<p>Example of setting/selection issues: Rawr did not mark that Paladin has \"Glyph of Seal of the Truth\" and/or User forgot to double&nbsp;check and mark it themselves or Boss handler is not defaulted/selected to \"You stand behind Boss - 100%\" =&gt; Rawr recommends reforging/gearing/etc to 26 Expertise instead of 16, ALL recommendations from Rawr&nbsp;skewed toward Exp.</p>\r\n<p>Expample of Gearing/Priority issues: Current gearing/enchant/etc allows Paladin to perform a Crusader Strike (with for example purposes 3.5sec CD)&nbsp;then 2 fillers&nbsp;then wait&nbsp;.5 seconds before CS is off CD and usable; Rawr sees this as wasted time sitting idle&nbsp;for .5 secs a total of 120 times during a 6 min fight. However if you equip/gem/enchant/reforge into X amount of haste the new CS CD is only 3.0 secs, now the Paladin can perform 60 more CS+2 fillers during the fight which significately increases DPS due to no more \"idle time\" therefore RAwr recommends Haste over several other stats.</p>\r\n<p>When refering to stat priorities, you must look at the big overall picture as well as the min-max-ing that Rawr performs. The X&gt;Y&gt;Z&gt;W listing is an overall GUIDELINE, it is not a strict this gear is better than that gear because it has Z stats instead of W stats.</p>\r\n<p>Until Caromina finishes working out the details/bugs in the priority list; Rawr will be slightly off on the nitty-gritty min-max gearing recommendations; however Rawr never has nor never will SET&nbsp;A STAT TO A PARTICULAR VALUE. The program simply does not operate that way.</p>\r\n<p>(For further proof: watch the RSV chart and reforge out of 80 points of hit (or exp or haste) and watch the value of that stat change drastically. You can see that no set stat weights are being used)</p>",
+    "PostedDate": "2011-05-08T20:41:06.32-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "693717",
+    "ThreadId": "246877",
+    "Html": "<p>&nbsp;&nbsp;&nbsp; Since the last post on this topic was in May and all the kinks should have been worked out by now (for the most part), I have a question for you Caromina.&nbsp; Do you incoporate a crit cap into your Rawr code?&nbsp; I am in close-to-end-game gear (4 pc. Tier with heroic Domo chest and most heroic&nbsp;non-Tier&nbsp;gear except for back -- thanks Blizz for BiS 378 cloak!), but I now have a question when I use the Optimizer.&nbsp; I understand Retribution Paladins are still under construction when you view the list of fully operational classes, but this situation seems weird to me.&nbsp; As I have read and also tested in-game throughout Cataclysm, strength beats all, then hit cap/expertise cap, then mastery.&nbsp; The last two stats (Crit and haste) are very much up for debate right now and there seems to be no clear winner.&nbsp; Before you judge that last statement, I am writing this on Nov. 4th, 2011.&nbsp; Look at all the info up until this date and you will understand what I am talking about (see Elitistjerks.com - Retribution Concordance 4.2.).&nbsp; The problem I am seeing is when I use the x10 thouroughness Optimizer.&nbsp; As I expected, it figured out how to get me to exact hit and expertise caps (841 and 481 respectively) with the best gems for stat weights and bonuses.&nbsp; However, I run into one issue that begs me to ask why.&nbsp; The issue lies in my cloak.&nbsp; I have the Bladed Flamewrath Cover and its secondary stats before reforging are Haste 173 and Expertise 115.&nbsp; After using the Optimizer (x10 thouroughness), my secondary stats (stats that can be reforged) were 841 hit, 481 expertise, 18.01 Mastery (37.8% additional damage), and 10.55% Crit.&nbsp; Keep in mind that this is without reforging the cloak at all, because here comes the issue -- Rawr wants to reforge 69 haste into 69 Crit instead of the (according to EJ Ret Concordance) the obvious 69 Mastery.&nbsp; Why?&nbsp; Is there a crit cap I am unware of for Ret Pallys?&nbsp; If this is the case, then I would assume it is 11% as the reforging of Haste to Crit brings me to 10.94% Crit.&nbsp; With this reforge it also drops my mastery by additional damage done as Holy by .8%.&nbsp; I do not see how a .4% increase to Crit is better than a .8% increase in damage done as Holy for my strongest and most used attacks; especially when I pair Zealotry and Heroism so my rotation is CS, TV, CS, TV, etc. all the way through Inq up time and one or maybe two more CS's, TV's after.&nbsp; Even without this pairing of Zealotry and Heroism, isn't Mastery just flat out better than Crit?&nbsp; Or like I asked before, is there a hidden Crit cap that Ret Pallys should be aware of?&nbsp; Most of all, why did Rawr make this reforging decision of Crit &gt; Mastery based on it's own numbers?</p>",
+    "PostedDate": "2011-11-04T00:30:47.773-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "696293",
+    "ThreadId": "246877",
+    "Html": "<p>Well except the obvious attacktable restriction there is no cap for Crit for Retris implemented.</p>\r\n<p>So it looks like something is not working the way it should.</p>\r\n<p>Could you create it as an Issue and add your character file?</p>",
+    "PostedDate": "2011-11-10T01:17:59.553-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "696321",
+    "ThreadId": "246877",
+    "Html": "<p>Hello Retribution community ! I've started using Rawr two weeks ago as I faced the most honourable challenge : leaving my prot spec for a retrib one to assist on Baleroc HM and preparing for 4.3 (as we raid in 10 man and most of the boss are 1 tank made ...) So back to the retrib.</p>\r\n<p>&nbsp;</p>\r\n<p>Firstly I have to say that my retribution stuff is not quite complete... I have 2 t12 part and a mix of 378-391 part looted here and&nbsp; then when no one wanted those. The thing is I still have my old t11 helm (normal &gt;&lt;), some 353 pauldrons from ZA, and I was using Akirus, the 359 2 hands mace from Bwl... with that, and without any optimization (I had just reforged full mastery and gemmed full strength) I was able to top around 21k dps on 10 man baleroc HM.</p>\r\n<p>&nbsp;</p>\r\n<p>Using rawr and informing myself about retrib spec, I learned that focusing only on mastery is not as good as I thought. With rawr telling me to up my crit, I was a little dubious at first but last week the result were here : with the same stuff and after 500 po reforging, I was able to do 25,5k dps on Baleroc HM. My dps on dummies raised as well, always beeing close to what Rawr shows me.</p>\r\n<p>&nbsp;</p>\r\n<p>Yesterday I tried to replace my old Akirus by a s10 pvp mace and I bought a necklace with valor points, I optimized like rawr showed me and&nbsp; went to a training dummy... I was able to maintain around 18k dps on the dummy where I could not go over 16k before.</p>\r\n<p>&nbsp;</p>\r\n<p>Rawr seems to works pretty well as for now concerning retrib pally. Bear in mind that our dps is subject to rng and may vary from low to very high if you have no proc or... full proc =D</p>\r\n<p>&nbsp;</p>\r\n<p>As for the benefits of mastery, I'm actually around 14,02 (was around 18-20 two weeks ago) so I'd say that maybe there is a diminishing returns after a certain point ?</p>\r\n<p>(you can check Mauradin from Conseil Des Ombres on the armory for the full details on stats)</p>\r\n<p>&nbsp;</p>\r\n<p>By the way, any idea what will we have to focus on for 4.3 ?</p>\r\n<p>&nbsp;</p>\r\n<p>cheers ! (sorry for my rusty english =))</p>",
+    "PostedDate": "2011-11-10T02:16:09.563-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "697289",
+    "ThreadId": "246877",
+    "Html": "<p>I'm glad that Rawr could help you.</p>\r\n<p>As far as I know there is no diminishing return. But a point in crit becomes more powerful for every point in mastery. If i recall correctly the best ratio should be something like 2 Mastery 1 Crit.</p>\r\n<p>&nbsp;</p>\r\n<p>I didn't do much for 4.3 (It's on my list) but as far as I've seen there aren't big changes for us in 4.3, except that HoW isn't as powerful as before.</p>",
+    "PostedDate": "2011-11-11T23:43:16.047-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "704042",
+    "ThreadId": "246877",
+    "Html": "<p>Ok I tested retrib on Ptr and if changes are not very troubling, here is some facts about how's the dps is shown on recount : First on the list is Crusader Strike followed by Censure (yup censure that's right...). Then goes melee, hands of light or templar's verdict (depending on whether you proc a lot ... or not =p)</p>\r\n<p>Damages from Judgment are slightly improved but I'm wondering if it's really better to use Glyph of Judgment instead of Exorcism like I've seen on some theorycraft site. Didn't have time to run full tests about that...</p>\r\n<p>&nbsp;</p>\r\n<p>The 2P T13 is just worth everything as your Judgment now proc 1 Holy Power.</p>\r\n<p>&nbsp;</p>\r\n<p>I'm gonna wait and see what happens the first week of 4.3 with my actual optimization and will try out something different if I see that's not fully working.</p>",
+    "PostedDate": "2011-11-28T01:17:07.053-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "704498",
+    "ThreadId": "246877",
+    "Html": "<p>Your test results should be correct.&nbsp;</p>\r\n<p>As far as i've seen the Exo Glyph should still be better than the judgement glyph. But it's getting close.</p>\r\n<p>I'm about to implementing the T13, but since it's changing the rotation it's a bit of work to do.</p>\r\n<p>All abilities should now use the 4.3 values. (As soon as the 4.3 version is released)</p>",
+    "PostedDate": "2011-11-28T16:09:21.54-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "704695",
+    "ThreadId": "246877",
+    "Html": "<p>about the rotation I didn't see big changes... Just that Hammer of Wrath isn't a priority anymore due to the nerf of Sanctified Wrath. But it's still a good filler when you're on Avenger's Wrath and exec phase.</p>\r\n<p>Judgment must be used every time off cooldown with the T13 2P.</p>\r\n<p>Nothing's big for us, but maybe hard to implement in rawr =/</p>",
+    "PostedDate": "2011-11-29T04:20:40.467-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "705585",
+    "ThreadId": "246877",
+    "Html": "<p>Weeeeeell... so tonight in DS, as a ret pal I was third on overall dps and always on the top 5 on the 4 first bosses. Pal ret got buffed more than I expected...</p>\r\n<p>I droped on the afternoon the captain varo'then brooch (trinket ilevel 378, +383 strength with chance on melee damage to proc around 1140 mastery) and I droped the Experimental Slicer (2H axe crit / mastery) on DS.</p>\r\n<p>In 25 mode, it's insane... I'm way ahead of a warrior who has 5 more ilevel points than me (he also got the axe !) and was always first dps on Fireland.</p>\r\n<p>Without changing anything in my cycle, I gained around 5k dps more or less.</p>\r\n<p>Exo glyph still better than Judgment one as far as I can see.</p>",
+    "PostedDate": "2011-11-30T16:13:47.417-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

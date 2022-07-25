@@ -1,0 +1,122 @@
+[
+  {
+    "Id": "608034",
+    "ThreadId": "256541",
+    "Html": "\r\n<p>Hey there,</p>\r\n<p>is it possible at all to filter out ret gear for a holy paladin? I've tinkered around with the filters a lot but can't seem to find it.</p>\r\n<p>Thanks for any enlightenment!</p>\r\n",
+    "PostedDate": "2011-05-05T12:27:42.113-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "610247",
+    "ThreadId": "256541",
+    "Html": "<p>Do you mean that while in the Holy Paladin module, do not show Ret gear?&nbsp; I don't see a way to do that.&nbsp; Looking at some of the other \"complete\" rawr modules, like the bear one, I see it lists caster items under bear. (items with Intellect)&nbsp;&nbsp; This is similar to listing items with Strength for a healadin.&nbsp; So it seems like that is they way the rawr designers wanted it.</p>\r\n<p>It might be possible for me to add a checkbox in the Healadin \"options\" tab to filter out any items with Strength.&nbsp; This would do what you ask, but seems like an awkward design to me. (having a filter option in a seperate area from other filter options) &nbsp; Any opinions from the rawr developers about this design option - as in would it be a good thing for me to do in terms of useful function vs awkward placement and consistency with other rawr modules?</p>",
+    "PostedDate": "2011-05-10T07:47:57.673-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "610345",
+    "ThreadId": "256541",
+    "Html": "\r\n<div>Yes, that would be the idea. I remember that in previous expansions, rawr would not show ret or prot gear when the current model was holy. Maybe one of the devs was on board back then already and remembers what happened then?\r\n</div>\r\n<div><br>\r\n</div>\r\n<div>Strenght just doesn't make much sense, so I wouldn't even make that an optional button like hit has been for a bit (&quot;Show hit items&quot;).<br>\r\n<br>\r\n</div>\r\n<div>The relative stat value list could be an indicator for rawr to not list strength items, too, one we have int, spirit, haste, mastery/crit in there, too.</div>\r\n<div><br>\r\n</div>\r\n<div>Cheera for working on the healadin module!<br>\r\n<br>\r\n</div>\r\n<div><br>\r\nOn 10.05.2011, at 07:48, &quot;molotok&quot; &lt;<a href=\"mailto:notifications@codeplex.com\">notifications@codeplex.com</a>&gt; wrote:<br>\r\n<br>\r\n</div>\r\n<div></div>\r\n<blockquote type=\"cite\">\r\n<div>\r\n<p>From: molotok</p>\r\n<div id=\"ThreadNotificationPostBody\">\r\n<p>Do you mean that while in the Holy Paladin module, do not show Ret gear? I don't see a way to do that. Looking at some of the other &quot;complete&quot; rawr modules, like the bear one, I see it lists caster items under bear. (items with Intellect) This is similar\r\n to listing items with Strength for a healadin. So it seems like that is they way the rawr designers wanted it.</p>\r\n<p>It might be possible for me to add a checkbox in the Healadin &quot;options&quot; tab to filter out any items with Strength. This would do what you ask, but seems like an awkward design to me. (having a filter option in a seperate area from other filter options) Any\r\n opinions from the rawr developers about this design option - as in would it be a good thing for me to do in terms of useful function vs awkward placement and consistency with other rawr modules?</p>\r\n</div>\r\n</div>\r\n</blockquote>\r\n",
+    "PostedDate": "2011-05-10T10:01:19.873-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "610360",
+    "ThreadId": "256541",
+    "Html": "<p>Well i don't know the holy module, but it should be possible to remove those retribution items. Because strength gives nothing for a holy.&nbsp;</p>\r\n<p>On the other hand filtering holy items out of retribution isn't that easy, because int still increases the dps, even if it is very limited.</p>",
+    "PostedDate": "2011-05-10T10:11:45.86-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "610418",
+    "ThreadId": "256541",
+    "Html": "<p>On any model, there's good stats and bad stats. Most models only support looking for gear with good stats while some (like DPSWarr) have options to kill bad gear. Honestly, every dev should implement it as either a static, unchanging bad stats filter or a grouped optionable bad stats filter (which is what DPSWarr uses). We do allow the options on the options pane for filtering bad stats separately from the other filter systems because this is definately model specific.</p>",
+    "PostedDate": "2011-05-10T11:21:56.11-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "610468",
+    "ThreadId": "256541",
+    "Html": "<p>OK I will play around with this part of the code as part of my next patch upload (probably around the end of this week).&nbsp; I like the idea of a \"grouped optionable bad stats filter\".&nbsp;&nbsp; I'll add Str to the existing checkbox, and then make sure it filters hit and str out properly.</p>\r\n<p>I would just remove Str permenantly with no option to show str items, but I just wonder if anyone would want to look at a trink or some other item with str.&nbsp; Maybe to compare a 333 ilvl piece with Int and mastery to a 359 with Str and haste.&nbsp;&nbsp; As mastery sucks for us and haste rocks, maybe they want to see if the Ret item with haste would be an upgrade?&nbsp; Likely - no.&nbsp; Possible - yes.</p>\r\n<p>I made some more progress on other things since my last patch, and am hoping the Healadin module will be much more useful to people (including me!) by the end of the month.</p>",
+    "PostedDate": "2011-05-10T12:17:21.183-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "610473",
+    "ThreadId": "256541",
+    "Html": "<p>Molotok, I'd probably say you can leave strength out of the holy model completely, just like Caromina said.</p>\r\n<p>Grouping it together with hit isn't that wise I think - hit isn't a bad stat all the time. Sometimes a hit item can be useful, especially in holy PvP. Strength on the other hand is never useful for holy.</p>\r\n<p>Oh, and after reading some logs, I find that with the recent patch, mastery is not as useless as it once was. In some fights it even made it to spot #6 of my most used heals. Still no top three, but better than before.</p>",
+    "PostedDate": "2011-05-10T12:26:36.693-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "610488",
+    "ThreadId": "256541",
+    "Html": "<p>OK, easy enough.&nbsp; If an item has Strength or Agility, it's now gone. (when I upload my next patch and it goes in)</p>",
+    "PostedDate": "2011-05-10T12:44:24.577-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "611426",
+    "ThreadId": "256541",
+    "Html": "<p>Would it be possible to allow filtering by a certain stat in general? I'm having the same trouble as robur but for items with Int / Spirit / spell power when outfitting my feral druid. If I could filter out all of the items with say Int on them, I could remove a lot of bloat from the equipment lists!</p>",
+    "PostedDate": "2011-05-11T22:22:04.173-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "611431",
+    "ThreadId": "256541",
+    "Html": "<p>That has been asked or time and again and the answer is no, we will not be implementing user controllable filters by stat.</p>",
+    "PostedDate": "2011-05-11T22:31:46.023-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "611438",
+    "ThreadId": "256541",
+    "Html": "<p>Alright, but even though users won't be able to control filters by stat, don't you think there are general filters which could be in place performing the same purpose for every class model? Druid - Cat doesn't need rings with int or spirit on them in the equipment lists, just as holy paladins don't need to sort through ret gear.</p>",
+    "PostedDate": "2011-05-11T22:50:52.47-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "611451",
+    "ThreadId": "256541",
+    "Html": "\r\n<div>Opuelas, I'd think that your best bet could be to get in touch with the developer of the feral druid model. I don't play any, but if it is a similar uselessness issue than strength on holy gear, I don't see why he should object.<br>\r\n<br>\r\n<br>\r\n</div>\r\n<div><br>\r\nOn 11.05.2011, at 22:51, &quot;Opuelas&quot; &lt;<a href=\"mailto:notifications@codeplex.com\">notifications@codeplex.com</a>&gt; wrote:<br>\r\n<br>\r\n</div>\r\n<div></div>\r\n<blockquote type=\"cite\">\r\n<div>\r\n<p>From: Opuelas</p>\r\n<div id=\"ThreadNotificationPostBody\">\r\n<p>Alright, but even though users won't be able to control filters by stat, don't you think there are general filters which could be in place performing the same purpose for every class model? Druid - Cat doesn't need rings with int or spirit on them in the\r\n equipment lists, just as holy paladins don't need to sort through ret gear.</p>\r\n</div>\r\n</div>\r\n</blockquote>\r\n",
+    "PostedDate": "2011-05-11T23:34:39.78-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "611459",
+    "ThreadId": "256541",
+    "Html": "<p>Thanks, that makes sense--I mostly posted here since the topic had the same line of reasoning. I'll do that!</p>",
+    "PostedDate": "2011-05-11T23:45:43.277-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "611469",
+    "ThreadId": "256541",
+    "Html": "<p>Found this issue&nbsp; where the spellpower items were filtered out of the cat module.&nbsp;&nbsp; Not Int though as this issue was pre-Cata.</p>\n<p>http://rawr.codeplex.com/workitem/17732</p>\n<p>&nbsp;</p>",
+    "PostedDate": "2011-05-12T00:28:30.063-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "611749",
+    "ThreadId": "256541",
+    "Html": "<p>Notice for all users: <strong>DONT REPLY BY EMAIL, COME TO THE THREAD AND MAKE YOUR POST</strong></p>",
+    "PostedDate": "2011-05-12T08:37:15.783-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

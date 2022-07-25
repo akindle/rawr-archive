@@ -1,0 +1,75 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Moonkin",
+      "DisplayName": "Rawr.Moonkin"
+    },
+    "ClosedComment": "Fixed in changeset 33457.",
+    "ClosedDate": "2009-04-23T11:53:14.287-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "In WoW, the benefits of Improved Mark of the Wild appear to be independently applied to the base stats and the enhancements to that stat.  For instance, talented and geared but unbuffed, the in-game paper doll shows Intellect as \"925 (140 + 785)\".  Without Improved mark of the wild, these numbers are \"908 (138 + 770)\".  WoW appears to do the calculation as:\nfloor(138 * 1.02) + floor(770 * 1.02) = 925\nwhile Rarw does it as:\nfloor((138 + 770) * 1.02) = 926\nThis off by one issue in Intellect ends up propagating thoughout many other stats shown by Rawr.\n \nAnd a minor nit.  The calculation for \"BonusStrenghtMultiplier\" is \n  BonusStrengthMultiplier = (0.02f ...\nand should be\n  BonusStrengthMultiplier = (1 + 0.02f ...\nor you could just remove BonusStrenghtMultiplier completely since it's not used anywhere else (that I could find).",
+    "LastUpdatedDate": "2017-11-27T11:00:12.94-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-04-23T08:58:04.983-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Moonkin] Calculations using Improved Mark of the Wild",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13097
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I'll get this fix checked in soon.  Thanks.",
+      "PostedDate": "2009-04-23T09:09:26.097-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-04-23T11:53:14.287-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:04:19.403-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:03:27.03-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:44.593-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:45.623-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:00:12.94-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

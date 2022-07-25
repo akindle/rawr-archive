@@ -1,0 +1,91 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSWarr",
+      "DisplayName": "Rawr.DPSWarr"
+    },
+    "ClosedComment": "Fixed in 46173",
+    "ClosedDate": "2010-02-01T10:35:29.97-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "With 2.3.8 something weird is going on with gemming recommendations. I'm some 29 below the ArP softcap (using Needle-Encrusted Scorpion) in my Fury offspec. I have socketed some pieces of my gear with pure ArP gems. Previous versions of Rawr and my intuition tell me that I need to replace at least one of my Strength gems with an ArP gem. However when I have selected a slot where I have an item socketed with pure ArP it tells me it will yield an improvement if I regem to Str. Even more confusing is the fact that it tells me to swap a Str gem for an ArP gem in a slot where I have only one Str gem. All this happens without changing anything in between (just the equipment slot selection). In the attached character file, check for example the Neck and Waist slot to see what I'm talking about.",
+    "LastUpdatedDate": "2013-05-16T05:22:02.8-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-01-29T17:01:25.403-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSWarr.Fury] Rotation iteration edge case",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16166
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2870,
+      "FileName": "Warrok_Fury.xml",
+      "DownloadUrl": ".\\2870"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Hmm, it looks like your character file has hit some weird edge case.  If you go to the Relative Stat Values chart, it shows a huge increase for 1 expertise rating, and then a decrease for 1 on top of that.  It appears to be an iteration issue with the heroic strike/slam normalization calculations, although I'd have to dig into the code to know for sure\r\n\r\nThanks for finding this.  I'll investigate a fix over this weekend.",
+      "PostedDate": "2010-01-29T22:43:40.213-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-29T22:44:35.68-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Now that you told me that about the expertise rating, I played a little bit further. Apparently it's enough to equip an axe (e.g. Dualblade Butcher) instead of the sword in the offhand to change the expertise value from +50 to -46. Note that I'm an orc and didn't bother cap my offhand. Maybe this helps a little bit further.",
+      "PostedDate": "2010-01-30T02:10:50.317-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Verified that the problem was in FuryRotation.IterativeCalculations.  Increased the precision for the iteration to avoid this boundary.  Fixed",
+      "PostedDate": "2010-02-01T10:35:03.563-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-01T10:35:29.97-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T16:08:54.537-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T16:43:20.367-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:30:08.933-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:02.8-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

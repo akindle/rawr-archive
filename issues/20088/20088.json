@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "I&#39;m following debug tracing of the WebClient protocol in WPF. It&#39;s following Internet Explorer&#39;s Settings. If you don&#39;t set the proxy in Internet Explorer, Rawr.WPF won&#39;t know to use it.Other than that, we will not be implementing specific proxy settings inside the Rawr WPF client.",
+    "ClosedDate": "2011-06-05T18:08:55.597-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I'm conecting the internet using a proxy in my work, but I don't know why Rawr can't get my proxy configurations.\nIs there any way to configure the xml files manually?\nExample:\nproxy: 10.52.152.99\nport: 80\nusername: biruta\npassword: yeahbaby\n \nWhen I try to config Settings.xml the configuration is resetting to default when I start rawr.\nSoeone can help with this, please?\n \n<ProxyServer />\n<ProxyPort>0</ProxyPort>\n<UseDefaultProxySettings>true</UseDefaultProxySettings>\n<ProxyUserName />\n<ProxyPassword />\n \nThanks in advance",
+    "LastUpdatedDate": "2013-05-16T05:18:34.957-07:00",
+    "PlannedForRelease": "Rawr 4.0.20 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-02-25T04:48:28.437-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] Proxy Authentication Required",
+    "Type": {
+      "Name": "Task",
+      "Id": 2
+    },
+    "VoteCount": 1,
+    "Id": 20088
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Those settings are left over from Rawr2, we aren't actually using them in any way in Rawr4. That's why they are resetting back to blank after you try to set them manually.",
+      "PostedDate": "2011-03-04T18:53:21.83-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You say that it isn't getting your proxy configs. Are you saying this because you are attempting to load from the battle.net armory and it's failing? Do you have the error from loading like that you can send us?",
+      "PostedDate": "2011-03-04T18:59:41.723-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "According to my research, Silverlight is designed to communicate through the browser's connection settings. So if you are using the web version of Rawr, it's going to follow whatever your browser is set up to do. If you install the web version offline, it will either use the browser's proxy or the OS's proxy (most likely the browser's).\r\n\r\nIf you are talking about the WPF version, we haven't built any options in for proxies yet.",
+      "PostedDate": "2011-03-04T19:06:22.417-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Is there any chance for proxy settings for the down loadable version?",
+      "PostedDate": "2011-03-11T12:26:57.95-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-04T20:53:21.413-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-06-05T18:08:55.597-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:25:48.327-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:34.957-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

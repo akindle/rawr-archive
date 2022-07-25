@@ -1,0 +1,98 @@
+[
+  {
+    "Id": "137250",
+    "ThreadId": "41379",
+    "Html": "<p style=\"margin:0in 0in 0pt\">Thanks for the 2.1.3 update I was hoping a lot of the ret pally issues would be corrected seems there are still a few hanging out there.</p>\r\n<p style=\"margin:0in 0in 0pt\"> </p>\r\n<p style=\"margin:0in 0in 0pt\">List of issues:</p>\r\n<p style=\"margin:0in 0in 0pt\">Mouse over for hit at 135 hit says 8.58% chance to hit the new hit cap is over 285. Even if I edit an item to give it 100 hit there is no change.</p>\r\n<p style=\"margin:0in 0in 0pt\"> </p>\r\n<p style=\"margin:0in 0in 0pt\">The avoided Attacks seems to show the correct values when highlighted but the actual # is wrong.  With 46 Expertise and 151 hit it shows me at -.21% yet the mouse over says 4.35% chance to miss.</p>\r\n<p style=\"margin:0in 0in 0pt\"> </p>\r\n<p style=\"margin:0in 0in 0pt\">The other item that seems to perplex me is that the dps from the 2 models only shows about 250 dps different.  Plus the 2.1.3 model vs an 83 boss is no where close to what I am getting on live. It has always been a little higher but after the x-pac it has never been close to what I am seeing.  </p>\r\n",
+    "PostedDate": "2008-12-03T06:20:06.44-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "137330",
+    "ThreadId": "41379",
+    "Html": "There were a few display bugs with the rating conversions, which I've fixed. Redownload 2.1.3 and you'll notice that Retribution is now v2.1.3.1, and has those tooltips fixed.\r\n",
+    "PostedDate": "2008-12-03T09:50:19.877-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "137626",
+    "ThreadId": "41379",
+    "Html": "You guys are good. I am sure you do not hear this enough but THANK YOU.\r\n",
+    "PostedDate": "2008-12-04T05:07:13.073-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "137719",
+    "ThreadId": "41379",
+    "Html": "Thanks. :)<br>\r\n<br>\r\nAnd just to update the above further, there was one more issue I corrected, so if you don't have Retribution v2.1.3<strong>.2</strong>, redownload Rawr 2.1.3, and you'll get it.<br>\r\n",
+    "PostedDate": "2008-12-04T09:17:45.207-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "137789",
+    "ThreadId": "41379",
+    "Html": "Few other bits and pieces I've noticed that still need updating:<br>\r\n<br>\r\n- agility -&gt; crit conversion appears to be off, rawr shows 394 agi as converting to 6.3% crit in the tooltip, in-game i actually have 400 unbuffed and this converts to 10.95% in the tooltip there<br>\r\n- total health appears low by a significant margin (~3600 for me), I suspect this is probably missing the new base HP gained from 70-80<br>\r\n- while browsing through CalculationsRetribution.cs I noticed the avenging wrath damage multiplier is still 30% in the calculations, the buff in-game has been 20% since 3.0 went live<br>\r\n",
+    "PostedDate": "2008-12-04T12:33:03.787-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "137817",
+    "ThreadId": "41379",
+    "Html": "Don't take the tooltip ingame to be true of what it should provide, since it acts oddly with base stats. Like as Holy I have 100 agility and it tells me tn gives 5.19% crit, which isn't close to right ratio. Normally this extra crit is implemented in Rawr as base crit, that might not be obvious to see in the UI. The missing 6 agi is probably coming from Ret only having base stats for one race, which should be fixed in next version. At level 80 a Pally needs 52.08 agi per crit.<br>\r\n",
+    "PostedDate": "2008-12-04T14:05:30.997-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "137835",
+    "ThreadId": "41379",
+    "Html": "Hrm, didn't know the in-game tooltip did that.&nbsp; I didn't look into it too heavily I guess.&nbsp; I noticed the agility thing after comparing my total crit values and seeing that rawr was showing a value 4% lower than in-game.&nbsp; The crit strike rating tooltips lined up, but the agility ones were significantly different, and reasonably close to that missing 4%.&nbsp; Must be something else that's not getting counted then as far as crit goes...<br>\r\n",
+    "PostedDate": "2008-12-04T15:02:26.753-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "137842",
+    "ThreadId": "41379",
+    "Html": "There is something wrong. just loading my profile in and not adding any buffs. The basic stats don't match my in game (non-buffed.. no aura either) stats.<br>\r\nMy in game stats:                           My 2.1.3.2 rawr stats:<br>\r\nHP: 17444                                      HP: 13857<br>\r\nStr: 1225                                        Str: 1228<br>\r\nAgi: 342  (crit of 9.83%)                 Agi: 386 (crit of 6.18%)<br>\r\nAP: 3243                                       AP: 3505<br>\r\nHaste is correct, but weapon speed isn't (the weapon data is correct)<br>\r\nSpeed: 3.31                                    Speed: 3.19<br>\r\n<br>\r\nCrit, Hit, exp all look good.<br>\r\n<br>\r\nwhen fully buffed with my model (ie, rarw) it shows WAY to much dps that i could ever dream of :)<br>\r\nIf you wanna play with my profile. plz do :)<br>\r\nzurv @ Alexstrasza<br>\r\n<a href=\"http://www.wowarmory.com/character-sheet.xml?r=Alexstrasza&n=Zurv\">http://www.wowarmory.com/character-sheet.xml?r=Alexstrasza&amp;n=Zurv</a><br>\r\nfor stats in action, wws reports: <a href=\"http://wowwebstats.com/bqfyhf3m4s2ka\"><strong>http://wowwebstats.com/bqfyhf3m4s2ka</strong></a> <br>\r\n<br>\r\n",
+    "PostedDate": "2008-12-04T15:35:40.607-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "137850",
+    "ThreadId": "41379",
+    "Html": "Rawr may be averaging out some procs on your gear. I can't look at your armory right now, but... The agi difference looks similar to the averaged out value of Mongoose, for example, same with the haste from Mongoose (it's a %, not a rating). I'm guessing you have some sort of AP proc too, to make up for the 250ap. As mentioned above, health looks like it's still using level 70 base value, and the stats are slightly off due to not having the base stat data for all races at 80 yet (both of those will be fixed soon).<br>\r\n",
+    "PostedDate": "2008-12-04T16:14:08.09-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "137854",
+    "ThreadId": "41379",
+    "Html": "Yeah, looks like mongoose and trinket would change the agi, ap and speed.<br>\r\n<br>\r\nthe agi to crit tooltip (if that is what the model uses too) makes it hard to pick what weapons pallies should use. ie, most of the nice weapon are stocked full of agi.<br>\r\n<br>\r\nIs there any plan to deal with the &quot;free&quot; +hit pallies got post 3.0? If it is a bug, it seems odd that it hasn't been fixed it. If it was working as intended.. then.. it would have been nice to see a blue post. But, as it stands now, rets are getting a free 3-4% (more?) +hit<br>\r\n<br>\r\nmaybe it is best to treat it like a bug so ppl don't pick gear thinking they didn't need the hit till some random tuesday fixes it ^_^<br>\r\nmaybe under buffs, &quot;ret +hit bug&quot; buff :)\r\n",
+    "PostedDate": "2008-12-04T16:29:28.237-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "138083",
+    "ThreadId": "41379",
+    "Html": "<p style=\"margin:0in 0in 0pt\">When trying to delete copies of multiple items using the Delete duplicates function it deletes all of an item. I have only tested this in the ret module.<br>\r\n<br>\r\nI am also having issues where I edit an item and none of the changes work. Example I take my current equipped cloak and add 200 hit rating and it changes nothing in the module. I am trying to simulate the bugged hit rating Rets are currently experiencing.</p>\r\n<br>\r\nNot sure these errors belong here but didn't want to start a new post either.\r\n",
+    "PostedDate": "2008-12-05T10:37:46.313-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "138112",
+    "ThreadId": "41379",
+    "Html": "There's currently a bug where if you edit an equipped item, you have to switch to a different item, then back to the changed item, to get the changes to apply. We're working on it.<br>\r\n",
+    "PostedDate": "2008-12-05T11:43:12.887-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

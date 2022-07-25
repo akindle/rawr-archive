@@ -1,0 +1,90 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSWarr",
+      "DisplayName": "Rawr.DPSWarr"
+    },
+    "ClosedComment": "Rawr 4.0.13 Released",
+    "ClosedDate": "2010-12-29T02:47:48.517-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I know it's a new thing that warrior's can use 1h weapons but rawr isn't showing me any 1h weapons, and when I import my warrior from the armory the Improvements I see are only 2h weapons and on the off hand, it only shows mages stuff.\n \nAlso if I go on the right bar and choose Gear>Offhand I get this error: \n \n[Arg_ArgumentException]\nArguments: \nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.51204.0&File=mscorlib.dll&Key=Arg_ArgumentException\n \n   at MS.Internal.XcpImports.CheckHResult(UInt32 hr)\n   at MS.Internal.XcpImports.SetValue(IManagedPeerBase obj, DependencyProperty property, Double d)\n   at System.Windows.DependencyObject.SetValue(DependencyProperty property, Double d)\n   at Rawr.UI.ComparisonGraphItem.ChangedSize(Object sender, SizeChangedEventArgs e)\n   at Rawr.UI.ComparisonGraphItem.set_Item(Int32 i, Single value)\n   at Rawr.UI.ComparisonGraph.DisplayCalcs(ComparisonCalculationBase[] calcs)\n   at Rawr.UI.GraphDisplay.UpdateGraphGear(String subgraph)\n   at Rawr.UI.GraphDisplay.UpdateGraph()\n   at Rawr.UI.ChartPicker.SetCurrentGraph()\n   at Rawr.UI.ChartPicker.Grid_MouseLeftButtonUp(Object sender, MouseButtonEventArgs e)\n   at MS.Internal.CoreInvokeHandler.InvokeEventHandler(Int32 typeIndex, Delegate handlerDelegate, Object sender, Object args)\n   at MS.Internal.JoltHelper.FireEvent(IntPtr unmanagedObj, IntPtr unmanagedObjArgs, Int32 argsTypeIndex, Int32 actualArgsTypeIndex, String eventName)\n \n \nThank you for the cool program.",
+    "LastUpdatedDate": "2013-05-16T05:19:30.727-07:00",
+    "PlannedForRelease": "Rawr 4.0.12 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-12-20T12:59:41.83-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSWarr.Fury] SMT with 1H Weapons doesn't work",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19372
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Please attach your character file so I can debug this",
+      "PostedDate": "2010-12-20T17:35:35.943-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-20T17:36:27-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok nvm, investigated and found this was three separate things:\r\n\r\n1) You need to go to Filters by Item Type and turn on 1h Weapons then click Apply. DPSWarr by default doesn't show them but does leave you the option to turn them on.\r\n2) SMT wasn't handled correctly. I've fixed this\r\n3) Having a 1h in the OffHand is throwing a NaN on that chart, so it ends up not knowing what to do and crashes. I've added a handler to check for NaN in that core file so no models can make that break anymore.",
+      "PostedDate": "2010-12-20T18:12:38.943-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Those Mage items show up because Misc is enabled, but you can't turn off Misc without also turning off Rings/Trinkets/Necks",
+      "PostedDate": "2010-12-20T18:38:07.28-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-20T18:41:35.83-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-20T19:13:24.573-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thank  you for the quick reply that actually solve my problem. One last thing on one of your post you say to turn off misc. But I only got one misc and it's on the \"offhand\" and when I turn it off it turns all the others off. The rest is working fine thank you again.",
+      "PostedDate": "2010-12-21T12:49:32.65-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-29T02:47:48.517-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:27:00.61-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:30.727-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

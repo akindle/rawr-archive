@@ -1,0 +1,274 @@
+[
+  {
+    "Id": "195321",
+    "ThreadId": "57776",
+    "Html": "<div id=\"ctl00_ctl00_MasterContent_Content_PostRepeater_ctl64_BodyDiv\">\r\n<p>I have been have an ongoing discussion with Ermad on various aspects of the Holy Paladin model in Rawr.&nbsp; One thing that popped out is it appears that the mana return calculations on Je'Tze's Bell is incorrect (Ermad said he found and correct the error in Figurine - Sapphire Owl).&nbsp; I'm actually concerned that this problem could be much larger than even that in Rawr (effecting all mana procs).&nbsp; So here are the details.</p>\r\n<p>I experimented by removing my Je'Tze's Bell.&nbsp; To recreate, load Darion from Hellscream on 2.2.4.&nbsp; Then&nbsp;reduce the fight time from 7 minutes to 2 minutes (leave all other options as is).&nbsp; When I&nbsp;removed the trinket (basically leaving the slot empty), the mana pool dropped from 60587 to 59896.&nbsp; The delta being 691.&nbsp; 691?&nbsp; That is a weird number.&nbsp; Bottom line in a two minute fight it is impossible for the trinket to return more than 600 mana.&nbsp; It could be less - 300 or even 0 if you spell cast's are low and/or you are incredibly unlucky.&nbsp; But it can't Proc more than twice.&nbsp;</p>\r\n<p>Ermad told me there was considerable complex math that very accurrately calculated the average procs.&nbsp; Here was my response:</p>\r\n<p>Ermad - thank you for you reply.&nbsp; I'm concerned by your answers though.&nbsp;&nbsp;You are implying a lot of 'complex math' to 'more accurately' judge how often it will proc on average.&nbsp; With all due respect - there is no complex math here.&nbsp; The amount of time it takes to proc can be calculated&nbsp;and in the end you get a discrete set of 'procs'.&nbsp; Not a continuous stream of 'averaged' mana.&nbsp; My napkin math spreadsheet (complex math gives me hives) has these equations:&nbsp;</p>\r\n<p>mana returned from Sapphire Owl useage = (int((Fight time in sec - 60)/300)+1)*2340</p>\r\n<p>so if you have a 60 sec fight you get 1 usage (yeah - I know - it takes 12 sec for the mana return to finish - I simplified)</p>\r\n<p>if you have a 300 sec fight you get 1 usage = 2340 mana</p>\r\n<p>if you have&nbsp; a 420 sec fight you get 2 usages = 4680 mana</p>\r\n<p>For the Je'Tze's Bell proc's I do the same sort of thing:</p>\r\n<p>mana returned from Je'Tze's Bell procs = (int((fight time - (fight time / # of spells cast) / 10%))&nbsp;/ ((fight time / # of spells cast)&nbsp;/ 10% + cool down)) + 1)&nbsp;* mana returned</p>\r\n<p>so if you have a 60 sec fight you get 1 proc = 300 mana (a proc at approximately 15 sec's give your method)</p>\r\n<p>if you have a 300 sec fight you get&nbsp;5 procs = 1500 mana (a proc at 15, 75, 135, 195, 255)</p>\r\n<p>Seem reasonable?&nbsp; Numbers like 691 mana scare the crap out of me because&nbsp;it probably means you are 'averaging' the mana returned across the fight time and that's just wrong.</p>\r\n<p>------------------</p>\r\n<p>Can the owner of the proc code please comment?&nbsp; Thank you.</p>\r\n</div>",
+    "PostedDate": "2009-05-28T11:03:32.603-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195341",
+    "ThreadId": "57776",
+    "Html": "<p>Wrong ICD example - still the same problem through.&nbsp; Looks like you are averaging mana returned across time instead of having distinct pulses of mana.</p>",
+    "PostedDate": "2009-05-28T11:31:37.507-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195344",
+    "ThreadId": "57776",
+    "Html": "<p>IED has 5% proc, 15s ICD.</p>\r\n<p>&nbsp;</p>\r\n<p>In a 60 sec fight Je'Tze's bell is more likely to proc twice, returning more than the 300 mana you'd expect.</p>\r\n<p>&nbsp;</p>\r\n<p>In a 2 minute fight where it procs in avg every 52 seconds, you can expect to see it proc at</p>\r\n<p>7 seconds, 59 seconds, 111 seconds, or 900/120*5 = 37.5mp5. However the trinket modelling is slightly more accurate than this.</p>",
+    "PostedDate": "2009-05-28T11:35:21.857-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195354",
+    "ThreadId": "57776",
+    "Html": "<p>You are arbitrarily deriving the average proc time for the trinket as 1 minute. There is no way to say that at all without knowledge of Trigger Interval (aka how often do you do an action that can proc the trinket). Compare two characters one who casts FoL the whole time, and one the casts HL the whole time. The one who casts FoL the whole time will gain more mana from Jet'zes bell since it has a lower average cast time, so it takes a shorter amount of time on average to get a proc.</p>\r\n<p>You are also trying to get a discrete proc times for things that have probabilities and chances of procing. Say if some&nbsp;theoretical&nbsp;proc in a theoretical fight has a 50% chance of procing twice, and 50% chance of procing thrice, how should it be valued? You would value as either 2 or 3 procs, yet valuing it as 2.5 procs would be much more accurate.</p>",
+    "PostedDate": "2009-05-28T11:51:45.547-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195370",
+    "ThreadId": "57776",
+    "Html": "<p>Let me start by apologizing.&nbsp; The Insightful Earthsiege Diamond does have a 15 sec cooldown - not 45 sec I put above.&nbsp; Complete miss on my part and made even worse by my having modelled it correctly in my spreadsheet and then writing an incorrect post.</p>\r\n<p>With that said I don't understand your answer.&nbsp; I'm not arbitrarily deriving anything.&nbsp; I'm using the output from your tool to calculate the average time to proc.&nbsp; You guys seem to be making this more complicated that it has to be.&nbsp; You managed to modeled Divine plea correctly.&nbsp; This has the exact same concept with a bit more complexity dealing with proc chance.&nbsp; ie:&nbsp; you have a discrete bump of mana at some set time and if the fight time says you only get two procs - you get two procs.&nbsp; Nothing about inventing a partial proc to be 'statistically correct across time'.</p>\r\n<p>Let me come back at this in a different direction.&nbsp; Are you saying that the proc chance isn't 10% for the Je'Tze's Bell?&nbsp; What complicated math am I missing.&nbsp; Doesn't a 10% chance mean that on average you need 10 spell casts to proc&nbsp;(noticed the 'on average' part - critical for many of our&nbsp;assumptions when modeling).&nbsp; For a 2 minute fight, the tool was using HL completely and with an 89% activity setting I assumed 1.5 sec average cast time was reasonable.&nbsp; This means on average you get a proc at 15 sec (1.5 sec / 0.1).&nbsp;</p>\r\n<p>So on average you have this timeline:</p>\r\n<p>0:00&nbsp;&nbsp;&nbsp; Start fight</p>\r\n<p>0:15&nbsp;&nbsp;&nbsp; Have cast 10 spells, on average, trinket procs here.&nbsp; yes - it could have proc'd at 0:00 or sometime around never, but average is at 15 sec.</p>\r\n<p>1:00&nbsp;&nbsp;&nbsp; 45 sec cool down is up and now the trinket can proc again</p>\r\n<p>1:15&nbsp;&nbsp; &nbsp;Have cast another 10 spells, on average trinket procs here.</p>\r\n<p>2:00&nbsp;&nbsp; &nbsp;45 sec cool down is up and now the trinket can proc again</p>\r\n<p>Tell me the average time per spell is 1 sec and I'll give you a different timeline (yielding&nbsp;3 procs instead of 2).&nbsp; Tell me the average time per spell is 2 sec and I'll give you a different timeline (yielding 2 procs - you don't drop to one unless you have an incredibly slow cast rate).</p>\r\n<p>What am I missing?</p>",
+    "PostedDate": "2009-05-28T12:22:55.707-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195374",
+    "ThreadId": "57776",
+    "Html": "<p>Divine Plea has nothing like these procs. You can <strong>choose</strong>&nbsp;when you hit Divine Plea, these procs happens at a random time after the cooldown comes up.</p>\r\n<p>Even if you are using just Holy Light, the Trigger Interval isn't just HL cast time. You have the short GCD casts of SS/BoL/HS, along with downtime associated with activity. I am on my mac so I don't have Rawr in front of me at the moment, but the average cast is almost surely not 1.5 seconds.</p>\r\n<p>Kavan (or someone else) should comment more on the math behind determining proc uptime, since he is one that coded it in.</p>",
+    "PostedDate": "2009-05-28T12:29:08.807-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195375",
+    "ThreadId": "57776",
+    "Html": "<p>Please - I made it very clear I was talking about discrete bumps of mana coming in over a given time.&nbsp; Let me come back to the statistics part.&nbsp; You seem to be hung up on the 10% proc chance.&nbsp; I realize that if you try this again and again as an experiment.&nbsp; You would get a range of proc's - bell shaped curve with the high point at the 10 cast point and a very long tail out in time given you do enough 'experiments'.&nbsp; But on average - you get a proc after 10 casts.&nbsp; It can happen earlier, it can happen later....but <span style=\"text-decoration:underline\">on average</span> it happens at the 10 cast point...Correct?</p>",
+    "PostedDate": "2009-05-28T12:34:17.207-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195395",
+    "ThreadId": "57776",
+    "Html": "<p>10% chance doesn't mean 100% after 10 casts. Although that would really simplify things. 10% chance just means you have a 90% chance to not proc it. And since the outcome of the previous chance doesnt' affect the next chance (ignoring ICD), that means after 2 casts, you have a 0.9*0.9 = 0.81% chance to not proc it. So basically, chance to proc after X casts is 1 - (1 - Chance)^X. Then you gotta consider the ICD and that makes things even more complex. Also you gotta adjust for the average length of each cast to complete and how often you cast.</p>\r\n<p>&nbsp;</p>\r\n<p>Basically, Kavan made a class that handles all this for us and produces fast and accurate results (given that we model authors feed it the right values).</p>",
+    "PostedDate": "2009-05-28T13:07:57.717-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195411",
+    "ThreadId": "57776",
+    "Html": "<p>Well everything is documented in code, but here is the derivation for computation of average number of procs in a fight of a given length. In the derivation all time durations are expressed in terms of trigger intervals.</p>\r\n<p>derivation from recurrence relation<br>Procs[n] := average number of procs given fight length n<br>p := proc rate<br>q := 1-p<br>C := Cooldown / triggerInterval (assume C = 1 if cooldown less than trigger interval)</p>\r\n<p>Procs[n] = p + p * Procs[n-C] + q * Procs[n-1]<br>split the function definition in segments of size C and solve each segment separately<br>that way the recurrence is only nonhomogeneous first order<br>Procs[n,k] = p + p * Procs[n,k-1] + q * Procs[n-1,k]</p>\r\n<p>for k = 0 solve<br>Procs[n,0] = p + q * Procs[n-1,0]<br>Procs[0,0] = 0</p>\r\n<p>solution is<br>Procs[n;0] = 1 - q^n</p>\r\n<p>for further segments let k be the previous segment and Procs(n)=Procs[n,k] the closed form<br>solution for previous segment<br>the homogeneous part has solution of form A + B * q^n<br>the particular solution is obtained using method of undetermined coefficient using the<br>form of n * P(n) * q^n, where P is polynomial of order k<br>we can more generally just set the form of Procs2(n)=Procs[n,k+1] as<br>Procs2(n):=q^n*sum(A[i] * n^i, i, 0, k+1)+sum(B[i]*n^i,i,0,k+1);<br>using the recurrence<br>eq: Procs2(n) = p + p * Procs(n) + q * Procs2(n-1);<br>we compute the missing coefficients<br>splitqn(eq):=makelist(ratcoef(eq,q^n,i),i,0,1);<br>spliteq(eq,var,order):=makelist(ratcoef(eq,var,i),i,0,order);<br>eqlist: flatten(map(splitqn,makelist(ratcoef(eq,n,i),i,0,k+1)));<br>ev (tellsimp (0^0, 1), simp: false);<br>solution: solve(append(eqlist,[Procs2(0)=Procs(C)]),append(makelist(A[i],i,0,k+1),makelist(B[i],i,0,k+1)))[1];<br>Procs2s : subst(solution,Procs2(n));<br>Procs2s : ratsubst(Q,q^C,facsum(subst(q,1-p,ratsimp(subst(1-p,q,Procs2s))),q^n));</p>\r\n<p>for the first few k we obtain the following (Q := q^C)</p>\r\n<p>Procs[n;0] = 1 - q^n<br>Procs[n;1] = 2 - (1 + Q + p * n) * q^n<br>Procs[n;2] = 3 - (1 + Q + Q^2 + p * (n + (C + n)*Q) + p^2 * n*(n+1)/2) * q^n<br>Procs[n;3] = 4 - (1 + Q + Q^2 + Q^3 + p * (n + (C + n)*Q + (2*C + n)*Q^2) + p^2 * ((C^2+(2*n+1)*C+n^2+n)*Q+n^2+n)/2&nbsp; + p^3 * (n*(n+1)*(n+2))/3!) * q^n</p>\r\n<p>analyzing the form we can obtain the following generalization<br>Procs(n,k):=k+1-sum(sum(binomial(C*j+n+i-1,i)*q^(C*j+n)*p^i,j,0,k-i),i,0,k);<br>which can be verified with the recurrence</p>\r\n<p>rearranging the sumation<br>Procs(n,k):=k+1-sum(q^(C*j+n)*sum(binomial(C*j+n+i-1,i)*p^i,i,0,k-j),j,0,k);</p>\r\n<p>we inspect the inner sum which has the following form<br>G(K,kj,p):=sum(binomial(K+i,i)*p^i*(1-p)^K,i,0,kj);<br>for K = 0 we get<br>sum(p^i,i,0,kj)<br>which can be evaluated to<br>G[0](kj,p):=(1-p^(kj-1))/(1-p);<br>we can express G in terms of G with lower K as follows<br>G[K+1](kj,p)=(1-p)^K*sum((1-p)*p^i*binomial(K+i+1,i),i,0,kj);<br>G[K+1](kj,p)=((1-p)^K/(K+1)!*(sum((p^i*(K+i+1)*(K+i)!)/i!,i,0,kj)-sum(i*(p^i*(K+i)!)/i!,i,1,kj+1)));<br>G[K+1](kj,p)=sum((1-p)^K/K!*(p^i*(K+i)!)/i!,i,0,kj)-(1-p)^K/(K+1)!*(kj+1)*(p^(kj+1)*(K+kj+1)!)/(kj+1)!;<br>G[K+1](kj,p)=G[K](kj,p)-(1-p)^K/(K+1)!*(p^(kj+1)*(K+kj+1)!)/kj!;<br>G[K+1](kj,p)=G[K](kj,p)-(1-p)^K*p^(kj+1)*binomial(K+kj+1,kj);</p>\r\n<p>this gives us an alternative formulation of G<br>G2(K,kj,p):=(1-p^(kj+1))/(1-p)-sum((1-p)^i*p^(kj+1)*binomial(i+kj+1,kj),i,0,K-1);</p>\r\n<p>we can now rephrase the Procs function using this to get<br>Procs3(n,k):=k+1-(1-p)*sum(G2(C*j+n-1,k-j,p),j,0,k);<br>=sum(p^(k-j+1),j,0,k)+sum(sum(binomial(k-j+i+1,k-j)*(1-p)^(i+1),i,0,j*C+n-2)*p^(k-j+1),j,0,k);</p>\r\n<p>we observe that we can express the inner expression in terms of negative binomial<br>Procs3(n,k):=sum(sum(binomial(r-1+i,r-1)*(1-p)^(i),i,0,k*C-(r-1)*C+n-1)*p^r,r,1,k+1);<br>Procs3(n,k)=sum(sum(Pr(NegBin(r,p)=i),i,0,k*C-(r-1)*C+n-1),r,1,k+1);<br>using the cumulative probability density for negative binomial we can express Procs as</p>\r\n<p>P(x):=sum(I[p](r+1,x-r*C),r,0,floor(x/C))<br>where I[p] is incomplete beta function</p>",
+    "PostedDate": "2009-05-28T13:38:11.59-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195455",
+    "ThreadId": "57776",
+    "Html": "<p>Honestly - I'm at a loss.&nbsp; I'm not a statistics expert but I've attached an article on probability theory&nbsp;I found that says what I believe.&nbsp; That given a 10% chance&nbsp;to win and given 'enough' samples, you will 'win' after 10 tries&nbsp;'on average'.&nbsp; Lots of math above but I simply don't believe it.&nbsp; I'm sure there is a Probability Law - can't remember the name - Law of Averages or Law of Large Numbers or something like that which proves given enough samples and a given probability of success - that given enough&nbsp;samples that number of tries needed is&nbsp;1 / probability of success.&nbsp; Ugh - any math whizes reading this that can help?&nbsp; If not, I'll probably post to Elist Jerks which gets a wider viewing for them to weigh in.</p>\r\n<p><a href=\"http://www.dummies.com/how-to/content/figuring-out-what-probability-means.html\">http://www.dummies.com/how-to/content/figuring-out-what-probability-means.html</a></p>",
+    "PostedDate": "2009-05-28T15:06:32.32-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195467",
+    "ThreadId": "57776",
+    "Html": "<p>I have a degree in mathematics, I think I know what I'm talking about.</p>",
+    "PostedDate": "2009-05-28T15:26:13.933-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195469",
+    "ThreadId": "57776",
+    "Html": "<p>Let me quote one of the paragraphs:</p>\r\n<p>&nbsp;</p>\r\n<p><strong>Playing the instant lottery</strong><br><br>Probabilities are based on long-term percentages (over thousands of trials), so when you apply them to a group, the group has to be large enough (the larger the better, but at least 1,500 or so items or individuals) for the probabilities to really apply. Here's an example where long-term interpretation makes sense in place of short-term interpretation. Suppose the chance of winning a prize in an instant lottery game is 1/10, or 10 percent. This probability means that in the long term (over thousands of tickets), 10 percent of all instant lottery tickets purchased for this game will win a prize, and 90 percent won't. It doesn't mean that if you buy 10 tickets, one of them will automatically win.<br><br>If you buy many sets of 10 tickets, on average, 10 percent of your tickets will win, but sometimes a group of 10 has multiple winners, and sometimes it has no winners. The winners are mixed up amongst the total population of tickets. If you buy exactly 10 tickets, each with a 10 percent chance of winning, you might expect a high chance of winning at least one prize. <strong>But the chance of you winning at least one prize with those 10 tickets is actually only 65 percent, and the chance of winning nothing is 35 percent.</strong></p>\r\n<p>&nbsp;</p>\r\n<p>Add on the following now:</p>\r\n<p>After winning a ticket, you have to buy another 20 tickets before you have a chance at winning again. Thats how procs with an ICD would work. Trust Kavan :)</p>",
+    "PostedDate": "2009-05-28T15:26:47.793-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195489",
+    "ThreadId": "57776",
+    "Html": "<p>Let me see if I understand correctly.</p>\r\n<p>If you have a 10% of success.&nbsp; And you try that 'game' ie:&nbsp; cast the spell until success.&nbsp; You get&nbsp;for each success a number of tries.&nbsp; That number is somewhere between 1 and infinity.&nbsp; For pratical purposes probably between 1 and 50 or so.&nbsp; So you can represent that this way.</p>\r\n<p>Try #1&nbsp;&nbsp; -&nbsp; 5 casts before success</p>\r\n<p>Try #2&nbsp; -&nbsp; 13 casts before success</p>\r\n<p>Try #3 -&nbsp; 1 cast before success</p>\r\n<p>Try #4&nbsp; -&nbsp;8 casts before success</p>\r\n<p>etc</p>\r\n<p>Now if you try an infinite number of times my contention is that the average number of casts is 10 to reach 'success'.&nbsp; Is this not correct?&nbsp; I understand that if 100 'tries' you may have an average of 9.5 or 10.7 or something like that.&nbsp; But as the number of tries gets bigger and bigger you approach 10.&nbsp; When you hit infinity - it's for all pratical purposes 10.</p>\r\n<p>Correct?</p>",
+    "PostedDate": "2009-05-28T16:10:28.827-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195494",
+    "ThreadId": "57776",
+    "Html": "<p>Yes, but then you are ignoring the periods of X (15, 45 etc) seconds where you CANNOT win.</p>",
+    "PostedDate": "2009-05-28T16:27:51.517-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195502",
+    "ThreadId": "57776",
+    "Html": "<p>One step at a time.&nbsp; Do we agree that for a 10% chance of success with completely independent tries - we get 'on average' - 10 tries for each&nbsp;success?&nbsp; It may take an infinite number of sets to get that perfect 10 tries on average for success but that is where the math leads us?</p>",
+    "PostedDate": "2009-05-28T17:19:40.497-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195503",
+    "ThreadId": "57776",
+    "Html": "<p>Already answered yes to that.</p>",
+    "PostedDate": "2009-05-28T17:25:51.07-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195508",
+    "ThreadId": "57776",
+    "Html": "<p>Ah - thought Kavan might want to weigh in.&nbsp; Sorry.&nbsp; So if we have agreed to 10 casts for 'on average' a proc success - can't we now take the next step?&nbsp; Your tool calculates behind the scenes the number of casts for every spell.&nbsp; It would be simple to add up all the casts and divide into the fight length to get the average time between casts - correct?&nbsp; With that number and the agreement on 10 casts we now have the number of seconds between starting to try and proc 'on average'.&nbsp; In my case I asserted 1.5 sec per cast for 'on average' 15 secs from start to&nbsp;procing the trinket.&nbsp; Correct?</p>",
+    "PostedDate": "2009-05-28T17:41:37.087-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195511",
+    "ThreadId": "57776",
+    "Html": "<p>The main thing to observe here is that when you have a limited number of tries (i.e. fight duration) it's possible that event will never happen. Let's have a random variable X which represents number of tries before we get a success. This variable has negative binomial distribution. The mean of X with 10% chance of success is indeed 10. But that's only valid if you're willing to wait till infinity. When we're limited with fight duration what you need is probability that you'll get at least one&nbsp;proc before fight ends, that is Pr(X &lt; fightDuration). Now this would be if we were only interested in one proc.</p>\r\n<p>Now let's have NegBin(r, p) be negative binomial variable with parameter r and chance of success p. This represents the number of tries before we get r successes (check <a href=\"http://en.wikipedia.org/wiki/Negative_binomial_distribution\">http://en.wikipedia.org/wiki/Negative_binomial_distribution</a>&nbsp;for math refresher).</p>\r\n<p>Let Y be a random variable representing number of procs in fight of given length. Expected value for Y is by definition E(Y) = sum_i=1..inf&nbsp;i * Pr(Y = i) = sum_i=1..inf i * (Pr(NegBin(i, p) &lt; fightDuration) - Pr(NegBin(i+1, p) &lt; fightDuration) = sum_i=1..inf Pr(NegBin(i, p) &lt; fightDuration)</p>\r\n<p>This&nbsp;was without internal cooldowns. Now you can generalize this with a leap of faith to E(Y) = sum_i=1..inf Pr(NegBin(i, p) &lt; fightDuration - (i - 1)&nbsp;* cooldown) which is derived in more detail above.</p>",
+    "PostedDate": "2009-05-28T17:51:56.193-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195516",
+    "ThreadId": "57776",
+    "Html": "<p>I believe I understand what you are trying to accomplish.&nbsp; But I'll try to say this in the nicest way.&nbsp; I think you are adding complexity to the point of the model giving bad results.&nbsp; Another way to handle the uncertainty of when you proc 'successfully' would be to put an error bar on the proc time.&nbsp; perhaps it's 10 casts +/- 3 casts.&nbsp; Then model it such that you still get discrete bumps of mana.&nbsp; Right now you get something completely wrong from a fight perspective.&nbsp; You simply can't ever get 691 mana in a 2 minute fight.&nbsp; But you could get 300 (low chance) or 600 (high chance) or 900 (low chance).&nbsp; In a longer fight you could get 300 (very low chance), 600 (low chance), and 900 (high chance), maybe 1200 (low chance).&nbsp; This seems more supportable than the 691 mana from the current model.&nbsp;</p>",
+    "PostedDate": "2009-05-28T18:21:40.67-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195519",
+    "ThreadId": "57776",
+    "Html": "<p>So basically what you are saying is, 50% of the fights you get 900.<br> 30% of the time you get 600.<br>20% of the time you get 300.</p>\r\n<p>900*.5 + 600*.3 + 300*.2 = 690.</p>\r\n<p>&nbsp;</p>\r\n<p>Discrete bumps of mana does not really show you your average results.</p>",
+    "PostedDate": "2009-05-28T18:35:38.39-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195534",
+    "ThreadId": "57776",
+    "Html": "<p>Sigh - great point.&nbsp; I wouldn't do that at all.&nbsp; I believe it is 'good enough' to simply use the 10 casts as is.&nbsp; Statistically sound across infinite number of fights (I believe at least).&nbsp; I can't say though what you are doing is wrong.&nbsp; Just unnecessary - my opinion.</p>",
+    "PostedDate": "2009-05-28T19:57:28.393-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195536",
+    "ThreadId": "57776",
+    "Html": "<p>You are complaining that Rawr is valuing the proc too accurately and we should revert to a not as accurate model so it makes more sense to you?</p>",
+    "PostedDate": "2009-05-28T20:06:33.827-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195697",
+    "ThreadId": "57776",
+    "Html": "<p>Frankly - I believe it is debatable whether it really is more accurate to model it the way Rawr is.&nbsp; In effect you are putting error bars on the timing of&nbsp;the proc.&nbsp; I'm not a statistics expert so I accept at face value the math is correct.&nbsp; But essentially you are saying given a fight of&nbsp;X length.&nbsp; The trinket could proc as few as 0 times and as many as (X in sec) / 45 + 1.&nbsp; Then you do some fancing math that says it procs 2.3 times on average.&nbsp; I'll accept that this is true but say say&nbsp;given an infinite number of fights - on average - you will proc not 0 times or (X in sec) / 45 +1.&nbsp; But you will proc exactly (INT(X - (X / # of spells cast) / 10%))&nbsp;/ ((X / # of spells cast)&nbsp;/ 10% + cool down)) + 1).&nbsp; Oh well - broken record.&nbsp; I'm&nbsp;curious why you aren't consistent in using this methodology?</p>\r\n<p>You could have just as easily done the same thing for Divine Plea.&nbsp; I realize&nbsp;the user puts&nbsp;in a cool down - although I suspect most don't actually mess with the settings.&nbsp; But there is no alarm on&nbsp;their desk that says - it's been two minutes - proc divine plea - and then every user automagically procs at exactly 2 minutes.&nbsp; There are error bars on that&nbsp;as well. &nbsp;Why don't you put some statistics around that and then 'average' the mana returned?&nbsp; Essentially the same principal.&nbsp; Not that I'm asking for it - I think you have Divine plea correct and have become 'too complex' for procing trinkets.&nbsp; But then - this is an engineer talking who believes perfection is the enemy of the good.</p>",
+    "PostedDate": "2009-05-29T07:40:19.77-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195790",
+    "ThreadId": "57776",
+    "Html": "<p>What you're computing is not average. The number we compute is average. What you're computing might be close to a median, but it's definitely not average over infinite number of fights. We're not putting any error bars anywhere, we're not using any deviation, just pure exact average. Let me give you an example why average is better than median. With median when your haste slightly changes and your trigger intervals get slightly shorter the median will remain most likely the same, it'll have a very step-like behavior. Average on the other hand is very smooth. For purposes of evaluating gear upgrades smooth functions are a lot more appropriate.</p>",
+    "PostedDate": "2009-05-29T11:56:48.73-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195813",
+    "ThreadId": "57776",
+    "Html": "<p>I'm not sure your way is&nbsp;much 'smoother' than what I advocated.&nbsp; You have divided your time slices in Rawr&nbsp;into 0.5 minute increments.&nbsp; So every time the user increments that - there is a 'jump' in mana.&nbsp; Caused by lots of things like Mp5 - that alone for me is 1800 mana for 30 sec.&nbsp; And yes - including your recalculation of the procs of this trinket, IED, and goodness knows what else.&nbsp; What I was advocating would also cause 'jumps' in the mana pool every 30 sec - but in the scheme of things I don't believe it would be&nbsp;noticable.</p>\r\n<p>And can I poke at the average part?&nbsp; Given a 10% chance to proc with a 45 sec cool down and a 1.5 sec average cast time - a pure average would say 1.5 / 0.1 = 15 + 45 = 60 secs per proc.&nbsp; That is 300 / 60 = 5 mana per second.&nbsp; In a 120 sec fight you would get 600 mana from the trinket.&nbsp; In a 130 sec fight the number would be 650 mana.&nbsp; That would seem to be a pure average.&nbsp; I don't believe this is what you are doing.</p>",
+    "PostedDate": "2009-05-29T12:40:58.387-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195816",
+    "ThreadId": "57776",
+    "Html": "<p>Man you are stubbron for someone that admits he's not too familiar with probability. Ok so by your logic in a fight that lasts 30 seconds are you saying that average is 5 mps * 30 = 150 mana? Not true. In 30 seconds you have 30 / 1.5 = 20 casts. There is 1 - 0.9 ^ 20 = 87.84% chance that you'll get a proc. So the average is 264 mana.</p>\r\n<p>I'm not sure where you get the 0.5 minute from. If you're referring to fight segmentation in mage model that is completely different and has no effect on any kind of jumps. And yes it is smoother.</p>",
+    "PostedDate": "2009-05-29T12:56:47.223-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195830",
+    "ThreadId": "57776",
+    "Html": "<p>Sorry to jump in, but hopefully this will help:</p>\r\n<p>Kavan: I'm pretty sure he's saying he does NOT like the averaged idea.&nbsp; So debating how said average is calculated isn't addressing that.</p>\r\n<p>Darion: You really should use the averaged value :)</p>\r\n<p>You cannot simply assume 1 proc per minute as you are using and get accurate results.&nbsp; Kevan's math has shown how, especially in short fights, the assumption of exactly 10 casts to proc is not correct.</p>\r\n<p>And if you really do not want an averaged value, what would you want to see instead?</p>\r\n<p>I'd personally find it more confusing to get a readout like:</p>\r\n<p>30% chance: mana pool = 50000</p>\r\n<p>22.4% chance: mana pool = 50300</p>\r\n<p>35.7% chance: mana pool = 50600</p>\r\n<p>11.9% chance: mana pool = 50900</p>\r\n<p>(I picked random numbers btw, so don't use them for anyhting)</p>",
+    "PostedDate": "2009-05-29T13:31:10.803-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195838",
+    "ThreadId": "57776",
+    "Html": "<p>Well the underlying question is a lot more fundamental. It's the question of what are we optimizing. Are we optimizing for worst case situation, are we optimizing for most likely situation or are we optimizing for average situation. You could argue for each of them to have a place depending on what you wanted to know. I would argue that for purposes of evaluating gear upgrades optimizing average situation is the most appropriate for the reasons I mentioned above.</p>",
+    "PostedDate": "2009-05-29T13:40:34.537-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195845",
+    "ThreadId": "57776",
+    "Html": "<p>I'd mostly agree.&nbsp; This derailing from paly proc math, but figure for things like rotation, even if you use average case to determine expected DPS (which I agree with), I do sometimes wish for a worstcase printout.&nbsp; For example if every attack I do fails to crit and my combo point generation is screwed up, I'd like to know what's my best case option to get back on track.&nbsp; Do I need to temporarily adjust or not?&nbsp; Or the obvious case for tanks where people favor uncritability to prevent worst case spikes over average mitigation.&nbsp; But in general case, exact size of any given hit or power is irrelevant and the average you can do over a series of raid encounters is most important.</p>",
+    "PostedDate": "2009-05-29T13:56:24.987-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195846",
+    "ThreadId": "57776",
+    "Html": "<p>Kavan - thank you for your time.&nbsp; Two&nbsp;comments - the first is 0.5 minutes is the discrete value picked by the Healadin Module in Rawr for fight length control.&nbsp; You can select 1, 1.5, 2, 2.5, etc.&nbsp; So you have built in mana jumps that cause the idea of smoothing for gear selection to break apart.&nbsp; My point was that the 'jump' caused by positioning of a 300 mana proc paled in comparison to a divine plea proc of 7.5k mana, or a Mp5 gain of 1.8k in that same 30 sec discontinuity built into the Rawr model.&nbsp; I wasn't trying to argue mine was better at smoothing - just that either way really made no difference in the scheme of things because&nbsp;they are&nbsp;swamped out by much bigger mana changes in that 30 seconds.</p>\r\n<p>And yes - probability isn't my area of expertise.&nbsp; Took a couple of classes in college and hated it - aced it of course but pegging a class and truly understanding is always two different things.&nbsp; Was much better at calculus which is bread and butter for electrical engineers (at least in college - most is forgetten in the working world).</p>\r\n<p>And yes again, I understand your example - it gets much, more interesting at time 0:45 where you can still have&nbsp;probability that it hasn't procced at all yet.&nbsp; And at the same time start adding in a chance that not only has it procc'd the first time.&nbsp; It's starting to have a probability of proccing the 2nd time. 1:30 gets even more exciting.&nbsp; etc.&nbsp; I get all that conceptually (at least I think I do :-).&nbsp; I just don't believe the complexity that you are adding does much for actually selecting gear.&nbsp;</p>\r\n<p>Can I ask a quick question on output?&nbsp; I just walked the fight time from 2 minutes to 7 minutes (0.5 minute increments of course).&nbsp; And then compared Rawr output to my spreadsheet using the napkin math 'on average' method.&nbsp; I assumed 1.5 sec cast time in my spreadsheet which sort of seems built into Ermad's algorithm (I believe it to be just a smidge less - perhaps 1.4 - 1.45 or so).&nbsp; Here is the result:</p>\r\n<p>2 minutes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 600&nbsp;&nbsp; 691</p>\r\n<p>2.5 minutes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 900&nbsp;&nbsp; 838.4</p>\r\n<p>3 minunte&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 900&nbsp;&nbsp; 995.93</p>\r\n<p>3.5 minutes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1200&nbsp;&nbsp; 1142.64</p>\r\n<p>4 minutes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1200&nbsp;&nbsp; 1297.72</p>\r\n<p>4.5 minutes&nbsp;&nbsp;&nbsp;&nbsp; 1500&nbsp;&nbsp; 1460.04</p>\r\n<p>5 minutes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1500&nbsp;&nbsp; 1625.99</p>\r\n<p>5.5 minutes&nbsp;&nbsp;&nbsp;&nbsp;1800&nbsp;&nbsp; 1776.99</p>\r\n<p>6 minutes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1800&nbsp;&nbsp; 1940.13</p>\r\n<p>6.5 minutes&nbsp;&nbsp;&nbsp; 2100&nbsp;&nbsp; 2096.13</p>\r\n<p>7 minutes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2100&nbsp;&nbsp; 2255.4</p>\r\n<p>So what we are talking about is in the 30 sec increments&nbsp;hard coded into Rawr - you calculate the average proc&nbsp;to be an&nbsp;additional 156 mana every 30 secs (average from above).&nbsp; Mine proces for an average increase of 300 mana every 60 seconds.</p>\r\n<p>So the question - the the average 156 increase due to the nature of your algorithm - or is it pure average spell time?&nbsp;&nbsp;If you actually write out the deltas above - you see the 156 is growing.&nbsp; Starting out at around 150 and ending up closer to 160.&nbsp;</p>",
+    "PostedDate": "2009-05-29T14:02:45.18-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195847",
+    "ThreadId": "57776",
+    "Html": "<p>.5 is just the change that happens when you click on the buttons in the control. You can enter in your own number manually (though I believe it gets rounded to .1).</p>\r\n<p>You can't really compare the the mana returns since you admitidly have no idea what the average cast time in Rawr. Part of the reason it isn't printed out is because it uses an interative method to try to get a more accurate value on procs. Lets say you do all of your proc calculations assuming you have a 1.5 second cast time, and determine you gain X mana from them. Now that extra mana is going to change your average spell cast time, which in turn changes the value of procs, which in turn changes spell cast time, and it keeps repeating until it eventually gets out to a consistent number. Basically Rawr.Healadin does this loop a few times to get more accurate results.</p>",
+    "PostedDate": "2009-05-29T14:05:42.58-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195856",
+    "ThreadId": "57776",
+    "Html": "<p><img src=\"http://i661.photobucket.com/albums/uu333/dusanjan/AverageProcs.png\" alt=\"\"></p>\r\n<p>This is a graph of average number of procs for 1.5 sec trigger interval, 10% proc chance, 45 sec internal cooldown as computed by Rawr.</p>",
+    "PostedDate": "2009-05-29T14:27:16.32-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195861",
+    "ThreadId": "57776",
+    "Html": "<p>Kavan - thanks for the graph.&nbsp; It matches in the beginning exactly as I would suspect.&nbsp; You see the rapidly rising chance for success in the first proc and then at time 45 the same rapidly rising for the 2nd proc merged with the continuing of the 1st proc.&nbsp; Then after the probability for the 3 and 4 proc kicks in - it all gets completely blurred together.&nbsp; Cool stuff.&nbsp; It's interesting that the 'on average method' I advocated is always 0.3 to 0.4 proc's behind.&nbsp; I'm sure there is math to explain it.&nbsp; But no need for more conversation.&nbsp; I understand, have enjoyed the conversation, and will continue to use both methods where I feel is needed.&nbsp; Thank you.</p>\r\n<p>Ermad - thank you for the tip of actually typing in a value.&nbsp; Lol...I get too use to a mouse and clicking.&nbsp; As for displaying the average cast time - I&nbsp;know you have all the information in the model.&nbsp; After you have done all your iterations - you calculate the amount of mana needed to cast all those spells (displayed on the mana usage breakdown).&nbsp; You can't do that without a number for each spell.&nbsp; You have the time spent in the rotation for all the spells (displayed on the rotation breakdown).&nbsp; Again you need the numbers of spells to do that.&nbsp; Adding up all the spells and dividing by the fight time would give you a great&nbsp;approximation of the number of spells per second (with the realization that divine plea, judgements, sacred shield, divine illumination puts more 'weight' in certain parts of the cast time line).&nbsp; I suspect that this is&nbsp;one of the&nbsp;inputs to Kavan's subroutine and you have just chosen not to display that to the user.</p>",
+    "PostedDate": "2009-05-29T14:47:27.663-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195863",
+    "ThreadId": "57776",
+    "Html": "<p>The first iteration uses 1.5sec to start with, once it is done it calculates a few different values. Average time inbetween spell cast (including everything), average time between heal, and average time between heal crit, since different procs use different values. It then uses these values to determine the value of the procs for the next interation.</p>",
+    "PostedDate": "2009-05-29T14:52:37.31-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "Id": "190486",
+    "ThreadId": "56378",
+    "Html": "<p>&quot;Maximum Parallel Threads&quot; is an option in the mage model under Options -&gt; Advanced... However I think this would fit better as an option available to *all* models under Tools -&gt; Options -&gt; General Settings.</p>\r\n<p>&nbsp;</p>\r\n<p>Another question about this...does setting it higher than 2 have any effect when using a dual-core processor?&nbsp; (I have a quad-core, so likewise does setting it higher than 4 have any effect)&nbsp; Based on what I know about parallel threads, you need 1 core per thread, but maybe I'm wrong in that assumption.</p>\r\n<p>&nbsp;</p>\r\n<p>Either way, this should be a global option</p>",
+    "PostedDate": "2009-05-14T15:57:58.09-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "190489",
+    "ThreadId": "56378",
+    "Html": "<p>Mage model requires a certain amount of static resources (memory) per thread to operate. Since this can be significant there's an option to limit the use to less than available processor cores. Setting it to higher than number of cores will have no effect, it will only use as many as cores are available (or less if the system is used by other processes also). This is in mage settings because this is not available&nbsp;for other models.</p>",
+    "PostedDate": "2009-05-14T16:31:40.557-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "215553",
+    "ThreadId": "56378",
+    "Html": "<p>Please consider expanding that to all models.&nbsp; I'm currently running a Build Upgrade process (for a Shadow Priest), and even on my quad-core system it's pegging the entire system at 90+%.&nbsp; I'd like to be able to tell Rawr to use 2 or three processors, and leave me one or two.&nbsp; I don't mind if Rawr takes longer doing its thing, I care more that it's dragging down other things I'd like to get done.</p>",
+    "PostedDate": "2009-07-23T18:09:48.447-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "216133",
+    "ThreadId": "56378",
+    "Html": "<p>Open the Windows Task Manager, under Processes tab, select Rawr, right-click and set priority to Low. Now the Windows scheduler should give priority to other tasks you run, while Rawr will still try to grab any idle cycles, your other tasks aren't using. (If your running very low on memory and end up swapping, this might still result in some performance penalties, but hopefully non of the Rawr models are that memory hungry).</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-07-26T05:30:24.647-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

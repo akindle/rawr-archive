@@ -1,0 +1,136 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSDK",
+      "DisplayName": "Rawr.DPSDK"
+    },
+    "ClosedComment": "Closing old Fixed defects.... Esp. since there&#39;s been quite a few builds since these were marked fixed.  Any new instances of those issues should be created in new defects.",
+    "ClosedDate": "2009-08-07T18:01:34.65-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The DPSDK model is not calculating Heart Strike correctly.  It is also calculating the effects of the DK DPS T8 4pc bonus incorrectly.\n \nHS is currently calculated as: Weapon damage * ( 50% + 5% per disease ) * ( 120% if 4pc T8 ) + 368 + any other bonuses for HS\n \nIt looks like it should be calculated as: ( Weapon damage * 50% + 368 + any other bonuses ) * ( 100% + 10% per disease * 120% if 4pc T8 )\n \nThe attached patch fixes the HS calculation accordingly.\n \nReferences:\nhttp://elitistjerks.com/f72/t40287-rawr_discussion/p6/#post1247600\nhttp://elitistjerks.com/f72/t40287-rawr_discussion/p6/#post1247876\nhttp://www.wowwiki.com/Heart_Strike",
+    "LastUpdatedDate": "2017-11-27T11:04:20.59-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-05-21T08:32:08.123-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSDK] Heart Strike not calculated correctly",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13302
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1916,
+      "FileName": "heartstrike1.patch",
+      "DownloadUrl": ".\\1916"
+    },
+    {
+      "FileId": 1917,
+      "FileName": "dkabilities1.patch",
+      "DownloadUrl": ".\\1917"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Further notes:\r\n1. Only HS has this bug with the 4pc T8 bonus.  The other three affected abilities model the per-disease increase correctly.\r\n2. The other three affected abilities, however, do have the issue with the additional percent damage from diseases only applying to the weapon damage.\r\n\r\ndkabilities1.patch corrects the disease damage handling for the other three abilities (OB, BS, and SS).",
+      "PostedDate": "2009-05-21T08:56:06.15-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-05-21T08:56:07.937-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Something nasty happened to these during the migration to a buff for the 4T8 bonus; should be good to go now.",
+      "PostedDate": "2009-05-21T21:04:19.857-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Actually, the bug with 4pc T8 and HS predates that migration.\r\n\r\nThe correction implemented in revision 34100 does not appear to be correct:\r\n\r\n1. The bonus damage from diseases is only being applied to the weapon damage, rather than the total damage.  (Both the ability description and wowwiki suggest that the bonus damage should be applied to the total damage.)\r\n2. As implemented, weapon damage will not be included at all if the character does not have 4pc T8.\r\n\r\nThe attached heartstrike1.patch, built against 34079, should fix both issues in HS.\r\n\r\n(I know in the past I've been using the upload patch functionality but I thought it made more sense to include the patch here rather than make you go look somewhere else to see the contents.  if you think I should go back to that, please let me know.)",
+      "PostedDate": "2009-05-21T22:03:29.523-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Actually, the bug with 4pc T8 and HS predates that migration.\r\n\r\nThe correction implemented in revision 34100 does not appear to be correct:\r\n\r\n1. The bonus damage from diseases is only being applied to the weapon damage, rather than the total damage.  (Both the ability description and wowwiki suggest that the bonus damage should be applied to the total damage.)\r\n2. As implemented, weapon damage will not be included at all if the character does not have 4pc T8.\r\n\r\nThe attached heartstrike1.patch, built against 34079, should fix both issues in HS.\r\n\r\n(I know in the past I've been using the upload patch functionality but I thought it made more sense to include the patch here rather than make you go look somewhere else to see the contents.  if you think I should go back to that, please let me know.)",
+      "PostedDate": "2009-05-21T22:04:12.033-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Er, sorry about the double post.  I have no idea how that happened.",
+      "PostedDate": "2009-05-21T22:50:27.51-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Further review of revision 34100 shows this bug:\r\n\r\nDiseases only affect the damage of BS, HS, OB, and SS if the 4pc T8 bonus is in effect.  If this is not in effect, the damage of the abilities will not be increased by a factor based on the number of diseases on the target.  This is contradictory to the description of the abilities in game and on wowhead.\r\n\r\nThis is in addition to the bug with HS mentioned an hour ago.\r\n\r\n(And now I will press \"Add Comment\" once and only once...)",
+      "PostedDate": "2009-05-21T23:11:04.6-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sorry if I'm getting on your nerves...\r\n\r\nAnyway, 34113 looks like it should fix the issues introduced with 34100 and fix the treatment of the 4pc T8 bonus for HS.\r\n\r\nI'm curious as to why it's left so that diseases only modify the damage contribution from the weapon as opposed to the total damage.  However, I'll open up a discussion item for that separately.",
+      "PostedDate": "2009-05-22T08:18:28.377-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Was fixed in 2.2.6.",
+      "PostedDate": "2009-06-13T11:19:51.207-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-06-13T11:20:23.513-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-07T18:01:34.65-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:48:06.93-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:49:21.28-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:21:17.93-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:25.47-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:29.54-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:04:20.59-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

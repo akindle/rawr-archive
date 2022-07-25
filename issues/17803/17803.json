@@ -1,0 +1,165 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Cat",
+      "DisplayName": "Rawr.Cat"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-07-02T11:37:36.797-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "This is mainly out of curiosity to see how it compares to other enchants for dps/threat.\nBefore anyone jumps down my throat (since I can't find anyone who seems to know how it works for feral, or incorrectly assumes what it procs on), it works off Maul + Mangle for bears & Shred + Mangle for cats, actually does _not_ proc off Faerie Fire (never seen it happen), and from my observations on using it, it procs on average every 38 secs (with variance of 37-40 secs depending on what I'm doing).",
+    "LastUpdatedDate": "2017-11-27T10:59:36.29-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-05-25T20:22:32.07-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Cat] Black Magic enchant not modelled",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 17803
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Interesting. Will research this.",
+      "PostedDate": "2010-05-25T21:18:25.203-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Black Magic is supposed to work of spell hits (damaging ones only), so it would be odd to see BM proc of what are pretty obviously melee abilities.\r\n\r\nMy guess it that it's NOT those melee abilities, but the debuff applied from the Infected Wounds talent that's causing this.  So the BM enchant would only be valuable if you had at least 1 point in that.\r\n\r\nBM has a 35sec ICD, so that would explain the 38sec you're seeing.  A proc more or less 3 sec after the ICD ran out.",
+      "PostedDate": "2010-05-26T02:45:43.463-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-05-26T02:46:03.893-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "OReubens: interesting thought... so I quickly demolished my offspec to test it out, and made sure to take no proc effects at all in spec (no Infected Wounds, no ILotP, no Primal Fury).\r\nBM still procs off mangle+shreds in catform, even with all gear taken off except for the weapon.. but doesn't proc any more in bear form.   Even more amusing, I still get it to proc off a Shred while naked in 0/0/0 spec (but took a bit longer to proc).\r\nBut you're right that IW somewhat affects it: it didn't start procing in bear form until I had put 1 point in Infected Wounds.\r\n\r\nSo, short version: \r\nCatform: BM procs off Shred regardless of spec (or having none at all). Procs off Mangle even without Infected Wounds.\r\nBearform: BM procs of Maul+Mangle but only if you have Infected Wounds.",
+      "PostedDate": "2010-05-26T06:39:40.427-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-05-26T08:21:44.667-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Did IW seem to increase the proc chance in Cat?",
+      "PostedDate": "2010-05-26T09:45:36.623-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Proving or disproving proc chance is going to be difficult because of the ICD.  it would literally take a few hours of testing before you could have a statistical reliable answer on that.\r\n\r\nThe cat situation is weird O.O  So shred procs BM always (making shred a magic attack (?)), Whereas mangle is a melee attack that via some talent (other than IW, ILOTP, PF)gets a magic damage debuf, whereas bears would need IW.  Might be worthwhile to do additional tests on cat/bear proc mechanics in general.\r\n\r\nCan your naked shred proc a 'melee hit' based trinket ?  I'll assume that trigger mechanics in Rawr now assume it does, but what you're saying now may mean it won't in game, making all meleehit based items loose some value or at least unless combined with certain talents.  \r\n\r\nAlternatively.  Black Magic's description is different from other spell hit triggers (which made it get the DamageSpellHit trigger in the first place), and it's entirely possible that the Blizzard devs messed that one up so that some non magic effects end up being included by mistake.  It's a bit the same situation why I had to add a new MeleeAttack trigger to model Tiny Abomination in a Jar, because (at least for retribution), it procs of a LOT more than just the 'meleehit' abilities.\r\nThese kind of 'oversights' on blizz's part can be hard to figure out, but it can also mean that BM in game ends up being a lot better than what rawr or other spreadsheets would suggest it is.",
+      "PostedDate": "2010-05-27T01:18:21.977-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Some quick testing of the proc value in Rawr shows it losing to Mongoose... until you're crit capped, then it starts winning. Interesting; will try to get that in for the next version.",
+      "PostedDate": "2010-05-27T02:03:24.147-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Personally, I'm just playing bear 99% of the time, and I simply ended up trying out BM out of curiosity/boredom (friend of mine was trying it out on his enh shaman and that got me to trying it out on one of my multiple 264 weapons ;p\r\nI was trying to figure out the threat benefit of it for bear (considering how low mongoose is for threat when doing trivial stuff), and I sorta ended up going by simple finger math (checked my rawr haste values, divide the proc effect by assumed avg proc rate), and that way it always seemed to be a close 2nd best threat choice after Berserking.\r\n\r\nAstrylian: I can't say for now if IW was affecting the proc chance in cat, but it was definitely always procing quickly after the ICD was out (given me just using my bear spec, which does include Shredding Attacks though). Slow proc rate in 0/0/0 form might be attributed to higher shred cost and therefore longer intervals between shreds.\r\nWhen testing how BM worked with Mangle in cat+bear form, I avoided taking any talents that could be attributed to procs (taking only flat stat upgrade talents) and mangle was working fine in cat form at that point, but had absolutely 0 procs in bear form. 1 point in IW and BM instantly started procing in bear form.\r\n\r\nI guess it might help if I had some addon to track the ICD of BM (or maybe just some basic proc tracker would do?) so I could check the difference on BM procs with & without IW.",
+      "PostedDate": "2010-05-27T06:17:23.387-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Internalcooldowns is probably the most obvious mod for tracking internal cooldowns.  I stopped using it myself when the ICD feature got integrated into the retribution specific clcret mod :)",
+      "PostedDate": "2010-05-28T02:52:01.58-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-05-28T07:30:04.883-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Black Magic procs of Shred and Mangle even without IW and I am getting uptimes around 22% according to the logs. Which is really close to theoretical uptime and comparable with the mongoose uptime. I'll try full ICC heroic run today and will compare it with full ICC logs from the last week (mongoose) to see the uptimes. But if the uptimes are the same the Black Magic will clearly beat the mongoose for heroic tier gear with diminishing effectiveness of agility. I already have around 73% crit and the percentage of the lost combo points is getting high.\r\n\r\n",
+      "PostedDate": "2010-06-02T00:46:10.43-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Black Magic procs of Shred and Mangle even without IW and I am getting uptimes around 22% according to the logs. Which is really close to theoretical uptime and comparable with the mongoose uptime. I'll try full ICC heroic run today and will compare it with full ICC logs from the last week (mongoose) to see the uptimes. But if the uptimes are the same the Black Magic will clearly beat the mongoose for heroic tier gear with diminishing effectiveness of agility. I already have around 73% crit and the percentage of the lost combo points is getting high.\r\n\r\n",
+      "PostedDate": "2010-06-02T00:46:47.873-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Black Magic procs of Shred and Mangle and I am getting uptimes of 22% (I can provide parses) with diminishing effectiveness of agility Black Magic is becoming quite good at my level of gear(74% crit) it looks like the best weapon enchant. I'll do a full heroic ICC today and will check how it goes in real situations.",
+      "PostedDate": "2010-06-02T00:50:10.273-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "What started as a thread I used to notify MMO forums of this possible revelation turned into a mind of it's own. It also is pointing out interesting bits of information that we may have been off. Such as Mongoose supplying a 30 Haste rating instead of a flat 2% haste; which would be correct given that at level 70, each haste rating costed 15.769.\r\n\r\nhttp://www.mmo-champion.com/class-druid/black-magic-enchant-might-actually-be-usefull-to-ferals/",
+      "PostedDate": "2010-06-04T09:31:51.327-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Wait. What? They changed Mongoose to 30 haste rating? Frell.",
+      "PostedDate": "2010-06-04T09:54:39.747-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Apparently so\r\n\r\nhttp://img215.imageshack.us/i/wowscrnshot060410130307.jpg/\r\n\r\nThat is only using my Heroic Shaft of Glacial Ice I use for tanking",
+      "PostedDate": "2010-06-04T10:15:32.997-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I did a bit of number crunching and evaluated that there is still a Physical haste increase in addition to the 30 Haste but it's only 0.275% Haste instead of the 2% haste. At 70 since it required 15.7 Haste rating per %, that would give 1.9% haste. Tack on the .27% to that and you would come up with something close to what people were getting back then, hence the Universal acceptance of 2% Physical Haste. But since at 80, giving 30 Haste only gives 0.91% Haste how am I getting 1.19% Haste on my character sheet? Only explanation is that there IS a Physical haste buff, just only a fraction of a percent. So I did update the Echants file to give 30 Haste Rating and .0027 Physical haste which should bring us in line.",
+      "PostedDate": "2010-06-04T12:32:31.207-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "No. Ferals get 30% more haste from Haste rating.",
+      "PostedDate": "2010-06-04T13:17:44.76-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I've added the cat trigger to Black Magic in build 51286, however I did not add the Bear triggers since\r\na) we don't have a Maul trigger\r\nb) it requires working with IW which I'm not 100% sure how one would go about making sure that talent is selected before added the trigger.",
+      "PostedDate": "2010-06-09T11:19:27.133-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T11:37:36.797-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T22:45:40.733-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:28:21.037-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:37.113-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T10:59:36.29-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

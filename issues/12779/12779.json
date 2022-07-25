@@ -1,0 +1,95 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Warlock",
+      "DisplayName": "Rawr.Warlock"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-04-13T05:12:53.023-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I ran some optimazations for my warlock in 2.2 and the program insisted on enchanting my OH, when he had I couldn´t remove the enchant either",
+    "LastUpdatedDate": "2013-05-16T05:26:05.053-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-03-08T06:47:32.04-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Warlock] OH Enchants missing after Optimize",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 12779
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Can you give a bit more info on this? Do you mean the enchant showed in the chart-list when looking at the off-hands or did it actually say below the offhand that it was enchanted? And did you check if this was only an issue in warlock or also with other characters in different models?",
+      "PostedDate": "2009-03-08T09:09:56.46-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Fes/Issa, add this to CalculationsWarlock:\r\n\r\n        public override bool EnchantFitsInSlot(Enchant enchant, Character character, Item.ItemSlot slot)\r\n        {\r\n            if (slot == Item.ItemSlot.OffHand || slot == Item.ItemSlot.Ranged) return false;\r\n            return base.EnchantFitsInSlot(enchant, character, slot);\r\n        }\r\n\r\n        public override bool ItemFitsInSlot(Item item, Character character, Character.CharacterSlot slot)\r\n        {\r\n            if (slot == Character.CharacterSlot.OffHand && item.Slot == Item.ItemSlot.OneHand) return false;\r\n            return base.ItemFitsInSlot(item, character, slot);\r\n        }",
+      "PostedDate": "2009-03-08T12:01:14.627-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It apeared below the item, and I did not check if it happened on other models.  I could change the enchant but I couldn´t select the none value",
+      "PostedDate": "2009-03-08T17:53:19.907-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Astrylian: does this addition that you suggest also work, say, for restricting out 2h enchants on 1h, or weapon enchants on shields?",
+      "PostedDate": "2009-03-08T23:48:28.82-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yes; you could use EnchantFitsInSlot to check whether the Offhand item is a shield or a HeldInOffhand or a 1H Weapon, and return true/false depending on the enchant type.",
+      "PostedDate": "2009-03-08T23:50:10.977-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "(This was originally added for DPSWarr, so that it could say that 2H enchants fit in the OH slot, if the character knew Titan's Grip)",
+      "PostedDate": "2009-03-08T23:52:25.85-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Fixed in next version.",
+      "PostedDate": "2009-04-13T05:12:39.887-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-04-13T05:12:53.023-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T15:45:14.817-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:35:15.71-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:05.053-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

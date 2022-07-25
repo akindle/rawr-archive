@@ -1,0 +1,115 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "Fixed in commit 44019",
+    "ClosedDate": "2009-12-14T11:49:43.37-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I'm getting a consistent crash when I do these steps.\n \n1) Load Rawr.\n2) Set it to the Night Elf->Druid->Cat\n3) Go to Trinket 1\n4) Scroll down until I can see \"Victor's Call\"\n5) Switch to Human\n6) Switch to Paladin\n \nIf I can see Victor's Call on my list when I switch to Paladin, it crashes. \n \nIt doesn't give me an error code. It gives me problem details/signatures:\n \nProblem signature:\n  Problem Event Name:\tCLR20r3\n  Problem Signature 01:\trawr.exe\n  Problem Signature 02:\t2.2.23.0\n  Problem Signature 03:\t4ad6db18\n  Problem Signature 04:\tRawr.Base\n  Problem Signature 05:\t2.2.23.0\n  Problem Signature 06:\t4ad6db07\n  Problem Signature 07:\t23\n  Problem Signature 08:\t71\n  Problem Signature 09:\tSystem.ArithmeticException\n  OS Version:\t6.1.7100.2.0.0.256.1\n  Locale ID:\t1033",
+    "LastUpdatedDate": "2013-05-16T05:23:45.127-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-10-21T08:12:38.41-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] Rawr 'stops working'",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 14497
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Issue breaks at SpecialFunction.cs Ibeta line 1379\r\n\r\n        public static double Ibeta(double aa, double bb, double xx)\r\n        {\r\n            double a, b, t, x, xc, w, y;\r\n            bool flag;\r\n\r\n            if (aa <= 0.0 || bb <= 0.0) throw new\r\n                                            ArithmeticException(\"ibeta: Domain error!\");\r\n\r\n            if ((xx <= 0.0) || (xx >= 1.0))\r\n            {\r\n                if (xx == 0.0) return 0.0;\r\n                if (xx == 1.0) return 1.0;\r\n                throw new ArithmeticException(\"ibeta: Domain error!\");  <-- Exception thrown here.\r\n            }\r\n\r\nxx = -0.0001923732488648966\r\n\r\nStack trace is :\r\nUnhandled Exception: System.ArithmeticException: ibeta: Domain error!\r\n   at Rawr.SpecialFunction.Ibeta(Double aa, Double bb, Double xx) in C:\\Programming\\Rawr\\Rawr.Base\\SpecialFunction.cs:line 1379\r\n   at Rawr.SpecialEffect.UptimeInterpolator.Evaluate(Single procChance, Single interval) in C:\\Programming\\Rawr\\Rawr.Base\\SpecialEffect.cs:line 154\r\n   at Rawr.SpecialEffect.Interpolator.UpdateGrid() in C:\\Programming\\Rawr\\Rawr.Base\\SpecialEffectInterpolator.cs:line 93\r\n   at Rawr.SpecialEffect.Interpolator.get_Item(Single procChance, Single interval) in C:\\Programming\\Rawr\\Rawr.Base\\SpecialEffectInterpolator.cs:line 63\r\n   at Rawr.SpecialEffect.GetAverageUptime(Single triggerInterval, Single triggerChance, Single attackSpeed, Single fightDuration) in C:\\Programming\\Rawr\\Rawr.Base\\SpecialEffect.cs:line 739\r\n   at Rawr.SpecialEffect.AccumulateAverageStats(Stats stats, Single triggerInterval, Single triggerChance, Single attackSpeed, Single fightDuration) in C:\\Programming\\Rawr\\Rawr.Base\\SpecialEffect.cs:line 403\r\n   at Rawr.SpecialEffect.GetAverageStats(Single triggerInterval, Single triggerChance, Single attackSpeed, Single fightDuration) in C:\\Programming\\Rawr\\Rawr.Base\\SpecialEffect.cs:line 376\r\n   at Rawr.Cat.CalculationsCat.GetCharacterStatsWithTemporaryArPen(Character character, Item additionalItem, List`1& tempArPenRatings, List`1& tempArPenRatingUptimes) in C:\\Programming\\Rawr\\Rawr.Cat\\CalculationsCat.cs:line 600\r\n   at Rawr.Cat.CalculationsCat.GetCharacterCalculations(Character character, Item additionalItem, Boolean referenceCalculation, Boolean significantChange, Boolean needsDisplayCalculations) in C:\\Programming\\Rawr\\Rawr.Cat\\CalculationsCat.cs:line 257\r\n   at Rawr.CalculationsBase.GetItemCalculations(ItemInstance item, Character character, CharacterSlot slot) in C:\\Programming\\Rawr\\Rawr.Base\\Calculations.cs:line 665\r\n   at Rawr.Calculations.GetItemCalculations(ItemInstance item, Character character, CharacterSlot slot) in C:\\Programming\\Rawr\\Rawr.Base\\Calculations.cs:line 238\r\n   at Rawr.ItemComparison.GetItemInstanceCalculations(Object item) in C:\\Programming\\Rawr\\ItemComparison.cs:line 158\r\n   at System.Threading._ThreadPoolWaitCallback.WaitCallback_Context(Object state)\r\n   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)\r\n   at System.Threading._ThreadPoolWaitCallback.PerformWaitCallbackInternal(_ThreadPoolWaitCallback tpWaitCallBack)\r\n   at System.Threading._ThreadPoolWaitCallback.PerformWaitCallback(Object state)\r\n",
+      "PostedDate": "2009-10-21T08:28:13.77-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Interestingly this stack trace is thrown after class change dropdown shows paladin. Yet the stack trace clearly shows Rawr.Cat doing processing. Is there perhaps an issue with changing class doing something before model is changed? Since the effect is in the Cat Model, the Paladin Models or the black magical mystery mathematical genius code that is SpecialEffect/SpecialFunction. I'm only reporting my findings and not touching the code. This is one for Kavan/Astrylian to fix.",
+      "PostedDate": "2009-10-21T08:40:44.92-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-21T08:41:23.01-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-21T08:42:16.973-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-21T08:44:39.78-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-21T09:24:11.53-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The bug appears to be that chanceCrit is negative in CalculationsCat.GetCharacterStatsWithTemporaryArPen, so you're passing in a negative chance (due to your target being over level 80).  I know that I've seen odd results when I send a negative effectChance to effect.GetAverageStats.",
+      "PostedDate": "2009-10-21T11:47:10.51-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Note that there was a fix for that i placed a long time ago but ermad reverted it...",
+      "PostedDate": "2009-10-21T11:55:18.82-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ermad reverted a kitty change?",
+      "PostedDate": "2009-10-21T12:43:45.463-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Negative effect chance is an invalid input. It is correct that an exception is thrown. Fix this on the model side.",
+      "PostedDate": "2009-10-21T16:48:34.27-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Interesting. I'll track this down.",
+      "PostedDate": "2009-10-22T00:03:43.003-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-06T12:45:49.28-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-14T11:49:43.37-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:32:17.037-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:45.127-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

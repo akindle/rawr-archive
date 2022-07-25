@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "194411",
+    "ThreadId": "57517",
+    "Html": "<p>Most (if not all, I only looked at a handful) of the DPSDK strike damages use code like this to determine the normalized weapon damage: (combatTable.MH.baseDamage + ((stats.AttackPower / 14f) * (DW ? 2.4f : 3.3f)))</p>\r\n<p>Since this shows up in every strike, why not factor this out, either into combatTable.MH or a variable earlier in the GetCharacterCalculations method?&nbsp; This would decrease the number of calculations needed (although it's not like there are very many to begin with) and would make the formulas for calculating strike damages a little clearer.</p>\r\n<p>(Also, the formula is wrong since it'll treat a 1h sword as if it were a 2h one as long as there is no off-hand weapon equipped.&nbsp; This is really minor though since almost all 1h weapons&nbsp; should be rated lower than 2h weapons of roughly equal ilevel anyway.)</p>",
+    "PostedDate": "2009-05-26T11:26:07.943-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "194610",
+    "ThreadId": "57517",
+    "Html": "<p>Yeah, it's a less-than-ideal method that I've been meaning to factor out; it's on the list.</p>",
+    "PostedDate": "2009-05-26T20:15:12.46-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

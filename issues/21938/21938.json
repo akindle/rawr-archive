@@ -1,0 +1,65 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I used Rawr Addon once since the release of 4.3 without issue. I updated the addon from Curse when i saw an update availible. \nI now receive a Lua error message. I dont know if the update is bugged or if another issue exsists.  Any ideas?\nMessage: Interface\\AddOns\\Rawr\\Locales\\Locale-enUS.lua:2: attempt to call global 'LibStub' (a nil value)\nTime: 12/15/11 04:04:35\nCount: 1\nStack: Interface\\AddOns\\Rawr\\Locales\\Locale-enUS.lua:2: in main chunk\n \nLocals: (*temporary) = nil\n(*temporary) = \"AceLocale-3.0\"\n(*temporary) = \"attempt to call global 'LibStub' (a nil value)\"\n \n \nThanks for any help",
+    "LastUpdatedDate": "2013-02-21T18:23:58.247-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-12-19T00:44:15.687-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Rawr Addon giving Lua error message.",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 4,
+    "Id": 21938
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Same issue.  Attempting to import my Upgrade list, created from the program's Optimizer.  Worked previously with the Rawr Addon in game.  Now, since the most recent update, giving the following bug report: \r\n\r\n\r\nDate: 2012-01-12 18:40:20\r\nID: 1\r\nError occured in: Global\r\nCount: 1\r\nMessage: ..\\AddOns\\Rawr\\Frame.lua line 358:\r\n   bad argument #1 to 'match' (string expected, got nil)\r\nDebug:\r\n   (tail call): ?\r\n   [C]: ?\r\n   [C]: match()\r\n   Rawr\\Frame.lua:358: CheckChangedItem()\r\n   Rawr\\Frame.lua:332: ItemSlots_UpdateItemSlot()\r\n   Rawr\\Frame.lua:282: FillSlots()\r\n   Rawr\\Frame.lua:250: ShowDoll()\r\n   Rawr\\Frame.lua:83: ShowCharacterFrame()\r\n   Rawr\\Rawr.lua:397:\r\n      Rawr\\Rawr.lua:395\r\n   (tail call): ?\r\n   ...\\AceConfig-3.0\\AceConfigCmd-3.0\\AceConfigCmd-3.0.lua:143:\r\n      ...\\AceConfig-3.0\\AceConfigCmd-3.0\\AceConfigCmd-3.0.lua:133\r\n   ...\\AceConfig-3.0\\AceConfigCmd-3.0\\AceConfigCmd-3.0.lua:408:\r\n      ...\\AceConfig-3.0\\AceConfigCmd-3.0\\AceConfigCmd-3.0.lua:334\r\n   (tail call): ?\r\n   ...\\AceConfig-3.0\\AceConfigCmd-3.0\\AceConfigCmd-3.0.lua:769: HandleCommand()\r\n   ...\\AceConfig-3.0\\AceConfigCmd-3.0\\AceConfigCmd-3.0.lua:781: ?()\r\n   ..\\FrameXML\\ChatFrame.lua:4293: ChatEdit_ParseText()\r\n   ..\\FrameXML\\ChatFrame.lua:3992: ChatEdit_SendText()\r\n   ..\\FrameXML\\ChatFrame.lua:4031: ChatEdit_OnEnterPressed()\r\n   [string \"*:OnEnterPressed\"]:1:\r\n      [string \"*:OnEnterPressed\"]:1\r\nAddOns:\r\n  Swatter, v5.13.5258 (BoldBandicoot)\r\n  ActionButtonColors, v1.0\r\n  AtlasLootLoader, vv6.05.02\r\n  AucAdvanced, v5.13.5258 (BoldBandicoot)\r\n  AucFilterBasic, v5.13.5258 (BoldBandicoot)\r\n  AucFilterOutlier, v5.13.5258.5187(5.13/embedded)\r\n  AucMatchUndercut, v5.13.5258.5232(5.13/embedded)\r\n  AucScanData, v5.13.5258 (BoldBandicoot)\r\n  AucStatHistogram, v5.13.5258 (BoldBandicoot)\r\n  AucStatiLevel, v5.13.5258 (BoldBandicoot)\r\n  AucStatPurchased, v5.13.5258 (BoldBandicoot)\r\n  AucStatSales, v5.13.5258.4838(5.13/embedded)\r\n  AucStatSimple, v5.13.5258 (BoldBandicoot)\r\n  AucStatStdDev, v5.13.5258 (BoldBandicoot)\r\n  AucStatWOWEcon, v5.13.5258.4828(5.13/embedded)\r\n  AucUtilAHWindowControl, v5.13.5258.5133(5.13/embedded)\r\n  AucUtilAppraiser, v5.13.5258.5241(5.13/embedded)\r\n  AucUtilAskPrice, v5.13.5258.5160(5.13/embedded)\r\n  AucUtilAutoMagic, v5.13.5258.5224(5.13/embedded)\r\n  AucUtilCompactUI, v5.13.5258.5254(5.13/embedded)\r\n  AucUtilEasyBuyout, v5.13.5258.5241(5.13/embedded)\r\n  AucUtilFixAH, v5.13.5258 (BoldBandicoot)\r\n  AucUtilItemSuggest, v5.13.5258.5224(5.13/embedded)\r\n  AucUtilPriceLevel, v5.13.5258.5241(5.13/embedded)\r\n  AucUtilScanButton, v5.13.5258.5153(5.13/embedded)\r\n  AucUtilScanFinish, v5.13.5258.5153(5.13/embedded)\r\n  AucUtilScanProgress, v5.13.5258.4979(5.13/embedded)\r\n  AucUtilScanStart, v5.13.5258.5153(5.13/embedded)\r\n  AucUtilSearchUI, v5.13.5258.5254(5.13/embedded)\r\n  AucUtilSimpleAuction, v5.13.5258.5210(5.13/embedded)\r\n  AucUtilVendMarkup, v5.13.5258.4828(5.13/embedded)\r\n  Babylonian, v5.1.DEV.312(/embedded)\r\n  BeanCounter, v5.13.5258 (BoldBandicoot)\r\n  ChatEdit, v3.1\r\n  Configator, v5.1.DEV.312(/embedded)\r\n  DBMCore, v\r\n  DebugLib, v5.1.DEV.312(/embedded)\r\n  Decursive, v2.7.0.4\r\n  DurabilityStatus, v\r\n  EasyMail, v\r\n  Enchantrix, v5.13.5258 (BoldBandicoot)\r\n  epgp, v5.7.1\r\n  epgplootmaster, v0.6.17\r\n  epgplootmasterml, v0.6.17\r\n  Informant, v5.13.5258 (BoldBandicoot)\r\n  LibExtraTip, v5.12.DEV.319(/embedded)\r\n  MageFever, v3.4## Title: Mage Fever\r\n  MinimapButtonFrame, v3.1.7\r\n  MinimapButtonFrameSkinPack, v3.0\r\n  MobInfo2, v3.87\r\n  Omen, v3.1.5\r\n  OmniCC, v4.3.2\r\n  Outfitter, v5.4.2\r\n  Rawr, v0.72\r\n  Recount, v\r\n  SlideBar, v5.13.5258 (BoldBandicoot)\r\n  Stubby, v5.13.5258 (BoldBandicoot)\r\n  TipHelper, v5.12.DEV.315(/embedded)\r\n  BlizRuntimeLib_enUS v4.3.0.40300 <us>\r\n  (ck=8d2)\r\n\r\n\r\nThanks.",
+      "PostedDate": "2012-01-12T15:47:37.35-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-02-02T14:56:02.603-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I have been using this addon for a long time.  I love it, and I love RAWR.  The only problem with the addon was that the LUA was looking for ranged slots that no longer exist and also the talent tree in the lua needed to be renamed as well.  \r\n\r\nI have rewritten the XML and LUA files and it works just fine now.  I want permission to share with people before I go ahead and do so considering this is not my project.  If I get permission I have no problems sharing my work.  ",
+      "PostedDate": "2013-02-05T17:08:19.72-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-09T22:43:40.153-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:23:58.247-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

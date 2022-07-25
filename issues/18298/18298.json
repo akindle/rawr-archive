@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.ItemFilters",
+      "DisplayName": "Rawr.Base.ItemFilters"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-08-20T12:25:49.623-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "1) With default setup expand all for \"Tier 10 Raids (10/25) ICC\" note that all are ticked.\n2) Untick the top item \"Tier 10 Raids (10/25) ICC\" and note that it also unticks \"Icecrown Citadel (10)\" and \"Icecrown Citadel (25)\"\n3) Note that it does NOT untick the sub menus \"Normal\", \"Heroic\" or \"Other\". Thus the unticking did nothing.\n \nIssue is that filter status change is failing to recurse to lower levels. I had a look and its firing various updates but I'm not familiar enough with this code to tackle it. So I'm posting an issue for someone familiar with the filter code to tackle.\n \nNB. This issue seems to affect ANY sub level of filter ie: ticking/unticking something only propagates a single branch down in the tree. Whereas the intuitive behaviour would be that changing the status a top level item in a tree should change the status of everything beneath it in the same branch.",
+    "LastUpdatedDate": "2017-11-27T11:03:18.183-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-07-26T05:06:33.153-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ItemFilters] Item Filters Bug",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 18298
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Edit: It may also be useful when the status changes on the filter is fired to implement a wait cursor and clear it when done. Not sure if this is possible in Silverlight/Web. The issue is that it takes a while sometimes (depends on model) to process the click and there is no visual feedback that you did anything until 5-10 seconds later the checkbox updates. This would be longer on a slower machine than mine.",
+      "PostedDate": "2010-07-26T05:11:37.703-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-08-01T11:08:49.227-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Resolved with changeset 53284.",
+      "PostedDate": "2010-08-20T12:25:49.623-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T19:05:05.29-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:09:45.937-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:27:52.38-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:13.527-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:03:18.183-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

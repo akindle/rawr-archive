@@ -1,0 +1,100 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.TankDK",
+      "DisplayName": "Rawr.TankDK"
+    },
+    "ClosedComment": "Fixed",
+    "ClosedDate": "2009-10-16T02:05:24.6-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Currently, I am unable to run the optimizer in any sane fashion to get spell hit cap in frost for dual wield.\nWould it be possible to add the base ratings for hit/exp to the optimizer, or be able to optimize for 0 missed yellow attacks or spells?\n \n(Note below, fixed to note that it was Tank DK and not DPS DK that had the issue)",
+    "LastUpdatedDate": "2017-11-27T11:04:25.003-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-08-13T22:39:27.997-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[TankDK] Unable to correctly optimize for hit cap (Frost/DW)",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13878
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Add an additional requirement in the optimizer to optimize for a specific hit rating also. I'm unsure of spell hit cap off the top of my head, but, say, 312 hit rating:\r\n1) Go to Optimizer\r\n2) Under Additional Requriements hit Add\r\n3) Select Hit Rating, Greater Than, and input 312\r\nIf you don't want it going much over that number, add another requirement for it to be less than a certain number.\r\n\r\nI know its not as easy as just selecting \"Optimize for Spell Hit Cap based on presence of shadow priest/draenai\", but it works.",
+      "PostedDate": "2009-08-14T12:11:35.37-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Should have been more specific.  When trying to optimize for Target Miss %, the optimizer decides to simply remove the off-hand rather then get to the necessary rating.",
+      "PostedDate": "2009-08-15T21:53:52.917-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-15T22:23:39.183-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I see what you mean.  I can see some optimization for improving that section of the code.  Not sure if you'll get what you want, or if I need to have an \"enforce dual-wield\" option.  \r\nAlso the latest release still doesn't quite have all of the 3.2 changes.  I'm working on them, and the DW sections need a bit more tweaking.  ",
+      "PostedDate": "2009-08-17T12:20:24.79-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yeah, it seems with the parry haste calcs being a negative to mitigation also factors against DW, even though I believe it's been tested that at 26 expertise skill you get parried at a rate equivalent to a prot warrior.  That, and each yellow attack is not two attacks, as it simply adds off-hand damage, not making it a second attack, meaning it still only counts as one for parry calcs.",
+      "PostedDate": "2009-08-17T20:13:16.497-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok... I'm taking a second look at this and re-working a bit of this section of optimization.  So that one can optimize for +Hit (EG 1 - target Miss %)  so that it's not gearing for 27% miss rate with DW.\r\nAs a warning, I've still seen posts (EJ and Skeleton Jack) that say DW tanking is not viable in 3.2, but I want to get the math working for y'all so that should things change we'll be able to mirror it here.  But right now, the mitigation costs are still pretty high.  \r\n\r\nThere are still bugs in this area and fixing this defect is my current project in the TankDK code.",
+      "PostedDate": "2009-09-09T16:27:55.97-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok... doing some more playing around, it looks like I can get it into a situation where it will optimize for certain DW situations.  Some of the keys include having the right spec.  I used the one specified here:\r\nhttp://pwnwear.com/2009/09/22/3-22-death-knight-dual-wield-tanking/\r\n\r\nYour mileage may vary on the effectiveness on what drops you get, but it may prove interesting that we're starting to see the high-end-game one-hand drops starting to be on-par w/ the 2h for tanking... and using the right RuneForged runes. (2% parry on both - meaning you're already def capped via the rest of your gear.)\r\n\r\nGonna mark this fixed for 2.2.24\r\n\r\n(I realize it's not a direct fix for the original issue, but I think it's the point is trying to get a viable DW spec out of Rawr has been the ultimate goal here.)",
+      "PostedDate": "2009-10-15T15:39:25.343-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-16T02:05:24.6-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:42:14.79-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:36.027-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:49.367-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:04:25.003-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

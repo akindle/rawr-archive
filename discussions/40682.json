@@ -1,0 +1,130 @@
+[
+  {
+    "Id": "134917",
+    "ThreadId": "40682",
+    "Html": "Hello:<br>\r\n<br>\r\nI don't&nbsp; know if this is the appropriate place to post this, I looked around and didn't find a suggestions box or something like that. Anyway, I've been thinking how great it would be if Rawr had these:<br>\r\n<br>\r\n1.- Inside the optimizer, when you click the [Optimize] button, and before the optimization actually begins, add some kind of progress bar so we can know that something is actually happening. Whenever you choose too many of a slot (gems, shoulders, etc) it takes forever between clicking the [Optimize] and getting the dialog asking if we want to proceed with Optimization. Last night I went to bed, left it running and this morning it was still running and no sign of optimization yet. I had to CTRL ALT DEL close the program. If a progress bar was in place, one would know if something is actually happening.<br>\r\n<br>\r\n2.- In the Filter options, add one to discriminate between green, blue and purple quality items. This would be useful while leveling up and specially for gems with so many to choose from.<br>\r\n<br>\r\n3.- When you click at a slot (like the helmet) and you are presented with a list of up/downgrade options, add the number of DPS/Overall points for each piece as it is shown inside the comparison box. Either that or add a Search box to the Comparison box. Why I suggest this? because sometimes you want to know if a new specific item is better than the one you are currently wearing and it is very difficult to visually search for it through the whole list. <br>\r\n<br>\r\nI hope these are as easy to add as they sound from my end. Thanks :) \r\n",
+    "PostedDate": "2008-11-24T14:28:25.513-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "134928",
+    "ThreadId": "40682",
+    "Html": "1) Sounds like you're explicitly using Optimizer against the advice of the warnings. There are warnings that alert you when you choose too many of a slot, as you mention, and you really shouldn't be using more than this, in most cases. If you can give me an example of a situation where this would actually be useful, I can prioritize this more, but currently it's just not a priority.<br>\r\n<br>\r\n2) This is planned, yes.<br>\r\n<br>\r\n3) These suggestions are nice polish, but not really a priority, especially since this will be mitigated alot when I trim down the default itemcache in 2.2. Definitely good suggestions, just only so much time available.<br>\r\n",
+    "PostedDate": "2008-11-24T15:05:19.473-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "134939",
+    "ThreadId": "40682",
+    "Html": "&quot;Sounds like you're explicitly using Optimizer against the advice of the warnings.&quot;<br>\r\n<br>\r\nThis happens before any warnings are issued. I know the warning you are talking about, the one that says you have chosen too many items for certain slots. Well, I still have yet to see that warning, the program just runs and runs and never shows any sign of life. My computer is a very decent one and in the past, as soon as the warning was issued, the Optimization usually finished in less than 2 minutes (even with throughness set all the way to the right). Just to be clear, whatever is causing the program to go dead is happening before the warning is issued and before any Optimization is performed.\r\n",
+    "PostedDate": "2008-11-24T16:38:37.977-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "134940",
+    "ThreadId": "40682",
+    "Html": "I think I found were this is happening. I ran the program though VS 2008 and when it seemed to be stuck I hit Break a few times and it was always at this line:<br>\r\n<br>\r\nif (item.FitsInSlot(Character.CharacterSlot.Chest)) foreach (Item gemmedItem in possibleGemmedItems) if (chestItemList.FindIndex(x =&gt; x.GemmedId == gemmedItem.GemmedId) &lt; 0) chestItemList.Add(gemmedItem);<br>\r\n",
+    "PostedDate": "2008-11-24T16:49:09.113-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "134941",
+    "ThreadId": "40682",
+    "Html": "I'll take a look at this.\r\n",
+    "PostedDate": "2008-11-24T16:52:30.107-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "134946",
+    "ThreadId": "40682",
+    "Html": "Thanks Kavan and Astrylian. If this may be of help, I added a watch to gemmedItem and x.GemmedId and the values seem to be changing very slowly. <br>\r\nMy computer is a quad core running Windows Vista x64 with 6GB of RAM. While running this through VS 2008, CPU Usage is at 28% and Physical Memory at 68% (Rawr.exe is only using 361,296 K, Devenv.exe is using 115,224K).<br>\r\n",
+    "PostedDate": "2008-11-24T17:07:35.163-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "134961",
+    "ThreadId": "40682",
+    "Html": "I made some improvements in the filtering. I haven't done a proper profiling so if you find any other bottlenecks let me know.\r\n",
+    "PostedDate": "2008-11-24T18:38:10.613-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "134981",
+    "ThreadId": "40682",
+    "Html": "Hey Kavan,<br>\r\n<br>\r\nThanks for your help. I downloaded your latest version but it seems to be &quot;stuck&quot; somewhere else.<br>\r\nThis time is the FilterList function, specifically here:<br>\r\n<br>\r\n&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; foreach (StatsColors statsColorsB in filteredStatsColors)<br>\r\n&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;{<br>\r\n&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;ArrayUtils.CompareResult compare = statsColorsA.CompareTo(statsColorsB);<br>\r\n<br>\r\n<br>\r\nI wish I could be of more help determining whats wrong or where the bottleneck is.<br>\r\n",
+    "PostedDate": "2008-11-24T19:55:31.14-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "134985",
+    "ThreadId": "40682",
+    "Html": "Yea I suspected this would be an issue. This is more a design problem and would need more substantial changes.\r\n",
+    "PostedDate": "2008-11-24T20:29:12.177-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "134998",
+    "ThreadId": "40682",
+    "Html": "Hey Kavan,<br>\r\n<br>\r\nI was afraid of something like that. Perhaps the progress bar could be re-used to show some signs of life during this pre-optimization progress?<br>\r\nEven if that doesn't fix the main problem, at least can give an visual indication that something is being done.<br>\r\n",
+    "PostedDate": "2008-11-24T21:28:25.563-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "135001",
+    "ThreadId": "40682",
+    "Html": "I'll try to add that in yes.\r\n",
+    "PostedDate": "2008-11-24T21:44:40.727-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "135201",
+    "ThreadId": "40682",
+    "Html": "I left Rawr.cat running overnight with the same profile I imported from CharacterProfiler. After 7 hours and 18 mins running the optimization, memory usage is at 1,990,208K and I still have yet to see any warnings or dialog saying anything.<br>\r\n<br>\r\nI'm not a Windows programmer but something definitely is not right :S<br>\r\nI understand the program is handling a lot of variables by importing that profile from CP, but even so it shouldn't take that long and consume that much memory. Should I open an issue tracker with this?<br>\r\n",
+    "PostedDate": "2008-11-25T10:10:37.73-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "135286",
+    "ThreadId": "40682",
+    "Html": "In case you weren't sure, you can stop leaving it running for hours at a time. If it's not optimizing after a min or two it's not going to. How many available items are we talking about here?<br>\r\n<br>\r\nIs this some stupid situation like a couple dozen items in each slot, and a couple dozen gems? Or is this a reasonable situation that we need to worry about, with a few items in each slot, and a few gems?<br>\r\n",
+    "PostedDate": "2008-11-25T13:56:59.273-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "135321",
+    "ThreadId": "40682",
+    "Html": "I think his problem is not items. I think he has way too many gems selected as available. Could you upload your character xml so we can see what you're doing?\r\n",
+    "PostedDate": "2008-11-25T15:21:30.92-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "135332",
+    "ThreadId": "40682",
+    "Html": "Yup, I think is what Kavan said, too many gems chosen. <br>\r\nThis was never an issue before. I used to have a profile saved with every single epic gem chosen and it never did anything like this. I guess the program is handling way too many items right now. This was the <strong>same profile</strong> that used to work fine on previous versions, except that now only WotLK gems were selected.<br>\r\n<br>\r\nAnyway, I re-imported my profile from Character Profile and only\r\nchose the top gems for either bear or cat and not both at the same time\r\nlike I used to. This time it worked fine, thanks a lot for your help :)<br>\r\n",
+    "PostedDate": "2008-11-25T16:01:43.837-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "135681",
+    "ThreadId": "40682",
+    "Html": "Personally i think the ability to discriminate between green, blue and purple quality items is a must. Especially when it comes to gems i think it would be great for this feature to be included asap\r\n",
+    "PostedDate": "2008-11-26T12:57:51.857-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,90 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-05-13T12:21:54.22-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Windows XP SP3 (32 bit), all updates. Installed dotNetFx40_Full_x86_x64.exe downloaded from the MS website (not the web installer) as it seems you've increased the .NET version required for this version (without telling anyone). There are no Windows Updates available for this .NET version.\n \nStart Rawr up after (properly) unzipping to the regular folder I use (C:\\Rawr). Which has full access permissions for everyone (its a local PC). First error:\n \n\"Unhandled exception has occurred in your application. If you click Continue, the application will ignore this error and attempt to continue.\n \nUnable to find any model plug in dlls. Please check that the files exist and are in the correct location.\n \nDetails:\n \nSee the end of this message for details on invoking \njust-in-time (JIT) debugging instead of this dialog box.\n \n************** Exception Text **************\nSystem.TypeLoadException: Unable to find any model plug in dlls.  Please check that the files exist and are in the correct location\n   at Rawr.Calculations.get_Models()\n   at Rawr.FormSplash.get_CachedSplash()\n   at Rawr.FormSplash.FormSplash_Paint(Object sender, PaintEventArgs e)\n   at System.Windows.Forms.Control.OnPaint(PaintEventArgs e)\n   at System.Windows.Forms.Form.OnPaint(PaintEventArgs e)\n   at System.Windows.Forms.Control.PaintWithErrorHandling(PaintEventArgs e, Int16 layer)\n   at System.Windows.Forms.Control.WmPaint(Message& m)\n   at System.Windows.Forms.Control.WndProc(Message& m)\n   at System.Windows.Forms.ScrollableControl.WndProc(Message& m)\n   at System.Windows.Forms.Form.WndProc(Message& m)\n   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)\n   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)\n   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)\n \n \n************** Loaded Assemblies **************\nmscorlib\n    Assembly Version: 4.0.0.0\n    Win32 Version: 4.0.30319.1 (RTMRel.030319-0100)\n    CodeBase: file:///C:/WINDOWS/Microsoft.NET/Framework/v4.0.30319/mscorlib.dll\n----------------------------------------\nRawr\n    Assembly Version: 2.3.16.0\n    Win32 Version: 2.3.16.0\n    CodeBase: file:///C:/Rawr%20v2.3.16/Rawr.exe\n----------------------------------------\nSystem.Windows.Forms\n    Assembly Version: 4.0.0.0\n    Win32 Version: 4.0.30319.1 built by: RTMRel\n    CodeBase: file:///C:/WINDOWS/Microsoft.Net/assembly/GAC_MSIL/System.Windows.Forms/v4.0_4.0.0.0__b77a5c561934e089/System.Windows.Forms.dll\n----------------------------------------\nSystem.Drawing\n    Assembly Version: 4.0.0.0\n    Win32 Version: 4.0.30319.1 built by: RTMRel\n    CodeBase: file:///C:/WINDOWS/Microsoft.Net/assembly/GAC_MSIL/System.Drawing/v4.0_4.0.0.0__b03f5f7f11d50a3a/System.Drawing.dll\n----------------------------------------\nSystem\n    Assembly Version: 4.0.0.0\n    Win32 Version: 4.0.30319.1 built by: RTMRel\n    CodeBase: file:///C:/WINDOWS/Microsoft.Net/assembly/GAC_MSIL/System/v4.0_4.0.0.0__b77a5c561934e089/System.dll\n----------------------------------------\nRawr.Base\n    Assembly Version: 2.3.16.0\n    Win32 Version: 2.3.16.0\n    CodeBase: file:///C:/Rawr%20v2.3.16/Rawr.Base.DLL\n----------------------------------------\nSystem.Xml\n    Assembly Version: 4.0.0.0\n    Win32 Version: 4.0.30319.1 built by: RTMRel\n    CodeBase: file:///C:/WINDOWS/Microsoft.Net/assembly/GAC_MSIL/System.Xml/v4.0_4.0.0.0__b77a5c561934e089/System.Xml.dll\n----------------------------------------\n \n************** JIT Debugging **************\nTo enable just-in-time (JIT) debugging, the .config file for this\napplication or computer (machine.config) must have the\njitDebugging value set in the system.windows.forms section.\nThe application must also be compiled with debugging\nenabled.\n \nFor example:\n \n<configuration>\n    <system.windows.forms jitDebugging=\"true\" />\n</configuration>\n \nWhen JIT debugging is enabled, any unhandled exception\nwill be sent to the JIT debugger registered on the computer\nrather than be handled by this dialog box.\"\n \n--------------------------------------\n \nSo I click Continue and:\n \n\"Rawr was unable to find its required data files. Please make sure you have unzipped Rawr to a location you have full permissions to (such as My Documents). If you still have problems, please copy (CTRL-C) and paste this into an email to cnervig@hotmail.com. Thanks!\n \nValue cannot be null.\nParameter name: key\n \nat System.Collections.Generic.Dictionary'2.FindEntry(Tkey key)\nat System.Collections.Generic.Dictionary'2.get_Item(Tkey key)\nat Rawr.FormMain.LoadModel(String displayName)\nat Rawr.FormMain..ctor()\nat Rawr.Program.Main()\"\n \n-------------\n \nI'm no computer noob; yes, everything was unzipped properly. So, assuming your switch to .NET 4 caused it to be overly picky on install location (being unable to find its own files), unzipped it again to its actual enclosed ZIP paths: C:\\Rawr v2.3.16. No change, identical errors on startup (again, that location has full permissions here). So finally tried moving it to \\My Documents\\Rawr v2.3.16. No change, same startup errors.\n \nThe downloaded Rawr v2.3.16.zip integrity has been checked with 7-zip & WinRAR here; its fine.\n \nBack to Rawr v2.3.15, which worked without issues.",
+    "LastUpdatedDate": "2013-05-16T05:20:45.31-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-05-13T09:11:54.697-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Rawr 2.3.16 fails to launch (different error than issue Id#17656)",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 5,
+    "Id": 17657
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I am having the exact same failure/same error wordage.  I also downloaded .Net 4.0 directly from Microsoft's standalone download page.  I run Windows 7 - 64 fully updated.",
+      "PostedDate": "2010-05-13T09:52:40.12-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-05-13T10:06:29.8-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "same problem, windows 7 - 32 bit.",
+      "PostedDate": "2010-05-13T10:18:29.077-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-05-13T10:18:34.55-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-05-13T10:29:00.337-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Same as Questors1 (including OS and steps taken).",
+      "PostedDate": "2010-05-13T10:30:50.937-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "There was some mixup with the build; took v2.3.16 back down, til I can rebuild it tonight.",
+      "PostedDate": "2010-05-13T10:38:10.773-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-05-13T12:21:54.22-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:28:29.757-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:45.31-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

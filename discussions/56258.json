@@ -1,0 +1,266 @@
+[
+  {
+    "Id": "190055",
+    "ThreadId": "56258",
+    "Html": "<p>A place for us to continue writting unittests.&nbsp; I'll admit that it's not very fleshed out, and could use some more docs, but it's a start.&nbsp; I'll have more in the coming weeks as I work on creating tests for engine style code.&nbsp;</p>",
+    "PostedDate": "2009-05-13T22:45:38.27-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "190177",
+    "ThreadId": "56258",
+    "Html": "<p>Thanks a lot for these! I was just asking Astrylian if any unit tests existed yesterday afternoon. I hope to see some unit tests for the modules in the future, too!</p>",
+    "PostedDate": "2009-05-14T05:19:24.633-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "190354",
+    "ThreadId": "56258",
+    "Html": "<p>Rawr.UnitTests doesn't seem to work with Visual Studio C# Express Edition.&nbsp; I suspect this may be because it's tied into features that are only supported with VS Professional Edition and higher.&nbsp; Would it be possible to reimplement the project so that Express Edition users can make use of it?</p>",
+    "PostedDate": "2009-05-14T10:38:37.313-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "190358",
+    "ThreadId": "56258",
+    "Html": "<p>Well crap.&nbsp; I'm not sure how to implement it w/o re-writing the test infrustructure that exists within VS.&nbsp;</p>\r\n<p>I guess the code is all c# so there should be a way to externally setup the tests like we would do with CPPUnit/JUnit/etc.&nbsp; I'll poke around to see what our options are.</p>",
+    "PostedDate": "2009-05-14T10:48:12.243-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "190370",
+    "ThreadId": "56258",
+    "Html": "<p>No, this is fine; VC#Express just doesn't support Unit Test projects. That's not a problem.</p>",
+    "PostedDate": "2009-05-14T11:06:50.77-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "190378",
+    "ThreadId": "56258",
+    "Html": "<p>As long as all developers are using versions of Visual Studio that support Unit Test projects, no, this isn't a problem.&nbsp; However, if there are any who are not using such versions, they will not be able to make use of the project for writing (and running) unit tests.</p>\r\n<p><span id=\"ctl00_PAvs2008Ctrl_lblYourActivationKey\">I have absolutely no experience with it at all but you could probably use NUnit for unit tests and not have this version requirement.</span></p>",
+    "PostedDate": "2009-05-14T11:21:01.387-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "190385",
+    "ThreadId": "56258",
+    "Html": "<p>Well, right, but that's not a problem. It's not like everyone has to be using VS. Those of us with VS can use VS, and use its unit test capabilities, and that doesn't impact the VC#Express users; they just can't run the unit tests.</p>\r\n<p>We could certainly switch to NUnit, but the integration with VS is very nice as is.</p>",
+    "PostedDate": "2009-05-14T11:30:08.297-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "190413",
+    "ThreadId": "56258",
+    "Html": "<p>If all developers are using VS Professional or better (VS Standard does not support unit tests either according to Microsoft), this is a complete non-issue.&nbsp; (And, in that case, I'm sorry for wasting your time.)&nbsp; Then the only people who are affected are &quot;hobbyists&quot; like myself currently and it's not usually that important if we can't run the test scripts.&nbsp; Any patches we devise and submit are processed by you or another developer who can check and ensure that the unit tests pass.</p>\r\n<p>If any developer is using VS Standard or VC#Express, I think this is an issue.&nbsp; It means that they cannot run the unit tests nor can they write any unit tests.&nbsp; This limits the usefulness of the unit tests since those developers cannot run them and verify that changes have not adversely affected other components.&nbsp; This also limits the breadth of the unit tests since those developers cannot write unit tests and pieces of the application may go untested until someone else writes those tests.</p>\r\n<p>(Personally, I'm downloading the 90 day trial of VS Professional now so this will be a non-issue for me.&nbsp; I'm reasonably sure I can put together the money to buy a proper license by the time it expires.)</p>",
+    "PostedDate": "2009-05-14T12:38:54.457-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "190424",
+    "ThreadId": "56258",
+    "Html": "<p>That's exactly the point. There never have been unit tests until now. Now there are. That doesn't negatively impact anyone, even the VC#Express users, it just doesn't positively impact everyone.&nbsp;</p>",
+    "PostedDate": "2009-05-14T13:08:40.883-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "190447",
+    "ThreadId": "56258",
+    "Html": "<p>I'm still very skeptical what you can actually test model-wise. It's not like there is some gold standard somewhere to compare against. The models themselves define the standard.</p>",
+    "PostedDate": "2009-05-14T13:53:11.837-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "190453",
+    "ThreadId": "56258",
+    "Html": "<p>Not sure about testing the models themselves, but the engine code within the models can be tested.&nbsp; I've just cracked open the TankDK stuff to improve and re-write some of the code in there.&nbsp; I'm using the unittests to get a better handle on what's going on and test my changes.&nbsp; I would argue it's not the job of the unittests to ensure that a given item is worth a specific amount, but there are boundary conditions that produce crashes, and code changes that can unexpectedly change results.&nbsp; It's those things that are the best use of the unittests.&nbsp;</p>\r\n<p>I'd argue that the work of data analysis to evaluate the results of a given set of item comparisons.&nbsp; EG: the TankDK model is very Stamina heavy, but I don't think that's accurate based on what I've read from EJ and getting feedback from my own class leaders who both MT progression content for our guild.&nbsp; So I'm gonna tackle the logic of the model, and just use the unittests to ensure that I don't break something.&nbsp;</p>\r\n<p>Hell, I could do a whole QA plan for the project but that seems a bit excessive at this point. ;)</p>",
+    "PostedDate": "2009-05-14T14:20:53.78-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "190454",
+    "ThreadId": "56258",
+    "Html": "<p>From a unit testing perspective, I'm not sure how you would check the entire model.&nbsp; However, you can easily write unit tests for each ability or to ensure that a given buff or option yields the proper results.</p>\r\n<p>An example of where unit tests would be useful is: The DPSDK model hard-codes the effects of the Sigils it currently handles.&nbsp; Patch 2863 (which is partially obsoleted and in the process of being rerolled) would have replaced these hard-coded numbers with the new statistics defined for the Sigil effects.&nbsp; Here, unit tests could be used to ensure that despite the change to the ability code, the numbers for each affected ability would remain the same.</p>",
+    "PostedDate": "2009-05-14T14:22:09.767-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "190471",
+    "ThreadId": "56258",
+    "Html": "<p>The DPSDK model needs to get updated... heheh... Last night, I checked in code to parse all of the sigils and have unittests that they are returning stats that I read as being correct.&nbsp; Someone needs to validate the work, but yeah.&nbsp; No more hard-coding sigils!&nbsp; heheh.</p>",
+    "PostedDate": "2009-05-14T14:57:30.627-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "190473",
+    "ThreadId": "56258",
+    "Html": "<p>(This is off-topic and maybe it should go to another thread.)&nbsp; I'll try to verify tomorrow that revision 33928 looks like it's working as expected.&nbsp; (Raid night tonight so I won't have much coding time.)&nbsp; I have a question about how you implemented some of the trinkets but I'll contact you directly about that.</p>",
+    "PostedDate": "2009-05-14T15:05:01.773-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "190474",
+    "ThreadId": "56258",
+    "Html": "<p>While these tests could be used to validate calculation results, I think their primary purpose (in this case) should be to ensure that changes made in one section of the application do not unintentionally affect the operations of another section.</p>",
+    "PostedDate": "2009-05-14T15:06:30.09-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "190490",
+    "ThreadId": "56258",
+    "Html": "<p>Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll is not free. It's not part of .NET either. &nbsp;It's licensed as part of the Visual Studio product - so MonoDevelop, #Development and Express users aren't licensed to use this assembly at all.</p>\r\n<p>I'd greatly appreciate if we used NUnit instead, since I don't use VS.</p>",
+    "PostedDate": "2009-05-14T16:35:03.443-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "192976",
+    "ThreadId": "56258",
+    "Html": "<p>The UnitTests Module is set to compile against .NET 3.5, while the other projects are .NET 2.0.&nbsp; With a project this size, I'm not entirely convinced there won't be integration issues, so should we start setting the projects to .NET 3.5, or the UnitTests to 2.0?</p>\r\n<p>[edit]</p>\r\n<p>- I'm also a big fan of NUnit over the VS tests.&nbsp; I just prefer the integration with ReSharper.</p>\r\n<p>- if we're going to have unit tests, we should talk about that Project/File structure.&nbsp; Before that project starts to grow, lets decide to create folders for each project in the UnitTest module, or decide to have each project create a separate Tests project for each main project (Rawr.Rogue.Tests, Rawr.Base.Tests, Rawr.Tests, etc).</p>\r\n<p>I'd prefer separate test projects for each module, since its easier to turn off module compilations than it is to turn off failing tests &amp; comment out broken modules.&nbsp;</p>",
+    "PostedDate": "2009-05-21T15:34:41.2-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "192999",
+    "ThreadId": "56258",
+    "Html": "<p>&quot;The UnitTests Module is set to compile against .NET 3.5, while the other projects are .NET 2.0.&nbsp; With a project this size, I'm not entirely convinced there won't be integration issues, so should we start setting the projects to .NET 3.5, or the UnitTests to 2.0?&quot;</p>\r\n<p>Given the description of the project on the main page, I didn't notice that the modules were building against 2.0 - I would argue all the projects should be updated to 3.5 since that's what advertised, unless there is a specific reason to be backwards compatible w/ potentially broken implementations of 3.5 for non-windows platforms.</p>\r\n<p>The discussion of Structure vs. System are separate discussions.&nbsp; I use VS tests because it was handy and I'd started using it at work to validate my test tools.&nbsp; If it's really an issue, we can investigate the use of NUnit.&nbsp; I haven't used it and I don't know how much work we're really talking about to make the transition.&nbsp; Also, taking a quick peek, it looks like NUnit 2.5 doesn't work for Mono folks, so do we need to stick w/ 2.4.8?</p>\r\n<p><br>RE: Structure of the tests:&nbsp; Astrylian and I had discussed it initially, and a single separate Unittest module seemed to make the most sense at the time.&nbsp; Certainly existing files and such can be moved around in the SVN to accomodate a more cohesive structure within that project.</p>",
+    "PostedDate": "2009-05-21T16:11:16.983-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "193044",
+    "ThreadId": "56258",
+    "Html": "<p>What do you mean 'advertised'? Rawr is entirely 2.0 Framework currently, and we intend to stay that way, until the (long term) switch to Silverlight.</p>",
+    "PostedDate": "2009-05-21T20:07:10.353-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "193088",
+    "ThreadId": "56258",
+    "Html": "<p>at the top of the discussions page, in the list of common items, one of the items says to get the latest from &quot;Microsoft (3.5SP1)<span style=\"font-size:12pt\">&quot;</span></p>",
+    "PostedDate": "2009-05-22T00:09:49.547-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "193341",
+    "ThreadId": "56258",
+    "Html": "<p>Unless I am mistaken doesn't it not matter if unit test code is compiled in 3.5 or not? Since it is loading in the dlls/exes that are already compiled with 2.0.</p>\r\n<p>What is the point the point of switching to 3.5 and breaking compatibility for some people, unless there is some new very noteworthy feature of it we want. Just because we suggest people use 3.5 doesn't mean they do. Hell how many questions do we get from people who don't have .NET installed at all. That will just magnify more if we start requiring 3.5. What do we gain for going to 3.5? Nothing substantial that I know of.</p>",
+    "PostedDate": "2009-05-22T12:08:55.933-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "193351",
+    "ThreadId": "56258",
+    "Html": "<p>I'm hearing a lot of different opinions on what constitutes as a unit test (as opposed to a more rigorous test). &nbsp;Can we have a dialog of outlining what unit testing is and isn't?</p>\r\n<p>At my workplace at least, the definition of a unit test is &quot;Giving input with a known output to the program to ensure the correct output is produced&quot;. &nbsp;A great example is the warrior ability, Bloodthirst. &nbsp;This ability does a set amount of raw damage (AP/2, unmitigated). &nbsp;We can create unit tests for a character by passing in a set AP, and a set boss armor of 0, and ensure it gives us the correct results. &nbsp;Then we can take it a step further, and use a warrior to Bloodthirst a dummy. &nbsp;Pass in that warriors AP and Armor Pen, make sure the bosses armor is configured, and ensure that our code reflects what happened in the game (this is possible because the value of a BT never changes, so long as your stats don't change).</p>\r\n<p>You'd put the value of the actual BT, and the stats used to get that value, into a resource file. &nbsp;The Unit Test reads from the resource file, creates our BT object (using the same code that the DPSWarr module uses, NOT copy+pasted), passes in the stats, and ensures that the output matches the &quot;known output&quot;.</p>\r\n<p>At my workplace, unit testing does NOT ensure that your module doesn't affect other parts of the code; it's the opposite of what unit testing is. &nbsp;You take a very small part of the code and make sure it works the way the game says it should.</p>\r\n<p>Anyway, I know that different places deal with unit testing differently; can we maybe have some guidelines written up and shared with all the developers?</p>",
+    "PostedDate": "2009-05-22T12:42:04.873-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "193516",
+    "ThreadId": "56258",
+    "Html": "<p>My few cents: I'm using VC#Express which refuses load the unit tests or show me the code created in there, so don't expect any unit tests for Tree anytime soon, although I would love to have it. (Or can someone find a hack to convince VC#Express that that project is just a normal c# file, so I can atleast compile and run a subset of this). Having to do some semi-major refactoring in order to support adaptive rotations, without a test bench is scary.</p>\r\n<p>In terms of tests, I can think of a few types that can be useful (granted mostly not unit tests, but still useful for regression checking):</p>\r\n<p>Unit Testing all the formulas/conversions in Rawr.Base, especially some of the things related to SpecialEffect, where there are complex rules like, treat negative values like ppm, treat 0 as infinite fight duration etc.</p>\r\n<p>The compare to an ingame event/&quot;combat log parse&quot; type of test that ebs2002 is talking about. If we can get an elegant way to load wws parse and compare those numbers to rawr generated numbers (allowing some modelling tolerance), would be VERY useful in getting confidence that we are staying in touch with the real game numbers. (Maybe a bit over complex in this form, but some subset should be practical).</p>\r\n<p>Compare a list of character profiles against their previously generated numbers/results (new 80, heroic geared, naxx geared, basic uldaur, BiS). This will help check models while doing refactoring, where you are not planning to make changes and might even pickup some errors in common code, if your change to a common block suddenly breaks a bunch of other models that use the common code differently. Since the models are continuously evolving replacing the expected output with the new &quot;standard&quot;, must be a simple process. A command line option, saving the CharacterDisplayCalculationValues dictonary to an output file, plus a few scripts maybe?</p>\r\n<p>A bunch of &quot;relative stats value&quot; tests: Relative stats must always be positive (and be constrained within a maximum range).&nbsp; In fact this should hold for basically all items or buffs. The fact that a talent makes an ability available (for example starfall) shouldn't neccesarily force me to use it, or that a buff makes a debuff redundant (trauma for mangle) shouldn't prevent me from completely using that ability. Frequently issues or discussion topics are created due to this apparent negative effects, frequently in conjunction to optimal rotation selection. Thus standard tests to try to catch them might be useful. But I understand that some of this only happens on certain boundary conditions of the search space and to be sure you catch them all isn't going to be possible. Haste can make it possible to cast faster and go oom faster, but it still shouldn't force you to go down that route. The only things that I can think of that can have negative results are some glyphs, but that is due to a user choice, for example A tree druid chooses to sacrifice his big slow heal to have a fast heal option, this might in fact be negative in HPS measures, but the choice was made for emergency burst healing reasons. Or choosing that Moonfire doesn't have a direct damage part, but rather a stronger dot (This in fact turns out to be positive for durations more than dot duration and we're probably not interested in anything shorter than the duration in any case). To implement this type of test, using the list of character profiles and exported versions some of their produced lists, might be the best starting point.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-05-23T05:09:06.343-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "193535",
+    "ThreadId": "56258",
+    "Html": "<p><em>&quot;What do we gain for going to 3.5? Nothing substantial that I know of.&quot;</em></p>\r\n<p>Nothing from 3.5, but Linq, expression trees, and extension methods would be cool.</p>\r\n<p>\r\n<hr>\r\n</p>\r\n<p><em>&quot;At my workplace, unit testing does NOT ensure that your module doesn't affect other parts of the code; it's the opposite of what unit testing is. &nbsp;You take a very small part of the code and make sure it works the way the game says it should.&quot;</em></p>\r\n<p>Looking back, my post was poorly worded. Individually, this is certainly how unit tests work. And if you're certain that a change is isolated from other execution paths, then there's probably no reason to run other unit tests before committing it. However, if a change is made to shared code, it would be wise to run the whole suite of unit tests prior to a commit just to be sure that other methods that may rely on the body of code you changed are still performing as expected.</p>",
+    "PostedDate": "2009-05-23T07:37:39.47-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "193577",
+    "ThreadId": "56258",
+    "Html": "<p>Wildebees:&nbsp; I agree w/ your assessment of type of tests/evaluators that should be integrated. They all sound like great ideas.</p>\r\n<p>I also hear those people who are using non-VS Team or Professional editions can't even see the unittests thus far so wouldn't know where to start if they were to use something else.&nbsp;</p>\r\n<p>So I would say, the next question would be a matter of documentation:&nbsp;</p>\r\n<ol>\r\n<li>Are there any design docs to help guide the development of the more complex tests?</li>\r\n<li>Where would the be if they exist? and if not, Where should they go?</li>\r\n<li>If they don't exist, I've to test doc templates/qa &amp; test plans and all that I can whip up pretty quick since, well, that's what I do.&nbsp; </li>\r\n</ol>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-05-23T14:00:34.61-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "193702",
+    "ThreadId": "56258",
+    "Html": "<p>Also, is there any way to simplify the process of creating Character objects? It seems a bit tedious having to manually pass all the required parameters when writing tests. Perhaps a constructor that takes a single XmlDocument parameter? Or even a decorator class to wrap the XmlDocument returned from WoWArmory, if you wanted to leave the XML processing out of the Character class.</p>\r\n<p>Edit: Nevermind, found the static method to create a character from an XML file.</p>",
+    "PostedDate": "2009-05-24T10:50:18.51-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195318",
+    "ThreadId": "56258",
+    "Html": "<p>According to the comment in the bottom of the Stat.cs file:</p>\r\n<p>&nbsp;&nbsp;&nbsp; public static class Extensions {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // requires .net 3.5 public static string LongName(this PropertyInfo info)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // allows it to be called like<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //&nbsp;&nbsp; info.LongName()<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // instead of<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //&nbsp;&nbsp; Extensions.LongName(info)</p>\r\n<p>&nbsp;</p>\r\n<p>So according to that comment, it looks like 3.5 is required, and that's what we get from it.&nbsp; Only 1 reference I found while working on something else.</p>",
+    "PostedDate": "2009-05-28T10:54:44.69-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195324",
+    "ThreadId": "56258",
+    "Html": "<p>That was originally designed as extension methods, and because that required 3.5, redesigned to just be a function library class; it doesn't require 3.5 anymore.</p>",
+    "PostedDate": "2009-05-28T11:08:50.977-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195331",
+    "ThreadId": "56258",
+    "Html": "<p>There's nothing preventing individual modules from targeting 3.5, correct?</p>",
+    "PostedDate": "2009-05-28T11:15:50.28-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195361",
+    "ThreadId": "56258",
+    "Html": "<p>On relative stat values always being positive. While in general this should be true, it is not always the case. There are times that gaining a stat will reduce on of stats. The easiest example to show is with Protection Paladin. They have Holy Shield, which does damage everytime you block. Say if you have a character who is &quot;block capped&quot;, meaning they have a 0% chance to be normally hit, so it the attack isn't avoided it is then blocked. Say that character gains 1% chance to dodge, he nows has 1% less chance to block and as a results Holy Shield will do less damage. There is no way to get around this.</p>\r\n<p>Another more complex example can be seen with Healadin. When you gain more mana it will model casting some amount of Holy Lights instead of Flash of Light, and in turn your average spell cast time increases. Which means you will get slightly less benefit from your trinket procs (since they will have a long proc interval), which in turn will reduce how much your burst healing is doing.</p>\r\n<p>I don't think these examples are behaving correctly.</p>",
+    "PostedDate": "2009-05-28T12:01:02.323-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195384",
+    "ThreadId": "56258",
+    "Html": "<p>I think we need to be careful here.&nbsp; This topic is fast becoming 3 topics, what constitutes Unit Testing, functional (aka customer) tests, and .NET 3.5.&nbsp; I don't want any of these conversations to get lost in the middle of the other 2.&nbsp; So, with that in mind should we close this topic and make 3 others?</p>\r\n<p>On .net 3.5:</p>\r\n<ul>\r\n<li>I use Extension methods for lots of business rules.&nbsp; For example, all the &quot;value &lt; 0 ? 0 : value&quot;, &quot;value &gt; 1 ? 1 : value&quot; stuff all over the place.&nbsp; I can replace that with &quot;public static float MinOfZero(this float value) { return value &lt; 0 ? 0 : value; }&quot;.&nbsp; Then my code goes from multiple lines of if-then-else to &quot;CalcFoo().MinOfZero().MaxOfOne()&quot;</li>\r\n<li>Since the UnitTest project is .NET 3.5, the entire project uses .NET 3.5 compiler.&nbsp; It just sets the Target Framework to .NET 2.0 for all the projects.</li>\r\n<li>While I really would prefer to go to .NET 3.5, Astrylian probably has enough on his plate that I don't want to add more to it.&nbsp; So I can disagree and commit here, and stick with .NET2.0.</li>\r\n</ul>\r\n<p>&nbsp;</p>\r\n<p>On Unit Testing (i.e.&nbsp; testing a single method, not functional testing)</p>\r\n<ul>\r\n<li>There is a lot of good code in this project, and I'm learning a lot, but there is also a lot of code that does not lend itself to unit testing.&nbsp; Unit Testing is one of those things where its great when you're doing it properly, but tests atrophy quickly and become a drag if you're not doing it correctly.&nbsp; The basis of a unit test is the S.O.L.I.D. principals.&nbsp; If we look at the first one <span style=\"text-decoration:underline\">S</span>ingle Responsibility (e.g. &quot;do one thing, do it well&quot;), how many of our methods fit on one page?&nbsp; There's a school of thought that says all <em>classes</em> should fit on one page.&nbsp; If we're going to do this effectively, we need to go in with our eyes open.</li>\r\n</ul>\r\n<p>I dont' think I want to get into functional tests yet. =)</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-05-28T12:54:50.197-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195422",
+    "ThreadId": "56258",
+    "Html": "<p><span style=\"color:#30332d\"><span style=\"font-style:italic\">There's nothing preventing individual modules from targeting 3.5, correct?</span></span></p>\r\n<p><span style=\"color:#30332d\"><span style=\"font-style:italic\">I use Extension methods for lots of business rules</span></span></p>\r\n<p><span style=\"color:#30332d\"><span style=\"font-weight:bold\">Fix this. ASAP.</span></span></p>\r\n<p>&nbsp;</p>\r\n<p><span style=\"color:#30332d\"><span style=\"font-weight:bold;font-size:18pt\">VERY IMPORTANT: Immediately, all developers on Rawr, ensure *all* of your code that is checked in requires ONLY .NET 2.0, <span style=\"text-decoration:underline\">NOT 3.0 or 3.5</span>.</span></span></p>",
+    "PostedDate": "2009-05-28T14:02:58.193-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "195608",
+    "ThreadId": "56258",
+    "Html": "<p><span style=\"color:#30332d\"><span style=\"font-style:italic\">I use Extension methods for lots of business rules</span></span></p>\r\n<p><span style=\"color:#30332d\"></span><br>I should have said this kind of thing is one of my common uses of extension methods.&nbsp; but I haven't used any extension methods in Rawr since we're on .net 2.0.</p>",
+    "PostedDate": "2009-05-29T02:07:34.53-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

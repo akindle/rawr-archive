@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "248817",
+    "ThreadId": "72850",
+    "Html": "<p>I note that with lots of set bonus buffs using special effects large numbers are showing up in the model buffs section. There is nothing obvious to filter on in the stats object as the special effect typically contains a relevant stat. However the set bonus is for a completely different class. Is there a method whereby we could modify the buff check code to filter out buffs for set bonuses where the set bonus belongs to a class that is not relevant for the current model.</p>\r\n<p>I'm aware that all the set bonus options are greyed out and so this is a cosmetic issue however it is a niggle.</p>",
+    "PostedDate": "2009-10-22T17:07:19.197-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "248822",
+    "ThreadId": "72850",
+    "Html": "<p>I definitely see the point. Joth, I think you setup the buff categories; can you add a Set Bonuses one?</p>\r\n<p>Side note, I'd like to start removing a bunch of the BC buffs and set bonuses.</p>",
+    "PostedDate": "2009-10-22T17:27:58.113-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "248825",
+    "ThreadId": "72850",
+    "Html": "<p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre>defaultBuffs.Add(<span style=\"color:Blue\">new</span> Buff()<br>{<br>    Name = <span style=\"color:#A31515\">&quot;Malorne Harness 2 Piece Bonus&quot;</span>,<br>    Group = <span style=\"color:#A31515\">&quot;Set Bonuses&quot;</span>,<br>    ConflictingBuffs = <span style=\"color:Blue\">new</span> List&lt;<span style=\"color:Blue\">string</span>&gt;(<span style=\"color:Blue\">new</span> <span style=\"color:Blue\">string</span>[] { }),<br>    Stats = { BloodlustProc = 0.8f },<br>    SetName = <span style=\"color:#A31515\">&quot;Malorne Harness&quot;</span>,<br>    SetThreshold = 2<br>});<br></pre>\r\n</div>\r\n</p>\r\n<p>The Buff Group is already being used, and most models (that are attempting to filter it) are dropping off specific ones by name or stating that specific ones are the only ones that are ok (which tends to be the shorter list).</p>\r\n<p>If you aren't already, override IsBuffRelevant like this (set your own info as needed):</p>\r\n<p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre><span style=\"color:Blue\">public</span> <span style=\"color:Blue\">override</span> <span style=\"color:Blue\">bool</span> IsBuffRelevant(Buff buff) {<br>    <span style=\"color:Blue\">string</span> name = buff.Name;<br>    <span style=\"color:Green\">// Force some buffs to active</span><br>    <span style=\"color:Blue\">if</span> (name.Contains(<span style=\"color:#A31515\">&quot;Potion of Wild Magic&quot;</span>)<br>        || name.Contains(<span style=\"color:#A31515\">&quot;Insane Strength Potion&quot;</span>)<br>    ) {<br>        <span style=\"color:Blue\">return</span> <span style=\"color:Blue\">true</span>;<br>    }<br>    <span style=\"color:Green\">// Force some buffs to go away</span><br>    <span style=\"color:Blue\">else</span> <span style=\"color:Blue\">if</span> (name.Contains(<span style=\"color:#A31515\">&quot;Malorne&quot;</span>)<br>         || name.Contains(<span style=\"color:#A31515\">&quot;Duskweaver&quot;</span>)<br>         || name.Contains(<span style=\"color:#A31515\">&quot;Primalstrike&quot;</span>)<br>         || name.Contains(<span style=\"color:#A31515\">&quot;Clefthoof&quot;</span>)<br>         || name.Contains(<span style=\"color:#A31515\">&quot;Dreamwalker&quot;</span>)<br>         || name.Contains(<span style=\"color:#A31515\">&quot;DK DPS 4T10&quot;</span>)<br>         || name.Contains(<span style=\"color:#A31515\">&quot;Skyshatter&quot;</span>)<br>    ) {<br>        <span style=\"color:Blue\">return</span> <span style=\"color:Blue\">false</span>;<br>    }<br>    <span style=\"color:Blue\">bool</span> haswantedStats = HasWantedStats(buff.Stats);<br>    <span style=\"color:Blue\">bool</span> hassurvStats = HasSurvivabilityStats(buff.Stats);<br>    <span style=\"color:Blue\">bool</span> hasbadstats = HasIgnoreStats(buff.Stats);<br>    <span style=\"color:Blue\">bool</span> retVal = haswantedStats || (hassurvStats &amp;&amp; !hasbadstats);<br>    <span style=\"color:Blue\">return</span> retVal;<br>}<br></pre>\r\n</div>\r\n</p>",
+    "PostedDate": "2009-10-22T17:39:31.223-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "248828",
+    "ThreadId": "72850",
+    "Html": "<p>Although all this being said, we would be better served to add a new variable to the Buff class storing Class limitations. Use the CharacterClass enum and add a &quot;any&quot; flag for any other buffs or allow it to be null/not set if there's not a limit set. I would also like to look at setting Buff id's so we can compare via those instead of strings (for performance).</p>",
+    "PostedDate": "2009-10-22T17:59:45.293-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "248829",
+    "ThreadId": "72850",
+    "Html": "<p>I've got a modification to the Buff class that I think can resolve this issue, someone needs to put it into the main IsBuffRelevant.</p>\r\n<p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre>defaultBuffs.Add(<span style=\"color:Blue\">new</span> Buff()<br>{<br>    Name = <span style=\"color:#A31515\">&quot;Malorne Harness 2 Piece Bonus&quot;</span>,<br>    Group = <span style=\"color:#A31515\">&quot;Set Bonuses&quot;</span>,<br>    ConflictingBuffs = <span style=\"color:Blue\">new</span> List&lt;<span style=\"color:Blue\">string</span>&gt;(<span style=\"color:Blue\">new</span> <span style=\"color:Blue\">string</span>[] { }),<br>    Stats = { BloodlustProc = 0.8f },<br>    SetName = <span style=\"color:#A31515\">&quot;Malorne Harness&quot;</span>,<br>    SetThreshold = 2,<br>    AllowedClasses = <span style=\"color:Blue\">new</span> List&lt;<span style=\"color:#008080\">CharacterClass</span>&gt;() { <span style=\"color:#008080\">CharacterClass</span>.Druid },<br>});<br></pre>\r\n</div>\r\nTo set the class restriction use the above line of code in the Buff. If AllowedClasses is not set during Buff creation, it returns a list of all classes (meaning any). This way if there's a set that can be used by both Warriors and Druids, you just set the list to those two.</p>",
+    "PostedDate": "2009-10-22T18:18:15.187-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "248842",
+    "ThreadId": "72850",
+    "Html": "<p>My brother is interfering with my ability to submit right now but I have updated the Set Bonuses list to sort things (they got a little random over time in that list) and added Class restrictions to all the Set Bonuses. Now to add the check in IsBuffRelevant and they will all filter at least by class (sorry to Healadin stuff showing up in ProtPaladin or similar circumstances).</p>\r\n<p>I've also noted all the stuff that is for TBC, would you like me to comment each of those sections out Astry?</p>\r\n<p>Edit: By stuff I mean Set Bonuses from TBC (Professions, Tiers 4,5,6)</p>",
+    "PostedDate": "2009-10-22T20:21:12.963-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

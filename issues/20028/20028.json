@@ -1,0 +1,90 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-03-18T16:57:30.65-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I have performed the Suggested Fix and continue to receive these two errors. If I am posting this message without having performed the Suggested Fix I am aware that I am consuming the Developer(s) time in managing my Issue unnecessarily.\n \n== Error Message ==\n[IsolatedStorage_Init]\nArguments: \nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.51204.0&File=mscorlib.dll&Key=IsolatedStorage_Init\n \n== StackTrace ==\n   at System.IO.IsolatedStorage.IsolatedStorageFile.FetchOrCreateStore(String groupName, String storeName, IsolatedStorageFile isf)\n   at System.IO.IsolatedStorage.IsolatedStorageFile.GetUserStore(String group, String id)\n   at System.IO.IsolatedStorage.IsolatedStorageFile.GetUserStoreForApplication()\n   at Rawr.UI.FileUtils.Delete()\n   at Rawr.UI.LoadScreen.filesLoaded(Object sender, EventArgs e)\n   at Rawr.UI.FileUtils.client_OpenReadCompleted(Object sender, OpenReadCompletedEventArgs e)\n   at System.Net.WebClient.OnOpenReadCompleted(OpenReadCompletedEventArgs e)\n   at System.Net.WebClient.OpenReadOperationCompleted(Object arg)\n \n== These are the Steps that I have tried ==\n[Please fill in steps here]\n \n== Error Message ==\n[IsolatedStorage_Init]\nArguments: \nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.51204.0&File=mscorlib.dll&Key=IsolatedStorage_Init\n \n== StackTrace ==\n   at System.IO.IsolatedStorage.IsolatedStorageFile.FetchOrCreateStore(String groupName, String storeName, IsolatedStorageFile isf)\n   at System.IO.IsolatedStorage.IsolatedStorageFile.GetUserStore(String group, String id)\n   at System.IO.IsolatedStorage.IsolatedStorageFile.GetUserStoreForApplication()\n   at Rawr.UI.LoadScreen.filesLoaded(Object sender, EventArgs e)\n \nThe online version of Rawr accessed at http://elitistjerks.com/rawr.php is the location I go through.\n \nThese problems only appear once I have corrected the memory issue - \"Rawr does not have permission to create a Storage Cache which is necessary to run the program.\" (go into Silverlight give permission).\n \nI have uses Rawr for quite a while now, and am getting frustrated to no end at this constant recurring problem, let alone trying to get the offline version to work. (Another post incoming!)",
+    "LastUpdatedDate": "2013-05-16T05:18:39.757-07:00",
+    "PlannedForRelease": "Rawr 4.0.19 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-02-17T14:38:58.523-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] Cannot Launch",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 20028
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "It looks like it isn't actually getting permission or it's not able to communicate with the server to get the DefaultDataFiles.zip to run with Rawr. Try taking the WPF version's DefaultDataFiles.zip and putting it into your Silverlight cache (google how to find it).",
+      "PostedDate": "2011-02-17T18:13:43.58-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-02-17T18:14:08.34-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I honestly have no clue what this means.  And my other post about the offline version is no where to be found, now.",
+      "PostedDate": "2011-02-17T23:49:17.09-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Your other post about the offline version has been closed, and hence won't show up unless you have the \"All Issues\" box checked in the issue tracker rather than the \"Open Issues\".\r\n\r\nFor this error:  Please check your Silverlight installation - you might have opted to disable the isolated storage. \r\n\r\nYou can re-enable it by right-clicking on any Silverlight app while it is still loading and click on [Silverlight], then navigate to the right-most pane and make sure Enable application storage is checked (the check box down the bottom).",
+      "PostedDate": "2011-02-18T00:26:32.45-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Never mind on the second part of my comment.  Just realised that you have already done so.",
+      "PostedDate": "2011-02-18T00:28:46.37-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I am ok with the offline version, although the update cache says NYI.  \r\n\r\nI still can't get the online version to work.  I \"adjust\" the silverlight memory permission thing.  Yet I still get the other two errors and the load freezing.  I let it attempt to load overnight so I know it is frozen.  Frozen at \"Loading Application...\" and below \"Decompressing PetTalents.xml...\"\r\n\r\nJothay suggested a \"fix\" but I have not clue what s/he means.  I am clearly not advanced enough to understand that.",
+      "PostedDate": "2011-02-24T14:23:18.903-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sol, I'm certain that copying the xml cache files from WPF (the downloadable version of Rawr) and putting them into your Silverlight cache will fix the issue, but if you can't find the folder to paste the files into then we can't help you. It's in C:\\users\\username\\AppData\\LocalLow\\Microsoft\\Silverlight\\is\\somegarbagename\\somegarbagename\\somenumber\\somegarbagename\\s\\somegarbagename\\f\\",
+      "PostedDate": "2011-02-24T19:45:45.957-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-18T16:57:30.65-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:25:54.617-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:39.757-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

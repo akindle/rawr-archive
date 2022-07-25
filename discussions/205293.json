@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "419382",
+    "ThreadId": "205293",
+    "Html": "<p>(Sorry wrong list, moved to Issue Tracker)</p>\r\n<p>Since the latest version, <strong>Val'anyr, Hammer of Ancient Kings, </strong> has disappeared from the Main hand slot.<br>I loaded an older version 2.3.10 and it was in the item cache by default, in 2.3.12 it is not and I can't get it in.</p>\r\n<p>Any get upgrades from armory or wow do not bring it back in.<br> Adding the its item-id 46017 shows it in the add item, but it still doesn't show up in the drop down.<br><br> Am I doing something wrong?<br><br> Cheers</p>",
+    "PostedDate": "2010-03-17T12:43:18.143-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419400",
+    "ThreadId": "205293",
+    "Html": "<p>Post this to the&nbsp;<a href=\"http://rawr.codeplex.com/WorkItem/List.aspx\">Issue Tracker</a>&nbsp;please.</p>",
+    "PostedDate": "2010-03-17T13:20:28.267-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419630",
+    "ThreadId": "205293",
+    "Html": "<p>The problem isn't that Val'Anyr isn't in the item cache. It clearly is in there, just load Rawr.Tree and you'll find the hammer there.</p>\r\n<p><br>The problem is that the item relevancy checks are deeming the&nbsp;special effect&nbsp;as not relevant, and any item which has a&nbsp;special effect&nbsp;that isn't relevant gets filtered out, regardless of how good the rest of the item is.&nbsp; This is a bit of a flawed approach towards item relevancy that was also present in Rawr.Retribution (but has been reworked entirely). Simple solution would be to add the proc effect to the list of relevant stats.&nbsp; A better solution is likely to rework relevancy checks since healadin is currently removing some other items as well simply because the item has a proc that isn't being modelled (yet). I'm planning an update on the relevancy checks thread soon (tm) about my findings/observations about the relevancy thing.</p>",
+    "PostedDate": "2010-03-18T02:51:52.577-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419820",
+    "ThreadId": "205293",
+    "Html": "<p>A bit of background... I reworked relevancy in 2.3.12 to more closely match Rawr.ProtPaladin's relevancy checking, which in turn was provided by Jothay (r37100). &nbsp;It had to be tweaked a bit to remove items such as Abyssal Rune (which has a relevant stat, haste, but not a relevant proc, DamageSpellCast), and I've set it up so it shows things like stamina while not considering that particular stat relevant. &nbsp;All in all, though, it's the same idea.</p>\r\n<p>I'm not currently aware of any items missing from Rawr.Healadin, but I've also not fully checked for missing items, as is evident by the &quot;missing&quot; Val'anyr. &nbsp;If there are any other items missing from Rawr.Healadin, please post an issue and I'll add them. :)</p>",
+    "PostedDate": "2010-03-18T09:02:48.467-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "419830",
+    "ThreadId": "205293",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>OReubens wrote:</strong><br>\r\n<p>...the relevancy checks thread...</p>\r\n</blockquote>\r\n<p>Oh hum, I missed that thread somehow. &nbsp;Guess I have a bit of reading to do on lunch. :)</p>",
+    "PostedDate": "2010-03-18T09:11:47.937-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "422025",
+    "ThreadId": "205293",
+    "Html": "<p>Working on the post text atm, but still need to clean up the code in Rawr.ret as that code still has both the old and new relevancy checking (defaulted to new) and it's currently looking a bit messy.</p>",
+    "PostedDate": "2010-03-22T02:23:11.03-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

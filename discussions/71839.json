@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "245142",
+    "ThreadId": "71839",
+    "Html": "<p>So, I think it's time to worry about the white crit cap (at least for ferals) as it's practically possible at this point to gear/gem in ways where you'll see problems with various crit soft-caps.&nbsp; <br><br>I'm not sure if it's currenlty being computed; there's no indication that it's behaving properly (without looking at the code).&nbsp; It's very possible to select items with crit, gem for agi/crit where possible, and come up with 75% crit and 2% miss with iLvl-258 gear.&nbsp; Which means, you should be missing white hits (because of 24% glances that can't be pushed off the combat table by crit, then 2% miss, meaning 1% crit on white attacks is wasted).&nbsp; From what I can tell, this isn't showing up in the RSVs/gem values as a direct indicator-- hit rating and expertise don't get assigned proportionally more value and crit less.&nbsp; It also looks like the stats are adding in the average agility of items proccing (Death's Choice, for instance) instead of something more complex. <br><br>Complicating things here is the same thing that happened with ArP trinkets: you can be over this soft-cap during a DC proc, and under otherwise.&nbsp; Mongoose (if your weapon serves double duty) can complicate this, as can double-Death's Choice trinkets.</p>\r\n<p>In addition, you approach the FB crit cap quickly, especially with 4T9. <br><br>This will become an even greater issue in tier 10 gear, as stats continue to increase exponentially.</p>",
+    "PostedDate": "2009-10-13T09:36:23.133-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "245172",
+    "ThreadId": "71839",
+    "Html": "<p>Indeed, this is something I'm going to fix soon, now that it's actually relevant. ArPen gets treated specially, such that it keeps track of the temporary arpen from special effects&nbsp;separately, so that it can properly average it out, including caps. I need to do the same thing for Agi/crit, now that you can reach those caps.</p>\r\n<p>I also found that it wasn't capping white crit at 1-glance-avoid, and fixed that, which will be in for next build.</p>",
+    "PostedDate": "2009-10-13T11:08:50.943-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "245323",
+    "ThreadId": "71839",
+    "Html": "<p>Excellent.&nbsp;&nbsp; I was thinking about this today.&nbsp;&nbsp; I'm fully gemmed for ArPen at the moment and still hit 60% crit with full raid buffs - with no temp buffs, procs or debuffs on the boss.&nbsp;&nbsp;&nbsp; And thats with only 2pcT9 so far.</p>\r\n<p>&nbsp;</p>\r\n<p>Good to know your on it Astrylian :)</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-10-13T16:01:54.2-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

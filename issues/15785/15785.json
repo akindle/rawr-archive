@@ -1,0 +1,140 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtPaladin",
+      "DisplayName": "Rawr.ProtPaladin"
+    },
+    "ClosedComment": "Closing these issues as they are basically invalidated by Cataclysm mechanic changes",
+    "ClosedDate": "2010-11-15T16:13:40.777-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I'm using Rawr 2.3.5.\n \n1) There is potentially a bug in the calculation of Survival Point (= Effective Health) and TankPoints (without threat) in the ProtPaladin module. For example : the module returns 362 268 TankPoints (without threat) and 186 399 Survival Points for a paladin having 48 689 health, 85,38% Total mitigation and 71,59% Guaranteed reduction, in the place of 333 030 TankPoints (without threat)  and 171 137 Survival Points when calculated by myself following the formulas : TankPoints = (1/ (100 - Total mitigation) )x 100 x Health ; Survival Points = (1/ (100 - Guaranteed reduction) ) x 100 x Health. This error is confirmed when checking at all the palatanks in my guild. On the opposite, the ProtWarrior module returns accurate results, identical or almost to my own calculations for all charachters I tested. The Bear module returns even closer results to mine regarding Survival Points, but it does not seem to calculate TankPoints at all (I think it could be implemented somehow). \n \nIf the error with the ProtPaladin module is not a real bug, but that it takes into account Ardent Defender or something like this, then it should be better to implement this only as an option (may be disable by default), as it is for Holy Shield. Anyway such a thing has to be verbose, not that discrete.\n \n2) The ProtWarrior suffers the same lack of verbosity about the calculation of Shield Block, that is no more a panic button for the majority of warriors, but a cyclic tech. At present time, I do not know if Rawr does count Shield Block or not. It should do it, and not discretely but verbosely with and option for that, and I recommend looking at the excellent addon TankPoints by Whitetooth that offers to configure the Shield Block delay (2s after being up by default in this addon). I have the same complaint about the 4 pieces bonus for T9 & T10. I read somewhere around here that they are not taken into account because they are panic button or too much circumstancial. That argument is good for trash ! May be some tanks, sometimes, use it as panic button, that's right. But in most cases, it's purely cyclic, as we warriors have already 2 very powerful survival tech on a 2m CD each (when enhanced), plus another interesting one, Enraged Regeneration, on a 3m CD. No tank needs a panic button every 30s in a normal situation of tanking, or there is a severe matter among healers ! No, those are mainly cyclic techs. We definitely need to have all those taken into account by Rawr, with checkboxes to enable or disable them to satisfy everybody.\n \n3) I deeply regret that the Demoralizing Shout and aliases are not present in Rawr, even approximately, although they are powerfull techs. I saw a blue post about Demo Shout declaring firmly it was a significative debuff even on worldbosses. For my part, I have it enhanced in one of my 2 prot templates, alike Ciderhelm from Tankspot. I do not doubt it makes some difference when the healers are under stress.\n \n4) I find the Survival Cap option usefull in the Bear module, and I would be elated to have it in the ProtWar modules and other tank modules. That said, it's less a concern than the other points.\n \nAnyway, I salute all the Rawr staff for your precious work.",
+    "LastUpdatedDate": "2013-05-16T05:22:31.387-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-01-08T07:07:07.033-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtPaladin|ProtWarrior] Potential bug and suggestions",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 15785
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "1) You can confirm your findings by going into the talents and removing the Ardent Defender talents, and then comparing the results to your formula.\r\n\r\nHowever, Holy Shield is not always guaranteed to be up (think tanking multiple adds on Anub'arak), therefore it was made an option.  Ardent Defender is always guaranteed to reduce the damage you take when you fall below 35% health, therefore it is not an option, and as long as you are spec'd into it, ProtPaladin will calculate it.\r\n\r\nI agree this should be stated somewhere.  I'll add it to the documentation.",
+      "PostedDate": "2010-01-08T08:40:49.46-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Shield Block is not calculated for Warriors. I have considered it, but as it will require UI changes I have put it off until we swap over to Rawr3. I may consider integrating set bonuses, but they are often used on reaction rather on a strict timer--as such, averaging them in seems a bit 'dangerous' numerically speaking.\r\n\r\nIn regard to Demo Shout, there have been no conclusive test results since Naxx as to the exact DPS reduction or mechanics of such abilities. Although I would love to implement it for the sake of accuracy, I simply do not have enough data to do so in any proper fashion. I looked around for data a month or two ago and everything I found was significantly outdated.\r\n\r\nIn regard to the weighting methods. The survival soft-cap mechanic will most likely be integrated for Rawr3.",
+      "PostedDate": "2010-01-08T09:00:26.14-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Shield Block could be set with a default of 'On every Cd' with an option to 'Save for Known Big Hits' which we could tie to the BossHandler for reading a known large hit as most of them come on timers and such in DBM.\r\n\r\nDemo Shout is already in the program but the tanking models need to add the stat it uses to relevant Buffs. I'm doing this in DPSWarr so you could probably copy the basic code from there. The data from before should still be valid as that stuff hasn't changed that I'm aware of. It still reduces the Bosses' attack power the same way and reduces the size of their hits.",
+      "PostedDate": "2010-01-08T09:18:09.683-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Continuing on the Shield Block train, how are we handling Last Stand & Shield Wall?",
+      "PostedDate": "2010-01-08T09:21:17.73-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Last Stand and Shield Wall are ignored. No reason to average them as they are always used to avoid big hits/enrages. May have a toggle to turn them 'on' if you want to see how much someone will hit you with it active or something, but averaging them serves no purpose other than artificially inflating one's average mitigation.\r\n\r\nIn regard to Demo Shout, the actual impact on boss damage seems to be highly inconsistant and untested, so unless I were to see solid data I would not really be able to implement it to any degree of accuracy. I just presume for the time being that the values input are what players see on a Demo Shout debuffed mob. Although this will technically undervalue Imp Demo Shout, I actually don't advise specing into it as Protection anyway, as Paladins can provide the debuff without sacrificing the 1k+ TPS from Deep Wounds that a Warrior would need to get it.",
+      "PostedDate": "2010-01-08T12:16:24.117-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "On that note, I'm more likely to provide tooltip info on average hits as to what it would be modified by Shield Wall and on the heath tooltip as to what it would be modified by Last Stand, rather than turning the buff on. It serves no real purpose for the goal of gear selection.",
+      "PostedDate": "2010-01-08T12:17:44.813-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-08T14:10:18.647-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You argue that averaging techs that can be used on a almost strict timer as well as casual buffs may be \"dangerous\" numerically speaking. I can understand that point of view. But on the other hand, Rawr is already averaging a lot of things that can receive the same objection : the powerful Ardent Defender for paladins (as roncli noted, it is the very answer to the first point of my post), most trinkets of the game (by default in ProtWar and on an option in ProtPal), and even some buffs like Heroism and some potions. Rawr counts as well buffs that can hardly be 100% up in a real game situation (ex : Ancestral Healing and Inspiration).\r\n\r\nSo I think you could make some general rationalization on that matter. Averaging all those kind of buffs is no more or as well \"dangerous\" numerically speaking as ignoring them all, but it seems a contradiction to average some and to ignore some others. Morover when it's done discretely, by default, escaping from user's own wisdom.\r\n\r\nI suggest to offer all those kind of techs and buffs as options for each kind (at present, it's already the case for the trinkets in the ProtPal module and some buffs like heroism). Ideally, powerfull buffs like Shield Block, but why not also Shield Wall and Last Stand, would receive a customizable timer each along with the checkbox enable/disable. Indeed, it seems legitimate to me that the final user of Rawr could make the choice to enable, disable and configure such things, knowing what he wants, how he plays, how he uses thoses techs, what he expects from Rawr to do. Of course, developers would still decide wether they ignore or average  by default this or that, but the possibility to customize would be present and useful to everyone, especially advanced gamers (but I suppose that Rawr is mainly adressed to advanced gamers anyway). \r\n\r\nI know all that is a great load of work, but you should consider it would deeply boost the accuracy and the usefulness of Rawr. At present time, I have to recalculate and correct a lot of things each time I update the table of the raid buffed stats of the MT of my guild because the lack of those kind of options. It's really hard to manage a fair interclass benchmark among tanks, when no options afford to override the fact that one class has his main CD averaged by default (Ardent Defender) and another has all his CDs ingored by default, even the more cyclic ones (as a warrior, I use Shield Block no less regulary than a clock shows minutes). At present time, Rawr does not provides fair interclass evaluation, still, it lacks few things to reach that point.\r\n\r\nBesides, I undestand that Demo Shout and Imp Demo Shout are hard to take into account if there is few data about it. That's a pity. However, I'm still convinced it deserves brainstorming. It's certainly not that weak. The blue post I was thinking to was a recent interview of Ghostcrawler by the Community Team on WoW Official Website (http://www.worldofwarcraft.com/info/underdev/warrior.html). It contains some numeric data, although hardly verifyable. I quote :\r\n\r\n\"Q: Demoralizing shout tends to have a very minimal impact in most situations, are there plans to improve this ability?\r\n\r\nA: I think by “most situations” you must mean “PvP.” Demo Shout has a massive benefit against raid bosses. It’s probably 20% less damage from a typical boss and literally like 50% against say Thorim’s Unbalancing Strike. However, removing 400 attack power from a Feral druid with 9000 attack power, or a Shadow priest who doesn’t care about attack power at all is of much more limited use. Monsters and players use pretty different combat formulae (which is one of the weird things about the old design of say Vindication). We would like Demo Shout to be more useful in PvP, at least against characters who rely on attack power.\"\r\n\r\nRegards, Aradril.\r\n\r\n",
+      "PostedDate": "2010-01-09T12:06:09.843-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Actually, such things like Heroism and whatnot are being modeled in a fairly correct when when approached from the perspective of averaging. Due to how our SpecialEffect system work, our DPS models take great care to get high accuracy while still using formulation.\r\n\r\nThe problem between the two comparisons is that such things can be averaged correctly, Shield Wall usage (for instance) cannot. There is no 'correct' way to use Shield Wall. Heroism will be used once a fight, Shield Wall may be used twice.. may be used 3 times, may be used on cooldown. \r\n\r\nThe other issue is that, for DPS, knowing how you scale under Heroism is important as it has a major impact on one's gearing. However, your relative stats with Shield Wall up are not important. As Rawr is primarily a tool for comparing gear opinions, looking at figures that skew or complicate the statistics in a way that one would not gear around are not nearly as relevant.\r\n\r\nExample of this: averaging in Last Stand would inflate the value of Stamina on gear, as it would act as a psudo Health multiplier running in the background. How is this valuable for gearing recommendations? It would simply overvalue Stamina as the 'average' Stamina multiplier would be inflated by Last Stand. However, no Warrior would realistically alter their gear approach simply to optimize their Last Stand health, therefore such an averaging of the effect is only going to be misleading and give erroneous results.\r\n\r\nAlso, in regard to Demo Shout, I fully agree that it would be nice to model it. But, as I mentioned, there simply isn't enough solid information or testing around at this current moment to do so.",
+      "PostedDate": "2010-01-11T03:14:49.143-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "For Last Stand, Shield Wall and Enraged Regeneration, I agree that calculating them would be almost irrelevant for gear selection. The only interest would be to have a symetric view with mods like ProtPal that calculate by default huge CDs like Ardent Defender. In such a perspective, I agree again there is no general way to determine an accurate timer for the use of Last Stand, Shield Wall and Enraged regeneration. Thus, it would be up to the final user to determine it himself from his logs for a given combat, following his own wisdom (the same thing for Ardent defender by the way). Perhaps you would simply prefer to add an option to enable/disable the calculation of Ardent defender easily in the ProtPal mod, to provide fairer interclass benchmark.\r\n\r\nHowever, calculating Shield Block seems to be a different matter : there is a direct interest for gear optimization as well as for interclass benchmark. Following my own approximative calculations, it worths for my charachter around 1,18% total mitigation against Lord Marrowgar 25 when used every 40s (67k base damage, 1,5s swing timer modified to 1,67s, parry-haste disable). Thus, block value is probably underevaluated by the present ProtWar module, even if it's gonna be still inferior to stam, armor and probably dodge anyway. The impact of Shield Block over TankPoints is great too, as you imagine. In the end, Shield Block is quite close to the global effect of Holy Shield for paladins. Averaged, it's around 21% added to Block depending on the Block rate of the charachter (25% for Holy Shield) and around 400 to 800 added to Block value, depending on the base Block value of the charachter (0 Block value for Holy Shield). The two techs seems to add around 1 to 1,3% to total mitigation. So, you would may be prefer not averaging it by default, but at least please provide some option about it (ideally with a customizable delay timer following Whitetooth's addon).\r\n\r\nConcerning Demo shout, I understand and regret your lack of data and I'll contribute if I find any valuable data.\r\n\r\nRegards, Aradril.",
+      "PostedDate": "2010-01-11T04:47:32.69-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Let me clarify what ProtPaladin is doing with Ardent Defender.  The damage reduction portion of Ardent Defender is not being \"averaged\".  It is being implemented 100% of the time for calculations of Effective Health, Tank Points, and Burst Time because it is not a proc'd effect, it is on all the time.\r\n\r\nThe healing portion of Ardent Defender is not modeled at all.  It's not averaged, it's not \"always on\", it's just not there.",
+      "PostedDate": "2010-01-11T08:46:44.953-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "As I mentioned before, Shield Block uptime is planned but will be in Rawr3 at some point in the future when I can clean up the options panel a bit.",
+      "PostedDate": "2010-01-12T02:57:23.54-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-05-26T03:25:32.683-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Diminishing returns is now a part of ProtPaladin as of the next release, 2.3.20 I believe.",
+      "PostedDate": "2010-07-02T14:38:24.633-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Err, I mean Survival Soft cap. :P",
+      "PostedDate": "2010-07-02T14:39:21.013-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T13:33:41.24-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-11-15T16:13:40.777-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:15:00.62-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:30:43.48-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:31.387-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

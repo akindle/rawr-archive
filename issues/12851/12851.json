@@ -1,0 +1,126 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtPaladin",
+      "DisplayName": "Rawr.ProtPaladin"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-04-10T11:07:22.11-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When checking the item list to find a possible upgrade the list appears empty.\n \nIf Ie. I press the icon on my head gear I get an empty list. But if I hover the mouse where I would normally select the item I still get the tooltip and I can select an item from this empty list. This happens when I use sort: Overall and Alpabetical. If I select sort::Mitigation then the list seems to work fine.\n \nSeems to only be a problem with then Tankadin module. If I load a mage into rawr this problem does not exist.",
+    "LastUpdatedDate": "2017-11-27T11:04:05.31-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-03-23T03:24:15.143-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtPaladin] Item list empty",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 12851
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1758,
+      "FileName": "Rawr.exe.config",
+      "DownloadUrl": ".\\1758"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Oh and this is for 2.2.05B btw. :)",
+      "PostedDate": "2009-03-23T03:53:30.107-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I have the same problem with the warlock 2.2.05b sheet, only dps and pet dps show the items on the list",
+      "PostedDate": "2009-03-24T07:38:53.88-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-03-24T07:39:01.787-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Can you guys post a screenshot, and repro steps? We really don't know what you're talking about currently, haven't seen or heard of anything like this.",
+      "PostedDate": "2009-03-24T13:34:53.593-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "To repro: Just load up Rawr, switch to the Tankadin model, and click on a slot to pick an item.\r\n\r\nScreenshots:\r\n\r\nFirst load, item list comes up completely blank: http://i40.tinypic.com/xg9u2b.jpg\r\n\r\nScrolling the list causes it to be drawn, but mousing over anything blanks it out again: http://i44.tinypic.com/1zqrd3t.png\r\n\r\nSometimes subsequent openings of the item list start with all the items drawn correctly, but mouse over any of them and they go blank again: http://i41.tinypic.com/jkj62r.png",
+      "PostedDate": "2009-03-26T16:54:33.79-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That seems very odd; has anyone else seen this? Can those who have this please zip up their entire Rawr folder, and attach it here?",
+      "PostedDate": "2009-03-26T17:42:37.053-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Unfortunately a full zip of the folder comes in over the attachment limit. As far as i can tell, though, there's no difference between my folder and the 2.2.0b5 download (even downloaded a new copy and extracted it somewhere else, and i get exactly the same problem), except the changes to the .config file that saves the recent model, etc. Just in case that might hold a clue, though i'll attach it.\r\n\r\nTried to do some testing to see which models exactly were affected (since someone else had mentioned that warlocks were similarly bugged). Healadin and Retribution models are all fine, for all sort criteria. Tankadin is bugged on Overall and Alphabetical, but fine for Mitigation and Survival. Trying to sort by Threat just throws an exception:\r\n\r\nSystem.ArgumentException: IComparer (or the IComparable methods it relies upon) did not return zero when Array.Sort called x. CompareTo(x). x: ''  x's type: 'ComparisonCalculationBase' The IComparer: 'System.Array+FunctorComparer`1[Rawr.ComparisonCalculationBase]'.\r\n   at System.Collections.Generic.ArraySortHelper`1.Sort(T[] keys, Int32 index, Int32 length, IComparer`1 comparer)\r\n   at System.Array.Sort[T](T[] array, Int32 index, Int32 length, IComparer`1 comparer)\r\n   at System.Collections.Generic.List`1.Sort(Comparison`1 comparison)\r\n   at Rawr.FormItemSelection.set_ItemCalculations(ComparisonCalculationBase[] value)\r\n   at Rawr.FormItemSelection.sortToolStripMenuItem_Click(Object sender, EventArgs e)\r\n   at System.Windows.Forms.ToolStripItem.RaiseEvent(Object key, EventArgs e)\r\n   at System.Windows.Forms.ToolStripMenuItem.OnClick(EventArgs e)\r\n   at System.Windows.Forms.ToolStripItem.HandleClick(EventArgs e)\r\n   at System.Windows.Forms.ToolStripItem.HandleMouseUp(MouseEventArgs e)\r\n   at System.Windows.Forms.ToolStrip.OnMouseUp(MouseEventArgs mea)\r\n   at System.Windows.Forms.ToolStripDropDown.OnMouseUp(MouseEventArgs mea)\r\n   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)\r\n   at System.Windows.Forms.Control.WndProc(Message& m)\r\n   at System.Windows.Forms.ToolStrip.WndProc(Message& m)\r\n   at System.Windows.Forms.ToolStripDropDown.WndProc(Message& m)\r\n   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)\r\n   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)\r\n\r\nI didn't get around to testing other models, as it was frequently (but not always, annoyingly) throwing an exception when i tried to switch model:\r\n\r\nSystem.NullReferenceException: Object reference not set to an instance of an object.\r\n   at Rawr.Moonkin.CalculationsMoonkin.GetCharacterCalculations(Character character, Item additionalItem)\r\n   at Rawr.CalculationsBase.GetItemCalculations(ItemInstance item, Character character, CharacterSlot slot)\r\n   at Rawr.FormItemSelection.LoadItemsBySlot(CharacterSlot slot)\r\n   at System.EventHandler.Invoke(Object sender, EventArgs e)\r\n   at Rawr.ItemCacheInstance.OnItemsChanged()\r\n   at Rawr.FormMain.Calculations_ModelChanged(Object sender, EventArgs e)\r\n   at System.EventHandler.Invoke(Object sender, EventArgs e)\r\n   at Rawr.Calculations.OnModelChanged()\r\n   at Rawr.Calculations.LoadModel(Type type)\r\n   at Rawr.FormMain.LoadModel(String displayName)\r\n   at System.Windows.Forms.ComboBox.OnSelectedIndexChanged(EventArgs e)\r\n   at System.Windows.Forms.ComboBox.WndProc(Message& m)\r\n   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)\r\n   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)\r\n\r\n(or various similar ones referencing the model i was trying to switch to at the time).",
+      "PostedDate": "2009-03-26T19:39:06.623-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-03-26T19:39:10.607-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok, after restarting Rawr a bunch of times, i've finished going through all the models - the drawing error occurs only in the Tankadin and Warlock models, and only when sorting by Overall and Alphabetical (in both models). Sorting by the other sorts available in either model (survivability/mitigation in tankadin, dps/pet dps in warlock) draws the list correctly.\r\n\r\nTrying to sort by Threat in Tankadin results in the previously mentioned exception, and i also seem to be geting the same one every time when trying to sort by Survivability in the Enhance Shaman model, and i _think_ i got it once trying to sort by Survivability in the Shadow priest model, but can't seem to repro that one now.",
+      "PostedDate": "2009-03-26T20:02:50.857-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Found it. Thanks! Fixed for the next version.",
+      "PostedDate": "2009-03-26T21:57:59.717-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-04-10T11:07:22.11-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:39:31.72-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-21T00:00:21.103-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:35:08.227-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:00.643-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:04:05.31-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

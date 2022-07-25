@@ -1,0 +1,126 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.TankDK",
+      "DisplayName": "Rawr.TankDK"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-08-19T09:46:47.027-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Trueshot Aura, Unleashed Rage, and Abomination's Might give negative values for mitigation and threat.\nArcane Empowerment, Ferocious Inspiration, and Sanctified Retribution give zero values for threat.\nBlessing of Sanctuary has its value split into two different ratings - one includes the value of the +10% Strength and Stamina, and a separate listing includes just the +3% damage. \nBlessing of Kings only shows the value of +10% Strength and Stamina, but not +10% Agility. Agility will add to Survival, Mitigation, and Threat.\n \n \nSteps to reproduce:\n(1) load DK Tank\n(2) go to Buffs => Raid Buffs\n(3) Observe at bottom of the list, the negative values for the three buffs and zero values for the other three buffs mentioned above.\n(4) Observe at top portion of the list the two separate values for Blessing of Sanctuary\n(5) Compare the values for Blessing of Sanctuary (Str/Stam) and Blessing of Kings (Str/Stam).\n \nAdditional Information:\n(1) Rawr version b3.0.3.21\n(2) Mac OS (10.6.4) running Firefox version 3.6.6\n(3) No error messages.\n \n[Edit: File attached as per BrWarner]",
+    "LastUpdatedDate": "2017-11-27T11:04:43.04-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-08-17T12:14:52-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[TankDK] Raid Buffs give strange or negative values",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 18507
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3891,
+      "FileName": "TankDKWyntyr.xml",
+      "DownloadUrl": ".\\3891"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "As per our Posting Guidelines, please attach a relevant character profile that exhibits the problematic behavior.",
+      "PostedDate": "2010-08-18T03:14:36.007-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-08-18T09:16:04.853-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Checking Rawr2 Functionality:\r\nCannot Repro TA/UR/AM issue, nor issue w/ Blessing of Kings. (It's split between the Str/Sta bonus and the rest of the stats).\r\nConfirmed AE/FI/SR providing 0 threat value.\r\nBlessing of Sanctuary split is expected behavior\r\n\r\nI'll start working on getting the AE/FI/SR situation fixed.  Then I'll look at it again in Rawr3.",
+      "PostedDate": "2010-08-18T10:29:41.71-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-08-18T10:49:44.32-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "As of noon on 18 Aug 10, I am unable to load my toon from in Rawr, from the Armory. Worked just fine yesterday, but now attempting to \"load from Armory\" causes the application to freeze. Tried downloading on 2 different computers, using both the desktop and \"in browser\" versions of b3.0.3.21. Toon is Wyntyr on Sisters of Elune. I will upload the file as soon as I can get my toon to re-load in Rawr.",
+      "PostedDate": "2010-08-18T11:38:48.98-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I got the toon to load, so file is now attached. Still see TA/UR/AM issue as described. \r\nI now see Blessing of Kings (+10% Agility) - I must have just missed it while looking for it earlier. \r\n\r\nQuestion: Why would you want to break out the different aspects of Blessing of Kings and Sanctuary? The Stam/Str part is obviously identical between them. Sanctuary is better, but that is harder to see from the way they are broken out. Not being critical, just curious.",
+      "PostedDate": "2010-08-18T11:47:29.617-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-08-18T11:47:30.553-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Because Kings doesn't stack with Sanctuary, we needed to make the Str/Stam conflict with each other.",
+      "PostedDate": "2010-08-18T13:53:00.207-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "(cont'd) while the other aspects of the buff didn't conflict. So while on a TankDK, you would want Sanc for the 10% damage reduc, a melee dps would just want the regular kings for the AGI boost. If we left it as a single buff, you'd be getting twice the STR/Stam bonus when you shouldn't",
+      "PostedDate": "2010-08-18T13:55:26.983-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 53228.",
+      "PostedDate": "2010-08-18T14:11:54.537-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok... I see the problem.  It's specific to Blood: Abominations Might.\r\nTalents that are being sported by the loaded toon make the buffs provided by others in the party/raid unnecessary.  Unfortunately, it looks like I'm not probably excluding them in the AM case.  I specifically don't spec to it since I'm always playing w/ a MM hunter, so I didn't see it on any of my sample characters.  Thank you for posting your character.  I'll get this fixed up. ",
+      "PostedDate": "2010-08-18T14:45:02.19-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Resolved with changeset 53259.",
+      "PostedDate": "2010-08-19T09:46:47.027-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:06:03.233-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:27:42.06-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:05.47-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:04:43.04-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

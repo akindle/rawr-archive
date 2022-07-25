@@ -1,0 +1,90 @@
+[
+  {
+    "Id": "245356",
+    "ThreadId": "71887",
+    "Html": "<p>Hey all. Due to several bugs with .22, I'm going to release .23 tonight, in about... <strong>5 hours from now (see post time for your time zone).</strong></p>\r\n<p>Get your changes checked in by then, if you want them in .23, thanks.</p>\r\n<p>&nbsp;</p>\r\n<p>EDIT: Change of plans. Gunna have to do this tomorrow morning. (Like, 12hr from now)</p>",
+    "PostedDate": "2009-10-13T19:00:55.267-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "245392",
+    "ThreadId": "71887",
+    "Html": "<p>For those of you experiencing the issue with loading Tabards, we've added an attempt to get the item from Wowhead upon Armory failure. Please let us know <strong>here</strong> if that fixes the issue in 2.2.23. This should also resolve other people's complaints about wanting items to come from wowhead for other reasons.</p>",
+    "PostedDate": "2009-10-13T22:44:33.923-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "245594",
+    "ThreadId": "71887",
+    "Html": "<p>Astrylian, if at all possible, make sure to grab my changeset 37525 in the .23 release.&nbsp; It contains a fix for an obscure bug that nobody but me even noticed, but it affects the accuracy of the calculations in Moonkin.</p>",
+    "PostedDate": "2009-10-14T07:28:33.797-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "245627",
+    "ThreadId": "71887",
+    "Html": "<p>FTR, the expertise regression that dpswarr had is fixed. &nbsp;I'm stuck in training and couldn't fix it at home, but I worked with Jothay to get it resolved last night and we checked in around 1:30am EST.</p>",
+    "PostedDate": "2009-10-14T08:14:36.36-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "245652",
+    "ThreadId": "71887",
+    "Html": "<p>This same problem has happened multiple times recently, where two versions have been released in quick succession due to bugs that were both obvious and bad enough to require immediate attention. I would like to suggest a change to the release process for Rawr to help prevent this from happening again.</p>\r\n<p>I am not sure if codeplex supports this functionality, but in every production environment I have ever coded in, before a release is made a release branch is created, and a code freeze put in place (no new features, only approved bug fixes allowed). This helps to stabilize the code prior to a release as opposed to a message saying &quot;get any code in you want before X:XX am&quot;. If this functionality is not available in codeplex then I would still recommend a code freeze on the mainline for a period of 1-2 days prior to a release. This would allow some of the more active members of the community (such as myself) to compile the release candidate and look for the kinds of show-stopping bugs that have been a problem.</p>\r\n<p>I understand that this may not always be possible in the case of a patch or major hotfix to the game, but I believe it would help us to provide a higher quality product to the WoW community on a consistent basis.</p>\r\n<p>&nbsp;</p>\r\n<p>~Droid</p>",
+    "PostedDate": "2009-10-14T08:52:48.167-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "245670",
+    "ThreadId": "71887",
+    "Html": "<p>Thanks for the hard work and quick corrections to problems,</p>\r\n<p>People need to remember that this is not their full time job and for some it may not be their career path. I</p>\r\n<p>ts free and its damn valuable so I can deal with a quick couple patches under that premise. If you don't like the changes revert back to an older more stable version.</p>\r\n<p>Thanks again guys</p>",
+    "PostedDate": "2009-10-14T09:52:05.53-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "245690",
+    "ThreadId": "71887",
+    "Html": "<p>Droid, the code freeze would make sense ONLY if we had devoted that time to root out bugs. &nbsp;Unfortunately, as bigdogcc said, this isn't our full time job. &nbsp;The reason I missed the expertise issue is because my full-time job got in the way (I'm in a weeklong training session, and I spent the past weekend reading prep material for the class). &nbsp;I spend most of my Rawr dev/test time on the weekends/at nights/lunch, and I just didn't have the time to play with the perf changes I made between the release announcement and the actual release. &nbsp;Had I known we would have a release that early, I probably wouldn't have checked in my code without rigorous testing beforehand.</p>\r\n<p>I really think that the best solution would be to adapt the Sprint model, say month-long sprints. &nbsp;We release ONLY the 1st of the month, no matter what. &nbsp;Emergency releases to fix critical bugs are patched from the currently released version, and not the current source control snapshot. &nbsp;Special cases are made for major patches (ie when 3.3 comes out).</p>\r\n<p>Thoughts from the devs?</p>",
+    "PostedDate": "2009-10-14T11:04:59.75-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "245692",
+    "ThreadId": "71887",
+    "Html": "<p>Ebs, it was not my intention to call anyone out, and I apologize if it came off that way. I completely understand that this is not any of our fill time jobs, I am simply trying to figure out a way to make the process more robust and to try to avoid potential problems from happening again in the future.</p>\r\n<p>I like the idea of the sprints, it gives a clear goal that everyone can strive towards. I think in this development model we would still need to try to avoid major changes going in shortly before the end of the sprint.</p>\r\n<p>~Matt</p>",
+    "PostedDate": "2009-10-14T11:14:25.727-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "245708",
+    "ThreadId": "71887",
+    "Html": "<p>We certainly could come up w/ a more threaded branching model.&nbsp; The monthly releases being the 2.x versions, and bug fixes being 2.2.x.&nbsp;</p>\r\n<p>I know that my dev time is also very sporadic as well.&nbsp; I work in software QA, so some days I have a great segment of time to devote to making a sweeping change, other times I'm just trying to tweak things in little ways to get the smaller issues out of the way.  I often have a couple different branches on my own machine.&nbsp; That's where some of the defects get introduced in the TankDK module... working in the wrong branch, or not properly porting a fix over from one area of code to another.&nbsp;</p>\r\n<p>I know that I often think of versions for given models as not necessarily requiring version changes with every release:</p>\r\n<p>Given A.B.C.D:</p>\r\n<p>A == Whole major sweeping changes with no hope of compatibility with anything that came before.&nbsp; See Rawr3.&nbsp; :)&nbsp; This rarely changes.</p>\r\n<p>B == New features that continue to adjust and expand functionality.&nbsp; I would have bumped this number when I got the Burst/Reaction graphs implemented in TankDK.</p>\r\n<p>C == Bug fix releases.&nbsp; E.G. Every time we post like we do now.</p>\r\n<p>D == internal build numbers that don't have much meaning in this environment.</p>",
+    "PostedDate": "2009-10-14T11:43:05.167-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "245850",
+    "ThreadId": "71887",
+    "Html": "<p>Yeah, we just don't have enough reliable development time to be able to do the branching, code freezes, far-ahead-planned releases, etc.&nbsp;</p>\r\n<p>Regardless, we're not really looking to put much more process-improvement into Rawr2, since we're trying to push hard on Rawr3 right now. Planning the release process for that is definitely something we want to do, though. That'll probably have a production and a beta site, with beta getting frequent updates, and production getting the stablest builds from beta.</p>\r\n<p>&nbsp;</p>\r\n<p>EDIT: And I keep getting my time bounced around with interview stuff, so haven't had a chance to release .23, but hope to do that after raid tonight. Sorry for the delay everyone.</p>",
+    "PostedDate": "2009-10-14T20:02:13.737-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "245856",
+    "ThreadId": "71887",
+    "Html": "<p>No worries, I was able to ninja in a few more last-minute fixes while you were busy. ;) The major fixes were all in this afternoon, and any Moonkin reading this will DEFINITELY need to grab version 2.2.23 as soon as it's released.&nbsp; Major, major accuracy improvements across the board, and better performance to boot.</p>",
+    "PostedDate": "2009-10-14T20:32:44.933-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

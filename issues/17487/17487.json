@@ -1,0 +1,105 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Moonkin",
+      "DisplayName": "Rawr.Moonkin"
+    },
+    "ClosedComment": "Fixed in release 2.3.19.",
+    "ClosedDate": "2010-06-22T10:34:39.09-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Select Moonkin model, buffs tab; scroll down and observe that there are several Lasherweave buffs named:\n \nLasherweave's Regalia (T10) 2 Piece Bonus\nLasherweave's Regalia (T10) 4 Piece Bonus\nLasherweave Garb (T10) 2 Piece Bonus\n \nThese are also visible in the comparison chart for Buffs|Set Bonuses\n \nFirst observation is that the T10 Moonkin set bonuses are called \"Lasherweave Regalia\" (not \"Lasherweave's\").  That's what's in the set field for the individual items.\n \nSecondly, the \"Lasherweave Garb\" bonus described above is actually a copy of the Regalia 2-piece bonus and isn't right at all; \"Lasherweave Garb\" is the Resto tier set.\n \nThird observation is that if you load up a random Moonkin and look at the set bonuses chart, the T9x2 and T10x4 bonuses seem to come in very high and around the same, which is what the EJ article and WrathCalcs tend to suggest.  However, *both* of the indicated T10x2 bonuses in the comparison chart (the real one and the \"Garb\" duplicate) come way down at the bottom and *each* comes in at less than a *sixth* of the T10x4 or T9x2 bonuses.  WrathCalcs and the EJ article suggest that the T10x2 bonus should be around half the T10x4, or a bit better.  For example, putting my own stats into WrathCalcs, T9x2 is worth 4.5%, while T10x2 is worth 2.8%.\n \nSo it looks like Rawr is strongly undervaluing T10x2 relative to the current WrathCalcs.  I can't help but wonder if this isn't related to the duplicated bonus thing, but perhaps it's entirely separate (or I'm just misunderstanding something).",
+    "LastUpdatedDate": "2017-11-27T11:00:17.313-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-04-30T05:40:11.27-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Moonkin] T10 Set Bonus Names and Values",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17487
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Rawr certainly undervalues 2t10.  6% chance on cast to do 15% extra damage for casts that complete in the next 6s.  I'm seeing Rawr value that bonus at about a 1.4% boost (character in a fairly low-haste situation).\r\n\r\nIf a 15% bonus only gives a 1.4% overall boost, slightly less than one spell in ten is getting the bonus.\r\n\r\n6% proc means one out of every 17 casts gives the bonus.  If only one in 10 spells benefits from the bonus, Rawr would need to assume that on average, the Moonkin cast fewer than two spells in the next six seconds.  On a PW fight it can happen that a moonkin completes only 1 cast in a six second period (IS SF SF can be more than six seconds from first IS to last SF), but it is pretty rare.  The reported rotation showed 24 casts in 39s.\r\n\r\nI could imagine Rawr getting the 10% benefit number with faulty logic like this:\r\n\r\nAverage cast time is 39/24 = 1.6s.  Proc on spell cast gives time for the next 3 spells to benefit (4*1.6 > 6).\r\n24 casts have an 80% chance to get at least one proc.\r\n80% chance for proc, times 3 spells per proc = 2.4 spells benefit per rotation.\r\n\r\nBetter logic would say that a spell doesn't benefit only if none of the previous 3 casts proc'ed the effect.  That has an 83% chance, meaning that 17% of spells should benefit from 2t10.\r\n\r\nEven better logic would recognize that the 24-spell moonkin rotation is better approximated as seven consecutive slow casts (SF=2.4s) followed by seventeen consecutive fast casts (Wr, MF, IS at 1.3s).  More than 2/3 of all procs will benefit 4 spells, while something less than 1/3 will benefit two (or in rare cases one) spell.  Combined with the 6% proc rate, that would mean about 20% of spells gain the benefit.\r\n\r\nNote that Simulationcraft sample output shows 21% of all spells that could benefit (everything except once-every-three-minutes treants) get the benefit.  If 21% of spells are getting a 15% benefit, the set bonus is worth about 3%, not the 1.3% reported by Rawr.",
+      "PostedDate": "2010-04-30T08:19:14.927-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-05-01T11:34:56.45-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I got into the code and found the problem.  Eclipse rotations (any serious Moonkin rotation) is seriously under-valuing proc-effects, unless the proc is SP, Hit, Haste, or Crit.\r\n\r\nIn particular, the 2t10 proc only benefits Wrath, and only those Wraths cast during Eclipse.\r\n\r\nCalling sequence involved is:\r\n\r\n1) At the top of moonkinSolver.Solve(), it initializes the moonkinSolver Wrath and SF members with a call to RecreateSpells().\r\n2) In Solve() there is a loop that manages combinations of proc effects.  It is here that 2t10 is applied as a bonus to Arcane and Nature damage.\r\n3) With that proc active, Solve() calls rot.DamageDone(), which calls DoEclipseCalcs()\r\n4) DoEclipseCalcs sets up the four nukes (presolar, solar, prelunar and lunar).  Some code fragments:\r\n\r\n            Spell preLunarCast = solver.FindSpell(\"W\");\r\n            Spell solarEclipseCast = new Spell(preLunarCast);\r\n\r\n            // Eclipse bonus\r\n            solarEclipseCast.AllDamageModifier = 1 +stuff + eclipseMultiplier;\r\n            solarEclipseCast.AllDamageModifier *= ((1 + calcs.BasicStats.BonusNatureDamageMultiplier) * otherstuff;\r\n\r\n            Spell preSolarCast = solver.FindSpell(\"SF\");\r\n            Spell lunarEclipseCast = new Spell(preSolarCast);\r\n            lunarEclipseCast.CriticalChanceModifier = fixup for lunar eclipse crit rate;\r\n\r\nThe Wrath and SF AllDamageModifier members have values that were set when Solve() called RecreateSpells() (and 2t10 was not active).  The preLunarCast, preSolarCast, and lunarEclipseCast variables all end up copying those values, and are not changed by 2t10.  (also, DoTs and Starfall aren't adjusted either).\r\n\r\nSolarEclipseCast gets its AllDamageModifier recomputed from scratch.  As such it manages to pick up the new BonusNatureDamageMultiplier that was adjusted by the 2t10 proc.  No other spell used in the rotation sees the changes to BonusNatureDamageMultiplier (or the Arcane multiplier).\r\n\r\nYou can easily demonstrate that SolarEclipseCast is the only spell that benefits from 2t10 by modifying the code above by changing\r\n            solarEclipseCast.AllDamageModifier *= ((1 + calcs.BasicStats.BonusNatureDamageMultiplier) * otherstuff;\r\nto\r\n            solarEclipseCast.AllDamageModifier *= ((1 + 0) * otherstuff;\r\nand you'll see the overall benefit from 2t10 drop to zero.\r\n\r\nI think the correct fix is in MoonkinSolver.Solve() call RecreateSpells() just before\r\n\r\n                        float tempDPS = rot.DamageDone(talents, calcs, baseSpellPower, baseHit, baseCrit, baseHaste) / rot.Duration;\r\n\r\nand also call RecreateSpells() just inside the foreach rotation loop (to undo the call above).\r\n\r\n            foreach (SpellRotation rot in rotations)\r\n\r\nwith those changes I'm seeing 2t10 at about a 3% DPS boost (using Thal from US Echo Isles), which is in line with SimulationCraft results.  This still does not let Starfall benefit from 2t10 but Starfall is ~10% of damage done, and missing a 3% boost to 10% of total damage is not a huge error for gear/spec evaluations.\r\n\r\n\r\nOther notes:\r\nCalculationsMoonkin.cs: It looks like both E&M and Master Shapeshifter are providing 1%/talent point bonuses.  Those should both be 2%. (E&M used to be 1%).\r\n\r\nProcEffect.cs: In the procEffect constructor, the 2t10 bonus is being added to other nature/arcane modifiers (in debugger I'm seeing it added to 13%, which I assume is the E&M debuff).  Wrathcalcs shows 2t10 as multiplicative with final damage from all other effects.  In the Active (and similar code in Deactivate) these are the lines that would be changed:\r\n                    if (arcaneModifier > 0)\r\n                        c.BasicStats.BonusArcaneDamageMultiplier += arcaneModifier;\r\n                    if (natureModifier > 0)\r\n                        c.BasicStats.BonusNatureDamageMultiplier += natureModifier;\r\n\r\n",
+      "PostedDate": "2010-06-02T09:24:40.047-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Something else for any C# guru's to check.\r\n\r\nIn the line\r\n\r\nfloat tempDPS = rot.DamageDone(... args ...) / rot.Duration;\r\n\r\nrot.DamageDone() has a side-effect of setting rot.Duration.  In C++, it is undefined whether or not the rot.Duration used for division is the value from before the call or after the call.  Is that not an issue in C#?",
+      "PostedDate": "2010-06-02T09:35:29.94-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Always after the call.",
+      "PostedDate": "2010-06-02T10:11:04.043-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Good catch (and sorry I was away to miss it!).  Yeah, when I created that loop originally, it was designed for trinket procs, which are all +SP/+Haste/+Crit and the like.  Damage multipliers were, at that time, pretty static.  There's probably a cleaner way to do all this, which I'll be looking into here soon.",
+      "PostedDate": "2010-06-12T09:41:51.527-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I fixed it in the code with a solution similar to Erdluf's.  Should be in the next release.",
+      "PostedDate": "2010-06-12T10:05:40.087-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-06-22T10:34:39.09-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:48:47.153-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:03:27.03-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:28:36.683-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:51.083-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:00:17.313-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

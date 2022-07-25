@@ -1,0 +1,90 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Cat",
+      "DisplayName": "Rawr.Cat"
+    },
+    "ClosedComment": "Closed, user misconception, these were fixes in code",
+    "ClosedDate": "2010-06-29T16:45:36.817-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Using 2.3.18 and 2.3.19 with exactly the same gear/gems/enchants gives different stat values. In particular Armor Mitigation went from 2.53% to 0.50%. I also modeled in 2.3.18 Black Magic in the exact same way as version 2.3.19 does and there is still a slight difference in haste. Where do these differences come from?",
+    "LastUpdatedDate": "2017-11-27T10:59:36.543-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-06-23T07:26:04.713-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Cat] Stat difference from version 2.3.18",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 18051
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "A few things changed in the latest release. First, there was a bug in the cat model that undervalued how much armor mitigated Armor Pen took off. Ast corrected that. Also there was a slight bug with the mangle debuff that he also fixed.  As for Black Magic, it could be the way Ast modeled the new trigger (MangleorShredorInfected instead of MangleorShred).",
+      "PostedDate": "2010-06-23T08:51:50.357-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "As Hina mentioned, there was a slight armor penetration calculation fix (but that applied to all models, not just Cat). It was very slightly undervalued. (For those who want to know the details: It was calculating the armor penetration cap as if your target was 80, not 83 or whatever your target level is selected at. In .19 I fixed that function to take the target level in as well, but only Cat passes it in currently; for everyone else it defaults to 83)\r\n\r\nYeah, if you just manually added the Black Magic enchant as 250haste on MangleCatOrShred trigger in .18, you'll see a difference, since it's now on the new MangleCatOrShredOrInfectedWounds trigger. It can proc off the application/refresh of IW, so there's this neat/odd situation where the highest DPS spec includes 1 point in IW to increase BM uptime.",
+      "PostedDate": "2010-06-23T11:20:27.51-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-06-29T16:45:20.37-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-06-29T16:45:36.817-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:49:24.913-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:33:04.973-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T22:45:40.733-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:28:07.553-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:25.223-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T10:59:36.543-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

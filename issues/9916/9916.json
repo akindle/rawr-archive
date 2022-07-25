@@ -1,0 +1,75 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Fixed.",
+    "ClosedDate": "2008-05-05T14:45:24.36-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "FilterList currently removes all items that are dominated. This is not desired behavior for rings. If the best ring dominates 2nd best ring and both are unique then 2nd best should not be filtered out.\n \nAlso when you're comparing for dominance an item can dominate more than one (you could have stats (2,4) on one, (4,2) on second which would both be added, item (5,5) then dominates both).",
+    "LastUpdatedDate": "2013-05-16T05:27:26.823-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-04-06T18:54:08.47-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "FilterList for optimization",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 9916
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Your first point is a bug, I'll fix that.\r\n\r\nSecond point, I don't understand. Is this not functioning properly? neither (2,4) or (4,2) should be included as options if (5,5) is available.",
+      "PostedDate": "2008-04-06T19:12:52.54-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Neither should be included, but the way code is now it'll find the first one it dominates and remove that, it won't remove any others unless I'm missing something.",
+      "PostedDate": "2008-04-06T20:55:07.01-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Gotcha, found it. Thanks.",
+      "PostedDate": "2008-04-06T21:50:28.183-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Current version crashes on optimize. You have removeItems = null in FilterList.",
+      "PostedDate": "2008-04-07T03:43:32.68-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-05-05T14:45:24.36-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:37:03.99-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:27:26.823-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

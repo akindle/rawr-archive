@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "179494",
+    "ThreadId": "53340",
+    "Html": "With trinket procs not being assessed correctly for now, I want to modify Grim Toll for my Cat druid model to reflect its average proc benefit.<div><br></div><div>It procs 612 ArP for 10s, with a 15% proc rate and a 45s internal CD.</div><div><br></div><div>The question is: how to compute the long run up time of this proc?</div><div><br></div><div>More generally, how to compute the average long run up time of a proc a duration t, with procrate p and internal CD c?</div><div><br></div><div>My approach (I use Grim Toll numbers to make it more concrete). I'd appreciate some feedback!</div><div><br></div><div>* upper bound: if it procs right after CD expiration, it procs every 45s for 10s, for an uptime of 10s per 45s. uptime: 10/45 ≈ 22.2%.</div><div>This assumes the CD starts at the beginning of the proc, and not at the end. Is this correct?</div><div><br></div><div>* expected time to proc, when off CD:</div><div>let N+1 be the number of strikes needed for the trinket to proc.</div><div>(N is the number of strikes which failed to proc the trinket before the proc).</div><div>N has a geometric distribution : P[N=k] = (1-p)^k * p</div><div>The expected value of N is E[N] = (1-p)/p  = .85/.15 ≈ 5.67</div><div>(see http://en.wikipedia.org/wiki/Geometric_distribution)</div><div>So the trinket can be expected to proc after 5.67+1=6.67 blows.</div><div><br></div><div>Now what is the average time between two strikes? For us cats, it's between 1s (auto attacks), and 1.5s (yellow damage), but it's affected by our haste, as well as by our miss rate. Therefore, we need to take into consideration our specific stats. I'll ignore my miss rate on the basis that it's not significant at less than 10% (this assumption is questionable).</div><div><br></div><div>I could not work out a reliable way to estimate the proportion of white attacks vs yellow attacks. I'll suppose it's about 50/50. Is there any better estimate? With this estimate, the average time between two attacks is 1.25 pre-haste.</div><div>Rawr tells me my toon has an attack speed of 0.755s. That's a haste factor of 0.755. The average time between two attacks post-haste is therefore 1.25*.755 ≈ 0.94s.</div><div><br></div><div>Finally the expected time for the trinket to proc when off CD is 6.67*.94 ≈ 6.3s.</div><div><br></div><div>Taking the CD into account, I expect the trinket to proc every 45+6.3 = 51.3s.</div><div><br></div><div>The average uptime should thus be 10s/51.3s ≈ 19.49%.</div><div>(With the decimal part probably not being significant at all.).</div><div><br></div><div>And I will assign an average ArP for Grim Toll of 612*19.49 = 119.</div><div><br></div><div>Is this correct? Is this realistic?</div><div><br></div><div>Note: this ignores the fact that for ArP, it's better to have a lot for a little while, than some for a long time. I don't know how to take that into account.</div><div><br></div><div><br></div>",
+    "PostedDate": "2009-04-15T03:07:31.143-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "179513",
+    "ThreadId": "53340",
+    "Html": "You are basically right. Max uptime is obviously 10 seconds every 45 seconds, although that is highly unrealistic. Most of the time it will have Proc'ed within a minute (10 seconds every 60). So a 51.3 second value is not wrong. However that assumes a 100% &quot;On the Boss&quot; time. (Like Patchwerk). Some models may be even more complex and/or simpler. I think most models simply model all proc trinkets the same way in order to balance them fairly against each other, while some models may do more complex calcs.<br>\r\n<br>\r\nFurther on, this assumes that a fight lasts a multiple of 51.3 seconds. If we take an example in a 1 minute Patchwerk fight, you will see this trinket will proc atleast twice (barring bad luck) during that fight, so you would really have 20/60 uptime on it.<br>\r\n<br>\r\nBut to answer your question, yes, that value is realistic.<br>\r\n<br>\r\n(I hope this answer helps people understand we take procs seriously ;)<br>\r\n",
+    "PostedDate": "2009-04-15T03:58:12.093-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "179628",
+    "ThreadId": "53340",
+    "Html": "haha! Glad my basic reasoning was on target.<div><br></div><div>Yes I assume a 100% &quot;On the Boss&quot; time. It doesn't decrease the trinket value for several reasons:</div><div>- all items become totally worthless when a cat is not &quot;On the Boss&quot; (a systematic 100% reduction in dps). There is no reason to treat a trinket differently</div><div>- bad luck is when you need to leave the boss during the proc. On the long run, this will happen exactly with the same % as the time spent &quot;Off the Boss&quot;.</div><div>- 45s out of 51.3s are spent waiting for the CD to expire. That's 88% of the time. This means that most of the time spent &quot;Off the Boss&quot;, will be during this time waiting for the CD to expire. This is actually <strong>increases</strong> the relative value of the trinket, as a larger % of actual fight will be on proc time.</div><div><div><br></div><div>Taking the fight length into account was out of my scope as I wanted to assess the average proc value <em>in the long run</em>.</div><div><br></div><div>However, you mentioning it leaves me thinking that basically assuming an infinite length fight actually *<strong>undervalues</strong>* the trinket, simply because the proc is so heavily skewed towards the beginning of the fight. I modelized it. The results are in my next post.</div></div>",
+    "PostedDate": "2009-04-15T08:12:52.887-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "179633",
+    "ThreadId": "53340",
+    "Html": "Yup, you got it all right. <br>\r\n- Not being 100% on the boss *improves* proc based trinket values. (Except in a few cases where it may proc just as you lose contact)<br>\r\n- In the long run, all trinkets should be fairly equal anyway, so finding the best one works just fine for that.<br>\r\n- Infinite length fights may undervalue trinkets. However, If a trinket starts off bad, and doesnt proc until 20 seconds into the fight, thats 20 seconds lost forever. If trinket keeps on proccing 20 seconds longer than average next time and next time, you see it adds up.<br>\r\n<br>\r\nHowever, in Rawr we try to compare items. Their best/worst impact on DPS is just too hard to get right without a simulation.<br>\r\n",
+    "PostedDate": "2009-04-15T08:18:13.683-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "179664",
+    "ThreadId": "53340",
+    "Html": "So here is my analysis to take into account the fight duration for assessing a proc value.<div><br></div><div>My previous post shows that a proc is on average a periodic, rectangular function, of period T. In my example, T=51.3s.</div><div>Each period can be split into three stages:</div><div><br></div><div>1- the &quot;waiting for proc&quot; stage. I call it the phase of the function. In my example, phase = 6.3s.</div><div>2- the proc stage, with duration set by the trinket. In my example, duration = 10s.</div><div>3- the &quot;cool off&quot; period, waiting for the CD to expire. coolOff = CD-duration. In my example, coolOff = 35s.</div><div><br></div><div>Of course the sum of all three stages amount to the period: period = phase+duration+coolOff.</div><div><br></div><div>The proc usefulness is that rectangular function of the fight duration t. It has value 0 in stages 1 and 3, and value V0 during stages 2. In my example, V0=612ArP. I graphed that function in orange.</div><div><br></div><div>I am now using a differential approach: for each (fraction of) second of the fight, I will add the usefulness of the proc, to get the total contribution of the proc for the entire fight. In maths terms, I integrate the usefulness function, to get the proc contribution function.</div><div><br></div><div>The contribution function is a piecemeal growing affine function, flat during stages 1 and 3, and slanted during stages 2. I graphed it in green.</div><div><br></div><div>Now what we are interested in for comparison purposes, is not the contribution function, but the average value per unit of time: value = contribution/t, as a function of the fight duration t. I graphed it in blue. It can be observed that the value of the proc swings wildly with fight duration for short durations, but dampens down to converge towards the average value computed earlier for longer fights.</div><div><br></div><div>It will now take me a little while to clean up and post my graph. bear with me, I'll update this post when done.</div>",
+    "PostedDate": "2009-04-15T08:50:39.473-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "179680",
+    "ThreadId": "53340",
+    "Html": "Ok, my graph is posted at http://gleamware.com/trinketProcVal.pdf<div><br></div><div>The pink line is the average value computed at the top of this topic. It, and the blue time-dependent function, have been scaled by a factor of 10 for a better visibility.</div><div><br></div><div>For those interested, the full model is available at http://gleamware.com/trinketProcVal.gcx. It's a Mac grapher document.</div><div><br></div>",
+    "PostedDate": "2009-04-15T09:17:03.43-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "179689",
+    "ThreadId": "53340",
+    "Html": "So do you feel this answers your question? :P<br>\r\n",
+    "PostedDate": "2009-04-15T09:29:22.227-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "179691",
+    "ThreadId": "53340",
+    "Html": "Finally: is all this useful?<div><br></div><div>I think so: for fights around 5 mins, it shows the trinket proc value to be more or less 10% better than the static analysis would suggest. For Grim Toll, I upped its value to 129 from 119.</div><div><br></div><div>Would it be possible to also model fights where some time is spent &quot;off the boss&quot;? I thinks so. But I'm not going to do it just yet :-)</div><div><br></div>",
+    "PostedDate": "2009-04-15T09:31:58.27-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "179692",
+    "ThreadId": "53340",
+    "Html": "I found all this quite fun actually. What a pandora's box!<div><br></div>",
+    "PostedDate": "2009-04-15T09:33:31.417-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

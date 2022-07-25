@@ -1,0 +1,91 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.HealPriest",
+      "DisplayName": "Rawr.HealPriest"
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-08T06:55:25.207-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Couple things I noticed when using the holy priest model:\n \n1. No Blue Dragon implementation - It was mentionend before in a joint tree/hpriest item, but only added for tree.  I assume same for the Bangle.  Semi-related, the Earing of Soulful Meditation wasn't in the default list, though stats loaded for it when I manually added it.  Maybe double check its done right and add it to the default list?\n \n2. Regen weight - If I'm reading the scoring right an item's score is the sum of the +heal bonus and the regen, (and I assume haste).  But this massively weights item score to +heal.  Regen should either be weighted higher, say the common 11heal/2mp5 ratio,  or allow it to be user adjusted.\n \n3. Optimizer issues - couple minor things here:\n1. It optimizes on 'regen'.  But the char display shows mp5 i5sr and o5sr.  Based on the results I've seen, I'm guessing 'regen' is the amount calculated based on your selection on the % of time i5sr?   This value should be shown somewhere.\n \n2. No option for min hp.  Not a biggie, but simple enough.\n \n3. Sometimes ignores requirements.  I've sometimes seen this in the other rawr models too, but feels worse in priest.  For example I said to optimize based on regen with a minimum of 2400 +healing.  The gear set it returned had 2300 heal.  But if I optimize on overall, same available items, I get a gearset of 2600 +heal, so a 2400 requirement is meetable.",
+    "LastUpdatedDate": "2017-11-27T11:05:16.067-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-08-18T13:51:55.577-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[HealPriest] Couple regen/optimizer related things",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 11040
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1234,
+      "FileName": "hpriest-opt1.xml",
+      "DownloadUrl": ".\\1234"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Regardingit not meeting requirements when it's able, can you please post an example character file?",
+      "PostedDate": "2008-08-18T18:20:38.103-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "As to the optimizer issue, here's what I was last working with.  Optimizing overall I get 2531 +heal.\r\nOptimizing for maxing regen with >= 2400 heal and I get only 2363 +heal.",
+      "PostedDate": "2008-08-18T22:56:40.68-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-08-18T22:56:41.68-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-08T06:55:25.207-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T17:40:22.823-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:09:45.937-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:33.797-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:27:02.75-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:05:16.067-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

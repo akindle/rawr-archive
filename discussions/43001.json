@@ -1,0 +1,42 @@
+[
+  {
+    "Id": "142932",
+    "ThreadId": "43001",
+    "Html": "As has been well documented right now certain Ret Paladin's have been receiving a &quot;ghost hit&quot; of 3%.&nbsp; I am luckily one of those.&nbsp; After extensive testing I have concluded that a hit rating of 131 gets me 0 misses against the boss target dummy in IF.&nbsp; Is there a way to adjust this in program to reflect my not needing hit gear as is suggested by the program?&nbsp; I can obviously just look at my hit and make sure it is not above that, but the dps numbers are reflective of me needed a much higer hit number.&nbsp; By the way I'm Draenei so 131 takes into account my 1% hit bonus<br>\r\n",
+    "PostedDate": "2008-12-25T00:43:28.683-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "142939",
+    "ThreadId": "43001",
+    "Html": "In your BuffCache.xml, you can add a custom buff that increases your hit rating.<br>\r\n",
+    "PostedDate": "2008-12-25T02:00:11.217-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "143173",
+    "ThreadId": "43001",
+    "Html": "Hate to sound like a complete and total noob but I can't seem to figure this out.&nbsp; I have tried to add new buffs and even edit Heroic Presence but every time I save it and go back into Rawr it still shows the same buff with 1% increase.&nbsp; I'm not sure if it has to be done in a certain program that I do not own or not but no matter how i open the buffcache.xml file I can't seem to get the file to save the way I edit it.&nbsp; Thanks in adavance for any help I get on this. I really did try over and over to get it to work on my own.<br>\r\n",
+    "PostedDate": "2008-12-28T00:03:15.243-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "143214",
+    "ThreadId": "43001",
+    "Html": "I think if you load in a saved char it rewrites the buffs.<br>\r\nClose rarw<br>\r\nedit the file with notepad<br>\r\nput it right before &lt;/ArrayOfBuff&gt; (which is at the end of the file)<br>\r\n<br>\r\n<br>\r\n    &lt;Buff&gt;<br>\r\n    &lt;Name&gt;Pally Ghost Hit&lt;/Name&gt;<br>\r\n    &lt;Group&gt;Pally Buffs&lt;/Group&gt;<br>\r\n    &lt;Stats&gt;<br>\r\n      &lt;SpellHit&gt;0.03&lt;/SpellHit&gt;<br>\r\n      &lt;PhysicalHit&gt;0.03&lt;/PhysicalHit&gt;<br>\r\n    &lt;/Stats&gt;<br>\r\n    &lt;SetThreshold&gt;0&lt;/SetThreshold&gt;<br>\r\n    &lt;Improvements /&gt;<br>\r\n    &lt;IsCustom&gt;true&lt;/IsCustom&gt;<br>\r\n    &lt;ConflictingBuffs&gt;<br>\r\n      &lt;string&gt;Racial Buffs&lt;/string&gt;<br>\r\n    &lt;/ConflictingBuffs&gt;<br>\r\n  &lt;/Buff&gt;<br>\r\n  &lt;Buff&gt;<br>\r\n    &lt;Name&gt;Human Expertise Racial(mace/sword)&lt;/Name&gt;<br>\r\n    &lt;Group&gt;Human Buffs&lt;/Group&gt;<br>\r\n    &lt;Stats&gt;<br>\r\n      &lt;ExpertiseRating&gt;24.6&lt;/ExpertiseRating&gt;<br>\r\n    &lt;/Stats&gt;<br>\r\n    &lt;SetThreshold&gt;0&lt;/SetThreshold&gt;<br>\r\n    &lt;Improvements /&gt;<br>\r\n    &lt;IsCustom&gt;true&lt;/IsCustom&gt;<br>\r\n    &lt;ConflictingBuffs&gt;<br>\r\n      &lt;string&gt;Racial Buffs&lt;/string&gt;<br>\r\n    &lt;/ConflictingBuffs&gt;<br>\r\n  &lt;/Buff&gt;<br>\r\n<br>\r\n<br>\r\n(that also has the human expertise racial)<br>\r\nopen rarw up.. load your self from the armory.. profit! \r\n",
+    "PostedDate": "2008-12-28T09:34:53.86-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "143569",
+    "ThreadId": "43001",
+    "Html": "hit, i think the above works to @ the 3% more, but it isn't reflected in on the stats page.. i have 7.44% hit before i apply the above ghost hit and 7.44% after. It does look like it is taken into account tho, ie items with a lot of hit are lowered in ranking.\r\n",
+    "PostedDate": "2008-12-30T11:32:51.343-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

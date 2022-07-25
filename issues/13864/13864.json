@@ -1,0 +1,85 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtWarrior",
+      "DisplayName": "Rawr.ProtWarrior"
+    },
+    "ClosedComment": "Submitted fix for this issue in build 36111",
+    "ClosedDate": "2009-08-17T07:27:47.35-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When I add a requirement to the Optimizer to keep my % Chance to Hit or % Chance to be Dodged/Parried/Avoided below a certain percent, it ignores those requirements.  On the Stats tab, my Hit and Expertise seem to be displaying correctly along with the correct amounts of +hit and -dodge.  Also, under \"Offensive Stats\" \"Chance to Not Land\", it's accurately describing my %chance to be missed, parried, and dodged (although it has bosses set to block 6.5% of the time).\n \nI have enough gear and gems checked as available that it should easily be able to get me past the hit and dodge caps when % Chance to Hit and % Chance to be Dodged are set to <= 0.  If I manually equip gear to get me past those caps, and then optimize it again, it says to swap the gear back to what I had before, which was optimized just for Overall Rating, with a requirement to be uncrittable.",
+    "LastUpdatedDate": "2013-05-16T05:24:50.7-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-08-12T23:00:07.103-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtWarr] Expertise/Hit Optimization Failure",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13864
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "You can't reduce the boss' chance to block and you are never behind the mob because its trying to hit *you* which is why it stays at 6.5%. The names you posted in your message are kind of wrong so you are probably using them wrong. I changed them to new stuff in 2.2.13 and verified they work.",
+      "PostedDate": "2009-08-13T17:14:52.323-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "To clarify, after optimizing with the requirement to be unavoidable, I am still being avoided 15.56% of the time, not including block.  This is also the case if I tell it to optimize only for 0% miss rate, or for 0% dodge, or 0% parry.\r\n\r\nParry chance for bosses in Lich King is 14%, making the hard cap 56 Expertise for anyone standing in front of the boss (http://www.tankspot.com/forums/f200/41907-frequently-asked-questions.html).  The Rawr tooltips indicate that the bosses are set to a base parry of 14.75% (I'm seeing at the moment a 10.52% parry with 4.23% parry reduction through expertise).  I haven't tested what the hardcap is myself, so I won't dispute 14.75%...I've seen conflicting posts on Tankspot and ElitistJerks that indicate the base chance being at different levels between 13.5% and 15%.\r\n\r\nAlso, most bosses do not block.  At least, I can't think of any that do, but I might be forgetting an old world boss.\r\n\r\nMy apologies if my brevity caused confusion.  The full names of the filters in question are \"% Chance to Miss (Yellow)\", \"% Chance to be Dodged\", \"% Chance to be Parried\", and \"% Chance to be Avoided (Yellow)\".  I haven't tried \"% Chance to Miss (White)\", as I haven't been using the ProtWarr model for dual-wield dps, although before dual specs came out I would have been.  I hope that I'm not using the filters wrong; the user interface for them seems pretty simple.  Also, each of these options did work correctly for me in earlier versions of Rawr, although some of the names were different (the filters were called \"Hit %\", \"Expertise %\", \"% Chance to be Dodged\", and \"% Chance to be Avoided\").",
+      "PostedDate": "2009-08-14T22:32:41.817-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yeah, I don't know the inner workings of the ProtWarr model, but this really does sound like this is a bug. Block isn't avoidance...",
+      "PostedDate": "2009-08-14T22:49:23.66-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The reason that I rewrote that system was due to several reasons:\r\n1) The back end was directly linked to functions that were calling old static values from several versions ago that we, as a full Rawr team, tried to move away from.\r\n2) The statements were a little counter-intuitive to what they were actually doing.\r\n3) Some of the methods were unable to handle partial percentages (you could set 3% but not 3.5%) which wouldn't work against the actual caps correctly.\r\n4) I wanted to make a new set that worked the same way in both DPSWarr and ProtWarr, with the ideals in methods that Astry has been preaching for a little while now. To use 'Percentage of Chance to Miss' rather than 'Hit Rating' or 'Hit Percent' which should make it more accurate to the intent and it would better make the user capable of reaching to these kinds of caps without needing to memorize or self-calculate specific numbers on Hit Ratings, etc.\r\n\r\nHere's your Attack table on a blank (untalented) character:\r\n08.00% Miss\r\n06.50% Dodge\r\n14.00% Parry (based on self-testing and info from Elitist Jerks I had looked up a while back)\r\n06.50% Blocked (this isn't actually in effect, it's just a display, I didn't write in a back end for it because I'm not the actual ProtWarr dev and I was really just trying to fix the major stuff that was keeping it from being usable with Patch 3.2+)\r\n\r\nHere is an explanation of each of the optimizer requirements:\r\n\"% Total Mitigation\" returns Total Mitigation (as a percentage, matching displayed on the Defensive Stats section of the Stats Pane) (the higher the number the better, 75% is a minimum that I set on my character for the optimizer)\r\n\"% Guaranteed Reduction\" returns Guaranteed Reduction (as a percentage, matching displayed on the Defensive Stats section of the Stats Pane) (the higher the number the better, 75% is a minimum that I set on my character for the optimizer)\r\n\"% Total Avoidance\" returns your defensive table for your chance to Dodge + Miss + Parry as a totaled percentage (50% is a decent minimum to set for T8 content)\r\n\"% Total Avoidance+Block\" returns the same as '% Total Avoidance' but adds your 'Block %' to that as well (70% is a decent minimum to set)\r\n\"% Chance to be Crit\" returns the bosses chance to crit you (you want this to be zero)\r\n\r\n\"% Chance to Miss (White)\" returns the White Miss Cap (8% when not dual-wielding, 27% when you are) minus how much total hit bonuses you have (rating, talents, buffs). You want this to be <=0 if you are trying to be white hit capped.\r\n\"% Chance to Miss (Yellow)\" returns the Yellow Miss Cap (8% always) minus how much total hit bonuses you have (rating, talents, buffs). You want this to be <=0 if you are trying to be yellow hit capped.\r\n\"% Chance to be Dodged\" returns the Yellow Dodge Cap (6.5%) minus your total dodge reduction bonuses (Weapon Mastery, Expertise, etc). Again, <=0 is your friend to reach the cap.\r\n\"% Chance to be Parried\" returns the Yellow Parry Cap (14%) minus your total parry reduction bonuses (Expertise, standing behind the mob a percentage of the time). It is not necessary to reach the Parry cap under any normal circumstances but having these here does give value to the additional expertise beyond the dodge cap.\r\n\"% Chance to be Avoided (Yellow/Dodge)\" returns the Yellow Miss and Yellow Dodge mentioned above together. This is a convenience function and setting it to <=0 will make you both yellow miss and dodge capped. This does NOT include the extra Parry cap (which is unnecessary) or Block (since you can't reduce that anyways)\r\n",
+      "PostedDate": "2009-08-15T15:40:39.23-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "After careful review of each of the options (checked individually), I found that '% Chance to be Dodged' actually *was* broken. It was trying to take the 0.065 and subtract your unconverted Expertise (say 15 as an arbitrary number) and turn that into a <= 0. so 0.065 - 15 = -14.935 which it obviously met off the bat. After converting that 15 to it's actual DodgeParryReducPerc (which for 15 Expertise is 0.0375) you have a formula of 0.065 - 0.0375 = 0.0275 or 2.75% chance for the mob to dodge your attacks, which means you are not expertise soft capped.\r\n\r\nI'm submitting this code now and it will be available for v2.2.14 (unless you are building unreleased versions for yourself).",
+      "PostedDate": "2009-08-15T21:38:44.197-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-17T07:27:47.35-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T16:09:01.14-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:38.233-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:50.7-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

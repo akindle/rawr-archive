@@ -1,0 +1,65 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "If any of these are still relevant, please post them individually as they pertain to the current version.",
+    "ClosedDate": "2009-09-18T18:01:42.743-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "This isn't a \"you did it all wrong\" suggestion.  I applaud the fantastic job everyone has done to make Rawr a highly accurate, extremely comprehensive, and deeply informative tool for \"sandboxing\" the theorycrafting of your character.\n \nI have been advocating Rawr, and trying to get more and more of my guild members and friends to use it, to help answer their questions.  And that is exactly where a hurdle in the learning curve comes up.  Rawr is not designed to address the way non-technical users work with the program.  Most notably, it is not \"layed out\" in a way that answers questions; it is only layed out to provide data.\n \nFor example, if I am a new 80, I want to use Rawr to solve my question \"What is the best gear upgrade I can get, for each slot, that is available from 80 dungeons, heroics, reputation, or crafted?\".  I understand that Rawr provides this data, certainly.  But it doesn't provide it in a way that makes it easy to answer the question.  There are no filters available to use on the Upgrade List itself.  To use the filters in the Comparison lists, I have to access the dropdown once for each filter to turn on/off, and there are several.  Plus, if you use the comparison lists, you lose the relative (vs. absolute) scale, as well as whatever information is being gleaned from all that extra computation is that takes place when you build an upgrade list.  (Also, if you do change all those filters, one at a time, they stay like that, and you have to change them all back, also one at a time.)\n \nAnother expample is, that besides the fastest, most hardcore guilds, players will spends weeks or months trying to clear a whole dungeon, and you want to answer the question \"From the two wings of Naxx that we clear consistently, what are the best upgrades I can get for my gear set?\".  Again, I can answer this question, just not conveniently.  I can click off all the filters except \"Heroic Tier-7 Raids\", then mouse over each item in the Comparison list that is better than what I have, to find the highest item I can get from one of the bosses in those quarters.  Or I can use the Upgrade List, sort by score, and mouse over the items down the list until I come across an item from a boss I can kill.\n \nA third example, is that a Ret Paladin may run an optimize, equip the gear recommendations, and ask \"What hit rating does this bring me to, and how much more do I need to reach hit cap?\".  Rawr obviously knows what his hit cap is, and that he is 20 shy, but all it reports is that his \"Miss chance: 1.5%\", and \"7% hit (252 rating)\" if he mouses over it.  This information is perfectly accurate, no doubt, yet the program is fully capable of providing this information in a context that gives it more meaning, namely in relation to the hit cap.\n \nA fourth example, would be a person who regularly raids with 9 other people from a pool of 15, and asks \"When which people are present, with their respective buffs, will I get the best performance, and which buffs should I ask them to use on me?\".  He can systematically go through each buff, turning them on and off, running new optimizations, etc. to find the top configuration.  At the least, it would be useful for the software to communicate which buffs come from which classes/specs, which it currently does not.  It would also help if the program could compute the effects of each buff, in sort of a \"buff upgrade list\", so they could see the relative effects of each, in a single view.\n \nA fith example, would be a person that wants to compare groups of gear items, to answer the question \"How do each of these pieces of gear effect a variety of important stats?\".  Obviously, the number of pieces would have to be small, in order to not go sky-high on computational cost.  This type of question is especially important for tank, that have to balance a myriad of stats to maintain effectiveness.  If you've ever used a plugin like RatingBuster, this is sort of the ideal way to answer the question.  RatingBuster lets you mouse over a piece of gear, and see that it will boost your HP by 214, drop your defense by 6, keep your attack power the same, but gain your 1.5% of dodge.  From this the tank weighs his options, \"So I'll lose 6 DEF, but go up 214 HP and 1.5% dodge?  SOLD!\".  The tank optimization models get much closer to this, because they tend to have numerous options that let you go after one goal (e.g. \"Mitigation\" vs. \"Avoidance + Block\"), but they don't provide several options in one place so that the tank can choose whether to go after an item that gives a small boost to mitigation score, or a large boost to avoidance score.\n \nMost people that use this type of advanced gearing information are \"technical users\", that have traditionally used spreadsheets, and other data-oriented tools, to gather raw information, from which they then mentally sifted through to find what they were looking for.  But the technical users already knew what information to look for, and in fact are the very people that helped program the model for Rawr, based on those facts they already knew or computed elsewhere.  Less technical users can greatly benefit from this information being presented to them in-context, so that the data more closely equates to the questions that are really being asked when the software is used.",
+    "LastUpdatedDate": "2013-05-16T05:25:34.057-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-05-14T13:03:46.283-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Feature Request] Design suggestions to make Rawr more accessible to less-technical users",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 13241
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "We definitely want to make Rawr more user friendly. No question about that.\r\n\r\nPlease list specific design requests as separate feature requests though, not just lump them all into one issue like this. To respond to a few of them, though...\r\n\r\nMaking the filter dropdown not close when you click on items should be possible, I'll look into that, and would indeed be nice.\r\n\r\nWe can't implement any sort of mix of comparison and upgrade list, due to the extreme differences in computation time required. For new, just-hit-80 users, they really don't need Upgrade Lists, because they have a wealth of potential upgrades, and nearly no need to min-max; Rawr is effectively a tool for finding whatever big upgrades there are that they have easy access to. The Direct Upgrades chart is perfect for them. I think we could definitely have a better way to direct these sort of users to that chart, however, and would love to hear ideas on how to do that. \r\n\r\nSecond suggestion: Yeah, we'd like to have per-boss filtering or something like that. It's currently possible to do, with a huge number of filters, but I can see us having some sort of like filters and sub-filters, so you could turn on/off different bosses, or whole instances, at a time. I think that will come whenever we get to building a filter panel (instead of it just being a simple dropdown). But that's probably a ways down the road.\r\n\r\nRegarding how to present specific stats, such as hit rating, I'd like to definitely standardize this better, across models. I think it should be displayed in terms of what actually matters (avoid chance), and have a tooltip that breaks it down into miss/dodge chance, hit/exp rating, and hit/exp rating til cap.\r\n\r\nYour fourth example is already covered. Tools > Options, show buff sources. An argument could be made that it should be on by default, but I currently think it should be off, since it makes things appear cluttered, and I think most people know where most buffs come from (not all, by any means, but I think it's a safe enough assumption, that the default can be off).\r\n\r\nFifth example: We definitely don't want to do things like \"So I'll lose 6 DEF, but go up 214 HP and 1.5% dodge?\", because trying to figure out the value of those stats is exactly why they're using Rawr in the first place. It should really be \"So I'll lose 100 mitigation, but gain 500 survival? SOLD!\" There's a Character Comparison feature coming, which is exactly what we're looking for for this sort of situation.\r\n\r\nAgain, these are great suggestions, and I really really want Rawr to be more user-friendly. Please break them up into individual feature requests, though, so we can better track them.",
+      "PostedDate": "2009-05-14T13:34:34.86-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-18T18:01:42.743-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T19:19:11.37-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:30.6-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:34.057-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

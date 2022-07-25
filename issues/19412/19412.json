@@ -1,0 +1,91 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtWarrior",
+      "DisplayName": "Rawr.ProtWarrior"
+    },
+    "ClosedComment": "4.0.14 Released",
+    "ClosedDate": "2011-01-01T18:04:57.637-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Base block chance on my naked warrior's paper doll is 32% (afaik 20% plus 12% from 8.00 base mastery). Rawr has 44% for a naked ProtWarr, not sure why.\n \nAlso, Rawr adds 47.5 parry rating on a naked ProtWarr, I don't either know where that comes from.\n \nMy naked toon has 4.05% dodge (that one is correct) and 5.00% parry.\n \nEdit: Ah, right. That 47.5 parry rating is from the 190 base strength. But according to my paper doll, base strength doesn't grant parry, only additional strength from gear and buffs (tested with Battle Shout and MotW).",
+    "LastUpdatedDate": "2013-05-16T05:19:26.947-07:00",
+    "PlannedForRelease": "Rawr 4.0.12 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-12-22T07:24:26.493-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtWarr] Incorrect base values for parry and block",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19412
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4268,
+      "FileName": "nakedprot.xml",
+      "DownloadUrl": ".\\4268"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I will quickly confirm in game tonight about base Strength -> Parry (what you say sounds resonable compared to how similar mechanics have worked with Agility in the past) and get that fixed.\r\n\r\nNot sure about the Block value issue. I thought that I had resolved an issue in my previous commit that was inappropriating giving value to Block from 'Defense' skill, but perhaps that got overwritten as it was in the core systems. Will take a look this evening.",
+      "PostedDate": "2010-12-23T05:42:00.233-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "After looking at the source, it does appear that someone overwrote/reverted my changes to StatConversion which were removing the bonuses/calucations for 'Defense' and DefenseRating, so it is giving you the bonus as if you had the Defense from your level. (Which is obviously incorrect now that Defense has been removed.)",
+      "PostedDate": "2010-12-23T05:45:37.717-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Actually, appears to be something else. Will be investigating this more when I can properly debug it. Thanks for the report.",
+      "PostedDate": "2010-12-23T06:01:35.287-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Did find the issue and will be adding the fix in a large commit today or tomorrow which resolves most of the remaining issues with the model. :)",
+      "PostedDate": "2010-12-28T07:35:42.817-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-30T07:23:31.777-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Both issues should now be fixed in CL 56643",
+      "PostedDate": "2010-12-30T07:25:15.57-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-01T18:04:57.637-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:56.087-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:26.947-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

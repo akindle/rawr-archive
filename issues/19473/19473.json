@@ -1,0 +1,125 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-01-02T01:06:48.757-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hey guys.  I get the following error after uninstalling the old rawr4 and installing the latest version (29 Dec 2010) and clearing all the cache stuff, etc etc.\n \n[Arg_NullReferenceException]\nArguments: \nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.51204.0&File=mscorlib.dll&Key=Arg_NullReferenceException\n \n   at Rawr.UI.FileUtils.client_OpenReadCompleted(Object sender, OpenReadCompletedEventArgs e)\n   at System.Net.WebClient.OnOpenReadCompleted(OpenReadCompletedEventArgs e)\n   at System.Net.WebClient.OpenReadOperationCompleted(Object arg)\n \nAt the bottom the loading bar is just about full and the text underneath reads \"Decompressing ItemSource.xml...\"\n \nSearched through the issue tracker, but didn't get much info about it.",
+    "LastUpdatedDate": "2013-05-16T05:19:22.27-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-12-29T03:02:53.073-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Arg_NullReferenceException on Decompressing ItemSource.xml",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19473
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "ItemSource.xml was removed from the DefaultDataFiles.zip for the new version because it's no longer necessary. I don't know why you would be getting an error on it.",
+      "PostedDate": "2010-12-29T03:05:48.663-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "HOLY COW that comment was faster than I expected.  \r\n\r\nI checked back today to see the new version, uninstalled the existing one on my pc and then i installed the new one.  The problem cropped up when I went into the silverlight settings and deleted the application storage (as a form of a total reset).   The big issue is that i can't continue into rawr at all now :(",
+      "PostedDate": "2010-12-29T03:08:59.51-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "At the website, the program loads up the files correctly. The first time, it redownloaded the files because TinkeringCache.xml was missing which is correct and *everyone* going to the website should now see it do that the first time. Since the new DefaultDataFiles.zip doesn't have ItemSource.xml and does have TinkeringCache.xml you should load in just fine.\r\n\r\nAfter you get this error, does Rawr finish loading? Can you get to 'Options > Reset All Caches'?",
+      "PostedDate": "2010-12-29T03:09:41.333-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Reset all Caches is the bugger that causes the issue :) \r\n\r\nInstall it on a pc and reset all caches.  Insta-crash with that error.  \r\n",
+      "PostedDate": "2010-12-29T03:12:17.06-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "ok, closing Rawr after that crash and then opening it again seems to load the app again without any crashes, but as soon as you reset all caches it bugs out again, requiring a restart of the app.",
+      "PostedDate": "2010-12-29T03:14:15.98-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You somehow have the older DefaultDataFiles.zip persisting.\r\n\r\nTo further try and replicate your issue, when I was at the site link I right-clicked and selected Silverlight, then went to Application Storage. Then I closed out the website so that no instance or Rawr was still running. Then in the Application Storage tab I deleted the site's storage and clicked OK.\r\n\r\nI went back to the site in my browser, it asked me to give it storage again, it downloaded the default data files (no crashes) and loaded right into Rawr.",
+      "PostedDate": "2010-12-29T03:16:25.403-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Did the same from Installed Offline (from website) no errors.",
+      "PostedDate": "2010-12-29T03:17:59.003-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "What browser are you using?",
+      "PostedDate": "2010-12-29T03:23:48.393-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm running Chrome atm, but got firefox and internet exploder at the ready. \r\nThe odd thing is that the issue crops up with the offline version for me.  Can it be that the browser cache taints the download for the offline install?",
+      "PostedDate": "2010-12-29T03:29:40.447-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Error persists in IE7 as well.  Cleared all data, but still get the issue.  I DID note tho that the Rawr version on http://elitistjerks.com/rawr.php still reads Rawr b4.0.12.0  Can that maybe be an issue (website says 4.0.13b should be out)?",
+      "PostedDate": "2010-12-29T03:38:27.523-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Chrome is known to hold onto the older version of Rawr: http://rawr.codeplex.com/Thread/View.aspx?ThreadId=238913",
+      "PostedDate": "2010-12-29T03:40:51.897-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "If your program or the website still says .12, you are running it out of date and need to clear the Browser's cache too (from the Browser's settings, not Silverlight's)",
+      "PostedDate": "2010-12-29T03:41:58.113-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": ":S  Resetting browser  cache, silverlight cache, deleting temp files in windows... no result.  still loads 4.0.12\r\nMight be my isp that's doing invisible caching.\r\n\r\nWill follow it up with them.\r\n\r\nThanks",
+      "PostedDate": "2010-12-29T03:49:20.233-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Try http://www.chromeboard.com/showthread.php?t=7095",
+      "PostedDate": "2010-12-29T03:58:12.077-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-02T01:06:48.757-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:49.05-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:22.27-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

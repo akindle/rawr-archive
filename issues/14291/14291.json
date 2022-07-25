@@ -1,0 +1,116 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Warlock",
+      "DisplayName": "Rawr.Warlock"
+    },
+    "ClosedComment": "No longer a known issue in 2.3.14.",
+    "ClosedDate": "2010-04-11T20:33:38.833-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I am seeing some unexpected results when optimizing for DPS. I have a Spectral Kris (47569) equiped and Plasma Foil available for the optimizer. The gear comparison screen says the optimally gemmed Kris is worth 710.78 DPS and my gemmed version is worth 702.18 while the foil is worth 562.92 but when I run the optimizer it suggests using the foil along with a few gem changes for both simulated annealing and genetic algorithms. \n \nComparing the two items:\n \nGains Kris\n1 Crit\n46 Haste\n1 Sockets\t\n \nGains Foil\n15 Int\n4 Sta\n46 Spi\n \nGiven the gem socket on the kris I am wondering how the optimizer is overcoming the 140+ DPS difference from the gear comparison screen. If this sounds legit to the developers then fine but I figured I would raise the issue incase it was something worth looking into.",
+    "LastUpdatedDate": "2013-05-16T05:24:05.013-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-09-29T11:04:29.65-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Warlock] Optimizations",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 14291
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2281,
+      "FileName": "Necronator.xml",
+      "DownloadUrl": ".\\2281"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "The reason its telling you to use the Gains Foil is a result of the warlock module or optimizer not properly valuing haste. It seems in the warlcok module that items with haste actually lose dps for the haste after 400 haste value. It has to be a bug because even if it was set to have a hard cap at 400 (which it shouldn't) then the haste after that would be valued as 0. Currently its being valued negatively which makes items which are clearly better being undervalued if they have haste. I tried looking through the source code for it but i have very little experience with c# to help identify where the issue is located. All my testing so far indicates its definately a problem with haste. If you look at the relative stat values, haste will be the most valued stat, but the items are being calculated wrong with that value causing it to be a dps loss for the item. ",
+      "PostedDate": "2009-09-29T17:41:33.523-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Is the same code that devalues haste after a certain point involved in the gear upgrade calculations? Just trying to figure out if I should temporarily stop using rawr optimizations or in general?",
+      "PostedDate": "2009-09-30T08:16:34.927-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-30T08:23:58.413-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "for what its worth, I believe that v. 2.2.16 was the last version released before whatever change occurred that created these issue.  Every version I have downloaded since then has given wacky optimization results.  2.2.19 was better but it still does seem to include the weird haste behavior that causes haste to lose its value after a certain threshold has been crossed.\r\n\r\nI dont want to bring the wrath down of the admins :).  But, if you want decent optimizations for your lock, I would revert back to 2.2.16 until this issue is addressed.",
+      "PostedDate": "2009-09-30T08:28:42.86-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "To put it bluntly, the Warlock module wasn't really ever finished and it was around 2.2.16 that we finally got some new devs to come in and start taking care of the model. So there's really not a version at this time where you can \"trust\" the calcs for optimization and we've said time and again why Haste jumps around in value, it's an issue which is systemic across multiple models in how rotations are calculated and people should STOP FREAKING OUT about how it looks for haste. Use the Build Upgrade List option to determine possible upgrades during a raid as that will give you the best outlook until things settle down on the back end between ArPhar and Hz.",
+      "PostedDate": "2009-09-30T09:04:54.73-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I am guessing your \"STOP FREAKING OUT\" comment wasn't directed at me but if it was I was just trying to help and point out a problem. Maybe a note about known issue with haste and warlocks being broken would help cut down the issue reporting.\r\n\r\nSo it sounds like it safe to trust the latest and greatest version for gear upgrades?",
+      "PostedDate": "2009-09-30T11:29:15.413-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ya, it wasn't directed at any one person. I'm gonna ask Astry to make a Known Issues bullet about Haste affecting several models in weird ways and we are all working on resolving this issue so it's less apparent across the board.",
+      "PostedDate": "2009-09-30T11:36:34.677-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-01T09:01:04.1-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Playing with my warlocks numbers I found significant DPS changes making only slight adjustments to the game/brain latency adjustment.  Increasing the latency seemed to increase the amount haste was valued.  Testing at zero latency Rawr liked to create gear sets that ranged from 400-500 haste rating. (optimize for DPS, not overall) Altering the adjustment to near 120+ms latency with the same gear available to the optimizer it liked to create sets of 650-780 haste rating. (The ranges coming from other changes i made with rotation priority and such.)  I'd find this second range of values as much more 'practical' in terms of actual DPS optimization values.  I wouldnt believe the calculations are trying to make up for latency with haste, Id guess its a GCD issue after conflag is it wasnt reported other class models are having the same haste issues.  Just some of my finding that may or may not help out the chiefs when they get time to look at this issue.\r\n(overall, love the mod btw, ty)",
+      "PostedDate": "2009-10-01T22:03:53.2-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Based on this thread it was suggested/implied that the upgrade wasn't being effected by the haste issues. I just recently got the Conqueror's Deathbringer Leggings and was trying to decide how to gem since I assume they were an upgrade over Legwraps of the Master Conjurer since the former provides haste instead of crit which is more important to warlock. I was surprised to the upgrade pane on the main screen of 2.2.21 list the legwraps as 20 DPS better then the leggings with optimal gemming.\r\n\r\nwowhead comparison of the two items.\r\nhttp://www.wowhead.com/?compare=45848;46139\r\n\r\nI think it is safe to say the haste issue is just not in the optimization code.",
+      "PostedDate": "2009-10-08T06:44:47.853-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-11T20:33:38.833-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T14:48:21.067-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:32:42.237-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:05.013-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "My fault, Use PTR should have been hidden as it doesn&#39;t work yet",
+    "ClosedDate": "2010-11-22T11:10:53.36-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I seem to be having an issue adding new items using Rawr4. I tried testing with item \"Treads of Fleeting Joy\" (item id: 58482). After selecting use PTR, I get the following message when I run in Firefox:\n \nAn exception occurred during the operation, making the result invalid.  Check InnerException for exception details.\n \n \n \n   at System.ComponentModel.AsyncCompletedEventArgs.RaiseExceptionIfNecessary()\n   at System.Net.DownloadStringCompletedEventArgs.get_Result()\n   at Rawr.ElitistArmoryService._webClient_DownloadStringCompleted(Object sender, DownloadStringCompletedEventArgs e)\n   at System.Net.WebClient.OnDownloadStringCompleted(DownloadStringCompletedEventArgs e)\n   at System.Net.WebClient.DownloadStringOperationCompleted(Object arg)\n \nSecurity error.\n \n   at System.Net.Browser.AsyncHelper.BeginOnUI(SendOrPostCallback beginMethod, Object state)\n   at System.Net.Browser.BrowserHttpWebRequest.EndGetResponse(IAsyncResult asyncResult)\n   at System.Net.WebClient.GetWebResponse(WebRequest request, IAsyncResult result)\n   at System.Net.WebClient.DownloadBitsResponseCallback(IAsyncResult result)Security error.\n \n   at System.Net.Browser.BrowserHttpWebRequest.InternalEndGetResponse(IAsyncResult asyncResult)\n   at System.Net.Browser.BrowserHttpWebRequest.<>c__DisplayClass5.<EndGetResponse>b__4(Object sendState)\n   at System.Net.Browser.AsyncHelper.<>c__DisplayClass2.<BeginOnUI>b__0(Object sendState)\n \nWhen I try this in Internet Explorer, it is linking me to line 70 of ElitistArmoryService.cs file:\n \nusing (StringReader sr = new StringReader(e.Result))\n \nTo me this means the program is trying to download from Elitist Armory when Elitist Armory is no longer available.",
+    "LastUpdatedDate": "2013-05-16T05:19:44.66-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-11-22T08:50:11.9-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] Problems adding items using Rawr4",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19157
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

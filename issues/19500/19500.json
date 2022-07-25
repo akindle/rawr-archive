@@ -1,0 +1,115 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Enhance",
+      "DisplayName": "Rawr.Enhance"
+    },
+    "ClosedComment": "Flametongue problem fixedDisplay being revamped, so haste problem out of date.",
+    "ClosedDate": "2011-02-24T18:01:13.697-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I don't know if this is specific to enh shamans, or whether it is an issue with weapon data or what.  My character, (Revirginator, Undermine) has two 2.6 speed weapons, and 472 haste rating.  With no raid buffs, the haste tooltip reports 4.77% haste instead of the 3.69% reported by WoW (not too far off), and the weapon speed is 1.80 instead of 2.51 (really far off).  This is causing flametongue attacks (and therefore spellpower) to be over-weighted in the calculations.\n \nThanks for all the work you folks have put into this tool.  I have used it extensively in the past, and look forward to using it in the future.",
+    "LastUpdatedDate": "2013-05-16T05:19:18.88-07:00",
+    "PlannedForRelease": "Rawr 4.0.13 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-12-30T16:07:31.963-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Enhance] Weapon speed does not match haste calculation, haste does not match wow",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 19500
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I'll look into the haste percentage tooltip.  However, the weapon speed includes things like flurry and unleash wind into its calculations, as well as attack speed buffs (windfury) that don't get shown in the haste rating (and percentage tooltip) value.",
+      "PostedDate": "2010-12-30T16:17:11.27-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-30T16:17:39.44-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-30T16:18:00.847-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I had looked in the past at having two haste ratings for the Enhance model and now that WoW shows stats this is an even better idea.\r\n\r\nBasically its a really good idea to have all the stats now showing as they are in game on the sheet. If for no other reason than it gives you as a model developer a strong lead to see if any stats are wrong.\r\n\r\nIf I was revising the model I'd break apart the stats into in game ones and calculated ones and re-do the display tab. If you need assistance on how this should work let me know and I'll be happy to discuss it with you.",
+      "PostedDate": "2010-12-30T18:18:35.153-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks for looking into this.  Flurry and unleash weapon could easily explain the 4.77 vs 3.69.  I had not thought of that.  1.80 still seems very fast.   Also, apologies if this comment gets added multiple times.",
+      "PostedDate": "2010-12-30T19:43:01-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I guess I should also say the thing that first got me looking at weapon speed was the amount of damage reported from flametongue.  It was 22% of total dmg, about double what I've seen in recount.  At first I was wondering if rawr was doing FT/FT, but I saw the windfury attacks listed as well.",
+      "PostedDate": "2010-12-30T19:51:15.693-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yeah Levva, that's on my to do list.\r\n\r\nAkhRani, the flametongue damage is another problem that I need to look into.  But I'm pretty sure the 1.80 speed is fairly accurate.  I will double check the calcs though.  Also, the 4.77 v 3.69% haste is something else I will look into.",
+      "PostedDate": "2010-12-30T20:48:03.82-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'll get some logs with target dummies tomorrow and see what my average haste looks like, based on total hits vs. total time.",
+      "PostedDate": "2010-12-30T20:53:14.407-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "OK, looks like 1.8 is basically what I'm seeing.  If my calculations are correct, this corresponds to 44.4% average haste.  So I'm still unclear about the 4.77% haste, but I'd say this is pretty low-priority if it's just a tooltip issue.  Sorry for whatever effort my confusion cost you.",
+      "PostedDate": "2010-12-31T13:48:56.22-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-01T14:48:01.293-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Usually this sort of thing ends up being a tooltip issue when its all said and done, but sometimes it isn't so its good to at least bring it to our attention and attach the character file where the issue is being seen.\r\n\r\nTime, can you edit the tooltip to branch out each source of haste? I know you were plaanning to do that anyway but conformity is win :) Check DPSWarr for an example of what I mean.",
+      "PostedDate": "2011-01-01T14:51:43.383-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-03T09:48:47.487-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-02-24T18:01:13.697-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:44.55-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:18.88-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

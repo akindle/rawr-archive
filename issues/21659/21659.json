@@ -1,0 +1,75 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSDK",
+      "DisplayName": "Rawr.DPSDK"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-11-30T00:35:31.463-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "KM procs are not additive when solving for total Obliterate crit chance, and the KM procs need to be pulled out first.\n \nAssume the following (bogus numbers just for easy math):\nfOBFSCount (all obliterates) = 10\nBase crit chance = 10%\nKMProcCount  = 3\n \nAccording to the code below, this would yield:\n_BonusCritChance = 3/10\nCritChance = 0.10 + BonusCritChanceObliterate + 0.3 = 0.4 + BonusCritChanceObliterate\n \nThis is incorrect, and the math should read as follows (ignoring BonusCritChanceObliterate since it would be combined with base.CritChance):\n#Crits = (#Obliterates - (#KMProcs used on OB)) * NonKBCritChance + (#KMProcs used on OB) = (10 - 3) * 0.10 + 3 = 3.7\nCritChance = #crits / #Obliterates = 3.7 / 10 = 0.37\n \nThe code below yields a 40% crit chance compared to the more accurate 37% crit chance.  This occurs because the base crit chance is being used on the guaranteed crit strikes, and this potentially yields 2 crits on a KM proc.  The easiest way to do this would be to pass in the total number of obliterates into the set function for _BonusCritChance.\n \nCode:\n----\n        public override float CritChance\n        {\n            get\n            {\n                return Math.Min(1, base.CritChance + CState.m_Stats.BonusCritChanceObliterate + _BonusCritChance);\n            }\n        }\n \n----\n            float fPctOBFSCrit = KMProcCount / fOBFSCount;\n            OB.SetKMCritChance(fPctOBFSCrit);\n----\n \nThere is also a discussion regarding crit and hit being overvalued, and none of the proper stat weights are being used.",
+    "LastUpdatedDate": "2013-05-16T05:17:20.713-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-10-18T14:38:15.87-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSDK] - KM Proc bonus to crit",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 21659
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Good find.  I thought I had sorted out all the additive vs. multiplicative stats.",
+      "PostedDate": "2011-10-18T19:01:58.867-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-10-18T19:02:40.853-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 63498.",
+      "PostedDate": "2011-10-18T19:51:13.44-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-10-18T21:00:39.85-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-11-30T00:35:31.463-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:24:10.587-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:17:20.713-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

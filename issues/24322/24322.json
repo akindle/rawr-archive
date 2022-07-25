@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Closing because I believe this is an issue with randomly enchanted gear.  If it continues to be an problem after trying 5.4.2, please open a new issue.",
+    "ClosedDate": "2013-11-27T09:19:21.15-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "My character is Seraphym on Caelestrasz server. When trying to load I get the error \"There is an error in XML document (18, 4). Index was outside the bounds of the array.\" with a stack trace \n\n   at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle, XmlDeserializationEvents events)\n   at System.Xml.Serialization.XmlSerializer.Deserialize(XmlReader xmlReader, String encodingStyle)\n   at Rawr.Character.LoadFromXml(String xml)\n\nI also get the same error when loading other people's characters except the error is in XML document (19,4).\n\nTrying to use the web-based version, it either freezes and quits or I get an error message \"System.IndexOutOfRangeException: Index was outside the bounds of the array.\n   at Rawr.RandomSuffix.GetStatValue(Item item, Int32 id, AdditiveStat stat) in C:\\Rawr-5.0\\Rawr.Base\\RandomSuffix.cs:line 681\n   at Rawr.Reforging.CurrentStatValue(Item baseItem, Int32 randomSuffixId, AdditiveStat stat) in C:\\Rawr-5.0\\Rawr.Base\\Reforging.cs:line 243\n   at Rawr.Reforging.ApplyReforging(Item baseItem, Int32 randomSuffixId) in C:\\Rawr-5.0\\Rawr.Base\\Reforging.cs:line 186\n   at Rawr.ItemInstance.OnIdsChanged() in C:\\Rawr-5.0\\Rawr.Base\\Items\\Item.cs:line 1399\n   at Rawr.ItemInstance.set_ReforgeId(Int32 value) in C:\\Rawr-5.0\\Rawr.Base\\Items\\Item.cs:line 1359\n   at Rawr.ItemInstance..ctor(String gemmedId) in C:\\Rawr-5.0\\Rawr.Base\\Items\\Item.cs:line 1688\n   at Rawr.Character.SetGemmedId(CharacterSlot slot, String gemmedId) in C:\\Rawr-5.0\\Rawr.Base\\Character.cs:line 689\n   at Rawr.Character.set__wrist(String value) in C:\\Rawr-5.0\\Rawr.Base\\Character.cs:line 706\n   at Rawr.Server.Controllers.CharacterController.ConvertBattleNetJsonToCharacter(String json, String region) in C:\\Rawr-5.0\\Child Projects\\Rawr.Server\\Rawr.Server\\Controllers\\CharacterController.cs:line 400\n   at Rawr.Server.Controllers.CharacterController.HandleBattleNetCharacterRequest(String characterRegionServer) in C:\\Rawr-5.0\\Child Projects\\Rawr.Server\\Rawr.Server\\Controllers\\CharacterController.cs:line 97\"\n\nand the suggested fix is to use the addon.\n\nany help is appreciated.",
+    "LastUpdatedDate": "2013-11-27T09:19:21.15-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Unassigned",
+      "Severity": 0,
+      "Id": 0
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2013-05-19T17:04:58.58-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Fixed"
+    },
+    "Summary": "unable to load characters from battle.net",
+    "Type": {
+      "Name": "Unassigned",
+      "Id": 5
+    },
+    "VoteCount": 1,
+    "Id": 24322
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

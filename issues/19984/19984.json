@@ -1,0 +1,95 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Buffs",
+      "DisplayName": "Rawr.Base.Buffs"
+    },
+    "ClosedComment": "Rawr 4.1.04 Released",
+    "ClosedDate": "2011-04-29T22:02:35.277-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Unable to have a flask Mixology buff selected as well as a double potion trick buff at the same time. Double potion trick will remove the Mixology buff and the Mixology buff refuses to be activated while there is a double potion trick buff selected. This only applies to flasks; it does not apply to elixirs.\n \n(No file attached as this is not character-specific.)",
+    "LastUpdatedDate": "2013-05-16T05:18:41.89-07:00",
+    "PlannedForRelease": "Rawr 4.0.19 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-02-10T11:57:31.797-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Buffs] Flask Mixology and Double Pot Trick mutually exclusive",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 19984
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Noticed the same thing. On a related note, when I unselect Double Pot Trick, my score doesn't change at all.",
+      "PostedDate": "2011-02-10T18:44:31.297-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hopefully fixed by commit 58287",
+      "PostedDate": "2011-02-24T19:39:52.03-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-10T18:49:34.12-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Rawr 4.1.0 Released\r\n\r\n\n\n** Closed by Jothay 3/10/2011 6:49 PM",
+      "PostedDate": "2011-04-05T23:01:45.84-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This still is not functioning as it should. If a double-potion is selected, it will deselect the Mixology buff and will refuse to allow the Mixology buff to be reselected until the double-potion buff is deselected.",
+      "PostedDate": "2011-04-05T23:01:46.533-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "relient, is that on a Mage or another toon. If its Mage then ignore it because Mage's don't select pots from there anyways (and it should be hidden, I'm not sure if hiding it made into this release).",
+      "PostedDate": "2011-04-05T23:11:35.167-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Fixed for next version. Not actually mutually exclusive per the buffs code set up. The problem was in the ValidateActiveBuffs code wasn't null-checking the strings in the ConflictingBuffs list, so it was allowing a null to match a null, which is common to both Flask Mixology and Double-Pots.",
+      "PostedDate": "2011-04-06T18:53:35.117-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-06T18:54:11.2-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-29T22:02:35.277-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:25:58.263-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:41.89-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "190729",
+    "ThreadId": "56444",
+    "Html": "<p>Hello,</p>\r\n<p>Perhaps i've missed something but looking for the DPS source charts in my character sheet, I was surprised about conflagrate DPS (2K+)</p>\r\n<p>So i went into the code to understand thoses numbers:</p>\r\n<p>&nbsp;</p>\r\n<p>(string name&nbsp; , Stats stats, Character character, List&lt;SpellData&gt; SpellRankTable, int manaCost, float castTime, float critCoef, float dotDuration, float damageCoef, int range, float cooldown, Color col, MagicSchool magicSchool, SpellTree spelltree)<br>(&quot;Conflagrate&quot;, stats&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; , character&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; , SpellRankTable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; , 12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; , 0f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; , 1.5f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; , 0f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; , 1.5f / 3.5f&nbsp;&nbsp;&nbsp;&nbsp; , 30&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; , 10f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; , Color.Red, MagicSchool.Fire, SpellTree.Destruction)<br>(&quot;Immolate&quot;&nbsp;&nbsp; , stats&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; , character&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; , SpellRankTable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; , 17&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; , 2f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; , 1.5f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; , 15f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; , 2f / 3.5f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; , 30&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; , 0f&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; , Color.Gold, MagicSchool.Fire, SpellTree.Destruction)<br><br>SpellData(int rank, int level, int minDamage, int maxDamage, int dotDamage)<br>&quot;Conflagrate&quot; : SpellData( 8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; , 80&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; , 766&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; , 945&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0)<br>&quot;Immolate&quot;&nbsp;&nbsp;&nbsp; : SpellData(11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; , 80&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; , 460&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; , 460&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 785)<br><br>tmpImmo.TimeBetweenTicks = 3f;<br><br>MinDamage = MaxDamage = tmpImmo.DotDamage / (tmpImmo.DebuffDuration / tmpImmo.TimeBetweenTicks) * 15;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 785 / (15 / 3) *15<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; = 785 / 5 * 15<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; = 785 * 3</p>\r\n<p>As far as i understand the code, It seems that conflagrate do the triple of the damage it should do.</p>\r\n<p>Please tell me if i'm wrong or if you want me to create an issue tracker with my character sheet.</p>\r\n<p>&nbsp;</p>\r\n<p>Jettay</p>\r\n<p>&nbsp;</p>\r\n<p>Ps : Sorry for English imperfection.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-05-15T06:56:11.177-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "190740",
+    "ThreadId": "56444",
+    "Html": "<p>Thanks for the report Jettay, I've added it to my things-to-fix list :)</p>",
+    "PostedDate": "2009-05-15T07:13:26.1-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "190747",
+    "ThreadId": "56444",
+    "Html": "<p>No problem, glad to help.</p>\r\n<p>In addition to this, i didn't find a location where the 70% Conflag nerf could have been applied.</p>\r\n<p>/cheer ;)</p>",
+    "PostedDate": "2009-05-15T07:53:53.033-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

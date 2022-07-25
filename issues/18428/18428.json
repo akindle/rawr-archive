@@ -1,0 +1,90 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.HealPriest",
+      "DisplayName": "Rawr.HealPriest"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-09-08T13:20:26.613-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "v2.3.21 crashes consistently when opening at startup a saved character XML file from a local folder that was saved in a prior Rawr 2.x version (2.3.20 here). Try loading two different healing Priest XML profiles at separate times and on each one:\n \n\"Unhandled exception has occurred in your application....The given key was not present in the dictionary....\n \nSee the end of this message for details on invoking \njust-in-time (JIT) debugging instead of this dialog box.\n \n************** Exception Text **************\nSystem.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\n   at System.ThrowHelper.ThrowKeyNotFoundException()\n   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)\n   at Rawr.FormMain.LoadModel(String displayName)\n   at Rawr.FormMain.LoadCharacterIntoForm(Character character, Boolean unsavedChanges)\n   at Rawr.FormMain.bw_LoadSavedCharacterComplete(Object sender, RunWorkerCompletedEventArgs e)\n   at System.ComponentModel.BackgroundWorker.OnRunWorkerCompleted(RunWorkerCompletedEventArgs e)\n   at System.ComponentModel.BackgroundWorker.AsyncOperationCompleted(Object arg)\n \n \nThis error is consistent; it refuses to open this saved character (about 5 different healing profile XML files of it) without crashing with the above error thrown. Also happens opening a saved healing Priest XML profile of a friend from about a month ago. \n \nBut...the error does not happen loading an old XML profile of the same character as Shadow. It has not happened on a couple other older XML profiles on character classes/specs other than healing Priests. It does not happen downloading the healing Priest from the Armory, saving a new XML file after spending several minutes modifying buffs/options, then opening that new profile (which is a gigantic hassle). And it never happened opening old saved XML profiles with v2.3.20.\n \nAfter the first few crashes, I went in and cleared out/deleted the directory Rawr was installed to to get rid of saved files from the prior v2.3.20 used. SpecialCache.bin, BuffCache.xml, ItemFilter.xml & so on were all deleted before the fresh install. Did not make any difference; the above issue still occurred.\n \nOn Windows XP Pro SP3, 32-bit.",
+    "LastUpdatedDate": "2013-05-16T05:20:09.82-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "High",
+      "Severity": 150,
+      "Id": 3
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-08-06T01:42:35.327-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[HealPriest] Crashes Loading File from a Previous Version",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 18428
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "This problem has been fixed in the code for next version.\r\nThe only work around right now is to re-create your character file.",
+      "PostedDate": "2010-08-06T09:12:18.063-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-08-06T09:12:42.03-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Would you mind attaching your character file too?",
+      "PostedDate": "2010-08-06T16:07:01.77-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "NVM, turns out this was unrelated to the other thing I thought I had fixed. This issue is because .20 and earlier all have a Model Name of \"HolyPriest\" but in .21+ we renamed the model to \"HealPriest\" and there wasn't a check in place to convert to the new name. I have resolve this issue as of commit 52947.\r\n\r\nRawr 2.3.22 will no longer have this problem.",
+      "PostedDate": "2010-08-06T18:18:16.413-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-08-06T18:18:43.247-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Workaround is as well and easie:\r\n1. Edit xml.\r\n2. Replace \"HolyPriest\" with \"HealPriest\"\r\n3. Save and open in Rawr",
+      "PostedDate": "2010-08-11T12:53:22.61-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T13:20:26.613-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:57:46.357-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:27:47.537-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:09.82-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

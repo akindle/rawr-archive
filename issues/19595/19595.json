@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtWarrior",
+      "DisplayName": "Rawr.ProtWarrior"
+    },
+    "ClosedComment": "Rawr 4.0.15 Released 01&#47;09&#47;2011",
+    "ClosedDate": "2011-01-09T19:54:16.427-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "While stamina was the big thing back in the day, it's not the case anymore. Most warrior tanks are edging towards mastery and other mitigation stats rather than stamina stacking. Could effective health be re-evaluated, or at least allow the mitigation scale to go beyond 1? I currently use Mitigation > 100% in the optimizer to scale it as much as possible while keeping things in check with expertise for my threat. But it would still be nice to get a better overall picture.",
+    "LastUpdatedDate": "2013-05-16T05:19:11.477-07:00",
+    "PlannedForRelease": "Rawr 4.0.14 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-01-06T20:20:17.043-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtWarr] Stamina/survival scaling too high",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19595
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "whilst mentioning stamina, i have a question on the health indicator, being that even when fully buffed health displays as 138605 and clearly when buffed in my current gearing im easily hitting 170k i can not find any reports of other warrior tanks having this display issue and i have also used the latest source code build to check if this had been changed incase it was just in rawr 4.0 14.0b\r\n\r\nNow i tie this with this raised issue as the poster is suggesting stam is being overrated as such and am curious is he seeing true hp values or not ",
+      "PostedDate": "2011-01-07T00:06:49.383-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-07T10:15:04.53-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "My hunch is that the built-in gethealthfromstamina function in Base is not adjusted for the 14 Health per Stamina at level 85 and is still only giving 10 Health per Stamina.\r\n\r\nAs for Stamina being the 'big thing' or not, it's still not something most high-end Warriors are totally forgoing. About the only stat that is particularly hands-down better than Stamina is Mastery when stacked enough to make it have increasing returns.\r\n\r\nI can look at hanging the Mitigation scale, however. Have you looked at using Burst Time to see if it gives you results more similar to what you would expect for avoidance vs. stamina?",
+      "PostedDate": "2011-01-07T11:47:33.22-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Also, I'm not sure Mitigation > 100% in the optimizer will give you the result you want. If you are concerned about that while optimizing, you should set a Health > Minimum then optimize for Overall Mitigation. (Which will attempt to meet the Stamina threshold then optimize for bonus armor/mastery/dodge/parry as approprite for whatever is the highest gain.)",
+      "PostedDate": "2011-01-07T11:48:56.207-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Correct, Stamina was still giving 10 Health instead of 14. Updated in 56965 for .15\r\nThis should adjust the other scaling you were worried about automatically without needing to rewrite any systems.",
+      "PostedDate": "2011-01-07T12:26:49.733-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-09T19:54:16.427-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:35.62-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:11.477-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSWarr",
+      "DisplayName": "Rawr.DPSWarr"
+    },
+    "ClosedComment": "Fixed in 2.2.11",
+    "ClosedDate": "2009-08-05T15:07:51-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I am currently running the mainline (revision 35481), with the attached setup my character is well below the expertise cap, and adding points to the Arms talent \"Weapons Mastery\" causes my DPS to behave as follows...\n0/2 points: 3798 DPS\n1/2 points: 3821 DPS\n2/2 points: 3760 DPS\n \nNOTE: This not swapping points for something else, this is just simply adding points to the Weapons Mastery talent.\n \nAlso, I have noticed that when there are 0/2 points in Weapons Mastery, some items are shown to have negative DPS, in the attached character the following item types are showing negative item values:\nHead\nShoulders\nChest\nWrist\nHands\nWaist\nFeet\nFinger\nTrinket\n \nIt appears that all of the items with negative value have expertise as an item stat.\n \nNeither of these problems appear to effect the release 2.2.10",
+    "LastUpdatedDate": "2013-05-16T05:25:03.117-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-07-20T22:26:39.127-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSWarr] Weapon Mastery DPS decrease",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13682
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2050,
+      "FileName": "droid_problem.xml",
+      "DownloadUrl": ".\\2050"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I had just build from a similar revision, and kept coming up with the same issue.  I was just in the process of re-building the darned thing, thinking it was a me error.\r\n\r\nThis is not an isolated case ,and I also noticed that most (not all, I don't think, but will check tomorrow) of these items had expertise on them.",
+      "PostedDate": "2009-07-21T00:35:47.67-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "After some research I found that this isn't a \"problem\" so much as a realization of a \"calculational idea\".\r\n\r\nWhen you are expertise capped, you don't get Overpower activates from people dodging. When you are below the cap, you get activates. Far enough below the cap, and then adding expertise starts cutting away from people dodging all the time. You'll notice that this happens in stages back and forth, \"balancing\" so to speak the number of activates from dodges giving overpowers vs your OTHER attacks all actually hitting the target that much more.\r\n\r\n\t\t\t\tWeapon Mastery: 0\t\tWeapon Mastery: 1\t\tWeapon Mastery: 2\t\t\r\n\t\t\t\tDPS\t      PerHit\t#ActsD\tDPS\t      PerHit\t#ActsD\tDPS\t      PerHit\t#ActsD\r\nMortal Strike\t\t0713.00\t3693\t115.85\t0120.00\t3731\t115.85\t0728.00\t3769\t115.85\r\nRend\t\t\t\t0199.00\t0601\t028.33\t0199.00\t0601\t028.33\t0199.00\t0601\t028.33\r\nOverpower\t\t0860.00\t4594\t112.32\t0819.00\t4603\t112.32\t0778.00\t4611\t101.21\r\nSudden Death\t\t0333.00\t4715\t042.39\t0381.00\t4763\t042.39\t0400.00\t4812\t049.88\r\nSlam\t\t\t\t0000.00\t3279\t000.00\t0000.00\t3313\t000.00\t0020.00\t3346\t003.61\r\nBladestorm\t\t0170.00\t2561\t006.65\t0172.00\t2587\t006.65\t0174.00\t2613\t006.65\r\nShattering Throw\t0011.00\t3409\t002.00\t0011.00\t3444\t002.00\t0012.00\t3479\t002.00\r\nDeep Wounds\t\t0424.00\t\t\t\t0421.00\t\t\t\t0414.00\t\t\r\nHeroic Strike\t\t0298.00\t3298\t\t\t0303.00\t3332\t\t\t0267.00\t3366\t\r\nWhite DPS\t\t\t0781.00\t2404\t\t\t0787.00\t2424\t\t\t0797.00\t2444\t\r\nTotal DPS\t\t\t3,790.00\t2,274,113\t\t3,813.00\t2,287,953\t\t3,787.00\t2,272,471\t\r\n",
+      "PostedDate": "2009-07-21T09:19:41.343-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "And of course, the nice formatting I had on that didn't work.....",
+      "PostedDate": "2009-07-21T09:20:13.64-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I will look into the possibility of it activating \"too much\" from dodges, but I believe that it is currently reading them correctly.",
+      "PostedDate": "2009-07-21T09:21:04.67-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I spoke with Jothay about this briefly, and I'm still on the fence as far as if this is \"working properly\" or not.\r\nHere's some of the theorycrafting, based on Jothay's numbers.\r\n\r\n1) Attacks that can be dodged are HS/White, Slam, Sudden Death, and MS (Bladestorm is also included, but is a small chunk of this and requires more complex math)\r\n2) The average damage for these attacks are: 3289/2404, 3279, 4715, and 3693.\r\n3) Overpower deals 4594dmg on average (not counting deep wounds damage applied from increased damage)\r\n4) This means that on average, you're gaining 1300/2100, 1300, -200, and 900 damage in replacing these with an overpower.\r\n5) HOWEVER, this uses 2 GCDs in place of 1, so you'd likely be spending that extra GCD on a slam, which averages out to 3279dmg (less the cost of delaying your next weapon swing).\r\nThese points lead me to believe that not being expertise capped would LOWER your DPS, because in 2 GCDs you're missing out on 1900/3400/2300dmg.  \r\n\r\nBut I'm not counting white swings, which only eats up one GCD.  In this case, you're replacing 2400+3200 (one slam and one white miss) with a 4600dmg overpower.  This is still a DPS loss.  Not to mention that you'd be losing out on white damage, which means less rage, which means less Heroic Strikes\r\n\r\nSo, my conclusion is that there's a bug somewhere in the overpower code.",
+      "PostedDate": "2009-07-21T12:19:42.437-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "ebs, I would about to post something almost identical. This also follows with what Landsoul's spreadsheet says about this situation as well. ",
+      "PostedDate": "2009-07-21T12:39:23.927-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "was*",
+      "PostedDate": "2009-07-21T12:39:47.303-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Changes made through revision 35529 have helped, but not totally fixed this issue.",
+      "PostedDate": "2009-07-23T20:47:37.21-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I didn't write this in before specifically, but as an Arms character there is yet another compounding variable to this \"issue\". When more attacks land, more Sudden Death's proc. So with that extra 6.5% chance to land vs miss, you would have ~6.5% more procs. This was evidenced in my previous data:\r\nSudden Death | 0333.00 : 4715 : 042.39 | 0381.00 : 4763 : 042.39 | 0400.00 : 4812 : 049.88\r\nwith WM 1 there appears to be the same number of procs there but the amount of times those procs were dodged went down so the DPS went up. WM 2 yielded additional procs and less procs dodged.",
+      "PostedDate": "2009-07-27T06:32:27.553-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I have done some playing around with both Landsoul's spreadsheet and Simulationcraft using the same parameters as is in the attached character file, and neither show this behavior for weapons mastery, nor do either show a negative value for Expertise in any case that I have yet found. In fact both say that Expertise is very close to the value of Strength with this character file equivalent (somewhere around 99% the value of strength). I still think there is a problem here.",
+      "PostedDate": "2009-07-27T16:52:56.343-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "To be perfectly honest, I question the landsoul sheet's validity. I think ours is showing it correctly.",
+      "PostedDate": "2009-07-27T18:09:11.5-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "For one, I just reviewed the newest copy of it and the OP GCD Spectrum and he put Unrelenting Assault where it should be Improved Slam.\r\n\r\nSecond, look at the formula, He has an if statement so that if you have Taste For blood at all it uses a set number of OP's, doesn't count the activates dodges at all.\r\n\r\nSo ya, proof\r\n>.<",
+      "PostedDate": "2009-07-27T18:30:19.21-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "In looking at simulationcraft:\r\n\r\nstatic void trigger_overpower_activation( attack_t* a )\r\n{\r\n  warrior_t* p = a -> player -> cast_warrior();\r\n  p -> _buffs.overpower = p -> sim -> current_time + 5.0;\r\n  p -> aura_gain( \"Overpower Activation\" );\r\n}\r\n\r\nIn a quick overview, this current_time + 5.0 doesn't take into account Unrelenting Assault. UNLESS this isn't the cd, but instead the amount of time you have to overpower before you missed the activate, which I'm not sure as this is the first time I've laid eyes on this code.\r\n\r\nFailing that, OP in SimCraft seems to be correct.",
+      "PostedDate": "2009-07-27T19:07:31.233-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Two more point and then I will shut up about this. Rawr v2.0.10 does not show this behavior for Weapons Mastery, and the optimizer does not recommend me taking off nearly all of my expertise in 2.0.10. Are we sure that the current mainline is correct where the previous release is wrong? In addition, I have never seen a single forum post recommending reduction in expertise for a DPS increase, it just doesn't add up to me.",
+      "PostedDate": "2009-07-27T20:42:57.46-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm going to try to find time in the next few days to take a look at the code closely.  Jothay is right that Landsoul's sheet doesn't factor in dodge-activated OPs, but the math still defies logic that your DPS would go down as your expertise goes up.\r\n\r\nMaybe Jothay is right and it's a counter-intuitive fact.  Or maybe there's a bug hiding somewhere.",
+      "PostedDate": "2009-07-28T06:05:32.383-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This problem appears to have been corrected in mainline revision 35743 (Jothay's submission). It no longer tells me to remove all my expertise gear, and after importing the attached character file (NOTE: It required manual modification of the file to prevent a exception when loading it) adding Weapons Mastery no longer causes a drop in DPS.",
+      "PostedDate": "2009-08-01T10:20:35.71-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It was actually fixed in the 35718 checkin :)",
+      "PostedDate": "2009-08-02T16:50:34.03-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I tested 35718 and the problem was still there, but reduced in severity. 35743 was the first build where I didn't see it happen at all no matter what settings that I tried. So I think it was a combination of the two sets of changes.",
+      "PostedDate": "2009-08-02T17:42:27.567-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-05T15:07:51-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T16:36:56.553-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:54.157-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:03.117-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

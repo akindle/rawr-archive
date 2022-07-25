@@ -1,0 +1,95 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Moonkin",
+      "DisplayName": "Rawr.Moonkin"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2012-02-20T18:43:56.89-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The relative value of haste winds up dropping below mastery and sometimes even crit.  This appears to be due to some fluctuations in the cast tables.  Possible solutions include increasing the resolution of the cast tables or deriving and integrating a non-linear interpolation function.",
+    "LastUpdatedDate": "2013-05-16T05:17:07.57-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2012-01-13T07:43:19.193-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Moonkin] Haste relative value fluctuates wildly",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 22063
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "This needs more testing, but I have increased the resolution of the cast tables to 0.1% in the simulator and it seems to produce satisfactory results.",
+      "PostedDate": "2012-01-18T18:14:42.087-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Still hasn't been fixed, but it's definitely an issue in the simulator action list.  I just have to figure out what, if anything, is wrong.",
+      "PostedDate": "2012-01-20T13:45:51.497-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Bumping this issue for my own sake and for anyone else who might be reading.  At least part of this issue is caused by Nature's Grace.  When the global cooldown under NG hits 1 second, it causes a severe drop in the immediate value of haste, and it appears to reduce the slope of the haste line below that of mastery.  This may or may not be correct, but there are several fixes to the implementation of NG that need to occur before this can be determined.",
+      "PostedDate": "2012-01-28T17:10:31.5-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Associated with changeset 64855.",
+      "PostedDate": "2012-01-30T18:57:45.88-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This issue is resolved in latest source.  As I commented in the checkin notes, there are still points on the graph where Rawr will suggest mastery instead of haste.  If you look at the stat graph on the Options pane, you will see that the two stats are very close, and that adding extra haste will bring it back to being the #1 stat.",
+      "PostedDate": "2012-01-30T18:59:23.17-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-02-20T18:42:32.3-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "\r\n\r\n\n\n** Closed by Kavan 2/20/2012 6:42 PM",
+      "PostedDate": "2012-02-20T18:43:00.563-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Finally fixed with the rebuild of the simulator and the calculations refactoring.",
+      "PostedDate": "2012-02-20T18:43:01.307-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-02-20T18:43:56.89-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:23:51.91-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:17:07.57-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

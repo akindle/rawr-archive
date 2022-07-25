@@ -1,0 +1,150 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Items",
+      "DisplayName": "Rawr.Base.Items"
+    },
+    "ClosedComment": "Rawr 4.0.15 Released 01&#47;09&#47;2011",
+    "ClosedDate": "2011-01-09T19:54:07.967-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Problem: I use Rawr to pick items that I want to upgrade to by putting the green diamond next to the good pieces that drop from the stuff my guild runs, then optimizing (the same way I'm sure many people use it).  The filters are great for this (though I wouldn't mind seeing more sub-filters for, say Ulduar normal & Ulduar hard, as mentioned in other posts).  However, my guild only runs once section of Ulduar per weak, so I don't really want to optimize for pieces that drop at 1 or 2%.\n \nSuggested \"fix\": simply displaying the drop rate in a tool tip would save me a LOT of back & forth between Rawr and Wowhead.  A filter to exclude them below a certain drop rate would be even cooler!",
+    "LastUpdatedDate": "2013-05-16T05:22:55.103-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-12-16T23:35:05.657-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Feature Request.Items] Add Item Drop Rate to the Tooltip",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 2,
+    "Id": 15466
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "A) Build Upgrade List. That's what you should be using for what you describe. It's not intended that you mark items as available that you don't have available, unless you're specifically trying to find the best set of gear from a small set of items.\r\nB) Regardless, this would still be a valuable feature.",
+      "PostedDate": "2009-12-16T23:55:22.907-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "To point A): Ok, sounds like something interesting to try.  I haven't played with it much.  My fear is that upgrading 1 piece at a time won't leave me with as good a gearset as if I plan out all the pieces at once, from the dungeons I run.  Do I misunderstand the feature?",
+      "PostedDate": "2009-12-17T07:58:20.28-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "For example, would using the Build Upgrade List feature have gotten me to the 4pT9 set, that by itself increases my healing output by 5-10 percent?",
+      "PostedDate": "2009-12-17T08:15:18.187-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-17T08:16:39.177-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You're right, build upgrade list is incremental.  My suggestion is to plan out your set pieces ahead of time, and then ignore those slots in the upgrade list.  If you want to build an upgrade list assuming you have your 2pc or 4pc set bonus, you could mark those four as available (even if you don't have them) before building the upgrade list.\r\n\r\nWe don't have a good solution to build upgrade list giving you a set bonus when you're at 0pc, because usually that first piece is not an upgrade until you also get the second piece if you're breaking a 4pc.  It will, however, work in the following scenario:\r\n- You have T8 chest/helm/gloves/shoulders\r\n- Your T9 helm is an upgrade in the upgrade list regardless, since it upgrades a non-set bonus\r\n- Once you get the T9 helm, usually you will break the T8 4pc for the T9 2pc, so a new upgrade list will consider all 4 remaining T9 pieces\r\n- Once you have 3pT8 and 2pT9, upgrading one of your T8 to a T9 will show up, because you don't lose the set bonus.  Now you have 3T9 and 2T8\r\n- Breaking the 2T8 for 4T9 will now show up in your next upgrade list\r\n\r\nOf course, if you don't want the T9 Helm because it's poorly itemized, this isn't a solution.  But keep in mind that \"Build Upgrade List\" provides you the value of your next one item, and not your next 5 items.  99% of the time this is more practical, because you can't guarantee that both pieces will drop at the same time, and many people don't want to spend DKP or whatever to get an item that sits in their bags until the second item they need drops.",
+      "PostedDate": "2009-12-17T09:34:59.053-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-18T09:53:29.293-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-20T06:00:30.25-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "does Rawr actually pull the drop rate, or does Wowhead even supply it with their api?",
+      "PostedDate": "2010-05-24T07:02:22.497-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Offhand, I believe they do supply the drop rate data.",
+      "PostedDate": "2010-05-24T09:27:27.817-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "even if you couldn't sort/filter drop rate, could there be an option to add it to the tooltip?",
+      "PostedDate": "2010-05-24T13:12:29.813-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "uhhh ya... that's what this feature request is all about dude\r\n\r\nI looked at it and the wowhead HTML page for the item will have a droprate (18% for example) but the back end data that we pull from (the XML version of the page, particularly the json) doesn't have that drop rate.\r\n\r\nAstry can you talk to your wowhead buddy to have them add it to the json so we can just parse it out of that?",
+      "PostedDate": "2010-05-24T13:46:26.813-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T13:56:44.45-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T14:10:57.837-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T15:30:14.413-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Relevant for Rawr4",
+      "PostedDate": "2010-11-20T20:14:05.413-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-11-22T19:59:10.873-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-11-22T20:03:35.22-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Drop rate has been implemented. Item Database needs to be updated to show the new data. Filtering by droprate coming next",
+      "PostedDate": "2011-01-07T23:27:49.33-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Added filters by it too now.king as Completed by 56984 for .15",
+      "PostedDate": "2011-01-08T01:11:46.223-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-09T19:54:07.967-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:15.083-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:55.103-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Asked and answered",
+    "ClosedDate": "2009-05-20T04:33:02.93-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Please consider adding an application installer that will copy the various files to the correct locations within Vista & Win7, plus will remove any old copies of Rawr that may also be present there.   At the same time, you could include a donation request screen to bring that issue more to the forefront as the user gets their updates.",
+    "LastUpdatedDate": "2013-05-16T05:25:30.63-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-05-17T17:16:10.167-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "How about an installer?",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13274
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "There are no 'correct locations'. Do people *really* have much trouble just unzipping a zip file? If there were anything that actually needed to be installed, I'd be much more into the idea, but currently an installer would just be an unzipper, which everyone already has.",
+      "PostedDate": "2009-05-17T19:31:53.217-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You have no idea how painful installer issues really turn out to being.  At my work, we actually developed a whole team to deal with our install problems with 3rd party installers (MSI/Wise/etc.)  So let people extract and install on their own.  Seriously, it's only gonna cause more problems in the long run.",
+      "PostedDate": "2009-05-18T12:45:02.477-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Those last two comments seems fundamentally at odds.  If installing really is trivial to do correctly, why would it take a whole team to do it?\r\n\r\nThe reason I suggested this at all was that I was having problems getting RAWR to work correctly in the \"Program Files\" directory because it not normally writeable by apps -- I had to elevate privelege to put it there AND I had to alter the shortcut to \"Run as Admin\" to let the app update it's cache files.  What it really seemed to want is to not have the cache files in the \"Program Files\" directory at all.  Getting that stuff right was beyond what you get for free from just unzipping the files.\r\n\r\nIf you're intent is for the user to always just UNZIP to a root directory ( C:\\RAWR ) instead of where all the other apps normally reside, then perhaps you should document the installation procedure more clearly?\r\n",
+      "PostedDate": "2009-05-18T14:34:04.563-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Those comments are NOT at odds they are saying the same thing. \r\n\r\nRawr doesn't need to be \"Installed\" it only needs unzipped into any directory of the user's choosing. What Shazear said that IF we introduced an installer THEN we would have problems as it was having an installer that caused problems as his work.\r\n\r\nOn Vista putting things in the program files is a pain as Vista's security model is fundamentally broken. ANY installer would have exactly the same issues as a user unzipping files you can't work your way around that. ie: an installer would STILL prompt for admin access to program files folder. \r\n\r\nThe only thing you have a point on is the location of the cache files.",
+      "PostedDate": "2009-05-18T14:42:15.11-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I don't use Vista and know very little about Windows security models, but just brainstorming here: \r\nIs there a standard pre-defined path/variable that points to the My Documents directory or whereever your supposed to put your data files according to the Microsoft standard? ($HOME type of thing. APPDATA or USERPROFILE on my XP machine looks promising). Using that directory as a alternative location for the cache files might be an option. Logic something like: On saving, save to APPDATA if current directory is write protected. On loading, first look in APPDATA, else open current directory.\r\n\r\nThat might be able to get around the security issue, if that is the real problem that needs to be addressed, but it will result in extra files left over in weird places (other than what the user might expect) (but that is the windows standard. anyone expecting anything else will be dissapointed in any case).\r\n\r\n",
+      "PostedDate": "2009-05-19T14:44:38.5-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "We'd need an installer for that design, wildebees, to get the files there in the first place.\r\n\r\nThe current design is super easy, and works fully. Anyone who isn't able to handle the current installation process (Unzip it anywhere you have permissions) probably shouldn't be using Rawr. ",
+      "PostedDate": "2009-05-19T19:40:01.857-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-05-20T04:33:02.93-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:26.79-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:30.63-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

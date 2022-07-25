@@ -1,0 +1,138 @@
+[
+  {
+    "Id": "420327",
+    "ThreadId": "205517",
+    "Html": "<p>This post is no longer being updated.&nbsp; As of version 2.3.15, the place to go is <a href=\"/wikipage?title=Rawr.Warlock&referringTitle=Models\">here</a>.</p>\r\n<p>I'd like to keep the original post here updated with what I believe the model is good for currently, and with my to-do list.&nbsp; The last section has questions for discussion in this thread.&nbsp; If you have other comments or questions, like &quot;when will this be done already?!&quot; or &quot;thanks so much for doing this!&quot;, please use <a href=\"http://rawr.codeplex.com/Thread/View.aspx?ThreadId=203628\">the other thread</a> &amp; keep this one on-topic.</p>\r\n<p><strong>Changes ready for the next release (2.3.15)</strong></p>\r\n<ul>\r\n<li>BUGFIX: Some trinkets were being undervalued.&nbsp; Confirmed cases are Nevermelting Ice Crystal (and any others that proc'd crit rating), Sliver of Pure Ice (and any others that restore a set amount of mana ... not mp5, but an actualy hard amount), and those that proc off Damage Done.&nbsp; These have all been fixed for 2.3.15.</li>\r\n<li>BUGFIX: Curse of Doom was being cast too much when under hit cap.</li>\r\n<li>BUGFIX: Double-pot trick was a) stacking the pot effects instead of spreading them out, and b) modeled wrong for the haste pot.</li>\r\n<li>Now modeling &quot;recursive trinkets&quot;, notably the Nevermelting Ice Crystal.</li>\r\n<li>Now modeling direct-damage-proc effects, such as Nibelung and Reign of the Dead.&nbsp; However, these are currently in guestimate form for warlocks in general, not tailored to your rotation (as with all trinket procs).</li>\r\n<li>Mp5 is being displayed, so you can see just how bad it really is.</li>\r\n<li>Slight performance improvements.</li>\r\n<li>Now models stacking crit effects before the cast of a rolling corruption (for affliction locks).</li>\r\n<li>Metamorphosis is no longer prioritizable - it just casts as soon as its available since it's not on the GCD.</li>\r\n<li>Added Immolation Aura.</li>\r\n<li>Started adding the portions of pet talents that affect the player's dps.</li>\r\n</ul>\r\n<p><strong>The Model is Currently Good For</strong></p>\r\n<ul>\r\n<li>I believe the model is pretty usable for affliction locks right now.&nbsp; The only things I know of that are missing are an execute stage and pets.</li>\r\n<li>A &quot;first draft&quot; for Destruction is done.&nbsp; Only pets are not modeled.&nbsp; It still needs attention - it overestimates how much non-filler spells can be cast, but it should still pick gear well.</li>\r\n<li>All non-pet talents for Demonology (yeah, like all 3 of them) are implemented.</li>\r\n</ul>\r\n<p><strong>The To-Do List</strong></p>\r\n<ul>\r\n<li>Performance improvements.</li>\r\n<li>Pets and related talents (and 2T9).</li>\r\n<li>Revisit Destruction spell modeling.</li>\r\n<li>Improved modeling of non-haste trinkets</li>\r\n<li>Add an option to cast just enough Shadow Bolts to keep up Improved Shadow Bolt</li>\r\n<li>Model the execute stage</li>\r\n<li>Improved estimate of Avg Unhasted Cast Time, for use in cases where the model needs an estimate before the actual value can be calculated</li>\r\n<li>Model Judgement of Wisdom</li>\r\n<li>Add notes and options to each spell in the options tab</li>\r\n<li>Create custom charts for anything interesting</li>\r\n<li>Model raid damage boosts &amp; include in the overall score</li>\r\n<li>Model incoming damage (for Fel Concentration)</li>\r\n<li>Model movement time?</li>\r\n</ul>\r\n<p><strong>Questions I Have</strong></p>\r\n<ul>\r\n<li>What things on the to-do list are most important to you?&nbsp; Other than pets.&nbsp; I'm still not up to implementing pets right now.&nbsp; (Sorry demo locks.)</li>\r\n<li>Do you have good ideas other than what's listed above?</li>\r\n<li>Does anybody else care to own &amp; implement any items on the to-do list?&nbsp; Particularly benign choices would be those improving the options tab or making custom charts, since those have little chance of interfering with anything I'm working on currently.&nbsp; Another excellent choice would be pets, because I don't want to do it.&nbsp; If so, contact me though the email link on my user page, or on MSN (xemnosyst@live.com).</li>\r\n</ul>",
+    "PostedDate": "2010-03-19T10:30:12.903-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "420468",
+    "ThreadId": "205517",
+    "Html": "<p>As an affliction lock I would lock to see whatever you have implemented so far for us. Would just be happy to see that the choices RAWR are making for us are close enough that we don't make mistakes of changing our items out and have DPS drop....I am carrying a bunch of extra gear to raids now to see which gear gives me the best DPS.</p>\r\n<p>&nbsp;</p>\r\n<p>RAWR used to function well for the most part. Would like to have a little more faith in it again as it has been a long time since it was reliable.</p>",
+    "PostedDate": "2010-03-19T21:20:43.64-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "420471",
+    "ThreadId": "205517",
+    "Html": "<p>Maleficus is creating builds with this model added in for people to use for testing.&nbsp; You can contact him if you'd like to check it out.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-03-19T21:55:40.3-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "422252",
+    "ThreadId": "205517",
+    "Html": "<p>I didn't want this post to get lost.&nbsp; Warlock in anticipation here.&nbsp; (Went back to see my huge wall of text, sorry if wrong place for this/these comments.. but you kinda asked.. Kinda.. I suspect I went overboard, a bit off toppic.&nbsp; yell at me if so, ill do some deletion)</p>\r\n<p>For me, I currently use RAWR as a manual gear selection tool only, and I'd love for this to change.&nbsp; I'd like to be able to use it for 'what it was intended for', however some debate could be done on its use if you implement some things listed above&nbsp;and not others.&nbsp; Things you have listed in the To-Do List above to me depends on intentions as to the creation of a priority list:</p>\r\n<p>&nbsp; Will &quot;Set bonuses&quot; be triggered at direct % then averaged, if so then using things like NMIC corruption rolling data may not be accurate enough to judge.&nbsp;</p>\r\n<p>Does the standard RAWR calculator (I don't want to say the word simulator here as I have read the discussions regarding RAWR and simulators) come with a target&nbsp;DoT drop like a &quot;Helter Skelter' mode can provide?&nbsp;&nbsp;Knowing if actions like this are present somewhat can lead us into a certain direction regarding gear selection, regardless of the numbers showed by RAWR.&nbsp;</p>\r\n<p>&nbsp;You mention &quot;Model raid damage boosts&quot;&nbsp;.&nbsp; Is this refering to say a rDemo?&nbsp; If so, good info to have, however when we select gear using RAWR and select our talents/raid buffs.. Maybe auto turn off a raid Demo lock and use the current profile, if we switch to our Aff spec for testing, turn this back on with a checkbox?</p>\r\n<p>Shadow bolt only every 30 seconds.&nbsp; This pretty much should be the standard in Execute stage if 'were' doing it correctly.&nbsp; Breaking Drain after a tick, or two, reapply DoT, drain another tick or two, reapply something else.&nbsp; Shadow bolt only when needed.&nbsp; (Will the model allow drain interuption?)&nbsp; Id assume there would be pretty significant changes to haste/SP/Crit DPS doing it one way over the other. This will be quite different though in the 'normal fight' parameters area, as unless the fight is using multiple adds, shadow bolts are going to make up a pretty hefty amount of our DPS.</p>\r\n<p>As far as rotation sets.&nbsp; It might be nice to be able to save different variations, however with the same gear on, altering the opening sequences.. soon as I see one that shows, 'simulates' (Doh!, there's that word) the highers return for my buck,&nbsp;that&nbsp;just became the new 'rotation' Id be aiming for.&nbsp; May aswell set stats based on that? (On a per spec basis)&nbsp; (Yes, fight openers depend on the fight, but as far as gearsets, having the base 'highest DPS' one should be all thats needed I'd guess.</p>\r\n<p>Lots of bla bla, I know.. I'd use RAWR (and want to) if:</p>\r\n<p>Execute was modeled (I think it would need to be included to be accurate),</p>\r\n<p>Haste was functioning properly (fight length data being able to adjust slightly as to not make adding 50 haste require you to adjust cast latency to compensate as it seems the old model would make you do to get a good average),</p>\r\n<p>Set bonuses at least 'averaged', with or without toys like rolling the 10% into corruption.&nbsp; (Is rolling Corruption a toy?&nbsp; I'm not sure as I kinda&nbsp;kick myself even having a Corr up without the added 10% of the&nbsp;T10_4p.&nbsp; If we can get the 10%, I think it becomes a must have, so needs to be figured into our gear selections before they can become accurate. but... is&nbsp;that modeling gearsets, or simulating?&nbsp; (Doh! that word!))</p>\r\n<p>&nbsp;All that being said.. I love the mod, love its capabilities, and I really want to be able to say &quot;RAWR told me this, so im gonna try it&quot;&nbsp;.&nbsp; Also want to thank you all for the combined efforts on RAWR3 and the continuation of the Warlock model, it's had some rough times as&nbsp;of late.&nbsp; I know your taking your personal time to bring this to us, you owe me nothing, no fixxes, its your product... I owe you for allowing me to use this tool.&nbsp; I'd just love to put this tool in the top drawer of my toolbox, instead of the bottom one.</p>",
+    "PostedDate": "2010-03-22T13:39:32.42-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "422316",
+    "ThreadId": "205517",
+    "Html": "<p>These are the answers/responses to the points you brought up:</p>\r\n<ul>\r\n<li>Set bonuses: each will be modeled as accurately as I believe is reasonable.&nbsp; As for 4pT10 and rolling corruption - I haven't thought much about it yet, but I will certainly consider it.</li>\r\n<li>Target DoT drop / &quot;Helter Skelter&quot;: what are these?</li>\r\n<li>Raid damage will be a way for you to estimate the value of raid buffs in Rawr, such as Demonic Pact or Curse of the Elements.&nbsp; You will select how many raid dps points to award each point of SP and crit % you give to the raid, so setting these values to zero will &quot;turn it off&quot;.</li>\r\n<li>The model should certainly allow drain interruption.</li>\r\n<li>I had a little trouble following what you were saying in the &quot;rotation sets&quot; paragraph.&nbsp; Perhaps it's that you'd like to be able to specify a specific rotation for each spec you save, so that changing the spec automatically changes the rotation, too?&nbsp; That is certainly a nice idea, which I can investigate when I get to that part.</li>\r\n<li>To make sure I'm following you correctly, let me repeat what I believe you were saying in the rest of the post.&nbsp; These are the must-have features for you:\r\n<ul>\r\n<li>Modeling the execute stage</li>\r\n<li>Smooth stat scaling, e.g. haste (which is already done)</li>\r\n<li>Set bonuses</li>\r\n<li>Front-loading crit and +damage% effects &amp; applying them to the full length of a rolling Corruption</li>\r\n</ul>\r\n</li>\r\n</ul>\r\n<p>As an aside, you may be happy to know that your list of priorities is very similar to mine. :)</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-03-22T15:52:36.87-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "422324",
+    "ThreadId": "205517",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>xemnosyst wrote:</strong><br>\r\n<p>These are the answers/responses to the points you brought up:</p>\r\n<ul>\r\n<li>Target DoT drop / &quot;Helter Skelter&quot;: what are these?</li>\r\n</ul>\r\n</blockquote>\r\n<p>He is referring to an option in SimulationCraft where all hell breaks loose. A lot of start casting, stop casting, movement, lots of adds, etc. Basically something to keep in mind when you start working on implementing RAWR 3's boss simulator.</p>\r\n<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0  1em;padding:0 .25em 0 .25em\"><strong>SimulationCraft's Helter Skelter events:<br></strong><br>\r\n<pre style=\"margin:0px;padding:3px;border:1px inset;width:694px;height:114px;text-align:left;overflow:auto\" dir=ltr>raid_events=casting,cooldown=30,duration=3,first=15<br>raid_events+=/movement,cooldown=30,duration=5<br>raid_events+=/stun,cooldown=60,duration=2<br>raid_events+=/invulnerable,cooldown=120,duration=3<br>raid_events+=/adds,count=3,cooldown=60,duration=20<br>raid_events+=/distraction,skill=0.2,cooldown=90,duration=4</pre>\r\n</blockquote>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-03-22T16:34:27.187-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "422358",
+    "ThreadId": "205517",
+    "Html": "<p>Thanks for the help Hinalover.&nbsp; That was the reference.&nbsp;</p>\r\n<p>Even on a lesser degree though.&nbsp; Something as simple as target switching.&nbsp; My arcane mage doesnt care about these as&nbsp;I retain the debuff stack on a&nbsp;target switch,&nbsp; stack on 1 mob, AM another.&nbsp; She doesnt know the difference.&nbsp;As for a Warlock, these things can be pretty significant.&nbsp; Stacking the debuffs again,&nbsp;reapplying corruption.. then effectivly reapplying corruption again&nbsp;after 4pT10 .&nbsp; yes, I'm sure this is way beyond what you would want to model, because id think that gets us closer to simulation than model, but this is a&nbsp;real world scenario.&nbsp; (At least for me, therefore I'd have to expect for others aswell)&nbsp; An averaging of tank and spank scenario with a boss immunity say once mid fight.&nbsp; Maybe this wont significantly effect the gear values, just the overall DPS values.. but Id have to believe they would impact both.</p>\r\n<p>The 'Rotation sets&quot; is refering to your quote in the potential options area:&nbsp; &quot;Allow multiple spell rotations to be saved &amp; selected, and include default rotations&quot;&nbsp;.&nbsp; IMO we need only one rotation per spec.&nbsp; The 'best' one.&nbsp; (I know, thats still open for debate, but as far as gear selection goes, I wouldnt&nbsp;expect that to change much.&nbsp; (Doh, unless there is a built in target switching scenario, in which case we get more complicated, again off to the Model or Simulation debate.)&nbsp;&nbsp;&nbsp;Yes,&nbsp;I took the very long way to say this again but:&nbsp; Every time Im Affliction, my spell priority list will be the same, every time&nbsp;I swap to Destro, my spell priority list will be different than Aff of course, but the same as the last time I was Destro.&nbsp;</p>\r\n<p>The front loading of Crit/Damage% is 'essential' to me.. IF, the model allows for it.&nbsp; If it doesn't allow for this,&nbsp;I (we) just need to know so we can make an accurate decision when we look at RAWR's accurate decisions. ;)</p>\r\n<p>Thanks for your quick response.&nbsp; I know you must me busy enough as it is. Im not a programmer nor a math guroo.&nbsp; I can't offer those skills to you to&nbsp;help ease the process.&nbsp; I can only offer things to make it more complicated.&nbsp; :(</p>",
+    "PostedDate": "2010-03-22T19:22:01.69-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "425745",
+    "ThreadId": "205517",
+    "Html": "<p>Xemnosyst:&nbsp; Is it possible to get the changes you have made in the next release?&nbsp; I know that this model still is a work in progress and that you have much more to do.&nbsp; I'm just wondering if some of the changes you have made currently would be of any help to us locks.&nbsp; I would have to think that the model has to be much better than it was and that we might be able to get some use from it as it is now.&nbsp; Thanks for all your hard work.&nbsp; You continue to have all the support and gratitude from us Warlocks.</p>",
+    "PostedDate": "2010-03-30T17:56:38.103-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "425772",
+    "ThreadId": "205517",
+    "Html": "<p>Dottie: because of your request I just spoke with Astrylian about this.&nbsp; The plan is to get at least as much in my module as there is in the existing one before swapping them.&nbsp; So, from the to-do list above, that includes <span style=\"text-decoration:line-through\">finishing up destro</span>, <span style=\"text-decoration:line-through\">hitting all the non-pet talents of demo</span>, <span style=\"text-decoration:line-through\">set bonuses</span>, and maybe Judgment of Wisdom?&nbsp; I'll make those my priorities (which is pretty close to what they were anyway).</p>",
+    "PostedDate": "2010-03-30T20:55:50.327-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "426102",
+    "ThreadId": "205517",
+    "Html": "<p>I have a stupid? question to ask.</p>\r\n<p>I too, would really like to have access to Xemnosyst's Warlock module. I personally don't have the ability (software required) to compile Rawr for myself to play with the module. Is it at all feasible to simply have both modules in the next release? example: when you select Deathknight from the drop down, in the second drop down your able to select DKDPS, or TankDPS? Is it possible to have the normal Warlock in the second drop down, but also Warlock - xemnosyst (abbreviated however it must be)?</p>\r\n<p>either way.. xemnosyst, thanks for the effort you've put into the module, it's greatly appreciated.</p>",
+    "PostedDate": "2010-03-31T10:28:11.21-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "426140",
+    "ThreadId": "205517",
+    "Html": "<p>You can already have exactly what you describe by contacting Maleficus and asking for his private builds that include my module for testing.&nbsp; As for whether to put that into a release - that's not up to me.&nbsp; If that does go into a release, though, I'd like fair warning so I can add in some safeguards against getting 30,000 bug reports about everything that's not yet implemented.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-03-31T12:15:58.763-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "431224",
+    "ThreadId": "205517",
+    "Html": "<p>Yep, something's definitely wonky with effects like NMIC. It looks like the special effect itself has a negative value; NMIC is worth less than je'tze's bell, which it should surpass by static SP bonus alone.</p>",
+    "PostedDate": "2010-04-14T19:07:59.547-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "431225",
+    "ThreadId": "205517",
+    "Html": "<p>Also, question:</p>\r\n<p>I see Life Tap is in the rotation builder list. What exactly does it do to add Life Tap to a rotation? I'm not seeing it make a number difference.</p>",
+    "PostedDate": "2010-04-14T19:11:13.823-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "431245",
+    "ThreadId": "205517",
+    "Html": "<p>For your first issue - yes you are absolutely correct, as stated in the to-do list in the original post.</p>\r\n<p>And about life tap - excellent question.&nbsp; I plan to include that kind of info in the options pane at some point, but that's low priority compared to making everything work.&nbsp; It is there for keeping up the lifetap glyph even if don't need the extra mana.&nbsp; If you have to lifetap enough to keep the glyph up anyway you won't see a difference by adding it into your rotation.</p>",
+    "PostedDate": "2010-04-14T20:55:10.23-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "431566",
+    "ThreadId": "205517",
+    "Html": "<p>What trinket is good for destro at this point.&nbsp; I know the NMIC is great for affy locks, but what about a level 200-232 trinket for destro?</p>",
+    "PostedDate": "2010-04-15T10:32:42.99-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "431814",
+    "ThreadId": "205517",
+    "Html": "<p>AFAIK, in the 200-232 range, Illustration of the Dragon Soul and Eye of the Broodmother are both good trinkets for destruction - I suggest we keep this thread focused on RAWR, though ;)</p>\r\n<p>Speaking of which, I want to thank xemnosyst for all the work already done - while the pets would be a nice addition as I'm playing demo, the calculations seem much more realistic than with the previous model.</p>\r\n<p>Which I could help, but I'm afraid my programming kung-fu is a bit weak. If you need some testing done...</p>\r\n<p>Again, thanks a lot.</p>",
+    "PostedDate": "2010-04-16T00:36:43.107-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "431834",
+    "ThreadId": "205517",
+    "Html": "<p>Hi,</p>\r\n<p>&nbsp;</p>\r\n<p>While there's a lot of important things to do; the thing that should be highest on your priority is pet damage since pets have become a very VERY large source of damage for all three specs now and not just demo; not implementing pets really hurts the accuracy of rawr for locks. After pets, execute phase is probably the next since two specs have execute phases.&nbsp; Alternately you could argue that since the two primary raid specs are affliction and demo you'd want to do execute ranges first and pets 2nd.</p>\r\n<p>Either way pets and execute phase are definitely the two most important things to do next and I highly encourage despite your apprehension to really consider pets. Blizzard has really focused on making pets matter for our damage with the last 3 to 5 patches.</p>\r\n<p>additionally i'm not sure why he option to cast just enough shadow bolts to keep ISB up is on there; for when a destro lock must provide the crit debuff in a 10 man??</p>\r\n<p>Additional idea:</p>\r\n<p>add the option to select to apply a damage bonus percent during a specific time frame. This would be useful when say calculating your dps if bitten sub 35%/25% boss health on blood queen lanathel if your aff or demo.</p>",
+    "PostedDate": "2010-04-16T01:38:01.663-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

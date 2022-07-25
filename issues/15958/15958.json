@@ -1,0 +1,86 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Cat",
+      "DisplayName": "Rawr.Cat"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-04-14T08:47:59.52-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "This isn't a major bug but perhaps how Rawr comes to this conclusion can be used to improve the optimizer.  Basically in this instance when presented with a new option Rawr chooses poorly.\n \nThe attached file is fresh out of optimization.  \n \nStep to reproduce:\n - Open file\n - Note current Overall of 12771.49\n - If overall doesn't show this for you it may be because socket bonuses are not in your cache.  I manually added them for all gear based on a prioritized list of Wowhead, MMO Champ, and (if nothing was found at those) by looking at similar pieces of gear.  This is not relevant to the issue, however it may make it hard to duplicate.\n - Also note I manually adjusted the ring proc effect to 1 PPM 60 sec ICD per Aldriana's EJ post.\n - Go to the finger2 slot\n - Check Bone Band of the Collosus (264) as available\n - Re-optimize, max optimization\n - Note it selects Bone Band of the Collosus and lowers the score.  Selecting this optimization and then re-optimizing several times does not ever revert back to the better choice of ring.\n \nI discovered this because my gut told me Seal of Many Mouths HAD to be better.  My gut is as often wrong as right so I figured, if I tell Rawr I don't have Bone Band of the Collosus what will it do?  It will improve my overall score was what I was surprised to find heh.\n \nMy suspicion is that the optimizer doesn't weigh heavily the idea that more ArP keeps getting better at a higher and higher rate.  So it doesn't try \"what if we go ALL ARP ALL THE TIME\" hard enough.",
+    "LastUpdatedDate": "2017-11-27T10:59:33.88-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-01-18T11:18:09.093-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Cat] Optimizer bad choice",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15958
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2807,
+      "FileName": "catplus2.xml",
+      "DownloadUrl": ".\\2807"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I was able to reproduce this. It got to the optimum a few times, otherwise usually it ends within 2 dps of optimum. But it definitely has a very hard time. It's not only ArP that seems to be messing it up, but hit as well. Unfortunately there is not much that can be done. The best advice I can give is to try to trim available items as much as possible.",
+      "PostedDate": "2010-01-18T13:52:52.377-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It's nothing major, no.  As you say it's like 2 DPS.  I tried to represent this issue item as just informational and not really a bug.\r\n\r\nBut I figured it might help \"optimize the optimizer\".  Examples of unexpected or known-bad behavior sometimes lead to improvements.",
+      "PostedDate": "2010-01-18T14:20:20.063-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-14T08:47:59.52-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:51:41.47-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T22:45:40.733-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:30:27.877-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:20.047-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T10:59:33.88-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

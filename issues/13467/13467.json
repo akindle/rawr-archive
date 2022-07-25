@@ -1,0 +1,155 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtPaladin",
+      "DisplayName": "Rawr.ProtPaladin"
+    },
+    "ClosedComment": "Fixed",
+    "ClosedDate": "2009-07-20T12:36:12.257-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi, I've noticed there are quite a few significant differences (about 4% on dodge/parry) between my toon stats and my rawr stats.\nBoth are unbuffed except for HoW, is this a known issue? because I couldn't find it here already.\nHere's a couple of sshots of the differences, I'm using the latest Rawr.\n \nhttp://img191.imageshack.us/img191/6448/rawra.jpg \n \nhttp://img8.imageshack.us/img8/5/charpane.jpg",
+    "LastUpdatedDate": "2013-05-16T05:25:15.4-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-06-10T15:48:35.993-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtPaladin] Dodge/Parry Values Incorrect",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 13467
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Is this a known issue specifically?  Yes and no.  :)  \r\nI'm constantly tweaking the calculations to dial it in to get closer to what the numbers should be.  I've made some changes since 2.2.6 was released that helped, but still aren't quite perfect. \r\n\r\nI'll leave this defect open to me for tracking purposes until I get it right.",
+      "PostedDate": "2009-06-10T17:24:04.537-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-06-10T17:24:29.717-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "You must also remember that Rawr deals in effective stats not actual.",
+      "PostedDate": "2009-06-11T07:18:11.8-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Character pane percentages are before diminishing returns; rawr's are (hopefully) after DR.",
+      "PostedDate": "2009-06-11T21:33:37.97-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yes... I implemented the DR in Rawr.Base.StatConversion and it works pretty well.  There are tweaks as I, or others, find bugs, but yeah, it's all post DR.",
+      "PostedDate": "2009-06-11T22:11:27.217-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "So is that a change in 2.2.6? because Rawr values used to match Character Pane values.",
+      "PostedDate": "2009-06-12T00:31:04.427-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It used to match because it used to NOT account for DR, or at least not do it correctly.",
+      "PostedDate": "2009-06-12T11:10:35.49-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Wouldn't it be more valuable for it to match char panes in game? most people use Rawr for stat evaluation and it becomes more complex to manually add and subtract some statistics.",
+      "PostedDate": "2009-06-13T05:24:21.66-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I disagree.  I would think that it's better to get the real numbers that you'll experience rather than the fake numbers that take less math in-game.  Wouldn't you rather know that you are only at 18% dodge or parry rather than 20% because of diminishing returns?  That way, as the toon gets close to the real cap, you can determine the true value of gear rather than the pre-DR paperdoll?",
+      "PostedDate": "2009-06-13T13:21:03-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It sounds to me like you are looking at values modified for a higher level target (i.e. a level 83 boss), which will differ from the values you see on your character sheet which are calculated to reflect a target at the same level as you. Try setting the target level to 80 and see if the values agree.",
+      "PostedDate": "2009-06-13T13:46:56.217-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ahh yes I see what you mean Shaz, so the real problem is the char pane is wrong. I wonder why they make it that way.. odd.\r\nSo with 2.2.6 there was a change to only show those stats without DR?\r\n\r\nAeitrides: nah it didn't change it.",
+      "PostedDate": "2009-06-14T04:49:43.303-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "http://www.tankspot.com/forums/f63/40003-diminishing-returns-avoidance.html\r\n\r\nThe paper doll is correct. This can be verified very easily in game. So if dodge/parry are not matching up between TankDK and in-game (with no buffs), then TankDK is incorrect.\r\n\r\nImportant notes: Defense from Stoneskin Gargoyle is NOT subject to diminishing returns (meaning 1% dodge, 1% parry, and 1% miss) in addition to 5% dodge from talents.\r\n\r\nThis leaves Miss to be calculated separately: 5% base, 1% from SG rune, and 3% from talents are all NOT subject to diminishing returns (9%), leaving only defense rating to contribute to DR miss. This means at 566 defense rating (the DK cap with SG rune), you would expect to have 5.6% chance to miss from defense rating (+9% from talents/SG rune/base), or 14.6% chance to be missed. After diminishing returns, however, you would only have roughly 13.29% total chance to be missed.\r\n\r\nNOTE: The miss cap has only been confirmed for Warriors, so diminishing returns on miss from defense rating for DK's (and druids/paladins) is currently only able to be estimated based on the Warrior miss cap.\r\n\r\nAdditional note: Night Elf racial 2% miss is also not subject to diminishing returns.",
+      "PostedDate": "2009-06-24T00:25:23.733-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Slight accuracy correction: knock 0.6% off of the non-DR counts on all 3 stats due to the level difference on bosses.\r\n\r\nThis brings 566 defense rating miss rate to roughly 13.1%, rather than 13.29%",
+      "PostedDate": "2009-06-24T02:43:23.847-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-06-24T13:25:57.27-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok... I was able to find the defect in my code.  I was wrapping up everything in Defense before DR.  However, your math is also slightly off:  Using the example you give:\r\nI'm see 12.1% Miss rather than 13.1% after DR.\r\nThe difference is that 566 Def only gets you a 4.6% def rating avoidance base.  5.6% comes from the def rating of 689. (DK crit cap w/o SSG.)\r\n\r\nOtherwise you're pretty spot on and I've added the specific case you present here as one of my unittests so I don't have this problem again. :)",
+      "PostedDate": "2009-06-24T14:54:32.98-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I r bad at mathz, or typing, 12.1%, not 13.1%",
+      "PostedDate": "2009-06-24T15:04:47.773-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "http://spreadsheets.google.com/ccc?key=rkVTf9fJoLNXwb_ikC7UVfQ\r\n\r\nKinda messy, but should be VERY accurate. It matches my character panel (minus miss, which isn't shown) exactly with raid buffs, just change the dodge rating, parry rating, defense rating, and agility values as necessary (as strength is translated directly into your parry rating).\r\n\r\nThe note in the character panel that states \"Before diminishing returns\" is ONLY on the % listed to be gained from dodge/parry rating. The displayed white value IS correctly diminished. You'll notice what's displayed in the yellow text matches exactly what is shown in Column C for Defense, Dodge, and Parry from rating.\r\n\r\nWhile you're working on tuning your Diminishing Returns model, this spreadsheet should be extremely accurate for Death Knight values.",
+      "PostedDate": "2009-06-24T16:22:33.26-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Completed: At revision: 34943  \r\n",
+      "PostedDate": "2009-06-25T10:53:23.807-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-07-20T12:36:12.257-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T14:43:00.09-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:24.073-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:08.327-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:15.4-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

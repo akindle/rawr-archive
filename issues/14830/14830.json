@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.DPSWarr",
+      "DisplayName": "Rawr.DPSWarr"
+    },
+    "ClosedComment": "Fixed as of 40700",
+    "ClosedDate": "2009-11-15T21:29:23.92-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "As of r40579, I am getting some freakishly WEIRD issues returned when using the DPSWarr module.  All of this is as Arms, but I will be testing Fury side as soon as possible.  I do not recall such odd behavior from a clean 2.2.27 release build.\n \na) DPS is significantly lower than it should be, and than it has been in previous versions\n \nb) The Expertise stat and Weapon Mastery seem to be conflicting, and often providing negative returns when the opposite should be happening.  For example, many items with Expertise are being valued SIGNIFICANTLY higher than other pieces.  For example, Boneshatter Armguards, Crimson Star, and even Victor's Call were, at one point, valued at over 4-5 times their closest competitors, even once equipped (not simply a visual anomaly).  However, turning on 1 or 2 points in WM is showing a DECREASE is DPS, even when the points are not being traded elsewhere.\n \nc) Haste also seems to be valued higher than it should be, but not quite to the same extent that Exp is.\n \nd) Toggling on points in Imp Slam do nothing.\n \ne) Watching the RSV chart as a means of diagnosis is returning some flat-out weird things.  Toggling various values and options (from glyph of HS, to AM, to WM, to Unrelenting Assault, to... you get the idea) throws the stat benefits all over the place.  I understand this is a bad way to get reliable comparison data, but it's throwing data ALL over the place, way more than it should be.\n \nf)  Toggling on and off different abilities within the Ability Maintenance (specifically, rotational abilities, rather than external buff/debuff maintenance) either does nothing, or does something.  You can toggle the same ability (A) for a minute straight and nothing changes, but go toggle something else (B) off and back on again, go back to the original ability (A), and it suddenly changes the setup when toggling it.\n \n \nMy guess is that somehow the recent changes to OP/TfB and GCD usage are doing something odd to the ability usage there.  That might partially contribute to the Exp issues.  Similarly, Slam/Execute/etc. seem to only sometimes be counted in the rotation, even when the DPS breakdown pane shows that all of the normal abilities are being used.  If Slam is not being used, then Haste would go up in value, probably to the values shown.\n \nCan attach a profile that exhibits this behavior, upon request.",
+    "LastUpdatedDate": "2013-05-16T05:23:24.68-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-11-15T17:47:20.22-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[DPSWarr] Broken as of r40579",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14830
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I blame Ebs",
+      "PostedDate": "2009-11-15T20:07:36.203-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm investigating now.",
+      "PostedDate": "2009-11-15T20:17:52.307-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Found it, was a dumb bug.  The Unrelenting Assault change went in, that made OP take up less of a GCD.  How much less?  Well, (1+Lag)/(1.5+Lag).  Only problem was, we did (1+LagInMS)/(1+LagInSeconds).  (1+179)/(1.679) =  107.2 GCDs used up per overpower.  Instead of 0.7 GCDs per overpower.\r\n\r\nI blame Jothay for not pressing F5 before checking in :P",
+      "PostedDate": "2009-11-15T20:47:41.36-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Lol.  Nice one - here's a cookie, both of yas.",
+      "PostedDate": "2009-11-15T21:16:36.113-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-15T21:29:23.92-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T16:08:54.537-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:49.09-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:24.68-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

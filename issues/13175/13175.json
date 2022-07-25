@@ -1,0 +1,60 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Working as intended.",
+    "ClosedDate": "2009-08-09T20:36:00.837-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "// Why is GetCrit == GetPhysicalCrit? for class specific calls into GetCrit, it should return either \n// spellcrit or Physical crit depending on the need.\npublic static float GetCritFromRating(float Rating, Character.CharacterClass Class) { return GetPhysicalCritFromRating(Rating); }\npublic static float GetCritFromRating(float Rating) { return GetPhysicalCritFromRating(Rating); }\npublic static float GetPhysicalCritFromRating(float Rating, Character.CharacterClass Class) { return GetPhysicalCritFromRating(Rating); }\n \nI would expect generic callsed like GetCritFromRating(rating, class) to do the work of determining if the class wanted physical or spell related crit.  Not just calling the physical only.  The function name becomes misleading otherwise.",
+    "LastUpdatedDate": "2013-05-16T05:25:39.73-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-05-05T16:59:24.63-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Generic functions in StatConversion calling the only Physical version when accepting a class as an arg.",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13175
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I believe it just is basically built to have physical be the default kind of crit. Classes don't want a specific type of crit, so that can't be 'auto detected' or anything.",
+      "PostedDate": "2009-05-05T19:54:11.147-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-09T20:36:00.837-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:37.453-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:39.73-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

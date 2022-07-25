@@ -1,0 +1,71 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "Fixed for v2.2.18.",
+    "ClosedDate": "2009-09-16T06:54:49.447-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Well, I managed to break Rawr.\n \nI just got [Enlightenment]. I ran the optimizer, it told me to equip it, along with changing some other gear around. I had some trouble with the enchant on it, but think I figured that out. At this point I noticed that the Off-Hand item was grayed out.\n \nI then ran optimizer again, this time for my 10 man group (no 3% hit buff) and noticed it was having me go back to my MH OH combo. I noticed it changed my gem on my OH even though I did not select the override option. I realized I probably did not change the green diamond to a purple diamond on that item. I went to go accomplish that, but I could not (and still can not) select an OH item. Not from the drop-down, and not from clicking on that slot on the left side. The slot is empty (not filled with a grayed out item)\n \nI removed Rawr and re-downloaded. Problem still exists.\n \nI removed all diamonds next to [Enlightenment], equipped a sword, saved my character, exited and restarted RAWR. Still can not get OH to show.\n \nI made sure that Offhand/Misc. Misc. is checked in Tools/Refine Types of Items Listed\n \nI am getting an exception:\n \n************** Exception Text **************\nSystem.NullReferenceException: Object reference not set to an instance of an object.\nat Rawr.Character.GetRelevantItemInstances(CharacterSlot slot)\nat Rawr.ItemComparison.LoadGearBySlot(CharacterSlot slot)\nat Rawr.FormMain.LoadComparisonData(String chartTag)\nat Rawr.FormMain.slotToolStripMenuItem_Click(Object sender, EventArgs e)\nat System.Windows.Forms.ToolStripItem.RaiseEvent(Object key, EventArgs e)\nat System.Windows.Forms.ToolStripMenuItem.OnClick(EventArgs e)\nat System.Windows.Forms.ToolStripItem.HandleClick(EventArgs e)\nat System.Windows.Forms.ToolStripItem.HandleMouseUp(MouseEventArgs e)\nat System.Windows.Forms.ToolStripItem.FireEventInteractive(EventArgs e, ToolStripItemEventType met)\nat System.Windows.Forms.ToolStripItem.FireEvent(EventArgs e, ToolStripItemEventType met)\nat System.Windows.Forms.ToolStrip.OnMouseUp(MouseEventArgs mea)\nat System.Windows.Forms.ToolStripDropDown.OnMouseUp(MouseEventArgs mea)\nat System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)\nat System.Windows.Forms.Control.WndProc(Message& m)\nat System.Windows.Forms.ScrollableControl.WndProc(Message& m)\nat System.Windows.Forms.ToolStrip.WndProc(Message& m)\nat System.Windows.Forms.ToolStripDropDown.WndProc(Message& m)\nat System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)\nat System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)\nat System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)\n \nIf I start a new character, I am able to select an OH. Error must be tied to my saved character. I guess I will need to start from scratch unless anyone can help me fix my saved character.\n \nCharacter attached",
+    "LastUpdatedDate": "2013-05-16T05:24:22.13-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-09-14T14:03:55.613-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] Cant Select Off-Hand Item",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14153
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2214,
+      "FileName": "Al.xml",
+      "DownloadUrl": ".\\2214"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I started a new character, loaded from armory.  I was adding items when all of a sudden I noticed the staff equipped and no grayed out OH.  I got the exception error when clicking on the empty box, but was able to select the drop-down OH and \"equip\" an item.  I was then able to click on grayed out OH slot.  The attached character still gives me error trying it either way.",
+      "PostedDate": "2009-09-14T16:55:16.497-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-16T06:54:49.447-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-09T15:23:32.43-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:03.007-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:22.13-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

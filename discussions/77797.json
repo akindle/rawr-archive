@@ -1,0 +1,378 @@
+[
+  {
+    "Id": "266044",
+    "ThreadId": "77797",
+    "Html": "<p>Based on popular request (well actually because I wanted them but ok) I've added some new options for gear planning.</p>\r\n<p>You can now assign costs to items. What cost is is completely arbitrary, it can be tokens, dkp, whatever you want it to be. A new menu selection under tools lets you reset, load and save item costs. These are stored in xml files separate from the item cache, allowing you to save and switch between different costs. There's also some presets (just Emblem of Frost for now) that loads costs from item source info, but this relies on accurate source data, which right now it isn't.</p>\r\n<p>What can you do with this?</p>\r\n<p>First there is a new chart &quot;Direct Upgrades / Cost&quot;. As the name implies, it is the same as direct upgrades, but only shows items with positive cost and their upgrade is displayed as upgrade value per unit cost.</p>\r\n<p>The other more powerful option is to use the cost data with optimizer. You can add a new requirement &quot;Cost&quot; and set it to be less than a specific value. For example if you set costs to number of emblems needed to buy you could set this to the number of emblems you have to figure out what to buy to get the most value out of it. Another example would be to set a cost of 1 to each piece of your tier set and set the requirement to cost &lt;= 2, which will tell you which two pieces are best to go after first. The rest is left to your imagination. Note that this option only works with the Optimize option, it has no effect on build upgrade list.</p>",
+    "PostedDate": "2009-12-10T19:48:18.35-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "266052",
+    "ThreadId": "77797",
+    "Html": "<p>Really, REALLY like that last idea with the set pieces.&nbsp;&nbsp; So many times when buying my first piece (or third) the item isn't actually an upgrade.&nbsp; It is only when you get the 2nd (or 4th) and the set bonus is active that it is an upgrade.&nbsp;&nbsp; This is a really nice solution to allow us to look at this sort of stuff&nbsp; - I already regularly divide the upgrade amount by the emblem cost myself.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-12-10T20:27:41.23-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "266068",
+    "ThreadId": "77797",
+    "Html": "<p>Awesome, thanks! Hey, I've got a question for you - if you like it, I can add a ticket for it - what about a shopping list of what to buy and where to put it, for when Rawr tells you to regem your stuff?</p>",
+    "PostedDate": "2009-12-10T21:23:27.537-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "266074",
+    "ThreadId": "77797",
+    "Html": "<p>I think there have been similar requests before (about shopping lists), check if anything matches your needs and vote on it or add some comments. I don't have any particular interest in implementing it.</p>",
+    "PostedDate": "2009-12-10T21:36:37.653-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "266083",
+    "ThreadId": "77797",
+    "Html": "<p>I'm using 3.2.1 and I don't see an option in Tools to incorporate costs -- is this available on a dev-only version, and if so, where can I find that?</p>",
+    "PostedDate": "2009-12-10T22:33:35.64-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "266091",
+    "ThreadId": "77797",
+    "Html": "<p>This was just implemented today, not in release build yet, so for now dev-only until next release.</p>",
+    "PostedDate": "2009-12-10T23:07:36.5-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "266210",
+    "ThreadId": "77797",
+    "Html": "<p>Is the only way to enter costs by using the Edit... option on the item? Or by gathering the item number of all items and generating an xml with individual costs? My guild has fixed price dkp, with cost based on (iLevel-200&nbsp;x slot-modifier) e.g. Trinket 150% =&nbsp;96 DKP for IL264. I'd like to automate setting this for all non-emblem gear. That would mean I have to make some xslt which distills the information in itemcache and itemsource. Or can you think of a better method?</p>",
+    "PostedDate": "2009-12-11T05:42:41.453-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "266401",
+    "ThreadId": "77797",
+    "Html": "<p>If you can compile the source the easiest thing might&nbsp;be to add in your own custom method that calculates this and then save xml and give it to guildies. For an example you can take a look at ItemCacheInstance.LoadTokenItemCost. Or if in your dkp system you already have a database with all items and their costs all you need to do is export the xml that maps item id to cost, just take a look at the saved xml (it's not too descriptive, just a serializer dump, but it should be easy to figure out what is what). One thing to take into account is that the optimizer treats all positive cost items as &quot;available&quot; when a cost constraint is present, so don't go overboard and give costs to everything, just things that you want it to consider.</p>",
+    "PostedDate": "2009-12-11T12:14:51.52-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "266427",
+    "ThreadId": "77797",
+    "Html": "<p>XSLT is probably a really good option for things like this where it's just a function of the stats that are already there, especially if you don't have much csharp background or don't have a compiler handy. &nbsp;</p>\r\n<p>If you have custom costs for some items, though, exporting is probably best.</p>\r\n<p>I wonder if we could create an option that will automatically read in the badge costs of items and set them by default. &nbsp;And a storage of multiple costs (DKP, Frost Emblems, Triumph Emblems, etc) so an item can have multiple costs and you don't have to constantly swap back and forth.</p>\r\n<p>I wish I had the time to play with it right now. &nbsp;Holidays and longer work hours are hurting :(</p>",
+    "PostedDate": "2009-12-11T13:08:01.727-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "266505",
+    "ThreadId": "77797",
+    "Html": "<p>Was just toying with setting costs and optimizing. &nbsp;Tried setting all tier items to have a cost of 2, then optimizing for Cost&lt;=2, and it's giving me a 2pc on low thoroughness. &nbsp;Something seems awry.</p>",
+    "PostedDate": "2009-12-11T17:06:13.683-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "266507",
+    "ThreadId": "77797",
+    "Html": "<p>Make sure you didn't have one of the pieces marked available, if it's already available it assumes it doesn't cost anything (you don't have to pay for it&nbsp;because you already have it).</p>",
+    "PostedDate": "2009-12-11T17:14:32.6-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "266589",
+    "ThreadId": "77797",
+    "Html": "<p>I think I'm more comfortable in C than xslt, so I'll try a custom method first. Having said that, there's&nbsp;always a certain satisfaction from writing a good xslt solution. Thanks for the ideas guys :)</p>",
+    "PostedDate": "2009-12-12T04:30:28.203-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "266709",
+    "ThreadId": "77797",
+    "Html": "<p>Very cool feature, thanks a ton for implementing it!</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-12-12T20:04:13.86-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "266725",
+    "ThreadId": "77797",
+    "Html": "<p>Thanks! Now I can build a list of upgrades in just a few minutes that will dynamically update as I change gear and/or spec.</p>",
+    "PostedDate": "2009-12-13T00:19:55.097-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "266730",
+    "ThreadId": "77797",
+    "Html": "<p>Quick question about overall gear planning. Is it possible to set it so I always make sure to have it optimize 4 piece / bonus. Example being only one of my pieces is listed as being my best in slot but I'd really enjoy having the 4 piece bonus. I tired looking around but I can't seem to figure it out. Thanks!</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-12-13T01:21:48.663-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "266750",
+    "ThreadId": "77797",
+    "Html": "<p>If you want to get the best setup with 4 piece bonus when it is not actually optimal, then I guess what you could do is set cost 1 to each piece and set the constraint to Cost &gt;= 4 (that is assuming all of them are unavailable currently, otherwise lower the value in constraint as necessary).</p>",
+    "PostedDate": "2009-12-13T05:19:59.483-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "266954",
+    "ThreadId": "77797",
+    "Html": "<p>Kavan, just a note since I was playing around with this yesterday. Really cool feature, very useful at first glance--one thing, though, is that whenever I reloaded an item from WoWHead/Armory (because my item cache was a bit fishy) it reset the cost value to zero. I could reload my saved costs and it would reapply fine, but if I didn't save the value would be lost.</p>\r\n<p>Not sure if it was just me doing something wrong, but it seemed odd when the item disappeared from the upgrade/cost list when I hit refresh on it.</p>",
+    "PostedDate": "2009-12-14T03:04:51.837-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "266965",
+    "ThreadId": "77797",
+    "Html": "<p>That's a good point. I'll make it so it copies over the cost when you refresh the data. Jothay also suggested that it would be better to save costs with the item cache (in addition to being able to save/load it independently) so you don't have to reload it every time you restart Rawr.</p>",
+    "PostedDate": "2009-12-14T04:11:47.473-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "267135",
+    "ThreadId": "77797",
+    "Html": "<p>Wait, so Optimize now doesn't just pull from items you have available, it pulls from items that have a cost OR are available?</p>\r\n<p>I can see this being problematic down the line, (ie if people are using it for DKP and virtually every item has a cost)</p>",
+    "PostedDate": "2009-12-14T09:33:59.463-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "267179",
+    "ThreadId": "77797",
+    "Html": "<p>Hopefully Kavan set it up that it will only use the Cost items if you set a cost requirement, otherwise it behaves as normal.</p>",
+    "PostedDate": "2009-12-14T10:48:33.51-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "267324",
+    "ThreadId": "77797",
+    "Html": "<p>Yes it only applies if you add a Cost constraint.</p>",
+    "PostedDate": "2009-12-14T15:25:26.173-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "267746",
+    "ThreadId": "77797",
+    "Html": "<p>I am confused. I would like to use this system to find out which piece of frost emblem gear is the biggest upgrade for me so I know which item I should to buy first. How would I do this?</p>",
+    "PostedDate": "2009-12-15T14:05:18.87-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "267755",
+    "ThreadId": "77797",
+    "Html": "<p>To determine the single best frost upgrade, regardless of cost:</p>\r\n<ul>\r\n<li>Edit all the frost emblem items that you are considering. &nbsp;Right click on them, choose &quot;Edit Item&quot;, and at the bottom there is a cost box. &nbsp;Put in this box the value &quot;1&quot;. &nbsp;Do not mark the item as available.</li>\r\n<li>Optimize your character and set an optimization constraint of &quot;Cost &lt;= 1&quot;. &nbsp;The resulting set should be the best upgrade for you with only one emblem purchase.</li>\r\n</ul>\r\n<p>To determine how to best spend your 125 Frost Badges (yes, I know that nobody has this many yet, but work with me)</p>\r\n<ul>\r\n<li>Edit all the frost emblem items that you are considering. &nbsp;Right click on them, choose &quot;Edit Item&quot;, and at the bottom there is a cost box. &nbsp;Put in this box the value the number of emblems it costs. &nbsp;Do not mark the item as available.</li>\r\n<li>Optimize your character and set an optimization constraint of &quot;Cost &lt;= 125&quot;. &nbsp;The resulting set should be the best upgrade for you while spending your 125 emblems.</li>\r\n</ul>\r\n<p>To determine the single biggest bang for your buck (Upgrade Value divided by # of emblems)</p>\r\n<ul>\r\n<li><span style=\"color:#ff0000\"><strong>This isn't possible yet</strong></span></li>\r\n<li>However the following steps will work for DIRECT UPGRADES ONLY (ie, swapping in the badge item for your current item -- this will not regem any of your other items to maintain hit cap or what have you)</li>\r\n<li>Edit all the frost emblem items that you are considering. &nbsp;Right click on them, choose &quot;Edit Item&quot;, and at the bottom there is a cost box. &nbsp;Put in this box the value &quot;1&quot;. &nbsp;Do not mark the item as available.</li>\r\n<li>On the right panel of Rawr, choose the dropdown box that says &quot;Gear&quot; and instead choose &quot;Direct Upgrades / Cost&quot;. &nbsp;The highest item here is the biggest &quot;bang for your buck&quot;</li>\r\n</ul>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-12-15T14:27:51.72-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268358",
+    "ThreadId": "77797",
+    "Html": "<p>Could someone give a little more detail on the format for importing costs to items?&nbsp; Perhaps even an example line of the file for proper format?</p>\r\n<p>I've set triumph badge cost on items to determine upgrades and such, but as soon as I shut down I lose all of the costs and have to do it again the next time.&nbsp; I'd like to use the import option to setup the different badge costs to save some time.</p>\r\n<p>Also, as a suggestion, just having an option for loading a specific emblem types cost misses the items available by downgrading the badge.&nbsp; There should be an option to load costs for all items that can be bought with an emblem type and the badges lower than it.</p>",
+    "PostedDate": "2009-12-16T23:37:13.58-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268362",
+    "ThreadId": "77797",
+    "Html": "<p>To save the costs you can just use Tools-&gt;Item Cost-&gt;Save. Also in next release the costs will be saved and reloaded&nbsp;automatically when you close Rawr.</p>",
+    "PostedDate": "2009-12-16T23:44:10.693-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "268729",
+    "ThreadId": "77797",
+    "Html": "<p>I already have a target gear set in mind in 264 gear, and lots of it costs badges.&nbsp; I just used this to help me determine if I should go straight for tier or get the offset pieces first.</p>\r\n<p>This would have been hell to do manually.&nbsp;&nbsp; This feature is amazing.&nbsp; Thanks again for implementing it!</p>\r\n<p>(the answer was tier all the way!)</p>",
+    "PostedDate": "2009-12-17T18:05:41.327-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269174",
+    "ThreadId": "77797",
+    "Html": "<p>Is there a way to disable ilvl 264 items and still Optimize for the best 251 (t10) itemization?</p>\r\n<p>I simulated it, with costs &lt; 120 emblems of frost; disabled the items by level on the filter (disable 259+); and I still get suggestions with ilvl264 items =(</p>\r\n<p>I just wanna be sure on which t10.251 slot I should spent those first emblems for better results</p>",
+    "PostedDate": "2009-12-18T19:33:50.757-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269399",
+    "ThreadId": "77797",
+    "Html": "<p>Thanks to the devs for providing this feature; it was just what I was looking for when I'm trying to decide how to &quot;invest&quot; all the badges one gets from the new LFG system.</p>\r\n<p>Someone pointed out that the built in Frost items don't include all the &quot;lower level&quot; badge items, and that xslt might be a good way to get this information.</p>\r\n<p>I took the suggestion and made a short xslt stylesheet to extract this information from the ItemSource.xml file; I'm including it here for refererence.&nbsp; I used cygwin's xsltproc (from the libxmlt package) to test the stylesheet:</p>\r\n<p>\r\n<div style=\"color:Black;background-color:White\">\r\n<pre><span style=\"color:Blue\">&lt;?</span><span style=\"color:#A31515\">xml</span> <span style=\"color:Red\">version</span><span style=\"color:Blue\">=</span><span style=\"color:Black\">&quot;</span><span style=\"color:Blue\">1.0</span><span style=\"color:Black\">&quot;</span> <span style=\"color:Red\">encoding</span><span style=\"color:Blue\">=</span><span style=\"color:Black\">&quot;</span><span style=\"color:Blue\">utf8</span><span style=\"color:Black\">&quot;</span><span style=\"color:Blue\">?&gt;</span>\r\n\r\n<span style=\"color:Blue\">&lt;</span><span style=\"color:#A31515\">xsl</span><span style=\"color:Blue\">:</span><span style=\"color:#A31515\">stylesheet</span> <span style=\"color:Red\">version</span><span style=\"color:Blue\">=</span><span style=\"color:Black\">&quot;</span><span style=\"color:Blue\">1.0</span><span style=\"color:Black\">&quot;</span>\r\n  <span style=\"color:Red\">xmlns:xsl</span><span style=\"color:Blue\">=</span><span style=\"color:Black\">&quot;</span><span style=\"color:Blue\">http://www.w3.org/1999/XSL/Transform</span><span style=\"color:Black\">&quot;</span><span style=\"color:Blue\">&gt;</span>\r\n  <span style=\"color:Blue\">&lt;</span><span style=\"color:#A31515\">xsl</span><span style=\"color:Blue\">:</span><span style=\"color:#A31515\">output</span> <span style=\"color:Red\">indent</span><span style=\"color:Blue\">=</span><span style=\"color:Black\">&quot;</span><span style=\"color:Blue\">yes</span><span style=\"color:Black\">&quot;</span><span style=\"color:Blue\">/&gt;</span>\r\n\r\n  <span style=\"color:Blue\">&lt;</span><span style=\"color:#A31515\">xsl</span><span style=\"color:Blue\">:</span><span style=\"color:#A31515\">template</span> <span style=\"color:Red\">match</span><span style=\"color:Blue\">=</span><span style=\"color:Black\">&quot;</span><span style=\"color:Blue\">/dictionary</span><span style=\"color:Black\">&quot;</span><span style=\"color:Blue\">&gt;</span>\r\n    <span style=\"color:Blue\">&lt;</span><span style=\"color:#A31515\">dictionary</span><span style=\"color:Blue\">&gt;</span>\r\n\r\n      &lt;xsl:for-each select=&quot;item[\r\n        descendant::Token='Emblem of Heroism' or\r\n        descendant::Token='Emblem of Valor' or\r\n        descendant::Token='Emblem of Conquest' or\r\n        descendant::Token='Emblem of Frost' or\r\n        descendant::Token='Emblem of Triumph'\r\n        ]&quot;&gt;\r\n        <span style=\"color:Blue\">&lt;</span><span style=\"color:#A31515\">item</span><span style=\"color:Blue\">&gt;</span>\r\n           <span style=\"color:Blue\">&lt;</span><span style=\"color:#A31515\">key</span><span style=\"color:Blue\">&gt;</span>\r\n            <span style=\"color:Blue\">&lt;</span><span style=\"color:#A31515\">int</span><span style=\"color:Blue\">&gt;</span><span style=\"color:Blue\">&lt;</span><span style=\"color:#A31515\">xsl</span><span style=\"color:Blue\">:</span><span style=\"color:#A31515\">value-of</span> <span style=\"color:Red\">select</span><span style=\"color:Blue\">=</span><span style=\"color:Black\">&quot;</span><span style=\"color:Blue\">key/string</span><span style=\"color:Black\">&quot;</span><span style=\"color:Blue\">/&gt;</span><span style=\"color:Blue\">&lt;/</span><span style=\"color:#A31515\">int</span><span style=\"color:Blue\">&gt;</span>\r\n           <span style=\"color:Blue\">&lt;/</span><span style=\"color:#A31515\">key</span><span style=\"color:Blue\">&gt;</span>\r\n           <span style=\"color:Blue\">&lt;</span><span style=\"color:#A31515\">value</span><span style=\"color:Blue\">&gt;</span>\r\n            <span style=\"color:Blue\">&lt;</span><span style=\"color:#A31515\">float</span><span style=\"color:Blue\">&gt;</span>\r\n              <span style=\"color:Blue\">&lt;</span><span style=\"color:#A31515\">xsl</span><span style=\"color:Blue\">:</span><span style=\"color:#A31515\">value-of</span> <span style=\"color:Red\">select</span><span style=\"color:Blue\">=</span><span style=\"color:Black\">&quot;</span><span style=\"color:Blue\">value/ArrayOfItemLocation/ItemLocation/Count</span><span style=\"color:Black\">&quot;</span><span style=\"color:Blue\">/&gt;</span>\r\n            <span style=\"color:Blue\">&lt;/</span><span style=\"color:#A31515\">float</span><span style=\"color:Blue\">&gt;</span>\r\n           <span style=\"color:Blue\">&lt;/</span><span style=\"color:#A31515\">value</span><span style=\"color:Blue\">&gt;</span>\r\n          <span style=\"color:Blue\">&lt;/</span><span style=\"color:#A31515\">item</span><span style=\"color:Blue\">&gt;</span>\r\n      <span style=\"color:Blue\">&lt;/</span><span style=\"color:#A31515\">xsl</span><span style=\"color:Blue\">:</span><span style=\"color:#A31515\">for-each</span><span style=\"color:Blue\">&gt;</span>\r\n\r\n    <span style=\"color:Blue\">&lt;/</span><span style=\"color:#A31515\">dictionary</span><span style=\"color:Blue\">&gt;</span>\r\n  <span style=\"color:Blue\">&lt;/</span><span style=\"color:#A31515\">xsl</span><span style=\"color:Blue\">:</span><span style=\"color:#A31515\">template</span><span style=\"color:Blue\">&gt;</span>\r\n\r\n<span style=\"color:Blue\">&lt;/</span><span style=\"color:#A31515\">xsl</span><span style=\"color:Blue\">:</span><span style=\"color:#A31515\">stylesheet</span><span style=\"color:Blue\">&gt;</span>\r\n</pre>\r\n</div>\r\n</p>\r\n<p>For those who don't know or want to transform xml, I've made two canned cost templates, one for all frost (and below) tokens, and one for triumph:</p>\r\n<ul>\r\n<li><a title=\"http://www.sonic.net/~nk31/rawr/frost.cost.xml\" href=\"http://www.sonic.net/~nk31/rawr/frost.cost.xml\">http://www.sonic.net/~nk31/rawr/frost.cost.xml</a></li>\r\n<li><a title=\"http://www.sonic.net/~nk31/rawr/triumph.cost.xml\" href=\"http://www.sonic.net/~nk31/rawr/triumph.cost.xml\">http://www.sonic.net/~nk31/rawr/triumph.cost.xml</a></li>\r\n</ul>",
+    "PostedDate": "2009-12-20T10:19:58.187-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "269457",
+    "ThreadId": "77797",
+    "Html": "<p>Thank you for doing this Flyx.&nbsp; I was trying to figure out a quick way to do the same, but I'm not familiar with xslt at all.</p>",
+    "PostedDate": "2009-12-20T18:34:46.667-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "270456",
+    "ThreadId": "77797",
+    "Html": "<p>When I use Optimize w/ costs of all Triumph gear, it's suggested that I buy the Rogue T9 pieces for my Druid. If something matches the cost requirement, does it ignore others, like 'Class'?</p>",
+    "PostedDate": "2009-12-23T16:15:27.28-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "270734",
+    "ThreadId": "77797",
+    "Html": "<p>I found a problem in the files I posted; it was ignoring the fact that you needed both Trophy of the Crusade and Triumph badges to purchase i245 gear.&nbsp; I've updated the files I previously posted, and posted the xslt&nbsp; file too:</p>\r\n<ul>\r\n<li><a href=\"http://www.sonic.net/~nk31/rawr/frost.cost.xml\">http://www.sonic.net/~nk31/rawr/frost.cost.xml</a></li>\r\n<li><a href=\"http://www.sonic.net/~nk31/rawr/triumph.cost.xml\">http://www.sonic.net/~nk31/rawr/triumph.cost.xml</a></li>\r\n<li><a href=\"http://www.sonic.net/~nk31/rawr/triumph.xslt\">http://www.sonic.net/~nk31/rawr/triumph.xslt</a></li>\r\n</ul>",
+    "PostedDate": "2009-12-25T13:32:14.657-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "277368",
+    "ThreadId": "77797",
+    "Html": "<p>This is an awesome feature and is saving me a lot of time figuring out what to do with my emblems of frost and triumph.&nbsp; (I suggest adding the triumph to the default options.)&nbsp; Thanks again guys.</p>\r\n<p>- Scott</p>",
+    "PostedDate": "2010-01-14T15:28:27.363-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "278272",
+    "ThreadId": "77797",
+    "Html": "<p>A question about this feature... I notice the base tier 10 items that cost 60 or 95 frost emblems are not listed.&nbsp; Any reason not to include those?&nbsp; I added the mage ones to the file for my main but it might be good to include them all.&nbsp; Of course, we don't want warlock items appearing for mages, etc.</p>",
+    "PostedDate": "2010-01-17T16:01:34.157-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "278279",
+    "ThreadId": "77797",
+    "Html": "<p>We don't set the cost for you, you do.</p>",
+    "PostedDate": "2010-01-17T16:26:43.127-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "278427",
+    "ThreadId": "77797",
+    "Html": "<p>Brilliant software, kudos to the many developers who work on this.</p>\r\n<p>When I make the optimal gear list and load it into my toon on the screen, how, can I print this list, with where it comes from?</p>",
+    "PostedDate": "2010-01-18T01:53:33.543-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "278554",
+    "ThreadId": "77797",
+    "Html": "<p>Hey... I was wondering if there is a more detailed explanation of how best to use the cost function? I have read a bunch of topics that incorporate it, but don't see too much in the way of explanation. It sounds like I can set an item to have a cost.. and then I can set a constraint to say don't equip something unless it costs X.. but that doesn't make sense to me.</p>\r\n<p>To be more specific, I read the following:</p>\r\n<p>If you want to get the best setup with 4 piece bonus when it is not actually optimal, then I guess what you could do is set cost 1 to each piece and set the constraint to Cost &gt;= 4 (that is assuming all of them are unavailable currently, otherwise lower the value in constraint as necessary).</p>",
+    "PostedDate": "2010-01-18T08:43:20.493-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "278563",
+    "ThreadId": "77797",
+    "Html": "Cost is meant to be a constraint you can set based on the number of badges you have to spend (ie, &quot;I have 150 frost badges, should I buy my tier chest and the cloak, or my tier shoulders and gloves, or what's the best upgrade?&quot;.  You set the cost for all the items you want to consider (ie, cost=95 for tier10 chest/head/legs, cost=60 for shoulders/gloves, cost=50 for cloak, etc).  Then optimize with a constraint of Cost &lt;= 150.\r\n\r\nIf you want to find out what the best 2 tier pieces are to go for, then set all the tier pieces to be = 1, and optimize for cost &lt;= 2.  If you want to know what 4pc is best for you (ie, that you don't want to buy all 5), optimize for cost &lt;= 4.\r\n\r\nEtc etc.",
+    "PostedDate": "2010-01-18T09:17:41.207-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "278592",
+    "ThreadId": "77797",
+    "Html": "<blockquote style=\"border:solid .1em #ccc;font-style:italic;margin:.25em 1em 0 1em;padding:0 .25em 0 .25em\"><strong>ebs2002 wrote:</strong><br>Cost is meant to be a constraint you can set based on the number of badges you have to spend (ie, &quot;I have 150 frost badges, should I buy my tier chest and the cloak, or my tier shoulders and gloves, or what's the best upgrade?&quot;. You set the cost for all the items you want to consider (ie, cost=95 for tier10 chest/head/legs, cost=60 for shoulders/gloves, cost=50 for cloak, etc). Then optimize with a constraint of Cost &lt;= 150. If you want to find out what the best 2 tier pieces are to go for, then set all the tier pieces to be = 1, and optimize for cost &lt;= 2. If you want to know what 4pc is best for you (ie, that you don't want to buy all 5), optimize for cost &lt;= 4. Etc etc.</blockquote>\r\n<p>&nbsp;Ahhh.. got it. Must have needed a second cup of coffee. Thanks for explaining.</p>",
+    "PostedDate": "2010-01-18T10:47:52.86-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "278852",
+    "ThreadId": "77797",
+    "Html": "<p>Many thanks for the other Emblem costs, Flyx!</p>",
+    "PostedDate": "2010-01-19T02:12:39.773-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "284068",
+    "ThreadId": "77797",
+    "Html": "<p>Hi,</p>\r\n<p>I'm trying to figure out what it is I'm doing wrong. I'm trying to figure out, taking into account what my current gear is, which piece of t10 I should upgrade first to get the best results. I have enough emblems for one piece (95 emblems). I went and edited the cost of all 5 T10 pieces to &quot;1,&quot; made sure they were available for the optimizer, and then in the optimizer set a requirement of Cost &lt;= 1. Weirdly enough the result I get is to replace 4 slots with my T10... and for some strange reason omits the hands. I was expecting it to tell me which slot to replace first with the one piece of T10 I can afford.</p>\r\n<p>What is it that I am missing?</p>",
+    "PostedDate": "2010-01-31T15:41:45.377-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "284070",
+    "ThreadId": "77797",
+    "Html": "<p>You shouldn't mark them as available. If an item with cost is marked as available the optimizer assumes you already have it and thus it doesn't cost you anything.</p>",
+    "PostedDate": "2010-01-31T15:58:37.04-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "284071",
+    "ThreadId": "77797",
+    "Html": "<p>I see!!! I had always assumed that if you didn't mark it as &quot;available for optimizer&quot; it even look at it. Ebs even said not to mark it but I didn't quite understand. Thank you!</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-01-31T16:01:40.687-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "471063",
+    "ThreadId": "77797",
+    "Html": "<p>Sorry for digging this old thread up.</p>\r\n<p>I had just won my first Sanctified token and wanted to find out which piece I should upgrade first. The &quot;Direct Upgrades / Cost&quot; view is the ideal tool, but since I didn't find any suitable cost file around, I made my own. I am no good at XSL, so this is done with <a href=\"http://www.wowhead.com/items=4?filter=na=Sanctified;minle=264;maxle=264\">Wowhead</a> and RegEx.</p>\r\n<p>I am sharing the item cost file here for anyone who is also in my position. It sets the item cost = 1 for all i264 Tier 10.</p>\r\n<ul>\r\n<li>T10 (ilvl 264): <a href=\"http://pastebin.com/JduaFpvk\">http://pastebin.com/JduaFpvk</a></li>\r\n</ul>",
+    "PostedDate": "2010-07-22T08:04:21.38-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "471099",
+    "ThreadId": "77797",
+    "Html": "<p>What I've done is load up the direct cost file, then did a save with a new name. Next I would open up the file in Notepad and enter into the tier pieces I want to evaluate. I would assign the cost of &quot;1&quot; to each. I would then load up that file and run the optimizer with a cost &gt;= 1. Just find it odd that I cannot create a &quot;xml&quot; file from scratch and that I have to save the file through rawr. Odd...</p>",
+    "PostedDate": "2010-07-22T09:23:26.673-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "471259",
+    "ThreadId": "77797",
+    "Html": "Maybe I'm misunderstanding what you're saying, buy you do realize you can edit the cost of items within the item editor, right?",
+    "PostedDate": "2010-07-22T16:16:48.56-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "471610",
+    "ThreadId": "77797",
+    "Html": "<p>I just find my RegEx method faster. Took less than 5 minutes to do 95 items. In fact, I can do as many items as I want in the same amount of time, provided I can filter them out in Wowhead. Would have taken me ages to change the item cost one by one; Rawr is slow on my useless desktop that can barely handle WoW.</p>\r\n<p>To prove my point, here is the heroic T10 item cost file:</p>\r\n<ul>\r\n<li>T10 (ilvl 277): <a href=\"http://pastebin.com/CbcMGyq9\">http://pastebin.com/CbcMGyq9</a></li>\r\n</ul></div>",
+    "PostedDate": "2010-07-23T06:41:37.987-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "471612",
+    "ThreadId": "77797",
+    "Html": "The Item Editor interface can be quite sluggish at times.",
+    "PostedDate": "2010-07-23T06:47:37.7-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

@@ -1,0 +1,86 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "If this still happens please open a new issue.",
+    "ClosedDate": "2012-10-18T13:21:22.12-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Using the following XML, the Optimizer solve (both full precision and 10x full precision) returns a suboptimal solve worse than existing equipment.  This is really odd given that during the solving process, the max-dps-found-so-far indicator had reached much higher numbers.",
+    "LastUpdatedDate": "2013-05-16T05:16:59.317-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2012-10-03T19:57:31.617-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[5.0.0][Mage][Fire] Optimizer solve worse than original, worse than intermediate solves",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 23456
+  },
+  "FileAttachments": [
+    {
+      "FileId": 6029,
+      "FileName": "Fire.xml",
+      "DownloadUrl": ".\\6029"
+    },
+    {
+      "FileId": 6030,
+      "FileName": "solve.jpg",
+      "DownloadUrl": ".\\6030"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I should add that if I start another solve after accepting this result, the main window will show current dps as 58k, while the optimizer window will show current dps as 63k.  ",
+      "PostedDate": "2012-10-03T20:03:21.2-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "After more experimenting, I think the issue may just be aesthetic in that whatever dps number the main window shows, is not calculated the same way as the the dps number in the optimizer.  But I don't believe the optimizer would find a higher maxima no matter how much I muck with initial state or precision level.",
+      "PostedDate": "2012-10-03T20:12:16.083-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-10-03T20:22:24.607-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This might shed some light: both Spellpower and Crit are not calculated the same between Main and Optimizer windows (or between 'before' and 'after').  Note that the Items pane is in fact empty because this solve found the current equipment as optimal.",
+      "PostedDate": "2012-10-03T20:22:25.847-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2012-10-18T13:21:22.12-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:23:37.223-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:16:59.317-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

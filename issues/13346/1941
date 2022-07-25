@@ -1,0 +1,80 @@
+Index: Rawr.DPSDK/CalculationsDPSDK.cs
+===================================================================
+--- Rawr.DPSDK/CalculationsDPSDK.cs	(revision 446)
++++ Rawr.DPSDK/CalculationsDPSDK.cs	(working copy)
+@@ -272,7 +272,6 @@
+         {
+             CalculationOptionsDPSDK calcOpts = character.CalculationOptions as CalculationOptionsDPSDK;
+             GetTalents(character);
+-            StatsSpecialEffects.character = character;
+             Stats stats = GetCharacterStats(character, additionalItem);
+ 
+             CharacterCalculationsDPSDK calcs = new CharacterCalculationsDPSDK();
+@@ -281,7 +280,6 @@
+             calcs.Talents = calcOpts.talents;
+ 
+             CombatTable combatTable = new CombatTable(character, calcs, stats, calcOpts);
+-            StatsSpecialEffects.combatTable = combatTable;
+ 
+             //DPS Subgroups
+             float dpsWhite = 0f;
+@@ -1333,8 +1331,6 @@
+             if (statsTotal.GreatnessProc > 0)
+                 statsGearEnchantsBuffs.Strength += statsTotal.GreatnessProc * 15f / 45f;
+ 
+-            StatsSpecialEffects.combatTable = new CombatTable(character, statsTotal, calcOpts);
+-
+             /*
+                         statsTotal.BonusAttackPowerMultiplier = statsGearEnchantsBuffs.BonusAttackPowerMultiplier;
+                         statsTotal.BonusAgilityMultiplier = statsGearEnchantsBuffs.BonusAgilityMultiplier;
+@@ -1413,9 +1409,7 @@
+             {
+                 if (HasRelevantStats(effect.Stats))
+                 {
+-                    StatsSpecialEffects.stats = statsTotal;
+-                    StatsSpecialEffects.combatTable = new CombatTable(character, statsTotal, calcOpts);
+-                    statsTotal += StatsSpecialEffects.getSpecialEffects(calcOpts, effect);
++                    statsTotal += StatsSpecialEffects.getSpecialEffects(character, statsTotal, calcOpts, effect);
+                 }
+             }
+             /*
+Index: Rawr.DPSDK/StatsSpecialEffects.cs
+===================================================================
+--- Rawr.DPSDK/StatsSpecialEffects.cs	(revision 446)
++++ Rawr.DPSDK/StatsSpecialEffects.cs	(working copy)
+@@ -6,18 +6,11 @@
+ {
+     class StatsSpecialEffects
+     {
+-        public static Character character;
+-        public static Stats stats;
+-        public static CombatTable combatTable;
+-
+-        public static Stats getSpecialEffects(CalculationOptionsDPSDK calcOpts, SpecialEffect effect)
++        public static Stats getSpecialEffects(Character character, Stats stats, CalculationOptionsDPSDK calcOpts, SpecialEffect effect)
+         {
+             Stats statsAverage = new Stats();
+             Rotation rotation = calcOpts.rotation;
+-            if (combatTable == null)
+-            {
+-                new CombatTable(character, stats, calcOpts);
+-            }
++            CombatTable combatTable = new CombatTable(character, stats, calcOpts);
+             if (combatTable.MH == null)
+             {
+                 combatTable.MH = new Weapon(null, new Stats(), calcOpts, 0f);
+@@ -86,6 +79,7 @@
+             return statsAverage;
+         }
+ 
++        /*
+         public static void GreatnessProc()
+         {
+             //trinket procs
+@@ -95,5 +89,6 @@
+                 stats.Strength += stats.GreatnessProc * 15f / 45f;
+             }
+         }
++        */
+     }
+ }

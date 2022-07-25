@@ -1,0 +1,85 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.MultipleModels",
+      "DisplayName": "Rawr.MultipleModels"
+    },
+    "ClosedComment": "",
+    "ClosedDate": null,
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "This is for Druids, Shamans, Paladins, and Priests Devs. I'm adding in two new Mana Cost reduction variables due to a new trinket that only reduce mana cost for Nature and Holy spells. The variables will be:\n \nNatureSpellsManaReduction\nHolySpellsManaReduction\n \nIf you could implement these variables as part of the mana Reduction portion of your code, that would be appreciated.",
+    "LastUpdatedDate": "2013-02-21T18:25:49.35-08:00",
+    "PlannedForRelease": "Rawr 4.1.0",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-02-24T10:48:53.533-08:00",
+    "Status": {
+      "Name": "Proposed",
+      "Id": 1
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] New Mana Cost Reduction Variables",
+    "Type": {
+      "Name": "Task",
+      "Id": 2
+    },
+    "VoteCount": 1,
+    "Id": 20079
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Is it a flat value that needs to be directly subtracted from the spell mana cost?\r\nAny idea how it interacts with talents that reduce mana cost? Is it applied before or after multiplicative reductions? (For example Druid's Mooglow. I guess other classes have something similar somewhere.)\r\nI believe Druid heals are still considered Nature Spells?",
+      "PostedDate": "2011-03-14T14:26:27.95-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Previous similar effects used to be applied as a flat value to base cost before any multipliers.",
+      "PostedDate": "2011-03-14T14:53:16.187-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hina's new stats here are flat values, not percentages. You should be safe with placing it right in with your other flat mana cost reduction values and you only need to use one of the two for your druid spells.",
+      "PostedDate": "2011-03-14T15:12:52.587-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Patch 59131 includes NatureSpellsManaReduction for Tree (but untested).",
+      "PostedDate": "2011-03-27T03:27:05.137-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "To test this, add in either of these two trinket ids'\r\n\r\n68926\r\n69111\r\n\r\nThis is for the trinket Jaws of Defeat. The Special Effect is in place so you can try it now.",
+      "PostedDate": "2011-03-28T09:43:58.653-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-04T19:12:43.457-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "These now have this:\r\n* Elemental\r\n* Healadin\r\n* Moonkin\r\n* Tree\r\n* RestoSham\r\nThese still need this:\r\n* Enhance (relevant but not in use)\r\n* HealPriest (relevant but not in use)\r\nThese may not need this:\r\n* ProtPaladin (Don't see where Mana is being factored in the model other than relevancy)\r\n* Retribution (Don't see where Mana is being factored in the model other than relevancy)",
+      "PostedDate": "2011-04-04T20:49:46.083-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This should be easy enough on mine, I left the old soul preserver trinket calcs I used in, I can just add these to them.",
+      "PostedDate": "2011-04-05T16:26:53.2-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:25:49.35-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

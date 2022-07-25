@@ -1,0 +1,101 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-10-16T14:51:04.23-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The interaction between the source filters and the Item levels filters is inconsistent. If all sources and item levels are deselected the charts should show only equipped/available gear however it will still show the 391 iLvl rep rings when it shouldn't. Selecting all the source codes does not change anything (working as it should?) until the item level is ALSO selected. However if the process is reversed by selecting item levels first, the chart will be populated and the source filters will have little to no effect. Able to reproduce this on 3 different toons using 5 different models (Hunter, ProtWarr, DPSWarr.Fury, Retribution Pally and Holy Pally) so it should be reproducable on any non-dev. builds.\n \nOn a slightly different note both Warrior and pally models have Magma Plated gear listed, I corrected this locally by editing the pieces for the DK class but it is a minor inconvience each change.",
+    "LastUpdatedDate": "2013-05-16T05:17:33.653-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-07-29T16:24:50.143-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Filters] Source relies on Item Lvl but not the reverse",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 21258
+  },
+  "FileAttachments": [
+    {
+      "FileId": 5251,
+      "FileName": "Bristef Retro 4.2.xml",
+      "DownloadUrl": ".\\5251"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "I have noticed that even with the ilvl 391 items filtered out, the Heroic (391) tier pieces still appear in the \"Special Currency\" filter.\r\n",
+      "PostedDate": "2011-08-05T01:27:43.83-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I wasn't able to reproduce the issue with 391 rings showing with filters unchecked.",
+      "PostedDate": "2011-08-07T17:37:39.52-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-08-14T14:31:07.74-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Steps to reproduce:\r\n Open Rawr @ EJ; Load from Battle.net Bristef@Akama(US);\r\n Open \"Filters by Source\" and UnCheck All; \r\n Open \"Filters by Item Level\" and UnCheck All; \r\n Go to Direct Upgrade panel and observe a few regem recommendations as well as all 5 pieces of the\r\n            391 ilvl Battleplate of Immolation set and the Obisdium Signet from Exalted rep with Avengers.\r\n Therefore with No Source selected and No Item Level selected, I still have 6 Direct Upgrades available according to Rawr.\r\nTo elaborate further, place a check in the 392 Ilvl box and note how quickly this action is completed\r\n  then place a check in the 378-390 Ilvl box and note a delay before action is completed and the list is changed\r\n            as well as an additional 13 items being listed still without ever enabling any souces.\r\nNow Uncheck All (or uncheck the 378-390 Ilvl box) the hit Reset under \"Filters by Source\" and note the slight delay\r\n            but the Direct Upgrade list does not change.\r\nReselect 378-390 Ilvl and deselect Crafted/Profession Source, BoE Items and Special Currency boxes;\r\n            notice that the list does not change and the 2 BoE Blacksmithing items and the 7 Valor Point items are still listed.\r\nThis was done using the web version at ElitistsJerks after resetting both Item Cache and All Caches but the latest WPF version works the same.",
+      "PostedDate": "2011-08-14T14:31:09.447-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I still cannot reproduce this. Can you verify that you are running Rawr version 4.2.3?",
+      "PostedDate": "2011-08-14T15:34:00.223-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "According to the number at the bottom of the Silverlight version at Elitistsjerks' website, yes it is 4.2.3. Are you sure you aren't running a Dev build of 4.2.3 or that you have not updated the cache manually. (Should be able to check that by simply resetting item and all caches to match your cache with the users.)",
+      "PostedDate": "2011-08-14T22:08:00.77-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Which browser are you using? I've noticed Chrome is having issues with cache files and doesn't want to reset them.",
+      "PostedDate": "2011-08-15T02:44:24.95-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Fixed by commit 63329\r\nStill unable to reproduce issue, but found a related bug that could correct for the end user",
+      "PostedDate": "2011-10-03T18:13:42.62-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-10-16T14:51:04.23-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:24:29.4-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:17:33.653-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

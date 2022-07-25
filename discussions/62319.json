@@ -1,0 +1,106 @@
+[
+  {
+    "Id": "211545",
+    "ThreadId": "62319",
+    "Html": "<p>Using Mage Template, Imported character data from armory, v2.2.9-Mage:</p>\r\n<p>On Options --&gt; Advanced, clicked the &quot;Compute Optimal Arcane Cycles&quot; button and gave me this pop-up with information:<br><a href=\"http://inydtyvm.com/images/Mage_Rotation.jpg\">http://inydtyvm.com/images/Mage_Rotation.jpg</a></p>\r\n<p><a href=\"http://inydtyvm.com/images/Mage_Rotation.jpg\"></a>While I've figured out everything else that I've looked for, I cannot seem to make heads or tails of what it's trying to explain to me.. The Formulas that it gives doesn't seem to make sense to me in conjunction with the other stuff that it lists.</p>\r\n<p>If someone could help walk me through it or something, I'd be grateful.<br><br>Thanks</p>\r\n<p>-Sharjaya</p>\r\n<p>Hakkar-US&nbsp;</p>",
+    "PostedDate": "2009-07-13T18:02:44.703-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "211673",
+    "ThreadId": "62319",
+    "Html": "<p>Cycles are described in terms of state policy, which means that it tells you what spell to use under which circumstances. First you need to understand what the states describe, which as you said can be a bit cryptic since they're auto generated. Here's a human readable translation for your case:</p>\r\n<p>0: no stacks of AB, ABar not on cooldown<br>1: no stacks of AB, ABar&nbsp;on cooldown, MB proc not visible<br>2: no stacks of AB, ABar&nbsp;on cooldown, MB proc&nbsp;visible<br>3:&nbsp;1 stack of AB, MB proc&nbsp;visible<br>4:&nbsp;2 stacks of AB, MB proc not&nbsp;visible<br>5:&nbsp;3 stacks of AB, MB proc not&nbsp;visible<br>6:&nbsp;3 stacks of AB, MB proc&nbsp;visible<br>7:&nbsp;2 stacks of AB, MB proc&nbsp;visible<br>8:&nbsp;1 stack of AB, MB proc not&nbsp;visible</p>\r\n<p>Now the cycles are described as a control string, one number for each state, describing which spell to cast in that state, 0 = AB, 1 = ABar, 2 = AM. Not all cycles enter all the states so in some cases some of the numbers are arbitrary.</p>\r\n<p>For example 000000200 means to always cast AB except use AM when you're in state 6, that is when you're at 3 stacks of AB and you see MB proc (cycle ABSpam3MBAM). 100000200 is the same except you use ABar when you're at 0 stacks of AB and it's not on cooldown. If you think about it this will only happen after you use AM on proc so this is equivalent to always using AB except using AM-ABar on 3 stack when you see proc (that is the ABSpam3C cycle). And so on for the rest of the cycles.</p>",
+    "PostedDate": "2009-07-14T04:13:48.44-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "211914",
+    "ThreadId": "62319",
+    "Html": "<p>Quote:</p>\r\n<p style=\"padding-left:30px\">&quot;For example 000000200 means to always cast AB except use AM when you're in state 6, that is when you're at 3 stacks of AB and you see MB proc (cycle ABSpam3MBAM).&quot;</p>\r\n<p>/Quote</p>\r\n<p>&nbsp;</p>\r\n<p>I understand the cycle that you've broken down for me, but perhaps you could explain how you came to conclude that state 6 is when you switch to AM. I realize that there are 6 zeros before the 2.. Is that how you determine which state to use, and if so, what does the 2 stand for?</p>\r\n<p>&nbsp;</p>\r\n<p>Perhaps I'm incompetent and maybe the only person having this problem with understanding the output of 000000200.. Maybe you could just break down what the outputs stand for piece by piece as simple as possible, in hope that it may help out other people as well.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-07-14T18:13:29.667-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "211935",
+    "ThreadId": "62319",
+    "Html": "<p>Yes the numbers correspond to spell selection for each state. So a code of X1 X2 X3 ... Xn would mean cast spell&nbsp;Xi (according to spell code, 0 = AB, 1 = ABar, 2 = AM) in state i (according to state description).</p>",
+    "PostedDate": "2009-07-14T20:10:38.993-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "211983",
+    "ThreadId": "62319",
+    "Html": "<p>so in the above post, X is the placeholder location (which we've deemed &quot;state&quot;), and the number that it reads is which spell we should cast according to the legend. Correct?</p>\r\n<p>&nbsp;</p>\r\n<p>I'm going to assume yes, so that would also mean that given 000000200, it's saying to smash ABx6 then AM; while this makes AM this 7th state, it is actually referring to the 6th state at which you pay attention to (3 stacks of AB, MB proc&nbsp;visible) as opposed to looking at the 7th state (which would provide a damage decrease on your AM with only 2 stacks of AB up).</p>\r\n<p>&nbsp;</p>\r\n<p>Essentially, this is assuming that Missle Barrage doesn't proc until minimally the 4th state, but presumes that you will only use AM when Missle Barrage is active, and prefers that you use it with a 3stack of AB.</p>\r\n<p>Given that, I think it is a fair assumption that the code isn't asking you to cast AB 6 times, but is basically telling you to use AB until you proc Missle Barrage, continue casting AB until you have a 3stack of the debuff, and then casting AM. So assuming that Missle Barrage would proc every time on the first or second cast of AB, your rotation could possibly work out to be as simple as AB x3, AM :repeat: ....right?</p>",
+    "PostedDate": "2009-07-15T00:11:57.497-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "211999",
+    "ThreadId": "62319",
+    "Html": "<p>No. Look at your picture. There are 9 digits in each of the cycles. Those 9 digits correspond to the 9 different states, as described in the 9 lines under &quot;Base:&quot;. What number the digit is describes what to do when you're in that state (0=AB, 1=ABar, 2=AM, as noted on the &quot;Cycle Code Legend&quot; line).</p>\r\n<p>Each of the 9 states are described in the form of &quot;ABx,ABary,MBz+-&quot;, where x = number of AB stacks, y = remaining cooldown on ABar, z = remaining time on MissileBarrage, and +/- = whether MBarr is visible or not.</p>\r\n<p>&nbsp;</p>\r\n<p>So 000000200 means: always cast spell #0 (AB), except while in State #6, which is &quot;AB3,ABar0,MB12.8306+&quot;, where you should cast spell #2 (AM). So spam AB, except use AM when you have 3 stacks of AB, ABar is off cooldown, Missile Barrage is visible, and there is less than 12.8306sec left on it.</p>",
+    "PostedDate": "2009-07-15T00:47:44.81-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "212009",
+    "ThreadId": "62319",
+    "Html": "<p>What Astrylian said, just a small correction. The timing on MB left isn't significant, because currently the spell selection logic only depends on whether MB proc is visible or not (there are actually several states AB3,ABar0,MBz+, with different time left on MB, it just picks the first one on its internal&nbsp;list to be a representative for all states that are considered equivalent for purposes of spell selection logic).</p>",
+    "PostedDate": "2009-07-15T00:58:16.49-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "212223",
+    "ThreadId": "62319",
+    "Html": "<p>Alrighty, I think it's finally been broken down enough for me to understand... Theorycrafting is a pain sometimes, eh?&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>Well, I know it's helped me, and hopefully will help someone else.</p>\r\n<p>Thanks,</p>\r\n<p>Silverphoenix</p>",
+    "PostedDate": "2009-07-15T10:38:41.41-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "212224",
+    "ThreadId": "62319",
+    "Html": "<p>I think part of the problem is that output really makes two very big assumptions:</p>\r\n<p>1. That someone who is not a programmer understands what a state machine is, and what a &quot;state&quot; is</p>\r\n<p>2. That someone can read a string of digits and parse that as decisions to be made based on the current state.</p>\r\n<p>To me, sadly, that output looks more like some concise text that you'd find in a program's internal save file more than something that is for [a non-programmer's] consumption.&nbsp; I can only come up with a couple of suggestions to get around this, but one's not ideal and the other one is much work.</p>\r\n<p>The first may involve people choosing their favorite rotation (i.e. probably clicking on the one that shows the highest dps) and printing out a verbose sequence of rules that include &quot;If this and this then do that.&quot;&nbsp; I could see that spanning a whole screen considering the complexity of the states &amp; the length of the rotations.&nbsp; The alternative, which <em>might</em> be better, would be to try to generate a flow chart for a selected rotation.</p>\r\n<p>As someone who is extremely well versed in programming but not as much in mage abilities, I also find that output&nbsp;very hard&nbsp;to understand&nbsp;(and fwiw I have a 64 mage).&nbsp; I suppose the same would be true for someone who isn't a programmer but knows mages very well.</p>\r\n<p>So my question to you is:&nbsp; Who is this screen directed towards?&nbsp; Is it for all Rawr users?&nbsp; Or do you expect only half a dozen uber-analytical mages to study it and to distill the results on their own blogs for others to understand?</p>\r\n<p>Char</p>",
+    "PostedDate": "2009-07-15T10:40:51.537-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "212275",
+    "ThreadId": "62319",
+    "Html": "<p>Somewhere closer to 'only half a dozen uber-analytical mages' (and only 1 spec of mages), I'm sure. This is buried on the Advanced tab for a reason. Kavan has explicitly said in the past, that this probably won't be getting any usability improvements, because it's just not intended to be widely used. (Kavan, correct me if I'm wrong, or expand on that)</p>",
+    "PostedDate": "2009-07-15T12:41:08.197-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "212324",
+    "ThreadId": "62319",
+    "Html": "<p>Ok, if that's the case then disregard my comments above, they don't really apply.</p>\r\n<p>Char</p>",
+    "PostedDate": "2009-07-15T14:15:19.837-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "212412",
+    "ThreadId": "62319",
+    "Html": "<p>Yes this is an advanced tool that lets someone verify if the &quot;standard&quot; cycles are applicable in the specific situation someone is investigating. Its main use is for me to check between major changes in mage mechanics if I'm missing any of the optimal cycles.</p>",
+    "PostedDate": "2009-07-15T21:23:35.34-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "212450",
+    "ThreadId": "62319",
+    "Html": "<p>yes char, this is definately the 'half a dozen uber-analytical mages' aspect. I am quite well versed at being a mage, but was looking for something different... constantly looking for a dps increase. While I am decently versed in programming, somehow this breakdown escaped me (most of my programming is web based [PHP/MySQL Scripting] as opposed to actual program creation based).</p>\r\n<p>Decided to give Rawr a shot to see if there was a way to increase my dps, and it seems like there are several boosts available, but as Kavan mentioned, this does seem better geared towards identifying changes in class mechanics as opposed to being directed at average users that are just looking for a way of maximizing their damage output. For the analysts it can work wonders, but for average players and especially people who have never even DABBLED in computing mechanics before... I think it'd be a headache and a turn-off for them.</p>\r\n<p>Perhaps a suggestion though for future Rawr releases would indeed be an easier-to-read output for people looking to find good rotations to use. Rawr encompasses so much more than maxDPS and other sites available, but really only lacks a rotation helper (which I do realize some people are against in the sense of oversimplifying things for people, but at some point you have to look at it in a &quot;for the greater good of your progression&quot; perspective).</p>\r\n<p>Happy to have sparked discussion, and again grateful for the help.</p>\r\n<p>Thanks again,</p>\r\n<p>Silverphoenix</p>",
+    "PostedDate": "2009-07-16T00:22:07.887-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

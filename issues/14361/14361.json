@@ -1,0 +1,81 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-10-07T13:56:04.37-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Hi there, I hate to do this as it will just seem like a wall of text but I want to give you a full explanation of what is going on with the new version.\n \nUpon upgrading to the new version I loaded up my saved character and promptly got this error/debug message:\n \nSee the end of this message for details on invoking \njust-in-time (JIT) debugging instead of this dialog box.\n \n************** Exception Text **************\nSystem.InvalidOperationException: There was an error generating the XML document. ---> System.InvalidOperationException: Instance validation error: '165' is not a valid value for Rawr.Profession.\n   at Microsoft.Xml.Serialization.GeneratedAssembly.XmlSerializationWriter1.Write96_Profession(Profession v)\n   at Microsoft.Xml.Serialization.GeneratedAssembly.XmlSerializationWriter1.Write98_Character(String n, String ns, Character o, Boolean isNullable, Boolean needType)\n   at Microsoft.Xml.Serialization.GeneratedAssembly.XmlSerializationWriter1.Write219_Character(Object o)\n   --- End of inner exception stack trace ---\n   at System.Xml.Serialization.XmlSerializer.Serialize(XmlWriter xmlWriter, Object o, XmlSerializerNamespaces namespaces, String encodingStyle, String id)\n   at System.Xml.Serialization.XmlSerializer.Serialize(TextWriter textWriter, Object o)\n   at Rawr.Character.Save(String path)\n   at Rawr.FormMain.saveToolStripMenuItem_Click(Object sender, EventArgs e)\n   at System.Windows.Forms.ToolStripItem.RaiseEvent(Object key, EventArgs e)\n   at System.Windows.Forms.ToolStripMenuItem.OnClick(EventArgs e)\n   at System.Windows.Forms.ToolStripItem.HandleClick(EventArgs e)\n   at System.Windows.Forms.ToolStripItem.HandleMouseUp(MouseEventArgs e)\n   at System.Windows.Forms.ToolStrip.OnMouseUp(MouseEventArgs mea)\n   at System.Windows.Forms.ToolStripDropDown.OnMouseUp(MouseEventArgs mea)\n   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)\n   at System.Windows.Forms.Control.WndProc(Message& m)\n   at System.Windows.Forms.ToolStrip.WndProc(Message& m)\n   at System.Windows.Forms.ToolStripDropDown.WndProc(Message& m)\n   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)\n   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)\n \n// WOT moved to an error file attachment\n \nSo I loaded my character fresh from the armory and created a new character profile and everything seemed to go OK. I then started adding the items from my inventory and noticed a few of the items weren't in the list. Handguards of the Potent Cures, Conqueror's Nightsong Cover, Conqueror's Nightsong Vestments. So I decided to cheat a little and equip these items, log out of the game and have Rawr pick them up from reloading my character from armory. It picked them up and added them to my list. Upon trying to save my character, I received the same error as i linked above.",
+    "LastUpdatedDate": "2013-05-16T05:23:59.52-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-10-07T13:39:20.35-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] Crashing with items equipped/marked that aren't in list",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14361
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2313,
+      "FileName": "error.txt",
+      "DownloadUrl": ".\\2313"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "This issue has already been resolved in recent commits",
+      "PostedDate": "2009-10-07T13:55:07.533-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "After reading the discussions page i realize you are already aware and are working on a fix. Apologize for not seeing that first.",
+      "PostedDate": "2009-10-07T13:55:26.447-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-07T13:56:04.37-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T16:29:59.67-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:15.273-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:32:35.277-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:59.52-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

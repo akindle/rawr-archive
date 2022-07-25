@@ -1,0 +1,196 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "closed",
+    "ClosedDate": "2009-08-29T20:22:37.587-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Rawr, as of 36312, and only underDPSWarr (as far as I am aware, have not done extensive testing), is lagging worse than a machine with 128 MB memory trying handle a character in Dalaran.  It hangs on all sorts of things, and I cannot isolate the issue yet.  It hangs on an optimize.  It hangs on trying to pull up the list of items in a slot.  It hangs on toggling buffs.  It hangs on loading a character, either from the Armory, or from a Characterfile.  But the worst part is, the only two things it RELIABLY hangs on are pulling up the list of items in a slot, and on optimize.  The rest are about a 50/50 chance, so far (not extended testing).\n \nAgain, this is not tied to character files, as it even happens when loading a character from the Armory (well, sometimes, at least).\n \n----\n \nProblem signature:\n  Problem Event Name:\tAppHangB1\n  Application Name:\tRawr.exe\n  Application Version:\t2.2.13.0\n  Application Timestamp:\t4a96414f\n  Hang Signature:\tbdd6\n  Hang Type:\t6400\n  OS Version:\t6.0.6002.2.2.0.256.1\n  Locale ID:\t1033\n  Additional Hang Signature 1:\t048354e5c76d2a6e9ad77901ff3c1c59\n  Additional Hang Signature 2:\td931\n  Additional Hang Signature 3:\t30c16b448f3580f4704d0774ba61402d\n  Additional Hang Signature 4:\tbdd6\n  Additional Hang Signature 5:\t048354e5c76d2a6e9ad77901ff3c1c59\n  Additional Hang Signature 6:\td931\n  Additional Hang Signature 7:\t30c16b448f3580f4704d0774ba61402d",
+    "LastUpdatedDate": "2013-05-16T05:24:41.293-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-08-27T01:58:52.07-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Odd behavior / Stalling (r36312)",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13977
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2135,
+      "FileName": "Aero2 Arms.xml",
+      "DownloadUrl": ".\\2135"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Additionally, doing ANYTHING is taking FOREVER.  Toggling a buff almost feels like activating a GCD.  I can watch my CPU usage graphically spike every time anything happens in the program - anything at all.  When I select a buff, for instance, all cores of my processor jump to 80% usage and then drop right back down again.  That's a little ridiculous, given the specs of my workstation.",
+      "PostedDate": "2009-08-27T02:03:40.233-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-27T02:04:10.35-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-27T02:04:46.16-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-27T02:05:31.793-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It could be a similar issue I had on the elemental model. I created a SpecialEffect each time with the new keyword in order to calculate a simple uptime. This effectively disabled the built in caching.",
+      "PostedDate": "2009-08-27T07:57:35.223-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "And when I say \"hang\" I mean that the program becomes totally unresponsive, and will not respond to any sort of interaction.",
+      "PostedDate": "2009-08-27T08:28:56.247-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Now, it's no longer extremely sluggish... but when I try to run an Optimize routine, it gains zero progress, and the DPS of the current set on the Optmizer is \"-1E+07\".  The Cancel button does not work, and I must terminate the Rawr process.",
+      "PostedDate": "2009-08-27T10:05:58.243-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Keeps getting weirder every time I open the program... It is sluggish on applying filters, selecting buffs, and selecting rotational abilities.  Toggling some abilities (Commanding Shout, just now) cause the program to hang.  Running the Optimizer still causes the program to hang.\r\n\r\nHowever, I can now use the drop-down menu to select which item I am wearing, and there is little lag there.\r\n\r\nThis is with no change from last night.  The \"trigger\" for a hang keeps changing.",
+      "PostedDate": "2009-08-27T10:13:53.103-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Using the current code (with Helmchen's commit after mine) I'm unable to reproduce this issue on my character. It is slower than it was before my overhaul but I'm not getting any hanging and the optimizer runs fine. I'll be working on the issue of why it is now a little slower (I know 1 of the main reasons) and will be making a commit later today to improve that performance.",
+      "PostedDate": "2009-08-27T10:17:10.37-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Cleared most XMLs out.  While it was previously happening on all DPSWarr characters and all over the place, it now seems localized to my existing profiles.\r\n\r\nSome profiles will get to 1%-5% (in the Optimizer), and just stop going.  My main profile won't even start an Optimize routine (stuck at 0%).\r\n\r\nWas there anything in the recent changes that outdated existing character profiles?",
+      "PostedDate": "2009-08-27T10:31:44.753-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Nothing that would have caused it to be non-functional. I did discover at one point that checking options off then turning them back on (like the standing in back option) was required, but I thought that went away. Try that and see if it helps.",
+      "PostedDate": "2009-08-27T10:43:30.203-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I just made a commit that should help the performance. Also Ebs made a commit that handles the ArP cap with GT or MR (one only, not both at the same time).",
+      "PostedDate": "2009-08-27T11:01:46.38-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I had noticed that toggling some options (like, as you mentioned, Standing in Back) were necessary to \"count\" them.  However, just on a hunch, I went down the list.  When I attempted to turn off Rampage, app hang.  Tried two more times, still getting stuck on Rampage.  Attempting to change the duration of a fight (increase by 1s), hang.  Attempting to change the duration of a fight (increase by 1s), hang.  \r\n\r\nComing back 5 minutes later, though... Toggling Rampage does not cause a hang.  When I went back to repeat the fight duration hang, no hang (either increasing or decreasing the time).\r\n\r\nAttempted an Optimize... \"-1E+07\".  Ugh\r\n\r\nGoing to go download the latest commit.",
+      "PostedDate": "2009-08-27T11:38:52.967-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-27T12:10:01.743-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-27T12:10:03.38-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Uploaded my character file for confirmation that I am / am not crazy.",
+      "PostedDate": "2009-08-27T12:10:43.66-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "OK, so i loaded up your character, started playing with the options (turning stuff on/off, etc.) and nothing (bad) was happening when i changed buffs, rotation maintenance, standing in back, latency UNTIL i hit Duration. When i increased it from 630 to 631 it hung. Pausing the EXE shows that it's reaching a point in the OnCalculationsInvalidated() [_autoResetEvent.WaitOne(); inside public void LoadGearBySlot(CharacterSlot slot)] where it's asking for something to finish but never receives the signal that it has, so it's just sitting there.\r\n\r\nI started investigating by opening your character file to check for any problems.... wow dude. You have options panel info for Mage, ProtWarr, Retribution, Hunter, Cat, Enhance, Bear *and* DPSWarr. Bear and DPSWarr I expect, and if you are using the same file for DPSWarr and ProtWarr I could understand that too. However, those other model's panel infos need to be stripped from the file. After stripping that info, it turns out that was not the issue, ok, but at least I cleared that garbage :P\r\n\r\nI tried running an optimize, went through just fine at normal speed. You've also got a lot of gear that could be sold to vendors as other items are clearly better and the situation really won't change. For Example, Armguards of the Nether Lord beat Bitter Cold Armguards in every stat except for Crit, and that's only a difference of 3 rating, which it well more than makes up for in other stats. Removing some items like that would probably help the performance of the optimizer for you.\r\n\r\nI loaded your character directly from the armory and just changed Duration to 600 then started kicking it up 1 at a time. At 610 it was fine, going to 611 it got that same hang.",
+      "PostedDate": "2009-08-27T13:11:32.427-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "For the life of me I can only reproduce this issue on your character, either via the file, or Armory load.\r\n\r\nGoogle searching shows the Hang 6400 issue to be related to how threads are handled and some changes to InterOp and SafeWaitHandle would probably resolve it, but that's out of my jurisdiction.",
+      "PostedDate": "2009-08-27T13:24:59.593-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yeah, on the options, I work with a lot of different people, helping walk them through the program, so I like to go through the motions with them, too.  ;)\r\n\r\nOn the gear, I very recently added the ToC stuff, so haven't gotten aroudn to doign a full cleaning (about to clear out some wrists and some legs, most notably).",
+      "PostedDate": "2009-08-27T14:13:51.717-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Since you've narrowed it to my particular setup, going to try and play with gear some to try and isolate the issue.  My guess is that it's either a proc, or a particular combination of procs, so I'll start my search there.",
+      "PostedDate": "2009-08-27T14:19:33.183-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Update re: time hang - my \"break point\" is 630/631.  630 is fine, 631 gums up the works.",
+      "PostedDate": "2009-08-27T14:50:28.28-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Further observation: Trying to make Blood Frenzy into 0/2 hangs (upon attempting to reproduce the error, it works fine, though I did not make the reproduction attempt in the same environment, I had turned off all procs/enchants for the second attempt).  Turning off all trinkets (0 trinkets equipped, and none set as available) and proccing enchants (Zerking, Mongoose, etc.) has no effect, still stuck on Optimize.\r\n\r\nHowever, somewhere along the line, it went from being stuck before starting (\"-1E+07\" DPS) to just displaying a value and not progressing on the progress bar (0% Optimizer completion, with a logical DPS value).\r\n\r\nLooking into potential issues from recent check-ins that may be related to the issue: 36526, 36277, 36248, 36291, 36277, 36294, or the BF part of 36312?",
+      "PostedDate": "2009-08-27T15:03:15.023-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The only Change to Blood Frenzy was actually adding the BonusPhysicalDamageMultiplier that it give, we previously didn't have it being added in. The Buff was adding it in but the Talent version we simply forgot to add it :{",
+      "PostedDate": "2009-08-27T15:14:47.75-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "\"Pausing the EXE shows that it's reaching a point in the OnCalculationsInvalidated() [_autoResetEvent.WaitOne();\"\r\n\r\nMake sure you open Debug->Windows->Threads and check the other threads. I'm seeing all calculations being somewhere in DPSWarr.Skills.*.GetActivates.",
+      "PostedDate": "2009-08-27T16:21:15.78-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Looking closer it seems to be stuck in this loop:\r\n\r\nwhile (\r\n                    (float)Math.Abs(_OP_GCDs - oldOPGCDs) > 0.1f ||\r\n                    (float)Math.Abs(_SD_GCDs - oldSDGCDs) > 0.1f ||\r\n                    (float)Math.Abs(_SL_GCDs - oldSLGCDs) > 0.1f ||\r\n                    (Talents.SwordSpecialization > 0\r\n                        && CombatFactors.MH.Type == ItemType.TwoHandSword\r\n                        && (float)Math.Abs(_SS_Acts - oldSSActs) > 0.1f)\r\n                  )",
+      "PostedDate": "2009-08-27T16:23:05.07-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm not certain as to why that would have started this issue with BrWarner's character this commit, maybe it was the Activates for OP being fixed that made it so it can't settle properly with Flooring enabled. Regardless, I've add an iteration count that makes it stop at 100 if it hasn't already. I could go over 630 with Duration after that where I couldn't before. Try the new code BrWarner.",
+      "PostedDate": "2009-08-27T16:53:56.697-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Seems to do the trick - No hangs, no excruciating lag in the calculations, no issue with fight duratio.  And best of all, no \"-1E+07\" DPS.",
+      "PostedDate": "2009-08-27T17:13:43.483-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-29T20:22:37.587-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:25.597-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:41.293-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

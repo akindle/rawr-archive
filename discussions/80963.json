@@ -1,0 +1,66 @@
+[
+  {
+    "Id": "277629",
+    "ThreadId": "80963",
+    "Html": "<p>I takes quite a few minutes to extract the ZIP into a folder due to the large number of images that are extracted. Just wondering why all the graphic images aren't embedded as resources in the EXE or DLL? It would greatly improve extraction time.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2010-01-15T09:01:03.297-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "277632",
+    "ThreadId": "80963",
+    "Html": "<p>The images are dynamic and could possibly change (blizz changes icons every now and then), embedding them would mean it would be harder to swap them if something changed.</p>",
+    "PostedDate": "2010-01-15T09:09:33.183-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "277847",
+    "ThreadId": "80963",
+    "Html": "<p>Yes the images can change, but they're distributed to users only when a new build comes out. This could be in its own project (i.e. Rawr.Resources.dll) to reduce impact on developers.</p>",
+    "PostedDate": "2010-01-15T22:51:11.5-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "277852",
+    "ThreadId": "80963",
+    "Html": "<p>No, you misunderstand. They truly are dynamic. The client certainly gets new ones, for example.</p>\r\n<p>Regardless, this is obsoleted in Rawr3, and in the mean time you can just improve your personal situation by getting a decent unzip tool.</p>",
+    "PostedDate": "2010-01-15T23:19:44.12-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "277857",
+    "ThreadId": "80963",
+    "Html": "<p>I highly recommend <a href=\"http://www.7-zip.org/\">7-Zip</a>.</p>",
+    "PostedDate": "2010-01-15T23:49:53.263-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "277860",
+    "ThreadId": "80963",
+    "Html": "<p>When does the client get new icons? It appears this only happens if the image doesn't already exist locally. When would this happen? Either the user didn't take them out of the ZIP, deleted them, or the image is a new image. A new image would appear if there's an item you didn't already have in your cache (not a common case), or Blizz decided to update which icon was used for an item (also not a common case). For either of those cases a fallback to files on the filesystem seems like a reasonable approach. You'll avoid having to constantly hit the disk to load images (they'll be loaded into RAM at startup when the resources dll gets loaded.</p>",
+    "PostedDate": "2010-01-16T00:02:58.397-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "277863",
+    "ThreadId": "80963",
+    "Html": "<p>we dont include every image in the zip file, just a bunch of them.</p>",
+    "PostedDate": "2010-01-16T00:22:09.303-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "277877",
+    "ThreadId": "80963",
+    "Html": "<p>I think you may have missed the '<strong>this is obsoleted in Rawr3, and in the mean time you can just improve your personal situation by getting a decent unzip tool.</strong>' part.</p>",
+    "PostedDate": "2010-01-16T01:42:48.023-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

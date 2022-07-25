@@ -1,0 +1,151 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.AddOn",
+      "DisplayName": "Rawr.AddOn"
+    },
+    "ClosedComment": "Going to close the issue as it&#39;s not our end that has the problem, it&#39;s Blizzards. I&#39;ll make a note on the description of the addon about it too. I may even put it into the tooltip that it won&#39;t import the suffix correctly.",
+    "ClosedDate": "2011-04-14T11:05:46.487-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "If I have a item with a suffix in the upgrade list like one of the rings from the conclave in throne of the four winds the item will not be correctly shown if I export this upgrade list into the rawr addon.\n \nIs there a possibility to implement this suffix support in the rawr addon?",
+    "LastUpdatedDate": "2013-05-16T05:18:12.92-07:00",
+    "PlannedForRelease": "Rawr 4.1.03",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-04-10T02:07:38.24-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Addon] Item suffixes ingame",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 20476
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4832,
+      "FileName": "Rawr Addon.jpg",
+      "DownloadUrl": ".\\4832"
+    },
+    {
+      "FileId": 4837,
+      "FileName": "Basti.xml",
+      "DownloadUrl": ".\\4837"
+    },
+    {
+      "FileId": 4838,
+      "FileName": "Export2Rawr.txt",
+      "DownloadUrl": ".\\4838"
+    },
+    {
+      "FileId": 4849,
+      "FileName": "Export2Rawr_NEW.txt",
+      "DownloadUrl": ".\\4849"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Please attach your export text",
+      "PostedDate": "2011-04-10T12:54:22.313-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "And character file",
+      "PostedDate": "2011-04-10T12:54:31.54-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I dont think the actual problem here is the export process, I think the suffix ID's for that item might be wrong. Edit the Item and ensure the right suffix ID's are enabled",
+      "PostedDate": "2011-04-10T13:23:00.237-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Might be. I will try this and attach the files when I'm back from work",
+      "PostedDate": "2011-04-10T21:53:25.693-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-11T10:13:04.173-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It doesn't seem for me that the problem are the suffix ids. In Rawr the IDs seems to be correct for me",
+      "PostedDate": "2011-04-11T10:13:05.817-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-11T10:13:53.807-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "And the the Export to the Rawr Addon",
+      "PostedDate": "2011-04-11T10:13:55.127-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I figured out the issue, but I don't know what to do to fix it right now.\r\n\r\nOn that item, the suffix ID is 128, which in Cataclysm should mean \"Of the Rockslab (190 STR, 285 Stamina, 126 Mastery Rating, 126 Dodge Rating)\".\r\nHowever, before Cata, that ID of 128 was \"Of Defense\" and gives +6 Dodge Rating.\r\n\r\nI'm assuming there is some kind of id conversion that is supposed to occur, but what the formula is, I don't know.",
+      "PostedDate": "2011-04-12T20:49:26.82-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Looks like this is a known issue: http://us.battle.net/wow/en/forum/topic/2046835719",
+      "PostedDate": "2011-04-12T21:07:47.35-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yeah ok...that's the reason why I asked for a possibility ;-) If it's not possible because it is a wow issue...then what will you do? ;-)",
+      "PostedDate": "2011-04-13T08:08:52.12-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Basti, when you next try to import, try changing the 128 to a -128 on that item id in your import text. Just paste the text into notepad like you did to make the attachment here, search for 63489 then edit the string from \":128:\" to \":-128:\".\r\n\r\nThat *might* fix it, if that works I'll make the code change on our end.",
+      "PostedDate": "2011-04-13T11:49:54.763-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Allright. I will try this evening and give you feedback",
+      "PostedDate": "2011-04-13T23:43:18.637-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-14T09:30:38.713-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hello Jothay. I tryed this with every item with a suffix in my import to the rawr addon (you can see it in my new export). Unfortunaly the problem remains stable :-( The shown stats are wrong and the suffix of the item which is shown in the addon is wrong too :-/",
+      "PostedDate": "2011-04-14T09:30:40.347-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-04-14T11:05:46.487-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:25:21.687-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:12.92-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

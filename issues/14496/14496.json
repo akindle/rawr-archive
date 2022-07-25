@@ -1,0 +1,65 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "well documented issue that is not on our end",
+    "ClosedDate": "2009-10-21T09:37:38.243-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "After navigating to the directory with mono and attempting to open the .exe, Rawr crashes instantly and gives me this error message:\nRawr has encountered a serious error. Please copy (CTRL-C) and paste this into an email to cnervig@hotmail.com. Thanks!\n \nA null reference or invalid value was found [GDI+ status: InvalidParameter]\n \n at System.Drawing.GDIPlus.CheckStatus (Status status) [0x00000]\n at System.Drawing.Bitmap.SetResolution (Single xDpi, Single yDpi) [0x00000]\n at (wrapper remoting-invoke-with-check) System.Drawing.Bitmap:SetResolution (single, single)\n at Rawr.ItemIcons.ScaleByPercent (System.Drawing.Image img, Int32 Percent) [0x00000]\n at Rawr.ItemIcons.GetItemIcon (System.String displayName) [0x00000]\n at Rawr.FormMain..ctor () [0x00000]\n at (wrapper remoting-invoke-with-check) Rawr.FormMain:.ctor ()\n at Rawr.Program.Main () [0x00000]",
+    "LastUpdatedDate": "2013-05-16T05:23:45.263-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-10-21T07:15:13.07-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Can't run Rawr with mono",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14496
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "You have the wrong version of Mono.  It's been noted here several times, but Mono 2.4 won't work with Rawr (their bug, not ours, but they refuse to fix it).  Downgrade to Mono 2.2 until they finally get around to fixing it.  Speaking of which, Astrylian, please make sure you let us know if that ever happens.",
+      "PostedDate": "2009-10-21T09:14:26.53-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-21T09:37:38.243-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Is the call to bmPhoto.SetResolution() in ItemIcons.ScaleByPercent (itemicons.cs line 383) strictly necessary? Unless you're planning on printing the image out, the resolution is irrelevent.\r\nRunning under mono 2.4, you can simply comment out the call and everything seems to work. Could somebody check if that works under Windows as well?",
+      "PostedDate": "2009-11-13T05:51:33.667-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:32:17.183-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:45.263-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

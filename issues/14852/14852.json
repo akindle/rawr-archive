@@ -1,0 +1,75 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ShadowPriest",
+      "DisplayName": "Rawr.ShadowPriest"
+    },
+    "ClosedComment": "I will be redoing all spells for Cataclysm, until now this is close enough.",
+    "ClosedDate": "2010-07-05T01:54:33.013-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Rawr.ShadowPriest incorrectly scales the base healing of PW:S for the effect of the talent Improved Power Word: Shield twice:\n \n            MinDamage = MaxDamage = (BaseMinDamage * (1 + character.PriestTalents.ImprovedPowerWordShield * 0.05f)\n                + stats.SpellPower * 1.88f * DamageCoef\n                + stats.SpellPower * character.PriestTalents.BorrowedTime * 0.04f)\n                * (1f + character.PriestTalents.FocusedPower * 0.02f)\n                * (1f + character.PriestTalents.TwinDisciplines * 0.01f)\n                * (1f + character.PriestTalents.ImprovedPowerWordShield * 0.05f);\n \nThe factor \"* (1 + character.PriestTalents.ImprovedPowerWordShield * 0.05f)\" should be removed from the first line of the expression.\n \nIssue is already correct in Rawr.Holypriest, where the expression is very similar with the offending factor commented out.",
+    "LastUpdatedDate": "2013-05-16T05:23:21.603-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-11-16T14:10:21.45-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ShadowPriest] Incorrectly Scaling PW:S",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14852
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Actually the scaling is incorrect in Both ShadowPriest and HolyPriest I believe, but I need to spend some time to make sure I get the Order and Coefficients correct.",
+      "PostedDate": "2009-11-16T14:48:43.14-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T15:51:47.453-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-05T01:54:33.013-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-09T12:30:18.8-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T14:22:14.55-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:47.853-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:21.603-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

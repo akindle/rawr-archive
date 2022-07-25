@@ -1,0 +1,135 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Items",
+      "DisplayName": "Rawr.Base.Items"
+    },
+    "ClosedComment": "Parsing added, new code back end that can support it but it has to be added per model.",
+    "ClosedDate": "2009-12-25T23:01:57.713-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "1H Axe Raging Deathbringer (ID 49500) not modelled properly.",
+    "LastUpdatedDate": "2013-05-16T05:23:47.683-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-10-18T15:00:45.797-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Items] Raging Deathbringer not modeled",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 3,
+    "Id": 14473
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "We aren't modelling those crappy items cuz they're, you know, crappy. And most of the model's aren't set up to read shadow/other damage like that.",
+      "PostedDate": "2009-10-18T15:56:28.093-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-18T15:57:05.827-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "iLevel 245 crappy?  Ahem?",
+      "PostedDate": "2009-10-18T16:58:11.84-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It seems like the item procs twice a minute, so that's not so bad.  The average dps is nice so I'm a bit set back that you dismiss this item so easily.",
+      "PostedDate": "2009-10-18T17:00:47.927-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Non-DK, assuming it maxes out every time (1874 DMG) and the mob doesn't resist any of it (E.g. the mob has no shadow resist).\r\n\r\n1874 * 2 (per minute) = 3748 dmg per minute\r\n3748 / 60 = 62.4667 raw DPS\r\n\r\nNote that the Axe doesn't have *any* other stats, no STR, ArP, nothing.\r\n\r\nCompare that to any other 245 1h Axe, we'll pick Frostblade Hatchet (Heroic) [Item 48043]\r\n\r\n+50 Agility\r\nEquip: Improves critical strike rating by 43 (0.94% @ L80).\r\nEquip: Improves haste rating by 24 (0.73% @ L80).\r\nEquip: Increases attack power by 89 (6.35 raw white DPS).\r\n\r\nIt just doesn't compare to what other axes do.",
+      "PostedDate": "2009-10-18T18:51:02.307-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Grognard, you also have to realize these weapons and starts are based around Vanilla WoW itemization. The itemization back then was horrendous compared to the itemization that is in Wrath. As Jothay pointed out, the extra equip itemization from the Frostblade Hatchet is many times better than the itemization on the Ony weapons that are being handed out.",
+      "PostedDate": "2009-10-18T20:49:45.5-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Given that it's PUGable though, it's probably going to show up in the hands of alot of people that otherwise just have ilvl200/213 stuff. So if it's easy to do so, we should support it. That said, it's probably not easy to do so, so users who have those items should probably just edit them, add 100ap or something to them, and view them that way.",
+      "PostedDate": "2009-10-18T23:32:48.96-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Isn't this fairly trivial to do though? \r\n\r\nIt's just a SpecialEffect with a Stats.ShadowDamage on 2 PPM Trigger.MeleeHit, which can be multiplied over your successful melee attacks as additional damage? I know adding support for this would be like... 1 line of code for the ProtWarr module or something.\r\n\r\nThis is exactly the same as Bandit's Insignia, which was already modeled in many models quite easily AFAIK. e.g.\r\nstats.AddSpecialEffect(new SpecialEffect(Trigger.PhysicalHit, new Stats() { ShadowDamage = 1666}, 0.0f, 0.0f, -2.0f));\r\n\r\nDon't see any reason not to model it, since if it sucks it would probably be better for us to show that it sucks rather than say \"it probably sucks, but we don't know since we don't model it.\"",
+      "PostedDate": "2009-10-19T09:07:04.647-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Very few models model the damage like Bandit's Insignia. So yeah, that's the one line of code to make it parse correctly (go ahead and do that). But that's not going to make it relevant/valued in most models.",
+      "PostedDate": "2009-10-19T10:33:14.023-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "No that's true, but I was more or less expressing that adding support for it in a model's damage output should be dead simple with very little effort once you do mark it as relevant. The SpecialEffect processing should do virtually all the work for you, so it should be fairly simple to tack on to the final damage calculations? (At least it would be from what I've seen.)",
+      "PostedDate": "2009-10-19T13:36:57.067-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I think it's a valid thing to model, even if we don't model the proc correctly.  Sure, when comparing it to another ilvl245 1H axe it pales.  What about compared to an ilvl219 Heroic 5-man toc weapon?  It may have more passive stats, but the ilvl245 has a much better damage range/dps.  My guess is, raiders with access to other 245 weapons will skip it (or take it as a temp upgrade); PUGs or people who aren't full-time raiders in the guild will see a noticeable upgrade from their Uld10, Naxx25 or Heroic weapons.",
+      "PostedDate": "2009-10-21T08:12:11.39-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-31T12:55:02.82-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-23T08:14:09.29-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "At least put it in the database, even if you don't try to model the proc.",
+      "PostedDate": "2009-12-23T08:15:38.31-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The item IS in the database... check the readme on how to find it if it's not showing up for you.",
+      "PostedDate": "2009-12-23T16:27:50.453-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-25T23:01:57.713-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:21.047-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:32:20.57-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:47.683-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

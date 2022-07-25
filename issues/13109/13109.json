@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "This issue has been open for 60&#43; days without response. If this is still an issue, please resubmit with current files and references to the versions affected.",
+    "ClosedDate": "2009-09-16T17:01:32.233-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When starting Rawr under mono on Ubuntu, version 2.2.1 gives the message:\n \n\"Rawr was unable to load the Item Cache. It appears to have been made with a previous incompatible version of Rawr. Please use the ItemCache included in this version of Rawr to start from.\"\n \nWhen checking the ItemCache.xml file it appears to have been cleaned out except for the header. Tried replacing it with the one from the zipfile and try again. Same thing happens. Then I load possible upgrades from Wowhead or Armory to fill it again, and it works fine for that session, when I check the file it is filled. But the same thing happens the next time I start Rawr.\n \nEverything used to work just fine with 2.2.0.b6 and older versions.\n \nOnyx.",
+    "LastUpdatedDate": "2013-05-16T05:25:44.383-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-04-24T14:09:53.07-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "ItemCache.xml gets corrupted on Linux (mono)",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13109
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Is your ItemCache.xml file locked, perhaps, or do you not have permissions to read/write it?",
+      "PostedDate": "2009-04-24T15:05:40.08-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Nope explicity checked that. This happens even with permissions set to 777.\r\n\r\nOnyx.",
+      "PostedDate": "2009-04-26T06:16:49.41-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm unaware of any ItemCache saving/loading changes that happened in b7 or later... Anyone else know of anything that might be causing this then?\r\n\r\nOnyx, is there any way you can run Rawr from a debugger? I don't know if there's a copy of VisualC# or similar for Ubuntu, or if VC#'ll just run on Ubuntu.\r\n\r\nIf you look at the ItemCache.xml file, while Rawr is closed, does it have the data in it? ie, is it a loading problem, or a saving problem?",
+      "PostedDate": "2009-04-26T12:19:00.1-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sorry, I'm not able to run Rawr from a debugger. I can't get the ItemCache.xml to break now, but it's not loading either.\r\n\r\n1. Tried with 2.2.1 in the default \"Rawr v2.2.1\" directory (as opposed to renaming it to \"Rawr\" which I usually do) and it gives two errors:\r\n* first the infamous \"The current BuffCache.xml was made with a previous version of Rawr.....\"\r\n* secondly the \"Rawr was unable to load the Item Cache. It appears to have been made with a previous incompatible...\" message.\r\n\r\n2. For good measure I tried 2.2.0b6 again and it loads like a charm showing me a load of items even before I load any character from the Armory.\r\n\r\nHope that gives you some more info.",
+      "PostedDate": "2009-04-27T09:20:23.453-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I had this same problem too, and found that if you upgrade to mono 2.2, it solves the problem.\r\nUnfortunately, I don't think mono 2.2 is packaged for ubuntu yet, so you have to compile from source.\r\nGet it from http://ftp.novell.com/pub/mono/archive/2.2/sources/\r\nYou need libgdiplus-2.2 and mono-2.2\r\n\r\n\r\nA little more info about what is actually failing with mono 1.6 or 1.9:\r\nOnce you remove the try/catch around the ItemCache loading, this is the exception thrown.\r\n\r\nUnhandled Exception: System.ArgumentException: Object type System.Single cannot be converted to target type: System.Int32\r\nParameter name: val\r\n  at System.Reflection.MonoField.SetValue (System.Object obj, System.Object val, BindingFlags invokeAttr, System.Reflection.Binder binder, System.Globalization.CultureInfo culture) [0x00000] \r\n[most of the stack trace snipped]\r\n  at System.Xml.Serialization.XmlSerializer.Deserialize (System.Xml.Serialization.XmlSerializationReader reader) [0x00000] \r\n\r\nIt appears that it's unable to deserialize the Stats class.  (Both Stats and SocketBonus elements cause the problem)\r\n",
+      "PostedDate": "2009-05-25T16:45:13.95-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-16T17:01:32.233-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:42.593-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:44.383-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

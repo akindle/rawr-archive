@@ -1,0 +1,151 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtPaladin",
+      "DisplayName": "Rawr.ProtPaladin"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-01-06T11:17:21.397-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "It appears the stats reported by Rawr don't match the in-game stats for my prot paladin.  I have verified each item, gem, enchant, and talent individually (yes, I looked at them one by one, stat by individual stat).  I have no buffs at all active (except for the innate profession buff Toughness), and I am ungrouped.\n \nI recreated my character from scratch, verified again, and still saw differences.\n \nI have attached my Rawr character and a spreadsheet showing the Rawr stats and the in-game stats (where I could find them).",
+    "LastUpdatedDate": "2013-05-16T05:22:40.103-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-01-01T14:01:46.53-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtPaladin] Rawr stats don't match in-game stats",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15678
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2706,
+      "FileName": "Christiane Prot Public.xml",
+      "DownloadUrl": ".\\2706"
+    },
+    {
+      "FileId": 2707,
+      "FileName": "Christiane Stats.csv",
+      "DownloadUrl": ".\\2707"
+    },
+    {
+      "FileId": 2708,
+      "FileName": "Christiane Stats naked.csv",
+      "DownloadUrl": ".\\2708"
+    },
+    {
+      "FileId": 2728,
+      "FileName": "nzall prot paladin.xml",
+      "DownloadUrl": ".\\2728"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Adding the spreadsheet",
+      "PostedDate": "2010-01-01T14:02:49.897-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-01T14:02:51.03-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "On a whim, I decided to check my naked stats in-game versus Rawr.  Those were off too.  I attached a spreadsheet with the differences.",
+      "PostedDate": "2010-01-01T14:22:27.24-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-01T14:22:30.047-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Problem confirmed to still exist in 2.3.5.  Same stats as 2.3.4.",
+      "PostedDate": "2010-01-02T18:16:04.54-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hi - Just to say i noticed the same thing. As you state only 'Toughness' is activated - if you uncheck toughness and then recheck it its (almost) correct again. Seems as if toughness is being 'double counted' for some reason i.e. adding 120 stam not 60.",
+      "PostedDate": "2010-01-03T16:24:31.417-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "i have the same problem with my prot paladin. however, he only has 3 STAM difference. that makes me believe it has something to do with the new racial base stats being not entirely accurate (these were updated for 3.3 to remove some imbalances with HP levels). for reference, i will add a file with my current gear setup (also found on http://eu.wowarmory.com/character-sheet.xml?r=Kor%27gall&cn=Nzall&gn=Mad+Ninja+Scientists, completely up to date for current gear).",
+      "PostedDate": "2010-01-05T07:23:53.073-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-05T07:23:56.543-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "@ Chrstiane Naked - I don't think you were in protection spec when you took down those values in game.   For instance, it does not appear that Redoubt and Combat Expertise were applied.  Also, keep in mind that in game values are vs. a level 80 mob, while Rawr defaults to being vs. a boss/level 83 mob, so that would explain the avoidance numbers being off.  Stamina is probably off due to a known rounding bug I haven't been able to track down.  Finally, if you're naked, you have no shield.  Despite what you may see in game, you cannot block, and thus your block % is going to be zero in Rawr.  If you still feel there is a problem, 1) Make sure your in game toon is in the correct spec, 2) Make sure Rawr is looking at a level 80 mob, and 3) recompare and resubmit your findings.",
+      "PostedDate": "2010-01-06T10:21:26.903-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "@ Christiane - A lot of these numbers are off due to some procs, for instance you're getting extra agility and haste in Rawr from the Mongoose proc being averaged.  Same with Dodge from Glyph of Indomitability and Armor from The Black Heart.  Block is off because of Holy Shield.  Dodge Parry and Block are off due to Rawr @ Lvl 83 and the game @ Lvl 80 as mentioned in the previous comment.  Also, I think you wrote down the number for Spirit (108) instead of Intellect (98) when trying to pull the in game value for Intellect.\r\n\r\nSome problems that I am seeing:\r\n* Expertise is not taking into account that you are human, and thus gain 3 expertise from using a sword.  This bug is resolved for the next version, committed in r45064.\r\n* I cannot account for the missing strength, the extra stamina, or the difference in critical strike.  Any help you or anyone else can provide with this to help narrow down where the differences might be will be much appreciated.",
+      "PostedDate": "2010-01-06T10:45:20.56-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "@ nzall - 3 could also be the rounding error bug.  Any help you can give tracking this down will be very helpful.",
+      "PostedDate": "2010-01-06T11:00:56.807-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "@ BarrenT - This occurs when loading from the Armory, and is fixed for the next version in r45065.",
+      "PostedDate": "2010-01-06T11:01:45.08-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Everyone, please keep in mind when comparing that Rawr compares vs. Level 83 mobs.  In order to compare to in game stats, you must change that level to 80.  To do this in the ProtPaladin module, click the Options tab, and then under the Target subtab, change the Target Level to 80.  I'm going to close this issue because I've already fixed a few things and it has become an umbrella issue of sorts.  Please post any followups on this topic as their own separate issues going forward.  Thanks for pointing these things out! :)",
+      "PostedDate": "2010-01-06T11:17:11.34-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-06T11:17:21.397-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T16:10:25.853-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:06:03.233-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:30:55.077-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:40.103-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

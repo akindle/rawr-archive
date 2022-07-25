@@ -1,0 +1,120 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.MultipleModels",
+      "DisplayName": "Rawr.MultipleModels"
+    },
+    "ClosedComment": "user reports fixed",
+    "ClosedDate": "2009-10-14T13:52:10.36-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The Paragon procs (from Death's Verdict) seem to be excluding each other - the program assumes only one Paragon proc can be active at any given point.  This is incorrect - both trinkets can have their own procs up at the same time, and the user will garner the benefit from both.",
+    "LastUpdatedDate": "2013-05-16T05:23:57.983-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-10-08T05:47:31.427-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Cat|Retribution] Paragon procs should not be mutually exclusive",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14374
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Is this particular to a specific model?",
+      "PostedDate": "2009-10-08T07:14:20.977-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Just checked on Arms Warr, Feral (cat) Druid, and Ret Pally, all indicated through score that the proc was only being counted for the first DV, not the second.  Does not seem to be model-dependent.",
+      "PostedDate": "2009-10-08T07:23:31.757-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That's odd as I've regularly seen both DV procs as BiS (paired) in my tests, which I wouldn't expect to happen if the 2nd proc isn't being counted.",
+      "PostedDate": "2009-10-08T08:41:07.25-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It was flagged as a non-additive stat.  We may have hit it because of how we were aggregating stats before the SpecialEffect revamp (possibly converting it to strength for each trinket, rather than waiting til the end?), or this may have just always been a problem.",
+      "PostedDate": "2009-10-08T12:59:31.457-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Out of curiosity, do you have any combat log parses showing both in use? I'd like to see how it looks.",
+      "PostedDate": "2009-10-08T13:12:21.083-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Unfortunately, I don't yet have DV.  Working on it, but our trinket luck is ABYSMAL.  xD\r\n\r\nhttp://img21.imageshack.us/img21/9683/dualproc.jpg shows that both can be active at the same time, and shows that the character pane reflects both procs providing benefit.",
+      "PostedDate": "2009-10-08T23:26:08.42-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Re: Jothay, testing under 37316, I put DV (258) in the trink1 slot.  then, when opening the trink2 list for item selection, the 245 trink is ranked equal to the Battlemaster's 256 AP trink.",
+      "PostedDate": "2009-10-08T23:29:22.133-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It was fixed in 37382",
+      "PostedDate": "2009-10-09T08:04:54.123-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ah, cool.  Going to go check now.",
+      "PostedDate": "2009-10-09T10:15:13.14-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-14T12:08:30.71-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I see the update of model-specificity, but after checking those three in particular, this issue seems entirely resolved.",
+      "PostedDate": "2009-10-14T12:57:16.173-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-14T13:52:10.36-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T15:51:41.47-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T16:26:39.733-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:32:33.333-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:57.983-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

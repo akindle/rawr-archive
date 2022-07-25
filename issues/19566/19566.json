@@ -1,0 +1,91 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.AddOn",
+      "DisplayName": "Rawr.AddOn"
+    },
+    "ClosedComment": "Not an addon issue",
+    "ClosedDate": "2011-01-06T08:33:17.27-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When loading an export that contains items that are not part of the default item cache, Rawr does not seem to load the items from wowhead. I'm providing an export of my newly dinged 85 feral druid as an example of what I have and several items that just do not want to load.",
+    "LastUpdatedDate": "2013-05-16T05:19:12.313-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-01-04T23:10:59.777-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Addon] Unable to load exported items that are not part of default item cache",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19566
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4356,
+      "FileName": "Rawr addon export.txt",
+      "DownloadUrl": ".\\4356"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Yes this is not really an addon issue as such in that the addon simply passes in a list of item ids so its doing its job. Most of the reason is not having green items in the item cache. However, as you know, the size of the cache supplied would be enormous if we included all possible items. It is really the import option that might be missing a call to force a cache refresh if items aren't found. I had thought that the cache was refreshed on load similar to how a battle.net load works.\r\n\r\nI didn't actually have anything to do with the load code so I'll bump this over to Jothay to have a look at as he did that bit.",
+      "PostedDate": "2011-01-05T05:14:24.457-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-05T05:15:10.87-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-05T05:15:28.177-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Actually it seems that the items do get found it just takes a while at times to display them so it looks like it is trying to update, but sometimes fails.",
+      "PostedDate": "2011-01-05T05:16:48.31-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "They are loaded asynchronously (sp?) and if a bunch are missing at once they will take a while to finish all the calls. If they don't load in a couple minutes just go to the Equipped Gear chart and refresh the ones still out manually.",
+      "PostedDate": "2011-01-05T06:29:27.443-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-06T08:33:17.27-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T19:16:05.59-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:36.663-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:12.313-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

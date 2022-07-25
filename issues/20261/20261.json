@@ -1,0 +1,131 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.ProtWarrior",
+      "DisplayName": "Rawr.ProtWarrior"
+    },
+    "ClosedComment": "Closing as not actionable due to another change coming soon. The user can at least get what he needs out of it for now.",
+    "ClosedDate": "2011-03-25T14:43:07.15-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Please allow higher Mitigation Weightings than 1.0. With that setting and current boss damage numbers, Stamina is weighted 2-3 times the value of avoidance ratings, which does not reflect real stat weightings Warrior Tanks currently make.",
+    "LastUpdatedDate": "2013-05-16T05:18:26.433-07:00",
+    "PlannedForRelease": "Rawr 4.1.0",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-03-18T08:02:06.897-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[ProtWarr] Mitigation Weight limited to <=1.0",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 20261
+  },
+  "FileAttachments": [
+    {
+      "FileId": 4714,
+      "FileName": "raid.xml",
+      "DownloadUrl": ".\\4714"
+    },
+    {
+      "FileId": 4715,
+      "FileName": "raid_optimized.xml",
+      "DownloadUrl": ".\\4715"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Please attach your Character File per the Posting Guidelines, we cannot reproduce this.",
+      "PostedDate": "2011-03-18T08:37:37.413-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-18T09:29:14.61-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sorry for not attaching right away, I was on my Linux laptop.",
+      "PostedDate": "2011-03-18T09:29:15.837-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I did significantly increase the scaler on Mitigation a bit ago, so I'm surprised if you are seeing '2-3 times the value' on Stamina. Will take a look.",
+      "PostedDate": "2011-03-19T06:34:40.287-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "On first glance, your boss attack value seems to be quite low for the tier of content you are handling. I will be adding boss handler support shortly to make this easier to select, but for the time being you should probably consider bumping up the attack value to 200,000-250,000 instead of 100,000. This is significantly deflating the value of mitigation in your case.\r\n\r\nAdditionally, I would suggest running an optimization pass for Mitigation Rating. This is generally going to yield the best results for factoring out the value of avoidance given the various increasing/decreasing returns on Warrior avoidance stats.",
+      "PostedDate": "2011-03-19T06:40:52.56-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-19T06:53:13.087-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I've attached a version of your file with the change to the boss attack value and optimized for Mitigation with a 170k health requirement. Does this more closely match what you would expect?\r\n\r\nWill still be looking into soft-capping the value of Stamina to make this more 'automatic' in the future, though. Thanks for the report.",
+      "PostedDate": "2011-03-19T06:53:14.403-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Man, I didn't even see the 'Calculation to Optimize' option in the Optimizer window before, I've always only looked in the Options Tab of the module for a more Mitigation oriented setting. Those two should perhaps be merged in a way, I think. Or at least the correlation should be made clearer.\r\n\r\nHowever, that looks better, yes. As for the damage values, I consulted our WoL logs for them, and 100k/1.5s is pretty closely to what both Cho'gall and Nefarian do - they hit me for around 30k mitigated.",
+      "PostedDate": "2011-03-19T07:34:35.33-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Quite possible, I will check some logs myself. I do believe that Cho'gall is a bit of a special case, as his normal melee attacks are somewhat low to compensate for his Fire/Shadow damage procs on each of his swings.",
+      "PostedDate": "2011-03-19T08:46:46.253-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yeah, but you have the TB trinket/other cooldowns (Fire) and respectively additional AE healing (Shadow) for that, so you wouldn't necessarily optimize your gear with that in mind. And in fact I haven't seen bigger melee hits than 30-35k across all bosses on normal mode so far, so I really think 100k/1.5s is a fair setting.\r\nModelling special attacks would of course be awesome, but I guess that's an additional topic. :)",
+      "PostedDate": "2011-03-19T09:10:27.437-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok well we aren't adding mitigation > 1 to the slider. Do the settings he provided give you what you need? I'm going to go ahead and close this out soon.",
+      "PostedDate": "2011-03-25T13:51:24.71-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Mostly, but that's really merely a temporary solution. You have to manually set minimum health and TPS if necessary, which depends on content and situation and isn't always easy to figure out.\r\n\r\nI think we still need a proper evaluation of Mitigation vs. EH (Survival) vs. Threat for 'Overall Rating' optimization.\r\n\r\nAs for the slider. Am I understanding correctly that Survival Rating is atm just hard-coded at 1? So we can set Survival:Mitigation ratios from 1:0.1 to 1:1. So why not allow Mitigation Rating of up to 10 OR make Survival Rating a variable, so we can get a ratio of 0.1:1 ?",
+      "PostedDate": "2011-03-25T14:37:46.423-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That's a back end discussion we devs have had. There will be changes coming to all those sliders soon which will change how those sliders affect calcs and they will be uniform across all models.",
+      "PostedDate": "2011-03-25T14:42:38.58-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-25T14:43:07.15-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:25:38.517-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:26.433-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

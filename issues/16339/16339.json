@@ -1,0 +1,116 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Rogue",
+      "DisplayName": "Rawr.Rogue"
+    },
+    "ClosedComment": "Pff, it took some hours, but I found the problem.Combat was fine, Mutilate spec was the problem, it reached the white crit cap and thus gave Expertise a high value as it was needed to overcome this.It&#39;s fixed in the next release.",
+    "ClosedDate": "2010-02-26T11:59:28.913-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Since this model is a work in progress I will try to give some feedback on the 2.3.9 changes.\n \n1) For combat rogues mainhand weapons don't appear to be taking into account weapon speed anymore.  I see 1.4 speed daggers that are coming out on top for mainhand.\n2) Expertise in combat is severely undervalued when under the cap, but weighted more appropriately for mutilate. For example, in combat I am well under the expertise cap and relative stat value of AGI is 1.7 versus expertise at  .55.\n \nLatest version of Rawr seems to have fixed trinket values very well. It also fixed the issue where haste was overvalued relative to other stats. I hope this helps.",
+    "LastUpdatedDate": "2013-05-16T05:21:53.3-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-02-13T13:13:18.867-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Rogue] Gear Valuation",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 2,
+    "Id": 16339
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2987,
+      "FileName": "Dangerzombie.xml",
+      "DownloadUrl": ".\\2987"
+    },
+    {
+      "FileId": 2988,
+      "FileName": "DangerzombiePlan.xml",
+      "DownloadUrl": ".\\2988"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Issue 1 is fixed in the next release.\r\nCan you post your char sheet so I can check issue 2?",
+      "PostedDate": "2010-02-17T01:44:43.287-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sure, here it is.",
+      "PostedDate": "2010-02-19T10:35:04.13-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-19T10:35:06.213-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Gear ilevels in the template I posted are kinda low, so heres another one with mostly 232 gear and expertise still has the same issue.",
+      "PostedDate": "2010-02-19T10:50:35.543-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-19T10:50:36.78-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The calculation for dodged attacks is the same for Muti and Combat and I can't find any mistakes in it.\r\nIt's not strange though that hitter harder and critting more can outweigh landing more attacks.\r\nAgility boosts all attacks that already land, Expertise only makes sure more attacks land. The gain of Agility is then higher than the one of Expertise if the sum of the damage from hitting harder on every landed attack is higher than the sum of the damage of the extra landed attacks.\r\nDeriving anything from stat values is risky at best, as also explained on the relative stat values overview.",
+      "PostedDate": "2010-02-23T02:24:54.693-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Looking at relative stat values should only be risky as it says in the description if you are near the cap values, correct? In the templates I sent, the relative stat values shown for expertise are even below attack power, point for point and over 3 times less valuable than agility. As a contrast, elitist jerks spreadsheets would have expertise as slightly higher than agility in value for these gear levels so there is a pretty big inconsistency here.\r\n",
+      "PostedDate": "2010-02-23T13:33:08.513-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'll look into this further, but so far I have no idea where it would be wrong.",
+      "PostedDate": "2010-02-24T03:10:44.54-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-25T13:44:26.963-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-02-26T11:59:28.913-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:40:45.093-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:29:57.75-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:53.3-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

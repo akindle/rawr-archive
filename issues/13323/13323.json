@@ -1,0 +1,190 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "Issue was fixed months ago",
+    "ClosedDate": "2009-08-19T12:38:58.953-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "New version 2.2.5 worked fine for me the first day on Vista.  After that, when I try to open the program it attempts for about 6 seconds, then I get the Windows error that the program has stopped responding.  A new download and install of the same version produced the same results.",
+    "LastUpdatedDate": "2013-05-16T05:25:27.737-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-05-25T14:07:29.84-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] Will not load",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 4,
+    "Id": 13323
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "That's not an issue with Rawr, that's a system issue.",
+      "PostedDate": "2009-05-25T14:27:36.057-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Same thing is happening to me. I even tried reinstalling 2.2.4 and running that but the same thing happens.",
+      "PostedDate": "2009-05-25T22:10:38.677-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Update: I rebooted and was able to start 2.2.4, but still can't run 2.2.5.",
+      "PostedDate": "2009-05-25T22:49:37.757-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Do you have any sort of error message?",
+      "PostedDate": "2009-05-25T23:56:12.02-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The only message I get is first that \"The program has stopped responding. Windows is checking for a solution.\" and then \"The program has stopped responding.\"  I understand how this appears to be a system issue, I just find it odd that the program worked the first time for me, and then doesn't.  I didn't install any new programs or make any system changes.",
+      "PostedDate": "2009-05-26T09:28:44.74-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-05-26T13:45:54.807-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "If this is with Healading model try the following workaround. Open user.config file (should be somewhere under your documents and settings folder, something like AppData\\Local\\Rawr\\...\\) and change the entry ProcEffectMode to 0.",
+      "PostedDate": "2009-05-26T18:47:24.003-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "What now?  The AppData folder is empty, and doing a search does not find a user.config file anywhere.",
+      "PostedDate": "2009-05-26T20:55:42.783-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "On Win XP the location might be something like c:\\Documents and Settings\\<username>\\Application Data\\Rawr...",
+      "PostedDate": "2009-05-27T02:01:51.51-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I encountered the same issue upon closing Rawr with the Healadin module open. When attempting to re-open Rawr, get an unexpected error and Rawr has to shut down. Does not occur with either of the DK modules (to my knowledge).",
+      "PostedDate": "2009-05-27T08:35:41.97-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Please include OS, Service Pack, version of .NET, version of IE, language, etc.\r\nI can't ghost an image to try to reproduce the defect if I don't know what to try it on.\r\nAll I know at this point for this defect is that it's on Vista, but not sure what SP, etc.\r\nThis could be similar to the Win7 issue reported in the reviews, but not here.  ",
+      "PostedDate": "2009-05-27T11:29:56.697-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-05-29T02:32:17.22-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Winxp sp3 here with same problem, .net 2.0, Google Chrome, IE7\r\nEventType : clr20r3     P1 : rawr.exe     P2 : 2.2.5.0     P3 : 4a19aab1     \r\nP4 : rawr.base     P5 : 2.2.5.0     P6 : 4a19aaa8     P7 : d73     P8 : 0     \r\nP9 : system.indexoutofrangeexception     \r\n",
+      "PostedDate": "2009-05-29T02:41:42.747-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "ProcEffectMode was not present in my user.config.  Only settings in user.config were RecentFiles, RecentModel, WindowSize, WindowLocation.  RecentModel is set to \"Healadin\".  Deleting the lines for RecentModel and saving the file allowed Rawr to load immediately.",
+      "PostedDate": "2009-05-30T10:01:25.317-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "What is the name of the file/location for windows xp?  I have searched for the / looked for the location and can't find it?",
+      "PostedDate": "2009-05-30T13:53:08.903-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The issue is that Healadin model is broken with default settings. If you start rawr fresh, and then swich the model to \"Healadin\" it crashes. This is why it worked once for the OP (and me): Loading our holy paladins caused the default model to get set to \"Healadin,\" which caused a crash the next time it loaded.\r\n\r\nI have XP, so this is not an OS specific issue.",
+      "PostedDate": "2009-05-30T14:36:39.533-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-05-30T14:38:07.377-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Oh, and the config file is at C:\\Documents and Settings\\MyUserName\\Local Settings\\Application Data\\Rawr\\Rawr.exe_Url_544meky4wjzbzo3ibmmqz0tvnoehbz3p\\2.2.5.0 for me. The big random string might be different for you though, there's one per vesion.",
+      "PostedDate": "2009-05-30T15:09:57.75-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "One more comment:\r\n\r\nFor a permanent workaround until this gets fixed, you can make your user.config file read-only. (Make sure you change the RecentModel to \"Bear\" or delete it first!) Rawr will throw a bunch of exceptions when you quit (or exit the optimizer), but otherwise works properly.",
+      "PostedDate": "2009-05-30T15:27:00.43-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Easy Fix:\r\n\r\n* Change c:/ drive settings to \"view hidden folders.\"\r\n* Open search and set search term \"rawr\"\r\n* Select all hits and delete then\r\n* Reinstall Rawr\r\n\r\nThis resolved all issues I had with Rawr 2.2.5.\r\nCurrent OS is Vista 64.",
+      "PostedDate": "2009-05-30T16:23:24.593-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Note:\r\n\r\n* Change c:/ settings to \"Show Hidden Folders\" AND uncheck \"Read Only\" ",
+      "PostedDate": "2009-05-30T16:26:48.75-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "\" * Change c:/ settings to \"Show Hidden Folders\" AND uncheck \"Read Only\"  \"\r\n\r\nI did this and it worked. I have XP.",
+      "PostedDate": "2009-06-03T04:01:56.037-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "EDIT: I was able to open rawr once. I used the healadin model and now it wont work again.",
+      "PostedDate": "2009-06-03T04:35:10.437-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This now works after deleting all these config files.  (Boom/Pally I use)",
+      "PostedDate": "2009-06-03T13:52:40.03-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-19T12:38:58.953-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T16:32:01.283-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-09T15:44:00.157-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:15.273-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:23-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:27.737-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

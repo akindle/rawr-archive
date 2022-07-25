@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "109637",
+    "ThreadId": "33085",
+    "Html": "Hi.<div>I installed Mono and when trying to get Rawr to work it quits suddenly and I get the following error message:</div><div><br></div><div><div>Unhandled Exception: System.FormatException: Unknown char: .</div><div>  at System.Double.Parse (System.String s, NumberStyles style, IFormatProvider provider) [0x00000] </div><div>  at System.Double.Parse (System.String s) [0x00000] </div><div>  at System.Convert.ToDouble (System.String value) [0x00000] </div><div>  at System.Windows.Forms.XplatUICarbon.GetMessage (System.Object queue_id, System.Windows.Forms.MSG&amp; msg, IntPtr hWnd, Int32 wFilterMin, Int32 wFilterMax) [0x00000] </div><div>  at System.Windows.Forms.XplatUI.GetMessage (System.Object queue_id, System.Windows.Forms.MSG&amp; msg, IntPtr hWnd, Int32 wFilterMin, Int32 wFilterMax) [0x00000] </div><div>  at System.Windows.Forms.Application.RunLoop (Boolean Modal, System.Windows.Forms.ApplicationContext context) [0x00000] </div><div>  at System.Windows.Forms.Application.Run (System.Windows.Forms.ApplicationContext context) [0x00000] </div><div>  at System.Windows.Forms.Application.Run (System.Windows.Forms.Form mainForm) [0x00000] </div><div>  at Rawr.Program.Main () [0x00000] </div><div><br></div><div>Also when looking at the readme for mono there is one point that is worrying:</div><div><p style=\"margin:0.0px 0.0px 0.0px 0.0px;font:12.0px Helvetica\">4.  System.Windows.Forms is known to not work under X11 on 10.5.  Apple has introduced a broken implementation of some extensions that we cannot disable.</p><div><span style=\"font-family:Helvetica;font-size:12px\"><br></span></div><div><span style=\"font-family:Helvetica;font-size:12px\">I'm running 10.5 so can this be the reason Rawr doesn't work or should I do something differently?</span></div><div><br></div><div><span style=\"font-family:Helvetica;font-size:12px\">/arvid</span></div></div></div>",
+    "PostedDate": "2008-08-07T05:29:38.873-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "109686",
+    "ThreadId": "33085",
+    "Html": "Actually, that may be a little backwards, in fact... On some machines, Mono refuses to run at all unless X11 is installed. Try installing X11 and see if that fixes it? Either way, Mono's really buggy, so if you can use either Boot Camp or one of the emulators, that'd give you a better experience. Right now, we're hoping for a big new release of Mono sometime soon to fix alot of its bugs. Sorry Rawr has to rely on Mono :(<br>\r\n",
+    "PostedDate": "2008-08-07T08:23:00.58-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

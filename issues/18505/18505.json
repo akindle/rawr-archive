@@ -1,0 +1,100 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Items",
+      "DisplayName": "Rawr.Base.Items"
+    },
+    "ClosedComment": "4.0.20 Released",
+    "ClosedDate": "2011-02-20T19:10:56.16-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Dear developers since english isn't my native language I prefer using Rawr with locale settings in german.\nI have to execute the \"Update item cache from xy\" to get the the items in german as well. The problem is that the amount of item is huge and the update takes forever.\n \nSo my request is to have a altered \"Update item cache from xy\" method that updates only the items my character is wearing  and maybe the items i have \"selected\" in the item list for possible upgrades.\nThe amount of items that have to get updated would shrink drastically and the time it takes reduce to less than a minute.",
+    "LastUpdatedDate": "2013-05-16T05:20:05.62-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-08-17T07:24:43.233-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Feature Request.Items] Refresh Only Items Currently Worn",
+    "Type": {
+      "Name": "Feature",
+      "Id": 1
+    },
+    "VoteCount": 1,
+    "Id": 18505
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "There already is a way to do this. I don't recall exactly how, but I believe it's a right-click on the charts, there's an 'update item cache for all items in this chart' or something.",
+      "PostedDate": "2010-08-17T10:06:27.893-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "In Rawr2, you can right-click an item in the chart and choose 'Update Relevants for this Slot...' and that will only update the items you see on that chart.",
+      "PostedDate": "2010-08-17T11:30:43.37-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thank you for your comments I am aware that I can update the current slot item by right-click. \r\nWhat I am looking for is a funktion call that updates the item cache of ALL my items my character is wearing (and selected upgrades) at once. So one-click to update ALL those items instead 30 times right-click and select update item cache.",
+      "PostedDate": "2010-08-18T02:01:51.467-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "An alternative to this (to solve the root cause) would be to have the Item Team generate additional language versions of caches and have someplace that users can download them. We'd need to include a popup in the Options dialog when you change language telling them to download the appropriate language caches.\r\n\r\nI think Refresh Items Currently Worn would probably be easier to implement though.",
+      "PostedDate": "2010-08-18T14:02:38.407-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "To backup or extract the item cache file from a previous version to use in a future version would also be a nice option. In that way you would update once the whole item cache and in the new rawr version you just have to import the file (maybe there is a way to implement a popup dialog where you get asked if you want use the \"old\" item cache file).\r\nThe update item cache methode then actually only have to make an incremental item update in case there are some new items in the game.\r\nWell however that would be a nice feature though.",
+      "PostedDate": "2010-08-19T00:08:44.257-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The Item Cache is literally 'ItemCache.xml' and 'ItemSource.xml' located in the Data directory of where you unzipped Rawr. While you *can* copy the file between versions we don't recommend it because if you do that across several versions (meaning using a cache from say .10 in say .15) then you run the risk of missing a bunch of programmatic item updates we've done over time, things that can have significant affects on the calculations. For example, Tiny Abomination in a Jar went through several revisions before it arrived in it's current state where most models support it.",
+      "PostedDate": "2010-08-19T08:33:01.17-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-08-19T08:35:31.927-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-09T15:16:14.333-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Added in commit 58025",
+      "PostedDate": "2011-02-13T14:48:43.717-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-02-20T19:10:56.16-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:27:42.24-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:05.62-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

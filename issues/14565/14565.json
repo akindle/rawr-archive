@@ -1,0 +1,106 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Hunter",
+      "DisplayName": "Rawr.Hunter"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-11-03T15:41:54.36-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When Iamcal remade the Hunter module he made an effort to copy the calculations from the Elitist Jerks Hunter Spreadsheet as close as possible.\n \nI  was looking through the code to look for possibilities to implement the MM Piercing Shot Talent which was missing from the Hunter module.\n \nI ran some very basic tests (character file attached). Which showed the same results for the most trivial calculations. However, when I added the readiness talent a small difference surfaced.\n \nI enabled the debug print out to compare the list of shots that the shot frequency was fetched from with the list generated from the excel spread sheet.\nThe lists are identical down to the second time Readiness is used.\n \nI have no idea where the difference in the Rawr code from the VB in the Excel sheet is. But something is making the lists diverge from each other.",
+    "LastUpdatedDate": "2013-05-16T05:23:37.607-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-10-28T10:05:35.01-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Hunter] Difference in Rotation Calculation (spreadsheet vs Rawr Hunter Module)",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14565
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2419,
+      "FileName": "ShotRotation Compare.xlsx",
+      "DownloadUrl": ".\\2419"
+    },
+    {
+      "FileId": 2420,
+      "FileName": "test.xml",
+      "DownloadUrl": ".\\2420"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Character File",
+      "PostedDate": "2009-10-28T10:09:53.54-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-10-28T10:09:55.093-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It seems as if the excel version does not fire off Readiness as soon as it comes off cooldown. It waits ~18s for Rapidfire to get off its cooldown first... then it triggers.",
+      "PostedDate": "2009-10-28T11:08:50.43-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I don't know if this would affect the results but I'm pretty sure the last version of the EJ Spreadsheet that Iamcal used was the 91e. If there has been any changes to the Hunter spreadsheet since then about Readiness that could be the problem.",
+      "PostedDate": "2009-10-28T15:03:03.103-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "One important note here is that that spreadsheet has been discontinued, and the way iamcal made the Rawr model, it too exactly followed the spreadsheet, such that it was just a a spreadsheet emulator, not taking advantage of Rawr's abilities. We're planning to significantly revise the hunter model to get it back up to date, and actually be a Rawr model.",
+      "PostedDate": "2009-10-28T22:11:37.66-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Discontinued? I know that Cheekys spreadsheet disappeared  but that was quite some time ago. Shandara continued the development back in 2008 and last version came out 17th of October this year (http://elitistjerks.com/f74/t30710-wotlk_dps_spreadsheet/).\r\n\r\nNot sure what you mean with \"just\" a spreadsheet emulator. There is an extensive amount of code behind the sheets surface and you can set it to simulate the events and procs instead of using just averages which I thought was what Rawr did as well in a Markov Simulation like approach.\r\n\r\nI'm jumping over to a discussion thread instead to ask a bit more about the planned hunter model :)",
+      "PostedDate": "2009-10-29T00:44:16.48-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Rewrite or not.\r\nFound a difference in two places in the RotationTest.cs\r\nIn between the if statment and the else if : \r\n... \r\nif (!ArcAimedPrio && (thisShot == Shots.AimedShot || thisShot == Shots.ArcaneShot || thisShot == Shots.MultiShot))\r\n         {\r\n              // do nothing if we don't want to prioritise Aimed/Arcane or Multi-Shot\r\n          }\r\n     else if (s.check_gcd)\r\n         {\r\n            bool result = true; \r\n....\r\n\r\nI added \r\n\r\n else if (s.type==Shots.Readiness && RFCD < (currentTime+CDCutoff+waitTime))\r\n     {\r\n         // Do nothing if we Rapid Fire isn't soon enough of CD\r\n     }\r\n\r\nHowever, the caCDCutOff time was set to 15 in the CalculationsOptionsHunter.cs file\r\n        public int cooldownCutoff = 15;\r\n\r\nThis is currently default 30 in the spreadsheet (v92b, and can also be changed).\r\n\r\nWith these 2 changes the simulated rotation shotlist comes out the same. (note though that in the test.xml characterfile that is attached the value is still 15.",
+      "PostedDate": "2009-10-29T04:24:07.997-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-03T15:41:54.36-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T18:26:05.78-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:32:08.017-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:37.607-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

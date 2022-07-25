@@ -1,0 +1,22 @@
+<div class="wikidoc"><h1>Retribution Frequently Asked Questions (FAQ)</h1>
+The issues here are Retribution-specific issues. Please refer to the <a href="https://rawr.codeplex.com/wikipage?title=FAQ&referringTitle=Rawr.Retribution%20FAQ">general FAQ</a> for more program-wide support.<br />
+<ul><li><a href="#DPSTest">Rawr tells me my DPS should be X, when testing on a dummy I get a different &#40;usually lower&#41; value Y. What am I doing wrong&#63;</a></li></ul>
+
+<hr />
+
+<ul><li><b><a name="DPSTest"></a>Q: Rawr is telling me my DPS should be X, when testing on a dummy I get a different (usually lower) value Y. What am I doing wrong?</b>
+<ul><li>A: There are several possible reasons why in game DPS does not correspond to the DPS number suggested by Rawr.
+<ul><li>Make sure the dummy is not sitting at 1 health. Make sure you are the only one on the dummy. Position yourself so you are not hitting any of the other dummies with Consecration, Divine Storm or Seal of Command.</li>
+<li>Double check your equipped gear, if the <a href="https://rawr.codeplex.com/wikipage?title=FAQ&referringTitle=Rawr.Retribution%20FAQ&ANCHOR#ItemCache">stats match in-game</a> (you could have an outdated item cache), enchantments, gems, talents and glyphs. Make sure &#39;Stacked Trinket Resets&#39; is set to 1 (or higher if you have stacking trinkets and the buff falls off). Alternatively set it to 0, and start your DPS test with SOV and trinkets fully stacked.</li>
+<li><b>Check your active buffs</b> !!! If you&#39;re doing a DPS test, you&#39;re unlikely going to have all raid buffs on you. Some of the buffs have profound effects on DPS done.</li>
+<li>Be sure to correctly set the fight parameters and in particular the mob type.</li>
+<li>Get a rotation helper add-on like <a href="http://wow.curse.com/downloads/wow-addons/details/clcret.aspx">ClcRet</a>. Set your FCFS priority, and follow its ability suggestion meticulously.</li>
+<li>With the above in place, enable combat logging and have a 1 to 2 minute DPS session on the dummy. Inspect the combat log and see how far apart you typically hit an ability off CD after hitting a Melee ability. In an ideal setting, this should be precisely 1.5sec, lag and human response however will make this slightly more. Try to find a good average, subtract 1.5sec and input this value into the &#39;Delay&#39; box in Rawr.</li>
+<li>Rawr.Retribution does not model mana usage or using Divine plea in the rotation. Rawr.Retribution always assumes you have mana to continue hitting buttons. If you run oom and need to slow down, or cut on ability usage, Rawr.Retribution will be higher DPS than your test in-game. Note that clcret has a feature to stop suggesting to use Consecration under low mana conditions. For Rawr tests, you need to turn this feature <b>off</b> since Rawr has no means to not use it. If at all possible, get a mage to cast Arcane Intellect on you since this will (thanks to replenishment and a larger initial mana pool) increase the fight length you can model.</li>
+<li>If your DPS meter has a feature to show how many times each ability got used, check to see if these amounts match up with the numbers Rawr.Retribution is giving. If you are significantly below, then you have probably set &#39;Delay&#39; too low, or you are not following the rotation properly.</li>
+<li>There is still the random element in game which rawr cannot model. Rawr works off averages, a 5% variance in DPS is normal.</li>
+<li>Any reasonable DPS test needs to be of sufficient length.  A 1min fight isn&#39;t going to be significant since trinket procs will likely have a too profound effect.  Ideally you want to end a test more or less when your trinket cooldowns are (almost) over.</li>
+<li>Many indivuals have ran actual DPS tests and confirmed that Rawr.Retribution gets close to in game, within an acceptable margin of error caused by RNG and human error.</li>
+<li>There are a few items in game that have very peculiar or very specific behaviour that is hard or even impossible to model in Rawr.</li>
+<li>And finally a bug in Rawr.Retribution is possible. Try to do your best to identify what is going, and open an issue.</li></ul></li></ul></li></ul>
+<br /></div><div class="ClearBoth"></div>

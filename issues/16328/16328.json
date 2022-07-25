@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-07-02T11:36:16.09-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I cannot consistently reproduce this crash.\nRawr v2.3.8\nWindows 7 64 Ultimate\n \nSee the end of this message for details on invoking \njust-in-time (JIT) debugging instead of this dialog box.\n \n************** Exception Text **************\nSystem.NullReferenceException: Object reference not set to an instance of an object.\n   at Rawr.Cat.CalculationsCat.GetCharacterStatsWithTemporaryEffects(Character character, Item additionalItem, WeightedStat[]& armorPenetrationUptimes, WeightedStat[]& critRatingUptimes)\n   at Rawr.Cat.CalculationsCat.GetCharacterCalculations(Character character, Item additionalItem, Boolean referenceCalculation, Boolean significantChange, Boolean needsDisplayCalculations)\n   at Rawr.CalculationsBase.GetItemCalculations(Item additionalItem, Character character, CharacterSlot slot)\n   at Rawr.FormItemSelection.AddGemToItemCalculations(List`1 itemCalculations, Item item)\n   at Rawr.FormItemSelection.LoadItemsBySlot(CharacterSlot slot)\n   at System.EventHandler.Invoke(Object sender, EventArgs e)\n   at Rawr.ItemCacheInstance.OnItemsChanged()\n   at Rawr.FormMain.Calculations_ModelChanged(Object sender, EventArgs e)\n   at System.EventHandler.Invoke(Object sender, EventArgs e)\n   at Rawr.Calculations.OnModelChanged()\n   at Rawr.Calculations.LoadModel(Type type)\n   at Rawr.FormMain.LoadModel(String displayName)\n   at Rawr.FormMain.comboBoxModel_SelectedIndexChanged(Object sender, EventArgs e)\n   at System.Windows.Forms.ComboBox.OnSelectedIndexChanged(EventArgs e)\n   at System.Windows.Forms.ComboBox.WndProc(Message& m)\n   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)\n   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)",
+    "LastUpdatedDate": "2013-05-16T05:21:54.057-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-02-12T17:28:03.833-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] Unhandled exception when swapping from Bear to Cat immediately after Save As ...",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 16328
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "This is not model specific.  I have occasionally seen this happen when swapping models (various).  It seems to be related to some calls still linking to/useing data the old model and some others still linking to the model you're changing to. Could be caused by a multithreading thread safety issue.\r\n",
+      "PostedDate": "2010-04-18T10:46:44.83-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-18T10:47:08.23-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-04-22T08:31:55.327-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T11:36:16.09-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:29:58.83-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:21:54.057-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

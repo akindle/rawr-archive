@@ -1,0 +1,39 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Fixed in commit 44564",
+    "ClosedDate": "2009-12-24T18:18:57.78-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The regular expression for Ashen Band of Courage has invalid group named \"ar,pr\". I think it should be \"armor\".\n \nelse if ((match = new Regex(@\"When struck in combat has a chance of increasing your armor by (?<ar,pr>\\d+) for (?<time>\\d+) sec\").Match(line)).Success)\n{ \n        // Ashen Band of Courage - seems to be 60 sec iCD (wowhead)\n        // Wowhead says 3% chance to proc (!!), let's assume it's 10%\n        float armor = (float)int.Parse(match.Groups[\"armor\"].Value);\n        float time = (float)int.Parse(match.Groups[\"time\"].Value);\n        stats.AddSpecialEffect(new SpecialEffect(Trigger.DamageTaken, new Stats() { Armor = armor }, time, 60f, 0.1f));\n}",
+    "LastUpdatedDate": "2013-05-16T05:22:46.12-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-12-24T07:55:15.773-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Rawr.Base - SpecialEffects.cs - ArgumentException on Ashen Band of Courage",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15603
+  },
+  "FileAttachments": [],
+  "Comments": []
+}

@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "254695",
+    "ThreadId": "74451",
+    "Html": "<p>Wouldn't there be something to win by actually keeping two separate models of the Hunter module. One &quot;Hunters Spreadsheet&quot; and one HunterSE?</p>\r\n<p>By making a model that exactly copies the results of the spreadsheet would,</p>\r\n<p>a) ...be fairly simple to maintain since its &quot;just&quot; a translation from &quot;.xls&quot; and VB to C# and all changes is delivered on a silver plate in the release notes of the spreadsheet.<br>b) ...provide an easy way to get some rough validation of the HunterSE model (as we were doing last night). There is quite a lot of ppl that scrutinize the spreadsheet and helps out getting the formulas correct in the EJ community. <br>c) ...provide a module that you can pinpoint &quot;errors&quot; down to the last digit. When I was looking for &quot;errors&quot; (i.e. errors being non spreadsheet sameness) i was in a very rare situation as a programmer. I had the &quot;correct&quot; answer that I knew the program should generate. <br>d) ...actually benefit the EJ work as well, I found 2 bugs of the spreadsheet implementation just by working with the Rawr code. (one which iamcal already had found and implemented in Rawr but was lacking in the spreadsheet code.)<br>e) ...allow ppl that are &quot;followers&quot; of the spreadsheet to get benefit from the Rawr interface as well.</p>\r\n<p>Of course there is no &quot;truth&quot; out there since each fight is unique and even each try at the same boss is different due to your performance varying as well as your team members performance varies. I'm very interested in the Boss module that I understand is getting developed in the core code and I'm all for getting a Hunter module that by being a more &quot;pure&quot; Rawr model, could benefit from any central changes and enhancements may it be constants changing to boss modules to graphing.</p>\r\n<p>However, you have in the spreadsheet an unique opportunity to validate parts of your module. I would guess that quite a few that uses the spreadsheet and Rawr are Theorycrafters to whom a difference of plus minus 10 DPS is regarded a significant &quot;error&quot; not to mention if the model were off by several %.</p>\r\n<p>When using any type of support for helping you choose gear you need to have faith in the model you choose. Otherwise it does not help you and would have you second guess every choice you make. I have found that in my &quot;loot journey&quot; that my upgrades to a slot often is a matter of getting maybe 40, or if I'm lucky a 100 better theoretical dps out. And that, assuming a max DPS output of 8000, translates to a difference between a &frac12; to 1 %. To then say, &quot;Bah, +- a &frac12; percent is less than the error margin of the model so I say no to roll on the just dropped &quot;death's verdict&quot; trinket.&quot;, would not really help you.</p>\r\n<p>Even in Rawr you state that &quot;Don't use stats weights to evaluate gear, it is highly in-accurate.&quot; Well, how do you validate the inner models of your modules to know that the inaccuracy in Rawr is less than the inaccuracy you would end up with by using rule of thumb stats weights?</p>\r\n<p>In my view, having 2 models could actually help that challenge.</p>",
+    "PostedDate": "2009-11-08T01:36:18.61-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254697",
+    "ThreadId": "74451",
+    "Html": "<p>Nope. It'd be a huge detriment to our users to have both.</p>",
+    "PostedDate": "2009-11-08T02:05:21.747-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254698",
+    "ThreadId": "74451",
+    "Html": "<p>ok, nvm the users. How does the developers validate the models then?</p>",
+    "PostedDate": "2009-11-08T02:15:38.367-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254713",
+    "ThreadId": "74451",
+    "Html": "<p>With Enhance it's easy as there exists an EnhSim - Enhancement Simulator which actually does a full scale simulation over thousands of hours of combat. Rawr is dramatically quicker and easier to use and I strive to have both producing similar results. However a simulator is naturally going to end up more accurate than a closed form solution where we are averaging everything. It does give me an excellent benchmark with which to compare the results however.</p>\r\n<p>The design I've gone for is Rawr should be great for 95% of users and more than accurate enough for their needs, for the top theorycrafters min/maxers there is an export to EnhSim option so that they can use Rawr to generate the EnhSim config file, and run the sim to verify the results Rawr gives. I do this a LOT to compare and contrast the figures in both models. I can often be found having two debug sessions going one in Rawr.Enhance and one in EnhSim stepping through the code checking values of things at different stages to compare the two.</p>\r\n<p>By using this method Rawr.Enhance has become dramatically more accurate lately and is very very similar to EnhSim now. It still favours hit a bit too much though compared with EnhSim output. My next major task after I've completed the Rawr3 options panel is to do various tests on the effects of hit above the spell hit cap and see where the variances are coming from.</p>\r\n<p>I would concur that being able to scrutinise both models allows you to find bugs in either one. However I'd agree with Astrylian having two hunter models would be overly confusing for the vast bulk of users. Perhaps the hunter model can go down the route of Enhance and have an export option that outputs the necessary data to make the Hunter Spreadsheet work. With a spreadsheet it would be relatively simple to export a standard csv file and have a spreadsheet macro that imported the csv and copied the data from the csv to the relevant cells in the spreadsheet.</p>\r\n<p>That way you could do the same rapid testing and development I'm used to in Enhance, and benefit from the insights of both communities.</p>",
+    "PostedDate": "2009-11-08T04:27:12.093-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254721",
+    "ThreadId": "74451",
+    "Html": "<p>I guess that EnhSim is similar to simulationcraft in its approach. And I would say having those kind of validation possibilities is quite useful for model evaluation.</p>\r\n<p>Actually, hehe, the more hours simulated in EnhSim the closer it should get to your &quot;averaging&quot;... accoding to good o'l statistics :)</p>\r\n<p>I.e. averaging is not &quot;THE EVIL&quot;... it is what you have to do in order to get an answer out that does not fluctuate with each run... beacuse then you would have to to introduce use measures of variance to describe the resulting numbers... and that would probably get us unto the upper league if we wanna play the game of &quot;confuse-an-user&quot;.</p>\r\n<p>Regarding Spreadsheet export,well, not sure that it would benefit that much apart from as you say as quick validation for Rawr dev.</p>\r\n<p>To start out from a blank Spreadsheet to getting figures out is just a matter of pressing the &quot;Load from Armory&quot; button and then set the rotation and buffs...&nbsp;</p>\r\n<p>Hunters are fairly &quot;simple&quot; creatures atm, we have more of a priority queue than a Rotation we follow since we have rather few &quot;procs&quot; apart from gear/trinket ones. Sure, the Improved steadyshot and Lock and Load talents adds some but not that much.</p>\r\n<p>User friendliness/user understandability is a balancing act and always will be. But I must say I don't quite understand the choice of words in &quot;huge detriment&quot;. Have you looked at the option tab for mages lately? 105 or so different places where I can tick boxes or enter values. (Not including the &quot;Advanced&quot; tab adding 20 more...). But I can't argue with the fact that there is only one choice under the Stats tab &quot;Model:&quot; pulldown.</p>\r\n<p>I get a feeling that its the &quot;Spreadsheet&quot; word that tend to taint things... Things with &quot;Sim&quot; in the name = good. Things with &quot;Spreadsheet&quot; in the name = bad. I don't see Rawr as a simple spreadsheet when I make the comparisons... and never will... you have far to few cells where I can write formulas in for that, and your save files does not end with .xls ;). Nor do I see the current &quot;Spreadsheet&quot; at EJ as &quot;simple&quot; any more. Far too much VB and simulation going on behind the cells. I do however, see in Rawr an excellent potential to do a lot more especially when doing more of the synergy approach &quot;good-things-in-one-module-get's-moved-to-rawr-base&quot;.</p>\r\n<p>However, if the aim is to help users &quot;...comparing and exploring gear...&quot; and do a good job at that, to get what Levva talks about, a &quot;EnhSim&quot; equivalent for hunter model validation would be nice.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-11-08T05:44:55.283-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254766",
+    "ThreadId": "74451",
+    "Html": "<p>The point becomes, if we want to validate against spreadsheet (or other) outputs, we can use the spreadsheet (or other) instead of trying to translate spreadsheet to our code and then compare the 2 modules. Huge step in one path, much smaller step in the other.</p>",
+    "PostedDate": "2009-11-08T09:16:45.65-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254776",
+    "ThreadId": "74451",
+    "Html": "<p>Its also a lot simpler for a model to have an export option in a format suitable for use in spreadsheet so that anyone can use it, than it is to have an option to convert a spreadsheet to VB code then to C# code something that would utterly defeat 99% of the Rawr userbase and not something we'd want to be supporting.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-11-08T10:05:16.753-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254783",
+    "ThreadId": "74451",
+    "Html": "<p>Ah, well, I accept the point of it being easier to maintain one model.</p>\r\n<p>(... though you almost had 2, Iamcal had already translated the VB code of the spreadsheet model, the thing missing was updates since Iamcal went MIA.)</p>\r\n<p>Anyway, I think It is probably one reason to why I have so difficult with letting the &quot;old code&quot; go is that there I had a possibility to contribute with small patches since it was more or less only a 1 to 1 row conversion and thereby easy to verify/compare. :)</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-11-08T10:21:10.433-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "254785",
+    "ThreadId": "74451",
+    "Html": "<p>*insert a music video pertaining to &quot;Let it Go&quot; here*</p>",
+    "PostedDate": "2009-11-08T10:29:45.633-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

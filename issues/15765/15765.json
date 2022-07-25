@@ -1,0 +1,106 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Enhance",
+      "DisplayName": "Rawr.Enhance"
+    },
+    "ClosedComment": "Out of Date",
+    "ClosedDate": "2010-11-20T16:54:46.717-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "in response to Levva's reaction on my post on mmo-champions rawr related forum topic, I'd like to submit the following issue;\n \nwhen I input my enhancement shaman's gear, and rotation into\nRawr.enhance 2.3.5, I get\n8781.75 dps, with glyph of lightning shield, FS excluded from rotation. \n8723.98 dps, with glyph of lightning shield, FS included in the rotation.\n8752.45 dps, with glyph of flame shock, FS included in rotation.\n \nI did not expect those results, since it's commonly accepted since wow patch 3.3, that using flame shock in the enhancement priority rotation, is an improvement of dps.\n \nwhen I export my rawr information to enhsim, version 1.9.5.4, I get:\n8156.1 dps, with glyph of lightning shield, and FS excluded from rotation.\n8201.13 dps, with glyph of lightning shield, and FS INcluded in the rotation.\n8290.76 dps, with glyph of flame shock, and FS included in the rotation\n \nwhich does display the normal/expected behaviour, of FS adding tot total damage. however, the difference in dps between both programs is quite large.\n \nboth XML's have been saved with +glyph of FS, and +FS in rotation",
+    "LastUpdatedDate": "2013-05-16T05:22:33.21-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-01-07T08:45:40.043-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Enhance] Excluding FS from rotation dps gain in Rawr, diff with enhsim",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15765
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2739,
+      "FileName": "Snoepzak Rawr.xml",
+      "DownloadUrl": ".\\2739"
+    },
+    {
+      "FileId": 2740,
+      "FileName": "Snoepzak enhsim.txt",
+      "DownloadUrl": ".\\2740"
+    },
+    {
+      "FileId": 2741,
+      "FileName": "enhsimgui_config.txt",
+      "DownloadUrl": ".\\2741"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Once EnhSim settles down after loads of recent updates I can spend time verifying that Rawr accurately matches what EnhSim is saying. Meantime this issue will be on hold.",
+      "PostedDate": "2010-01-12T03:12:59.757-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-01-15T08:48:28.043-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T13:42:21.1-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Can you confirm that this still happens with the latest version of EnhSim? There was a big bug in EnhSim that overestimated the effects of FS glyph to the point where now the accepted wisdom is that it is not good for us.\r\n\r\nV1.9.8.10 has the fix.\r\n\r\nFixed how the Glyph of Flame Shock was being applied for Work Item # 6927.\r\nEnded up that the glyph was having too large of an impact on Flame Shock's damage.\r\nIt should now be more closely align to how the damage is on Live. ",
+      "PostedDate": "2010-09-10T02:41:24.863-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Using my own Shaman's file:\r\nRawr 2.3.23\r\n12879.38, GoLS, no FlS\r\n12934.67, GoLS, FlS above ES\r\n12980.41, GoFlS, FlS above ES\r\nSo with FlS above ES in the priority, things look like they should be. Enhsim follows this behavior (there is a bit of a difference, but only about 200-300dps difference).  However, if I place FlS below ES in priority things get wierd (since FlS shouldn't fire at all theoretically).\r\n12879.38, GoLS, no FlS\r\n13569.50, GoLS, FlS below ES\r\n13644.48, GoFlS, FlS below ES\r\n\r\nSeems to be related to [workitem:16015]",
+      "PostedDate": "2010-09-12T18:59:37.193-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "My EnhSim results:\r\n\r\nEnhSim 1.9.8.10\r\n9772, GoLS, no FlS\r\n10400, GoLS, FlS above ES\r\n10385, GoFlS, FlS above ES\r\n\r\n9772, GoLS, no FlS\r\n9772, GoLS, FlS below ES\r\n9721, GoFlS, FlS below ES\r\n\r\nThe much lower results more than likely are due to Strength of Wyrnn and some of my settings.  I posted this just to show the trend, not the overall values.",
+      "PostedDate": "2010-09-12T19:30:22.27-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-11-20T16:54:46.717-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:18.067-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:30:45.967-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:22:33.21-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "Id": "412793",
+    "ThreadId": "203446",
+    "Html": "<p>Blizzard just released new details on the Cata stat changes. Most of which are generic descriptions of what they are intending (more stam on all non-plate gear). But there were a few things that are going to be interesting</p>\r\n<p>http://forums.worldofwarcraft.com/thread.html?topicId=23425636414</p>\r\n<p>For example Block will have a 30% to block an incoming attack, with talents that will raise that amount, Parry no longer is hasted, but a chance to miss 50% of the incoming damage for 2 attacks, Later tiers of bosses will be harder to hit (Boss level being raised with each tier?)</p>\r\n<p>Do you think RAWR should start planning for these changes now (not implement, but definitely have some coding ready in the background) and wait for the PTR to get some solid data before implementing?</p>",
+    "PostedDate": "2010-03-01T10:39:27.147-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "412831",
+    "ThreadId": "203446",
+    "Html": "<p>It's pretty hard to plan for the future with such slim details and no way to perform tests to determine any real values. Sure models could be developed with dummy numbers but Blizzard has a history of changing things on the fly and with so much work already to be done, it could be wasteful to spend time on &quot;What if...?&quot; when that time could be spent moving towards Rawr3 or improving current models. After all, if Blizzard decides to suddenly change something&nbsp;drastically&nbsp;enough to render a potential model useless, a lot of time would have been sunk and lost. But rest assured, I am sure theorycrafting involving these changes will start to pop up, especially as more concrete details are revealed.&nbsp;</p>",
+    "PostedDate": "2010-03-01T11:51:42.247-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "412833",
+    "ThreadId": "203446",
+    "Html": "<p>Once they show up on the PTR, rest assured that our models will be updated with that data (either through a &quot;PTR Mode&quot; checkbox, or just something under the hood that we can promote when we're ready to release the new version).</p>\r\n<p>Until that happens, there's no point in doing any dev work. &nbsp;In part because the stat conversion is really quite easy for us to factor in, and in part because there's not nearly enough details for anything substantial to be done.</p>",
+    "PostedDate": "2010-03-01T11:55:57.61-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "413101",
+    "ThreadId": "203446",
+    "Html": "<p>Knowing Cataclysm is coming soon (tm) does mean you can start thinking about some things, maybe even adding bits of code here or there. Or adding comments where you know now you'll need some fixes giving you a better idea of how much work you have to go through.</p>\r\n<p>For me at least, it's having an influence on priority of things. Rawr.ret doesn't currently model the crit cap, and with cata up ahead, i'm not even at all worried about it.&nbsp; The only way to reach it now would be to invest heavily on Agi/crit leather/mail gear and gemming for it. Which will be &quot;useless&quot; with the cata changes in place.&nbsp; With plate gear that doesn't have Agi, reaching the cap will be harder/impossible, making it a low priority issue.&nbsp; If your model is lacking/missing out on something that will be pointless with the already announced plans for cata, then it does mean those features are going to be wasted effort in a few months time.</p>\r\n<p>Changes to ratings and such <strong>do</strong> make it <span style=\"color:#ff0000\">important for models to properly use the StatConversion class</span> from Rawr.base to do conversions from ratings to values.&nbsp; A lot of models (if not most) are doing all raw stat to 'end' values explicitely (such as calculating health by taking stamina*10, or converting hitrating to hit%). If your model is doing this now, then you can start preparing for cataclysm changes already by using StatConversions. The 'ptr mode' will likely be implemented in the stat conversion functions, meaning your model will probably not need any changes, other than accounting for changes in talents and abilities.</p>",
+    "PostedDate": "2010-03-02T03:20:00.38-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "413301",
+    "ThreadId": "203446",
+    "Html": "<p>No, please do not model with Cata in mind. Cata is still a loooong way off.</p>",
+    "PostedDate": "2010-03-02T10:48:48.42-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "413657",
+    "ThreadId": "203446",
+    "Html": "<p>I didn't mean actually modelling things just yet.&nbsp; But you can use the info that's been made available already in your decisionmaking and&nbsp;improving your code.<br><br>For example Rawr.ret doesn't currently have mana usage modelling.&nbsp; With what we know already, any code trying to model that for current WOW, would probably be totally wasted for cataclysm and need to be redone.&nbsp; So you can consider that and adjust your priorities and do some other thing that needs to be done as well but won't be affected.&nbsp; It's all a effort vs gain thing really.&nbsp; Spending hours/days of coding for something that's not absolutely critical to your model and which will need to be taken out at cataclysm is probably not worth the effort anymore, unless you've got nothing else to do on your model.</p>\r\n<p>If your model is still doing explicit stat conversions (bad) then changing that to using the stuff in StatConversions is a good thing to do anyway, and it will already prepare your model by being more robust once cataclysm changes are being implemented.</p>",
+    "PostedDate": "2010-03-03T05:56:48.567-08:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

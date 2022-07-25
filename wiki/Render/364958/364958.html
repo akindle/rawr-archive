@@ -1,0 +1,30 @@
+<div class="wikidoc">
+<h1>Batch Tools</h1>
+<p>Batch tools are available for users that frequently work on several characters together. This is especially meant to ease the common operations when working on several Rawr character that all represent the same in-game character, but corresponding to different
+ fight conditions and/or different specs.</p>
+<p><span style="font-size:large; font-weight:bolder">Getting Started</span></p>
+<p>You can start using batch tools after you have defined all the Rawr profiles that you want to work with. You can start the batch tools from 'Tools &gt; Batch Tools'. You will be presented with a list of characters that is initially empty and optimization
+ controls. You can create a batch list by using 'File &gt; Import' and selecting several character xml files or clicking on ... button to add them one by one. Characters will use whatever model they were last saved with. So you can add a cat and bear character
+ to the same batch list and each will use their respective model. After your list is complete you can save it with 'File &gt; Save' so that you can quickly reopen it in later sessions.</p>
+<p>In the list each character shows its current score, weight, new score and a button to show the character in main Rawr window. Be careful when displaying characters while you have some other character open from before. The previous character will be put aside
+ and you will only be able to work on it again after you close the batch tools (at that point the batch character will be hidden and the character that was loaded before starting batch tools will appear again). Note that if you add a character to the list that
+ was also opened in the Rawr that those two will be treated as two different characters, changes made to one will not show in the other.</p>
+<p>Batch tools are best suited if you mark your item availability with specific available items (using blue diamonds and enchant restrictions). When you make changes to the item availability you can use Tools-&gt;Set Available Items to quickly copy available
+ items from currently shown character to all characters in the list. If the changes made some equipped items unavailable you can use Tools-&gt;Replace Unavailable to correct those changes (for example if an item changes gems or enchant it will replace previous
+ version with the currently available one).</p>
+<p>At the core of batch tools are the optimization functions. Tools-&gt;Optimize will simply run optimize on each character in the list with the currently selected settings. One change from doing it manually is that it will try running optimize several times
+ (up to max defined with the Max Rounds slider, default 3) if it is not able to match current score of the character. It will also retry optimize when it finds a new optimum (and reset the max rounds count). This way you can combat the inherent problem that
+ optimizer cannot guarantee to find the optimum solution in a single run. After the optimizer finds a better solution it will display this in the New Score column and marking character name with a *. You can then either save all characters with Tools-&gt;Save
+ Characters or save a copy of them with Tools-&gt;Save Characters As Copy which will append a timestamp to character file names.</p>
+<p>Last function is build upgrade list. It functions a bit differently than running build upgrade list separately on each character. It won't create separate upgrade lists for each fight condition, instead it will look at upgrades and see how much of an upgrade
+ it provides for each of them and compute a weighted average using the specified weight. It forces the same gemming/enchant of an item to be evaluated for all characters and only then it computes the average. If you would run upgrade list separately you might
+ get which gemming is best in each of the setups, this way you get which is best overall. It will also correctly take into account that for example regemming currently available item might rise value on one character, but drop it on another character. At the
+ same time if the item is not used in the best setup of the other character then it will correctly identify that changing gems creates no difference for that character. This can help in identifying alternative gemmings for items that you're no longer using
+ for most common situations.</p>
+<p>From version 2.2 on you have two new optimization functions available, batch optimize and build batch upgrade list. These are a lot more time intensive than the previous ones. Their main purpose is to support regemming/reenchanting over several configurations.
+ The normal versions when using regemming/reenchanting (or not using blue diamonds/enchant restrictions) could use different gemming/enchant for each character for items marked as available. The new batch versions make sure the same gemming/enchant is used
+ for all of them.</p>
+<p>Starting with version 2.2.6 two new optimization functions have been added, progressive optimize and build progressive upgrade list. Their purpose is the same as for the batch variants. Main difference is that while batch variants try to optimize all characters
+ in batch at the same time, the progressive version will optimize the first character and then optimize next without changing the gemmings/enchants that were already used. While this is in theory less powerful than the batch versions, it can be quite a bit
+ faster by narrowing the search space.</p>
+</div><div class="ClearBoth"></div>

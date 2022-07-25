@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "118563",
+    "ThreadId": "35678",
+    "Html": "Trying to figure some other discrepancy out, I noticed that the Badge of Tenacity is described thus:<div><br></div><div><div>    &lt;Stats&gt;</div><div>      &lt;Armor&gt;308&lt;/Armor&gt;</div><div>      &lt;AttackPower&gt;25.75&lt;/AttackPower&gt;</div><div>      &lt;CritRating&gt;22.08&lt;/CritRating&gt;</div><div>    &lt;/Stats&gt;</div><div><br></div><div>The AP and crit numbers look like an attempt to average the Badge's on-use +AGI effect over time (+150 AGI for 20s in every 120s), but as I understand it:</div><div><br></div><div>* this doesn't affect bear form, so it means that AP in the bear model isn't computed the same as the in-game calculation</div><div><br></div><div>* it does affect cat form, but then adding the Badge of Tenacity short-term buff will add to it again, making that calculation give the wrong answer as well.</div><div><br></div><div>This seems like an odd thing to be doing, but it does seem deliberate so I'm wondering if someone can explain the rationale here.</div></div>",
+    "PostedDate": "2008-09-15T07:52:02.71-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "118581",
+    "ThreadId": "35678",
+    "Html": "Yeah, we wanted to average out the Use effect, for Cat, but not for Bear. This was before Bear had a Threat calculation, either. So yeah, it's overestimating bear threat by 25.75ap, but that's minor enough that trying to mess with it further didn't seem worth it. If you have any suggestions on how to better calculate it (until we actually calculate it as a cooldown), let us know.<br>\r\n",
+    "PostedDate": "2008-09-15T08:39:55.373-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "118610",
+    "ThreadId": "35678",
+    "Html": "OK, good to know that you're doing what I thought you were, at least.<div><br></div><div>As to better ways to approach this kind of thing, it's hard to see how to get there unless you were prepared to codify what you've been doing as a convention: in other words, have sets of shadow stats on items that were excluded from the base stats (so that your calculations would match what the game character panel says) but were nevertheless incorporated into the value scales (so that we can see whether X is better than Y).  That sounds hard.</div><div><br></div><div>What I may try for my own purposes is to clear off the averaged AP and crit rating from the base item so that I can check against the character panel (it's an AP mismatch that I'm trying to get to the bottom of, in fact).  I can use that with the temporary buff check-box too.  Then, duplicate that and make a &quot;Badge of Tenacity (averaged)&quot; item that just has armour and +25 AGI that I can use to get an idea of the average effect... seems like that should get the right answers in the model for both cat and bear form, with cat getting the appropriate AP and crit, and bear getting appropriate crit, dodge etc.?</div>",
+    "PostedDate": "2008-09-15T10:44:23.387-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

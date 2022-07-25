@@ -1,0 +1,250 @@
+[
+  {
+    "Id": "209118",
+    "ThreadId": "61639",
+    "Html": "<p>Recent fixes that will show up in for 2.2.10</p>\r\n<ul>\r\n<li>Fixed Armor Penetration / Serrated Blades calculations</li>\r\n<li>Added Master Poisoner crit bonus</li>\r\n<li>Fixed but where Weapon Expertise was double counted</li>\r\n<li>Fixed divide-by-zero error that was breaking the optimizer</li>\r\n<li>fixed savage combat bug</li>\r\n<li>fix bug in talent bonus </li>\r\n<li>added code to include items with special effects</li>\r\n</ul>\r\n<p>Open items</p>\r\n<ul>\r\n<li>Major Armor Debuff, Haste%, Heroic Presence, Minor Armor Debuff don't affect DPS</li>\r\n<li>Trinket procs not calculating correctly (Darkmoon Card Greatness below Alchemist Stone)</li>\r\n<li>SnD haste bonus based on uptime (currently modeled at 100%) </li>\r\n<li>Loss of Deadly Poison DPS due to Envenom </li>\r\n<li>Killing Spree /Glyph of Killing Spree </li>\r\n<li>Vigor / Glyph of Vigor </li>\r\n<li>Fan of Knives / Glyph of Fan of Knives </li>\r\n<li>Expose Armor/ Glyph of Expose Armor </li>\r\n<li>Shadow Dance </li>\r\n<li>Preparation </li>\r\n<li>Premeditation </li>\r\n<li>Cold Blood </li>\r\n<li>Tricks of the trade </li>\r\n<li>Fix CPG combo box to hide abilities that aren't available due to talents/weapons</li>\r\n<li>settings in the &quot;Options&quot; tab are not saved with your character</li>\r\n<li>Enhance &quot;Refine Types of Items Listed&quot; to include swords/daggers/fists/etc</li>\r\n</ul>\r\n<p>Really Low Priority Items</p>\r\n<ul>\r\n<li>riposte </li>\r\n<li>Ghostly strike / Glyph of Ghostly Strike </li>\r\n</ul>\r\n<p>Older&nbsp;udpates</p>\r\n<ul>\r\n<li>Modeled SnD uptime (not entirely accurate, but gives an idea of how much SnD time you will lose with the current rotation) </li>\r\n<li>Added Feint &amp; Glyph of Feint </li>\r\n<li>Added dodge and parry to display </li>\r\n<li>Added crit from buff options </li>\r\n<li>Modeled Savage Combat </li>\r\n<li>Modeled FindWeakness </li>\r\n<li>Modeled Hunger For Blood Damage Bonus </li>\r\n<li>Modeled Turn the Tables </li>\r\n<li>Modeled glyph of Blade Flurry </li>\r\n<li>Modeled glyph of Adrenaline Rush </li>\r\n<li>Modeled glyph of SnD </li>\r\n<li>Modeled Glyph of Rupture </li>\r\n<li>Modeled Glyph of Backstab </li>\r\n<li>Modeled Seal Fate </li>\r\n<li>Modeled Murder </li>\r\n<li>Fixed bug where switching talents would not update talent bonus calculation </li>\r\n<li>fixed bug where find weakness was double counted </li>\r\n<li>fixed OH white attack speed bug </li>\r\n<li>Fixed issue where rogue model would not be selected after loading from Armory </li>\r\n<li>Fixed calc for Energy Regen </li>\r\n</ul>\r\n<p>&nbsp;&nbsp;</p>\r\n<p>If you find any bugs, any feature requests, or have items you want prioritized please either respond to this topic, or create a new issue.</p>\r\n<p>Constructive Feedback and Suggestions are welcome!</p>",
+    "PostedDate": "2009-07-06T12:59:22.657-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "209519",
+    "ThreadId": "61639",
+    "Html": "<p>As far as I know, the Prey on the Weak talent is still unmodeled, and I don't see it on this list.</p>",
+    "PostedDate": "2009-07-07T08:13:44.927-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "209585",
+    "ThreadId": "61639",
+    "Html": "<p>I just remembered another one: it seems some enchants aren't modeled? Examples are Mongoose, Executioner, Savagery, and Massacre. There are probably others. They seem to show their proper stat effect in the tooltips for them, but they show zero dps on the enchants list.</p>",
+    "PostedDate": "2009-07-07T10:57:20.43-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "209604",
+    "ThreadId": "61639",
+    "Html": "<p>Executioner/Mongoose would tie in with the Trinket Procs open-issue. &nbsp;It sounds like the rogue model is not properly using Base.SpecialEffects (else the Greatness trinket would be functioning correctly).</p>",
+    "PostedDate": "2009-07-07T11:33:53.387-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "210514",
+    "ThreadId": "61639",
+    "Html": "<p>Has Agility been shown as the best DPS gain for combat rogues again?&nbsp; Last I knew gemming for ArP was the way to go, assuming you were below the soft cap...&nbsp; Or is this due to the same issue with ArP calculations currently in place?&nbsp; Also, the optimizer likes to suggest stamina-based gems and enchants over pure DPS ones.&nbsp; Any idea why it would do that?&nbsp; I ran the optimizer on my gear and it came out with an overall score slightly lower than my current gear and changed 4-5 Agl and AP gems/chants to stam.&nbsp; Very strange.</p>\r\n<p>Completely unrelated, I've noted several PvP gear pieces are missing in the furious and deadly sets.&nbsp; As furious set armor is ilevel 232 and easy to attain via emalon, it could represent an upgrade for some people.</p>\r\n<p>Feature request:&nbsp; Allow us to set the SnD (and similar effects) uptime.&nbsp; I know I can't hold it or rupture up beyond, say, 95% of the time and it would be nice to see how stats are affected by that loss.&nbsp; For example, the T8 4-piece bonus isn't quite as useful if you only have an 85% uptime on rupture.</p>\r\n<p>Second Feature request:&nbsp; Set goals and priorities for certain stats.&nbsp; For example, I would love to be able to hit the optimizer and have it show me if I can successfully attain 320 hit rating and 200 armor pen rating with my available gear, then do standard optimizations after that is accomplished (or gotten as close as it can).</p>\r\n<p>Don't know if either of those would be very easy or hard to do, but they are on my wishlist :)&nbsp;&nbsp;</p>\r\n<p>Great program, you've obviously put in a ton of work!&nbsp; Even with the oddities, I'm still finding it very useful for quick gear lookups with relative power levels.&nbsp; I do wish I was doing the 8.9k DPS it says I should be though :P</p>",
+    "PostedDate": "2009-07-09T10:28:33.207-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "213478",
+    "ThreadId": "61639",
+    "Html": "<p>I'd love to see the option to add constraints to the optimizer, being able to set minimum ratings for Hit and Expertise would be great.</p>",
+    "PostedDate": "2009-07-18T19:36:01.743-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "213481",
+    "ThreadId": "61639",
+    "Html": "<p>A good thought, but brainpsyk, make sure you do this properly. That is, add a &quot;% Chance to Miss&quot; constraint, not anything in terms of ratings or specific types of avoidance (unless there's some dps difference between a miss and a dodge for rogues, not positive there isn't).</p>",
+    "PostedDate": "2009-07-18T19:59:12.26-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "213491",
+    "ThreadId": "61639",
+    "Html": "<p>Well, there's the fact that miss = hit and dodge = expertise and we'd like to set them seperately.&nbsp; Otherwise, I don't care if it's checked as rating or % chance to not hit.&nbsp; Actually, the more I think about it, rating is the way I would prefer after all...&nbsp; With rogues, you will ALWAYS be missing with your offhand (if you're not, you have WAY too much hit and I'm simultaneously impressed and want to /facepalm), so I'd like to be able to set something like 350 hit as my mark.&nbsp; Though I suppose I could live with setting &quot;10% chance to miss with OH&quot; instead.</p>",
+    "PostedDate": "2009-07-18T20:57:25.547-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "213493",
+    "ThreadId": "61639",
+    "Html": "<p>I cant claim to know how this works out for Rogues but for DPSWarr we added the following a little while back and it's worked wonders:</p>\r\n<p>'Chance to be Avoided % &lt;= 0'</p>\r\n<p>This links back to function that checks the Yellow Attack's ability to be Dodged (6.5%) or Missed (8). So setting this requirement puts you at the yellow hit rating cap and the dodge expertise cap.</p>",
+    "PostedDate": "2009-07-18T21:03:50.773-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "213500",
+    "ThreadId": "61639",
+    "Html": "<p>Oh, yeah, sorry, when I said &quot;% Chance to Miss&quot;, I mean &quot;% Chance to be Avoided&quot;, for that very reason. :)</p>\r\n<p>Why would you want to set them separately? Do they have any performance difference?</p>\r\n<p>And regarding rating vs %, we still should do %. Because of the different levels of hit soft-capping for Rogues, it should be '% Chance for specials to be avoided', '...for poisons to be avoided', '...for offhands to be avoided'. We don't need to do specific rating #s, since users shouldn't have to know specific rating #s.</p>",
+    "PostedDate": "2009-07-18T22:16:39.467-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "213502",
+    "ThreadId": "61639",
+    "Html": "<p>I guess the poison hit cap and expertise cap are probably of equal importance, so it wouldn't be too bad to merge those into avoidance.&nbsp; The different levels of hit capping would be the key.</p>",
+    "PostedDate": "2009-07-18T22:23:24.88-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "213568",
+    "ThreadId": "61639",
+    "Html": "<p>Would it be possible to add a better Mut rotation. Hard coding specific CP dosen't work well for Mut. Maby use Mut rotations set down in <a href=\"http://elitistjerks.com/f78/t51426-depth_mutilate_cycle_analysis/\">http://elitistjerks.com/f78/t51426-depth_mutilate_cycle_analysis/</a>?</p>",
+    "PostedDate": "2009-07-19T09:39:05.03-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "213661",
+    "ThreadId": "61639",
+    "Html": "<p>Note that there really shouldn't be a NEED to have &quot;% chance to be avoided&quot; to improve Optimizer results if the model is programmed correctly. &nbsp;Of course, if we're talking about white damage because of a comfort level of rage/energy income, then that's worth having Hit Rating as optimizable.</p>\r\n<p>But if Optimizer is telling you to ignore hit/expertise altogether (like DPSWarr was at one point), there's probably something wrong in your model :)</p>",
+    "PostedDate": "2009-07-19T21:31:07.143-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "213666",
+    "ThreadId": "61639",
+    "Html": "<p>There are a few circumstances. Such as wanting to ensure your kicks don't miss for Vezax.</p>",
+    "PostedDate": "2009-07-19T22:05:50.007-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "220409",
+    "ThreadId": "61639",
+    "Html": "<p>Were there any rogue module updates in 2.2.11 or 2.2.12? How's the progress on the top 2 items in the Open Items in the OP?</p>",
+    "PostedDate": "2009-08-06T08:37:33.62-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "222030",
+    "ThreadId": "61639",
+    "Html": "<p>Checking the option &quot;Target is valid for Murder&quot; has no effect on DPS in a Mutilate spec.&nbsp; It still appears that trinkets make no sense.&nbsp; Pyrite Infuser and Grim Toll&nbsp;remain at the bottom of the list while Battlemaster's Conviction and Battlemaster's Rage remain at the top.</p>",
+    "PostedDate": "2009-08-11T07:29:26.783-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "222435",
+    "ThreadId": "61639",
+    "Html": "<p>Hi there,</p>\r\n<p>&nbsp;</p>\r\n<p>If i load my rogue into rawr and i look at expertise and hit, it will not take talentpoints into account. I am way over hitcap for poison/spell and rawr tells me i am at 99%. Same goes with expertise, the model does NOT take my +10 from talents. So all upgrade items put hit and expertise way to high.</p>\r\n<p>&nbsp;</p>\r\n<p>Is this known issue? can't find it on other posts.</p>",
+    "PostedDate": "2009-08-12T04:15:02.79-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "228099",
+    "ThreadId": "61639",
+    "Html": "<p>Is Brainpsyk still working on this module? Is anyone working on the trinket effects? We haven't heard any news on the rogue module in quite awhile.</p>",
+    "PostedDate": "2009-08-26T12:36:19.243-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "228747",
+    "ThreadId": "61639",
+    "Html": "<p>We do not have an active Rogue model dev per the notice at the top of the discussions page. If you know anyone familiar with C# and Rogue gameplay in 3.2, please shoot them our way so we can see about getting them on the project.</p>",
+    "PostedDate": "2009-08-28T08:40:42.46-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "229167",
+    "ThreadId": "61639",
+    "Html": "<p>A question to the other rogues... how dependable does this module seem to be at this point? I would like to keep using it for my rogue if it's still fairly reliable. She's not a raiding rogue (my third 80) so absolute precision is really not as much of an issue as it would be for most.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-08-30T16:00:22.48-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "229302",
+    "ThreadId": "61639",
+    "Html": "<p>I made an update just before the new release to fix some of the major issues that were occurring in the model (Attack Table issues mostly).</p>",
+    "PostedDate": "2009-08-31T05:40:32.993-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "232382",
+    "ThreadId": "61639",
+    "Html": "<p>the t9 set bonuses and hack 'n slash (axes etc) both getting added soon would be awesome &lt;3</p>",
+    "PostedDate": "2009-09-08T13:20:09.74-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "232394",
+    "ThreadId": "61639",
+    "Html": "<p>The tooltip may be wrong but the code supports current Hack n Slash</p>",
+    "PostedDate": "2009-09-08T14:09:51.11-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "232831",
+    "ThreadId": "61639",
+    "Html": "<p>So I'm a bit confused on the geming options with this tool and this thread seemed to be somewhat discussing what I'm trying to do. Is there a way to force the tool to optimize me gem wise up to 26 (214) expertise then up to a set number in hit as well before it starts providing me agi/crit/arpen/etc choices to best boost my dps? Curious if its possible to set 'goals' with the tool that you want met before it defaults to providing you the rest of the best stat choices. Thanks!</p>",
+    "PostedDate": "2009-09-09T13:51:01.047-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "232835",
+    "ThreadId": "61639",
+    "Html": "<p>goals = optimizer requirements, please read the help file on this....</p>",
+    "PostedDate": "2009-09-09T14:25:54.7-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "232845",
+    "ThreadId": "61639",
+    "Html": "<p>I tried messing around with the optimizer requirements and I'm getting odd results from it. Currently my character is sitting at the rogue exp cap of 26.96 (221... slightly over cap) with &quot;% Change to be dodged &lt; 0&quot; set in the Optimizer. When optimized it is still telling me to ditch enough exp gems that it would drop me down to about 19. I'm not quite sure why it is doing this... perhaps I'm doing something wrong?</p>\r\n<p>Edit: Should mention that I'm mutilate spec so I don't have the exp talent.</p>",
+    "PostedDate": "2009-09-09T15:09:16.3-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "232868",
+    "ThreadId": "61639",
+    "Html": "<p>Are you getting a racial Expertise bonus for the weapon being used?</p>",
+    "PostedDate": "2009-09-09T16:17:46.493-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "232977",
+    "ThreadId": "61639",
+    "Html": "<p>Nope :( I'm a blood elf.</p>",
+    "PostedDate": "2009-09-10T00:22:30.48-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "238524",
+    "ThreadId": "61639",
+    "Html": "<p>Several new patches have been applied for the Rogue module, would the persons who uploaded them please give the new code a once-over that all the changes are set the way you intended and don't conflict.</p>\r\n<p>&nbsp;</p>",
+    "PostedDate": "2009-09-24T14:23:47.503-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "238562",
+    "ThreadId": "61639",
+    "Html": "<p>Thought I would mention that Mace Spec doesn't seem to work. Mace weapons don't show any change in contributed DPS when you spec into or out of mace spec, so unless I'm missing an option box somewhere...</p>",
+    "PostedDate": "2009-09-24T16:38:35.097-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "238576",
+    "ThreadId": "61639",
+    "Html": "<p>Look at the Talents Comparison chart, if it has DPS value, then it's modelled, if not, it isn't.</p>",
+    "PostedDate": "2009-09-24T17:42:17.283-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

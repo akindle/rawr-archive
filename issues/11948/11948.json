@@ -1,0 +1,100 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base",
+      "DisplayName": "Rawr.Base"
+    },
+    "ClosedComment": "Considered resolved.",
+    "ClosedDate": "2009-01-17T13:53:11.773-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Any time I use the \"edit\" menu to switch a gem, I get an error the next time I click on an object on my character sheet. I've tested it both loading my own profile as well as just tossing random gear into a few slots and trying it out. I right click and edit one piece of gear, switch the gem, click OK. Then as soon as I left click on another item, I get the following error:\n \n************** Exception Text **************\nSystem.ObjectDisposedException: Cannot access a disposed object.\nObject name: 'ItemButton'.\nat System.Windows.Forms.Control.CreateHandle()\nat System.Windows.Forms.Control.get_Handle()\nat System.Windows.Forms.Control.GetSafeHandle(IWin32Window window)\nat System.Windows.Forms.ToolTip.Hide(IWin32Window win)\nat System.Windows.Forms.ToolTip.HideAllToolTips()\nat System.Windows.Forms.ToolTip.BaseFormDeactivate(Object sender, EventArgs e)\nat System.Windows.Forms.Form.OnDeactivate(EventArgs e)\nat System.Windows.Forms.Form.set_Active(Boolean value)\nat System.Windows.Forms.Form.WmActivate(Message& m)\nat System.Windows.Forms.Form.WndProc(Message& m)\nat System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)\nat System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)\nat System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)",
+    "LastUpdatedDate": "2013-05-16T05:26:41.813-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-12-08T12:53:44.933-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Base] Error after switching a gem",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 3,
+    "Id": 11948
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I have this same issue, but only in Windows XP.",
+      "PostedDate": "2008-12-12T05:50:57.423-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-12-12T05:51:21.78-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Uninstall whatever version of .NET Framework you have installed, and then install the latest version (3.5 SP1, at time of writing). You can download it from microsoft.com.",
+      "PostedDate": "2008-12-13T13:04:40.897-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I found this possilby related bug and a workaround here: http://codebetter.com/blogs/patricksmacchia/archive/2007/09/12/dissecting-an-undeterministic-windows-forms-v2-bug.aspx\r\n\r\nI understand we're manually configuring tooltips and it's possible that we're creating the same problem with changing the parent of a tooltip, so that should be investigated.\r\n\r\nIt is also mentioned there that a workaround as Astrylian noted is to install .Net version 3.5 SP1 which indeed includes a fix for this problem.",
+      "PostedDate": "2008-12-16T18:01:50.85-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-12-20T10:20:22.217-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-01-17T13:53:11.773-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Is it possible for Rawr to detect what version of net is being used and give a warning to update it?  This error drove me nuts until i stumbled across this post.",
+      "PostedDate": "2009-01-21T16:39:24.887-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T18:51:00.933-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T18:51:03.43-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:30:15.273-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:06.787-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:41.813-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Buffs",
+      "DisplayName": "Rawr.Base.Buffs"
+    },
+    "ClosedComment": "Fixed",
+    "ClosedDate": "2009-12-14T11:51:48.91-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Top-level profession buffs like Flask of the North, Endless Healing/Mana Potions and Toughness are not filtered out of the buffs list when the appropriate professions are not selected. Profession improvements like Mixology are filtered just fine. It looks like top-level buffs aren't being profession checked in BuffSelector.cs.\n \nI tried adding some conditionals to BuffSelector.cs, but I'm not familiar with the buff class and I just made it crash instead, so I'll leave this fix up to you guys. ^^",
+    "LastUpdatedDate": "2013-05-16T05:23:14.463-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-12-02T18:14:37.683-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Buffs] Top-level profession buffs are not hidden by selected professions",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 15152
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Had a bit of time to work on this. Fix uploaded to the patch section.\r\n\r\nThe code that sizes group boxes(?) was trying to reference \"groupBox.Controls[0]\" which may not exist in cases like the \"Profession Buffs\" section, causing a crash.",
+      "PostedDate": "2009-12-03T10:31:59.503-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hmm. Slight problem with that patch. Profession buffs aren't shown until the characters professions are manually changed. Might want to hold off on that one for a sec until it gets figured out. I can work on it a little bit tonight. If someone can give me any info on where to start looking, let me know. :)\r\n\r\nSomething I also noticed, enabled profession buffs are left active but hidden when you change to another profession. for example, change to mining, you get 60 Stam, switch away from mining and you still have 60 extra Stam.\r\n",
+      "PostedDate": "2009-12-03T12:28:02.573-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "After banging my head against the wall for a bit, I learned a few things. I attached triggers (okay, MessageBoxes. :P ) to a bunch of places in the code, loaded a few characters and came up with this:\r\n\r\n1. Buffs are re-loaded a lot. At least twice on opening the program, 3-4 times when loading a character.\r\n2. All but the last of said re-loads are done with null characters or without the character's professions defined.\r\n3. Somewhere along the line the profession buffs stop getting checked at all. I think they are being removed from the list of buffs to check, but I can't find where.\r\nNote that all this takes place before the character is done loading.\r\n\r\nI found that removing lines 1195-1196 from Rawr.Base/Calculations.cs:IsBuffRelevant() (Looked like a profession check) solved the problem of profession buffs not showing up on character load, but I'm not really sure what it actually changed.\r\nChanging professions manually after a character is loaded repopulates the buffs list from scratch, but I can't figure out why the profession change trigger isn't being fired on character load.\r\n\r\nNone of this changes the fact that all profession buffs (including improvements, which are showing/hiding correctly already) are still active but hidden when your profession is changed to something else. Not just buffs though, things like enchants and BS sockets stay active too. Maybe that is another ticket though.\r\n",
+      "PostedDate": "2009-12-03T17:52:40.417-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "ZD would you mind making the same patch again for Rawr3? I applied it for 2",
+      "PostedDate": "2009-12-04T10:04:55.703-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I would love to, but unfortunately I'm unable to compile/use Rawr3 since I'm developing with Mono. Any attempt I'd make would just be a shot in the dark without being able to test it. Sorry. :(\r\n\r\nWhen you applied this patch, did you fix the problem with profession buffs not showing up on character load? Also, should I make another bug for hidden buffs being counted in your character stats or is that fixed too? I don't have access to my compiler ATM to check.\r\n",
+      "PostedDate": "2009-12-04T11:57:08.893-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I didn't notice the problem you mention after having applied the patch",
+      "PostedDate": "2009-12-04T12:16:13.053-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-14T11:51:48.91-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T13:22:00.06-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:31:40.373-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:14.463-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

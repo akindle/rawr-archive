@@ -1,0 +1,90 @@
+[
+  {
+    "Id": "645986",
+    "ThreadId": "266168",
+    "Html": "\r\n<p>According to EJs posting... Unholy values haste higher than any other stat sans strength. However, in Rawr... it's constantly valued at .1 no matter what your gear level is.<br>\r\n<br>\r\nWhat's the reasoning behind this? Am I missing something?&nbsp;</p>\r\n",
+    "PostedDate": "2011-07-22T02:17:09.547-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "646169",
+    "ThreadId": "266168",
+    "Html": "<p>I've made some changes to better handle Haste and will be in the next release.&nbsp; In general haste has key plateaus where benefits of haste will be really small until you reach the next level.&nbsp; I've mediated that to some degree but it's not completely gone.&nbsp;</p>",
+    "PostedDate": "2011-07-22T08:10:12.94-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "646182",
+    "ThreadId": "266168",
+    "Html": "<p>Can you elaborate on this a bit?<br /><br />Do you happen to know what these plateaus are rating or percent wise?&nbsp;</p>",
+    "PostedDate": "2011-07-22T08:45:41.057-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "646187",
+    "ThreadId": "266168",
+    "Html": "<p>In the current in-field model, I only allowed for Whole casts to be valid.&nbsp; So any partial casts were just kind of dropped and I reported excess RP left over at the end of the rotation.&nbsp; This meant you would only see a significant benefit if you could squeeze a whole additional cast of DC into the rotation or if the runes would cooldown fast enough to change the GCD count.&nbsp; You would also see smaller benefits for additional white hits that would squeeze into the total rotation duration.&nbsp;&nbsp; In my change, I not allow for partial casts of the filler spells (DC in the case of UH) as long as there are resources available.&nbsp; This also means that I'm allowing partial GCDs, which gives a finer value for the overall rotation duration if you are GCD bound.&nbsp;</p>\r\n<p>The best way to see this:&nbsp; Go to the Options tab, you will see a stats graph option.&nbsp; Select only haste, (or you can include other stats if you want to compare) set the interval to something like 500 or 1000.&nbsp; Let your machine munch on that for a bit and then it will show the stats graph in a new window.&nbsp; You will see that all other stats (if you include them) are pretty straight.&nbsp; Only haste will have a stair step effect.&nbsp; That shows at what point in the old method would the model show a change in DPS.&nbsp; Once the next release comes out, you will see that line much more smooth.&nbsp; I still haven't implemented dealing w/ partial runes yet so I still build the rotations around using up the runes. :)&nbsp;</p>\r\n<p>Hope that answers your question.</p>",
+    "PostedDate": "2011-07-22T08:58:10.97-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "646432",
+    "ThreadId": "266168",
+    "Html": "<p>Are we getting a release soon?&nbsp; I'm eager to tinker :)</p>",
+    "PostedDate": "2011-07-23T01:25:30.707-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "646508",
+    "ThreadId": "266168",
+    "Html": "<p>Soon... ;)</p>",
+    "PostedDate": "2011-07-23T08:09:33.813-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "647176",
+    "ThreadId": "266168",
+    "Html": "<p>4.2.2 Is released and has the fixes.</p>",
+    "PostedDate": "2011-07-25T07:20:00.997-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "647178",
+    "ThreadId": "266168",
+    "Html": "<p>Interestingly enough, using the reforges from the prior model, (Going full mastery with haste secondary, basically) shows a dps increase both on a test dummy and once again in a real world setting, especially on anything aoe related. (The latter expected)</p>",
+    "PostedDate": "2011-07-25T07:22:53.347-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "647193",
+    "ThreadId": "266168",
+    "Html": "<p>Might be worth cleaning up my partial ability useage code and then providing an option to the user on whether or not to use the partial casts.&nbsp; This provides the Haste plateaus for those who want to see how it fits into CD usage, and the Haste averages for those who don't.</p>",
+    "PostedDate": "2011-07-25T07:44:44.467-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "662428",
+    "ThreadId": "266168",
+    "Html": "<p>I'm not sure where to go with my issue that isn't uh but frost dw. So, I figured i would start here. Looking in game, I have 1.52 swings with DW gurubashi punishers. The armory posts it as 1.67 and Rawr currently posts it as 1.72.&nbsp; I try to imagine that the .15 credit in the game comes from figuring in 15% from improved icy talons which would match the website listing,&nbsp; but not sure why rawr sees it but doesn't \"pick it up\". {listed haste on all 3 is 1554/12.14%.}</p>",
+    "PostedDate": "2011-08-23T19:08:03.47-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "662470",
+    "ThreadId": "266168",
+    "Html": "<p>Write up a defect with your character XML.&nbsp; I'll definitely take a look.&nbsp; I thought I had rooted out the haste issues w/ DW Frost a while back.&nbsp; If there are lingering issues, I want to get them fixed.</p>",
+    "PostedDate": "2011-08-23T21:14:09.087-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]

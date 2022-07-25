@@ -1,0 +1,101 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Old issue.",
+    "ClosedDate": "2009-08-09T17:28:47.16-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Tonight (first on Rawr 2.1.6 and then on 2.1.7), I tried to use the \"Set Default Gems for Equipment\" feature only to have it (at least) not behave as I expected.\n \nBasically, I defined 2 gemmings, selected the \"Delete non-listed Gemmings\" checkbox, and didn't see most of the not-useful (for me) gemmings get deleted.\nSpecifically, I still saw a bunch with epic gems, even though my custom gemmings only had blue gems in them (plus earthsiege metas).\n \nAnyway, I proceeded to grab a copy of the code from SVN, and re-wrote the section in question (mostly for my own understanding, if nothing else).\n \nMy updated code seems to work for me, as far as I can tell.  (Though I admit, I may be simply not understanding what it's supposed to be doing...)\n \nBasically, starting on line 181, I replaced the entire \"else clause\" for the \"if (checkBoxDeleteNonlistedGemmings.Checked == false)\" check:\n \n                Item lastItem = null;\n \n                foreach (Item item in ItemCache.RelevantItems)\n                {\n                    if (lastItem != null && lastItem.Id != item.Id)\n                    {\n                        if (listGemmableItems.Count != 0)\n                        {\n                            //delete all socketed items that are not available or equipped on a character\n                            foreach (Item exItem in listGemmableItems)\n                            {\n                                if (currCharacter.GetItemAvailability(exItem) != Character.ItemAvailability.NotAvailable)\n                                {\n                                    continue;\n                                }\n                                //checks to make sure that items which are equipped are not deleted due to undesirable\n                                //gemmings\n                                else if (currCharacter.IsEquipped(exItem))\n                                {\n                                    continue;\n                                }\n                                else\n                                {\n                                    ItemCache.DeleteItem(exItem, false);\n                                }\n                            }\n \n                            // add in new gemmings\n                            foreach (Gemming set in listOfGemmings)\n                            {\n                                ItemCache.AddItem(set.gemIt(lastItem), true, false);\n                            }\n                        }\n \n                        // We handled this \"lastItem\", so clear it out...\n                        lastItem = null;\n                    }\n \n                    if (lastItem != null && lastItem.Id == item.Id)\n                    {\n                        listGemmableItems.Add(item);\n                    }\n                    else\n                    {\n                        // if this item has sockets\n                        if (item.Sockets.Color1 != Item.ItemSlot.None\n                            || item.Sockets.Color2 != Item.ItemSlot.None\n                            || item.Sockets.Color3 != Item.ItemSlot.None)\n                        {\n                            // setup for next item\n                            lastItem = item;\n \n                            listGemmableItems = new List<Item>();\n                            listGemmableItems.Add(item);\n                        }\n                    }\n                }\n \n                // handle last item in list\n                if (lastItem != null && listGemmableItems.Count > 0) {\n                    if (listGemmableItems.Count != 0)\n                    {\n                        //delete all socketed items that are not available or equipped on a character\n                        foreach (Item exItem in listGemmableItems)\n                        {\n                            if (currCharacter.GetItemAvailability(exItem) != Character.ItemAvailability.NotAvailable)\n                            {\n                                continue;\n                            }\n                            //checks to make sure that items which are equipped are not deleted due to undesirable\n                            //gemmings\n                            else if (currCharacter.IsEquipped(exItem))\n                            {\n                                continue;\n                            }\n                            else\n                            {\n                                ItemCache.DeleteItem(exItem, false);\n                            }\n                        }\n                    }\n \n                    // add in new gemmings\n                    foreach (Gemming set in listOfGemmings)\n                    {\n                        ItemCache.AddItem(set.gemIt(lastItem), true, false);\n                    }\n                \n                    // not necessary... but probably a good idea... (not sure how C# GC works)\n                    lastItem = null;\n                    listGemmableItems = new List<Item>();\n                }\n            }\n \nOf course, I don't like the way I handle the last item in the list (if it's a \"new\" item)... My solution, I think, instead of trying to handle it in the main item loop, would be to add a new function, which takes lastItem and listGemmableItems as parameters, and does the requisite deletes and inserts into the ItemCache.  I believe that this would be easier to understand, and would remove most of the code duplication I have in there.\n \nThoughts?  (Feel free to just tell me that I'm retarded and the current code works fine...)\n \nNote: I'm not really a C# programmer at all (not sure exactly how obvious that is)... But Rawr is an important enough project to me that digging into it was both fun and useful (if only to me).\n \n---SolomonKane of Doomhammer",
+    "LastUpdatedDate": "2013-05-16T05:26:24.433-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-01-21T01:49:00.46-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "possible \"Set Default Gems for Equipment\" problem",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 12421
+  },
+  "FileAttachments": [
+    {
+      "FileId": 1621,
+      "FileName": "FormMassGemReplacement.cs",
+      "DownloadUrl": ".\\1621"
+    },
+    {
+      "FileId": 1622,
+      "FileName": "FormMassGemReplacement.cs",
+      "DownloadUrl": ".\\1622"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Actually, in trying this with a full ItemCache (instead of a semi-dummy one with a very limited number of items), I found that the \"if (currCharacter.GetItemAvailability(exItem) != Character.ItemAvailability.NotAvailable)\" is still screwing stuff up sometimes.\r\n\r\nNow I'm kind of interested in what gemmings that check/continue is trying to prevent from being removed.\r\n\r\n",
+      "PostedDate": "2009-01-21T02:37:45.33-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-01-21T02:37:48.593-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "IIRC (been a while since I wrote that snip of code) the best I could determine was that \"currCharacter.GetItemAvailability\" used an item and checked to see\r\nif it was equipped on the character. The \"Character.ItemAvailability.NotAvailable\" check means that so long as it returned a value that was not \".NotAvailable\"\r\nI wanted it to keep the item as it was being used on the character. \r\n\r\nOtherwise, the function would delete the item with the gemming in question.  ",
+      "PostedDate": "2009-01-21T14:40:59.807-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Actually only Available and AvailableWithEnchantRestrictions should be prevented from removing, all other should be deleted.",
+      "PostedDate": "2009-01-21T16:38:32.89-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "My understanding of this is that, you define a set of gemmings that you would like to use in the theorycrafting. I set up 2 for mine, and then clicked remove rest. Nothing got removed and when I entered again the checkbox was gone.",
+      "PostedDate": "2009-01-22T03:36:14.98-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "\"Actually only Available and AvailableWithEnchantRestrictions should be prevented from removing, all other should be deleted.\" -> doesn't this mean that all items that you mark as available with the green diamond will be protected for removal?  The problem comes then if you (like me) often check out many other players in Rawr and they might have the same gear as you but with a different gemming, and these extra items build up over time, but you can't get rid of them (with 'delete non-listed gemmings') because you've marked some/all of those items as available for yourself.\r\n\r\nSo shouldn't the function actually only be checking for IsEquipped? and maybe also item-gem combos specifically marked with blue diamond rather than blanket protecting anything marked with green diamond?",
+      "PostedDate": "2009-01-22T04:22:10.333-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Available and AvailableWithEnchantRestrictions only apply to blue diamonds. Green diamonds are reported as RegemmingAllowed.",
+      "PostedDate": "2009-01-22T16:59:00.977-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-09T17:28:47.16-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:35:43.693-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:24.433-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

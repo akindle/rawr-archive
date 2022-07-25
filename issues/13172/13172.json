@@ -1,0 +1,115 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.MultipleModels",
+      "DisplayName": "Rawr.MultipleModels"
+    },
+    "ClosedComment": "This is several months old with no comments, if this is still an issue, please resubmit",
+    "ClosedDate": "2009-08-19T13:27:58.843-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The way type promotion interacts with Math.Floor() is leading to some odd results.  A simple way to see this in Rawr is to start a new character and set them up as a Tauren Druid.  Then under Restoration talents, add 2 points to Improved Mark of the Wild.  Under \"Stats\", Stamina is showing as 101 where it should show as 102.  Here's what's happening:\n  statsTotal.Stamina = (float)Math.Floor(statsRace.Stamina * (1f + statsTotal.BonusStaminaMultiplier));\nget's evaluated as though the code was written this way (with partial resuls in [])\n  double x1 = 1f;                                                  [1.0]\n  double x2 = statsTotal.BonusStaminalMultiplier;   [0.0199999995529651644]\n  double x3 = x1 + x2;                                          [1.0199999995529651644]\n  double x4 = statsRace.Stamina;                           [100.0]\n  double x5 = x4 * x3;                                           [101.99999995519651644]\n  double x6 = Math.Floor(x5);                                [101.0]\n  StatusTotal.Stamina = (float)x6;                           [101.0]\n \nThe problem here is that the float 0.02 is represented by 0.0199.... when converted to a double and the fact that Math.Floor() takes a double causes conversion  to double of it's arguments.  \n \nThis could be partially worked around by changing the code to:\n  statsTotal.Stamina = (float)Math.Floor((float)(statsRace.Stamina * (1f + statsTotal.BonusStaminaMultiplier)));\nso that all the steps, x1-x5 involve floats rather than doubles.\n  \nIt's unclear if the correct solution would be to switch to using doubles instead of floats everyhere, add a new function for floor that takes and returns a double and not use Math.Floor (except inside this new routine), or something else.",
+    "LastUpdatedDate": "2013-05-16T05:25:40.147-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-05-05T13:23:24.817-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[MultipleModels] Math.Floor leading to odd results",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13172
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "And just how big of an inaccuracy will this add up to? A difference of 10-20 health?",
+      "PostedDate": "2009-05-05T13:50:00.67-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yes, in this example case, I excpect that the error is limited to 10-20 health.  The bigger problem is that every time Math.Floor gets used the results can be off.  A similar error in intellect results in incorrect values for mana, mp5, crit, and spell power.  Individually, none of the differences are big but cumulative they can get significant.  And while changing 102 into 101 can be argued to be not that relevant, changing a 1 to a 0 that then gets used as a multiplier elsewhere can have a huge impact.",
+      "PostedDate": "2009-05-05T14:29:31.327-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks for this it was proving really bugging in my model I had assumed it was just Visual Studio being a right royal pain given its a MS product, and I'm much more used to using Eclipse and Java coding. Looks like MS get off the hook on this one :(\r\n\r\nI had several examples where I was adding a fudge factor mostly for display results as users don't half complain if the armory says they have X stat and Rawr says they have X-1 stat. Some of it was potentially throwing off calcs too especially near caps. I would appreciate someone implementing an overload though as all the (float) casting looks really ugly.",
+      "PostedDate": "2009-05-05T16:43:16.893-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "If you're going to those details then you'll have to take a few more things into account. From the testing I've seen not all stat multipliers work the same. Talent multipliers appear to work separately on base and bonus stat and floor each separately. Buffs on the other hand (for example blessing of kings) however don't floor, but round the result and work on the overall value after all talents are applied.",
+      "PostedDate": "2009-05-05T16:50:10.25-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well, a 1 to a 0 that's used as a multiplier wouldn't happen.\r\n\r\nI understand what's happening, but not how you're suggesting that has anything to do with doubles vs floats. I don't see how your proposed change would do anything at all, because all of the variables/constants involved are already floats. There's no doubles in any of those calculations, beyond the conversion that happens when it's passed into Math.Floor(), which is unchanged.\r\n\r\nWe've evaluated the idea of switching to doubles everywhere before, and decided not to, because it's effectively trading a slight accuracy improvement for doubling the memory requirements, and a slight performance reduction.\r\n\r\nThe one idea that I see having merit is having a set of math libraries, which provide basic single floating point math operations, without much performance impact, but which account for the inaccuracies of floats.\r\n\r\nFloor/Ceiling are the big ones, and I suppose those could be handled easily enough by adding 0.000001 before flooring, and subtracting that before ceilinging. But there's also equality checks, greater/lessthan checks, thought I don't know how much those are impacting us.",
+      "PostedDate": "2009-05-05T16:56:50.027-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I've seen this in the DEF numbers for TankDK.  Where armory and in-game shows me at 540 with a certain set of gear, but Rawr shows 539 w/ me needing 5 more def rating to hit the 540 softcap.  So it may be worth investigating and I can look at adding some of these math function validation into the Unittest code that I'm starting.  I'll see what I can do to find that threshold number.",
+      "PostedDate": "2009-05-05T17:05:34.06-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The difference between what is and what I proposed is based on how the C# compiler handles the expressions.\r\nIn the case of Math.Floor(statsRace.Stamina * (1f + statsTotal.BonusStaminaMultiplier)), the promotion rules used by C# result in the expression being conveted as I'v shown above using x1 - x6.  \r\n\r\nIn the case of  Math.Floor((float)(statsRace.Stamina * (1f + statsTotal.BonusStaminaMultiplier))), the equivalent generated code looks like:\r\nfloat x1 = 1f; [1.0]\r\nfloat x2 = statsTotal.BonusStaminalMultiplier; [0.02]\r\nfloat x3 = x1 + x2; [1.02]\r\nfloat x4 = statsRace.Stamina; [100.0]\r\nfloat x5 = x4 * x3; [102.0]\r\ndouble x6  = x5; [102.0]\r\ndouble x7 = Math.Floor(x6); [102.0]\r\nStatusTotal.Stamina = (float)x7; [102.0]\r\n\r\nFor added fun, you can add the following code somewhere:\r\n\r\nfloat f1 = 2.0f;\r\ndouble f2 = 2.0f;\r\ndouble f3 = 2.0d;\r\n\r\nUnder the debugger you'll see that the values are:\r\nf1 = 2.0\r\nf2 = 0.0199999995529651644\r\nf3 = 2.0",
+      "PostedDate": "2009-05-05T21:31:28.363-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I wish I new how to edit comments.  I meant:\r\n\r\nFor added fun, you can add the following code somewhere:\r\n\r\nfloat f1 = 0.02f;\r\ndouble f2 = 0.02f;\r\ndouble f3 = 0.02d;\r\n\r\nUnder the debugger you'll see that the values are:\r\nf1 = 0.02\r\nf2 = 0.0199999995529651644\r\nf3 = 0.02\r\n\r\nAnd for the record, I'm fairly certain this is a bug in Visual Studio C# but I've not figured out how to report it and instead proposed a work-around since that's something we can control.",
+      "PostedDate": "2009-05-05T22:00:21.237-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Here's What MicroSoft had to say:\r\n\"This behavior is By Design. Floating-point calculations carry an inherent risk of numerical error as they cannot exactly represent many decimal values such as 0.02. The representation used will be the closest available representation of 0.02 at the gievn precision, which may fall above or below the actual value. In this case, the float representation for 0.02 falls below 0.02 and thus will produce a number very slightly under 102.0 after the multiplication. When the floor of this value is taken, it will produce 101.0 instead of 102.0. Accounting for this type of error is a necessary part of calculating with floating-point types.\r\n\r\nAs a possible workaround, you can try adding a very small value to increase before the multiplication. If you can nudge the value upwards by more than the observed error, the Floor function should return the value you intend. Whether this would introduce other error into your system is something you will need to determine.\r\n\r\nAlex Turner\r\nProgram Manager\r\nVisual C# Compiler\r\n\"",
+      "PostedDate": "2009-05-11T19:31:27.827-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Could it also be possible to avoid floating point math all together?  EG.  if everything is viable at 2-4 points of precision eg.  0.0001?  Then why not use INT32 or INT64 values and then divide by the appropriate order of magnitude?  It may cause problems requiring a total-rewrite that may be out of scope of trying to work around a FP prec. issue.",
+      "PostedDate": "2009-05-11T20:32:15.34-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Avoiding floating point math all together isn't really viable, I don't think. Best I can think of is to implement our own Floor function, which adds epsilon to the value before flooring it. (And our own Ceiling, which subtracts epsilon)",
+      "PostedDate": "2009-05-12T09:34:50.06-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-19T13:27:58.843-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:48:47.153-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:34:37.967-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:25:40.147-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

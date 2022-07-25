@@ -1,0 +1,90 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-10-01T13:30:51.513-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I get an error every time I try to load a toon in the Batch tools UI.\n \nThe error is :-\n \n[FileSecurityState_OperationNotPermitted]\nArguments: \nDebugging resource strings are unavailable. Often the key and arguments provide sufficient information to diagnose the problem. See http://go.microsoft.com/fwlink/?linkid=106663&Version=4.0.60531.0&File=mscorlib.dll&Key=FileSecurityState_OperationNotPermitted\n \n \nThe Stack Trace is :-\n \n   at System.IO.FileSecurityState.EnsureState()\n   at System.IO.FileSystemInfo.get_FullName()\n   at Rawr.UI.BatchTools.Open(Object sender, RoutedEventArgs e)\n   at System.Windows.Controls.MenuItem.OnClick()\n   at System.Windows.Controls.MenuItem.OnMouseLeftButtonDown(MouseButtonEventArgs e)\n   at System.Windows.Controls.Control.OnMouseLeftButtonDown(Control ctrl, EventArgs e)\n   at MS.Internal.JoltHelper.FireEvent(IntPtr unmanagedObj, IntPtr unmanagedObjArgs, Int32 argsTypeIndex, Int32 actualArgsTypeIndex, String eventName)\n \n \nThe batch tools are a fantastic but under-utilised part of Rawr and would be great to have working to help with my Boomkins resto set.",
+    "LastUpdatedDate": "2013-05-16T05:17:41.107-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-07-06T01:03:20.92-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Batch Tools] Error everytime opening a character",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 21098
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Batch tools are very limited in Silverlight due to security restrictions. Can you be more specific in how exactly you're trying to load the character? If you have the option I would definitely recommend the WPF version if you're using batch tools.",
+      "PostedDate": "2011-07-06T04:36:48.017-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Loading up Rawr (in browser as you assumed).    Selecting Tools>BatchTools.    Then hitting File>Open and selecting a character  =   Error.   \r\n\r\nIt's getting late here now, but i'll try the WPF tomorrow to see how that goes.  Thanks.\r\n",
+      "PostedDate": "2011-07-06T07:59:51.18-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "File->Open in batch tools is not for loading characters, that is for loading a whole batch list (which I don't think is supported under SL, should probably gray it out). What you want is either click on ... button in new row or File->Import.",
+      "PostedDate": "2011-07-06T14:15:21.847-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Just successfully used the File>Import to import the first toon but it won't add a second profile to the batch.   \r\n\r\nThe ....  button existed in the old version and is what I used to use all the time in the batch tools.    In the Silverlight button it doesn't exist initially but does appear  once you have loaded the first toon, but it only loads another toon in that same first position, it doesn't load a second toon :(\r\n\r\nSo I am a step closer, but still can't get the 2nd profile to load in the Silverlight version.    I'll give the WPF a go now.\r\n",
+      "PostedDate": "2011-07-06T16:43:39.553-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "In File->Import you should be able to select several files at the same time and they will all be loaded together.",
+      "PostedDate": "2011-07-06T16:49:10.423-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "In the WPF, clicking on the ..... allowed me to load one toon, but left me with only one line (no second line there with another ..... to load the second profile).\r\n\r\nUsing the import however correctly imported the 1st toon and added a second line with the .... on to load the second one.   So far so good, i'll report back if I run into any more issues :)\r\n\r\n",
+      "PostedDate": "2011-07-06T16:49:43.45-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Working perfectly with the WPF.    Thanks.\r\n",
+      "PostedDate": "2011-07-07T01:01:10.36-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-10-01T13:30:51.513-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:24:42.017-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:17:41.107-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

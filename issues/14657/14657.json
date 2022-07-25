@@ -1,0 +1,90 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Bear",
+      "DisplayName": "Rawr.Bear"
+    },
+    "ClosedComment": "Fixed for v2.2.25",
+    "ClosedDate": "2009-11-08T04:34:16.29-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "To replicate with source release r38543\n \n1) Load Rawr and change the class and model to something else eg: Shaman/Enhance\n2) Exit Rawr to save changes\n3) Re start Rawr and observe that the class displays Shaman and model displays Enhance (NB. if it still says Druid/Bear then the bug won't manifest itself)\n4) Load a character from Armoury eg: Astrylian, Suramar, US\n5) Observe that once the load from armoury is complete that the program will crash with the following exception...\n \n\"Object reference not set to an instance of an object.\"\n   at Rawr.Character.<>c__DisplayClass1.<ActiveBuffsContains>b__0(Buff x) in C:\\Programming\\Rawr\\Rawr.Base\\Character.cs:line 362\n   at System.Collections.Generic.List`1.FindIndex(Int32 startIndex, Int32 count, Predicate`1 match)\n   at System.Collections.Generic.List`1.FindIndex(Predicate`1 match)\n   at Rawr.Character.ActiveBuffsContains(String buff) in C:\\Programming\\Rawr\\Rawr.Base\\Character.cs:line 362\n   at Rawr.Bear.CalculationsBear.GetCharacterStats(Character character, Item additionalItem) in C:\\Programming\\Rawr\\Rawr.Bear\\CalculationsBear.cs:line 798\n   at Rawr.Bear.CalculationsBear.GetCharacterCalculations(Character character, Item additionalItem, Boolean referenceCalculation, Boolean significantChange, Boolean needsDisplayCalculations) in C:\\Programming\\Rawr\\Rawr.Bear\\CalculationsBear.cs:line 399\n   at Rawr.Calculations.GetCharacterCalculations(Character character, Item additionalItem, Boolean referenceCalculation, Boolean significantChange, Boolean needsDisplayCalculations) in C:\\Programming\\Rawr\\Rawr.Base\\Calculations.cs:line 258\n   at Rawr.FormMain._character_ItemsChanged(Object sender, EventArgs e) in C:\\Programming\\Rawr\\FormMain.cs:line 443\n   at Rawr.FormMain.set_Character(Character value) in C:\\Programming\\Rawr\\FormMain.cs:line 293\n   at Rawr.FormMain.LoadCharacterIntoForm(Character character, Boolean unsavedChanges) in C:\\Programming\\Rawr\\FormMain.cs:line 837\n   at Rawr.FormMain.LoadCharacterIntoForm(Character character) in C:\\Programming\\Rawr\\FormMain.cs:line 829\n   at Rawr.FormMain.bw_ArmoryGetCharacterComplete(Object sender, RunWorkerCompletedEventArgs e) in C:\\Programming\\Rawr\\FormMain.cs:line 997\n   at System.ComponentModel.BackgroundWorker.OnRunWorkerCompleted(RunWorkerCompletedEventArgs e)\n   at System.ComponentModel.BackgroundWorker.AsyncOperationCompleted(Object arg)\n \nThis bug doesn't seem to manifest itself if you start with Druid/Bear as the default Class/Model only when you switch to that having a different startup model.  I also confirmed it would crash if you loaded a Mage then tried to load a Bear. So its something to do with the transition to a bear when bear isn't the default.",
+    "LastUpdatedDate": "2017-11-27T10:59:32.59-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-11-06T11:47:51.04-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Bear] Repeatable error on loading a Bear from Armory",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14657
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "This could be similar to what I was seeing in RAWR3 web test site. The Bear Module would crash basically every time I was trying to load from the armory.",
+      "PostedDate": "2009-11-06T23:58:23.253-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-07T04:52:16.29-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-07T05:08:46.243-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Further update the issue is that Rawr.Bear CalculationsBear.cs line 1422 has \r\n\r\ncharacter.ActiveBuffs.Add(Buff.GetBuffByName(\"Bloodlust\"));\r\n\r\nwhich means that a null gets added to Activebuffs as no such buff exists. This is a potentially wider issue as the protection level on Character.ActiveBuffs at present is such that its easy to add nulls to it and cause issues. Perhaps as an interim measure Buff.GetBuffByName should throw a warning if it is about to return a null so that the error can be trapped at source.",
+      "PostedDate": "2009-11-07T13:53:06.187-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-11-08T04:34:16.29-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:06:03.233-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-21T00:00:17.077-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:32:00.083-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:23:31.643-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T10:59:32.59-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

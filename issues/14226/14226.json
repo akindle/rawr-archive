@@ -1,0 +1,95 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Items",
+      "DisplayName": "Rawr.Base.Items"
+    },
+    "ClosedComment": "Additional checks added to prevent this issue in commit 42953",
+    "ClosedDate": "2009-12-02T10:49:58.23-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I noticed that the Horde's set is named Thassarian's Battleplate/Plate instead of Koltira's Battlplate/Plate. I don't think this has an effect on showing whether you get 2pc/4pc set bonus, however I discovered that having 3/4 of one iLvL and the fourth having a different iLvL, it will not give you the 4pc set bonus, possibly the same with different iLvL for 2pc as well.",
+    "LastUpdatedDate": "2013-05-16T05:24:12.6-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-09-23T02:13:11.95-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Items] DK T9 set bonuses vs. iLvL and possibly set names",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 14226
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "We standardize on all alliance names for sets. Are you sure one of the items you were trying wasn't the other spec?",
+      "PostedDate": "2009-09-23T02:17:55.003-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Nope, its all DKDPS Horde T9 gear with different iLvL. I even tried changing the iLvL of various pieces and it only gives me the 4pc set bonus when all the pieces share the same iLvL.",
+      "PostedDate": "2009-09-23T02:25:14.167-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "AFAIK the DPSDK module won't pick up the set bonus if you have alliance set name on horde gear.",
+      "PostedDate": "2009-09-23T06:59:43.14-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It actually doesn't matter which set name you use, I discovered when testing out this i tried it under both the Alliance Battleplate and the Horde Battleplate names. Though I did discover the actual Thassarian pieces do work regardless of iLvL where as the Koltira pieces don't. Someone just messed up the Horde set somehow.\r\nIf the all the sets are standardized on the Alliance names for sets, then why is there even a listing for Kolitra's Battleplate/Plate in the set bonuses list? This confuses half the people using Rawr and can cause problems in the database.",
+      "PostedDate": "2009-09-23T09:24:03.163-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I found out what's causing this; if you edit the items [Koltira's Gauntlets of Conquest] and look at the set name its sometihng like \"Thassarian's Battlegear       \". If you remove the extra \"     \" at the end of all items, they'll stack and give setbonus (tested with 3 pieces conq and one triumph)",
+      "PostedDate": "2009-09-23T11:10:34.507-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Cool, ezlay! That worked for me. I removed the extra spaces at the end of the set name and it worked.",
+      "PostedDate": "2009-09-24T03:15:05.463-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-24T09:58:03.69-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-12-02T10:49:58.23-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T16:19:37.49-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:32:51.057-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:12.6-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

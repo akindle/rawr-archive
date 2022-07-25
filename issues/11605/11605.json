@@ -1,0 +1,70 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "bug has been squashed.",
+    "ClosedDate": "2008-11-19T23:10:12.13-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Still broken with the surce that's in source control:\nHappens both with rawr loaded with a character and without one, at least when the mage module is loaded.\n \nSee the end of this message for details on invoking \njust-in-time (JIT) debugging instead of this dialog box.\n \n************** Exception Text **************\nSystem.NullReferenceException: Object reference not set to an instance of an object.\n   at Rawr.Character.IsEquipped(Item itemToBeChecked)\n   at Rawr.FormMassGemReplacement.OKButton_Click(Object sender, EventArgs e)\n   at System.Windows.Forms.Control.OnClick(EventArgs e)\n   at System.Windows.Forms.Button.OnClick(EventArgs e)\n   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)\n   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)\n   at System.Windows.Forms.Control.WndProc(Message& m)\n   at System.Windows.Forms.ButtonBase.WndProc(Message& m)\n   at System.Windows.Forms.Button.WndProc(Message& m)\n   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)\n   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)\n   at System.Windows.Forms.NativeWindow.Callback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)",
+    "LastUpdatedDate": "2013-05-16T05:26:51.253-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-11-12T01:22:56.05-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Mass Gem Replacement",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 11605
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "*nods*  On it. \r\n\r\n(If you could answer a question or two, it'd make the hunt a bit easier...)\r\n\r\nDoes it happen with one character in specific, or whenever you're working on a mage?\r\n\r\nIf you're working with a fresh itemcache and enchantcache (i.e. a fresh install of release), does it still happen?",
+      "PostedDate": "2008-11-12T21:28:51.92-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sorry, it took me sometime to get back to it. It's actually very easy to reproduce, I downloaded a fresh rawr 2.1, deleted all modules except mage, opened rawr, without openeing any character I click the mass gem replacement and set some caster dps gems as the default and to delete all other variations - it crashes with the above error.",
+      "PostedDate": "2008-11-19T02:54:18.13-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Looks like IsEquipped is having an issue with no character being loaded. \r\n\r\nMassGemReplacement checks the equipment from the currently loaded character to make sure\r\nthat equipment that they're carrying isn't removed from the list if it's carrying out of date gemmings.\r\n\r\nIf a character is loaded, you shouldn't run into this error, and I'll see about having a fix in before the next release. ",
+      "PostedDate": "2008-11-19T22:24:58.317-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-11-19T23:10:12.13-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:18.34-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:51.253-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

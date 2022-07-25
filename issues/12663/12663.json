@@ -1,0 +1,80 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Warlock",
+      "DisplayName": "Rawr.Warlock"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-02-24T23:02:34.233-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "There are two talents that trigger the exception (same exception in both cases, print out follows at the bottom of this description).\n \n1. Improved Shadow Bolt. To reproduce this, open a clean Rawr, select the warlock module, navigate to the Destruction talent tree and click on the Improved Shadow Bolt talent. The exception will occur.\n \n2. Everlasting Affliction without Haunt: To reproduce this, open a clean Rawr, select the warlock module, navigate to the Affliction talent tree and select talents until the talent requirements have been met to enable Everlasting Affliction. Click the Everlasting Affliction talent. The exception will occur. Interestingly, if you select enough lower tier talents that Haunt is enabled before you select Everlasting Affliction, you can talent Haunt, and then talent Everlasting Affliction and the exception will not occur. If you then untalent Haunt once Everlasting Affliction is talented with at least one point, the exception will occur.\n \n************** Exception Text **************\nSystem.NullReferenceException: Object reference not set to an instance of an object.\n   at Rawr.Warlock.Solver.Calculate(CharacterCalculationsWarlock calculatedStats)\n   at Rawr.Warlock.CalculationsWarlock.GetCharacterCalculations(Character character, Item additionalItem)\n   at Rawr.CalculationsBase.GetCharacterCalculations(Character character)\n   at Rawr.Calculations.GetCharacterCalculations(Character character)\n   at Rawr.FormMain._character_ItemsChanged(Object sender, EventArgs e)\n   at System.EventHandler.Invoke(Object sender, EventArgs e)\n   at Rawr.Character.OnCalculationsInvalidated()\n   at Rawr.FormMain.set_Character(Character value)\n   at Rawr.FormMain.Calculations_ModelChanged(Object sender, EventArgs e)\n   at System.EventHandler.Invoke(Object sender, EventArgs e)\n   at Rawr.Calculations.OnModelChanged()\n   at Rawr.Calculations.LoadModel(Type type)\n   at Rawr.FormMain.LoadModel(String displayName)\n   at Rawr.FormMain.comboBoxModel_SelectedIndexChanged(Object sender, EventArgs e)\n   at System.Windows.Forms.ComboBox.OnSelectedIndexChanged(EventArgs e)\n   at System.Windows.Forms.ComboBox.set_SelectedIndex(Int32 value)\n   at Rawr.FormMain._character_ClassChanged(Object sender, EventArgs e)\n   at Rawr.FormMain.set_Character(Character value)\n   at Rawr.FormMain.bw_ArmoryGetCharacterComplete(Object sender, RunWorkerCompletedEventArgs e)\n   at System.ComponentModel.BackgroundWorker.OnRunWorkerCompleted(RunWorkerCompletedEventArgs e)\n   at System.ComponentModel.BackgroundWorker.AsyncOpera",
+    "LastUpdatedDate": "2017-11-27T11:00:42.21-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-02-23T15:06:00.503-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Warlock] Exceptions applying certain talent configurations",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 12663
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Both are fixed in the next version.",
+      "PostedDate": "2009-02-24T12:02:39.823-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-02-24T23:02:34.233-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T14:54:03.573-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T20:42:11.687-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:09:45.937-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:35:25.39-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:11.097-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:00:42.21-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

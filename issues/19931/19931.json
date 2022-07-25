@@ -1,0 +1,75 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-02-06T20:42:00.767-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "In BossHandler.cs is this code:\n \n \n        private double UNDER35PERC = 0.10d;\n        public double Under35Perc { get { return UNDER35PERC; } set { UNDER35PERC = value; OnPropertyChanged(\"Under35Perc\"); } }\n        private double UNDER20PERC = 0.15d;\n        public double Under20Perc { get { return UNDER20PERC; } set { UNDER20PERC = value; OnPropertyChanged(\"Under20Perc\"); } }\n \n \nWhile I understand that UNDER35PERC should be less than 0.35 since it's expected that less the boss will be less than 35% health for less than 35% of the fight (due to heroism/bloodlust among other things), 0.10 seems too low.  In any case, I would expect UNDER35PERC to be a larger value than UNDER20PERC.",
+    "LastUpdatedDate": "2013-05-16T05:18:45.65-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2011-02-06T19:55:24.98-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "BossHandler value for UNDER35PERC seems off.",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 19931
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "It was intended that UNDER35PERC would be active only until UNDER20PERC took over, that's why 35's duration is smaller than 20's.",
+      "PostedDate": "2011-02-06T20:30:20.583-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "So in practical usage, if a model had a spell/ability that could only activate under 35% target health, you'd add the two together.",
+      "PostedDate": "2011-02-06T20:31:18.93-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "It still seems counterintuitive.  I would've expected that to get the time between 35 and 20 percent, I'd subtract the two.",
+      "PostedDate": "2011-02-06T20:38:30-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "ya, I never really thought that part through because I didn't use it myself in DPSWarr. I've committed the change to Moonkin to do it this way. Only it and Hunter Pets even had usage of the variable at all and Hunter was already doing it right.",
+      "PostedDate": "2011-02-06T20:41:55.887-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-02-06T20:42:00.767-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:02.64-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:18:45.65-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

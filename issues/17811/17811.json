@@ -1,0 +1,115 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Optimizer",
+      "DisplayName": "Rawr.Base.Optimizer"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-10-01T12:23:18.507-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The batch optimizer kind of assumes all items are unique.\nWhen building a progressive upgrade list for Cat/Bear gear sets it doesn't see that for example set items can be obtained multiple times so these items don't show in the upgrade list for Bear if I they are equipped for Cat as it only considers them when gemmed / echanted the same way.\n(I don't think example files are needed to fix this but it they are just ask, don't have them with me atm)",
+    "LastUpdatedDate": "2013-05-16T05:20:36.37-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Medium",
+      "Severity": 100,
+      "Id": 2
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-05-26T06:18:49.56-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Optimizer.Batch] Items not considered properly",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 17811
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "There is no way to tell it you have multiple copies of an item even for a single character, much less Batch Tools",
+      "PostedDate": "2010-05-26T08:23:54.11-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Correct, but when building an upgrade list it should consider you can get a second one of an item, which it doesn't at the moment.",
+      "PostedDate": "2010-05-26T14:07:45.85-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Actually, if it's not an item you already have (meaning you don't already have 2 of them) then the optimizer isn't doing anything wrong. That's what the Upgrade list should be doing, but I don't think that has a Batch version.",
+      "PostedDate": "2010-05-26T21:39:22.2-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I think we're not understanding each other somewhere but I don't see where :)\r\n\r\nAn example:\r\nI use Bloodfall heroic for Cat and Bloodfall normal for Bear, the progressive optimizer does this nicely, gems/enchants the heroic one for Cat and the normal one for Bear.\r\nBut when I now make a progressive upgrade list (the only one I use, can't comment on other ones) it does not contain Bloodfall heroic. For Cat this is correct as I already use that but for Bear it would be a direct upgrade as I can gem/enchant the 2nd for Bear.\r\nThe Upgrade list should contain Bloodfall heroic but it doesn't as I already have it (once).",
+      "PostedDate": "2010-05-27T07:49:54.153-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "There's no support currently for multiples of same item (in terms of availability). It is something we want to add eventually, but there are some technical limitations.",
+      "PostedDate": "2010-05-27T09:47:49.79-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T13:49:47.21-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-02T15:55:49.493-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-09T12:32:00.773-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-09T12:33:51.45-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-11T14:54:41.22-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I implemented the quick fix that we talked about. Since UI only supports showing one gemming of the item in the upgrade list it'll show one of the upgrade gemmings in the upgrade list if multiple are used, so the upgrade value shown under a specific character might be actually achieved with a different gemming.",
+      "PostedDate": "2010-09-18T19:58:15.307-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-11-23T13:47:37.537-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-10-01T12:23:18.507-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:28:20.49-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:36.37-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

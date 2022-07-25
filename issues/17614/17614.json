@@ -1,0 +1,165 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.MultipleModels",
+      "DisplayName": "Rawr.MultipleModels"
+    },
+    "ClosedComment": "Duplicate to 17629 as Bear is the only one left not doing this",
+    "ClosedDate": "2010-11-23T13:45:13.063-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I used default settings on the rawr web application and the scores for the balebrew charms (170 stamina) were 4907,75 versus 1736,12 for Corroded skeleyon key (228 stamina and 6400 damage absorption per two minutes).\n \nThis just can't be correct as more stamina is always better than less stamina (all other relevant things the same).\n \nProbably som issue with the abortiopn effect since it doesn't show up in the tool tip in rawr.\n \nThanks for a good job!",
+    "LastUpdatedDate": "2013-05-16T05:20:47.303-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-05-08T12:39:46.18-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Tanking] Damage Absorbs not modeled",
+    "Type": {
+      "Name": "Task",
+      "Id": 2
+    },
+    "VoteCount": 1,
+    "Id": 17614
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "Please follow the posting guidelines. There's not enough information here to help you.",
+      "PostedDate": "2010-05-08T15:40:50.13-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "No Absorb affects work at all... we don't have modeling for them in any tank model",
+      "PostedDate": "2010-05-09T00:22:51.45-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I added a parse to handle this as a \"HealthRestore\" currently to hopefully add a more appropriate value.  Other, wiser devs may choose to remove it, until a more suitable model is worked out.",
+      "PostedDate": "2010-05-10T14:56:53.99-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "see my patch on the subject",
+      "PostedDate": "2010-05-10T17:38:02.48-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-05-10T19:34:46.977-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-05-11T09:27:40.857-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Resolved with changeset 50397.",
+      "PostedDate": "2010-05-11T11:45:35.84-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "** Closed by Shazear 5/11/2010 11:45 AM",
+      "PostedDate": "2010-05-11T13:11:59.797-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This fix over-values absorb.  See comments.",
+      "PostedDate": "2010-05-11T13:12:00.463-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "What the trinket does:  Absorbs damage for 10 seconds every 2 minutes, up to a maximum of 6400 damage.  Over a 10 minute fight, you can absorb 32000 damage.\r\n\r\nWhat this revision does with trinket effects averaged:  Absorbs 6400 / 12 = 533.33, repeating of course, per hit.  Assuming you are hit every 2 seconds over a 10 minute fight, Rawr says you can absorb 160000 damage.\r\n\r\nWhat this revision does with trinket effects always on:  Absorbs 6400 per hit.  Assuming you are hit every 2 seconds over a 10 minute fight, Rawr says you can absorb 1920000 damage.\r\n\r\nThe only reason I never implemented this patch was because I couldn't figure out how to get it as close to the trinket as possible, and given it's more of a \"holy crap\" button, I recall there being some debate as to whether we'd even model this as mitigation.",
+      "PostedDate": "2010-05-11T13:13:16.62-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Err, \"trinket effects\" = \"trinket on use effects\".  At least in ProtPaladin, it's an option as to whether you see stats and values with trinket on use effects off, on, or properly averaged.",
+      "PostedDate": "2010-05-11T13:14:42.7-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The values look correct in TankDK to what I would expect.  I have my own special handler for special effects for things that I pass in to the general special effects handler so that the cooldowns are factored in and such as well.  We could see about adding that type of functionality into Paly/Warr if you like.\r\n",
+      "PostedDate": "2010-05-11T13:24:43.187-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'll definitely check out how you're doing it. :)\r\n\r\nAs a note, Essence of Gossamer is modeled correctly, which leads me to believe that we may need to split this stat between Essence of Gossamer and Corroded Skeleton Key.",
+      "PostedDate": "2010-05-11T13:27:04.133-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This looks wrong in TankDK, too, assuming I understand how mitigation works in it.\r\n\r\nTwo problems I see with the TankDK implementation, assuming that fTotalMitigation represents \"Damage Mitigated Per Second\" as mentioned in the \r\n\r\n1) For the Essence of Gossamer, the value in DamageAbsorbed represents the DamageAbsorbed per hit.  This calculation will only be correct in cases where the boss hits once per second.\r\n\r\n2) For the Corroded Skeleton Key, the problem is that the number DamageAbsorbed represents after being averaged is the amount of damage absorbed per *ten* seconds.  6400 for 10 seconds every 2 minutes means you can absorb 640 damage per second for 10 seconds and 0 damage per second for 110 seconds, which averages out to 53.33.. per second.  stats.DamageAbsorbed is actually coming out of the average function as 533.33.., so it appears that TankDK is indeed overvaluing absorb on this trinket by 10x.\r\n\r\nAs a comparison... imagine you had a trinket that added 2000 spell power for 10 seconds every 2 minutes, and a trinket that absorbed 2000 damage for 10 seconds every 2 minutes.  Now, increase the length of the proc on both of those to 20 seconds.  The Spell Power trinket allows for more spell power during those extra 10 seconds to do extra damage or healing, but the Damage Absorbed trinket still will only absorb the same amount no matter if it's proc is 10 seconds or 20 seconds long.\r\n\r\nThe root of the issue is that we're running the DamageAbsorbed through the same average function as we would SpellPower and other stats, and this is resulting in erroneous output because DamageAbsorbed cannot be averaged the same way SpellPower does.",
+      "PostedDate": "2010-05-11T14:00:41.62-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Crap... you're probably right - I was looking at the Gossamer and figured that was off, but the valuation of the other items seemed in-line w/ my napkin math.  But you're right in that it should be 6400/120 since I'm keeping everything in terms of DPS.  and then whatever the mitigation multiplier would be by default * 4.  I'll crack it back open and see about filtering it out some more.  Since it's possible that a wide range of Special Effects may be running into the same problem. ",
+      "PostedDate": "2010-05-11T14:11:10.7-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-05-12T13:36:52.147-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "After consideration, given that Essence of Gossamer's absorption and Corroded Skeleton Key's absorption operates under different mechanics, I have concluded that two separate stats are needed to handle these two trinkets.  For EoG, A stat like \"DamageAbsorbedPerHit\" would do, while keeping CSK as \"DamageAbsorbed\".\r\n\r\nIn the code, instead of reducing each hit by Stats.DamageAbsorbed, you'd reduce it by Stats.DamageAbsorbedPerHit.\r\n\r\nThere is an issue with DamageAbsorbed, however, in that it is not a mitigation stat, but rather a survival stat.  In DefendModel.cs for ProtPaladin, for instance, I would simply add it to the value of healthAD.\r\n\r\nI'd like to get the other tank model devs opinion of this potential solution before I implement it, given it would add a stat.",
+      "PostedDate": "2010-05-26T13:39:49.23-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well, DamageAbsorbed is a mitigation stat, very slightly. You do end up taking less damage over time. It's just like 6000 less over 2 minutes or whatever the cooldown is.",
+      "PostedDate": "2010-05-26T13:46:47.01-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "yeah, that's all dependent upon how the given model looks at damage absorb.  And yes, I was looking at the damage absorbed vs. damage absorbed per hit conundrum.  splitting the stat into 2 would work, and be less hacky than something like the CSR which I was just going to put a duration of 1 on an go from there.  Though it seems counter-productive to us trying to make the stat object smaller.  The method of scoring Survival vs. Mitigation is kinda up to the model.  Since I have a damage reduction section already, it'll show up in mitigation for TankDk.\r\n\r\n",
+      "PostedDate": "2010-05-26T15:41:07.457-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I really wouldn't worry too much about accurately modeling the Essence of Gossamer's proc at this point. Until there's some good trinket that comes along and has the same (but much stronger) proc, anyway. It's not like anyone (should) ever care about the value of EoG's proc. It's used solely because of its stam in a situation where you want stam, and don't have two good stam trinkets.",
+      "PostedDate": "2010-05-26T16:03:56.127-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-06T20:38:28.507-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T16:26:39.733-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-11-23T13:45:13.063-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:28:32.467-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:47.303-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

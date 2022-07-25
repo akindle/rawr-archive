@@ -1,0 +1,31 @@
+<div class="wikidoc"><h1>Rawr Options</h1>
+Rawr options allow you to customize the behavior of Rawr. Most of the users will never need to change the settings, but they are there to let the more advanced users modify Rawr to their specific needs.<br />
+<h2>General Settings</h2>
+<h5>Use multithreading</h5><ul><li>Rawr is designed to take advantage of multi-core processors and will by default compute several gear calculations in parallel when calculating comparison charts or optimizing your gear. You can disable this to force Rawr to only utilize one thread.</li></ul>
+<h5>Display Buff Sources</h5><ul><li>You can enable this to display which class/spec provides the buffs in the Buffs tab.</li></ul>
+<h5>Display Gem Names in Tooltips</h5><ul><li>You can enable this to display the names of gems in addition to their stats in item tooltips.</li></ul>
+<h5>Enforce Profession Requirements</h5><ul><li>When enabled it will hide all buffs, enchants and options such as jewelers gems and blacksmithing sockets that you don&#39;t have access to based on your selected professions.</li></ul>
+<h5>List Names Width</h5><ul><li>Determines the width of column reserved for item names in comparison charts</li></ul>
+
+<h2>Special Effect Settings</h2>
+<h5>Proc Effect Calculation Mode</h5>Determines the way uptime of special effects is calculated.
+<ul><li>Simple - This is the fastest way, using the asymptotic uptime as fight duration goes to infinity.</li>
+<li>Advanced - Low Precision - Computes accurate uptime based on given fight duration using single precision when calculating values of incomplete beta function.</li>
+<li>Advanced - High Precision - This is the most accurate, but slowest method. It computes uptime based on given fight duration using double precision when calculating values of incomplete beta function.</li>
+<li>Advanced - Interpolation - This method precomputes high precision values at specific proc chance and interval points and then uses interpolation to compute values at other proc chances and intervals. It is relatively fast while still giving very accurate results.</li></ul>
+<h5>Effect Combinations Calculation Mode</h5>Determines the way combined uptime of several special effects is calculated. All methods use adaptive Simpson&#39;s method for numeric integration of average uptime over time. The methods differ in how the incomplete beta function values are calculated that are used to compute average uptime at specific time points.
+<ul><li>Interpolation - Linear - Uses linear interpolation to compute values of incomplete beta function. Fastest, but least accurate.</li>
+<li>Interpolation - Cubic - Uses cubic interpolation to compute values of incomplete beta function. Relatively fast, medium accuracy.</li>
+<li>High Precision - Double precision calculation of incomplete beta function using P series or continued fraction expansion.</li></ul>
+
+<h2>Optimizer Settings</h2>
+See <a href="https://rawr.codeplex.com/wikipage?title=GearOptimization&referringTitle=Options">Gear Optimization</a> for more details on gear optimization.<br />
+<h5>Enable warnings in optimizer</h5><ul><li>By default you will be warned when the optimizer considers that you&#39;re using suboptimal settings such as having too many items selected available or not having something marked available that you have currently equipped. You can uncheck this to disable those warnings.</li></ul>
+<h5>Consider gems in enabled gemming templates to be available</h5><ul><li>When enabled the gems in enabled gemming templates will be available to be used by the optimizer when regemming items.</li></ul>
+<h5>Optimization Method</h5>This determines the primary search method used by the optimizer.
+<ul><li>Genetic Algorithm - This is the default way the optimizer is searching for optimum gear setups. When optimizer is searching for optimum it will use a population of characters which it combines and modifies to find better gear setups. More details on <a href="http://en.wikipedia.org/wiki/Genetic_algorithm">Wikipedia</a>.</li>
+<li>Simulated Annealing - When optimizer is searching for optimum it will only modify a single character, starting with large changes and minimizing changes the closer it gets to the optimum. More details on <a href="http://en.wikipedia.org/wiki/Simulated_annealing">Wikipedia</a>.</li></ul>
+<h5>Greedy Optimization Method</h5>This determines the search method at minimum thoroughness or when making a final pass after main search is complete.
+<ul><li>All Combinations - When looking for direct upgrades in a slot it will evaluate all possible gemming and enchanting combinations for all gear marked as available.</li>
+<li>Single Gem/Enchant Changes - When looking for direct upgrades in a slot it will only try modifying one gem/enchant at a time. This speeds up the search, but if two gems need to be changed at the same time to get an improvement it will miss that.</li>
+<li>Greedy Best Gem/Enchant - When looking for direct upgrades in a slot it will first determine which gems/enchants are best based on relative stat values and try putting in the best based on socket colors or best overall. This method is the fastest, but will give the worst results.</li></ul></div><div class="ClearBoth"></div>

@@ -1,0 +1,155 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Issue implemented in release v2.2.0.7",
+    "ClosedDate": "2009-04-14T07:05:27.81-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "I just wonder what it takes to have a different language version of the item cache ? RAWR is a great tool and I use it quite heavily, but whats a bit uncomfortable is that I always need to lookup the items I'm interessted in on wowhead and get my native language name then. It would much cooler if I could either tell RAWR to show me e.g. the german item names instead. Or maybe a workaround outside RAWR which would enable me to produce a german item xml file. anything like that possible ?",
+    "LastUpdatedDate": "2013-05-16T05:26:08.827-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-02-28T02:01:54.483-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Different language version",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 4,
+    "Id": 12714
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "It'd be a significant time commitment to support alternate languages. We'd like to at some point, but just don't have the time. If anyone would like to put in the time to develop multilingual support, let me know.",
+      "PostedDate": "2009-02-28T18:11:02.523-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'd be willing to contribute my time to support this. My coding skills is low but if there are easy, but time consuming tasks I might be able to help this way.",
+      "PostedDate": "2009-02-28T22:33:09.29-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-03-01T07:44:05.853-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This wouldn't be especially easy, no...",
+      "PostedDate": "2009-03-01T16:34:11.3-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-03-02T00:37:50.047-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "it would be enough to show the other language itemnames for searching the item. how can we support this?",
+      "PostedDate": "2009-03-26T04:48:55.84-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-03-26T04:49:08.917-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'd say the best way to accomplish this currently would be to add an additional property of LocalizedItemName, and an option in Rawr to choose the display language. That additional property would need to be filled in for all items then, using localized versions of Wowhead or Armory.",
+      "PostedDate": "2009-03-26T07:48:53.68-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I've added initial support for reloading ItemCache from localised Wowhead. Whilst it is bound to have some issues eg: if items text is parsed for procs/use effects and text is expected in English, then it wouldn't necessarily get the proc/use effect. However it is at least a major first step to localising Rawr. \r\n\r\nThose testing this localisation please understand that this is an early development and full support for alternate languages will need the help and effort of testers and programmers who understand the languages concerned. Please do not expect a 100% working localised version from day one. If you can assist working on localisation I'm sure Astrylian would be keen to hear from you.",
+      "PostedDate": "2009-03-26T10:57:35.083-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Levva, could you please redesign that so that it loads the full item data from the normal wowhead site, then afterward loads just the name from the regional site, and saves that data to a new property on item, \"LocalizedName\"? Thanks.",
+      "PostedDate": "2009-03-26T13:05:20.683-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Absolutely Astrylian - I was thinking that the solution I'd used would need a bit of a tweak to make it smoother. Should we also store localised description? As whilst the description shouldn't be used for parsing it would be useful to be used for tooltip display so that German users saw a German tooltip etc.",
+      "PostedDate": "2009-03-26T16:19:54.34-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I don't see how that would hurt; go for it.",
+      "PostedDate": "2009-03-26T17:30:54.36-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm guessing I should use, what locally we would call the bastardised (note proper spelling :)) American spelling of Localised? ie: Localized. Hmm that will hurt, mis-spelling stuff like that :) Its like asking me to type Armoury as Armory. \r\n\r\nHmmm there's a thought I could create an American Locale version too, for those of you that don't use proper English!! :) :)",
+      "PostedDate": "2009-03-27T02:50:59.723-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Implemented the changes now, without an American locale :) \r\n\r\nThe setting for Locale is in Tools | Options... | General Settings. This may need to be highlighted in the readme as otherwise how would anyone know. \r\n\r\nWhen the option is selected it prompts the user, in thier local language (got from google translator) to run \"Update Item Cache from Wowhead\". This local language text may need to be tweaked as translation services are ok but no match for a human translator. If some of our German/French/Spanish/Russian users can check the text and post any corrections is would be much appreciated.\r\n\r\nOnce you have selected the locale preference and loaded your item cache from wowhead you should see all of your graphs and tooltips now have the item name in your local language. Whilst not 100% localised its a big jump forward and what the original poster asked for.",
+      "PostedDate": "2009-03-27T08:54:48.963-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "really good work levva.\r\nit works fine for german translation. i got no errors while compiling and all special chars are working fine.",
+      "PostedDate": "2009-03-28T16:01:17.247-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Can you confirm that the German language text that warns you to refresh the data from Wowhead is actually proper German translation, I used Google Translator so it might need a tweak.",
+      "PostedDate": "2009-03-28T18:50:38.267-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I will test it again today after work and tell you if it is correct german.\r\nFurther on it would be great to see beside or below the translated name the english original name. Many WoW sides have only english names and talking in forums like elitistjerks also only have english ones.",
+      "PostedDate": "2009-03-30T01:08:50.16-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I will test it again today after work and tell you if it is correct german.\r\nFurther on it would be great to see beside or below the translated name the english original name. Many WoW sides have only english names and talking in forums like elitistjerks also only have english ones.",
+      "PostedDate": "2009-03-30T01:08:55.7-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ok now i have finally checked it, sorry for waiting so long.\r\n\r\nNow it says: Sie müssen 'Update Item Cache from Wowhead' to reload Artikel für die Deutsche Lokalisierung\r\n\r\nThe correct translation should be: Um die deutsche Lokalisierung nachzuladen müssen sie auf 'Update Item Cache from Wowhead' drücken.",
+      "PostedDate": "2009-04-04T00:13:35.75-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-04-14T07:05:27.81-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I tested a little bit and found out, when iam refreshing an item that the english language is reloaded even when german language is selected.\r\nfurther more i had english names when i opened a character which i switched to german before.",
+      "PostedDate": "2009-04-20T01:19:27.773-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:35:22.323-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:26:08.827-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

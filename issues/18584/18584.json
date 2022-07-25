@@ -1,0 +1,116 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Items",
+      "DisplayName": "Rawr.Base.Items"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2010-09-11T15:24:39.38-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "When I optimize my shadowpriest build, rawr suggests that replacing a Runed Stormjewel with a Runed Cardinal Ruby (both +23 spellpower red gems) will increase my rating and there is ~200 of actual value added by the optimization.\n \nSteps to reproduce:\n1. Load the xml character file attached.\n2. Click Tools > Optimizer... > Optimize.\n3. A redundant optimization is suggested that actually changes the dps rating of the character.\n \nRawr b3.0.3.22",
+    "LastUpdatedDate": "2013-05-16T05:20:00.203-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-08-25T05:29:05.75-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Items] Incorrectly handles Stormjewel as being one gem unique",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 18584
+  },
+  "FileAttachments": [
+    {
+      "FileId": 3938,
+      "FileName": "RunedStormjewel.xml",
+      "DownloadUrl": ".\\3938"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "You're going to have to upload your own results of a file that shows this post-Optimize behavior.  I am not able to reproduce the issue.  It is replacing the Stormjewel with a Cardinal Ruby, but not changing the total value of the character.  My gut instinct is that you have two Stormjewels equipped pre-Optimize, so the program is ignoring the value contributed by one of them (similar to how the program handles manually equipping four or more JC-only gems).  The Optimizer realizes that it can gain an entire gem's worth of value by replacing one of these valueless Stormjewels with a Cardinal Ruby, and that's where the bump in character performance is coming from.  Again, assuming you are working with the same file that uploaded as your PRE-OPTIMIZE character file, I'm not seeing this issue on my own machine, but if this is a post-optimize, then I would say to check for two or more Stormjewels being equipped.",
+      "PostedDate": "2010-08-25T09:48:14.16-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-08-25T14:42:15.867-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "The in-game limit to having only one Stormjewel went away once crafted epic gems became available in 3.2.  If the optimizer \"realizes\" the pre-3.2 behavior, it is wrong.",
+      "PostedDate": "2010-08-26T05:54:38.453-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Wow, I actually didn't know that.  Go me?  xD",
+      "PostedDate": "2010-08-26T12:18:33.94-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm changing this to a Base issue, since the basic issue is with the fact that the gems from the fishing dailies can only have 1 Stormjewel at a time.",
+      "PostedDate": "2010-08-26T14:05:24.13-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-08-26T14:07:04.18-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-08-27T18:56:33.38-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-08T13:29:28.767-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I can't reproduce this. Stormjewels are no longer treated as unique.\r\n\r\nWith the provided character a change is suggested upon optimization, but it suggests replacing +sp for +hit, which has nothing to do with stormjewels.",
+      "PostedDate": "2010-09-11T15:10:39.34-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Was able to reproduce this issue on live Rawr3 version. It seems for some reason the post optimization gives 5% extra crit to some abilities, but after loading the character the change is not reflected. Likely related with the similar issue with cat model.",
+      "PostedDate": "2010-09-11T15:17:32.25-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Similar with the cat issue I can't reproduce it in Rawr3 dev build, so I'm assuming that whatever was the underlying problem must have been fixed.",
+      "PostedDate": "2010-09-11T15:24:25.16-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-11T15:24:39.38-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:27:36.95-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:20:00.203-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

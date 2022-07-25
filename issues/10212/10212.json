@@ -1,0 +1,326 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "",
+      "DisplayName": ""
+    },
+    "ClosedComment": "Fixed.",
+    "ClosedDate": "2009-01-19T15:13:26.003-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Can anyone else reproduce this bug--\n \nI Download and unzip 14.1;  open a previosly saved character or download new from armory.  Right click on an item and select 'edit';  everything works.\nNow I select 'Update Item Cache';  Now when I right click on an item and select 'edit' or select Tools|Edit  I get the error msg \"Rawr encountered an error while attempting to load a saved image.  If you encounter this error multiplet times, please ensure that Rawr is unzipped in a location that you have full file read/write access, such as your Desktop, or My Documents.\" ;  the only way to get rid of the message is to kill the Rawr executable.  \n \nI've tried redownloading, but same problem occurs.  Is there a problem with the updated Cache?",
+    "LastUpdatedDate": "2013-05-16T05:27:16.4-07:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2008-05-19T07:02:07.1-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "Edit Item bug?  Problems with updated cache?",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 5,
+    "Id": 10212
+  },
+  "FileAttachments": [
+    {
+      "FileId": 981,
+      "FileName": "ItemCache.zip",
+      "DownloadUrl": ".\\981"
+    },
+    {
+      "FileId": 992,
+      "FileName": "ItemCache.zip",
+      "DownloadUrl": ".\\992"
+    },
+    {
+      "FileId": 1031,
+      "FileName": "Capture.JPG",
+      "DownloadUrl": ".\\1031"
+    },
+    {
+      "FileId": 1035,
+      "FileName": "temp.jpg",
+      "DownloadUrl": ".\\1035"
+    },
+    {
+      "FileId": 1036,
+      "FileName": "inv_helmet_132.jpg",
+      "DownloadUrl": ".\\1036"
+    },
+    {
+      "FileId": 1037,
+      "FileName": "inv_shoulder_89.jpg",
+      "DownloadUrl": ".\\1037"
+    },
+    {
+      "FileId": 1038,
+      "FileName": "inv_shoulder_96.jpg",
+      "DownloadUrl": ".\\1038"
+    },
+    {
+      "FileId": 1039,
+      "FileName": "error.txt",
+      "DownloadUrl": ".\\1039"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Yes I've had that one too.",
+      "PostedDate": "2008-05-19T07:36:08.49-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Does it work after a relaunch? If not, please post the ItemCache.xml.\r\n\r\nEither way, please post the full error log.",
+      "PostedDate": "2008-05-19T08:20:54.303-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Here's the item cache.  How do I get the error log?  I couldn't find any file called rawr.log.",
+      "PostedDate": "2008-05-19T09:23:51.07-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-05-19T09:23:51.46-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ohh, that's right, there's no error log displayed for that error. Nevermind then, thanks for the itemcache. Will see if I can repro it...",
+      "PostedDate": "2008-05-19T09:44:33.617-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I've found 2 of the Sunwell shoulders (one plate, one cloth) have bad image downloads from the armory - these are inv_shoulder_89 and inv_shoulder_96.  I got around the problem by deleting the bad images and renaming copies of the \"temp\" jpg to fill the holes.  It's fairly easy to find the bad images in this case, all you have to do is sort the icons by filesize, and both of the bad ones are 1kb, whereas the rest are generally 3 or 4kb.",
+      "PostedDate": "2008-05-21T08:15:36.597-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-05-23T05:13:07.977-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm having the same issue, and I can repro it 100% on both my windows XP and windows vista machines.  Vanilla extract of 14.1, immedietly do an item update, put a helm of malorne in the head slot then right click to edit.  Constant repeating error dialog and I have to kill the process.  What is the work around?  right now I can't use rawr to edit my items.  Attached is my item cache.",
+      "PostedDate": "2008-05-23T22:50:52.59-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-05-23T22:50:53.293-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-05-23T22:51:39.027-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "A workaround is to look at the filename of the item which is mentioned in the error dialogue, e.g. 'inv_shoulder_96.jpg'. Then make a new copy of 'temp.jpg', delete the broken 'inv_shoulder_96.jpg' and rename 'copy of temp.jpg' to 'inv_shoulder_96.jpg'.",
+      "PostedDate": "2008-05-25T06:10:59.667-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "nope, that doesn't fix the issue.  The error has no mention of a file name, and the error dialog has no text in the title.  When I did find the image in the image directory and rename the temp.jpg to correspond with that image name.  I loaded, saw the tmp image on my piece of equipment (as expected) then right click: edit produces the same result; infinite repeating error dialogs.",
+      "PostedDate": "2008-05-28T00:51:09.01-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "@ wewhoeat\r\nThe problem is that more than one item uses the same icon, and there are multiple broken icons in the armory at present.  You'll need to find both (or more) of the 1kb jpegs and fix all of them.  Remember that doing a cache update will re-download the broken jpegs, so you'll need to repair them again after an update.\r\n\r\nYou're not actually getting \"infinite\" error dialogs - just more than you want to click through.  I think that I have a dozen or so broken ones in my current itemcache, and replacing the two broken jpegs with good temp ones clears all the errors at once.",
+      "PostedDate": "2008-05-28T06:40:49.103-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yeah I'm getting it also, fresh download of Rawr, using Rawr.Mage. I updated the item cache, then imported my char from armory, and whenever i try to edit the gems in an item, i get that error",
+      "PostedDate": "2008-06-01T16:01:20.623-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Anyone?",
+      "PostedDate": "2008-06-03T15:38:52.587-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Use the original itemcache.",
+      "PostedDate": "2008-06-03T16:56:29.773-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "then a lot of the items i want to use arent included?",
+      "PostedDate": "2008-06-03T19:26:42.213-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Just don't use Update items, you can still add items (via potential upgrades, or loading a character, or individually)",
+      "PostedDate": "2008-06-03T20:15:29.26-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "If you copy temp.jpg to inv_shoulder_89.jpg and inv_shoulder_96.jpg that will clear the problem - the inv_shoulder_89.jpg and inv_shoulder_96.jpg being served up by the armory are corrupt at the moment.",
+      "PostedDate": "2008-06-04T10:41:41.843-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-06-04T10:41:42.5-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Just to add new info, inv_helmet_132.jpg is now also bad from the armory, if you're getting the error this is probably going to be one of the culprits too.  Replace the following images in your images directory with copies of the temp.jpg and the error will stop.  I will update this thread with new information as we get it.\r\n\r\ninv_shoulder_89.jpg\r\ninv_shoulder_96.jpg\r\ninv_helmet_132.jpg",
+      "PostedDate": "2008-06-04T21:17:48.647-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-06-04T21:17:49.05-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I have used my not-so-wonderful image editing abilities to generate temporary images for the three bad ones - they are attached to the top of the post.",
+      "PostedDate": "2008-06-04T22:16:45.177-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-06-04T22:16:45.69-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "inv_shoulder_89.jpg",
+      "PostedDate": "2008-06-04T22:17:14.317-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-06-04T22:17:14.833-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "inv_shoulder_96.jpg",
+      "PostedDate": "2008-06-04T22:17:41.647-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-06-04T22:17:42.1-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks very much, Lapdragon!",
+      "PostedDate": "2008-06-04T22:19:08.503-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "so we should be able to update the cache from the armory, then just replace the image files with the ones listed here?",
+      "PostedDate": "2008-06-05T15:24:18.823-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "and i get this error when I try to change a gem...\r\n\r\n(error.txt)",
+      "PostedDate": "2008-06-05T15:45:15.293-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-06-05T15:45:15.95-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "@ Citta\r\nYes, that is exactly the way it works :-)",
+      "PostedDate": "2008-06-05T20:27:53.36-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Thanks lapdragon, this has got me going.  Much appreciated.",
+      "PostedDate": "2008-06-06T01:29:44.467-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-06-25T23:16:37.05-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2008-06-26T08:44:42.853-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I'm not entirely sure if it's related but adding a piece of gear manually through the add item and adding a meta and a new gem that was not loaded doesn't seem to work now either.  I have loaded my toon from the armory so the item is present but when I go to the comparisons column to see where that item stacks up it's not listed.  I go to add it but it's there, just not in the comparisions list.  In the past any item you have equiped would show up in the comparisons list.",
+      "PostedDate": "2008-06-27T04:59:03.377-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "@ Rogueldr\r\nIt sounds like you've forgotten to add the proper item type and slot tags to your new item - in the item editor, find your item and use the two dropdown menus in the top right to select what armor class and slot your item is.  You may want to compare it to another item of the same type in order to get both tags right.",
+      "PostedDate": "2008-06-28T15:25:29.23-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "No those tags are correct.  I realize that a Leather item is not always the best for a Healing Pally but none the less it's the best I have at the moment.  It's the Forest Wind Shoulderpads.  They were imported from the armory, I checked the tags you suggested and they are leather and shoulders respectively, but they don't show up in the comparisons list to the right.  I also have a helm that had a +26 healing Meta that does not show up in the comparisons list either.  In the past I've added such items and I've done so here thinking it was not in the database.  When I go to add them it's already finds them yet I can't get either item to show up in the comparisons.",
+      "PostedDate": "2008-06-29T04:15:18.82-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "@ Rogueldr\r\nI've duplicated what you're experiencing, and I can only theorize that it's an unintended flaw in the item filtering of rawr.healadin - those shoulders to appear in the rawr.retadin build.  For now until the issue is fixed, I'd recommend firstly adding a separate Issue report (as the issue you're reporting has nothing to do with the issue that this particular thread is about), and secondly, duplicate the Forest Wind Shoulderpads in the item editor and change the item type to Plate so that your paladin build can see it in Rawr.",
+      "PostedDate": "2008-06-29T14:58:31.877-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Hmm i get these corrupt jpg files as well.\r\n\r\nI tried opening them in a text editor and behold\r\n\r\n<?xml version=\"1.0\" encoding=\"UTF-8\"?><?xml-stylesheet type=\"text/xsl\" href=\"layout/error404.xsl\"?><page globalSearch=\"1\" lang=\"en_us\">\r\n  <errorhtml/>\r\n<!-- IE 512 byte friendly error override\r\n       ...........................................................\r\n       ...........................................................\r\n       ...........................................................\r\n       ...........................................................\r\n       ...........................................................\r\n       ...........................................................\r\n-->  \r\n</page>\r\n",
+      "PostedDate": "2008-06-29T21:27:51.36-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Maybe Rarw should check for these corrupted files at update time and if it is indeed corrupt use the one already present (if any) or revert to temp.jpg?",
+      "PostedDate": "2008-06-29T21:30:45.407-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This appears to still be an issue, I updated my item cache yesterday I'm still receiving a corrupt  inv_helmet_132.jpg files from the US armory.  Probably the error should be handled gracefully and a temp image shown?",
+      "PostedDate": "2008-06-30T20:38:41.36-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Could always grab the file from wowhead instead.. eg:\r\nhttp://static.wowhead.com/images/icons/medium/inv_helmet_132.jpg",
+      "PostedDate": "2008-06-30T20:40:47.393-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "That's where I got the image I based the ones I uploaded from - I just used paint to put the border around the image like the ones downloaded from the armory.",
+      "PostedDate": "2008-07-01T04:26:55.23-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "This should be fixed in the next release.  It won't detect existing corrupted files, but it should prevent new ones from getting downloaded.  The best way to find the corrupted files is to view by thumbnails the images directory and delete any that don't show up.",
+      "PostedDate": "2008-07-02T08:49:50.273-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-01-19T15:13:26.003-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:36:50.943-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:27:16.4-07:00",
+      "Id": -2147483648
+    }
+  ]
+}

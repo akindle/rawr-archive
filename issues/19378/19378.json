@@ -1,0 +1,115 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Base.Items",
+      "DisplayName": "Rawr.Base.Items"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2011-02-20T20:15:49.597-08:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "The issue in question is the trinket Sorrowsong: http://www.wowhead.com/item=56400\n \nYour spells that damage a target below 35% health grant 1710 spell power for 10 sec.  Cannot activate again for 10 sec after bonus expires.\n \nThis means it is activated when the target is below 35% health for 10 seconds with a 20 second cooldown. I was thinking this could be linked somehow by way of the Boss Handler.",
+    "LastUpdatedDate": "2017-11-27T11:01:16.107-08:00",
+    "PlannedForRelease": "Rawr 4.0.13 Beta",
+    "ReleaseVisibleToPublic": true,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2010-12-20T16:08:21.737-08:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Items] Need a trigger that triggers when target is below 35%",
+    "Type": {
+      "Name": "Task",
+      "Id": 2
+    },
+    "VoteCount": 2,
+    "Id": 19378
+  },
+  "FileAttachments": [],
+  "Comments": [
+    {
+      "Message": "I thought there were flags in BossHandler already for time below 35%/20%.  In any event, whatever the solution is, I'll also need to hook into it.",
+      "PostedDate": "2010-12-21T05:53:45.907-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "There are flags in the Boss Handler, yes. However there is currently no triggers that are linked to the Boss Handler as far as I am aware of.",
+      "PostedDate": "2010-12-21T06:41:38.067-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Yes, it has the flags, we just need to figure out a way to translate those Percentages into the SpecialEffects processing. I'm thinking initially we would just affect the proc's uptime? Kavan would be best to comment on this more since that's his baby.",
+      "PostedDate": "2010-12-21T16:13:50.247-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Awesome, I don't feel (as) stupid now for not being able to figure out how to input something that wasn't there. ",
+      "PostedDate": "2010-12-30T12:42:18.34-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-12-30T21:20:46.293-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-01-07T12:40:34.417-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Well, I've given Sorrowsong, some value in the latest release. However it still really needs an Execute trigger to have a better value to it.",
+      "PostedDate": "2011-01-09T19:24:14.763-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Think we'll be seeing such a thing any time soon?",
+      "PostedDate": "2011-01-09T19:52:14.287-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I have a local fix for this, but I'm not going to check it in for .18. I'm going to save it for .19 instead.\r\n\r\nAll models that are impacted by these trinkets need to add a line to their SpecialEffects processing, you will have to adapt it to your specific methods but it's the same idea:\r\nif (effect.LimitedToExecutePhase) { uptime *= (float)BossOpts.Under35Perc; }\r\n\r\nIf you don't do this, Trinkets like Sorrowsong will be WAY WAY WAY overvalued after being refreshed.",
+      "PostedDate": "2011-02-03T17:30:35.293-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Here is suggested implementation for this (just looking at average over the whole fight):\r\n\r\n                float durationMultiplier = 1;\r\n                if (effect.LimitedToExecutePhase)\r\n                {\r\n                    durationMultiplier = BossOpts.Under35Perc;\r\n                }\r\n                return durationMultiplier * effect.GetAverageUptime(triggerInterval, triggerChance, attackSpeed, durationMultiplier * fightDuration);\r\n",
+      "PostedDate": "2011-02-03T18:31:49.043-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Mage and Moonkin are doing this right now. That leaves ShadowPriest, Healadin, HealPriest, Elemental, Warlock and Tree. I'm not counting melee or tanks here because only the Sorrowsong (spellpower) item is really affected right now.",
+      "PostedDate": "2011-02-07T18:12:57.337-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-02-20T20:15:49.597-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:26:59.843-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:19:30.107-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:01:16.107-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

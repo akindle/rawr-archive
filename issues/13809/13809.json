@@ -1,0 +1,151 @@
+{
+  "WorkItem": {
+    "AffectedComponent": {
+      "Name": "Rawr.Tree",
+      "DisplayName": "Rawr.Tree"
+    },
+    "ClosedComment": "",
+    "ClosedDate": "2009-09-19T19:16:54.717-07:00",
+    "CommentCount": 0,
+    "Custom": null,
+    "Description": "Basic stats page (v2.2.12) is showing\n \nInt 1008\nSpirit 817\nMP5 531: Mouseover shows 772 O5SR.\n \nGaining 772-531 = 241 when going O5SR implies 2*241=482 Spirit regen (factor of two because Intensity already gives me 50% spirit regen).\n \nI believe the formula for spirit regen is 5*(.001+sqrt(int)*spirit*.003345) = 434.\n \nSo I'm seeing a discrepancy of about 10% on O5SR regen?\n \nHT Heal: Shows 12229 (SP is 2644). I think that would be consistent with ET being multiplicative, but http://elitistjerks.com/f73/t37038-restoration_glyphs/p8/#post1240879 showed ET as adding .4 to the HT coefficient, not multiplying by 1.4.\n \nNourish: I don't have test numbers for these (I'll try to get them):\n \n1) I'd assume that if ET is additive for HT, it would also be additive for Nourish. Rawr is using multiplicative.\n2) I think I've heard the Glyph of Nourish bonus (and the tier bonus) are both multiplicative, so with three HoTs and both bonuses you'd have xxx*1.18*1.15. Rawr has these as additive.\n3) I'd assumed that the 20% bonus for having any HoT present was multiplicative. Rawr has it additive with GoN. I don't recall any seeing any tests one way or the other.",
+    "LastUpdatedDate": "2017-11-27T11:05:39.28-08:00",
+    "PlannedForRelease": "",
+    "ReleaseVisibleToPublic": false,
+    "Priority": {
+      "Name": "Low",
+      "Severity": 50,
+      "Id": 1
+    },
+    "ProjectName": "Rawr",
+    "ReportedDate": "2009-08-07T10:28:27.93-07:00",
+    "Status": {
+      "Name": "Closed",
+      "Id": 4
+    },
+    "ReasonClosed": {
+      "Name": "Unassigned"
+    },
+    "Summary": "[Tree] mana numbers and ET",
+    "Type": {
+      "Name": "Issue",
+      "Id": 3
+    },
+    "VoteCount": 1,
+    "Id": 13809
+  },
+  "FileAttachments": [
+    {
+      "FileId": 2079,
+      "FileName": "Erd Heal.xml",
+      "DownloadUrl": ".\\2079"
+    },
+    {
+      "FileId": 2215,
+      "FileName": "NourishTest.xls",
+      "DownloadUrl": ".\\2215"
+    }
+  ],
+  "Comments": [
+    {
+      "Message": "Thanks for the feedback. I'll look at this over the next day or so. \r\nSome feedback so long:\r\nO5SR: 5*(.001+sqrt(int)*spirit*.003345) is being used in the code. (In code common to numerous models).  The reason why the numbers aren't mathcing up is that replenishment is being added to both the MP5 and O5SR numbers, if I read the quick code check correctly, but I'll play with the numbers and try to see if I can show the more clearly. (Also still using the old innervate, so that tooltip needs to change as well).\r\n\r\nET: That part of the code comes from before I started working on it. No complaints yet, therefor I haven't messed with it. I copied that logic to Nourish for the 3.2 mod. I'll go check the EJ post. Thanks\r\n\r\nNourish: I have 4 T7, so will go try testing that. Not using Nourish glyph atm, but will see.\r\n\r\n \r\n\r\n\r\n",
+      "PostedDate": "2009-08-07T14:51:44.84-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I looked at numbers from a Black Knight attempt last night.  I didn't record my SP, but Rawr says my toon should have had 2213 (IMotW, SP food, Dalaran Intellect, no pally/shami/priest buffs).  If I back-calculate from Rejuv ticks (1913,1914) SP should have been 2210.\r\n\r\nUsing that I saw Regrowth ticks (1043,1044) about 1.2% less than rawr formulas predict.  Regrowth direct was in predicted range.\r\n\r\nLifebloom ticks were in range, but blooms (2586-2587, or 7759 for a three-stack) were about 0.5% less than predicted.\r\n\r\nTranquility seems to have ticked (5503,5504) for about 2% more than I would have predicted from the wowwiki coef of 53.8%/tick (I assumed ER, GoN and Genesis all applied to Tranq).\r\n\r\nNourish: ET needs to be additive to base coefficient.  20% bonus for hots needs to be multiplicative. \r\n6/12/18/24% bonus from Glyph cannot be additive with the 20% for HoT.  It might, or might not be additive with GoN (results weren't conclusive).  The most telling result was a Nourish that landed for 6903 with three Hots present.  That is over 300 above what Rawr predicts.\r\n\r\nI really just need to run some tests on myself, ungrouped.\r\n",
+      "PostedDate": "2009-08-08T12:45:25.253-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Ignore my numbers from the Black Knight post.  Looking in Armory, I seem to have taken Starlight Wrath instead of Genesis (old Moonkin habit, I guess).  My computations assumed Genesis, so they will be wrong.",
+      "PostedDate": "2009-08-12T10:24:54.41-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Sorry been a busy week and only got to changes now. Just checked in patch 36098:\r\n-Changed Innervates for 3.2 mode (3 min cd, half size). Number of Innervates calculated based on fight duration.\r\n-Changed Empowered Touch Talent to be additive to both HT and Nourish\r\n-Changed MP5 breakdown on main stats display to give a clearer breakdown\r\n\r\nI didn't change anything for the different HoT bonusses for nourish yet. Any further testing?\r\n\r\nCurrent formula is:\r\nNourish_noHoT = (Base + Sp * 0.6611 + ET) * (1+GoN) * (1 + MS) * (1 + ToL) \r\nNourish_HoT =  Nourish_noHoT * (1.2 +  (4T7 +Glyph) * #HoTs)\r\n\r\nShould this be \r\nNourish_HoT =  Nourish_noHoT * 1.2  *  (1 + 4T7 +Glyph) * #HoTs) ?\r\n\r\nLet me know when you get more testing data.\r\n",
+      "PostedDate": "2009-08-15T10:04:27.43-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-08-19T12:52:18.93-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Did some testing just now.\r\nSpellpower was 1919, was out of tree form, don't have ET, have GoN and 4T7, don't have nourish glyph.\r\nDid some tests using different number of hots on myself and recorded lowest and highest numbers.\r\nWith regrowth, rejiv and lifebloom, I got a 4762 and a 7134 crit. \r\n\r\nIf we assumed Nourish_HoT = (Base+Sp*0.6611)* (1+GoN)  * 1.2 * (1 + (4T7 * #HoTs) ), these 2 numbers fall just outside the lower bound (4784 and 7176). Thus this version of the formula doesn't fit the data. \r\n\r\nAll the numbers fell within the ranges of the current Rawr formula, but too few tests to be conclusive.",
+      "PostedDate": "2009-08-22T14:43:29.393-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "I finally got around to testing.  Results are attached.  Unfortunately these are hand-logged, and two of the entries are suspect.\r\n\r\n128 casts, split between balance+0, balance+1, resto+0, resto+3(glyphed).\r\n\r\nI get a very good match for:\r\nET is additive.\r\nIt appears glyph is additive with the 20% bonus for having a hot.  Their sum is multiplicative with the various talents.\r\n\r\nGlyphed + 3 Nourishes uses: GoN*MSS*ToL*(1 + .2 (nourish with hot) + .18 (glyph))\r\n",
+      "PostedDate": "2009-09-14T20:46:23.193-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-14T20:46:24.057-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Note:  My Nourish test numbers from last night look like they match the current Rawr code (Glyph is additive with 20% for HoT).  No need for any further change.",
+      "PostedDate": "2009-09-15T05:12:40.803-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "WTB: A way to edit comments here.\r\n\r\nNourish coef in Rawr:\r\ncoefDH = 0.6611f; // Spreadsheet says .69, wowwiki says .6611, 1.5/3.5 = .43, confused!\r\n\r\nWowwiki now says .673\r\nMy attached spreadsheet puts lower and upper bounds between .6705 and .6726\r\n\r\nI think a likely value is\r\n1.5/3.5 (cast time) * 1.88 (BC +heal to LK +SP conversion) / 1.2 (bonus when HoT is on target) = .671429\r\n\r\nI plan to update wowwiki right after I do this post.\r\n",
+      "PostedDate": "2009-09-15T06:08:53.257-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-17T12:10:19.273-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "Changed coefDH to .671429 in patch 36874.",
+      "PostedDate": "2009-09-19T14:21:14.383-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2009-09-19T19:16:54.717-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-07-09T12:30:54.787-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2010-09-05T17:43:01.65-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-03-17T21:40:46.86-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2011-05-20T23:09:45.937-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-02-21T18:33:45.44-08:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2013-05-16T05:24:56.39-07:00",
+      "Id": -2147483648
+    },
+    {
+      "Message": "",
+      "PostedDate": "2017-11-27T11:05:39.28-08:00",
+      "Id": -2147483648
+    }
+  ]
+}

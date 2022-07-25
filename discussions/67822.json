@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "230506",
+    "ThreadId": "67822",
+    "Html": "<p>I got Victor's Call tonight http://www.wowhead.com/?item=47725 and I am wondering how to model it using the the item special effects.</p>\r\n<p>This item is a bit unusual in that it is an on-use trinket, but it stacks an AP buff to 5 on any &quot;strike&quot; which includes both white and yellow hits. For now I have done a quick back of the envolope calculation for a best-case rotation stacking to five, and averaging it over the 20 seconds of the effect. The parameters I am using are as follows for the iLvl 232 version of the trinket:</p>\r\n<p>AP: 1236.25</p>\r\n<p>Trigger: Melee Hit (I think that on use is still pulling GCDs BTW, setting it to on use drops the DPS of the item)</p>\r\n<p>Duration: 20 sec</p>\r\n<p>Cooldown: 120 sec</p>\r\n<p>Chance: 100%</p>\r\n<p>Stacks: 1</p>\r\n<p>Does this seem reasonable? Is there a better way to model this without coding it in? I wasn't able to find any other trinkets that worked similarly, but if anyone knows of one that I can look at please let me know.</p>\r\n<p>&nbsp;</p>\r\n<p>~Droid</p>",
+    "PostedDate": "2009-09-02T22:16:20.053-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "230518",
+    "ThreadId": "67822",
+    "Html": "<p>You may try AP=215, Stacks=5, Duration=20, Cooldown=120, Trigger=Use.</p>\r\n<p>Did we fix trinkets costing GCDs or not?</p>",
+    "PostedDate": "2009-09-02T22:56:39.907-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "230521",
+    "ThreadId": "67822",
+    "Html": "<p>If you are talking about DPSWarr, Trinket's dont use GCDs now.</p>",
+    "PostedDate": "2009-09-02T23:00:49.5-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "230524",
+    "ThreadId": "67822",
+    "Html": "<p>Astrylian: It appears that the settings you listed are only putting one &quot;stack&quot; worth of 215 AP on every 2 minutes without allowing it to stack up to 5 during the 20 seconds that the effect is active, it gives significantly lower DPS then expected.</p>\r\n<p>Jothay: Yes it is DPSWarr in the 2.2.14 release, I forgot to mention that. It I change the trinket activate condition from &quot;Melee Hit&quot; to &quot;Use&quot; then I get a loss of 1.62 DPS. Any idea why?</p>\r\n<p>&nbsp;</p>\r\n<p>My character file right now may have other problems as well, it is giving me negitive DPS for expertise and Improved MS again. I will post it as an issue.</p>\r\n<p>&nbsp;</p>\r\n<p>~Droid</p>",
+    "PostedDate": "2009-09-02T23:12:53.927-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "230756",
+    "ThreadId": "67822",
+    "Html": "<p>I don't know why because it is not in any way consuming GCDs, I took that code out.</p>",
+    "PostedDate": "2009-09-03T10:07:05.49-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "230864",
+    "ThreadId": "67822",
+    "Html": "<p>Ah, I found the bug. There was one lingering spot still trying to use GCDs, but the primary point where they were I had already taken it out.</p>",
+    "PostedDate": "2009-09-03T13:43:57.67-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "236331",
+    "ThreadId": "67822",
+    "Html": "<p>Victor's call still doesn't have a on-use specified in the default data files that were shipped with v2.2.17, is this on anyone's ToDo list?</p>\r\n<p>&nbsp;</p>\r\n<p>~Droid</p>",
+    "PostedDate": "2009-09-18T21:32:05.85-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "236356",
+    "ThreadId": "67822",
+    "Html": "<p>Ok, the trouble with Victor's Call is that it technically has two different triggers. The primary, Trigger.Use has a cooldown of 2 mins and can't go for longer than 20 seconds, but it's internal one has no cooldown and procs via Trigger.MeleeHit, stacking 5 times.</p>\r\n<p>So basically, it needed a Nested SpecialEffect, the secondary one affected by the Primary's Uptime. So in order for this to work, I needed to make our handler check for Nested Special Effects. Some elbow grease and a half hour later, I had a recursive version of the functionality to get average special effects stats. So, according to my immediate testing on a dummy BiS, the trinket now gets it's proper value instead of just the 83 expertise rating and doesn't need an averaged value like 1236.25 hard-set. Other trinkets didn't change in value so the original methods still apply to everything else.</p>\r\n<p>Also, Wowhead's data is bad for the item (back-end has some invalid characters so the parser doesn't see the second line where the proc info is) so you have to refresh from Armory.</p>",
+    "PostedDate": "2009-09-18T23:45:37.637-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  },
+  {
+    "Id": "236427",
+    "ThreadId": "67822",
+    "Html": "<p>Fantastic! It looks to be giving me a small reduction in DPS from what I was modeling with the static AP, but I now realize I accidently used the heroic version's stats when I calculated that. When I do it with the RIGHT stats we come out to within 1 DPS.</p>\r\n<p>&nbsp;</p>\r\n<p>~Droid</p>",
+    "PostedDate": "2009-09-19T10:00:14.867-07:00",
+    "UserRole": null,
+    "MarkedAsAnswerDate": null
+  }
+]
